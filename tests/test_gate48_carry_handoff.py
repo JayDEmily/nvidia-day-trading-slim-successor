@@ -126,3 +126,20 @@ def test_carry_handoff_builder_blocks_add_carry_inside_event_carry_window() -> N
     assert handoff.horizon is CarryHorizon.EVENT_CARRY
     assert handoff.event_carry_window is True
     assert CarryAction.ADD_CARRY not in handoff.allowed_actions
+
+
+def test_carry_handoff_builder_treats_saturday_morning_as_weekend_branch() -> None:
+    handoff = CarryHandoffBuilder().build(
+        symbol="NVDA",
+        evaluation_ts=datetime.fromisoformat("2026-03-28T08:15:00-04:00"),
+        temporal=_temporal_output(ts="2026-03-28T08:15:00-04:00"),
+        options_flow=_options_output(),
+        posture=_posture_output(),
+        execution=_execution_output(["pin_reversion"]),
+    )
+
+    assert handoff.horizon is CarryHorizon.WEEKEND
+    assert handoff.weekend_window is True
+    assert handoff.next_session_open_ts is not None
+    assert handoff.next_session_open_ts.weekday() == 0
+    assert handoff.allowed_actions.count(CarryAction.HOLD_BASELINE) == 1

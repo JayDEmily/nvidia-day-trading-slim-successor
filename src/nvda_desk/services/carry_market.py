@@ -86,10 +86,11 @@ class OvernightCarryMarketService:
             action=output.carry_action,
             exposure=output.overnight_exposure_pct,
         )
+        adjusted_recommendation = self._recommendation_for_action(adjusted_action)
         rationale_codes = list(output.rationale_codes)
         rationale_codes.extend(adjustment_reasons)
         return OvernightCarryMarketOutput(
-            carry_recommendation=output.carry_recommendation,
+            carry_recommendation=adjusted_recommendation,
             carry_action=adjusted_action,
             overnight_exposure_pct=adjusted_exposure,
             keep_orders_active=output.keep_orders_active,
@@ -128,6 +129,15 @@ class OvernightCarryMarketService:
         if recommendation is CarryRecommendation.BLOCK:
             return CarryAction.BLOCK_CARRY, 0.0, ["handoff:block_carry"]
         return CarryAction.FLATTEN, 0.0, [f"handoff:downgraded_from:{action.value}"]
+
+    def _recommendation_for_action(self, action: CarryAction) -> CarryRecommendation:
+        return {
+            CarryAction.ADD_CARRY: CarryRecommendation.INCREASE,
+            CarryAction.HOLD_SMALL: CarryRecommendation.HOLD_SMALL,
+            CarryAction.HOLD_BASELINE: CarryRecommendation.HOLD_SMALL,
+            CarryAction.FLATTEN: CarryRecommendation.FLATTEN,
+            CarryAction.BLOCK_CARRY: CarryRecommendation.BLOCK,
+        }[action]
 
     def _latest_close_or_zero(self, symbol: str, ts: datetime) -> float:
         snapshot = self._market_state_service.get_market_snapshot(symbol=symbol, ts=ts)

@@ -47,7 +47,7 @@ class CarryHandoffBuilder:
     ) -> CloseStateCarryHandoff:
         aware_ts = evaluation_ts.astimezone(self._tz) if evaluation_ts.tzinfo else evaluation_ts.replace(tzinfo=self._tz)
         next_session_open_ts = self._next_session_open(aware_ts)
-        weekend_window = (next_session_open_ts.date() - aware_ts.date()).days >= 3
+        weekend_window = aware_ts.weekday() >= 5 or (next_session_open_ts.date() - aware_ts.date()).days >= 2
         event_carry_window = temporal.event_window_state in {"event_imminent_window", "event_live_window"}
         horizon = CarryHorizon.WEEKEND if weekend_window else (CarryHorizon.EVENT_CARRY if event_carry_window else CarryHorizon.OVERNIGHT)
         allowed_actions = self._allowed_actions(
@@ -103,14 +103,18 @@ class CarryHandoffBuilder:
             allowed = [CarryAction.FLATTEN, CarryAction.HOLD_SMALL, CarryAction.HOLD_BASELINE, CarryAction.ADD_CARRY]
         if horizon is CarryHorizon.WEEKEND and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
-            allowed.append(CarryAction.HOLD_BASELINE)
         if event_carry_window and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
         return allowed
 
     def _next_session_open(self, aware_ts: datetime) -> datetime:
-        candidate = aware_ts.replace(hour=self._settings.regular_open_hour, minute=self._settings.regular_open_minute, second=0, microsecond=0)
-        if aware_ts < candidate:
+        candidate = aware_ts.replace(
+            hour=self._settings.regular_open_hour,
+            minute=self._settings.regular_open_minute,
+            second=0,
+            microsecond=0,
+        )
+        if aware_ts.weekday() < 5 and aware_ts < candidate:
             return candidate
         next_day = aware_ts + timedelta(days=1)
         while next_day.weekday() >= 5:

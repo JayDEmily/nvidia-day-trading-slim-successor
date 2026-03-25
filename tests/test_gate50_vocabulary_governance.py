@@ -4,6 +4,7 @@ from pathlib import Path
 
 from nvda_desk.schemas.vocabulary import VocabularyDocument
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
+from scripts.build_canonical_vocabulary import build_document
 
 VOCAB_PATH = Path("docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json")
 
@@ -31,3 +32,10 @@ def test_vocabulary_aliases_do_not_reference_stale_canonical_truth() -> None:
 
     assert "canonical_step1_truth" in session_clock.disallowed_phrases
     assert "session_clock_wrapper" in session_clock.allowed_aliases
+
+
+def test_canonical_vocabulary_file_matches_generator_output() -> None:
+    generated = build_document().to_json_text()
+    committed = VOCAB_PATH.read_text(encoding="utf-8")
+
+    assert committed == generated
