@@ -1,0 +1,480 @@
+{
+  "plan_id": "COGNITIVE-WORKFLOW-MODIFICATION-V1",
+  "governing_plan": "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md",
+  "global_rules": [
+    "This tranche modifies the current deterministic cognition architecture and does not authorise a rewrite.",
+    "One working branch per gate; no downstream gate begins until the current gate is complete, green, and merged.",
+    "DMP v1 remains the live binding default unless a dedicated gate explicitly proves and promotes a DMP v2 migration.",
+    "Modules remain interchangeable only within their grammar slot.",
+    "Shared primitives are allowed; downstream verdict loops are forbidden.",
+    "Weekend / overnight / event carry remains a distinct horizon branch.",
+    "Raw and derived surfaces remain separated."
+  ],
+  "leaves": [
+    {
+      "id": "LEAF-G51-001",
+      "gate": "Gate 51",
+      "title": "Pin stage ownership for the cognitive workflow modification",
+      "prerequisites": [],
+      "scope": "Map each workflow branch from calendar/horizon through review/explanation to its owning stage, including explicit boundaries and non-goals.",
+      "files_expected": [
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md",
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/audit/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write a stage-ownership map for calendar/horizon, temporal phase, regime, options/flow, posture/risk, candidate families, setup variants, execution expression, carry branch, and review.",
+        "State explicitly which stage owns candidate family generation.",
+        "State explicitly what may and may not flow into the carry branch.",
+        "Record non-goals so the tranche cannot expand into a rewrite."
+      ],
+      "validation_tasks": [
+        "Check the implementation map against docs/01_NORMATIVE.md and docs/02_OPERATING_MODEL.md.",
+        "Ensure no stage ownership contradicts the audit findings."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The workflow implementation map is explicit, bounded, and normatively aligned.",
+      "merge_gate": "The map does not contradict the current seven-stage runtime order unless such a change is explicitly justified and proven.",
+      "status": "planned",
+      "execution_sequence": 1
+    },
+    {
+      "id": "LEAF-G51-002",
+      "gate": "Gate 51",
+      "title": "Freeze candidate-generation and carry-branch boundaries",
+      "prerequisites": ["LEAF-G51-001"],
+      "scope": "Prevent drift by pinning where candidate family generation ends and where carry-horizon decisioning begins.",
+      "files_expected": [
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md",
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define the boundary between posture/risk permission and candidate family generation.",
+        "Define the boundary between execution expression and carry-horizon handoff.",
+        "State explicit examples of invalid cross-stage leakage."
+      ],
+      "validation_tasks": [
+        "Ensure the boundary rules do not reintroduce downstream-verdict loops into Step 1 or carry routing."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Boundaries are explicit enough that later runtime implementation cannot reasonably claim ambiguity.",
+      "merge_gate": "Boundary rules are consistent with audit findings and normative docs.",
+      "status": "planned",
+      "execution_sequence": 2
+    },
+    {
+      "id": "LEAF-G52-001",
+      "gate": "Gate 52",
+      "title": "Refactor registry contracts to native family/variant/expression hierarchy",
+      "prerequisites": ["LEAF-G51-001", "LEAF-G51-002"],
+      "scope": "Upgrade the registry contracts so the runtime speaks native family, setup variant, execution expression, and horizon rather than treating hierarchy as a cosmetic wrapper.",
+      "files_expected": [
+        "src/nvda_desk/schemas/playbook_registry.py",
+        "docs/planning/2026-03-24_PLAYBOOK_REGISTRY_SPEC.md",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate47_registry_v2.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "docs/planning/**",
+        "config/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Promote family, setup_variant, execution_expression, and horizon to native first-class contract fields.",
+        "Document compatibility behaviour for existing live rules.",
+        "Update the registry spec so it no longer reads as a bridge-only surface."
+      ],
+      "validation_tasks": [
+        "Prove the registry schema serialises and validates cleanly.",
+        "Prove the checked-in registry file matches the documented schema expectations."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate47_registry_v2.py tests/test_playbook_registry.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The registry contracts are natively hierarchical and explicitly versioned.",
+      "merge_gate": "Legacy compatibility remains explicit and tested rather than accidental.",
+      "status": "planned",
+      "execution_sequence": 3
+    },
+    {
+      "id": "LEAF-G52-002",
+      "gate": "Gate 52",
+      "title": "Move runtime eligibility from flat rule map toward hierarchical evaluation",
+      "prerequisites": ["LEAF-G52-001"],
+      "scope": "Refactor runtime selection so the eligibility layer evaluates family/variant/expression natively instead of living mostly inside a hard-coded rule-id map.",
+      "files_expected": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_playbook_registry.py",
+        "tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "fixtures/**",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Introduce a family-first selection path in runtime logic.",
+        "Ensure review/explanation can reconstruct chosen family, setup variant, and execution expression.",
+        "Preserve deterministic ordering and inspectability."
+      ],
+      "validation_tasks": [
+        "Prove current live rules still select correctly under the compatibility bridge.",
+        "Prove explanation lineage includes the hierarchical path."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Runtime evaluation is natively hierarchical without losing deterministic selection.",
+      "merge_gate": "Current live playbooks remain explainable and compatibility-tested.",
+      "status": "planned",
+      "execution_sequence": 4
+    },
+    {
+      "id": "LEAF-G52-003",
+      "gate": "Gate 52",
+      "title": "Expand candidate-family scaffolding without uncontrolled taxonomy bloat",
+      "prerequisites": ["LEAF-G52-001"],
+      "scope": "Add bounded scaffolding for the expanded family library discussed in the workflow update without pretending all future trader setups are implemented immediately.",
+      "files_expected": [
+        "config/playbook_registry.example.yaml",
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_UPDATE.md",
+        "docs/planning/2026-03-26_PLAYBOOK_FAMILY_SCAFFOLD.md"
+      ],
+      "allowed_touches": [
+        "config/**",
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Record the 12-family scaffold and mark which families are implemented, partially scaffolded, or planned only.",
+        "Prevent the registry from implying unsupported runtime depth.",
+        "Document which overlays remain sub-variants rather than top-level families."
+      ],
+      "validation_tasks": [
+        "Ensure no family is marked live without a runtime-supported path."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The family library is richer on paper without overstating what runtime supports today.",
+      "merge_gate": "Registry and docs do not claim live support for unimplemented families.",
+      "status": "planned",
+      "execution_sequence": 5
+    },
+    {
+      "id": "LEAF-G53-001",
+      "gate": "Gate 53",
+      "title": "Define the typed close-state to carry-state handoff contract",
+      "prerequisites": ["LEAF-G51-001", "LEAF-G51-002"],
+      "scope": "Pin the exact typed packet that passes close-state cognition outputs into overnight/weekend/event carry decisioning.",
+      "files_expected": [
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "docs/planning/2026-03-26_CARRY_HANDOFF_CONTRACT.md",
+        "tests/test_gate48_carry_handoff.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Define the handoff schema from intraday close-state into carry evaluation.",
+        "Specify required and optional fields explicitly.",
+        "Document prohibited implicit carry assumptions."
+      ],
+      "validation_tasks": [
+        "Prove handoff serialisation and validation.",
+        "Prove weekend/event branches read the contract consistently."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Carry handoff is typed, explicit, and documented.",
+      "merge_gate": "The handoff contract is sufficient for weekend and event-carry routing without borrowing hidden intraday state."
+    ,
+      "status": "planned",
+      "execution_sequence": 6
+    },
+    {
+      "id": "LEAF-G53-002",
+      "gate": "Gate 53",
+      "title": "Freeze weekend, overnight, and event-carry taxonomy",
+      "prerequisites": ["LEAF-G53-001"],
+      "scope": "Define the horizon taxonomy so Friday/weekend/event logic cannot drift back into generic late-session semantics.",
+      "files_expected": [
+        "docs/planning/2026-03-26_CARRY_HANDOFF_CONTRACT.md",
+        "docs/planning/2026-03-26_CARRY_HORIZON_TAXONOMY.md",
+        "src/nvda_desk/schemas/overnight.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define ordinary overnight, weekend carry, and event carry categories.",
+        "State exactly when weekend_window applies.",
+        "State what is and is not a valid event-carry state."
+      ],
+      "validation_tasks": [
+        "Prove taxonomy labels are used consistently across carry code and docs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_document_hygiene.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Weekend and event carry are no longer semantically ambiguous.",
+      "merge_gate": "Carry taxonomy is explicit enough to support explanation and replay."
+    ,
+      "status": "planned",
+      "execution_sequence": 7
+    },
+    {
+      "id": "LEAF-G53-003",
+      "gate": "Gate 53",
+      "title": "Pin allowed carry actions and downgrade/override rules",
+      "prerequisites": ["LEAF-G53-001", "LEAF-G53-002"],
+      "scope": "Define allowed carry actions and the downgrade rules that convert posture and carry context into final allowed carry behaviour.",
+      "files_expected": [
+        "src/nvda_desk/services/carry_market.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "docs/planning/2026-03-26_CARRY_HORIZON_TAXONOMY.md",
+        "tests/test_gate48_carry_handoff.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define allowed actions such as flatten, hold baseline, reduce, add, and block carry.",
+        "Document downgrade/override rules for weekend and event cases.",
+        "Ensure explanation outputs reflect the final action actually permitted."
+      ],
+      "validation_tasks": [
+        "Prove allowed-action lists are deduplicated and coherent.",
+        "Prove recommendation/action mismatches cannot silently persist."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Carry actions and downgrade rules are deterministic and explanation-safe.",
+      "merge_gate": "Weekend/event downgrade paths are explicitly tested and green."
+    ,
+      "status": "planned",
+      "execution_sequence": 8
+    },
+    {
+      "id": "LEAF-G54-001",
+      "gate": "Gate 54",
+      "title": "Inventory all live DMP binding surfaces",
+      "prerequisites": ["LEAF-G51-001"],
+      "scope": "Create a precise inventory of live DMP v1 production surfaces, DMP v2 draft/migration surfaces, and any mixed-mode assumptions.",
+      "files_expected": [
+        "docs/planning/2026-03-26_DMP_BINDING_SURFACE_DECISION.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "tests/test_dmp_protocol.py",
+        "tests/test_dmp_v2_protocol.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**",
+        "src/nvda_desk/services/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Inventory where DMP v1 is produced and consumed live.",
+        "Inventory where DMP v2 exists as draft, migration helper, or secondary surface.",
+        "State whether any runtime path incorrectly assumes v2 is already canonical."
+      ],
+      "validation_tasks": [
+        "Prove the inventory matches current code and tests.",
+        "Flag any mixed-mode ambiguity explicitly."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The repo has a precise inventory of live vs draft DMP surfaces.",
+      "merge_gate": "No reader can reasonably confuse the live runtime packet contract after the decision note lands.",
+      "status": "planned",
+      "execution_sequence": 9
+    },
+    {
+      "id": "LEAF-G54-002",
+      "gate": "Gate 54",
+      "title": "Freeze the live DMP surface for the workflow-modification tranche",
+      "prerequisites": ["LEAF-G54-001"],
+      "scope": "Make the live DMP choice explicit for the workflow-modification tranche and prevent accidental partial migration.",
+      "files_expected": [
+        "docs/planning/2026-03-26_DMP_BINDING_SURFACE_DECISION.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "tests/test_dmp_protocol.py",
+        "tests/test_dmp_v2_protocol.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**",
+        "src/nvda_desk/services/**",
+        "src/nvda_desk/schemas/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Record whether DMP v1 remains the canonical live packet surface for this tranche or whether a dedicated promotion is occurring.",
+        "Document explicit non-goals if v2 is not promoted.",
+        "Add or tighten tests to block silent mixed-mode drift."
+      ],
+      "validation_tasks": [
+        "Prove the chosen DMP decision is reflected consistently in docs and tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The DMP choice for this tranche is explicit, bounded, and test-enforced.",
+      "merge_gate": "There is no ambiguity about whether runtime is coded for legacy DMP, v1, or v2."
+    ,
+      "status": "planned",
+      "execution_sequence": 10
+    },
+    {
+      "id": "LEAF-G55-001",
+      "gate": "Gate 55",
+      "title": "Align vocabulary governance to family/variant/expression/horizon ownership",
+      "prerequisites": ["LEAF-G51-001", "LEAF-G52-001", "LEAF-G53-002", "LEAF-G54-002"],
+      "scope": "Rebase vocabulary governance onto the now-pinned architecture so terminology tracks actual stage ownership and hierarchy.",
+      "files_expected": [
+        "docs/vocabulary/**",
+        "data/vocabulary/feeder/**",
+        "scripts/build_canonical_vocabulary.py",
+        "tests/test_gate50_vocabulary_governance.py"
+      ],
+      "allowed_touches": [
+        "docs/vocabulary/**",
+        "data/vocabulary/**",
+        "scripts/**",
+        "tests/**",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Add canonical ownership for family, setup variant, execution expression, and horizon terms.",
+        "Align code slugs and planning labels with canonical terminology.",
+        "Preserve allowed aliases and document deprecations."
+      ],
+      "validation_tasks": [
+        "Prove generated vocabulary artefacts match checked-in canonical files.",
+        "Prove conflicting duplicate labels are blocked."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Vocabulary governance now reflects the updated workflow architecture rather than stale prior terms.",
+      "merge_gate": "No conflicting duplicate labels or undefined aliases remain in the canonical governance surface.",
+      "status": "planned",
+      "execution_sequence": 11
+    },
+    {
+      "id": "LEAF-G55-002",
+      "gate": "Gate 55",
+      "title": "Add governance enforcement for future workflow expansion",
+      "prerequisites": ["LEAF-G55-001"],
+      "scope": "Prevent future workflow and playbook expansion from silently introducing conflicting labels or unowned terms.",
+      "files_expected": [
+        "tests/test_gate50_vocabulary_governance.py",
+        "docs/vocabulary/**",
+        "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md"
+      ],
+      "allowed_touches": [
+        "tests/**",
+        "docs/vocabulary/**",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Add enforcement checks for duplicate labels, stale aliases, and workflow terms lacking canonical ownership.",
+        "Document the promotion path for new family or setup-variant terms."
+      ],
+      "validation_tasks": [
+        "Prove enforcement tests fail on deliberate drift cases and pass on the canonical set."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_document_hygiene.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Future workflow expansion is governance-checked rather than relying on memory and luck.",
+      "merge_gate": "Vocabulary and workflow governance are enforceable, not advisory only.",
+      "status": "planned",
+      "execution_sequence": 12
+    }
+  ]
+}
