@@ -34,14 +34,15 @@ This gate pack is a **candidate downstream tranche** prepared after Gates 47–5
 4. Shared primitive inputs are allowed; downstream verdict loops are forbidden.
 5. Weekend / overnight / event carry remains a distinct horizon branch and must not be collapsed back into ordinary intraday playbook selection.
 6. Raw and derived surfaces remain separated.
-7. No gate may silently promote DMP v2 as the canonical live runtime transport. Any DMP promotion must be explicit, bounded, and proven.
-8. Execution discipline remains one-branch-per-gate:
+7. Step 0 calendar/horizon ownership must be explicit; it may not remain an implied side-effect split across temporal and carry code.
+8. No gate may silently promote DMP v2 as the canonical live runtime transport. Any DMP promotion must be explicit, bounded, and proven.
+9. Execution discipline remains one-branch-per-gate:
    - create a dedicated working branch for the gate
    - complete all gate leaves on that branch
    - pass targeted validation and required full-suite checks
    - merge to `main`
    - only then open the next gate branch
-9. No gate may proceed if its predecessor is incomplete, unmerged, or contradicted by current audit findings.
+10. No gate may proceed if its predecessor is incomplete, unmerged, or contradicted by current audit findings.
 
 ## Non-goals for this tranche
 
@@ -105,6 +106,7 @@ Carry logic exists, but the handoff from intraday close-state to overnight/weeke
 ### Scope
 - define close-state -> carry-state handoff packet
 - define weekend, ordinary overnight, and event-carry taxonomy
+- define the held-position / inventory context required by carry decisioning
 - define allowed carry actions and downgrade/override rules
 - ensure review/explanation can reconstruct why carry was allowed, downgraded, or blocked
 
@@ -124,6 +126,7 @@ The repo contains live DMP v1 runtime production plus DMP v2 draft/migration sur
 ### Scope
 - inventory all live runtime DMP binding surfaces
 - prove whether the tranche stays on DMP v1 or deliberately promotes DMP v2
+- if promotion is chosen, close Gate 54 with a bounded successor promotion pack rather than smuggling implementation into unrelated workflow leaves
 - update docs/tests so the chosen decision is explicit and enforceable
 - forbid accidental partial migration or hidden mixed-mode assumptions
 
@@ -174,6 +177,7 @@ No later gate may begin until the current gate is complete, validated, and merge
 - one leaf pack with bounded touches and validation commands
 - updated explanation/review traces where hierarchy or carry routing changes
 - explicit DMP decision artefacts, not implied assumptions
+- gate-specific or neutral test filenames for new checks; reuse of older gate-numbered tests must be explicitly justified rather than left ambiguous
 
 ## Audit checkpoints to retain throughout execution
 
