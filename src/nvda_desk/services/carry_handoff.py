@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
+    InventoryState,
     OptionsFlowContextOutput,
     PostureRiskOutput,
     TemporalContextOutput,
@@ -23,7 +24,7 @@ class CarryHandoffBuilder:
         deterministic outputs from the intraday runtime.
     Inputs:
         Symbol, evaluation timestamp, and the upstream stage outputs needed to
-        describe the close-state surface.
+        describe the close-state surface, including held-position context.
     Outputs:
         `CloseStateCarryHandoff` with explicit horizon taxonomy and allowed
         carry-action envelope.
@@ -43,6 +44,7 @@ class CarryHandoffBuilder:
         temporal: TemporalContextOutput,
         options_flow: OptionsFlowContextOutput,
         posture: PostureRiskOutput,
+        inventory: InventoryState,
         execution: ExecutionExpressionOutput,
     ) -> CloseStateCarryHandoff:
         aware_ts = evaluation_ts.astimezone(self._tz) if evaluation_ts.tzinfo else evaluation_ts.replace(tzinfo=self._tz)
@@ -54,6 +56,10 @@ class CarryHandoffBuilder:
             permission_state=posture.permission_state.value,
             horizon=horizon,
             event_carry_window=event_carry_window,
+            thesis_state=posture.thesis_state,
+            existing_inventory_pct=inventory.existing_inventory_pct,
+            overnight_inventory_pct=inventory.overnight_inventory_pct,
+            active_playbook_ids=execution.active_playbook_ids,
         )
         recommended_action_ceiling = allowed_actions[-1] if allowed_actions else CarryAction.BLOCK_CARRY
         rationale_codes: list[str] = [f"horizon:{horizon.value}"]
@@ -63,8 +69,14 @@ class CarryHandoffBuilder:
             rationale_codes.append("event_carry_window")
         if posture.permission_state.value != "allow":
             rationale_codes.append(f"permission:{posture.permission_state.value}")
+        if inventory.existing_inventory_pct > 0 or inventory.overnight_inventory_pct > 0:
+            rationale_codes.append("existing_inventory_present")
+        else:
+            rationale_codes.append("no_existing_inventory")
         if execution.active_playbook_ids:
             rationale_codes.append("active_intraday_playbook_present")
+        if posture.thesis_state != "valid":
+            rationale_codes.append(f"thesis_state:{posture.thesis_state}")
         return CloseStateCarryHandoff(
             symbol=symbol,
             evaluation_ts=aware_ts,
@@ -79,9 +91,16 @@ class CarryHandoffBuilder:
             permission_state=posture.permission_state.value,
             fresh_deployable_capital_pct=posture.fresh_deployable_capital_pct,
             overnight_deployable_capital_pct=posture.overnight_deployable_capital_pct,
+            existing_inventory_pct=inventory.existing_inventory_pct,
+            overnight_inventory_pct=inventory.overnight_inventory_pct,
+            open_orders_count=inventory.open_orders_count,
+            inventory_action_bias=posture.inventory_action_bias,
+            thesis_state=posture.thesis_state,
             dealer_pressure_state=options_flow.dealer_pressure_state,
             pin_risk_state=options_flow.pin_risk_state,
             options_behavior_cluster=options_flow.options_behavior_cluster,
+            active_family_ids=list(execution.active_family_ids),
+            active_setup_variant_ids=list(execution.active_setup_variant_ids),
             active_playbook_ids=list(execution.active_playbook_ids),
             recommended_action_ceiling=recommended_action_ceiling,
             allowed_actions=allowed_actions,
@@ -94,6 +113,10 @@ class CarryHandoffBuilder:
         permission_state: str,
         horizon: CarryHorizon,
         event_carry_window: bool,
+        thesis_state: str,
+        existing_inventory_pct: float,
+        overnight_inventory_pct: float,
+        active_playbook_ids: list[str],
     ) -> list[CarryAction]:
         if permission_state == "block":
             return [CarryAction.BLOCK_CARRY]
@@ -101,10 +124,20 @@ class CarryHandoffBuilder:
             allowed = [CarryAction.FLATTEN, CarryAction.HOLD_SMALL]
         else:
             allowed = [CarryAction.FLATTEN, CarryAction.HOLD_SMALL, CarryAction.HOLD_BASELINE, CarryAction.ADD_CARRY]
+        has_position = existing_inventory_pct > 0 or overnight_inventory_pct > 0
+        has_active_intraday_thesis = bool(active_playbook_ids)
+        if thesis_state != "valid":
+            allowed = [action for action in allowed if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}]
+        if not has_position:
+            allowed = [action for action in allowed if action is not CarryAction.HOLD_BASELINE]
+            if not has_active_intraday_thesis:
+                allowed = [action for action in allowed if action is CarryAction.FLATTEN]
         if horizon is CarryHorizon.WEEKEND and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
         if event_carry_window and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
+        if not allowed:
+            return [CarryAction.BLOCK_CARRY]
         return allowed
 
     def _next_session_open(self, aware_ts: datetime) -> datetime:

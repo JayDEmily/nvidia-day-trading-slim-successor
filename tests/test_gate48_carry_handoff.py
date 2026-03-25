@@ -6,6 +6,7 @@ from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     GammaState,
+    InventoryState,
     OptionsFlowContextOutput,
     PermissionState,
     PostureRiskOutput,
@@ -77,11 +78,32 @@ def _posture_output(permission: PermissionState = PermissionState.ALLOW) -> Post
     )
 
 
+def _inventory_state(*, existing: float = 12.0, overnight: float = 5.0, open_orders: int = 0) -> InventoryState:
+    return InventoryState(
+        existing_inventory_pct=existing,
+        fresh_cash_pct=60.0,
+        overnight_inventory_pct=overnight,
+        open_orders_count=open_orders,
+        capital_lockup_pct=5.0,
+        cost_basis_gap_pct=0.0,
+        thesis_state_input="valid",
+        adverse_excursion_pct=0.0,
+    )
+
+
 def _execution_output(active: list[str]) -> ExecutionExpressionOutput:
+    active_setup_variant_ids = ["late_session_pin_reversion"] if active else []
+    active_family_ids = ["pin_behaviour"] if active else []
     return ExecutionExpressionOutput(
         active_playbook_ids=active,
+        active_setup_variant_ids=active_setup_variant_ids,
+        active_family_ids=active_family_ids,
+        lead_playbook_id=active[0] if active else None,
+        lead_setup_variant_id=active_setup_variant_ids[0] if active_setup_variant_ids else None,
+        lead_family_id=active_family_ids[0] if active_family_ids else None,
         entry_style="pin_fade_scaler",
         playbook_execution_styles={playbook_id: "pin_fade_scaler" for playbook_id in active},
+        setup_variant_execution_styles={setup_variant_id: "pin_fade_scaler" for setup_variant_id in active_setup_variant_ids},
         hedge_required=False,
         inventory_action="hold",
         fresh_capital_action="hold",
@@ -104,6 +126,7 @@ def test_carry_handoff_builder_treats_friday_close_as_weekend_branch() -> None:
         temporal=_temporal_output(ts="2026-03-27T19:45:00-04:00"),
         options_flow=_options_output(),
         posture=_posture_output(),
+        inventory=_inventory_state(),
         execution=_execution_output(["pin_reversion"]),
     )
 
@@ -120,6 +143,7 @@ def test_carry_handoff_builder_blocks_add_carry_inside_event_carry_window() -> N
         temporal=_temporal_output(ts="2026-03-24T15:45:00-04:00", event_window_state="event_imminent_window"),
         options_flow=_options_output(cluster="event_suppressed"),
         posture=_posture_output(),
+        inventory=_inventory_state(),
         execution=_execution_output(["term_structure_dislocation"]),
     )
 
@@ -135,6 +159,7 @@ def test_carry_handoff_builder_treats_saturday_morning_as_weekend_branch() -> No
         temporal=_temporal_output(ts="2026-03-28T08:15:00-04:00"),
         options_flow=_options_output(),
         posture=_posture_output(),
+        inventory=_inventory_state(),
         execution=_execution_output(["pin_reversion"]),
     )
 

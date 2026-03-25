@@ -12,17 +12,18 @@ IMPLEMENTATION_MAP = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IM
 BOUNDARY_RULES = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md"
 CALENDAR = REPO_ROOT / "docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md"
 GATE52 = REPO_ROOT / "docs/planning/2026-03-26_GATE52_NATIVE_PLAYBOOK_HIERARCHY_IMPLEMENTATION.md"
+GATE53 = REPO_ROOT / "docs/planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMALISATION.md"
 PLANS = REPO_ROOT / "PLANS.md"
 
 
-def test_gate51_docs_exist_and_gate_pack_marks_gate52_complete() -> None:
+def test_gate51_docs_exist_and_gate_pack_marks_gate53_complete() -> None:
     gates_text = GATES.read_text()
     leaves = json.loads(LEAVES.read_text())
 
-    assert "Status: Gates 51-52 complete on `main`; Gate 53 next planned gate" in gates_text
-    assert leaves["execution_status"] == "gate_52_complete_on_main_gate_53_planned"
-    assert leaves["completed_gate_ids"] == ["Gate 51", "Gate 52"]
-    assert leaves["active_gate"] == "Gate 53"
+    assert "Status: Gates 51-53 complete on `main`; Gate 54 next planned gate" in gates_text
+    assert leaves["execution_status"] == "gate_53_complete_on_main_gate_54_planned"
+    assert leaves["completed_gate_ids"] == ["Gate 51", "Gate 52", "Gate 53"]
+    assert leaves["active_gate"] == "Gate 54"
     assert leaves["completed_leaf_ids"] == [
         "LEAF-G51-001",
         "LEAF-G51-002",
@@ -30,6 +31,9 @@ def test_gate51_docs_exist_and_gate_pack_marks_gate52_complete() -> None:
         "LEAF-G52-001",
         "LEAF-G52-002",
         "LEAF-G52-003",
+        "LEAF-G53-001",
+        "LEAF-G53-002",
+        "LEAF-G53-003",
     ]
 
 
@@ -38,6 +42,7 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     boundary_rules = BOUNDARY_RULES.read_text()
     calendar = CALENDAR.read_text()
     gate52 = GATE52.read_text()
+    gate53 = GATE53.read_text()
     plans = PLANS.read_text()
 
     assert "Step 0 calendar/horizon routing is real, but it is not a hidden eighth analysis stage." in implementation_map
@@ -46,4 +51,5 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     assert "Step 0 is an **explicit runtime routing concern**." in calendar
     assert "Carry begins only at an explicit handoff boundary" in boundary_rules
     assert "family -> setup_variant -> execution_expression" in gate52
-    assert "Gate 52 — complete on `main`" in plans
+    assert "weekend, ordinary overnight, and event carry" in gate53
+    assert "Gate 53 — complete on `main`" in plans

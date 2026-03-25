@@ -296,7 +296,7 @@
       "full_suite_required": false,
       "pass_gate": "Carry handoff is typed, explicit, and documented.",
       "merge_gate": "The handoff contract is sufficient for weekend and event-carry routing without borrowing hidden intraday state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 7
     },
     {
@@ -335,7 +335,7 @@
       "full_suite_required": false,
       "pass_gate": "Weekend and event carry are no longer semantically ambiguous.",
       "merge_gate": "Carry taxonomy is explicit enough to support explanation and replay.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 8
     },
     {
@@ -377,7 +377,7 @@
       "full_suite_required": true,
       "pass_gate": "Carry actions and downgrade rules are deterministic and explanation-safe.",
       "merge_gate": "Weekend/event downgrade paths are explicitly tested and green.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 9
     },
     {
@@ -590,7 +590,7 @@
       "execution_sequence": 14
     }
   ],
-  "execution_status": "gate_52_complete_on_main_gate_53_planned",
+  "execution_status": "gate_53_complete_on_main_gate_54_planned",
   "completed_at": "2026-03-26T00:55:00Z",
   "completed_leaf_ids": [
     "LEAF-G51-001",
@@ -598,12 +598,12 @@
     "LEAF-G51-003",
     "LEAF-G52-001",
     "LEAF-G52-002",
-    "LEAF-G52-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G52-003",
     "LEAF-G53-001",
     "LEAF-G53-002",
-    "LEAF-G53-003",
+    "LEAF-G53-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G54-001",
     "LEAF-G54-002",
     "LEAF-G54-003",
@@ -612,7 +612,8 @@
   ],
   "completed_gate_ids": [
     "Gate 51",
-    "Gate 52"
+    "Gate 52",
+    "Gate 53"
   ],
-  "active_gate": "Gate 53"
+  "active_gate": "Gate 54"
 }

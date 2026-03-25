@@ -1,6 +1,6 @@
 # 2026-03-26 Cognitive Workflow Modification Gates v1
 
-Status: Gates 51-52 complete on `main`; Gate 53 next planned gate
+Status: Gates 51-53 complete on `main`; Gate 54 next planned gate
 Version: v1.1
 
 ## Purpose
@@ -111,7 +111,7 @@ The runtime selects through hierarchical playbook structures natively, while leg
 
 ## Gate 53 — Carry / weekend / event-horizon formalisation
 
-Status: next planned gate
+Status: complete on `main`
 
 ### Objective
 Formalise the handoff between intraday cognition and carry-horizon decisioning, with explicit treatment of weekend and event carry.
@@ -133,7 +133,7 @@ Carry-horizon decisioning is formally typed, bounded, and explained without bein
 
 ## Gate 54 — DMP binding-surface decision
 
-Status: planned
+Status: next planned gate
 
 ### Objective
 Make the DMP binding decision explicit for this tranche and prevent mixed-mode ambiguity.
@@ -184,8 +184,8 @@ The repo has one authoritative vocabulary/governance surface for the updated wor
 
 1. Gate 51 — complete on `main`
 2. Gate 52 — complete on `main`
-3. Gate 53 — next planned gate
-4. Gate 54
+3. Gate 53 — complete on `main`
+4. Gate 54 — next planned gate
 5. Gate 55
 
 No later gate may begin until the current gate is complete, validated, and merged.

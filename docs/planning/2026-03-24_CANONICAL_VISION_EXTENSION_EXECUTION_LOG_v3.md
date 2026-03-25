@@ -931,7 +931,7 @@ This baseline is context only. It is not a forward-execution leaf log.
 
 - Branch: `work/gate52-native-playbook-hierarchy-20260326`
 - Start commit: `dddd6cd`
-- End commit: `<GATE52_COMMIT>`
+- End commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Files touched:
   - `src/nvda_desk/schemas/cognition.py`
   - `src/nvda_desk/services/playbook_registry.py`
@@ -952,14 +952,14 @@ This baseline is context only. It is not a forward-execution leaf log.
   - Moved hierarchy selection to ordered setup-variant evaluation and explicit family aggregation rather than a flat playbook-only loop.
   - Added gate-specific tests proving native family and setup-variant lineage survives through the runtime.
 - Stop conditions hit: none
-- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Merge status: merged to `main` via fast-forward at `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Notes: Leaf closes the native hierarchy contract surface; downstream carry work remains out of scope for Gate 52.
 
 ### LEAF-G52-002 — Convert execution and review lineage to hierarchy-native outputs
 
 - Branch: `work/gate52-native-playbook-hierarchy-20260326`
 - Start commit: `dddd6cd`
-- End commit: `<GATE52_COMMIT>`
+- End commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Files touched:
   - `src/nvda_desk/services/execution_expression.py`
   - `src/nvda_desk/services/review_explanation.py`
@@ -975,14 +975,14 @@ This baseline is context only. It is not a forward-execution leaf log.
   - Review output now summarises family/setup selection rather than only a flat playbook list.
   - Existing runtime parity tests still pass with the richer lineage payload.
 - Stop conditions hit: none
-- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Merge status: merged to `main` via fast-forward at `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Notes: Execution style remains template-driven; Gate 52 does not authorise new playbook families.
 
 ### LEAF-G52-003 — Keep the legacy playbook bridge explicit and tested
 
 - Branch: `work/gate52-native-playbook-hierarchy-20260326`
 - Start commit: `dddd6cd`
-- End commit: `<GATE52_COMMIT>`
+- End commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Files touched:
   - `src/nvda_desk/services/playbook_eligibility.py`
   - `src/nvda_desk/services/playbook_registry.py`
@@ -998,5 +998,72 @@ This baseline is context only. It is not a forward-execution leaf log.
   - Legacy playbook candidates are now explicitly derived from native setup-variant decisions rather than treated as the source of truth.
   - Planning pack and status tests were updated so Gate 52 is recorded as complete and Gate 53 becomes the active next gate.
 - Stop conditions hit: none
-- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Merge status: merged to `main` via fast-forward at `661d38884bf392f04f649686a21e54a7b947f7cc`
 - Notes: The bridge remains necessary for downstream consumers that still iterate active playbook ids.
+
+### LEAF-G53-001 — Define the close-state to carry-state handoff packet with held-position / inventory context
+
+- Branch: `work/gate53-carry-horizon-formalisation-20260326`
+- Start commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
+- End commit: `recorded in Gate 53 closeout commit`
+- Files touched:
+  - `src/nvda_desk/schemas/overnight.py`
+  - `src/nvda_desk/services/carry_handoff.py`
+  - `tests/test_gate48_carry_handoff.py`
+  - `tests/test_gate53_carry_handoff.py`
+  - `docs/planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMALISATION.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_carry_review_cli_and_legacy.py tests/test_research_replay.py tests/test_second_wave_records_and_events.py` → `22 passed`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - Close-state handoff now carries held inventory, overnight inventory, open-order count, thesis state, and hierarchy lineage.
+  - Carry builder now uses explicit inventory/thesis context when computing allowed carry actions.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 53 closeout
+- Notes: This leaf formalises the typed handoff boundary and does not authorise DMP changes.
+
+### LEAF-G53-002 — Encode weekend, overnight, and event-carry taxonomy plus carry actions in typed runtime surfaces
+
+- Branch: `work/gate53-carry-horizon-formalisation-20260326`
+- Start commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
+- End commit: `recorded in Gate 53 closeout commit`
+- Files touched:
+  - `src/nvda_desk/schemas/overnight.py`
+  - `src/nvda_desk/services/carry_handoff.py`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json`
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_gate51_cognitive_workflow_planning.py` → `8 passed`
+  - `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Full suite required: `true`
+- Full suite command/result: `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Exact evidence:
+  - Weekend/event/overnight horizons remain explicit typed branches.
+  - Planning surfaces now record Gate 53 complete and Gate 54 active next gate.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 53 closeout
+- Notes: No intraday stage ownership changed inside Gate 53.
+
+### LEAF-G53-003 — Harden downgrade / override rules so carry recommendations remain deterministic and explanation-safe
+
+- Branch: `work/gate53-carry-horizon-formalisation-20260326`
+- Start commit: `661d38884bf392f04f649686a21e54a7b947f7cc`
+- End commit: `recorded in Gate 53 closeout commit`
+- Files touched:
+  - `src/nvda_desk/services/carry_handoff.py`
+  - `src/nvda_desk/services/carry_market.py`
+  - `tests/test_gate53_carry_handoff.py`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate53_carry_handoff.py tests/test_carry_review_cli_and_legacy.py` → `7 passed`
+  - `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Full suite required: `true`
+- Full suite command/result: `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Exact evidence:
+  - Carry builder now blocks baseline carry when no held inventory and no active thesis exist.
+  - Invalid thesis state now caps carry actions to flatten/hold-small and tests prove market-service downgrade remains recommendation-safe.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 53 closeout
+- Notes: Recommendation/action alignment remains enforced after downgrade.

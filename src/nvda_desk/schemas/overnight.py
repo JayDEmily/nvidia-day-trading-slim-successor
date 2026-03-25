@@ -33,7 +33,7 @@ class CarryAction(StrEnum):
 class CloseStateCarryHandoff(BaseModel):
     """Typed intraday close-state handoff into the carry-horizon branch."""
 
-    handoff_version: str = Field(default="carry_handoff.v1", min_length=1)
+    handoff_version: str = Field(default="carry_handoff.v2", min_length=1)
     symbol: str = Field(default="NVDA", min_length=1)
     evaluation_ts: datetime
     horizon: CarryHorizon
@@ -47,9 +47,16 @@ class CloseStateCarryHandoff(BaseModel):
     permission_state: str
     fresh_deployable_capital_pct: float = Field(ge=0, le=100)
     overnight_deployable_capital_pct: float = Field(ge=0, le=100)
+    existing_inventory_pct: float = Field(ge=0, le=100)
+    overnight_inventory_pct: float = Field(ge=0, le=100)
+    open_orders_count: int = Field(ge=0)
+    inventory_action_bias: str
+    thesis_state: str
     dealer_pressure_state: str
     pin_risk_state: str
     options_behavior_cluster: str
+    active_family_ids: list[str] = Field(default_factory=list)
+    active_setup_variant_ids: list[str] = Field(default_factory=list)
     active_playbook_ids: list[str] = Field(default_factory=list)
     recommended_action_ceiling: CarryAction
     allowed_actions: list[CarryAction] = Field(default_factory=list)
