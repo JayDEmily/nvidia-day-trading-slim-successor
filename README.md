@@ -14,7 +14,7 @@ The current repo contains a working local development spine plus a contract-firs
 - local SQLAlchemy-backed persistence with a deterministic SQLite dev path;
 - FastAPI routes for market, replay, research-note capture, module registry, promotion tracking, and evaluation logging;
 - deterministic dev seed covering multiple intraday session phases;
-- session-clock classification, replay grouped by session phase, and two first promoted evaluators:
+- temporal-state classification with a session-clock compatibility wrapper, replay grouped by session phase, and two first promoted evaluators:
   - Strategic Ladder Validator;
   - Overnight Carry Evaluator;
 - canonical import registry and Desk Cognition Grammar mapping artefacts under `docs/planning/`;
@@ -34,7 +34,7 @@ Read these in order:
 9. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md`
 10. `AGENTS.md`
 
-Historical design drafts live in `docs/legacy/`.
+Historical design drafts and archived milestone artefacts live in `docs/legacy/`.
 Build-status notes live in `docs/status/`.
 Machine-readable repo history lives in `CHANGELOG.jsonl`.
 
@@ -69,7 +69,7 @@ make run-api
 src/nvda_desk/
   api/          FastAPI entrypoints
   db/           local DB metadata, models, sessions, seeding
-  domain/       deterministic domain logic such as session clock
+  domain/       deterministic domain logic such as temporal-state classification
   schemas/      Pydantic contracts
   services/     reusable market, research, evaluation, replay, and desk-grammar services
 ```

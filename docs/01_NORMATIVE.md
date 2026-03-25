@@ -105,7 +105,7 @@ These items vary via config without altering the architecture:
 
 ## Normative versus historical docs
 
-- Files in `docs/` with stable names are normative.
+- Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.
 - Files in `docs/planning/` are active execution artefacts under repo-root `PLANS.md`.
 - Files in `docs/status/` are dated implementation notes.
 - Files in `docs/legacy/` are historical design artefacts kept for provenance.
