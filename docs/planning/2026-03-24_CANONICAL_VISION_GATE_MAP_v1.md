@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority  
-Version: v1.8  
+Version: v1.9  
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.  
 Paired files:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md` — bounded-scope note only
@@ -9,6 +9,8 @@ Paired files:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` — sequential execution receipts
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md` — frozen audit findings input
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md` — audit-produced planning consequences
+- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md` — successor modification gate surface
+- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json` — successor modification leaf ledger
 
 ## 0. Purpose
 
@@ -41,12 +43,14 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gate 40 | `LEAF-G40-001` complete on `main` | replaces the hard clock bucket with signal-aware temporal state while keeping the outward stage payload stable | `docs/planning/2026-03-25_GATE40_TEMPORAL_STATE_REPLACEMENT.md`, `tests/test_temporal_context_signal_state.py` |
 | Gates 41–42 | `LEAF-G41-001`, `LEAF-G42-001` complete on `main` | split the signal workbook into raw-versus-derived authority layers and freeze the dense options/raw-baseline capture policy | `docs/planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md`, `docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md`, `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx` |
 | Gates 43–44 | `LEAF-G43-001`, `LEAF-G44-001` complete on `main` | add the first three options-first playbooks and prove the DMP wrapper remains stable after the temporal/options expansion | `docs/planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md`, `docs/planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md`, registry/runtime tests |
+| Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
+| Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate on the current execution branch: **none**. Gates 46–50 are complete on the current execution branch pending merge to `main`.
+Current active gate: **Gate 52 is the next planned gate** in the successor cognitive-workflow modification pack.
 
-## 2. Current execution-branch tranche
+## 2. Current completed tranche and successor pack
 
-One leaf at a time. One gate at a time. The current execution branch has now completed Gates 46–50 as one bounded architecture tranche and is awaiting review and merge.
+One leaf at a time. One gate at a time. Gates 46–50 are now complete on `main`, and Gate 51 has closed the workflow-ownership planning pass on `main`.
 
 | Gate | Leaf IDs | Executed purpose | Exit evidence |
 |---|---|---|---|
@@ -58,7 +62,14 @@ One leaf at a time. One gate at a time. The current execution branch has now com
 
 ## 3. Downstream gate map
 
-No downstream gate beyond Gate 50 is authored in this planning surface yet. The next gate pack must be written only after this tranche is reviewed and merged.
+The successor cognitive-workflow modification pack is now authored and partially executed:
+
+| Gate | Status | Meaning now | Control surface |
+|---|---|---|---|
+| Gate 52 | planned next gate | native playbook hierarchy implementation remains the next execution target | `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json` |
+| Gate 53 | planned | carry / weekend / event-horizon formalisation follows Gate 52 | same successor pack |
+| Gate 54 | planned | DMP binding-surface decision remains explicit and bounded | same successor pack |
+| Gate 55 | planned | vocabulary/governance alignment follows architecture truth | same successor pack |
 
 ## 4. Global execution rules
 
@@ -69,4 +80,4 @@ No downstream gate beyond Gate 50 is authored in this planning surface yet. The 
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are closed together on the current execution branch; no Gate 51+ work may begin until this tranche is reviewed and merged.
+8. Gates 46–50 are complete on `main`; Gate 51 is complete on `main`; Gate 52 may begin only from the successor pack and only after Gate 51 is recorded and merged.

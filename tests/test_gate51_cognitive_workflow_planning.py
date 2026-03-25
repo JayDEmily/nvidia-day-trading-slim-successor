@@ -1,0 +1,39 @@
+"""Planning integrity checks for Gate 51 cognitive-workflow implementation docs."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+GATES = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json"
+IMPLEMENTATION_MAP = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md"
+BOUNDARY_RULES = REPO_ROOT / "docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md"
+CALENDAR = REPO_ROOT / "docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md"
+PLANS = REPO_ROOT / "PLANS.md"
+
+
+def test_gate51_docs_exist_and_gate_pack_marks_gate51_complete() -> None:
+    gates_text = GATES.read_text()
+    leaves = json.loads(LEAVES.read_text())
+
+    assert "Status: Gate 51 complete on `main`; Gate 52 next planned gate" in gates_text
+    assert leaves["execution_status"] == "gate_51_complete_on_main_gate_52_planned"
+    assert leaves["completed_gate_ids"] == ["Gate 51"]
+    assert leaves["active_gate"] == "Gate 52"
+    assert leaves["completed_leaf_ids"] == ["LEAF-G51-001", "LEAF-G51-002", "LEAF-G51-003"]
+
+
+def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
+    implementation_map = IMPLEMENTATION_MAP.read_text()
+    boundary_rules = BOUNDARY_RULES.read_text()
+    calendar = CALENDAR.read_text()
+    plans = PLANS.read_text()
+
+    assert "Step 0 calendar/horizon routing is real, but it is not a hidden eighth analysis stage." in implementation_map
+    assert "Candidate family generation is owned by the **playbook-selection grammar slot**." in implementation_map
+    assert "Carry-horizon decisioning is owned by the **carry branch**" in implementation_map
+    assert "Step 0 is an **explicit runtime routing concern**." in calendar
+    assert "Carry begins only at an explicit handoff boundary" in boundary_rules
+    assert "Gate 51 — complete on `main`" in plans

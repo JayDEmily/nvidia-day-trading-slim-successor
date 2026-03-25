@@ -1,6 +1,6 @@
 # 2026-03-24 DMP V2 Implementation Receipt
 
-Status: implemented on work branch; pending merge to `main` until validations pass in full  
+Status: implemented on `main` as draft/migration surface; not the canonical live runtime transport  
 Scope: DMP v2 schema layer, runtime packetisation adapter path, review/replay lineage adoption, and regression proof against the existing Gate 8-10 surfaces.
 
 ## What was implemented

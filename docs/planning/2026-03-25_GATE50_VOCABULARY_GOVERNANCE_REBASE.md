@@ -1,6 +1,6 @@
 # Gate 50 — Vocabulary Governance Rebase
 
-Status: complete on current execution branch
+Status: complete on `main`
 
 ## Purpose
 

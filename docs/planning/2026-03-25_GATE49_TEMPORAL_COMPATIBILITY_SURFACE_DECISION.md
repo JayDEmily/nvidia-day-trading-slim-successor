@@ -1,6 +1,6 @@
 # Gate 49 — Temporal Compatibility Surface Decision
 
-Status: complete on current execution branch
+Status: complete on `main`
 
 ## Purpose
 

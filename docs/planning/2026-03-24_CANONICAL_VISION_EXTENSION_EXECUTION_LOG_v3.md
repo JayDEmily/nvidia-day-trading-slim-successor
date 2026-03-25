@@ -917,3 +917,12 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Validation in the repo venv:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py`
 - Result: Gate 50 is complete and vocabulary governance is now rebased onto the live architecture.
+
+
+### LEAF-G51-001 through LEAF-G51-003 — Pin workflow ownership, boundary rules, and Step 0 calendar/horizon routing
+
+- Branch: `work/gate51-cognitive-workflow-implementation-map-20260326`
+- Scope: close Gate 51 by writing the explicit implementation map, freezing boundary rules between posture/candidate/execution/carry, and pinning Step 0 as a routing concern rather than a hidden eighth stage.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py`
+- Result: Gate 51 is complete on `main`, the successor cognitive-workflow modification pack now has explicit stage ownership, and Gate 52 becomes the next planned gate.

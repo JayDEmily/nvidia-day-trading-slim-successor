@@ -1,6 +1,6 @@
 # Gate 48 — Carry-Horizon Handoff
 
-Status: complete on current execution branch
+Status: complete on `main`
 
 ## Purpose
 

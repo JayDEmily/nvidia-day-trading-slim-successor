@@ -1,4 +1,4 @@
-"""Planning/execution integrity checks for the Gate 46-50 tranche."""
+"""Planning/execution integrity checks for the post-Gate-50 merged state."""
 
 from __future__ import annotations
 
@@ -12,19 +12,19 @@ PLANS = REPO_ROOT / "PLANS.md"
 
 
 def test_gate_46_to_50_are_complete_and_gate_45_stays_retired() -> None:
-    """The execution branch should keep Gate 45 retired and mark Gates 46-50 complete."""
+    """The merged repo should keep Gate 45 retired and mark Gates 46-50 complete on main."""
 
     gate_map = GATE_MAP.read_text()
     plans = PLANS.read_text()
 
-    assert "Gate 45 — retired placeholder on the current planning branch" in plans
-    assert "Gates 46–50 — complete on the current execution branch pending merge to `main`" in plans
+    assert "Gate 45 — retired placeholder on `main`" in plans
+    assert "Gates 46–50 — complete on `main`" in plans
     assert "Gate 45 is retired as a placeholder" in gate_map
-    assert "Current active gate on the current execution branch: **none**. Gates 46–50 are complete on the current execution branch pending merge to `main`." in gate_map
+    assert "Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main`" in gate_map
 
 
 def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:
-    """The leaf ledger should contain the bounded Gate 46-50 leaves as completed on branch."""
+    """The leaf ledger should contain the bounded Gate 46-50 leaves as completed."""
 
     leaf_ledger = json.loads(LEAF_LEDGER.read_text())
     leaves = {leaf["id"]: leaf for leaf in leaf_ledger["leaves"]}
@@ -48,4 +48,4 @@ def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:
         for leaf_id in remaining
         if leaf_id.startswith(("LEAF-G46-", "LEAF-G47-", "LEAF-G48-", "LEAF-G49-", "LEAF-G50-"))
     }
-    assert leaf_ledger["execution_status"] == "gates_46_to_50_complete_on_execution_branch_pending_merge"
+    assert leaf_ledger["execution_status"] == "gates_46_to_50_complete_on_main_gate_51_complete_on_main"

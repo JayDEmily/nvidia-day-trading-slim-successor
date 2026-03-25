@@ -1,6 +1,6 @@
 # Gate 47 — Playbook Registry v2
 
-Status: complete on current execution branch
+Status: complete on `main`
 
 ## Purpose
 

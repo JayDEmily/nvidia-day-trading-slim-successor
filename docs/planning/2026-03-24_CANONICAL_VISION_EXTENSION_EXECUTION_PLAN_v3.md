@@ -3,7 +3,7 @@
 Status: Active bounded-scope note  
 Version: v6.3 (filename retained for continuity)  
 Authority: Subordinate to `docs/01_NORMATIVE.md` and supplementary to `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`. This file is **not** the governing gate authority.  
-Baseline: `PLANS.md` records Gates 0 through 44 complete on `main`, retires Gate 45 as a planning placeholder, and records Gates 46–50 complete on the current execution branch pending merge.  
+Baseline: `PLANS.md` records Gates 0 through 51 complete on `main`, retires Gate 45 as a planning placeholder, records Gates 46–50 complete on `main`, and points to the successor cognitive-workflow modification pack for Gates 52–55.  
 Correction scope: this file now exists to explain why the next slice is bounded to an audit-driven architecture tranche rather than widening into open-ended runtime invention.
 
 ## 0. Purpose
@@ -27,7 +27,7 @@ Exact gate control now lives in:
 ## 1. Baseline facts
 
 - Gates 0–44 are complete on persisted `main`.
-- Gate 45 existed only as a vague downstream placeholder and is now retired on the current planning branch.
+- Gate 45 existed only as a vague downstream placeholder and is now retired administratively.
 - The pre-implementation audit established four bounded architecture questions:
   - registry hierarchy;
   - carry-horizon handoff;
@@ -58,14 +58,15 @@ The active slice is intentionally narrow:
 This note does **not** authorise the invention of every possible trader leaf.  
 This note does **not** authorise a DMP rewrite.  
 This note does **not** merge the stale vocabulary workspace blindly.  
-This note does **not** mix weekend carry logic into ordinary intraday playbook selection.
+This note does **not** mix weekend carry logic into ordinary intraday playbook selection.  
+This note does **not** override the successor cognitive-workflow modification pack for Gate 51 onward.
 
 ## 4. What this note deliberately does not do
 
 This note must not:
 - override the gate map;
 - duplicate the full leaf ledger;
-- imply that Gates 47–50 are already implemented;
+- pretend Gates 46–50 remain unmerged now that they are on `main`;
 - treat the audit as optional once the gate pack exists;
 - widen the slice into speculative module proliferation.
 
@@ -82,4 +83,4 @@ Use the files below together:
 
 ## Current tranche status
 
-The bounded Gate 46–50 architecture tranche is complete on the current execution branch and awaiting review/merge. No downstream Gate 51+ work is implied by this note.
+The bounded Gate 46–50 architecture tranche is complete on `main`. Gate 51 has now closed the workflow-ownership planning pass, and downstream Gate 52+ work is governed by `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md` plus its paired leaf ledger.

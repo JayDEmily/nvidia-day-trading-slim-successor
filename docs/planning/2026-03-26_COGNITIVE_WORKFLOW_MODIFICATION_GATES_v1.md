@@ -1,5 +1,8 @@
 # 2026-03-26 Cognitive Workflow Modification Gates v1
 
+Status: Gate 51 complete on `main`; Gate 52 next planned gate
+Version: v1.1
+
 ## Purpose
 
 This document defines the **next bounded modification tranche** driven by `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_UPDATE.md`.
@@ -10,7 +13,7 @@ This is **not** a repo rewrite. It is a controlled modification of the current d
 
 ## Position in the planning stack
 
-This gate pack is a **candidate downstream tranche** prepared after Gates 47–50. It is intentionally written as a standalone planning artefact so it can be reviewed, amended, and then promoted into the canonical planning quartet deliberately.
+This gate pack is the **successor modification planning surface** prepared after Gates 47–50. Gate 51 is now closed on `main`; Gates 52–55 remain planned and bounded by this artefact.
 
 ## Governing inputs
 
@@ -56,6 +59,8 @@ This gate pack is a **candidate downstream tranche** prepared after Gates 47–5
 
 ## Gate 51 — Cognitive workflow implementation map
 
+Status: complete on `main`
+
 ### Objective
 Translate the cognitive workflow update into a repo-owned implementation map with explicit stage ownership, explicit boundaries, and explicit non-goals.
 
@@ -72,9 +77,18 @@ The workflow update is conceptually correct, but until the stage ownership map i
 ### Definition of done
 A reviewed implementation map exists that shows, stage by stage, how the updated trader-thinking workflow is realised without violating current normative constraints.
 
+### Gate 51 outputs
+
+- `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`
+- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`
+- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`
+- `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md`
+
 ---
 
 ## Gate 52 — Native playbook hierarchy implementation
+
+Status: planned
 
 ### Objective
 Move the runtime from a legacy-compatible flat-playbook bridge toward a native hierarchy:
@@ -97,6 +111,8 @@ The runtime selects through hierarchical playbook structures natively, while leg
 
 ## Gate 53 — Carry / weekend / event-horizon formalisation
 
+Status: planned
+
 ### Objective
 Formalise the handoff between intraday cognition and carry-horizon decisioning, with explicit treatment of weekend and event carry.
 
@@ -116,6 +132,8 @@ Carry-horizon decisioning is formally typed, bounded, and explained without bein
 ---
 
 ## Gate 54 — DMP binding-surface decision
+
+Status: planned
 
 ### Objective
 Make the DMP binding decision explicit for this tranche and prevent mixed-mode ambiguity.
@@ -143,6 +161,8 @@ The repo can no longer be misread as “already on DMP v2” if it is not, and a
 
 ## Gate 55 — Vocabulary/governance alignment
 
+Status: planned
+
 ### Objective
 Align vocabulary governance with the workflow modification only after stage ownership, hierarchy, carry taxonomy, and DMP decision are pinned.
 
@@ -162,8 +182,8 @@ The repo has one authoritative vocabulary/governance surface for the updated wor
 
 ## Execution order
 
-1. Gate 51
-2. Gate 52
+1. Gate 51 — complete on `main`
+2. Gate 52 — next planned gate
 3. Gate 53
 4. Gate 54
 5. Gate 55

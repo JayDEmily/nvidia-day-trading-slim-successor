@@ -1,6 +1,6 @@
 # Gate 46 — Audit Closeout and Planning Freeze
 
-Status: active on current planning branch
+Status: complete on `main`
 
 ## Purpose
 
