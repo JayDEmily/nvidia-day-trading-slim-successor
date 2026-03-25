@@ -1,0 +1,664 @@
+{
+  "schema_version": "desk_vocabulary.v1",
+  "registry_version": "gate50-rebase-2026-03-25",
+  "notes": [
+    "Generated from current live playbook registry and pinned architecture surfaces.",
+    "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth."
+  ],
+  "entries": [
+    {
+      "canonical_slug": "temporal_context",
+      "canonical_label": "Temporal Context",
+      "category": "stage",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.TemporalContextOutput",
+      "allowed_aliases": [
+        "step_1",
+        "time_phase_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Binding Stage 1 grammar slot."
+      ]
+    },
+    {
+      "canonical_slug": "market_regime_context",
+      "canonical_label": "Market Regime Context",
+      "category": "stage",
+      "stage_owner": "market_regime_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.MarketRegimeContextOutput",
+      "allowed_aliases": [
+        "regime_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "options_flow_context",
+      "canonical_label": "Options and Flow Context",
+      "category": "stage",
+      "stage_owner": "options_flow_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.OptionsFlowContextOutput",
+      "allowed_aliases": [
+        "options_context",
+        "flow_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "posture_risk_permission",
+      "canonical_label": "Posture and Risk Permission",
+      "category": "stage",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PostureRiskOutput",
+      "allowed_aliases": [
+        "posture_risk",
+        "permission_layer"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "playbook_eligibility",
+      "canonical_label": "Playbook Eligibility",
+      "category": "stage",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PlaybookEligibilityOutput",
+      "allowed_aliases": [
+        "selector_layer"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "expression_execution",
+      "canonical_label": "Expression and Execution",
+      "category": "stage",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "execution_expression"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "review_explanation",
+      "canonical_label": "Review and Explanation",
+      "category": "stage",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ReviewExplanationOutput",
+      "allowed_aliases": [
+        "review_packet",
+        "reason_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "temporal_state",
+      "canonical_label": "Temporal State",
+      "category": "compatibility_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.temporal_surface.TemporalStateFeaturePayload",
+      "allowed_aliases": [
+        "step1_temporal_state"
+      ],
+      "disallowed_phrases": [
+        "hard_clock_truth"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_slug": "session_clock",
+      "canonical_label": "Session Clock",
+      "category": "compatibility_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.session_clock.SessionClockFeaturePayload",
+      "allowed_aliases": [
+        "session_clock_wrapper"
+      ],
+      "disallowed_phrases": [
+        "canonical_step1_truth"
+      ],
+      "notes": [
+        "Explicit compatibility wrapper retained over temporal_state."
+      ]
+    },
+    {
+      "canonical_slug": "raw_primitive",
+      "canonical_label": "Raw Primitive",
+      "category": "data_classification",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "raw",
+      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+      "allowed_aliases": [
+        "raw_signal"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "derived_feature",
+      "canonical_label": "Derived Feature",
+      "category": "data_classification",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+      "allowed_aliases": [
+        "derived_state"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "vocabulary_workflow",
+      "canonical_label": "Vocabulary Workflow",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+      "allowed_aliases": [
+        "consolidation_workflow"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "intraday",
+      "canonical_label": "Intraday",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_intraday"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "overnight",
+      "canonical_label": "Overnight",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "overnight",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_overnight"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "weekend",
+      "canonical_label": "Weekend",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "weekend",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_weekend"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "event_carry",
+      "canonical_label": "Event Carry",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "event_carry",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_event_carry"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "trend_continuation",
+      "canonical_label": "Trend Continuation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "trend_continuation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:trend_continuation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Top-level family for continuation and ladder-style deployment."
+      ]
+    },
+    {
+      "canonical_slug": "compression_release",
+      "canonical_label": "Compression Release",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "compression_release",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:compression_release"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Top-level family for compression breakout setups."
+      ]
+    },
+    {
+      "canonical_slug": "pin_behaviour",
+      "canonical_label": "Pin Behaviour",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "pin_behaviour",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:pin_behaviour"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Includes both generic pin reversion and front-expiry-specific pin pressure."
+      ]
+    },
+    {
+      "canonical_slug": "gamma_destabilisation",
+      "canonical_label": "Gamma Destabilisation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "gamma_destabilisation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:gamma_destabilisation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Hostile negative-gamma conditions."
+      ]
+    },
+    {
+      "canonical_slug": "term_structure_dislocation",
+      "canonical_label": "Term Structure Dislocation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "term_structure_dislocation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:term_structure_dislocation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Options-first curve family."
+      ]
+    },
+    {
+      "canonical_slug": "skew_pressure_transition",
+      "canonical_label": "Skew Pressure Transition",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "skew_pressure_transition",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:skew_pressure_transition"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Options-first skew family."
+      ]
+    },
+    {
+      "canonical_slug": "opening_drive_continuation",
+      "canonical_label": "Opening Drive Continuation",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "trend_continuation",
+      "setup_variant": "opening_drive_continuation",
+      "execution_expression": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:continuation_ladder"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Legacy continuation ladder path expressed as a setup variant."
+      ]
+    },
+    {
+      "canonical_slug": "continuation_ladder_exec",
+      "canonical_label": "Trend Ladder 3 Step",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "trend_continuation",
+      "setup_variant": "opening_drive_continuation",
+      "execution_expression": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "trend_ladder_3_step"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "trend_structure_broken"
+      ]
+    },
+    {
+      "canonical_slug": "midday_compression_release",
+      "canonical_label": "Midday Compression Release",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "compression_release",
+      "setup_variant": "midday_compression_release",
+      "execution_expression": "compression_breakout_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:compression_breakout"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Legacy compression breakout path as explicit setup variant."
+      ]
+    },
+    {
+      "canonical_slug": "compression_breakout_exec",
+      "canonical_label": "Compression Release Ladder",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "compression_release",
+      "setup_variant": "midday_compression_release",
+      "execution_expression": "compression_breakout_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "compression_release_ladder"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "compression_failed_or_event_window_opened"
+      ]
+    },
+    {
+      "canonical_slug": "late_session_pin_reversion",
+      "canonical_label": "Late Session Pin Reversion",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "pin_behaviour",
+      "setup_variant": "late_session_pin_reversion",
+      "execution_expression": "pin_reversion_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:pin_reversion"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "pin_reversion_exec",
+      "canonical_label": "Pin Fade Scaler",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "pin_behaviour",
+      "setup_variant": "late_session_pin_reversion",
+      "execution_expression": "pin_reversion_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "pin_fade_scaler"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "pin_released_or_flow_reaccelerated"
+      ]
+    },
+    {
+      "canonical_slug": "negative_gamma_flush_probe",
+      "canonical_label": "Negative Gamma Flush Probe",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "gamma_destabilisation",
+      "setup_variant": "negative_gamma_flush_probe",
+      "execution_expression": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:negative_gamma_flush"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "negative_gamma_flush_exec",
+      "canonical_label": "Probe Then Hedge",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "gamma_destabilisation",
+      "setup_variant": "negative_gamma_flush_probe",
+      "execution_expression": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "probe_then_hedge"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "flush_accelerates_or_bounce_fails"
+      ]
+    },
+    {
+      "canonical_slug": "front_expiry_pin_build",
+      "canonical_label": "Front Expiry Pin Build",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "pin_behaviour",
+      "setup_variant": "front_expiry_pin_build",
+      "execution_expression": "front_expiry_pin_pressure_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:front_expiry_pin_pressure"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "front_expiry_pin_pressure_exec",
+      "canonical_label": "Front Pin Scaler",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "pin_behaviour",
+      "setup_variant": "front_expiry_pin_build",
+      "execution_expression": "front_expiry_pin_pressure_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "front_pin_scaler"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "pin_build_failed_or_released"
+      ]
+    },
+    {
+      "canonical_slug": "front_next_curve_dislocation",
+      "canonical_label": "Front Versus Next Curve Dislocation",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "term_structure_dislocation",
+      "setup_variant": "front_next_curve_dislocation",
+      "execution_expression": "term_structure_dislocation_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:term_structure_dislocation"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "term_structure_dislocation_exec",
+      "canonical_label": "Term Dislocation Probe",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "term_structure_dislocation",
+      "setup_variant": "front_next_curve_dislocation",
+      "execution_expression": "term_structure_dislocation_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "term_dislocation_probe"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "term_structure_normalised"
+      ]
+    },
+    {
+      "canonical_slug": "skew_relaxation_reversal",
+      "canonical_label": "Skew Relaxation Reversal",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "skew_pressure_transition",
+      "setup_variant": "skew_relaxation_reversal",
+      "execution_expression": "skew_pressure_reversal_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:skew_pressure_reversal"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "skew_pressure_reversal_exec",
+      "canonical_label": "Skew Reversal Scaler",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "skew_pressure_transition",
+      "setup_variant": "skew_relaxation_reversal",
+      "execution_expression": "skew_pressure_reversal_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "skew_reversal_scaler"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "skew_reversal_failed"
+      ]
+    }
+  ]
+}

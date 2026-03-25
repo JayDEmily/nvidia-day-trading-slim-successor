@@ -1,6 +1,6 @@
 # Gate 48 — Carry-Horizon Handoff
 
-Status: planned on current planning branch
+Status: complete on current execution branch
 
 ## Purpose
 
@@ -31,3 +31,7 @@ Carry evaluation has an explicit typed upstream packet, horizon taxonomy is froz
 - no mixing of weekend logic into ordinary intraday playbook eligibility;
 - no fake booked-position theatre;
 - no silent policy changes about mandatory flattening.
+
+## Exit evidence
+
+- Typed close-state handoff, carry taxonomy, carry actions, carry services, and replay tests are in place.

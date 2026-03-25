@@ -80,6 +80,7 @@ def test_overnight_carry_blocks_hot_risk_state() -> None:
     )
     assert result.carry_recommendation.value == "block"
     assert result.overnight_exposure_pct == 0.0
+    assert result.carry_action.value == "block_carry"
     assert result.review_required is True
 
 
@@ -115,4 +116,6 @@ def test_overnight_carry_matches_admitted_vwap_case_biases() -> None:
         )
     )
     assert de_risk_result.carry_recommendation.value in {"block", "flatten"}
+    assert de_risk_result.carry_action.value in {"block_carry", "flatten"}
     assert supportive_result.carry_recommendation.value in {"increase", "hold_small"}
+    assert supportive_result.carry_action.value in {"add_carry", "hold_small"}

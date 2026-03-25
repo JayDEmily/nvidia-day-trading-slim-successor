@@ -345,6 +345,10 @@ class PlaybookCandidate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     playbook_id: str
+    family_id: str | None = None
+    setup_variant_id: str | None = None
+    execution_expression_id: str | None = None
+    horizon: str | None = None
     decision: PlaybookDecision
     action_bias: PlaybookAction = PlaybookAction.HOLD
     sizing_fraction: float = Field(default=0.0, ge=0.0, le=1.0)

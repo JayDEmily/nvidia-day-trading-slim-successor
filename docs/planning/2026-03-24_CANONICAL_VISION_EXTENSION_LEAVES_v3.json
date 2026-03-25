@@ -2366,7 +2366,7 @@
       "full_suite_required": false,
       "pass_gate": "The authoritative repo contains the frozen audit artefacts.",
       "merge_gate": "Audit artefacts are present, referenced, and no runtime behaviour changed.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 35,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
@@ -2382,6 +2382,12 @@
       "planned_items": [
         "audit-import",
         "audit-freeze"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2428,7 +2434,7 @@
       "full_suite_required": false,
       "pass_gate": "The planning quartet exposes Gate 46 as active and Gates 47-50 as bounded downstream gates.",
       "merge_gate": "The planning quartet is coherent and does not claim implementation beyond Gate 44.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 36,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
@@ -2444,6 +2450,12 @@
       "planned_items": [
         "gate-pack-install",
         "gate45-retirement"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2481,7 +2493,7 @@
       "full_suite_required": false,
       "pass_gate": "The planning pack has an executable integrity test surface.",
       "merge_gate": "Planning tests pass without forcing unrelated runtime changes.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 37,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
@@ -2495,6 +2507,12 @@
       "planned_items": [
         "planning-test",
         "planning-integrity"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2536,7 +2554,7 @@
       "full_suite_required": false,
       "pass_gate": "A typed registry-v2 schema exists.",
       "merge_gate": "Schema tests prove the new registry surface is stable and bounded.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 38,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py"
@@ -2549,6 +2567,12 @@
       ],
       "planned_items": [
         "registry-v2-schema"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2589,7 +2613,7 @@
       "full_suite_required": false,
       "pass_gate": "The seven live playbooks are represented truthfully in registry-v2.",
       "merge_gate": "Compatibility tests prove the flat registry can be bridged without silent remapping.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 39,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
@@ -2603,6 +2627,12 @@
       "planned_items": [
         "registry-v2-mapping",
         "compatibility-bridge"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2643,7 +2673,7 @@
       "full_suite_required": false,
       "pass_gate": "Checked-in config and fixtures are registry-v2 compatible.",
       "merge_gate": "Fixture and parity tests pass with no silent drift.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 40,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
@@ -2656,6 +2686,12 @@
       ],
       "planned_items": [
         "registry-v2-fixtures"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2698,7 +2734,7 @@
       "full_suite_required": true,
       "pass_gate": "Runtime readers consume registry-v2 while legacy approved behaviour remains stable.",
       "merge_gate": "Targeted runtime tests and the full suite pass.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 41,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py",
@@ -2712,6 +2748,12 @@
       ],
       "planned_items": [
         "registry-v2-runtime"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2745,7 +2787,7 @@
       "full_suite_required": false,
       "pass_gate": "Registry-v2 has explicit boundaries and does not become a dumping ground.",
       "merge_gate": "The documentation is clear enough to prevent family/variant/expression drift.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 42,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -2756,6 +2798,12 @@
       ],
       "planned_items": [
         "registry-v2-boundaries"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2795,7 +2843,7 @@
       "full_suite_required": false,
       "pass_gate": "A typed close-state to carry-state handoff contract exists.",
       "merge_gate": "Schema and carry tests prove the contract is valid.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 43,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
@@ -2808,6 +2856,12 @@
       ],
       "planned_items": [
         "carry-handoff-contract"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2845,7 +2899,7 @@
       "full_suite_required": false,
       "pass_gate": "Carry taxonomy is explicit and bounded.",
       "merge_gate": "Horizon-value tests pass.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 44,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
@@ -2858,6 +2912,12 @@
       ],
       "planned_items": [
         "carry-horizon-taxonomy"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2897,7 +2957,7 @@
       "full_suite_required": true,
       "pass_gate": "Carry services consume the handoff packet and branch separation remains explicit.",
       "merge_gate": "Carry tests and full suite pass.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 45,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
@@ -2911,6 +2971,12 @@
       ],
       "planned_items": [
         "carry-handoff-runtime"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2948,7 +3014,7 @@
       "full_suite_required": false,
       "pass_gate": "Allowed carry actions are typed and explicit.",
       "merge_gate": "Contract tests prove the action set is bounded.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 46,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
@@ -2961,6 +3027,12 @@
       ],
       "planned_items": [
         "carry-actions"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -2999,7 +3071,7 @@
       "full_suite_required": true,
       "pass_gate": "Tests prove carry logic is a separate branch.",
       "merge_gate": "Focused carry tests and full suite pass.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 47,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
@@ -3013,6 +3085,12 @@
       ],
       "planned_items": [
         "carry-branch-proof"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3051,7 +3129,7 @@
       "full_suite_required": false,
       "pass_gate": "Every outward session_clock surface is explicitly inventoried.",
       "merge_gate": "The decision gate now rests on evidence rather than memory.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 48,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3062,6 +3140,12 @@
       ],
       "planned_items": [
         "temporal-compat-inventory"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3094,7 +3178,7 @@
       "full_suite_required": false,
       "pass_gate": "The repo has one explicit outward naming policy for Step 1.",
       "merge_gate": "The compatibility policy is documented clearly enough to drive implementation.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 49,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3105,6 +3189,12 @@
       ],
       "planned_items": [
         "temporal-compat-policy"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3147,7 +3237,7 @@
       "full_suite_required": true,
       "pass_gate": "Outward temporal surfaces now follow one explicit policy.",
       "merge_gate": "Focused compatibility tests and full suite pass.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 50,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_session_clock.py tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py",
@@ -3161,6 +3251,12 @@
       ],
       "planned_items": [
         "temporal-compat-runtime"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3194,7 +3290,7 @@
       "full_suite_required": false,
       "pass_gate": "The temporal compatibility decision is durable and reversible.",
       "merge_gate": "Documentation and rollback notes are explicit.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 51,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3205,6 +3301,12 @@
       ],
       "planned_items": [
         "temporal-compat-docs"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3241,7 +3343,7 @@
       "full_suite_required": false,
       "pass_gate": "The vocabulary workflow exists in-repo as governed process, not blind truth.",
       "merge_gate": "The gate note makes the feeder-only rule explicit.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 52,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3252,6 +3354,12 @@
       ],
       "planned_items": [
         "vocabulary-workflow-import"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3287,7 +3395,7 @@
       "full_suite_required": false,
       "pass_gate": "The canonical vocabulary matches current architecture truth.",
       "merge_gate": "Regeneration is scripted and internally consistent.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 53,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3298,6 +3406,12 @@
       ],
       "planned_items": [
         "vocabulary-regeneration"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3332,7 +3446,7 @@
       "full_suite_required": false,
       "pass_gate": "Vocabulary schema can represent the new architecture.",
       "merge_gate": "The schema fields line up with the pinned architecture.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 54,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3343,6 +3457,12 @@
       ],
       "planned_items": [
         "vocabulary-schema-extension"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3377,7 +3497,7 @@
       "full_suite_required": false,
       "pass_gate": "Duplicate labels and stale aliases are reconciled explicitly.",
       "merge_gate": "Consistency checks prove the vocabulary no longer contains conflicting duplicate labels.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 55,
       "validation_commands": [],
       "acceptance_criteria": [
@@ -3388,6 +3508,12 @@
       ],
       "planned_items": [
         "vocabulary-reconciliation"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     },
     {
@@ -3426,7 +3552,7 @@
       "full_suite_required": true,
       "pass_gate": "Vocabulary governance is enforced by tests instead of memory.",
       "merge_gate": "Enforcement tests pass and prevent silent language drift.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 56,
       "validation_commands": [
         "PYTHONPATH=src .venv/bin/python -m pytest -q",
@@ -3440,11 +3566,17 @@
       ],
       "planned_items": [
         "vocabulary-enforcement"
+      ],
+      "completion_note": "Completed on branch `work/gates47-50-execution-20260325`; see execution log and full-suite receipt for validation evidence.",
+      "completion_evidence": [
+        "branch:work/gates47-50-execution-20260325",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q -> 173 passed"
       ]
     }
   ],
-  "execution_status": "gate_46_planning_pack_authored_gate_47_to_50_leafed_on_branch",
-  "completed_at": "2026-03-25T08:30:00Z",
+  "execution_status": "gates_46_to_50_complete_on_execution_branch_pending_merge",
+  "completed_at": "2026-03-25T12:45:00Z",
   "completed_leaf_ids": [
     "LEAF-G8-001",
     "LEAF-G9-001",
@@ -3479,9 +3611,7 @@
     "LEAF-G41-001",
     "LEAF-G42-001",
     "LEAF-G43-001",
-    "LEAF-G44-001"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G44-001",
     "LEAF-G46-001",
     "LEAF-G46-002",
     "LEAF-G46-003",
@@ -3505,6 +3635,7 @@
     "LEAF-G50-004",
     "LEAF-G50-005"
   ],
+  "remaining_leaf_ids": [],
   "supplementary_scope_note": "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md",
   "completed_baseline_leaf_ids": [
     "LEAF-G7-BASELINE"

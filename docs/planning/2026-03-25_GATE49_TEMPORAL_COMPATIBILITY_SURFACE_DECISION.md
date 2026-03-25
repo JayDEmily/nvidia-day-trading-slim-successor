@@ -1,6 +1,6 @@
 # Gate 49 — Temporal Compatibility Surface Decision
 
-Status: planned on current planning branch
+Status: complete on current execution branch
 
 ## Purpose
 
@@ -30,3 +30,7 @@ The repo has one explicit outward naming policy for Step 1, and tests enforce it
 - no hidden renames of DMP payload identity;
 - no silent API breakage;
 - no reintroduction of elapsed-minute bucket truth.
+
+## Exit evidence
+
+- The repo now exposes canonical `temporal_state` surfaces while keeping `session_clock` as an explicit compatibility wrapper.

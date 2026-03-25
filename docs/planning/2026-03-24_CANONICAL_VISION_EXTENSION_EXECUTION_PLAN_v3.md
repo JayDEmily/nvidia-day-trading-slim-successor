@@ -1,9 +1,9 @@
 # 2026-03-24 Canonical Vision Extension Scope Note
 
 Status: Active bounded-scope note  
-Version: v6.2 (filename retained for continuity)  
+Version: v6.3 (filename retained for continuity)  
 Authority: Subordinate to `docs/01_NORMATIVE.md` and supplementary to `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`. This file is **not** the governing gate authority.  
-Baseline: `PLANS.md` records Gates 0 through 44 complete on `main`, retires Gate 45 as a planning placeholder on the current branch, and installs the Gate 46–50 planning pack without implying execution.  
+Baseline: `PLANS.md` records Gates 0 through 44 complete on `main`, retires Gate 45 as a planning placeholder, and records Gates 46–50 complete on the current execution branch pending merge.  
 Correction scope: this file now exists to explain why the next slice is bounded to an audit-driven architecture tranche rather than widening into open-ended runtime invention.
 
 ## 0. Purpose
@@ -50,10 +50,10 @@ Exact gate control now lives in:
 The active slice is intentionally narrow:
 
 - **Gate 46:** freeze the audit in the authoritative repo tree and install the canonical Gate 46–50 planning pack.
-- **Gate 47:** introduce registry-v2 so playbooks can be expressed as family → setup variant → execution expression → horizon.
-- **Gate 48:** formalise intraday close-state → carry-horizon handoff for overnight, weekend, and event carry.
-- **Gate 49:** decide whether outward `session_clock` surfaces remain explicit compatibility wrappers or are retired.
-- **Gate 50:** rebase vocabulary governance onto the now-pinned architecture.
+- **Gate 47:** introduced registry-v2 so playbooks are expressed as family → setup variant → execution expression → horizon.
+- **Gate 48:** formalised intraday close-state → carry-horizon handoff for overnight, weekend, and event carry.
+- **Gate 49:** kept outward `session_clock` surfaces as explicit compatibility wrappers while adding canonical `temporal_state` surfaces.
+- **Gate 50:** rebased vocabulary governance onto the now-pinned architecture.
 
 This note does **not** authorise the invention of every possible trader leaf.  
 This note does **not** authorise a DMP rewrite.  
@@ -79,3 +79,7 @@ Use the files below together:
 4. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md` — this bounded-scope note
 5. `docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md` — frozen audit findings
 6. `docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md` — audit-derived planning consequences
+
+## Current tranche status
+
+The bounded Gate 46–50 architecture tranche is complete on the current execution branch and awaiting review/merge. No downstream Gate 51+ work is implied by this note.

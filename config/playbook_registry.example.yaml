@@ -1,4 +1,4 @@
-schema_version: playbook_registry.v1
+schema_version: playbook_registry.v2
 registry_version: gate11-draft
 notes:
 - Checked-in typed playbook registry for Gates 11-13.
@@ -142,6 +142,26 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: trend_continuation
+  setup_variant_id: opening_drive_continuation
+  execution_expression_id: continuation_ladder_exec
+  horizon: intraday
+  constraints: &id001
+    allowed_desk_windows:
+    - early_anchor
+    - mid_morning
+    - trend_window
+    - late_session
+    blocked_event_window_states:
+    - event_imminent_window
+    - event_live_window
+    notes:
+    - Supportive leadership and breadth still required in code.
+  risk_overrides: &id002
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
 - playbook_id: compression_breakout
   notes:
   - Second-priority expansion family once compression confirms.
@@ -164,6 +184,25 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: compression_release
+  setup_variant_id: midday_compression_release
+  execution_expression_id: compression_breakout_exec
+  horizon: intraday
+  constraints: &id003
+    allowed_desk_windows:
+    - lunch
+    - trend_window
+    - late_session
+    blocked_event_window_states:
+    - event_imminent_window
+    - event_live_window
+    required_options_behavior_clusters:
+    - compression_breakout_ready
+  risk_overrides: &id004
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
 - playbook_id: pin_reversion
   notes:
   - Trim-biased pin fade around close and lunch windows.
@@ -186,6 +225,26 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: pin_behaviour
+  setup_variant_id: late_session_pin_reversion
+  execution_expression_id: pin_reversion_exec
+  horizon: intraday
+  constraints: &id005
+    allowed_desk_windows:
+    - lunch
+    - trend_window
+    - late_session
+    - close
+    blocked_event_window_states:
+    - event_imminent_window
+    - event_live_window
+  risk_overrides: &id006
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
+    force_hedge_when_dealer_pressure_states:
+    - dealer_destabilising
 - playbook_id: negative_gamma_flush
   notes:
   - Probe-first hostile flush playbook with hedge overlay.
@@ -208,6 +267,23 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: gamma_destabilisation
+  setup_variant_id: negative_gamma_flush_probe
+  execution_expression_id: negative_gamma_flush_exec
+  horizon: intraday
+  constraints: &id007
+    blocked_event_window_states:
+    - event_imminent_window
+    - event_live_window
+    required_options_behavior_clusters:
+    - negative_gamma_flush
+  risk_overrides: &id008
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
+    force_hedge_when_dealer_pressure_states:
+    - dealer_destabilising
 - playbook_id: front_expiry_pin_pressure
   notes:
   - Options-first family for front-expiry pin build, stability, and release management.
@@ -230,6 +306,22 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: pin_behaviour
+  setup_variant_id: front_expiry_pin_build
+  execution_expression_id: front_expiry_pin_pressure_exec
+  horizon: intraday
+  constraints: &id009
+    allowed_desk_windows:
+    - early_anchor
+    - mid_morning
+    - trend_window
+    - late_session
+    - close
+  risk_overrides: &id010
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
 - playbook_id: term_structure_dislocation
   notes:
   - Options-first family for front-versus-next expiry IV curve dislocation.
@@ -252,6 +344,18 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: term_structure_dislocation
+  setup_variant_id: front_next_curve_dislocation
+  execution_expression_id: term_structure_dislocation_exec
+  horizon: intraday
+  constraints: &id011
+    blocked_event_window_states:
+    - event_live_window
+  risk_overrides: &id012
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
 - playbook_id: skew_pressure_reversal
   notes:
   - Options-first family for expanding skew tension that starts to reverse without
@@ -275,3 +379,126 @@ playbooks:
     action_bias: reduce
     sizing_fraction: 0.0
     hedge_overlay: false
+  family_id: skew_pressure_transition
+  setup_variant_id: skew_relaxation_reversal
+  execution_expression_id: skew_pressure_reversal_exec
+  horizon: intraday
+  constraints: &id013
+    blocked_event_window_states:
+    - event_live_window
+  risk_overrides: &id014
+    block_permission_states:
+    - block
+    watch_only_permission_states:
+    - derisk
+    force_hedge_when_dealer_pressure_states:
+    - dealer_destabilising
+families:
+- family_id: trend_continuation
+  title: Trend Continuation
+  thesis: Persistent directional tape with supportive breadth and non-hostile options
+    context.
+  notes:
+  - Top-level family for continuation and ladder-style deployment.
+  active: true
+- family_id: compression_release
+  title: Compression Release
+  thesis: Compressed tape or options surface releases into directional range expansion.
+  notes:
+  - Top-level family for compression breakout setups.
+  active: true
+- family_id: pin_behaviour
+  title: Pin Behaviour
+  thesis: 'Strike-magnet behaviour dominates and favours mean reversion or controlled
+    trim. '
+  notes:
+  - Includes both generic pin reversion and front-expiry-specific pin pressure.
+  active: true
+- family_id: gamma_destabilisation
+  title: Gamma Destabilisation
+  thesis: Dealer pressure amplifies price movement and supports flush-style or hedge-led
+    responses.
+  notes:
+  - Hostile negative-gamma conditions.
+  active: true
+- family_id: term_structure_dislocation
+  title: Term Structure Dislocation
+  thesis: Front-versus-next expiry dislocation distorts the curve and creates a normalisation
+    setup.
+  notes:
+  - Options-first curve family.
+  active: true
+- family_id: skew_pressure_transition
+  title: Skew Pressure Transition
+  thesis: Skew pressure relaxes or reverses without a full destabilised flush.
+  notes:
+  - Options-first skew family.
+  active: true
+setup_variants:
+- setup_variant_id: opening_drive_continuation
+  family_id: trend_continuation
+  title: Opening Drive Continuation
+  horizon: intraday
+  priority: 1
+  execution_expression_id: continuation_ladder_exec
+  legacy_playbook_id: continuation_ladder
+  constraints: *id001
+  risk_overrides: *id002
+  notes:
+  - Legacy continuation ladder path expressed as a setup variant.
+- setup_variant_id: midday_compression_release
+  family_id: compression_release
+  title: Midday Compression Release
+  horizon: intraday
+  priority: 2
+  execution_expression_id: compression_breakout_exec
+  legacy_playbook_id: compression_breakout
+  constraints: *id003
+  risk_overrides: *id004
+  notes:
+  - Legacy compression breakout path as explicit setup variant.
+- setup_variant_id: late_session_pin_reversion
+  family_id: pin_behaviour
+  title: Late Session Pin Reversion
+  horizon: intraday
+  priority: 3
+  execution_expression_id: pin_reversion_exec
+  legacy_playbook_id: pin_reversion
+  constraints: *id005
+  risk_overrides: *id006
+- setup_variant_id: negative_gamma_flush_probe
+  family_id: gamma_destabilisation
+  title: Negative Gamma Flush Probe
+  horizon: intraday
+  priority: 4
+  execution_expression_id: negative_gamma_flush_exec
+  legacy_playbook_id: negative_gamma_flush
+  constraints: *id007
+  risk_overrides: *id008
+- setup_variant_id: front_expiry_pin_build
+  family_id: pin_behaviour
+  title: Front Expiry Pin Build
+  horizon: intraday
+  priority: 5
+  execution_expression_id: front_expiry_pin_pressure_exec
+  legacy_playbook_id: front_expiry_pin_pressure
+  constraints: *id009
+  risk_overrides: *id010
+- setup_variant_id: front_next_curve_dislocation
+  family_id: term_structure_dislocation
+  title: Front Versus Next Curve Dislocation
+  horizon: intraday
+  priority: 6
+  execution_expression_id: term_structure_dislocation_exec
+  legacy_playbook_id: term_structure_dislocation
+  constraints: *id011
+  risk_overrides: *id012
+- setup_variant_id: skew_relaxation_reversal
+  family_id: skew_pressure_transition
+  title: Skew Relaxation Reversal
+  horizon: intraday
+  priority: 7
+  execution_expression_id: skew_pressure_reversal_exec
+  legacy_playbook_id: skew_pressure_reversal
+  constraints: *id013
+  risk_overrides: *id014

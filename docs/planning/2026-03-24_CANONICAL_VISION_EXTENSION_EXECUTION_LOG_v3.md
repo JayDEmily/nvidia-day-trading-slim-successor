@@ -876,3 +876,44 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Validation in the repo venv:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py`
 - Result: Gate 44 is complete and Gate 45 becomes the next downstream placeholder only.
+
+
+### LEAF-G46-001 through LEAF-G46-003 — Freeze the audit and planning pack in the authoritative tree
+
+- Branch: `work/gates47-50-execution-20260325`
+- Scope: import the pre-implementation audit, retire the Gate 45 placeholder administratively, keep the planning quartet authoritative, and preserve the findings as bounded inputs for execution.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py`
+- Result: Gate 46 is complete and the audit/planning pack now lives in the authoritative tree.
+
+### LEAF-G47-001 through LEAF-G47-005 — Replace the flat playbook registry with registry-v2 hierarchy
+
+- Branch: `work/gates47-50-execution-20260325`
+- Scope: add typed family/setup-variant/execution-expression/horizon surfaces, update checked-in config and replay fixtures, and keep runtime behaviour deterministic.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_gate47_registry_v2.py tests/test_runtime_parity_registry_playbooks.py`
+- Result: Gate 47 is complete and the flat registry has been superseded by registry v2.
+
+### LEAF-G48-001 through LEAF-G48-005 — Formalise close-state to carry-horizon handoff
+
+- Branch: `work/gates47-50-execution-20260325`
+- Scope: define the typed handoff packet, freeze overnight/weekend/event-carry taxonomy, and thread the handoff through carry services and replay.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_module_evaluators.py tests/test_api.py`
+- Result: Gate 48 is complete and carry logic now consumes an explicit upstream handoff.
+
+### LEAF-G49-001 through LEAF-G49-004 — Keep `session_clock` as explicit compatibility wrapper while adding canonical temporal-state surfaces
+
+- Branch: `work/gates47-50-execution-20260325`
+- Scope: add outward `temporal_state` surfaces, preserve `session_clock` as an explicit compatibility policy, and keep API/snapshot behaviour truthful.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate49_temporal_compatibility.py tests/test_api.py`
+- Result: Gate 49 is complete and the outward Step-1 naming policy is explicit rather than drifting.
+
+### LEAF-G50-001 through LEAF-G50-005 — Rebase vocabulary governance onto current architecture
+
+- Branch: `work/gates47-50-execution-20260325`
+- Scope: import the vocabulary workflow as feeder process only, add canonical vocabulary schema and file, and enforce duplicate-label/alias governance under test.
+- Validation in the repo venv:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py`
+- Result: Gate 50 is complete and vocabulary governance is now rebased onto the live architecture.

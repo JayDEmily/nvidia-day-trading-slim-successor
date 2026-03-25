@@ -1,30 +1,56 @@
 # 2026-03-24 Playbook Registry Spec
 
-Status: Gates 11-12 typed-registry surface
+Status: Gate 47 registry-v2 typed-registry surface
 
 ## Purpose
 
-This registry makes the four live Gate-D playbooks and their execution-template shapes explicit checked-in artefacts.
+This registry now defines the live deterministic playbook hierarchy as checked-in typed artefacts.
 
-It exists to do three things only:
-1. define `PlaybookSpec` and `ExecutionTemplateSpec` as typed offline-loadable contracts;
-2. keep playbook and execution-template ownership separate from `StackDefinition` and `CoefficientSet` ownership;
-3. provide one checked-in registry format that Gate 12 and Gate 13 can promote without inventing a second stack family.
+It exists to do four things only:
+1. define playbook families, setup variants, execution expressions, horizons, constraints, and risk overrides as typed offline-loadable contracts;
+2. keep playbook hierarchy ownership separate from stack/coefficient ownership;
+3. provide one checked-in registry format that runtime readers can consume without inventing ad hoc side dictionaries;
+4. preserve a bounded compatibility bridge from the older flat playbook rows.
 
 ## Registry format
 
-The checked-in registry format is YAML. That matches the repo's existing config surface and remains testable offline.
+The checked-in registry format is YAML.
 
 Top-level fields:
 - `schema_version`
 - `registry_version`
 - `notes`
+- `families`
+- `setup_variants`
 - `execution_templates`
 - `playbooks`
 
+## PlaybookFamilySpec
+
+Required fields:
+- `family_id`
+- `title`
+- `description`
+- `horizon`
+- `state_requirements`
+- `phase_constraints`
+
+## SetupVariantSpec
+
+Required fields:
+- `setup_variant_id`
+- `family_id`
+- `title`
+- `description`
+- `state_requirements`
+
+Optional fields:
+- `phase_constraints`
+- `risk_overrides`
+
 ## ExecutionTemplateSpec
 
-`ExecutionTemplateSpec` holds playbook-execution shape, not stack configuration.
+`ExecutionTemplateSpec` still holds execution shape, not stack configuration.
 
 Required fields:
 - `template_id`
@@ -44,47 +70,40 @@ Optional-but-typed fields keep current execution semantics explicit:
 - `inventory_pressure_states`
 - `inventory_pressure_exit_reason`
 
-`scaling_step_factors` are deliberately **not** required to sum to 1.0. Some current live playbooks, especially `negative_gamma_flush`, use partial/probe deployment shapes that intentionally leave deployable capital unused.
-
 ## PlaybookSpec
 
-`PlaybookSpec` holds live-playbook identity, priority, rule linkage, execution-template linkage, and decision-profile defaults.
+`PlaybookSpec` is now the leaf binding row that connects family, setup variant, and execution expression.
 
 Required fields:
 - `playbook_id`
 - `title`
 - `rule_id`
-- `execution_template_id`
+- `family_id`
+- `setup_variant_id`
+- `execution_expression_id`
+- `horizon`
 - `priority`
 - `eligible`
 - `watch_only`
 - `ineligible`
 
-Each decision profile is typed as:
+Optional typed fields:
+- `constraints`
+- `risk_overrides`
+
+Each decision profile remains typed as:
 - `decision`
 - `action_bias`
 - `sizing_fraction`
 - `hedge_overlay`
 
-## Gate 12 backfill notes
+## Current live coverage
 
-The four live playbooks are backfilled one-for-one in this registry:
-- `continuation_ladder`
-- `compression_breakout`
-- `pin_reversion`
-- `negative_gamma_flush`
-
-Their priority order remains:
-1. `continuation_ladder`
-2. `compression_breakout`
-3. `pin_reversion`
-4. `negative_gamma_flush`
-
-No new playbooks are introduced in this registry.
+The live checked-in registry now covers seven playbooks across explicit family and setup-variant hierarchy, including the options-first additions introduced in the Gates 41–44 tranche.
 
 ## Ownership boundaries
 
-The registry must not create a second stack/config family.
+This registry must not create a second stack/config family.
 
 So this registry **must not** own:
 - stack membership

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.overnight import (
+    CarryAction,
     CarryRecommendation,
     OvernightCarryEvaluatorInput,
     OvernightCarryEvaluatorOutput,
@@ -133,8 +134,15 @@ class OvernightCarryEvaluatorService:
         if not rationale_codes:
             rationale_codes.append("baseline_overnight_profile")
 
+        action = {
+            CarryRecommendation.INCREASE: CarryAction.ADD_CARRY,
+            CarryRecommendation.HOLD_SMALL: CarryAction.HOLD_SMALL,
+            CarryRecommendation.FLATTEN: CarryAction.FLATTEN,
+            CarryRecommendation.BLOCK: CarryAction.BLOCK_CARRY,
+        }[recommendation]
         return OvernightCarryEvaluatorOutput(
             carry_recommendation=recommendation,
+            carry_action=action,
             overnight_exposure_pct=exposure,
             keep_orders_active=keep_orders_active,
             rationale_codes=rationale_codes,

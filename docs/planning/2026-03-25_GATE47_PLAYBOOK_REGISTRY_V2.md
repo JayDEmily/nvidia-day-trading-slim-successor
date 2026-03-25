@@ -1,6 +1,6 @@
 # Gate 47 — Playbook Registry v2
 
-Status: planned on current planning branch
+Status: complete on current execution branch
 
 ## Purpose
 
@@ -31,3 +31,7 @@ A typed registry-v2 exists, current live playbooks are represented through the h
 - no invention of every hypothetical trader play;
 - no collapse of posture/risk and playbook layers into one object;
 - no LLM-facing ontology work.
+
+## Exit evidence
+
+- Registry-v2 exists in typed schemas, checked-in config, replay fixtures, runtime readers, and deterministic tests.

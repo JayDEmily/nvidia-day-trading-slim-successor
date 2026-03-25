@@ -6,11 +6,17 @@ from sqlalchemy import asc, desc, select
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session, sessionmaker
 
+from nvda_desk.config import Settings
 from nvda_desk.db.models import Bar1m, Instrument, OptionSnapshot
 from nvda_desk.domain.session_clock import SessionClockClassifier
+from nvda_desk.domain.temporal_state import TemporalSignalInput, TemporalStateClassifier
 from nvda_desk.schemas.market import Bar1mPayload, IntradayBarsResponse, MarketSnapshotResponse
 from nvda_desk.schemas.options import OptionSnapshotPayload, OptionSurfaceResponse, OptionType
 from nvda_desk.schemas.session_clock import SessionClockFeaturePayload
+from nvda_desk.schemas.temporal_surface import (
+    SessionClockCompatibilityPayload,
+    TemporalStateFeaturePayload,
+)
 
 
 class MarketStateService:
@@ -18,18 +24,25 @@ class MarketStateService:
         self,
         classifier: SessionClockClassifier,
         session_factory: sessionmaker[Session] | None = None,
+        settings: Settings | None = None,
     ):
         self._classifier = classifier
         self._session_factory = session_factory
+        self._temporal_classifier = TemporalStateClassifier(settings or Settings())
 
     def get_session_clock(self, ts: datetime) -> SessionClockFeaturePayload:
-        return SessionClockFeaturePayload.from_state(self._classifier.classify(ts))
+        state = self._classifier.classify(ts)
+        return SessionClockCompatibilityPayload.from_state(state)
+
+    def get_temporal_state(self, ts: datetime) -> TemporalStateFeaturePayload:
+        return TemporalStateFeaturePayload.from_state(self._temporal_classifier.classify(TemporalSignalInput(ts=ts)))
 
     def get_market_snapshot(self, symbol: str, ts: datetime) -> MarketSnapshotResponse:
         latest_bar = self._get_latest_bar(symbol=symbol, ts=ts)
         return MarketSnapshotResponse(
             symbol=symbol,
             requested_at=ts,
+            temporal_state=self.get_temporal_state(ts),
             session_clock=self.get_session_clock(ts),
             latest_bar=latest_bar,
         )

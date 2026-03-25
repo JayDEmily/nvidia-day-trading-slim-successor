@@ -31,8 +31,7 @@ The sequential execution log is:
 - Gate 40 — complete on `main`
 - Gates 41–44 — complete on `main`
 - Gate 45 — retired placeholder on the current planning branch
-- Gate 46 — active planning gate on the current planning branch
-- Gates 47–50 — leafed downstream planning gates on the current planning branch
+- Gates 46–50 — complete on the current execution branch pending merge to `main`
 
 ## Sequential execution rule
 
@@ -40,11 +39,11 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Current repo state
 
-The persisted `main` baseline is closed through Gate 44 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. The current planning branch imports the pre-implementation audit into `docs/audit/2026-03-25_preimplementation_audit/`, retires the vague Gate 45 placeholder administratively, and installs a bounded Gate 46–50 planning pack for:
-- audit closeout and planning freeze;
-- playbook registry v2;
-- carry-horizon handoff;
-- temporal compatibility-surface decision;
-- vocabulary governance rebase.
+The persisted `main` baseline is closed through Gate 44 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. The current execution branch completes Gates 46–50 as one bounded architecture tranche by:
+- freezing the pre-implementation audit in-repo;
+- replacing the flat playbook registry with registry v2 hierarchy;
+- formalising close-state to carry-horizon handoff for overnight, weekend, and event carry;
+- keeping `session_clock` as an explicit outward compatibility wrapper while exposing canonical `temporal_state` surfaces;
+- rebasing vocabulary governance onto the current architecture with enforcement tests.
 
-No implementation beyond Gate 44 is implied until the new leaves are executed, validated, and merged.
+No downstream gate beyond Gate 50 is implied until this tranche is reviewed, merged, and a new planning pack is authored.

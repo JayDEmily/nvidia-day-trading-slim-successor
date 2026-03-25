@@ -104,6 +104,10 @@ class PlaybookEligibilityService:
         profile: PlaybookDecisionProfile = getattr(spec, profile_name)
         return PlaybookCandidate(
             playbook_id=spec.playbook_id,
+            family_id=spec.family_id,
+            setup_variant_id=spec.setup_variant_id,
+            execution_expression_id=spec.execution_expression_id,
+            horizon=spec.horizon.value,
             decision=profile.decision,
             action_bias=profile.action_bias,
             sizing_fraction=profile.sizing_fraction,

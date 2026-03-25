@@ -1,6 +1,6 @@
 # Gate 50 — Vocabulary Governance Rebase
 
-Status: planned on current planning branch
+Status: complete on current execution branch
 
 ## Purpose
 
@@ -31,3 +31,7 @@ The vocabulary workflow is rebased onto current truth, duplicate labels are gove
 - no blind merge of the stale vocabulary workspace;
 - no free-form glossary disconnected from typed contracts;
 - no vocabulary-first redesign of the runtime.
+
+## Exit evidence
+
+- Vocabulary workflow docs, canonical vocabulary schema/file, build script, and enforcement tests are in place.

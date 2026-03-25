@@ -115,6 +115,7 @@ from nvda_desk.schemas.slv import (
     StrategicLadderValidatorMarketOutput,
     StrategicLadderValidatorOutput,
 )
+from nvda_desk.schemas.temporal_surface import TemporalStateFeaturePayload
 from nvda_desk.services.capital_allocator import CapitalAllocatorService
 from nvda_desk.services.carry_market import OvernightCarryMarketService
 from nvda_desk.services.carry_replay import OvernightCarryReplayService
@@ -231,6 +232,16 @@ def get_strategy_variant(
         return service.get_strategy_variant(variant_name)
     except ConfigSurfaceLookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@app.get("/market/temporal-state")
+def market_temporal_state(
+    ts: TimestampQuery = None,
+    service: MarketStateDep = None,  # type: ignore[assignment]
+) -> TemporalStateFeaturePayload:
+    effective_ts = ts or datetime.now(tz=UTC)
+    assert service is not None
+    return service.get_temporal_state(effective_ts)
 
 
 @app.get("/market/session-clock")

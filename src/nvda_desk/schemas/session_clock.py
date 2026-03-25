@@ -17,6 +17,7 @@ class SessionClockFeaturePayload(BaseModel):
     is_regular_hours: bool
     is_power_hour: bool
     phase_confidence: float = Field(ge=0.0, le=1.0)
+    compatibility_policy: str = Field(default="legacy_wrapper_over_temporal_state")
 
     @classmethod
     def from_state(cls, state: SessionClockState) -> SessionClockFeaturePayload:

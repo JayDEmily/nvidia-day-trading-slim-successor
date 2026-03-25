@@ -6,6 +6,7 @@ from decimal import Decimal
 from pydantic import BaseModel
 
 from nvda_desk.schemas.session_clock import SessionClockFeaturePayload
+from nvda_desk.schemas.temporal_surface import TemporalStateFeaturePayload
 
 
 class Bar1mPayload(BaseModel):
@@ -20,6 +21,7 @@ class Bar1mPayload(BaseModel):
 class MarketSnapshotResponse(BaseModel):
     symbol: str
     requested_at: datetime
+    temporal_state: TemporalStateFeaturePayload
     session_clock: SessionClockFeaturePayload
     latest_bar: Bar1mPayload | None = None
 

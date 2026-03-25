@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority  
-Version: v1.7  
+Version: v1.8  
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.  
 Paired files:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md` — bounded-scope note only
@@ -42,26 +42,23 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 41–42 | `LEAF-G41-001`, `LEAF-G42-001` complete on `main` | split the signal workbook into raw-versus-derived authority layers and freeze the dense options/raw-baseline capture policy | `docs/planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md`, `docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md`, `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx` |
 | Gates 43–44 | `LEAF-G43-001`, `LEAF-G44-001` complete on `main` | add the first three options-first playbooks and prove the DMP wrapper remains stable after the temporal/options expansion | `docs/planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md`, `docs/planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md`, registry/runtime tests |
 
-Current active gate on the current planning branch: **Gate 46**.
+Current active gate on the current execution branch: **none**. Gates 46–50 are complete on the current execution branch pending merge to `main`.
 
-## 2. Active executable gate
+## 2. Current execution-branch tranche
 
-One leaf at a time. One gate at a time. Downstream leaves may be planned, but execution must not start until the current gate is complete, logged, and merged.
+One leaf at a time. One gate at a time. The current execution branch has now completed Gates 46–50 as one bounded architecture tranche and is awaiting review and merge.
 
-| Gate | Leaf IDs | Purpose | Entry rule | Exit rule | Next gate |
-|---|---|---|---|---|---|
-| Gate 46 | `LEAF-G46-001`, `LEAF-G46-002`, `LEAF-G46-003` | freeze the pre-implementation audit into the authoritative tree, retire the Gate 45 placeholder, install the Gate 46–50 planning pack, and add planning-integrity checks | Gate 44 complete on `main`; audit findings exist in a bounded artefact set | audit artefacts live under `docs/audit/2026-03-25_preimplementation_audit/`, the planning quartet points to Gates 46–50, and planning tests prove the pack is coherent | Gate 47 |
+| Gate | Leaf IDs | Executed purpose | Exit evidence |
+|---|---|---|---|
+| Gate 46 | `LEAF-G46-001`, `LEAF-G46-002`, `LEAF-G46-003` | freeze the pre-implementation audit into the authoritative tree, retire the Gate 45 placeholder, install the Gate 46–50 planning pack, and add planning-integrity checks | audit artefacts live under `docs/audit/2026-03-25_preimplementation_audit/`, the planning quartet points to Gates 46–50, and planning tests prove the pack is coherent |
+| Gate 47 | `LEAF-G47-001`–`LEAF-G47-005` | replace the flat playbook registry with registry-v2 hierarchy: family, setup variant, execution expression, horizon, constraints, and risk overrides | typed registry-v2 schemas, config, fixtures, runtime readers, and tests are green |
+| Gate 48 | `LEAF-G48-001`–`LEAF-G48-005` | formalise the intraday close-state to carry-horizon handoff for overnight, weekend, and event-carry decisions | typed handoff packet exists, carry taxonomy is frozen, and carry services/tests consume the new handoff |
+| Gate 49 | `LEAF-G49-001`–`LEAF-G49-004` | keep `session_clock` as an explicit outward compatibility wrapper while adding canonical `temporal_state` outward surfaces | API, market snapshot, and compatibility tests now prove both surfaces explicitly |
+| Gate 50 | `LEAF-G50-001`–`LEAF-G50-005` | rebase vocabulary governance onto the current architecture and enforce canonical labels/aliases | canonical vocabulary file, feeder workflow docs, schema, script, and enforcement tests exist |
 
 ## 3. Downstream gate map
 
-The gates below are leafed but not yet executed. They must remain bounded to the audited architecture questions and must not silently widen into speculative runtime invention.
-
-| Gate | Leaf IDs | Planning purpose | Indicative primary surfaces |
-|---|---|---|---|
-| Gate 47 | `LEAF-G47-001`–`LEAF-G47-005` | replace the flat playbook registry with registry-v2 hierarchy: family, setup variant, execution expression, horizon, and bounded compatibility bridge | `config/playbook_registry.example.yaml`, `docs/planning/2026-03-24_PLAYBOOK_REGISTRY_SPEC.md`, `src/nvda_desk/services/playbook_eligibility.py`, replay fixtures, registry tests |
-| Gate 48 | `LEAF-G48-001`–`LEAF-G48-005` | formalise the intraday close-state to carry-horizon handoff for overnight, weekend, and event-carry decisions | `src/nvda_desk/schemas/cognition.py`, `src/nvda_desk/schemas/overnight.py`, `src/nvda_desk/services/carry_replay.py`, carry tests |
-| Gate 49 | `LEAF-G49-001`–`LEAF-G49-004` | make an explicit decision about outward `session_clock` compatibility versus `temporal_state`-named surfaces | `src/nvda_desk/schemas/market.py`, `src/nvda_desk/services/market_state.py`, `src/nvda_desk/api/app.py`, `src/nvda_desk/services/replay.py`, legacy tests/docs |
-| Gate 50 | `LEAF-G50-001`–`LEAF-G50-005` | rebase vocabulary governance onto the current architecture and enforce canonical labels/aliases | vocabulary workflow import, canonical vocabulary file, enforcement tests, planning/runtime label surfaces |
+No downstream gate beyond Gate 50 is authored in this planning surface yet. The next gate pack must be written only after this tranche is reviewed and merged.
 
 ## 4. Global execution rules
 
@@ -72,4 +69,4 @@ The gates below are leafed but not yet executed. They must remain bounded to the
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gate 46 exists to freeze the audit and planning pack only; it must not smuggle in runtime refactors that belong to Gates 47–50.
+8. Gates 46–50 are closed together on the current execution branch; no Gate 51+ work may begin until this tranche is reviewed and merged.

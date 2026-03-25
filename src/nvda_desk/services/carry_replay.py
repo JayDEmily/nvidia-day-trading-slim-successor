@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.db.models import Bar1m, Instrument, MarketEvent, SessionCalendar
 from nvda_desk.schemas.overnight import (
+    CarryAction,
+    CarryHorizon,
     CarryReplayPathSummary,
     OvernightCarryMarketInput,
     OvernightCarryReplayFromMarketInput,
@@ -34,13 +36,22 @@ class OvernightCarryReplayService:
             risk_budget_remaining_pct=payload.risk_budget_remaining_pct,
             gross_exposure_pct=payload.gross_exposure_pct,
             open_orders_count=payload.open_orders_count,
+            close_state_handoff=payload.close_state_handoff,
         )
         carry_eval = self._carry_market_service.evaluate_from_market(market_input)
         close_price = self._latest_price(symbol=payload.symbol, ts=payload.evaluation_ts)
         if close_price is None:
             raise ValueError(f"no market bars available for symbol: {payload.symbol}")
-        next_open_ts, weekend_window = self._next_session_open(payload.evaluation_ts)
-        event_window_open = self._event_window_open(symbol=payload.symbol, requested_at=payload.evaluation_ts)
+        if payload.close_state_handoff is not None and payload.close_state_handoff.next_session_open_ts is not None:
+            next_open_ts = payload.close_state_handoff.next_session_open_ts
+            weekend_window = payload.close_state_handoff.weekend_window
+        else:
+            next_open_ts, weekend_window = self._next_session_open(payload.evaluation_ts)
+        event_window_open = (
+            payload.close_state_handoff.event_carry_window
+            if payload.close_state_handoff is not None
+            else self._event_window_open(symbol=payload.symbol, requested_at=payload.evaluation_ts)
+        )
         next_open_price_reference, reference_source = self._project_next_open_price(
             symbol=payload.symbol,
             next_open_ts=next_open_ts,
@@ -50,9 +61,15 @@ class OvernightCarryReplayService:
             carry_eval=carry_eval,
         )
         gap_pct = ((next_open_price_reference - close_price) / close_price) * 100.0
+        carry_horizon = (
+            payload.close_state_handoff.horizon
+            if payload.close_state_handoff is not None
+            else (CarryHorizon.WEEKEND if weekend_window else (CarryHorizon.EVENT_CARRY if event_window_open else CarryHorizon.OVERNIGHT))
+        )
         paths = [
             self._path_summary(
                 path_name="flatten",
+                carry_action=CarryAction.FLATTEN,
                 exposure_pct=0.0,
                 keep_orders_active=False,
                 projected_open_price=next_open_price_reference,
@@ -61,6 +78,7 @@ class OvernightCarryReplayService:
             ),
             self._path_summary(
                 path_name="hold_baseline",
+                carry_action=CarryAction.HOLD_BASELINE,
                 exposure_pct=payload.baseline_hold_exposure_pct,
                 keep_orders_active=payload.open_orders_count == 0,
                 projected_open_price=next_open_price_reference,
@@ -69,6 +87,7 @@ class OvernightCarryReplayService:
             ),
             self._path_summary(
                 path_name="follow_recommendation",
+                carry_action=carry_eval.carry_action,
                 exposure_pct=carry_eval.overnight_exposure_pct,
                 keep_orders_active=carry_eval.keep_orders_active,
                 projected_open_price=next_open_price_reference,
@@ -84,11 +103,14 @@ class OvernightCarryReplayService:
             next_session_reference_source=reference_source,
             weekend_window=weekend_window,
             event_window_open=event_window_open,
+            carry_horizon=carry_horizon,
             best_path_name=best_path.path_name,
             carry_recommendation=carry_eval.carry_recommendation,
+            carry_action=carry_eval.carry_action,
             close_price=round(close_price, 4),
             next_open_price_reference=round(next_open_price_reference, 4),
             path_summaries=paths,
+            applied_handoff=payload.close_state_handoff,
         )
 
     def _project_next_open_price(
@@ -123,6 +145,7 @@ class OvernightCarryReplayService:
         self,
         *,
         path_name: str,
+        carry_action: CarryAction,
         exposure_pct: float,
         keep_orders_active: bool,
         projected_open_price: float,
@@ -132,7 +155,8 @@ class OvernightCarryReplayService:
         projected_pnl_pct = (projected_gap_pct * exposure_pct) / 100.0
         return CarryReplayPathSummary(
             path_name=path_name,
-            exposure_pct=round(exposure_pct, 4),
+            carry_action=carry_action,
+            exposure_pct=exposure_pct,
             keep_orders_active=keep_orders_active,
             projected_open_price=round(projected_open_price, 4),
             projected_gap_pct=round(projected_gap_pct, 4),
@@ -140,36 +164,40 @@ class OvernightCarryReplayService:
             rationale_codes=rationale_codes,
         )
 
-    def _next_session_open(self, evaluation_ts: datetime) -> tuple[datetime, bool]:
-        aware_ts = self._aware(evaluation_ts)
+    def _next_session_open(self, ts: datetime) -> tuple[datetime, bool]:
+        aware_ts = self._aware(ts)
+        requested_date = aware_ts.date()
         with self._session_factory() as session:
-            rows = list(
-                session.scalars(
-                    select(SessionCalendar)
-                    .where(SessionCalendar.market_open_utc > aware_ts)
-                    .order_by(asc(SessionCalendar.market_open_utc))
-                    .limit(2)
-                )
+            current = session.scalar(
+                select(SessionCalendar).where(SessionCalendar.session_date == requested_date)
             )
-        if rows:
-            next_session = rows[0]
-            gap_days = (next_session.session_date - aware_ts.date()).days
-            return self._aware(next_session.market_open_utc), gap_days > 1
-        fallback_ts = (aware_ts + timedelta(days=3)).replace(hour=13, minute=30, second=0, microsecond=0)
-        return fallback_ts, True
+            if current is None:
+                return aware_ts + timedelta(days=1), requested_date.weekday() == 4
+            next_session = session.scalar(
+                select(SessionCalendar)
+                .where(SessionCalendar.market_open_utc > aware_ts)
+                .order_by(asc(SessionCalendar.market_open_utc))
+                .limit(1)
+            )
+        if next_session is None:
+            fallback_open = datetime.combine(requested_date + timedelta(days=1), datetime.min.time(), tzinfo=UTC).replace(hour=13, minute=30)
+            return fallback_open, requested_date.weekday() == 4
+        weekend_window = (next_session.session_date - requested_date).days > 1
+        return self._aware(next_session.market_open_utc), weekend_window
 
     def _event_window_open(self, *, symbol: str, requested_at: datetime) -> bool:
         aware_ts = self._aware(requested_at)
+        window_start = aware_ts - timedelta(hours=12)
+        window_end = aware_ts + timedelta(hours=24)
         with self._session_factory() as session:
-            rows = list(
-                session.scalars(
-                    select(MarketEvent)
-                    .where(MarketEvent.event_ts >= aware_ts)
-                    .where(MarketEvent.event_ts <= aware_ts + timedelta(days=1))
-                    .where((MarketEvent.symbol == symbol) | (MarketEvent.symbol.is_(None)))
-                )
+            stmt = (
+                select(MarketEvent)
+                .where((MarketEvent.symbol == symbol) | (MarketEvent.symbol.is_(None)))
+                .where(MarketEvent.event_ts >= window_start)
+                .where(MarketEvent.event_ts <= window_end)
             )
-        return any(row.impact_level in {"medium", "high"} for row in rows)
+            event = session.scalar(stmt.limit(1))
+        return event is not None
 
     def _latest_price(self, *, symbol: str, ts: datetime, exact_or_after: bool = False) -> float | None:
         aware_ts = self._aware(ts)

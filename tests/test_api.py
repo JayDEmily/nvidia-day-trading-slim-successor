@@ -76,16 +76,25 @@ def test_health() -> None:
     assert response.json() == {"status": "ok"}
 
 
-def test_market_session_clock() -> None:
+def test_market_temporal_state_and_session_clock() -> None:
     with TestClient(app) as client:
-        response = client.get(
+        temporal_response = client.get(
+            "/market/temporal-state",
+            params={"ts": "2026-03-18T13:35:00Z"},
+        )
+        session_clock_response = client.get(
             "/market/session-clock",
             params={"ts": "2026-03-18T13:35:00Z"},
         )
-    assert response.status_code == 200
-    payload = response.json()
-    assert payload["phase"] == "open_disorder"
-    assert payload["minutes_since_open"] == 5
+    assert temporal_response.status_code == 200
+    temporal_payload = temporal_response.json()
+    assert temporal_payload["phase"] == "open_disorder"
+    assert temporal_payload["compatibility_policy"] == "session_clock_wrapper_retained"
+    assert session_clock_response.status_code == 200
+    session_clock_payload = session_clock_response.json()
+    assert session_clock_payload["phase"] == "open_disorder"
+    assert session_clock_payload["minutes_since_open"] == 5
+    assert session_clock_payload["compatibility_policy"] == "legacy_wrapper_over_temporal_state"
 
 
 def test_config_routes() -> None:
@@ -114,6 +123,7 @@ def test_market_snapshot_with_seeded_bar(tmp_path: Path) -> None:
     payload = response.json()
     assert payload["symbol"] == "NVDA"
     assert payload["session_clock"]["phase"] == "open_disorder"
+    assert payload["temporal_state"]["phase"] == "open_disorder"
     assert payload["latest_bar"] is not None
     assert payload["latest_bar"]["ts_utc"] == "2026-03-18T13:40:00Z"
 
@@ -259,6 +269,7 @@ def test_overnight_carry_endpoint() -> None:
     assert response.status_code == 200
     payload = response.json()
     assert payload["carry_recommendation"] == "increase"
+    assert payload["carry_action"] == "add_carry"
 
 
 def test_overnight_carry_from_market_endpoint(tmp_path: Path) -> None:
@@ -279,6 +290,7 @@ def test_overnight_carry_from_market_endpoint(tmp_path: Path) -> None:
     payload = response.json()
     assert payload["derived_context"]["close_phase"] in {"midday_compression", "post_lunch_drift"}
     assert payload["carry_recommendation"] in {"hold_small", "increase", "flatten", "block"}
+    assert payload["carry_action"] in {"hold_small", "add_carry", "flatten", "block_carry"}
 
 
 def test_risk_gateway_endpoint(tmp_path: Path) -> None:

@@ -8,8 +8,20 @@
     "term_structure_dislocation",
     "skew_pressure_reversal"
   ],
+  "ordered_setup_variants": [
+    "opening_drive_continuation",
+    "midday_compression_release",
+    "late_session_pin_reversion",
+    "negative_gamma_flush_probe",
+    "front_expiry_pin_build",
+    "front_next_curve_dislocation",
+    "skew_relaxation_reversal"
+  ],
   "playbook_profiles": {
     "continuation_ladder": {
+      "family_id": "trend_continuation",
+      "setup_variant_id": "opening_drive_continuation",
+      "horizon": "intraday",
       "eligible_action_bias": "add",
       "eligible_sizing_fraction": 0.35,
       "watch_action_bias": "hold",
@@ -17,6 +29,9 @@
       "template_id": "continuation_ladder_exec"
     },
     "compression_breakout": {
+      "family_id": "compression_release",
+      "setup_variant_id": "midday_compression_release",
+      "horizon": "intraday",
       "eligible_action_bias": "add",
       "eligible_sizing_fraction": 0.25,
       "watch_action_bias": "hold",
@@ -24,6 +39,9 @@
       "template_id": "compression_breakout_exec"
     },
     "pin_reversion": {
+      "family_id": "pin_behaviour",
+      "setup_variant_id": "late_session_pin_reversion",
+      "horizon": "intraday",
       "eligible_action_bias": "trim",
       "eligible_sizing_fraction": 0.2,
       "watch_action_bias": "hold",
@@ -31,6 +49,9 @@
       "template_id": "pin_reversion_exec"
     },
     "negative_gamma_flush": {
+      "family_id": "gamma_destabilisation",
+      "setup_variant_id": "negative_gamma_flush_probe",
+      "horizon": "intraday",
       "eligible_action_bias": "add",
       "eligible_sizing_fraction": 0.1,
       "watch_action_bias": "hedge",
@@ -38,6 +59,9 @@
       "template_id": "negative_gamma_flush_exec"
     },
     "front_expiry_pin_pressure": {
+      "family_id": "pin_behaviour",
+      "setup_variant_id": "front_expiry_pin_build",
+      "horizon": "intraday",
       "eligible_action_bias": "trim",
       "eligible_sizing_fraction": 0.15,
       "watch_action_bias": "hold",
@@ -45,6 +69,9 @@
       "template_id": "front_expiry_pin_pressure_exec"
     },
     "term_structure_dislocation": {
+      "family_id": "term_structure_dislocation",
+      "setup_variant_id": "front_next_curve_dislocation",
+      "horizon": "intraday",
       "eligible_action_bias": "add",
       "eligible_sizing_fraction": 0.12,
       "watch_action_bias": "hold",
@@ -52,11 +79,84 @@
       "template_id": "term_structure_dislocation_exec"
     },
     "skew_pressure_reversal": {
+      "family_id": "skew_pressure_transition",
+      "setup_variant_id": "skew_relaxation_reversal",
+      "horizon": "intraday",
       "eligible_action_bias": "hedge",
       "eligible_sizing_fraction": 0.1,
       "watch_action_bias": "hedge",
       "watch_hedge_overlay": true,
       "template_id": "skew_pressure_reversal_exec"
+    }
+  },
+  "setup_variants": {
+    "opening_drive_continuation": {
+      "family_id": "trend_continuation",
+      "execution_expression_id": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "continuation_ladder"
+    },
+    "midday_compression_release": {
+      "family_id": "compression_release",
+      "execution_expression_id": "compression_breakout_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "compression_breakout"
+    },
+    "late_session_pin_reversion": {
+      "family_id": "pin_behaviour",
+      "execution_expression_id": "pin_reversion_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "pin_reversion"
+    },
+    "negative_gamma_flush_probe": {
+      "family_id": "gamma_destabilisation",
+      "execution_expression_id": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "negative_gamma_flush"
+    },
+    "front_expiry_pin_build": {
+      "family_id": "pin_behaviour",
+      "execution_expression_id": "front_expiry_pin_pressure_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "front_expiry_pin_pressure"
+    },
+    "front_next_curve_dislocation": {
+      "family_id": "term_structure_dislocation",
+      "execution_expression_id": "term_structure_dislocation_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "term_structure_dislocation"
+    },
+    "skew_relaxation_reversal": {
+      "family_id": "skew_pressure_transition",
+      "execution_expression_id": "skew_pressure_reversal_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "skew_pressure_reversal"
+    }
+  },
+  "families": {
+    "trend_continuation": {
+      "title": "Trend Continuation",
+      "thesis": "Persistent directional tape with supportive breadth and non-hostile options context."
+    },
+    "compression_release": {
+      "title": "Compression Release",
+      "thesis": "Compressed tape or options surface releases into directional range expansion."
+    },
+    "pin_behaviour": {
+      "title": "Pin Behaviour",
+      "thesis": "Strike-magnet behaviour dominates and favours mean reversion or controlled trim. "
+    },
+    "gamma_destabilisation": {
+      "title": "Gamma Destabilisation",
+      "thesis": "Dealer pressure amplifies price movement and supports flush-style or hedge-led responses."
+    },
+    "term_structure_dislocation": {
+      "title": "Term Structure Dislocation",
+      "thesis": "Front-versus-next expiry dislocation distorts the curve and creates a normalisation setup."
+    },
+    "skew_pressure_transition": {
+      "title": "Skew Pressure Transition",
+      "thesis": "Skew pressure relaxes or reverses without a full destabilised flush."
     }
   },
   "execution_templates": {
