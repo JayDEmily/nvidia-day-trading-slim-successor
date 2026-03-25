@@ -339,8 +339,39 @@ class PostureRiskOutput(BaseModel):
     reasons: list[str] = Field(default_factory=list)
 
 
+class PlaybookFamilyCandidate(BaseModel):
+    """Candidate playbook-family status inside the desk-cognition runtime."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    family_id: str
+    decision: PlaybookDecision
+    active_setup_variant_ids: list[str] = Field(default_factory=list)
+    watch_setup_variant_ids: list[str] = Field(default_factory=list)
+    active_playbook_ids: list[str] = Field(default_factory=list)
+    watch_playbook_ids: list[str] = Field(default_factory=list)
+    reasons: list[str] = Field(default_factory=list)
+
+
+class SetupVariantCandidate(BaseModel):
+    """Candidate setup-variant status inside the desk-cognition runtime."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    setup_variant_id: str
+    family_id: str
+    execution_expression_id: str | None = None
+    horizon: str | None = None
+    legacy_playbook_id: str | None = None
+    decision: PlaybookDecision
+    action_bias: PlaybookAction = PlaybookAction.HOLD
+    sizing_fraction: float = Field(default=0.0, ge=0.0, le=1.0)
+    hedge_overlay: bool = False
+    reasons: list[str] = Field(default_factory=list)
+
+
 class PlaybookCandidate(BaseModel):
-    """Candidate playbook status inside the desk-cognition runtime."""
+    """Legacy-compatible playbook candidate derived from native setup-variant selection."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -372,7 +403,13 @@ class PlaybookEligibilityOutput(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
+    family_candidates: list[PlaybookFamilyCandidate] = Field(default_factory=list)
+    setup_variant_candidates: list[SetupVariantCandidate] = Field(default_factory=list)
     candidates: list[PlaybookCandidate] = Field(default_factory=list)
+    active_family_ids: list[str] = Field(default_factory=list)
+    watch_family_ids: list[str] = Field(default_factory=list)
+    active_setup_variant_ids: list[str] = Field(default_factory=list)
+    watch_setup_variant_ids: list[str] = Field(default_factory=list)
     add_candidates: list[str] = Field(default_factory=list)
     hold_candidates: list[str] = Field(default_factory=list)
     trim_candidates: list[str] = Field(default_factory=list)
@@ -403,8 +440,14 @@ class ExecutionExpressionOutput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     active_playbook_ids: list[str] = Field(default_factory=list)
+    active_setup_variant_ids: list[str] = Field(default_factory=list)
+    active_family_ids: list[str] = Field(default_factory=list)
+    lead_playbook_id: str | None = None
+    lead_setup_variant_id: str | None = None
+    lead_family_id: str | None = None
     entry_style: str
     playbook_execution_styles: dict[str, str] = Field(default_factory=dict)
+    setup_variant_execution_styles: dict[str, str] = Field(default_factory=dict)
     hedge_required: bool
     inventory_action: str
     fresh_capital_action: str

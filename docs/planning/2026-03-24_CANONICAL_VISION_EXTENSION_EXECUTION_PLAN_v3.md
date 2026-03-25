@@ -83,4 +83,4 @@ Use the files below together:
 
 ## Current tranche status
 
-The bounded Gate 46–50 architecture tranche is complete on `main`. Gate 51 has now closed the workflow-ownership planning pass, and downstream Gate 52+ work is governed by `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md` plus its paired leaf ledger.
+The bounded Gate 46–50 architecture tranche is complete on `main`. Gates 51–52 have now closed the workflow-ownership and native hierarchy passes, and downstream Gate 53+ work is governed by `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md` plus its paired leaf ledger.

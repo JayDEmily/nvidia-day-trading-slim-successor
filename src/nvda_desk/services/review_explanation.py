@@ -39,6 +39,8 @@ class ReviewExplanationService:
         summary = (
             f"window={payload.temporal.desk_window}; "
             f"permission={payload.posture.permission_state.value}; "
+            f"families={payload.execution.active_family_ids or ['none']}; "
+            f"setups={payload.execution.active_setup_variant_ids or ['none']}; "
             f"playbooks={payload.execution.active_playbook_ids or ['none']}"
         )
         stage_reason_packets = [
@@ -64,12 +66,20 @@ class ReviewExplanationService:
             ),
             StageReasonPacket(
                 stage="eligibility",
-                summary=f"eligible={payload.eligibility.add_candidates or payload.eligibility.trim_candidates or ['none']}",
+                summary=(
+                    f"families={payload.eligibility.active_family_ids or ['none']} / "
+                    f"setups={payload.eligibility.active_setup_variant_ids or ['none']} / "
+                    f"eligible={payload.eligibility.add_candidates or payload.eligibility.trim_candidates or ['none']}"
+                ),
                 reasons=payload.eligibility.reasons,
             ),
             StageReasonPacket(
                 stage="execution",
-                summary=payload.execution.entry_style,
+                summary=(
+                    f"{payload.execution.entry_style} / "
+                    f"family={payload.execution.lead_family_id or 'none'} / "
+                    f"setup={payload.execution.lead_setup_variant_id or 'none'}"
+                ),
                 reasons=payload.execution.reasons,
             ),
         ]
@@ -101,6 +111,13 @@ class ReviewExplanationService:
             "posture": payload.posture.model_dump(mode="json"),
             "eligibility": payload.eligibility.model_dump(mode="json"),
             "execution": payload.execution.model_dump(mode="json"),
+            "hierarchy_summary": {
+                "active_family_ids": list(payload.execution.active_family_ids),
+                "active_setup_variant_ids": list(payload.execution.active_setup_variant_ids),
+                "lead_family_id": payload.execution.lead_family_id,
+                "lead_setup_variant_id": payload.execution.lead_setup_variant_id,
+                "lead_playbook_id": payload.execution.lead_playbook_id,
+            },
             "stage_summaries": stage_summaries,
             "stage_reason_packets": [packet.model_dump(mode="json") for packet in stage_reason_packets],
             "rejected_playbooks": [packet.model_dump(mode="json") for packet in rejected_playbooks],
@@ -149,6 +166,8 @@ class ReviewExplanationService:
             f"{payload.regime.volatility_regime.value} / {payload.regime.breadth_concentration_state} | "
             f"{payload.options_flow.options_behavior_cluster} | "
             f"permission={payload.posture.permission_state.value} | "
+            f"family={payload.execution.lead_family_id or 'none'} | "
+            f"setup={payload.execution.lead_setup_variant_id or 'none'} | "
             f"inventory={payload.execution.inventory_action}"
         )
 

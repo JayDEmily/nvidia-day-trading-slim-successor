@@ -1,6 +1,6 @@
 # 2026-03-26 Cognitive Workflow Modification Gates v1
 
-Status: Gate 51 complete on `main`; Gate 52 next planned gate
+Status: Gates 51-52 complete on `main`; Gate 53 next planned gate
 Version: v1.1
 
 ## Purpose
@@ -88,7 +88,7 @@ A reviewed implementation map exists that shows, stage by stage, how the updated
 
 ## Gate 52 — Native playbook hierarchy implementation
 
-Status: planned
+Status: complete on `main`
 
 ### Objective
 Move the runtime from a legacy-compatible flat-playbook bridge toward a native hierarchy:
@@ -111,7 +111,7 @@ The runtime selects through hierarchical playbook structures natively, while leg
 
 ## Gate 53 — Carry / weekend / event-horizon formalisation
 
-Status: planned
+Status: next planned gate
 
 ### Objective
 Formalise the handoff between intraday cognition and carry-horizon decisioning, with explicit treatment of weekend and event carry.
@@ -183,8 +183,8 @@ The repo has one authoritative vocabulary/governance surface for the updated wor
 ## Execution order
 
 1. Gate 51 — complete on `main`
-2. Gate 52 — next planned gate
-3. Gate 53
+2. Gate 52 — complete on `main`
+3. Gate 53 — next planned gate
 4. Gate 54
 5. Gate 55
 

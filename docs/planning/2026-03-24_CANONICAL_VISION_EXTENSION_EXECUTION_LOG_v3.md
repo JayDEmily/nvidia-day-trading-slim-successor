@@ -926,3 +926,77 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Validation in the repo venv:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py`
 - Result: Gate 51 is complete on `main`, the successor cognitive-workflow modification pack now has explicit stage ownership, and Gate 52 becomes the next planned gate.
+
+### LEAF-G52-001 — Make family/setup-variant selection native in runtime contracts
+
+- Branch: `work/gate52-native-playbook-hierarchy-20260326`
+- Start commit: `dddd6cd`
+- End commit: `<GATE52_COMMIT>`
+- Files touched:
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/playbook_registry.py`
+  - `src/nvda_desk/services/playbook_eligibility.py`
+  - `tests/test_gate52_native_playbook_hierarchy.py`
+  - `docs/planning/2026-03-26_GATE52_NATIVE_PLAYBOOK_HIERARCHY_IMPLEMENTATION.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json`
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate52_native_playbook_hierarchy.py tests/test_gate47_registry_v2.py tests/test_playbook_registry.py tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py` → `23 passed`
+  - `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Full suite required: `false`
+- Full suite command/result: extra validation run via `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Exact evidence:
+  - Added native `family_candidates` and `setup_variant_candidates` to playbook-eligibility output while keeping legacy playbook candidates as an explicit compatibility bridge.
+  - Moved hierarchy selection to ordered setup-variant evaluation and explicit family aggregation rather than a flat playbook-only loop.
+  - Added gate-specific tests proving native family and setup-variant lineage survives through the runtime.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Notes: Leaf closes the native hierarchy contract surface; downstream carry work remains out of scope for Gate 52.
+
+### LEAF-G52-002 — Convert execution and review lineage to hierarchy-native outputs
+
+- Branch: `work/gate52-native-playbook-hierarchy-20260326`
+- Start commit: `dddd6cd`
+- End commit: `<GATE52_COMMIT>`
+- Files touched:
+  - `src/nvda_desk/services/execution_expression.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `tests/test_gate52_native_playbook_hierarchy.py`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate52_native_playbook_hierarchy.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py` → `9 passed`
+  - `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Full suite required: `true`
+- Full suite command/result: `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Exact evidence:
+  - Execution output now records active family ids, active setup-variant ids, and lead family/setup/playbook lineage.
+  - Review output now summarises family/setup selection rather than only a flat playbook list.
+  - Existing runtime parity tests still pass with the richer lineage payload.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Notes: Execution style remains template-driven; Gate 52 does not authorise new playbook families.
+
+### LEAF-G52-003 — Keep the legacy playbook bridge explicit and tested
+
+- Branch: `work/gate52-native-playbook-hierarchy-20260326`
+- Start commit: `dddd6cd`
+- End commit: `<GATE52_COMMIT>`
+- Files touched:
+  - `src/nvda_desk/services/playbook_eligibility.py`
+  - `src/nvda_desk/services/playbook_registry.py`
+  - `tests/test_gate52_native_playbook_hierarchy.py`
+  - `tests/test_playbook_registry.py`
+  - `tests/test_gate51_cognitive_workflow_planning.py`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate52_native_playbook_hierarchy.py tests/test_playbook_registry.py tests/test_gate51_cognitive_workflow_planning.py` → `8 passed`
+  - `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Full suite required: `false`
+- Full suite command/result: extra validation run via `make check` → ruff passed, mypy passed, pytest passed (`185 passed in 13.89s`)
+- Exact evidence:
+  - Legacy playbook candidates are now explicitly derived from native setup-variant decisions rather than treated as the source of truth.
+  - Planning pack and status tests were updated so Gate 52 is recorded as complete and Gate 53 becomes the active next gate.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `<GATE52_COMMIT>`
+- Notes: The bridge remains necessary for downstream consumers that still iterate active playbook ids.

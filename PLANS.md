@@ -37,7 +37,8 @@ The active successor modification pair for Gate 51 onward is:
 - Gate 45 — retired placeholder on `main`
 - Gates 46–50 — complete on `main`
 - Gate 51 — complete on `main`
-- Gates 52–55 — planned in the cognitive workflow modification pack
+- Gate 52 — complete on `main`
+- Gates 53–55 — planned in the cognitive workflow modification pack
 
 ## Sequential execution rule
 
@@ -53,4 +54,4 @@ The persisted `main` baseline is now closed through Gate 51 and records Gate 7 e
 - rebasing vocabulary governance onto the current architecture with enforcement tests;
 - pinning workflow-stage ownership, candidate-generation boundaries, Step 0 calendar/horizon routing, and carry-branch boundary semantics in Gate 51 planning artefacts.
 
-The next gate is Gate 52 in the cognitive workflow modification pack.
+The next gate is Gate 53 in the cognitive workflow modification pack.

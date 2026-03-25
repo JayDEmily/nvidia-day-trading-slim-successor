@@ -168,7 +168,7 @@
       "full_suite_required": false,
       "pass_gate": "The registry contracts are natively hierarchical and explicitly versioned.",
       "merge_gate": "Legacy compatibility remains explicit and tested rather than accidental.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 4
     },
     {
@@ -211,7 +211,7 @@
       "full_suite_required": true,
       "pass_gate": "Runtime evaluation is natively hierarchical without losing deterministic selection.",
       "merge_gate": "Current live playbooks remain explainable and compatibility-tested.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 5
     },
     {
@@ -251,7 +251,7 @@
       "full_suite_required": false,
       "pass_gate": "The family library is richer on paper without overstating what runtime supports today.",
       "merge_gate": "Registry and docs do not claim live support for unimplemented families.",
-      "status": "planned",
+      "status": "complete_on_main",
       "execution_sequence": 6
     },
     {
@@ -590,17 +590,17 @@
       "execution_sequence": 14
     }
   ],
-  "execution_status": "gate_51_complete_on_main_gate_52_planned",
+  "execution_status": "gate_52_complete_on_main_gate_53_planned",
   "completed_at": "2026-03-26T00:55:00Z",
   "completed_leaf_ids": [
     "LEAF-G51-001",
     "LEAF-G51-002",
-    "LEAF-G51-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G51-003",
     "LEAF-G52-001",
     "LEAF-G52-002",
-    "LEAF-G52-003",
+    "LEAF-G52-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G53-001",
     "LEAF-G53-002",
     "LEAF-G53-003",
@@ -611,7 +611,8 @@
     "LEAF-G55-002"
   ],
   "completed_gate_ids": [
-    "Gate 51"
+    "Gate 51",
+    "Gate 52"
   ],
-  "active_gate": "Gate 52"
+  "active_gate": "Gate 53"
 }

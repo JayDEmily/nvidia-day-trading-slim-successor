@@ -1,6 +1,6 @@
 """Expression and execution service for the Desk Cognition Grammar.
 
-This service converts posture and playbook eligibility into deterministic
+This service converts posture and native playbook hierarchy outputs into
 execution shape, sizing, hedge requirements, and exit-plan scaffolding.
 """
 
@@ -19,12 +19,13 @@ class ExecutionExpressionService:
     """Derive deterministic expression and execution outputs.
 
     Purpose:
-        Turn posture and eligibility into concrete execution shape and sizing.
+        Turn posture and hierarchy-native playbook eligibility into concrete
+        execution shape and sizing.
     Inputs:
         `ExecutionExpressionInput` with posture, playbook eligibility, and options context.
     Outputs:
-        `ExecutionExpressionOutput` describing entry style, family-specific laddering,
-        invalidation reasons, exits, and hedge need.
+        `ExecutionExpressionOutput` describing entry style, family/setup lineage,
+        laddering, invalidation reasons, exits, and hedge need.
     Determinism:
         Uses checked-in registry order and execution templates with no hidden fallbacks.
     """
@@ -47,17 +48,29 @@ class ExecutionExpressionService:
             for playbook_id in ordered_playbook_ids
             if playbook_id in candidates and candidates[playbook_id].decision is PlaybookDecision.WATCH_ONLY
         ]
+        active_setup_variant_ids = list(payload.eligibility.active_setup_variant_ids)
+        active_family_ids = list(payload.eligibility.active_family_ids)
+        lead_playbook_id = active_playbook_ids[0] if active_playbook_ids else None
+        lead_setup_variant_id = active_setup_variant_ids[0] if active_setup_variant_ids else None
+        lead_family_id = active_family_ids[0] if active_family_ids else None
         reasons: list[str] = []
         invalidation_reasons: list[str] = []
         exit_reasons: list[str] = []
         playbook_execution_styles: dict[str, str] = {}
+        setup_variant_execution_styles: dict[str, str] = {}
 
         if payload.posture.permission_state.value == "block":
             reasons.append("execution_blocked_by_permission")
             return ExecutionExpressionOutput(
                 active_playbook_ids=[],
+                active_setup_variant_ids=[],
+                active_family_ids=[],
+                lead_playbook_id=None,
+                lead_setup_variant_id=None,
+                lead_family_id=None,
                 entry_style="no_trade",
                 playbook_execution_styles={},
+                setup_variant_execution_styles={},
                 hedge_required=False,
                 inventory_action="reduce",
                 fresh_capital_action="reduce",
@@ -72,13 +85,17 @@ class ExecutionExpressionService:
 
         hedge_required = bool(payload.eligibility.hedge_candidates) or payload.options_flow.gamma_state.value == "destabilising"
 
-        if active_playbook_ids:
-            lead_playbook = active_playbook_ids[0]
-            template = self._registry.template_for_playbook(lead_playbook)
+        if active_setup_variant_ids:
+            assert lead_setup_variant_id is not None  # runtime guarantee from list truthiness
+            template = self._registry.template(self._registry.setup_variant(lead_setup_variant_id).execution_expression_id)
             entry_style = template.entry_style
             playbook_execution_styles = {
                 playbook_id: self._registry.template_for_playbook(playbook_id).entry_style
                 for playbook_id in active_playbook_ids
+            }
+            setup_variant_execution_styles = {
+                setup_variant_id: self._registry.template(self._registry.setup_variant(setup_variant_id).execution_expression_id).entry_style
+                for setup_variant_id in active_setup_variant_ids
             }
             target = payload.posture.fresh_deployable_capital_pct
             scaling_plan = [round(target * factor, 4) for factor in template.scaling_step_factors]
@@ -88,7 +105,10 @@ class ExecutionExpressionService:
             exit_plan = list(exit_reasons)
             inventory_action = self._inventory_action(payload, template)
             fresh_capital_action = template.default_fresh_capital_action
-            reasons.append(f"lead_playbook:{lead_playbook}")
+            reasons.extend(f"active_family:{family_id}" for family_id in active_family_ids)
+            reasons.extend(f"active_setup_variant:{setup_variant_id}" for setup_variant_id in active_setup_variant_ids)
+            if lead_playbook_id is not None:
+                reasons.append(f"lead_playbook:{lead_playbook_id}")
         elif watch_playbook_ids:
             lead_watch = watch_playbook_ids[0]
             template = self._registry.template_for_playbook(lead_watch)
@@ -96,6 +116,10 @@ class ExecutionExpressionService:
             playbook_execution_styles = {
                 playbook_id: self._registry.template_for_playbook(playbook_id).watch_execution_style
                 for playbook_id in watch_playbook_ids
+            }
+            setup_variant_execution_styles = {
+                setup_variant_id: self._registry.template(self._registry.setup_variant(setup_variant_id).execution_expression_id).watch_execution_style
+                for setup_variant_id in payload.eligibility.watch_setup_variant_ids
             }
             target = 0.0
             scaling_plan = []
@@ -117,7 +141,7 @@ class ExecutionExpressionService:
             exit_plan = list(exit_reasons)
             inventory_action = payload.posture.inventory_action_bias
             fresh_capital_action = "hold"
-            reasons.append("no_active_playbook")
+            reasons.append("no_active_setup_variant")
 
         if hedge_required:
             reasons.append("hedge_required")
@@ -129,8 +153,14 @@ class ExecutionExpressionService:
 
         return ExecutionExpressionOutput(
             active_playbook_ids=active_playbook_ids,
+            active_setup_variant_ids=active_setup_variant_ids,
+            active_family_ids=active_family_ids,
+            lead_playbook_id=lead_playbook_id,
+            lead_setup_variant_id=lead_setup_variant_id,
+            lead_family_id=lead_family_id,
             entry_style=entry_style,
             playbook_execution_styles=playbook_execution_styles,
+            setup_variant_execution_styles=setup_variant_execution_styles,
             hedge_required=hedge_required,
             inventory_action=inventory_action,
             fresh_capital_action=fresh_capital_action,

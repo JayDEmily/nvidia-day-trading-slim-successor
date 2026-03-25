@@ -98,6 +98,20 @@ class PlaybookRegistryService:
 
         return self.setup_variant_index()[setup_variant_id]
 
+    def playbooks_for_setup_variant(self, setup_variant_id: str) -> list[PlaybookSpec]:
+        """Return active playbooks linked to one setup variant in priority order."""
+
+        return [
+            playbook
+            for playbook in self.ordered_playbooks()
+            if playbook.setup_variant_id == setup_variant_id
+        ]
+
+    def active_playbook_ids_for_setup_variant(self, setup_variant_id: str) -> list[str]:
+        """Return active playbook ids linked to one setup variant in priority order."""
+
+        return [playbook.playbook_id for playbook in self.playbooks_for_setup_variant(setup_variant_id)]
+
     def template(self, template_id: str) -> ExecutionTemplateSpec:
         """Return one execution template by id."""
 
