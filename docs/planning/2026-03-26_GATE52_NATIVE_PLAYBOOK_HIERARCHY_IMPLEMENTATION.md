@@ -1,6 +1,6 @@
 # Gate 52 — Native Playbook Hierarchy Implementation
 
-Status: complete on `main` once merged from the gate branch
+Status: complete on `main`
 
 ## Purpose
 

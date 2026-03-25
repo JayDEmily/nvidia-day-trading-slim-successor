@@ -1,6 +1,6 @@
 # Gate 53 — Carry / Weekend / Event-Horizon Formalisation
 
-Status: complete on `main` once merged from the gate branch
+Status: complete on `main`
 
 ## Purpose
 
