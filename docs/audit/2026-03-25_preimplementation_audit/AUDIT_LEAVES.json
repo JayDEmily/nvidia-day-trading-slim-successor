@@ -1,0 +1,47 @@
+[
+  {
+    "leaf_id": "LEAF-G46-AUDIT-001",
+    "title": "Contract spine audit",
+    "goal": "Verify typed stage contracts, runtime order, and DMP wrapper stability.",
+    "status": "complete",
+    "allowed_touches": [
+      "docs/audit/2026-03-25_preimplementation_audit/*"
+    ]
+  },
+  {
+    "leaf_id": "LEAF-G46-AUDIT-002",
+    "title": "Interchangeability audit",
+    "goal": "Verify slot-bounded interchangeability and identify stage-bound dependencies.",
+    "status": "complete",
+    "allowed_touches": [
+      "docs/audit/2026-03-25_preimplementation_audit/*"
+    ]
+  },
+  {
+    "leaf_id": "LEAF-G46-AUDIT-003",
+    "title": "Playbook architecture audit",
+    "goal": "Assess flat registry limits versus family/variant/expression/horizon requirements.",
+    "status": "complete",
+    "allowed_touches": [
+      "docs/audit/2026-03-25_preimplementation_audit/*"
+    ]
+  },
+  {
+    "leaf_id": "LEAF-G46-AUDIT-004",
+    "title": "Carry horizon audit",
+    "goal": "Assess overnight/weekend/event carry branch separation and missing handoff contracts.",
+    "status": "complete",
+    "allowed_touches": [
+      "docs/audit/2026-03-25_preimplementation_audit/*"
+    ]
+  },
+  {
+    "leaf_id": "LEAF-G46-AUDIT-005",
+    "title": "Planning synthesis input",
+    "goal": "Produce planning consequences for the next canonical gate pack without mutating gate authority yet.",
+    "status": "complete",
+    "allowed_touches": [
+      "docs/audit/2026-03-25_preimplementation_audit/*"
+    ]
+  }
+]

@@ -2323,9 +2323,1127 @@
         "doc:docs/planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md"
       ],
       "completed_in_commit": "a14387e"
+    },
+    {
+      "id": "LEAF-G46-001",
+      "gate": "Gate 46",
+      "title": "Import and freeze the pre-implementation audit artefacts",
+      "prerequisites": [
+        "LEAF-G44-001"
+      ],
+      "scope": "Copy the audit findings, planning input, execution brief, and leaves into the authoritative repo tree so the next tranche stops depending on thread memory.",
+      "files_expected": [
+        "docs/audit/2026-03-25_preimplementation_audit/README.md",
+        "docs/audit/2026-03-25_preimplementation_audit/AUDIT_EXECUTION_BRIEF.md",
+        "docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md",
+        "docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md",
+        "docs/audit/2026-03-25_preimplementation_audit/AUDIT_LEAVES.json",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/audit/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "config/**",
+        "fixtures/**",
+        "runtime behaviour"
+      ],
+      "implementation_tasks": [
+        "Import the audit artefacts into docs/audit.",
+        "Ensure the audit findings are the frozen input for Gate 46-50 planning.",
+        "Do not rewrite runtime behaviour in this leaf."
+      ],
+      "validation_tasks": [
+        "Verify the audit folder exists in the authoritative tree and is referenced by the planning quartet."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The authoritative repo contains the frozen audit artefacts.",
+      "merge_gate": "Audit artefacts are present, referenced, and no runtime behaviour changed.",
+      "status": "planned",
+      "execution_sequence": 35,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "acceptance_criteria": [
+        "The audit findings must be in-repo and referenceable.",
+        "The audit must remain subordinate to docs/01_NORMATIVE.md and the schema authority."
+      ],
+      "stop_conditions": [
+        "The leaf starts implementing Gate 47-50 runtime changes.",
+        "The audit artefacts are copied without their planning consequences."
+      ],
+      "planned_items": [
+        "audit-import",
+        "audit-freeze"
+      ]
+    },
+    {
+      "id": "LEAF-G46-002",
+      "gate": "Gate 46",
+      "title": "Install the Gate 46-50 planning pack and retire Gate 45 placeholder",
+      "prerequisites": [
+        "LEAF-G46-001"
+      ],
+      "scope": "Update the planning quartet so Gate 45 stops existing as a vague placeholder and Gates 46 through 50 become the bounded next tranche.",
+      "files_expected": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json",
+        "docs/planning/2026-03-25_GATE46_AUDIT_CLOSEOUT_AND_FREEZE.md",
+        "docs/planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md",
+        "docs/planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md",
+        "docs/planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md",
+        "docs/planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "PLANS.md",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "config/**",
+        "tests/** beyond planning integrity"
+      ],
+      "implementation_tasks": [
+        "Retire Gate 45 as a placeholder.",
+        "Define Gate 46 as active and Gate 47-50 as downstream leafed gates.",
+        "Write gate notes for Gates 46-50 that remain bounded to the audited architecture questions."
+      ],
+      "validation_tasks": [
+        "Validate that the planning quartet points to Gate 46 as active and to Gate 47-50 as downstream."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The planning quartet exposes Gate 46 as active and Gates 47-50 as bounded downstream gates.",
+      "merge_gate": "The planning quartet is coherent and does not claim implementation beyond Gate 44.",
+      "status": "planned",
+      "execution_sequence": 36,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "acceptance_criteria": [
+        "Gate 45 must be retired explicitly rather than silently disappearing.",
+        "The gate pack must remain bounded to the four audited architecture questions plus audit freeze."
+      ],
+      "stop_conditions": [
+        "The plan implies Gate 47-50 are already complete.",
+        "The plan widens into speculative trader leaf invention."
+      ],
+      "planned_items": [
+        "gate-pack-install",
+        "gate45-retirement"
+      ]
+    },
+    {
+      "id": "LEAF-G46-003",
+      "gate": "Gate 46",
+      "title": "Add planning-integrity checks for the Gate 46-50 pack",
+      "prerequisites": [
+        "LEAF-G46-002"
+      ],
+      "scope": "Add narrow planning tests so the new gate pack cannot drift away from the authoritative quartet silently.",
+      "files_expected": [
+        "tests/test_gate46_50_planning_pack.py",
+        "tests/test_planning_gate_authority_consistency.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "runtime behaviour",
+        "broad full-suite rewrites"
+      ],
+      "implementation_tasks": [
+        "Add tests that assert Gate 46 is active, Gate 45 is retired, and Gate 47-50 leaves exist in the ledger.",
+        "Keep the tests narrow and planning-only."
+      ],
+      "validation_tasks": [
+        "Run the planning integrity tranche."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The planning pack has an executable integrity test surface.",
+      "merge_gate": "Planning tests pass without forcing unrelated runtime changes.",
+      "status": "planned",
+      "execution_sequence": 37,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_gate46_50_planning_pack.py"
+      ],
+      "acceptance_criteria": [
+        "Tests must remain planning-only and deterministic."
+      ],
+      "stop_conditions": [
+        "The tests start asserting future implementation outcomes."
+      ],
+      "planned_items": [
+        "planning-test",
+        "planning-integrity"
+      ]
+    },
+    {
+      "id": "LEAF-G47-001",
+      "gate": "Gate 47",
+      "title": "Define registry-v2 schema for family, setup variant, execution expression, and horizon",
+      "prerequisites": [
+        "LEAF-G46-003"
+      ],
+      "scope": "Create the typed registry-v2 contract that can represent trader-real hierarchy without breaking deterministic stage order.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/schemas/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "config/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "carry branch implementation",
+        "vocabulary workflow"
+      ],
+      "implementation_tasks": [
+        "Define the registry-v2 schema fields.",
+        "Keep execution templates distinct from playbook family rows.",
+        "Preserve deterministic ordering and constraints."
+      ],
+      "validation_tasks": [
+        "Add schema/unit tests for the registry-v2 shape."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "A typed registry-v2 schema exists.",
+      "merge_gate": "Schema tests prove the new registry surface is stable and bounded.",
+      "status": "planned",
+      "execution_sequence": 38,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "acceptance_criteria": [
+        "Registry-v2 must include family, setup_variant, execution_expression, and horizon."
+      ],
+      "stop_conditions": [
+        "Registry-v2 collapses playbook eligibility, posture, and execution into one object."
+      ],
+      "planned_items": [
+        "registry-v2-schema"
+      ]
+    },
+    {
+      "id": "LEAF-G47-002",
+      "gate": "Gate 47",
+      "title": "Map the seven live playbooks into registry-v2 family rows",
+      "prerequisites": [
+        "LEAF-G47-001"
+      ],
+      "scope": "Translate the current live playbooks into registry-v2 family/variant rows and define the compatibility bridge from the flat registry.",
+      "files_expected": [
+        "config/playbook_registry.example.yaml",
+        "fixtures/replay/playbook_registry_live_backfill_snapshot.json",
+        "docs/planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "config/**",
+        "fixtures/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src/** beyond readers",
+        "new trader families not yet planned"
+      ],
+      "implementation_tasks": [
+        "Map the current seven playbooks into family rows.",
+        "Define which rows are family-level and which are variant-level.",
+        "Write the flat-to-v2 compatibility bridge rules."
+      ],
+      "validation_tasks": [
+        "Prove every current live playbook resolves into one registry-v2 family entry."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The seven live playbooks are represented truthfully in registry-v2.",
+      "merge_gate": "Compatibility tests prove the flat registry can be bridged without silent remapping.",
+      "status": "planned",
+      "execution_sequence": 39,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "acceptance_criteria": [
+        "No current live playbook may disappear silently during mapping."
+      ],
+      "stop_conditions": [
+        "The mapping invents future trader leaves not yet approved in planning."
+      ],
+      "planned_items": [
+        "registry-v2-mapping",
+        "compatibility-bridge"
+      ]
+    },
+    {
+      "id": "LEAF-G47-003",
+      "gate": "Gate 47",
+      "title": "Update checked-in config and fixtures to registry-v2",
+      "prerequisites": [
+        "LEAF-G47-002"
+      ],
+      "scope": "Refit the checked-in registry config and replay fixtures to the new hierarchy while keeping the repo runnable.",
+      "files_expected": [
+        "config/playbook_registry.example.yaml",
+        "fixtures/replay/playbook_registry_live_backfill_snapshot.json",
+        "tests/test_playbook_registry.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "config/**",
+        "fixtures/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "api routes",
+        "carry services",
+        "vocabulary workflow"
+      ],
+      "implementation_tasks": [
+        "Update config fixtures to registry-v2.",
+        "Keep fixture semantics deterministic and minimal."
+      ],
+      "validation_tasks": [
+        "Run config/fixture parity tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Checked-in config and fixtures are registry-v2 compatible.",
+      "merge_gate": "Fixture and parity tests pass with no silent drift.",
+      "status": "planned",
+      "execution_sequence": 40,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "acceptance_criteria": [
+        "Fixture data must stay deterministic and replay-safe."
+      ],
+      "stop_conditions": [
+        "The fixture update changes runtime meaning without tests."
+      ],
+      "planned_items": [
+        "registry-v2-fixtures"
+      ]
+    },
+    {
+      "id": "LEAF-G47-004",
+      "gate": "Gate 47",
+      "title": "Refit runtime readers to consume registry-v2 without behaviour drift",
+      "prerequisites": [
+        "LEAF-G47-003"
+      ],
+      "scope": "Update runtime readers and eligibility plumbing so registry-v2 can be consumed without changing approved Gate 44 behaviour.",
+      "files_expected": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/import_registry.py",
+        "tests/test_posture_risk_and_playbook.py",
+        "tests/test_gate43_options_playbook_expansion.py",
+        "tests/test_runtime_parity_registry_playbooks.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "DMP payload renames",
+        "carry-handoff implementation",
+        "new playbook family invention"
+      ],
+      "implementation_tasks": [
+        "Update runtime readers to registry-v2.",
+        "Keep the seven live playbook outcomes stable where legacy fixtures already exist."
+      ],
+      "validation_tasks": [
+        "Run focused runtime parity tests and the full suite because runtime behaviour is touched."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Runtime readers consume registry-v2 while legacy approved behaviour remains stable.",
+      "merge_gate": "Targeted runtime tests and the full suite pass.",
+      "status": "planned",
+      "execution_sequence": 41,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Existing approved playbook behaviour must not drift silently."
+      ],
+      "stop_conditions": [
+        "Registry-v2 causes behaviour drift that is not explicitly explained and tested."
+      ],
+      "planned_items": [
+        "registry-v2-runtime"
+      ]
+    },
+    {
+      "id": "LEAF-G47-005",
+      "gate": "Gate 47",
+      "title": "Freeze registry-v2 non-goals and execution-expression placement",
+      "prerequisites": [
+        "LEAF-G47-004"
+      ],
+      "scope": "Document what remains a family, what remains an execution expression, and what does not become a top-level family so the hierarchy stays bounded.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime rewrites",
+        "new config keys"
+      ],
+      "implementation_tasks": [
+        "Write the non-goal section and boundary notes.",
+        "Freeze execution-expression placement rules."
+      ],
+      "validation_tasks": [
+        "Review the gate note for boundedness and consistency with docs/01_NORMATIVE.md."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "Registry-v2 has explicit boundaries and does not become a dumping ground.",
+      "merge_gate": "The documentation is clear enough to prevent family/variant/expression drift.",
+      "status": "planned",
+      "execution_sequence": 42,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "The gate note must say what does not become a top-level family."
+      ],
+      "stop_conditions": [
+        "The hierarchy remains vague after the gate is complete."
+      ],
+      "planned_items": [
+        "registry-v2-boundaries"
+      ]
+    },
+    {
+      "id": "LEAF-G48-001",
+      "gate": "Gate 48",
+      "title": "Define the typed close-state to carry-state handoff contract",
+      "prerequisites": [
+        "LEAF-G47-005"
+      ],
+      "scope": "Create the explicit typed packet that hands intraday close-state into overnight/weekend/event carry evaluation.",
+      "files_expected": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/overnight.py",
+        "docs/planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "playbook registry",
+        "api routes",
+        "live broker code"
+      ],
+      "implementation_tasks": [
+        "Define the handoff packet fields.",
+        "Keep the contract explicit about close-state, horizon, and carry permissions."
+      ],
+      "validation_tasks": [
+        "Add schema tests for the handoff contract."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "A typed close-state to carry-state handoff contract exists.",
+      "merge_gate": "Schema and carry tests prove the contract is valid.",
+      "status": "planned",
+      "execution_sequence": 43,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "acceptance_criteria": [
+        "The handoff contract must stay separate from ordinary intraday playbook outputs."
+      ],
+      "stop_conditions": [
+        "The handoff contract smuggles policy decisions that belong downstream."
+      ],
+      "planned_items": [
+        "carry-handoff-contract"
+      ]
+    },
+    {
+      "id": "LEAF-G48-002",
+      "gate": "Gate 48",
+      "title": "Freeze weekend, overnight, and event-carry taxonomy",
+      "prerequisites": [
+        "LEAF-G48-001"
+      ],
+      "scope": "Define the bounded horizon taxonomy and the Friday/weekend/event carry labels that the branch will use.",
+      "files_expected": [
+        "src/nvda_desk/schemas/overnight.py",
+        "docs/planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "intraday temporal_state runtime",
+        "playbook registry"
+      ],
+      "implementation_tasks": [
+        "Define horizon values and weekend/event carry semantics.",
+        "Keep weekend logic out of intraday family names."
+      ],
+      "validation_tasks": [
+        "Add schema tests for allowed horizon values."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Carry taxonomy is explicit and bounded.",
+      "merge_gate": "Horizon-value tests pass.",
+      "status": "planned",
+      "execution_sequence": 44,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "acceptance_criteria": [
+        "Weekend must be modelled as carry-horizon logic, not ordinary intraday phase."
+      ],
+      "stop_conditions": [
+        "The taxonomy duplicates intraday temporal state."
+      ],
+      "planned_items": [
+        "carry-horizon-taxonomy"
+      ]
+    },
+    {
+      "id": "LEAF-G48-003",
+      "gate": "Gate 48",
+      "title": "Thread the carry handoff through replay and carry services",
+      "prerequisites": [
+        "LEAF-G48-002"
+      ],
+      "scope": "Wire the new handoff packet into carry replay/services so the branch separation is enforceable in code.",
+      "files_expected": [
+        "src/nvda_desk/services/carry_replay.py",
+        "src/nvda_desk/services/replay.py",
+        "tests/test_carry_review_cli_and_legacy.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "api route redesign",
+        "new broker integrations"
+      ],
+      "implementation_tasks": [
+        "Update carry services to consume the handoff packet.",
+        "Keep intraday replay and carry replay responsibilities distinct."
+      ],
+      "validation_tasks": [
+        "Run focused carry/replay tests and the full suite because runtime behaviour is touched."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Carry services consume the handoff packet and branch separation remains explicit.",
+      "merge_gate": "Carry tests and full suite pass.",
+      "status": "planned",
+      "execution_sequence": 45,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Replay and carry paths must remain deterministic."
+      ],
+      "stop_conditions": [
+        "Carry wiring changes approved intraday behaviour silently."
+      ],
+      "planned_items": [
+        "carry-handoff-runtime"
+      ]
+    },
+    {
+      "id": "LEAF-G48-004",
+      "gate": "Gate 48",
+      "title": "Define allowed carry actions and override rules",
+      "prerequisites": [
+        "LEAF-G48-003"
+      ],
+      "scope": "Freeze the legal carry actions and the override rules that sit between close-state and weekend/event hold decisions.",
+      "files_expected": [
+        "src/nvda_desk/schemas/overnight.py",
+        "docs/planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "posture/risk rewrite",
+        "policy-free carry actions"
+      ],
+      "implementation_tasks": [
+        "Define allowed carry actions and override fields.",
+        "Keep the action set narrow and typed."
+      ],
+      "validation_tasks": [
+        "Add schema/contract tests for allowed carry actions."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Allowed carry actions are typed and explicit.",
+      "merge_gate": "Contract tests prove the action set is bounded.",
+      "status": "planned",
+      "execution_sequence": 46,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "acceptance_criteria": [
+        "The action set must remain narrow and explicit."
+      ],
+      "stop_conditions": [
+        "Carry action names become vague English phrases."
+      ],
+      "planned_items": [
+        "carry-actions"
+      ]
+    },
+    {
+      "id": "LEAF-G48-005",
+      "gate": "Gate 48",
+      "title": "Prove intraday and carry branches remain separate under test",
+      "prerequisites": [
+        "LEAF-G48-004"
+      ],
+      "scope": "Add the final contract/replay tests that prove weekend and event carry do not collapse back into ordinary intraday playbook selection.",
+      "files_expected": [
+        "tests/test_carry_review_cli_and_legacy.py",
+        "docs/planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "new playbook families",
+        "api redesign"
+      ],
+      "implementation_tasks": [
+        "Add explicit tests for branch separation.",
+        "Record the branch-separation proof in the gate note."
+      ],
+      "validation_tasks": [
+        "Run focused carry branch tests and the full suite because runtime behaviour is touched."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Tests prove carry logic is a separate branch.",
+      "merge_gate": "Focused carry tests and full suite pass.",
+      "status": "planned",
+      "execution_sequence": 47,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_carry_review_cli_and_legacy.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Weekend/event carry must stay outside ordinary intraday playbook selection."
+      ],
+      "stop_conditions": [
+        "Tests allow carry to masquerade as another intraday family."
+      ],
+      "planned_items": [
+        "carry-branch-proof"
+      ]
+    },
+    {
+      "id": "LEAF-G49-001",
+      "gate": "Gate 49",
+      "title": "Inventory all outward session_clock surfaces",
+      "prerequisites": [
+        "LEAF-G48-005"
+      ],
+      "scope": "Collect every outward session_clock surface across docs, schemas, services, replay, API, and tests so the compatibility decision is evidence-backed.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md",
+        "src/nvda_desk/schemas/market.py",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/services/replay.py",
+        "tests/test_session_clock.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime renames",
+        "schema changes before the inventory exists"
+      ],
+      "implementation_tasks": [
+        "Inventory every outward session_clock surface.",
+        "Classify each surface as wrapper, direct truth claim, or stale doc/test."
+      ],
+      "validation_tasks": [
+        "Review the inventory for completeness against the audit findings."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "Every outward session_clock surface is explicitly inventoried.",
+      "merge_gate": "The decision gate now rests on evidence rather than memory.",
+      "status": "planned",
+      "execution_sequence": 48,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "The inventory must include docs and tests, not just runtime code."
+      ],
+      "stop_conditions": [
+        "The policy decision is made before the inventory exists."
+      ],
+      "planned_items": [
+        "temporal-compat-inventory"
+      ]
+    },
+    {
+      "id": "LEAF-G49-002",
+      "gate": "Gate 49",
+      "title": "Choose and document the temporal compatibility policy",
+      "prerequisites": [
+        "LEAF-G49-001"
+      ],
+      "scope": "Make the explicit decision: keep session_clock as a named compatibility wrapper or retire it in favour of temporal_state outward surfaces.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime code until the policy is chosen"
+      ],
+      "implementation_tasks": [
+        "Choose the compatibility policy.",
+        "Document the rationale, bounds, and migration consequences."
+      ],
+      "validation_tasks": [
+        "Review the policy against audit finding G1 and DMP invariants."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The repo has one explicit outward naming policy for Step 1.",
+      "merge_gate": "The compatibility policy is documented clearly enough to drive implementation.",
+      "status": "planned",
+      "execution_sequence": 49,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "The policy must preserve DMP payload stability unless explicitly changed later."
+      ],
+      "stop_conditions": [
+        "The gate leaves both policies half-alive."
+      ],
+      "planned_items": [
+        "temporal-compat-policy"
+      ]
+    },
+    {
+      "id": "LEAF-G49-003",
+      "gate": "Gate 49",
+      "title": "Implement the chosen temporal compatibility policy across outward surfaces",
+      "prerequisites": [
+        "LEAF-G49-002"
+      ],
+      "scope": "Update the API/service/replay/docs/tests surfaces according to the chosen policy while keeping the runtime truth in temporal_state.",
+      "files_expected": [
+        "src/nvda_desk/schemas/market.py",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/services/replay.py",
+        "tests/test_session_clock.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/**",
+        "tests/**",
+        "docs/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "temporal_state core truth",
+        "DMP payload identity renames"
+      ],
+      "implementation_tasks": [
+        "Implement the selected wrapper/migration policy.",
+        "Update docs and tests accordingly."
+      ],
+      "validation_tasks": [
+        "Run focused temporal compatibility tests and the full suite because outward/runtime surfaces are touched."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_session_clock.py tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Outward temporal surfaces now follow one explicit policy.",
+      "merge_gate": "Focused compatibility tests and full suite pass.",
+      "status": "planned",
+      "execution_sequence": 50,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_session_clock.py tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "The outward policy must be explicit and test-backed."
+      ],
+      "stop_conditions": [
+        "The implementation silently changes Step 1 behaviour instead of surface naming."
+      ],
+      "planned_items": [
+        "temporal-compat-runtime"
+      ]
+    },
+    {
+      "id": "LEAF-G49-004",
+      "gate": "Gate 49",
+      "title": "Freeze migration notes, rollback path, and docs for temporal compatibility",
+      "prerequisites": [
+        "LEAF-G49-003"
+      ],
+      "scope": "Record the compatibility decision durably in docs, changelog, and rollback notes so future sessions do not relitigate the same naming split.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime rewrites",
+        "new tests beyond compatibility"
+      ],
+      "implementation_tasks": [
+        "Write migration notes and rollback guidance.",
+        "Freeze the decision in the gate note."
+      ],
+      "validation_tasks": [
+        "Review the gate note for durability and clarity."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The temporal compatibility decision is durable and reversible.",
+      "merge_gate": "Documentation and rollback notes are explicit.",
+      "status": "planned",
+      "execution_sequence": 51,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "Rollback guidance must exist if outward surfaces change."
+      ],
+      "stop_conditions": [
+        "The decision depends on undocumented tribal memory."
+      ],
+      "planned_items": [
+        "temporal-compat-docs"
+      ]
+    },
+    {
+      "id": "LEAF-G50-001",
+      "gate": "Gate 50",
+      "title": "Import the vocabulary workflow as feeder process only",
+      "prerequisites": [
+        "LEAF-G49-004"
+      ],
+      "scope": "Bring the vocabulary workflow into the authoritative repo as a controlled feeder process rather than a blind source of truth.",
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md",
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime schemas before architecture pinning",
+        "blind payload merges"
+      ],
+      "implementation_tasks": [
+        "Import the workflow scaffold.",
+        "State explicitly that the imported workflow is feeder process only."
+      ],
+      "validation_tasks": [
+        "Review the imported workflow against the gate note."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The vocabulary workflow exists in-repo as governed process, not blind truth.",
+      "merge_gate": "The gate note makes the feeder-only rule explicit.",
+      "status": "planned",
+      "execution_sequence": 52,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "The workflow must not claim stale payload authority."
+      ],
+      "stop_conditions": [
+        "The stale vocabulary payload is merged blindly."
+      ],
+      "planned_items": [
+        "vocabulary-workflow-import"
+      ]
+    },
+    {
+      "id": "LEAF-G50-002",
+      "gate": "Gate 50",
+      "title": "Regenerate canonical vocabulary from the current repo surfaces",
+      "prerequisites": [
+        "LEAF-G50-001"
+      ],
+      "scope": "Rebuild the canonical vocabulary file from the current live repo surfaces after Gates 47-49 are pinned.",
+      "files_expected": [
+        "canonical vocabulary file",
+        "scripts/**",
+        "docs/planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime refactors unrelated to vocabulary"
+      ],
+      "implementation_tasks": [
+        "Regenerate vocabulary from current repo surfaces.",
+        "Use the current architecture, not the stale snapshot, as canonical input."
+      ],
+      "validation_tasks": [
+        "Add tests or scripted checks that the regenerated file is internally consistent."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The canonical vocabulary matches current architecture truth.",
+      "merge_gate": "Regeneration is scripted and internally consistent.",
+      "status": "planned",
+      "execution_sequence": 53,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "The regenerated vocabulary must reflect current architecture, not old session_clock-era truth."
+      ],
+      "stop_conditions": [
+        "Vocabulary regeneration uses stale snapshot inputs."
+      ],
+      "planned_items": [
+        "vocabulary-regeneration"
+      ]
+    },
+    {
+      "id": "LEAF-G50-003",
+      "gate": "Gate 50",
+      "title": "Extend vocabulary schema for family, variant, expression, horizon, and raw-derived tags",
+      "prerequisites": [
+        "LEAF-G50-002"
+      ],
+      "scope": "Add the fields the new architecture requires so vocabulary governance can actually cover the hierarchy and data-layer split.",
+      "files_expected": [
+        "canonical vocabulary file",
+        "docs/planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime behaviour"
+      ],
+      "implementation_tasks": [
+        "Add family/variant/expression/horizon/raw_or_derived/stage_owner/contract-link fields.",
+        "Keep the schema bounded and typed."
+      ],
+      "validation_tasks": [
+        "Review the schema against Gates 47-49 outputs."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "Vocabulary schema can represent the new architecture.",
+      "merge_gate": "The schema fields line up with the pinned architecture.",
+      "status": "planned",
+      "execution_sequence": 54,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "Schema fields must map to real architecture surfaces."
+      ],
+      "stop_conditions": [
+        "Vocabulary schema becomes a dumping ground for free-form notes."
+      ],
+      "planned_items": [
+        "vocabulary-schema-extension"
+      ]
+    },
+    {
+      "id": "LEAF-G50-004",
+      "gate": "Gate 50",
+      "title": "Reconcile duplicate labels, aliases, and stale temporal terms",
+      "prerequisites": [
+        "LEAF-G50-003"
+      ],
+      "scope": "Clean up duplicate labels and stale session_clock-era language so one term means one thing and aliases are governed explicitly.",
+      "files_expected": [
+        "canonical vocabulary file",
+        "docs/planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime renames beyond approved policy"
+      ],
+      "implementation_tasks": [
+        "Resolve duplicate labels and aliases.",
+        "Reconcile stale temporal terms against the Gate 49 decision."
+      ],
+      "validation_tasks": [
+        "Run duplicate/alias consistency checks."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "Duplicate labels and stale aliases are reconciled explicitly.",
+      "merge_gate": "Consistency checks prove the vocabulary no longer contains conflicting duplicate labels.",
+      "status": "planned",
+      "execution_sequence": 55,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "One term must mean one thing once this leaf closes."
+      ],
+      "stop_conditions": [
+        "Aliases remain uncontrolled or conflicting after reconciliation."
+      ],
+      "planned_items": [
+        "vocabulary-reconciliation"
+      ]
+    },
+    {
+      "id": "LEAF-G50-005",
+      "gate": "Gate 50",
+      "title": "Add vocabulary enforcement tests",
+      "prerequisites": [
+        "LEAF-G50-004"
+      ],
+      "scope": "Add enforcement tests so future modules, families, and stage labels cannot drift away from the canonical vocabulary silently.",
+      "files_expected": [
+        "tests/**",
+        "canonical vocabulary file",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "tests/**",
+        "docs/**",
+        "scripts/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime redesign",
+        "blind glossary expansion"
+      ],
+      "implementation_tasks": [
+        "Add tests for duplicate conflicting labels, undefined aliases, and missing canonical entries for runtime/planning surfaces."
+      ],
+      "validation_tasks": [
+        "Run the vocabulary enforcement tranche and the full suite if runtime-adjacent files are touched."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Vocabulary governance is enforced by tests instead of memory.",
+      "merge_gate": "Enforcement tests pass and prevent silent language drift.",
+      "status": "planned",
+      "execution_sequence": 56,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Enforcement tests must fail on duplicate conflicting labels and undefined aliases."
+      ],
+      "stop_conditions": [
+        "Vocabulary governance remains advisory-only after the gate closes."
+      ],
+      "planned_items": [
+        "vocabulary-enforcement"
+      ]
     }
   ],
-  "execution_status": "gate_44_complete_gate_45_placeholder_only",
+  "execution_status": "gate_46_planning_pack_authored_gate_47_to_50_leafed_on_branch",
   "completed_at": "2026-03-25T08:30:00Z",
   "completed_leaf_ids": [
     "LEAF-G8-001",
@@ -2363,7 +3481,30 @@
     "LEAF-G43-001",
     "LEAF-G44-001"
   ],
-  "remaining_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G46-001",
+    "LEAF-G46-002",
+    "LEAF-G46-003",
+    "LEAF-G47-001",
+    "LEAF-G47-002",
+    "LEAF-G47-003",
+    "LEAF-G47-004",
+    "LEAF-G47-005",
+    "LEAF-G48-001",
+    "LEAF-G48-002",
+    "LEAF-G48-003",
+    "LEAF-G48-004",
+    "LEAF-G48-005",
+    "LEAF-G49-001",
+    "LEAF-G49-002",
+    "LEAF-G49-003",
+    "LEAF-G49-004",
+    "LEAF-G50-001",
+    "LEAF-G50-002",
+    "LEAF-G50-003",
+    "LEAF-G50-004",
+    "LEAF-G50-005"
+  ],
   "supplementary_scope_note": "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md",
   "completed_baseline_leaf_ids": [
     "LEAF-G7-BASELINE"
