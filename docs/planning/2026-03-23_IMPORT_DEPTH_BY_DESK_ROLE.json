@@ -1,0 +1,90 @@
+{
+  "report_inputs": {
+    "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
+    "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl"
+  },
+  "roles": [
+    {
+      "concept_contract_count": 3,
+      "desk_role_priority": 10,
+      "evidence_only_count": 2,
+      "grammar_role": "temporal_context",
+      "implemented_runtime_count": 1,
+      "implemented_runtime_pct": 16.67,
+      "ready_for_contract_import_count": 1,
+      "remaining_backlog_count": 5,
+      "total_items": 6
+    },
+    {
+      "concept_contract_count": 27,
+      "desk_role_priority": 20,
+      "evidence_only_count": 0,
+      "grammar_role": "market_regime_context",
+      "implemented_runtime_count": 1,
+      "implemented_runtime_pct": 3.57,
+      "ready_for_contract_import_count": 14,
+      "remaining_backlog_count": 27,
+      "total_items": 28
+    },
+    {
+      "concept_contract_count": 18,
+      "desk_role_priority": 30,
+      "evidence_only_count": 5,
+      "grammar_role": "options_flow_context",
+      "implemented_runtime_count": 0,
+      "implemented_runtime_pct": 0.0,
+      "ready_for_contract_import_count": 9,
+      "remaining_backlog_count": 23,
+      "total_items": 23
+    },
+    {
+      "concept_contract_count": 8,
+      "desk_role_priority": 40,
+      "evidence_only_count": 4,
+      "grammar_role": "posture_risk_permission",
+      "implemented_runtime_count": 1,
+      "implemented_runtime_pct": 7.69,
+      "ready_for_contract_import_count": 7,
+      "remaining_backlog_count": 12,
+      "total_items": 13
+    },
+    {
+      "concept_contract_count": 8,
+      "desk_role_priority": 50,
+      "evidence_only_count": 2,
+      "grammar_role": "playbook_eligibility",
+      "implemented_runtime_count": 4,
+      "implemented_runtime_pct": 28.57,
+      "ready_for_contract_import_count": 7,
+      "remaining_backlog_count": 10,
+      "total_items": 14
+    },
+    {
+      "concept_contract_count": 16,
+      "desk_role_priority": 60,
+      "evidence_only_count": 0,
+      "grammar_role": "expression_execution",
+      "implemented_runtime_count": 0,
+      "implemented_runtime_pct": 0.0,
+      "ready_for_contract_import_count": 16,
+      "remaining_backlog_count": 16,
+      "total_items": 16
+    },
+    {
+      "concept_contract_count": 13,
+      "desk_role_priority": 70,
+      "evidence_only_count": 13,
+      "grammar_role": "review_explanation",
+      "implemented_runtime_count": 3,
+      "implemented_runtime_pct": 10.34,
+      "ready_for_contract_import_count": 7,
+      "remaining_backlog_count": 26,
+      "total_items": 29
+    }
+  ],
+  "summary": {
+    "implemented_runtime_count": 10,
+    "ready_for_contract_import_count": 61,
+    "total_roles": 7
+  }
+}

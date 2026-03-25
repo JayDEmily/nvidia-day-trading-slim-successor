@@ -1,0 +1,1224 @@
+{
+  "by_grammar_role": {
+    "expression_execution": 16,
+    "market_regime_context": 28,
+    "options_flow_context": 18,
+    "playbook_eligibility": 12,
+    "posture_risk_permission": 9,
+    "review_explanation": 16,
+    "temporal_context": 4
+  },
+  "by_readiness": {
+    "implemented_runtime": 10,
+    "needs_scope_definition": 32,
+    "ready_for_contract_import": 61
+  },
+  "excluded_evidence_only_count": 26,
+  "executable_backlog_count": 103,
+  "items": [
+    {
+      "canonical_id": "legacy-feature-008",
+      "canonical_slug": "distance_to_vwap",
+      "desk_role_priority": 10,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "temporal_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-006",
+      "canonical_slug": "event_flag_capture",
+      "desk_role_priority": 10,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "temporal_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:manual_or_api_events"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-017",
+      "canonical_slug": "phase_detector",
+      "desk_role_priority": 10,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "temporal_context",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "legacy-feature-001",
+      "canonical_slug": "session_clock_phase_id",
+      "desk_role_priority": 10,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "temporal_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-013",
+      "canonical_slug": "adr_delta_divergence",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-006",
+      "canonical_slug": "archetype_match_label",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-015",
+      "canonical_slug": "asia_precursor_composite",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-008",
+      "canonical_slug": "asia_precursor_context_filter",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:canonical_market",
+        "dependency:derived_features",
+        "dependency:macro_market_feeds",
+        "dependency:research_artefacts"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-010",
+      "canonical_slug": "chop_state",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-011",
+      "canonical_slug": "conviction_tier",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-022",
+      "canonical_slug": "engine_score",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:S01_to_S14_signal_outputs"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-009",
+      "canonical_slug": "envelope_band_width",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-006",
+      "canonical_slug": "macro_adaptive_weighting_filter",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:event_flags",
+        "dependency:macro_metrics",
+        "dependency:research_artefacts",
+        "dependency:risk"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-009",
+      "canonical_slug": "macro_alignment_gap",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-005",
+      "canonical_slug": "macro_data_capture",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:macro_market_feeds"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-013",
+      "canonical_slug": "macro_signal_score",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:event_flags",
+        "dependency:macro_metrics"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-012",
+      "canonical_slug": "obv_vi_combo_state",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-014",
+      "canonical_slug": "peer_divergence",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:peer_equities",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-004",
+      "canonical_slug": "peer_divergence_coherence_score",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-007",
+      "canonical_slug": "peer_equity_capture",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:peer_spot_ticks"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-011",
+      "canonical_slug": "ppo_obv_contradiction",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-009",
+      "canonical_slug": "realized_volatility_engine",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-052",
+      "canonical_slug": "run_signal_scan",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:runtime_config"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-055",
+      "canonical_slug": "runtime_settings",
+      "desk_role_priority": 20,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-module-001",
+      "canonical_slug": "spot_data_capture",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:broker_spot_ticks"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-016",
+      "canonical_slug": "time_to_profit_drift_post_macro",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-018",
+      "canonical_slug": "volume_spike_filter",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:spot_prices",
+        "dependency:spot_volume_series"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-005",
+      "canonical_slug": "volume_spike_state",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-044",
+      "canonical_slug": "vvix_ladder_shaper",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:ladder_constructor",
+        "dependency:macro_metrics"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-002",
+      "canonical_slug": "vwap_accumulator",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:spot_trade_ticks"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-008",
+      "canonical_slug": "vwap_roc",
+      "desk_role_priority": 20,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:spot_vwap_10s"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-014",
+      "canonical_slug": "yield_curve_steepening_signal",
+      "desk_role_priority": 20,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "market_regime_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-021",
+      "canonical_slug": "execution_context_score",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:macro_signal_score",
+        "dependency:peer_divergence",
+        "dependency:volume_spike_filter"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-002",
+      "canonical_slug": "execution_context_score",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-011",
+      "canonical_slug": "gamma_pressure",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_chain",
+        "dependency:options_metadata",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-017",
+      "canonical_slug": "iv_crush_unwind_state",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-005",
+      "canonical_slug": "iv_hv_divergence_by_expiry",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-004",
+      "canonical_slug": "iv_rank_vs_iv_percentile_timing",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-010",
+      "canonical_slug": "iv_vs_rv_analysis",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_chain",
+        "dependency:rv_metrics"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-006",
+      "canonical_slug": "oi_cluster_width",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-005",
+      "canonical_slug": "options_behaviour_cluster",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:derived_features",
+        "dependency:options_chain",
+        "dependency:options_metadata",
+        "dependency:research_artefacts",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-003",
+      "canonical_slug": "options_data_capture",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:broker_options_snapshots"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-004",
+      "canonical_slug": "options_metadata_capture",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:broker_option_chain_metadata"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-007",
+      "canonical_slug": "put_ladder_rationality_vs_call_decay",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-016",
+      "canonical_slug": "skew_inflection",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_chain"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-019",
+      "canonical_slug": "vix_spread_detector",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:macro_metrics"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-003",
+      "canonical_slug": "vix_term_structure",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-002",
+      "canonical_slug": "vix_vvix_crossover_slope",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-003",
+      "canonical_slug": "vix_vvix_spread_state",
+      "desk_role_priority": 30,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-012",
+      "canonical_slug": "vol_corridor",
+      "desk_role_priority": 30,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "options_flow_context",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_chain",
+        "dependency:options_metadata"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval05",
+      "canonical_slug": "confidence_divergence_logger",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:profit_loss_ledger"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-043",
+      "canonical_slug": "conviction_tier_allocator",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:macro_signal_score"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval03",
+      "canonical_slug": "macro_alignment_checker",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:macro_metrics",
+        "dependency:trade_log"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-046",
+      "canonical_slug": "macro_shock_responder",
+      "desk_role_priority": 40,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-module-051",
+      "canonical_slug": "model_confidence_scorer",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:signal_conflicts"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval02",
+      "canonical_slug": "signal_conflict_detector",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_decisions",
+        "dependency:signal_outputs"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-012",
+      "canonical_slug": "tail_hedge_activation_state",
+      "desk_role_priority": 40,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-049",
+      "canonical_slug": "tail_hedge_injector",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:macro_signal_score",
+        "dependency:position_state"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-002",
+      "canonical_slug": "volatility_sentiment_index",
+      "desk_role_priority": 40,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "posture_risk_permission",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:derived_features",
+        "dependency:ladder_constructor",
+        "dependency:macro_metrics",
+        "dependency:research_artefacts",
+        "dependency:risk"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-020",
+      "canonical_slug": "archetype_matcher",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:optional_context_signals",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-048",
+      "canonical_slug": "archetype_tagger",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_context",
+        "dependency:signals"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-004",
+      "canonical_slug": "compression_regime_detector",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:derived_features",
+        "dependency:research_artefacts",
+        "dependency:risk",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-023",
+      "canonical_slug": "entry_gate",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:macro_signal_score"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-026",
+      "canonical_slug": "fill_bias_adjuster",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_chain",
+        "dependency:spot_prices",
+        "dependency:spot_vwap_10s"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-024",
+      "canonical_slug": "ladder_constructor",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:options_metadata",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-003",
+      "canonical_slug": "obv_vi_flow_confirmation",
+      "desk_role_priority": 50,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:derived_features",
+        "dependency:research_artefacts",
+        "dependency:spot_prices",
+        "dependency:spot_volume_series"
+      ]
+    },
+    {
+      "canonical_id": "legacy-module-007",
+      "canonical_slug": "overnight_carry_evaluator",
+      "desk_role_priority": 50,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-module-015",
+      "canonical_slug": "slv_overlay_score",
+      "desk_role_priority": 50,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-module-025",
+      "canonical_slug": "slv_validator",
+      "desk_role_priority": 50,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "legacy-module-001",
+      "canonical_slug": "strategic_ladder_validator",
+      "desk_role_priority": 50,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-feature-001",
+      "canonical_slug": "validated_strike_zone_score",
+      "desk_role_priority": 50,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "playbook_eligibility",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-054",
+      "canonical_slug": "broker_adapter",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:broker_requests"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-035",
+      "canonical_slug": "dynamic_partial_exit_model",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:position_state",
+        "dependency:signals"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-027",
+      "canonical_slug": "entry_planner",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:fill_bias_adjuster",
+        "dependency:ladder_constructor",
+        "dependency:slv_validator"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-030",
+      "canonical_slug": "execution_log_writer",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:entry_gate",
+        "dependency:entry_planner",
+        "dependency:order_simulator",
+        "dependency:position_allocator"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-050",
+      "canonical_slug": "execution_tags",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_decisions",
+        "dependency:signals"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-045",
+      "canonical_slug": "fill_feedback_router",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:current_runtime_state",
+        "dependency:past_fills"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-047",
+      "canonical_slug": "ladder_continuity_tracker",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:current_ladder",
+        "dependency:prior_ladder_history"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-029",
+      "canonical_slug": "order_simulator",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:entry_planner",
+        "dependency:position_allocator",
+        "dependency:spot_prices",
+        "dependency:spot_vwap_10s"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-028",
+      "canonical_slug": "position_allocator",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:engine_score",
+        "dependency:entry_planner",
+        "dependency:spot_prices"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-031",
+      "canonical_slug": "position_book",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_log",
+        "dependency:fills"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-053",
+      "canonical_slug": "run_trading_bot",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:runtime_config"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-034",
+      "canonical_slug": "take_profit",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:market_prices",
+        "dependency:position_state"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-037",
+      "canonical_slug": "trade_logger",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:runtime_events"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-036",
+      "canonical_slug": "trade_reentry_marker",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:closed_positions",
+        "dependency:new_signals"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-033",
+      "canonical_slug": "trailing_stop",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:market_prices",
+        "dependency:position_state"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-032",
+      "canonical_slug": "unrealized_tracker",
+      "desk_role_priority": 60,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "expression_execution",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:market_prices",
+        "dependency:open_positions"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-010",
+      "canonical_slug": "confidence_divergence_gap",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-041",
+      "canonical_slug": "daily_summary",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:profit_loss_ledger",
+        "dependency:trade_log"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval07",
+      "canonical_slug": "evaluation_config",
+      "desk_role_priority": 70,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-evaluator-eval06",
+      "canonical_slug": "feedback_summary_writer",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:evaluator_outputs"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-019",
+      "canonical_slug": "memory_bucket_design",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-feature-007",
+      "canonical_slug": "module_attribution_score",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval01",
+      "canonical_slug": "module_score_attributor",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:module_attribution_log",
+        "dependency:profit_loss_ledger"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-038",
+      "canonical_slug": "module_trace_attribution",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_decisions",
+        "dependency:signal_outputs"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-039",
+      "canonical_slug": "profit_loss_ledger",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:closed_positions"
+      ]
+    },
+    {
+      "canonical_id": "legacy-feature-018",
+      "canonical_slug": "retail_bleed_vs_desk_absorption",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval00",
+      "canonical_slug": "run_evaluator",
+      "desk_role_priority": 70,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "archive-feature-008",
+      "canonical_slug": "signal_conflict_density",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-042",
+      "canonical_slug": "sim_engine",
+      "desk_role_priority": 70,
+      "implementation_readiness": "implemented_runtime",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": []
+    },
+    {
+      "canonical_id": "legacy-feature-020",
+      "canonical_slug": "two_brain_boundary",
+      "desk_role_priority": 70,
+      "implementation_readiness": "needs_scope_definition",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "needs_structured_source_form",
+        "missing_explicit_io_contract"
+      ]
+    },
+    {
+      "canonical_id": "archive-evaluator-eval04",
+      "canonical_slug": "variant_performance_tracker",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:profit_loss_ledger",
+        "dependency:variant_trace"
+      ]
+    },
+    {
+      "canonical_id": "archive-module-040",
+      "canonical_slug": "variant_trace_logger",
+      "desk_role_priority": 70,
+      "implementation_readiness": "ready_for_contract_import",
+      "primary_grammar_role": "review_explanation",
+      "readiness_blockers": [
+        "missing_runtime_translation",
+        "dependency:execution_outcomes",
+        "dependency:runtime_config"
+      ]
+    }
+  ],
+  "report_inputs": {
+    "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
+    "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl"
+  },
+  "total_items": 129
+}

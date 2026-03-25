@@ -1,0 +1,2388 @@
+{
+  "plan_id": "2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.1",
+  "governing_plan": "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+  "global_rules": {
+    "status": "active",
+    "baseline": "Gates 0\u20137 complete on main",
+    "active_under_PLANS": true,
+    "repo_copy_inserted": true,
+    "active_gate": "Gate 45 placeholder only",
+    "completed_admin_baseline": {
+      "gate": "Gate 7",
+      "status": "complete_on_main",
+      "commits": [
+        "9bc768d",
+        "04daf33",
+        "b4846e2",
+        "ae3e248",
+        "ec888e9",
+        "4e7f3b9"
+      ],
+      "leaf_id": "LEAF-G7-BASELINE"
+    },
+    "full_suite_rule": "Required for leaves that touch live runtime behaviour, replay behaviour, or promotion-state surfaces.",
+    "sequential_gate_rule": "The next gate must not begin until the prior gate is complete, marked complete in this ledger and the execution log, and merged to main.",
+    "gate_authority": "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+    "supplementary_scope_note": "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md"
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G8-001",
+      "gate": "Gate 8",
+      "title": "Define DMP v1 envelope and typed schema surface",
+      "prerequisites": [],
+      "scope": "Create Desk Module Protocol v1 as the internal deterministic packet envelope for stage and module outputs, keeping the live stage payload models intact underneath.",
+      "files_expected": [
+        "src/nvda_desk/schemas/dmp.py",
+        "docs/planning/2026-03-24_DMP_V1_SPEC.md",
+        "tests/test_dmp_protocol.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "MCP integration",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Define a DMP envelope with protocol_version, packet identity, grammar role, behaviour class, schema identifiers, stack identity, coefficient identity, dependencies, trace references, trader summary, and payload.",
+        "Ensure DMP wraps existing typed cognition outputs instead of replacing them with loose dictionaries.",
+        "Write a short DMP v1 spec with explicit non-goals."
+      ],
+      "validation_tasks": [
+        "Add schema tests for serialisation, required fields, and rejection of undeclared extras.",
+        "Prove stack_id and coefficient_set_id are first-class in the envelope."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_dmp_protocol.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "A typed DMP envelope exists, is narrow, and serialises cleanly.",
+      "merge_gate": "DMP is internal, repo-native, and does not rename or replace the existing cognition payload models.",
+      "status": "complete",
+      "execution_sequence": 1,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_dmp_protocol.py"
+      ],
+      "acceptance_criteria": [
+        "DMP v1 must carry stack and coefficient identity explicitly.",
+        "The payload surface must remain typed through the existing cognition schemas.",
+        "The spec must state clearly that MCP remains external and DMP remains internal."
+      ],
+      "stop_conditions": [
+        "The design starts trying to solve every transport problem in one pass.",
+        "The envelope would force wholesale rewrites of existing typed payload models."
+      ],
+      "completion_note": "Implemented in commit `b634dfa`, validated on branch, and merged to `main` via fast-forward at `02e5da6`.",
+      "completion_evidence": [
+        "commit:b634dfa",
+        "tests:.venv/bin/python -m pytest -q tests/test_dmp_protocol.py -> 3 passed",
+        "tests:.venv/bin/python -m pytest -q -> 89 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "merge:fast-forwarded to main at 02e5da6"
+      ],
+      "completed_in_commit": "b634dfa"
+    },
+    {
+      "id": "LEAF-G9-001",
+      "gate": "Gate 9",
+      "title": "Wrap the seven binding runtime stages in DMP without behaviour drift",
+      "prerequisites": [
+        "LEAF-G8-001"
+      ],
+      "scope": "Add DMP wrappers for temporal, regime, options_flow, posture, eligibility, execution, and review outputs while preserving the existing runtime order and logic.",
+      "files_expected": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/test_runtime_contract_registry.py",
+        "tests/test_dmp_protocol.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "new playbook rules",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Emit DMP-wrapped stage packets in the existing runtime order.",
+        "Keep the current stage payloads and contract registry visible for downstream tests.",
+        "Do not change the decision logic of the current four playbooks during wrapper adoption."
+      ],
+      "validation_tasks": [
+        "Prove the seven-stage order remains intact.",
+        "Prove the wrapped runtime still satisfies the existing runtime-contract registry tests."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_runtime_contract_registry.py",
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "All seven binding stages emit DMP packets and existing runtime behaviour still passes the contract tests.",
+      "merge_gate": "All seven binding runtime stages emit DMP wrappers without behaviour drift under targeted tests and the full suite.",
+      "status": "complete",
+      "execution_sequence": 2,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_runtime_contract_registry.py tests/test_execution_review_runtime.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Temporal, regime, options, posture, eligibility, execution, and review outputs must all be packetised in order.",
+        "The runtime contract registry must remain truthful.",
+        "Playbook output must not change merely because it is wrapped."
+      ],
+      "stop_conditions": [
+        "DMP wrapping changes playbook decisions or execution styles.",
+        "The wrapper obscures the underlying typed payloads instead of clarifying them."
+      ],
+      "completion_note": "Implemented in commit `11f2313`, validated on branch, and merged to `main` via fast-forward at `11f2313`.",
+      "completion_evidence": [
+        "commit:11f2313",
+        "tests:.venv/bin/python -m pytest -q tests/test_runtime_contract_registry.py tests/test_execution_review_runtime.py -> 9 passed",
+        "tests:.venv/bin/python -m pytest -q -> 91 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "merge:fast-forwarded to main at 11f2313"
+      ],
+      "completed_in_commit": "11f2313"
+    },
+    {
+      "id": "LEAF-G10-001",
+      "gate": "Gate 10",
+      "title": "Bind DMP trace references into review packets and replay artefacts",
+      "prerequisites": [
+        "LEAF-G9-001"
+      ],
+      "scope": "Thread DMP packet references into the review and replay surfaces so comparison runs can cite exactly which packet chain produced a decision.",
+      "files_expected": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/calibration.py",
+        "src/nvda_desk/services/replay_compare.py",
+        "tests/test_dmp_review_trace.py",
+        "tests/test_replay_compare_runtime.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live broker integrations"
+      ],
+      "implementation_tasks": [
+        "Attach packet references and packet lineage into review outputs.",
+        "Ensure replay and comparison artefacts can surface those references deterministically.",
+        "Keep comparison metrics stable while enriching traceability."
+      ],
+      "validation_tasks": [
+        "Add tests that confirm review packets and replay results cite packet lineage.",
+        "Confirm comparison output remains serialisable and deterministic."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py",
+        ".venv/bin/python -m pytest -q tests/test_dmp_review_trace.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Important runtime decisions can be traced from review output back to stage packets and replay artefacts.",
+      "merge_gate": "Review and replay artefacts carry DMP lineage without drift under targeted tests and the full suite.",
+      "status": "complete",
+      "execution_sequence": 3,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py tests/test_dmp_review_trace.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "A review packet must be able to name the packet lineage that produced an allow, block, or reshape decision.",
+        "Replay artefacts must carry enough trace to compare configuration and packet ancestry honestly.",
+        "The comparison schema must remain deterministic."
+      ],
+      "stop_conditions": [
+        "Trace lineage requires live vendor data to exist.",
+        "Replay metrics drift because trace attachment changed the decision logic."
+      ],
+      "completion_note": "Implemented in commit `bfbe86e`, validated on branch, and merged to `main` via fast-forward at `bfbe86e`.",
+      "completion_evidence": [
+        "commit:bfbe86e",
+        "tests:.venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py tests/test_dmp_review_trace.py -> 7 passed",
+        "tests:.venv/bin/python -m pytest -q -> 94 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "merge:fast-forwarded to main at bfbe86e"
+      ],
+      "completed_in_commit": "bfbe86e"
+    },
+    {
+      "id": "LEAF-G11-001",
+      "gate": "Gate 11",
+      "title": "Define PlaybookSpec and ExecutionTemplateSpec without creating a second stack family",
+      "prerequisites": [
+        "LEAF-G10-001"
+      ],
+      "scope": "Add typed playbook and execution-template schemas and a registry format that can represent the current live playbooks without touching StackDefinition or CoefficientSet.",
+      "files_expected": [
+        "src/nvda_desk/schemas/playbook_registry.py",
+        "config/playbook_registry.example.yaml",
+        "docs/planning/2026-03-24_PLAYBOOK_REGISTRY_SPEC.md",
+        "tests/test_playbook_registry.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "config/**",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src/nvda_desk/schemas/calibration.py",
+        "frontend",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Define PlaybookSpec and ExecutionTemplateSpec as first-class typed contracts.",
+        "Choose one checked-in registry format that matches existing repo config patterns.",
+        "Keep StackDefinition and CoefficientSet as the canonical stack/config surfaces."
+      ],
+      "validation_tasks": [
+        "Add schema and round-trip registry tests.",
+        "Prove that playbook specs can express the current four live playbooks and their execution styles."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The repo has a typed, registry-backed playbook surface without stack-schema duplication.",
+      "merge_gate": "Playbooks and execution templates become explicit artefacts while stack and coefficient ownership remain unchanged.",
+      "status": "complete",
+      "execution_sequence": 4,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "acceptance_criteria": [
+        "The playbook registry must represent current live playbooks and execution templates cleanly.",
+        "A second overlapping stack schema must not be introduced.",
+        "The registry format must be checked in and testable offline."
+      ],
+      "stop_conditions": [
+        "The design starts folding stack configuration into playbook specs.",
+        "The registry needs live system calls to load."
+      ],
+      "completion_note": "Implemented in commit `2781950`, validated on branch, and merged to `main` via fast-forward at `2781950`.",
+      "completion_evidence": [
+        "commit:2781950",
+        "tests:.venv/bin/python -m pytest -q tests/test_playbook_registry.py -> 3 passed",
+        "merge:fast-forwarded to main at 2781950"
+      ],
+      "completed_in_commit": "2781950"
+    },
+    {
+      "id": "LEAF-G12-001",
+      "gate": "Gate 12",
+      "title": "Backfill the four live Gate-D playbooks into the registry",
+      "prerequisites": [
+        "LEAF-G11-001"
+      ],
+      "scope": "Encode continuation_ladder, compression_breakout, pin_reversion, and negative_gamma_flush as checked-in playbook specs and execution-template specs.",
+      "files_expected": [
+        "config/playbook_registry.example.yaml",
+        "fixtures/replay/**",
+        "tests/test_playbook_registry.py"
+      ],
+      "allowed_touches": [
+        "config/**",
+        "fixtures/**",
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "new playbook invention",
+        "frontend",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Backfill the four live playbooks exactly as they behave today.",
+        "Encode their priority order, action biases, sizing fractions, hedge requirements, invalidation states, and exit-plan shapes.",
+        "Document any field that cannot yet be expressed and fix the schema rather than hiding it."
+      ],
+      "validation_tasks": [
+        "Add parity fixtures for the four playbooks.",
+        "Ensure registry artefacts can express current execution styles without ambiguity."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py",
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py",
+        ".venv/bin/python -m pytest -q tests/test_playbook_registry.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All four live playbooks exist as checked-in registry artefacts and the registry surface can express their current behaviour.",
+      "merge_gate": "The registry is faithful to the current code, not an aspirational rewrite.",
+      "status": "complete",
+      "execution_sequence": 5,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_playbook_registry.py"
+      ],
+      "acceptance_criteria": [
+        "The four current playbooks must be encoded one-for-one in the registry.",
+        "Priority order must remain continuation_ladder, compression_breakout, pin_reversion, negative_gamma_flush throughout this plan.",
+        "This leaf must not add new playbooks."
+      ],
+      "stop_conditions": [
+        "Backfill requires changing current runtime behaviour to fit the registry.",
+        "A live playbook cannot be represented without hiding an execution rule."
+      ],
+      "completion_note": "Implemented in commit `4420b2e`, validated on branch, and merged to `main` via fast-forward at `4420b2e`.",
+      "completion_evidence": [
+        "commit:4420b2e",
+        "tests:.venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_playbook_registry.py -> 12 passed",
+        "merge:fast-forwarded to main at 4420b2e"
+      ],
+      "completed_in_commit": "4420b2e"
+    },
+    {
+      "id": "LEAF-G13-001",
+      "gate": "Gate 13",
+      "title": "Switch runtime playbook loading to the registry and prove no-drift parity",
+      "prerequisites": [
+        "LEAF-G12-001"
+      ],
+      "scope": "Move the live playbook and execution-template lookup out of hard-coded service internals and into the checked-in registry, with parity tests proving no behaviour drift.",
+      "files_expected": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_registry.py",
+        "tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/**",
+        "src/nvda_desk/schemas/**",
+        "config/**",
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "new playbook invention",
+        "frontend",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Load playbook and execution-template definitions from the checked-in registry.",
+        "Keep decision logic deterministic and current behaviour unchanged.",
+        "Add parity tests that compare registry-backed behaviour with the current fixture expectations."
+      ],
+      "validation_tasks": [
+        "Run the existing Gate D and Gate F behaviour tests.",
+        "Add direct registry-parity tests for playbook ordering and execution style mapping."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py",
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py",
+        ".venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py",
+        ".venv/bin/python -m pytest -q tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The runtime loads the four live playbooks from the registry and existing behaviour remains unchanged under targeted tests and replay fixtures.",
+      "merge_gate": "Registry migration is proven by parity, not assumed.",
+      "status": "complete",
+      "execution_sequence": 6,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_replay_compare_runtime.py tests/test_runtime_parity_registry_playbooks.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Current playbook outputs must remain stable under the existing fixture scenarios.",
+        "Replay comparison results for the checked-in fixture pack must remain materially unchanged.",
+        "The registry-backed loader must become the only live playbook source of truth."
+      ],
+      "stop_conditions": [
+        "Registry loading changes current outcomes and parity cannot explain why.",
+        "The migration requires hidden fallback logic that keeps the hard-coded paths alive."
+      ],
+      "completion_note": "Implemented in commit `eb4a267` predecessor branch `d112766`, validated on branch, and merged to `main` via fast-forward closeout at `9a763de`.",
+      "completion_evidence": [
+        "branch_commit:d112766",
+        "tests:.venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_replay_compare_runtime.py tests/test_runtime_parity_registry_playbooks.py -> 16 passed",
+        "tests:.venv/bin/python -m pytest -q -> 105 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "merge:fast-forwarded to main at 9a763de"
+      ],
+      "completed_in_commit": "d112766"
+    },
+    {
+      "id": "LEAF-G14-001",
+      "gate": "Gate 14",
+      "title": "Freeze contract-import tranche A manifest for the current live playbooks",
+      "prerequisites": [
+        "LEAF-G13-001"
+      ],
+      "scope": "Select one bounded tranche of ready-for-contract-import items that materially deepen the current four-playbook runtime without opening a new ontology or live-vendor dependency swamp.",
+      "files_expected": [
+        "docs/planning/2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.md",
+        "docs/planning/2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.json",
+        "tests/test_import_registry_and_mapping.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "runtime logic",
+        "frontend",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Freeze tranche A as thirteen named backlog items that directly support the current live playbooks and review surfaces.",
+        "Record each item's blockers, intended contract target, and whether the leaf outcome is concept-contract-only or implemented runtime.",
+        "Write explicit stop rules: no vendor feeds, no new ontology work, no broad playbook expansion, no silent promotion to approved runtime."
+      ],
+      "validation_tasks": [
+        "Ensure every selected tranche item exists in the executable backlog report and remains ready_for_contract_import.",
+        "Ensure the manifest preserves grammar order and does not leapfrog into named playbook expansion."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_import_registry_and_mapping.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "One bounded tranche manifest exists with exact canonical IDs, blockers, contract targets, and stop rules.",
+      "merge_gate": "The tranche is small enough to execute honestly and rich enough to deepen the current runtime.",
+      "status": "complete",
+      "execution_sequence": 7,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_import_registry_and_mapping.py"
+      ],
+      "acceptance_criteria": [
+        "Tranche A must remain capped at the thirteen named backlog items listed in the canonical extension plan.",
+        "Every item must retain its backlog provenance and blocker list.",
+        "The manifest must separate concept-contract-only outcomes from implemented-runtime outcomes."
+      ],
+      "stop_conditions": [
+        "The tranche expands beyond the frozen thirteen items.",
+        "An item would require live broker or live options-vendor access to continue honestly."
+      ],
+      "completion_note": "Implemented in commit `eb4a267`, validated on branch, and merged to `main` via fast-forward at `eb4a267`.",
+      "tranche_items": [
+        "archive-module-006",
+        "archive-module-009",
+        "archive-module-018",
+        "archive-module-014",
+        "archive-module-011",
+        "archive-module-010",
+        "archive-module-016",
+        "archive-evaluator-eval02",
+        "archive-module-051",
+        "archive-module-043",
+        "archive-module-023",
+        "archive-module-024",
+        "archive-module-020"
+      ],
+      "completion_evidence": [
+        "commit:eb4a267",
+        "tests:.venv/bin/python -m pytest -q tests/test_import_registry_and_mapping.py -> 13 passed",
+        "tests:.venv/bin/python -m pytest -q -> 107 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:make alembic-sql -> passed",
+        "merge:fast-forwarded to main at eb4a267"
+      ],
+      "completed_in_commit": "eb4a267"
+    },
+    {
+      "id": "LEAF-G15-001",
+      "gate": "Gate 15",
+      "title": "Import tranche A upstream detectors as typed contracts with DMP envelopes",
+      "prerequisites": [
+        "LEAF-G14-001"
+      ],
+      "scope": "Bring the tranche-A temporal, regime, and options detectors into the repo as typed contract surfaces and DMP-emitting components without claiming full live-data readiness.",
+      "files_expected": [
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/test_tranche_a_upstream_contracts.py",
+        "docs/planning/2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.md"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "fixtures/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live vendor integrations",
+        "named playbook expansion"
+      ],
+      "implementation_tasks": [
+        "Import event_flag_capture, realized_volatility_engine, volume_spike_filter, peer_divergence, gamma_pressure, iv_vs_rv_analysis, and skew_inflection as typed contract surfaces.",
+        "Wrap each imported output in DMP and keep unfulfilled external dependencies explicit in the contract notes.",
+        "Use deterministic fixtures or existing stage outputs where possible; fence anything that still depends on unavailable live feeds."
+      ],
+      "validation_tasks": [
+        "Add contract tests for each imported upstream detector.",
+        "Prove imported outputs serialise through DMP and can be cited in review lineage."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_upstream_contracts.py",
+        ".venv/bin/python -m pytest -q tests/test_dmp_protocol.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The tranche-A upstream detectors exist as typed, DMP-emitting contract surfaces with explicit dependency fences.",
+      "merge_gate": "Imported detectors deepen the runtime substrate without pretending that missing live-data dependencies are solved.",
+      "status": "complete",
+      "execution_sequence": 8,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_upstream_contracts.py tests/test_dmp_protocol.py"
+      ],
+      "acceptance_criteria": [
+        "The seven upstream tranche-A items must exist as typed contracts with packet outputs.",
+        "Imported detectors must not hide unsatisfied live-data dependencies.",
+        "Imported outputs must remain reviewable and replayable."
+      ],
+      "stop_conditions": [
+        "An imported detector requires live vendor access to define its contract honestly.",
+        "The implementation starts bypassing the DMP envelope or the existing runtime order."
+      ],
+      "completion_note": "Implemented in commit `c3600b6`, validated on branch, and merged to `main` via fast-forward at `c3600b6`.",
+      "tranche_items": [
+        "archive-module-006",
+        "archive-module-009",
+        "archive-module-018",
+        "archive-module-014",
+        "archive-module-011",
+        "archive-module-010",
+        "archive-module-016"
+      ],
+      "completion_evidence": [
+        "commit:c3600b6",
+        "tests:.venv/bin/python -m pytest -q tests/test_tranche_a_upstream_contracts.py tests/test_dmp_protocol.py -> 6 passed",
+        "tests:.venv/bin/python -m pytest -q -> 110 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:make alembic-sql -> passed",
+        "merge:fast-forwarded to main at c3600b6"
+      ],
+      "completed_in_commit": "c3600b6"
+    },
+    {
+      "id": "LEAF-G16-001",
+      "gate": "Gate 16",
+      "title": "Import tranche A posture and eligibility selectors with no live-playbook drift",
+      "prerequisites": [
+        "LEAF-G15-001"
+      ],
+      "scope": "Bring the tranche-A posture and eligibility items into the repo as typed contract surfaces, then let the current four playbooks cite them without changing outcome parity.",
+      "files_expected": [
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/test_tranche_a_posture_eligibility_contracts.py",
+        "tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "fixtures/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "new playbooks",
+        "live integrations"
+      ],
+      "implementation_tasks": [
+        "Import signal_conflict_detector, model_confidence_scorer, conviction_tier_allocator, entry_gate, ladder_constructor, and archetype_matcher as typed contract surfaces.",
+        "Thread their outputs into the registry-backed live playbook path only behind parity-preserving integration tests.",
+        "Keep any unresolved dependency explicit as a fenced contract gap rather than a hidden stub."
+      ],
+      "validation_tasks": [
+        "Add contract tests for each imported selector.",
+        "Re-run live-playbook parity tests to ensure the four current playbooks remain behaviourally stable."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_posture_eligibility_contracts.py",
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py",
+        ".venv/bin/python -m pytest -q tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The tranche-A posture and eligibility selectors are typed, packetised, and integrated without changing current live-playbook outcomes.",
+      "merge_gate": "The new selectors deepen the substrate but do not silently rewrite the current playbook rules.",
+      "status": "complete",
+      "execution_sequence": 9,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_posture_eligibility_contracts.py tests/test_posture_risk_and_playbook.py tests/test_runtime_parity_registry_playbooks.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "The six posture and eligibility tranche-A items must exist as typed contract surfaces.",
+        "The registry-backed four-playbook runtime must remain parity-stable under the existing fixtures.",
+        "This leaf must not start named playbook expansion."
+      ],
+      "stop_conditions": [
+        "Parity breaks and the change cannot be explained by an intentional contract adoption.",
+        "The imported selectors demand new live feeds or new playbooks to make sense."
+      ],
+      "completion_note": "Implemented in commit `c2148c6`, validated on branch, and merged to `main` via fast-forward at `c2148c6`.",
+      "tranche_items": [
+        "archive-evaluator-eval02",
+        "archive-module-051",
+        "archive-module-043",
+        "archive-module-023",
+        "archive-module-024",
+        "archive-module-020"
+      ],
+      "completion_evidence": [
+        "commit:c2148c6",
+        "tests:.venv/bin/python -m pytest -q tests/test_tranche_a_posture_eligibility_contracts.py tests/test_posture_risk_and_playbook.py tests/test_runtime_parity_registry_playbooks.py -> 10 passed",
+        "tests:.venv/bin/python -m pytest -q -> 113 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:make alembic-sql -> passed",
+        "merge:fast-forwarded to main at c2148c6"
+      ],
+      "completed_in_commit": "c2148c6"
+    },
+    {
+      "id": "LEAF-G17-001",
+      "gate": "Gate 17",
+      "title": "Bind tranche A outputs into review and replay without promotion theatre",
+      "prerequisites": [
+        "LEAF-G16-001"
+      ],
+      "scope": "Extend review packets and replay artefacts so the imported tranche-A modules can be cited, attributed, and compared without falsely claiming that they are approved trading modules.",
+      "files_expected": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/calibration.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/test_tranche_a_review_replay.py",
+        "docs/planning/2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.md"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live brokerage",
+        "approval-state promotion"
+      ],
+      "implementation_tasks": [
+        "Add review and replay surfaces that can cite tranche-A module packets and contract provenance.",
+        "Keep the maturity state honest: concept-contract or implemented-runtime only where proven.",
+        "Write explicit notes for anything still fenced by unresolved dependencies."
+      ],
+      "validation_tasks": [
+        "Add replay/review tests for module attribution and packet lineage.",
+        "Confirm the promotion surface does not mislabel tranche-A modules as approved."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_review_replay.py",
+        ".venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py",
+        ".venv/bin/python -m pytest -q tests/test_module_registry_promotion.py"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Tranche-A imports are reviewable and replayable, and their maturity state remains truthful.",
+      "merge_gate": "The repo can now deepen the current runtime honestly without pretending that imported modules are already production-ready trading logic.",
+      "status": "complete",
+      "execution_sequence": 10,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_tranche_a_review_replay.py tests/test_replay_compare_runtime.py tests/test_module_registry_promotion.py",
+        ".venv/bin/python -m pytest -q"
+      ],
+      "acceptance_criteria": [
+        "Review packets must cite tranche-A packet lineage and module attribution.",
+        "Replay artefacts must be able to compare runs that include tranche-A contract surfaces.",
+        "Promotion state must remain honest and explicit."
+      ],
+      "stop_conditions": [
+        "Review or replay surfaces start implying live-trading approval for contract-only imports.",
+        "The leaf would require live broker execution to validate the imported modules honestly."
+      ],
+      "completion_note": "Implemented in commit `aaa0179`, validated on branch, and merged to `main` via fast-forward at `aaa0179`.",
+      "completion_evidence": [
+        "commit:aaa0179",
+        "tests:.venv/bin/python -m pytest -q tests/test_tranche_a_review_replay.py tests/test_replay_compare_runtime.py tests/test_module_registry_promotion.py -> 9 passed",
+        "tests:.venv/bin/python -m pytest -q -> 115 passed",
+        "tests:make check -> ruff passed, mypy passed, pytest passed",
+        "tests:make alembic-sql -> passed",
+        "merge:fast-forwarded to main at aaa0179"
+      ],
+      "completed_in_commit": "aaa0179"
+    },
+    {
+      "id": "LEAF-G18-001",
+      "gate": "Gate 18",
+      "title": "Define shared market-data substrate contracts before wider context imports",
+      "prerequisites": [
+        "LEAF-G17-001"
+      ],
+      "scope": "Import spot_data_capture, peer_equity_capture, options_data_capture, options_metadata_capture, macro_data_capture, vwap_accumulator, and vwap_roc as typed DMP-emitting substrate contracts without pretending live market-feed acquisition is solved.",
+      "files_expected": [
+        "src/nvda_desk/schemas/imported_modules/market_substrate.py",
+        "src/nvda_desk/services/imported_modules/market_substrate.py",
+        "docs/planning/2026-03-24_SHARED_MARKET_SUBSTRATE_CONTRACTS.md",
+        "tests/test_market_substrate_contracts.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live broker order paths",
+        "named playbook registry contents"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for the seven shared substrate modules in gate-map order.",
+        "Emit DMP packets for each substrate contract while keeping unsatisfied feed dependencies explicit as fences or runtime proxies.",
+        "Write one short contract note explaining the proxy-vs-fence rule for shared substrate imports."
+      ],
+      "validation_tasks": [
+        "Add contract tests proving the seven substrate modules emit in the frozen order.",
+        "Prove fenced feed gaps remain explicit and packet serialisation stays stable."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_market_substrate_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The shared market-data substrate exists as typed contract surfaces with honest dependency fences.",
+      "merge_gate": "The repo gains reusable substrate contracts without pretending that live feeds or broker capture are already solved.",
+      "status": "complete",
+      "execution_sequence": 10,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_market_substrate_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "All seven gate-18 substrate modules must exist as typed contract outputs with DMP packets.",
+        "Feed dependencies must remain explicit as proxied or fenced; no fake live readiness.",
+        "The output order must match the gate-map substrate order exactly."
+      ],
+      "stop_conditions": [
+        "The implementation starts inventing live market-feed ingestion or broker adapters.",
+        "The substrate import leaks into named-playbook expansion or hidden execution logic."
+      ],
+      "completion_note": "Gate 18 complete on main; shared market-data substrate contracts are now frozen as typed DMP surfaces with honest proxy-versus-fence boundaries.",
+      "completion_evidence": [
+        "Implementation commit fe768f8 adds typed substrate schemas, the Gate-18 contract service, the short substrate note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_market_substrate_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 118 passed; make check -> passed; make alembic-sql -> passed.",
+        "The seven substrate contracts emit in frozen order and keep live feed gaps explicit as runtime proxies or fenced dependencies."
+      ],
+      "completed_in_commit": "fe768f8",
+      "merge_commit": "fe768f8",
+      "merged_to_main": true,
+      "main_closeout_commit": "165dda5"
+    },
+    {
+      "id": "LEAF-G19-001",
+      "gate": "Gate 19",
+      "title": "Import the remaining context and scanner contracts above the shared substrate",
+      "prerequisites": [
+        "LEAF-G18-001"
+      ],
+      "scope": "Import macro_signal_score, execution_context_score, vix_spread_detector, vol_corridor, options_behaviour_cluster, asia_precursor_context_filter, macro_adaptive_weighting_filter, and engine_score as typed DMP-emitting context/scanner contracts with explicit substrate dependencies and no live-playbook rewrite.",
+      "files_expected": [
+        "src/nvda_desk/schemas/imported_modules/context_scanners.py",
+        "src/nvda_desk/services/imported_modules/context_scanners.py",
+        "docs/planning/2026-03-24_CONTEXT_SCANNER_CONTRACTS.md",
+        "tests/test_context_scanner_contracts.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live broker order paths",
+        "named playbook registry contents"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for the eight context/scanner modules in gate-map order.",
+        "Bind those outputs to the Gate-18 substrate contracts and the already-imported tranche-A detectors where appropriate.",
+        "Keep every unresolved dependency explicit instead of inventing hidden score stacks or live feeds."
+      ],
+      "validation_tasks": [
+        "Add contract tests proving the eight context/scanner modules emit in the frozen order.",
+        "Prove engine_score and execution_context_score carry explicit dependency provenance rather than fake approval state."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_context_scanner_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The remaining context and scanner imports exist as typed contract surfaces above the shared substrate.",
+      "merge_gate": "The repo deepens the context/scanner universe without silently rewriting the four live playbooks or claiming live readiness.",
+      "status": "complete",
+      "execution_sequence": 11,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_context_scanner_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "All eight gate-19 modules must exist as typed contract outputs with DMP packets.",
+        "Dependency provenance must cite the shared substrate or prior imported signals explicitly.",
+        "No imported scanner may be labelled approved or live-trading-ready by default."
+      ],
+      "stop_conditions": [
+        "The implementation starts inventing execution-chain behaviour or broker actions.",
+        "The import requires a new hidden ontology or bypasses the shared substrate contracts."
+      ],
+      "completion_note": "Gate 19 complete on main; the remaining context/scanner layer now exists as typed DMP surfaces with explicit provenance and no fake approval state.",
+      "completion_evidence": [
+        "Implementation commit 2761cb8 adds typed context/scanner schemas, the Gate-19 contract service, the short context-scanner note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_context_scanner_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 121 passed; make check -> passed; make alembic-sql -> passed.",
+        "Execution-context and engine-score contracts now carry explicit upstream slug provenance and satisfied dependency fences instead of fake approval labels."
+      ],
+      "completed_in_commit": "2761cb8",
+      "merge_commit": "2761cb8",
+      "merged_to_main": true,
+      "main_closeout_commit": "718b540"
+    },
+    {
+      "id": "LEAF-G20-001",
+      "gate": "Gate 20",
+      "title": "Import the remaining eligibility and posture enrichers for the current four playbooks",
+      "prerequisites": [
+        "LEAF-G19-001"
+      ],
+      "scope": "Import fill_bias_adjuster, archetype_tagger, compression_regime_detector, obv_vi_flow_confirmation, tail_hedge_injector, and volatility_sentiment_index as typed DMP-emitting enrichers with explicit Gate-19 provenance and no live execution claims.",
+      "files_expected": [
+        "src/nvda_desk/schemas/imported_modules/posture_enrichers.py",
+        "src/nvda_desk/services/imported_modules/posture_enrichers.py",
+        "docs/planning/2026-03-24_POSTURE_ENRICHER_CONTRACTS.md",
+        "tests/test_posture_enricher_contracts.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live broker order paths",
+        "named playbook registry contents"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for the six Gate-20 enrichers in gate-map order.",
+        "Bind those outputs to Gate-19 context/scanner contracts plus existing posture and eligibility surfaces where required.",
+        "Keep every unresolved dependency explicit instead of inventing execution-chain behaviour or promoted readiness."
+      ],
+      "validation_tasks": [
+        "Add contract tests proving the six enrichers emit in the frozen order.",
+        "Prove fill_bias_adjuster and tail_hedge_injector carry explicit dependency provenance and remain advisory-only."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_enricher_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The remaining current-runtime enrichers exist as typed advisory contract surfaces with explicit upstream provenance.",
+      "merge_gate": "The repo finishes the current non-execution contract tranche without widening into broker or order-chain work.",
+      "status": "complete",
+      "execution_sequence": 12,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_enricher_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "All six Gate-20 enrichers must exist as typed contract outputs with DMP packets.",
+        "Dependency provenance must cite Gate-19 contracts or current posture/eligibility surfaces explicitly.",
+        "No Gate-20 enricher may imply live execution readiness or hidden broker-side behaviour."
+      ],
+      "stop_conditions": [
+        "The implementation starts inventing order-routing or broker action semantics.",
+        "The import widens into Gate-21 execution-chain work or named-playbook expansion."
+      ],
+      "completion_note": "Gate 20 complete on main; the remaining current-runtime enrichers now exist as typed advisory contract surfaces and the contract-import tranche stops cleanly before Gate 21 execution-chain work.",
+      "completion_evidence": [
+        "Implementation commit 3f3d9de adds typed posture-enricher schemas, the Gate-20 contract service, the short posture-enricher note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_posture_enricher_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 124 passed; make check -> passed; make alembic-sql -> passed.",
+        "Fill-bias and tail-hedge enrichers now carry explicit advisory-only provenance, while OBV flow confirmation keeps raw volume-tape dependencies fenced rather than hidden."
+      ],
+      "completed_in_commit": "3f3d9de",
+      "merge_commit": "3f3d9de",
+      "merged_to_main": true,
+      "main_closeout_commit": "pending"
+    },
+    {
+      "id": "LEAF-G21-001",
+      "gate": "Gate 21",
+      "title": "Import execution-planning and broker-abstraction core as typed DMP contracts",
+      "prerequisites": [
+        "LEAF-G20-001"
+      ],
+      "scope": "Add the five Gate-21 execution-planning modules as typed DMP-emitting contract surfaces while keeping broker boundaries, dispatch loops, and fill acknowledgements explicitly out of scope.",
+      "files_expected": [
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/execution_planning.py",
+        "src/nvda_desk/services/imported_modules/execution_planning.py",
+        "tests/contract_chain_fixtures.py",
+        "tests/test_execution_planning_contracts.py",
+        "docs/planning/2026-03-24_EXECUTION_PLANNING_CONTRACTS.md"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "live broker paths",
+        "approval-state promotion"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for broker_adapter, entry_planner, position_allocator, order_simulator, and run_trading_bot.",
+        "Emit Gate-21 packets in frozen order as DMP v1 plus upgraded DMP v2 packets.",
+        "Keep broker requests, routing acknowledgements, and daemon-loop state fenced outside the deterministic runtime."
+      ],
+      "validation_tasks": [
+        "Prove the frozen five-module order is preserved.",
+        "Prove the supportive fixture yields an advisory preview plan without pretending the broker bridge exists.",
+        "Prove the stressed fixture degrades honestly to suppressed planning and stand-down dispatch."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_planning_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All five Gate-21 planning modules exist as typed contract outputs with an honest dry-run boundary.",
+      "merge_gate": "The execution-planning chain remains advisory-only and does not imply live routing, fill acknowledgements, or bot autonomy.",
+      "status": "complete",
+      "execution_sequence": 14,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_planning_contracts.py",
+        ".venv/bin/python -m pytest -q",
+        ".venv/bin/python -m ruff check src tests",
+        ".venv/bin/python -m mypy src tests"
+      ],
+      "acceptance_criteria": [
+        "All five Gate-21 modules must exist as typed contract outputs with DMP packets.",
+        "Broker routing must stay fenced and preview-only.",
+        "Supportive fixtures may produce advisory plans, but no live execution claims may appear."
+      ],
+      "stop_conditions": [
+        "The implementation starts inventing live broker callbacks, routing credentials, or daemon-loop autonomy.",
+        "The import widens into Gate-22 lifecycle state or Gate-23 review-chain work."
+      ],
+      "completion_note": "Gate 21 complete on main; the execution-planning core now exists as typed dry-run contract surfaces and Gate 22 remains unleafed pending the next explicit planning decision.",
+      "completion_evidence": [
+        "Implementation commit recorded in the local git log for the Gate-21 branch adds typed execution-planning schemas, the Gate-21 contract service, the short supporting note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_execution_planning_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 129 passed; .venv/bin/python -m ruff check src tests -> All checks passed!; .venv/bin/python -m mypy src tests -> Success: no issues found in 123 source files.",
+        "The broker boundary remains fenced while supportive fixtures still emit an advisory preview plan and stressed fixtures degrade honestly to stand-down state."
+      ],
+      "merged_to_main": true,
+      "main_closeout_commit": "pending_local_fast_forward"
+    },
+    {
+      "id": "LEAF-G22-001",
+      "gate": "Gate 22",
+      "title": "Import execution state, exits, and lifecycle chain as typed DMP contracts",
+      "prerequisites": [
+        "LEAF-G21-001"
+      ],
+      "scope": "Add the eleven Gate-22 lifecycle modules as typed DMP-emitting contract surfaces while keeping fills, ladder continuity, and broker feedback explicitly preview-only or fenced.",
+      "files_expected": [
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/execution_lifecycle.py",
+        "src/nvda_desk/services/imported_modules/execution_lifecycle.py",
+        "tests/contract_chain_fixtures.py",
+        "tests/test_execution_lifecycle_contracts.py",
+        "docs/planning/2026-03-24_EXECUTION_LIFECYCLE_CONTRACTS.md"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "persistent live state machines",
+        "booked PnL or review attribution"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for the eleven lifecycle modules from dynamic_partial_exit_model through trade_logger.",
+        "Emit Gate-22 packets in frozen order as DMP v1 plus upgraded DMP v2 packets.",
+        "Keep fill history, broker feedback, and ladder continuity honesty explicit instead of guessed."
+      ],
+      "validation_tasks": [
+        "Prove the frozen eleven-module order is preserved.",
+        "Prove supportive fixtures yield preview position, stop, tag, and trade-log state without claiming live fills.",
+        "Prove stressed fixtures degrade honestly into permission-constrained and stand-down traces."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_lifecycle_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All eleven Gate-22 lifecycle modules exist as typed contract outputs with honest preview-state boundaries.",
+      "merge_gate": "Lifecycle outputs remain preview-only and do not imply real fills, cross-session continuity, or persistent broker feedback.",
+      "status": "complete",
+      "execution_sequence": 15,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_lifecycle_contracts.py",
+        ".venv/bin/python -m pytest -q",
+        ".venv/bin/python -m ruff check src tests",
+        ".venv/bin/python -m mypy src tests"
+      ],
+      "acceptance_criteria": [
+        "All eleven Gate-22 modules must exist as typed contract outputs with DMP packets.",
+        "Preview position and stop state must remain clearly non-booked and non-broker-confirmed.",
+        "Missing fill history and feedback surfaces must stay fenced rather than guessed."
+      ],
+      "stop_conditions": [
+        "The implementation starts inventing persistent broker-side lifecycle state or booked fills.",
+        "The import widens into Gate-23 review-chain work."
+      ],
+      "completion_note": "Gate 22 complete on main; the execution-state and lifecycle chain now exists as typed preview-only contract surfaces and Gate 23 remains unleafed pending the next explicit planning decision.",
+      "completion_evidence": [
+        "Implementation commit recorded in the local git log for the Gate-22 branch adds typed execution-lifecycle schemas, the Gate-22 contract service, the short supporting note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_execution_lifecycle_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 132 passed; .venv/bin/python -m ruff check src tests -> All checks passed!; .venv/bin/python -m mypy src tests -> Success: no issues found in 126 source files.",
+        "Supportive fixtures keep lifecycle outputs traceable without claiming live fills, while stressed fixtures degrade honestly into permission-constrained preview state."
+      ],
+      "merged_to_main": true,
+      "main_closeout_commit": "pending_local_fast_forward"
+    },
+    {
+      "id": "LEAF-G23-001",
+      "gate": "Gate 23",
+      "title": "Import review, preview-PnL, attribution, and variant-tracking chain as typed DMP contracts",
+      "prerequisites": [
+        "LEAF-G22-001"
+      ],
+      "scope": "Add the nine Gate-23 review-chain modules as typed DMP-emitting contract surfaces while keeping preview PnL, attribution, and macro alignment explicitly descriptive rather than promotional.",
+      "files_expected": [
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/review_attribution.py",
+        "src/nvda_desk/services/imported_modules/review_attribution.py",
+        "tests/contract_chain_fixtures.py",
+        "tests/test_review_attribution_contracts.py",
+        "docs/planning/2026-03-24_REVIEW_ATTRIBUTION_CONTRACTS.md"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "booked broker ledger claims",
+        "promotion-state theatre"
+      ],
+      "implementation_tasks": [
+        "Define typed contract outputs for profit_loss_ledger, module_trace_attribution, daily_summary, feedback_summary_writer, module_score_attributor, variant_trace_logger, variant_performance_tracker, confidence_divergence_logger, and macro_alignment_checker.",
+        "Emit Gate-23 packets in frozen order as DMP v1 plus upgraded DMP v2 packets.",
+        "Keep preview PnL, attribution, confidence divergence, and macro alignment strictly descriptive and review-oriented."
+      ],
+      "validation_tasks": [
+        "Prove the frozen nine-module order is preserved.",
+        "Prove supportive fixtures yield preview PnL and variant-trace outputs without pretending booked results.",
+        "Prove stressed fixtures expose negative preview PnL, macro caution, and confidence divergence honestly."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_review_attribution_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All nine Gate-23 review-chain modules exist as typed contract outputs with explicit preview-ledger honesty.",
+      "merge_gate": "Review-chain outputs remain descriptive and do not imply booked PnL, approval state, or live-trading promotion.",
+      "status": "complete",
+      "execution_sequence": 16,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_review_attribution_contracts.py",
+        ".venv/bin/python -m pytest -q",
+        ".venv/bin/python -m ruff check src tests",
+        ".venv/bin/python -m mypy src tests"
+      ],
+      "acceptance_criteria": [
+        "All nine Gate-23 modules must exist as typed contract outputs with DMP packets.",
+        "Preview PnL and attribution must remain clearly non-booked and non-promotional.",
+        "Macro caution and confidence divergence must remain descriptive review surfaces only."
+      ],
+      "stop_conditions": [
+        "The implementation starts claiming booked fills, promotion state, or live-approval outcomes.",
+        "The import widens into Gate-24 scope-definition work."
+      ],
+      "completion_note": "Gate 23 complete on main; the review-chain, preview-PnL, attribution, and variant-tracking surfaces now exist as typed descriptive contract outputs and Gate 24 remains unleafed pending the next planning decision.",
+      "completion_evidence": [
+        "Implementation commit recorded in the local git log for the Gate-23 branch adds typed review-attribution schemas, the Gate-23 contract service, the short supporting note, and contract tests.",
+        "Validation receipts: .venv/bin/python -m pytest -q tests/test_review_attribution_contracts.py -> 3 passed; .venv/bin/python -m pytest -q -> 135 passed; .venv/bin/python -m ruff check src tests -> All checks passed!; .venv/bin/python -m mypy src tests -> Success: no issues found in 129 source files.",
+        "Supportive fixtures keep preview PnL and variant tracing descriptive, while stressed fixtures surface macro caution and confidence divergence honestly without pretending promotion state."
+      ],
+      "merged_to_main": true,
+      "main_closeout_commit": "pending_local_fast_forward"
+    },
+    {
+      "id": "LEAF-G27-001",
+      "gate": "Gate 27",
+      "title": "Retire stale placeholder rows and partition the remaining ready backlog into executable gates",
+      "prerequisites": [
+        "LEAF-G23-001"
+      ],
+      "scope": "Administratively retire the never-leafed Gate 24\u201326 placeholder rows on the persisted branch, freeze the exact 61-item Gate 28\u201339 partition, and re-open execution at Gate 28 with no orphan ready items.",
+      "files_expected": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json",
+        "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md",
+        "docs/planning/2026-03-25_REMAINING_READY_IMPORT_GATE_PLAN.md",
+        "tests/test_planning_ready_import_backlog_partition.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "PLANS.md",
+        "docs/planning/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "src runtime code",
+        "frontend",
+        "named playbook expansion"
+      ],
+      "implementation_tasks": [
+        "Retire the stale Gate 24\u201326 placeholder rows explicitly rather than pretending they executed on this persisted branch.",
+        "Partition the 61 ready-for-contract-import items exactly once across Gates 28\u201339 by dependency cluster and grammar role.",
+        "Link every new executable gate to an exact leaf ID before reopening execution at Gate 28."
+      ],
+      "validation_tasks": [
+        "Prove the Gate 28\u201339 partition covers all 61 ready items with no overlap and no leftovers.",
+        "Prove the gate map, leaf ledger, scope note, and PLANS pointer all agree on the Gate 27 reset and Gate 28 reopening."
+      ],
+      "test_commands": [
+        ".venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_planning_ready_import_backlog_partition.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The stale placeholder rows are retired honestly and the 61-item ready backlog is partitioned exactly once across Gates 28\u201339.",
+      "merge_gate": "Gate 28 is reopened cleanly with no orphan ready items and no silent widening into scope-definition or named-playbook work.",
+      "status": "complete",
+      "execution_sequence": 17,
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_planning_ready_import_backlog_partition.py"
+      ],
+      "acceptance_criteria": [
+        "Gate 24\u201326 placeholders must be retired explicitly rather than left ambiguous.",
+        "The Gate 28\u201339 partition must cover all 61 ready items exactly once.",
+        "Gate 40 must remain an unleafed named-playbook placeholder only."
+      ],
+      "stop_conditions": [
+        "The planning reset starts claiming Gate 24\u201326 executed on this persisted branch.",
+        "The partition tries to absorb the 32 scope-definition items or named-playbook invention."
+      ],
+      "completion_note": "Gate 27 planning reset complete on main path; commit `7fb06c6` retires the stale Gate 24\u201326 placeholder rows and partitions the remaining 61 ready items across Gates 28\u201339 with exact planned leaves.",
+      "completion_evidence": [
+        "commit:7fb06c6",
+        "support_note:docs/planning/2026-03-25_REMAINING_READY_IMPORT_GATE_PLAN.md partitions all 61 ready items across Gates 28\u201339.",
+        "tests:python3 -m pytest -q tests/test_planning_gate_authority_consistency.py tests/test_planning_ready_import_backlog_partition.py -> 3 passed"
+      ],
+      "completed_in_commit": "7fb06c6"
+    },
+    {
+      "id": "LEAF-G28-001",
+      "gate": "Gate 28",
+      "title": "Import remaining-ready ingress substrate contracts",
+      "prerequisites": [
+        "LEAF-G27-001"
+      ],
+      "scope": "Bring the temporal flag, spot, macro, peer, VWAP, and realised-volatility ingress substrate into typed contract form.",
+      "planned_items": [
+        "archive-module-006",
+        "archive-module-001",
+        "archive-module-002",
+        "archive-module-008",
+        "archive-module-007",
+        "archive-module-005",
+        "archive-module-009"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE28_INGRESS_SUBSTRATE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 28 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 28 preserves the planned item order and exact item count of 7.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All seven ingress substrate modules exist as typed contract surfaces with explicit external-feed fences and no named-playbook widening.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 18,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate28_ingress_substrate_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 7 exact planned items may be closed inside Gate 28.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 28 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Implemented and reconciled on the persisted branch in commit `8d444a8`, validated under the dedicated Gate-28 attribution test, and merged to `main` via fast-forward at `8d444a8`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate28_ingress_substrate_contracts.py -> 1 passed",
+        "doc:docs/planning/2026-03-25_GATE28_INGRESS_SUBSTRATE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "8d444a8"
+    },
+    {
+      "id": "LEAF-G29-001",
+      "gate": "Gate 29",
+      "title": "Import remaining-ready market-context synthesis contracts",
+      "prerequisites": [
+        "LEAF-G28-001"
+      ],
+      "scope": "Convert the market-context synthesis layer into typed contracts above the ingress substrate.",
+      "planned_items": [
+        "archive-module-013",
+        "archive-module-014",
+        "archive-module-018",
+        "legacy-module-006",
+        "legacy-module-008",
+        "archive-module-022",
+        "archive-module-052"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE29_MARKET_CONTEXT_SYNTHESIS_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 29 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 29 preserves the planned item order and exact item count of 7.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All seven market-context synthesis modules exist as typed contracts with explicit upstream provenance and no execution-chain leakage.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 19,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate29_market_context_synthesis_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 7 exact planned items may be closed inside Gate 29.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 29 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Implemented and reconciled on the persisted branch in commit `76403de`, validated under the dedicated Gate-29 synthesis test, and merged to `main` via fast-forward at `76403de`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate29_market_context_synthesis_contracts.py -> 1 passed",
+        "doc:docs/planning/2026-03-25_GATE29_MARKET_CONTEXT_SYNTHESIS_CONTRACTS.md"
+      ],
+      "completed_in_commit": "76403de"
+    },
+    {
+      "id": "LEAF-G30-001",
+      "gate": "Gate 30",
+      "title": "Import remaining-ready options ingress and primary flow contracts",
+      "prerequisites": [
+        "LEAF-G29-001"
+      ],
+      "scope": "Convert the options-capture and primary options-flow analytics layer into typed contracts.",
+      "planned_items": [
+        "archive-module-003",
+        "archive-module-004",
+        "archive-module-011",
+        "archive-module-010",
+        "archive-module-016",
+        "archive-module-012",
+        "archive-module-019"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE30_OPTIONS_INGRESS_PRIMARY_FLOW_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 30 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 30 preserves the planned item order and exact item count of 7.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All seven options-ingress and primary flow modules exist as typed contracts with explicit chain/metadata/feed fences.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 20,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate30_options_ingress_primary_flow_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 7 exact planned items may be closed inside Gate 30.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 30 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Implemented and reconciled on the persisted branch in commit `fe657cf`, validated under the dedicated Gate-30 options-ingress test, and merged to `main` via fast-forward at `fe657cf`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate30_options_ingress_primary_flow_contracts.py -> 1 passed",
+        "doc:docs/planning/2026-03-25_GATE30_OPTIONS_INGRESS_PRIMARY_FLOW_CONTRACTS.md"
+      ],
+      "completed_in_commit": "fe657cf"
+    },
+    {
+      "id": "LEAF-G31-001",
+      "gate": "Gate 31",
+      "title": "Import remaining-ready higher-order context composites",
+      "prerequisites": [
+        "LEAF-G30-001"
+      ],
+      "scope": "Convert the context-composite and scanner bridge modules that sit above the primary context layers and feed later eligibility decisions.",
+      "planned_items": [
+        "legacy-module-005",
+        "archive-module-021",
+        "legacy-module-004",
+        "legacy-module-003"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE31_HIGHER_ORDER_CONTEXT_COMPOSITES_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 31 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 31 preserves the planned item order and exact item count of 4.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All four higher-order composite modules exist as typed contracts and remain descriptive rather than promotional.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 21,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate31_higher_order_context_composites.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 4 exact planned items may be closed inside Gate 31.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 31 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 31 higher-order composite tranche reconciled on the persisted branch and validated under the dedicated Gate-31 test before fast-forward merge to `main` at `a00c933`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate31_higher_order_context_composites.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE31_HIGHER_ORDER_CONTEXT_COMPOSITES.md"
+      ],
+      "completed_in_commit": "a00c933"
+    },
+    {
+      "id": "LEAF-G32-001",
+      "gate": "Gate 32",
+      "title": "Import remaining-ready archetype and entry-gate bridge contracts",
+      "prerequisites": [
+        "LEAF-G31-001"
+      ],
+      "scope": "Convert the archetype and entry-gate bridge surfaces that open the playbook-eligibility chain.",
+      "planned_items": [
+        "archive-module-020",
+        "archive-module-048",
+        "archive-module-023"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE32_ARCHETYPE_ENTRY_GATE_BRIDGE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 32 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 32 preserves the planned item order and exact item count of 3.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The three bridge modules exist as typed contracts with explicit dependence on upstream context outputs and no new playbook invention.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 22,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate32_archetype_entry_gate_bridge_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 3 exact planned items may be closed inside Gate 32.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 32 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 32 archetype/entry-gate bridge tranche reconciled on the persisted branch and validated under the dedicated Gate-32 test before fast-forward merge to `main` at `c2bc69d`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate32_archetype_entry_gate_bridge_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE32_ARCHETYPE_ENTRY_GATE_BRIDGE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "c2bc69d"
+    },
+    {
+      "id": "LEAF-G33-001",
+      "gate": "Gate 33",
+      "title": "Import remaining-ready ladder and execution-readiness overlays",
+      "prerequisites": [
+        "LEAF-G32-001"
+      ],
+      "scope": "Convert the ladder-construction and execution-readiness overlay modules that prepare expression surfaces without widening into broker truth claims.",
+      "planned_items": [
+        "archive-module-024",
+        "archive-module-026",
+        "archive-module-044",
+        "legacy-module-002"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE33_LADDER_EXECUTION_READINESS_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 33 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 33 preserves the planned item order and exact item count of 4.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All four ladder and readiness overlays exist as typed contracts with explicit advisory-only honesty.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 23,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate33_ladder_execution_readiness_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 4 exact planned items may be closed inside Gate 33.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 33 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 33 ladder/readiness tranche reconciled on the persisted branch, added the missing `vvix_ladder_shaper` contract, and validated under the dedicated Gate-33 test before fast-forward merge to `main` at `32af7f6`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate33_ladder_execution_readiness_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE33_LADDER_EXECUTION_READINESS_CONTRACTS.md"
+      ],
+      "completed_in_commit": "32af7f6"
+    },
+    {
+      "id": "LEAF-G34-001",
+      "gate": "Gate 34",
+      "title": "Import remaining-ready posture and permission core contracts",
+      "prerequisites": [
+        "LEAF-G33-001"
+      ],
+      "scope": "Convert the posture and permission core that scores conflicts, model confidence, and conviction before execution.",
+      "planned_items": [
+        "archive-evaluator-eval02",
+        "archive-module-051",
+        "archive-module-043"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE34_POSTURE_PERMISSION_CORE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 34 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 34 preserves the planned item order and exact item count of 3.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All three posture core modules exist as typed contracts and remain clearly non-approved advisory surfaces.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 24,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate34_posture_permission_core_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 3 exact planned items may be closed inside Gate 34.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 34 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 34 posture core tranche reconciled on the persisted branch and validated under the dedicated Gate-34 test before fast-forward merge to `main` at `6151b2b`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate34_posture_permission_core_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE34_POSTURE_PERMISSION_CORE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "6151b2b"
+    },
+    {
+      "id": "LEAF-G35-001",
+      "gate": "Gate 35",
+      "title": "Import remaining-ready execution orchestration core contracts",
+      "prerequisites": [
+        "LEAF-G34-001"
+      ],
+      "scope": "Convert the execution-orchestration core while keeping broker and runtime orchestration surfaces dry-run and fenced.",
+      "planned_items": [
+        "archive-module-027",
+        "archive-module-028",
+        "archive-module-029",
+        "archive-module-054",
+        "archive-module-053",
+        "archive-module-050"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE35_EXECUTION_ORCHESTRATION_CORE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 35 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 35 preserves the planned item order and exact item count of 6.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All six orchestration modules exist as typed contracts with broker and runtime honesty kept explicit.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 25,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate35_execution_orchestration_core_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 6 exact planned items may be closed inside Gate 35.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 35 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 35 execution-orchestration tranche reconciled on the persisted branch and validated under the dedicated Gate-35 test before fast-forward merge to `main` at `d94bf62`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate35_execution_orchestration_core_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE35_EXECUTION_ORCHESTRATION_CORE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "d94bf62"
+    },
+    {
+      "id": "LEAF-G36-001",
+      "gate": "Gate 36",
+      "title": "Import remaining-ready execution state and ledger spine contracts",
+      "prerequisites": [
+        "LEAF-G35-001"
+      ],
+      "scope": "Convert the execution-state and ledger spine needed before exits and review surfaces can be imported honestly.",
+      "planned_items": [
+        "archive-module-030",
+        "archive-module-031",
+        "archive-module-037",
+        "archive-module-032"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE36_EXECUTION_STATE_LEDGER_SPINE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 36 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 36 preserves the planned item order and exact item count of 4.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All four state-spine modules exist as typed contracts with explicit preview-state honesty.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 26,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate36_execution_state_ledger_spine_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 4 exact planned items may be closed inside Gate 36.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 36 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 36 execution-state spine tranche reconciled on the persisted branch and validated under the dedicated Gate-36 test before fast-forward merge to `main` at `efe11eb`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate36_execution_state_ledger_spine_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE36_EXECUTION_STATE_LEDGER_SPINE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "efe11eb"
+    },
+    {
+      "id": "LEAF-G37-001",
+      "gate": "Gate 37",
+      "title": "Import remaining-ready exit, re-entry, and continuity contracts",
+      "prerequisites": [
+        "LEAF-G36-001"
+      ],
+      "scope": "Convert the exit, re-entry, and ladder-continuity chain above the execution-state spine.",
+      "planned_items": [
+        "archive-module-035",
+        "archive-module-034",
+        "archive-module-033",
+        "archive-module-036",
+        "archive-module-045",
+        "archive-module-047"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE37_EXIT_REENTRY_CONTINUITY_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 37 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 37 preserves the planned item order and exact item count of 6.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All six exit and continuity modules exist as typed contracts with no booked-fill or live-broker theatre.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 27,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate37_exit_reentry_continuity_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 6 exact planned items may be closed inside Gate 37.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 37 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 37 exit-chain tranche reconciled on the persisted branch and validated under the dedicated Gate-37 test before fast-forward merge to `main` at `84ff1ce`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate37_exit_reentry_continuity_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE37_EXIT_REENTRY_CONTINUITY_CONTRACTS.md"
+      ],
+      "completed_in_commit": "84ff1ce"
+    },
+    {
+      "id": "LEAF-G38-001",
+      "gate": "Gate 38",
+      "title": "Import remaining-ready review ledger and attribution spine contracts",
+      "prerequisites": [
+        "LEAF-G37-001"
+      ],
+      "scope": "Convert the review-ledger and attribution spine that later diagnostics and feedback overlays depend on.",
+      "planned_items": [
+        "archive-module-039",
+        "archive-module-038",
+        "archive-evaluator-eval01",
+        "archive-module-041"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE38_REVIEW_LEDGER_ATTRIBUTION_SPINE_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 38 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 38 preserves the planned item order and exact item count of 4.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "All four review-spine modules exist as typed descriptive contracts with explicit preview-ledger honesty.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 28,
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate38_review_ledger_attribution_spine_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 4 exact planned items may be closed inside Gate 38.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 38 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ],
+      "completion_note": "Gate 38 review-spine tranche reconciled on the persisted branch and validated under the dedicated Gate-38 test before fast-forward merge to `main` at `dd2d1f9`.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src python3 -m pytest -q tests/test_gate38_review_ledger_attribution_spine_contracts.py -> 2 passed",
+        "doc:docs/planning/2026-03-25_GATE38_REVIEW_LEDGER_ATTRIBUTION_SPINE_CONTRACTS.md"
+      ],
+      "completed_in_commit": "dd2d1f9"
+    },
+    {
+      "id": "LEAF-G39-001",
+      "gate": "Gate 39",
+      "title": "Import remaining-ready review overlays and feedback-chain contracts",
+      "prerequisites": [
+        "LEAF-G38-001"
+      ],
+      "scope": "Convert the remaining review overlays, diagnostics, and feedback modules after the review spine is available.",
+      "planned_items": [
+        "archive-module-040",
+        "archive-evaluator-eval04",
+        "archive-evaluator-eval06",
+        "archive-evaluator-eval03",
+        "archive-evaluator-eval05",
+        "archive-module-049"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE39_REVIEW_OVERLAYS_FEEDBACK_CHAIN_CONTRACTS.md",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/imported_modules/**",
+        "src/nvda_desk/services/imported_modules/**",
+        "tests/**",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion",
+        "booked broker ledger claims"
+      ],
+      "implementation_tasks": [
+        "Import the exact planned_items list for Gate 39 as typed contract surfaces in frozen order.",
+        "Keep unresolved external dependencies explicit and fenced rather than pretending they are solved.",
+        "Extend review and planning receipts honestly without widening into unrelated backlog items."
+      ],
+      "validation_tasks": [
+        "Prove Gate 39 preserves the planned item order and exact item count of 6.",
+        "Prove the imported outputs remain advisory, dry-run, or descriptive where the dependency surface requires it."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate39_review_overlays_feedback_chain_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All six review-overlay modules exist as typed descriptive contracts and the 61-item remaining-ready backlog is fully exhausted.",
+      "merge_gate": "The imported surfaces remain bounded to the exact planned item set and do not widen into downstream gates.",
+      "status": "complete",
+      "execution_sequence": 29,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate39_review_overlays_feedback_chain_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Only the 6 exact planned items may be closed inside Gate 39.",
+        "Every imported surface must remain explicitly non-promotional until stronger evidence exists."
+      ],
+      "stop_conditions": [
+        "Gate 39 starts absorbing items allocated to a different gate.",
+        "The work widens into named-playbook expansion, new ontology work, or hidden side-state."
+      ]
+    },
+    {
+      "id": "LEAF-G40-001",
+      "gate": "Gate 40",
+      "title": "Replace the Step-1 session clock with temporal state primitives",
+      "prerequisites": [
+        "LEAF-G39-001"
+      ],
+      "scope": "Swap hard session buckets for a signal-aware temporal-state engine while preserving TemporalContextOutput and DMP packet identity.",
+      "planned_items": [
+        "temporal-state-replacement"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE40_TEMPORAL_STATE_REPLACEMENT.md",
+        "src/nvda_desk/domain/temporal_state.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_temporal_context_signal_state.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/domain/**",
+        "src/nvda_desk/schemas/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "named playbook expansion beyond gate scope"
+      ],
+      "implementation_tasks": [
+        "Replace SessionClockClassifier truth with TemporalStateClassifier.",
+        "Keep TemporalContextOutput and DMP wrapper identity stable.",
+        "Thread primitive temporal observables from the prepared snapshot path into Step 1."
+      ],
+      "validation_tasks": [
+        "Prove signal-aware temporal classification passes targeted tests.",
+        "Prove DMP packet surfaces remain stable after the Step-1 replacement."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context_signal_state.py tests/test_real_data_loader.py tests/test_posture_risk_and_playbook.py tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_gate29_market_context_synthesis_contracts.py tests/test_gate30_options_ingress_primary_flow_contracts.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Temporal state replaces hard clock buckets without breaking the typed runtime stage boundary.",
+      "merge_gate": "Targeted temporal, loader, and DMP tests pass with the stable outward payload surface.",
+      "status": "complete",
+      "execution_sequence": 30,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context_signal_state.py tests/test_real_data_loader.py tests/test_posture_risk_and_playbook.py tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_gate29_market_context_synthesis_contracts.py tests/test_gate30_options_ingress_primary_flow_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Step 1 must remain independent from later stage verdicts.",
+        "TemporalContextOutput and DMP packet identity must remain stable."
+      ],
+      "stop_conditions": [
+        "Gate 40 reintroduces clock-bucket truth as the primary classifier.",
+        "Gate 40 renames the outward stage payload or DMP role identity."
+      ],
+      "completion_note": "Gate 40 temporal-state replacement closed and validated on the persisted branch.",
+      "completion_evidence": [
+        "doc:docs/planning/2026-03-25_GATE40_TEMPORAL_STATE_REPLACEMENT.md"
+      ],
+      "completed_in_commit": "a14387e"
+    },
+    {
+      "id": "LEAF-G41-001",
+      "gate": "Gate 41",
+      "title": "Separate raw primitives from derived features in the NVDA signal workbook",
+      "prerequisites": [
+        "LEAF-G40-001"
+      ],
+      "scope": "Make the workbook authoritative about what is raw, what is derived, and what options rows must be preserved without proxy inflation.",
+      "planned_items": [
+        "signal-workbook-raw-derived-split"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md",
+        "2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "runtime surface renames"
+      ],
+      "implementation_tasks": [
+        "Split raw and derived catalog authority in the workbook.",
+        "Mark the legacy mixed catalog non-authoritative.",
+        "Record the playbook module audit in the workbook."
+      ],
+      "validation_tasks": [
+        "Prove the workbook exposes separate raw and derived catalogs."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The workbook now distinguishes raw primitives from derived features explicitly.",
+      "merge_gate": "The workbook and planning note agree on raw-versus-derived authority.",
+      "status": "complete",
+      "execution_sequence": 31,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "Raw and derived sheets must be separate authorities.",
+        "Options chain row capture must be defined as raw."
+      ],
+      "stop_conditions": [
+        "Gate 41 keeps proxy options fields labelled as raw."
+      ],
+      "completion_note": "Gate 41 workbook doctrine split closed on the persisted branch.",
+      "completion_evidence": [
+        "doc:docs/planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md",
+        "artifact:2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "completed_in_commit": "a14387e"
+    },
+    {
+      "id": "LEAF-G42-001",
+      "gate": "Gate 42",
+      "title": "Define dense options raw-capture and same-bucket volume-baseline policy",
+      "prerequisites": [
+        "LEAF-G41-001"
+      ],
+      "scope": "Freeze the raw options-row capture policy and the historical same-bucket participation baseline the playbooks require.",
+      "planned_items": [
+        "options-raw-capture-policy",
+        "volume-baseline-policy"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "unbounded 365-day dense chain capture"
+      ],
+      "implementation_tasks": [
+        "Define dense front-two-expiry options capture.",
+        "Define coarser farther-tenor curve sampling.",
+        "Define same-bucket historical volume, spread, and trade-count baseline requirements."
+      ],
+      "validation_tasks": [
+        "Prove the workbook carries explicit options raw-capture and baseline-policy sheets."
+      ],
+      "test_commands": [],
+      "full_suite_required": false,
+      "pass_gate": "The project has an explicit raw options capture and participation-baseline policy.",
+      "merge_gate": "The policy remains bounded and does not require full-chain landfill capture every loop.",
+      "status": "complete",
+      "execution_sequence": 32,
+      "validation_commands": [],
+      "acceptance_criteria": [
+        "Front-two-expiry dense capture must be explicit.",
+        "Same-bucket historical baselines must be explicit."
+      ],
+      "stop_conditions": [
+        "Gate 42 claims full 365-day dense capture every 30 seconds."
+      ],
+      "completion_note": "Gate 42 options raw-capture and baseline policy closed on the persisted branch.",
+      "completion_evidence": [
+        "doc:docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "artifact:2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "completed_in_commit": "a14387e"
+    },
+    {
+      "id": "LEAF-G43-001",
+      "gate": "Gate 43",
+      "title": "Add three deterministic options-first named playbooks",
+      "prerequisites": [
+        "LEAF-G42-001"
+      ],
+      "scope": "Expand the live playbook stack with front-expiry pin pressure, term-structure dislocation, and skew-pressure reversal without displacing the existing four baseline playbooks in their legacy fixtures.",
+      "planned_items": [
+        "front-expiry-pin-pressure",
+        "term-structure-dislocation",
+        "skew-pressure-reversal"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate43_options_playbook_expansion.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "config/**",
+        "src/nvda_desk/services/**",
+        "tests/**",
+        "docs/planning/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "runtime stage renames",
+        "non-deterministic model calls"
+      ],
+      "implementation_tasks": [
+        "Add execution templates and playbook specs for the three new options-first playbooks.",
+        "Add deterministic eligibility evaluators for each new playbook.",
+        "Prove the existing four baseline playbooks still hold their legacy fixtures."
+      ],
+      "validation_tasks": [
+        "Run dedicated Gate 43 runtime tests.",
+        "Run registry and parity tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate43_options_playbook_expansion.py tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The runtime exposes seven live playbooks in deterministic registry order and the three new options-first playbooks qualify only in their focused option-led states.",
+      "merge_gate": "Gate 43 tests plus registry parity tests pass and the existing four baseline playbook fixtures stay stable.",
+      "status": "complete",
+      "execution_sequence": 33,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate43_options_playbook_expansion.py tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py"
+      ],
+      "acceptance_criteria": [
+        "The three new playbooks must be registry-backed and deterministic.",
+        "Legacy continuation, compression, pin-reversion, and negative-gamma fixtures must stay stable."
+      ],
+      "stop_conditions": [
+        "Gate 43 silently redefines the legacy four playbooks.",
+        "Gate 43 introduces hidden data dependencies outside the typed runtime input path."
+      ],
+      "completion_note": "Gate 43 options-first named playbook expansion closed on the persisted branch.",
+      "completion_evidence": [
+        "tests:PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate43_options_playbook_expansion.py",
+        "doc:docs/planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md"
+      ],
+      "completed_in_commit": "a14387e"
+    },
+    {
+      "id": "LEAF-G44-001",
+      "gate": "Gate 44",
+      "title": "Audit DMP compatibility and record playbook-family update status",
+      "prerequisites": [
+        "LEAF-G43-001"
+      ],
+      "scope": "Prove the DMP packet wrapper remains stable after the temporal and options-first playbook expansion and record the playbook-family update audit explicitly.",
+      "planned_items": [
+        "dmp-compatibility-audit",
+        "playbook-family-audit"
+      ],
+      "files_expected": [
+        "docs/planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md",
+        "tests/test_dmp_protocol.py",
+        "tests/test_dmp_v2_protocol.py",
+        "CHANGELOG.jsonl"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**",
+        "PLANS.md",
+        "CHANGELOG.jsonl"
+      ],
+      "must_not_touch": [
+        "frontend",
+        "payload identity renames"
+      ],
+      "implementation_tasks": [
+        "Run the DMP protocol checks against the widened runtime.",
+        "Record the playbook family audit in the workbook and planning note."
+      ],
+      "validation_tasks": [
+        "Run DMP plus registry/playbook test tranche under the repo venv."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "DMP packet behaviour remains stable after the temporal and options-first expansion.",
+      "merge_gate": "The DMP and playbook audit test tranche passes under the repo venv.",
+      "status": "complete",
+      "execution_sequence": 34,
+      "validation_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_playbook_registry.py tests/test_runtime_parity_registry_playbooks.py tests/test_posture_risk_and_playbook.py tests/test_gate43_options_playbook_expansion.py"
+      ],
+      "acceptance_criteria": [
+        "The DMP wrapper must remain stable.",
+        "The playbook audit must state which families stay, which need richer inputs, and which were added now."
+      ],
+      "stop_conditions": [
+        "Gate 44 renames the DMP payload identity or invents fake broker-booking behaviour."
+      ],
+      "completion_note": "Gate 44 DMP compatibility and playbook audit closed on the persisted branch.",
+      "completion_evidence": [
+        "doc:docs/planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md"
+      ],
+      "completed_in_commit": "a14387e"
+    }
+  ],
+  "execution_status": "gate_44_complete_gate_45_placeholder_only",
+  "completed_at": "2026-03-25T08:30:00Z",
+  "completed_leaf_ids": [
+    "LEAF-G8-001",
+    "LEAF-G9-001",
+    "LEAF-G10-001",
+    "LEAF-G11-001",
+    "LEAF-G12-001",
+    "LEAF-G13-001",
+    "LEAF-G14-001",
+    "LEAF-G15-001",
+    "LEAF-G16-001",
+    "LEAF-G17-001",
+    "LEAF-G18-001",
+    "LEAF-G19-001",
+    "LEAF-G20-001",
+    "LEAF-G21-001",
+    "LEAF-G22-001",
+    "LEAF-G23-001",
+    "LEAF-G27-001",
+    "LEAF-G28-001",
+    "LEAF-G29-001",
+    "LEAF-G30-001",
+    "LEAF-G31-001",
+    "LEAF-G32-001",
+    "LEAF-G33-001",
+    "LEAF-G34-001",
+    "LEAF-G35-001",
+    "LEAF-G36-001",
+    "LEAF-G37-001",
+    "LEAF-G38-001",
+    "LEAF-G39-001",
+    "LEAF-G40-001",
+    "LEAF-G41-001",
+    "LEAF-G42-001",
+    "LEAF-G43-001",
+    "LEAF-G44-001"
+  ],
+  "remaining_leaf_ids": [],
+  "supplementary_scope_note": "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md",
+  "completed_baseline_leaf_ids": [
+    "LEAF-G7-BASELINE"
+  ],
+  "completed_baseline_leaves": [
+    {
+      "id": "LEAF-G7-BASELINE",
+      "gate": "Gate 7",
+      "title": "Record Gate 7 doctrine freeze and planning-surface promotion as the explicit baseline leaf",
+      "status": "complete_on_main",
+      "commits": [
+        "9bc768d",
+        "04daf33",
+        "b4846e2",
+        "ae3e248",
+        "ec888e9",
+        "4e7f3b9"
+      ],
+      "note": "Administrative baseline leaf only; forward execution still begins at Gate 8."
+    }
+  ]
+}

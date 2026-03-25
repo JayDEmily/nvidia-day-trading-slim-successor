@@ -1,0 +1,622 @@
+{
+  "plan_id": "2026-03-23_CANONICAL_DESK_REBUILD_LEAVES_v1.0",
+  "governing_plan": "docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_EXECUTION_PLAN.md",
+  "global_rules": {
+    "sequential_execution": true,
+    "skip_ahead_allowed": false,
+    "leaf_done_definition": [
+      "scoped implementation or documentation is complete",
+      "leaf-specific tests or validations are present",
+      "relevant targeted tests or validations pass",
+      "full-suite run passes when blast radius requires it"
+    ],
+    "normative_drift_allowed": false,
+    "absolute_language_required": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-000",
+      "gate": "Gate 0",
+      "title": "Audit and reconcile normative authority docs",
+      "prerequisites": [],
+      "scope": "Reconcile all top-level doctrine and remove conflict or ambiguity before broad build work.",
+      "files_expected": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "README.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "implementation_tasks": [
+        "Audit authority hierarchy and terminology.",
+        "Remove conflicting language and stale assumptions.",
+        "Lock module, feature, classifier, overlay, playbook, gate, and review definitions.",
+        "Lock docstring and package-organisation rules."
+      ],
+      "validation_tasks": [
+        "Run a line-by-line conflict audit against the audited docs.",
+        "Confirm authority precedence remains consistent with docs/01_NORMATIVE.md.",
+        "Confirm the updated docs contain only absolute wording for execution rules."
+      ],
+      "test_commands": [
+        "python -m json.tool CHANGELOG.jsonl >/dev/null 2>&1 || true"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "All audited docs agree on authority, terminology, and execution order. No blocking ambiguity remains.",
+      "merge_gate": "Documentation diff reviewed; no higher-precedence conflict remains.",
+      "status": "complete",
+      "completion_evidence": [
+        "Absolute-language grep across audited docs returned no matches for may/should/could/optional/maybe/might.",
+        "Downstream gate status was reset to blocked in PLANS.md, the canonical execution plan, the leaf ledger, and the execution log.",
+        "The repo venv passed pytest -q and make check after the planning/doc updates.",
+        "implementation commit `72a144d`"
+      ],
+      "execution_sequence": 1,
+      "completed_in_commit": "72a144d",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `72a144d`.",
+      "completed_at": "2026-03-22T20:02:48Z"
+    },
+    {
+      "id": "LEAF-001",
+      "gate": "Gate 1",
+      "title": "Build the canonical import registry",
+      "prerequisites": [
+        "LEAF-000"
+      ],
+      "scope": "Merge the preservation pack and corpus-bounded Phase A outputs into one canonical import registry.",
+      "files_expected": [
+        "docs/planning/canonical_import_registry.jsonl",
+        "docs/planning/canonical_import_registry.md"
+      ],
+      "implementation_tasks": [
+        "Ingest preserved modules, features, and desk-cognition fragments.",
+        "Assign canonical IDs and source-form types.",
+        "Assign maturity states and provenance records.",
+        "Preserve every recoverable item without silent deletion."
+      ],
+      "validation_tasks": [
+        "Verify all preservation-pack module rows are represented.",
+        "Verify all corpus-bounded Phase A items are represented.",
+        "Verify duplicate handling keeps provenance rather than deleting meaning."
+      ],
+      "test_commands": [
+        "python -m json.tool docs/planning/canonical_import_registry.jsonl >/dev/null 2>&1 || true"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The canonical import registry covers the full corpus-bounded universe with no-loss evidence and does not overstate runtime completion for concept-contract or evidence-only items.",
+      "merge_gate": "Coverage report, canonical registry, and maturity counts are complete, parseable, and truthfully scoped.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `fff369e`"
+      ],
+      "execution_sequence": 2,
+      "completed_in_commit": "fff369e",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `fff369e`.",
+      "completed_at": "2026-03-22T20:12:58Z"
+    },
+    {
+      "id": "LEAF-002",
+      "gate": "Gate 2",
+      "title": "Map the import registry into the Desk Cognition Grammar and runtime architecture",
+      "prerequisites": [
+        "LEAF-001"
+      ],
+      "scope": "Assign every canonical item to grammar role, technical architecture role, and runtime target.",
+      "files_expected": [
+        "docs/planning/canonical_grammar_mapping.json",
+        "docs/planning/canonical_grammar_mapping.md"
+      ],
+      "implementation_tasks": [
+        "Map every canonical item into grammar position.",
+        "Map every canonical item into raw input, derived state, classifier, posture gate, playbook qualifier, execution component, or review component.",
+        "Flag items already implemented, partially represented, absent, or evidence-only."
+      ],
+      "validation_tasks": [
+        "Confirm no canonical item remains unmapped.",
+        "Confirm no runtime role conflicts with the normative architecture."
+      ],
+      "test_commands": [
+        "python -m json.tool docs/planning/canonical_grammar_mapping.json >/dev/null"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Every canonical item has one grammar role and one architecture role, and no orphan item remains.",
+      "merge_gate": "Mapping artefacts parse, show zero orphan items, and keep evidence-only items outside runtime completion counts.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `a58c853`"
+      ],
+      "execution_sequence": 3,
+      "completed_in_commit": "a58c853",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `a58c853`.",
+      "completed_at": "2026-03-22T20:14:04Z"
+    },
+    {
+      "id": "LEAF-003",
+      "gate": "Gate 3",
+      "title": "Define common module contracts and runtime loader scaffolding",
+      "prerequisites": [
+        "LEAF-002"
+      ],
+      "scope": "Add common interfaces, loader rules, and trace packet contracts for imported modules.",
+      "files_expected": [
+        "src/nvda_desk/schemas/",
+        "src/nvda_desk/services/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Define common contract schemas for module inputs and outputs.",
+        "Define loader or registry surfaces for canonical items.",
+        "Define explanation and trace packet contracts.",
+        "Add docstring requirements to the touched code surfaces."
+      ],
+      "validation_tasks": [
+        "Add targeted unit tests for the contract schemas and loader behaviour.",
+        "Add parsing or import tests for the new registry surfaces."
+      ],
+      "test_commands": [
+        "pytest -q tests",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The runtime scaffold loads deterministic contracts, emits trace-ready outputs, and the repo venv passes the full suite.",
+      "merge_gate": "Touched code is docstring-complete and the repo remains green.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `e30d3ed`"
+      ],
+      "execution_sequence": 4,
+      "completed_in_commit": "e30d3ed",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `e30d3ed`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_runtime_contract_registry.py"
+      ],
+      "acceptance_criteria": [
+        "All seven binding grammar layers will expose deterministic runtime contracts in the correct execution order.",
+        "Every runtime layer contract will require a docstring-backed service path and explicit input/output model names.",
+        "Trace-stage packet construction will be contract-backed and deterministic."
+      ],
+      "completed_at": "2026-03-22T20:15:18Z"
+    },
+    {
+      "id": "LEAF-004",
+      "gate": "Gate 4",
+      "title": "Import temporal context tranche",
+      "prerequisites": [
+        "LEAF-003"
+      ],
+      "scope": "Implement or refactor temporal-context modules and feature families first.",
+      "files_expected": [
+        "src/nvda_desk/domain/",
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Import session-clock, expiry-proximity, and event-proximity logic into the contract-first runtime.",
+        "Refactor surviving code instead of duplicating it.",
+        "Add clear docstrings to every touched module."
+      ],
+      "validation_tasks": [
+        "Add targeted unit tests for temporal state classification.",
+        "Add targeted integration tests for pipeline consumption of temporal context."
+      ],
+      "test_commands": [
+        "pytest -q tests -k temporal or session_clock",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Temporal context is deterministic, test-covered, and increases implemented-runtime depth for the temporal grammar role.",
+      "merge_gate": "Relevant targeted tests pass and no contract regression is introduced.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `5661ea1`"
+      ],
+      "execution_sequence": 5,
+      "completed_in_commit": "5661ea1",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `5661ea1`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_temporal_context_runtime.py"
+      ],
+      "acceptance_criteria": [
+        "Temporal context will classify session phase, expiry-cycle state, and event-proximity state deterministically.",
+        "Temporal outputs will preserve recent-path tags for flush, squeeze, and prior-session context.",
+        "All touched temporal code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:16:13Z"
+    },
+    {
+      "id": "LEAF-005",
+      "gate": "Gate 4",
+      "title": "Import market-regime tranche",
+      "prerequisites": [
+        "LEAF-004"
+      ],
+      "scope": "Implement or refactor beta, breadth, vol-regime, and cross-asset market-state layers.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Import regime-context modules from the canonical mapping.",
+        "Expose deterministic state packets for downstream posture and playbook logic.",
+        "Maintain explicit docstrings and contract compliance."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for regime classification and cross-asset state assembly.",
+        "Add tests that confirm upstream temporal context is consumed correctly."
+      ],
+      "test_commands": [
+        "pytest -q tests -k regime or market_state or risk",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Market-regime context is deterministic, test-covered, and increases implemented-runtime depth for the regime grammar role.",
+      "merge_gate": "Relevant targeted tests pass and explanation surfaces remain intact.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `452c36a`"
+      ],
+      "execution_sequence": 6,
+      "completed_in_commit": "452c36a",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `452c36a`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "acceptance_criteria": [
+        "Market regime context will classify beta residuals, volatility regime, vol-of-vol state, breadth, and sector leadership deterministically.",
+        "Cross-asset pressure will remain explicit rather than hidden inside downstream risk logic.",
+        "All touched regime code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:16:56Z"
+    },
+    {
+      "id": "LEAF-006",
+      "gate": "Gate 4",
+      "title": "Import options-and-flow tranche",
+      "prerequisites": [
+        "LEAF-005"
+      ],
+      "scope": "Implement or refactor options-state, skew, term-structure, gamma, and flow layers as first-class context.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Import options and flow modules from the canonical mapping.",
+        "Define contract surfaces for chain snapshots, derived options state, and explanatory outputs.",
+        "Keep options data first-class rather than a secondary overlay."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for chain-state derivation, skew, term structure, and gamma-context outputs.",
+        "Add integration tests proving downstream layers receive options context."
+      ],
+      "test_commands": [
+        "pytest -q tests -k options or skew or gamma or flow",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Options-and-flow context is deterministic, test-covered on positive and negative paths, and materially increases implemented-runtime depth for the options grammar role.",
+      "merge_gate": "Touched code is docstring-complete and the full suite remains green.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `a2c7534`"
+      ],
+      "execution_sequence": 7,
+      "completed_in_commit": "a2c7534",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `a2c7534`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_options_flow_context.py"
+      ],
+      "acceptance_criteria": [
+        "Options and flow context will expose term structure, skew, gamma, IV-vs-RV, pin-risk, dealer-pressure, and options-behaviour states deterministically.",
+        "Options data will remain first-class rather than a secondary overlay.",
+        "All touched options-flow code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:18:01Z"
+    },
+    {
+      "id": "LEAF-007",
+      "gate": "Gate 4",
+      "title": "Import posture-and-risk tranche",
+      "prerequisites": [
+        "LEAF-006"
+      ],
+      "scope": "Implement posture, permission, inventory-aware gating, and deployable-capital governance.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Import or refactor posture and risk modules into the current decision hierarchy.",
+        "Make inventory state and fresh deployable capital explicit runtime fields.",
+        "Ensure no downstream allocation bypasses upstream permission."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for permission, derisk, block, no-overnight, and deployable-capital behaviour.",
+        "Add end-to-end tests for veto propagation into downstream execution surfaces."
+      ],
+      "test_commands": [
+        "pytest -q tests -k risk or allocation or deployment",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Posture-and-risk logic is deterministic, inventory-aware, test-covered on positive and negative paths, and materially increases implemented-runtime depth for the posture grammar role.",
+      "merge_gate": "The repo remains green and no allocation path bypasses posture and risk.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `bb9e3ab`"
+      ],
+      "execution_sequence": 8,
+      "completed_in_commit": "bb9e3ab",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `bb9e3ab`.",
+      "completed_at": "2026-03-22T20:19:33Z"
+    },
+    {
+      "id": "LEAF-008",
+      "gate": "Gate 4",
+      "title": "Import playbook-eligibility tranche",
+      "prerequisites": [
+        "LEAF-007"
+      ],
+      "scope": "Implement classifiers and gates that decide which playbooks are eligible, invalid, or watch-only.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Translate preserved playbook concepts into eligibility surfaces.",
+        "Keep concept-contracts for ideas that still await dependencies.",
+        "Expose eligibility outcomes to downstream execution and review packets."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for playbook qualification, invalidation, and watch-only outcomes.",
+        "Add tests proving eligibility reacts to upstream regime and options context."
+      ],
+      "test_commands": [
+        "pytest -q tests -k playbook or classifier or eligibility",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Playbook eligibility logic covers more than scaffold stubs, is test-covered on positive and negative paths, and materially increases implemented-runtime depth for the playbook grammar role.",
+      "merge_gate": "Relevant tests pass and eligibility outputs appear in trace packets.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `18c5757`"
+      ],
+      "execution_sequence": 9,
+      "completed_in_commit": "18c5757",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `18c5757`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_posture_risk_and_playbook.py"
+      ],
+      "acceptance_criteria": [
+        "Playbook eligibility will expose more than the initial three playbooks and will classify eligible, watch-only, and ineligible states deterministically.",
+        "Preserved playbook concepts will map into runtime eligibility surfaces without pretending that every preserved idea is already executable.",
+        "All touched playbook code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:20:28Z"
+    },
+    {
+      "id": "LEAF-009",
+      "gate": "Gate 4",
+      "title": "Import expression-and-execution tranche",
+      "prerequisites": [
+        "LEAF-008"
+      ],
+      "scope": "Implement or refactor entry shape, laddering, sizing, hedge, and exit modules under the new grammar.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Translate preserved execution concepts into deterministic runtime modules.",
+        "Maintain risk-first hierarchy and explicit explanation outputs.",
+        "Refactor surviving ladder and carry logic where useful rather than treating it as sacred."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for expression, scaling, exits, and hedge requirements.",
+        "Add integration tests proving execution logic only activates after playbook eligibility and permission."
+      ],
+      "test_commands": [
+        "pytest -q tests -k execution or ladder or carry or hedge",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Expression-and-execution logic is deterministic, inventory-aware, test-covered on positive and negative paths, and materially increases implemented-runtime depth for the execution grammar role.",
+      "merge_gate": "The repo remains green and execution outputs are traceable.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `5ebf41f`"
+      ],
+      "execution_sequence": 10,
+      "completed_in_commit": "5ebf41f",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `5ebf41f`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py"
+      ],
+      "acceptance_criteria": [
+        "Expression and execution will expose inventory action, fresh-capital action, and thesis-invalidation state explicitly.",
+        "Execution style will remain subordinate to permission and playbook eligibility.",
+        "All touched execution code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:21:29Z"
+    },
+    {
+      "id": "LEAF-010",
+      "gate": "Gate 4",
+      "title": "Import review-and-explanation tranche",
+      "prerequisites": [
+        "LEAF-009"
+      ],
+      "scope": "Implement or refactor attribution, conflict, review, and explanation surfaces.",
+      "files_expected": [
+        "src/nvda_desk/services/",
+        "src/nvda_desk/schemas/",
+        "tests/"
+      ],
+      "implementation_tasks": [
+        "Expose reason packets, attribution surfaces, and conflict logs for the rebuilt grammar.",
+        "Keep review and explanation first-class rather than post-hoc ornaments."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for reason-packet shape, attribution completeness, and conflict reporting.",
+        "Add integration tests proving every meaningful decision path is explainable."
+      ],
+      "test_commands": [
+        "pytest -q tests -k review or attribution or conflict or explanation",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Review-and-explanation logic reconstructs decisions deterministically, is test-covered on positive and negative paths, and materially increases implemented-runtime depth for the review grammar role.",
+      "merge_gate": "Relevant tests pass and trace packets are machine-readable.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `fead161`"
+      ],
+      "execution_sequence": 11,
+      "completed_in_commit": "fead161",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `fead161`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py"
+      ],
+      "acceptance_criteria": [
+        "Review and explanation will expose stage summaries, desk readout, and explicit conflict tags.",
+        "Reason packets will remain first-class rather than post-hoc ornaments.",
+        "All touched review code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:22:11Z"
+    },
+    {
+      "id": "LEAF-011",
+      "gate": "Gate 5",
+      "title": "Prepare the real-data ingestion scaffold",
+      "prerequisites": [
+        "LEAF-010"
+      ],
+      "scope": "Add dataset schemas, loaders, and provenance surfaces for the incoming real-data corpus.",
+      "files_expected": [
+        "src/nvda_desk/",
+        "config/",
+        "tests/",
+        "docs/"
+      ],
+      "implementation_tasks": [
+        "Define import contracts for bars, options chains, events, and auxiliary state.",
+        "Define provenance requirements and loader behaviour.",
+        "Prepare deterministic replay-ready storage for the incoming corpus."
+      ],
+      "validation_tasks": [
+        "Add schema and loader tests for the import surfaces.",
+        "Add fixture-backed integration tests that prove replay-ready ingestion."
+      ],
+      "test_commands": [
+        "pytest -q tests -k loader or dataset or ingest or replay",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The runtime consumes a typed real-data bundle rather than validating one in isolation, preserves provenance, and routes options-chain state into the grammar through typed contracts.",
+      "merge_gate": "The repo remains green and every imported dataset path carries provenance.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `3864171`"
+      ],
+      "execution_sequence": 12,
+      "completed_in_commit": "3864171",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `3864171`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_real_data_loader.py"
+      ],
+      "acceptance_criteria": [
+        "The real-data loader will validate bundles and distil bars plus option chains into runtime-ready snapshots.",
+        "Loader provenance will remain explicit.",
+        "All touched real-data ingestion code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:23:39Z"
+    },
+    {
+      "id": "LEAF-012",
+      "gate": "Gate 6",
+      "title": "Prepare replay, calibration, and comparison harnesses",
+      "prerequisites": [
+        "LEAF-011"
+      ],
+      "scope": "Extend the runtime so it can support repeated deterministic runs, coefficient tuning, and stack comparison under governance.",
+      "files_expected": [
+        "src/nvda_desk/",
+        "tests/",
+        "docs/planning/"
+      ],
+      "implementation_tasks": [
+        "Define replay and comparison entrypoints.",
+        "Support coefficient and sub-coefficient tuning without violating the grammar.",
+        "Define stable metrics for calibration, veto quality, deployable-capital discipline, and explanation quality."
+      ],
+      "validation_tasks": [
+        "Add targeted tests for deterministic reruns and metric stability.",
+        "Add integration tests for replay and comparison scaffolding."
+      ],
+      "test_commands": [
+        "pytest -q tests -k replay or calibration or compare or tuning",
+        "ruff check src tests",
+        "mypy src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Replay and calibration use module weights and sub-coefficients in runtime evaluation, compare explicit stack definitions, and encode walk-forward and holdout discipline.",
+      "merge_gate": "The repo remains green and calibration/comparison metrics are reproducible.",
+      "status": "complete",
+      "completion_evidence": [
+        "implementation commit `7d1aeef`"
+      ],
+      "execution_sequence": 13,
+      "completed_in_commit": "7d1aeef",
+      "completion_note": "Completed on main in the historical sequential rebuild pass; implementation commit `7d1aeef`.",
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_replay_compare_runtime.py"
+      ],
+      "acceptance_criteria": [
+        "Replay and comparison harnesses will support coefficient sets, stack identifiers, enabled-playbook filtering, and module-weight effects deterministically.",
+        "Calibration metrics will expose veto quality, deployable-capital discipline, active-playbook depth, and conflict counts.",
+        "All touched replay and calibration code surfaces will retain explicit docstrings."
+      ],
+      "completed_at": "2026-03-22T20:24:48Z"
+    }
+  ],
+  "execution_status": "completed_historical",
+  "completed_at": "2026-03-22T20:25:45Z",
+  "completed_leaf_ids": [
+    "LEAF-000",
+    "LEAF-001",
+    "LEAF-002",
+    "LEAF-003",
+    "LEAF-004",
+    "LEAF-005",
+    "LEAF-006",
+    "LEAF-007",
+    "LEAF-008",
+    "LEAF-009",
+    "LEAF-010",
+    "LEAF-011",
+    "LEAF-012"
+  ],
+  "remaining_leaf_ids": [],
+  "historical": true,
+  "active_under_PLANS": false
+}

@@ -1,0 +1,222 @@
+{
+  "by_category": {
+    "architecture_doctrine": {
+      "concept_contract": 0,
+      "evidence_only": 7,
+      "implemented_runtime": 0
+    },
+    "decision": {
+      "concept_contract": 3,
+      "evidence_only": 0,
+      "implemented_runtime": 2
+    },
+    "derived_features": {
+      "concept_contract": 21,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "derived_features,research_artefacts": {
+      "concept_contract": 3,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "evaluator": {
+      "concept_contract": 6,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "evaluator_config": {
+      "concept_contract": 0,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "evaluator_orchestrator": {
+      "concept_contract": 0,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "execution": {
+      "concept_contract": 4,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "grammar_step": {
+      "concept_contract": 0,
+      "evidence_only": 5,
+      "implemented_runtime": 0
+    },
+    "logging": {
+      "concept_contract": 4,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "market_state_requirement": {
+      "concept_contract": 0,
+      "evidence_only": 5,
+      "implemented_runtime": 0
+    },
+    "operator_surface": {
+      "concept_contract": 0,
+      "evidence_only": 3,
+      "implemented_runtime": 0
+    },
+    "position_management": {
+      "concept_contract": 6,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "raw_capture": {
+      "concept_contract": 7,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "raw_derived_capture": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "research_artefacts": {
+      "concept_contract": 5,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "research_artefacts,execution_records": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "research_artefacts,risk": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "risk": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "risk_posture": {
+      "concept_contract": 0,
+      "evidence_only": 5,
+      "implemented_runtime": 0
+    },
+    "scoring": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "signal": {
+      "concept_contract": 16,
+      "evidence_only": 0,
+      "implemented_runtime": 2
+    },
+    "simulation": {
+      "concept_contract": 1,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "supervisory": {
+      "concept_contract": 7,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "taxonomy_requirement": {
+      "concept_contract": 0,
+      "evidence_only": 1,
+      "implemented_runtime": 0
+    },
+    "unknown": {
+      "concept_contract": 0,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "wrapper": {
+      "concept_contract": 3,
+      "evidence_only": 0,
+      "implemented_runtime": 1
+    },
+    "xai": {
+      "concept_contract": 2,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    }
+  },
+  "by_grammar_role": {
+    "expression_execution": {
+      "concept_contract": 16,
+      "evidence_only": 0,
+      "implemented_runtime": 0,
+      "priority": 60,
+      "total_items": 16
+    },
+    "market_regime_context": {
+      "concept_contract": 27,
+      "evidence_only": 0,
+      "implemented_runtime": 1,
+      "priority": 20,
+      "total_items": 28
+    },
+    "options_flow_context": {
+      "concept_contract": 18,
+      "evidence_only": 5,
+      "implemented_runtime": 0,
+      "priority": 30,
+      "total_items": 23
+    },
+    "playbook_eligibility": {
+      "concept_contract": 8,
+      "evidence_only": 2,
+      "implemented_runtime": 4,
+      "priority": 50,
+      "total_items": 14
+    },
+    "posture_risk_permission": {
+      "concept_contract": 8,
+      "evidence_only": 4,
+      "implemented_runtime": 1,
+      "priority": 40,
+      "total_items": 13
+    },
+    "review_explanation": {
+      "concept_contract": 13,
+      "evidence_only": 13,
+      "implemented_runtime": 3,
+      "priority": 70,
+      "total_items": 29
+    },
+    "temporal_context": {
+      "concept_contract": 3,
+      "evidence_only": 2,
+      "implemented_runtime": 1,
+      "priority": 10,
+      "total_items": 6
+    }
+  },
+  "by_item_class": {
+    "cognition_fragment": {
+      "concept_contract": 0,
+      "evidence_only": 26,
+      "implemented_runtime": 0
+    },
+    "feature": {
+      "concept_contract": 32,
+      "evidence_only": 0,
+      "implemented_runtime": 0
+    },
+    "module": {
+      "concept_contract": 61,
+      "evidence_only": 0,
+      "implemented_runtime": 10
+    }
+  },
+  "by_runtime_target": {
+    "concept_contract": 93,
+    "evidence_only": 26,
+    "implemented_runtime": 10
+  },
+  "report_inputs": {
+    "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
+    "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl"
+  },
+  "total_items": 129
+}

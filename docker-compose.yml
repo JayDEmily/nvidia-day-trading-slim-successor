@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17
+    container_name: nvda-desk-postgres
+    environment:
+      POSTGRES_DB: nvda_desk
+      POSTGRES_USER: nvda
+      POSTGRES_PASSWORD: nvda
+    ports:
+      - "54329:5432"
+    volumes:
+      - nvda_desk_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nvda -d nvda_desk"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nvda_desk_pgdata:

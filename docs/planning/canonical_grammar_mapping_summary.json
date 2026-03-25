@@ -1,0 +1,81 @@
+{
+  "architecture_role_counts": {
+    "classifier": 14,
+    "derived_state": 28,
+    "evidence_component": 26,
+    "execution_component": 16,
+    "playbook_qualifier": 12,
+    "posture_gate": 9,
+    "raw_input": 8,
+    "review_component": 16
+  },
+  "grammar_role_counts": {
+    "expression_execution": 16,
+    "market_regime_context": 28,
+    "options_flow_context": 23,
+    "playbook_eligibility": 14,
+    "posture_risk_permission": 13,
+    "review_explanation": 29,
+    "temporal_context": 6
+  },
+  "implementation_state_counts": {
+    "conceptual_preserved": 93,
+    "evidence_only": 26,
+    "implemented": 10
+  },
+  "report_inputs": {
+    "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
+    "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl"
+  },
+  "runtime_contract_status_counts": {
+    "concept_contract_only": 93,
+    "evidence_only_no_contract": 26,
+    "implemented_binding_contract": 10
+  },
+  "runtime_gap_report": {
+    "roles": {
+      "expression_execution": {
+        "concept_contract": 16,
+        "evidence_only": 0,
+        "implemented_runtime": 0
+      },
+      "market_regime_context": {
+        "concept_contract": 27,
+        "evidence_only": 0,
+        "implemented_runtime": 1
+      },
+      "options_flow_context": {
+        "concept_contract": 18,
+        "evidence_only": 5,
+        "implemented_runtime": 0
+      },
+      "playbook_eligibility": {
+        "concept_contract": 8,
+        "evidence_only": 2,
+        "implemented_runtime": 4
+      },
+      "posture_risk_permission": {
+        "concept_contract": 8,
+        "evidence_only": 4,
+        "implemented_runtime": 1
+      },
+      "review_explanation": {
+        "concept_contract": 13,
+        "evidence_only": 13,
+        "implemented_runtime": 3
+      },
+      "temporal_context": {
+        "concept_contract": 3,
+        "evidence_only": 2,
+        "implemented_runtime": 1
+      }
+    },
+    "total_items": 129
+  },
+  "runtime_target_counts": {
+    "concept_contract": 93,
+    "evidence_only": 26,
+    "implemented_runtime": 10
+  },
+  "total_items": 129
+}

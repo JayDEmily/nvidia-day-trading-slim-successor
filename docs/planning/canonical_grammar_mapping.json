@@ -1,0 +1,2538 @@
+{
+  "items": [
+    {
+      "canonical_id": "archive-module-020",
+      "canonical_slug": "archetype_matcher",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-048",
+      "canonical_slug": "archetype_tagger",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-module-008",
+      "canonical_slug": "asia_precursor_context_filter",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-054",
+      "canonical_slug": "broker_adapter",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:wrapper",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "legacy-module-004",
+      "canonical_slug": "compression_regime_detector",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-evaluator-eval05",
+      "canonical_slug": "confidence_divergence_logger",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-043",
+      "canonical_slug": "conviction_tier_allocator",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-041",
+      "canonical_slug": "daily_summary",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:simulation",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-035",
+      "canonical_slug": "dynamic_partial_exit_model",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-022",
+      "canonical_slug": "engine_score",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:scoring",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-023",
+      "canonical_slug": "entry_gate",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:decision",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-027",
+      "canonical_slug": "entry_planner",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:execution",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-006",
+      "canonical_slug": "event_flag_capture",
+      "grammar_role": "temporal_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-021",
+      "canonical_slug": "execution_context_score",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-030",
+      "canonical_slug": "execution_log_writer",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:execution",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-050",
+      "canonical_slug": "execution_tags",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:xai",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-evaluator-eval06",
+      "canonical_slug": "feedback_summary_writer",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-026",
+      "canonical_slug": "fill_bias_adjuster",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:decision",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-045",
+      "canonical_slug": "fill_feedback_router",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-011",
+      "canonical_slug": "gamma_pressure",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-010",
+      "canonical_slug": "iv_vs_rv_analysis",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-024",
+      "canonical_slug": "ladder_constructor",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:decision",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "continuation_ladder"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-047",
+      "canonical_slug": "ladder_continuity_tracker",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "continuation_ladder"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "legacy-module-006",
+      "canonical_slug": "macro_adaptive_weighting_filter",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-evaluator-eval03",
+      "canonical_slug": "macro_alignment_checker",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-005",
+      "canonical_slug": "macro_data_capture",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-013",
+      "canonical_slug": "macro_signal_score",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-051",
+      "canonical_slug": "model_confidence_scorer",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:xai",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-evaluator-eval01",
+      "canonical_slug": "module_score_attributor",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-038",
+      "canonical_slug": "module_trace_attribution",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:logging",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-module-003",
+      "canonical_slug": "obv_vi_flow_confirmation",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-module-005",
+      "canonical_slug": "options_behaviour_cluster",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-003",
+      "canonical_slug": "options_data_capture",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-004",
+      "canonical_slug": "options_metadata_capture",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-029",
+      "canonical_slug": "order_simulator",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:execution",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-014",
+      "canonical_slug": "peer_divergence",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-007",
+      "canonical_slug": "peer_equity_capture",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-028",
+      "canonical_slug": "position_allocator",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:execution",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-031",
+      "canonical_slug": "position_book",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-039",
+      "canonical_slug": "profit_loss_ledger",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:logging",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-009",
+      "canonical_slug": "realized_volatility_engine",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-052",
+      "canonical_slug": "run_signal_scan",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:wrapper",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-053",
+      "canonical_slug": "run_trading_bot",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:wrapper",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-evaluator-eval02",
+      "canonical_slug": "signal_conflict_detector",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-016",
+      "canonical_slug": "skew_inflection",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-001",
+      "canonical_slug": "spot_data_capture",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-049",
+      "canonical_slug": "tail_hedge_injector",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-034",
+      "canonical_slug": "take_profit",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-037",
+      "canonical_slug": "trade_logger",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:logging",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-036",
+      "canonical_slug": "trade_reentry_marker",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-033",
+      "canonical_slug": "trailing_stop",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-032",
+      "canonical_slug": "unrealized_tracker",
+      "grammar_role": "expression_execution",
+      "architecture_role": "execution_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:position_management",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 60,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-evaluator-eval04",
+      "canonical_slug": "variant_performance_tracker",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:evaluator",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-040",
+      "canonical_slug": "variant_trace_logger",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:logging",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-019",
+      "canonical_slug": "vix_spread_detector",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-012",
+      "canonical_slug": "vol_corridor",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-module-002",
+      "canonical_slug": "volatility_sentiment_index",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "archive-module-018",
+      "canonical_slug": "volume_spike_filter",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-044",
+      "canonical_slug": "vvix_ladder_shaper",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "continuation_ladder"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-002",
+      "canonical_slug": "vwap_accumulator",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "raw_input",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:raw_derived_capture",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-008",
+      "canonical_slug": "vwap_roc",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:conceptual_preserved"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-evaluator-eval07",
+      "canonical_slug": "evaluation_config",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "config/evaluation_config.example.yaml",
+        "src/nvda_desk/config_models.py"
+      ],
+      "rationale": [
+        "category:evaluator_config",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-055",
+      "canonical_slug": "runtime_settings",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "config/runtime_settings.example.yaml",
+        "src/nvda_desk/config_models.py"
+      ],
+      "rationale": [
+        "category:wrapper",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-046",
+      "canonical_slug": "macro_shock_responder",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/schemas/risk.py",
+        "src/nvda_desk/services/risk_gateway.py"
+      ],
+      "rationale": [
+        "category:supervisory",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "legacy-module-007",
+      "canonical_slug": "overnight_carry_evaluator",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_market.py"
+      ],
+      "rationale": [
+        "category:unknown",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-017",
+      "canonical_slug": "phase_detector",
+      "grammar_role": "temporal_context",
+      "architecture_role": "classifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/domain/session_clock.py",
+        "src/nvda_desk/schemas/session_clock.py",
+        "src/nvda_desk/services/replay.py"
+      ],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-evaluator-eval00",
+      "canonical_slug": "run_evaluator",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/services/evaluation_log.py",
+        "src/nvda_desk/services/module_evaluators.py",
+        "src/nvda_desk/services/replay.py"
+      ],
+      "rationale": [
+        "category:evaluator_orchestrator",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-042",
+      "canonical_slug": "sim_engine",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/schemas/replay.py",
+        "src/nvda_desk/services/replay.py"
+      ],
+      "rationale": [
+        "category:simulation",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-015",
+      "canonical_slug": "slv_overlay_score",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/schemas/slv.py",
+        "src/nvda_desk/services/slv_market.py",
+        "src/nvda_desk/services/slv_replay.py"
+      ],
+      "rationale": [
+        "category:signal",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-module-025",
+      "canonical_slug": "slv_validator",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/schemas/slv.py",
+        "src/nvda_desk/services/slv_market.py",
+        "src/nvda_desk/services/slv_replay.py"
+      ],
+      "rationale": [
+        "category:decision",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-module-001",
+      "canonical_slug": "strategic_ladder_validator",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "implemented_runtime",
+      "implementation_state": "implemented",
+      "implemented_paths": [
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/schemas/slv.py",
+        "src/nvda_desk/services/slv_market.py",
+        "src/nvda_desk/services/slv_replay.py"
+      ],
+      "rationale": [
+        "category:decision",
+        "item_class:module",
+        "status:implemented"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "implemented_binding_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-001",
+      "canonical_slug": "session_clock_phase_id",
+      "grammar_role": "temporal_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "compression_breakout",
+        "negative_gamma_flush"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-002",
+      "canonical_slug": "vix_vvix_crossover_slope",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-003",
+      "canonical_slug": "vix_term_structure",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-004",
+      "canonical_slug": "iv_rank_vs_iv_percentile_timing",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-005",
+      "canonical_slug": "iv_hv_divergence_by_expiry",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-006",
+      "canonical_slug": "oi_cluster_width",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-007",
+      "canonical_slug": "put_ladder_rationality_vs_call_decay",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "continuation_ladder"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-008",
+      "canonical_slug": "distance_to_vwap",
+      "grammar_role": "temporal_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "continuation_ladder",
+        "pin_reversion"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-009",
+      "canonical_slug": "envelope_band_width",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "compression_breakout"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-010",
+      "canonical_slug": "chop_state",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "compression_breakout"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-011",
+      "canonical_slug": "ppo_obv_contradiction",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-012",
+      "canonical_slug": "obv_vi_combo_state",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-013",
+      "canonical_slug": "adr_delta_divergence",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-014",
+      "canonical_slug": "yield_curve_steepening_signal",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-015",
+      "canonical_slug": "asia_precursor_composite",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-016",
+      "canonical_slug": "time_to_profit_drift_post_macro",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-017",
+      "canonical_slug": "iv_crush_unwind_state",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed",
+        "negative_gamma_flush"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-018",
+      "canonical_slug": "retail_bleed_vs_desk_absorption",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-019",
+      "canonical_slug": "memory_bucket_design",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "legacy-feature-020",
+      "canonical_slug": "two_brain_boundary",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts",
+        "item_class:feature",
+        "status:planned_or_backlog"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-001",
+      "canonical_slug": "validated_strike_zone_score",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "playbook_qualifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features,research_artefacts",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-002",
+      "canonical_slug": "execution_context_score",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-003",
+      "canonical_slug": "vix_vvix_spread_state",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-004",
+      "canonical_slug": "peer_divergence_coherence_score",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-005",
+      "canonical_slug": "volume_spike_state",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "derived_state",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-006",
+      "canonical_slug": "archetype_match_label",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features,research_artefacts",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-007",
+      "canonical_slug": "module_attribution_score",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts,execution_records",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-008",
+      "canonical_slug": "signal_conflict_density",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-009",
+      "canonical_slug": "macro_alignment_gap",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:derived_features,research_artefacts",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [
+        "event_suppressed",
+        "overnight_carry"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-010",
+      "canonical_slug": "confidence_divergence_gap",
+      "grammar_role": "review_explanation",
+      "architecture_role": "review_component",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-011",
+      "canonical_slug": "conviction_tier",
+      "grammar_role": "market_regime_context",
+      "architecture_role": "classifier",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:research_artefacts,risk",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 20,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "archive-feature-012",
+      "canonical_slug": "tail_hedge_activation_state",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "posture_gate",
+      "runtime_target": "concept_contract",
+      "implementation_state": "conceptual_preserved",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk",
+        "item_class:feature",
+        "status:backlog_only"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "concept_contract_only",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-001",
+      "canonical_slug": "desk_cognition_grammar",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:grammar_step",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-002",
+      "canonical_slug": "temporal_context_first",
+      "grammar_role": "temporal_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:grammar_step",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [
+        "event_suppressed",
+        "overnight_carry"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-003",
+      "canonical_slug": "market_regime_context",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:grammar_step",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-004",
+      "canonical_slug": "options_flow_context_first_class",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:market_state_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [
+        "negative_gamma_flush"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-005",
+      "canonical_slug": "posture_and_risk_permission",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk_posture",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [
+        "overnight_carry"
+      ],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-006",
+      "canonical_slug": "playbook_eligibility_gate",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:grammar_step",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-007",
+      "canonical_slug": "expression_after_permission",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:grammar_step",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-008",
+      "canonical_slug": "review_and_explanation_layer",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-009",
+      "canonical_slug": "thirty_signal_glass_cockpit",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:operator_surface",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-010",
+      "canonical_slug": "session_clock_first_class_feature_family",
+      "grammar_role": "temporal_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:operator_surface",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 10,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-011",
+      "canonical_slug": "regime_to_product_mapping",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:operator_surface",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-012",
+      "canonical_slug": "overnight_carry_planner",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk_posture",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [
+        "overnight_carry"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-013",
+      "canonical_slug": "replay_what_did_we_know_then",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-014",
+      "canonical_slug": "ensemble_playbook_thinking",
+      "grammar_role": "playbook_eligibility",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 50,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-015",
+      "canonical_slug": "adversarial_markets_edge_decay_monitor",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-016",
+      "canonical_slug": "bounded_qualitative_context",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-017",
+      "canonical_slug": "sit_out_with_structure",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk_posture",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-018",
+      "canonical_slug": "no_trade_is_valid",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk_posture",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-019",
+      "canonical_slug": "two_brain_architecture",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-020",
+      "canonical_slug": "existing_inventory_vs_fresh_deployable_capital",
+      "grammar_role": "posture_risk_permission",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:risk_posture",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 40,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-021",
+      "canonical_slug": "beta_tape_uses_es_and_nq_first",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:market_state_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-022",
+      "canonical_slug": "asia_handoff_is_a_structured_layer",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:market_state_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [
+        "overnight_carry"
+      ],
+      "options_affinity": true,
+      "inventory_affinity": true
+    },
+    {
+      "canonical_id": "cog-023",
+      "canonical_slug": "vol_complex_not_one_number",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:market_state_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-024",
+      "canonical_slug": "breadth_and_concentration_layer",
+      "grammar_role": "options_flow_context",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:market_state_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 30,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": true,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-025",
+      "canonical_slug": "vwap_raw_vs_derived_taxonomy",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:taxonomy_requirement",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    },
+    {
+      "canonical_id": "cog-026",
+      "canonical_slug": "desk_human_lens_is_binding",
+      "grammar_role": "review_explanation",
+      "architecture_role": "evidence_component",
+      "runtime_target": "evidence_only",
+      "implementation_state": "evidence_only",
+      "implemented_paths": [],
+      "rationale": [
+        "category:architecture_doctrine",
+        "item_class:cognition_fragment",
+        "status:evidence_only"
+      ],
+      "desk_role_priority": 70,
+      "runtime_contract_status": "evidence_only_no_contract",
+      "playbook_affinity": [],
+      "options_affinity": false,
+      "inventory_affinity": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "coverage_summary": {
+    "mapping_count": 129,
+    "orphan_count": 0,
+    "registry_count": 129
+  },
+  "item_class_counts": {
+    "cognition_fragment": 26,
+    "feature": 32,
+    "module": 71
+  },
+  "maturity_counts": {
+    "conceptual_preserved": 93,
+    "evidence_only": 26,
+    "implemented": 10
+  },
+  "readiness_counts": {
+    "evidence_only": 26,
+    "implemented_runtime": 10,
+    "needs_scope_definition": 32,
+    "ready_for_contract_import": 61
+  },
+  "report_inputs": {
+    "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
+    "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl"
+  },
+  "runtime_target_counts": {
+    "concept_contract": 93,
+    "evidence_only": 26,
+    "implemented_runtime": 10
+  },
+  "source_form_counts": {
+    "backlog_entry": 71,
+    "implemented_code": 28,
+    "json_spec": 71,
+    "markdown_fragment": 58,
+    "phase_a_registry": 129,
+    "yaml_spec": 71
+  },
+  "total_items": 129
+}

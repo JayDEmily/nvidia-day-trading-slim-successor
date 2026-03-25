@@ -1,0 +1,20 @@
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+.env
+var/*.db
+
+# Local tooling / editor noise
+.vscode/
+.idea/
+.DS_Store
+
+# Python packaging / build artefacts
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
