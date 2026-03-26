@@ -46,7 +46,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **Gate 55 is the next planned gate** in the successor cognitive-workflow modification pack.
+Current active gate: **no later gate is authored yet beyond Gate 55 in the successor cognitive-workflow modification pack**.
 
 ## 2. Current completed tranche and successor pack
 
@@ -69,7 +69,7 @@ The successor cognitive-workflow modification pack is now authored and partially
 | Gate 52 | `LEAF-G52-001`, `LEAF-G52-002`, `LEAF-G52-003` complete on `main` | make family/setup-variant/execution-expression lineage native while keeping the flat playbook bridge explicit and tested | `docs/planning/2026-03-26_GATE52_NATIVE_PLAYBOOK_HIERARCHY_IMPLEMENTATION.md` |
 | Gate 53 | `LEAF-G53-001`, `LEAF-G53-002`, `LEAF-G53-003` complete on `main` | formalise close-state to carry-state handoff, horizon taxonomy, and deterministic carry downgrade rules | `docs/planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMALISATION.md` |
 | Gate 54 | complete on `main` | freeze DMP v1 as the canonical live producer path while retaining DMP v2 as a secondary migration/inspection surface | `docs/planning/2026-03-26_GATE54_DMP_BINDING_SURFACE_DECISION.md` |
-| Gate 55 | planned next gate | vocabulary/governance alignment follows architecture truth | same successor pack |
+| Gate 55 | complete on `main` | align vocabulary/governance with the pinned workflow architecture and enforce canonical workflow-routing terms | `docs/planning/2026-03-26_GATE55_VOCABULARY_GOVERNANCE_ALIGNMENT.md` |
 
 ## 4. Global execution rules
 
@@ -80,4 +80,4 @@ The successor cognitive-workflow modification pack is now authored and partially
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–54 are complete on `main`; Gate 55 may begin only from the successor pack and only after Gate 54 is recorded and merged.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; no later gate may be implied until a new successor pack is authored.

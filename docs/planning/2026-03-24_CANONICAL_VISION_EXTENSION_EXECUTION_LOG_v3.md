@@ -1132,3 +1132,52 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward after Gate 54 closeout
 - Notes: The successor-promotion path stays documentation-only until a future gate authorises implementation.
+
+
+### LEAF-G55-001 — Align vocabulary governance to family/variant/expression/horizon ownership
+
+- Branch: `work/gate55-vocabulary-governance-alignment-20260326`
+- Start commit: `68c38a9`
+- End commit: `recorded in Gate 55 closeout commit`
+- Files touched:
+  - `scripts/build_canonical_vocabulary.py`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `docs/vocabulary/README.md`
+  - `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+  - `data/vocabulary/feeder/2026-03-26_GATE55_WORKFLOW_ALIGNMENT_FEED.md`
+  - `tests/test_gate55_vocabulary_governance.py`
+  - `docs/planning/2026-03-26_GATE55_VOCABULARY_GOVERNANCE_ALIGNMENT.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - Added canonical ownership for Step 0 calendar/horizon routing, candidate family generation, carry handoff, and carry horizon branch.
+  - Regenerated the canonical vocabulary from the live registry and workflow architecture.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 55 closeout
+- Notes: The feeder note remains evidence only until the generated canonical file and tests agree.
+
+### LEAF-G55-002 — Add governance enforcement for future workflow expansion
+
+- Branch: `work/gate55-vocabulary-governance-alignment-20260326`
+- Start commit: `68c38a9`
+- End commit: `recorded in Gate 55 closeout commit`
+- Files touched:
+  - `tests/test_gate55_vocabulary_governance.py`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json`
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py tests/test_gate51_cognitive_workflow_planning.py`
+  - `make check`
+- Full suite required: `true`
+- Full suite command/result: `make check` → recorded in Gate 55 closeout
+- Exact evidence:
+  - The canonical vocabulary file must regenerate exactly from the script.
+  - Workflow-routing terms now have explicit canonical ownership and the cognitive-workflow successor pack is recorded closed through Gate 55.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 55 closeout
+- Notes: No new downstream cognitive-workflow gate is implied after Gate 55.

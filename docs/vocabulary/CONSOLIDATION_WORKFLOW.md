@@ -19,7 +19,7 @@ The vocabulary workflow is a **feeder process only**.
 - never merge a stale harvested payload blindly;
 - never let one label point to two different contract surfaces;
 - never treat compatibility labels as canonical runtime truth;
-- never let a new family, setup variant, execution expression, or horizon land without a canonical vocabulary entry.
+- never let a new family, setup variant, execution expression, horizon, or workflow-routing concept land without a canonical vocabulary entry.
 
 ## Three-ledger split
 
@@ -30,3 +30,13 @@ The workflow keeps three distinct language ledgers:
 3. **repo labels / code slugs**
 
 They may map to each other. They must not silently collapse into each other.
+
+
+## Gate 55 alignment notes
+
+Gate 55 extends canonical ownership to:
+
+- Step 0 calendar/horizon routing terms;
+- candidate family generation terms;
+- carry handoff and carry-branch terms;
+- generic family / setup-variant / execution-expression governance labels.

@@ -115,6 +115,66 @@ def build_document() -> VocabularyDocument:
             maps_to_contract="docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
             allowed_aliases=["consolidation_workflow"],
         ),
+        VocabularyEntry(
+            canonical_slug="calendar_horizon_gate",
+            canonical_label="Calendar Horizon Gate",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="step0_calendar_horizon",
+            maps_to_contract="docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md",
+            allowed_aliases=["step_0", "horizon_router"],
+            notes=["Explicit runtime routing concern that selects intraday vs carry evaluation horizon."],
+        ),
+        VocabularyEntry(
+            canonical_slug="candidate_family_generation",
+            canonical_label="Candidate Family Generation",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="playbook_eligibility",
+            maps_to_contract="docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md",
+            allowed_aliases=["family_generation", "candidate_setup_generation"],
+            notes=["Owned by the playbook-selection grammar slot rather than Step 1 or posture."],
+        ),
+        VocabularyEntry(
+            canonical_slug="playbook_family",
+            canonical_label="Playbook Family",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="playbook_eligibility",
+            maps_to_contract="nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+            allowed_aliases=["family_layer"],
+        ),
+        VocabularyEntry(
+            canonical_slug="setup_variant",
+            canonical_label="Setup Variant",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="playbook_eligibility",
+            maps_to_contract="nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+            allowed_aliases=["deterministic_setup_variant"],
+        ),
+        VocabularyEntry(
+            canonical_slug="execution_expression",
+            canonical_label="Execution Expression",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="expression_execution",
+            maps_to_contract="nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+            allowed_aliases=["execution_shape"],
+        ),
+        VocabularyEntry(
+            canonical_slug="carry_handoff",
+            canonical_label="Carry Handoff",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="carry_horizon",
+            maps_to_contract="nvda_desk.schemas.overnight.CloseStateCarryHandoff",
+            allowed_aliases=["close_state_handoff"],
+            notes=["Typed bridge from intraday close-state into overnight/weekend/event carry evaluation."],
+        ),
+        VocabularyEntry(
+            canonical_slug="carry_horizon_branch",
+            canonical_label="Carry Horizon Branch",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="carry_horizon",
+            maps_to_contract="nvda_desk.schemas.overnight.CarryHorizon",
+            allowed_aliases=["carry_branch"],
+            notes=["Separate horizon branch for overnight, weekend, and event carry decisions."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(
@@ -176,7 +236,7 @@ def build_document() -> VocabularyDocument:
         )
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
-        registry_version="gate50-rebase-2026-03-25",
+        registry_version="gate55-alignment-2026-03-26",
         notes=[
             "Generated from current live playbook registry and pinned architecture surfaces.",
             "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth.",

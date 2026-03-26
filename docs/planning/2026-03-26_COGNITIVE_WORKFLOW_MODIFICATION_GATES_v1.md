@@ -1,6 +1,6 @@
 # 2026-03-26 Cognitive Workflow Modification Gates v1
 
-Status: Gates 51–54 complete on `main`; Gate 55 next planned gate
+Status: Gates 51–55 complete on `main`; successor pack closed through Gate 55
 Version: v1.2
 
 Status: Gates 51-53 complete on `main`; Gate 54 next planned gate
@@ -164,7 +164,7 @@ The repo can no longer be misread as “already on DMP v2” if it is not, and a
 
 ## Gate 55 — Vocabulary/governance alignment
 
-Status: planned next gate
+Status: complete on `main`
 
 ### Objective
 Align vocabulary governance with the workflow modification only after stage ownership, hierarchy, carry taxonomy, and DMP decision are pinned.

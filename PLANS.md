@@ -39,8 +39,7 @@ The active successor modification pair for Gate 51 onward is:
 - Gate 51 — complete on `main`
 - Gate 52 — complete on `main`
 - Gate 53 — complete on `main`
-- Gate 54 — complete on `main`
-- Gate 55 — planned in the cognitive workflow modification pack
+- Gates 54–55 — complete on `main`
 
 ## Sequential execution rule
 
@@ -48,12 +47,12 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 51 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–50 are merged on `main`, and Gate 51 closes the workflow-ownership planning pass by:
-- freezing the pre-implementation audit in-repo;
-- replacing the flat playbook registry with registry v2 hierarchy;
-- formalising close-state to carry-horizon handoff for overnight, weekend, and event carry;
-- keeping `session_clock` as an explicit outward compatibility wrapper while exposing canonical `temporal_state` surfaces;
-- rebasing vocabulary governance onto the current architecture with enforcement tests;
-- pinning workflow-stage ownership, candidate-generation boundaries, Step 0 calendar/horizon routing, and carry-branch boundary semantics in Gate 51 planning artefacts.
+The persisted `main` baseline is now closed through Gate 55 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–55 are merged on `main`, which means the repo now has:
+- the frozen pre-implementation audit in-repo;
+- registry-v2 hierarchy with native family/setup-variant lineage;
+- formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
+- explicit `session_clock` compatibility over canonical `temporal_state`;
+- a bounded DMP decision that keeps v1 as the canonical live producer surface while retaining v2 as a secondary migration/inspection surface;
+- vocabulary governance aligned to family / setup-variant / execution-expression / horizon ownership plus workflow-routing terms such as Step 0 calendar/horizon and carry handoff.
 
-The next gate is Gate 55 in the cognitive workflow modification pack.
+No later cognitive-workflow gate has been authored yet beyond Gate 55.
