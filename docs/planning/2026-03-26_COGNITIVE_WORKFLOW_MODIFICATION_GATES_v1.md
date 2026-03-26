@@ -3,8 +3,7 @@
 Status: Gates 51–55 complete on `main`; successor pack closed through Gate 55
 Version: v1.2
 
-Status: Gates 51-53 complete on `main`; Gate 54 next planned gate
-Version: v1.1
+Historical note: the DMP assumptions in this pack were later superseded by the dedicated Gates 56–58 DMP promotion pack.
 
 ## Purpose
 

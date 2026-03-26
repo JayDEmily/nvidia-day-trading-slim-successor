@@ -104,9 +104,8 @@ def test_tranche_a_upstream_packets_upgrade_to_v2_and_remain_lineage_ready() -> 
     ivrv = next(emission for emission in emissions if emission.output.canonical_slug == "iv_vs_rv_analysis")
     ivrv_output = cast(IvVsRvAnalysisContractOutput, ivrv.output)
 
-    assert skew.packet.protocol_version == "dmp.v1"
-    assert skew.packet_v2.protocol_version == "dmp.v2"
-    assert skew.packet_v2.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
-    assert skew.packet_v2.summary.trader_summary.startswith("skew_inflection")
+    assert skew.packet.protocol_version == "dmp.v2"
+    assert skew.packet.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
+    assert skew.packet.summary.trader_summary.startswith("skew_inflection")
     assert ivrv_output.ivrv_ratio is None or ivrv_output.ivrv_ratio > 0.0
     assert ivrv.packet.schema_identifiers.output_model_name == "IvVsRvAnalysisContractOutput"

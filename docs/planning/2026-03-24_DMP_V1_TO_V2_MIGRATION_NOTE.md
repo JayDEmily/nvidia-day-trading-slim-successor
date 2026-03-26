@@ -1,5 +1,8 @@
 # 2026-03-24 DMP V1 to V2 Migration Note
 
+Status: historical planning artefact; retained after Gates 56–58 for audit context
+
+
 Status: design draft only; not yet implemented
 
 ## 1. Purpose

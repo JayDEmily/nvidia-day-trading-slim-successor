@@ -7,12 +7,10 @@ from datetime import datetime
 from hashlib import sha1
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.execution_lifecycle import (
     DynamicPartialExitModelContractOutput,
     ExecutionLifecycleContext,
@@ -40,8 +38,7 @@ class ExecutionLifecycleContractEmission:
     """One typed execution-lifecycle contract output plus its DMP packets."""
 
     output: ExecutionLifecyclePayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -116,7 +113,7 @@ class ExecutionLifecycleContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> ExecutionLifecycleContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::execution_lifecycle::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -128,16 +125,13 @@ class ExecutionLifecycleContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="ExecutionLifecycleContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::execution_lifecycle::{emitted_at.isoformat()}",
             run_id=f"run::execution_lifecycle::{emitted_at.isoformat()}",
             module_instance_id=f"execution_lifecycle::{output.canonical_slug}",
             registry_version="execution_lifecycle_v1",
             environment_tag="research",
         )
-        return ExecutionLifecycleContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return ExecutionLifecycleContractEmission(output=output, packet=packet)
 
     def _dynamic_partial_exit_model(
         self, context: ExecutionLifecycleContext

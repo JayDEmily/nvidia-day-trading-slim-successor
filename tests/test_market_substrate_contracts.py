@@ -90,8 +90,7 @@ def test_market_substrate_packets_upgrade_to_v2_without_losing_order_or_schema_n
     macro = next(emission for emission in emissions if emission.output.canonical_slug == "macro_data_capture")
     options_meta = next(emission for emission in emissions if emission.output.canonical_slug == "options_metadata_capture")
 
-    assert macro.packet.protocol_version == "dmp.v1"
-    assert macro.packet_v2.protocol_version == "dmp.v2"
-    assert macro.packet_v2.producer.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
+    assert macro.packet.protocol_version == "dmp.v2"
+    assert macro.packet.producer.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
     assert options_meta.packet.schema_identifiers.output_model_name == "OptionsMetadataCaptureContractOutput"
-    assert options_meta.packet_v2.summary.trader_summary.startswith("options_metadata_capture")
+    assert options_meta.packet.summary.trader_summary.startswith("options_metadata_capture")

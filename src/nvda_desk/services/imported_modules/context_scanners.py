@@ -7,12 +7,10 @@ from datetime import datetime
 from statistics import fmean
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.context_scanners import (
     AsiaPrecursorContextFilterContractOutput,
     ContextScannerContext,
@@ -37,8 +35,7 @@ class ContextScannerContractEmission:
     """One typed context/scanner contract output plus its DMP packets."""
 
     output: ContextScannerPayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -121,7 +118,7 @@ class ContextScannerContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> ContextScannerContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::context_scanners::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -133,16 +130,13 @@ class ContextScannerContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="ContextScannerContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::context_scanners::{emitted_at.isoformat()}",
             run_id=f"run::context_scanners::{emitted_at.isoformat()}",
             module_instance_id=f"context_scanners::{output.canonical_slug}",
             registry_version="context_scanners_v1",
             environment_tag="research",
         )
-        return ContextScannerContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return ContextScannerContractEmission(output=output, packet=packet)
 
     def _macro_signal_score(self, context: ContextScannerContext) -> MacroSignalScoreContractOutput:
         macro_pressure = 0.0

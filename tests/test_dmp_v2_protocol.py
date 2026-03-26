@@ -9,14 +9,7 @@ from pydantic import ValidationError
 
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.cognition import TemporalContextOutput
-from nvda_desk.schemas.dmp import (
-    DmpBehaviourClass,
-    DmpGrammarRole,
-    DmpPacket,
-    DmpPacketIdentity,
-    DmpSchemaIdentifiers,
-    DmpTraceReferences,
-)
+from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
 from nvda_desk.schemas.dmp_v2 import (
     DmpV2ArtifactRefBlock,
     DmpV2ArtifactReference,
@@ -31,10 +24,8 @@ from nvda_desk.schemas.dmp_v2 import (
     DmpV2TableColumn,
     DmpV2TimeseriesBlock,
     build_dmp_v2_packet,
-    upgrade_v1_packet_to_v2,
+    build_dmp_v2_packet_from_payload,
 )
-
-TemporalContextPacket = DmpPacket[TemporalContextOutput]
 
 
 def _temporal_payload() -> TemporalContextOutput:
@@ -50,27 +41,6 @@ def _temporal_payload() -> TemporalContextOutput:
         recent_path_tag="trend_up",
         carryover_state="clean",
         reasons=["opening drive intact"],
-    )
-
-
-def _v1_packet() -> TemporalContextPacket:
-    return TemporalContextPacket(
-        packet_identity=DmpPacketIdentity(
-            packet_id="pkt-temporal-001",
-            emitted_at=datetime(2026, 3, 24, 9, 31),
-        ),
-        grammar_role=DmpGrammarRole.TEMPORAL_CONTEXT,
-        behaviour_class=DmpBehaviourClass.STAGE_OUTPUT,
-        schema_identifiers=DmpSchemaIdentifiers(
-            payload_model_name="TemporalContextOutput",
-            payload_module_path="nvda_desk.schemas.cognition",
-            output_model_name="TemporalContextOutput",
-        ),
-        stack_id="stack_live_v1",
-        coefficient_set_id="coeff_default_v1",
-        dependencies=["temporal_state_v1"],
-        trader_summary="Opening window classified cleanly.",
-        payload=_temporal_payload(),
     )
 
 
@@ -232,32 +202,35 @@ def test_dmp_v2_supports_inline_tables_timeseries_and_artifact_references() -> N
     assert timeseries.points[1].values["front_atm_iv"] == 0.6
 
 
-def test_upgrade_v1_packet_to_v2_preserves_identity_context_and_lineage() -> None:
-    """Migration should preserve deterministic ids and first-class execution context."""
+def test_build_dmp_v2_packet_from_payload_preserves_identity_context_and_lineage() -> None:
+    """Canonical packet building should preserve ids, context, and lineage without a v1 shim."""
 
-    packet = _v1_packet().model_copy(
-        update={
-            "trace_references": DmpTraceReferences(
-                parent_packet_id="pkt-parent-000",
-                upstream_packet_ids=["pkt-parent-000", "pkt-upstream-001"],
-                review_trace_id="review-trace::pkt-temporal-001",
-            )
-        }
-    )
-    upgraded = upgrade_v1_packet_to_v2(
-        packet,
+    packet = build_dmp_v2_packet_from_payload(
+        packet_id="pkt-temporal-001",
+        emitted_at=datetime(2026, 3, 24, 9, 31),
+        grammar_role=DmpGrammarRole.TEMPORAL_CONTEXT,
+        behaviour_class=DmpBehaviourClass.STAGE_OUTPUT,
+        payload=_temporal_payload(),
+        trader_summary="Opening window classified cleanly.",
+        stack_id="stack_live_v1",
+        coefficient_set_id="coeff_default_v1",
+        dependencies=["temporal_state_v2"],
+        input_model_name="TemporalContextInput",
+        output_model_name="TemporalContextOutput",
+        parent_packet_ids=["pkt-parent-000"],
+        dependency_packet_ids=["pkt-parent-000", "pkt-upstream-001"],
+        review_trace_id="review-trace::pkt-temporal-001",
         trace_id="trace::session_a",
         run_id="run::session_a::001",
         module_instance_id="temporal_context::runtime",
-        registry_version="registry.v1",
+        registry_version="registry.v2",
         environment_tag="research",
     )
 
-    assert upgraded.packet_id == packet.packet_identity.packet_id
-    assert upgraded.execution_context.stack_id == "stack_live_v1"
-    assert upgraded.execution_context.coefficient_set_id == "coeff_default_v1"
-    assert upgraded.lineage.parent_packet_ids == ["pkt-parent-000"]
-    assert upgraded.lineage.dependency_packet_ids == ["pkt-parent-000", "pkt-upstream-001"]
-    assert upgraded.lineage.review_trace_id == "review-trace::pkt-temporal-001"
-    assert upgraded.blocks[0].block_type == "object_block"
-    assert upgraded.blocks[0].data["desk_window"] == "open_drive"
+    assert packet.packet_id == "pkt-temporal-001"
+    assert packet.execution_context.stack_id == "stack_live_v1"
+    assert packet.execution_context.coefficient_set_id == "coeff_default_v1"
+    assert packet.lineage.parent_packet_ids == ["pkt-parent-000"]
+    assert packet.lineage.dependency_packet_ids == ["pkt-parent-000", "pkt-upstream-001"]
+    assert packet.dependencies == ["temporal_state_v2"]
+    assert packet.payload.model_dump(mode="json") == _temporal_payload().model_dump(mode="json")

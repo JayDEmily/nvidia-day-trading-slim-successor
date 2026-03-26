@@ -6,12 +6,10 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.ladder_readiness_overlays import (
     LadderReadinessContext,
     LadderReadinessPayload,
@@ -29,8 +27,7 @@ class LadderReadinessContractEmission:
     """One typed ladder-readiness overlay output plus its DMP packets."""
 
     output: LadderReadinessPayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -93,7 +90,7 @@ class LadderReadinessContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> LadderReadinessContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::ladder_readiness_overlays::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -105,16 +102,13 @@ class LadderReadinessContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="LadderReadinessContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::ladder_readiness_overlays::{emitted_at.isoformat()}",
             run_id=f"run::ladder_readiness_overlays::{emitted_at.isoformat()}",
             module_instance_id=f"ladder_readiness_overlays::{output.canonical_slug}",
             registry_version="ladder_readiness_overlays_v1",
             environment_tag="research",
         )
-        return LadderReadinessContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return LadderReadinessContractEmission(output=output, packet=packet)
 
     def _vvix_ladder_shaper(self, context: LadderReadinessContext) -> VvixLadderShaperContractOutput:
         ladder = context.ladder_constructor.ladder_strikes

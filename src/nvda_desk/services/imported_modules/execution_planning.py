@@ -6,12 +6,10 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.execution_planning import (
     BrokerAdapterContractOutput,
     EntryPlannerContractOutput,
@@ -33,8 +31,7 @@ class ExecutionPlanningContractEmission:
     """One typed execution-planning contract output plus its DMP packets."""
 
     output: ExecutionPlanningPayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -103,7 +100,7 @@ class ExecutionPlanningContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> ExecutionPlanningContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::execution_planning::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -115,16 +112,13 @@ class ExecutionPlanningContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="ExecutionPlanningContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::execution_planning::{emitted_at.isoformat()}",
             run_id=f"run::execution_planning::{emitted_at.isoformat()}",
             module_instance_id=f"execution_planning::{output.canonical_slug}",
             registry_version="execution_planning_v1",
             environment_tag="research",
         )
-        return ExecutionPlanningContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return ExecutionPlanningContractEmission(output=output, packet=packet)
 
     def _broker_adapter(self, context: ExecutionPlanningContext) -> BrokerAdapterContractOutput:
         return BrokerAdapterContractOutput(

@@ -184,4 +184,4 @@ def test_context_scanner_contracts_reflect_stressed_conditions_without_fake_appr
     assert engine_score.conviction_band == "suppressed"
     assert engine_score.engine_score < 0.3
     assert vix_spread.risk_tag == "vvix_dislocation"
-    assert emissions[-1].packet_v2.summary.trader_summary.startswith("engine_score")
+    assert emissions[-1].packet.summary.trader_summary.startswith("engine_score")

@@ -1,20 +1,20 @@
 """Desk Module Protocol (DMP) v2 typed packet contract.
 
-DMP v2 supersedes the narrow v1 envelope as the long-term canonical internal
-message contract. The protocol keeps a fixed top-level envelope while allowing
-one or more typed data blocks for heterogeneous module outputs such as compact
-objects, scalar metrics, tabular datasets, time series, and external artefact
-references.
+DMP v2 is the canonical live internal message contract. The protocol keeps a
+fixed top-level envelope while allowing one or more typed data blocks for
+heterogeneous module outputs such as compact objects, scalar metrics, tabular
+datasets, time series, and external artefact references.
 """
 
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated, Any, Literal
+from importlib import import_module
+from typing import Annotated, Any, Literal, cast
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from nvda_desk.schemas.dmp import DmpPacket
+from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
 
 
 class DmpV2Producer(BaseModel):
@@ -84,6 +84,37 @@ class DmpV2Validation(BaseModel):
 
     schema_valid: bool = True
     validation_errors: list[str] = Field(default_factory=list)
+
+
+class DmpV2PacketIdentityCompat(BaseModel):
+    """Compatibility view over v2 packet identity."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    packet_id: str = Field(min_length=1)
+    emitted_at: datetime
+
+
+class DmpV2SchemaIdentifiersCompat(BaseModel):
+    """Compatibility view over payload schema identifiers."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    payload_model_name: str = Field(min_length=1)
+    payload_module_path: str = Field(min_length=1)
+    input_model_name: str | None = None
+    output_model_name: str | None = None
+
+
+class DmpV2TraceReferencesCompat(BaseModel):
+    """Compatibility view over lineage/tracing semantics."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    parent_packet_id: str | None = None
+    upstream_packet_ids: list[str] = Field(default_factory=list)
+    review_trace_id: str | None = None
+    replay_trace_id: str | None = None
 
 
 class DmpV2ArtifactReference(BaseModel):
@@ -218,6 +249,72 @@ class DmpV2Packet(BaseModel):
     validation: DmpV2Validation = Field(default_factory=DmpV2Validation)
     extensions: dict[str, Any] = Field(default_factory=dict)
 
+    @property
+    def packet_identity(self) -> DmpV2PacketIdentityCompat:
+        return DmpV2PacketIdentityCompat(packet_id=self.packet_id, emitted_at=self.producer.emitted_at)
+
+    @property
+    def grammar_role(self) -> DmpGrammarRole:
+        return DmpGrammarRole(self.producer.grammar_role)
+
+    @property
+    def behaviour_class(self) -> DmpBehaviourClass:
+        return DmpBehaviourClass(self.producer.behaviour_class)
+
+    @property
+    def schema_identifiers(self) -> DmpV2SchemaIdentifiersCompat:
+        compat = self.extensions.get("schema_identifiers", {})
+        if isinstance(compat, dict) and {"payload_model_name", "payload_module_path"} <= compat.keys():
+            return DmpV2SchemaIdentifiersCompat.model_validate(compat)
+        object_block = next((block for block in self.blocks if block.block_type == "object_block"), None)
+        if object_block is None:
+            raise AttributeError("DMP v2 packet has no object block for schema compatibility view")
+        module_path, _, model_name = object_block.schema_id.rpartition(".")
+        return DmpV2SchemaIdentifiersCompat(
+            payload_model_name=model_name,
+            payload_module_path=module_path,
+            output_model_name=model_name,
+        )
+
+    @property
+    def trace_references(self) -> DmpV2TraceReferencesCompat:
+        parent_packet_id = self.lineage.parent_packet_ids[-1] if self.lineage.parent_packet_ids else None
+        return DmpV2TraceReferencesCompat(
+            parent_packet_id=parent_packet_id,
+            upstream_packet_ids=list(self.lineage.dependency_packet_ids),
+            review_trace_id=self.lineage.review_trace_id,
+            replay_trace_id=self.lineage.replay_trace_id,
+        )
+
+    @property
+    def stack_id(self) -> str | None:
+        return self.execution_context.stack_id
+
+    @property
+    def coefficient_set_id(self) -> str | None:
+        return self.execution_context.coefficient_set_id
+
+    @property
+    def dependencies(self) -> list[str]:
+        raw = self.extensions.get("semantic_dependencies", [])
+        if isinstance(raw, list):
+            return [str(item) for item in raw]
+        return []
+
+    @property
+    def trader_summary(self) -> str:
+        return self.summary.trader_summary
+
+    @property
+    def payload(self) -> BaseModel:
+        object_block = next((block for block in self.blocks if block.block_type == "object_block"), None)
+        if object_block is None:
+            raise AttributeError("DMP v2 packet has no object block for payload compatibility view")
+        schema = self.schema_identifiers
+        module = import_module(schema.payload_module_path)
+        model_cls = getattr(module, schema.output_model_name or schema.payload_model_name)
+        return cast(BaseModel, model_cls.model_validate(object_block.data))
+
     @model_validator(mode="after")
     def _validate_block_contract(self) -> DmpV2Packet:
         present_block_kinds = [block.block_type for block in self.blocks]
@@ -264,74 +361,92 @@ def build_dmp_v2_packet(
     )
 
 
-def upgrade_v1_packet_to_v2[PayloadT: BaseModel](
-    packet: DmpPacket[PayloadT],
+def build_dmp_v2_packet_from_payload(
     *,
-    trace_id: str,
-    run_id: str,
+    packet_id: str,
+    emitted_at: datetime,
+    grammar_role: DmpGrammarRole | str,
+    behaviour_class: DmpBehaviourClass | str,
+    payload: BaseModel,
+    trader_summary: str,
+    stack_id: str | None = None,
+    coefficient_set_id: str | None = None,
+    dependencies: list[str] | None = None,
+    input_model_name: str | None = None,
+    output_model_name: str | None = None,
+    parent_packet_ids: list[str] | None = None,
+    dependency_packet_ids: list[str] | None = None,
+    review_trace_id: str | None = None,
+    replay_trace_id: str | None = None,
+    trace_id: str | None = None,
+    run_id: str | None = None,
     scenario_id: str | None = None,
+    module_id: str | None = None,
     module_version: str = "1.0.0",
     module_instance_id: str | None = None,
+    stage_name: str | None = None,
     registry_version: str | None = None,
     environment_tag: str | None = None,
+    extensions: dict[str, Any] | None = None,
 ) -> DmpV2Packet:
-    """Upgrade one DMP v1 packet into the v2 fixed-envelope plus block format."""
+    """Build one canonical DMP v2 packet directly from a typed payload model."""
 
-    payload = packet.payload
-    grammar_role = packet.grammar_role.value
-    behaviour_class = packet.behaviour_class.value
-    parent_ids = (
-        [packet.trace_references.parent_packet_id]
-        if packet.trace_references.parent_packet_id is not None
-        else []
-    )
+    payload_model = payload.__class__
+    grammar_role_value = grammar_role.value if isinstance(grammar_role, DmpGrammarRole) else str(grammar_role)
+    behaviour_class_value = behaviour_class.value if isinstance(behaviour_class, DmpBehaviourClass) else str(behaviour_class)
+    resolved_output_model = output_model_name or payload_model.__name__
+    payload_extensions = {
+        "schema_identifiers": {
+            "payload_model_name": payload_model.__name__,
+            "payload_module_path": payload_model.__module__,
+            "input_model_name": input_model_name,
+            "output_model_name": resolved_output_model,
+        },
+        "semantic_dependencies": list(dependencies or []),
+    }
+    if extensions:
+        payload_extensions.update(dict(extensions))
     return build_dmp_v2_packet(
-        packet_id=packet.packet_identity.packet_id,
-        trace_id=trace_id,
-        run_id=run_id,
+        packet_id=packet_id,
+        trace_id=trace_id or f"trace::{packet_id}",
+        run_id=run_id or f"run::{packet_id}",
         scenario_id=scenario_id,
         producer=DmpV2Producer(
-            module_id=grammar_role,
+            module_id=module_id or grammar_role_value,
             module_version=module_version,
-            module_instance_id=module_instance_id or f"{grammar_role}::default",
-            grammar_role=grammar_role,
-            stage_name=grammar_role,
-            behaviour_class=behaviour_class,
-            emitted_at=packet.packet_identity.emitted_at,
+            module_instance_id=module_instance_id or f"{grammar_role_value}::default",
+            grammar_role=grammar_role_value,
+            stage_name=stage_name or grammar_role_value,
+            behaviour_class=behaviour_class_value,
+            emitted_at=emitted_at,
         ),
         contract=DmpV2Contract(
             packet_schema_id="dmp.packet@2.0.0",
-            payload_contract_id=f"{grammar_role}.output@1.0.0",
-            compatibility_version="1",
+            payload_contract_id=f"{grammar_role_value}.output@1.0.0",
+            compatibility_version="2",
             required_blocks=["object_block"],
-            optional_blocks=["summary_block"],
+            optional_blocks=["summary_block", "metrics_block", "table_block", "timeseries_block", "artifact_ref_block"],
         ),
         lineage=DmpV2Lineage(
-            parent_packet_ids=parent_ids,
-            dependency_packet_ids=list(packet.trace_references.upstream_packet_ids),
+            parent_packet_ids=list(parent_packet_ids or []),
+            dependency_packet_ids=list(dependency_packet_ids or []),
             source_artifact_ids=[],
-            review_trace_id=packet.trace_references.review_trace_id,
-            replay_trace_id=packet.trace_references.replay_trace_id,
+            review_trace_id=review_trace_id,
+            replay_trace_id=replay_trace_id,
         ),
         execution_context=DmpV2ExecutionContext(
-            stack_id=packet.stack_id,
-            coefficient_set_id=packet.coefficient_set_id,
+            stack_id=stack_id,
+            coefficient_set_id=coefficient_set_id,
             registry_version=registry_version,
             environment_tag=environment_tag,
         ),
         blocks=[
             DmpV2ObjectBlock(
                 block_id="payload",
-                schema_id=(
-                    f"{packet.schema_identifiers.payload_module_path}."
-                    f"{packet.schema_identifiers.output_model_name or payload.__class__.__name__}"
-                ),
+                schema_id=f"{payload_model.__module__}.{resolved_output_model}",
                 data=payload.model_dump(mode="json"),
             )
         ],
-        trader_summary=packet.trader_summary,
-        extensions={
-            "v1_schema_identifiers": packet.schema_identifiers.model_dump(mode="json"),
-            "v1_dependencies": list(packet.dependencies),
-        },
+        trader_summary=trader_summary,
+        extensions=payload_extensions,
     )

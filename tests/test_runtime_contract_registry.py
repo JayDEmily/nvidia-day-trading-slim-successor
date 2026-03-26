@@ -97,14 +97,13 @@ def test_runtime_emits_dmp_packets_in_registry_order_with_typed_payloads() -> No
     assert [packet.schema_identifiers.output_model_name for packet in result.stage_packets] == [
         contract.output_model_name for contract in contracts
     ]
-    assert [packet.producer.grammar_role for packet in result.stage_packets_v2] == [
+    assert [packet.producer.grammar_role for packet in result.stage_packets] == [
         contract.grammar_role for contract in contracts
     ]
-    assert result.packet_lineage == tuple(packet.packet_identity.packet_id for packet in result.stage_packets)
-    assert result.packet_lineage == tuple(packet.packet_id for packet in result.stage_packets_v2)
+    assert result.packet_lineage == tuple(packet.packet_id for packet in result.stage_packets)
     assert result.stage_packets[0].payload.model_dump(mode="json") == result.temporal.model_dump(mode="json")
     assert result.stage_packets[-1].payload.model_dump(mode="json") == result.review.model_dump(mode="json")
-    assert isinstance(result.stage_packets_v2[0].blocks[0], DmpV2ObjectBlock)
-    assert isinstance(result.stage_packets_v2[-1].blocks[0], DmpV2ObjectBlock)
-    assert result.stage_packets_v2[0].blocks[0].data == result.temporal.model_dump(mode="json")
-    assert result.stage_packets_v2[-1].blocks[0].data == result.review.model_dump(mode="json")
+    assert isinstance(result.stage_packets[0].blocks[0], DmpV2ObjectBlock)
+    assert isinstance(result.stage_packets[-1].blocks[0], DmpV2ObjectBlock)
+    assert result.stage_packets[0].blocks[0].data == result.temporal.model_dump(mode="json")
+    assert result.stage_packets[-1].blocks[0].data == result.review.model_dump(mode="json")

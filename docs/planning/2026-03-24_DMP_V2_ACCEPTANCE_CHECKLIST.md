@@ -1,5 +1,8 @@
 # 2026-03-24 DMP V2 Acceptance Checklist
 
+Status: historical planning artefact; retained after Gates 56–58 for audit context
+
+
 Status: design draft only; not yet implemented
 
 Use this checklist before any DMP v2 implementation is treated as acceptable.

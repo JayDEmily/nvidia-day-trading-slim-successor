@@ -4,7 +4,7 @@
   "global_rules": [
     "This tranche modifies the current deterministic cognition architecture and does not authorise a rewrite.",
     "One working branch per gate; no downstream gate begins until the current gate is complete, green, and merged.",
-    "DMP v1 remains the live binding default unless a dedicated gate explicitly proves and promotes a DMP v2 migration.",
+    "This pack assumed DMP v1 remained live until a later dedicated DMP promotion gate executed; that assumption was later closed by Gates 56\u201358.",
     "Modules remain interchangeable only within their grammar slot.",
     "Shared primitives are allowed; downstream verdict loops are forbidden.",
     "Weekend / overnight / event carry remains a distinct horizon branch.",
@@ -616,5 +616,6 @@
     "Gate 54",
     "Gate 55"
   ],
-  "active_gate": "none_pack_closed_after_gate_55"
+  "active_gate": "none_pack_closed_after_gate_55",
+  "historical_note": "Executed through Gate 55; DMP assumptions were later superseded by Gates 56\u201358."
 }

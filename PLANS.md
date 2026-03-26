@@ -47,12 +47,13 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 55 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–55 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 58 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–58 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
 - explicit `session_clock` compatibility over canonical `temporal_state`;
-- a bounded DMP decision that keeps v1 as the canonical live producer surface while retaining v2 as a secondary migration/inspection surface;
+- DMP v2 promoted as the canonical live producer surface;
+- DMP v1 retired from live runtime dependency and retained only as archived historical context;
 - vocabulary governance aligned to family / setup-variant / execution-expression / horizon ownership plus workflow-routing terms such as Step 0 calendar/horizon and carry handoff.
 
-No later cognitive-workflow gate has been authored yet beyond Gate 55.
+No later DMP or cognitive-workflow gate has been authored yet beyond Gate 58.

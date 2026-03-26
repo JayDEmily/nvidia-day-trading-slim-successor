@@ -7,12 +7,10 @@ from datetime import datetime
 from statistics import fmean
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.posture_enrichers import (
     ArchetypeTaggerContractOutput,
     CompressionRegimeDetectorContractOutput,
@@ -35,8 +33,7 @@ class PostureEnricherContractEmission:
     """One typed posture-enricher contract output plus its DMP packets."""
 
     output: PostureEnricherPayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -106,7 +103,7 @@ class PostureEnricherContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> PostureEnricherContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::posture_enrichers::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -118,16 +115,13 @@ class PostureEnricherContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="PostureEnricherContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::posture_enrichers::{emitted_at.isoformat()}",
             run_id=f"run::posture_enrichers::{emitted_at.isoformat()}",
             module_instance_id=f"posture_enrichers::{output.canonical_slug}",
             registry_version="posture_enrichers_v1",
             environment_tag="research",
         )
-        return PostureEnricherContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return PostureEnricherContractEmission(output=output, packet=packet)
 
     def _fill_bias_adjuster(self, context: PostureEnricherContext) -> FillBiasAdjusterContractOutput:
         base = context.execution_context_score.context_score * context.macro_adaptive_weighting_filter.weight_multiplier

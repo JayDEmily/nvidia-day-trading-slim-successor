@@ -210,4 +210,4 @@ def test_posture_enrichers_reflect_stressed_conditions_and_keep_obv_flow_fenced(
         "market_volume_series",
         "intraday_obv_curve",
     }
-    assert emissions[-1].packet_v2.summary.trader_summary.startswith("volatility_sentiment_index")
+    assert emissions[-1].packet.summary.trader_summary.startswith("volatility_sentiment_index")

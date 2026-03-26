@@ -1,6 +1,6 @@
 # 2026-03-26 Gate 54 — DMP Binding Surface Decision
 
-Status: complete on `main` once merged
+Status: historical Gate 54 closeout note retained after Gates 56–58 once merged
 
 ## Objective
 
@@ -22,3 +22,6 @@ Gate 54 freezes the workflow-modification tranche on **DMP v1 as the canonical l
 - targeted DMP binding tests green
 - full matrix green
 - planning/control surfaces updated so Gate 54 is recorded complete and Gate 55 becomes active
+
+
+Historical note: Gate 54 froze v1 only for the workflow-modification tranche. Gates 56–58 later promoted DMP v2 and retired live v1 dependency.

@@ -1181,3 +1181,31 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward after Gate 55 closeout
 - Notes: No new downstream cognitive-workflow gate is implied after Gate 55.
+
+
+### LEAF-G56-001 through LEAF-G56-005 — DMP v2 readiness / future-proof / governance audit
+
+- Branch: `work/gate56-dmp-v2-readiness-audit-20260326`
+- Scope: inventory live producer/consumer surfaces, audit v2 envelope adequacy, sweep normative/guardrail/docs, and freeze readiness verdict.
+- Outcome:
+  - Added the successor DMP promotion pack to the authoritative tree.
+  - Added readiness audit artefacts under `docs/audit/2026-03-26_dmp_v2_readiness_audit/`.
+  - Concluded DMP v2 is promotion-ready and no DMP v3 redesign is required for the current workflow.
+
+### LEAF-G57-001 through LEAF-G57-005 — DMP v2 canonical producer promotion
+
+- Branch: `work/gate57-dmp-v2-canonical-promotion-20260326`
+- Scope: make runtime and imported-module packet emission native-v2 and treat v2 as the canonical live producer contract.
+- Outcome:
+  - Runtime `stage_packets` and imported-module `packet` surfaces now emit native DMP v2 packets.
+  - Compatibility accessors on `DmpV2Packet` preserve typed-payload ergonomics without keeping a mixed-mode runtime.
+  - Full matrix and dependency-heavy tests were rerun and passed.
+
+### LEAF-G58-001 through LEAF-G58-004 — DMP v1 retirement and mixed-mode cleanup
+
+- Branch: `work/gate58-dmp-v1-retirement-20260326`
+- Scope: retire live v1 producer dependency, archive historical docs, and close mixed-mode wording.
+- Outcome:
+  - Removed active mixed-mode runtime surfaces such as `stage_packets_v2`, `contract_packets_v2`, and imported-module `.packet_v2`.
+  - Archived DMP v1 as historical context only and rewrote active docs so DMP v2 is the one canonical live protocol.
+  - Deleted the v1-only protocol test surface and proved the repo passes on the v2-only runtime contract.

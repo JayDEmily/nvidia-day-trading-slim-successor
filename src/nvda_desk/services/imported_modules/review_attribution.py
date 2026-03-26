@@ -6,12 +6,10 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from nvda_desk.schemas.dmp import (
-    DeskModulePacket,
     DmpBehaviourClass,
     DmpGrammarRole,
-    build_dmp_packet,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.review_attribution import (
     ConfidenceDivergenceLoggerContractOutput,
     DailySummaryContractOutput,
@@ -37,8 +35,7 @@ class ReviewAttributionContractEmission:
     """One typed Gate-23 review-chain contract output plus its DMP packets."""
 
     output: ReviewAttributionPayload
-    packet: DeskModulePacket
-    packet_v2: DmpV2Packet
+    packet: DmpV2Packet
 
 
 def _dependency_fences(
@@ -120,7 +117,7 @@ class ReviewAttributionContractService:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> ReviewAttributionContractEmission:
-        packet = build_dmp_packet(
+        packet = build_dmp_v2_packet_from_payload(
             packet_id=f"dmp::review_attribution::{output.canonical_slug}::{emitted_at.isoformat()}",
             emitted_at=emitted_at,
             grammar_role=DmpGrammarRole(output.grammar_role),
@@ -132,16 +129,13 @@ class ReviewAttributionContractService:
             dependencies=[fence.dependency for fence in output.dependency_fences],
             input_model_name="ReviewAttributionContext",
             output_model_name=output.__class__.__name__,
-        )
-        packet_v2 = upgrade_v1_packet_to_v2(
-            packet,
             trace_id=f"trace::review_attribution::{emitted_at.isoformat()}",
             run_id=f"run::review_attribution::{emitted_at.isoformat()}",
             module_instance_id=f"review_attribution::{output.canonical_slug}",
             registry_version="review_attribution_v1",
             environment_tag="research",
         )
-        return ReviewAttributionContractEmission(output=output, packet=packet, packet_v2=packet_v2)
+        return ReviewAttributionContractEmission(output=output, packet=packet)
 
     def _profit_loss_ledger(self, context: ReviewAttributionContext) -> ProfitLossLedgerContractOutput:
         realized = round(0.35 if context.execution.active_playbook_ids else 0.0, 4)

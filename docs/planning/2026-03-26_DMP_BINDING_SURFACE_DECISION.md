@@ -1,15 +1,15 @@
 # 2026-03-26 DMP Binding Surface Decision
 
-Status: Gate 54 decision surface; complete on `main` once merged
-Authority: subordinate to `docs/01_NORMATIVE.md`; bounded decision artefact for the cognitive-workflow modification tranche
+Status: historical Gate 54 freeze note; superseded by Gates 56–58
+Authority: subordinate to `docs/01_NORMATIVE.md`; historical decision artefact retained for lineage
 
-## Decision
+## Historical Gate 54 decision
 
-For the cognitive-workflow modification tranche closed through Gate 54:
+For the workflow-modification tranche closed through Gate 54:
 
-- **DMP v1 remains the canonical live runtime packet producer surface.**
-- **DMP v2 remains an implemented secondary migration/inspection surface derived from v1 packets.**
-- **No partial DMP v2 producer promotion is authorised inside Gates 51–55.**
+- **DMP v1 remained the canonical live runtime packet producer surface.**
+- **DMP v2 remained an implemented secondary migration/inspection surface derived from v1 packets.**
+- **No partial DMP v2 producer promotion was authorised inside Gates 51–55.**
 
 ## Why this decision is correct now
 
@@ -17,19 +17,18 @@ For the cognitive-workflow modification tranche closed through Gate 54:
 2. The runtime and imported-module paths generate DMP v2 packets by upgrading those v1 packets via `upgrade_v1_packet_to_v2(...)`.
 3. The current trader-thinking workflow gates already modify hierarchy, carry routing, and vocabulary. Coupling those semantic changes to a transport promotion would blur root-cause attribution when behaviour drifts.
 
-## Live binding inventory
+## Historical Gate 54 inventory
 
-### Canonical producer surfaces
+### Canonical producer surfaces at the time
 
 - `src/nvda_desk/schemas/dmp.py`
 - `src/nvda_desk/services/cognition_runtime.py::_build_stage_packets`
-- imported-module emissions that expose `.packet` as the first-class packet surface
+- imported-module emissions that exposed `.packet` as the first-class packet surface
 
-### Secondary migration / inspection surfaces
+### Secondary migration / inspection surfaces at the time
 
 - `src/nvda_desk/schemas/dmp_v2.py`
-- `src/nvda_desk/services/cognition_runtime.py::_build_stage_packets_v2`
-- imported-module emissions that expose `.packet_v2` derived from `.packet`
+- runtime and imported-module upgrade helpers that produced secondary v2 packets from canonical v1 packets
 
 ## Explicit non-goals
 
@@ -37,11 +36,16 @@ For the cognitive-workflow modification tranche closed through Gate 54:
 - removing v1 packet production during Gates 51–55
 - adding direct `build_dmp_v2_packet(...)` producer paths to runtime services as a side effect of workflow work
 
-## Promotion rule
+## Historical promotion rule
 
-If the repo later chooses DMP v2 as the canonical live producer contract, that promotion must happen in a dedicated successor gate that:
+If the repo later chose DMP v2 as the canonical live producer contract, that promotion had to happen in a dedicated successor gate that:
 
 - rewrites the producer path explicitly
 - proves backward-compatibility or documents intentional breakage
 - updates docs, fixtures, and tests together
 - removes mixed-mode ambiguity rather than deepening it
+
+
+## Historical supersession note
+
+This Gate 54 freeze applied only to the workflow-modification tranche through Gate 55. Gates 56–58 later promoted DMP v2 to the canonical live producer surface and retired DMP v1 as a live runtime dependency.

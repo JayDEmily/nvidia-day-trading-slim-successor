@@ -37,15 +37,8 @@ from nvda_desk.schemas.cognition import (
     TemporalContextInput,
     TemporalContextOutput,
 )
-from nvda_desk.schemas.dmp import (
-    CognitionStagePayload,
-    DeskModulePacket,
-    DmpBehaviourClass,
-    DmpGrammarRole,
-    DmpTraceReferences,
-    build_dmp_packet,
-)
-from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock, DmpV2Packet, upgrade_v1_packet_to_v2
+from nvda_desk.schemas.dmp import CognitionStagePayload, DmpBehaviourClass, DmpGrammarRole
+from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock, DmpV2Packet, build_dmp_v2_packet_from_payload
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ArchetypeMatcherContractOutput,
     ContractComputationMode,
@@ -88,12 +81,10 @@ class DeskCognitionRuntimeResult:
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
     review: ReviewExplanationOutput
-    stage_packets: tuple[DeskModulePacket, ...] = ()
-    stage_packets_v2: tuple[DmpV2Packet, ...] = ()
+    stage_packets: tuple[DmpV2Packet, ...] = ()
     packet_lineage: tuple[str, ...] = ()
     stage_packet_ids: dict[str, str] = field(default_factory=dict)
-    contract_packets: tuple[DeskModulePacket, ...] = ()
-    contract_packets_v2: tuple[DmpV2Packet, ...] = ()
+    contract_packets: tuple[DmpV2Packet, ...] = ()
     contract_packet_ids: dict[str, str] = field(default_factory=dict)
 
 
@@ -177,8 +168,7 @@ class DeskCognitionRuntime:
             ImportedModuleReviewCitation(
                 canonical_id=emission.output.canonical_id,
                 canonical_slug=emission.output.canonical_slug,
-                packet_id=emission.packet.packet_identity.packet_id,
-                packet_id_v2=emission.packet_v2.packet_id,
+                packet_id=emission.packet.packet_id,
                 grammar_role=emission.output.grammar_role,
                 computation_mode=emission.output.computation_mode.value,
                 maturity_state=self._imported_module_maturity(emission),
@@ -292,18 +282,12 @@ class DeskCognitionRuntime:
             stack_id=stack_id,
             coefficient_set_id=coefficient_set_id,
         )
-        stage_packets_v2 = self._build_stage_packets_v2(
-            emitted_at=temporal_input.ts,
-            stage_packets=stage_packets,
-            stack_id=stack_id,
-            coefficient_set_id=coefficient_set_id,
-        )
         stage_packet_ids = {
-            stage_name.value: packet.packet_identity.packet_id
+            stage_name.value: packet.packet_id
             for stage_name, packet in stage_packets.items()
         }
         packet_lineage = tuple(
-            stage_packets[stage_name].packet_identity.packet_id
+            stage_packets[stage_name].packet_id
             for stage_name, _, _, _ in self._STAGE_SPECS
         )
         review_packet_id = stage_packet_ids[BindingStageName.REVIEW.value]
@@ -335,21 +319,13 @@ class DeskCognitionRuntime:
         )
         stage_packets[BindingStageName.REVIEW] = stage_packets[BindingStageName.REVIEW].model_copy(
             update={
-                "payload": review,
-                "trace_references": stage_packets[BindingStageName.REVIEW].trace_references.model_copy(
-                    update={"review_trace_id": f"review-trace::{review_packet_id}"}
-                ),
-            }
-        )
-        stage_packets_v2[BindingStageName.REVIEW] = stage_packets_v2[BindingStageName.REVIEW].model_copy(
-            update={
-                "lineage": stage_packets_v2[BindingStageName.REVIEW].lineage.model_copy(
+                "lineage": stage_packets[BindingStageName.REVIEW].lineage.model_copy(
                     update={"review_trace_id": f"review-trace::{review_packet_id}"}
                 ),
                 "blocks": [
                     DmpV2ObjectBlock(
                         block_id="payload",
-                        schema_id=stage_packets_v2[BindingStageName.REVIEW].blocks[0].schema_id,
+                        schema_id=stage_packets[BindingStageName.REVIEW].blocks[0].schema_id,
                         data=review.model_dump(mode="json"),
                     )
                 ],
@@ -357,10 +333,6 @@ class DeskCognitionRuntime:
         )
         ordered_packets = tuple(
             stage_packets[stage_name]
-            for stage_name, _, _, _ in self._STAGE_SPECS
-        )
-        ordered_packets_v2 = tuple(
-            stage_packets_v2[stage_name]
             for stage_name, _, _, _ in self._STAGE_SPECS
         )
         return DeskCognitionRuntimeResult(
@@ -372,12 +344,10 @@ class DeskCognitionRuntime:
             execution=execution,
             review=review,
             stage_packets=ordered_packets,
-            stage_packets_v2=ordered_packets_v2,
-            packet_lineage=tuple(packet.packet_identity.packet_id for packet in ordered_packets),
+            packet_lineage=tuple(packet.packet_id for packet in ordered_packets),
             stage_packet_ids=stage_packet_ids,
             contract_packets=tuple(emission.packet for emission in (*upstream_contract_emissions, *selector_contract_emissions)),
-            contract_packets_v2=tuple(emission.packet_v2 for emission in (*upstream_contract_emissions, *selector_contract_emissions)),
-            contract_packet_ids={emission.output.canonical_slug: emission.packet.packet_identity.packet_id for emission in (*upstream_contract_emissions, *selector_contract_emissions)},
+            contract_packet_ids={emission.output.canonical_slug: emission.packet.packet_id for emission in (*upstream_contract_emissions, *selector_contract_emissions)},
         )
 
     def _posture_with_contract_citations(
@@ -430,11 +400,13 @@ class DeskCognitionRuntime:
         stage_outputs: dict[BindingStageName, CognitionStagePayload],
         stack_id: str | None,
         coefficient_set_id: str | None,
-    ) -> dict[BindingStageName, DeskModulePacket]:
-        stage_packets: dict[BindingStageName, DeskModulePacket] = {}
+    ) -> dict[BindingStageName, DmpV2Packet]:
+        stage_packets: dict[BindingStageName, DmpV2Packet] = {}
         upstream_packet_ids: list[str] = []
+        trace_id = f"trace::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
+        run_id = f"run::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
         for stage_name, grammar_role, input_model_name, output_model_name in self._STAGE_SPECS:
-            packet = build_dmp_packet(
+            packet = build_dmp_v2_packet_from_payload(
                 packet_id=self._packet_id(
                     emitted_at=emitted_at,
                     stage_name=stage_name,
@@ -449,38 +421,19 @@ class DeskCognitionRuntime:
                 stack_id=stack_id,
                 coefficient_set_id=coefficient_set_id,
                 dependencies=self._dependencies_for_stage(stage_name),
-                trace_references=DmpTraceReferences(
-                    parent_packet_id=upstream_packet_ids[-1] if upstream_packet_ids else None,
-                    upstream_packet_ids=list(upstream_packet_ids),
-                ),
                 input_model_name=input_model_name,
                 output_model_name=output_model_name,
-            )
-            stage_packets[stage_name] = packet
-            upstream_packet_ids.append(packet.packet_identity.packet_id)
-        return stage_packets
-
-    def _build_stage_packets_v2(
-        self,
-        *,
-        emitted_at: datetime,
-        stage_packets: dict[BindingStageName, DeskModulePacket],
-        stack_id: str | None,
-        coefficient_set_id: str | None,
-    ) -> dict[BindingStageName, DmpV2Packet]:
-        trace_id = f"trace::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
-        run_id = f"run::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
-        stage_packets_v2: dict[BindingStageName, DmpV2Packet] = {}
-        for stage_name, packet in stage_packets.items():
-            stage_packets_v2[stage_name] = upgrade_v1_packet_to_v2(
-                packet,
+                parent_packet_ids=[upstream_packet_ids[-1]] if upstream_packet_ids else [],
+                dependency_packet_ids=list(upstream_packet_ids),
                 trace_id=trace_id,
                 run_id=run_id,
                 module_instance_id=f"{stage_name.value}::runtime",
-                registry_version="dmp_v2_migration",
+                registry_version="dmp_v2_live",
                 environment_tag="research",
             )
-        return stage_packets_v2
+            stage_packets[stage_name] = packet
+            upstream_packet_ids.append(packet.packet_id)
+        return stage_packets
 
     def _packet_id(
         self,

@@ -1,0 +1,281 @@
+{
+  "version": "v1.0",
+  "status": "executed and closed through Gate 58 on main",
+  "paired_gates_doc": "docs/planning/2026-03-26_DMP_V2_PROMOTION_GATES_v1.md",
+  "global_rules": [
+    "One branch per gate; merge to main only after the gate is green.",
+    "Gate 56 must pass before Gate 57 may start.",
+    "Gate 57 may make DMP v2 canonical, but may not fully retire v1 in the same gate.",
+    "Gate 58 may not begin until Gate 57 is merged and any surviving v1 usage is explicitly compatibility-only.",
+    "Normative docs, guardrails, AGENTS guidance, and planning docs must agree on what is canonical, compatibility-only, and archived.",
+    "If Gate 56 finds DMP v2 is not future-proof, promotion is blocked until the bounded defects are resolved."
+  ],
+  "gates": [
+    {
+      "gate_id": "G56",
+      "title": "DMP v2 readiness / future-proof / governance audit",
+      "status": "complete_on_main",
+      "leaves": [
+        {
+          "leaf_id": "LEAF-G56-001",
+          "title": "Inventory all DMP v1/v2 producer and consumer surfaces",
+          "purpose": "Produce an authoritative map of live v1 producers, live v2 producers, v2-upgraded surfaces, v1 consumers, v2 consumers, and mixed-mode helpers.",
+          "allowed_touches": [
+            "docs/audit/**",
+            "docs/planning/**",
+            "src/nvda_desk/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Runtime semantics beyond evidence-only instrumentation"
+          ],
+          "validation": [
+            "Evidence note with file paths and exact producer/consumer classification",
+            "Targeted pytest for DMP protocol surfaces if any test names change"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G56-002",
+          "title": "Audit DMP v2 envelope and block model for future-proofing",
+          "purpose": "Prove that the current v2 envelope and block types can carry the post-Gate-55 workflow, including Step 0 routing, hierarchy lineage, carry handoff, review traceability, and foreseeable near-term modules without a DMP v3 redesign.",
+          "allowed_touches": [
+            "docs/audit/**",
+            "docs/planning/**",
+            "src/nvda_desk/schemas/dmp_v2.py",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Canonical producer path",
+            "Imported-module runtime behaviour"
+          ],
+          "validation": [
+            "Future-proof audit note with explicit pass/fail verdict",
+            "Targeted tests covering any schema clarifications"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G56-003",
+          "title": "Audit normative docs, guardrails, AGENTS, and planning surfaces for DMP coherence",
+          "purpose": "Remove ambiguity across docs/01-05, AGENTS.md, DMP specs, workflow notes, and execution-control docs so they agree on what is live, what is compatibility-only, and what is archived.",
+          "allowed_touches": [
+            "docs/**",
+            "AGENTS.md",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Runtime code except for docstring alignment if strictly necessary"
+          ],
+          "validation": [
+            "Normative coherence note with explicit contradictions resolved",
+            "Doc-hygiene / planning-authority tests green"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G56-004",
+          "title": "Archive or stub legacy planning artefacts with authoritative pointers",
+          "purpose": "Move stale planning artefacts out of the active path while preserving truthful stubs/pointers so no historical context is lost.",
+          "allowed_touches": [
+            "docs/planning/**",
+            "docs/legacy/**",
+            "docs/status/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Active canonical control surfaces without explicit justification"
+          ],
+          "validation": [
+            "Authoritative archive/stub note",
+            "Doc-hygiene tests green"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G56-005",
+          "title": "Emit readiness verdict and Gate 57/58 exact pass criteria",
+          "purpose": "Freeze a promotion-ready or promotion-blocked verdict, plus exact Gate 57 and Gate 58 entry/exit criteria.",
+          "allowed_touches": [
+            "docs/audit/**",
+            "docs/planning/**"
+          ],
+          "must_not_touch": [
+            "Runtime code",
+            "Fixtures"
+          ],
+          "validation": [
+            "Explicit readiness verdict committed in-repo",
+            "No ambiguous 'probably ready' language"
+          ]
+        }
+      ]
+    },
+    {
+      "gate_id": "G57",
+      "title": "DMP v2 canonical producer promotion",
+      "status": "complete_on_main",
+      "leaves": [
+        {
+          "leaf_id": "LEAF-G57-001",
+          "title": "Rewrite runtime stage packet producer path to native v2",
+          "purpose": "Stop canonical runtime packet production from depending on 'emit v1 then upgrade' behaviour.",
+          "allowed_touches": [
+            "src/nvda_desk/services/**",
+            "src/nvda_desk/schemas/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Carry semantics unrelated to packet production",
+            "Playbook hierarchy semantics unrelated to packet production"
+          ],
+          "validation": [
+            "Targeted DMP producer-path tests green",
+            "Parity note showing native v2 production path"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G57-002",
+          "title": "Promote imported-module and ancillary packet emission to v2-first",
+          "purpose": "Ensure imported-module packet and any ancillary packet surfaces treat v2 as canonical, not derived.",
+          "allowed_touches": [
+            "src/nvda_desk/**",
+            "tests/**",
+            "fixtures/**"
+          ],
+          "must_not_touch": [
+            "Unrelated module business logic"
+          ],
+          "validation": [
+            "Imported-module / ancillary packet tests green"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G57-003",
+          "title": "Migrate canonical fixtures, API/replay readers, and docs to v2",
+          "purpose": "Make v2 the default packet contract in fixtures, API/replay-facing surfaces, and authoritative docs.",
+          "allowed_touches": [
+            "fixtures/**",
+            "src/nvda_desk/api/**",
+            "src/nvda_desk/services/**",
+            "docs/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Historical archives except for truthful stubs/pointers"
+          ],
+          "validation": [
+            "API/replay tests green",
+            "Docs reflect v2 as canonical producer"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G57-004",
+          "title": "Constrain any surviving v1 usage to explicit compatibility-only shims",
+          "purpose": "If any v1 consumer cannot be removed inside Gate 57, confine it to a minimal, named compatibility shim with retirement criteria.",
+          "allowed_touches": [
+            "src/nvda_desk/**",
+            "docs/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Reintroduction of v1 as canonical producer"
+          ],
+          "validation": [
+            "Compatibility shim inventory committed",
+            "No hidden mixed-mode producer path remains"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G57-005",
+          "title": "Prove canonical v2 promotion with full matrix and dependency-heavy validation",
+          "purpose": "Run the full matrix plus backend/dependency-heavy checks to prove v2 is the canonical live producer surface and Gate 58 is safe to begin.",
+          "allowed_touches": [
+            "tests/**",
+            "docs/planning/**",
+            "docs/audit/**"
+          ],
+          "must_not_touch": [
+            "Runtime semantics except for fixes required by failing validation"
+          ],
+          "validation": [
+            "make check green",
+            "Dependency-heavy/backend subset green",
+            "Gate 58 readiness note committed"
+          ]
+        }
+      ]
+    },
+    {
+      "gate_id": "G58",
+      "title": "DMP v1 retirement and mixed-mode cleanup",
+      "status": "complete_on_main",
+      "leaves": [
+        {
+          "leaf_id": "LEAF-G58-001",
+          "title": "Remove v1 producer codepaths and temporary adapters",
+          "purpose": "Delete any remaining v1 producer path and any temporary adapter no longer justified after Gate 57.",
+          "allowed_touches": [
+            "src/nvda_desk/**",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Canonical v2 producer semantics except as required by cleanup"
+          ],
+          "validation": [
+            "No runtime producer path emits v1",
+            "Targeted retirement tests green"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G58-002",
+          "title": "Retire v1-only fixtures, tests, and docs",
+          "purpose": "Archive or remove v1-only support artefacts once they no longer serve a live compatibility role.",
+          "allowed_touches": [
+            "fixtures/**",
+            "tests/**",
+            "docs/**"
+          ],
+          "must_not_touch": [
+            "Historical archives without truthful pointers"
+          ],
+          "validation": [
+            "Fixture/test/doc inventory updated",
+            "No stale claim that v1 remains live"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G58-003",
+          "title": "Close mixed-mode wording and archive obsolete DMP v1 planning surfaces",
+          "purpose": "Ensure normative/planning/agent docs describe one surviving canonical DMP surface and archive obsolete mixed-mode notes with pointers.",
+          "allowed_touches": [
+            "docs/**",
+            "AGENTS.md",
+            "tests/**"
+          ],
+          "must_not_touch": [
+            "Non-DMP architecture decisions unrelated to retirement"
+          ],
+          "validation": [
+            "Doc-hygiene and planning-authority tests green",
+            "No contradictory v1-live wording remains"
+          ]
+        },
+        {
+          "leaf_id": "LEAF-G58-004",
+          "title": "Prove zero meaningful v1 dependency remains",
+          "purpose": "Run full validation and emit a retirement receipt showing the repo no longer meaningfully depends on DMP v1.",
+          "allowed_touches": [
+            "tests/**",
+            "docs/planning/**",
+            "docs/audit/**"
+          ],
+          "must_not_touch": [
+            "Runtime semantics except for fixes revealed by validation"
+          ],
+          "validation": [
+            "make check green",
+            "Dependency-heavy/backend subset green",
+            "Retirement receipt committed"
+          ]
+        }
+      ]
+    }
+  ]
+}

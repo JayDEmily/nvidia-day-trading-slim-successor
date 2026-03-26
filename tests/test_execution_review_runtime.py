@@ -354,14 +354,11 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     )
 
     assert len(result.stage_packets) == 7
-    assert len(result.stage_packets_v2) == 7
     assert result.stage_packets[5].payload.model_dump(mode="json") == result.execution.model_dump(mode="json")
     assert result.stage_packets[6].payload.model_dump(mode="json") == result.review.model_dump(mode="json")
-    assert isinstance(result.stage_packets_v2[5].blocks[0], DmpV2ObjectBlock)
-    assert isinstance(result.stage_packets_v2[6].blocks[0], DmpV2ObjectBlock)
-    assert result.stage_packets_v2[5].blocks[0].data == result.execution.model_dump(mode="json")
-    assert result.stage_packets_v2[6].blocks[0].data == result.review.model_dump(mode="json")
-    assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_identity.packet_id
-    assert result.stage_packet_ids["execution"] == result.stage_packets_v2[5].packet_id
-    assert result.stage_packets[6].trace_references.parent_packet_id == result.stage_packets[5].packet_identity.packet_id
-    assert result.stage_packets_v2[6].lineage.parent_packet_ids == [result.stage_packets_v2[5].packet_id]
+    assert isinstance(result.stage_packets[5].blocks[0], DmpV2ObjectBlock)
+    assert isinstance(result.stage_packets[6].blocks[0], DmpV2ObjectBlock)
+    assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(mode="json")
+    assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
+    assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_id
+    assert result.stage_packets[6].lineage.parent_packet_ids == [result.stage_packets[5].packet_id]

@@ -34,9 +34,8 @@ def test_review_output_carries_dmp_lineage_for_the_decision_chain() -> None:
     assert lineage.packet_lineage == list(result.packet_lineage)
     assert lineage.stage_packet_ids == result.stage_packet_ids
     assert result.review.review_packet["dmp_lineage"] == lineage.model_dump(mode="json")
-    assert result.stage_packets[-1].trace_references.review_trace_id == f"review-trace::{lineage.review_packet_id}"
-    assert result.stage_packets_v2[-1].lineage.review_trace_id == f"review-trace::{lineage.review_packet_id}"
-    assert result.stage_packets_v2[-1].packet_id == lineage.review_packet_id
+    assert result.stage_packets[-1].lineage.review_trace_id == f"review-trace::{lineage.review_packet_id}"
+    assert result.stage_packets[-1].packet_id == lineage.review_packet_id
 
 
 def test_replay_run_result_carries_replay_packet_lineage_without_touching_report_metrics() -> None:

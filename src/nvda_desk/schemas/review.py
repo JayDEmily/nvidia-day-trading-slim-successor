@@ -40,7 +40,6 @@ class ImportedModuleReviewCitation(BaseModel):
     canonical_id: str = Field(min_length=1)
     canonical_slug: str = Field(min_length=1)
     packet_id: str = Field(min_length=1)
-    packet_id_v2: str = Field(min_length=1)
     grammar_role: str = Field(min_length=1)
     computation_mode: str = Field(min_length=1)
     maturity_state: ImportedModuleMaturityState

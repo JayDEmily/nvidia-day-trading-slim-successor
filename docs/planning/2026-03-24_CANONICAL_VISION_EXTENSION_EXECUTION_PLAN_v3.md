@@ -83,4 +83,4 @@ Use the files below together:
 
 ## Current tranche status
 
-The bounded Gate 46–50 architecture tranche is complete on `main`. Gates 51–55 have now closed the workflow-ownership, native hierarchy, carry-formalisation, DMP-binding, and vocabulary-alignment passes. No later cognitive-workflow gate is authored yet beyond Gate 55.
+The bounded Gate 46–50 architecture tranche is complete on `main`. Gates 51–55 closed the workflow-ownership, native hierarchy, carry-formalisation, DMP-binding, and vocabulary-alignment passes. Gates 56–58 then audited DMP v2 readiness, promoted v2 to the canonical producer path, and retired DMP v1 from live runtime dependency. No later successor gate is authored yet beyond Gate 58.
