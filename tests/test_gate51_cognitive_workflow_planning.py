@@ -16,14 +16,14 @@ GATE53 = REPO_ROOT / "docs/planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMAL
 PLANS = REPO_ROOT / "PLANS.md"
 
 
-def test_gate51_docs_exist_and_gate_pack_marks_gate53_complete() -> None:
+def test_gate51_docs_exist_and_gate_pack_marks_gate54_complete() -> None:
     gates_text = GATES.read_text()
     leaves = json.loads(LEAVES.read_text())
 
-    assert "Status: Gates 51-53 complete on `main`; Gate 54 next planned gate" in gates_text
-    assert leaves["execution_status"] == "gate_53_complete_on_main_gate_54_planned"
-    assert leaves["completed_gate_ids"] == ["Gate 51", "Gate 52", "Gate 53"]
-    assert leaves["active_gate"] == "Gate 54"
+    assert "Status: Gates 51–54 complete on `main`; Gate 55 next planned gate" in gates_text
+    assert leaves["execution_status"] == "gate_54_complete_on_main_gate_55_planned"
+    assert leaves["completed_gate_ids"] == ["Gate 51", "Gate 52", "Gate 53", "Gate 54"]
+    assert leaves["active_gate"] == "Gate 55"
     assert leaves["completed_leaf_ids"] == [
         "LEAF-G51-001",
         "LEAF-G51-002",
@@ -34,6 +34,9 @@ def test_gate51_docs_exist_and_gate_pack_marks_gate53_complete() -> None:
         "LEAF-G53-001",
         "LEAF-G53-002",
         "LEAF-G53-003",
+        "LEAF-G54-001",
+        "LEAF-G54-002",
+        "LEAF-G54-003",
     ]
 
 
@@ -52,4 +55,4 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     assert "Carry begins only at an explicit handoff boundary" in boundary_rules
     assert "family -> setup_variant -> execution_expression" in gate52
     assert "weekend, ordinary overnight, and event carry" in gate53
-    assert "Gate 53 — complete on `main`" in plans
+    assert "Gate 54 — complete on `main`" in plans

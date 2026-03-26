@@ -1,12 +1,18 @@
 # 2026-03-24 DMP V2 Normative Specification
 
-Status: design draft only; not yet implemented  
-Authority: subordinate to `docs/01_NORMATIVE.md`; non-governing design artefact for the next DMP redesign pass  
-Design target: replace DMP v1 as the long-term canonical internal message contract after explicit promotion and implementation
+Status: migration/inspection surface implemented in bounded secondary form; not the canonical live producer path  
+Authority: subordinate to `docs/01_NORMATIVE.md`; non-governing design+promotion artefact until a dedicated DMP v2 gate promotes it  
+Design target: replace DMP v1 as the long-term canonical internal message contract only after explicit promotion and implementation
+
+## 0. Gate 54 clarification
+
+The repo now contains real DMP v2 schemas, tests, and upgrade helpers, and some runtime/module paths emit secondary v2 packets by upgrading a v1 packet after the canonical v1 packet has already been produced.
+
+That means DMP v2 is **implemented as a secondary migration/inspection surface**, but it is **not** yet the canonical live producer path. Any future promotion must replace the producer path deliberately rather than relying on mixed-mode coexistence.
 
 ## 1. Purpose
 
-Desk Module Protocol (DMP) v2 is the **canonical internal message contract** for module-to-module handoff.
+Desk Module Protocol (DMP) v2 is the **long-term target internal message contract** for module-to-module handoff once a dedicated promotion gate makes it the canonical producer path.
 
 DMP v2 exists to solve a different problem from DMP v1.
 

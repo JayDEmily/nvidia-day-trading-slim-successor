@@ -1067,3 +1067,68 @@ This baseline is context only. It is not a forward-execution leaf log.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward after Gate 53 closeout
 - Notes: Recommendation/action alignment remains enforced after downgrade.
+
+
+### LEAF-G54-001 — Inventory all live DMP binding surfaces
+
+- Branch: `work/gate54-dmp-binding-surface-decision-20260326`
+- Start commit: `ff3fdc7`
+- End commit: `recorded in Gate 54 closeout commit`
+- Files touched:
+  - `docs/planning/2026-03-26_DMP_BINDING_SURFACE_DECISION.md`
+  - `docs/planning/2026-03-24_DMP_V1_SPEC.md`
+  - `docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md`
+  - `tests/test_gate54_dmp_binding_surface.py`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_gate54_dmp_binding_surface.py`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - Inventoried v1 producer surfaces and v2 upgrade surfaces in one decision note.
+  - Tightened the older DMP notes so the repo no longer claims v2 is merely hypothetical while simultaneously shipping real v2 packets.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 54 closeout
+- Notes: This leaf closes the inventory ambiguity and does not yet authorise a v2 promotion.
+
+### LEAF-G54-002 — Freeze the live DMP surface for the workflow-modification tranche
+
+- Branch: `work/gate54-dmp-binding-surface-decision-20260326`
+- Start commit: `ff3fdc7`
+- End commit: `recorded in Gate 54 closeout commit`
+- Files touched:
+  - `docs/planning/2026-03-26_GATE54_DMP_BINDING_SURFACE_DECISION.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
+  - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json`
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_dmp_protocol.py tests/test_dmp_v2_protocol.py tests/test_gate54_dmp_binding_surface.py tests/test_planning_gate_authority_consistency.py`
+  - `make check`
+- Full suite required: `true`
+- Full suite command/result: `make check` → recorded in Gate 54 closeout
+- Exact evidence:
+  - Froze DMP v1 as the canonical live producer contract for the workflow-modification tranche.
+  - Marked Gate 54 complete and Gate 55 active in the control surfaces.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 54 closeout
+- Notes: Gate 54 remains a bounded decision gate and does not permit a silent transport rewrite.
+
+### LEAF-G54-003 — If DMP v2 promotion is chosen, emit a bounded successor promotion pack instead of mixed-mode implementation
+
+- Branch: `work/gate54-dmp-binding-surface-decision-20260326`
+- Start commit: `ff3fdc7`
+- End commit: `recorded in Gate 54 closeout commit`
+- Files touched:
+  - `docs/planning/2026-03-26_DMP_BINDING_SURFACE_DECISION.md`
+  - `docs/planning/2026-03-26_GATE54_DMP_BINDING_SURFACE_DECISION.md`
+- Validations run:
+  - `.venv/bin/python -m pytest -q tests/test_gate54_dmp_binding_surface.py tests/test_planning_gate_authority_consistency.py`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - Gate 54 ends with a bounded v1 freeze decision and explicitly forbids treating that as a stealth v2 promotion.
+  - Any future v2 promotion is forced into a dedicated successor gate rather than smuggled through workflow work.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward after Gate 54 closeout
+- Notes: The successor-promotion path stays documentation-only until a future gate authorises implementation.

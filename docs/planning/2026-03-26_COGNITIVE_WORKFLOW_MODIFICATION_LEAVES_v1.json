@@ -168,7 +168,7 @@
       "full_suite_required": false,
       "pass_gate": "The registry contracts are natively hierarchical and explicitly versioned.",
       "merge_gate": "Legacy compatibility remains explicit and tested rather than accidental.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 4
     },
     {
@@ -211,7 +211,7 @@
       "full_suite_required": true,
       "pass_gate": "Runtime evaluation is natively hierarchical without losing deterministic selection.",
       "merge_gate": "Current live playbooks remain explainable and compatibility-tested.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 5
     },
     {
@@ -251,7 +251,7 @@
       "full_suite_required": false,
       "pass_gate": "The family library is richer on paper without overstating what runtime supports today.",
       "merge_gate": "Registry and docs do not claim live support for unimplemented families.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 6
     },
     {
@@ -296,7 +296,7 @@
       "full_suite_required": false,
       "pass_gate": "Carry handoff is typed, explicit, and documented.",
       "merge_gate": "The handoff contract is sufficient for weekend and event-carry routing without borrowing hidden intraday state.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 7
     },
     {
@@ -335,7 +335,7 @@
       "full_suite_required": false,
       "pass_gate": "Weekend and event carry are no longer semantically ambiguous.",
       "merge_gate": "Carry taxonomy is explicit enough to support explanation and replay.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 8
     },
     {
@@ -377,7 +377,7 @@
       "full_suite_required": true,
       "pass_gate": "Carry actions and downgrade rules are deterministic and explanation-safe.",
       "merge_gate": "Weekend/event downgrade paths are explicitly tested and green.",
-      "status": "complete_on_main",
+      "status": "complete",
       "execution_sequence": 9
     },
     {
@@ -421,7 +421,7 @@
       "full_suite_required": false,
       "pass_gate": "The repo has a precise inventory of live vs draft DMP surfaces.",
       "merge_gate": "No reader can reasonably confuse the live runtime packet contract after the decision note lands.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 10
     },
     {
@@ -462,7 +462,7 @@
       "full_suite_required": true,
       "pass_gate": "The DMP choice for this tranche is explicit, bounded, and test-enforced.",
       "merge_gate": "There is no ambiguity about whether runtime is coded for legacy DMP, v1, or v2.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 11
     },
     {
@@ -502,7 +502,7 @@
       "full_suite_required": false,
       "pass_gate": "Gate 54 ends with an explicit bounded DMP outcome rather than an ambiguous mixed-mode state.",
       "merge_gate": "If DMP v2 is chosen, a successor promotion pack exists before any implementation branch starts.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 12
     },
     {
@@ -590,7 +590,7 @@
       "execution_sequence": 14
     }
   ],
-  "execution_status": "gate_53_complete_on_main_gate_54_planned",
+  "execution_status": "gate_54_complete_on_main_gate_55_planned",
   "completed_at": "2026-03-26T00:55:00Z",
   "completed_leaf_ids": [
     "LEAF-G51-001",
@@ -601,19 +601,20 @@
     "LEAF-G52-003",
     "LEAF-G53-001",
     "LEAF-G53-002",
-    "LEAF-G53-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G53-003",
     "LEAF-G54-001",
     "LEAF-G54-002",
-    "LEAF-G54-003",
+    "LEAF-G54-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G55-001",
     "LEAF-G55-002"
   ],
   "completed_gate_ids": [
     "Gate 51",
     "Gate 52",
-    "Gate 53"
+    "Gate 53",
+    "Gate 54"
   ],
-  "active_gate": "Gate 54"
+  "active_gate": "Gate 55"
 }
