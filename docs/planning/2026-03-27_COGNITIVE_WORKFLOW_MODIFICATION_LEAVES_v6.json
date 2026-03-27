@@ -2084,7 +2084,7 @@
       "full_suite_required": false,
       "pass_gate": "Define event proximity and event-window states is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 67 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 44
     },
     {
@@ -2130,7 +2130,7 @@
       "full_suite_required": false,
       "pass_gate": "Define overlapping and stacked-event semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 67 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 45
     },
     {
@@ -2176,7 +2176,7 @@
       "full_suite_required": false,
       "pass_gate": "Differentiate company-event and macro-event windows is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 67 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 46
     },
     {
@@ -2222,7 +2222,7 @@
       "full_suite_required": false,
       "pass_gate": "Bind priced-risk and realised-reaction timing semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 67 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 47
     },
     {
@@ -2268,7 +2268,7 @@
       "full_suite_required": false,
       "pass_gate": "Add temporal event-window tests and vocabulary hooks is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 67 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 48
     },
     {
@@ -5195,7 +5195,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_66_complete_on_main_successor_pack_active_from_gate_67",
+  "execution_status": "gate_67_complete_on_main_successor_pack_active_from_gate_68",
   "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5240,14 +5240,14 @@
     "LEAF-G66-002",
     "LEAF-G66-003",
     "LEAF-G66-004",
-    "LEAF-G66-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G66-005",
     "LEAF-G67-001",
     "LEAF-G67-002",
     "LEAF-G67-003",
     "LEAF-G67-004",
-    "LEAF-G67-005",
+    "LEAF-G67-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G68-001",
     "LEAF-G68-002",
     "LEAF-G68-003",
@@ -5319,8 +5319,9 @@
     "Gate 63",
     "Gate 64",
     "Gate 65",
-    "Gate 66"
+    "Gate 66",
+    "Gate 67"
   ],
-  "active_gate": "Gate 67",
+  "active_gate": "Gate 68",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

@@ -1,11 +1,92 @@
 from __future__ import annotations
 
 from datetime import datetime
+from enum import StrEnum
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.temporal_state import ClockEnvelope, TemporalState
 from nvda_desk.schemas.session_clock import SessionClockFeaturePayload
+
+
+class EventProximityState(StrEnum):
+    """Bounded proximity states for upcoming or live events."""
+
+    NO_EVENT_CONTEXT = "no_event_context"
+    EVENT_SCHEDULED = "event_scheduled"
+    EVENT_SAME_DAY = "event_same_day"
+    EVENT_SAME_SESSION = "event_same_session"
+    EVENT_IMMINENT = "event_imminent"
+    EVENT_LIVE_OR_PASSED = "event_live_or_passed"
+
+
+class EventWindowState(StrEnum):
+    """Governed event-window states consumed by posture and review layers."""
+
+    CLEAR_WINDOW = "clear_window"
+    SAME_SESSION_EVENT_WINDOW = "same_session_event_window"
+    EVENT_IMMINENT_WINDOW = "event_imminent_window"
+    EVENT_LIVE_WINDOW = "event_live_window"
+    EVENT_COOLING_OFF_WINDOW = "event_cooling_off_window"
+    EVENT_MEMORY_WINDOW = "event_memory_window"
+
+
+class EventOverlapClass(StrEnum):
+    """How multiple event windows coexist or supersede each other."""
+
+    SINGLE_EVENT = "single_event"
+    STACKED_EVENT_CLUSTER = "stacked_event_cluster"
+    OVERLAPPING_WINDOWS = "overlapping_windows"
+    HIGHER_PRIORITY_WINDOW_SUPERSEDES = "higher_priority_window_supersedes"
+
+
+class EventRiskTimingClass(StrEnum):
+    """Whether the window reflects priced risk, live release, or memory effects."""
+
+    PRICED_RISK = "priced_risk"
+    LIVE_RELEASE = "live_release"
+    REALISED_REACTION = "realised_reaction"
+    COOLING_OFF = "cooling_off"
+    EVENT_MEMORY = "event_memory"
+
+
+class EventCarrySensitivity(StrEnum):
+    """Whether an event window should die intraday or persist into carry decisions."""
+
+    INTRADAY_ONLY = "intraday_only"
+    CARRY_SENSITIVE = "carry_sensitive"
+    NEXT_SESSION_MEMORY = "next_session_memory"
+
+
+class EventWindowContract(BaseModel):
+    """One governed event-window contract frozen by Gate 67."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    event_family: str = Field(min_length=1)
+    proximity_state: EventProximityState
+    primary_window_state: EventWindowState
+    overlap_class: EventOverlapClass = EventOverlapClass.SINGLE_EVENT
+    risk_timing_class: EventRiskTimingClass
+    carry_sensitivity: EventCarrySensitivity
+    pre_window_minutes: int = Field(ge=0)
+    post_window_minutes: int = Field(ge=0)
+    cooling_off_minutes: int = Field(ge=0, default=0)
+    memory_minutes: int = Field(ge=0, default=0)
+    notes: list[str] = Field(default_factory=list)
+
+
+class EventWindowAuthorityPacket(BaseModel):
+    """Frozen Gate 67 authority for event-window semantics."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    proximity_states: list[EventProximityState] = Field(default_factory=list)
+    window_states: list[EventWindowState] = Field(default_factory=list)
+    overlap_classes: list[EventOverlapClass] = Field(default_factory=list)
+    risk_timing_classes: list[EventRiskTimingClass] = Field(default_factory=list)
+    carry_sensitivity_classes: list[EventCarrySensitivity] = Field(default_factory=list)
+    window_contracts: list[EventWindowContract] = Field(default_factory=list)
 
 
 class TemporalStateFeaturePayload(BaseModel):

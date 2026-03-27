@@ -137,6 +137,15 @@ Temporal routing now depends on venue contracts rather than a single generic mar
 - US early closes, HK holiday-eve half-days, Japan split sessions, and Mainland China bridge/make-up-day behaviour stay explicit;
 - expiry interactions with shortened sessions and carry-sensitive horizons are treated as calendar facts.
 
+## Gate 67 temporal event-window authority
+
+Event timing now has bounded semantics before later policy matrices consume it.
+
+- proximity, window, overlap, risk-timing, and carry-sensitivity states are explicit typed authority, not free text;
+- event windows distinguish priced risk, live release, realised reaction, cooling-off, and event-memory semantics;
+- overlapping windows must resolve through explicit priority classes rather than informal discretion;
+- company and macro events may share vocabulary while still carrying different time budgets.
+
 ## Current operating surfaces
 
 The current repo exposes:

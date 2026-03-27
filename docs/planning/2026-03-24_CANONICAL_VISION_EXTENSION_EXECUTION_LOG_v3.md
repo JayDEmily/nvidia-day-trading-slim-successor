@@ -1327,3 +1327,14 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate66_desk_calendar_contracts.py tests/test_gate65_event_taxonomy.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
 
+### LEAF-G67-001 through LEAF-G67-005 — Temporal event-window semantics
+
+- Branch: `work/gate67-event-window-semantics-20260327`
+- Scope: freeze event proximity, window, overlap, risk-timing, and carry-sensitivity semantics before precursor-universe or phase-policy work.
+- Outcome:
+  - Added typed event-window authority contracts covering proximity states, window states, overlap classes, risk-timing semantics, and carry sensitivity.
+  - Added review/config hooks so later review packets and policy surfaces can carry bounded event-window meaning without rewiring the runtime yet.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so event timing language is explicit rather than casual.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate67_event_window_semantics.py tests/test_gate66_desk_calendar_contracts.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
+
