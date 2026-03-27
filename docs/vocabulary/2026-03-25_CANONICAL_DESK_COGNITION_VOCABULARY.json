@@ -761,6 +761,26 @@
       ]
     },
     {
+      "canonical_slug": "modifier_control_law",
+      "canonical_label": "Modifier Control Law",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierControlLawAuthorityPacket",
+      "allowed_aliases": [
+        "precedence_matrix",
+        "kill_switch_law"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

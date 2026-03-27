@@ -218,6 +218,15 @@ Event-conditioned and options-stress-conditioned posture must remain one explici
 - combined event-plus-options examples must remain internally consistent while final precedence waits for Gate 71;
 - hard-block conditions must stay explicit rather than implied by desk lore.
 
+## Modifier-control law
+
+Multiple active states must resolve through one deterministic control law rather than blended judgement.
+
+- precedence bands are `kill_switch`, `hard_block`, `event_options_stress`, `phase_carry`, `precursor`, `regime`, and `baseline`;
+- compatible modifiers may combine only through bounded algebra such as `most_restrictive_wins`, `multiply_then_clamp`, `additive_offset_then_clamp`, or `block_overrides_scale`;
+- caps, floors, vetoes, and kill-switch conditions must stay explicit and review-visible;
+- lineage must record which precedence band won, which laws applied, which states were suppressed, and whether a kill switch fired.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

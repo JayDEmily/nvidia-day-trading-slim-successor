@@ -18,6 +18,7 @@ from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     EventOptionsStressPolicySurface,
     ImportedModuleReviewCitation,
+    ModifierControlLawSurface,
     PhaseCarryoverPolicySurface,
     PrecursorGovernanceSurface,
     ReviewEligibilitySurface,
@@ -588,6 +589,7 @@ class ReviewExplanationOutput(BaseModel):
     precursor_governance: PrecursorGovernanceSurface | None = None
     phase_carry_policy: PhaseCarryoverPolicySurface | None = None
     event_options_stress_policy: EventOptionsStressPolicySurface | None = None
+    modifier_control_law: ModifierControlLawSurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None

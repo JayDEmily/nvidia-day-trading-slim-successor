@@ -382,6 +382,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["event_stress_matrix", "options_stress_policy"],
             notes=["Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."],
         ),
+        VocabularyEntry(
+            canonical_slug="modifier_control_law",
+            canonical_label="Modifier Control Law",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.ModifierControlLawAuthorityPacket",
+            allowed_aliases=["precedence_matrix", "kill_switch_law"],
+            notes=["Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

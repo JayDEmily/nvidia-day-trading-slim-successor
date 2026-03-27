@@ -1372,3 +1372,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Added targeted Gate 70 integrity tests covering the bounded policy matrix, review/config hooks, and vocabulary generation.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate70_event_options_stress_policy.py tests/test_gate69_phase_carry_policy.py tests/test_gate60_state_policy_ontology.py tests/test_successor_pack_anti_drift.py`
+
+
+### LEAF-G71-001 through LEAF-G71-005 — Modifier precedence, caps, vetoes, and kill-switches
+
+- Branch: `work/gate71-modifier-control-law-20260327`
+- Scope: freeze the deterministic control law for multiple active states before event-source plumbing or runtime integration begins.
+- Outcome:
+  - Added typed modifier-control-law authority contracts for precedence bands, compatible-combination algebra, clamps, vetoes, and kill-switches.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so combined-state resolution is explicit rather than blended judgement.
+  - Added targeted Gate 71 integrity tests covering precedence bands, clamp/veto law, review/config hooks, and vocabulary generation.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate71_modifier_control_law.py tests/test_gate70_event_options_stress_policy.py tests/test_gate69_phase_carry_policy.py tests/test_successor_pack_anti_drift.py`

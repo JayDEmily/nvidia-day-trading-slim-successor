@@ -3121,7 +3121,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze modifier precedence hierarchy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 71 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 66
     },
     {
@@ -3168,7 +3168,7 @@
       "full_suite_required": false,
       "pass_gate": "Define compatible-combination algebra is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 71 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 67
     },
     {
@@ -3215,7 +3215,7 @@
       "full_suite_required": false,
       "pass_gate": "Define caps, floors, and exposure clamps is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 71 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 68
     },
     {
@@ -3262,7 +3262,7 @@
       "full_suite_required": false,
       "pass_gate": "Define vetoes and kill-switch / hard-block conditions is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 71 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 69
     },
     {
@@ -3309,7 +3309,7 @@
       "full_suite_required": false,
       "pass_gate": "Add modifier-control-law tests and lineage hooks is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 71 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 70
     },
     {
@@ -5195,7 +5195,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_70_complete_on_main_successor_pack_active_from_gate_71",
+  "execution_status": "gate_71_complete_on_main_successor_pack_active_from_gate_72",
   "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5262,14 +5262,14 @@
     "LEAF-G70-003",
     "LEAF-G70-004",
     "LEAF-G70-005",
-    "LEAF-G70-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G70-006",
     "LEAF-G71-001",
     "LEAF-G71-002",
     "LEAF-G71-003",
     "LEAF-G71-004",
-    "LEAF-G71-005",
+    "LEAF-G71-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G72-001",
     "LEAF-G72-002",
     "LEAF-G72-003",
@@ -5323,8 +5323,9 @@
     "Gate 67",
     "Gate 68",
     "Gate 69",
-    "Gate 70"
+    "Gate 70",
+    "Gate 71"
   ],
-  "active_gate": "Gate 71",
+  "active_gate": "Gate 72",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }
