@@ -15,6 +15,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.events import LiveEventSnapshot
+from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     EventOptionsStressPolicySurface,
@@ -22,6 +23,7 @@ from nvda_desk.schemas.review import (
     ModifierControlLawSurface,
     PhaseCarryoverPolicySurface,
     PrecursorGovernanceSurface,
+    PrecursorRuntimeBindingSurface,
     ReviewEligibilitySurface,
     ReviewGovernanceSurface,
     TemporalEventWindowSurface,
@@ -117,6 +119,7 @@ class TemporalContextInput(BaseModel):
     next_expiry: datetime | None = None
     next_event_at: datetime | None = None
     live_event_snapshot: LiveEventSnapshot | None = None
+    precursor_runtime_packet: PrecursorRuntimePacket | None = None
     prior_session_return_pct: float = 0.0
     intraday_move_pct: float = 0.0
     prior_close_price: float | None = None
@@ -525,6 +528,7 @@ class ReviewExplanationInput(BaseModel):
     posture: PostureRiskOutput
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
+    temporal_input: TemporalContextInput | None = None
 
 
 class StageReasonPacket(BaseModel):
@@ -589,6 +593,7 @@ class ReviewExplanationOutput(BaseModel):
     review_governance: ReviewGovernanceSurface | None = None
     event_window_governance: TemporalEventWindowSurface | None = None
     precursor_governance: PrecursorGovernanceSurface | None = None
+    precursor_runtime_binding: PrecursorRuntimeBindingSurface | None = None
     phase_carry_policy: PhaseCarryoverPolicySurface | None = None
     event_options_stress_policy: EventOptionsStressPolicySurface | None = None
     modifier_control_law: ModifierControlLawSurface | None = None

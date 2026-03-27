@@ -20,6 +20,9 @@ from nvda_desk.schemas.execution_records import (
 )
 from nvda_desk.schemas.market import (
     DerivedPrecursorField,
+    PrecursorContradictionClass,
+    PrecursorFallbackDisposition,
+    PrecursorPostureState,
     PrecursorVenueUniverse,
     SessionAlignmentExpectation,
 )
@@ -162,6 +165,21 @@ class PrecursorGovernanceSurface(BaseModel):
     active_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
     session_alignment: list[SessionAlignmentExpectation] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class PrecursorRuntimeBindingSurface(BaseModel):
+    """Gate 76 hook exposing the actual precursor packet seen by runtime and review."""
+
+    requested_at: datetime
+    stitched_order: list[PrecursorVenueUniverse] = Field(default_factory=list)
+    active_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
+    missing_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
+    derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
+    contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
+    posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
+    lineage_keys: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
 
 

@@ -883,7 +883,7 @@ Gate 75 is closed on `main`. The repo now freezes one deterministic precursor ve
 
 ## Gate 76 — Precursor runtime binding and review exposure
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 75
 
@@ -918,6 +918,10 @@ Runtime and review consume one typed, reconstructible precursor context surface 
 - precursor-binding docs
 - packet/schema updates
 - targeted runtime/review tests
+
+### Gate 76 closeout note
+
+Gate 76 is closed on `main`. The repo now preserves precursor truth through prepared runtime snapshots, cognition ingress, and review exposure using one additive typed packet and one lineage path, while older consumers remain free to ignore the richer packet without creating a competing precursor interpretation.
 
 ---
 

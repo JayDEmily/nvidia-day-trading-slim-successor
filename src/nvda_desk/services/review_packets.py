@@ -19,6 +19,7 @@ from nvda_desk.db.models import (
     RiskBlockEvent,
 )
 from nvda_desk.schemas.execution_records import DailyPnlReportCreate, DailyPnlReportPayload
+from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.review import DailyReviewPacket, ModuleHealthPacket, RecordCountSummary
 from nvda_desk.services.events import EventsService
 from nvda_desk.services.execution_records import ExecutionRecordsService
@@ -84,6 +85,14 @@ class ReviewPacketService:
             last_fill_at=last_fill_at,
             open_position_symbols=sorted(set(open_positions)),
         )
+
+    @staticmethod
+    def render_precursor_runtime_binding(packet: PrecursorRuntimePacket | None) -> dict[str, object] | None:
+        """Return a review-safe serialisation of the additive precursor runtime packet."""
+
+        if packet is None:
+            return None
+        return packet.model_dump(mode="json")
 
     def daily_packet(self, *, report_date: date, symbol: str = "NVDA") -> DailyReviewPacket:
         account_state = self._execution_records_service.latest_capital_state()

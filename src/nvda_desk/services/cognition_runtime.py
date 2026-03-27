@@ -265,6 +265,7 @@ class DeskCognitionRuntime:
                 posture=posture,
                 eligibility=eligibility,
                 execution=execution,
+                temporal_input=temporal_input,
             )
         )
         stage_outputs: dict[BindingStageName, CognitionStagePayload] = {

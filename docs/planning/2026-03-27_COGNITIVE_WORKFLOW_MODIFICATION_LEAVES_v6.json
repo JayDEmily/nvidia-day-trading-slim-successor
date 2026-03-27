@@ -4286,8 +4286,9 @@
       "full_suite_required": true,
       "pass_gate": "Define the precursor runtime packet contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 76 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 91
+      "status": "complete",
+      "execution_sequence": 91,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G76-002",
@@ -4333,8 +4334,9 @@
       "full_suite_required": true,
       "pass_gate": "Bind precursor context into cognition input and review exposure is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 76 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 92
+      "status": "complete",
+      "execution_sequence": 92,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G76-003",
@@ -4380,8 +4382,9 @@
       "full_suite_required": true,
       "pass_gate": "Freeze compatibility and lineage rules for precursor-rich packets is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 76 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 93
+      "status": "complete",
+      "execution_sequence": 93,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G76-004",
@@ -4427,8 +4430,9 @@
       "full_suite_required": true,
       "pass_gate": "Add precursor runtime-binding and review tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 76 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 94
+      "status": "complete",
+      "execution_sequence": 94,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G77-001",
@@ -5200,8 +5204,8 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_75_complete_successor_pack_active_from_gate_76",
-  "completed_at": "2026-03-27T17:30:00Z",
+  "execution_status": "gate_76_complete_successor_pack_active_from_gate_77",
+  "completed_at": "2026-03-27T18:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5292,13 +5296,13 @@
     "LEAF-G75-002",
     "LEAF-G75-003",
     "LEAF-G75-004",
-    "LEAF-G75-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G75-005",
     "LEAF-G76-001",
     "LEAF-G76-002",
     "LEAF-G76-003",
-    "LEAF-G76-004",
+    "LEAF-G76-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G77-001",
     "LEAF-G77-002",
     "LEAF-G77-003",
@@ -5333,8 +5337,9 @@
     "Gate 72",
     "Gate 73",
     "Gate 74",
-    "Gate 75"
+    "Gate 75",
+    "Gate 76"
   ],
-  "active_gate": "Gate 76",
+  "active_gate": "Gate 77",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

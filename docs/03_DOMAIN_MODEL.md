@@ -2580,3 +2580,18 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/market.py`
 - deterministic assembly service in `src/nvda_desk/services/market_state.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4n. Precursor runtime-binding objects
+
+Typed contracts that preserve stitched precursor truth through prepared runtime snapshots, cognition ingress, and review reconstruction without creating a second hidden precursor path.
+
+Key examples:
+- `PrecursorRuntimePacket`
+- `PreparedRuntimeSnapshot.precursor_runtime_packet`
+- `TemporalContextInput.precursor_runtime_packet`
+- `PrecursorRuntimeBindingSurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/market.py`, `src/nvda_desk/schemas/dataset.py`, and `src/nvda_desk/schemas/cognition.py`
+- conversion/runtime bridge in `src/nvda_desk/services/chain_to_cognition.py`
+- review exposure in `src/nvda_desk/services/review_explanation.py`

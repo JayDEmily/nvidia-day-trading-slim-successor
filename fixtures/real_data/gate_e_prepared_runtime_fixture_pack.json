@@ -698,6 +698,7 @@
             "src:macro:evt-2"
           ]
         },
+        "precursor_runtime_packet": null,
         "call_oi_near_spot": 9900.0,
         "put_oi_near_spot": 10800.0,
         "front_volume_near_spot": 2380.0,
@@ -801,6 +802,7 @@
             "src:ir:evt-1",
             "src:macro:evt-2"
           ],
+          "precursor_lineage_keys": [],
           "sequence_id": "seq-opening-balance"
         }
       },
@@ -924,6 +926,7 @@
             "src:macro:evt-2"
           ]
         },
+        "precursor_runtime_packet": null,
         "call_oi_near_spot": 13300.0,
         "put_oi_near_spot": 13900.0,
         "front_volume_near_spot": 3120.0,
@@ -1027,6 +1030,7 @@
             "src:ir:evt-1",
             "src:macro:evt-2"
           ],
+          "precursor_lineage_keys": [],
           "sequence_id": "seq-opening-balance"
         }
       },
@@ -1150,6 +1154,7 @@
             "src:macro:evt-2"
           ]
         },
+        "precursor_runtime_packet": null,
         "call_oi_near_spot": 13500.0,
         "put_oi_near_spot": 13950.0,
         "front_volume_near_spot": 3165.0,
@@ -1253,6 +1258,7 @@
             "src:ir:evt-1",
             "src:macro:evt-2"
           ],
+          "precursor_lineage_keys": [],
           "sequence_id": "seq-opening-balance"
         }
       }

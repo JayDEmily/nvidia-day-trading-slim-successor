@@ -14,6 +14,7 @@ from nvda_desk.schemas.cognition import (
     ReviewExplanationOutput,
     StageReasonPacket,
 )
+from nvda_desk.schemas.review import PrecursorRuntimeBindingSurface
 
 
 class ReviewExplanationService:
@@ -104,6 +105,7 @@ class ReviewExplanationService:
         module_attribution = self._module_attribution(stage_reason_packets)
         stage_summaries = {packet.stage: "; ".join(packet.reasons) for packet in stage_reason_packets}
         desk_readout = self._desk_readout(payload)
+        precursor_runtime_binding = self._precursor_runtime_binding(payload)
         review_packet: dict[str, object] = {
             "temporal": payload.temporal.model_dump(mode="json"),
             "regime": payload.regime.model_dump(mode="json"),
@@ -127,6 +129,8 @@ class ReviewExplanationService:
             "desk_readout": desk_readout,
             "conflicts": conflict_tags,
         }
+        if precursor_runtime_binding is not None:
+            review_packet["precursor_runtime_binding"] = precursor_runtime_binding.model_dump(mode="json")
         return ReviewExplanationOutput(
             summary=summary,
             conflict_tags=conflict_tags,
@@ -135,6 +139,7 @@ class ReviewExplanationService:
             rejected_playbooks=rejected_playbooks,
             contradictions=contradictions,
             module_attribution=module_attribution,
+            precursor_runtime_binding=precursor_runtime_binding,
             review_packet=review_packet,
         )
 
@@ -190,3 +195,20 @@ class ReviewExplanationService:
             "adding_into_locked_inventory": ["posture", "execution"],
         }
         return stage_map.get(tag, ["review_explanation"])
+
+    def _precursor_runtime_binding(self, payload: ReviewExplanationInput) -> PrecursorRuntimeBindingSurface | None:
+        packet = None if payload.temporal_input is None else payload.temporal_input.precursor_runtime_packet
+        if packet is None:
+            return None
+        return PrecursorRuntimeBindingSurface(
+            requested_at=packet.requested_at,
+            stitched_order=list(packet.stitched_order),
+            active_venues=list(packet.active_venues),
+            missing_venues=list(packet.missing_venues),
+            derived_fields=list(packet.derived_fields),
+            contradiction_class=packet.contradiction_class,
+            posture_state=packet.posture_state,
+            fallback_dispositions=list(packet.fallback_dispositions),
+            lineage_keys=list(packet.lineage_keys),
+            notes=list(packet.notes),
+        )
