@@ -74,6 +74,37 @@ Key examples:
 - `ExecutionExpressionInput` / `ExecutionExpressionOutput`
 - `ReviewExplanationInput` / `ReviewExplanationOutput`
 
+### 4a. State-policy authority objects
+Typed contracts that freeze what may vary, what state may be read, and how effective policy is derived.
+
+Key examples:
+- `RuntimeSurfaceClass`
+- `CanonicalStateVectorField`
+- `StateVectorFieldSpec`
+- `ModifierPolicySpec`
+- `EffectiveCoefficientLineage`
+- `StatePolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4b. Non-action and conflict governance objects
+Typed contracts that freeze stand-down classes, conflict severity, degradation steps, and override boundaries before later policy matrices are written.
+
+Key examples:
+- `NonActionClass`
+- `SignalConflictClass`
+- `DegradationStep`
+- `OverrideDisposition`
+- `ConflictResolutionPolicy`
+- `NonActionAuthorityPacket`
+- `ReviewGovernanceSurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
+- review exposure through `ReviewExplanationOutput`
+
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.
 

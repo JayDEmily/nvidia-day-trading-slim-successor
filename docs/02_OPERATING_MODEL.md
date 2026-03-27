@@ -68,6 +68,26 @@ The runtime processes decisions in this order:
 
 This order is binding.
 
+## Gate 60 state-policy authority
+
+The approved modifier read-set is an explicit state vector, not hidden ambient state. The current canonical readable fields are:
+
+- temporal ownership: `desk_window`, `clock_envelope`, `carryover_state`, `expiry_cycle_state`, `event_proximity_state`, `event_window_state`;
+- regime ownership: `volatility_regime`, `breadth_state`, `sector_leadership_state`, `rates_regime_state`, `fx_stress_state`, `signal_conflict_state`;
+- options/flow ownership: `term_structure_state`, `skew_state`, `gamma_state`, `dealer_pressure_state`, `options_behavior_cluster`;
+- posture/risk ownership: `inventory_posture_state`, `fresh_vs_inventory_state`, `thesis_state`, `capital_lockup_state`, `time_stop_state`, `permission_state`.
+
+Those fields may inform bounded posture policy, but they do not authorise runtime mutation of grammar order, baseline coefficients, calendar/event truth, or registry membership.
+
+## Gate 61 non-action and conflict authority
+
+The deterministic desk is allowed to decide **not** to participate. That is a valid governed outcome.
+
+- stand-down remains first-class and is not treated as a missing trade;
+- conflicts stay visible in review as ordered classes rather than disappearing into narrative reasons;
+- degradation is ordered from tighter confirmation through reduced confidence and size, then watch-only, stand-down, and veto;
+- discretionary runtime override is forbidden, and any permitted human-only release or audit annotation must stay outside the runtime path and inside review evidence.
+
 ## Current operating surfaces
 
 The current repo exposes:

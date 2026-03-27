@@ -1,8 +1,9 @@
 {
   "schema_version": "desk_vocabulary.v1",
-  "registry_version": "gate55-alignment-2026-03-26",
+  "registry_version": "gate61-state-policy-alignment-2026-03-27",
   "notes": [
     "Generated from current live playbook registry and pinned architecture surfaces.",
+    "Gate 60 and Gate 61 extend the workflow vocabulary with state-policy, non-action, and conflict-law terms.",
     "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth."
   ],
   "entries": [
@@ -349,6 +350,185 @@
       "disallowed_phrases": [],
       "notes": [
         "Separate horizon branch for overnight, weekend, and event carry decisions."
+      ]
+    },
+    {
+      "canonical_slug": "state_vector",
+      "canonical_label": "State Vector",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.RuntimeStateVector",
+      "allowed_aliases": [
+        "approved_state_vector"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 60 freezes the readable runtime state fields before policy matrices exist."
+      ]
+    },
+    {
+      "canonical_slug": "baseline_coefficient",
+      "canonical_label": "Baseline Coefficient",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.RuntimeSurfaceClass",
+      "allowed_aliases": [
+        "release_coefficient"
+      ],
+      "disallowed_phrases": [
+        "live_tuning"
+      ],
+      "notes": [
+        "May change only through reviewed release, never through runtime self-adjustment."
+      ]
+    },
+    {
+      "canonical_slug": "state_conditioned_modifier",
+      "canonical_label": "State-Conditioned Modifier",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierPolicySpec",
+      "allowed_aliases": [
+        "bounded_modifier"
+      ],
+      "disallowed_phrases": [
+        "freeform_override"
+      ],
+      "notes": [
+        "Approved runtime policy object that deforms posture without mutating cognition grammar."
+      ]
+    },
+    {
+      "canonical_slug": "effective_coefficient",
+      "canonical_label": "Effective Coefficient",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.EffectiveCoefficientLineage",
+      "allowed_aliases": [
+        "effective_policy_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Lawful baseline-plus-modifier result recorded for review lineage."
+      ]
+    },
+    {
+      "canonical_slug": "prohibited_runtime_variation",
+      "canonical_label": "Prohibited Runtime Variation",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ProhibitedRuntimeSurface",
+      "allowed_aliases": [
+        "locked_surface"
+      ],
+      "disallowed_phrases": [
+        "runtime_rewrite"
+      ],
+      "notes": [
+        "Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."
+      ]
+    },
+    {
+      "canonical_slug": "stand_down_class",
+      "canonical_label": "Stand-Down Class",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.NonActionClass",
+      "allowed_aliases": [
+        "non_action_class"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 61 makes disciplined non-participation a first-class governed outcome."
+      ]
+    },
+    {
+      "canonical_slug": "conflict_class",
+      "canonical_label": "Conflict Class",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.SignalConflictClass",
+      "allowed_aliases": [
+        "signal_conflict_class"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Ordered conflict severity remains visible in review rather than being silently absorbed."
+      ]
+    },
+    {
+      "canonical_slug": "degradation_step",
+      "canonical_label": "Degradation Step",
+      "category": "workflow",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.DegradationStep",
+      "allowed_aliases": [
+        "posture_degradation_step"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Ordered ladder from confirmation tightening through stand-down and veto."
+      ]
+    },
+    {
+      "canonical_slug": "override_disposition",
+      "canonical_label": "Override Disposition",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.OverrideDisposition",
+      "allowed_aliases": [
+        "override_status"
+      ],
+      "disallowed_phrases": [
+        "trader_feel_override"
+      ],
+      "notes": [
+        "Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."
       ]
     },
     {

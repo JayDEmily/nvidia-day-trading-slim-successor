@@ -1,6 +1,6 @@
 # 2026-03-27 Cognitive Workflow Modification Gates v6
 
-Status: Gates 51–58 complete on `main`; Gate 59 complete on `main`; active successor execution continues at Gate 60
+Status: Gates 51–58 complete on `main`; Gates 59–61 complete on `main`; active successor execution continues at Gate 62
 
 Version: v6.1
 
@@ -135,7 +135,7 @@ Gate 59 closed by making the V6 pair the only active successor authority, archiv
 
 ## Gate 60 — State-policy vocabulary and coefficient ontology
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 59
 
@@ -184,9 +184,13 @@ The repo has one authoritative vocabulary and object model for what may vary, wh
 - planning updates
 - schema/test updates for canonical terms
 
+### Gate 60 closeout note
+
+Gate 60 closed by freezing the invariant / baseline / modifier taxonomy, approving a bounded runtime state vector, recording the lawful mutable and prohibited surfaces, and adding typed schema hooks for effective-policy lineage.
+
 ## Gate 61 — Non-action, conflict hierarchy, and discretion boundaries
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 60
 
@@ -225,6 +229,10 @@ The repo can express, in binding form, when not to participate, how conflicts ar
 - doctrine docs for non-action/conflict law
 - vocabulary updates
 - targeted planning-consistency tests
+
+### Gate 61 closeout note
+
+Gate 61 closed by making stand-down a first-class governed outcome, freezing ordered conflict and degradation vocabulary, forbidding discretionary runtime override, and exposing the resulting review vocabulary through typed schema hooks.
 
 ## Gate 62 — Stability-metric algebra and corridor schema
 

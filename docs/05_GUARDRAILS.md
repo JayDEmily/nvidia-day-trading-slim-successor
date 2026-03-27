@@ -22,6 +22,10 @@
 18. **Every runtime decision that affects capital or playbook eligibility must be explainable.**
 19. **No allocation path bypasses posture and risk permission.**
 20. **No module import discards preserved evidence without an explicit changelog entry.**
+21. **No forced-action bias; stand-down is a valid governed outcome.**
+22. **Conflicts and degradation steps must remain review-visible.**
+23. **Discretionary runtime override is forbidden.**
+24. **Only typed approved mutable surfaces may vary under state-conditioned policy.**
 
 ## Required runtime guardrails
 

@@ -1,3 +1,10 @@
+"""Review and daily packet contracts.
+
+The review layer reconstructs deterministic decisions, imported-module lineage,
+recent execution records, and the Gate 61 non-action/conflict vocabulary that
+later review packets must expose explicitly.
+"""
+
 from __future__ import annotations
 
 from datetime import date, datetime
@@ -10,6 +17,12 @@ from nvda_desk.schemas.execution_records import (
     CapitalStateSnapshotPayload,
     DailyPnlReportPayload,
     PositionSnapshotPayload,
+)
+from nvda_desk.schemas.state_policy import (
+    DegradationStep,
+    NonActionClass,
+    OverrideDisposition,
+    SignalConflictClass,
 )
 
 
@@ -27,7 +40,7 @@ class ImportedModuleApprovalState(StrEnum):
 
 
 class ImportedModuleDependencySurface(BaseModel):
-    """Review/replay-safe rendering of one imported-module dependency fence."""
+    """Review-safe rendering of one imported-module dependency fence."""
 
     dependency: str = Field(min_length=1)
     status: str = Field(min_length=1)
@@ -49,6 +62,8 @@ class ImportedModuleReviewCitation(BaseModel):
 
 
 class RecordCountSummary(BaseModel):
+    """Daily record-count summary for the review surface."""
+
     signal_event_count: int = Field(ge=0)
     veto_event_count: int = Field(ge=0)
     risk_block_event_count: int = Field(ge=0)
@@ -58,6 +73,8 @@ class RecordCountSummary(BaseModel):
 
 
 class ModuleHealthPacket(BaseModel):
+    """Per-module health packet shown in daily review."""
+
     module_id: str = Field(min_length=1)
     evaluation_count: int = Field(ge=0)
     experiment_count: int = Field(ge=0)
@@ -69,6 +86,8 @@ class ModuleHealthPacket(BaseModel):
 
 
 class DailyReviewPacket(BaseModel):
+    """Top-level daily review packet for capital, positions, and events."""
+
     requested_at: datetime
     report_date: date
     trade_count: int = Field(ge=0)
@@ -78,3 +97,13 @@ class DailyReviewPacket(BaseModel):
     positions: list[PositionSnapshotPayload]
     module_health: list[ModuleHealthPacket]
     recent_events: list[MarketEventPayload]
+
+
+class ReviewGovernanceSurface(BaseModel):
+    """Gate 61 review vocabulary for non-action, conflict, and overrides."""
+
+    stand_down_class: NonActionClass | None = None
+    conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
+    degradation_step: DegradationStep = DegradationStep.NORMAL
+    override_disposition: OverrideDisposition = OverrideDisposition.NOT_APPLICABLE
+    override_audit_notes: list[str] = Field(default_factory=list)

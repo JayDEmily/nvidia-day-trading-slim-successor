@@ -35,7 +35,7 @@ def test_v6_pair_is_the_only_active_successor_pointer() -> None:
 
     assert 'active successor modification gate surface' in gate_map
     assert '2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md' in gate_map
-    assert 'Current active gate: **Gate 60 in the V6 successor pack**.' in gate_map
+    assert 'Current active gate: **Gate 62 in the V6 successor pack**.' in gate_map
 
 
 def test_v6_gates_doc_is_self_contained_and_governing_inputs_do_not_depend_on_missing_drafts() -> None:
@@ -75,10 +75,10 @@ def test_v6_leaves_ledger_marks_gate59_complete_and_gate60_next() -> None:
     leaves = json.loads(LEAVES.read_text())
 
     assert leaves['governing_plan'] == 'docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md'
-    assert leaves['execution_status'] == 'gate_59_complete_on_main_successor_pack_active_from_gate_60'
-    assert leaves['completed_gate_ids'] == ['Gate 59']
-    assert leaves['active_gate'] == 'Gate 60'
-    assert leaves['completed_leaf_ids'] == [
+    assert leaves['execution_status'] == 'gate_61_complete_on_main_successor_pack_active_from_gate_62'
+    assert leaves['completed_gate_ids'] == ['Gate 59', 'Gate 60', 'Gate 61']
+    assert leaves['active_gate'] == 'Gate 62'
+    assert leaves['completed_leaf_ids'][:6] == [
         'LEAF-G59-001',
         'LEAF-G59-002',
         'LEAF-G59-003',

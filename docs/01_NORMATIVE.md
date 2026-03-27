@@ -62,6 +62,24 @@ The repo preserves a stable cognition grammar and only allows bounded, approved 
 - runtime never invents new coefficients or hidden policy in place;
 - baseline coefficient changes happen only through reviewed release, never through runtime self-adjustment.
 
+## State-policy ontology
+
+- **invariant surface**: runtime truth that never varies in response to session state. Examples: desk cognition grammar order, stage ownership, calendar truth, event identity, raw market facts, and review lineage.
+- **baseline coefficient**: released default numeric or categorical policy surface that may change only through reviewed release. Runtime may read it but may not mutate it in place.
+- **state-conditioned modifier**: typed bounded policy object that reads an approved state vector and lawfully deforms a mutable downstream surface without changing cognition grammar.
+- **effective coefficient**: the review-visible result of baseline plus approved modifier lineage for one mutable surface.
+- approved modifier transform family is limited to: `multiplicative_scale`, `additive_offset`, `clamp`, `rank_weight_adjustment`, and `suppression_veto`.
+- approved mutable runtime surfaces are limited to: `entry_gate_score_floor`, `zone_score_threshold`, `distance_to_vwap_soft_limit_pct`, `risk_vix_caution_threshold`, `risk_vix_hot_threshold`, `max_risk_per_trade`, `target_fresh_deployable_pct`, and `hedge_required`.
+- prohibited runtime variation includes: cognition grammar order, stage ownership, baseline coefficient values, calendar truth, event identity, raw market facts, playbook registry membership, and review-packet lineage.
+
+## Non-action, conflict, and discretion law
+
+- non-action is a first-class valid runtime outcome, not a missing action.
+- stand-down classes are explicit and governed across data quality, temporal, event-risk, regime, options/flow, posture/risk, eligibility, and execution-readiness surfaces.
+- conflict classes are explicit and ordered: `observation_divergence`, `confirmation_conflict`, `posture_degradation`, and `hard_veto_conflict`.
+- the degradation ladder is explicit and ordered: `normal`, `confirmation_tightened`, `confidence_reduced`, `size_reduced`, `watch_only`, `stand_down`, `veto`.
+- discretionary runtime override is forbidden. The only lawful non-runtime escape hatches are `audit_annotation_only` and `human_review_release_only`, both of which must remain visible in review surfaces.
+
 ## Canonical terminology
 
 - **module**: deterministic runtime component with a clear contract.

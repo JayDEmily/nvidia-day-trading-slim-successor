@@ -1,9 +1,20 @@
+"""Configuration-surface contracts.
+
+These payloads expose coefficient groups, strategy variants, and the Gate 60/61
+authority packets that fence lawful mutable surfaces away from prohibited or
+review-only policy language.
+"""
+
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
+from nvda_desk.schemas.state_policy import NonActionAuthorityPacket, StatePolicyAuthorityPacket
+
 
 class CoefficientGroupParameterPayload(BaseModel):
+    """One parameter inside a coefficient group."""
+
     name: str = Field(min_length=1)
     value: float | int | str | bool
     test_min: float | int | None = None
@@ -13,6 +24,8 @@ class CoefficientGroupParameterPayload(BaseModel):
 
 
 class CoefficientGroupPayload(BaseModel):
+    """One configurable coefficient group and its supported sandbox overrides."""
+
     key: str = Field(min_length=1)
     layer: str = Field(min_length=1)
     module: str = Field(min_length=1)
@@ -23,10 +36,14 @@ class CoefficientGroupPayload(BaseModel):
 
 
 class CoefficientGroupListResponse(BaseModel):
+    """Response wrapper for configured coefficient groups."""
+
     groups: list[CoefficientGroupPayload]
 
 
 class StrategyVariantSummaryPayload(BaseModel):
+    """Compact summary for one named strategy variant."""
+
     name: str = Field(min_length=1)
     description: str
     weight_override_keys: list[str] = Field(default_factory=list)
@@ -35,10 +52,14 @@ class StrategyVariantSummaryPayload(BaseModel):
 
 
 class StrategyVariantListResponse(BaseModel):
+    """Response wrapper for strategy-variant summaries."""
+
     variants: list[StrategyVariantSummaryPayload]
 
 
 class StrategyVariantPayload(BaseModel):
+    """Detailed strategy-variant surface including explicit override buckets."""
+
     name: str = Field(min_length=1)
     description: str
     enabled_module_counts: dict[str, int] = Field(default_factory=dict)
@@ -46,3 +67,15 @@ class StrategyVariantPayload(BaseModel):
     coefficient_overrides: dict[str, dict[str, float | int | str | bool]] = Field(default_factory=dict)
     runtime_overrides: dict[str, object] = Field(default_factory=dict)
     supported_sandbox_overrides: list[str] = Field(default_factory=list)
+
+
+class StatePolicyAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 60 state-policy packet."""
+
+    authority: StatePolicyAuthorityPacket
+
+
+class NonActionAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 61 non-action authority packet."""
+
+    authority: NonActionAuthorityPacket

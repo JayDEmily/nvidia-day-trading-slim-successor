@@ -1,15 +1,29 @@
+"""Build the canonical desk vocabulary document.
+
+The generator stays aligned with the pinned runtime registry and the Gate 60/61
+state-policy governance vocabulary so the committed JSON cannot drift from the
+authoritative builder.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
 
 from nvda_desk.schemas.playbook_registry import PlaybookHorizon
-from nvda_desk.schemas.vocabulary import RawDerivedTag, VocabularyCategory, VocabularyDocument, VocabularyEntry
+from nvda_desk.schemas.vocabulary import (
+    RawDerivedTag,
+    VocabularyCategory,
+    VocabularyDocument,
+    VocabularyEntry,
+)
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
 
 OUTPUT_PATH = Path("docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json")
 
 
 def build_document() -> VocabularyDocument:
+    """Return the canonical vocabulary document for the current repo state."""
+
     registry = PlaybookRegistryService()
     document = registry.document()
     entries: list[VocabularyEntry] = [
@@ -175,6 +189,91 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["carry_branch"],
             notes=["Separate horizon branch for overnight, weekend, and event carry decisions."],
         ),
+        VocabularyEntry(
+            canonical_slug="state_vector",
+            canonical_label="State Vector",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.cognition.RuntimeStateVector",
+            allowed_aliases=["approved_state_vector"],
+            notes=["Gate 60 freezes the readable runtime state fields before policy matrices exist."],
+        ),
+        VocabularyEntry(
+            canonical_slug="baseline_coefficient",
+            canonical_label="Baseline Coefficient",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="planning_governance",
+            maps_to_contract="nvda_desk.schemas.state_policy.RuntimeSurfaceClass",
+            allowed_aliases=["release_coefficient"],
+            disallowed_phrases=["live_tuning"],
+            notes=["May change only through reviewed release, never through runtime self-adjustment."],
+        ),
+        VocabularyEntry(
+            canonical_slug="state_conditioned_modifier",
+            canonical_label="State-Conditioned Modifier",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="planning_governance",
+            maps_to_contract="nvda_desk.schemas.state_policy.ModifierPolicySpec",
+            allowed_aliases=["bounded_modifier"],
+            disallowed_phrases=["freeform_override"],
+            notes=["Approved runtime policy object that deforms posture without mutating cognition grammar."],
+        ),
+        VocabularyEntry(
+            canonical_slug="effective_coefficient",
+            canonical_label="Effective Coefficient",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.EffectiveCoefficientLineage",
+            allowed_aliases=["effective_policy_surface"],
+            notes=["Lawful baseline-plus-modifier result recorded for review lineage."],
+        ),
+        VocabularyEntry(
+            canonical_slug="prohibited_runtime_variation",
+            canonical_label="Prohibited Runtime Variation",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="planning_governance",
+            maps_to_contract="nvda_desk.schemas.state_policy.ProhibitedRuntimeSurface",
+            allowed_aliases=["locked_surface"],
+            disallowed_phrases=["runtime_rewrite"],
+            notes=["Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."],
+        ),
+        VocabularyEntry(
+            canonical_slug="stand_down_class",
+            canonical_label="Stand-Down Class",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.NonActionClass",
+            allowed_aliases=["non_action_class"],
+            notes=["Gate 61 makes disciplined non-participation a first-class governed outcome."],
+        ),
+        VocabularyEntry(
+            canonical_slug="conflict_class",
+            canonical_label="Conflict Class",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.SignalConflictClass",
+            allowed_aliases=["signal_conflict_class"],
+            notes=["Ordered conflict severity remains visible in review rather than being silently absorbed."],
+        ),
+        VocabularyEntry(
+            canonical_slug="degradation_step",
+            canonical_label="Degradation Step",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="posture_risk_permission",
+            maps_to_contract="nvda_desk.schemas.state_policy.DegradationStep",
+            allowed_aliases=["posture_degradation_step"],
+            notes=["Ordered ladder from confirmation tightening through stand-down and veto."],
+        ),
+        VocabularyEntry(
+            canonical_slug="override_disposition",
+            canonical_label="Override Disposition",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.OverrideDisposition",
+            allowed_aliases=["override_status"],
+            disallowed_phrases=["trader_feel_override"],
+            notes=["Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(
@@ -236,9 +335,10 @@ def build_document() -> VocabularyDocument:
         )
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
-        registry_version="gate55-alignment-2026-03-26",
+        registry_version="gate61-state-policy-alignment-2026-03-27",
         notes=[
             "Generated from current live playbook registry and pinned architecture surfaces.",
+            "Gate 60 and Gate 61 extend the workflow vocabulary with state-policy, non-action, and conflict-law terms.",
             "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth.",
         ],
         entries=entries,
@@ -246,6 +346,8 @@ def build_document() -> VocabularyDocument:
 
 
 def main() -> None:
+    """Write the generated vocabulary document to the committed JSON path."""
+
     document = build_document()
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(document.to_json_text(), encoding="utf-8")

@@ -44,6 +44,8 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 52 — complete on `main`
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
+- Gates 56–58 — complete on `main`
+- Gates 59–61 — complete on `main`
 
 ## Sequential execution rule
 
@@ -51,7 +53,7 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 59 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–59 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 61 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–61 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
@@ -60,6 +62,8 @@ The persisted `main` baseline is now closed through Gate 59 and records Gate 7 e
 - DMP v1 retired from live runtime dependency and retained only as archived historical context;
 - vocabulary governance aligned to family / setup-variant / execution-expression / horizon ownership plus workflow-routing terms such as Step 0 calendar/horizon and carry handoff;
 - Gate 59 doctrine rebase complete on `main`, with the V6 pair now the single active successor authority for Gates 60–79;
+- Gate 60 ontology freeze complete on `main`, with typed state-policy authority now fencing lawful mutable surfaces away from prohibited runtime variation;
+- Gate 61 non-action/conflict law complete on `main`, with explicit stand-down, conflict, degradation, and override vocabulary exposed to review surfaces;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 60 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+The next authored gate is Gate 62 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.

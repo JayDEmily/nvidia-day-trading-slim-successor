@@ -14,7 +14,8 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
-from nvda_desk.schemas.review import ImportedModuleReviewCitation
+from nvda_desk.schemas.review import ImportedModuleReviewCitation, ReviewGovernanceSurface
+from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage
 
 
 class VolatilityRegime(StrEnum):
@@ -460,6 +461,44 @@ class ExecutionExpressionOutput(BaseModel):
     reasons: list[str] = Field(default_factory=list)
 
 
+class RuntimeStateVector(BaseModel):
+    """Approved state-vector slice readable by Gate 60 modifier policy."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    desk_window: str
+    clock_envelope: str
+    carryover_state: str
+    expiry_cycle_state: str
+    event_proximity_state: str
+    event_window_state: str
+    volatility_regime: VolatilityRegime
+    breadth_state: BreadthState
+    sector_leadership_state: str
+    rates_regime_state: str
+    fx_stress_state: str
+    signal_conflict_state: str
+    term_structure_state: TermStructureState
+    skew_state: SkewState
+    gamma_state: GammaState
+    dealer_pressure_state: str
+    options_behavior_cluster: str
+    inventory_posture_state: str
+    fresh_vs_inventory_state: str
+    thesis_state: str
+    capital_lockup_state: str
+    time_stop_state: str
+    permission_state: PermissionState
+
+
+class EffectivePolicySnapshot(BaseModel):
+    """Review-visible snapshot of effective policy surfaces for one decision."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    active_lineage: list[EffectiveCoefficientLineage] = Field(default_factory=list)
+
+
 class ReviewExplanationInput(BaseModel):
     """Inputs required to reconstruct a deterministic reasoning packet."""
 
@@ -530,6 +569,8 @@ class ReviewExplanationOutput(BaseModel):
     module_attribution: dict[str, float] = Field(default_factory=dict)
     imported_module_citations: list[ImportedModuleReviewCitation] = Field(default_factory=list)
     imported_module_maturity_counts: dict[str, int] = Field(default_factory=dict)
+    effective_policy: EffectivePolicySnapshot | None = None
+    review_governance: ReviewGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None
     review_packet: dict[str, object]
 
