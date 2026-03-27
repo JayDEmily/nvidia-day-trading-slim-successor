@@ -1441,6 +1441,6 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 
 ### Gate 78 successor-pack closeout
 
-- Source merge commit: `TO_BE_FILLED_AFTER_MERGE`
+- Source merge commit: `eccd360`
 - Closeout summary: integrated bounded state-conditioned modifier law into live runtime using one typed modifier packet that now carries effective coefficients, kill-switch outcomes, stand-down classes, and lineage through posture, execution, and review.
 - Proof surfaces: `tests/test_gate78_modifier_runtime_integration.py`, `tests/test_execution_review_runtime.py`, updated planning quartet, and runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py`, `src/nvda_desk/services/cognition_runtime.py`, plus review exposure in `src/nvda_desk/services/review_explanation.py`.
