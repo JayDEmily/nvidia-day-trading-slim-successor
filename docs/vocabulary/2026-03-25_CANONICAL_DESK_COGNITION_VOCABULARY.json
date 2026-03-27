@@ -821,6 +821,26 @@
       ]
     },
     {
+      "canonical_slug": "live_event_richness",
+      "canonical_label": "Live Event Richness",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.LiveEventRichnessAuthorityPacket",
+      "allowed_aliases": [
+        "live_event_snapshot",
+        "event_rich_temporal_input"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

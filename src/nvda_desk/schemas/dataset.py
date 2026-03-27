@@ -12,6 +12,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.schemas.cognition import OptionsFlowContextInput, TemporalContextInput
+from nvda_desk.schemas.events import LiveEventSnapshot, NormalisedEventRecord
 
 
 class ProvenanceRecord(BaseModel):
@@ -80,15 +81,8 @@ class OptionChainSnapshot(BaseModel):
     quotes: list[OptionQuote] = Field(default_factory=list)
 
 
-class EventRecord(BaseModel):
-    """Replay-ready scheduled event record."""
-
-    model_config = ConfigDict(extra="forbid")
-
-    event_id: str
-    event_at: datetime
-    event_type: str
-    label: str
+class EventRecord(NormalisedEventRecord):
+    """Replay-ready scheduled event record with preserved event richness."""
 
 
 class RealDataBundle(BaseModel):
@@ -157,6 +151,7 @@ class PreparedRuntimeLineage(BaseModel):
     aligned_bar_ts: datetime
     bar_age_seconds: int = Field(ge=0)
     event_ids: list[str] = Field(default_factory=list)
+    event_lineage_keys: list[str] = Field(default_factory=list)
     sequence_id: str | None = None
 
 
@@ -208,6 +203,7 @@ class PreparedRuntimeSnapshot(BaseModel):
     spot_to_pin_distance_pct: float = 0.0
     pin_progression_bias: str = "untracked"
     next_event_at: datetime | None = None
+    live_event_snapshot: LiveEventSnapshot | None = None
     call_oi_near_spot: float = Field(ge=0.0, default=0.0)
     put_oi_near_spot: float = Field(ge=0.0, default=0.0)
     front_volume_near_spot: float = Field(ge=0.0, default=0.0)

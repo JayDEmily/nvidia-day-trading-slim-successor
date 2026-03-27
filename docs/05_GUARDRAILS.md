@@ -43,22 +43,19 @@
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+38. **Live cognition packets must preserve event richness additively; `next_event_at` may remain only as a derived compatibility hint, not as a private competing event path.**
 
-## Required runtime guardrails
 ## Required runtime guardrails
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
-## Required runtime guardrails
 ## Required runtime guardrails
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
 ## Required runtime guardrails
-## Required runtime guardrails
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
-## Required runtime guardrails
 ## Required runtime guardrails
 35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
 
@@ -67,20 +64,16 @@
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
 ## Required runtime guardrails
-## Required runtime guardrails
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
-## Required runtime guardrails
 ## Required runtime guardrails
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
 ## Required runtime guardrails
-## Required runtime guardrails
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
-## Required runtime guardrails
 ## Required runtime guardrails
 
 At minimum, the runtime supports configurable checks for:

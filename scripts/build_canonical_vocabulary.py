@@ -409,6 +409,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["event_store_query", "shared_event_truth"],
             notes=["Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."],
         ),
+        VocabularyEntry(
+            canonical_slug="live_event_richness",
+            canonical_label="Live Event Richness",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.events.LiveEventRichnessAuthorityPacket",
+            allowed_aliases=["live_event_snapshot", "event_rich_temporal_input"],
+            notes=["Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

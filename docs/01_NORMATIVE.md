@@ -238,6 +238,11 @@ Supported event sources must normalise through one explicit provenance contract 
 
 ## Shared event-store and query law
 
+## Live event-richness law
+
+Live cognition packets must preserve event identity, materiality, provenance counts, nearby-event summaries, and lineage keys rather than collapsing event truth to timestamp-only hints. `next_event_at` remains as an explicit backwards-compatible compatibility field, but it must be derived from the richer live-event snapshot rather than maintained as a competing private path.
+
+
 Shared event truth must sit behind one explicit store/query contract rather than ad hoc helper calls.
 
 - runtime, review, and replay consumers must use the same nearby-event window semantics;

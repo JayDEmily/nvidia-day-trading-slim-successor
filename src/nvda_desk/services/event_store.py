@@ -7,6 +7,8 @@ from nvda_desk.schemas.events import (
     EventMaterialityTier,
     EventQueryWindow,
     EventStoreQueryResult,
+    LiveEventReference,
+    LiveEventSnapshot,
     NormalisedEventRecord,
     ReplayEventConsumerMode,
 )
@@ -61,11 +63,56 @@ class EventStoreService:
             replay_mode=replay_mode,
         )
 
+
+    def build_live_event_snapshot(
+        self,
+        *,
+        requested_at: datetime,
+        symbol: str | None = None,
+        query_window: EventQueryWindow | None = None,
+        minimum_materiality: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT,
+    ) -> LiveEventSnapshot:
+        result = self.query(
+            requested_at=requested_at,
+            symbol=symbol,
+            query_window=query_window,
+            minimum_materiality=minimum_materiality,
+            replay_mode=ReplayEventConsumerMode.RUNTIME_NEARBY,
+        )
+        next_event = min(
+            (record for record in result.nearby_events if self._aware(record.event_at) >= self._aware(requested_at)),
+            key=lambda record: record.event_at,
+            default=None,
+        )
+        lineage_keys = sorted({key for keys in result.lineage_map.values() for key in keys})
+        return LiveEventSnapshot(
+            requested_at=result.requested_at,
+            symbol=result.symbol,
+            query_window=result.query_window,
+            next_event=self._to_live_reference(next_event) if next_event is not None else None,
+            nearby_events=[self._to_live_reference(record) for record in result.nearby_events],
+            material_events=[self._to_live_reference(record) for record in result.material_events],
+            lineage_keys=lineage_keys,
+        )
+
     def lineage_for(self, record_id: str) -> list[str]:
         for record in self._records:
             if record.record_id == record_id:
                 return list(record.lineage_keys)
         return []
+
+
+    def _to_live_reference(self, record: NormalisedEventRecord) -> LiveEventReference:
+        return LiveEventReference(
+            record_id=record.record_id,
+            event_id=record.event_id,
+            event_at=record.event_at,
+            event_type=record.event_type,
+            label=record.label,
+            materiality_tier=record.materiality_tier,
+            provenance_count=len(record.provenance),
+            lineage_keys=list(record.lineage_keys),
+        )
 
     def _materiality_rank(self, tier: EventMaterialityTier) -> int:
         ordering = {
