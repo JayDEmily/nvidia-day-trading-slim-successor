@@ -748,7 +748,7 @@ Gate 72 is complete on `main`. The repo now freezes one explicit provenance cont
 
 ## Gate 73 — Event store and query surfaces
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 72
 
@@ -786,6 +786,10 @@ Event storage and query contracts are explicit, typed, and shared across runtime
 - targeted persistence/query tests
 
 ---
+
+### Gate 73 closeout note
+
+Gate 73 is complete on `main`. The repo now freezes one shared event-store/query contract for runtime, review, and replay consumers, including nearby-event windows, materiality filters, lineage retrieval, and declared replay-consumer modes.
 
 ## Gate 74 — Preserve event richness into live cognition input
 

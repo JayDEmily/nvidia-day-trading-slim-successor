@@ -335,3 +335,46 @@ class EventIngestionAuthorityPacket(BaseModel):
     confidence_tiers: list[EventConfidenceTier] = Field(default_factory=list)
     conflict_dispositions: list[SourceConflictDisposition] = Field(default_factory=list)
     outage_policies: list[SourceOutagePolicy] = Field(default_factory=list)
+
+
+
+class ReplayEventConsumerMode(StrEnum):
+    """Shared consumer modes allowed to read the bounded event store."""
+
+    RUNTIME_NEARBY = "runtime_nearby"
+    REVIEW_LINEAGE = "review_lineage"
+    REPLAY_SESSION = "replay_session"
+
+
+class EventQueryWindow(BaseModel):
+    """Bounded nearby-event query window used by shared consumers."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    lookback_minutes: int = Field(ge=0)
+    lookahead_minutes: int = Field(ge=0)
+
+
+class EventStoreQueryResult(BaseModel):
+    """Shared event truth returned to runtime, review, or replay consumers."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    requested_at: datetime
+    symbol: str | None = None
+    query_window: EventQueryWindow
+    nearby_events: list[NormalisedEventRecord] = Field(default_factory=list)
+    material_events: list[NormalisedEventRecord] = Field(default_factory=list)
+    lineage_map: dict[str, list[str]] = Field(default_factory=dict)
+    replay_mode: ReplayEventConsumerMode = ReplayEventConsumerMode.RUNTIME_NEARBY
+
+
+class EventStoreAuthorityPacket(BaseModel):
+    """Frozen Gate 73 authority for shared event-store and query surfaces."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    default_query_window: EventQueryWindow
+    default_materiality_floor: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT
+    replay_modes: list[ReplayEventConsumerMode] = Field(default_factory=list)
+    lineage_required: bool = True

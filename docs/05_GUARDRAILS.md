@@ -42,9 +42,21 @@
 
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
 ## Required runtime guardrails
 ## Required runtime guardrails
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
+
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
 ## Required runtime guardrails
 ## Required runtime guardrails
@@ -52,9 +64,21 @@
 
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
 ## Required runtime guardrails
 ## Required runtime guardrails
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
+
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 
 ## Required runtime guardrails
 ## Required runtime guardrails

@@ -191,6 +191,15 @@ The repo now has one bounded provenance contract for supported event sources bef
 - label conflicts and degraded sources remain explicit after normalisation;
 - this gate freezes ingestion authority only; shared store/query consumers land in Gate 73.
 
+## Gate 73 shared event-store and query authority
+
+The repo now has one bounded shared event truth surface for runtime, review, and replay consumers.
+
+- nearby-event selection now flows through an explicit query window contract;
+- material-event filters now use explicit materiality floors;
+- lineage retrieval is part of the shared event-store contract rather than a side path;
+- replay uses the same event truth with a declared consumer mode instead of bespoke semantics.
+
 ## Current operating surfaces
 
 The current repo exposes:
