@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any, cast
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.events import (
@@ -160,8 +161,11 @@ def test_gate77_schema_surface_exposes_failure_and_promotion_packets() -> None:
         notes=["needs more lineage before candidate adjudication"],
     )
 
-    assert ReviewPacketService.render_failure_taxonomy(failure)["resolution"] == "unresolved"
-    assert ReviewPacketService.render_promotion_evidence(promotion)["missing_sections"] == ["modifier_policy_ids"]
+    rendered_failure = cast(dict[str, Any], ReviewPacketService.render_failure_taxonomy(failure))
+    rendered_promotion = cast(dict[str, Any], ReviewPacketService.render_promotion_evidence(promotion))
+
+    assert rendered_failure["resolution"] == "unresolved"
+    assert rendered_promotion["missing_sections"] == ["modifier_policy_ids"]
     assert lineage.event_lineage_keys == ["src:ir:evt-1"]
     assert contribution.diagnosis is EconomicContributionTag.VALUE_LEAK
 
@@ -192,9 +196,13 @@ def test_gate77_runtime_review_packet_carries_lineage_failure_and_promotion_evid
     assert result.review.promotion_evidence is not None
     assert result.review.promotion_evidence.ready_for_candidate_review is False
     assert "modifier_policy_ids" in result.review.promotion_evidence.missing_sections
-    assert result.review.review_packet["review_lineage"]["event_lineage_keys"] == ["src:ir:evt-1"]
-    assert result.review.review_packet["failure_taxonomy"]["resolution"] == "unresolved"
-    assert result.review.review_packet["promotion_evidence"]["ready_for_candidate_review"] is False
+    review_lineage = cast(dict[str, Any], result.review.review_packet["review_lineage"])
+    failure_taxonomy = cast(dict[str, Any], result.review.review_packet["failure_taxonomy"])
+    promotion_evidence = cast(dict[str, Any], result.review.review_packet["promotion_evidence"])
+
+    assert review_lineage["event_lineage_keys"] == ["src:ir:evt-1"]
+    assert failure_taxonomy["resolution"] == "unresolved"
+    assert promotion_evidence["ready_for_candidate_review"] is False
 
 
 def test_gate77_vocabulary_terms_are_generated_and_committed() -> None:
