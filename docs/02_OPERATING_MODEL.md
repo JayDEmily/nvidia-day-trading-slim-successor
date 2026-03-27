@@ -128,6 +128,15 @@ Later calendar, event-window, and policy gates now inherit a frozen event identi
 - materiality is tiered as background, monitor, posture relevant, and desk critical;
 - NVDA-specific, bounded peer, bounded macro/policy, expiry, and venue/session subclasses remain explicit rather than free-form text.
 
+## Gate 66 desk-calendar authority
+
+Temporal routing now depends on venue contracts rather than a single generic market-open concept.
+
+- the supported venue set is bounded to Nasdaq US cash, JPX cash, HKEX cash, SSE/SZSE cash, and CFFEX index futures;
+- venue contracts carry timezone authority, session template, closure classes, and bridge rules;
+- US early closes, HK holiday-eve half-days, Japan split sessions, and Mainland China bridge/make-up-day behaviour stay explicit;
+- expiry interactions with shortened sessions and carry-sensitive horizons are treated as calendar facts.
+
 ## Current operating surfaces
 
 The current repo exposes:

@@ -1854,7 +1854,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze venue and session taxonomy with timezone authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 66 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 39
     },
     {
@@ -1900,7 +1900,7 @@
       "full_suite_required": false,
       "pass_gate": "Define US holiday, half-day, and bridge rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 66 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 40
     },
     {
@@ -1946,7 +1946,7 @@
       "full_suite_required": false,
       "pass_gate": "Define Japan, Hong Kong, and China holiday/session contracts is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 66 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 41
     },
     {
@@ -1992,7 +1992,7 @@
       "full_suite_required": false,
       "pass_gate": "Define expiry-calendar and carry-sensitive interactions is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 66 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 42
     },
     {
@@ -2038,7 +2038,7 @@
       "full_suite_required": false,
       "pass_gate": "Add desk-calendar schema and contract tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 66 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 43
     },
     {
@@ -5195,7 +5195,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_65_complete_on_main_successor_pack_active_from_gate_66",
+  "execution_status": "gate_66_complete_on_main_successor_pack_active_from_gate_67",
   "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5235,14 +5235,14 @@
     "LEAF-G65-002",
     "LEAF-G65-003",
     "LEAF-G65-004",
-    "LEAF-G65-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G65-005",
     "LEAF-G66-001",
     "LEAF-G66-002",
     "LEAF-G66-003",
     "LEAF-G66-004",
-    "LEAF-G66-005",
+    "LEAF-G66-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G67-001",
     "LEAF-G67-002",
     "LEAF-G67-003",
@@ -5318,8 +5318,9 @@
     "Gate 62",
     "Gate 63",
     "Gate 64",
-    "Gate 65"
+    "Gate 65",
+    "Gate 66"
   ],
-  "active_gate": "Gate 66",
+  "active_gate": "Gate 67",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

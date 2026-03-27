@@ -132,6 +132,26 @@ class EventTaxonomyAuthorityPacket(BaseModel):
     venue_session_subclasses: list[VenueSessionEventSubclass] = Field(default_factory=list)
 
 
+class ExpiryCalendarInteraction(StrEnum):
+    """How expiry semantics collide with calendar structure."""
+
+    NORMAL_SESSION = "normal_session"
+    EARLY_CLOSE_EXPIRY = "early_close_expiry"
+    PRE_HOLIDAY_EXPIRY = "pre_holiday_expiry"
+    POST_HOLIDAY_RESET = "post_holiday_reset"
+
+
+class CalendarAwareEventContract(BaseModel):
+    """One calendar-sensitive event interaction frozen by Gate 66."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    venue_event_subclass: VenueSessionEventSubclass | None = None
+    expiry_subclass: ExpiryEventSubclass | None = None
+    expiry_calendar_interaction: ExpiryCalendarInteraction
+    notes: list[str] = Field(default_factory=list)
+
+
 class SessionCalendarCreate(BaseModel):
     session_date: date
     venue: str = Field(default="NASDAQ", min_length=1)

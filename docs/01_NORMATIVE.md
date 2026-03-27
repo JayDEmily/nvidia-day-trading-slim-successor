@@ -172,6 +172,15 @@ Event identity must remain bounded, typed, and desk-relevant.
 - NVDA-specific company events, bounded peer events, bounded macro/policy releases, expiry events, and venue/session events must remain distinct subclasses rather than loose labels;
 - no later gate may expand the event taxonomy through free-text strings or ad hoc new classes without an explicit authority update.
 
+## Desk-calendar and venue law
+
+Calendar truth must come from bounded venue contracts rather than one generic open/closed flag.
+
+- the canonical venue set for this tranche is US Nasdaq cash, JPX cash, HKEX cash, SSE/SZSE cash, and CFFEX index futures;
+- venue contracts must carry timezone authority, session template, closure class, and bridge rules;
+- US early-close and half-day semantics, HK holiday-eve half-day semantics, Japan split-session semantics, and Mainland China bridge/make-up-day semantics must remain explicit;
+- expiry interaction with shortened sessions and carry-sensitive horizons must be recorded as calendar facts, not inferred casually downstream.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

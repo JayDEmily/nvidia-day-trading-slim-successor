@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
+from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     CandidateGovernanceAuthorityPacket,
     NonActionAuthorityPacket,
@@ -74,6 +75,13 @@ class StrategyVariantPayload(BaseModel):
     runtime_overrides: dict[str, object] = Field(default_factory=dict)
     supported_sandbox_overrides: list[str] = Field(default_factory=list)
 
+
+
+
+class DeskCalendarAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 66 desk-calendar packet."""
+
+    authority: DeskCalendarAuthorityPacket
 
 class StatePolicyAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 60 state-policy packet."""

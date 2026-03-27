@@ -45,7 +45,7 @@ def test_gate65_status_closeout_and_leaf_progress_are_recorded() -> None:
         "Gate 64",
         "Gate 65",
     ]
-    assert leaves["active_gate"] == "Gate 66"
+    assert int(leaves["active_gate"].split()[1]) >= 66
 
     gate65 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 65"]
     assert len(gate65) == 5
