@@ -524,3 +524,72 @@ class CandidateGovernanceAuthorityPacket(BaseModel):
     comparison_outcomes: list[CandidateComparisonOutcome] = Field(default_factory=list)
     adjudication_dispositions: list[AdjudicationDisposition] = Field(default_factory=list)
     candidate_shape: CandidateSetShape
+
+
+
+class EventOptionsStressState(StrEnum):
+    """Bounded Gate 70 event and options-stress states."""
+
+    EVENT_IMMINENT = "event_imminent"
+    EVENT_LIVE = "event_live"
+    EVENT_SUPPRESSED = "event_suppressed"
+    NEGATIVE_GAMMA_STRESS = "negative_gamma_stress"
+    PIN_RISK = "pin_risk"
+    EXPIRY_DISTORTION = "expiry_distortion"
+
+
+class EventOptionsStressFamily(StrEnum):
+    """Event or options families that qualify Gate 70 policy examples."""
+
+    COMPANY_EVENT = "company_event"
+    MACRO_EVENT = "macro_event"
+    POLICY_EVENT = "policy_event"
+    VENUE_EVENT = "venue_event"
+    OPTIONS_GEOMETRY = "options_geometry"
+
+
+class PolicyEffectType(StrEnum):
+    """Bounded posture effects allowed by the Gate 70 matrix."""
+
+    SUPPRESS = "suppress"
+    DEGRADE = "degrade"
+    WIDEN = "widen"
+    CAP = "cap"
+    BLOCK = "block"
+    HEDGE = "hedge"
+
+
+class EventOptionsBehaviourClass(StrEnum):
+    """Behaviour classes frozen by the event/options-stress matrix."""
+
+    TIGHTENED_THRESHOLDS = "tightened_thresholds"
+    HEDGED_ONLY = "hedged_only"
+    SIZE_CAPPED = "size_capped"
+    WATCH_ONLY = "watch_only"
+    HARD_BLOCK = "hard_block"
+
+
+class EventOptionsStressPolicyRecord(BaseModel):
+    """One deterministic event/options-stress policy record."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    state: EventOptionsStressState
+    event_families: list[EventOptionsStressFamily] = Field(default_factory=list)
+    mutable_surface_targets: list[MutableRuntimeSurface] = Field(default_factory=list)
+    effect_types: list[PolicyEffectType] = Field(default_factory=list)
+    behaviour_class: EventOptionsBehaviourClass
+    hard_block: bool = False
+    notes: list[str] = Field(default_factory=list)
+
+
+class EventOptionsStressAuthorityPacket(BaseModel):
+    """Frozen Gate 70 authority for event and options-stress posture law."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    states: list[EventOptionsStressState] = Field(default_factory=list)
+    families: list[EventOptionsStressFamily] = Field(default_factory=list)
+    effect_types: list[PolicyEffectType] = Field(default_factory=list)
+    behaviour_classes: list[EventOptionsBehaviourClass] = Field(default_factory=list)
+    policy_records: list[EventOptionsStressPolicyRecord] = Field(default_factory=list)

@@ -34,8 +34,11 @@ from nvda_desk.schemas.state_policy import (
     CandidateComparisonOutcome,
     CandidateSetShape,
     DegradationStep,
+    EventOptionsBehaviourClass,
+    EventOptionsStressState,
     NonActionClass,
     OverrideDisposition,
+    PolicyEffectType,
     ReviewChangeBudget,
     ReviewEvidenceBlock,
     ReviewOutcome,
@@ -168,6 +171,16 @@ class PhaseCarryoverPolicySurface(BaseModel):
     carry_horizon_state: CarryHorizonState
     behaviour_class: PhaseBehaviourClass
     no_action_bias: PhaseNoActionBias = PhaseNoActionBias.NEUTRAL
+    notes: list[str] = Field(default_factory=list)
+
+
+class EventOptionsStressPolicySurface(BaseModel):
+    """Gate 70 hook exposing event/options-stress posture law to review."""
+
+    active_states: list[EventOptionsStressState] = Field(default_factory=list)
+    behaviour_class: EventOptionsBehaviourClass
+    effect_types: list[PolicyEffectType] = Field(default_factory=list)
+    hard_block: bool = False
     notes: list[str] = Field(default_factory=list)
 
 

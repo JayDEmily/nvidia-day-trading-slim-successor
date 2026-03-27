@@ -1360,3 +1360,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate69_phase_carry_policy.py tests/test_gate60_state_policy_ontology.py tests/test_gate68_precursor_universe.py tests/test_successor_pack_anti_drift.py`
 
+
+
+### LEAF-G70-001 through LEAF-G70-006 — Event and options-stress policy matrix
+
+- Branch: `work/gate70-event-options-stress-20260327`
+- Scope: freeze deterministic posture law for imminent/live event states and options-stress states before modifier-precedence control law lands.
+- Outcome:
+  - Added typed event/options-stress authority contracts for imminent/live event states, event suppression, negative-gamma stress, pin risk, expiry distortion, and bounded behavioural consequences.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so event/options posture law is explicit and review-visible rather than informal desk language.
+  - Added targeted Gate 70 integrity tests covering the bounded policy matrix, review/config hooks, and vocabulary generation.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate70_event_options_stress_policy.py tests/test_gate69_phase_carry_policy.py tests/test_gate60_state_policy_ontology.py tests/test_successor_pack_anti_drift.py`

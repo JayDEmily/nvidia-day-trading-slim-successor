@@ -14,6 +14,7 @@ from nvda_desk.schemas.risk import PhaseCarryoverPolicyAuthorityPacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     CandidateGovernanceAuthorityPacket,
+    EventOptionsStressAuthorityPacket,
     NonActionAuthorityPacket,
     ReviewEligibilityAuthorityPacket,
     StabilityAuthorityPacket,
@@ -133,6 +134,12 @@ class ReviewEligibilityAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 63 review-eligibility packet."""
 
     authority: ReviewEligibilityAuthorityPacket
+
+
+class EventOptionsStressAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 70 event/options-stress packet."""
+
+    authority: EventOptionsStressAuthorityPacket
 
 
 class CandidateGovernanceAuthorityResponse(BaseModel):

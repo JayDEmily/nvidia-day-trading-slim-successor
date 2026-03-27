@@ -208,6 +208,16 @@ Phase and carry context may change bounded posture, but it must not mutate the d
 - midday compression and late-session carry preparation may prefer or require no-action even when no hard veto exists;
 - phase/carryover policy may alter only approved mutable surfaces while invariant grammar and baseline coefficients remain unchanged.
 
+## Event/options-stress policy law
+
+Event-conditioned and options-stress-conditioned posture must remain one explicit matrix rather than loose trader folklore.
+
+- event/options-stress states are `event_imminent`, `event_live`, `event_suppressed`, `negative_gamma_stress`, `pin_risk`, and `expiry_distortion`;
+- the matrix must state what is suppressed, degraded, widened, capped, hedged, or blocked under each state;
+- company-event, macro-event, policy-event, venue-event, and options-geometry examples may share vocabulary but not necessarily the same behavioural consequence;
+- combined event-plus-options examples must remain internally consistent while final precedence waits for Gate 71;
+- hard-block conditions must stay explicit rather than implied by desk lore.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

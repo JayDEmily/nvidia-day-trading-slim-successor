@@ -164,6 +164,15 @@ Stable doctrine now has a bounded ordinary-session policy matrix.
 - no-action can be preferred or required by policy without inventing a discretionary override;
 - the matrix only targets approved mutable runtime surfaces.
 
+## Gate 70 event/options-stress policy authority
+
+Stable doctrine now has an explicit matrix for event-conditioned and options-stress-conditioned posture.
+
+- the matrix covers imminent/live event risk, event suppression, negative gamma stress, pin risk, and expiry distortion;
+- behavioural consequences are bounded to tightened thresholds, hedged-only operation, size caps, watch-only posture, or hard block;
+- the matrix states which mutable runtime surfaces are targeted and which conditions force no-action or stand-down;
+- combined event-plus-options examples remain lawful while final precedence stays deferred to Gate 71.
+
 ## Current operating surfaces
 
 The current repo exposes:

@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
+    EventOptionsStressPolicySurface,
     ImportedModuleReviewCitation,
     PhaseCarryoverPolicySurface,
     PrecursorGovernanceSurface,
@@ -586,6 +587,7 @@ class ReviewExplanationOutput(BaseModel):
     event_window_governance: TemporalEventWindowSurface | None = None
     precursor_governance: PrecursorGovernanceSurface | None = None
     phase_carry_policy: PhaseCarryoverPolicySurface | None = None
+    event_options_stress_policy: EventOptionsStressPolicySurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None
@@ -631,3 +633,6 @@ class TraceStagePacket(BaseModel):
     required_input_fields: list[str] = Field(default_factory=list)
     required_output_fields: list[str] = Field(default_factory=list)
     summary: str
+
+
+ReviewExplanationOutput.model_rebuild()

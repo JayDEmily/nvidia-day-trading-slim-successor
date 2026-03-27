@@ -36,6 +36,9 @@
 32. **Precursor context must come from the bounded Asia/ex-US universe; no casual source creep.**
 33. **Phase/carryover policy may change bounded posture, but it must not force action just because the clock moved.**
 
+34. **Event/options-stress posture must come from the frozen matrix, not improvised event lore or gamma hand-waving.**
+
+## Required runtime guardrails
 ## Required runtime guardrails
 
 At minimum, the runtime supports configurable checks for:
