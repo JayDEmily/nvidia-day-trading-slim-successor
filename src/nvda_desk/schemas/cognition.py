@@ -19,6 +19,7 @@ from nvda_desk.schemas.review import (
     ImportedModuleReviewCitation,
     ReviewEligibilitySurface,
     ReviewGovernanceSurface,
+    TemporalEventWindowSurface,
 )
 from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage, SurfaceStabilityScorecard
 
@@ -577,6 +578,7 @@ class ReviewExplanationOutput(BaseModel):
     effective_policy: EffectivePolicySnapshot | None = None
     stability_scorecards: list[SurfaceStabilityScorecard] = Field(default_factory=list)
     review_governance: ReviewGovernanceSurface | None = None
+    event_window_governance: TemporalEventWindowSurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None

@@ -684,6 +684,25 @@
       ]
     },
     {
+      "canonical_slug": "event_window_state",
+      "canonical_label": "Event Window State",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.temporal_surface.EventWindowAuthorityPacket",
+      "allowed_aliases": [
+        "event_window_semantics"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

@@ -17,6 +17,7 @@ from nvda_desk.schemas.state_policy import (
     StabilityAuthorityPacket,
     StatePolicyAuthorityPacket,
 )
+from nvda_desk.schemas.temporal_surface import EventWindowAuthorityPacket
 
 
 class CoefficientGroupParameterPayload(BaseModel):
@@ -82,6 +83,14 @@ class DeskCalendarAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 66 desk-calendar packet."""
 
     authority: DeskCalendarAuthorityPacket
+
+
+
+class EventWindowAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 67 event-window packet."""
+
+    authority: EventWindowAuthorityPacket
+
 
 class StatePolicyAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 60 state-policy packet."""

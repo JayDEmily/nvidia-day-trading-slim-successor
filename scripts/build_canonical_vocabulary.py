@@ -346,6 +346,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["venue_calendar_authority"],
             notes=["Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."],
         ),
+        VocabularyEntry(
+            canonical_slug="event_window_state",
+            canonical_label="Event Window State",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.temporal_surface.EventWindowAuthorityPacket",
+            allowed_aliases=["event_window_semantics"],
+            notes=["Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

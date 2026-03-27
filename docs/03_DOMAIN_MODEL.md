@@ -190,6 +190,24 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/session_clock.py` and `src/nvda_desk/schemas/events.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4h. Temporal event-window objects
+Typed contracts that freeze event proximity, window, overlap, risk-timing, and carry-sensitivity semantics before later posture matrices or runtime binding.
+
+Key examples:
+- `EventProximityState`
+- `EventWindowState`
+- `EventOverlapClass`
+- `EventRiskTimingClass`
+- `EventCarrySensitivity`
+- `EventWindowContract`
+- `EventWindowAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/temporal_surface.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.
 

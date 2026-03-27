@@ -181,6 +181,15 @@ Calendar truth must come from bounded venue contracts rather than one generic op
 - US early-close and half-day semantics, HK holiday-eve half-day semantics, Japan split-session semantics, and Mainland China bridge/make-up-day semantics must remain explicit;
 - expiry interaction with shortened sessions and carry-sensitive horizons must be recorded as calendar facts, not inferred casually downstream.
 
+## Temporal event-window law
+
+Event timing must remain typed, bounded, and explicit rather than described with loose words like "near event".
+
+- event proximity states are `no_event_context`, `event_scheduled`, `event_same_day`, `event_same_session`, `event_imminent`, and `event_live_or_passed`;
+- event-window states are `clear_window`, `same_session_event_window`, `event_imminent_window`, `event_live_window`, `event_cooling_off_window`, and `event_memory_window`;
+- overlapping or stacked events must resolve through explicit overlap classes and priority rules rather than ad hoc judgement;
+- company-event and macro-event windows may share names but not necessarily the same pre-window, post-window, cooling-off, or carry-sensitive treatment.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

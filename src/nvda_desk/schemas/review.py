@@ -31,6 +31,13 @@ from nvda_desk.schemas.state_policy import (
     ReviewTriggerClass,
     SignalConflictClass,
 )
+from nvda_desk.schemas.temporal_surface import (
+    EventCarrySensitivity,
+    EventOverlapClass,
+    EventProximityState,
+    EventRiskTimingClass,
+    EventWindowState,
+)
 
 
 class ImportedModuleMaturityState(StrEnum):
@@ -115,6 +122,19 @@ class ReviewGovernanceSurface(BaseModel):
     override_disposition: OverrideDisposition = OverrideDisposition.NOT_APPLICABLE
     override_audit_notes: list[str] = Field(default_factory=list)
 
+
+
+
+
+class TemporalEventWindowSurface(BaseModel):
+    """Gate 67 hook exposing bounded event-window semantics to review packets."""
+
+    proximity_state: EventProximityState
+    window_state: EventWindowState
+    overlap_class: EventOverlapClass = EventOverlapClass.SINGLE_EVENT
+    risk_timing_class: EventRiskTimingClass
+    carry_sensitivity: EventCarrySensitivity
+    event_family: str = Field(min_length=1)
 
 
 class ReviewEligibilitySurface(BaseModel):

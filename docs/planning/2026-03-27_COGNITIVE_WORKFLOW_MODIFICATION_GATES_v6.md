@@ -474,7 +474,7 @@ Gate 66 is complete on `main`. The repo now freezes bounded venue/session contra
 
 ## Gate 67 — Temporal event-window semantics
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 66
 
@@ -511,6 +511,10 @@ Runtime and review consumers can refer to event-window states with precise, boun
 - event-window docs
 - temporal vocabulary updates
 - targeted semantics tests
+
+### Gate 67 closeout note
+
+Gate 67 is complete on `main`. The repo now freezes bounded event proximity, event-window, overlap, risk-timing, and carry-sensitivity semantics, including explicit cooling-off and event-memory vocabulary so later policy matrices no longer rely on ad hoc timing language.
 
 ---
 
