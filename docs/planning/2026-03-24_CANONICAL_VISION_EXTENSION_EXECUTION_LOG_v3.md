@@ -1448,6 +1448,6 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 
 ### Gate 79 successor-pack closeout
 
-- Source merge commit: `PENDING_COMMIT`
+- Source merge commit: `17f20e6`
 - Closeout summary: froze one bounded walk-forward review-horizon discovery harness with chronology-safe windows, start-offset comparison, explicit stable/offset-sensitive/no-stable/coverage-insufficient outputs, event/regime/session slice coverage, fragility, ablation, and downstream review/candidate/research bindings.
 - Proof surfaces: `tests/test_gate79_horizon_discovery_harness.py`, `tests/test_research_eval_replay.py`, updated planning quartet, `src/nvda_desk/schemas/calibration.py`, `src/nvda_desk/schemas/replay.py`, `src/nvda_desk/services/replay_compare.py`, `src/nvda_desk/services/replay.py`, and `src/nvda_desk/services/research.py`.
