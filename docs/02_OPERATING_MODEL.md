@@ -155,6 +155,15 @@ Precursor context is now bounded before any stitching or runtime integration wor
 - session alignment must use last-complete-session semantics and keep weekend/holiday gaps explicit;
 - tempting extra sources remain excluded until they are explicitly authorised.
 
+## Gate 69 phase-and-carryover policy authority
+
+Stable doctrine now has a bounded ordinary-session policy matrix.
+
+- day-phase and carry-horizon states are explicit typed policy inputs rather than loose clock phrases;
+- the matrix distinguishes opening disorder, orderly trend windows, midday compression, late-session carry preparation, and post-close states;
+- no-action can be preferred or required by policy without inventing a discretionary override;
+- the matrix only targets approved mutable runtime surfaces.
+
 ## Current operating surfaces
 
 The current repo exposes:

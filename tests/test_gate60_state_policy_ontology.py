@@ -83,7 +83,8 @@ def test_gate60_schema_surface_matches_frozen_ontology() -> None:
         "suppression_veto",
     } == {item.value for item in ModifierTransformType}
 
-    assert set(RuntimeStateVector.model_fields) == {
+    model_fields = set(RuntimeStateVector.model_fields)
+    required_fields = {
         "desk_window",
         "clock_envelope",
         "carryover_state",
@@ -108,6 +109,10 @@ def test_gate60_schema_surface_matches_frozen_ontology() -> None:
         "time_stop_state",
         "permission_state",
     }
+    assert required_fields.issubset(model_fields)
+    leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+    if int(leaves["active_gate"].split()[1]) >= 70:
+        assert {"day_phase_state", "carry_horizon_state"}.issubset(model_fields)
 
     authority = StatePolicyAuthorityResponse(
         authority=StatePolicyAuthorityPacket(

@@ -225,6 +225,42 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 5a. Phase-and-carryover policy objects
+Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
+
+Key examples:
+- `DayPhaseState`
+- `CarryHorizonState`
+- `PhaseBehaviourClass`
+- `PhaseNoActionBias`
+- `PhaseCarryPolicyRecord`
+- `PhaseCarryoverPolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/risk.py`
+- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5a. Phase-and-carryover policy objects
+Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
+
+Key examples:
+- `DayPhaseState`
+- `CarryHorizonState`
+- `PhaseBehaviourClass`
+- `PhaseNoActionBias`
+- `PhaseCarryPolicyRecord`
+- `PhaseCarryoverPolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/risk.py`
+- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4i. Precursor-universe objects
@@ -242,6 +278,42 @@ Key examples:
 
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/market.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5a. Phase-and-carryover policy objects
+Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
+
+Key examples:
+- `DayPhaseState`
+- `CarryHorizonState`
+- `PhaseBehaviourClass`
+- `PhaseNoActionBias`
+- `PhaseCarryPolicyRecord`
+- `PhaseCarryoverPolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/risk.py`
+- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5a. Phase-and-carryover policy objects
+Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
+
+Key examples:
+- `DayPhaseState`
+- `CarryHorizonState`
+- `PhaseBehaviourClass`
+- `PhaseNoActionBias`
+- `PhaseCarryPolicyRecord`
+- `PhaseCarryoverPolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/risk.py`
+- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 

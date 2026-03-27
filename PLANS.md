@@ -45,7 +45,7 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
-- Gates 59–68 — complete on `main`
+- Gates 59–69 — complete on `main`
 
 ## Sequential execution rule
 
@@ -57,7 +57,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 68 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–68 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 69 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–69 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
@@ -75,6 +75,7 @@ The persisted `main` baseline is now closed through Gate 68 and records Gate 7 e
 - Gate 66 desk-calendar authority complete on `main`, with bounded venue/timezone/session/closure/bridge contracts now freezing US, Japan, Hong Kong, and Mainland China session truth before event-window or precursor wiring;
 - Gate 67 temporal event-window authority complete on `main`, with bounded proximity/window/overlap/risk-timing/carry-sensitivity semantics now freezing what event timing words actually mean before precursor or posture-policy gates;
 - Gate 68 precursor-universe authority complete on `main`, with bounded Asia/ex-US venue families, raw fields, derived fields, and session-alignment expectations now freezing what precursor context may lawfully enter later stitching or policy work;
+- Gate 69 phase-and-carryover policy authority complete on `main`, with bounded day-phase states, carry-horizon states, no-action bias, and mutable-surface targeting now freezing ordinary session posture law before event-stress matrices;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 69 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+The next authored gate is Gate 70 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.

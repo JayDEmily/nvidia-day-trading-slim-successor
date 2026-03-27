@@ -566,7 +566,7 @@ Gate 68 is complete on `main`. The repo now freezes the bounded precursor univer
 
 ## Gate 69 — Phase-of-day and carryover policy matrix
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 60–68
 
@@ -1020,4 +1020,9 @@ The repo has a bounded walk-forward horizon-discovery harness contract ready for
 - harness design docs
 - replay/testing contract updates
 - targeted harness-consistency tests
+
+
+### Gate 69 closeout note
+
+Gate 69 is complete on `main`. The repo now freezes the ordinary phase-and-carryover policy matrix with explicit day-phase states, carry-horizon states, behaviour classes, no-action bias, and mutable-surface targeting, plus the required state-vector extensions for `day_phase_state` and `carry_horizon_state`.
 
