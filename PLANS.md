@@ -45,7 +45,7 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
-- Gates 59–75 — complete on `main`
+- Gates 59–76 — complete on `main`
 
 ## Sequential execution rule
 
@@ -57,7 +57,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 75 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–74 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 76 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–74 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
@@ -82,4 +82,4 @@ The persisted `main` baseline is now closed through Gate 75 and records Gate 7 e
 - Gate 73 shared event-store/query authority complete on `main`, with one bounded nearby-event/query window, materiality filtering, lineage retrieval, and replay-consumer contract now freezing shared event truth before live cognition binding;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 76 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+The next authored gate is Gate 77 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.

@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.schemas.cognition import OptionsFlowContextInput, TemporalContextInput
 from nvda_desk.schemas.events import LiveEventSnapshot, NormalisedEventRecord
+from nvda_desk.schemas.market import PrecursorRuntimePacket
 
 
 class ProvenanceRecord(BaseModel):
@@ -152,6 +153,7 @@ class PreparedRuntimeLineage(BaseModel):
     bar_age_seconds: int = Field(ge=0)
     event_ids: list[str] = Field(default_factory=list)
     event_lineage_keys: list[str] = Field(default_factory=list)
+    precursor_lineage_keys: list[str] = Field(default_factory=list)
     sequence_id: str | None = None
 
 
@@ -204,6 +206,7 @@ class PreparedRuntimeSnapshot(BaseModel):
     pin_progression_bias: str = "untracked"
     next_event_at: datetime | None = None
     live_event_snapshot: LiveEventSnapshot | None = None
+    precursor_runtime_packet: PrecursorRuntimePacket | None = None
     call_oi_near_spot: float = Field(ge=0.0, default=0.0)
     put_oi_near_spot: float = Field(ge=0.0, default=0.0)
     front_volume_near_spot: float = Field(ge=0.0, default=0.0)

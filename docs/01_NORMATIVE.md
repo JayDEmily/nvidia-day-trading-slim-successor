@@ -271,3 +271,10 @@ Shared event truth must sit behind one explicit store/query contract rather than
 - missing or degraded precursor truth may only resolve through `continue_normally`, `continue_with_degraded_confidence`, `continue_without_venue`, or `require_stand_down_pressure`;
 - contradiction classes are `none`, `directional_split`, `futures_cash_divergence`, `timestamp_misalignment`, and `broad_cross_venue_conflict`;
 - precursor contradiction may only classify itself as `normal_confidence`, `degraded_confidence`, `tightened_posture`, `stand_down_pressure`, or `unresolved_context` before later policy matrices consume it.
+
+## Precursor runtime-binding law
+
+- precursor runtime truth must travel in one additive typed packet shared by runtime ingress and review;
+- the packet must expose active venues, derived precursor fields, contradiction class, posture state, fallback dispositions, and lineage keys;
+- legacy consumers may ignore the richer packet, but they must not rewrite or shadow it with a parallel precursor interpretation;
+- precursor-rich packets remain optional while real-data precursor ingestion is not yet wired, but if present they must be preserved intact.

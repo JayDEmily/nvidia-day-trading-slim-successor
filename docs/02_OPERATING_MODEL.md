@@ -272,3 +272,12 @@ Operational rules:
 - `MarketStateService.stitch_precursor_context(...)` is the authoritative pre-runtime assembly path for precursor slices.
 - precursor stitching stays descriptive at this gate; it may classify contradiction or stand-down pressure, but it must not yet mutate runtime policy surfaces.
 - `PrecursorRuntimePacket` remains out of scope for Gate 75 closeout even though its future shape is now anticipated by the authority packet.
+
+## Gate 76 precursor runtime-binding authority
+
+Gate 76 binds precursor truth into the runtime ingress and review packet surfaces without changing runtime policy logic.
+
+Operational rules:
+- `PreparedRuntimeSnapshot.precursor_runtime_packet` and `TemporalContextInput.precursor_runtime_packet` carry the same typed precursor truth.
+- `ReviewExplanationInput.temporal_input` is the lawful bridge that lets review expose exactly the precursor packet runtime received.
+- legacy runtime consumers may ignore the richer precursor packet, but they must not create a competing hidden precursor surface.
