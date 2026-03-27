@@ -82,4 +82,4 @@ The persisted `main` baseline is now closed through Gate 74 and records Gate 7 e
 - Gate 73 shared event-store/query authority complete on `main`, with one bounded nearby-event/query window, materiality filtering, lineage retrieval, and replay-consumer contract now freezing shared event truth before live cognition binding;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 74 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+The next authored gate is Gate 75 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
