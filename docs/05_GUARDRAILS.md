@@ -31,6 +31,7 @@
 27. **Live paper compares locked candidates only; it must not become ad hoc candidate search or retuning.**
 28. **Reserved adjudication spans must stay protected until governed final comparison consumes them.**
 29. **Event identity must stay inside the frozen bounded taxonomy; no free-text event-class drift.**
+30. **Venue calendar truth must come from explicit venue contracts, not one generic market-open flag.**
 
 ## Required runtime guardrails
 

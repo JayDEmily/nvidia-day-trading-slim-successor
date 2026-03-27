@@ -1315,3 +1315,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Added targeted Gate 65 integrity tests and future-proofed older successor-pack status tests so later gate closeout does not break them by being truthful.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate65_event_taxonomy.py tests/test_gate59_doctrine_rebase.py tests/test_gate60_state_policy_ontology.py tests/test_gate61_non_action_conflict.py tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py tests/test_successor_pack_anti_drift.py`
+
+### LEAF-G66-001 through LEAF-G66-005 — Session, holiday, and venue-calendar contracts
+
+- Branch: `work/gate66-desk-calendar-20260327`
+- Scope: freeze venue/timezone/session/closure/bridge rules and expiry-calendar interactions across US and Asia precursor venues before event-window and precursor-universe work.
+- Outcome:
+  - Added typed desk-calendar authority contracts for venue identity, timezone authority, session templates, closure classes, bridge rules, and calendar-aware expiry interactions.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so venue calendar truth is explicit and bounded rather than implied by one generic market-open flag.
+  - Added targeted Gate 66 integrity tests covering Nasdaq, JPX, HKEX, and Mainland China calendar contracts.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate66_desk_calendar_contracts.py tests/test_gate65_event_taxonomy.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
+

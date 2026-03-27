@@ -337,6 +337,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["bounded_event_identity"],
             notes=["Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."],
         ),
+        VocabularyEntry(
+            canonical_slug="desk_calendar_contract",
+            canonical_label="Desk Calendar Contract",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.session_clock.DeskCalendarAuthorityPacket",
+            allowed_aliases=["venue_calendar_authority"],
+            notes=["Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

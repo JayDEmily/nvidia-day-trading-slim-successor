@@ -172,6 +172,24 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/events.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4g. Desk-calendar and venue objects
+Typed contracts that freeze venue calendars, timezone authority, closure classes, and bridge rules before later routing and precursor binding.
+
+Key examples:
+- `TradingVenue`
+- `VenueTimezone`
+- `SessionTemplate`
+- `CalendarClosureClass`
+- `SessionBridgeRule`
+- `VenueSessionContract`
+- `DeskCalendarAuthorityPacket`
+- `ExpiryCalendarInteraction`
+- `CalendarAwareEventContract`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/session_clock.py` and `src/nvda_desk/schemas/events.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.
 

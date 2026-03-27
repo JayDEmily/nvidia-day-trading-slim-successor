@@ -428,7 +428,7 @@ Gate 65 is complete on `main`. The repo now freezes bounded top-level event clas
 
 ## Gate 66 — Session, holiday, and venue-calendar contracts
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 65
 
@@ -465,6 +465,10 @@ The repo has a canonical desk-calendar contract suitable for temporal routing, p
 - desk-calendar docs
 - calendar schema updates
 - targeted calendar tests
+
+### Gate 66 closeout note
+
+Gate 66 is complete on `main`. The repo now freezes bounded venue/session contracts for Nasdaq US cash, JPX cash, HKEX cash, SSE/SZSE cash, and CFFEX index futures, including timezone authority, split-session or continuous-session templates, closure classes, bridge rules, and explicit expiry-calendar interactions.
 
 ---
 
