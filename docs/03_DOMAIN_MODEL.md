@@ -156,6 +156,22 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
 - review and ledger hooks through `ReviewExplanationOutput`
 
+### 4f. Event taxonomy objects
+Typed contracts that freeze event class, subclass, materiality, and semantic-phase law before later event plumbing or policy matrices.
+
+Key examples:
+- `DeskEventClass`
+- `EventSemanticPhase`
+- `EventMaterialityTier`
+- `CompanyEventSubclass`
+- `MacroEventSubclass`
+- `PolicyEventSubclass`
+- `EventTaxonomyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.
 

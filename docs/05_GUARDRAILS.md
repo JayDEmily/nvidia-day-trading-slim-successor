@@ -30,6 +30,7 @@
 26. **Review eligibility requires governed evidence floors and may conclude no change.**
 27. **Live paper compares locked candidates only; it must not become ad hoc candidate search or retuning.**
 28. **Reserved adjudication spans must stay protected until governed final comparison consumes them.**
+29. **Event identity must stay inside the frozen bounded taxonomy; no free-text event-class drift.**
 
 ## Required runtime guardrails
 

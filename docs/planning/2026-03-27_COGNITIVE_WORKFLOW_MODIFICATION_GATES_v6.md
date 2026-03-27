@@ -1,6 +1,6 @@
 # 2026-03-27 Cognitive Workflow Modification Gates v6
 
-Status: Gates 51–58 complete on `main`; Gates 59–64 complete on `main`; active successor execution continues at Gate 65
+Status: Gates 51–58 complete on `main`; Gates 59–65 complete on `main`; active successor execution continues at Gate 66
 
 Version: v6.1
 
@@ -382,7 +382,7 @@ Gate 64 is complete on `main`. The repo now freezes candidate-set shape, champio
 
 ## Gate 65 — Canonical event taxonomy
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 64
 
@@ -419,6 +419,10 @@ The repo has a typed, bounded, non-ambiguous event taxonomy suitable for runtime
 - event-taxonomy docs
 - vocabulary/schema updates
 - targeted taxonomy tests
+
+### Gate 65 closeout note
+
+Gate 65 is complete on `main`. The repo now freezes bounded top-level event classes, semantic separation between known risk / priced risk / realised reaction, materiality tiers, and the desk-relevant NVDA, peer, macro, policy, expiry, and venue/session subclass surface.
 
 ---
 

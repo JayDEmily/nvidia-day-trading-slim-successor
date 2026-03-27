@@ -119,6 +119,15 @@ Historical replay locks candidates; live paper adjudicates them under bounded ro
 - governed outcomes are retain champion, promote challenger, demote to dormant, retire candidate, or reset to research;
 - if the failure is ontology-level rather than candidate-level, the governed answer is research reset rather than ad hoc retuning.
 
+## Gate 65 event-taxonomy authority
+
+Later calendar, event-window, and policy gates now inherit a frozen event identity surface.
+
+- top-level event classes are company, peer company, macro, policy, expiry, and venue/session;
+- every event keeps semantic separation between known risk, priced risk, and realised reaction;
+- materiality is tiered as background, monitor, posture relevant, and desk critical;
+- NVDA-specific, bounded peer, bounded macro/policy, expiry, and venue/session subclasses remain explicit rather than free-form text.
+
 ## Current operating surfaces
 
 The current repo exposes:

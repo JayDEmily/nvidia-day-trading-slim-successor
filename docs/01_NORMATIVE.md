@@ -162,6 +162,16 @@ Historical research creates bounded candidate sets; live paper compares locked c
 - at least one reserved adjudication span remains untouched until final governed comparison consumes it;
 - when evidence points to ontology failure rather than bounded adjustment, the correct governed result is research reset rather than another runtime tweak.
 
+## Event taxonomy law
+
+Event identity must remain bounded, typed, and desk-relevant.
+
+- runtime and review may only consume events through the bounded top-level classes `company`, `peer_company`, `macro`, `policy`, `expiry`, and `venue_session`;
+- event identity must separate the event existing, the market pricing it, and the realised reaction after it;
+- event materiality is governed through explicit tiers `background`, `monitor`, `posture_relevant`, and `desk_critical`;
+- NVDA-specific company events, bounded peer events, bounded macro/policy releases, expiry events, and venue/session events must remain distinct subclasses rather than loose labels;
+- no later gate may expand the event taxonomy through free-text strings or ad hoc new classes without an explicit authority update.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

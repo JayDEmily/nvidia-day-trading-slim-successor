@@ -646,6 +646,25 @@
       ]
     },
     {
+      "canonical_slug": "event_taxonomy",
+      "canonical_label": "Event Taxonomy",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.EventTaxonomyAuthorityPacket",
+      "allowed_aliases": [
+        "bounded_event_identity"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

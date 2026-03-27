@@ -328,6 +328,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["reserved_span_state"],
             notes=["The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."],
         ),
+        VocabularyEntry(
+            canonical_slug="event_taxonomy",
+            canonical_label="Event Taxonomy",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.events.EventTaxonomyAuthorityPacket",
+            allowed_aliases=["bounded_event_identity"],
+            notes=["Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(
