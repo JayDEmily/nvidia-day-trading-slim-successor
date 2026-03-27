@@ -9,8 +9,10 @@ Paired files:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` — sequential execution receipts
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md` — frozen audit findings input
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md` — audit-produced planning consequences
-- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md` — active successor modification gate surface
-- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json` — active successor modification leaf ledger
+- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md` — closed successor-pack evidence for Gates 59–79
+- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json` — closed successor-pack leaf ledger for Gates 59–79
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md` — active corrective reconstruction gate surface
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json` — active corrective reconstruction leaf ledger
 
 ## 0. Purpose
 
@@ -46,7 +48,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — the V6 successor pack is closed through Gate 79 on `main`**. Gates 59–79 are complete on `main`; the attached `_v4_5` salvage pair is archived under `docs/legacy/` and is not active authority.
+Current active gate: **Gate 81 in the corrective reconstruction pack**. Gate 80 is complete on `main`; the V6 successor pack is closed through Gate 79 on `main`; the attached `_v4_5` salvage pair is archived under `docs/legacy/` and is not active authority.
 
 ## 2. Current completed tranche and successor pack
 
@@ -62,7 +64,7 @@ One leaf at a time. One gate at a time. Gates 46–50 are now complete on `main`
 
 ## 3. Downstream gate map
 
-The successor cognitive-workflow modification pack is now authored and partially executed:
+The successor cognitive-workflow modification pack is closed through Gate 79, and the corrective reconstruction pack is now active:
 
 | Gate | Status | Meaning now | Control surface |
 |---|---|---|---|
@@ -94,6 +96,9 @@ The successor cognitive-workflow modification pack is now authored and partially
 | Gate 77 | complete on `main` | upgrade review packets with lineage, failure taxonomy, economic accountability, and promotion-evidence completeness | `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`, `src/nvda_desk/schemas/review.py`, `tests/test_gate77_review_failure_taxonomy.py` |
 | Gate 78 | complete on `main` | integrate bounded state-conditioned modifier law into live runtime with typed modifier packets and lineage | `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`, `src/nvda_desk/services/state_conditioned_modifier.py`, `tests/test_gate78_modifier_runtime_integration.py` |
 | Gate 79 | complete on `main` | freeze the bounded walk-forward review-horizon discovery harness, output taxonomy, and downstream consumer bindings without starting historical search | `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`, `src/nvda_desk/services/replay_compare.py`, `tests/test_gate79_horizon_discovery_harness.py` |
+| Gate 80 | complete on `main` | freeze the bounded corrective seam, insert the corrective reconstruction pair into the active planning stack, deduplicate the guardrails, and add anti-drift proof without reopening Gates 59–79 | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`, `tests/test_gate80_corrective_pass_reset.py` |
+| Gate 81 | planned; next active gate | preserve missing live-event semantics, consume them in temporal context, and emit event-window / precursor governance surfaces | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json` |
+| Gates 82–86 | planned corrective follow-on gates | emit posture-law review packets, build aggregate governance surfaces from real evidence, deepen failure taxonomy, widen horizon economics, and refine event-source precedence | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json` |
 
 ## 4. Global execution rules
 
@@ -104,4 +109,4 @@ The successor cognitive-workflow modification pack is now authored and partially
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; no later gate is active in the V6 successor pack.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gate 80 is complete on `main`; Gate 81 is the next active gate in the corrective reconstruction pack.

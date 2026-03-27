@@ -238,11 +238,6 @@ Supported event sources must normalise through one explicit provenance contract 
 
 ## Shared event-store and query law
 
-## Live event-richness law
-
-Live cognition packets must preserve event identity, materiality, provenance counts, nearby-event summaries, and lineage keys rather than collapsing event truth to timestamp-only hints. `next_event_at` remains as an explicit backwards-compatible compatibility field, but it must be derived from the richer live-event snapshot rather than maintained as a competing private path.
-
-
 Shared event truth must sit behind one explicit store/query contract rather than ad hoc helper calls.
 
 - runtime, review, and replay consumers must use the same nearby-event window semantics;
@@ -250,10 +245,15 @@ Shared event truth must sit behind one explicit store/query contract rather than
 - lineage lookup must return the same normalised provenance keys the runtime saw;
 - replay consumers may vary their mode, but they may not redefine what counts as nearby or material.
 
+## Live event-richness law
+
+Live cognition packets must preserve event identity, materiality, provenance counts, nearby-event summaries, and lineage keys rather than collapsing event truth to timestamp-only hints. `next_event_at` remains as an explicit backwards-compatible compatibility field, but it must be derived from the richer live-event snapshot rather than maintained as a competing private path.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.
-- Files in `docs/planning/` are active execution artefacts under repo-root `PLANS.md`.
+- Files in `docs/planning/` are planning and execution artefacts governed by repo-root `PLANS.md`.
+- Completed predecessor packs may remain under `docs/planning/` when tests or execution receipts still depend on them, but repo-root `PLANS.md` decides which planning artefacts are active.
 - Files in `docs/status/` are dated implementation notes.
 - Files in `docs/legacy/` are historical design artefacts kept for provenance.
 
@@ -296,4 +296,6 @@ Runtime modifier law becomes real only when the live runtime materialises one ty
 - posture, execution, and review must all see the same effective-coefficient lineage rather than reconstructing separate private interpretations;
 - compatibility fields may remain as additive hints, but the modifier packet is the authority for runtime-applied posture change.
 
-- review-horizon discovery must use bounded chronology-safe window contracts and explicit offset-comparison law; guessed calendar folklore (for example, “20 sessions” by habit) is prohibited where the Gate 79 harness has not produced evidence;
+## Review-horizon discovery law
+
+- review-horizon discovery must use bounded chronology-safe window contracts and explicit offset-comparison law; guessed calendar folklore (for example, “20 sessions” by habit) is prohibited where the Gate 79 harness has not produced evidence.

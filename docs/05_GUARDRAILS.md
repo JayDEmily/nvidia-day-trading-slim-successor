@@ -35,44 +35,15 @@
 31. **Event-window semantics must stay typed; `near event` or `probably clear by now` is not lawful runtime language.**
 32. **Precursor context must come from the bounded Asia/ex-US universe; no casual source creep.**
 33. **Phase/carryover policy may change bounded posture, but it must not force action just because the clock moved.**
-
 34. **Event/options-stress posture must come from the frozen matrix, not improvised event lore or gamma hand-waving.**
-
 35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
-
 36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
-
 37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
 38. **Live cognition packets must preserve event richness additively; `next_event_at` may remain only as a derived compatibility hint, not as a private competing event path.**
-
-## Required runtime guardrails
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
-
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
-
-36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
-
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
-
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
-
-## Required runtime guardrails
-37. **Runtime, review, and replay must query the same shared event truth; no private nearby-event semantics.**
+39. **Precursor stitching, fallback, stale-data handling, and contradiction class must come from the frozen Gate 75 law — no quiet venue reshuffling or “close enough” timestamp hand-waving.**
+40. **If precursor truth enters runtime, review must see the same typed packet and lineage — no sidecar precursor memory, no private reinterpretation.**
+41. **Review packets must stay machine-readable and lineage-complete; no post hoc story time masquerading as trader-grade failure analysis.**
+42. **Modifier runtime integration must stay additive, lineaged, and backwards-compatible — no silent rewrites of earlier deterministic consumers.**
 
 ## Required runtime guardrails
 
@@ -94,15 +65,8 @@ At minimum, the runtime supports configurable checks for:
 - stable docs live under `docs/`;
 - active execution plans live under `docs/planning/`;
 - dated notes live under `docs/status/` or `docs/legacy/`;
+- completed predecessor packs may remain under `docs/planning/` when tests or receipts still depend on them, but repo-root `PLANS.md` decides which planning artefacts are active;
 - README points to the authoritative set;
 - `CHANGELOG.jsonl` is append-only.
 
-39. **Precursor stitching, fallback, stale-data handling, and contradiction class must come from the frozen Gate 75 law — no quiet venue reshuffling or “close enough” timestamp hand-waving.**
-
-40. **If precursor truth enters runtime, review must see the same typed packet and lineage — no sidecar precursor memory, no private reinterpretation.**
-
-41. **Review packets must stay machine-readable and lineage-complete; no post hoc story time masquerading as trader-grade failure analysis.**
-
-42. **Modifier runtime integration must stay additive, lineaged, and backwards-compatible — no silent rewrites of earlier deterministic consumers.**
-
-- Gate 79 outputs are context only for later review/candidate/research consumers; they must not be read as permission to promote a candidate or guess a review horizon where coverage is insufficient.
+Gate 79 outputs are context only for later review/candidate/research consumers; they must not be read as permission to promote a candidate or guess a review horizon where coverage is insufficient.

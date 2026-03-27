@@ -1,8 +1,8 @@
 # 2026-03-27 Cognitive Workflow Modification Gates v6
 
-Status: Gates 51–58 complete on `main`; Gates 59–65 complete on `main`; active successor execution continues at Gate 66
+Status: Gates 51–79 complete on `main`; successor pack closed through Gate 79 and retained as predecessor evidence
 
-Version: v6.1
+Version: v6.2
 
 Historical note: the original v5 ordering insight was preserved — adaptation doctrine, review law, and candidate governance must sit ahead of context plumbing. Gate 59 closes that rebase by making this v6 pair self-contained and authoritative inside the repo. Usable executable detail from the later `_v4_5` salvage pair has been absorbed; the archived salvage copy now lives under `docs/legacy/` and is not a governing dependency.
 
@@ -29,7 +29,7 @@ The governing workflow remains:
 
 ## Position in the planning stack
 
-This gate pack is the canonical successor to the completed cognitive-workflow tranche and the completed DMP promotion tranche. Gates 51–58 are closed on `main`. Gates 59–79 are the next bounded sequential work stack and must be completed one branch at a time.
+This gate pack is the canonical successor to the completed cognitive-workflow tranche and the completed DMP promotion tranche. Gates 51–58 are closed on `main`, and Gates 59–79 are now also closed on `main`. The pack remains in-repo as the closed predecessor evidence surface for those gates.
 
 ## Governing inputs
 
@@ -1061,9 +1061,3 @@ The repo has a bounded walk-forward horizon-discovery harness contract ready for
 ### Gate 79 closeout note
 
 Gate 79 is complete on `main`. The repo now freezes one bounded walk-forward review-horizon discovery harness contract with chronology-safe anchored/rolling window generation, start-offset comparison law, explicit stable/offset-sensitive/no-stable/coverage-insufficient outcomes, event/regime/session slice reporting, fragility and ablation outputs, and explicit review/candidate/research consumer bindings that do **not** authorise unconstrained historical search or promotion by folklore horizon.
-
-
-
-### Gate 69 closeout note
-
-Gate 69 is complete on `main`. The repo now freezes the ordinary phase-and-carryover policy matrix with explicit day-phase states, carry-horizon states, behaviour classes, no-action bias, and mutable-surface targeting, plus the required state-vector extensions for `day_phase_state` and `carry_horizon_state`.

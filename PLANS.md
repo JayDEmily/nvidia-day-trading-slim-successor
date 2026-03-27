@@ -18,13 +18,15 @@ The canonical leaf ledger remains:
 The sequential execution log remains:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md`
 
-The completed successor modification pair that closed Gates 51–58 remains:
+Completed predecessor modification pairs retained as in-repo evidence are:
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json`
-
-The active successor modification pair from Gate 59 onward is:
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json`
+
+The active corrective reconstruction pair from Gate 80 onward is:
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`
 
 `PLANS.md` remains short. Detailed execution logic lives in the planning files above.
 
@@ -46,6 +48,8 @@ The active successor modification pair from Gate 59 onward is:
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
 - Gates 59–79 — complete on `main`
+- Gate 80 — complete on `main` (corrective tranche reset and anti-drift freeze)
+- Gates 81–86 — planned corrective follow-on tranche; Gate 81 is next
 
 ## Sequential execution rule
 
@@ -65,7 +69,7 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - DMP v2 promoted as the canonical live producer surface;
 - DMP v1 retired from live runtime dependency and retained only as archived historical context;
 - vocabulary governance aligned to family / setup-variant / execution-expression / horizon ownership plus workflow-routing terms such as Step 0 calendar/horizon and carry handoff;
-- Gate 59 doctrine rebase complete on `main`, with the V6 pair now the single active successor authority for Gates 60–79;
+- Gate 59 doctrine rebase complete on `main`, with the V6 pair freezing the successor authority for Gates 60–79 before later corrective follow-on work;
 - Gate 60 ontology freeze complete on `main`, with typed state-policy authority now fencing lawful mutable surfaces away from prohibited runtime variation;
 - Gate 61 non-action/conflict law complete on `main`, with explicit stand-down, conflict, degradation, and override vocabulary exposed to review surfaces;
 - Gate 62 stability/corridor law complete on `main`, with frozen scorecard axes, corridor algebra, persistence, and coverage surfaces exposed as typed contracts;
@@ -86,6 +90,7 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 77 review lineage/failure-taxonomy authority complete on `main`, with typed review lineage, failure, accountability, and promotion-evidence packets now frozen before runtime modifier integration;
 - Gate 78 runtime modifier integration complete on `main`, with one typed modifier packet now preserving effective coefficients, kill-switches, stand-down outcomes, and modifier lineage through posture, execution, and review;
 - Gate 79 walk-forward harness authority complete on `main`, with bounded window-generation, offset-comparison, discovery, fragility, ablation, and downstream-binding contracts now frozen for later testing without starting unconstrained historical search;
+- Gate 80 corrective tranche reset complete on `main`, with the corrective reconstruction pair now inserted as the live post-Gate-79 planning surface, the authority docs cleaned, and anti-drift proof added without reopening Gates 59–79;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-No active authored gate remains in the V6 successor pack. Gates 59–79 are closed on `main`, and no missing `v4` or `v5` draft is required to treat that pack as complete.
+The V6 successor pack is closed through Gate 79 on `main`. The corrective reconstruction pack is now the active post-Gate-79 planning surface, and Gate 81 is the next gate.

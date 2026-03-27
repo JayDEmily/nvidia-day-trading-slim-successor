@@ -42,6 +42,13 @@ A leaf is complete only when:
 A downstream gate is not marked complete on scaffold existence alone.
 A downstream gate is not marked complete until its hard acceptance criteria in the canonical execution plan and the canonical leaf ledger are satisfied.
 
+## Documentation and control-surface changes
+
+Documentation-only changes still need proof when they alter authority, sequencing, or closeout state. At minimum:
+- run the targeted documentation/planning tests affected by the change;
+- update the active planning quartet together when gate status changes;
+- record the change in `CHANGELOG.jsonl` and the execution log if it changes gate truth rather than commentary only.
+
 ## Promotion state machine
 
 The canonical promotion states are defined by `src/nvda_desk/schemas/module.py`:

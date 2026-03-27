@@ -1,0 +1,699 @@
+{
+  "plan_id": "review_reconstruction_corrective_gates_v1",
+  "governing_plan": "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md",
+  "global_rules": [
+    "Gates 59\u201379 remain closed; this corrective pack starts at Gate 80 and does not reopen the successor tranche.",
+    "One branch per gate. Finish the gate, pass the targeted proof, merge to main, and only then open the next gate branch.",
+    "Typed schema hooks must either be emitted from real evidence-bearing producers or be removed/relocated by explicit doctrine change. Silent dead hooks are forbidden.",
+    "Single-runtime decisions must not fabricate aggregate evidence. Stability scorecards, review eligibility, and candidate governance must bind to real replay/review artefacts when required.",
+    "Event semantics must prefer preserved live-event truth over timestamp-only shortcuts when the richer governed packet exists.",
+    "Keep all changes additive, typed, and lineaged; do not loosen contracts into dict-shaped side channels.",
+    "Do not change broker integration, frontend surfaces, or baseline coefficient doctrine inside this corrective pack.",
+    "Any gate that discovers a schema-location mistake must repair it explicitly and add anti-drift proof rather than leaving a misleading field in place."
+  ],
+  "leaves": [
+    {
+      "id": "LEAF-G80-001",
+      "gate": "Gate 80",
+      "title": "Freeze the corrective seam and successor-pack boundaries in planning doctrine",
+      "prerequisites": [],
+      "scope": "Define the bounded post-Gate-79 corrective pass without reopening the closed v6 tranche.",
+      "files_expected": [
+        "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md",
+        "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json",
+        "PLANS.md",
+        "tests/test_gate80_corrective_pass_reset.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "PLANS.md",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Write the corrective-tranche doctrine, scope, non-goals, and gate sequence.",
+        "State explicitly that Gates 59\u201379 remain closed and are not reopened.",
+        "Record the code-proven corrective seam so later gates cannot drift into unrelated redesign."
+      ],
+      "validation_tasks": [
+        "Check the new plan against the current v6 plan and ensure numbering starts at Gate 80 without altering the historical closeout state."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate80_corrective_pass_reset.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The corrective tranche exists as a bounded authoritative plan after Gate 79 and does not reopen the closed successor pack.",
+      "merge_gate": "Gate 80 remains planning/anti-drift only and does not smuggle runtime implementation work forward.",
+      "status": "complete",
+      "execution_sequence": 1
+    },
+    {
+      "id": "LEAF-G80-002",
+      "gate": "Gate 80",
+      "title": "Add anti-drift tests that fail if declared corrective surfaces stay permanently dead",
+      "prerequisites": [
+        "LEAF-G80-001"
+      ],
+      "scope": "Create proof-oriented tests that make the corrective seam executable rather than rhetorical.",
+      "files_expected": [
+        "tests/test_gate80_corrective_pass_reset.py",
+        "tests/test_planning_gate_authority_consistency.py"
+      ],
+      "allowed_touches": [
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Add tests that assert the corrective pack names the missing review surfaces explicitly.",
+        "Ensure the tests fail if the repo later claims closeout while those surfaces still have no producers or doctrine exception."
+      ],
+      "validation_tasks": [
+        "Run the new tests together with planning-consistency checks to confirm the corrective pack is discoverable and bounded."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The corrective seam is enforced by executable anti-drift checks rather than prose alone.",
+      "merge_gate": "Gate 80 closes only when the corrective pack is authoritative and test-backed.",
+      "status": "complete",
+      "execution_sequence": 2
+    },
+    {
+      "id": "LEAF-G81-003",
+      "gate": "Gate 81",
+      "title": "Extend live event references with the missing governed semantics",
+      "prerequisites": [
+        "LEAF-G80-002"
+      ],
+      "scope": "Preserve event-class and semantic-phase truth in the live packet so temporal/review logic can consume it honestly.",
+      "files_expected": [
+        "src/nvda_desk/schemas/events.py",
+        "src/nvda_desk/services/event_store.py",
+        "tests/test_gate81_live_event_temporal_semantics.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/schemas/events.py",
+        "src/nvda_desk/services/event_store.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Add the missing governed fields to `LiveEventReference` and snapshot conversion.",
+        "Preserve backwards-compatible timestamp and lineage fields.",
+        "Keep the packet compact, typed, and limited to fields the temporal/review layers are allowed to read."
+      ],
+      "validation_tasks": [
+        "Verify that fixture-backed event snapshots retain identity, materiality, semantic phase, event class, provenance count, and lineage keys."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate81_live_event_temporal_semantics.py tests/test_real_data_loader.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The live event packet preserves the governed fields required by temporal and review semantics.",
+      "merge_gate": "Gate 81 must enrich existing event truth without introducing unbounded news semantics.",
+      "status": "planned",
+      "execution_sequence": 3
+    },
+    {
+      "id": "LEAF-G81-004",
+      "gate": "Gate 81",
+      "title": "Bind temporal event semantics to live event truth when present",
+      "prerequisites": [
+        "LEAF-G81-003"
+      ],
+      "scope": "Use the richer live-event packet to derive event proximity/window semantics lawfully instead of relying only on a timestamp shortcut.",
+      "files_expected": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_temporal_context_runtime.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Update temporal evaluation so live-event semantics can shape event proximity/window states when a snapshot is present.",
+        "Retain `next_event_at` back-compatibility as a fallback, not as the only path."
+      ],
+      "validation_tasks": [
+        "Check that timestamp-only and rich-event inputs remain deterministic and that the rich path wins when present."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate81_live_event_temporal_semantics.py tests/test_temporal_context_runtime.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Temporal event states are now derived from governed live-event truth when available, with explicit fallback only when it is absent.",
+      "merge_gate": "Gate 81 must preserve deterministic temporal semantics and not drift into informal event interpretation.",
+      "status": "planned",
+      "execution_sequence": 4
+    },
+    {
+      "id": "LEAF-G81-005",
+      "gate": "Gate 81",
+      "title": "Emit event-window and precursor governance review surfaces",
+      "prerequisites": [
+        "LEAF-G81-004"
+      ],
+      "scope": "Expose the already-approved event-window and precursor governance surfaces in runtime review output.",
+      "files_expected": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate76_precursor_runtime_binding.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Build typed `TemporalEventWindowSurface` and `PrecursorGovernanceSurface` producers from runtime inputs already present.",
+        "Write both surfaces into `ReviewExplanationOutput` and `review_packet`."
+      ],
+      "validation_tasks": [
+        "Verify that review output carries these surfaces in real runtime runs and that lineage remains intact."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate81_live_event_temporal_semantics.py tests/test_gate76_precursor_runtime_binding.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Runtime review output exposes event-window and precursor governance as real typed surfaces.",
+      "merge_gate": "Gate 81 closes only when those surfaces are emitted by code, not merely declared by schema.",
+      "status": "planned",
+      "execution_sequence": 5
+    },
+    {
+      "id": "LEAF-G82-006",
+      "gate": "Gate 82",
+      "title": "Build phase/carry policy review packets from applied runtime truth",
+      "prerequisites": [
+        "LEAF-G81-005"
+      ],
+      "scope": "Expose the existing phase/carry posture law as a typed review surface sourced from the same runtime packet that altered posture.",
+      "files_expected": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate82_review_surface_runtime_emission.py",
+        "tests/test_gate69_phase_carry_policy.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Derive `PhaseCarryoverPolicySurface` from temporal state, carry horizon, and applied modifier packet truth.",
+        "Emit the surface into review output and packet serialisation."
+      ],
+      "validation_tasks": [
+        "Check that emitted phase/carry surfaces match the applied modifier lineage and do not contradict posture permission outcomes."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate82_review_surface_runtime_emission.py tests/test_gate69_phase_carry_policy.py tests/test_gate78_modifier_runtime_integration.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Phase/carry posture behaviour is now reconstructable from a first-class review packet.",
+      "merge_gate": "Gate 82 must reconstruct existing law only; it must not redesign modifier precedence.",
+      "status": "planned",
+      "execution_sequence": 6
+    },
+    {
+      "id": "LEAF-G82-007",
+      "gate": "Gate 82",
+      "title": "Build event/options-stress review packets from applied runtime truth",
+      "prerequisites": [
+        "LEAF-G82-006"
+      ],
+      "scope": "Expose event/options-stress posture law as a typed review surface sourced from temporal/options/modifier truth.",
+      "files_expected": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate82_review_surface_runtime_emission.py",
+        "tests/test_gate70_event_options_stress_policy.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Derive `EventOptionsStressPolicySurface` from event window state, expiry state, gamma/pin conditions, and modifier packet truth.",
+        "Emit the surface into review output and packet serialisation."
+      ],
+      "validation_tasks": [
+        "Verify that the emitted surface stays consistent with `modifier_control_law`, execution blockers, and stand-down outcomes."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate82_review_surface_runtime_emission.py tests/test_gate70_event_options_stress_policy.py tests/test_gate78_modifier_runtime_integration.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Event/options-stress posture behaviour is now reconstructable from a first-class review packet.",
+      "merge_gate": "Gate 82 closes only when review output can explain applied posture law without reverse-engineering from permission state alone.",
+      "status": "planned",
+      "execution_sequence": 7
+    },
+    {
+      "id": "LEAF-G83-008",
+      "gate": "Gate 83",
+      "title": "Create scorecard producers bound to real corridor and replay evidence",
+      "prerequisites": [
+        "LEAF-G82-007",
+        "LEAF-G82-008"
+      ],
+      "scope": "Produce stability scorecards only from real evidence-bearing paths, not from one runtime snapshot.",
+      "files_expected": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate83_review_governance_surface_builders.py",
+        "tests/test_gate62_stability_metric_corridors.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Build typed `SurfaceStabilityScorecard` producers that consume actual comparison/corridor evidence.",
+        "Bind those scorecards into review artefacts only when the required evidence packet exists."
+      ],
+      "validation_tasks": [
+        "Verify that scorecards are produced from replay/corridor evidence and are not fabricated during a single runtime pass."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate62_stability_metric_corridors.py tests/test_gate79_horizon_discovery_harness.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Stability scorecards are now emitted from real evidence-bearing paths and are no longer dead schema hooks.",
+      "merge_gate": "Gate 83 must preserve evidence honesty: no single-snapshot fabrication.",
+      "status": "planned",
+      "execution_sequence": 8
+    },
+    {
+      "id": "LEAF-G83-009",
+      "gate": "Gate 83",
+      "title": "Build review eligibility surfaces from explicit evidence floors and triggers",
+      "prerequisites": [
+        "LEAF-G83-009"
+      ],
+      "scope": "Turn Gate 63 review-eligibility law into a real emitted surface backed by evidence blocks and bounded outcomes.",
+      "files_expected": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/test_gate83_review_governance_surface_builders.py",
+        "tests/test_gate63_review_eligibility_governance.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Create a `ReviewEligibilitySurface` builder that consumes explicit evidence blocks, trigger classes, and governed outcomes.",
+        "Emit the surface only when the necessary evidence-bearing context exists and make any absence explicit and governed."
+      ],
+      "validation_tasks": [
+        "Verify that review output no longer leaves review eligibility as a dead hook when evidence is present."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate63_review_eligibility_governance.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Review eligibility becomes a real emitted governance surface when supported by evidence.",
+      "merge_gate": "Gate 83 must not fake eligibility from narrative commentary or one-off heuristics.",
+      "status": "planned",
+      "execution_sequence": 9
+    },
+    {
+      "id": "LEAF-G83-010",
+      "gate": "Gate 83",
+      "title": "Build candidate governance surfaces from promotion evidence and bounded comparison context",
+      "prerequisites": [
+        "LEAF-G83-010"
+      ],
+      "scope": "Turn Gate 64 candidate governance law into a real emitted surface backed by promotion evidence and explicit comparison context.",
+      "files_expected": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/test_gate83_review_governance_surface_builders.py",
+        "tests/test_gate64_candidate_adjudication_governance.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/review.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Create a `CandidateGovernanceSurface` builder that consumes promotion evidence and bounded comparison/adjudication context.",
+        "Emit reserved/untouched states honestly when no candidate comparison context exists."
+      ],
+      "validation_tasks": [
+        "Verify that candidate governance is no longer a schema-only hook and that emitted dispositions remain bounded."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate64_candidate_adjudication_governance.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Candidate governance becomes a real emitted surface with bounded states and inputs.",
+      "merge_gate": "Gate 83 closes only when candidate governance is either emitted from real evidence or explicitly reserved by emitted doctrine-compliant state.",
+      "status": "planned",
+      "execution_sequence": 10
+    },
+    {
+      "id": "LEAF-G84-011",
+      "gate": "Gate 84",
+      "title": "Populate evidence floors in review failure packets",
+      "prerequisites": [
+        "LEAF-G83-011",
+        "LEAF-G83-012",
+        "LEAF-G83-013"
+      ],
+      "scope": "Bind failure packets to the actual evidence floor instead of leaving the field empty.",
+      "files_expected": [
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate84_failure_taxonomy_evidence_floor.py",
+        "tests/test_gate77_review_failure_taxonomy.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Populate `ReviewFailurePacket.evidence_floor` from the same bounded evidence blocks used by review eligibility.",
+        "Ensure the failure packet and review-eligibility packet cannot disagree about the evidence floor."
+      ],
+      "validation_tasks": [
+        "Verify real runtime/review paths emit non-null evidence floors when evidence exists."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate84_failure_taxonomy_evidence_floor.py tests/test_gate77_review_failure_taxonomy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Failure packets carry explicit evidence floors rather than empty placeholders.",
+      "merge_gate": "Gate 84 must keep evidence floors typed and bounded, not free-text.",
+      "status": "planned",
+      "execution_sequence": 11
+    },
+    {
+      "id": "LEAF-G84-012",
+      "gate": "Gate 84",
+      "title": "Deepen failure and resolution classification coverage",
+      "prerequisites": [
+        "LEAF-G84-014"
+      ],
+      "scope": "Make the bounded Gate 77 classes materially exercised rather than mostly vocab-level declarations.",
+      "files_expected": [
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate84_failure_taxonomy_evidence_floor.py",
+        "tests/test_gate77_review_failure_taxonomy.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Add bounded logic for `SIZING_FAILURE`, `ONTOLOGY_FAILURE`, and `BAD_LUCK`.",
+        "Tighten separation between blocked-trade, non-action, unresolved, and ontology-failure outcomes."
+      ],
+      "validation_tasks": [
+        "Verify that each newly deepened class is reachable by deterministic targeted fixtures and that economic accountability remains aligned."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate84_failure_taxonomy_evidence_floor.py tests/test_gate77_review_failure_taxonomy.py tests/test_gate78_modifier_runtime_integration.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Failure and resolution classes are now materially differentiated and evidenced.",
+      "merge_gate": "Gate 84 closes only when the deepened classes are both reachable and bounded.",
+      "status": "planned",
+      "execution_sequence": 12
+    },
+    {
+      "id": "LEAF-G85-013",
+      "gate": "Gate 85",
+      "title": "Widen horizon economic-behaviour consistency into a bounded multi-axis rule",
+      "prerequisites": [
+        "LEAF-G84-015",
+        "LEAF-G84-016"
+      ],
+      "scope": "Repair the thin Gate 79 economic-consistency proxy without redesigning the whole harness.",
+      "files_expected": [
+        "src/nvda_desk/services/replay_compare.py",
+        "tests/test_gate85_horizon_economic_behaviour.py",
+        "tests/test_gate79_horizon_discovery_harness.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/replay_compare.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Define a bounded multi-axis economic-behaviour consistency rule using existing replay/review metrics.",
+        "Preserve deterministic chronology and current outcome vocabulary while widening the rule."
+      ],
+      "validation_tasks": [
+        "Verify the widened rule can distinguish stable, offset-sensitive, and economically inconsistent outcomes on controlled fixtures."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate85_horizon_economic_behaviour.py tests/test_gate79_horizon_discovery_harness.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Horizon discovery now evaluates economic behaviour on more than one thin proxy while remaining deterministic.",
+      "merge_gate": "Gate 85 must widen the rule in bounded form and not redesign the harness wholesale.",
+      "status": "planned",
+      "execution_sequence": 13
+    },
+    {
+      "id": "LEAF-G85-014",
+      "gate": "Gate 85",
+      "title": "Expose failing economic axes in fragility and ablation reports",
+      "prerequisites": [
+        "LEAF-G85-017"
+      ],
+      "scope": "Make widened economic behaviour auditable by naming which axis actually broke stability.",
+      "files_expected": [
+        "src/nvda_desk/services/replay_compare.py",
+        "tests/test_gate85_horizon_economic_behaviour.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/replay_compare.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Update fragility and ablation reporting so economically unstable surfaces show which axis failed.",
+        "Keep the reports compact, deterministic, and review-safe."
+      ],
+      "validation_tasks": [
+        "Verify the updated reports remain backwards-compatible for existing consumers where possible."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate85_horizon_economic_behaviour.py tests/test_replay_compare_runtime.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Economic instability is now reviewable by axis rather than hidden inside a single spread result.",
+      "merge_gate": "Gate 85 closes only when fragility/ablation reports reveal why the economic rule failed.",
+      "status": "planned",
+      "execution_sequence": 14
+    },
+    {
+      "id": "LEAF-G86-015",
+      "gate": "Gate 86",
+      "title": "Replace first-record event winner selection with explicit bounded source precedence",
+      "prerequisites": [
+        "LEAF-G85-018"
+      ],
+      "scope": "Refine event ingestion from deterministic first-record selection to deterministic explicit precedence.",
+      "files_expected": [
+        "src/nvda_desk/services/event_ingestion.py",
+        "src/nvda_desk/schemas/events.py",
+        "tests/test_gate86_event_ingestion_precedence_and_closeout.py",
+        "tests/test_gate72_event_ingestion_provenance.py"
+      ],
+      "allowed_touches": [
+        "src/nvda_desk/services/event_ingestion.py",
+        "src/nvda_desk/schemas/events.py",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Implement bounded winner selection across confidence tier, freshness, source class, and outage state.",
+        "Preserve conflict visibility, provenance lineage, and deterministic tie-breaking."
+      ],
+      "validation_tasks": [
+        "Verify that authoritative/fresher observations win for the right reasons and that ties remain explicit and deterministic."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate86_event_ingestion_precedence_and_closeout.py tests/test_gate72_event_ingestion_provenance.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Event winner selection is now explicit, bounded, and reviewable.",
+      "merge_gate": "Gate 86 must refine precedence without introducing hidden heuristics.",
+      "status": "planned",
+      "execution_sequence": 15
+    },
+    {
+      "id": "LEAF-G86-016",
+      "gate": "Gate 86",
+      "title": "Close the corrective tranche with end-to-end anti-drift proof",
+      "prerequisites": [
+        "LEAF-G86-019"
+      ],
+      "scope": "Prove that the previously dead review surfaces now emit from code or from real evidence-bearing paths, and then close the corrective pack.",
+      "files_expected": [
+        "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md",
+        "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json",
+        "tests/test_gate86_event_ingestion_precedence_and_closeout.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**",
+        "docs/*.md"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "broker integration paths",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Add closeout assertions covering runtime review surfaces, aggregate governance builders, widened horizon economics, and event precedence.",
+        "Mark the corrective pack closed only after the end-to-end proof passes."
+      ],
+      "validation_tasks": [
+        "Run the closeout tests together with the targeted successor/regression tests for Gates 76\u201379 and the new corrective gates."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate81_live_event_temporal_semantics.py tests/test_gate82_review_surface_runtime_emission.py tests/test_gate83_review_governance_surface_builders.py tests/test_gate84_failure_taxonomy_evidence_floor.py tests/test_gate85_horizon_economic_behaviour.py tests/test_gate86_event_ingestion_precedence_and_closeout.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The corrective tranche can close only when the repo proves the review reconstruction seam is repaired end to end.",
+      "merge_gate": "Gate 86 must close the corrective pass with proof, not with prose.",
+      "status": "planned",
+      "execution_sequence": 16
+    }
+  ],
+  "execution_status": "gate_80_complete_on_main_corrective_pack_active_from_gate_81",
+  "completed_at": "2026-03-27T22:55:00Z",
+  "completed_leaf_ids": [
+    "LEAF-G80-001",
+    "LEAF-G80-002"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G81-003",
+    "LEAF-G81-004",
+    "LEAF-G81-005",
+    "LEAF-G82-006",
+    "LEAF-G82-007",
+    "LEAF-G83-008",
+    "LEAF-G83-009",
+    "LEAF-G83-010",
+    "LEAF-G84-011",
+    "LEAF-G84-012",
+    "LEAF-G85-013",
+    "LEAF-G85-014",
+    "LEAF-G86-015",
+    "LEAF-G86-016"
+  ],
+  "completed_gate_ids": [
+    "Gate 80"
+  ],
+  "active_gate": "Gate 81",
+  "historical_note": "This corrective pack is a bounded follow-on to the closed 2026-03-27 cognitive-workflow successor pack. It exists to repair the review-visible reconstruction seam found by code audit after Gate 79."
+}

@@ -31,12 +31,11 @@ Read these in order:
 6. `docs/TESTING_AND_PROMOTION.md`
 7. repo-root `PLANS.md`
 8. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-9. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md`
-10. `AGENTS.md`
+9. the active corrective/successor pair named by `PLANS.md` (currently `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md` and `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`)
+10. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` when gate status or closeout truth matters
+11. `AGENTS.md`
 
-Historical design drafts and archived milestone artefacts live in `docs/legacy/`.
-Build-status notes live in `docs/status/`.
-Machine-readable repo history lives in `CHANGELOG.jsonl`.
+Completed predecessor packs may remain under `docs/planning/` as implementation evidence, but repo-root `PLANS.md` decides which planning artefacts are active. Historical design drafts and archived milestone artefacts live in `docs/legacy/`. Build-status notes live in `docs/status/`. Machine-readable repo history lives in `CHANGELOG.jsonl`.
 
 ## Quickstart
 

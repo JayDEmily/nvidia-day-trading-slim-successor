@@ -1451,3 +1451,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Source merge commit: `17f20e6`
 - Closeout summary: froze one bounded walk-forward review-horizon discovery harness with chronology-safe windows, start-offset comparison, explicit stable/offset-sensitive/no-stable/coverage-insufficient outputs, event/regime/session slice coverage, fragility, ablation, and downstream review/candidate/research bindings.
 - Proof surfaces: `tests/test_gate79_horizon_discovery_harness.py`, `tests/test_research_eval_replay.py`, updated planning quartet, `src/nvda_desk/schemas/calibration.py`, `src/nvda_desk/schemas/replay.py`, `src/nvda_desk/services/replay_compare.py`, `src/nvda_desk/services/replay.py`, and `src/nvda_desk/services/research.py`.
+
+
+### Gate 80 corrective-pass reset and guidance cleanup
+
+- Branch: `main`
+- Scope: docs-only corrective tranche insertion, authority-surface cleanup, guardrail deduplication, and anti-drift proof after Gate 79 closeout.
+- Outcome:
+  - Added the corrective reconstruction pair under `docs/planning/` and marked Gate 80 complete on `main` with Gate 81 next.
+  - Repointed the live planning surfaces so the corrective pack is the active post-Gate-79 authority while preserving the V6 pair as closed predecessor evidence.
+  - Deduplicated `docs/05_GUARDRAILS.md`, repaired stale V6 header/tail drift, and cleaned normative/README/AGENTS guidance so authority and active-work pointers agree again.
+- Validation rerun on `main`:
+  - `.venv/bin/python -m pytest -q tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py tests/test_gate80_corrective_pass_reset.py`

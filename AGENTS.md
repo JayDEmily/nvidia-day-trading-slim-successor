@@ -42,6 +42,7 @@ It does **not** build an autonomous LLM trader.
 
 - `AGENTS.md` governs **agent behaviour in the repo**.
 - repo-root `PLANS.md` plus the active planning quartet govern **what work is active now**.
+- Completed predecessor packs may remain under `docs/planning/` as evidentiary receipts, but they are not active authority unless repo-root `PLANS.md` says so.
 
 ## Required checks before closing a change
 
