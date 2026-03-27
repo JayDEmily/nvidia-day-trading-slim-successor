@@ -146,6 +146,15 @@ Event timing now has bounded semantics before later policy matrices consume it.
 - overlapping windows must resolve through explicit priority classes rather than informal discretion;
 - company and macro events may share vocabulary while still carrying different time budgets.
 
+## Gate 68 precursor-universe authority
+
+Precursor context is now bounded before any stitching or runtime integration work begins.
+
+- supported precursor venues are JPX cash, HKEX cash, Mainland China cash, and CFFEX index futures;
+- only the approved raw and derived precursor fields may flow into later stitching and policy gates;
+- session alignment must use last-complete-session semantics and keep weekend/holiday gaps explicit;
+- tempting extra sources remain excluded until they are explicitly authorised.
+
 ## Current operating surfaces
 
 The current repo exposes:

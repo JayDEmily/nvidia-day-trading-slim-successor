@@ -17,6 +17,7 @@ from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     ImportedModuleReviewCitation,
+    PrecursorGovernanceSurface,
     ReviewEligibilitySurface,
     ReviewGovernanceSurface,
     TemporalEventWindowSurface,
@@ -579,6 +580,7 @@ class ReviewExplanationOutput(BaseModel):
     stability_scorecards: list[SurfaceStabilityScorecard] = Field(default_factory=list)
     review_governance: ReviewGovernanceSurface | None = None
     event_window_governance: TemporalEventWindowSurface | None = None
+    precursor_governance: PrecursorGovernanceSurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None

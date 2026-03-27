@@ -355,6 +355,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["event_window_semantics"],
             notes=["Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."],
         ),
+        VocabularyEntry(
+            canonical_slug="precursor_universe",
+            canonical_label="Precursor Universe",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="market_context",
+            maps_to_contract="nvda_desk.schemas.market.PrecursorUniverseAuthorityPacket",
+            allowed_aliases=["asia_precursor_context"],
+            notes=["Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

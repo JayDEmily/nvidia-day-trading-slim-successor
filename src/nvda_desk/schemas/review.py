@@ -18,6 +18,11 @@ from nvda_desk.schemas.execution_records import (
     DailyPnlReportPayload,
     PositionSnapshotPayload,
 )
+from nvda_desk.schemas.market import (
+    DerivedPrecursorField,
+    PrecursorVenueUniverse,
+    SessionAlignmentExpectation,
+)
 from nvda_desk.schemas.state_policy import (
     AdjudicationDisposition,
     CandidateComparisonOutcome,
@@ -135,6 +140,17 @@ class TemporalEventWindowSurface(BaseModel):
     risk_timing_class: EventRiskTimingClass
     carry_sensitivity: EventCarrySensitivity
     event_family: str = Field(min_length=1)
+
+
+
+
+class PrecursorGovernanceSurface(BaseModel):
+    """Gate 68 hook exposing bounded precursor-universe selection to review."""
+
+    active_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
+    derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
+    session_alignment: list[SessionAlignmentExpectation] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
 
 
 class ReviewEligibilitySurface(BaseModel):
