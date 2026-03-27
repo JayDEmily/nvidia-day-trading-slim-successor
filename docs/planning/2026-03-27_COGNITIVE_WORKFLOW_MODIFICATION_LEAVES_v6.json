@@ -4050,8 +4050,9 @@
       "full_suite_required": false,
       "pass_gate": "Define precursor stitching order and timestamp discipline is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 75 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 86
+      "status": "complete",
+      "execution_sequence": 86,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G75-002",
@@ -4096,8 +4097,9 @@
       "full_suite_required": false,
       "pass_gate": "Define missing, degraded, and stale precursor fallback rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 75 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 87
+      "status": "complete",
+      "execution_sequence": 87,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G75-003",
@@ -4142,8 +4144,9 @@
       "full_suite_required": false,
       "pass_gate": "Define contradiction handling across precursor venues is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 75 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 88
+      "status": "complete",
+      "execution_sequence": 88,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G75-004",
@@ -4188,8 +4191,9 @@
       "full_suite_required": false,
       "pass_gate": "Define precursor-contradiction impact on lawful posture surfaces is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 75 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 89
+      "status": "complete",
+      "execution_sequence": 89,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G75-005",
@@ -4234,8 +4238,9 @@
       "full_suite_required": false,
       "pass_gate": "Add precursor-stitching determinism tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 75 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 90
+      "status": "complete",
+      "execution_sequence": 90,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G76-001",
@@ -5195,8 +5200,8 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_74_complete_on_main_successor_pack_active_from_gate_75",
-  "completed_at": "2026-03-27T16:05:00Z",
+  "execution_status": "gate_75_complete_successor_pack_active_from_gate_76",
+  "completed_at": "2026-03-27T17:30:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5282,14 +5287,14 @@
     "LEAF-G74-002",
     "LEAF-G74-003",
     "LEAF-G74-004",
-    "LEAF-G74-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G74-005",
     "LEAF-G75-001",
     "LEAF-G75-002",
     "LEAF-G75-003",
     "LEAF-G75-004",
-    "LEAF-G75-005",
+    "LEAF-G75-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G76-001",
     "LEAF-G76-002",
     "LEAF-G76-003",
@@ -5327,8 +5332,9 @@
     "Gate 71",
     "Gate 72",
     "Gate 73",
-    "Gate 74"
+    "Gate 74",
+    "Gate 75"
   ],
-  "active_gate": "Gate 75",
+  "active_gate": "Gate 76",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

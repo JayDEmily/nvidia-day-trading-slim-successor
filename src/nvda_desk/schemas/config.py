@@ -14,7 +14,10 @@ from nvda_desk.schemas.events import (
     EventStoreAuthorityPacket,
     LiveEventRichnessAuthorityPacket,
 )
-from nvda_desk.schemas.market import PrecursorUniverseAuthorityPacket
+from nvda_desk.schemas.market import (
+    PrecursorStitchingAuthorityPacket,
+    PrecursorUniverseAuthorityPacket,
+)
 from nvda_desk.schemas.risk import PhaseCarryoverPolicyAuthorityPacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
@@ -101,6 +104,12 @@ class PrecursorUniverseAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 68 precursor-universe packet."""
 
     authority: PrecursorUniverseAuthorityPacket
+
+
+class PrecursorStitchingAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 75 precursor-stitching packet."""
+
+    authority: PrecursorStitchingAuthorityPacket
 
 
 

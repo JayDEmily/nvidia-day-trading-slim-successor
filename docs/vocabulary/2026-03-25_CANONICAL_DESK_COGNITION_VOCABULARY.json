@@ -433,6 +433,64 @@
       ]
     },
     {
+      "canonical_slug": "precursor_stitching",
+      "canonical_label": "Precursor Stitching",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorStitchingAuthorityPacket",
+      "allowed_aliases": [
+        "precursor_fallback_law",
+        "precursor_contradiction_law"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 75 freezes venue order, fallback, stale-data, and contradiction handling before runtime binding."
+      ]
+    },
+    {
+      "canonical_slug": "precursor_runtime_packet",
+      "canonical_label": "Precursor Runtime Packet",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorRuntimePacket",
+      "allowed_aliases": [
+        "precursor_context_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 76 preserves precursor truth additively into runtime and review packets."
+      ]
+    },
+    {
+      "canonical_slug": "review_failure_taxonomy",
+      "canonical_label": "Review Failure Taxonomy",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.review.ReviewFailurePacket",
+      "allowed_aliases": [
+        "failure_classification_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."
+      ]
+    },
+    {
       "canonical_slug": "prohibited_runtime_variation",
       "canonical_label": "Prohibited Runtime Variation",
       "category": "workflow",

@@ -2561,3 +2561,22 @@ Only the broker adapter layer knows broker-specific details.
 
 ### Persistence boundary
 Pydantic contracts define the shape crossing service and API layers. SQLAlchemy models define the persisted shape.
+
+### 4m. Precursor-stitching objects
+
+Typed contracts that freeze precursor venue ordering, timestamp discipline, stale/degraded fallback, contradiction classes, and pre-policy posture meaning before runtime packet binding lands.
+
+Key examples:
+- `PrecursorTimestampDiscipline`
+- `PrecursorFreshnessState`
+- `PrecursorFallbackDisposition`
+- `PrecursorContradictionClass`
+- `PrecursorPostureState`
+- `PrecursorVenueSlice`
+- `PrecursorStitchingResult`
+- `PrecursorStitchingAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/market.py`
+- deterministic assembly service in `src/nvda_desk/services/market_state.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`

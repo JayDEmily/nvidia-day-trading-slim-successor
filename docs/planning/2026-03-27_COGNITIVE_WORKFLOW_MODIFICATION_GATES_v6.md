@@ -838,7 +838,7 @@ Gate 74 is complete on `main`. The repo now preserves event identity, impact, pr
 
 ## Gate 75 — Precursor stitching, fallback, and contradiction rules
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 68 and 74
 
@@ -874,6 +874,10 @@ The repo has one deterministic law for precursor stitching, missing data, contra
 - precursor-stitching docs
 - stitching/fallback schema updates
 - targeted determinism tests
+
+### Gate 75 closeout note
+
+Gate 75 is closed on `main`. The repo now freezes one deterministic precursor venue order, timestamp discipline, fallback ladder, contradiction taxonomy, and pre-policy posture classification before any runtime packet or modifier matrix may consume precursor truth.
 
 ---
 

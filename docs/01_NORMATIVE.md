@@ -263,3 +263,11 @@ Shared event truth must sit behind one explicit store/query contract rather than
 - Historical milestone notes use dated names.
 - Changelog entries use UTC ISO time plus Unix milliseconds.
 - Canonical import registries, grammar mappings, and leaf ledgers use dated filenames under `docs/planning/`.
+
+## Precursor-stitching law
+
+- precursor venue order is `jpx_cash_index_complex`, `hkex_cash_index_complex`, `mainland_china_cash_index_complex`, then `cffex_index_futures_complex`;
+- timestamp discipline is `last_complete_session_only`, `venue_local_close_required`, `request_time_must_not_precede_source_time`, and `no_forward_fill_across_us_decision_window`;
+- missing or degraded precursor truth may only resolve through `continue_normally`, `continue_with_degraded_confidence`, `continue_without_venue`, or `require_stand_down_pressure`;
+- contradiction classes are `none`, `directional_split`, `futures_cash_divergence`, `timestamp_misalignment`, and `broad_cross_venue_conflict`;
+- precursor contradiction may only classify itself as `normal_confidence`, `degraded_confidence`, `tightened_posture`, `stand_down_pressure`, or `unresolved_context` before later policy matrices consume it.

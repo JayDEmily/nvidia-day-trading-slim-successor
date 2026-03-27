@@ -1420,3 +1420,10 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Rebased normative, operating, domain, guardrail, planning, vocabulary, and fixture/test surfaces so live event truth is preserved additively rather than collapsed to a bare timestamp.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate74_live_event_richness.py tests/test_real_data_loader.py tests/test_gate73_event_store_query.py tests/test_successor_pack_anti_drift.py`
+
+### Gate 75 successor-pack closeout
+
+- Source merge commit: `c0d3a81`
+- Closeout summary: froze deterministic precursor venue order, timestamp discipline, stale/degraded fallback, contradiction classes, and pre-policy posture meaning before runtime packet binding.
+- Proof surfaces: `tests/test_gate75_precursor_stitching.py`, updated planning quartet, `src/nvda_desk/schemas/market.py`, and `src/nvda_desk/services/market_state.py`.
+

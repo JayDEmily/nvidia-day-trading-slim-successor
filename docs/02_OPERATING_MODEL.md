@@ -263,3 +263,12 @@ A module is never promoted directly from a good conversation.
 - not a giant OMS/EMS clone;
 - not a prompt-only trading toy;
 - not a system where the chat thread acts as durable memory.
+
+## Gate 75 precursor-stitching authority
+
+Gate 75 freezes one deterministic stitching order for bounded precursor venues, one timestamp discipline, one stale/degraded fallback ladder, and one contradiction classification surface before any runtime packet or policy matrix may consume precursor context.
+
+Operational rules:
+- `MarketStateService.stitch_precursor_context(...)` is the authoritative pre-runtime assembly path for precursor slices.
+- precursor stitching stays descriptive at this gate; it may classify contradiction or stand-down pressure, but it must not yet mutate runtime policy surfaces.
+- `PrecursorRuntimePacket` remains out of scope for Gate 75 closeout even though its future shape is now anticipated by the authority packet.
