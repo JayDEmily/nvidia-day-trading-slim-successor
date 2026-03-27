@@ -1338,3 +1338,14 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate67_event_window_semantics.py tests/test_gate66_desk_calendar_contracts.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
 
+### LEAF-G68-001 through LEAF-G68-005 — Asia and ex-US precursor market universe
+
+- Branch: `work/gate68-precursor-universe-20260327`
+- Scope: freeze the bounded precursor venue universe, raw fields, derived fields, exclusions, and session-alignment expectations before any stitching or runtime binding begins.
+- Outcome:
+  - Added typed precursor-universe authority contracts for JPX, HKEX, Mainland China cash, and CFFEX index futures plus approved raw and derived field families.
+  - Added review/config hooks so later stitching and policy surfaces can carry bounded precursor meaning without dragging in source creep.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so precursor scope is explicit and exclusions are documented.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate68_precursor_universe.py tests/test_gate67_event_window_semantics.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
+

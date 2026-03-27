@@ -703,6 +703,25 @@
       ]
     },
     {
+      "canonical_slug": "precursor_universe",
+      "canonical_label": "Precursor Universe",
+      "category": "workflow",
+      "stage_owner": "market_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorUniverseAuthorityPacket",
+      "allowed_aliases": [
+        "asia_precursor_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

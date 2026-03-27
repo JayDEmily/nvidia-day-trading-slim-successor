@@ -207,6 +207,44 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4i. Precursor-universe objects
+Typed contracts that freeze which ex-US precursor venues, raw fields, derived fields, and session-alignment expectations are lawful before stitching or runtime binding begins.
+
+Key examples:
+- `PrecursorVenueUniverse`
+- `PrecursorSourceClass`
+- `RawPrecursorField`
+- `DerivedPrecursorField`
+- `SessionAlignmentExpectation`
+- `ExcludedPrecursorSource`
+- `PrecursorVenueContract`
+- `PrecursorUniverseAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/market.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4i. Precursor-universe objects
+Typed contracts that freeze which ex-US precursor venues, raw fields, derived fields, and session-alignment expectations are lawful before stitching or runtime binding begins.
+
+Key examples:
+- `PrecursorVenueUniverse`
+- `PrecursorSourceClass`
+- `RawPrecursorField`
+- `DerivedPrecursorField`
+- `SessionAlignmentExpectation`
+- `ExcludedPrecursorSource`
+- `PrecursorVenueContract`
+- `PrecursorUniverseAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/market.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.

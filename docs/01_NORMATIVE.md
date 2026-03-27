@@ -190,6 +190,15 @@ Event timing must remain typed, bounded, and explicit rather than described with
 - overlapping or stacked events must resolve through explicit overlap classes and priority rules rather than ad hoc judgement;
 - company-event and macro-event windows may share names but not necessarily the same pre-window, post-window, cooling-off, or carry-sensitive treatment.
 
+## Precursor-universe law
+
+Precursor context must remain bounded to an explicit Asia/ex-US universe rather than expanding opportunistically.
+
+- the precursor universe is bounded to JPX cash equity indices, HKEX cash equity indices, Mainland China cash equity indices, and CFFEX index futures;
+- allowed raw fields are session return, opening gap, session range, realised volatility, close location in range, relative volume, futures basis, and close timing;
+- allowed derived fields are directional composite, cross-venue agreement, futures-cash divergence, impulse persistence, precursor pressure, and carry-risk warning;
+- Europe, commodities, crypto, and single-stock chatter remain excluded until a later explicit authority change says otherwise.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
+from nvda_desk.schemas.market import PrecursorUniverseAuthorityPacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     CandidateGovernanceAuthorityPacket,
@@ -84,6 +85,14 @@ class DeskCalendarAuthorityResponse(BaseModel):
 
     authority: DeskCalendarAuthorityPacket
 
+
+
+
+
+class PrecursorUniverseAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 68 precursor-universe packet."""
+
+    authority: PrecursorUniverseAuthorityPacket
 
 
 class EventWindowAuthorityResponse(BaseModel):

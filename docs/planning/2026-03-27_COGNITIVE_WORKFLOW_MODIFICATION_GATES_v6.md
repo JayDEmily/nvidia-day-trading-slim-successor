@@ -520,7 +520,7 @@ Gate 67 is complete on `main`. The repo now freezes bounded event proximity, eve
 
 ## Gate 68 — Asia and ex-US precursor market universe
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 67
 
@@ -557,6 +557,10 @@ The repo has one bounded, justified precursor universe with explicit raw and der
 - precursor-universe docs
 - schema/vocabulary updates
 - targeted universe-consistency tests
+
+### Gate 68 closeout note
+
+Gate 68 is complete on `main`. The repo now freezes the bounded precursor universe to JPX cash, HKEX cash, Mainland China cash, and CFFEX index futures, plus the approved raw fields, derived fields, excluded-source list, and session-alignment expectations required before stitching or runtime integration.
 
 ---
 

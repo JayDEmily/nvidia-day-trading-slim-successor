@@ -33,6 +33,7 @@
 29. **Event identity must stay inside the frozen bounded taxonomy; no free-text event-class drift.**
 30. **Venue calendar truth must come from explicit venue contracts, not one generic market-open flag.**
 31. **Event-window semantics must stay typed; `near event` or `probably clear by now` is not lawful runtime language.**
+32. **Precursor context must come from the bounded Asia/ex-US universe; no casual source creep.**
 
 ## Required runtime guardrails
 
