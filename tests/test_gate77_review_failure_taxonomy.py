@@ -194,15 +194,16 @@ def test_gate77_runtime_review_packet_carries_lineage_failure_and_promotion_evid
     assert result.review.economic_accountability is not None
     assert result.review.economic_accountability.diagnosis in {EconomicContributionTag.UNKNOWN, EconomicContributionTag.VALUE_LEAK}
     assert result.review.promotion_evidence is not None
-    assert result.review.promotion_evidence.ready_for_candidate_review is False
-    assert "modifier_policy_ids" in result.review.promotion_evidence.missing_sections
+    assert result.review.promotion_evidence.ready_for_candidate_review is True
+    assert result.review.review_lineage.modifier_policy_ids
+    assert result.review.promotion_evidence.missing_sections == []
     review_lineage = cast(dict[str, Any], result.review.review_packet["review_lineage"])
     failure_taxonomy = cast(dict[str, Any], result.review.review_packet["failure_taxonomy"])
     promotion_evidence = cast(dict[str, Any], result.review.review_packet["promotion_evidence"])
 
     assert review_lineage["event_lineage_keys"] == ["src:ir:evt-1"]
     assert failure_taxonomy["resolution"] == "unresolved"
-    assert promotion_evidence["ready_for_candidate_review"] is False
+    assert promotion_evidence["ready_for_candidate_review"] is True
 
 
 def test_gate77_vocabulary_terms_are_generated_and_committed() -> None:

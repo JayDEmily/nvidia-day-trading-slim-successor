@@ -290,3 +290,13 @@ Operational rules:
 - `ReviewExplanationOutput.review_lineage`, `failure_taxonomy`, `economic_accountability`, and `promotion_evidence` are now mandatory typed review surfaces.
 - event lineage and precursor lineage may be empty only when the runtime input truly had none; empty lineage must remain explicit, not silently omitted.
 - missing modifier or effective-coefficient lineage must remain visible to later candidate-governance consumers via `PromotionEvidencePacket.missing_sections`.
+
+## Gate 78 runtime modifier integration authority
+
+`PostureRiskOutput`, `ExecutionExpressionOutput`, and `ReviewExplanationOutput` must all be able to see the same Gate 78 modifier packet.
+
+Operational rules:
+- effective coefficients now materialise inside runtime rather than being implied from narrative after the fact;
+- posture receives bounded permission, stand-down, and target-capital consequences from the packet without changing grammar order;
+- execution receives additive hedge/capital consequences from the same packet rather than a second private modifier interpretation;
+- review reads the same packet for effective-policy lineage, modifier-control-law outcomes, and blocked-trade / non-action explanation.

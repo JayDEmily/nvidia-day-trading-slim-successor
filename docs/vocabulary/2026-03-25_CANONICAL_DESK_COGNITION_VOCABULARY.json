@@ -491,6 +491,26 @@
       ]
     },
     {
+      "canonical_slug": "modifier_runtime_packet",
+      "canonical_label": "Modifier Runtime Packet",
+      "category": "workflow",
+      "stage_owner": "posture_risk",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierRuntimePacket",
+      "allowed_aliases": [
+        "runtime_modifier_packet",
+        "effective_modifier_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."
+      ]
+    },
+    {
       "canonical_slug": "prohibited_runtime_variation",
       "canonical_label": "Prohibited Runtime Variation",
       "category": "workflow",

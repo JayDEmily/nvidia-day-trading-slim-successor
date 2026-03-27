@@ -4715,7 +4715,7 @@
       "full_suite_required": true,
       "pass_gate": "Implement effective-coefficient calculation surfaces is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 78 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 100
     },
     {
@@ -4764,7 +4764,7 @@
       "full_suite_required": true,
       "pass_gate": "Bind approved state-policy surfaces into downstream runtime stages is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 78 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 101
     },
     {
@@ -4813,7 +4813,7 @@
       "full_suite_required": true,
       "pass_gate": "Expose non-action, conflict, veto, and clamp outcomes in runtime packets is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 78 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 102
     },
     {
@@ -4862,7 +4862,7 @@
       "full_suite_required": true,
       "pass_gate": "Preserve compatibility and migrate fixed-threshold consumers cleanly is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 78 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 103
     },
     {
@@ -4911,7 +4911,7 @@
       "full_suite_required": true,
       "pass_gate": "Add deterministic runtime integration tests and full-suite coverage is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 78 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 104
     },
     {
@@ -5210,7 +5210,7 @@
     }
   ],
   "execution_status": "gate_77_complete_successor_pack_active_from_gate_78",
-  "completed_at": "2026-03-27T18:40:00Z",
+  "completed_at": "2026-03-27T08:03:11.927747+00:00",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5310,14 +5310,14 @@
     "LEAF-G77-002",
     "LEAF-G77-003",
     "LEAF-G77-004",
-    "LEAF-G77-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G77-005",
     "LEAF-G78-001",
     "LEAF-G78-002",
     "LEAF-G78-003",
     "LEAF-G78-004",
-    "LEAF-G78-005",
+    "LEAF-G78-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G79-001",
     "LEAF-G79-002",
     "LEAF-G79-003",
@@ -5344,8 +5344,9 @@
     "Gate 74",
     "Gate 75",
     "Gate 76",
-    "Gate 77"
+    "Gate 77",
+    "Gate 78"
   ],
-  "active_gate": "Gate 78",
+  "active_gate": "Gate 79",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

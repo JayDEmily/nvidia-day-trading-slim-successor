@@ -1439,3 +1439,8 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Closeout summary: upgraded review packets with typed lineage, failure-taxonomy, economic-accountability, and promotion-evidence surfaces without changing runtime decision logic.
 - Proof surfaces: `tests/test_gate77_review_failure_taxonomy.py`, `tests/test_execution_review_runtime.py`, `tests/test_dmp_review_trace.py`, updated planning quartet, and review packet upgrades in `src/nvda_desk/schemas/*` plus `src/nvda_desk/services/*`.
 
+### Gate 78 successor-pack closeout
+
+- Source merge commit: `TO_BE_FILLED_AFTER_MERGE`
+- Closeout summary: integrated bounded state-conditioned modifier law into live runtime using one typed modifier packet that now carries effective coefficients, kill-switch outcomes, stand-down classes, and lineage through posture, execution, and review.
+- Proof surfaces: `tests/test_gate78_modifier_runtime_integration.py`, `tests/test_execution_review_runtime.py`, updated planning quartet, and runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py`, `src/nvda_desk/services/cognition_runtime.py`, plus review exposure in `src/nvda_desk/services/review_explanation.py`.

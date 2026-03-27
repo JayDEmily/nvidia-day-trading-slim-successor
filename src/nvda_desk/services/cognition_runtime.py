@@ -67,6 +67,7 @@ from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.review_explanation import ReviewExplanationService
+from nvda_desk.services.state_conditioned_modifier import StateConditionedModifierService
 from nvda_desk.services.temporal_context import TemporalContextService
 
 
@@ -144,6 +145,7 @@ class DeskCognitionRuntime:
         self._eligibility = PlaybookEligibilityService()
         self._execution = ExecutionExpressionService()
         self._review = ReviewExplanationService()
+        self._modifiers = StateConditionedModifierService()
         self._tranche_a_upstream = TrancheAUpstreamContractService()
         self._tranche_a_selector = TrancheASelectorContractService()
 
@@ -239,6 +241,14 @@ class DeskCognitionRuntime:
             )
         )
         posture = self._posture_with_contract_citations(posture, selector_contract_emissions)
+        modifier_runtime_packet = self._modifiers.evaluate(
+            temporal_input=temporal_input,
+            temporal=temporal,
+            regime=regime,
+            options_flow=options_flow,
+            posture=posture,
+        )
+        posture = self._modifiers.apply_to_posture(posture, modifier_runtime_packet)
         eligibility = self._eligibility.evaluate(
             PlaybookEligibilityInput(
                 temporal=temporal,
@@ -255,8 +265,10 @@ class DeskCognitionRuntime:
                 options_flow=options_flow,
                 posture=posture,
                 eligibility=eligibility,
+                modifier_runtime_packet=modifier_runtime_packet,
             )
         )
+        execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
         review = self._review.evaluate(
             ReviewExplanationInput(
                 temporal=temporal,
@@ -265,6 +277,7 @@ class DeskCognitionRuntime:
                 posture=posture,
                 eligibility=eligibility,
                 execution=execution,
+                modifier_runtime_packet=modifier_runtime_packet,
                 temporal_input=temporal_input,
             )
         )

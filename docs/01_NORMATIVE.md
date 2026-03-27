@@ -286,3 +286,12 @@ Shared event truth must sit behind one explicit store/query contract rather than
 - review outputs are `action_taken`, `non_action`, `blocked_trade`, `unknown`, `unresolved`, `bad_luck`, and `ontology_failure`;
 - economic accountability must stay separate from raw P&L summary and may classify diagnosis, posture, timing, execution, sizing, and non-action as `value_add`, `capital_preservation`, `neutral`, `value_leak`, or `unknown`;
 - narrative-only review packets are forbidden; packet lineage and failure taxonomy must stay machine-readable.
+
+## Runtime integration of state-conditioned modifiers
+
+Runtime modifier law becomes real only when the live runtime materialises one typed, auditable packet and carries it through posture, execution, and review without changing cognition grammar order.
+
+- runtime must materialise a typed modifier packet before downstream review or replay can talk about effective coefficients honestly;
+- blocked or stand-down outcomes must be explicit packet fields, not inferred from missing trades;
+- posture, execution, and review must all see the same effective-coefficient lineage rather than reconstructing separate private interpretations;
+- compatibility fields may remain as additive hints, but the modifier packet is the authority for runtime-applied posture change.

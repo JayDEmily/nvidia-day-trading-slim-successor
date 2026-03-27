@@ -255,6 +255,15 @@ def build_document() -> VocabularyDocument:
             notes=["Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."],
         ),
         VocabularyEntry(
+            canonical_slug="modifier_runtime_packet",
+            canonical_label="Modifier Runtime Packet",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="posture_risk",
+            maps_to_contract="nvda_desk.schemas.state_policy.ModifierRuntimePacket",
+            allowed_aliases=["runtime_modifier_packet", "effective_modifier_packet"],
+            notes=["Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."],
+        ),
+        VocabularyEntry(
             canonical_slug="prohibited_runtime_variation",
             canonical_label="Prohibited Runtime Variation",
             category=VocabularyCategory.WORKFLOW,

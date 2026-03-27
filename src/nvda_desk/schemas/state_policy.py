@@ -659,3 +659,39 @@ class ModifierControlLawAuthorityPacket(BaseModel):
     clamp_rules: list[ModifierClampRule] = Field(default_factory=list)
     veto_rules: list[ModifierVetoRule] = Field(default_factory=list)
     lineage_fields: list[str] = Field(default_factory=list)
+
+
+class ResolvedRuntimeSurfaceValue(BaseModel):
+    """One resolved mutable-surface value after bounded runtime modifier law."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    target_surface: MutableRuntimeSurface
+    baseline_numeric_value: float | None = None
+    baseline_boolean_value: bool | None = None
+    effective_numeric_value: float | None = None
+    effective_boolean_value: bool | None = None
+    winning_precedence_band: ModifierPriorityBand
+    source_policy_ids: list[str] = Field(default_factory=list)
+    clamped: bool = False
+    notes: list[str] = Field(default_factory=list)
+
+
+class ModifierRuntimePacket(BaseModel):
+    """Typed runtime packet freezing Gate 78 modifier application outputs."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    active_state_fields: list[CanonicalStateVectorField] = Field(default_factory=list)
+    active_policy_ids: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[ResolvedRuntimeSurfaceValue] = Field(default_factory=list)
+    effective_lineage: list[EffectiveCoefficientLineage] = Field(default_factory=list)
+    active_precedence_bands: list[ModifierPriorityBand] = Field(default_factory=list)
+    applied_combination_laws: list[CombinationLaw] = Field(default_factory=list)
+    triggered_kill_switch: KillSwitchCondition | None = None
+    suppressed_state_labels: list[str] = Field(default_factory=list)
+    stand_down_class: NonActionClass | None = None
+    conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
+    degradation_step: DegradationStep = DegradationStep.NORMAL
+    override_disposition: OverrideDisposition = OverrideDisposition.NOT_APPLICABLE
+    notes: list[str] = Field(default_factory=list)
