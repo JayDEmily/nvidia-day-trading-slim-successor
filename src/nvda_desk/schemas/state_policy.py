@@ -238,3 +238,287 @@ class NonActionAuthorityPacket(BaseModel):
     conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
     degradation_steps: list[DegradationStep] = Field(default_factory=list)
     override_dispositions: list[OverrideDisposition] = Field(default_factory=list)
+
+
+
+class ScorecardAxis(StrEnum):
+    """Canonical Gate 62 scorecard axes for governed stability review."""
+
+    DIAGNOSIS_QUALITY = "diagnosis_quality"
+    DECISION_QUALITY = "decision_quality"
+    ECONOMIC_QUALITY = "economic_quality"
+    EXECUTION_QUALITY = "execution_quality"
+    POSTURE_LAW_FIDELITY = "posture_law_fidelity"
+
+
+class StabilityMetricFamily(StrEnum):
+    """Metric families that describe behaviour change and stability."""
+
+    LEVEL = "level"
+    SLOPE = "slope"
+    ACCELERATION = "acceleration"
+    PERSISTENCE = "persistence"
+    DISPERSION = "dispersion"
+    CORRIDOR_WIDTH = "corridor_width"
+    BREACH_FREQUENCY = "breach_frequency"
+    BREACH_SEVERITY = "breach_severity"
+    COVERAGE = "coverage"
+
+
+class MetricTriggerMode(StrEnum):
+    """Whether one metric is descriptive only or may support review triggers."""
+
+    DESCRIPTIVE_ONLY = "descriptive_only"
+    REVIEW_TRIGGER = "review_trigger"
+
+
+class CorridorZone(StrEnum):
+    """Named corridor regions for governed stability assessment."""
+
+    TARGET = "target"
+    TOLERATED_DRIFT = "tolerated_drift"
+    BREACH = "breach"
+
+
+class CorridorBreachSeverity(StrEnum):
+    """Severity labels for corridor breaches after persistence law is applied."""
+
+    NONE = "none"
+    DRIFTING = "drifting"
+    MATERIAL = "material"
+    SEVERE = "severe"
+
+
+class BehaviourStabilityState(StrEnum):
+    """Human-readable governed stability posture for one surface."""
+
+    BREATHING = "breathing"
+    DRIFTING = "drifting"
+    DECAYING = "decaying"
+
+
+class CoverageSliceClass(StrEnum):
+    """Coverage slices that keep hidden fragility visible in scorecards."""
+
+    EVENT_CLASS = "event_class"
+    REGIME_SLICE = "regime_slice"
+    SESSION_SLICE = "session_slice"
+
+
+class StabilityMetricObservation(BaseModel):
+    """One scorecard metric observation for a governed review surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    axis: ScorecardAxis
+    metric_family: StabilityMetricFamily
+    trigger_mode: MetricTriggerMode = MetricTriggerMode.DESCRIPTIVE_ONLY
+    value: float
+    notes: list[str] = Field(default_factory=list)
+
+
+class CorridorBounds(BaseModel):
+    """Formal corridor algebra for one governed metric family."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    central_tendency: float
+    tolerated_spread: float = Field(ge=0.0)
+    target_low: float
+    target_high: float
+    drift_low: float
+    drift_high: float
+    breach_low: float
+    breach_high: float
+
+
+class PersistenceHysteresisSpec(BaseModel):
+    """Persistence and hysteresis rules that prevent review chatter."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    minimum_blocks: int = Field(ge=1)
+    confirmation_blocks: int = Field(ge=1)
+    recovery_blocks: int = Field(ge=1)
+    cooldown_blocks: int = Field(ge=0)
+
+
+class CoverageSliceScore(BaseModel):
+    """Coverage summary for one event, regime, or session slice."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    slice_class: CoverageSliceClass
+    slice_label: str = Field(min_length=1)
+    observation_count: int = Field(ge=0)
+    coverage_ratio: float = Field(ge=0.0, le=1.0)
+
+
+class SurfaceStabilityScorecard(BaseModel):
+    """Frozen Gate 62 scorecard shape for one governed surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_id: str = Field(min_length=1)
+    surface_class: RuntimeSurfaceClass
+    metric_observations: list[StabilityMetricObservation] = Field(default_factory=list)
+    corridor: CorridorBounds
+    breach_severity: CorridorBreachSeverity = CorridorBreachSeverity.NONE
+    behaviour_state: BehaviourStabilityState = BehaviourStabilityState.BREATHING
+    persistence: PersistenceHysteresisSpec
+    coverage_slices: list[CoverageSliceScore] = Field(default_factory=list)
+
+
+class StabilityAuthorityPacket(BaseModel):
+    """Frozen Gate 62 metric, corridor, and scorecard authority packet."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    scorecard_axes: list[ScorecardAxis] = Field(default_factory=list)
+    metric_families: list[StabilityMetricFamily] = Field(default_factory=list)
+    trigger_modes: list[MetricTriggerMode] = Field(default_factory=list)
+    corridor_zones: list[CorridorZone] = Field(default_factory=list)
+    breach_severities: list[CorridorBreachSeverity] = Field(default_factory=list)
+    behaviour_states: list[BehaviourStabilityState] = Field(default_factory=list)
+    coverage_slice_classes: list[CoverageSliceClass] = Field(default_factory=list)
+
+
+class ReviewSurfaceClass(StrEnum):
+    """Surface classes that may become eligible for governed review."""
+
+    COEFFICIENT_GROUP = "coefficient_group"
+    POLICY_SURFACE = "policy_surface"
+
+
+class ReviewTriggerClass(StrEnum):
+    """Explicit reasons a sufficiently evidenced surface becomes review-eligible."""
+
+    MATERIAL_CORRIDOR_BREACH = "material_corridor_breach"
+    SEVERE_CORRIDOR_BREACH = "severe_corridor_breach"
+    PERSISTENCE_FAILURE = "persistence_failure"
+    COVERAGE_COLLAPSE = "coverage_collapse"
+
+
+class ReviewOutcome(StrEnum):
+    """Governed outcomes emitted by review-eligibility law."""
+
+    REVIEW_NOT_ELIGIBLE = "review_not_eligible"
+    REVIEW_NO_CHANGE = "review_no_change"
+    BOUNDED_ADJUSTMENT_REQUEST = "bounded_adjustment_request"
+    CANDIDATE_REPLACEMENT_REQUEST = "candidate_replacement_request"
+    RESEARCH_RESET = "research_reset"
+    MISSING_MODULE_SUSPICION = "missing_module_suspicion"
+
+
+class ReviewChangeBudget(StrEnum):
+    """Bounded downstream action budget attached to a governed review outcome."""
+
+    NONE = "none"
+    BOUNDED_SINGLE_SURFACE = "bounded_single_surface"
+    BOUNDED_MULTI_SURFACE = "bounded_multi_surface"
+    CANDIDATE_SWAP_ONLY = "candidate_swap_only"
+    RESEARCH_ONLY = "research_only"
+
+
+class EvidenceFloorSpec(BaseModel):
+    """Minimum evidence floor required before one surface may be judged."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_class: ReviewSurfaceClass
+    minimum_samples: int = Field(ge=1)
+    minimum_sessions: int = Field(ge=1)
+    minimum_event_slices: int = Field(ge=0)
+    minimum_regime_slices: int = Field(ge=0)
+    minimum_coverage_ratio: float = Field(ge=0.0, le=1.0)
+
+
+class ReviewEvidenceBlock(BaseModel):
+    """Observed evidence block measured against review floors and corridors."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_class: ReviewSurfaceClass
+    surface_id: str = Field(min_length=1)
+    sample_count: int = Field(ge=0)
+    session_count: int = Field(ge=0)
+    event_slice_count: int = Field(ge=0)
+    regime_slice_count: int = Field(ge=0)
+    coverage_ratio: float = Field(ge=0.0, le=1.0)
+    breach_severity: CorridorBreachSeverity = CorridorBreachSeverity.NONE
+    persistence_blocks: int = Field(ge=0)
+    hysteresis_passed: bool = False
+
+
+class ReviewEligibilityAuthorityPacket(BaseModel):
+    """Frozen Gate 63 review-eligibility authority packet."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_classes: list[ReviewSurfaceClass] = Field(default_factory=list)
+    trigger_classes: list[ReviewTriggerClass] = Field(default_factory=list)
+    outcomes: list[ReviewOutcome] = Field(default_factory=list)
+    change_budgets: list[ReviewChangeBudget] = Field(default_factory=list)
+
+
+class CandidateRole(StrEnum):
+    """Governed candidate roles allowed after historical research lock."""
+
+    CHAMPION = "champion"
+    SHADOW_CHALLENGER = "shadow_challenger"
+    DORMANT_CANDIDATE = "dormant_candidate"
+    RETIRED_CANDIDATE = "retired_candidate"
+
+
+class CandidateComparisonOutcome(StrEnum):
+    """Governed downstream result of candidate comparison and adjudication."""
+
+    RETAIN_CHAMPION = "retain_champion"
+    PROMOTE_CHALLENGER = "promote_challenger"
+    DEMOTE_TO_DORMANT = "demote_to_dormant"
+    RETIRE_CANDIDATE = "retire_candidate"
+    RESET_TO_RESEARCH = "reset_to_research"
+
+
+class AdjudicationDisposition(StrEnum):
+    """Lifecycle state for the reserved adjudication span."""
+
+    RESERVED_UNTOUCHED = "reserved_untouched"
+    RELEASED_FOR_FINAL_COMPARISON = "released_for_final_comparison"
+    CONSUMED_RECORDED = "consumed_recorded"
+
+
+class CandidateSetShape(BaseModel):
+    """Bounded size and role-shape rules for locked candidate sets."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    max_candidate_count: int = Field(ge=1)
+    max_shadow_challengers: int = Field(ge=0)
+    allow_dormant_candidates: bool = True
+    allow_retired_candidates: bool = True
+    reserved_adjudication_spans: int = Field(ge=1)
+
+
+class CandidateLedgerRecord(BaseModel):
+    """Tracking hook for one locked candidate and its adjudication state."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    candidate_id: str = Field(min_length=1)
+    role: CandidateRole
+    locked_from_research: bool = True
+    evidence_span_ids: list[str] = Field(default_factory=list)
+    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
+    notes: list[str] = Field(default_factory=list)
+
+
+class CandidateGovernanceAuthorityPacket(BaseModel):
+    """Frozen Gate 64 candidate-governance authority packet."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    allowed_roles: list[CandidateRole] = Field(default_factory=list)
+    comparison_outcomes: list[CandidateComparisonOutcome] = Field(default_factory=list)
+    adjudication_dispositions: list[AdjudicationDisposition] = Field(default_factory=list)
+    candidate_shape: CandidateSetShape

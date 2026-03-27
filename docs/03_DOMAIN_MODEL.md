@@ -105,6 +105,57 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
 - review exposure through `ReviewExplanationOutput`
 
+
+### 4c. Stability metric and corridor objects
+Typed contracts that freeze the multi-axis scorecard, corridor zones, persistence law, and slice coverage used before later review or candidate comparison gates.
+
+Key examples:
+- `ScorecardAxis`
+- `StabilityMetricFamily`
+- `MetricTriggerMode`
+- `CorridorZone`
+- `CorridorBreachSeverity`
+- `BehaviourStabilityState`
+- `SurfaceStabilityScorecard`
+- `StabilityAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- review hooks through `ReviewExplanationOutput`
+
+### 4d. Review-eligibility governance objects
+Typed contracts that freeze evidence floors, trigger classes, downstream review outcomes, and bounded change budgets.
+
+Key examples:
+- `ReviewSurfaceClass`
+- `ReviewTriggerClass`
+- `ReviewOutcome`
+- `ReviewChangeBudget`
+- `EvidenceFloorSpec`
+- `ReviewEvidenceBlock`
+- `ReviewEligibilityAuthorityPacket`
+- `ReviewEligibilitySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
+- review exposure through `ReviewExplanationOutput`
+
+### 4e. Candidate governance and adjudication objects
+Typed contracts that freeze candidate-set size, role semantics, adjudication disposition, and governed comparison outcomes.
+
+Key examples:
+- `CandidateRole`
+- `CandidateComparisonOutcome`
+- `AdjudicationDisposition`
+- `CandidateSetShape`
+- `CandidateLedgerRecord`
+- `CandidateGovernanceAuthorityPacket`
+- `CandidateGovernanceSurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
+- review and ledger hooks through `ReviewExplanationOutput`
+
 ### 5. Risk and capital objects
 Deterministic checks that sit in front of execution.
 

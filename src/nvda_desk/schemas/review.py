@@ -19,9 +19,16 @@ from nvda_desk.schemas.execution_records import (
     PositionSnapshotPayload,
 )
 from nvda_desk.schemas.state_policy import (
+    AdjudicationDisposition,
+    CandidateComparisonOutcome,
+    CandidateSetShape,
     DegradationStep,
     NonActionClass,
     OverrideDisposition,
+    ReviewChangeBudget,
+    ReviewEvidenceBlock,
+    ReviewOutcome,
+    ReviewTriggerClass,
     SignalConflictClass,
 )
 
@@ -107,3 +114,26 @@ class ReviewGovernanceSurface(BaseModel):
     degradation_step: DegradationStep = DegradationStep.NORMAL
     override_disposition: OverrideDisposition = OverrideDisposition.NOT_APPLICABLE
     override_audit_notes: list[str] = Field(default_factory=list)
+
+
+
+class ReviewEligibilitySurface(BaseModel):
+    """Gate 63 hook exposing evidence, triggers, and governed review outcome."""
+
+    evidence_block: ReviewEvidenceBlock
+    trigger_classes: list[ReviewTriggerClass] = Field(default_factory=list)
+    eligible: bool = False
+    governed_outcome: ReviewOutcome = ReviewOutcome.REVIEW_NOT_ELIGIBLE
+    change_budget: ReviewChangeBudget = ReviewChangeBudget.NONE
+
+
+class CandidateGovernanceSurface(BaseModel):
+    """Gate 64 hook exposing candidate roles and adjudication state."""
+
+    candidate_shape: CandidateSetShape
+    champion_candidate_id: str | None = None
+    shadow_challenger_ids: list[str] = Field(default_factory=list)
+    dormant_candidate_ids: list[str] = Field(default_factory=list)
+    retired_candidate_ids: list[str] = Field(default_factory=list)
+    comparison_outcome: CandidateComparisonOutcome | None = None
+    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED

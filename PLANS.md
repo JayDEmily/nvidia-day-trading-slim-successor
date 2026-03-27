@@ -45,7 +45,7 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
-- Gates 59–61 — complete on `main`
+- Gates 59–64 — complete on `main`
 
 ## Sequential execution rule
 
@@ -64,6 +64,9 @@ The persisted `main` baseline is now closed through Gate 61 and records Gate 7 e
 - Gate 59 doctrine rebase complete on `main`, with the V6 pair now the single active successor authority for Gates 60–79;
 - Gate 60 ontology freeze complete on `main`, with typed state-policy authority now fencing lawful mutable surfaces away from prohibited runtime variation;
 - Gate 61 non-action/conflict law complete on `main`, with explicit stand-down, conflict, degradation, and override vocabulary exposed to review surfaces;
+- Gate 62 stability/corridor law complete on `main`, with frozen scorecard axes, corridor algebra, persistence, and coverage surfaces exposed as typed contracts;
+- Gate 63 review-eligibility law complete on `main`, with governed evidence floors, trigger classes, review outcomes, and bounded change budgets exposed as typed review hooks;
+- Gate 64 candidate/adjudication law complete on `main`, with bounded candidate roles, adjudication disposition, and candidate governance hooks frozen before context plumbing;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 62 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+The next authored gate is Gate 65 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.

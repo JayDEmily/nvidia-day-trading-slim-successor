@@ -14,8 +14,13 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
-from nvda_desk.schemas.review import ImportedModuleReviewCitation, ReviewGovernanceSurface
-from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage
+from nvda_desk.schemas.review import (
+    CandidateGovernanceSurface,
+    ImportedModuleReviewCitation,
+    ReviewEligibilitySurface,
+    ReviewGovernanceSurface,
+)
+from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage, SurfaceStabilityScorecard
 
 
 class VolatilityRegime(StrEnum):
@@ -570,7 +575,10 @@ class ReviewExplanationOutput(BaseModel):
     imported_module_citations: list[ImportedModuleReviewCitation] = Field(default_factory=list)
     imported_module_maturity_counts: dict[str, int] = Field(default_factory=dict)
     effective_policy: EffectivePolicySnapshot | None = None
+    stability_scorecards: list[SurfaceStabilityScorecard] = Field(default_factory=list)
     review_governance: ReviewGovernanceSurface | None = None
+    review_eligibility: ReviewEligibilitySurface | None = None
+    candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None
     review_packet: dict[str, object]
 

@@ -274,6 +274,60 @@ def build_document() -> VocabularyDocument:
             disallowed_phrases=["trader_feel_override"],
             notes=["Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."],
         ),
+        VocabularyEntry(
+            canonical_slug="stability_scorecard",
+            canonical_label="Stability Scorecard",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.SurfaceStabilityScorecard",
+            allowed_aliases=["surface_scorecard"],
+            notes=["Gate 62 freezes the multi-axis stability surface before review law or candidate comparison."],
+        ),
+        VocabularyEntry(
+            canonical_slug="corridor_zone",
+            canonical_label="Corridor Zone",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.CorridorZone",
+            allowed_aliases=["target_drift_breach_zone"],
+            notes=["Target, tolerated-drift, and breach zones remain explicit in governed scorecards."],
+        ),
+        VocabularyEntry(
+            canonical_slug="review_evidence_block",
+            canonical_label="Review Evidence Block",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.ReviewEvidenceBlock",
+            allowed_aliases=["evidence_floor_block"],
+            notes=["Gate 63 requires explicit evidence floors before a surface may become review-eligible."],
+        ),
+        VocabularyEntry(
+            canonical_slug="review_outcome",
+            canonical_label="Review Outcome",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.ReviewOutcome",
+            allowed_aliases=["governed_review_outcome"],
+            notes=["Includes review_not_eligible and review_no_change as first-class governed results."],
+        ),
+        VocabularyEntry(
+            canonical_slug="candidate_role",
+            canonical_label="Candidate Role",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.CandidateRole",
+            allowed_aliases=["candidate_state_role"],
+            notes=["Gate 64 limits candidate roles to champion, shadow challenger, dormant candidate, and retired candidate."],
+        ),
+        VocabularyEntry(
+            canonical_slug="adjudication_disposition",
+            canonical_label="Adjudication Disposition",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.state_policy.AdjudicationDisposition",
+            allowed_aliases=["reserved_span_state"],
+            notes=["The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(
@@ -335,10 +389,10 @@ def build_document() -> VocabularyDocument:
         )
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
-        registry_version="gate61-state-policy-alignment-2026-03-27",
+        registry_version="gate64-review-governance-alignment-2026-03-27",
         notes=[
             "Generated from current live playbook registry and pinned architecture surfaces.",
-            "Gate 60 and Gate 61 extend the workflow vocabulary with state-policy, non-action, and conflict-law terms.",
+            "Gates 60-64 extend the workflow vocabulary with state-policy, non-action, stability, review-law, and candidate-governance terms.",
             "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth.",
         ],
         entries=entries,

@@ -131,6 +131,37 @@ These items vary via config without altering the architecture:
 - runtime feature toggles;
 - OpenAI model choice within the supported API surface.
 
+
+## Stability corridor and scorecard law
+
+Stability is judged through a frozen multi-axis scorecard rather than a single raw P&L line.
+
+- the canonical scorecard axes are diagnosis quality, decision quality, economic quality, execution quality, and posture-law fidelity;
+- the canonical metric families include level, slope, change in slope, persistence, dispersion, corridor width, breach frequency, breach severity, and coverage;
+- every governed stability surface is assessed against a corridor algebra with target, tolerated-drift, and breach zones;
+- a surface may be `breathing`, `drifting`, or `decaying`, and that distinction must remain explicit in review evidence;
+- event-slice, regime-slice, and session-slice coverage must remain visible so apparent stability is not confused with thin sampling.
+
+## Review-eligibility law
+
+Not every observed movement deserves a review.
+
+- review eligibility requires a governed evidence block with explicit minimum floors;
+- review triggers combine evidence sufficiency with corridor-breach and persistence law;
+- review may conclude `review_not_eligible` or `review_no_change` without any downstream change request;
+- bounded adjustment request, candidate replacement request, research reset, and missing-module suspicion are governed review outcomes, not narrative suggestions;
+- live paper remains a falsification and promotion surface for locked candidates, never an in-place coefficient search loop.
+
+## Candidate and adjudication law
+
+Historical research creates bounded candidate sets; live paper compares locked candidates under governed review.
+
+- candidate sets are bounded in size and role shape before any later replay or paper comparison;
+- candidate roles are limited to champion, shadow challenger, dormant candidate, and retired candidate;
+- promotion, replacement, demotion, retirement, and research reset occur only at governed review boundaries;
+- at least one reserved adjudication span remains untouched until final governed comparison consumes it;
+- when evidence points to ontology failure rather than bounded adjustment, the correct governed result is research reset rather than another runtime tweak.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

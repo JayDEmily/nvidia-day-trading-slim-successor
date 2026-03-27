@@ -9,7 +9,13 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-from nvda_desk.schemas.state_policy import NonActionAuthorityPacket, StatePolicyAuthorityPacket
+from nvda_desk.schemas.state_policy import (
+    CandidateGovernanceAuthorityPacket,
+    NonActionAuthorityPacket,
+    ReviewEligibilityAuthorityPacket,
+    StabilityAuthorityPacket,
+    StatePolicyAuthorityPacket,
+)
 
 
 class CoefficientGroupParameterPayload(BaseModel):
@@ -79,3 +85,22 @@ class NonActionAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 61 non-action authority packet."""
 
     authority: NonActionAuthorityPacket
+
+
+
+class StabilityAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 62 stability authority packet."""
+
+    authority: StabilityAuthorityPacket
+
+
+class ReviewEligibilityAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 63 review-eligibility packet."""
+
+    authority: ReviewEligibilityAuthorityPacket
+
+
+class CandidateGovernanceAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 64 candidate-governance packet."""
+
+    authority: CandidateGovernanceAuthorityPacket

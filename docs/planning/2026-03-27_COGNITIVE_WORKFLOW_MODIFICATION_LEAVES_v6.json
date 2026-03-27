@@ -870,7 +870,7 @@
       "full_suite_required": false,
       "pass_gate": "Define stability-metric components is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 18
     },
     {
@@ -918,7 +918,7 @@
       "full_suite_required": false,
       "pass_gate": "Define per-group scorecard schema is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 19
     },
     {
@@ -966,7 +966,7 @@
       "full_suite_required": false,
       "pass_gate": "Define corridor algebra and thresholds is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 20
     },
     {
@@ -1014,7 +1014,7 @@
       "full_suite_required": false,
       "pass_gate": "Define persistence and hysteresis measures is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 21
     },
     {
@@ -1062,7 +1062,7 @@
       "full_suite_required": false,
       "pass_gate": "Define event-slice and coverage metrics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 22
     },
     {
@@ -1109,7 +1109,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze stability-metric authority and add corridor tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 62 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 23
     },
     {
@@ -1156,7 +1156,7 @@
       "full_suite_required": false,
       "pass_gate": "Define minimum evidence floors and evidence-block objects is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 63 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 24
     },
     {
@@ -1203,7 +1203,7 @@
       "full_suite_required": false,
       "pass_gate": "Define corridor-breach review triggers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 63 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 25
     },
     {
@@ -1250,7 +1250,7 @@
       "full_suite_required": false,
       "pass_gate": "Define persistence, hysteresis, and no-change outcomes is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 63 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 26
     },
     {
@@ -1297,7 +1297,7 @@
       "full_suite_required": false,
       "pass_gate": "Define live-paper falsification boundary and downstream review outcomes is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 63 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 27
     },
     {
@@ -1343,7 +1343,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze review-eligibility authority and add sequencing checks is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 63 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 28
     },
     {
@@ -1390,7 +1390,7 @@
       "full_suite_required": false,
       "pass_gate": "Define candidate-set size and shape constraints is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 64 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 29
     },
     {
@@ -1437,7 +1437,7 @@
       "full_suite_required": false,
       "pass_gate": "Define champion, challenger, dormant, and adjudication semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 64 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 30
     },
     {
@@ -1484,7 +1484,7 @@
       "full_suite_required": false,
       "pass_gate": "Define promotion, replacement, demotion, and retirement rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 64 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 31
     },
     {
@@ -1531,7 +1531,7 @@
       "full_suite_required": false,
       "pass_gate": "Define reserved adjudication and research-reset triggers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 64 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 32
     },
     {
@@ -1578,7 +1578,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze candidate-governance authority and add ledger hooks is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 64 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 33
     },
     {
@@ -5190,7 +5190,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_61_complete_on_main_successor_pack_active_from_gate_62",
+  "execution_status": "gate_64_complete_on_main_successor_pack_active_from_gate_65",
   "completed_at": "2026-03-27",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5209,9 +5209,7 @@
     "LEAF-G61-002",
     "LEAF-G61-003",
     "LEAF-G61-004",
-    "LEAF-G61-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G61-005",
     "LEAF-G62-001",
     "LEAF-G62-002",
     "LEAF-G62-003",
@@ -5227,7 +5225,9 @@
     "LEAF-G64-002",
     "LEAF-G64-003",
     "LEAF-G64-004",
-    "LEAF-G64-005",
+    "LEAF-G64-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G65-001",
     "LEAF-G65-002",
     "LEAF-G65-003",
@@ -5309,8 +5309,11 @@
   "completed_gate_ids": [
     "Gate 59",
     "Gate 60",
-    "Gate 61"
+    "Gate 61",
+    "Gate 62",
+    "Gate 63",
+    "Gate 64"
   ],
-  "active_gate": "Gate 62",
+  "active_gate": "Gate 65",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

@@ -1,6 +1,6 @@
 # 2026-03-27 Cognitive Workflow Modification Gates v6
 
-Status: Gates 51–58 complete on `main`; Gates 59–61 complete on `main`; active successor execution continues at Gate 62
+Status: Gates 51–58 complete on `main`; Gates 59–64 complete on `main`; active successor execution continues at Gate 65
 
 Version: v6.1
 
@@ -236,7 +236,7 @@ Gate 61 closed by making stand-down a first-class governed outcome, freezing ord
 
 ## Gate 62 — Stability-metric algebra and corridor schema
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 61
 
@@ -287,9 +287,13 @@ The repo has an authoritative metric language, scorecard shape, and corridor alg
 - typed scorecard schema proposals
 - consistency tests for canonical metric vocabulary
 
+### Gate 62 closeout note
+
+Gate 62 is complete on `main`. The repo now freezes scorecard axes, metric families, corridor zones, breach severity, persistence/hysteresis, and coverage slices as typed authority surfaces, with review hooks available through `ReviewExplanationOutput`.
+
 ## Gate 63 — Review-eligibility governance
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 62
 
@@ -328,9 +332,13 @@ The repo has one authoritative review-governance contract covering evidence floo
 - bounded evidence-object proposals
 - targeted sequencing and consistency tests
 
+### Gate 63 closeout note
+
+Gate 63 is complete on `main`. The repo now freezes evidence floors, trigger classes, review outcomes, and bounded change budgets, and it exposes review-eligibility hooks without turning review into a runtime tuning shortcut.
+
 ## Gate 64 — Candidate, champion, challenger, and adjudication governance
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 63
 
@@ -367,6 +375,10 @@ Candidate governance is explicit enough that later replay and live paper become 
 - candidate-governance docs
 - bounded candidate-state vocabulary
 - targeted governance tests and ledger hooks
+
+### Gate 64 closeout note
+
+Gate 64 is complete on `main`. The repo now freezes candidate-set shape, champion/challenger/dormant/retired roles, reserved adjudication-span law, governed comparison outcomes, and candidate-ledger hooks before any later context plumbing or live-paper comparison code.
 
 ## Gate 65 — Canonical event taxonomy
 

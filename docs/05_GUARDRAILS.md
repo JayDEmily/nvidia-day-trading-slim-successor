@@ -26,6 +26,10 @@
 22. **Conflicts and degradation steps must remain review-visible.**
 23. **Discretionary runtime override is forbidden.**
 24. **Only typed approved mutable surfaces may vary under state-conditioned policy.**
+25. **Stability must be judged against frozen scorecards and corridor zones, not one-off outcome snapshots.**
+26. **Review eligibility requires governed evidence floors and may conclude no change.**
+27. **Live paper compares locked candidates only; it must not become ad hoc candidate search or retuning.**
+28. **Reserved adjudication spans must stay protected until governed final comparison consumes them.**
 
 ## Required runtime guardrails
 

@@ -88,6 +88,37 @@ The deterministic desk is allowed to decide **not** to participate. That is a va
 - degradation is ordered from tighter confirmation through reduced confidence and size, then watch-only, stand-down, and veto;
 - discretionary runtime override is forbidden, and any permitted human-only release or audit annotation must stay outside the runtime path and inside review evidence.
 
+
+## Gate 62 stability authority
+
+Stability is judged with a frozen scorecard and corridor algebra rather than a single trailing outcome snapshot.
+
+- every governed surface receives a scorecard across diagnosis quality, decision quality, economic quality, execution quality, and posture-law fidelity;
+- metric families stay explicit: level, slope, acceleration, persistence, dispersion, corridor width, breach frequency, breach severity, and coverage;
+- corridor zones are explicit target, tolerated-drift, and breach ranges;
+- persistence and hysteresis prevent one noisy block from becoming an automatic review demand;
+- event, regime, and session slice coverage remain visible so hidden fragility is not mistaken for stability.
+
+## Gate 63 review-eligibility authority
+
+A review only becomes eligible when the evidence block is large enough and the observed behaviour crosses the governed trigger law.
+
+- coefficient groups and policy surfaces carry explicit minimum evidence floors;
+- review triggers are bounded to corridor breaches, persistence failures, or coverage collapse, not vague discomfort;
+- downstream review outcomes stay governed: `review_not_eligible`, `review_no_change`, `bounded_adjustment_request`, `candidate_replacement_request`, `research_reset`, and `missing_module_suspicion`;
+- every review outcome carries a bounded change budget;
+- live paper still falsifies locked candidates and does not become a search loop for new in-place coefficients.
+
+## Gate 64 candidate governance authority
+
+Historical replay locks candidates; live paper adjudicates them under bounded role and span rules.
+
+- candidate sets remain small and role-bound before later replay and live-paper wiring;
+- champion, shadow challenger, dormant candidate, and retired candidate are the only governed role labels;
+- adjudication keeps one reserved untouched span until final comparison consumes it deliberately;
+- governed outcomes are retain champion, promote challenger, demote to dormant, retire candidate, or reset to research;
+- if the failure is ontology-level rather than candidate-level, the governed answer is research reset rather than ad hoc retuning.
+
 ## Current operating surfaces
 
 The current repo exposes:
