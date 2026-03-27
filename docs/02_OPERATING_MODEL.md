@@ -300,3 +300,7 @@ Operational rules:
 - posture receives bounded permission, stand-down, and target-capital consequences from the packet without changing grammar order;
 - execution receives additive hedge/capital consequences from the same packet rather than a second private modifier interpretation;
 - review reads the same packet for effective-policy lineage, modifier-control-law outcomes, and blocked-trade / non-action explanation.
+
+## Gate 79 walk-forward harness authority
+
+Gate 79 freezes the replay-side harness contract only. It may generate chronology-safe windows, compare offsets, and emit bounded horizon/fragility/coverage outputs. It may not silently become a live search loop or promotion engine.

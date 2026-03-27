@@ -104,3 +104,5 @@ At minimum, the runtime supports configurable checks for:
 41. **Review packets must stay machine-readable and lineage-complete; no post hoc story time masquerading as trader-grade failure analysis.**
 
 42. **Modifier runtime integration must stay additive, lineaged, and backwards-compatible — no silent rewrites of earlier deterministic consumers.**
+
+- Gate 79 outputs are context only for later review/candidate/research consumers; they must not be read as permission to promote a candidate or guess a review horizon where coverage is insufficient.

@@ -20,6 +20,7 @@ from nvda_desk.schemas.events import (
 )
 from nvda_desk.services.event_ingestion import EventIngestionService
 from scripts.build_canonical_vocabulary import build_document
+from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
@@ -41,7 +42,7 @@ def test_gate72_status_closeout_and_leaf_progress_are_recorded() -> None:
         "Gate 59", "Gate 60", "Gate 61", "Gate 62", "Gate 63", "Gate 64", "Gate 65", "Gate 66",
         "Gate 67", "Gate 68", "Gate 69", "Gate 70", "Gate 71", "Gate 72",
     ]
-    assert int(leaves["active_gate"].split()[1]) >= 73
+    assert successor_pack_position(leaves["active_gate"]) >= 73
     gate72 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 72"]
     assert len(gate72) == 5
     assert all(leaf["status"] == "complete" for leaf in gate72)

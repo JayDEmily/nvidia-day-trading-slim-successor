@@ -15,6 +15,7 @@ from nvda_desk.schemas.state_policy import (
     StatePolicyAuthorityPacket,
 )
 from scripts.build_canonical_vocabulary import build_document
+from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
@@ -111,7 +112,7 @@ def test_gate60_schema_surface_matches_frozen_ontology() -> None:
     }
     assert required_fields.issubset(model_fields)
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
-    if int(leaves["active_gate"].split()[1]) >= 70:
+    if successor_pack_position(leaves["active_gate"]) >= 70:
         assert {"day_phase_state", "carry_horizon_state"}.issubset(model_fields)
 
     authority = StatePolicyAuthorityResponse(

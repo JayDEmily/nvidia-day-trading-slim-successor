@@ -1018,7 +1018,7 @@ Gate 78 is closed on `main`. Runtime now materialises one typed modifier packet,
 
 ## Gate 79 — Walk-forward review-horizon discovery harness
 
-Status: planned
+Status: complete
 
 Depends on: Gates 62–78
 
@@ -1058,7 +1058,12 @@ The repo has a bounded walk-forward horizon-discovery harness contract ready for
 - targeted harness-consistency tests
 
 
+### Gate 79 closeout note
+
+Gate 79 is complete on `main`. The repo now freezes one bounded walk-forward review-horizon discovery harness contract with chronology-safe anchored/rolling window generation, start-offset comparison law, explicit stable/offset-sensitive/no-stable/coverage-insufficient outcomes, event/regime/session slice reporting, fragility and ablation outputs, and explicit review/candidate/research consumer bindings that do **not** authorise unconstrained historical search or promotion by folklore horizon.
+
+
+
 ### Gate 69 closeout note
 
 Gate 69 is complete on `main`. The repo now freezes the ordinary phase-and-carryover policy matrix with explicit day-phase states, carry-horizon states, behaviour classes, no-action bias, and mutable-surface targeting, plus the required state-vector extensions for `day_phase_state` and `carry_horizon_state`.
-

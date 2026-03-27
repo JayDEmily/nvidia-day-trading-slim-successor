@@ -45,7 +45,7 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
-- Gates 59–78 — complete on `main`
+- Gates 59–79 — complete on `main`
 
 ## Sequential execution rule
 
@@ -57,7 +57,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 78 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–78 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 79 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–79 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
@@ -80,6 +80,12 @@ The persisted `main` baseline is now closed through Gate 78 and records Gate 7 e
 - Gate 71 modifier-control-law authority complete on `main`, with deterministic precedence, compatible-combination algebra, clamps, vetoes, and kill-switches now freezing how multiple active states resolve before event-source plumbing;
 - Gate 72 event-ingestion and provenance authority complete on `main`, with one bounded source inventory and provenance contract now freezing freshness, confidence, conflict visibility, and outage fallback before shared event-store/query work;
 - Gate 73 shared event-store/query authority complete on `main`, with one bounded nearby-event/query window, materiality filtering, lineage retrieval, and replay-consumer contract now freezing shared event truth before live cognition binding;
+- Gate 74 live-event-richness authority complete on `main`, with bounded event identity, provenance, nearby summaries, and lineage now preserved additively through the live cognition packet;
+- Gate 75 precursor stitching authority complete on `main`, with bounded venue ordering, freshness, contradiction, stale/degraded fallback, and pre-policy posture meaning now frozen before runtime packet binding;
+- Gate 76 precursor runtime-binding authority complete on `main`, with one additive precursor packet now preserved through prepared runtime snapshots, cognition ingress, and review surfaces;
+- Gate 77 review lineage/failure-taxonomy authority complete on `main`, with typed review lineage, failure, accountability, and promotion-evidence packets now frozen before runtime modifier integration;
+- Gate 78 runtime modifier integration complete on `main`, with one typed modifier packet now preserving effective coefficients, kill-switches, stand-down outcomes, and modifier lineage through posture, execution, and review;
+- Gate 79 walk-forward harness authority complete on `main`, with bounded window-generation, offset-comparison, discovery, fragility, ablation, and downstream-binding contracts now frozen for later testing without starting unconstrained historical search;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The next authored gate is Gate 79 in the V6 successor pack. No missing `v4` or `v5` draft is required to execute that stack.
+No active authored gate remains in the V6 successor pack. Gates 59–79 are closed on `main`, and no missing `v4` or `v5` draft is required to treat that pack as complete.

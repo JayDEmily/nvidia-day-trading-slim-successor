@@ -8,6 +8,7 @@ leaving them implied in tests or ad hoc payloads.
 from __future__ import annotations
 
 from datetime import datetime
+from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -247,3 +248,205 @@ class ReplayFixturePack(BaseModel):
     coefficient_sets: list[CoefficientSet] = Field(default_factory=list)
     scenarios: list[ReplayScenarioRecord] = Field(default_factory=list)
     walk_forward_slices: list[WalkForwardSliceDefinition] = Field(default_factory=list)
+
+
+
+class WalkForwardWindowMode(StrEnum):
+    """Bounded window-generation modes for the Gate 79 harness."""
+
+    ANCHORED = "anchored"
+    ROLLING = "rolling"
+
+
+class WalkForwardWindowRole(StrEnum):
+    """One chronology role inside a generated walk-forward block."""
+
+    CALIBRATION = "calibration"
+    VALIDATION = "validation"
+    FORWARD = "forward"
+
+
+class ChronologyRule(StrEnum):
+    """Frozen no-leakage rules for review-horizon discovery windows."""
+
+    STRICT_FORWARD_ONLY = "strict_forward_only"
+    ADJACENT_SLICES_ONLY = "adjacent_slices_only"
+    NO_FUTURE_LEAKAGE = "no_future_leakage"
+
+
+class OffsetComparisonOutcome(StrEnum):
+    """How multiple start offsets behaved for one candidate horizon."""
+
+    CONSISTENT = "consistent"
+    OFFSET_SENSITIVE = "offset_sensitive"
+    FLAPPING = "flapping"
+
+
+class HorizonDiscoveryOutcome(StrEnum):
+    """Bounded Gate 79 outcomes for review-horizon discovery."""
+
+    STABLE_HORIZON_FOUND = "stable_horizon_found"
+    OFFSET_SENSITIVE = "offset_sensitive"
+    NO_STABLE_HORIZON_FOUND = "no_stable_horizon_found"
+    COVERAGE_INSUFFICIENT = "coverage_insufficient"
+
+
+class DownstreamConsumerMode(StrEnum):
+    """Permitted downstream interpretation of Gate 79 outputs."""
+
+    REVIEW_CONTEXT_ONLY = "review_context_only"
+    CANDIDATE_CONTEXT_ONLY = "candidate_context_only"
+    RESEARCH_RESET_CONTEXT_ONLY = "research_reset_context_only"
+
+
+class WalkForwardStartOffset(BaseModel):
+    """One allowed starting offset for harness window generation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    offset_id: str
+    offset_sessions: int = Field(ge=0)
+
+
+class StabilityComparisonRule(BaseModel):
+    """Frozen spread thresholds used to decide whether a horizon is stable."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    max_replay_score_spread: float = Field(ge=0.0, default=0.25)
+    max_veto_correctness_spread: float = Field(ge=0.0, default=0.25)
+    max_playbook_precision_spread: float = Field(ge=0.0, default=0.25)
+    max_fresh_deployable_spread: float = Field(ge=0.0, default=20.0)
+    min_review_completeness_rate: float = Field(ge=0.0, le=1.0, default=0.9)
+    minimum_forward_windows: int = Field(ge=1, default=2)
+
+
+class WalkForwardWindowContract(BaseModel):
+    """One generated chronology-safe window inside the harness contract."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    window_id: str
+    surface_key: str
+    mode: WalkForwardWindowMode
+    role: WalkForwardWindowRole
+    block_sessions: int = Field(ge=1)
+    offset_id: str
+    start_index: int = Field(ge=0)
+    end_index: int = Field(ge=0)
+    scenario_ids: list[str] = Field(default_factory=list)
+
+
+class ContextSliceReport(BaseModel):
+    """Coverage counts for one event/regime/session slice label."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    dimension: str
+    label: str
+    scenario_count: int = Field(ge=0, default=0)
+    window_count: int = Field(ge=0, default=0)
+
+
+class FragilitySignalReport(BaseModel):
+    """Gate 79 fragility summary that later research can consume."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    hidden_fragility_detected: bool = False
+    offset_sensitive_surface_keys: list[str] = Field(default_factory=list)
+    unstable_surface_keys: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class AblationSignalReport(BaseModel):
+    """Bounded ablation and module-pruning hints, without executing search."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    suspected_missing_modules: list[str] = Field(default_factory=list)
+    pruning_candidates: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class HorizonDiscoveryBinding(BaseModel):
+    """Frozen downstream bindings for review, candidate, and research consumers."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    review_consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.REVIEW_CONTEXT_ONLY
+    candidate_consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.CANDIDATE_CONTEXT_ONLY
+    research_consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.RESEARCH_RESET_CONTEXT_ONLY
+    notes: list[str] = Field(default_factory=list)
+
+
+class GroupReviewHorizonResult(BaseModel):
+    """Review-horizon discovery result for one coefficient group or policy surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_key: str
+    outcome: HorizonDiscoveryOutcome
+    smallest_stable_forward_block: int | None = Field(default=None, ge=1)
+    evaluated_window_ids: list[str] = Field(default_factory=list)
+    stable_offset_ids: list[str] = Field(default_factory=list)
+    unstable_offset_ids: list[str] = Field(default_factory=list)
+    offset_outcome: OffsetComparisonOutcome
+    ranking_consistent: bool = False
+    decision_distribution_consistent: bool = False
+    economic_behaviour_consistent: bool = False
+    notes: list[str] = Field(default_factory=list)
+
+
+class WalkForwardHarnessAuthorityPacket(BaseModel):
+    """Frozen Gate 79 authority packet for review-horizon discovery harness rules."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    harness_id: str
+    window_mode: WalkForwardWindowMode = WalkForwardWindowMode.ANCHORED
+    calibration_window: int = Field(ge=1)
+    validation_window: int = Field(ge=1)
+    candidate_forward_blocks: list[int] = Field(default_factory=list)
+    step_size: int = Field(ge=1, default=1)
+    start_offsets: list[WalkForwardStartOffset] = Field(default_factory=list)
+    chronology_rules: list[ChronologyRule] = Field(
+        default_factory=lambda: [
+            ChronologyRule.STRICT_FORWARD_ONLY,
+            ChronologyRule.ADJACENT_SLICES_ONLY,
+            ChronologyRule.NO_FUTURE_LEAKAGE,
+        ]
+    )
+    stability_rule: StabilityComparisonRule = Field(default_factory=StabilityComparisonRule)
+    surface_keys: list[str] = Field(default_factory=list)
+    downstream_binding: HorizonDiscoveryBinding = Field(default_factory=HorizonDiscoveryBinding)
+    no_go_language: str = (
+        "Do not replace discovered evidence blocks with guessed calendar numbers or folklore horizons."
+    )
+
+    @model_validator(mode="after")
+    def validate_candidate_blocks(self) -> WalkForwardHarnessAuthorityPacket:
+        if not self.candidate_forward_blocks:
+            self.candidate_forward_blocks = [1]
+        self.candidate_forward_blocks = sorted(set(self.candidate_forward_blocks))
+        if not self.start_offsets:
+            self.start_offsets = [WalkForwardStartOffset(offset_id="offset_0", offset_sessions=0)]
+        if not self.surface_keys:
+            self.surface_keys = ["coefficient_groups_default"]
+        return self
+
+
+class HorizonDiscoveryReport(BaseModel):
+    """Bounded Gate 79 report surface emitted by the harness service."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    fixture_pack_id: str | None = None
+    generated_windows: list[WalkForwardWindowContract] = Field(default_factory=list)
+    group_results: list[GroupReviewHorizonResult] = Field(default_factory=list)
+    event_slice_reports: list[ContextSliceReport] = Field(default_factory=list)
+    regime_slice_reports: list[ContextSliceReport] = Field(default_factory=list)
+    session_slice_reports: list[ContextSliceReport] = Field(default_factory=list)
+    fragility: FragilitySignalReport = Field(default_factory=FragilitySignalReport)
+    ablation: AblationSignalReport = Field(default_factory=AblationSignalReport)
+    downstream_binding: HorizonDiscoveryBinding = Field(default_factory=HorizonDiscoveryBinding)

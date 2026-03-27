@@ -8,23 +8,36 @@ and serialises deterministic comparison reports.
 from __future__ import annotations
 
 import json
+from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 from typing import cast
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.calibration import (
+    AblationSignalReport,
     CoefficientAuditPacket,
     CoefficientSet,
     ComparisonMetrics,
     ComparisonReport,
+    ContextSliceReport,
+    FragilitySignalReport,
+    GroupReviewHorizonResult,
+    HorizonDiscoveryOutcome,
+    HorizonDiscoveryReport,
+    OffsetComparisonOutcome,
     ReplayFixturePack,
     ReplayPacketLineage,
     ReplayRunResult,
     ReplayScenarioRecord,
+    StabilityComparisonRule,
     StackDefinition,
     StackVersusStackSummary,
+    WalkForwardHarnessAuthorityPacket,
     WalkForwardSliceDefinition,
+    WalkForwardWindowContract,
+    WalkForwardWindowMode,
+    WalkForwardWindowRole,
 )
 from nvda_desk.schemas.cognition import (
     InventoryState,
@@ -37,6 +50,7 @@ from nvda_desk.schemas.cognition import (
     TemporalContextInput,
     TenorCurvePoint,
 )
+from nvda_desk.schemas.replay import ReplayHorizonDiscoveryResponse
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 
 
@@ -451,3 +465,341 @@ class ReplayComparisonService:
         if value is None:
             return None
         return self._coerce_datetime(value)
+
+
+    def discover_review_horizons_from_fixture_pack(
+        self,
+        path: str | Path,
+        authority: WalkForwardHarnessAuthorityPacket,
+    ) -> ReplayHorizonDiscoveryResponse:
+        """Run the bounded Gate 79 harness from a checked-in replay fixture pack."""
+
+        fixture_pack = self.load_fixture_pack(path)
+        generated_windows = self.build_walk_forward_windows(fixture_pack.scenarios, authority)
+        forward_slices = [
+            WalkForwardSliceDefinition(
+                slice_id=window.window_id,
+                label=f"{window.surface_key} {window.role.value} {window.block_sessions}",
+                scenario_ids=window.scenario_ids,
+            )
+            for window in generated_windows
+            if window.role is WalkForwardWindowRole.FORWARD
+        ]
+        _, report = self.compare(
+            fixture_pack_id=fixture_pack.fixture_pack_id,
+            scenarios=fixture_pack.scenarios,
+            coefficient_sets=fixture_pack.coefficient_sets,
+            stack_definitions=fixture_pack.stack_definitions,
+            walk_forward_slices=forward_slices,
+        )
+        horizon_report = self.evaluate_horizon_discovery(
+            report=report,
+            authority=authority,
+            generated_windows=generated_windows,
+            scenarios=fixture_pack.scenarios,
+        )
+        return ReplayHorizonDiscoveryResponse(
+            fixture_pack_id=fixture_pack.fixture_pack_id,
+            authority=authority,
+            report=horizon_report,
+        )
+
+    def build_walk_forward_windows(
+        self,
+        scenarios: list[ReplayScenarioRecord],
+        authority: WalkForwardHarnessAuthorityPacket,
+    ) -> list[WalkForwardWindowContract]:
+        """Generate chronology-safe calibration, validation, and forward windows."""
+
+        ordered = sorted(scenarios, key=lambda item: (item.ts, item.scenario_id))
+        scenario_ids = [scenario.scenario_id for scenario in ordered]
+        total = len(scenario_ids)
+        windows: list[WalkForwardWindowContract] = []
+        for surface_key in authority.surface_keys:
+            for block_sessions in authority.candidate_forward_blocks:
+                for offset in authority.start_offsets:
+                    iteration = 0
+                    growth = 0
+                    rolling_start = offset.offset_sessions
+                    while True:
+                        if authority.window_mode is WalkForwardWindowMode.ANCHORED:
+                            calibration_start = offset.offset_sessions
+                            calibration_end = calibration_start + authority.calibration_window + growth
+                        else:
+                            calibration_start = rolling_start
+                            calibration_end = calibration_start + authority.calibration_window
+                        validation_start = calibration_end
+                        validation_end = validation_start + authority.validation_window
+                        forward_start = validation_end
+                        forward_end = forward_start + block_sessions
+                        if forward_end > total:
+                            break
+                        spans = [
+                            (WalkForwardWindowRole.CALIBRATION, calibration_start, calibration_end),
+                            (WalkForwardWindowRole.VALIDATION, validation_start, validation_end),
+                            (WalkForwardWindowRole.FORWARD, forward_start, forward_end),
+                        ]
+                        for role, start_idx, end_idx in spans:
+                            windows.append(
+                                WalkForwardWindowContract(
+                                    window_id=(
+                                        f"{surface_key}::{offset.offset_id}::block_{block_sessions}::"
+                                        f"iter_{iteration}::{role.value}"
+                                    ),
+                                    surface_key=surface_key,
+                                    mode=authority.window_mode,
+                                    role=role,
+                                    block_sessions=block_sessions,
+                                    offset_id=offset.offset_id,
+                                    start_index=start_idx,
+                                    end_index=end_idx,
+                                    scenario_ids=scenario_ids[start_idx:end_idx],
+                                )
+                            )
+                        iteration += 1
+                        if authority.window_mode is WalkForwardWindowMode.ANCHORED:
+                            growth += authority.step_size
+                        else:
+                            rolling_start += authority.step_size
+        return windows
+
+    def evaluate_horizon_discovery(
+        self,
+        *,
+        report: ComparisonReport,
+        authority: WalkForwardHarnessAuthorityPacket,
+        generated_windows: list[WalkForwardWindowContract],
+        scenarios: list[ReplayScenarioRecord],
+    ) -> HorizonDiscoveryReport:
+        """Evaluate generated windows against the frozen Gate 79 stability rules."""
+
+        scenario_index = {scenario.scenario_id: scenario for scenario in scenarios}
+        forward_windows = [window for window in generated_windows if window.role is WalkForwardWindowRole.FORWARD]
+        group_results: list[GroupReviewHorizonResult] = []
+        unstable_keys: list[str] = []
+        offset_sensitive_keys: list[str] = []
+        for surface_key in authority.surface_keys:
+            surface_windows = [window for window in forward_windows if window.surface_key == surface_key]
+            result = self._evaluate_surface_key(surface_key, surface_windows, report, authority.stability_rule)
+            group_results.append(result)
+            if result.outcome is HorizonDiscoveryOutcome.OFFSET_SENSITIVE:
+                offset_sensitive_keys.append(surface_key)
+            elif result.outcome is not HorizonDiscoveryOutcome.STABLE_HORIZON_FOUND:
+                unstable_keys.append(surface_key)
+        return HorizonDiscoveryReport(
+            fixture_pack_id=report.fixture_pack_id,
+            generated_windows=generated_windows,
+            group_results=group_results,
+            event_slice_reports=self._context_slice_reports("event", forward_windows, scenario_index),
+            regime_slice_reports=self._context_slice_reports("regime", forward_windows, scenario_index),
+            session_slice_reports=self._context_slice_reports("session", forward_windows, scenario_index),
+            fragility=FragilitySignalReport(
+                hidden_fragility_detected=bool(offset_sensitive_keys or unstable_keys),
+                offset_sensitive_surface_keys=sorted(offset_sensitive_keys),
+                unstable_surface_keys=sorted(unstable_keys),
+                notes=["Harness outputs are bounded evidence surfaces, not promotion decisions."],
+            ),
+            ablation=self._ablation_report(report),
+            downstream_binding=authority.downstream_binding,
+        )
+
+    def _evaluate_surface_key(
+        self,
+        surface_key: str,
+        windows: list[WalkForwardWindowContract],
+        report: ComparisonReport,
+        rule: StabilityComparisonRule,
+    ) -> GroupReviewHorizonResult:
+        block_groups: dict[int, list[WalkForwardWindowContract]] = defaultdict(list)
+        for window in windows:
+            block_groups[window.block_sessions].append(window)
+        if not block_groups:
+            return GroupReviewHorizonResult(
+                surface_key=surface_key,
+                outcome=HorizonDiscoveryOutcome.COVERAGE_INSUFFICIENT,
+                offset_outcome=OffsetComparisonOutcome.FLAPPING,
+                notes=["No generated forward windows were available for this surface."],
+            )
+        offset_sensitive_seen = False
+        evaluated_window_ids: list[str] = []
+        for block_sessions in sorted(block_groups):
+            block_windows = block_groups[block_sessions]
+            evaluated_window_ids.extend(window.window_id for window in block_windows)
+            populated_windows = [window for window in block_windows if report.slice_reports.get(window.window_id)]
+            if len(populated_windows) < rule.minimum_forward_windows:
+                continue
+            offset_map: dict[str, list[WalkForwardWindowContract]] = defaultdict(list)
+            for window in populated_windows:
+                offset_map[window.offset_id].append(window)
+            stable_offsets: list[str] = []
+            unstable_offsets: list[str] = []
+            offset_rankings: list[list[str]] = []
+            any_metrics = False
+            for offset_id, offset_windows in sorted(offset_map.items()):
+                metrics_by_set = self._metrics_by_set(offset_windows, report)
+                if not metrics_by_set:
+                    unstable_offsets.append(offset_id)
+                    continue
+                any_metrics = True
+                ranking = self._ranking_for_offset(metrics_by_set)
+                offset_rankings.append(ranking)
+                if self._metrics_are_stable(metrics_by_set, rule):
+                    stable_offsets.append(offset_id)
+                else:
+                    unstable_offsets.append(offset_id)
+            if not any_metrics:
+                continue
+            ranking_consistent = len({tuple(ranking) for ranking in offset_rankings}) <= 1
+            decision_consistent = len(unstable_offsets) == 0
+            economic_consistent = self._economic_behaviour_consistent(block_windows, report, rule)
+            if stable_offsets and ranking_consistent and decision_consistent and economic_consistent:
+                return GroupReviewHorizonResult(
+                    surface_key=surface_key,
+                    outcome=HorizonDiscoveryOutcome.STABLE_HORIZON_FOUND,
+                    smallest_stable_forward_block=block_sessions,
+                    evaluated_window_ids=evaluated_window_ids,
+                    stable_offset_ids=stable_offsets,
+                    unstable_offset_ids=unstable_offsets,
+                    offset_outcome=OffsetComparisonOutcome.CONSISTENT,
+                    ranking_consistent=ranking_consistent,
+                    decision_distribution_consistent=decision_consistent,
+                    economic_behaviour_consistent=economic_consistent,
+                    notes=["Smallest chronology-safe stable block found."],
+                )
+            if stable_offsets and not ranking_consistent:
+                offset_sensitive_seen = True
+        outcome = (
+            HorizonDiscoveryOutcome.OFFSET_SENSITIVE
+            if offset_sensitive_seen
+            else HorizonDiscoveryOutcome.NO_STABLE_HORIZON_FOUND
+        )
+        offset_outcome = (
+            OffsetComparisonOutcome.OFFSET_SENSITIVE
+            if offset_sensitive_seen
+            else OffsetComparisonOutcome.FLAPPING
+        )
+        if all(len([window for window in group if report.slice_reports.get(window.window_id)]) < rule.minimum_forward_windows for group in block_groups.values()):
+            outcome = HorizonDiscoveryOutcome.COVERAGE_INSUFFICIENT
+            offset_outcome = OffsetComparisonOutcome.FLAPPING
+        return GroupReviewHorizonResult(
+            surface_key=surface_key,
+            outcome=outcome,
+            evaluated_window_ids=evaluated_window_ids,
+            offset_outcome=offset_outcome,
+            ranking_consistent=False,
+            decision_distribution_consistent=False,
+            economic_behaviour_consistent=False,
+            notes=["No stable horizon met the frozen Gate 79 comparison rules."],
+        )
+
+    def _metrics_by_set(
+        self,
+        windows: list[WalkForwardWindowContract],
+        report: ComparisonReport,
+    ) -> dict[str, list[ComparisonMetrics]]:
+        metrics: dict[str, list[ComparisonMetrics]] = defaultdict(list)
+        for window in windows:
+            slice_metrics = report.slice_reports.get(window.window_id, {})
+            for set_id, summary in slice_metrics.items():
+                metrics[set_id].append(summary)
+        return dict(metrics)
+
+    def _metrics_are_stable(
+        self,
+        metrics_by_set: dict[str, list[ComparisonMetrics]],
+        rule: StabilityComparisonRule,
+    ) -> bool:
+        for summaries in metrics_by_set.values():
+            if not summaries:
+                return False
+            replay_spread = max(item.mean_replay_score for item in summaries) - min(item.mean_replay_score for item in summaries)
+            veto_spread = max(item.veto_correctness_rate for item in summaries) - min(item.veto_correctness_rate for item in summaries)
+            playbook_spread = max(item.mean_playbook_precision for item in summaries) - min(item.mean_playbook_precision for item in summaries)
+            fresh_spread = max(item.mean_fresh_deployable_pct for item in summaries) - min(item.mean_fresh_deployable_pct for item in summaries)
+            if replay_spread > rule.max_replay_score_spread:
+                return False
+            if veto_spread > rule.max_veto_correctness_spread:
+                return False
+            if playbook_spread > rule.max_playbook_precision_spread:
+                return False
+            if fresh_spread > rule.max_fresh_deployable_spread:
+                return False
+            if min(item.review_completeness_rate for item in summaries) < rule.min_review_completeness_rate:
+                return False
+        return True
+
+    def _ranking_for_offset(self, metrics_by_set: dict[str, list[ComparisonMetrics]]) -> list[str]:
+        ranked = []
+        for set_id, summaries in metrics_by_set.items():
+            mean_score = sum(item.mean_replay_score for item in summaries) / len(summaries)
+            ranked.append((set_id, mean_score))
+        return [set_id for set_id, _score in sorted(ranked, key=lambda item: (-item[1], item[0]))]
+
+    def _economic_behaviour_consistent(
+        self,
+        windows: list[WalkForwardWindowContract],
+        report: ComparisonReport,
+        rule: StabilityComparisonRule,
+    ) -> bool:
+        spreads = []
+        for window in windows:
+            slice_metrics = report.slice_reports.get(window.window_id, {})
+            if not slice_metrics:
+                continue
+            means = [metric.mean_fresh_deployable_pct for metric in slice_metrics.values()]
+            spreads.append(max(means) - min(means))
+        return not spreads or max(spreads) <= rule.max_fresh_deployable_spread
+
+    def _context_slice_reports(
+        self,
+        dimension: str,
+        windows: list[WalkForwardWindowContract],
+        scenario_index: dict[str, ReplayScenarioRecord],
+    ) -> list[ContextSliceReport]:
+        scenario_counter: Counter[str] = Counter()
+        window_counter: Counter[str] = Counter()
+        for window in windows:
+            labels = set()
+            for scenario_id in window.scenario_ids:
+                scenario = scenario_index[scenario_id]
+                labels_for_scenario = self._labels_for_dimension(dimension, scenario)
+                for label in labels_for_scenario:
+                    scenario_counter[label] += 1
+                    labels.add(label)
+            for label in labels:
+                window_counter[label] += 1
+        return [
+            ContextSliceReport(dimension=dimension, label=label, scenario_count=scenario_counter[label], window_count=window_counter[label])
+            for label in sorted(scenario_counter)
+        ]
+
+    def _labels_for_dimension(self, dimension: str, scenario: ReplayScenarioRecord) -> list[str]:
+        payload = scenario.payload
+        if dimension == "event":
+            if payload.get("event_slice"):
+                return [str(payload["event_slice"])]
+            return ["event_adjacent" if payload.get("next_event_at") else "no_event"]
+        if dimension == "regime":
+            if payload.get("regime_slice"):
+                return [str(payload["regime_slice"])]
+            breadth = self._get_float(payload, "breadth_score", 0.0)
+            return ["broad_risk_on" if breadth >= 0 else "broad_risk_off"]
+        if payload.get("session_slice"):
+            return [str(payload["session_slice"])]
+        ts = self._coerce_datetime(payload["ts"])
+        return ["core_session" if 13 <= ts.hour <= 20 else "other_session"]
+
+    def _ablation_report(self, report: ComparisonReport) -> AblationSignalReport:
+        zero_activity_sets = [
+            set_id
+            for set_id, metrics in report.reports.items()
+            if metrics.active_playbook_rate == 0.0
+        ]
+        notes = []
+        if zero_activity_sets:
+            notes.append("Sets with zero active-playbook rate across the harness may indicate missing-module or over-pruning suspicion.")
+        return AblationSignalReport(
+            suspected_missing_modules=sorted(zero_activity_sets),
+            pruning_candidates=sorted(zero_activity_sets),
+            notes=notes,
+        )

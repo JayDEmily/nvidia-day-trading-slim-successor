@@ -295,3 +295,5 @@ Runtime modifier law becomes real only when the live runtime materialises one ty
 - blocked or stand-down outcomes must be explicit packet fields, not inferred from missing trades;
 - posture, execution, and review must all see the same effective-coefficient lineage rather than reconstructing separate private interpretations;
 - compatibility fields may remain as additive hints, but the modifier packet is the authority for runtime-applied posture change.
+
+- review-horizon discovery must use bounded chronology-safe window contracts and explicit offset-comparison law; guessed calendar folklore (for example, “20 sessions” by habit) is prohibited where the Gate 79 harness has not produced evidence;

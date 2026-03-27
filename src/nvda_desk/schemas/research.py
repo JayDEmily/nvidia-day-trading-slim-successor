@@ -25,3 +25,14 @@ class ResearchNotePayload(BaseModel):
 
 class ResearchNoteListResponse(BaseModel):
     notes: list[ResearchNotePayload]
+
+
+
+class HorizonDiscoveryResearchSummary(BaseModel):
+    """Bounded research-facing summary for Gate 79 harness outputs."""
+
+    fixture_pack_id: str | None = None
+    stable_surface_keys: list[str] = Field(default_factory=list)
+    unstable_surface_keys: list[str] = Field(default_factory=list)
+    insufficient_surface_keys: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)

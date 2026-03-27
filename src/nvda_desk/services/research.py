@@ -6,7 +6,9 @@ from sqlalchemy import desc, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.db.models import ResearchNote
+from nvda_desk.schemas.calibration import HorizonDiscoveryOutcome, HorizonDiscoveryReport
 from nvda_desk.schemas.research import (
+    HorizonDiscoveryResearchSummary,
     ResearchNoteCreate,
     ResearchNoteListResponse,
     ResearchNotePayload,
@@ -46,4 +48,30 @@ class ResearchService:
             thesis=note.thesis,
             body_md=note.body_md,
             tags=list(json.loads(note.tags_json)),
+        )
+
+
+    def build_horizon_discovery_summary(self, report: HorizonDiscoveryReport) -> HorizonDiscoveryResearchSummary:
+        """Collapse Gate 79 outputs into a bounded research-facing summary."""
+
+        stable = []
+        unstable = []
+        insufficient = []
+        for result in report.group_results:
+            if result.outcome is HorizonDiscoveryOutcome.STABLE_HORIZON_FOUND:
+                stable.append(result.surface_key)
+            elif result.outcome is HorizonDiscoveryOutcome.COVERAGE_INSUFFICIENT:
+                insufficient.append(result.surface_key)
+            else:
+                unstable.append(result.surface_key)
+        notes = [
+            "Gate 79 freezes harness outputs only; it does not run unconstrained historical search.",
+            "Candidate and review consumers may treat unstable or insufficient outputs as context, not promotion proof.",
+        ]
+        return HorizonDiscoveryResearchSummary(
+            fixture_pack_id=report.fixture_pack_id,
+            stable_surface_keys=sorted(stable),
+            unstable_surface_keys=sorted(unstable),
+            insufficient_surface_keys=sorted(insufficient),
+            notes=notes,
         )

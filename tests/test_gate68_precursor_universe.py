@@ -19,6 +19,7 @@ from nvda_desk.schemas.market import (
 )
 from nvda_desk.schemas.review import PrecursorGovernanceSurface
 from scripts.build_canonical_vocabulary import build_document
+from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
@@ -48,7 +49,7 @@ def test_gate68_status_closeout_and_leaf_progress_are_recorded() -> None:
         "Gate 67",
         "Gate 68",
     ]
-    assert int(leaves["active_gate"].split()[1]) >= 69
+    assert successor_pack_position(leaves["active_gate"]) >= 69
 
     gate68 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 68"]
     assert len(gate68) == 5

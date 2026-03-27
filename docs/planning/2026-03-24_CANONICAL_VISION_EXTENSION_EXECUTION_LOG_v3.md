@@ -1444,3 +1444,10 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Source merge commit: `eccd360`
 - Closeout summary: integrated bounded state-conditioned modifier law into live runtime using one typed modifier packet that now carries effective coefficients, kill-switch outcomes, stand-down classes, and lineage through posture, execution, and review.
 - Proof surfaces: `tests/test_gate78_modifier_runtime_integration.py`, `tests/test_execution_review_runtime.py`, updated planning quartet, and runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py`, `src/nvda_desk/services/cognition_runtime.py`, plus review exposure in `src/nvda_desk/services/review_explanation.py`.
+
+
+### Gate 79 successor-pack closeout
+
+- Source merge commit: `PENDING_COMMIT`
+- Closeout summary: froze one bounded walk-forward review-horizon discovery harness with chronology-safe windows, start-offset comparison, explicit stable/offset-sensitive/no-stable/coverage-insufficient outputs, event/regime/session slice coverage, fragility, ablation, and downstream review/candidate/research bindings.
+- Proof surfaces: `tests/test_gate79_horizon_discovery_harness.py`, `tests/test_research_eval_replay.py`, updated planning quartet, `src/nvda_desk/schemas/calibration.py`, `src/nvda_desk/schemas/replay.py`, `src/nvda_desk/services/replay_compare.py`, `src/nvda_desk/services/replay.py`, and `src/nvda_desk/services/research.py`.

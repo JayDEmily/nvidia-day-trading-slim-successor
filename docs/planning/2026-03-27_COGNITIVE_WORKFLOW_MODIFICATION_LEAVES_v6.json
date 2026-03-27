@@ -4960,7 +4960,7 @@
       "full_suite_required": true,
       "pass_gate": "Define walk-forward window-generation contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 105
     },
     {
@@ -5009,7 +5009,7 @@
       "full_suite_required": true,
       "pass_gate": "Define start-offset comparison logic and stability-comparison rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 106
     },
     {
@@ -5058,7 +5058,7 @@
       "full_suite_required": true,
       "pass_gate": "Define review-horizon discovery outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 107
     },
     {
@@ -5107,7 +5107,7 @@
       "full_suite_required": true,
       "pass_gate": "Define event-sliced, regime-sliced, fragility, and ablation reporting outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 108
     },
     {
@@ -5156,7 +5156,7 @@
       "full_suite_required": true,
       "pass_gate": "Bind horizon-discovery outputs to review and candidate consumers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 109
     },
     {
@@ -5205,12 +5205,12 @@
       "full_suite_required": true,
       "pass_gate": "Freeze walk-forward harness authority and add replay-contract checks is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 79 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_77_complete_successor_pack_active_from_gate_78",
-  "completed_at": "2026-03-27T08:03:11.927747+00:00",
+  "execution_status": "gate_79_complete_successor_pack_closed_after_gate_79",
+  "completed_at": "2026-03-27T09:24:40.679429+00:00",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5315,9 +5315,7 @@
     "LEAF-G78-002",
     "LEAF-G78-003",
     "LEAF-G78-004",
-    "LEAF-G78-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G78-005",
     "LEAF-G79-001",
     "LEAF-G79-002",
     "LEAF-G79-003",
@@ -5325,6 +5323,7 @@
     "LEAF-G79-005",
     "LEAF-G79-006"
   ],
+  "remaining_leaf_ids": [],
   "completed_gate_ids": [
     "Gate 59",
     "Gate 60",
@@ -5345,8 +5344,9 @@
     "Gate 75",
     "Gate 76",
     "Gate 77",
-    "Gate 78"
+    "Gate 78",
+    "Gate 79"
   ],
-  "active_gate": "Gate 79",
+  "active_gate": "none_successor_pack_closed_after_gate_79",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

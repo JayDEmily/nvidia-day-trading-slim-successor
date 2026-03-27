@@ -21,6 +21,7 @@ from nvda_desk.services.real_data_loader import RealDataLoaderService
 from nvda_desk.services.review_packets import ReviewPacketService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 from scripts.build_canonical_vocabulary import build_document
+from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
@@ -70,7 +71,7 @@ def test_gate76_status_closeout_and_leaf_progress_are_recorded() -> None:
         "Gate 59", "Gate 60", "Gate 61", "Gate 62", "Gate 63", "Gate 64", "Gate 65", "Gate 66",
         "Gate 67", "Gate 68", "Gate 69", "Gate 70", "Gate 71", "Gate 72", "Gate 73", "Gate 74", "Gate 75", "Gate 76",
     ]
-    assert int(leaves["active_gate"].split()[1]) >= 77
+    assert successor_pack_position(leaves["active_gate"]) >= 77
     gate76 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 76"]
     assert len(gate76) == 4
     assert all(leaf["status"] == "complete" for leaf in gate76)
