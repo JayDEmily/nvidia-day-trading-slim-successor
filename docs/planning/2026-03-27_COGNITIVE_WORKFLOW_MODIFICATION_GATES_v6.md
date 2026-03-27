@@ -607,7 +607,7 @@ A bounded phase/carryover policy matrix exists and identifies what changes, what
 
 ## Gate 70 — Event and options-stress policy matrix
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 60–69
 
@@ -645,6 +645,10 @@ A bounded event/options-stress policy matrix exists with explicit behavioural co
 - event/stress posture docs
 - policy-matrix vocabulary updates
 - targeted schema and consistency tests
+
+### Gate 70 closeout note
+
+Gate 70 is complete on `main`. The repo now freezes one deterministic event/options-stress matrix covering imminent/live event states, event suppression, negative-gamma stress, pin risk, expiry distortion, non-action boundaries, and internally consistent combined examples while leaving final precedence to Gate 71.
 
 ## Gate 71 — Modifier precedence, caps, vetoes, and kill-switches
 

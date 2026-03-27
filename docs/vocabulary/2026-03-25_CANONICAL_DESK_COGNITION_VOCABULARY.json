@@ -741,6 +741,26 @@
       ]
     },
     {
+      "canonical_slug": "event_options_stress_policy",
+      "canonical_label": "Event and Options-Stress Policy",
+      "category": "workflow",
+      "stage_owner": "posture_risk",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.EventOptionsStressAuthorityPacket",
+      "allowed_aliases": [
+        "event_stress_matrix",
+        "options_stress_policy"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

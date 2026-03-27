@@ -2834,7 +2834,7 @@
       "full_suite_required": false,
       "pass_gate": "Write event-imminent and event-live modifier policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 60
     },
     {
@@ -2882,7 +2882,7 @@
       "full_suite_required": false,
       "pass_gate": "Write event-suppressed and negative-gamma-stress policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 61
     },
     {
@@ -2930,7 +2930,7 @@
       "full_suite_required": false,
       "pass_gate": "Write pin-risk and expiry-distortion policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 62
     },
     {
@@ -2978,7 +2978,7 @@
       "full_suite_required": false,
       "pass_gate": "Write combined event-plus-options-state examples is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 63
     },
     {
@@ -3026,7 +3026,7 @@
       "full_suite_required": false,
       "pass_gate": "Define event/options-state non-action boundaries is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 64
     },
     {
@@ -3074,7 +3074,7 @@
       "full_suite_required": false,
       "pass_gate": "Freeze event/options-stress policy-matrix authority and add tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 70 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 65
     },
     {
@@ -5195,7 +5195,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_69_complete_on_main_successor_pack_active_from_gate_70",
+  "execution_status": "gate_70_complete_on_main_successor_pack_active_from_gate_71",
   "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5256,15 +5256,15 @@
     "LEAF-G69-003",
     "LEAF-G69-004",
     "LEAF-G69-005",
-    "LEAF-G69-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G69-006",
     "LEAF-G70-001",
     "LEAF-G70-002",
     "LEAF-G70-003",
     "LEAF-G70-004",
     "LEAF-G70-005",
-    "LEAF-G70-006",
+    "LEAF-G70-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G71-001",
     "LEAF-G71-002",
     "LEAF-G71-003",
@@ -5322,8 +5322,9 @@
     "Gate 66",
     "Gate 67",
     "Gate 68",
-    "Gate 69"
+    "Gate 69",
+    "Gate 70"
   ],
-  "active_gate": "Gate 70",
+  "active_gate": "Gate 71",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

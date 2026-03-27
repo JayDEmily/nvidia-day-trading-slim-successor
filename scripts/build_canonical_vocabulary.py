@@ -373,6 +373,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["ordinary_session_policy_matrix"],
             notes=["Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."],
         ),
+        VocabularyEntry(
+            canonical_slug="event_options_stress_policy",
+            canonical_label="Event and Options-Stress Policy",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="posture_risk",
+            maps_to_contract="nvda_desk.schemas.state_policy.EventOptionsStressAuthorityPacket",
+            allowed_aliases=["event_stress_matrix", "options_stress_policy"],
+            notes=["Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

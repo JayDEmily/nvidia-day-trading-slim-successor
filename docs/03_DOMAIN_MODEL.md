@@ -242,6 +242,42 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5a. Phase-and-carryover policy objects
@@ -259,6 +295,42 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/risk.py`
 - state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -298,6 +370,42 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5a. Phase-and-carryover policy objects
@@ -315,6 +423,42 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/risk.py`
 - state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 5b. Event/options-stress policy objects
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
