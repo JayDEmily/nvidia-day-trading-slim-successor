@@ -52,6 +52,16 @@ The deterministic runtime follows this order:
 
 No module bypasses this order.
 
+## Adaptation law
+
+The repo preserves a stable cognition grammar and only allows bounded, approved change in operating posture. That means:
+
+- historical replay is the research and discovery surface;
+- live paper is the falsification and promotion surface for locked candidates;
+- review does not imply change, and **no change** is a valid governed outcome;
+- runtime never invents new coefficients or hidden policy in place;
+- baseline coefficient changes happen only through reviewed release, never through runtime self-adjustment.
+
 ## Canonical terminology
 
 - **module**: deterministic runtime component with a clear contract.

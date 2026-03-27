@@ -31,6 +31,16 @@ The current repo has three parts:
 - records orders, fills, vetoes, blocks, and attribution;
 - runs replay, backtest, and paper paths.
 
+## Adaptation and evidence law
+
+The deterministic desk is allowed to adapt only in a bounded, inspectable way.
+
+- The cognition grammar stays fixed unless a deliberate normative revision proves otherwise.
+- Historical replay is the research/discovery surface.
+- Live paper is the falsification/promotion surface for locked candidates and must not become in-place coefficient discovery.
+- Review may end in `no_change`; the existence of a review does not itself authorise a runtime or coefficient edit.
+- Runtime never invents coefficients or hidden policy in place.
+
 ## Daily operating loop
 
 ```text
@@ -40,7 +50,7 @@ prepare market picture
   -> draft or revise module artefacts
   -> code / gate deterministic module changes
   -> replay / backtest / paper evaluate
-  -> promote, revise, or retire
+  -> promote, revise, retire, or keep unchanged
   -> review post-trade attribution
 ```
 

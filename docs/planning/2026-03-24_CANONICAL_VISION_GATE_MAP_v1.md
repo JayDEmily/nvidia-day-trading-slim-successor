@@ -9,8 +9,8 @@ Paired files:
 - `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` — sequential execution receipts
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md` — frozen audit findings input
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md` — audit-produced planning consequences
-- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md` — successor modification gate surface
-- `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v1.json` — successor modification leaf ledger
+- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md` — active successor modification gate surface
+- `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json` — active successor modification leaf ledger
 
 ## 0. Purpose
 
@@ -46,7 +46,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **no later gate is authored yet beyond Gate 58 in the successor DMP-promotion pack**.
+Current active gate: **Gate 60 in the V6 successor pack**. Gate 59 doctrine rebase is complete on `main`; the attached `_v4_5` salvage pair is archived under `docs/legacy/` and is not active authority.
 
 ## 2. Current completed tranche and successor pack
 
@@ -73,6 +73,7 @@ The successor cognitive-workflow modification pack is now authored and partially
 | Gate 56 | complete on `main` | audit DMP v2 readiness, future-proofing, and doc/guardrail coherence before promotion | `docs/planning/2026-03-26_GATE56_DMP_V2_READINESS_AUDIT.md` |
 | Gate 57 | complete on `main` | promote DMP v2 to the canonical live producer surface across runtime and imported-module emissions | `docs/planning/2026-03-26_GATE57_DMP_V2_CANONICAL_PROMOTION.md` |
 | Gate 58 | complete on `main` | retire DMP v1 from live runtime dependency and remove mixed-mode ambiguity | `docs/planning/2026-03-26_GATE58_DMP_V1_RETIREMENT.md` |
+| Gate 59 | complete on `main` | doctrine/planning reset that makes the V6 pair the only active successor authority for Gates 60–79 | `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`, `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json` |
 
 ## 4. Global execution rules
 
@@ -83,4 +84,4 @@ The successor cognitive-workflow modification pack is now authored and partially
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; no later gate may be implied until a new successor pack is authored.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gate 59 doctrine rebase is complete on `main`; Gate 60 is the next active gate in the V6 successor pack.

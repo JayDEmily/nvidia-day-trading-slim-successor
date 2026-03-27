@@ -1,0 +1,4552 @@
+{
+  "plan_id": "2026-03-27_cognitive_workflow_modification_v4",
+  "governing_plan": "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+  "global_rules": [
+    "This successor pack begins after Gates 51\u201358 and exists to turn the broad exploratory modification ideas into genuinely executable slices.",
+    "The binding cognition grammar order remains authoritative; no gate may reorder runtime stages unless a dedicated gate proves and documents the change.",
+    "One branch per gate; complete every planned leaf for the gate, pass targeted validation, merge to main, and only then open the next gate branch.",
+    "No leaf may silently introduce ad hoc event classes, calendar facts, precursor markets, or modifier surfaces outside the authority docs created in earlier gates.",
+    "Live paper remains a falsification/promotion surface for locked candidates, not an in-place coefficient-discovery surface.",
+    "State-conditioned modifiers are bounded runtime policies, not informal retuning; prohibited variable surfaces remain fixed.",
+    "Any gate that reveals ontology failure or a missing module must emit a research-reset note rather than smuggling the redesign into the current gate."
+  ],
+  "leaves": [
+    {
+      "id": "LEAF-G59-001",
+      "gate": "Gate 59",
+      "title": "Freeze canonical event-class taxonomy",
+      "prerequisites": [],
+      "scope": "Define the top-level event classes the desk runtime recognises and prohibit free-text runtime categories.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write the canonical event-class list for company, macro, policy, venue, expiry, and exceptional desk-relevant events.",
+        "State explicit inclusion/exclusion examples so event classes do not drift by analogy.",
+        "Record forbidden free-text and overlapping categories that must not reappear downstream."
+      ],
+      "validation_tasks": [
+        "Check the class list against docs/01_NORMATIVE.md, docs/02_OPERATING_MODEL.md, and the current events schema for naming conflicts.",
+        "Ensure the taxonomy is exhaustive enough for the known desk use-cases raised in the planning thread."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze canonical event-class taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 1
+    },
+    {
+      "id": "LEAF-G59-002",
+      "gate": "Gate 59",
+      "title": "Separate known risk, priced risk, and realised reaction semantics",
+      "prerequisites": [
+        "LEAF-G59-001"
+      ],
+      "scope": "Pin the conceptual distinction between scheduled/known events, market-priced event posture, and realised post-event path.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write precise definitions for known risk, priced risk, and realised reaction.",
+        "State which runtime stages may consume each concept and which stages must not collapse them into one label.",
+        "Give trader-style examples where two days look similarly nervous but differ in causal event class."
+      ],
+      "validation_tasks": [
+        "Confirm the definitions do not contradict the seven-stage grammar or temporal/event ownership notes."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Separate known risk, priced risk, and realised reaction semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 2
+    },
+    {
+      "id": "LEAF-G59-003",
+      "gate": "Gate 59",
+      "title": "Define event impact-tier vocabulary and examples",
+      "prerequisites": [
+        "LEAF-G59-002"
+      ],
+      "scope": "Create bounded impact tiers so event materiality is explicit rather than left to ad hoc commentary.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define the impact-tier ladder and what each tier means operationally.",
+        "Map representative company, macro, and venue events to the proposed tiers.",
+        "Record what evidence is required for a source to assign a tier."
+      ],
+      "validation_tasks": [
+        "Check that impact tiers can be represented without new free-text fields."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event impact-tier vocabulary and examples is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 3
+    },
+    {
+      "id": "LEAF-G59-004",
+      "gate": "Gate 59",
+      "title": "Define company-specific event classes for NVDA and close peers",
+      "prerequisites": [
+        "LEAF-G59-003"
+      ],
+      "scope": "Capture the company-event classes the desk actually cares about instead of leaving them implicit.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List NVDA-specific and closely related company-event classes such as earnings, major launches, guidance, conferences, and regulatory updates.",
+        "State whether peer or supply-chain events are first-class or merely supporting context.",
+        "Record examples and non-examples."
+      ],
+      "validation_tasks": [
+        "Ensure company-event classes do not overlap confusingly with generic macro or venue-event classes."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define company-specific event classes for NVDA and close peers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 4
+    },
+    {
+      "id": "LEAF-G59-005",
+      "gate": "Gate 59",
+      "title": "Define macro, policy, and expiry event classes",
+      "prerequisites": [
+        "LEAF-G59-004"
+      ],
+      "scope": "Capture the desk-relevant macro/policy calendar and expiry-related classes as first-class event types.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List FOMC, CPI, PPI, NFP, GDP, Powell/minutes, OPEX, expiry-week, expiry-day, and similar classes.",
+        "State whether each class is scheduled-event logic, venue-calendar logic, or both.",
+        "Record how macro-policy classes differ from company-event classes in downstream use."
+      ],
+      "validation_tasks": [
+        "Ensure expiry classes align with session/holiday contracts rather than duplicating them inconsistently."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define macro, policy, and expiry event classes is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 5
+    },
+    {
+      "id": "LEAF-G59-006",
+      "gate": "Gate 59",
+      "title": "Freeze the event-taxonomy authority surface",
+      "prerequisites": [
+        "LEAF-G59-005"
+      ],
+      "scope": "Close Gate 59 by freezing one authoritative event-taxonomy surface and pointers for downstream gates.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final Gate 59 authority note and point downstream gates at the canonical taxonomy artefact.",
+        "Record no-go language that prevents later gates from silently adding ad hoc event classes."
+      ],
+      "validation_tasks": [
+        "Check that every downstream gate referencing event classes points back to the new authority surface."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze the event-taxonomy authority surface is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 59 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 6
+    },
+    {
+      "id": "LEAF-G60-001",
+      "gate": "Gate 60",
+      "title": "Define venue and session taxonomy",
+      "prerequisites": [],
+      "scope": "Write the canonical venue/session taxonomy for US, Japan, Hong Kong, and China desk context.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define venue identifiers, session classes, and their desk-relevant meanings.",
+        "State which venues are direct trading venues versus precursor-context venues.",
+        "Record session-open/session-close semantics and session-class naming."
+      ],
+      "validation_tasks": [
+        "Check that venue/session labels do not conflict with existing temporal vocabulary."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define venue and session taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 7
+    },
+    {
+      "id": "LEAF-G60-002",
+      "gate": "Gate 60",
+      "title": "Formalise US holidays and half-day rules",
+      "prerequisites": [
+        "LEAF-G60-001"
+      ],
+      "scope": "Capture US market holidays, half-days, and related routing consequences.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the US holiday and half-day classes relevant to the desk.",
+        "State how holiday and half-day facts affect intraday, carry, and review logic.",
+        "Record examples where a half-day should change runtime assumptions."
+      ],
+      "validation_tasks": [
+        "Ensure the holiday rules remain calendar facts and do not mutate the seven-stage grammar."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Formalise US holidays and half-day rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 8
+    },
+    {
+      "id": "LEAF-G60-003",
+      "gate": "Gate 60",
+      "title": "Formalise Japan, Hong Kong, and China holiday/session facts",
+      "prerequisites": [
+        "LEAF-G60-002"
+      ],
+      "scope": "Capture the non-US venue closures and special session facts that shape precursor context.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List Japan, Hong Kong, and China holiday/session cases the desk cares about.",
+        "State how closures, shortened sessions, or missing sessions affect precursor interpretation.",
+        "Record how these facts are represented without overloading event classes."
+      ],
+      "validation_tasks": [
+        "Check for duplication against the event taxonomy and venue/session taxonomy."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Formalise Japan, Hong Kong, and China holiday/session facts is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 9
+    },
+    {
+      "id": "LEAF-G60-004",
+      "gate": "Gate 60",
+      "title": "Define session-bridge and timezone-alignment rules",
+      "prerequisites": [
+        "LEAF-G60-003"
+      ],
+      "scope": "Write the rules for how one venue/session hands off into the next in desk calendar terms.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Specify timezone authority and conversion rules.",
+        "Define how overnight precursor sessions are aligned to the US trading day.",
+        "State what happens on weekends, bridging holidays, and daylight-saving transitions."
+      ],
+      "validation_tasks": [
+        "Confirm timezone rules are deterministic and reviewable."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define session-bridge and timezone-alignment rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 10
+    },
+    {
+      "id": "LEAF-G60-005",
+      "gate": "Gate 60",
+      "title": "Define expiry-calendar and session interaction rules",
+      "prerequisites": [
+        "LEAF-G60-004"
+      ],
+      "scope": "Separate expiry-calendar facts from generic event classes while preserving their routing relevance.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define OPEX/expiry-week/expiry-day calendar ownership and relation to venue sessions.",
+        "State how expiry calendars interact with holidays, half-days, and session bridges.",
+        "Record examples of combined expiry and holiday edge cases."
+      ],
+      "validation_tasks": [
+        "Ensure expiry rules do not silently reintroduce vague event labels."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define expiry-calendar and session interaction rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 11
+    },
+    {
+      "id": "LEAF-G60-006",
+      "gate": "Gate 60",
+      "title": "Freeze the desk-calendar authority surface",
+      "prerequisites": [
+        "LEAF-G60-005"
+      ],
+      "scope": "Close Gate 60 by freezing one authoritative session/holiday/venue-calendar contract for downstream gates.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and explicit references for later precursor, event, and modifier gates.",
+        "Record no-go language preventing ad hoc calendar facts outside the authority surface."
+      ],
+      "validation_tasks": [
+        "Check downstream gate references to the desk-calendar contract."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze the desk-calendar authority surface is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 60 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 12
+    },
+    {
+      "id": "LEAF-G61-001",
+      "gate": "Gate 61",
+      "title": "Inventory supported event sources",
+      "prerequisites": [],
+      "scope": "Produce a source inventory of all feeds or files the repo may trust for event facts.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/audit/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "Runtime semantics beyond evidence-only instrumentation",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List each supported event source and what event classes it may authoritatively provide.",
+        "State whether each source is primary, secondary, or compatibility-only.",
+        "Record gaps where no authoritative source exists yet."
+      ],
+      "validation_tasks": [
+        "Ensure the source inventory matches the event taxonomy and calendar contracts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Inventory supported event sources is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 13
+    },
+    {
+      "id": "LEAF-G61-002",
+      "gate": "Gate 61",
+      "title": "Define normalised event-source field contract",
+      "prerequisites": [
+        "LEAF-G61-001"
+      ],
+      "scope": "Write the canonical ingestion field contract every event source must normalise into.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Define the required normalised fields for source name, event class, title, timestamps, venue, impact, and provenance.",
+        "State which fields are optional and under what conditions.",
+        "Record field-level naming and type constraints."
+      ],
+      "validation_tasks": [
+        "Check the normalised field set against the current events schema and future runtime needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_schema.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define normalised event-source field contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 14
+    },
+    {
+      "id": "LEAF-G61-003",
+      "gate": "Gate 61",
+      "title": "Define provenance, confidence, and freshness rules",
+      "prerequisites": [
+        "LEAF-G61-002"
+      ],
+      "scope": "Specify what provenance/freshness facts must survive ingestion and how stale or uncertain records are marked.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define provenance fields, freshness windows, and source-confidence semantics.",
+        "State how stale or ambiguous records are represented without silent dropping.",
+        "Specify the minimum evidence required for a source to emit a material event."
+      ],
+      "validation_tasks": [
+        "Ensure provenance/freshness rules can be consumed downstream without loose dict helpers."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_schema.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define provenance, confidence, and freshness rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 15
+    },
+    {
+      "id": "LEAF-G61-004",
+      "gate": "Gate 61",
+      "title": "Define conflict-resolution rules across sources",
+      "prerequisites": [
+        "LEAF-G61-003"
+      ],
+      "scope": "Write deterministic rules for duplicate, conflicting, or partially overlapping event records from multiple sources.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify duplicate-detection rules, source precedence, and merge/update behaviour.",
+        "State what happens when two sources disagree on class, timestamp, or impact.",
+        "Record when a conflict must remain visible rather than auto-resolved."
+      ],
+      "validation_tasks": [
+        "Check conflict rules against review and provenance requirements."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_service.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define conflict-resolution rules across sources is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 16
+    },
+    {
+      "id": "LEAF-G61-005",
+      "gate": "Gate 61",
+      "title": "Define missing-data and source-outage fallback rules",
+      "prerequisites": [
+        "LEAF-G61-004"
+      ],
+      "scope": "Specify how the desk behaves when an event source is unavailable, late, or obviously incomplete.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write fallback rules for missing event feeds and delayed records.",
+        "State what confidence downgrade or routing consequence follows source outages.",
+        "Record what must be surfaced to review packets when fallback was used."
+      ],
+      "validation_tasks": [
+        "Ensure fallback rules do not masquerade uncertainty as certainty."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_service.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define missing-data and source-outage fallback rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 17
+    },
+    {
+      "id": "LEAF-G61-006",
+      "gate": "Gate 61",
+      "title": "Freeze event-ingestion and provenance authority",
+      "prerequisites": [
+        "LEAF-G61-005"
+      ],
+      "scope": "Close Gate 61 by freezing one authoritative ingestion/provenance contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and pointers for persistence/runtime/review gates.",
+        "Record no-go language preventing ad hoc source-specific bypasses."
+      ],
+      "validation_tasks": [
+        "Check that downstream gates point to the frozen ingestion/provenance authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze event-ingestion and provenance authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 61 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 18
+    },
+    {
+      "id": "LEAF-G62-001",
+      "gate": "Gate 62",
+      "title": "Define event-store persistence contract",
+      "prerequisites": [],
+      "scope": "Write the canonical persistence contract for stored event records and their lineage fields.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/models/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define the persisted event record shape, keys, timestamps, and lineage fields.",
+        "State what is immutable versus updateable after initial ingest.",
+        "Record how stored events link back to source/provenance facts."
+      ],
+      "validation_tasks": [
+        "Check persistence fields against the ingestion contract and current model constraints."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_store_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event-store persistence contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 19
+    },
+    {
+      "id": "LEAF-G62-002",
+      "gate": "Gate 62",
+      "title": "Define query surfaces for runtime consumers",
+      "prerequisites": [
+        "LEAF-G62-001"
+      ],
+      "scope": "Specify the read/query surfaces runtime stages may use to retrieve material event context.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Define query inputs/outputs for next event, nearby events, event windows, and class-filtered lookups.",
+        "State which surfaces are runtime-safe and which remain review-only.",
+        "Record performance and determinism expectations."
+      ],
+      "validation_tasks": [
+        "Ensure runtime queries do not reintroduce source-specific knowledge."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_service.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define query surfaces for runtime consumers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 20
+    },
+    {
+      "id": "LEAF-G62-003",
+      "gate": "Gate 62",
+      "title": "Define material-event selection rules",
+      "prerequisites": [
+        "LEAF-G62-002"
+      ],
+      "scope": "Write the bounded rules that select which stored events become part of the runtime event picture.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Specify how material events are selected by class, impact tier, timing, and venue relevance.",
+        "State when multiple nearby events should all remain visible instead of reducing to one record.",
+        "Record examples for ordinary days, event clusters, and holiday bridges."
+      ],
+      "validation_tasks": [
+        "Ensure material-event rules align with the known/priced/realised distinction."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_service.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define material-event selection rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 21
+    },
+    {
+      "id": "LEAF-G62-004",
+      "gate": "Gate 62",
+      "title": "Define nearby-event packet contract",
+      "prerequisites": [
+        "LEAF-G62-003"
+      ],
+      "scope": "Write the packet shape for exposing more than one nearby event without opening the door to unbounded event spam.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define a bounded nearby-event summary object with explicit size and ordering rules.",
+        "State how primary vs supporting nearby events are represented.",
+        "Record when only one event should be visible despite multiple records."
+      ],
+      "validation_tasks": [
+        "Check the packet shape against cognition-input and review-packet needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_schema.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define nearby-event packet contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 22
+    },
+    {
+      "id": "LEAF-G62-005",
+      "gate": "Gate 62",
+      "title": "Define review and lineage retrieval rules for events",
+      "prerequisites": [
+        "LEAF-G62-004"
+      ],
+      "scope": "Specify how review surfaces retrieve exactly what event information the runtime had at decision time.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define lineage keys and retrieval rules that let review reconstruct the runtime-visible event picture.",
+        "State how source conflicts, fallbacks, and stale data are exposed in review.",
+        "Record what must be retained for auditability."
+      ],
+      "validation_tasks": [
+        "Ensure review retrieval does not depend on live source re-querying."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define review and lineage retrieval rules for events is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 23
+    },
+    {
+      "id": "LEAF-G62-006",
+      "gate": "Gate 62",
+      "title": "Freeze shared event-store/query authority",
+      "prerequisites": [
+        "LEAF-G62-005"
+      ],
+      "scope": "Close Gate 62 by freezing one authority surface for stored events and query semantics.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and explicit downstream references.",
+        "Record no-go language preventing stage-specific event query shapes from proliferating."
+      ],
+      "validation_tasks": [
+        "Check all event-consumer gates reference the same authority surface."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze shared event-store/query authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 62 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 24
+    },
+    {
+      "id": "LEAF-G63-001",
+      "gate": "Gate 63",
+      "title": "Extend the live event snapshot contract",
+      "prerequisites": [],
+      "scope": "Define the live event snapshot object that preserves class, impact, title, provenance, and nearby-event summary.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the snapshot object shape for live runtime use.",
+        "State exactly which fields replace the current timestamp-only reduction.",
+        "Record bounds so the snapshot remains deterministic and compact."
+      ],
+      "validation_tasks": [
+        "Check the snapshot contract against the event-store/query authority and cognition input needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_events_schema.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Extend the live event snapshot contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 25
+    },
+    {
+      "id": "LEAF-G63-002",
+      "gate": "Gate 63",
+      "title": "Rewire real-data loading to preserve event richness",
+      "prerequisites": [
+        "LEAF-G63-001"
+      ],
+      "scope": "Plan the loader changes needed so live data prep no longer discards event identity and provenance.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/real_data_loader.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify the exact real_data_loader binding changes required to keep event class, impact, title, and provenance.",
+        "Record any migration/compatibility notes for existing packet readers.",
+        "State how missing event richness is represented when upstream sources are incomplete."
+      ],
+      "validation_tasks": [
+        "Check that loader rewiring still respects the chosen DMP/live packet authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_real_data_loader.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Rewire real-data loading to preserve event richness is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 26
+    },
+    {
+      "id": "LEAF-G63-003",
+      "gate": "Gate 63",
+      "title": "Rewire chain-to-cognition event binding",
+      "prerequisites": [
+        "LEAF-G63-002"
+      ],
+      "scope": "Plan the chain-to-cognition changes needed so the cognition runtime consumes the richer event snapshot.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Specify the chain_to_cognition binding changes and the corresponding cognition input fields.",
+        "Record any backwards-compatibility requirements for current runtime consumers.",
+        "State which event facts become first-class runtime inputs and which remain review-only."
+      ],
+      "validation_tasks": [
+        "Ensure chain-to-cognition binding preserves, rather than recomputes, upstream event meaning."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_chain_to_cognition.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Rewire chain-to-cognition event binding is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 27
+    },
+    {
+      "id": "LEAF-G63-004",
+      "gate": "Gate 63",
+      "title": "Define lineage retention for event-rich runtime packets",
+      "prerequisites": [
+        "LEAF-G63-003"
+      ],
+      "scope": "Specify how richer event facts survive into lineage and replay surfaces.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define what event-rich fields must survive into lineage, replay, and review packets.",
+        "State which fields may be summarised versus fully retained.",
+        "Record replay/backtest parity requirements."
+      ],
+      "validation_tasks": [
+        "Check lineage retention against review and promotion evidence needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define lineage retention for event-rich runtime packets is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 28
+    },
+    {
+      "id": "LEAF-G63-005",
+      "gate": "Gate 63",
+      "title": "Define regression and compatibility boundaries for event-rich packets",
+      "prerequisites": [
+        "LEAF-G63-004"
+      ],
+      "scope": "Write the regression surface and compatibility rules for introducing richer live event packets.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify targeted regression tests, compatibility constraints, and failure expectations.",
+        "State what old packet assumptions must be retired or explicitly shimmed."
+      ],
+      "validation_tasks": [
+        "Ensure event-rich packet work remains a bounded runtime change, not a hidden rewrite."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_api.py tests/test_chain_to_cognition.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define regression and compatibility boundaries for event-rich packets is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 29
+    },
+    {
+      "id": "LEAF-G63-006",
+      "gate": "Gate 63",
+      "title": "Freeze the live event-richness authority surface",
+      "prerequisites": [
+        "LEAF-G63-005"
+      ],
+      "scope": "Close Gate 63 by freezing one authoritative statement of how live runtime packets preserve event richness.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final Gate 63 authority note and downstream references.",
+        "Record no-go language preventing future timestamp-only collapse."
+      ],
+      "validation_tasks": [
+        "Check all event-window and modifier gates reference the frozen authority surface."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze the live event-richness authority surface is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 63 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 30
+    },
+    {
+      "id": "LEAF-G64-001",
+      "gate": "Gate 64",
+      "title": "Define event-window-state taxonomy",
+      "prerequisites": [],
+      "scope": "Write the canonical event-window-state labels that temporal logic may emit.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define event-window states such as none, distant, same_day, imminent, live, and aftermath, or their final canonical equivalents.",
+        "State what each state means and what it does not mean.",
+        "Record how these states coexist with preserved event identity."
+      ],
+      "validation_tasks": [
+        "Check event-window labels against current temporal vocabulary and event taxonomy."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event-window-state taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 31
+    },
+    {
+      "id": "LEAF-G64-002",
+      "gate": "Gate 64",
+      "title": "Define temporal thresholds and ownership for event windows",
+      "prerequisites": [
+        "LEAF-G64-001"
+      ],
+      "scope": "Specify the thresholds and ownership rules that map stored event facts into temporal event-window states.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write threshold rules for same_session, same_day, imminent, live, and aftermath states.",
+        "State clearly that temporal owns event-window timing, not event identity itself.",
+        "Record how overlapping nearby events affect state emission."
+      ],
+      "validation_tasks": [
+        "Ensure threshold rules do not create a hidden extra runtime stage."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define temporal thresholds and ownership for event windows is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 32
+    },
+    {
+      "id": "LEAF-G64-003",
+      "gate": "Gate 64",
+      "title": "Preserve known-vs-priced-vs-realised distinctions through temporal mapping",
+      "prerequisites": [
+        "LEAF-G64-002"
+      ],
+      "scope": "State how temporal window logic may reference known risk without collapsing priced or realised reaction semantics.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write examples where identical event windows correspond to different event classes or priced states.",
+        "State which distinctions stay visible to downstream stages despite the temporal label.",
+        "Record forbidden simplifications."
+      ],
+      "validation_tasks": [
+        "Check examples against Gate 59 and Gate 63 authority surfaces."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Preserve known-vs-priced-vs-realised distinctions through temporal mapping is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 33
+    },
+    {
+      "id": "LEAF-G64-004",
+      "gate": "Gate 64",
+      "title": "Define event-window examples for ordinary, clustered, and edge-case days",
+      "prerequisites": [
+        "LEAF-G64-003"
+      ],
+      "scope": "Create worked examples that exercise ordinary days, event clusters, and edge cases such as holidays or overlapping company/macro events.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write worked examples for one-event, multi-event, and event-plus-holiday cases.",
+        "State the resulting event-window state and preserved event identity for each case."
+      ],
+      "validation_tasks": [
+        "Confirm examples are deterministic and expose no unresolved ambiguity."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event-window examples for ordinary, clustered, and edge-case days is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 34
+    },
+    {
+      "id": "LEAF-G64-005",
+      "gate": "Gate 64",
+      "title": "Define temporal-output contract changes required by event windows",
+      "prerequisites": [
+        "LEAF-G64-004"
+      ],
+      "scope": "Specify any cognition/temporal output contract updates required so downstream stages see the new event-window semantics.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Record the exact output fields and naming required.",
+        "State any compatibility shims or field deprecations required by the change."
+      ],
+      "validation_tasks": [
+        "Ensure output changes align with current runtime stage ownership."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py tests/test_chain_to_cognition.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define temporal-output contract changes required by event windows is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 35
+    },
+    {
+      "id": "LEAF-G64-006",
+      "gate": "Gate 64",
+      "title": "Freeze temporal event-window authority",
+      "prerequisites": [
+        "LEAF-G64-005"
+      ],
+      "scope": "Close Gate 64 by freezing one authority surface for temporal event-window semantics.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing temporal logic from stealing event identity ownership."
+      ],
+      "validation_tasks": [
+        "Check all modifier and review gates reference the frozen temporal event-window authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze temporal event-window authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 64 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 36
+    },
+    {
+      "id": "LEAF-G65-001",
+      "gate": "Gate 65",
+      "title": "Freeze precursor market universe membership",
+      "prerequisites": [],
+      "scope": "Define the exact Asia/ex-US precursor markets and instruments included in the desk universe.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the precursor indices, futures, FX, rates, and supporting instruments in scope.",
+        "State why each instrument is in scope and what question it helps answer.",
+        "Record explicit non-goals so the universe cannot sprawl."
+      ],
+      "validation_tasks": [
+        "Check the precursor universe against the desk-calendar and event contracts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze precursor market universe membership is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 37
+    },
+    {
+      "id": "LEAF-G65-002",
+      "gate": "Gate 65",
+      "title": "Define precursor source and provenance rules",
+      "prerequisites": [
+        "LEAF-G65-001"
+      ],
+      "scope": "Specify how precursor-market data inherits provenance, freshness, and venue/session ownership.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write source/provenance expectations for each precursor instrument class.",
+        "State freshness requirements and what counts as stale precursor context.",
+        "Record how venue/session facts affect source validity."
+      ],
+      "validation_tasks": [
+        "Ensure precursor provenance rules align with event/calendar provenance standards where applicable."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_runtime_settings_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor source and provenance rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 38
+    },
+    {
+      "id": "LEAF-G65-003",
+      "gate": "Gate 65",
+      "title": "Define raw versus derived precursor fields",
+      "prerequisites": [
+        "LEAF-G65-002"
+      ],
+      "scope": "Separate raw precursor captures from derived precursor states so later runtime gates do not mix them.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the raw precursor fields captured directly from markets.",
+        "List the derived states that may be computed from those fields.",
+        "Record which runtime stages may consume raw vs derived precursor information."
+      ],
+      "validation_tasks": [
+        "Ensure raw/derived precursor separation matches existing repo doctrine about raw vs derived surfaces."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define raw versus derived precursor fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 39
+    },
+    {
+      "id": "LEAF-G65-004",
+      "gate": "Gate 65",
+      "title": "Define precursor desk-relevance criteria",
+      "prerequisites": [
+        "LEAF-G65-003"
+      ],
+      "scope": "State the decision rules for when a precursor market move is materially relevant rather than background noise.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write criteria for meaningful precursor moves, correlations, or dislocations.",
+        "State what counts as merely informative versus routing-relevant precursor context.",
+        "Record examples and non-examples."
+      ],
+      "validation_tasks": [
+        "Check that relevance rules remain deterministic and reviewable."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor desk-relevance criteria is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 40
+    },
+    {
+      "id": "LEAF-G65-005",
+      "gate": "Gate 65",
+      "title": "Define precursor session-alignment examples",
+      "prerequisites": [
+        "LEAF-G65-004"
+      ],
+      "scope": "Create worked examples showing how precursor context is aligned to the US session on ordinary and edge-case days.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write examples for ordinary days, Japan/HK/China holidays, and weekend/bridge cases.",
+        "State the precursor context handed into the US day for each example."
+      ],
+      "validation_tasks": [
+        "Confirm examples agree with the desk-calendar authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor session-alignment examples is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 41
+    },
+    {
+      "id": "LEAF-G65-006",
+      "gate": "Gate 65",
+      "title": "Freeze precursor-universe authority",
+      "prerequisites": [
+        "LEAF-G65-005"
+      ],
+      "scope": "Close Gate 65 by freezing one authoritative precursor-universe surface and downstream pointers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and explicit downstream references.",
+        "Record no-go language preventing ad hoc precursor additions in later gates."
+      ],
+      "validation_tasks": [
+        "Check precursor stitching/runtime gates reference the frozen universe authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze precursor-universe authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 65 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 42
+    },
+    {
+      "id": "LEAF-G66-001",
+      "gate": "Gate 66",
+      "title": "Define precursor stitching order and timezone rules",
+      "prerequisites": [],
+      "scope": "Specify the deterministic order and timezone authority for stitching precursor markets into one overnight context picture.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the stitching order across venues and sessions.",
+        "State timezone authority and alignment rules.",
+        "Record how overlapping or sequential sessions are combined for one US day context."
+      ],
+      "validation_tasks": [
+        "Check timezone and stitching rules against the desk-calendar contract."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor stitching order and timezone rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 43
+    },
+    {
+      "id": "LEAF-G66-002",
+      "gate": "Gate 66",
+      "title": "Define stale, missing, and partial precursor fallback logic",
+      "prerequisites": [
+        "LEAF-G66-001"
+      ],
+      "scope": "Write deterministic fallback rules for missing, stale, or partial precursor signals.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Specify what happens when a precursor venue is closed, delayed, or incomplete.",
+        "State how missing precursor information changes confidence or routing.",
+        "Record what must be surfaced to review packets."
+      ],
+      "validation_tasks": [
+        "Ensure fallback logic does not fabricate precursor certainty."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define stale, missing, and partial precursor fallback logic is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 44
+    },
+    {
+      "id": "LEAF-G66-003",
+      "gate": "Gate 66",
+      "title": "Define contradiction resolution for precursor signals",
+      "prerequisites": [
+        "LEAF-G66-002"
+      ],
+      "scope": "Specify how conflicting precursor signals are retained, degraded, or resolved.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write contradiction cases such as Japan strong / Hong Kong weak or precursor bullish / macro bearish.",
+        "State when contradiction should remain visible rather than being collapsed into a single score.",
+        "Record how contradictions degrade confidence or alter routing."
+      ],
+      "validation_tasks": [
+        "Check contradiction logic against future conflict-hierarchy gates."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define contradiction resolution for precursor signals is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 45
+    },
+    {
+      "id": "LEAF-G66-004",
+      "gate": "Gate 66",
+      "title": "Define derived precursor state vocabulary",
+      "prerequisites": [
+        "LEAF-G66-003"
+      ],
+      "scope": "Write the derived precursor states the runtime may consume after stitching raw precursor inputs.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define labels such as aligned_supportive, aligned_hostile, contradictory, absent, or their final canonical equivalents.",
+        "State exactly what evidence is required for each derived state.",
+        "Record which states are review-only versus runtime-active."
+      ],
+      "validation_tasks": [
+        "Ensure derived precursor state labels do not overlap confusingly with market-regime labels."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define derived precursor state vocabulary is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 46
+    },
+    {
+      "id": "LEAF-G66-005",
+      "gate": "Gate 66",
+      "title": "Pin precursor ownership boundary into runtime stages",
+      "prerequisites": [
+        "LEAF-G66-004"
+      ],
+      "scope": "State where precursor context enters the cognition grammar and what it may influence.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write whether precursor context binds through Step 0, temporal context, market-regime context, or a bounded adjunct.",
+        "State what precursor context may and may not directly influence.",
+        "Record examples of invalid leakage."
+      ],
+      "validation_tasks": [
+        "Check ownership rules against the implementation map and boundary rules."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Pin precursor ownership boundary into runtime stages is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 47
+    },
+    {
+      "id": "LEAF-G66-006",
+      "gate": "Gate 66",
+      "title": "Freeze precursor-stitching authority",
+      "prerequisites": [
+        "LEAF-G66-005"
+      ],
+      "scope": "Close Gate 66 by freezing one authoritative stitching/fallback/contradiction contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing informal precursor heuristics."
+      ],
+      "validation_tasks": [
+        "Check runtime-binding and review gates reference the frozen precursor-stitching authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze precursor-stitching authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 66 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 48
+    },
+    {
+      "id": "LEAF-G67-001",
+      "gate": "Gate 67",
+      "title": "Define precursor runtime packet contract",
+      "prerequisites": [],
+      "scope": "Specify the packet or schema additions needed for precursor context to enter runtime deterministically.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the precursor packet fields, sizes, and naming.",
+        "State which precursor fields are raw, derived, or summary-only.",
+        "Record bounds that keep the packet deterministic and compact."
+      ],
+      "validation_tasks": [
+        "Check the packet contract against raw/derived precursor separation and current cognition schema patterns."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_chain_to_cognition.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor runtime packet contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 49
+    },
+    {
+      "id": "LEAF-G67-002",
+      "gate": "Gate 67",
+      "title": "Plan real-data binding for precursor context",
+      "prerequisites": [
+        "LEAF-G67-001"
+      ],
+      "scope": "Write the exact loader/service binding changes needed to populate the precursor packet.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/real_data_loader.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify where precursor market data is loaded and transformed into the runtime packet.",
+        "State what happens when precursor data is absent or downgraded.",
+        "Record any compatibility shims required by current loaders."
+      ],
+      "validation_tasks": [
+        "Ensure the binding remains bounded and does not mutate unrelated runtime semantics."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_real_data_loader.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Plan real-data binding for precursor context is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 50
+    },
+    {
+      "id": "LEAF-G67-003",
+      "gate": "Gate 67",
+      "title": "Plan stage-level precursor consumption",
+      "prerequisites": [
+        "LEAF-G67-002"
+      ],
+      "scope": "Specify how precursor context is consumed by the chosen runtime stage without bypassing grammar boundaries.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/market_regime_context.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "State which runtime stage consumes precursor context and which stages only see derived consequences.",
+        "Record forbidden direct uses of precursor context.",
+        "Give examples of allowed and disallowed stage interactions."
+      ],
+      "validation_tasks": [
+        "Check stage-level consumption against boundary rules and the implementation map."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_market_regime_context.py tests/test_temporal_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Plan stage-level precursor consumption is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 51
+    },
+    {
+      "id": "LEAF-G67-004",
+      "gate": "Gate 67",
+      "title": "Define precursor lineage and review exposure",
+      "prerequisites": [
+        "LEAF-G67-003"
+      ],
+      "scope": "Specify how precursor context appears in review packets, explanation packets, and lineage surfaces.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/review_packets.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the precursor facts that must survive into review and lineage.",
+        "State what review packets must reveal about precursor uncertainty or contradiction.",
+        "Record replay/backtest parity expectations."
+      ],
+      "validation_tasks": [
+        "Ensure review exposure does not depend on live-source re-querying."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define precursor lineage and review exposure is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 52
+    },
+    {
+      "id": "LEAF-G67-005",
+      "gate": "Gate 67",
+      "title": "Define regression boundaries for precursor runtime integration",
+      "prerequisites": [
+        "LEAF-G67-004"
+      ],
+      "scope": "Write the targeted regression surface and compatibility boundaries for precursor binding.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify targeted tests, expected compatibility breaks, and protected surfaces.",
+        "State what old assumptions must be retired or explicitly shimmable."
+      ],
+      "validation_tasks": [
+        "Ensure precursor integration remains a bounded change and not a hidden architecture fork."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_chain_to_cognition.py tests/test_market_regime_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define regression boundaries for precursor runtime integration is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 53
+    },
+    {
+      "id": "LEAF-G67-006",
+      "gate": "Gate 67",
+      "title": "Freeze precursor runtime-binding authority",
+      "prerequisites": [
+        "LEAF-G67-005"
+      ],
+      "scope": "Close Gate 67 by freezing one authoritative precursor runtime/review binding surface.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing precursor context from slipping back into narrative-only territory."
+      ],
+      "validation_tasks": [
+        "Check modifier and review gates reference the frozen precursor-binding authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze precursor runtime-binding authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 67 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 54
+    },
+    {
+      "id": "LEAF-G68-001",
+      "gate": "Gate 68",
+      "title": "Freeze invariant, baseline, and modifier taxonomy",
+      "prerequisites": [],
+      "scope": "Define the three-way taxonomy for fixed invariants, baseline coefficients, and state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write exact definitions for invariant, baseline, and state-conditioned modifier surfaces.",
+        "State why runtime state changes do not count as live retuning.",
+        "Record explicit non-examples."
+      ],
+      "validation_tasks": [
+        "Check the taxonomy against current config and runtime terminology."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze invariant, baseline, and modifier taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 55
+    },
+    {
+      "id": "LEAF-G68-002",
+      "gate": "Gate 68",
+      "title": "Define the canonical state vector vocabulary",
+      "prerequisites": [
+        "LEAF-G68-001"
+      ],
+      "scope": "Write the approved state-vector fields the modifier system may read.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List state-vector fields such as desk_window, carryover_state, event_window_state, dealer_pressure_state, and precursor_state or their final equivalents.",
+        "State which stage owns each field.",
+        "Record forbidden implicit state inputs."
+      ],
+      "validation_tasks": [
+        "Ensure the state vector vocabulary aligns with already-frozen event, temporal, and precursor authorities."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define the canonical state vector vocabulary is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 56
+    },
+    {
+      "id": "LEAF-G68-003",
+      "gate": "Gate 68",
+      "title": "Define the modifier policy object model",
+      "prerequisites": [
+        "LEAF-G68-002"
+      ],
+      "scope": "Specify the object model for state-conditioned coefficient policies.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define how a modifier policy records target surface, activation state, adjustment form, caps/floors, and explanation metadata.",
+        "State bounded object size and naming rules.",
+        "Record what is required for review packet explainability."
+      ],
+      "validation_tasks": [
+        "Check the object model against current config-surface doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_coefficients_registry_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define the modifier policy object model is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 57
+    },
+    {
+      "id": "LEAF-G68-004",
+      "gate": "Gate 68",
+      "title": "Define eligible mutable runtime surfaces",
+      "prerequisites": [
+        "LEAF-G68-003"
+      ],
+      "scope": "List the runtime surfaces that may legally receive state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define approved mutable surfaces such as permission strictness, deployable-capital caps, execution aggressiveness, and confirmation thresholds.",
+        "State why each approved surface is safe for bounded runtime variation.",
+        "Record explicit non-goals."
+      ],
+      "validation_tasks": [
+        "Ensure eligible surfaces do not extend to grammar order or hidden unbounded parameters."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define eligible mutable runtime surfaces is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 58
+    },
+    {
+      "id": "LEAF-G68-005",
+      "gate": "Gate 68",
+      "title": "Define prohibited variable surfaces",
+      "prerequisites": [
+        "LEAF-G68-004"
+      ],
+      "scope": "List the runtime surfaces that must never vary by state-conditioned modifier.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the prohibited variable surface list such as grammar order, route ownership, hard veto rules, or any final approved invariants.",
+        "State why each surface is prohibited.",
+        "Record examples of tempting but forbidden variation."
+      ],
+      "validation_tasks": [
+        "Check prohibited surfaces against the invariant taxonomy and current normative docs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define prohibited variable surfaces is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 59
+    },
+    {
+      "id": "LEAF-G68-006",
+      "gate": "Gate 68",
+      "title": "Freeze state-policy vocabulary authority",
+      "prerequisites": [
+        "LEAF-G68-005"
+      ],
+      "scope": "Close Gate 68 by freezing one authoritative vocabulary/object-model surface for modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing ad hoc \u201csmart coefficient\u201d vocabulary."
+      ],
+      "validation_tasks": [
+        "Check all policy-matrix and runtime-integration gates reference the frozen modifier vocabulary authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze state-policy vocabulary authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 68 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 60
+    },
+    {
+      "id": "LEAF-G69-001",
+      "gate": "Gate 69",
+      "title": "Define approved day-phase state list",
+      "prerequisites": [],
+      "scope": "Freeze the set of temporal phases and carryover conditions that receive dedicated policy treatment.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the approved temporal/carryover states such as open_disorder, early_anchor, trend_window, midday_compression, late_session, large_gap_carryover, and their final canonical equivalents.",
+        "State what makes each state distinct enough to deserve policy treatment.",
+        "Record states that deliberately share one policy."
+      ],
+      "validation_tasks": [
+        "Ensure the state list aligns with current temporal vocabulary and carryover semantics."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define approved day-phase state list is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 61
+    },
+    {
+      "id": "LEAF-G69-002",
+      "gate": "Gate 69",
+      "title": "Write open-disorder operating posture policy",
+      "prerequisites": [
+        "LEAF-G69-001"
+      ],
+      "scope": "Specify how the open-disorder state alters permission, sizing, confirmation, and expression behaviour.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the open-disorder modifier policy with explicit behaviour changes and non-changes.",
+        "State how large overnight gaps and messy opening ranges alter the posture.",
+        "Record examples and non-examples."
+      ],
+      "validation_tasks": [
+        "Check the open-disorder policy against current temporal/open disorder logic."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py tests/test_posture_risk.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write open-disorder operating posture policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 62
+    },
+    {
+      "id": "LEAF-G69-003",
+      "gate": "Gate 69",
+      "title": "Write trend-window and orderly-session policy",
+      "prerequisites": [
+        "LEAF-G69-002"
+      ],
+      "scope": "Specify the modifier policy for orderly intraday windows where clean playbook expression is most plausible.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the policy for early-anchor and trend-window states.",
+        "State how confirmation, capital, and execution differ from open_disorder.",
+        "Record boundaries that prevent accidental over-aggression."
+      ],
+      "validation_tasks": [
+        "Ensure orderly-session policy does not become a generic always-on boost."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_posture_risk.py tests/test_execution_expression.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write trend-window and orderly-session policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 63
+    },
+    {
+      "id": "LEAF-G69-004",
+      "gate": "Gate 69",
+      "title": "Write midday-compression policy",
+      "prerequisites": [
+        "LEAF-G69-003"
+      ],
+      "scope": "Specify the modifier policy for midday compression and similar low-quality participation windows.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the policy for midday compression, low-energy tape, or similar states.",
+        "State how breakout confirmation, non-action thresholds, and overtrading protection change.",
+        "Record examples where no-action is the preferred outcome."
+      ],
+      "validation_tasks": [
+        "Check midday policy against current playbook eligibility and review logic."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write midday-compression policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 64
+    },
+    {
+      "id": "LEAF-G69-005",
+      "gate": "Gate 69",
+      "title": "Write late-session and carryover-prep policy",
+      "prerequisites": [
+        "LEAF-G69-004"
+      ],
+      "scope": "Specify the policy for late-session states and carryover-preparation conditions.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the policy for late-session, pinning risk, and carryover-prep states.",
+        "State how posture, capital, and expression should change near the close.",
+        "Record interaction with carry-horizon routing."
+      ],
+      "validation_tasks": [
+        "Ensure late-session policy does not collapse carry logic back into ordinary intraday logic."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py tests/test_carry_review_cli_and_legacy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write late-session and carryover-prep policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 65
+    },
+    {
+      "id": "LEAF-G69-006",
+      "gate": "Gate 69",
+      "title": "Freeze phase-and-carryover policy-matrix authority",
+      "prerequisites": [
+        "LEAF-G69-005"
+      ],
+      "scope": "Close Gate 69 by freezing one authoritative day-phase/carryover policy matrix.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final matrix authority note and downstream references.",
+        "Record no-go language preventing casual phase-policy expansion."
+      ],
+      "validation_tasks": [
+        "Check event/options and precedence gates reference the frozen phase/carryover matrix."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze phase-and-carryover policy-matrix authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 69 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 66
+    },
+    {
+      "id": "LEAF-G70-001",
+      "gate": "Gate 70",
+      "title": "Write event-imminent and event-live modifier policy",
+      "prerequisites": [],
+      "scope": "Specify how imminent/live event states alter posture and execution behaviour.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the policy for event-imminent, event-live, and immediate aftermath states.",
+        "State what behaviour is suppressed, degraded, or blocked.",
+        "Record examples across company, macro, and venue events."
+      ],
+      "validation_tasks": [
+        "Check the policy against the temporal event-window and event taxonomy authorities."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_temporal_context.py tests/test_posture_risk.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write event-imminent and event-live modifier policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 67
+    },
+    {
+      "id": "LEAF-G70-002",
+      "gate": "Gate 70",
+      "title": "Write event-suppressed and negative-gamma-stress policy",
+      "prerequisites": [
+        "LEAF-G70-001"
+      ],
+      "scope": "Specify how event-suppressed and negative-gamma-like options states alter behaviour.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the modifier policy for event_suppressed, negative_gamma_flush, dealer_flow_tension, or their final canonical equivalents.",
+        "State which surfaces tighten, widen, cap, or veto under those states.",
+        "Record examples and non-examples."
+      ],
+      "validation_tasks": [
+        "Ensure the policy uses current options-flow behaviour clusters rather than invented new ones."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_options_flow_context.py tests/test_posture_risk.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write event-suppressed and negative-gamma-stress policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 68
+    },
+    {
+      "id": "LEAF-G70-003",
+      "gate": "Gate 70",
+      "title": "Write pin-risk and expiry-distortion policy",
+      "prerequisites": [
+        "LEAF-G70-002"
+      ],
+      "scope": "Specify the modifier policy for pin-risk, expiry distortion, and related late-cycle options states.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the policy for pin risk and expiry-driven distortion states.",
+        "State what changes in permission, capital, and execution expression.",
+        "Record examples around expiry week/day and pinning risk."
+      ],
+      "validation_tasks": [
+        "Check alignment with the expiry-calendar authority and late-session policy."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_options_flow_context.py tests/test_playbook_eligibility.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write pin-risk and expiry-distortion policy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 69
+    },
+    {
+      "id": "LEAF-G70-004",
+      "gate": "Gate 70",
+      "title": "Write combined event-plus-options-state examples",
+      "prerequisites": [
+        "LEAF-G70-003"
+      ],
+      "scope": "Create worked examples where event and options-stress states are both active.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write examples where event timing and options geometry are simultaneously hostile or mixed.",
+        "State which modifiers activate and what the effective posture should be."
+      ],
+      "validation_tasks": [
+        "Ensure combined examples defer final precedence questions to Gate 71 but remain internally consistent."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_options_flow_context.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Write combined event-plus-options-state examples is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 70
+    },
+    {
+      "id": "LEAF-G70-005",
+      "gate": "Gate 70",
+      "title": "Define event/options-state non-action boundaries",
+      "prerequisites": [
+        "LEAF-G70-004"
+      ],
+      "scope": "Specify where event/options-stress states should force stand-down rather than softer modifier application.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "List the states or combinations that should trigger stand-down or hard block.",
+        "State when softer degradation is still acceptable.",
+        "Record examples of over-aggressive behaviour the policy must prevent."
+      ],
+      "validation_tasks": [
+        "Check non-action boundaries against the forthcoming non-action/conflict gate."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event/options-state non-action boundaries is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 71
+    },
+    {
+      "id": "LEAF-G70-006",
+      "gate": "Gate 70",
+      "title": "Freeze event/options-stress policy-matrix authority",
+      "prerequisites": [
+        "LEAF-G70-005"
+      ],
+      "scope": "Close Gate 70 by freezing one authoritative event/options-stress policy matrix.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final matrix authority note and downstream references.",
+        "Record no-go language preventing ad hoc stress-state policies."
+      ],
+      "validation_tasks": [
+        "Check precedence and runtime-integration gates reference the frozen event/options matrix."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze event/options-stress policy-matrix authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 70 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 72
+    },
+    {
+      "id": "LEAF-G71-001",
+      "gate": "Gate 71",
+      "title": "Define modifier precedence graph",
+      "prerequisites": [],
+      "scope": "Write the deterministic precedence graph for multiple simultaneously active modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define how phase, event, options-stress, precursor, and carryover modifiers combine or override one another.",
+        "State the ordering/precedence graph explicitly.",
+        "Record examples of competing states."
+      ],
+      "validation_tasks": [
+        "Ensure precedence rules do not create hidden loops or contradictory behaviour."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define modifier precedence graph is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 73
+    },
+    {
+      "id": "LEAF-G71-002",
+      "gate": "Gate 71",
+      "title": "Define caps, floors, and bounded adjustment forms",
+      "prerequisites": [
+        "LEAF-G71-001"
+      ],
+      "scope": "Specify the legal adjustment forms and their hard bounds.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define allowed multiplier, offset, or clamp forms.",
+        "State hard caps and floors for each mutable surface class.",
+        "Record forbidden unbounded or compounding adjustment forms."
+      ],
+      "validation_tasks": [
+        "Check bounds against current risk and config doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_coefficients_registry_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define caps, floors, and bounded adjustment forms is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 74
+    },
+    {
+      "id": "LEAF-G71-003",
+      "gate": "Gate 71",
+      "title": "Define hard veto and stand-down rules",
+      "prerequisites": [
+        "LEAF-G71-002"
+      ],
+      "scope": "List the conditions where modifiers are not enough and the outcome must be block/stand-down.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the hard-veto list and what each veto blocks.",
+        "State what evidence is needed for a hard block.",
+        "Record how vetoes appear in review packets and logs."
+      ],
+      "validation_tasks": [
+        "Ensure hard vetoes align with existing posture/playbook block concepts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define hard veto and stand-down rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 75
+    },
+    {
+      "id": "LEAF-G71-004",
+      "gate": "Gate 71",
+      "title": "Define kill-switch and emergency-degradation semantics",
+      "prerequisites": [
+        "LEAF-G71-003"
+      ],
+      "scope": "Specify the bounded kill-switch or emergency-degradation rules for pathological states.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Define kill-switch conditions, degraded-mode semantics, and recovery requirements.",
+        "State what is logged and what review evidence is mandatory.",
+        "Record why these switches do not count as informal discretion."
+      ],
+      "validation_tasks": [
+        "Check kill-switch semantics against normative guardrails and existing operational docs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_api.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define kill-switch and emergency-degradation semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 76
+    },
+    {
+      "id": "LEAF-G71-005",
+      "gate": "Gate 71",
+      "title": "Define combined-state sanity examples",
+      "prerequisites": [
+        "LEAF-G71-004"
+      ],
+      "scope": "Create sanity examples that exercise precedence, caps, vetoes, and kill-switch interactions.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write worked examples for mixed states like open_disorder plus event_live, or precursor_hostile plus negative_gamma.",
+        "State the final effective posture and why."
+      ],
+      "validation_tasks": [
+        "Confirm the examples resolve cleanly under the proposed precedence graph."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define combined-state sanity examples is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 77
+    },
+    {
+      "id": "LEAF-G71-006",
+      "gate": "Gate 71",
+      "title": "Freeze modifier-control authority",
+      "prerequisites": [
+        "LEAF-G71-005"
+      ],
+      "scope": "Close Gate 71 by freezing one authoritative precedence/caps/vetoes/kill-switch contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing ad hoc combination logic in runtime code."
+      ],
+      "validation_tasks": [
+        "Check metrics, review, and runtime-integration gates reference the frozen modifier-control authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze modifier-control authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 71 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 78
+    },
+    {
+      "id": "LEAF-G72-001",
+      "gate": "Gate 72",
+      "title": "Define stability-metric components",
+      "prerequisites": [],
+      "scope": "Write the component metrics for ranking stability, decision-distribution stability, and economic stability.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define the metric components that matter for coefficient-group stability.",
+        "State why raw P&L alone is insufficient.",
+        "Record what each component measures and does not measure."
+      ],
+      "validation_tasks": [
+        "Check component metrics against current evaluation config fields and repo terminology."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_evaluation_config_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define stability-metric components is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 79
+    },
+    {
+      "id": "LEAF-G72-002",
+      "gate": "Gate 72",
+      "title": "Define per-group scorecard schema",
+      "prerequisites": [
+        "LEAF-G72-001"
+      ],
+      "scope": "Specify the scorecard object each coefficient group receives after a replay or paper block.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the scorecard schema for permission, capital, confirmation, and execution-related groups.",
+        "State required fields, optional fields, and explanation metadata.",
+        "Record how scorecards map back to coefficient groups."
+      ],
+      "validation_tasks": [
+        "Ensure the schema stays bounded and reviewable."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_evaluation_config_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define per-group scorecard schema is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 80
+    },
+    {
+      "id": "LEAF-G72-003",
+      "gate": "Gate 72",
+      "title": "Define corridor algebra and thresholds",
+      "prerequisites": [
+        "LEAF-G72-002"
+      ],
+      "scope": "Write the corridor concept formally so stability is judged against an allowed range rather than one point estimate.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define corridor bounds, central tendency, and tolerated spread for each metric family.",
+        "State how corridors may differ by coefficient group.",
+        "Record examples of inside-corridor and outside-corridor behaviour."
+      ],
+      "validation_tasks": [
+        "Check corridor language remains deterministic rather than narrative."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define corridor algebra and thresholds is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 81
+    },
+    {
+      "id": "LEAF-G72-004",
+      "gate": "Gate 72",
+      "title": "Define persistence and hysteresis measures",
+      "prerequisites": [
+        "LEAF-G72-003"
+      ],
+      "scope": "Specify the persistence/hysteresis logic that prevents one noisy block from forcing review.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write persistence window and hysteresis concepts for corridor breaches.",
+        "State how repeat breaches are counted and what resets the counter.",
+        "Record examples of chatter that should not force review."
+      ],
+      "validation_tasks": [
+        "Ensure persistence logic aligns with the review-governance gate."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define persistence and hysteresis measures is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 82
+    },
+    {
+      "id": "LEAF-G72-005",
+      "gate": "Gate 72",
+      "title": "Define event-slice and coverage metrics",
+      "prerequisites": [
+        "LEAF-G72-004"
+      ],
+      "scope": "Add event-class and regime-slice views to the scorecards so hidden fragility is visible.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Specify how scorecards slice by event class, venue-calendar class, and stress regime.",
+        "State which coverage metrics are mandatory before some groups can be judged.",
+        "Record examples where event coverage is insufficient."
+      ],
+      "validation_tasks": [
+        "Check event-slice metrics align with event and calendar authorities."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event-slice and coverage metrics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 83
+    },
+    {
+      "id": "LEAF-G72-006",
+      "gate": "Gate 72",
+      "title": "Freeze stability-metric authority",
+      "prerequisites": [
+        "LEAF-G72-005"
+      ],
+      "scope": "Close Gate 72 by freezing one authoritative metric/scorecard/corridor surface.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing informal metric substitution."
+      ],
+      "validation_tasks": [
+        "Check review-governance, candidate-governance, and harness gates reference the frozen metric authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze stability-metric authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 72 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 84
+    },
+    {
+      "id": "LEAF-G73-001",
+      "gate": "Gate 73",
+      "title": "Define minimum evidence floors per coefficient group",
+      "prerequisites": [],
+      "scope": "Specify the minimum evidence floors that must be met before a coefficient group is review-eligible.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write evidence floors for each coefficient-group class.",
+        "State what counts as evidence: sessions, decisions, fills, event cycles, or other bounded measures.",
+        "Record examples of insufficient evidence despite elapsed time."
+      ],
+      "validation_tasks": [
+        "Check evidence floors against the metric/scorecard and candidate-governance concepts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define minimum evidence floors per coefficient group is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 85
+    },
+    {
+      "id": "LEAF-G73-002",
+      "gate": "Gate 73",
+      "title": "Define corridor-breach review triggers",
+      "prerequisites": [
+        "LEAF-G73-001"
+      ],
+      "scope": "Specify the exact review trigger logic once evidence floors are met.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the review-trigger rule combining evidence floors with corridor breaches.",
+        "State how different metric families contribute to a review trigger.",
+        "Record examples where a breach is material versus ignorable."
+      ],
+      "validation_tasks": [
+        "Ensure review-trigger logic remains deterministic and machine-checkable."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define corridor-breach review triggers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 86
+    },
+    {
+      "id": "LEAF-G73-003",
+      "gate": "Gate 73",
+      "title": "Define persistence and no-change outcomes",
+      "prerequisites": [
+        "LEAF-G73-002"
+      ],
+      "scope": "Specify when review occurs but the correct outcome is to keep coefficients unchanged.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the rules that separate review occurrence from change justification.",
+        "State when persistence is insufficient for change even after review.",
+        "Record examples of review-with-no-change."
+      ],
+      "validation_tasks": [
+        "Check no-change outcomes align with hysteresis logic and live-paper falsification doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define persistence and no-change outcomes is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 87
+    },
+    {
+      "id": "LEAF-G73-004",
+      "gate": "Gate 73",
+      "title": "Define live-paper falsification boundary",
+      "prerequisites": [
+        "LEAF-G73-003"
+      ],
+      "scope": "State explicitly that live paper tests locked candidates and does not discover coefficients in place.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write the live-paper boundary doctrine and examples of allowed versus forbidden learning.",
+        "State how live-paper failures become research hypotheses rather than runtime edits."
+      ],
+      "validation_tasks": [
+        "Ensure the doctrine aligns with the operating-model separation between research and deterministic runtime."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define live-paper falsification boundary is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 88
+    },
+    {
+      "id": "LEAF-G73-005",
+      "gate": "Gate 73",
+      "title": "Define review output states and downstream actions",
+      "prerequisites": [
+        "LEAF-G73-004"
+      ],
+      "scope": "Specify the machine-readable outcomes of a review and what each outcome authorises next.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/schemas/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define outputs such as not_eligible, review_no_change, challenger_required, promotion_candidate, and research_reset or their final equivalents.",
+        "State the downstream action each output authorises."
+      ],
+      "validation_tasks": [
+        "Check output states against candidate-governance needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_evaluation_config_contract.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define review output states and downstream actions is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 89
+    },
+    {
+      "id": "LEAF-G73-006",
+      "gate": "Gate 73",
+      "title": "Freeze review-eligibility authority",
+      "prerequisites": [
+        "LEAF-G73-005"
+      ],
+      "scope": "Close Gate 73 by freezing one authoritative review-eligibility contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing calendar-only review folklore from reappearing."
+      ],
+      "validation_tasks": [
+        "Check candidate-governance, harness, and review-packet gates reference the frozen review-eligibility authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze review-eligibility authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 73 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 90
+    },
+    {
+      "id": "LEAF-G74-001",
+      "gate": "Gate 74",
+      "title": "Define candidate-set size and shape constraints",
+      "prerequisites": [],
+      "scope": "Specify the bounded size and role of the candidate set produced by historical research.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the candidate-set bounds and role labels such as champion, conservative challenger, event-aware challenger, or their final equivalents.",
+        "State why the set is bounded.",
+        "Record forbidden candidate-set sprawl."
+      ],
+      "validation_tasks": [
+        "Check candidate-set constraints against research and paper-trading doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define candidate-set size and shape constraints is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 91
+    },
+    {
+      "id": "LEAF-G74-002",
+      "gate": "Gate 74",
+      "title": "Define champion and challenger semantics",
+      "prerequisites": [
+        "LEAF-G74-001"
+      ],
+      "scope": "Specify what champion and challenger status mean operationally and analytically.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the semantics of champion, shadow challenger, dormant candidate, and retired candidate.",
+        "State how each candidate is run and compared in paper or replay contexts."
+      ],
+      "validation_tasks": [
+        "Ensure champion/challenger semantics remain deterministic and bounded."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define champion and challenger semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 92
+    },
+    {
+      "id": "LEAF-G74-003",
+      "gate": "Gate 74",
+      "title": "Define promotion, replacement, and demotion rules",
+      "prerequisites": [
+        "LEAF-G74-002"
+      ],
+      "scope": "Specify how candidates are promoted, replaced, or retired at review boundaries.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the exact conditions for promotion, replacement, demotion, and retirement.",
+        "State who or what may authorise each transition.",
+        "Record examples of ambiguous results and how they resolve."
+      ],
+      "validation_tasks": [
+        "Check transitions against review-output states and human-approval requirements."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define promotion, replacement, and demotion rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 93
+    },
+    {
+      "id": "LEAF-G74-004",
+      "gate": "Gate 74",
+      "title": "Define untouched adjudication rules",
+      "prerequisites": [
+        "LEAF-G74-003"
+      ],
+      "scope": "Specify the final untouched adjudication concept so at least one reserved evaluation span remains unsullied by repeated search.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the untouched adjudication principle and how the final reserved span is protected.",
+        "State when adjudication may be consumed and how its result is recorded."
+      ],
+      "validation_tasks": [
+        "Ensure adjudication rules remain compatible with walk-forward harness planning."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define untouched adjudication rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 94
+    },
+    {
+      "id": "LEAF-G74-005",
+      "gate": "Gate 74",
+      "title": "Define research-reset and new-module triggers",
+      "prerequisites": [
+        "LEAF-G74-004"
+      ],
+      "scope": "Specify when live-paper or replay results force a return to research rather than another coefficient tweak.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the reset-to-research triggers, including evidence of ontology failure or missing modules.",
+        "State how such failures are recorded and routed back into planning."
+      ],
+      "validation_tasks": [
+        "Check research-reset triggers against failure taxonomy and review outputs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define research-reset and new-module triggers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 95
+    },
+    {
+      "id": "LEAF-G74-006",
+      "gate": "Gate 74",
+      "title": "Freeze candidate-governance authority",
+      "prerequisites": [
+        "LEAF-G74-005"
+      ],
+      "scope": "Close Gate 74 by freezing one authoritative candidate/champion/challenger/adjudication contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing live paper from becoming in-place discovery."
+      ],
+      "validation_tasks": [
+        "Check walk-forward, review-packet, and runtime-integration gates reference the frozen candidate-governance authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze candidate-governance authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 74 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 96
+    },
+    {
+      "id": "LEAF-G75-001",
+      "gate": "Gate 75",
+      "title": "Define walk-forward window-generation contract",
+      "prerequisites": [],
+      "scope": "Specify how training/calibration, validation, and forward windows are generated for the harness.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the window-generation rules for anchored and/or rolling walk-forward evaluation.",
+        "State window ownership, overlap limits, and chronology rules.",
+        "Record what information is forbidden at each step."
+      ],
+      "validation_tasks": [
+        "Check window-generation rules against the untouched adjudication doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define walk-forward window-generation contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 97
+    },
+    {
+      "id": "LEAF-G75-002",
+      "gate": "Gate 75",
+      "title": "Define start-offset comparison logic",
+      "prerequisites": [
+        "LEAF-G75-001"
+      ],
+      "scope": "Specify how multiple start offsets are compared so a review horizon is not an artefact of one lucky start date.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the offset-comparison logic and what constitutes acceptable stability across offsets.",
+        "State what counts as flapping or offset sensitivity."
+      ],
+      "validation_tasks": [
+        "Ensure offset comparison aligns with the stability-metric corridor concepts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define start-offset comparison logic is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 98
+    },
+    {
+      "id": "LEAF-G75-003",
+      "gate": "Gate 75",
+      "title": "Define review-horizon discovery algorithm",
+      "prerequisites": [
+        "LEAF-G75-002"
+      ],
+      "scope": "Specify the bounded algorithm that discovers the smallest stable review horizon for each coefficient group.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the per-group review-horizon discovery concept.",
+        "State what outputs the algorithm emits and what counts as no stable horizon found.",
+        "Record examples for different coefficient-group types."
+      ],
+      "validation_tasks": [
+        "Check the discovery algorithm against evidence-floor and persistence logic."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define review-horizon discovery algorithm is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 99
+    },
+    {
+      "id": "LEAF-G75-004",
+      "gate": "Gate 75",
+      "title": "Define event-sliced and regime-sliced reporting outputs",
+      "prerequisites": [
+        "LEAF-G75-003"
+      ],
+      "scope": "Specify the reporting outputs that expose hidden fragility by event class or regime slice.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the event/regime reporting outputs the harness must emit.",
+        "State how these slices map back to scorecards and review outcomes."
+      ],
+      "validation_tasks": [
+        "Ensure slice reporting aligns with event, calendar, and stress-state authorities."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define event-sliced and regime-sliced reporting outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 100
+    },
+    {
+      "id": "LEAF-G75-005",
+      "gate": "Gate 75",
+      "title": "Define fragility, ablation, and module-pruning outputs",
+      "prerequisites": [
+        "LEAF-G75-004"
+      ],
+      "scope": "Specify the harness outputs that support module pruning, missing-module suspicion, or fragility diagnosis.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the fragility/ablation outputs and what decisions they can support.",
+        "State when module pruning or missing-module suspicion is warranted."
+      ],
+      "validation_tasks": [
+        "Check fragility outputs against research-reset and trader-grade failure taxonomy needs."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define fragility, ablation, and module-pruning outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 101
+    },
+    {
+      "id": "LEAF-G75-006",
+      "gate": "Gate 75",
+      "title": "Freeze walk-forward harness authority",
+      "prerequisites": [
+        "LEAF-G75-005"
+      ],
+      "scope": "Close Gate 75 by freezing one authoritative walk-forward/review-horizon discovery contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing ad hoc window folklore."
+      ],
+      "validation_tasks": [
+        "Check review-packet and runtime-integration gates reference the frozen harness authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze walk-forward harness authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 75 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 102
+    },
+    {
+      "id": "LEAF-G76-001",
+      "gate": "Gate 76",
+      "title": "Define review-packet event and precursor fields",
+      "prerequisites": [],
+      "scope": "Specify the new review-packet fields required to expose event identity, precursor context, and modifier activations.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/review_packets.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the review-packet field additions for event class, impact, precursor state, and active modifiers.",
+        "State which fields are summary versus full lineage references."
+      ],
+      "validation_tasks": [
+        "Check review-packet additions against current explanation packet doctrine and lineage constraints."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define review-packet event and precursor fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 103
+    },
+    {
+      "id": "LEAF-G76-002",
+      "gate": "Gate 76",
+      "title": "Define trader-grade failure taxonomy",
+      "prerequisites": [
+        "LEAF-G76-001"
+      ],
+      "scope": "Write the failure taxonomy separating bad read, bad expression, bad sizing, bad luck, and ontology failure.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define each failure class precisely.",
+        "State how multiple failure classes may coexist and which one becomes primary.",
+        "Record worked examples."
+      ],
+      "validation_tasks": [
+        "Ensure failure taxonomy aligns with review and research-reset semantics."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define trader-grade failure taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 104
+    },
+    {
+      "id": "LEAF-G76-003",
+      "gate": "Gate 76",
+      "title": "Define economic-contribution and edge-accountability fields",
+      "prerequisites": [
+        "LEAF-G76-002"
+      ],
+      "scope": "Specify what review packets must say about whether a module or modifier made or saved money, or merely narrated well.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the economic-contribution fields and how they tie back to decisions.",
+        "State what evidence is required before claiming a module made or saved money."
+      ],
+      "validation_tasks": [
+        "Check economic-accountability fields against current evaluation metrics and review doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define economic-contribution and edge-accountability fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 105
+    },
+    {
+      "id": "LEAF-G76-004",
+      "gate": "Gate 76",
+      "title": "Define non-action and blocked-trade explanation fields",
+      "prerequisites": [
+        "LEAF-G76-003"
+      ],
+      "scope": "Specify what review packets must show when the correct outcome was stand-down or hard block.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the fields that explain non-action, blocked trades, and veto outcomes.",
+        "State how these explanations reference active states and policy matrices."
+      ],
+      "validation_tasks": [
+        "Ensure non-action explanations remain distinct from simple missing-data failures."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define non-action and blocked-trade explanation fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 106
+    },
+    {
+      "id": "LEAF-G76-005",
+      "gate": "Gate 76",
+      "title": "Define promotion-evidence packet outputs",
+      "prerequisites": [
+        "LEAF-G76-004"
+      ],
+      "scope": "Specify the evidence object produced when a candidate becomes promotion-eligible or research-reset eligible.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the promotion-evidence packet structure and required fields.",
+        "State how scorecards, event slices, and failure taxonomy outputs are bundled."
+      ],
+      "validation_tasks": [
+        "Check promotion-evidence outputs against candidate-governance and review-governance rules."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py tests/test_research_eval_replay.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define promotion-evidence packet outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 107
+    },
+    {
+      "id": "LEAF-G76-006",
+      "gate": "Gate 76",
+      "title": "Freeze review-packet authority",
+      "prerequisites": [
+        "LEAF-G76-005"
+      ],
+      "scope": "Close Gate 76 by freezing one authoritative review-packet/failure-taxonomy surface.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing review from collapsing back into vague narrative."
+      ],
+      "validation_tasks": [
+        "Check non-action/conflict and runtime-integration gates reference the frozen review-packet authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze review-packet authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 76 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 108
+    },
+    {
+      "id": "LEAF-G77-001",
+      "gate": "Gate 77",
+      "title": "Define non-action taxonomy",
+      "prerequisites": [],
+      "scope": "Write the classes of justified stand-down and no-trade outcomes the runtime and review system recognise.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "docs/vocabulary/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define no-valid-family, no-valid-setup, no-valid-expression, event-blocked, conflict-blocked, low-quality-tape, and similar stand-down classes or their final equivalents.",
+        "State what each class means and when it applies."
+      ],
+      "validation_tasks": [
+        "Check the taxonomy against current playbook and posture concepts."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define non-action taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 109
+    },
+    {
+      "id": "LEAF-G77-002",
+      "gate": "Gate 77",
+      "title": "Define discretion boundaries",
+      "prerequisites": [
+        "LEAF-G77-001"
+      ],
+      "scope": "Specify where human or runtime discretion is forbidden, bounded, or merely explanatory.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write the discretion-boundary doctrine for this repo.",
+        "State what is advisory, what is deterministic, and what is outright forbidden.",
+        "Record examples of trader judgement that must be represented as formal policy rather than override."
+      ],
+      "validation_tasks": [
+        "Ensure discretion boundaries align with normative docs and candidate-governance doctrine."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define discretion boundaries is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 110
+    },
+    {
+      "id": "LEAF-G77-003",
+      "gate": "Gate 77",
+      "title": "Define signal-conflict hierarchy",
+      "prerequisites": [
+        "LEAF-G77-002"
+      ],
+      "scope": "Write the hierarchy for resolving or exposing conflicts between precursor, event, regime, options, and temporal signals.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Define primary versus secondary conflicts and when conflict remains visible.",
+        "State which conflicts degrade confidence versus block action.",
+        "Record worked examples."
+      ],
+      "validation_tasks": [
+        "Check conflict hierarchy against modifier precedence and review taxonomy."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_boundaries_and_config_surface.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define signal-conflict hierarchy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 111
+    },
+    {
+      "id": "LEAF-G77-004",
+      "gate": "Gate 77",
+      "title": "Define degradation hierarchy",
+      "prerequisites": [
+        "LEAF-G77-003"
+      ],
+      "scope": "Specify the ordered degradation path from normal posture to reduced size to block/stand-down.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the degradation ladder and what triggers each step.",
+        "State how degradation differs from veto/kill-switch outcomes.",
+        "Record examples across ordinary, event, and stress states."
+      ],
+      "validation_tasks": [
+        "Ensure degradation hierarchy aligns with modifier policy matrices."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_posture_risk.py tests/test_playbook_eligibility.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define degradation hierarchy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 112
+    },
+    {
+      "id": "LEAF-G77-005",
+      "gate": "Gate 77",
+      "title": "Define override/audit recording rules",
+      "prerequisites": [
+        "LEAF-G77-004"
+      ],
+      "scope": "Specify any permitted override or audit-only annotation paths and the evidence they require.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write whether any override path exists at all; if yes, bound it strictly.",
+        "State the audit evidence required and what review packets must record.",
+        "Record explicit non-goals if no operational override path is allowed."
+      ],
+      "validation_tasks": [
+        "Ensure override rules do not become a smuggled discretion channel."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define override/audit recording rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 113
+    },
+    {
+      "id": "LEAF-G77-006",
+      "gate": "Gate 77",
+      "title": "Freeze non-action/discretion/conflict authority",
+      "prerequisites": [
+        "LEAF-G77-005"
+      ],
+      "scope": "Close Gate 77 by freezing one authoritative non-action/discretion/conflict contract.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and downstream references.",
+        "Record no-go language preventing forced-action bias or informal overrides."
+      ],
+      "validation_tasks": [
+        "Check runtime-integration gate references the frozen non-action/discretion/conflict authority."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze non-action/discretion/conflict authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 77 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 114
+    },
+    {
+      "id": "LEAF-G78-001",
+      "gate": "Gate 78",
+      "title": "Plan posture-risk modifier integration",
+      "prerequisites": [],
+      "scope": "Specify the exact posture-risk surfaces that will consume state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write the posture-risk integration plan for permission strictness, deployable-capital caps, and related surfaces.",
+        "State what remains fixed versus modifiable.",
+        "Record compatibility boundaries."
+      ],
+      "validation_tasks": [
+        "Check the integration plan against the modifier vocabulary, policy matrices, and precedence rules."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_posture_risk.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Plan posture-risk modifier integration is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 115
+    },
+    {
+      "id": "LEAF-G78-002",
+      "gate": "Gate 78",
+      "title": "Plan playbook-eligibility modifier integration",
+      "prerequisites": [
+        "LEAF-G78-001"
+      ],
+      "scope": "Specify the exact eligibility surfaces that will consume state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the eligibility integration plan for family/setup confirmation thresholds and stand-down logic.",
+        "State how active modifiers affect candidate and setup filtering without bypassing grammar order."
+      ],
+      "validation_tasks": [
+        "Ensure eligibility integration does not let modifiers invent new families or hidden routing."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_playbook_eligibility.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Plan playbook-eligibility modifier integration is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 116
+    },
+    {
+      "id": "LEAF-G78-003",
+      "gate": "Gate 78",
+      "title": "Plan execution-expression modifier integration",
+      "prerequisites": [
+        "LEAF-G78-002"
+      ],
+      "scope": "Specify the exact execution surfaces that will consume state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/execution_expression.py",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Write the execution integration plan for aggressiveness, ladder pace, invalidation spacing, and similar bounded surfaces.",
+        "State what execution surfaces remain fixed."
+      ],
+      "validation_tasks": [
+        "Check execution integration against caps/floors and policy-matrix authorities."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_execution_expression.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Plan execution-expression modifier integration is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 117
+    },
+    {
+      "id": "LEAF-G78-004",
+      "gate": "Gate 78",
+      "title": "Define end-to-end runtime modifier path and explanation surfaces",
+      "prerequisites": [
+        "LEAF-G78-003"
+      ],
+      "scope": "Specify the end-to-end runtime path from state vector to active modifiers to review/explanation output.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "src/nvda_desk/services/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the end-to-end modifier activation path and what must be logged.",
+        "State how active modifiers appear in review and evidence packets.",
+        "Record any DMP/packet implications."
+      ],
+      "validation_tasks": [
+        "Ensure the path remains deterministic, inspectable, and bounded."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_chain_to_cognition.py tests/test_review_packets.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Define end-to-end runtime modifier path and explanation surfaces is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 118
+    },
+    {
+      "id": "LEAF-G78-005",
+      "gate": "Gate 78",
+      "title": "Define targeted and full-suite validation for runtime modifier rollout",
+      "prerequisites": [
+        "LEAF-G78-004"
+      ],
+      "scope": "Write the validation matrix required before modifier integration can be promoted.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "live broker paths"
+      ],
+      "implementation_tasks": [
+        "Specify targeted tests, integration tests, and full-suite expectations for modifier rollout.",
+        "State what must stay green before promotion to main.",
+        "Record proof artefacts required at gate closeout."
+      ],
+      "validation_tasks": [
+        "Ensure validation remains proportionate but strong enough to catch cross-stage drift."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_posture_risk.py tests/test_playbook_eligibility.py tests/test_execution_expression.py tests/test_review_packets.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "Define targeted and full-suite validation for runtime modifier rollout is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 119
+    },
+    {
+      "id": "LEAF-G78-006",
+      "gate": "Gate 78",
+      "title": "Freeze runtime modifier-integration authority",
+      "prerequisites": [
+        "LEAF-G78-005"
+      ],
+      "scope": "Close Gate 78 by freezing one authoritative runtime integration plan for state-conditioned modifiers.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md",
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**"
+      ],
+      "implementation_tasks": [
+        "Write the final authority note and explicit pass/fail criteria for implementation.",
+        "Record no-go language preventing runtime modifier creep outside the approved surfaces."
+      ],
+      "validation_tasks": [
+        "Check all relevant authority surfaces are referenced and consistent."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_planning_gate_authority_consistency.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Freeze runtime modifier-integration authority is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
+      "merge_gate": "Gate 78 remains a bounded implementation slice and does not silently absorb downstream gates.",
+      "status": "planned",
+      "execution_sequence": 120
+    }
+  ],
+  "execution_status": "planned_successor_pack_not_started",
+  "completed_at": "",
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G59-001",
+    "LEAF-G59-002",
+    "LEAF-G59-003",
+    "LEAF-G59-004",
+    "LEAF-G59-005",
+    "LEAF-G59-006",
+    "LEAF-G60-001",
+    "LEAF-G60-002",
+    "LEAF-G60-003",
+    "LEAF-G60-004",
+    "LEAF-G60-005",
+    "LEAF-G60-006",
+    "LEAF-G61-001",
+    "LEAF-G61-002",
+    "LEAF-G61-003",
+    "LEAF-G61-004",
+    "LEAF-G61-005",
+    "LEAF-G61-006",
+    "LEAF-G62-001",
+    "LEAF-G62-002",
+    "LEAF-G62-003",
+    "LEAF-G62-004",
+    "LEAF-G62-005",
+    "LEAF-G62-006",
+    "LEAF-G63-001",
+    "LEAF-G63-002",
+    "LEAF-G63-003",
+    "LEAF-G63-004",
+    "LEAF-G63-005",
+    "LEAF-G63-006",
+    "LEAF-G64-001",
+    "LEAF-G64-002",
+    "LEAF-G64-003",
+    "LEAF-G64-004",
+    "LEAF-G64-005",
+    "LEAF-G64-006",
+    "LEAF-G65-001",
+    "LEAF-G65-002",
+    "LEAF-G65-003",
+    "LEAF-G65-004",
+    "LEAF-G65-005",
+    "LEAF-G65-006",
+    "LEAF-G66-001",
+    "LEAF-G66-002",
+    "LEAF-G66-003",
+    "LEAF-G66-004",
+    "LEAF-G66-005",
+    "LEAF-G66-006",
+    "LEAF-G67-001",
+    "LEAF-G67-002",
+    "LEAF-G67-003",
+    "LEAF-G67-004",
+    "LEAF-G67-005",
+    "LEAF-G67-006",
+    "LEAF-G68-001",
+    "LEAF-G68-002",
+    "LEAF-G68-003",
+    "LEAF-G68-004",
+    "LEAF-G68-005",
+    "LEAF-G68-006",
+    "LEAF-G69-001",
+    "LEAF-G69-002",
+    "LEAF-G69-003",
+    "LEAF-G69-004",
+    "LEAF-G69-005",
+    "LEAF-G69-006",
+    "LEAF-G70-001",
+    "LEAF-G70-002",
+    "LEAF-G70-003",
+    "LEAF-G70-004",
+    "LEAF-G70-005",
+    "LEAF-G70-006",
+    "LEAF-G71-001",
+    "LEAF-G71-002",
+    "LEAF-G71-003",
+    "LEAF-G71-004",
+    "LEAF-G71-005",
+    "LEAF-G71-006",
+    "LEAF-G72-001",
+    "LEAF-G72-002",
+    "LEAF-G72-003",
+    "LEAF-G72-004",
+    "LEAF-G72-005",
+    "LEAF-G72-006",
+    "LEAF-G73-001",
+    "LEAF-G73-002",
+    "LEAF-G73-003",
+    "LEAF-G73-004",
+    "LEAF-G73-005",
+    "LEAF-G73-006",
+    "LEAF-G74-001",
+    "LEAF-G74-002",
+    "LEAF-G74-003",
+    "LEAF-G74-004",
+    "LEAF-G74-005",
+    "LEAF-G74-006",
+    "LEAF-G75-001",
+    "LEAF-G75-002",
+    "LEAF-G75-003",
+    "LEAF-G75-004",
+    "LEAF-G75-005",
+    "LEAF-G75-006",
+    "LEAF-G76-001",
+    "LEAF-G76-002",
+    "LEAF-G76-003",
+    "LEAF-G76-004",
+    "LEAF-G76-005",
+    "LEAF-G76-006",
+    "LEAF-G77-001",
+    "LEAF-G77-002",
+    "LEAF-G77-003",
+    "LEAF-G77-004",
+    "LEAF-G77-005",
+    "LEAF-G77-006",
+    "LEAF-G78-001",
+    "LEAF-G78-002",
+    "LEAF-G78-003",
+    "LEAF-G78-004",
+    "LEAF-G78-005",
+    "LEAF-G78-006"
+  ],
+  "completed_gate_ids": [],
+  "active_gate": "Gate 59",
+  "historical_note": "This v4 successor replaces over-broad exploratory cognitive-workflow modification drafts with smaller gates and exact cognitive-workflow leaf-ledger schema compatibility."
+}

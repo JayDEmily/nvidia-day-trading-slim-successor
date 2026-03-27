@@ -4,18 +4,24 @@
 
 1. **No LLM live execution.**
 2. **Deterministic runtime only.**
-3. **Risk gateway mandatory.**
-4. **Ledger mandatory.**
-5. **No silent schema drift.**
-6. **No hidden state.**
-7. **No vendor lock-in in the domain model.**
-8. **No direct route-handler business logic.**
-9. **Replayability first.**
-10. **Promotion is conservative.**
-11. **Docstrings are mandatory on every new or refactored Python file.**
-12. **Every runtime decision that affects capital or playbook eligibility must be explainable.**
-13. **No allocation path bypasses posture and risk permission.**
-14. **No module import discards preserved evidence without an explicit changelog entry.**
+3. **Stable cognition grammar is preserved unless a deliberate normative change proves otherwise.**
+4. **Runtime variation is limited to approved bounded posture/policy surfaces.**
+5. **Historical replay is the research/discovery surface.**
+6. **Live paper is falsification/promotion only, never in-place coefficient discovery.**
+7. **Review may conclude no change.**
+8. **Runtime never invents coefficients or hidden policy in place.**
+9. **Risk gateway mandatory.**
+10. **Ledger mandatory.**
+11. **No silent schema drift.**
+12. **No hidden state.**
+13. **No vendor lock-in in the domain model.**
+14. **No direct route-handler business logic.**
+15. **Replayability first.**
+16. **Promotion is conservative.**
+17. **Docstrings are mandatory on every new or refactored Python file.**
+18. **Every runtime decision that affects capital or playbook eligibility must be explainable.**
+19. **No allocation path bypasses posture and risk permission.**
+20. **No module import discards preserved evidence without an explicit changelog entry.**
 
 ## Required runtime guardrails
 

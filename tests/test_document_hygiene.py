@@ -24,3 +24,8 @@ def test_build_plan_is_explicitly_archived_context() -> None:
 def test_status_and_legacy_readmes_exist() -> None:
     assert (DOCS_ROOT / 'status' / 'README.md').exists()
     assert (DOCS_ROOT / 'legacy' / 'README.md').exists()
+
+
+def test_gate59_salvage_archive_lives_under_docs_legacy() -> None:
+    assert (DOCS_ROOT / 'legacy' / '2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md').exists()
+    assert (DOCS_ROOT / 'legacy' / '2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json').exists()

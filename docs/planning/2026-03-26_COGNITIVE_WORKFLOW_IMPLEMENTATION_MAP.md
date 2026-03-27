@@ -4,7 +4,7 @@ Status: complete on `main`
 Version: v1.0
 Gate: Gate 51
 Purpose: pin explicit ownership for each branch of the updated trader-thinking workflow without rewriting the seven-stage runtime spine.
-Authority boundary: this file is subordinate to `docs/01_NORMATIVE.md` through `docs/05_MULTI_AGENT_RUNTIME.md`, the frozen audit findings, and `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`.
+Authority boundary: this file is subordinate to `docs/01_NORMATIVE.md` through `docs/05_MULTI_AGENT_RUNTIME.md`, the frozen audit findings, and the active successor authority `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`.
 
 ## Governing inputs
 
