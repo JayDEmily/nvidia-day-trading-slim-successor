@@ -17,11 +17,13 @@ from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     ImportedModuleReviewCitation,
+    PhaseCarryoverPolicySurface,
     PrecursorGovernanceSurface,
     ReviewEligibilitySurface,
     ReviewGovernanceSurface,
     TemporalEventWindowSurface,
 )
+from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState
 from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage, SurfaceStabilityScorecard
 
 
@@ -475,6 +477,8 @@ class RuntimeStateVector(BaseModel):
 
     desk_window: str
     clock_envelope: str
+    day_phase_state: DayPhaseState
+    carry_horizon_state: CarryHorizonState
     carryover_state: str
     expiry_cycle_state: str
     event_proximity_state: str
@@ -581,6 +585,7 @@ class ReviewExplanationOutput(BaseModel):
     review_governance: ReviewGovernanceSurface | None = None
     event_window_governance: TemporalEventWindowSurface | None = None
     precursor_governance: PrecursorGovernanceSurface | None = None
+    phase_carry_policy: PhaseCarryoverPolicySurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
     packet_lineage: PacketLineageSurface | None = None

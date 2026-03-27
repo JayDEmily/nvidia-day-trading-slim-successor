@@ -80,6 +80,8 @@ class CanonicalStateVectorField(StrEnum):
 
     DESK_WINDOW = "desk_window"
     CLOCK_ENVELOPE = "clock_envelope"
+    DAY_PHASE_STATE = "day_phase_state"
+    CARRY_HORIZON_STATE = "carry_horizon_state"
     CARRYOVER_STATE = "carryover_state"
     EXPIRY_CYCLE_STATE = "expiry_cycle_state"
     EVENT_PROXIMITY_STATE = "event_proximity_state"

@@ -1349,3 +1349,14 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate68_precursor_universe.py tests/test_gate67_event_window_semantics.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py`
 
+### LEAF-G69-001 through LEAF-G69-006 — Phase-of-day and carryover policy matrix
+
+- Branch: `work/gate69-phase-carry-policy-20260327`
+- Scope: freeze ordinary session day-phase and carryover posture law, including explicit no-action bias and mutable-surface targeting, before later event-stress matrices or runtime integration.
+- Outcome:
+  - Added typed phase/carry policy authority contracts for day phases, carry-horizon states, behaviour classes, no-action bias, and mutable-surface targets.
+  - Extended the approved runtime state vector with `day_phase_state` and `carry_horizon_state`, and updated the earlier ontology proof so it protects the contract without blocking later authorised extensions.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so ordinary session posture law is explicit and review-visible.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate69_phase_carry_policy.py tests/test_gate60_state_policy_ontology.py tests/test_gate68_precursor_universe.py tests/test_successor_pack_anti_drift.py`
+

@@ -364,6 +364,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["asia_precursor_context"],
             notes=["Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."],
         ),
+        VocabularyEntry(
+            canonical_slug="phase_carry_policy",
+            canonical_label="Phase Carry Policy",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="posture_risk",
+            maps_to_contract="nvda_desk.schemas.risk.PhaseCarryoverPolicyAuthorityPacket",
+            allowed_aliases=["ordinary_session_policy_matrix"],
+            notes=["Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

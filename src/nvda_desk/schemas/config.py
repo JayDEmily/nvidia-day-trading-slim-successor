@@ -10,6 +10,7 @@ from __future__ import annotations
 from pydantic import BaseModel, Field
 
 from nvda_desk.schemas.market import PrecursorUniverseAuthorityPacket
+from nvda_desk.schemas.risk import PhaseCarryoverPolicyAuthorityPacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     CandidateGovernanceAuthorityPacket,
@@ -93,6 +94,14 @@ class PrecursorUniverseAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 68 precursor-universe packet."""
 
     authority: PrecursorUniverseAuthorityPacket
+
+
+
+
+class PhaseCarryoverPolicyAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 69 phase/carry packet."""
+
+    authority: PhaseCarryoverPolicyAuthorityPacket
 
 
 class EventWindowAuthorityResponse(BaseModel):

@@ -199,6 +199,15 @@ Precursor context must remain bounded to an explicit Asia/ex-US universe rather 
 - allowed derived fields are directional composite, cross-venue agreement, futures-cash divergence, impulse persistence, precursor pressure, and carry-risk warning;
 - Europe, commodities, crypto, and single-stock chatter remain excluded until a later explicit authority change says otherwise.
 
+## Phase-of-day and carryover policy law
+
+Phase and carry context may change bounded posture, but it must not mutate the desk grammar or force action merely because time advanced.
+
+- approved day-phase states are `opening_disorder`, `opening_resolution`, `trend_window`, `midday_compression`, `late_session`, `close_auction`, and `post_close`;
+- carry-horizon states are `intraday_only`, `overnight_setup`, `weekend_setup`, and `event_carry_setup`;
+- midday compression and late-session carry preparation may prefer or require no-action even when no hard veto exists;
+- phase/carryover policy may alter only approved mutable surfaces while invariant grammar and baseline coefficients remain unchanged.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

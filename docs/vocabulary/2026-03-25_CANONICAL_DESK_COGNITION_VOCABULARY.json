@@ -722,6 +722,25 @@
       ]
     },
     {
+      "canonical_slug": "phase_carry_policy",
+      "canonical_label": "Phase Carry Policy",
+      "category": "workflow",
+      "stage_owner": "posture_risk",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.risk.PhaseCarryoverPolicyAuthorityPacket",
+      "allowed_aliases": [
+        "ordinary_session_policy_matrix"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

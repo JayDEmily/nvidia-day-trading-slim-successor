@@ -23,6 +23,12 @@ from nvda_desk.schemas.market import (
     PrecursorVenueUniverse,
     SessionAlignmentExpectation,
 )
+from nvda_desk.schemas.risk import (
+    CarryHorizonState,
+    DayPhaseState,
+    PhaseBehaviourClass,
+    PhaseNoActionBias,
+)
 from nvda_desk.schemas.state_policy import (
     AdjudicationDisposition,
     CandidateComparisonOutcome,
@@ -150,6 +156,18 @@ class PrecursorGovernanceSurface(BaseModel):
     active_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
     session_alignment: list[SessionAlignmentExpectation] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+
+
+class PhaseCarryoverPolicySurface(BaseModel):
+    """Gate 69 hook exposing bounded phase/carry posture meaning to review."""
+
+    day_phase_state: DayPhaseState
+    carry_horizon_state: CarryHorizonState
+    behaviour_class: PhaseBehaviourClass
+    no_action_bias: PhaseNoActionBias = PhaseNoActionBias.NEUTRAL
     notes: list[str] = Field(default_factory=list)
 
 

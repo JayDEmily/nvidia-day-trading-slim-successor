@@ -3,9 +3,74 @@ from __future__ import annotations
 from datetime import datetime
 from enum import StrEnum
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
+from nvda_desk.schemas.state_policy import MutableRuntimeSurface
+
+
+class DayPhaseState(StrEnum):
+    """Approved day-phase states for Gate 69 policy law."""
+
+    OPENING_DISORDER = "opening_disorder"
+    OPENING_RESOLUTION = "opening_resolution"
+    TREND_WINDOW = "trend_window"
+    MIDDAY_COMPRESSION = "midday_compression"
+    LATE_SESSION = "late_session"
+    CLOSE_AUCTION = "close_auction"
+    POST_CLOSE = "post_close"
+
+
+class CarryHorizonState(StrEnum):
+    """Carry-sensitive states that may alter posture lawfully."""
+
+    INTRADAY_ONLY = "intraday_only"
+    OVERNIGHT_SETUP = "overnight_setup"
+    WEEKEND_SETUP = "weekend_setup"
+    EVENT_CARRY_SETUP = "event_carry_setup"
+
+
+class PhaseBehaviourClass(StrEnum):
+    """Bounded policy behaviours allowed by the phase/carry matrix."""
+
+    NORMAL_OPERATION = "normal_operation"
+    TIGHTENED_THRESHOLDS = "tightened_thresholds"
+    COMPRESSED_DEPLOYMENT = "compressed_deployment"
+    CARRY_PREPARATION = "carry_preparation"
+    NO_ACTION_PREFERRED = "no_action_preferred"
+
+
+class PhaseNoActionBias(StrEnum):
+    """Whether the matrix simply allows, prefers, or requires no-action."""
+
+    NEUTRAL = "neutral"
+    PREFERRED = "preferred"
+    REQUIRED = "required"
+
+
+class PhaseCarryPolicyRecord(BaseModel):
+    """One deterministic phase/carry posture policy record."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    day_phase: DayPhaseState
+    carry_horizon: CarryHorizonState
+    behaviour_class: PhaseBehaviourClass
+    no_action_bias: PhaseNoActionBias = PhaseNoActionBias.NEUTRAL
+    mutable_surface_targets: list[MutableRuntimeSurface] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class PhaseCarryoverPolicyAuthorityPacket(BaseModel):
+    """Frozen Gate 69 authority for phase-of-day and carryover policy."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    day_phases: list[DayPhaseState] = Field(default_factory=list)
+    carry_horizon_states: list[CarryHorizonState] = Field(default_factory=list)
+    behaviour_classes: list[PhaseBehaviourClass] = Field(default_factory=list)
+    no_action_biases: list[PhaseNoActionBias] = Field(default_factory=list)
+    policy_records: list[PhaseCarryPolicyRecord] = Field(default_factory=list)
 
 
 class RiskAction(StrEnum):

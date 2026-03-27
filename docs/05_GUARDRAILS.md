@@ -34,6 +34,7 @@
 30. **Venue calendar truth must come from explicit venue contracts, not one generic market-open flag.**
 31. **Event-window semantics must stay typed; `near event` or `probably clear by now` is not lawful runtime language.**
 32. **Precursor context must come from the bounded Asia/ex-US universe; no casual source creep.**
+33. **Phase/carryover policy may change bounded posture, but it must not force action just because the clock moved.**
 
 ## Required runtime guardrails
 
