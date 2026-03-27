@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from tests._successor_pack_helpers import successor_pack_position
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 AGENTS = REPO_ROOT / "AGENTS.md"
@@ -19,14 +21,14 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert leaves['completed_gate_ids'][:6] == ['Gate 59', 'Gate 60', 'Gate 61', 'Gate 62', 'Gate 63', 'Gate 64']
-    assert int(leaves['active_gate'].split()[1]) >= 65
-    assert leaves['execution_status'].startswith('gate_') and '_successor_pack_active_from_gate_' in leaves['execution_status']
+    assert successor_pack_position(leaves['active_gate']) >= 65
+    assert leaves['execution_status'].startswith('gate_') and ('_successor_pack_active_from_gate_' in leaves['execution_status'] or '_successor_pack_closed_after_gate_' in leaves['execution_status'])
 
     assert '- Gates 59–' in plans
     assert 'closed through Gate ' in plans
     assert 'Gates 46–' in plans and 'are merged on `main`' in plans
 
-    assert 'Current active gate: **Gate ' in gate_map and 'in the V6 successor pack**.' in gate_map
+    assert ('Current active gate: **Gate ' in gate_map and 'in the V6 successor pack**.' in gate_map) or 'Current active gate: **none — the V6 successor pack is closed through Gate 79 on `main`**.' in gate_map
 
 
 def test_execution_log_contains_successor_pack_receipt_recovery_block() -> None:

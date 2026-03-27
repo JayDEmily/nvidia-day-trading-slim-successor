@@ -513,12 +513,38 @@ def build_document() -> VocabularyDocument:
                 notes=[template.thesis_invalidation_state],
             )
         )
+    entries.extend([
+        VocabularyEntry(
+            canonical_slug="walk_forward_harness",
+            canonical_label="Walk Forward Harness",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_replay",
+            maps_to_contract="nvda_desk.schemas.calibration.WalkForwardHarnessAuthorityPacket",
+            notes=["Frozen Gate 79 review-horizon discovery harness contract."],
+        ),
+        VocabularyEntry(
+            canonical_slug="review_horizon_discovery",
+            canonical_label="Review Horizon Discovery",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_replay",
+            maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryReport",
+            notes=["Bounded Gate 79 horizon-discovery output surface."],
+        ),
+        VocabularyEntry(
+            canonical_slug="offset_sensitive",
+            canonical_label="Offset Sensitive",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_replay",
+            maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
+            notes=["Gate 79 outcome meaning offsets disagree materially."],
+        ),
+    ])
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
-        registry_version="gate64-review-governance-alignment-2026-03-27",
+        registry_version="gate79-review-horizon-alignment-2026-03-27",
         notes=[
             "Generated from current live playbook registry and pinned architecture surfaces.",
-            "Gates 60-64 extend the workflow vocabulary with state-policy, non-action, stability, review-law, and candidate-governance terms.",
+            "Gates 60-79 extend the workflow vocabulary with state-policy, event, precursor, modifier, and review-horizon terms.",
             "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth.",
         ],
         entries=entries,

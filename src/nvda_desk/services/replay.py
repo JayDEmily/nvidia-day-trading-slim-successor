@@ -1,14 +1,20 @@
 from __future__ import annotations
 
+import json
 from collections import defaultdict
 from datetime import UTC, datetime
+from pathlib import Path
 
 from sqlalchemy import asc, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.db.models import Bar1m, Instrument
 from nvda_desk.domain.session_clock import SessionClockClassifier, SessionClockPhase
-from nvda_desk.schemas.replay import ReplayPhaseSummary, ReplaySessionResponse
+from nvda_desk.schemas.replay import (
+    ReplayHorizonDiscoveryResponse,
+    ReplayPhaseSummary,
+    ReplaySessionResponse,
+)
 
 
 class ReplayService:
@@ -65,3 +71,15 @@ class ReplayService:
             total_bars=len(bars),
             phase_summaries=phase_summaries,
         )
+
+
+
+def serialize_horizon_discovery_response(
+    response: ReplayHorizonDiscoveryResponse,
+    output_path: str | Path,
+) -> str:
+    """Serialise a Gate 79 harness response to stable JSON."""
+
+    serialised = json.dumps(response.model_dump(mode="json"), indent=2, sort_keys=True) + "\n"
+    Path(output_path).write_text(serialised)
+    return serialised

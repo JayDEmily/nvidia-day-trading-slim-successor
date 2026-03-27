@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
+from nvda_desk.schemas.calibration import WalkForwardHarnessAuthorityPacket
 from nvda_desk.schemas.events import (
     EventIngestionAuthorityPacket,
     EventStoreAuthorityPacket,
@@ -185,3 +186,9 @@ class CandidateGovernanceAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 64 candidate-governance packet."""
 
     authority: CandidateGovernanceAuthorityPacket
+
+
+class WalkForwardHarnessAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 79 walk-forward harness packet."""
+
+    authority: WalkForwardHarnessAuthorityPacket

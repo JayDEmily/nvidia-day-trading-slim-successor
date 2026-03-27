@@ -2630,3 +2630,7 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
 - runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py` and `src/nvda_desk/services/cognition_runtime.py`
 - review exposure in `src/nvda_desk/services/review_explanation.py`
+
+## Gate 79 domain additions
+
+The domain now includes explicit walk-forward window contracts, horizon-discovery outputs, fragility/ablation reports, and downstream consumer bindings so review-horizon evidence is typed rather than implied.
