@@ -793,7 +793,7 @@ Gate 73 is complete on `main`. The repo now freezes one shared event-store/query
 
 ## Gate 74 — Preserve event richness into live cognition input
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 73
 
@@ -831,6 +831,10 @@ Live cognition input preserves event identity and provenance richly enough for l
 - targeted regression tests
 
 ---
+
+### Gate 74 closeout note
+
+Gate 74 is complete on `main`. The repo now preserves event identity, impact, provenance, nearby-event summaries, and lineage in the live cognition path while retaining `next_event_at` as an explicit backwards-compatible timestamp hint for older temporal consumers.
 
 ## Gate 75 — Precursor stitching, fallback, and contradiction rules
 

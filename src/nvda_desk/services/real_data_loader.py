@@ -31,6 +31,7 @@ from nvda_desk.schemas.dataset import (
     RealDataBundle,
     RuntimeSnapshotSanityReport,
 )
+from nvda_desk.services.event_store import EventStoreService
 
 
 class RealDataLoaderService:
@@ -83,6 +84,7 @@ class RealDataLoaderService:
             raise ValueError("real-data bundle must contain at least one option-chain snapshot")
 
         bar_timestamps = [bar.ts for bar in ordered_bars]
+        event_store = EventStoreService(bundle.events)
         session_open_price = float(ordered_bars[0].open)
         snapshots: list[PreparedRuntimeSnapshot] = []
         for chain in ordered_chains:
@@ -102,6 +104,7 @@ class RealDataLoaderService:
                     ordered_bars=ordered_bars,
                     ordered_chains=ordered_chains,
                     session_open_price=session_open_price,
+                    event_store=event_store,
                 )
             )
 
@@ -195,6 +198,7 @@ class RealDataLoaderService:
         ordered_bars: Sequence[BarRecord],
         ordered_chains: Sequence[OptionChainSnapshot],
         session_open_price: float,
+        event_store: EventStoreService,
     ) -> PreparedRuntimeSnapshot:
         """Build one prepared runtime snapshot from one aligned chain and bar."""
 
@@ -223,8 +227,9 @@ class RealDataLoaderService:
             for point in repeated_sequence
         ]
         pin_progression_bias = self._pin_progression_bias(pin_progression_sequence)
-        next_event = self._next_event(chain.ts, bundle.events)
-        event_ids = [next_event.event_id] if next_event is not None else []
+        live_event_snapshot = event_store.build_live_event_snapshot(requested_at=chain.ts, symbol=bundle.provenance.symbol)
+        next_event = live_event_snapshot.next_event
+        event_ids = [event.event_id for event in live_event_snapshot.nearby_events]
         bar_age_seconds = max(0, int((chain.ts - aligned_bar.ts).total_seconds()))
         distance_to_vwap_pct = None
         if session_vwap not in {None, 0.0}:
@@ -283,6 +288,7 @@ class RealDataLoaderService:
             spot_to_pin_distance_pct=spot_to_pin_distance_pct,
             pin_progression_bias=pin_progression_bias,
             next_event_at=next_event.event_at if next_event is not None else None,
+            live_event_snapshot=live_event_snapshot,
             call_oi_near_spot=round(self._near_spot_oi(front_quotes, aligned_bar.close, side="call"), 4),
             put_oi_near_spot=round(self._near_spot_oi(front_quotes, aligned_bar.close, side="put"), 4),
             front_volume_near_spot=round(self._near_spot_volume(front_quotes, aligned_bar.close), 4),
@@ -299,6 +305,7 @@ class RealDataLoaderService:
                 aligned_bar_ts=aligned_bar.ts,
                 bar_age_seconds=bar_age_seconds,
                 event_ids=event_ids,
+                event_lineage_keys=list(live_event_snapshot.lineage_keys),
                 sequence_id=chain.sequence.sequence_id if chain.sequence is not None else None,
             ),
         )

@@ -14,6 +14,7 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
+from nvda_desk.schemas.events import LiveEventSnapshot
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     EventOptionsStressPolicySurface,
@@ -115,6 +116,7 @@ class TemporalContextInput(BaseModel):
     ts: datetime
     next_expiry: datetime | None = None
     next_event_at: datetime | None = None
+    live_event_snapshot: LiveEventSnapshot | None = None
     prior_session_return_pct: float = 0.0
     intraday_move_pct: float = 0.0
     prior_close_price: float | None = None

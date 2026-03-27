@@ -502,16 +502,68 @@
     ],
     "events": [
       {
+        "record_id": "evt::1",
+        "symbol": "NVDA",
         "event_id": "evt-1",
         "event_at": "2026-03-23T15:30:00Z",
         "event_type": "macro",
-        "label": "Fed speaker"
+        "label": "Fed speaker",
+        "event_class": null,
+        "semantic_phase": "known_risk",
+        "materiality_tier": "posture_relevant",
+        "provenance": [
+          {
+            "source": "policy_release_calendar",
+            "source_class": "policy_calendar",
+            "source_document": "fed_speakers",
+            "observed_at": "2026-03-22T20:00:00Z",
+            "freshness_state": "current",
+            "confidence_tier": "corroborated",
+            "conflict_disposition": "latest_corroborated_wins",
+            "outage_policy": null,
+            "lineage_key": "src:ir:evt-1",
+            "notes": []
+          }
+        ],
+        "lineage_keys": [
+          "src:ir:evt-1"
+        ],
+        "conflict_notes": [],
+        "tags": [
+          "fed"
+        ]
       },
       {
+        "record_id": "evt::2",
+        "symbol": null,
         "event_id": "evt-2",
         "event_at": "2026-03-24T12:30:00Z",
         "event_type": "macro",
-        "label": "CPI"
+        "label": "CPI",
+        "event_class": null,
+        "semantic_phase": "known_risk",
+        "materiality_tier": "posture_relevant",
+        "provenance": [
+          {
+            "source": "macro_release_calendar",
+            "source_class": "macro_calendar",
+            "source_document": "macro_schedule",
+            "observed_at": "2026-03-22T20:00:00Z",
+            "freshness_state": "current",
+            "confidence_tier": "corroborated",
+            "conflict_disposition": "latest_corroborated_wins",
+            "outage_policy": null,
+            "lineage_key": "src:macro:evt-2",
+            "notes": []
+          }
+        ],
+        "lineage_keys": [
+          "src:macro:evt-2"
+        ],
+        "conflict_notes": [],
+        "tags": [
+          "inflation"
+        ]
       }
     ]
   },
@@ -570,6 +622,82 @@
         "spot_to_pin_distance_pct": 1.7241,
         "pin_progression_bias": "pinning_in",
         "next_event_at": "2026-03-23T15:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:02:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T15:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
         "call_oi_near_spot": 9900.0,
         "put_oi_near_spot": 10800.0,
         "front_volume_near_spot": 2380.0,
@@ -666,7 +794,12 @@
           "aligned_bar_ts": "2026-03-23T14:00:00Z",
           "bar_age_seconds": 120,
           "event_ids": [
-            "evt-1"
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
           ],
           "sequence_id": "seq-opening-balance"
         }
@@ -715,6 +848,82 @@
         "spot_to_pin_distance_pct": 0.5111,
         "pin_progression_bias": "pinning_in",
         "next_event_at": "2026-03-23T15:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:07:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T15:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
         "call_oi_near_spot": 13300.0,
         "put_oi_near_spot": 13900.0,
         "front_volume_near_spot": 3120.0,
@@ -811,7 +1020,12 @@
           "aligned_bar_ts": "2026-03-23T14:05:00Z",
           "bar_age_seconds": 120,
           "event_ids": [
-            "evt-1"
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
           ],
           "sequence_id": "seq-opening-balance"
         }
@@ -860,6 +1074,82 @@
         "spot_to_pin_distance_pct": 0.0848,
         "pin_progression_bias": "pinning_in",
         "next_event_at": "2026-03-23T15:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:12:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T15:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
         "call_oi_near_spot": 13500.0,
         "put_oi_near_spot": 13950.0,
         "front_volume_near_spot": 3165.0,
@@ -956,7 +1246,12 @@
           "aligned_bar_ts": "2026-03-23T14:10:00Z",
           "bar_age_seconds": 120,
           "event_ids": [
-            "evt-1"
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
           ],
           "sequence_id": "seq-opening-balance"
         }

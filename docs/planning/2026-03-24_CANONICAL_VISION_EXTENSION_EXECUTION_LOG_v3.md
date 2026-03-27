@@ -1408,3 +1408,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces and added targeted Gate 73 integrity tests.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate73_event_store_query.py tests/test_gate72_event_ingestion_provenance.py tests/test_gate71_modifier_control_law.py tests/test_successor_pack_anti_drift.py`
+
+
+### LEAF-G74-001 through LEAF-G74-005 — Preserve event richness into live cognition input
+
+- Branch: `work/gate74-live-event-richness-20260327`
+- Scope: preserve event identity, impact, provenance, nearby-event summaries, and lineage all the way into the live cognition packet without breaking existing `next_event_at` consumers.
+- Outcome:
+  - Added typed live-event-richness authority contracts plus compact live-event references and snapshots for the bounded live path.
+  - Rewired the real-data loader and chain-to-cognition bridge so prepared runtime snapshots retain rich nearby-event truth and expose it through `TemporalContextInput.live_event_snapshot`.
+  - Rebased normative, operating, domain, guardrail, planning, vocabulary, and fixture/test surfaces so live event truth is preserved additively rather than collapsed to a bare timestamp.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate74_live_event_richness.py tests/test_real_data_loader.py tests/test_gate73_event_store_query.py tests/test_successor_pack_anti_drift.py`

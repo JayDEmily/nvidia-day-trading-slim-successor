@@ -200,6 +200,15 @@ The repo now has one bounded shared event truth surface for runtime, review, and
 - lineage retrieval is part of the shared event-store contract rather than a side path;
 - replay uses the same event truth with a declared consumer mode instead of bespoke semantics.
 
+## Gate 74 live event-richness authority
+
+The live runtime preparation path now preserves a bounded `live_event_snapshot` contract from the shared event store through prepared runtime snapshots into `TemporalContextInput.live_event_snapshot`. Older temporal consumers may continue to read `next_event_at`, but that timestamp is now an additive compatibility hint derived from the richer packet, not a substitute for it.
+
+- nearby-event selection now flows through an explicit query window contract;
+- material-event filters now use explicit materiality floors;
+- lineage retrieval is part of the shared event-store contract rather than a side path;
+- replay uses the same event truth with a declared consumer mode instead of bespoke semantics.
+
 ## Current operating surfaces
 
 The current repo exposes:

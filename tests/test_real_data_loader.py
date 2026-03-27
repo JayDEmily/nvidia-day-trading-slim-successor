@@ -50,7 +50,12 @@ def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_ev
     assert first_snapshot.bar_age_seconds == 120
     assert first_snapshot.snapshot_sequence_id == "seq-opening-balance"
     assert first_snapshot.snapshot_count == 3
-    assert first_snapshot.lineage.event_ids == ["evt-1"]
+    assert first_snapshot.lineage.event_ids == ["evt-1", "evt-2"]
+    assert first_snapshot.lineage.event_lineage_keys == ["src:ir:evt-1", "src:macro:evt-2"]
+    assert first_snapshot.live_event_snapshot is not None
+    assert first_snapshot.live_event_snapshot.next_event is not None
+    assert first_snapshot.live_event_snapshot.next_event.event_id == "evt-1"
+    assert [event.event_id for event in first_snapshot.live_event_snapshot.nearby_events] == ["evt-1", "evt-2"]
     assert first_snapshot.repeated_snapshot_sequence[-1].ts.isoformat() == "2026-03-23T14:12:00+00:00"
     assert first_snapshot.pin_progression_bias == "pinning_in"
 
@@ -66,6 +71,7 @@ def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs()
     assert converted.lineage.sequence_id == "seq-opening-balance"
     assert converted.temporal_input.ts == snapshot.ts
     assert converted.temporal_input.next_expiry == snapshot.front_expiry
+    assert converted.temporal_input.live_event_snapshot == snapshot.live_event_snapshot
     assert converted.options_flow_input.spot_price == snapshot.spot_price
     assert converted.options_flow_input.front_dte == snapshot.front_dte
     assert converted.options_flow_input.call_oi_near_spot == snapshot.call_oi_near_spot

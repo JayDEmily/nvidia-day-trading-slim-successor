@@ -297,6 +297,11 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+### 4l. Live event-richness objects
+
+`LiveEventReference` carries compact event identity, timing, materiality, provenance count, and lineage keys for one nearby event. `LiveEventSnapshot` carries the requested timestamp, query window, next-event reference, nearby/material event summaries, and deduplicated lineage keys. `PreparedRuntimeSnapshot.live_event_snapshot` and `TemporalContextInput.live_event_snapshot` preserve this packet into the live cognition path while `PreparedRuntimeLineage.event_lineage_keys` keeps the provenance keys auditable.
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -313,6 +318,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -349,6 +356,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -365,6 +374,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -418,6 +429,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -434,6 +447,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -470,6 +485,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -486,6 +503,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -556,6 +575,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -572,6 +593,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -608,6 +631,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -624,6 +649,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -677,6 +704,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -693,6 +722,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -729,6 +760,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -745,6 +778,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -832,6 +867,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -848,6 +885,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -884,6 +923,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -900,6 +941,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -953,6 +996,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -969,6 +1014,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1005,6 +1052,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1021,6 +1070,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1091,6 +1142,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1107,6 +1160,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1143,6 +1198,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1159,6 +1216,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1212,6 +1271,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1228,6 +1289,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1264,6 +1327,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1280,6 +1345,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1385,6 +1452,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1401,6 +1470,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1437,6 +1508,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1453,6 +1526,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1506,6 +1581,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1522,6 +1599,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1558,6 +1637,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1574,6 +1655,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1644,6 +1727,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1660,6 +1745,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1696,6 +1783,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1712,6 +1801,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1765,6 +1856,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1781,6 +1874,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1817,6 +1912,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1833,6 +1930,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1920,6 +2019,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1936,6 +2037,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1972,6 +2075,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -1988,6 +2093,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2041,6 +2148,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2057,6 +2166,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2093,6 +2204,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2109,6 +2222,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2179,6 +2294,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2195,6 +2312,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2231,6 +2350,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2247,6 +2368,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2300,6 +2423,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2316,6 +2441,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2352,6 +2479,8 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:
@@ -2368,6 +2497,8 @@ Ownership:
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 4k. Shared event-store and query objects
+
+
 Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
 
 Key examples:

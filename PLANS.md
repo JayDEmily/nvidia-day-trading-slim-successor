@@ -45,7 +45,7 @@ The active successor modification pair from Gate 59 onward is:
 - Gate 53 — complete on `main`
 - Gates 54–55 — complete on `main`
 - Gates 56–58 — complete on `main`
-- Gates 59–73 — complete on `main`
+- Gates 59–74 — complete on `main`
 
 ## Sequential execution rule
 
@@ -57,7 +57,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 73 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–73 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 74 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–74 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
