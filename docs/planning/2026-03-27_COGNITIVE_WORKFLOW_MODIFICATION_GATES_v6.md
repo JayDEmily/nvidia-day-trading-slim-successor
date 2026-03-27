@@ -652,7 +652,7 @@ Gate 70 is complete on `main`. The repo now freezes one deterministic event/opti
 
 ## Gate 71 — Modifier precedence, caps, vetoes, and kill-switches
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 69–70
 
@@ -696,6 +696,10 @@ The repo has one deterministic combination law for state-conditioned posture cha
 - targeted determinism tests
 
 ---
+
+### Gate 71 closeout note
+
+Gate 71 is complete on `main`. The repo now freezes one deterministic control law for combining active modifier states, including precedence bands, compatible-combination algebra, clamps, vetoes, kill-switches, and lineage requirements that keep later review reconstruction honest.
 
 ## Gate 72 — Event-source ingestion and provenance normalisation
 

@@ -15,6 +15,7 @@ from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     CandidateGovernanceAuthorityPacket,
     EventOptionsStressAuthorityPacket,
+    ModifierControlLawAuthorityPacket,
     NonActionAuthorityPacket,
     ReviewEligibilityAuthorityPacket,
     StabilityAuthorityPacket,
@@ -140,6 +141,12 @@ class EventOptionsStressAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 70 event/options-stress packet."""
 
     authority: EventOptionsStressAuthorityPacket
+
+
+class ModifierControlLawAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 71 modifier-control-law packet."""
+
+    authority: ModifierControlLawAuthorityPacket
 
 
 class CandidateGovernanceAuthorityResponse(BaseModel):

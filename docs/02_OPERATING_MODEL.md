@@ -173,6 +173,15 @@ Stable doctrine now has an explicit matrix for event-conditioned and options-str
 - the matrix states which mutable runtime surfaces are targeted and which conditions force no-action or stand-down;
 - combined event-plus-options examples remain lawful while final precedence stays deferred to Gate 71.
 
+## Gate 71 modifier-control-law authority
+
+The repo now has one deterministic combination law for multiple active posture states.
+
+- precedence bands order kill switches, hard blocks, event/options stress, phase/carry, precursor context, regime context, and baseline posture;
+- compatible modifiers combine through bounded algebra and then clamp to approved caps/floors;
+- vetoes and kill switches remain explicit, typed, and review-visible;
+- lineage requirements now freeze how later review packets reconstruct which modifier won and why.
+
 ## Current operating surfaces
 
 The current repo exposes:

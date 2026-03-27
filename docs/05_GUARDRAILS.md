@@ -38,6 +38,12 @@
 
 34. **Event/options-stress posture must come from the frozen matrix, not improvised event lore or gamma hand-waving.**
 
+35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
+
 ## Required runtime guardrails
 ## Required runtime guardrails
 

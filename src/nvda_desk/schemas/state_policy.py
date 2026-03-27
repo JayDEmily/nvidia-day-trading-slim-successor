@@ -593,3 +593,69 @@ class EventOptionsStressAuthorityPacket(BaseModel):
     effect_types: list[PolicyEffectType] = Field(default_factory=list)
     behaviour_classes: list[EventOptionsBehaviourClass] = Field(default_factory=list)
     policy_records: list[EventOptionsStressPolicyRecord] = Field(default_factory=list)
+
+
+
+class ModifierPriorityBand(StrEnum):
+    """Deterministic precedence bands for Gate 71 control law."""
+
+    KILL_SWITCH = "kill_switch"
+    HARD_BLOCK = "hard_block"
+    EVENT_OPTIONS_STRESS = "event_options_stress"
+    PHASE_CARRY = "phase_carry"
+    PRECURSOR = "precursor"
+    REGIME = "regime"
+    BASELINE = "baseline"
+
+
+class CombinationLaw(StrEnum):
+    """Bounded algebra for combining compatible modifier effects."""
+
+    MOST_RESTRICTIVE_WINS = "most_restrictive_wins"
+    MULTIPLY_THEN_CLAMP = "multiply_then_clamp"
+    ADDITIVE_OFFSET_THEN_CLAMP = "additive_offset_then_clamp"
+    BLOCK_OVERRIDES_SCALE = "block_overrides_scale"
+
+
+class KillSwitchCondition(StrEnum):
+    """Explicit hard-stop conditions frozen by Gate 71."""
+
+    EVENT_LIVE_HARD_BLOCK = "event_live_hard_block"
+    EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA = "event_suppressed_with_negative_gamma"
+    PRECURSOR_CONTRADICTION_WITH_EXPIRY_DISTORTION = "precursor_contradiction_with_expiry_distortion"
+    DATA_QUALITY_HARD_BLOCK = "data_quality_hard_block"
+    OPERATOR_OR_BROKER_HARD_BLOCK = "operator_or_broker_hard_block"
+
+
+class ModifierClampRule(BaseModel):
+    """Hard cap and floor bounds for one effective mutable surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    target_surface: MutableRuntimeSurface
+    floor: float | None = None
+    cap: float | None = None
+    notes: list[str] = Field(default_factory=list)
+
+
+class ModifierVetoRule(BaseModel):
+    """When one precedence band suppresses another entirely."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    controlling_band: ModifierPriorityBand
+    suppressed_bands: list[ModifierPriorityBand] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ModifierControlLawAuthorityPacket(BaseModel):
+    """Frozen Gate 71 authority for precedence, clamps, vetoes, and kill-switches."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    precedence_bands: list[ModifierPriorityBand] = Field(default_factory=list)
+    combination_laws: list[CombinationLaw] = Field(default_factory=list)
+    kill_switch_conditions: list[KillSwitchCondition] = Field(default_factory=list)
+    clamp_rules: list[ModifierClampRule] = Field(default_factory=list)
+    veto_rules: list[ModifierVetoRule] = Field(default_factory=list)
+    lineage_fields: list[str] = Field(default_factory=list)

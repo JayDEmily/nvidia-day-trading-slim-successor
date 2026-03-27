@@ -33,9 +33,12 @@ from nvda_desk.schemas.state_policy import (
     AdjudicationDisposition,
     CandidateComparisonOutcome,
     CandidateSetShape,
+    CombinationLaw,
     DegradationStep,
     EventOptionsBehaviourClass,
     EventOptionsStressState,
+    KillSwitchCondition,
+    ModifierPriorityBand,
     NonActionClass,
     OverrideDisposition,
     PolicyEffectType,
@@ -181,6 +184,16 @@ class EventOptionsStressPolicySurface(BaseModel):
     behaviour_class: EventOptionsBehaviourClass
     effect_types: list[PolicyEffectType] = Field(default_factory=list)
     hard_block: bool = False
+    notes: list[str] = Field(default_factory=list)
+
+
+class ModifierControlLawSurface(BaseModel):
+    """Gate 71 hook exposing precedence, veto, and kill-switch outcomes."""
+
+    active_precedence_bands: list[ModifierPriorityBand] = Field(default_factory=list)
+    applied_combination_laws: list[CombinationLaw] = Field(default_factory=list)
+    triggered_kill_switch: KillSwitchCondition | None = None
+    suppressed_state_labels: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
 
 
