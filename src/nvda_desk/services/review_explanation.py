@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from nvda_desk.schemas.cognition import (
     ContradictionSurface,
+    EffectivePolicySnapshot,
     PlaybookDecision,
     RejectedPlaybookReason,
     ReviewExplanationInput,
@@ -17,10 +18,12 @@ from nvda_desk.schemas.cognition import (
 from nvda_desk.schemas.review import (
     EconomicContributionPacket,
     EconomicContributionTag,
+    ModifierControlLawSurface,
     PrecursorRuntimeBindingSurface,
     PromotionEvidencePacket,
     ReviewFailureClass,
     ReviewFailurePacket,
+    ReviewGovernanceSurface,
     ReviewLineagePacket,
     ReviewResolutionClass,
 )
@@ -115,6 +118,9 @@ class ReviewExplanationService:
         stage_summaries = {packet.stage: "; ".join(packet.reasons) for packet in stage_reason_packets}
         desk_readout = self._desk_readout(payload)
         precursor_runtime_binding = self._precursor_runtime_binding(payload)
+        review_governance = self._review_governance(payload)
+        modifier_control_law = self._modifier_control_law(payload)
+        effective_policy = self._effective_policy(payload)
         review_lineage = self._review_lineage(payload)
         failure_taxonomy = self._failure_taxonomy(payload, conflict_tags)
         economic_accountability = self._economic_accountability(failure_taxonomy)
@@ -144,6 +150,12 @@ class ReviewExplanationService:
         }
         if precursor_runtime_binding is not None:
             review_packet["precursor_runtime_binding"] = precursor_runtime_binding.model_dump(mode="json")
+        if review_governance is not None:
+            review_packet["review_governance"] = review_governance.model_dump(mode="json")
+        if modifier_control_law is not None:
+            review_packet["modifier_control_law"] = modifier_control_law.model_dump(mode="json")
+        if effective_policy is not None:
+            review_packet["effective_policy"] = effective_policy.model_dump(mode="json")
         review_packet["review_lineage"] = review_lineage.model_dump(mode="json")
         review_packet["failure_taxonomy"] = failure_taxonomy.model_dump(mode="json")
         review_packet["economic_accountability"] = economic_accountability.model_dump(mode="json")
@@ -156,6 +168,9 @@ class ReviewExplanationService:
             rejected_playbooks=rejected_playbooks,
             contradictions=contradictions,
             module_attribution=module_attribution,
+            effective_policy=effective_policy,
+            review_governance=review_governance,
+            modifier_control_law=modifier_control_law,
             precursor_runtime_binding=precursor_runtime_binding,
             review_lineage=review_lineage,
             failure_taxonomy=failure_taxonomy,
@@ -172,7 +187,11 @@ class ReviewExplanationService:
             conflict_tags.append("posture_signal_conflict")
         if payload.eligibility.no_trade_reasons and payload.execution.active_playbook_ids:
             conflict_tags.append("event_veto_breached")
-        if payload.options_flow.gamma_state.value == "destabilising" and not payload.execution.hedge_required:
+        if (
+            payload.options_flow.gamma_state.value == "destabilising"
+            and payload.posture.permission_state.value != "block"
+            and not payload.execution.hedge_required
+        ):
             conflict_tags.append("missing_hedge_under_destabilising_gamma")
         if payload.posture.inventory_posture_state in {"trapped", "capital_locked"} and payload.execution.inventory_action == "add":
             conflict_tags.append("adding_into_locked_inventory")
@@ -234,6 +253,36 @@ class ReviewExplanationService:
             notes=list(packet.notes),
         )
 
+    def _review_governance(self, payload: ReviewExplanationInput) -> ReviewGovernanceSurface | None:
+        packet = payload.modifier_runtime_packet
+        if packet is None:
+            return None
+        return ReviewGovernanceSurface(
+            stand_down_class=packet.stand_down_class,
+            conflict_classes=list(packet.conflict_classes),
+            degradation_step=packet.degradation_step,
+            override_disposition=packet.override_disposition,
+            override_audit_notes=list(packet.notes),
+        )
+
+    def _modifier_control_law(self, payload: ReviewExplanationInput) -> ModifierControlLawSurface | None:
+        packet = payload.modifier_runtime_packet
+        if packet is None:
+            return None
+        return ModifierControlLawSurface(
+            active_precedence_bands=list(packet.active_precedence_bands),
+            applied_combination_laws=list(packet.applied_combination_laws),
+            triggered_kill_switch=packet.triggered_kill_switch,
+            suppressed_state_labels=list(packet.suppressed_state_labels),
+            notes=list(packet.notes),
+        )
+
+    def _effective_policy(self, payload: ReviewExplanationInput) -> EffectivePolicySnapshot | None:
+        packet = payload.modifier_runtime_packet
+        if packet is None:
+            return None
+        return EffectivePolicySnapshot(active_lineage=list(packet.effective_lineage))
+
     def _review_lineage(self, payload: ReviewExplanationInput) -> ReviewLineagePacket:
         event_lineage_keys = []
         precursor_lineage_keys = []
@@ -241,11 +290,16 @@ class ReviewExplanationService:
             event_lineage_keys = list(payload.temporal_input.live_event_snapshot.lineage_keys)
         if payload.temporal_input is not None and payload.temporal_input.precursor_runtime_packet is not None:
             precursor_lineage_keys = list(payload.temporal_input.precursor_runtime_packet.lineage_keys)
+        modifier_policy_ids = []
+        effective_targets = []
+        if payload.modifier_runtime_packet is not None:
+            modifier_policy_ids = list(payload.modifier_runtime_packet.active_policy_ids)
+            effective_targets = [lineage.target_surface.value for lineage in payload.modifier_runtime_packet.effective_lineage]
         return ReviewLineagePacket(
             event_lineage_keys=event_lineage_keys,
             precursor_lineage_keys=precursor_lineage_keys,
-            modifier_policy_ids=[],
-            effective_coefficient_targets=[],
+            modifier_policy_ids=modifier_policy_ids,
+            effective_coefficient_targets=effective_targets,
             posture_change_reasons=list(payload.posture.reasons),
         )
 
@@ -258,6 +312,11 @@ class ReviewExplanationService:
             primary_failure_class = ReviewFailureClass.DATA_PROVENANCE_FAILURE
             rationale.append("precursor_runtime_packet_signalled_unresolved_context")
 
+        modifier_kill_switch = None
+        if payload.modifier_runtime_packet is not None and payload.modifier_runtime_packet.triggered_kill_switch is not None:
+            modifier_kill_switch = payload.modifier_runtime_packet.triggered_kill_switch
+            rationale.append(f"modifier_kill_switch:{modifier_kill_switch.value}")
+
         if "regime_signal_conflict" in conflict_tags or "posture_signal_conflict" in conflict_tags:
             primary_failure_class = ReviewFailureClass.DIAGNOSIS_FAILURE
             rationale.append("cross_signal_conflict_visible_in_review")
@@ -267,13 +326,15 @@ class ReviewExplanationService:
         if any(tag in conflict_tags for tag in {"missing_hedge_under_destabilising_gamma", "adding_into_locked_inventory"}):
             primary_failure_class = ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE
             rationale.append("execution_expression_conflict_visible_in_review")
+        if modifier_kill_switch is not None:
+            primary_failure_class = ReviewFailureClass.POSTURE_POLICY_FAILURE
 
         if payload.execution.active_playbook_ids:
             resolution = ReviewResolutionClass.UNRESOLVED
+        elif payload.posture.permission_state.value == "block":
+            resolution = ReviewResolutionClass.BLOCKED_TRADE
         elif payload.eligibility.no_trade_reasons:
             resolution = ReviewResolutionClass.NON_ACTION
-        elif payload.posture.permission_state.value == "blocked":
-            resolution = ReviewResolutionClass.BLOCKED_TRADE
         else:
             resolution = ReviewResolutionClass.UNKNOWN
 

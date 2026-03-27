@@ -102,3 +102,5 @@ At minimum, the runtime supports configurable checks for:
 40. **If precursor truth enters runtime, review must see the same typed packet and lineage — no sidecar precursor memory, no private reinterpretation.**
 
 41. **Review packets must stay machine-readable and lineage-complete; no post hoc story time masquerading as trader-grade failure analysis.**
+
+42. **Modifier runtime integration must stay additive, lineaged, and backwards-compatible — no silent rewrites of earlier deterministic consumers.**

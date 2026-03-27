@@ -33,7 +33,15 @@ from nvda_desk.schemas.review import (
     TemporalEventWindowSurface,
 )
 from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState
-from nvda_desk.schemas.state_policy import EffectiveCoefficientLineage, SurfaceStabilityScorecard
+from nvda_desk.schemas.state_policy import (
+    DegradationStep,
+    EffectiveCoefficientLineage,
+    ModifierRuntimePacket,
+    NonActionClass,
+    OverrideDisposition,
+    SignalConflictClass,
+    SurfaceStabilityScorecard,
+)
 
 
 class VolatilityRegime(StrEnum):
@@ -357,6 +365,11 @@ class PostureRiskOutput(BaseModel):
     signal_conflict_state: str
     time_stop_minutes_remaining: int | None = None
     thesis_pressure_score: float
+    modifier_runtime_packet: ModifierRuntimePacket | None = None
+    stand_down_class: NonActionClass | None = None
+    conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
+    degradation_step: DegradationStep = DegradationStep.NORMAL
+    override_disposition: OverrideDisposition = OverrideDisposition.NOT_APPLICABLE
     reasons: list[str] = Field(default_factory=list)
 
 
@@ -453,6 +466,7 @@ class ExecutionExpressionInput(BaseModel):
     options_flow: OptionsFlowContextOutput
     posture: PostureRiskOutput
     eligibility: PlaybookEligibilityOutput
+    modifier_runtime_packet: ModifierRuntimePacket | None = None
 
 
 class ExecutionExpressionOutput(BaseModel):
@@ -478,6 +492,7 @@ class ExecutionExpressionOutput(BaseModel):
     invalidation_reasons: list[str] = Field(default_factory=list)
     exit_reasons: list[str] = Field(default_factory=list)
     exit_plan: list[str] = Field(default_factory=list)
+    modifier_runtime_packet: ModifierRuntimePacket | None = None
     reasons: list[str] = Field(default_factory=list)
 
 
@@ -532,6 +547,7 @@ class ReviewExplanationInput(BaseModel):
     posture: PostureRiskOutput
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
+    modifier_runtime_packet: ModifierRuntimePacket | None = None
     temporal_input: TemporalContextInput | None = None
 
 

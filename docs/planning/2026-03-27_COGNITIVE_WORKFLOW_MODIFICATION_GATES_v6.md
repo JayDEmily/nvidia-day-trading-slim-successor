@@ -972,7 +972,7 @@ Gate 77 is closed on `main`. Review packets now preserve event and precursor lin
 
 ## Gate 78 — Runtime integration of state-conditioned modifiers
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 60–77
 
@@ -1011,6 +1011,10 @@ Runtime applies approved state-conditioned posture law deterministically, expose
 - deterministic integration tests
 
 ---
+
+### Gate 78 closeout note
+
+Gate 78 is closed on `main`. Runtime now materialises one typed modifier packet, applies bounded effective-coefficient law deterministically, preserves kill-switch and stand-down outcomes as first-class packet fields, and carries the same modifier lineage through posture, execution, and review without changing cognition grammar order.
 
 ## Gate 79 — Walk-forward review-horizon discovery harness
 

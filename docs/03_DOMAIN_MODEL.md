@@ -2613,3 +2613,20 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - review packet builder in `src/nvda_desk/services/review_explanation.py`
 - review packet rendering helpers in `src/nvda_desk/services/review_packets.py`
+
+
+### 5d. Runtime modifier integration objects
+
+Typed contracts that let runtime apply bounded modifier law once, expose the effective result honestly, and preserve lineage across posture, execution, and review.
+
+Key examples:
+- `ResolvedRuntimeSurfaceValue`
+- `ModifierRuntimePacket`
+- `PostureRiskOutput.modifier_runtime_packet`
+- `ExecutionExpressionOutput.modifier_runtime_packet`
+- `ReviewExplanationOutput.effective_policy`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
+- runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py` and `src/nvda_desk/services/cognition_runtime.py`
+- review exposure in `src/nvda_desk/services/review_explanation.py`

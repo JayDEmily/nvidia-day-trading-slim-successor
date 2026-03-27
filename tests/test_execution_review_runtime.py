@@ -291,7 +291,7 @@ def test_review_packets_expose_conflict_density_and_contradictions() -> None:
     conflicts = cast(list[str], result.review.review_packet["conflicts"])
     assert "regime_signal_conflict" in conflicts
     packet = cast(dict[str, Any], result.review.review_packet["execution"])
-    assert packet["entry_style"] == "stand_aside"
+    assert packet["entry_style"] == "no_trade"
 
 
 
