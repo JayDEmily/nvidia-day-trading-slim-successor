@@ -100,3 +100,5 @@ At minimum, the runtime supports configurable checks for:
 39. **Precursor stitching, fallback, stale-data handling, and contradiction class must come from the frozen Gate 75 law — no quiet venue reshuffling or “close enough” timestamp hand-waving.**
 
 40. **If precursor truth enters runtime, review must see the same typed packet and lineage — no sidecar precursor memory, no private reinterpretation.**
+
+41. **Review packets must stay machine-readable and lineage-complete; no post hoc story time masquerading as trader-grade failure analysis.**

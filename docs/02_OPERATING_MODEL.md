@@ -281,3 +281,12 @@ Operational rules:
 - `PreparedRuntimeSnapshot.precursor_runtime_packet` and `TemporalContextInput.precursor_runtime_packet` carry the same typed precursor truth.
 - `ReviewExplanationInput.temporal_input` is the lawful bridge that lets review expose exactly the precursor packet runtime received.
 - legacy runtime consumers may ignore the richer precursor packet, but they must not create a competing hidden precursor surface.
+
+## Gate 77 review-packet and failure-taxonomy authority
+
+Gate 77 upgrades the review packet so later replay, paper review, and candidate adjudication can reconstruct what the system knew, how posture changed, why action or non-action occurred, and which failure class or ambiguity bucket applies.
+
+Operational rules:
+- `ReviewExplanationOutput.review_lineage`, `failure_taxonomy`, `economic_accountability`, and `promotion_evidence` are now mandatory typed review surfaces.
+- event lineage and precursor lineage may be empty only when the runtime input truly had none; empty lineage must remain explicit, not silently omitted.
+- missing modifier or effective-coefficient lineage must remain visible to later candidate-governance consumers via `PromotionEvidencePacket.missing_sections`.

@@ -18,14 +18,18 @@ from nvda_desk.schemas.events import LiveEventSnapshot
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
+    EconomicContributionPacket,
     EventOptionsStressPolicySurface,
     ImportedModuleReviewCitation,
     ModifierControlLawSurface,
     PhaseCarryoverPolicySurface,
     PrecursorGovernanceSurface,
     PrecursorRuntimeBindingSurface,
+    PromotionEvidencePacket,
     ReviewEligibilitySurface,
+    ReviewFailurePacket,
     ReviewGovernanceSurface,
+    ReviewLineagePacket,
     TemporalEventWindowSurface,
 )
 from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState
@@ -599,6 +603,10 @@ class ReviewExplanationOutput(BaseModel):
     modifier_control_law: ModifierControlLawSurface | None = None
     review_eligibility: ReviewEligibilitySurface | None = None
     candidate_governance: CandidateGovernanceSurface | None = None
+    review_lineage: ReviewLineagePacket | None = None
+    failure_taxonomy: ReviewFailurePacket | None = None
+    economic_accountability: EconomicContributionPacket | None = None
+    promotion_evidence: PromotionEvidencePacket | None = None
     packet_lineage: PacketLineageSurface | None = None
     review_packet: dict[str, object]
 

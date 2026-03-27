@@ -235,3 +235,78 @@ class CandidateGovernanceSurface(BaseModel):
     retired_candidate_ids: list[str] = Field(default_factory=list)
     comparison_outcome: CandidateComparisonOutcome | None = None
     adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
+
+
+class ReviewFailureClass(StrEnum):
+    """Trader-grade failure classes frozen by Gate 77."""
+
+    DIAGNOSIS_FAILURE = "diagnosis_failure"
+    POSTURE_POLICY_FAILURE = "posture_policy_failure"
+    ELIGIBILITY_FAILURE = "eligibility_failure"
+    EXECUTION_EXPRESSION_FAILURE = "execution_expression_failure"
+    SIZING_FAILURE = "sizing_failure"
+    DATA_PROVENANCE_FAILURE = "data_provenance_failure"
+    ONTOLOGY_FAILURE = "ontology_failure"
+
+
+class ReviewResolutionClass(StrEnum):
+    """Bounded review outputs for action, non-action, ambiguity, and structural failure."""
+
+    ACTION_TAKEN = "action_taken"
+    NON_ACTION = "non_action"
+    BLOCKED_TRADE = "blocked_trade"
+    UNKNOWN = "unknown"
+    UNRESOLVED = "unresolved"
+    BAD_LUCK = "bad_luck"
+    ONTOLOGY_FAILURE = "ontology_failure"
+
+
+class EconomicContributionTag(StrEnum):
+    """Directional economic-accountability labels used by Gate 77 review packets."""
+
+    VALUE_ADD = "value_add"
+    CAPITAL_PRESERVATION = "capital_preservation"
+    NEUTRAL = "neutral"
+    VALUE_LEAK = "value_leak"
+    UNKNOWN = "unknown"
+
+
+class ReviewLineagePacket(BaseModel):
+    """Review-visible lineage needed to reconstruct event, precursor, and modifier truth."""
+
+    event_lineage_keys: list[str] = Field(default_factory=list)
+    precursor_lineage_keys: list[str] = Field(default_factory=list)
+    modifier_policy_ids: list[str] = Field(default_factory=list)
+    effective_coefficient_targets: list[str] = Field(default_factory=list)
+    posture_change_reasons: list[str] = Field(default_factory=list)
+
+
+class ReviewFailurePacket(BaseModel):
+    """Bounded failure-taxonomy packet for one runtime decision or non-decision."""
+
+    primary_failure_class: ReviewFailureClass | None = None
+    resolution: ReviewResolutionClass
+    blocked_trade: bool = False
+    non_action: bool = False
+    evidence_floor: ReviewEvidenceBlock | None = None
+    rationale: list[str] = Field(default_factory=list)
+
+
+class EconomicContributionPacket(BaseModel):
+    """Economic-accountability fields kept separate from raw P&L narration."""
+
+    diagnosis: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    posture: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    timing: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    execution: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    sizing: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    non_action: EconomicContributionTag = EconomicContributionTag.NEUTRAL
+
+
+class PromotionEvidencePacket(BaseModel):
+    """Minimum trader-grade review packet required before later candidate adjudication."""
+
+    ready_for_candidate_review: bool = False
+    required_sections: list[str] = Field(default_factory=list)
+    missing_sections: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)

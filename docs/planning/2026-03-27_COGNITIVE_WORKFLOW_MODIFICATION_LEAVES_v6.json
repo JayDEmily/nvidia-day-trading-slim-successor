@@ -4477,8 +4477,9 @@
       "full_suite_required": true,
       "pass_gate": "Define review-packet event, precursor, modifier, and effective-coefficient lineage fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 77 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 95
+      "status": "complete",
+      "execution_sequence": 95,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G77-002",
@@ -4523,8 +4524,9 @@
       "full_suite_required": true,
       "pass_gate": "Define trader-grade failure taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 77 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 96
+      "status": "complete",
+      "execution_sequence": 96,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G77-003",
@@ -4569,8 +4571,9 @@
       "full_suite_required": true,
       "pass_gate": "Define economic-contribution and edge-accountability fields is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 77 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 97
+      "status": "complete",
+      "execution_sequence": 97,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G77-004",
@@ -4615,8 +4618,9 @@
       "full_suite_required": true,
       "pass_gate": "Define non-action, blocked-trade, unknown, unresolved, and ontology-failure outputs is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 77 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 98
+      "status": "complete",
+      "execution_sequence": 98,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G77-005",
@@ -4661,8 +4665,9 @@
       "full_suite_required": true,
       "pass_gate": "Freeze review-packet authority and add regression tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 77 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 99
+      "status": "complete",
+      "execution_sequence": 99,
+      "completed_on": "main"
     },
     {
       "id": "LEAF-G78-001",
@@ -5204,8 +5209,8 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_76_complete_successor_pack_active_from_gate_77",
-  "completed_at": "2026-03-27T18:05:00Z",
+  "execution_status": "gate_77_complete_successor_pack_active_from_gate_78",
+  "completed_at": "2026-03-27T18:40:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5300,14 +5305,14 @@
     "LEAF-G76-001",
     "LEAF-G76-002",
     "LEAF-G76-003",
-    "LEAF-G76-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G76-004",
     "LEAF-G77-001",
     "LEAF-G77-002",
     "LEAF-G77-003",
     "LEAF-G77-004",
-    "LEAF-G77-005",
+    "LEAF-G77-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G78-001",
     "LEAF-G78-002",
     "LEAF-G78-003",
@@ -5338,8 +5343,9 @@
     "Gate 73",
     "Gate 74",
     "Gate 75",
-    "Gate 76"
+    "Gate 76",
+    "Gate 77"
   ],
-  "active_gate": "Gate 77",
+  "active_gate": "Gate 78",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

@@ -14,7 +14,16 @@ from nvda_desk.schemas.cognition import (
     ReviewExplanationOutput,
     StageReasonPacket,
 )
-from nvda_desk.schemas.review import PrecursorRuntimeBindingSurface
+from nvda_desk.schemas.review import (
+    EconomicContributionPacket,
+    EconomicContributionTag,
+    PrecursorRuntimeBindingSurface,
+    PromotionEvidencePacket,
+    ReviewFailureClass,
+    ReviewFailurePacket,
+    ReviewLineagePacket,
+    ReviewResolutionClass,
+)
 
 
 class ReviewExplanationService:
@@ -106,6 +115,10 @@ class ReviewExplanationService:
         stage_summaries = {packet.stage: "; ".join(packet.reasons) for packet in stage_reason_packets}
         desk_readout = self._desk_readout(payload)
         precursor_runtime_binding = self._precursor_runtime_binding(payload)
+        review_lineage = self._review_lineage(payload)
+        failure_taxonomy = self._failure_taxonomy(payload, conflict_tags)
+        economic_accountability = self._economic_accountability(failure_taxonomy)
+        promotion_evidence = self._promotion_evidence(review_lineage)
         review_packet: dict[str, object] = {
             "temporal": payload.temporal.model_dump(mode="json"),
             "regime": payload.regime.model_dump(mode="json"),
@@ -131,6 +144,10 @@ class ReviewExplanationService:
         }
         if precursor_runtime_binding is not None:
             review_packet["precursor_runtime_binding"] = precursor_runtime_binding.model_dump(mode="json")
+        review_packet["review_lineage"] = review_lineage.model_dump(mode="json")
+        review_packet["failure_taxonomy"] = failure_taxonomy.model_dump(mode="json")
+        review_packet["economic_accountability"] = economic_accountability.model_dump(mode="json")
+        review_packet["promotion_evidence"] = promotion_evidence.model_dump(mode="json")
         return ReviewExplanationOutput(
             summary=summary,
             conflict_tags=conflict_tags,
@@ -140,6 +157,10 @@ class ReviewExplanationService:
             contradictions=contradictions,
             module_attribution=module_attribution,
             precursor_runtime_binding=precursor_runtime_binding,
+            review_lineage=review_lineage,
+            failure_taxonomy=failure_taxonomy,
+            economic_accountability=economic_accountability,
+            promotion_evidence=promotion_evidence,
             review_packet=review_packet,
         )
 
@@ -211,4 +232,108 @@ class ReviewExplanationService:
             fallback_dispositions=list(packet.fallback_dispositions),
             lineage_keys=list(packet.lineage_keys),
             notes=list(packet.notes),
+        )
+
+    def _review_lineage(self, payload: ReviewExplanationInput) -> ReviewLineagePacket:
+        event_lineage_keys = []
+        precursor_lineage_keys = []
+        if payload.temporal_input is not None and payload.temporal_input.live_event_snapshot is not None:
+            event_lineage_keys = list(payload.temporal_input.live_event_snapshot.lineage_keys)
+        if payload.temporal_input is not None and payload.temporal_input.precursor_runtime_packet is not None:
+            precursor_lineage_keys = list(payload.temporal_input.precursor_runtime_packet.lineage_keys)
+        return ReviewLineagePacket(
+            event_lineage_keys=event_lineage_keys,
+            precursor_lineage_keys=precursor_lineage_keys,
+            modifier_policy_ids=[],
+            effective_coefficient_targets=[],
+            posture_change_reasons=list(payload.posture.reasons),
+        )
+
+    def _failure_taxonomy(self, payload: ReviewExplanationInput, conflict_tags: list[str]) -> ReviewFailurePacket:
+        runtime_precursor = None if payload.temporal_input is None else payload.temporal_input.precursor_runtime_packet
+        rationale: list[str] = []
+        primary_failure_class: ReviewFailureClass | None = None
+
+        if runtime_precursor is not None and runtime_precursor.posture_state.value == "unresolved_context":
+            primary_failure_class = ReviewFailureClass.DATA_PROVENANCE_FAILURE
+            rationale.append("precursor_runtime_packet_signalled_unresolved_context")
+
+        if "regime_signal_conflict" in conflict_tags or "posture_signal_conflict" in conflict_tags:
+            primary_failure_class = ReviewFailureClass.DIAGNOSIS_FAILURE
+            rationale.append("cross_signal_conflict_visible_in_review")
+        if "event_veto_breached" in conflict_tags:
+            primary_failure_class = ReviewFailureClass.ELIGIBILITY_FAILURE
+            rationale.append("event_veto_breach_visible_in_review")
+        if any(tag in conflict_tags for tag in {"missing_hedge_under_destabilising_gamma", "adding_into_locked_inventory"}):
+            primary_failure_class = ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE
+            rationale.append("execution_expression_conflict_visible_in_review")
+
+        if payload.execution.active_playbook_ids:
+            resolution = ReviewResolutionClass.UNRESOLVED
+        elif payload.eligibility.no_trade_reasons:
+            resolution = ReviewResolutionClass.NON_ACTION
+        elif payload.posture.permission_state.value == "blocked":
+            resolution = ReviewResolutionClass.BLOCKED_TRADE
+        else:
+            resolution = ReviewResolutionClass.UNKNOWN
+
+        if resolution is ReviewResolutionClass.UNKNOWN and primary_failure_class is ReviewFailureClass.ONTOLOGY_FAILURE:
+            rationale.append("ontology_failure_selected")
+
+        return ReviewFailurePacket(
+            primary_failure_class=primary_failure_class,
+            resolution=resolution,
+            blocked_trade=resolution is ReviewResolutionClass.BLOCKED_TRADE,
+            non_action=resolution is ReviewResolutionClass.NON_ACTION,
+            evidence_floor=None,
+            rationale=rationale,
+        )
+
+    def _economic_accountability(self, packet: ReviewFailurePacket) -> EconomicContributionPacket:
+        diagnosis = EconomicContributionTag.UNKNOWN
+        posture = EconomicContributionTag.UNKNOWN
+        execution = EconomicContributionTag.UNKNOWN
+        non_action = EconomicContributionTag.NEUTRAL
+
+        if packet.primary_failure_class is ReviewFailureClass.DIAGNOSIS_FAILURE:
+            diagnosis = EconomicContributionTag.VALUE_LEAK
+        if packet.primary_failure_class is ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE:
+            execution = EconomicContributionTag.VALUE_LEAK
+        if packet.resolution in {ReviewResolutionClass.NON_ACTION, ReviewResolutionClass.BLOCKED_TRADE}:
+            posture = EconomicContributionTag.CAPITAL_PRESERVATION
+            non_action = EconomicContributionTag.CAPITAL_PRESERVATION
+
+        return EconomicContributionPacket(
+            diagnosis=diagnosis,
+            posture=posture,
+            timing=EconomicContributionTag.UNKNOWN,
+            execution=execution,
+            sizing=EconomicContributionTag.UNKNOWN,
+            non_action=non_action,
+        )
+
+    def _promotion_evidence(self, lineage: ReviewLineagePacket) -> PromotionEvidencePacket:
+        required_sections = [
+            "event_lineage_keys",
+            "precursor_lineage_keys",
+            "modifier_policy_ids",
+            "effective_coefficient_targets",
+            "posture_change_reasons",
+        ]
+        missing_sections = [
+            section
+            for section, values in {
+                "event_lineage_keys": lineage.event_lineage_keys,
+                "precursor_lineage_keys": lineage.precursor_lineage_keys,
+                "modifier_policy_ids": lineage.modifier_policy_ids,
+                "effective_coefficient_targets": lineage.effective_coefficient_targets,
+                "posture_change_reasons": lineage.posture_change_reasons,
+            }.items()
+            if not values
+        ]
+        return PromotionEvidencePacket(
+            ready_for_candidate_review=not missing_sections,
+            required_sections=required_sections,
+            missing_sections=missing_sections,
+            notes=["gate77_review_packet_requires_lineage_before_later_candidate_adjudication"],
         )
