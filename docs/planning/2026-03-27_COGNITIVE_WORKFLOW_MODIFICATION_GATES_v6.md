@@ -927,7 +927,7 @@ Gate 76 is closed on `main`. The repo now preserves precursor truth through prep
 
 ## Gate 77 — Review packet upgrade and failure taxonomy
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 61–76
 
@@ -965,6 +965,10 @@ Review packets can explain what the system believed, how posture was altered, wh
 - review packet and failure-taxonomy docs
 - packet/schema upgrades
 - targeted packet/review regression tests
+
+### Gate 77 closeout note
+
+Gate 77 is closed on `main`. Review packets now preserve event and precursor lineage, classify bounded failure and resolution states, expose economic-accountability fields separately from raw P&L narrative, and emit promotion-evidence completeness for later candidate adjudication.
 
 ## Gate 78 — Runtime integration of state-conditioned modifiers
 

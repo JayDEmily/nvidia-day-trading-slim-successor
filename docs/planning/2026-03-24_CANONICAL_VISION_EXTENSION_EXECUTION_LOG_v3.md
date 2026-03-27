@@ -1433,3 +1433,9 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Closeout summary: preserved precursor truth through prepared runtime snapshots, cognition ingress, and review packets using one additive typed packet and one lineage path.
 - Proof surfaces: `tests/test_gate76_precursor_runtime_binding.py`, `tests/test_execution_review_runtime.py`, updated planning quartet, and precursor packet bindings in `src/nvda_desk/schemas/*` plus `src/nvda_desk/services/*`.
 
+### Gate 77 successor-pack closeout
+
+- Source merge commit: `2998f14`
+- Closeout summary: upgraded review packets with typed lineage, failure-taxonomy, economic-accountability, and promotion-evidence surfaces without changing runtime decision logic.
+- Proof surfaces: `tests/test_gate77_review_failure_taxonomy.py`, `tests/test_execution_review_runtime.py`, `tests/test_dmp_review_trace.py`, updated planning quartet, and review packet upgrades in `src/nvda_desk/schemas/*` plus `src/nvda_desk/services/*`.
+

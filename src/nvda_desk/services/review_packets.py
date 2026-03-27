@@ -20,7 +20,13 @@ from nvda_desk.db.models import (
 )
 from nvda_desk.schemas.execution_records import DailyPnlReportCreate, DailyPnlReportPayload
 from nvda_desk.schemas.market import PrecursorRuntimePacket
-from nvda_desk.schemas.review import DailyReviewPacket, ModuleHealthPacket, RecordCountSummary
+from nvda_desk.schemas.review import (
+    DailyReviewPacket,
+    ModuleHealthPacket,
+    PromotionEvidencePacket,
+    RecordCountSummary,
+    ReviewFailurePacket,
+)
 from nvda_desk.services.events import EventsService
 from nvda_desk.services.execution_records import ExecutionRecordsService
 
@@ -89,6 +95,22 @@ class ReviewPacketService:
     @staticmethod
     def render_precursor_runtime_binding(packet: PrecursorRuntimePacket | None) -> dict[str, object] | None:
         """Return a review-safe serialisation of the additive precursor runtime packet."""
+
+        if packet is None:
+            return None
+        return packet.model_dump(mode="json")
+
+    @staticmethod
+    def render_failure_taxonomy(packet: ReviewFailurePacket | None) -> dict[str, object] | None:
+        """Return a review-safe serialisation of the Gate 77 failure packet."""
+
+        if packet is None:
+            return None
+        return packet.model_dump(mode="json")
+
+    @staticmethod
+    def render_promotion_evidence(packet: PromotionEvidencePacket | None) -> dict[str, object] | None:
+        """Return a review-safe serialisation of Gate 77 promotion evidence."""
 
         if packet is None:
             return None

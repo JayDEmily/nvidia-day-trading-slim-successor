@@ -278,3 +278,11 @@ Shared event truth must sit behind one explicit store/query contract rather than
 - the packet must expose active venues, derived precursor fields, contradiction class, posture state, fallback dispositions, and lineage keys;
 - legacy consumers may ignore the richer packet, but they must not rewrite or shadow it with a parallel precursor interpretation;
 - precursor-rich packets remain optional while real-data precursor ingestion is not yet wired, but if present they must be preserved intact.
+
+## Review-packet and failure-taxonomy law
+
+- review packets must preserve event lineage, precursor lineage, modifier lineage, effective-coefficient lineage, and posture-change reasons as separate typed surfaces;
+- failure classes are `diagnosis_failure`, `posture_policy_failure`, `eligibility_failure`, `execution_expression_failure`, `sizing_failure`, `data_provenance_failure`, and `ontology_failure`;
+- review outputs are `action_taken`, `non_action`, `blocked_trade`, `unknown`, `unresolved`, `bad_luck`, and `ontology_failure`;
+- economic accountability must stay separate from raw P&L summary and may classify diagnosis, posture, timing, execution, sizing, and non-action as `value_add`, `capital_preservation`, `neutral`, `value_leak`, or `unknown`;
+- narrative-only review packets are forbidden; packet lineage and failure taxonomy must stay machine-readable.

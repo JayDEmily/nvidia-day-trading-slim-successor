@@ -2595,3 +2595,21 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/market.py`, `src/nvda_desk/schemas/dataset.py`, and `src/nvda_desk/schemas/cognition.py`
 - conversion/runtime bridge in `src/nvda_desk/services/chain_to_cognition.py`
 - review exposure in `src/nvda_desk/services/review_explanation.py`
+
+### 4o. Review failure-taxonomy objects
+
+Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.
+
+Key examples:
+- `ReviewFailureClass`
+- `ReviewResolutionClass`
+- `EconomicContributionTag`
+- `ReviewLineagePacket`
+- `ReviewFailurePacket`
+- `EconomicContributionPacket`
+- `PromotionEvidencePacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- review packet builder in `src/nvda_desk/services/review_explanation.py`
+- review packet rendering helpers in `src/nvda_desk/services/review_packets.py`
