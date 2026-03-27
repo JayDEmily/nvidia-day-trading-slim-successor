@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-from nvda_desk.schemas.events import EventIngestionAuthorityPacket
+from nvda_desk.schemas.events import EventIngestionAuthorityPacket, EventStoreAuthorityPacket
 from nvda_desk.schemas.market import PrecursorUniverseAuthorityPacket
 from nvda_desk.schemas.risk import PhaseCarryoverPolicyAuthorityPacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
@@ -154,6 +154,12 @@ class EventIngestionAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 72 event-ingestion packet."""
 
     authority: EventIngestionAuthorityPacket
+
+
+class EventStoreAuthorityResponse(BaseModel):
+    """Future config/API hook for the frozen Gate 73 event-store/query packet."""
+
+    authority: EventStoreAuthorityPacket
 
 
 class CandidateGovernanceAuthorityResponse(BaseModel):

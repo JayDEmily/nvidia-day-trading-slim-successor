@@ -236,6 +236,15 @@ Supported event sources must normalise through one explicit provenance contract 
 - source conflict must stay visible through explicit dispositions rather than silent merge heuristics;
 - source outages must remain explicit through governed fallback policies instead of pretending the source was healthy.
 
+## Shared event-store and query law
+
+Shared event truth must sit behind one explicit store/query contract rather than ad hoc helper calls.
+
+- runtime, review, and replay consumers must use the same nearby-event window semantics;
+- material-event filtering must use explicit materiality floors rather than consumer-specific lore;
+- lineage lookup must return the same normalised provenance keys the runtime saw;
+- replay consumers may vary their mode, but they may not redefine what counts as nearby or material.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.

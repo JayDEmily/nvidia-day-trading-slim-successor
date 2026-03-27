@@ -3585,7 +3585,7 @@
       "full_suite_required": false,
       "pass_gate": "Define the shared event-store persistence contract is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 73 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 76
     },
     {
@@ -3631,7 +3631,7 @@
       "full_suite_required": false,
       "pass_gate": "Define query surfaces for runtime consumers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 73 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 77
     },
     {
@@ -3677,7 +3677,7 @@
       "full_suite_required": false,
       "pass_gate": "Define lineage and review retrieval rules is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 73 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 78
     },
     {
@@ -3723,7 +3723,7 @@
       "full_suite_required": false,
       "pass_gate": "Define replay/backtest shared-consumer semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 73 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 79
     },
     {
@@ -3769,7 +3769,7 @@
       "full_suite_required": false,
       "pass_gate": "Add event-store/query tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 73 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 80
     },
     {
@@ -5195,7 +5195,7 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_72_complete_on_main_successor_pack_active_from_gate_73",
+  "execution_status": "gate_73_complete_on_main_successor_pack_active_from_gate_74",
   "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
@@ -5272,14 +5272,14 @@
     "LEAF-G72-002",
     "LEAF-G72-003",
     "LEAF-G72-004",
-    "LEAF-G72-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G72-005",
     "LEAF-G73-001",
     "LEAF-G73-002",
     "LEAF-G73-003",
     "LEAF-G73-004",
-    "LEAF-G73-005",
+    "LEAF-G73-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G74-001",
     "LEAF-G74-002",
     "LEAF-G74-003",
@@ -5325,8 +5325,9 @@
     "Gate 69",
     "Gate 70",
     "Gate 71",
-    "Gate 72"
+    "Gate 72",
+    "Gate 73"
   ],
-  "active_gate": "Gate 73",
+  "active_gate": "Gate 74",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }

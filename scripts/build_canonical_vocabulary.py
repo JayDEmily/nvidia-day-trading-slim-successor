@@ -400,6 +400,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["event_source_normalisation", "event_ingestion_contract"],
             notes=["Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."],
         ),
+        VocabularyEntry(
+            canonical_slug="shared_event_store",
+            canonical_label="Shared Event Store",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.events.EventStoreAuthorityPacket",
+            allowed_aliases=["event_store_query", "shared_event_truth"],
+            notes=["Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

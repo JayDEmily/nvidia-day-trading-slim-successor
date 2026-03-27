@@ -1396,3 +1396,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces and added targeted Gate 72 integrity tests.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate72_event_ingestion_provenance.py tests/test_gate71_modifier_control_law.py tests/test_gate70_event_options_stress_policy.py tests/test_successor_pack_anti_drift.py`
+
+
+### LEAF-G73-001 through LEAF-G73-005 — Event store and query surfaces
+
+- Branch: `work/gate73-event-store-query-20260327`
+- Scope: freeze one shared event-store/query surface for runtime, review, and replay before live cognition packets retain richer event truth.
+- Outcome:
+  - Added typed event-store/query authority contracts for nearby-event windows, materiality floors, lineage retrieval, and replay-consumer modes.
+  - Added a deterministic shared event-store service that returns the same nearby/material truth and lineage map to all bounded consumer modes.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces and added targeted Gate 73 integrity tests.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate73_event_store_query.py tests/test_gate72_event_ingestion_provenance.py tests/test_gate71_modifier_control_law.py tests/test_successor_pack_anti_drift.py`
