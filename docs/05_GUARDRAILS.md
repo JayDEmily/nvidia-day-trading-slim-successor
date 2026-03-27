@@ -40,9 +40,21 @@
 
 35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
 
+36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
+
 ## Required runtime guardrails
 ## Required runtime guardrails
 35. **When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**
+
+36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
+
+## Required runtime guardrails
+## Required runtime guardrails
+36. **Event sources must normalise through the frozen provenance contract; stale, conflicting, or degraded source state must stay visible.**
 
 ## Required runtime guardrails
 ## Required runtime guardrails

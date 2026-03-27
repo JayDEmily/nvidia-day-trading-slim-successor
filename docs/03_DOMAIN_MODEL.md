@@ -276,6 +276,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -293,6 +335,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -331,6 +415,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -348,6 +474,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -403,6 +571,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -420,6 +630,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -458,6 +710,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -475,6 +769,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -548,6 +884,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -565,6 +943,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -603,6 +1023,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -620,6 +1082,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -675,6 +1179,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -692,6 +1238,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects
@@ -730,6 +1318,48 @@ Ownership:
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
 ### 5. Risk and capital objects
 ### 5. Risk and capital objects
 ### 5c. Modifier-control-law objects
@@ -747,6 +1377,48 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py`
 - config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5. Risk and capital objects
+### 5. Risk and capital objects
+### 4j. Event-ingestion and provenance objects
+Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
+
+Key examples:
+- `EventSourceClass`
+- `SupportedEventSource`
+- `EventFreshnessState`
+- `EventConfidenceTier`
+- `SourceConflictDisposition`
+- `SourceOutagePolicy`
+- `EventSourceProvenance`
+- `RawEventSourceObservation`
+- `NormalisedEventRecord`
+- `EventIngestionAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- normalisation service in `src/nvda_desk/services/event_ingestion.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5. Risk and capital objects

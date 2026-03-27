@@ -1384,3 +1384,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Added targeted Gate 71 integrity tests covering precedence bands, clamp/veto law, review/config hooks, and vocabulary generation.
 - Validation rerun on gate branch:
   - `.venv/bin/python -m pytest -q tests/test_gate71_modifier_control_law.py tests/test_gate70_event_options_stress_policy.py tests/test_gate69_phase_carry_policy.py tests/test_successor_pack_anti_drift.py`
+
+
+### LEAF-G72-001 through LEAF-G72-005 — Event-source ingestion and provenance normalisation
+
+- Branch: `work/gate72-event-ingestion-provenance-20260327`
+- Scope: freeze supported event-source inventory and one normalised provenance contract before shared store/query surfaces land.
+- Outcome:
+  - Added typed event-ingestion authority contracts for source classes, supported source inventory, freshness/confidence semantics, conflict dispositions, outage policies, and normalised event records.
+  - Added a deterministic event-ingestion service that groups supported observations into shared event truth while preserving conflicts and outages visibly.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces and added targeted Gate 72 integrity tests.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate72_event_ingestion_provenance.py tests/test_gate71_modifier_control_law.py tests/test_gate70_event_options_stress_policy.py tests/test_successor_pack_anti_drift.py`

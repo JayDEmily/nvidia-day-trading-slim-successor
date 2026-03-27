@@ -781,6 +781,26 @@
       ]
     },
     {
+      "canonical_slug": "event_provenance_contract",
+      "canonical_label": "Event Provenance Contract",
+      "category": "workflow",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.EventIngestionAuthorityPacket",
+      "allowed_aliases": [
+        "event_source_normalisation",
+        "event_ingestion_contract"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."
+      ]
+    },
+    {
       "canonical_slug": "intraday",
       "canonical_label": "Intraday",
       "category": "horizon",

@@ -703,7 +703,7 @@ Gate 71 is complete on `main`. The repo now freezes one deterministic control la
 
 ## Gate 72 — Event-source ingestion and provenance normalisation
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gates 65–67
 
@@ -741,6 +741,10 @@ All supported event sources map through one normalised provenance contract with 
 - targeted ingestion tests
 
 ---
+
+### Gate 72 closeout note
+
+Gate 72 is complete on `main`. The repo now freezes one explicit provenance contract for supported event sources, including source inventory, freshness, confidence, conflict visibility, and outage fallback policy, before any shared event-store/query or runtime binding work proceeds.
 
 ## Gate 73 — Event store and query surfaces
 

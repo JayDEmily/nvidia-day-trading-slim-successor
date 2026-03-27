@@ -227,6 +227,15 @@ Multiple active states must resolve through one deterministic control law rather
 - caps, floors, vetoes, and kill-switch conditions must stay explicit and review-visible;
 - lineage must record which precedence band won, which laws applied, which states were suppressed, and whether a kill switch fired.
 
+## Event-source ingestion and provenance law
+
+Supported event sources must normalise through one explicit provenance contract before any shared consumer sees them.
+
+- supported source classes are `exchange_calendar`, `issuer_ir`, `macro_calendar`, `policy_calendar`, `internal_curated`, and `options_expiry_calendar`;
+- freshness states are `current`, `stale`, and `deferred`; confidence tiers are `authoritative`, `corroborated`, `provisional`, and `degraded`;
+- source conflict must stay visible through explicit dispositions rather than silent merge heuristics;
+- source outages must remain explicit through governed fallback policies instead of pretending the source was healthy.
+
 ## Normative versus historical docs
 
 - Files in `docs/` with stable names are normative unless they explicitly mark themselves as archived or historical context.
