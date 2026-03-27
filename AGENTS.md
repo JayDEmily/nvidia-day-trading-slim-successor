@@ -50,6 +50,18 @@ At minimum, run the relevant targets from:
 - `make alembic-sql`
 - `make test-unit`
 
+## Anti-drift closeout protocol
+
+Before calling any gate closed or starting the next gate, update these four authority surfaces together on the same branch:
+1. repo-root `PLANS.md`
+2. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+3. the active leaf ledger for the active pack
+4. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md`
+
+A gate is not closed if any one of those still points at the older active gate or older completed tranche.
+
+When a closeout is reconstructed after the fact, mark it explicitly as a receipt-recovery / anti-drift repair rather than pretending it was logged in real time.
+
 ## Documentation precedence
 
 Follow `docs/01_NORMATIVE.md` for final precedence rules.

@@ -51,9 +51,13 @@ The active successor modification pair from Gate 59 onward is:
 
 Active work proceeds one leaf at a time, one gate at a time, with the execution log carrying the receipts once execution begins.
 
+## Anti-drift closeout rule
+
+Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed.
+
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 61 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–61 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 64 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–64 are merged on `main`, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;

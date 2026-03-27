@@ -1209,3 +1209,97 @@ This baseline is context only. It is not a forward-execution leaf log.
   - Removed active mixed-mode runtime surfaces such as `stage_packets_v2`, `contract_packets_v2`, and imported-module `.packet_v2`.
   - Archived DMP v1 as historical context only and rewrote active docs so DMP v2 is the one canonical live protocol.
   - Deleted the v1-only protocol test surface and proved the repo passes on the v2-only runtime contract.
+
+
+### Anti-drift receipt recovery — Gates 59–64 successor-pack closeout
+
+This block is a truthful receipt-recovery pass added on branch `anti-drift` after audit review found that the successor-pack closeout commits had landed on `main` without matching execution-log receipts. It reconstructs the missing receipt spine from the merged commits, the active V6 successor pack, and rerun validations.
+
+### LEAF-G59-001 through LEAF-G59-006 — Doctrine rebase and successor-pack activation
+
+- Source merge commit: `000cc98`
+- Files evidenced from merged commit:
+  - `PLANS.md`
+  - `docs/01_NORMATIVE.md`
+  - `docs/02_OPERATING_MODEL.md`
+  - `docs/05_GUARDRAILS.md`
+  - `docs/legacy/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md`
+  - `docs/legacy/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json`
+  - `tests/test_document_hygiene.py`
+  - `tests/test_gate59_doctrine_rebase.py`
+- Reconstructed outcome:
+  - Promoted the V6 pair as the only active successor authority from Gate 59 onward.
+  - Preserved the attached `_v4_5` pair under `docs/legacy/` as archived provenance only.
+  - Rebases doctrine so replay is the discovery surface, live paper is the falsification/promotion surface, review may end in no-change, and runtime does not invent coefficients in place.
+- Validation rerun on anti-drift branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate59_doctrine_rebase.py tests/test_document_hygiene.py`
+
+### LEAF-G60-001 through LEAF-G60-006 and LEAF-G61-001 through LEAF-G61-006 — State-policy ontology and non-action / conflict law
+
+- Source merge commit: `ba37c55`
+- Files evidenced from merged commit:
+  - `PLANS.md`
+  - `docs/01_NORMATIVE.md`
+  - `docs/02_OPERATING_MODEL.md`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/05_GUARDRAILS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/schemas/config.py`
+  - `src/nvda_desk/schemas/review.py`
+  - `src/nvda_desk/schemas/state_policy.py`
+  - `tests/test_gate60_state_policy_ontology.py`
+  - `tests/test_gate61_non_action_conflict.py`
+- Reconstructed outcome:
+  - Froze the lawful ontology for invariant versus baseline versus state-conditioned modifier surfaces.
+  - Froze stand-down, conflict precedence, degradation, and no-runtime-discretion law before any deeper context plumbing.
+  - Regenerated the canonical vocabulary from script so the new governance terms are committed, not hand-edited.
+- Validation rerun on anti-drift branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate60_state_policy_ontology.py tests/test_gate61_non_action_conflict.py`
+
+### LEAF-G62-001 through LEAF-G62-006, LEAF-G63-001 through LEAF-G63-006, and LEAF-G64-001 through LEAF-G64-006 — Stability, review-eligibility, and candidate-governance freeze
+
+- Source merge commit: `0765452`
+- Files evidenced from merged commit:
+  - `PLANS.md`
+  - `docs/01_NORMATIVE.md`
+  - `docs/02_OPERATING_MODEL.md`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/05_GUARDRAILS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`
+  - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/schemas/config.py`
+  - `src/nvda_desk/schemas/review.py`
+  - `src/nvda_desk/schemas/state_policy.py`
+  - `tests/test_gate62_stability_metric_corridors.py`
+  - `tests/test_gate63_review_eligibility_governance.py`
+  - `tests/test_gate64_candidate_adjudication_governance.py`
+- Reconstructed outcome:
+  - Froze scorecard axes, corridor algebra, persistence, and coverage as typed stability contracts.
+  - Froze review-eligibility triggers, evidence floors, and bounded change budgets as governed review hooks.
+  - Froze candidate roles and adjudication disposition before any later runtime integration or discovery harness work.
+- Validation rerun on anti-drift branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py`
+
+### Anti-drift repair validation
+
+- Branch: `anti-drift`
+- Scope: align planning status surfaces, add explicit anti-drift closeout rules, and prove the repaired successor-pack receipt spine stays aligned before Gate 65 starts.
+- Validation rerun on anti-drift branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate59_doctrine_rebase.py tests/test_gate60_state_policy_ontology.py tests/test_gate61_non_action_conflict.py tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py tests/test_planning_gate_authority_consistency.py tests/test_successor_pack_anti_drift.py`
+  - `.venv/bin/python -m pytest -q`
+  - `.venv/bin/python -m ruff check src tests`
+  - `.venv/bin/python -m mypy src tests`
+- Notes: This repair does not create a new numbered gate. It hardens the repo against status drift before Gate 65.
+
