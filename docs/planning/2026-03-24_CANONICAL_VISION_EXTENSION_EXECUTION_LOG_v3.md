@@ -1303,3 +1303,15 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - `.venv/bin/python -m mypy src tests`
 - Notes: This repair does not create a new numbered gate. It hardens the repo against status drift before Gate 65.
 
+
+
+### LEAF-G65-001 through LEAF-G65-005 — Canonical event taxonomy
+
+- Branch: `work/gate65-event-taxonomy-20260327`
+- Scope: freeze bounded event classes, semantic phases, materiality tiers, and desk-relevant subclasses before calendar or event-window plumbing.
+- Outcome:
+  - Added typed event-taxonomy authority contracts for top-level event classes, semantic phases, materiality tiers, and desk-relevant NVDA / peer / macro / policy / expiry / venue subclasses.
+  - Rebased normative, operating, domain, guardrail, planning, and vocabulary surfaces so event identity is bounded and no longer free-text driftable.
+  - Added targeted Gate 65 integrity tests and future-proofed older successor-pack status tests so later gate closeout does not break them by being truthful.
+- Validation rerun on gate branch:
+  - `.venv/bin/python -m pytest -q tests/test_gate65_event_taxonomy.py tests/test_gate59_doctrine_rebase.py tests/test_gate60_state_policy_ontology.py tests/test_gate61_non_action_conflict.py tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py tests/test_successor_pack_anti_drift.py`

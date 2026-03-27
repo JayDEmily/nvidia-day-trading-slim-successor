@@ -1623,8 +1623,9 @@
       "full_suite_required": false,
       "pass_gate": "Freeze top-level event-class taxonomy is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 65 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 34
+      "status": "complete",
+      "execution_sequence": 34,
+      "completed_at": "2026-03-27T16:05:00Z"
     },
     {
       "id": "LEAF-G65-002",
@@ -1668,8 +1669,9 @@
       "full_suite_required": false,
       "pass_gate": "Separate known risk, priced risk, and realised reaction semantics is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 65 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 35
+      "status": "complete",
+      "execution_sequence": 35,
+      "completed_at": "2026-03-27T16:05:00Z"
     },
     {
       "id": "LEAF-G65-003",
@@ -1713,8 +1715,9 @@
       "full_suite_required": false,
       "pass_gate": "Define event materiality tiers is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 65 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 36
+      "status": "complete",
+      "execution_sequence": 36,
+      "completed_at": "2026-03-27T16:05:00Z"
     },
     {
       "id": "LEAF-G65-004",
@@ -1758,8 +1761,9 @@
       "full_suite_required": false,
       "pass_gate": "Bound NVDA-specific, peer, macro, and expiry subclasses is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 65 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 37
+      "status": "complete",
+      "execution_sequence": 37,
+      "completed_at": "2026-03-27T16:05:00Z"
     },
     {
       "id": "LEAF-G65-005",
@@ -1803,8 +1807,9 @@
       "full_suite_required": false,
       "pass_gate": "Add event-taxonomy schema and consistency tests is explicit, bounded, and consistent with the governing cognitive-workflow tranche rules.",
       "merge_gate": "Gate 65 remains a bounded sequential implementation slice and does not silently absorb later gates.",
-      "status": "planned",
-      "execution_sequence": 38
+      "status": "complete",
+      "execution_sequence": 38,
+      "completed_at": "2026-03-27T16:05:00Z"
     },
     {
       "id": "LEAF-G66-001",
@@ -5190,8 +5195,8 @@
       "execution_sequence": 110
     }
   ],
-  "execution_status": "gate_64_complete_on_main_successor_pack_active_from_gate_65",
-  "completed_at": "2026-03-27",
+  "execution_status": "gate_65_complete_on_main_successor_pack_active_from_gate_66",
+  "completed_at": "2026-03-27T16:05:00Z",
   "completed_leaf_ids": [
     "LEAF-G59-001",
     "LEAF-G59-002",
@@ -5225,14 +5230,14 @@
     "LEAF-G64-002",
     "LEAF-G64-003",
     "LEAF-G64-004",
-    "LEAF-G64-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G64-005",
     "LEAF-G65-001",
     "LEAF-G65-002",
     "LEAF-G65-003",
     "LEAF-G65-004",
-    "LEAF-G65-005",
+    "LEAF-G65-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G66-001",
     "LEAF-G66-002",
     "LEAF-G66-003",
@@ -5312,8 +5317,9 @@
     "Gate 61",
     "Gate 62",
     "Gate 63",
-    "Gate 64"
+    "Gate 64",
+    "Gate 65"
   ],
-  "active_gate": "Gate 65",
+  "active_gate": "Gate 66",
   "historical_note": "v6 preserves the corrected dependency order that puts adaptation doctrine, review law, and candidate governance ahead of context plumbing. Gate 59 makes the V6 pair self-contained and authoritative inside the repo. The attached `_v4_5` salvage pair is archived under docs/legacy for provenance; missing `v4` or `v5` drafts are not required to execute Gates 60\u201379."
 }
