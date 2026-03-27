@@ -391,6 +391,15 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["precedence_matrix", "kill_switch_law"],
             notes=["Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."],
         ),
+        VocabularyEntry(
+            canonical_slug="event_provenance_contract",
+            canonical_label="Event Provenance Contract",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="research_doctrine",
+            maps_to_contract="nvda_desk.schemas.events.EventIngestionAuthorityPacket",
+            allowed_aliases=["event_source_normalisation", "event_ingestion_contract"],
+            notes=["Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."],
+        ),
     ]
     for horizon in PlaybookHorizon:
         entries.append(

@@ -182,6 +182,15 @@ The repo now has one deterministic combination law for multiple active posture s
 - vetoes and kill switches remain explicit, typed, and review-visible;
 - lineage requirements now freeze how later review packets reconstruct which modifier won and why.
 
+## Gate 72 event-ingestion and provenance authority
+
+The repo now has one bounded provenance contract for supported event sources before shared store/query or runtime consumers read event truth.
+
+- supported upstream sources are inventoried explicitly rather than implied by ad hoc helpers;
+- every normalised event record carries freshness, confidence, lineage, and visible conflict/outage semantics;
+- label conflicts and degraded sources remain explicit after normalisation;
+- this gate freezes ingestion authority only; shared store/query consumers land in Gate 73.
+
 ## Current operating surfaces
 
 The current repo exposes:

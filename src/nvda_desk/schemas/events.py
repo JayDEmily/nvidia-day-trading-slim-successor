@@ -194,3 +194,144 @@ class EventProximityResponse(BaseModel):
     event_risk_window_open: bool
     upcoming_events: list[MarketEventPayload]
     recent_events: list[MarketEventPayload]
+
+
+
+class EventSourceClass(StrEnum):
+    """Bounded event-source classes supported by Gate 72."""
+
+    EXCHANGE_CALENDAR = "exchange_calendar"
+    ISSUER_IR = "issuer_ir"
+    MACRO_CALENDAR = "macro_calendar"
+    POLICY_CALENDAR = "policy_calendar"
+    INTERNAL_CURATED = "internal_curated"
+    OPTIONS_EXPIRY_CALENDAR = "options_expiry_calendar"
+
+
+class SupportedEventSource(StrEnum):
+    """Supported upstream event sources before shared store/query wiring."""
+
+    NASDAQ_TRADER = "nasdaq_trader"
+    ISSUER_INVESTOR_RELATIONS = "issuer_investor_relations"
+    MACRO_RELEASE_CALENDAR = "macro_release_calendar"
+    POLICY_RELEASE_CALENDAR = "policy_release_calendar"
+    INTERNAL_EVENT_LEDGER = "internal_event_ledger"
+    OPTIONS_EXPIRY_LEDGER = "options_expiry_ledger"
+
+
+class EventFreshnessState(StrEnum):
+    """Freshness states visible after provenance normalisation."""
+
+    CURRENT = "current"
+    STALE = "stale"
+    DEFERRED = "deferred"
+
+
+class EventConfidenceTier(StrEnum):
+    """Confidence tiers visible after provenance normalisation."""
+
+    AUTHORITATIVE = "authoritative"
+    CORROBORATED = "corroborated"
+    PROVISIONAL = "provisional"
+    DEGRADED = "degraded"
+
+
+class SourceConflictDisposition(StrEnum):
+    """How source conflicts are surfaced rather than hidden."""
+
+    AUTHORITATIVE_SOURCE_WINS = "authoritative_source_wins"
+    LATEST_CORROBORATED_WINS = "latest_corroborated_wins"
+    KEEP_CONFLICT_VISIBLE = "keep_conflict_visible"
+
+
+class SourceOutagePolicy(StrEnum):
+    """Fallback posture when one supported event source is degraded or absent."""
+
+    USE_LAST_VERIFIED_WITH_FLAG = "use_last_verified_with_flag"
+    DEGRADE_TO_UNKNOWN = "degrade_to_unknown"
+    DROP_SOURCE_AND_BLOCK_UNSUPPORTED = "drop_source_and_block_unsupported"
+
+
+class EventSourceInventoryRecord(BaseModel):
+    """One supported source in the Gate 72 source inventory."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: SupportedEventSource
+    source_class: EventSourceClass
+    notes: list[str] = Field(default_factory=list)
+
+
+class EventSourceProvenance(BaseModel):
+    """Normalised provenance contract carried by one event record."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: SupportedEventSource
+    source_class: EventSourceClass
+    source_document: str = Field(min_length=1)
+    observed_at: datetime
+    freshness_state: EventFreshnessState
+    confidence_tier: EventConfidenceTier
+    conflict_disposition: SourceConflictDisposition = SourceConflictDisposition.KEEP_CONFLICT_VISIBLE
+    outage_policy: SourceOutagePolicy | None = None
+    lineage_key: str = Field(min_length=1)
+    notes: list[str] = Field(default_factory=list)
+
+
+class RawEventSourceObservation(BaseModel):
+    """One upstream event observation before provenance normalisation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: SupportedEventSource
+    source_class: EventSourceClass
+    symbol: str | None = None
+    event_id: str = Field(min_length=1)
+    event_at: datetime
+    event_type: str = Field(min_length=1)
+    label: str = Field(min_length=1)
+    event_class: DeskEventClass | None = None
+    semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
+    materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
+    source_document: str = Field(min_length=1)
+    observed_at: datetime
+    freshness_state: EventFreshnessState
+    confidence_tier: EventConfidenceTier
+    lineage_key: str = Field(min_length=1)
+    notes: list[str] = Field(default_factory=list)
+    outage_policy: SourceOutagePolicy | None = None
+
+
+class NormalisedEventRecord(BaseModel):
+    """Shared event truth after source normalisation and provenance freezing."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    record_id: str = Field(min_length=1)
+    symbol: str | None = None
+    event_id: str = Field(min_length=1)
+    event_at: datetime
+    event_type: str = Field(min_length=1)
+    label: str = Field(min_length=1)
+    event_class: DeskEventClass | None = None
+    semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
+    materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
+    provenance: list[EventSourceProvenance] = Field(default_factory=list)
+    lineage_keys: list[str] = Field(default_factory=list)
+    conflict_notes: list[str] = Field(default_factory=list)
+    tags: list[str] = Field(default_factory=list)
+
+
+class EventIngestionAuthorityPacket(BaseModel):
+    """Frozen Gate 72 authority for event-source ingestion and provenance."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_inventory: list[EventSourceInventoryRecord] = Field(default_factory=list)
+    source_classes: list[EventSourceClass] = Field(default_factory=list)
+    supported_sources: list[SupportedEventSource] = Field(default_factory=list)
+    freshness_states: list[EventFreshnessState] = Field(default_factory=list)
+    confidence_tiers: list[EventConfidenceTier] = Field(default_factory=list)
+    conflict_dispositions: list[SourceConflictDisposition] = Field(default_factory=list)
+    outage_policies: list[SourceOutagePolicy] = Field(default_factory=list)
