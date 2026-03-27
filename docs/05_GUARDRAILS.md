@@ -96,3 +96,5 @@ At minimum, the runtime supports configurable checks for:
 - dated notes live under `docs/status/` or `docs/legacy/`;
 - README points to the authoritative set;
 - `CHANGELOG.jsonl` is append-only.
+
+39. **Precursor stitching, fallback, stale-data handling, and contradiction class must come from the frozen Gate 75 law — no quiet venue reshuffling or “close enough” timestamp hand-waving.**
