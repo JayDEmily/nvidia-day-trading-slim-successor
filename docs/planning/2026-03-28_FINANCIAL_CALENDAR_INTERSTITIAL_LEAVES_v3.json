@@ -1,20 +1,23 @@
 {
   "governing_plan": "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md",
   "version": "v3.0",
-  "execution_status": "gate_88_financial_calendar_pack_active",
-  "active_gate": "Gate 88",
+  "execution_status": "gate_89_financial_calendar_pack_active_after_gate_88",
+  "active_gate": "Gate 89",
   "supersedes": [
     "conversation-claimed financial calendar interstitial planning artefacts not present in the restored repo",
     "any partial interstitial-only draft that did not merge the downstream calendar tranche"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 88"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G88-001",
     "LEAF-G88-002",
     "LEAF-G88-003",
     "LEAF-G88-004",
-    "LEAF-G88-005",
+    "LEAF-G88-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G89-001",
     "LEAF-G89-002",
     "LEAF-G89-003",
@@ -68,7 +71,7 @@
       "id": "LEAF-G88-001",
       "gate": "Gate 88",
       "title": "Promote the financial-calendar planning pack into the active planning control surfaces",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [],
       "deliverables": [
@@ -84,7 +87,7 @@
       "id": "LEAF-G88-002",
       "gate": "Gate 88",
       "title": "Freeze the retain, retire-from-authority, and amend matrix for affected temporal and event surfaces",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-001"
@@ -98,7 +101,7 @@
       "id": "LEAF-G88-003",
       "gate": "Gate 88",
       "title": "Freeze vocabulary discipline and the source-of-truth hierarchy for the financial-calendar tranche",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-002"
@@ -112,7 +115,7 @@
       "id": "LEAF-G88-004",
       "gate": "Gate 88",
       "title": "Freeze the canonical transit rule and explicit non-goals",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-003"
@@ -125,8 +128,8 @@
     {
       "id": "LEAF-G88-005",
       "gate": "Gate 88",
-      "title": "Add planning anti-drift tests proving Gate 88 is next and the new control surfaces are active",
-      "status": "planned",
+      "title": "Add planning anti-drift tests proving Gate 88 closeout and Gate 89 activation",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-004"
@@ -140,7 +143,7 @@
       "id": "LEAF-G89-001",
       "gate": "Gate 89",
       "title": "Define the deterministic crosswalk from bundle fact families into repo-native target surfaces",
-      "status": "planned",
+      "status": "planned; next active leaf",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-005"

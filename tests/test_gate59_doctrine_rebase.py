@@ -59,6 +59,9 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
     ) or (
         "Current active gate: **Gate 88 in the financial-calendar interstitial pack**."
         in gate_map
+    ) or (
+        "Current active gate: **Gate 89 in the financial-calendar interstitial pack**."
+        in gate_map
     )
 
 

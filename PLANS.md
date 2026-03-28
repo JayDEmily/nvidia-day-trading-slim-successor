@@ -55,7 +55,8 @@ The active financial-calendar planning pack from Gate 88 onward is:
 - Gate 80 — complete on `main` (corrective tranche reset and anti-drift freeze)
 - Gates 81–86 — complete on `main`
 - Gate 87 — complete on `main` (audit-remediation and closeout-integrity sweep)
-- Gate 88 — planned; next active gate on `main` (financial-calendar workflow transition reset, authority disposition, and vocabulary freeze)
+- Gate 88 — complete on `main` (financial-calendar workflow transition reset, authority disposition, vocabulary freeze, and planning-authority promotion)
+- Gate 89 — planned; next active gate on `main` (canonical crosswalk and DMP v2 producer freeze for the financial-calendar lane)
 
 ## Sequential execution rule
 
@@ -100,4 +101,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The active post-Gate-87 planning authority is the financial-calendar interstitial pack, with Gate 88 as the next executable gate on `main`.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The active post-Gate-87 planning authority is the financial-calendar interstitial pack, with Gate 88 complete on `main` and Gate 89 as the next executable gate on `main`.

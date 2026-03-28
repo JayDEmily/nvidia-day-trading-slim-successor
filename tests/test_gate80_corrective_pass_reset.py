@@ -45,6 +45,9 @@ def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
     ) or (
         "Current active gate: **Gate 88 in the financial-calendar interstitial pack**."
         in gate_map
+    ) or (
+        "Current active gate: **Gate 89 in the financial-calendar interstitial pack**."
+        in gate_map
     )
     assert "| Gate 80 | complete on `main` |" in gate_map
     assert (

@@ -1,6 +1,6 @@
 # 2026-03-28 Financial Calendar Interstitial Gates v3
 
-Status: active on `main`; Gate 88 is the next executable gate  
+Status: active on `main`; Gate 89 is the next executable gate  
 Version: v3.0
 
 ## Purpose
@@ -178,7 +178,7 @@ The bundle must **not** be flattened straight into `session_clock`, `next_event_
 
 ## Gate 88 — Workflow transition reset, authority disposition, and vocabulary freeze
 
-Status: planned; next active gate
+Status: complete on `main`
 
 Depends on: closed Gate 87
 
@@ -193,11 +193,11 @@ Freeze the workflow transition early enough that later implementation cannot pip
 - freeze the source-of-truth hierarchy for the financial-calendar tranche;
 - define vocabulary discipline for any new nouns required by this tranche;
 - record the canonical transit rule and explicit non-goals;
-- add anti-drift tests that fail if the active planning surfaces disagree about Gate 88 being next.
+- add anti-drift tests that fail if the active planning surfaces disagree about Gate 88 being complete and Gate 89 being next.
 
 ### Definition of done
 
-The repo has one active financial-calendar planning pack and one coherent set of planning control surfaces, the workflow-transition matrix is explicit, and the active planning tests prove Gate 88 is the next gate and that rich calendar truth may not be flattened into compatibility-only surfaces by doctrine drift.
+The repo has one active financial-calendar planning pack and one coherent set of planning control surfaces, the workflow-transition matrix is explicit, and the active planning tests prove Gate 88 is complete on `main`, Gate 89 is the next gate, and rich calendar truth may not be flattened into compatibility-only surfaces by doctrine drift.
 
 ### Gate outputs
 
@@ -206,9 +206,13 @@ The repo has one active financial-calendar planning pack and one coherent set of
 - one execution log for this pack
 - updates to repo-root planning pointers and anti-drift tests
 
+### Gate 88 closeout note
+
+Gate 88 is complete on `main` once the active control surfaces, leaf ledger, execution log, and anti-drift tests all agree that Gate 89 is the next executable gate and that the Gate 88 transition doctrine remains explicit by class, field, and workflow boundary.
+
 ## Gate 89 — Canonical crosswalk and DMP v2 producer freeze
 
-Status: planned
+Status: planned; next active gate
 
 Depends on: closed Gate 88
 
