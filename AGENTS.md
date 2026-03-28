@@ -57,7 +57,7 @@ Before calling any gate closed or starting the next gate, update these four auth
 1. repo-root `PLANS.md`
 2. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 3. the active leaf ledger for the active pack
-4. `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
+4. the active execution log named by repo-root `PLANS.md`
 
 A gate is not closed if any one of those still points at the older active gate or older completed tranche.
 

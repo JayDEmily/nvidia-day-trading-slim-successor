@@ -1,0 +1,984 @@
+{
+  "version": "v2.0",
+  "governing_plan": "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md",
+  "supersedes": [
+    "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v1.json"
+  ],
+  "execution_status": "gate_92_financial_calendar_temporal_transition_active_after_gate_91",
+  "active_gate": "Gate 92",
+  "completed_gate_ids": [
+    "Gate 88",
+    "Gate 89",
+    "Gate 90",
+    "Gate 91"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G91-001",
+    "LEAF-G91-002",
+    "LEAF-G91-003",
+    "LEAF-G91-004",
+    "LEAF-G91-005",
+    "LEAF-G91-006"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G92-001",
+    "LEAF-G92-002",
+    "LEAF-G92-003",
+    "LEAF-G92-004",
+    "LEAF-G92-005",
+    "LEAF-G92-006",
+    "LEAF-G93-001",
+    "LEAF-G93-002",
+    "LEAF-G93-003",
+    "LEAF-G93-004",
+    "LEAF-G93-005"
+  ],
+  "global_rules": {
+    "one_gate_at_a_time": true,
+    "one_leaf_at_a_time": true,
+    "branch_per_gate": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "raw_bundle_and_import_records_must_not_be_direct_downstream_inputs": true,
+    "compatibility_hints_must_remain_explicitly_non_canonical": true,
+    "planning_control_surfaces_must_move_together": true,
+    "retire_from_authority_not_delete": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "zip_required_before_gate_can_be_called_done": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G91-001",
+      "gate": "Gate 91",
+      "title": "Project venue-state facts into desk-calendar authority surfaces",
+      "objective": "Project imported venue/session facts into desk-calendar authority without promoting session_clock compatibility wrappers back to canonical truth.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "src/nvda_desk/schemas/session_clock.py",
+        "src/nvda_desk/services/financial_calendar_import.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "inputs": [
+        "data/reference/financial_calendar/repo_manifest.json",
+        "checked-in imported financial-calendar artefacts",
+        "current desk-calendar authority contracts"
+      ],
+      "ordered_actions": [
+        "Trace imported venue-state fields against DeskCalendarAuthorityPacket fields and write the exact projection contract before editing code.",
+        "Implement deterministic projection from imported venue facts into desk-calendar authority surfaces under repo-native field names.",
+        "Keep session_clock outward compatibility explicit and non-canonical.",
+        "Add bounded tests proving holidays, half-days, and closure classes survive projection under the desk-calendar contract."
+      ],
+      "forbidden_actions": [
+        "Do not treat session_clock compatibility payloads as canonical truth.",
+        "Do not skip vocabulary checks when naming new projection fields or classes.",
+        "Do not write downstream policy logic in this leaf."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/financial_calendar.py src/nvda_desk/schemas/session_clock.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py -k desk_calendar"
+      ],
+      "expected_evidence": [
+        "desk-calendar projection code exists under a repo-native canonical surface",
+        "tests prove venue-state facts survive projection without demoting desk-calendar truth into session_clock compatibility payloads"
+      ],
+      "definition_of_done": [
+        "desk-calendar authority can be derived deterministically from imported venue-state records",
+        "half-day and closure semantics are covered by bounded tests"
+      ],
+      "vocabulary_terms_checked": [
+        "desk_calendar_contract",
+        "session_clock",
+        "temporal_state"
+      ],
+      "workflow_intent_assertion": "This leaf is the first lawful bridge from imported financial-calendar truth into canonical desk-calendar authority. It is upstream information authority, not downstream policy.",
+      "depends_on": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G91-002",
+      "gate": "Gate 91",
+      "title": "Project macro and policy families into canonical event records",
+      "objective": "Project imported macro and policy fact families into canonical event observations and normalised records under the bounded taxonomy.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/events.py",
+        "src/nvda_desk/services/event_ingestion.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "inputs": [
+        "crosswalk and retained-field rules from Gate 89",
+        "imported macro/policy records from Gate 90",
+        "bounded event taxonomy in src/nvda_desk/schemas/events.py"
+      ],
+      "ordered_actions": [
+        "Map imported macro and policy families into RawEventSourceObservation and NormalisedEventRecord under canonical classes and subclasses.",
+        "Preserve source_status, venue, jurisdiction, layer identity, retained tags, and lineage where runtime or review later need them.",
+        "Add tests covering at least one FOMC-style and one macro-release-style example.",
+        "Reject any projection path that silently falls back to free-text event types."
+      ],
+      "forbidden_actions": [
+        "Do not invent new event classes without vocabulary and taxonomy governance.",
+        "Do not flatten policy and macro into a single generic event class.",
+        "Do not consume raw bundle JSON directly in downstream consumers."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/events.py src/nvda_desk/services/event_ingestion.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py -k macro_or_policy"
+      ],
+      "expected_evidence": [
+        "canonical event projection covers macro and policy families",
+        "tests prove projection uses bounded taxonomy rather than free-text expansion"
+      ],
+      "definition_of_done": [
+        "macro and policy families become canonical event records with preserved lineage and retained fields",
+        "no new free-text taxonomy path exists"
+      ],
+      "vocabulary_terms_checked": [
+        "event_taxonomy",
+        "shared_event_store"
+      ],
+      "workflow_intent_assertion": "This leaf turns imported macro and policy facts into canonical event truth. It must respect event_taxonomy and must not create a free-text taxonomy side channel.",
+      "depends_on": [
+        "LEAF-G91-001"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G91-003",
+      "gate": "Gate 91",
+      "title": "Project company, peer, and expiry families into canonical event records",
+      "objective": "Project imported company, peer-company, and expiry fact families into canonical event observations and normalised records under the bounded taxonomy.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/events.py",
+        "src/nvda_desk/services/event_ingestion.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "inputs": [
+        "crosswalk and retained-field rules from Gate 89",
+        "imported company/expiry records from Gate 90",
+        "bounded event taxonomy in src/nvda_desk/schemas/events.py"
+      ],
+      "ordered_actions": [
+        "Map imported company, peer, and expiry families into RawEventSourceObservation and NormalisedEventRecord under canonical classes and subclasses.",
+        "Preserve source_status, venue, jurisdiction, layer identity, retained tags, and lineage where runtime or review later need them.",
+        "Add tests covering at least one NVDA earnings-style, one peer-company-style, and one expiry-style example.",
+        "Reject any projection path that silently falls back to free-text event types."
+      ],
+      "forbidden_actions": [
+        "Do not invent new event classes without vocabulary and taxonomy governance.",
+        "Do not flatten company, peer, and expiry into a single generic event class.",
+        "Do not consume raw bundle JSON directly in downstream consumers."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/events.py src/nvda_desk/services/event_ingestion.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py -k company_or_expiry"
+      ],
+      "expected_evidence": [
+        "canonical event projection covers company, peer-company, and expiry families",
+        "tests prove projection uses bounded taxonomy rather than free-text expansion"
+      ],
+      "definition_of_done": [
+        "company, peer-company, and expiry families become canonical event records with preserved lineage and retained fields",
+        "no new free-text taxonomy path exists"
+      ],
+      "vocabulary_terms_checked": [
+        "event_taxonomy",
+        "shared_event_store"
+      ],
+      "workflow_intent_assertion": "This leaf turns imported company, peer-company, and expiry facts into canonical event truth. It must respect event_taxonomy and must not create a free-text taxonomy side channel.",
+      "depends_on": [
+        "LEAF-G91-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G91-004",
+      "gate": "Gate 91",
+      "title": "Project precursor venue-state facts into precursor runtime surfaces",
+      "objective": "Project imported precursor venue-state facts into precursor runtime surfaces without treating them as generic event spillover.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/market.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "src/nvda_desk/services/financial_calendar_import.py"
+      ],
+      "inputs": [
+        "imported precursor venue-state records",
+        "bounded precursor runtime packet surfaces"
+      ],
+      "ordered_actions": [
+        "Map precursor venue-state facts into PrecursorRuntimePacket and any needed supporting structures.",
+        "Preserve venue, jurisdiction, source status, retained tags, and lineage where runtime or review later need them.",
+        "Add tests covering at least one Asia precursor venue-state example and one closed/half-day precursor example.",
+        "Keep precursor runtime bounded and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not flatten precursor venue-state into a generic event-only path.",
+        "Do not bypass the bounded precursor runtime packet.",
+        "Do not write downstream modifier logic in this leaf."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/market.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py -k precursor"
+      ],
+      "expected_evidence": [
+        "precursor runtime projection exists and preserves retained meaning needed by later runtime layers",
+        "tests prove closed/half-day precursor states survive projection"
+      ],
+      "definition_of_done": [
+        "precursor venue-state facts survive into precursor runtime surfaces with retained meaning",
+        "tests cover at least one precursor closure-state case"
+      ],
+      "vocabulary_terms_checked": [
+        "precursor_runtime_packet",
+        "shared_event_store"
+      ],
+      "workflow_intent_assertion": "This leaf ensures precursor venue-state truth survives into the bounded precursor runtime lane instead of being diluted into generic event handling.",
+      "depends_on": [
+        "LEAF-G91-001"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G91-005",
+      "gate": "Gate 91",
+      "title": "Extend event-store and live-event surfaces so retained meaning survives projection",
+      "objective": "Extend shared event-store and live-event carriers so retained rich meaning survives projection and is available to Gate 92 and Gate 93.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/events.py",
+        "src/nvda_desk/services/event_store.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "inputs": [
+        "canonical event records projected by earlier Gate 91 leaves",
+        "existing shared-event-store and live-event surfaces"
+      ],
+      "ordered_actions": [
+        "Extend shared-event-store and live-event surfaces only where retained meaning is genuinely required by Gate 92 and Gate 93.",
+        "Keep all added fields vocabulary-governed and bounded.",
+        "Add tests proving retained fields survive into live-event and query surfaces without reopening free-text event semantics."
+      ],
+      "forbidden_actions": [
+        "Do not bloat runtime packets with unused narrative fields.",
+        "Do not add duplicate copies of meaning already preserved elsewhere without a runtime justification.",
+        "Do not bypass shared_event_store."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/events.py src/nvda_desk/services/event_store.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py tests/test_gate73_event_store_query.py"
+      ],
+      "expected_evidence": [
+        "event-store and live-event surfaces preserve retained meaning required by Gate 92 and Gate 93",
+        "tests prove retained fields survive canonical projection and query surfaces"
+      ],
+      "definition_of_done": [
+        "shared-event and live-event surfaces retain the rich meaning required by later gates",
+        "dataset/runtime carriage includes any required added fields"
+      ],
+      "vocabulary_terms_checked": [
+        "shared_event_store",
+        "live_event_richness"
+      ],
+      "workflow_intent_assertion": "This leaf preserves the rich meaning the later temporal and review layers need. It keeps the canonical runtime carriers honest instead of forcing a retreat to thin fields.",
+      "depends_on": [
+        "LEAF-G91-002",
+        "LEAF-G91-003",
+        "LEAF-G91-004"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G91-006",
+      "gate": "Gate 91",
+      "title": "Prove thin CRUD sinks and raw import records remain subordinate and non-canonical",
+      "objective": "Add explicit proof that thin CRUD sinks and raw import records remain subordinate compatibility surfaces rather than the runtime truth source.",
+      "status": "complete",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/events.py",
+        "src/nvda_desk/services/financial_calendar_import.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_gate91_financial_calendar_canonical_projection.py"
+      ],
+      "inputs": [
+        "canonical projection path from earlier Gate 91 leaves",
+        "legacy thin CRUD event/session sinks"
+      ],
+      "ordered_actions": [
+        "Add tests that fail if imported calendar truth is treated as completed runtime truth at the thin CRUD sink layer.",
+        "Assert that runtime-facing consumers use canonical carriers rather than raw import records or thin CRUD surfaces.",
+        "Record the subordinate role of those surfaces in code comments or tests where needed."
+      ],
+      "forbidden_actions": [
+        "Do not delete thin CRUD sinks in this gate.",
+        "Do not leave the subordinate relationship implicit.",
+        "Do not allow raw import records to appear as direct downstream consumer inputs."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/events.py src/nvda_desk/services/financial_calendar_import.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate91_financial_calendar_canonical_projection.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate91_financial_calendar_canonical_projection.py tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py"
+      ],
+      "expected_evidence": [
+        "tests prove SessionCalendarCreate, MarketEventCreate, and raw import records are not the primary runtime truth sink",
+        "planning/control tests remain green while Gate 91 closes"
+      ],
+      "definition_of_done": [
+        "thin CRUD sinks remain explicitly subordinate and non-canonical",
+        "raw import records are proved not to be direct downstream inputs"
+      ],
+      "vocabulary_terms_checked": [
+        "session_clock",
+        "shared_event_store"
+      ],
+      "workflow_intent_assertion": "This leaf is the anti-collapse proof for Gate 91. It stops the enriched calendar from being poured straight back into the old thin sinks.",
+      "depends_on": [
+        "LEAF-G91-005"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-001",
+      "gate": "Gate 92",
+      "title": "Widen runtime carriage into cognition input from rich canonical packets",
+      "objective": "Widen runtime carriage and cognition input so rich canonical calendar/event meaning reaches TemporalContextService through lawful packet surfaces.",
+      "status": "planned; next active leaf",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "inputs": [
+        "Gate 91 canonical projection outputs",
+        "existing runtime carriage into cognition input"
+      ],
+      "ordered_actions": [
+        "Identify which retained fields must reach cognition input for lawful temporal derivation.",
+        "Add only the bounded carriage needed for Gate 92 and Gate 93.",
+        "Keep compatibility hints explicit and separate from canonical rich carriers.",
+        "Add tests proving lawful runtime carriage reaches cognition input."
+      ],
+      "forbidden_actions": [
+        "Do not widen runtime carriage with speculative fields.",
+        "Do not hide compatibility hints by silently repurposing them as canonical carriers.",
+        "Do not add direct raw import record carriage."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/dataset.py src/nvda_desk/schemas/cognition.py src/nvda_desk/services/chain_to_cognition.py tests/test_gate92_financial_calendar_temporal_transition.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py -k cognition_input"
+      ],
+      "expected_evidence": [
+        "runtime carriage includes the bounded retained meaning required for temporal derivation",
+        "tests prove cognition input receives rich canonical carriers and explicit compatibility hints separately"
+      ],
+      "definition_of_done": [
+        "cognition input is widened lawfully and minimally",
+        "compatibility hints remain explicit but non-canonical"
+      ],
+      "vocabulary_terms_checked": [
+        "precursor_runtime_packet",
+        "event_window_state"
+      ],
+      "workflow_intent_assertion": "This leaf ensures the rich canonical packets actually reach the step-1 temporal boundary. Without it, later temporal work would still be reading the repo through a keyhole.",
+      "depends_on": [
+        "LEAF-G91-006"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-002",
+      "gate": "Gate 92",
+      "title": "Amend temporal event-window derivation to use rich canonical event truth",
+      "objective": "Amend temporal event-window derivation so overlap, cooling-off, memory, and carry-sensitive event semantics come from rich canonical event truth.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/temporal_surface.py"
+      ],
+      "inputs": [
+        "widened cognition input from LEAF-G92-001",
+        "canonical event/live-event carriers from Gate 91"
+      ],
+      "ordered_actions": [
+        "Refactor temporal event-window derivation so it reads rich canonical event truth rather than a lone next_event_at anchor.",
+        "Derive overlap, cooling-off, memory, and carry-sensitive event semantics through bounded state outputs.",
+        "Add tests covering at least one overlapping-event case and one cooling-off or memory case."
+      ],
+      "forbidden_actions": [
+        "Do not let next_event_at remain the sole event system.",
+        "Do not expose raw import records to TemporalContextService.",
+        "Do not invent unbounded new runtime labels without vocabulary governance."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/temporal_context.py src/nvda_desk/schemas/cognition.py tests/test_gate92_financial_calendar_temporal_transition.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py -k event_window"
+      ],
+      "expected_evidence": [
+        "temporal event-window derivation uses rich canonical event truth",
+        "tests cover overlap and cooling-off or memory semantics"
+      ],
+      "definition_of_done": [
+        "event-window derivation no longer depends on a lone timestamp anchor",
+        "bounded event semantics required by later consumers exist and are tested"
+      ],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "live_event_richness"
+      ],
+      "workflow_intent_assertion": "This leaf is the heart of the temporal transition. It changes event timing from a single-anchor story into a bounded canonical-state story.",
+      "depends_on": [
+        "LEAF-G92-001"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-003",
+      "gate": "Gate 92",
+      "title": "Amend temporal venue/session derivation to use desk-calendar authority",
+      "objective": "Amend temporal venue/session derivation so session state reflects desk-calendar authority, including half-days, closures, and venue-state truth.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/schemas/session_clock.py",
+        "src/nvda_desk/schemas/temporal_surface.py"
+      ],
+      "inputs": [
+        "desk-calendar authority from LEAF-G91-001",
+        "widened cognition input from LEAF-G92-001"
+      ],
+      "ordered_actions": [
+        "Refactor temporal venue/session derivation so it reads desk-calendar authority instead of weekday-only assumptions.",
+        "Derive bounded session-state outputs for half-days, closures, and venue-state transitions.",
+        "Add tests covering at least one half-day case and one full closure case."
+      ],
+      "forbidden_actions": [
+        "Do not promote session_clock compatibility payloads back to canonical truth.",
+        "Do not collapse half-day and closure semantics into ordinary session labels.",
+        "Do not bypass desk-calendar authority."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/temporal_context.py src/nvda_desk/schemas/session_clock.py tests/test_gate92_financial_calendar_temporal_transition.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py -k session_or_venue"
+      ],
+      "expected_evidence": [
+        "temporal venue/session derivation uses desk-calendar authority",
+        "tests prove half-day and closure semantics survive into bounded temporal outputs"
+      ],
+      "definition_of_done": [
+        "venue/session derivation uses desk-calendar truth rather than weekday heuristics",
+        "half-day and closure semantics are tested"
+      ],
+      "vocabulary_terms_checked": [
+        "desk_calendar_contract",
+        "session_clock"
+      ],
+      "workflow_intent_assertion": "This leaf fixes the session side of step-1 temporal derivation so the new calendar actually changes what kind of day the desk thinks it is.",
+      "depends_on": [
+        "LEAF-G92-001"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-004",
+      "gate": "Gate 92",
+      "title": "Amend carry routing to use desk-calendar truth for next-session logic",
+      "objective": "Amend carry routing so next-session logic, half-days, and closures use desk-calendar truth rather than weekday heuristics.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/carry_handoff.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/schemas/session_clock.py"
+      ],
+      "inputs": [
+        "desk-calendar authority from LEAF-G91-001",
+        "temporal outputs from LEAF-G92-002 and LEAF-G92-003"
+      ],
+      "ordered_actions": [
+        "Refactor next-session routing and carry sensitivity logic to read desk-calendar truth.",
+        "Cover at least one holiday, one half-day, and one ordinary session case.",
+        "Keep carry outputs bounded and explainable."
+      ],
+      "forbidden_actions": [
+        "Do not leave next-session open logic as weekday-only heuristics.",
+        "Do not infer carry sensitivity purely from coarse event_window_state if richer bounded state exists.",
+        "Do not couple carry routing directly to raw import records."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/carry_handoff.py tests/test_gate92_financial_calendar_temporal_transition.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py tests/test_gate53_carry_handoff.py -k carry"
+      ],
+      "expected_evidence": [
+        "carry routing uses desk-calendar truth for next-session logic",
+        "tests prove holiday and half-day routing are handled explicitly"
+      ],
+      "definition_of_done": [
+        "carry routing stops using weekday-only next-session heuristics",
+        "holiday and half-day carry cases are tested"
+      ],
+      "vocabulary_terms_checked": [
+        "carry_handoff",
+        "desk_calendar_contract"
+      ],
+      "workflow_intent_assertion": "This leaf is where the enriched calendar becomes operationally useful for overnight and distorted-session handling.",
+      "depends_on": [
+        "LEAF-G92-002",
+        "LEAF-G92-003"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-005",
+      "gate": "Gate 92",
+      "title": "Preserve compatibility hints explicitly while proving they are non-canonical",
+      "objective": "Preserve compatibility hints such as next_event_at explicitly while proving they are subordinate to rich canonical carriers.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "new rich canonical carriers from earlier Gate 92 leaves",
+        "existing compatibility hints"
+      ],
+      "ordered_actions": [
+        "Keep compatibility hints available where existing consumers still need them.",
+        "Add tests that fail if compatibility hints are treated as canonical truth when richer canonical carriers are available.",
+        "Document or test the compatibility-only role explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not delete compatibility hints blindly in this gate.",
+        "Do not let compatibility hints silently regain authority.",
+        "Do not conflate compatibility fields with canonical retained fields."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/schemas/dataset.py src/nvda_desk/schemas/cognition.py src/nvda_desk/services/temporal_context.py tests/test_gate92_financial_calendar_temporal_transition.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py -k compatibility"
+      ],
+      "expected_evidence": [
+        "tests prove compatibility hints remain explicit but non-canonical",
+        "runtime carriage shows separation between compatibility and canonical truth"
+      ],
+      "definition_of_done": [
+        "compatibility hints remain available and explicitly subordinate",
+        "tests fail if they regain canonical authority"
+      ],
+      "vocabulary_terms_checked": [
+        "session_clock",
+        "event_window_state"
+      ],
+      "workflow_intent_assertion": "This leaf keeps backward-compatibility surfaces alive without letting them become the truth source again.",
+      "depends_on": [
+        "LEAF-G92-004"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G92-006",
+      "gate": "Gate 92",
+      "title": "Prove bounded temporal outputs preserve the rich meaning required by later consumers",
+      "objective": "Add bounded proof that the temporal outputs now preserve the rich meaning later consumers need without exposing raw packets directly.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "docs/05_GUARDRAILS.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py",
+        "tests/test_temporal_context_runtime.py",
+        "tests/test_temporal_context_signal_state.py"
+      ],
+      "inputs": [
+        "rich canonical carriers and amended temporal outputs from earlier Gate 92 leaves"
+      ],
+      "ordered_actions": [
+        "Add bounded tests showing macro/company/expiry/venue-session differences survive into temporal outputs where they matter.",
+        "Add tests showing overlap or carry-sensitive semantics survive into temporal outputs where they matter.",
+        "Keep outputs bounded and lawful rather than dumping raw packet structure downstream."
+      ],
+      "forbidden_actions": [
+        "Do not expose raw import or canonical records directly as downstream policy inputs.",
+        "Do not declare Gate 92 complete without proving later consumers can now see the preserved bounded meaning."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/temporal_context.py tests/test_gate92_financial_calendar_temporal_transition.py tests/test_temporal_context_runtime.py tests/test_temporal_context_signal_state.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate92_financial_calendar_temporal_transition.py tests/test_temporal_context_runtime.py tests/test_temporal_context_signal_state.py tests/test_gate81_live_event_temporal_semantics.py"
+      ],
+      "expected_evidence": [
+        "tests prove bounded temporal outputs preserve rich meaning later consumers need",
+        "later consumer alignment can proceed without direct raw-record coupling"
+      ],
+      "definition_of_done": [
+        "temporal outputs are bounded but meaningfully richer than the old thin path",
+        "proof exists that later consumers can rely on those outputs"
+      ],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "carry_handoff",
+        "playbook_eligibility"
+      ],
+      "workflow_intent_assertion": "This leaf is the proof that Gate 92 actually preserved useful meaning instead of merely moving code around.",
+      "depends_on": [
+        "LEAF-G92-005"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G93-001",
+      "gate": "Gate 93",
+      "title": "Align playbook eligibility with richer bounded temporal state",
+      "objective": "Align playbook eligibility so it distinguishes richer bounded temporal/event states without reading raw import-stage or packet internals directly.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "inputs": [
+        "bounded temporal outputs from Gate 92",
+        "current playbook eligibility logic"
+      ],
+      "ordered_actions": [
+        "Refactor playbook eligibility to read the richer bounded temporal state produced by Gate 92.",
+        "Add tests covering at least one macro window, one company event window, and one venue-session distortion case.",
+        "Keep the service bounded and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not couple playbook eligibility directly to raw import or canonical packet internals.",
+        "Do not preserve the old compressed event logic if richer bounded state now exists.",
+        "Do not start coefficient tuning in this gate."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/playbook_eligibility.py tests/test_gate93_financial_calendar_downstream_alignment.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate93_financial_calendar_downstream_alignment.py -k playbook"
+      ],
+      "expected_evidence": [
+        "playbook eligibility distinguishes richer bounded temporal states",
+        "tests cover macro, company-event, and venue-session distortion cases"
+      ],
+      "definition_of_done": [
+        "playbook eligibility consumes richer bounded temporal state lawfully",
+        "tests show it no longer relies only on the old compressed event story"
+      ],
+      "vocabulary_terms_checked": [
+        "playbook_eligibility",
+        "event_window_state"
+      ],
+      "workflow_intent_assertion": "This leaf is consumer alignment for playbook gating. It must read richer bounded state, not raw packets and not the old single-anchor story.",
+      "depends_on": [
+        "LEAF-G92-006"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G93-002",
+      "gate": "Gate 93",
+      "title": "Align state-conditioned modifier with richer bounded temporal state",
+      "objective": "Align the state-conditioned modifier so it distinguishes richer bounded temporal/event states without reading raw import-stage or packet internals directly.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "inputs": [
+        "bounded temporal outputs from Gate 92",
+        "current state-conditioned modifier logic"
+      ],
+      "ordered_actions": [
+        "Refactor the state-conditioned modifier to read the richer bounded temporal state produced by Gate 92.",
+        "Add tests covering at least one macro window, one company event window, one expiry case, and one venue-session distortion case.",
+        "Keep the service bounded and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not couple the modifier directly to raw import or canonical packet internals.",
+        "Do not preserve the old compressed event logic if richer bounded state now exists.",
+        "Do not start coefficient search in this gate."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/state_conditioned_modifier.py tests/test_gate93_financial_calendar_downstream_alignment.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate93_financial_calendar_downstream_alignment.py -k modifier"
+      ],
+      "expected_evidence": [
+        "state-conditioned modifier distinguishes richer bounded temporal states",
+        "tests cover macro, company-event, expiry, and venue-session distortion cases"
+      ],
+      "definition_of_done": [
+        "state-conditioned modifier consumes richer bounded temporal state lawfully",
+        "tests show it no longer relies only on the old compressed event story"
+      ],
+      "vocabulary_terms_checked": [
+        "state_conditioned_modifier",
+        "event_window_state"
+      ],
+      "workflow_intent_assertion": "This leaf is consumer alignment for the modifier path. It should become more expressive without becoming a raw-packet parasite.",
+      "depends_on": [
+        "LEAF-G92-006"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G93-003",
+      "gate": "Gate 93",
+      "title": "Align review explanation with overlap classes and preserved runtime packets",
+      "objective": "Align review explanation so overlap classes, carry sensitivity, and preserved runtime packet meaning survive explanation faithfully.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/services/event_store.py",
+        "tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "inputs": [
+        "bounded temporal outputs from Gate 92",
+        "retained event-store/live-event/runtime packet meaning from Gate 91"
+      ],
+      "ordered_actions": [
+        "Refactor review explanation so overlap classes, carry sensitivity, and preserved packet meaning survive into review surfaces.",
+        "Add tests covering overlapping events and preserved provenance/lineage explanation.",
+        "Keep review explanation bounded and evidence-based."
+      ],
+      "forbidden_actions": [
+        "Do not re-invent overlap semantics inside explanation after the fact.",
+        "Do not let review explanation read raw import records directly.",
+        "Do not discard provenance or retained packet meaning needed for explanation."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check src/nvda_desk/services/review_explanation.py tests/test_gate93_financial_calendar_downstream_alignment.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate93_financial_calendar_downstream_alignment.py -k review"
+      ],
+      "expected_evidence": [
+        "review explanation preserves overlap classes, carry sensitivity, and retained runtime packet meaning",
+        "tests cover overlapping events and preserved provenance/lineage explanation"
+      ],
+      "definition_of_done": [
+        "review explanation stays faithful to bounded runtime truth and preserved packets",
+        "tests cover overlap-aware explanation"
+      ],
+      "vocabulary_terms_checked": [
+        "shared_event_store",
+        "carry_handoff",
+        "event_window_state"
+      ],
+      "workflow_intent_assertion": "This leaf is review-surface alignment. It must keep explanation faithful to bounded runtime truth and preserved packets rather than inventing overlap semantics after the fact.",
+      "depends_on": [
+        "LEAF-G92-006"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G93-004",
+      "gate": "Gate 93",
+      "title": "Close the tranche honestly across plans, gate map, leaves ledger, and execution log",
+      "objective": "Advance the planning control surfaces together so repo truth matches the completed Gates 91-93 state.",
+      "status": "planned",
+      "authority_docs": [
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md"
+      ],
+      "inputs": [
+        "completed Gate 91 and Gate 92 receipts",
+        "completed Gate 93 runtime and review alignment work"
+      ],
+      "ordered_actions": [
+        "Update PLANS, gate map, active leaves ledger, and execution log together.",
+        "Mark Gate 93 complete and point the repo at the next lawful successor surface if one exists.",
+        "Record the exact commands, results, and merge evidence for Gates 91-93.",
+        "Prepare the full-history zip from the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not claim Gate 93 complete while any control surface still points at an older active gate.",
+        "Do not let the execution log lag behind the gate/leaf truth.",
+        "Do not package the repo before the closeout surfaces agree."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate93_financial_calendar_downstream_alignment.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "expected_evidence": [
+        "all planning control surfaces point at Gate 93 closeout truth together",
+        "validation commands and observed results are recorded",
+        "fresh full-history zip created from the exact green repo state"
+      ],
+      "definition_of_done": [
+        "repo planning truth is singular and honest for the completed tranche",
+        "packaging and receipt evidence exist for the tranche closeout"
+      ],
+      "vocabulary_terms_checked": [
+        "shared_event_store",
+        "carry_handoff",
+        "playbook_eligibility"
+      ],
+      "workflow_intent_assertion": "This leaf is planning/control closeout, not runtime behaviour. Its job is to make repo truth honest and singular.",
+      "depends_on": [
+        "LEAF-G93-001",
+        "LEAF-G93-002",
+        "LEAF-G93-003"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes Gate 93, create a fresh full-history zip from the exact green repo state."
+    },
+    {
+      "id": "LEAF-G93-005",
+      "gate": "Gate 93",
+      "title": "Add anti-drift proof that runtime integration cannot be claimed complete while legacy active truth remains",
+      "objective": "Add or amend planning tests so the repo cannot claim the runtime-integration tranche is complete while control surfaces still point to the older pack or older active gate truth.",
+      "status": "planned",
+      "authority_docs": [
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_financial_calendar_planning_v3.py",
+        "tests/test_successor_pack_anti_drift.py",
+        "tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "inputs": [
+        "final active planning pack",
+        "completed control-surface closeout from LEAF-G93-004"
+      ],
+      "ordered_actions": [
+        "Add planning-authority tests that assert the runtime-integration pack is singularly active after Gate 93 closeout.",
+        "Assert that older pack truth cannot remain active while the repo claims Gate 93 completion.",
+        "Run the bounded planning anti-drift slice in .venv.",
+        "Record the proof in the execution log."
+      ],
+      "forbidden_actions": [
+        "Do not close the tranche without anti-drift proof.",
+        "Do not rely on chat memory or verbal claims of completion.",
+        "Do not weaken predecessor evidence; only retire stale active authority."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate93_financial_calendar_downstream_alignment.py",
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate93_financial_calendar_downstream_alignment.py"
+      ],
+      "expected_evidence": [
+        "anti-drift tests fail if older active-pack truth remains after claimed tranche closeout",
+        "execution log records final anti-drift proof"
+      ],
+      "definition_of_done": [
+        "planning authority cannot drift silently after the runtime-integration tranche closes",
+        "the final closeout includes bounded anti-drift proof"
+      ],
+      "vocabulary_terms_checked": [
+        "shared_event_store",
+        "session_clock",
+        "precursor_runtime_packet"
+      ],
+      "workflow_intent_assertion": "This leaf is anti-drift proof for the planning authority itself. It prevents ghost completion claims in later threads.",
+      "depends_on": [
+        "LEAF-G93-004"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this is the final tranche closeout leaf, the fresh full-history zip must already exist and be recorded in the execution log."
+    }
+  ]
+}

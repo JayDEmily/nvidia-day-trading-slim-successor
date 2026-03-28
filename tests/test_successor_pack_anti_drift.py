@@ -67,6 +67,10 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **Gate 91 in the financial-calendar interstitial pack**."
             in gate_map
         )
+        or (
+            "Current active gate: **Gate 92 in the financial-calendar runtime-integration pack**."
+            in gate_map
+        )
     )
 
 
@@ -90,7 +94,7 @@ def test_agents_file_freezes_the_four_surface_closeout_protocol() -> None:
     assert "repo-root `PLANS.md`" in agents
     assert "2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md" in agents
     assert "active leaf ledger" in agents
-    assert "2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md" in agents
+    assert "the active execution log named by repo-root `PLANS.md`" in agents
     assert (
         "A gate is not closed if any one of those still points at the older active gate or older completed tranche."
         in agents

@@ -293,9 +293,22 @@ class RawEventSourceObservation(BaseModel):
     event_type: str = Field(min_length=1)
     label: str = Field(min_length=1)
     event_class: DeskEventClass | None = None
+    event_subclass: str | None = None
     semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
     materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
+    layer_id: str | None = None
+    jurisdiction: str | None = None
+    venues: list[str] = Field(default_factory=list)
+    entities: list[str] = Field(default_factory=list)
+    runtime_tags: list[str] = Field(default_factory=list)
+    evaluation_tags: list[str] = Field(default_factory=list)
+    source_status: str | None = None
     source_document: str = Field(min_length=1)
+    repo_artifact_id: str | None = None
+    repo_artifact_path: str | None = None
+    import_lineage_key: str | None = None
+    window_start_at: datetime | None = None
+    window_end_at: datetime | None = None
     observed_at: datetime
     freshness_state: EventFreshnessState
     confidence_tier: EventConfidenceTier
@@ -316,8 +329,22 @@ class NormalisedEventRecord(BaseModel):
     event_type: str = Field(min_length=1)
     label: str = Field(min_length=1)
     event_class: DeskEventClass | None = None
+    event_subclass: str | None = None
     semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
     materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
+    layer_id: str | None = None
+    jurisdiction: str | None = None
+    venues: list[str] = Field(default_factory=list)
+    entities: list[str] = Field(default_factory=list)
+    runtime_tags: list[str] = Field(default_factory=list)
+    evaluation_tags: list[str] = Field(default_factory=list)
+    source_status: str | None = None
+    source_document: str | None = None
+    repo_artifact_id: str | None = None
+    repo_artifact_path: str | None = None
+    import_lineage_key: str | None = None
+    window_start_at: datetime | None = None
+    window_end_at: datetime | None = None
     provenance: list[EventSourceProvenance] = Field(default_factory=list)
     lineage_keys: list[str] = Field(default_factory=list)
     conflict_notes: list[str] = Field(default_factory=list)
@@ -391,8 +418,21 @@ class LiveEventReference(BaseModel):
     event_type: str = Field(min_length=1)
     label: str = Field(min_length=1)
     event_class: DeskEventClass | None = None
+    event_subclass: str | None = None
     semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
     materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
+    layer_id: str | None = None
+    jurisdiction: str | None = None
+    venues: list[str] = Field(default_factory=list)
+    entities: list[str] = Field(default_factory=list)
+    runtime_tags: list[str] = Field(default_factory=list)
+    evaluation_tags: list[str] = Field(default_factory=list)
+    source_status: str | None = None
+    source_document: str | None = None
+    repo_artifact_id: str | None = None
+    import_lineage_key: str | None = None
+    window_start_at: datetime | None = None
+    window_end_at: datetime | None = None
     provenance_count: int = Field(ge=0, default=0)
     lineage_keys: list[str] = Field(default_factory=list)
 
