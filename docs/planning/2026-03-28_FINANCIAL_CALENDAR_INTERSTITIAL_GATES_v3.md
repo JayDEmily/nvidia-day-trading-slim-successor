@@ -98,21 +98,21 @@ The lawful flow is therefore:
 
 The following remain canonical and must be enriched rather than bypassed:
 
-- `DeskCalendarAuthorityPacket` and related venue/session contracts;
-- `EventWindowAuthorityPacket` and canonical temporal-state feature payloads;
-- `PrecursorUniverseAuthorityPacket` and precursor runtime packet carriage;
-- `EventIngestionService` and provenance-bearing event normalisation;
-- `EventStoreService` and `LiveEventSnapshot`;
+- `DeskCalendarAuthorityPacket` and the `desk_calendar_contract` venue/session contracts;
+- `EventWindowAuthorityPacket`, `TemporalStateFeaturePayload`, and `TemporalStateClassifier`;
+- `PrecursorUniverseAuthorityPacket`, `PrecursorRuntimePacket`, `PreparedRuntimeSnapshot.precursor_runtime_packet`, and `TemporalContextInput.precursor_runtime_packet`;
+- `EventIngestionService`, `RawEventSourceObservation`, and `NormalisedEventRecord`;
+- `EventStoreService`, `LiveEventSnapshot`, `PreparedRuntimeSnapshot.live_event_snapshot`, and `TemporalContextInput.live_event_snapshot`;
 - `TemporalContextService` as the bounded Step 1 derivation boundary.
 
 ### Retire from authority
 
 The following may remain in the tree for compatibility, but they must no longer be treated as architectural truth for this tranche:
 
-- outward `session_clock` surfaces as a canonical source for new calendar work;
+- outward `session_clock` compatibility surfaces, including `SessionClockCompatibilityPayload`;
 - `SessionClockClassifier` as the governing truth surface for post-Gate-87 temporal work;
-- `next_event_at` as anything more than a compatibility hint;
-- thin CRUD event/session import sinks as the canonical destination for rich financial-calendar authority.
+- `PreparedRuntimeSnapshot.next_event_at` and `TemporalContextInput.next_event_at` as anything more than compatibility hints;
+- `SessionCalendarCreate` and `MarketEventCreate` as canonical destinations for rich financial-calendar authority.
 
 Retire from authority does **not** mean blind deletion. It means compatibility-only unless and until a later gate removes the code explicitly.
 
@@ -124,7 +124,8 @@ The tranche must explicitly amend the following seams:
 - live event references must stay rich enough to preserve event family meaning, not just a timestamp and a label;
 - temporal derivation must stop collapsing all event meaning into one timestamp anchor where richer governed truth already exists;
 - carry/session alignment must derive from desk-calendar authority rather than weekday heuristics;
-- compatibility-era imported-module consumers must not set architecture by accident.
+- compatibility-era imported-module consumers must not set architecture by accident;
+- `state_conditioned_modifier`, `playbook_eligibility`, `carry_handoff`, and review consumers must read bounded temporal outputs or preserved runtime packets, not raw bundle files or import-stage records.
 
 ## Vocabulary discipline
 
@@ -146,6 +147,8 @@ Before implementation begins, Gate 89 must freeze the repo-native DMP v2 produce
 - `grammar_role` values compatible with the current repo enums/helpers;
 - `behaviour_class` values compatible with the current repo enums/helpers;
 - `packet_schema_id` and payload-contract identifiers matching repo-native packet-builder conventions;
+- `schema_identifiers` compatibility metadata for object-block payload recovery;
+- explicit `DmpV2Lineage`, `DmpV2ExecutionContext`, `DmpV2Summary`, and `DmpV2Validation` surfaces rather than ad hoc extension fields;
 - the lawful block mix of one compact metadata `object_block` plus referenced artefact blocks.
 
 No implementation gate may proceed while the financial-calendar packet lane still depends on external example identifiers that the current repo helper layer would reject.
@@ -168,6 +171,7 @@ The bundle must **not** be flattened straight into `session_clock`, `next_event_
 - turning the bundle into a live web-fetch subsystem;
 - widening the calendar bundle into an unbounded news engine;
 - replacing canonical runtime policy with raw bundle labels;
+- letting downstream policy or review services read raw bundle files or import-stage records directly;
 - silently deleting compatibility-era code without explicit doctrine and tests.
 
 ---
@@ -184,8 +188,8 @@ Freeze the workflow transition early enough that later implementation cannot pip
 
 ### Scope
 
-- promote this pack into the active planning quartet;
-- freeze the retain / retire-from-authority / amend matrix for affected modules and surfaces;
+- promote this pack into the active planning control surfaces;
+- freeze the retain / retire-from-authority / amend matrix for affected modules and surfaces by exact class and field name where the repo already has those names;
 - freeze the source-of-truth hierarchy for the financial-calendar tranche;
 - define vocabulary discipline for any new nouns required by this tranche;
 - record the canonical transit rule and explicit non-goals;
@@ -193,7 +197,7 @@ Freeze the workflow transition early enough that later implementation cannot pip
 
 ### Definition of done
 
-The repo has one active financial-calendar planning quartet, the workflow-transition matrix is explicit, and the active planning tests prove Gate 88 is the next gate and that rich calendar truth may not be flattened into compatibility-only surfaces by doctrine drift.
+The repo has one active financial-calendar planning pack and one coherent set of planning control surfaces, the workflow-transition matrix is explicit, and the active planning tests prove Gate 88 is the next gate and that rich calendar truth may not be flattened into compatibility-only surfaces by doctrine drift.
 
 ### Gate outputs
 
@@ -214,9 +218,10 @@ Define the deterministic mapping contract from external financial-calendar facts
 
 ### Scope
 
-- freeze the crosswalk from bundle fact families to canonical target surfaces;
+- freeze the crosswalk from bundle fact families to canonical target surfaces and bounded top-level event classes/subclasses;
 - freeze how rich bundle fields survive canonical projection and review retention;
-- freeze the repo-native DMP v2 producer identifiers and block layout for the reference-bundle lane;
+- freeze the repo-native DMP v2 producer identifiers, schema-identifiers compatibility metadata, and block layout for the reference-bundle lane;
+- freeze required `summary`, `validation`, `lineage`, and `execution_context` population rules for that lane;
 - define what remains additive compatibility versus what becomes canonical;
 - define validation and proof required before any import code lands.
 
@@ -309,4 +314,4 @@ Close the tranche cleanly, promote the active financial-calendar pack as complet
 
 ### Definition of done
 
-The planning quartet, repo-root pointers, and tests agree on the closed financial-calendar tranche, and any retained compatibility surfaces are documented as such rather than silently treated as canonical.
+The planning pack, repo-root pointers, active planning control surfaces, and tests agree on the closed financial-calendar tranche, and any retained compatibility surfaces are documented as such rather than silently treated as canonical.

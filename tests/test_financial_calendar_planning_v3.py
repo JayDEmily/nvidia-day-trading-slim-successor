@@ -37,7 +37,11 @@ def test_gates_doc_freezes_workflow_transition_and_dmp_constraints() -> None:
     assert "## Workflow transition and module disposition" in gates
     assert "### Retain as canonical" in gates
     assert "### Retire from authority" in gates
+    assert "SessionClockCompatibilityPayload" in gates
+    assert "PreparedRuntimeSnapshot.next_event_at" in gates
+    assert "SessionCalendarCreate` and `MarketEventCreate" in gates
     assert "Retire from authority does **not** mean blind deletion." in gates
+    assert "state_conditioned_modifier`, `playbook_eligibility`, `carry_handoff`" in gates
     assert "## DMP v2 compatibility constraint" in gates
     assert "must **not** be copied verbatim" in gates
     assert "## Canonical transit rule" in gates
@@ -54,7 +58,9 @@ def test_leaves_doc_marks_gate88_active_and_freezes_no_flattening_rules() -> Non
     assert leaves["remaining_leaf_ids"][0] == "LEAF-G88-001"
     assert leaves["global_rules"]["retire_from_authority_not_delete"] is True
     assert leaves["global_rules"]["dmp_v2_example_packet_must_not_be_copied_verbatim"] is True
+    assert leaves["global_rules"]["no_free_text_event_taxonomy_expansion"] is True
     assert "next_event_at_as_primary_event_system" in leaves["global_rules"]["must_not_flatten_into"]
+    assert "carry_handoff" in leaves["global_rules"]["downstream_consumers_must_not_read_raw_bundle_or_import_stage_records"]
 
 
 def test_execution_log_is_active_but_not_claiming_gate88_execution() -> None:
@@ -62,3 +68,12 @@ def test_execution_log_is_active_but_not_claiming_gate88_execution() -> None:
 
     assert "Status: active execution log for the financial-calendar planning pack" in execution_log
     assert "It does **not** count as a Gate 88 implementation receipt." in execution_log
+
+
+def test_repo_root_docs_no_longer_claim_a_three_file_quartet_or_unconditional_scope_note() -> None:
+    plans = PLANS.read_text(encoding="utf-8")
+    agents = AGENTS.read_text(encoding="utf-8")
+
+    assert "The active financial-calendar planning pack from Gate 88 onward is:" in plans
+    assert "only if repo-root `PLANS.md` names one" in agents
+    assert "active planning control surfaces govern **what work is active now**" in agents

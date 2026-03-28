@@ -21,7 +21,7 @@ Until a gate begins real execution, this file is only the active receipt surface
 
 The active financial-calendar planning pack was inserted after Gate 87 closeout to define the post-corrective execution path.
 
-This maintenance step establishes the active planning quartet only. It does **not** count as a Gate 88 implementation receipt.
+This maintenance step establishes the active planning pack and control surfaces only. It does **not** count as a Gate 88 implementation receipt.
 
 ## Entry template
 

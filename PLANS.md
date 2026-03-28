@@ -27,7 +27,7 @@ The completed corrective reconstruction pair retained as predecessor evidence is
 - `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`
 - `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`
 
-The active financial-calendar planning quartet from Gate 88 onward is:
+The active financial-calendar planning pack from Gate 88 onward is:
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`

@@ -34,14 +34,14 @@ It does **not** build an autonomous LLM trader.
 3. active gate master under `docs/planning/`
 4. active leaf ledger under `docs/planning/`
 5. active execution log under `docs/planning/`
-6. bounded-scope note under `docs/planning/`
+6. bounded-scope note under `docs/planning/` only if repo-root `PLANS.md` names one
 7. `CHANGELOG.jsonl` tail if historical context is needed
 8. `README.md` for human onboarding context only
 
 ## Behaviour authority versus work authority
 
 - `AGENTS.md` governs **agent behaviour in the repo**.
-- repo-root `PLANS.md` plus the active planning quartet govern **what work is active now**.
+- repo-root `PLANS.md` plus the active planning control surfaces govern **what work is active now**.
 - Completed predecessor packs may remain under `docs/planning/` as evidentiary receipts, but they are not active authority unless repo-root `PLANS.md` says so.
 
 ## Required checks before closing a change
