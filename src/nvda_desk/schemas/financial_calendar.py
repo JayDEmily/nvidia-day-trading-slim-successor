@@ -106,6 +106,8 @@ class FinancialCalendarReferenceArtifactKind(StrEnum):
     BUNDLE_README = "bundle_readme"
     BINDING_PLAN = "binding_plan"
     CHECKSUM_MANIFEST = "checksum_manifest"
+    EXTERNAL_EXAMPLE_PACKET = "external_example_packet"
+    EXTERNAL_VALIDATION_RESULT = "external_validation_result"
 
 
 class FinancialCalendarReferenceArtifact(BaseModel):
@@ -225,6 +227,31 @@ class FinancialCalendarImportedRecord(BaseModel):
     source_status: str = Field(min_length=1)
     source_document: str = Field(min_length=1)
     notes_md: str = ""
+
+
+class FinancialCalendarRepoManifest(BaseModel):
+    """Repo-controlled manifest for the checked-in reference bundle."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    bundle_root: str = Field(min_length=1)
+    bundle_metadata_file: str = Field(min_length=1)
+    layer_files: list[str] = Field(default_factory=list)
+    source_manifest_file: str = Field(min_length=1)
+    checksum_manifest_file: str = Field(min_length=1)
+    supporting_files: list[str] = Field(default_factory=list)
+    import_status: str = Field(min_length=1)
+
+
+class FinancialCalendarImportedBundle(BaseModel):
+    """Repo-controlled view over the checked-in bundle plus imported records."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    metadata: FinancialCalendarBundleMetadata
+    repo_manifest: FinancialCalendarRepoManifest
+    artifacts: list[FinancialCalendarReferenceArtifact] = Field(default_factory=list)
+    imported_records: list[FinancialCalendarImportedRecord] = Field(default_factory=list)
 
 
 class FinancialCalendarCrosswalkRecord(BaseModel):

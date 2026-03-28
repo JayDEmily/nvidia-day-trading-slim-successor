@@ -57,7 +57,8 @@ The active financial-calendar planning pack from Gate 88 onward is:
 - Gate 87 — complete on `main` (audit-remediation and closeout-integrity sweep)
 - Gate 88 — complete on `main` (financial-calendar workflow transition reset, authority disposition, vocabulary freeze, and planning-authority promotion)
 - Gate 89 — complete on `main` (canonical crosswalk, retained-field freeze, repo-native DMP v2 reference-bundle lane, and validation proof)
-- Gate 90 — planned; next active gate on `main` (checked-in reference artefacts and provenance-bearing import seam)
+- Gate 90 — complete on `main` (checked-in reference artefacts, repo manifest, provenance-bearing import seam, and non-behavioural proof)
+- Gate 91 — planned; next active gate on `main` (canonical projection into desk-calendar, event, and event-store surfaces)
 
 ## Sequential execution rule
 

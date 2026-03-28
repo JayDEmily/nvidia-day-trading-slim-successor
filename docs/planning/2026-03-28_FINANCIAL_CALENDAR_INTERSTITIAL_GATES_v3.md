@@ -1,6 +1,6 @@
 # 2026-03-28 Financial Calendar Interstitial Gates v3
 
-Status: active on `main`; Gate 90 is the next executable gate  
+Status: active on `main`; Gate 91 is the next executable gate  
 Version: v3.0
 
 ## Purpose
@@ -239,7 +239,7 @@ Gate 89 closes only when the deterministic crosswalk, retained-field matrix, rep
 
 ## Gate 90 — Checked-in reference artefacts and provenance-bearing import seam
 
-Status: planned; next active gate
+Status: complete on `main`
 
 Depends on: closed Gate 89
 
@@ -259,9 +259,13 @@ Land the financial-calendar reference artefacts under repo-native checked-in pat
 
 Reference artefacts are checked into the repo under governed paths, provenance-bearing import records exist, and tests prove the raw artefacts are reviewable without becoming direct runtime policy.
 
+### Gate 90 closeout note
+
+Gate 90 closes only when the checked-in artefacts, repo manifest, import-stage records, repo-controlled packet lane, and non-behavioural proof all exist on `main` together.
+
 ## Gate 91 — Canonical projection into desk calendar, event, and event-store surfaces
 
-Status: planned
+Status: planned; next active gate
 
 Depends on: closed Gate 90
 

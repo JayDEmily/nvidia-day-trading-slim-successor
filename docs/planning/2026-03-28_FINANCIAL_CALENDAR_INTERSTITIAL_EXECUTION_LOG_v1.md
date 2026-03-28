@@ -1,6 +1,6 @@
 # 2026-03-28 Financial Calendar Interstitial Execution Log v1
 
-Status: active execution log for the financial-calendar planning pack; Gate 88 and Gate 89 complete on `main`, Gate 90 next
+Status: active execution log for the financial-calendar planning pack; Gate 88, Gate 89, and Gate 90 complete on `main`, Gate 91 next
 
 ## Purpose
 
@@ -216,6 +216,88 @@ This maintenance step establishes the active planning pack and control surfaces 
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - the new Gate 89 validation test builds a repo-native reference-bundle packet and proves helper-layer compatibility without copying the external example identifiers.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G90-001 — Land the external tranche artefacts under a repo-controlled reference-data path
+
+- Branch: `work/gate-90-financial-calendar-import-20260328`
+- Start commit: `888bf15`
+- End commit: pending branch closeout
+- Files touched:
+  - `data/reference/financial_calendar/financial_calendar_master_2026.json`
+  - `data/reference/financial_calendar/source_manifest.json`
+  - `data/reference/financial_calendar/SHA256SUMS.json`
+  - `data/reference/financial_calendar/repo_manifest.json`
+  - `data/reference/financial_calendar/layers/*.json`
+  - `data/reference/financial_calendar/README.md`
+  - `data/reference/financial_calendar/DMP_V2_BINDING_PLAN.md`
+- Validations run:
+  - `.venv/bin/python -m ruff check src/nvda_desk/schemas/financial_calendar.py src/nvda_desk/services/financial_calendar_reference.py src/nvda_desk/services/financial_calendar_import.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate90_financial_calendar_reference_import.py tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate55_vocabulary_governance.py`
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate90_financial_calendar_reference_import.py tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate55_vocabulary_governance.py tests/test_dmp_v2_protocol.py`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - the external tranche artefacts are now checked into `data/reference/financial_calendar/` under repo control;
+  - repo manifest discipline exists before any canonical projection or runtime activation.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G90-002 — Implement the raw import seam without wiring the artefacts straight into runtime policy
+
+- Branch: `work/gate-90-financial-calendar-import-20260328`
+- Start commit: `888bf15`
+- End commit: pending branch closeout
+- Files touched:
+  - `src/nvda_desk/services/financial_calendar_import.py`
+  - `src/nvda_desk/schemas/financial_calendar.py`
+- Validations run:
+  - same bounded validation slice as LEAF-G90-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - `FinancialCalendarImportService` returns provenance-bearing import-stage records and repo-controlled artefact inventory only;
+  - Gate 90 does not yet emit canonical event-store rows or runtime behavioural state.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G90-003 — Preserve provenance-bearing bundle metadata required by runtime and review
+
+- Branch: `work/gate-90-financial-calendar-import-20260328`
+- Start commit: `888bf15`
+- End commit: pending branch closeout
+- Files touched:
+  - `src/nvda_desk/schemas/financial_calendar.py`
+  - `src/nvda_desk/services/financial_calendar_import.py`
+  - `tests/test_gate90_financial_calendar_reference_import.py`
+- Validations run:
+  - same bounded validation slice as LEAF-G90-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - imported records retain venue, jurisdiction, layer id, source status, runtime tags, evaluation tags, repo artefact id/path, and import lineage key.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G90-004 — Record import proof in the execution log without claiming behavioural activation
+
+- Branch: `work/gate-90-financial-calendar-import-20260328`
+- Start commit: `888bf15`
+- End commit: pending branch closeout
+- Files touched:
+  - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
+  - `tests/test_financial_calendar_planning_v3.py`
+- Validations run:
+  - same bounded validation slice as LEAF-G90-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - Gate 90 receipts explicitly describe checked-in artefacts and import-stage records while refusing to claim runtime activation before Gate 91.
 - Stop conditions hit: none
 - Merge status: pending
 - Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
