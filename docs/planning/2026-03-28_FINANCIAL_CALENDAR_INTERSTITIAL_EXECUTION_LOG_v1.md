@@ -1,6 +1,6 @@
 # 2026-03-28 Financial Calendar Interstitial Execution Log v1
 
-Status: active execution log for the financial-calendar planning pack; Gate 88 complete on `main`, Gate 89 next
+Status: active execution log for the financial-calendar planning pack; Gate 88 and Gate 89 complete on `main`, Gate 90 next
 
 ## Purpose
 
@@ -141,3 +141,81 @@ This maintenance step establishes the active planning pack and control surfaces 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `aac9c1e`
 - Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
+
+### LEAF-G89-001 — Define the deterministic crosswalk from bundle fact families into repo-native target surfaces
+
+- Branch: `work/gate-89-financial-calendar-crosswalk-20260328`
+- Start commit: `fb3e128`
+- End commit: pending branch closeout
+- Files touched:
+  - `src/nvda_desk/schemas/financial_calendar.py`
+  - `src/nvda_desk/services/financial_calendar_reference.py`
+  - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_CROSSWALK_SPEC_v1.md`
+- Validations run:
+  - `.venv/bin/python -m ruff check src/nvda_desk/schemas/financial_calendar.py src/nvda_desk/services/financial_calendar_reference.py scripts/build_canonical_vocabulary.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate55_vocabulary_governance.py`
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate55_vocabulary_governance.py tests/test_dmp_v2_protocol.py`
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - one deterministic crosswalk now covers every frozen bundle event type;
+  - entity-scoped earnings mapping is explicit for NVDA versus direct-readthrough mega-cap names;
+  - no Gate 89 record targets `session_clock` as canonical truth.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G89-002 — Freeze rich-field retention rules for provenance, review, and runtime explanation
+
+- Branch: `work/gate-89-financial-calendar-crosswalk-20260328`
+- Start commit: `fb3e128`
+- End commit: pending branch closeout
+- Files touched:
+  - `src/nvda_desk/schemas/financial_calendar.py`
+  - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_CROSSWALK_SPEC_v1.md`
+- Validations run:
+  - same bounded validation slice as LEAF-G89-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - import-stage, canonical-projection, and review/runtime retained-field families are now frozen by exact field name.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G89-003 — Freeze repo-native DMP v2 producer identifiers for the financial-calendar reference-bundle lane
+
+- Branch: `work/gate-89-financial-calendar-crosswalk-20260328`
+- Start commit: `fb3e128`
+- End commit: pending branch closeout
+- Files touched:
+  - `src/nvda_desk/services/financial_calendar_reference.py`
+  - `src/nvda_desk/schemas/financial_calendar.py`
+  - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_CROSSWALK_SPEC_v1.md`
+- Validations run:
+  - same bounded validation slice as LEAF-G89-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - repo-native `grammar_role`, `behaviour_class`, `packet_schema_id`, payload contract id, schema-identifiers metadata, and block mix now validate through the current DMP v2 helper layer.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.
+
+### LEAF-G89-004 — Add validation proof that the lane no longer depends on incompatible external example identifiers
+
+- Branch: `work/gate-89-financial-calendar-crosswalk-20260328`
+- Start commit: `fb3e128`
+- End commit: pending branch closeout
+- Files touched:
+  - `tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+  - `tests/test_financial_calendar_planning_v3.py`
+  - `tests/test_successor_pack_anti_drift.py`
+- Validations run:
+  - same bounded validation slice as LEAF-G89-001
+- Full suite required: `false`
+- Full suite command/result: not required by the leaf
+- Exact evidence:
+  - the new Gate 89 validation test builds a repo-native reference-bundle packet and proves helper-layer compatibility without copying the external example identifiers.
+- Stop conditions hit: none
+- Merge status: pending
+- Notes: receipt will be finalised after the branch validation slice is green and the branch is merged.

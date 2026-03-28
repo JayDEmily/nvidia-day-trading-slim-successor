@@ -1,6 +1,6 @@
 # 2026-03-28 Financial Calendar Interstitial Gates v3
 
-Status: active on `main`; Gate 89 is the next executable gate  
+Status: active on `main`; Gate 90 is the next executable gate  
 Version: v3.0
 
 ## Purpose
@@ -212,7 +212,7 @@ Gate 88 is complete on `main` once the active control surfaces, leaf ledger, exe
 
 ## Gate 89 — Canonical crosswalk and DMP v2 producer freeze
 
-Status: planned; next active gate
+Status: complete on `main`
 
 Depends on: closed Gate 88
 
@@ -233,9 +233,13 @@ Define the deterministic mapping contract from external financial-calendar facts
 
 The repo has one explicit deterministic crosswalk contract and one repo-native DMP v2 producer contract for the financial-calendar lane, with no dependence on incompatible external example identifiers.
 
+### Gate 89 closeout note
+
+Gate 89 closes only when the deterministic crosswalk, retained-field matrix, repo-native DMP v2 lane, vocabulary entries, and bounded validation proof all exist on `main` together.
+
 ## Gate 90 — Checked-in reference artefacts and provenance-bearing import seam
 
-Status: planned
+Status: planned; next active gate
 
 Depends on: closed Gate 89
 

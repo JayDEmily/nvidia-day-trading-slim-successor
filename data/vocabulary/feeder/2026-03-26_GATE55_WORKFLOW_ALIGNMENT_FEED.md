@@ -14,3 +14,6 @@ Status: feeder evidence only; not canonical until regenerated into the vocabular
 | execution shape | alias_only | `execution_expression` | Shorthand only; canonical term remains execution expression. |
 | close-state handoff | alias_only | `carry_handoff` | Typed carry bridge terminology. |
 | carry branch | alias_only | `carry_horizon_branch` | Separate horizon branch, not an intraday stage. |
+| financial calendar bundle | add_new | `financial_calendar_reference_bundle` | Repo-controlled scheduled-facts artefact lane for the financial-calendar tranche. |
+| calendar crosswalk | add_new | `financial_calendar_crosswalk` | Deterministic mapping from bundle fact families into canonical targets. |
+| calendar import record | add_new | `financial_calendar_import_record` | Raw provenance-bearing import-stage record before canonical projection. |

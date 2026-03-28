@@ -258,6 +258,40 @@ def build_document() -> VocabularyDocument:
             notes=["Gate 76 preserves precursor truth additively into runtime and review packets."],
         ),
         VocabularyEntry(
+            canonical_slug="financial_calendar_reference_bundle",
+            canonical_label="Financial Calendar Reference Bundle",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.financial_calendar.FinancialCalendarBundleMetadata",
+            allowed_aliases=["financial_calendar_bundle"],
+            notes=[
+                "Repo-controlled scheduled-facts artefact lane for the post-Gate-87 financial-calendar tranche."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="financial_calendar_crosswalk",
+            canonical_label="Financial Calendar Crosswalk",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="temporal_context",
+            maps_to_contract="nvda_desk.schemas.financial_calendar.FinancialCalendarCrosswalkRecord",
+            allowed_aliases=["calendar_crosswalk"],
+            notes=[
+                "Deterministic mapping from bundle fact families into canonical calendar, event, precursor, and temporal surfaces."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="financial_calendar_import_record",
+            canonical_label="Financial Calendar Import Record",
+            category=VocabularyCategory.DATA_CLASSIFICATION,
+            stage_owner="temporal_context",
+            raw_or_derived=RawDerivedTag.RAW,
+            maps_to_contract="nvda_desk.schemas.financial_calendar.FinancialCalendarImportedRecord",
+            allowed_aliases=["calendar_import_record"],
+            notes=[
+                "Provenance-bearing import-stage record retained before Gate 91 canonical projection."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="review_failure_taxonomy",
             canonical_label="Review Failure Taxonomy",
             category=VocabularyCategory.WORKFLOW,

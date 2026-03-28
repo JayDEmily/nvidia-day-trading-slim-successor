@@ -472,6 +472,63 @@
       ]
     },
     {
+      "canonical_slug": "financial_calendar_reference_bundle",
+      "canonical_label": "Financial Calendar Reference Bundle",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.financial_calendar.FinancialCalendarBundleMetadata",
+      "allowed_aliases": [
+        "financial_calendar_bundle"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Repo-controlled scheduled-facts artefact lane for the post-Gate-87 financial-calendar tranche."
+      ]
+    },
+    {
+      "canonical_slug": "financial_calendar_crosswalk",
+      "canonical_label": "Financial Calendar Crosswalk",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.financial_calendar.FinancialCalendarCrosswalkRecord",
+      "allowed_aliases": [
+        "calendar_crosswalk"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Deterministic mapping from bundle fact families into canonical calendar, event, precursor, and temporal surfaces."
+      ]
+    },
+    {
+      "canonical_slug": "financial_calendar_import_record",
+      "canonical_label": "Financial Calendar Import Record",
+      "category": "data_classification",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "raw",
+      "maps_to_contract": "nvda_desk.schemas.financial_calendar.FinancialCalendarImportedRecord",
+      "allowed_aliases": [
+        "calendar_import_record"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Provenance-bearing import-stage record retained before Gate 91 canonical projection."
+      ]
+    },
+    {
       "canonical_slug": "review_failure_taxonomy",
       "canonical_label": "Review Failure Taxonomy",
       "category": "workflow",

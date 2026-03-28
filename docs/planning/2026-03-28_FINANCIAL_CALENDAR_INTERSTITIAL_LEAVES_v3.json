@@ -1,27 +1,28 @@
 {
   "governing_plan": "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md",
   "version": "v3.0",
-  "execution_status": "gate_89_financial_calendar_pack_active_after_gate_88",
-  "active_gate": "Gate 89",
+  "execution_status": "gate_90_financial_calendar_reference_import_active_after_gate_89",
+  "active_gate": "Gate 90",
   "supersedes": [
     "conversation-claimed financial calendar interstitial planning artefacts not present in the restored repo",
     "any partial interstitial-only draft that did not merge the downstream calendar tranche"
   ],
   "completed_gate_ids": [
-    "Gate 88"
+    "Gate 88",
+    "Gate 89"
   ],
   "completed_leaf_ids": [
     "LEAF-G88-001",
     "LEAF-G88-002",
     "LEAF-G88-003",
     "LEAF-G88-004",
-    "LEAF-G88-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G88-005",
     "LEAF-G89-001",
     "LEAF-G89-002",
     "LEAF-G89-003",
-    "LEAF-G89-004",
+    "LEAF-G89-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G90-001",
     "LEAF-G90-002",
     "LEAF-G90-003",
@@ -143,7 +144,7 @@
       "id": "LEAF-G89-001",
       "gate": "Gate 89",
       "title": "Define the deterministic crosswalk from bundle fact families into repo-native target surfaces",
-      "status": "planned; next active leaf",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G88-005"
@@ -157,7 +158,7 @@
       "id": "LEAF-G89-002",
       "gate": "Gate 89",
       "title": "Freeze rich-field retention rules for provenance, review, and runtime explanation",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G89-001"
@@ -170,7 +171,7 @@
       "id": "LEAF-G89-003",
       "gate": "Gate 89",
       "title": "Freeze repo-native DMP v2 producer identifiers for the financial-calendar reference-bundle lane",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G89-002"
@@ -187,7 +188,7 @@
       "id": "LEAF-G89-004",
       "gate": "Gate 89",
       "title": "Add validation proof that the lane no longer depends on incompatible external example identifiers",
-      "status": "planned",
+      "status": "complete",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G89-003"
@@ -200,7 +201,7 @@
       "id": "LEAF-G90-001",
       "gate": "Gate 90",
       "title": "Land the external tranche artefacts under a repo-controlled reference-data path",
-      "status": "planned",
+      "status": "planned; next active leaf",
       "full_suite_required": false,
       "depends_on": [
         "LEAF-G89-004"

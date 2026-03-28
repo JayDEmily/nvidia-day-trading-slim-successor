@@ -23,11 +23,13 @@ def test_active_planning_surfaces_point_at_the_financial_calendar_pack() -> None
     assert "2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json" in plans
     assert "2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md" in plans
     assert "Gate 88 — complete on `main`" in plans
-    assert "Gate 89 — planned; next active gate on `main`" in plans
+    assert "Gate 89 — complete on `main`" in plans
+    assert "Gate 90 — planned; next active gate on `main`" in plans
 
-    assert "Current active gate: **Gate 89 in the financial-calendar interstitial pack**." in gate_map
+    assert "Current active gate: **Gate 90 in the financial-calendar interstitial pack**." in gate_map
     assert "| Gate 88 | complete on `main` |" in gate_map
-    assert "| Gate 89 | planned; next active gate |" in gate_map
+    assert "| Gate 89 | complete on `main` |" in gate_map
+    assert "| Gate 90 | planned; next active gate |" in gate_map
     assert "| Gate 93 | planned |" in gate_map
 
     assert "2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md" in agents
@@ -54,11 +56,11 @@ def test_leaves_doc_marks_gate88_active_and_freezes_no_flattening_rules() -> Non
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert leaves["governing_plan"] == "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md"
-    assert leaves["execution_status"] == "gate_89_financial_calendar_pack_active_after_gate_88"
-    assert leaves["active_gate"] == "Gate 89"
-    assert leaves["completed_gate_ids"] == ["Gate 88"]
-    assert leaves["completed_leaf_ids"] == ["LEAF-G88-001", "LEAF-G88-002", "LEAF-G88-003", "LEAF-G88-004", "LEAF-G88-005"]
-    assert leaves["remaining_leaf_ids"][0] == "LEAF-G89-001"
+    assert leaves["execution_status"] == "gate_90_financial_calendar_reference_import_active_after_gate_89"
+    assert leaves["active_gate"] == "Gate 90"
+    assert leaves["completed_gate_ids"] == ["Gate 88", "Gate 89"]
+    assert leaves["completed_leaf_ids"] == ["LEAF-G88-001", "LEAF-G88-002", "LEAF-G88-003", "LEAF-G88-004", "LEAF-G88-005", "LEAF-G89-001", "LEAF-G89-002", "LEAF-G89-003", "LEAF-G89-004"]
+    assert leaves["remaining_leaf_ids"][0] == "LEAF-G90-001"
     assert leaves["global_rules"]["retire_from_authority_not_delete"] is True
     assert leaves["global_rules"]["dmp_v2_example_packet_must_not_be_copied_verbatim"] is True
     assert leaves["global_rules"]["no_free_text_event_taxonomy_expansion"] is True
@@ -69,8 +71,8 @@ def test_leaves_doc_marks_gate88_active_and_freezes_no_flattening_rules() -> Non
 def test_execution_log_is_active_but_not_claiming_gate88_execution() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "Status: active execution log for the financial-calendar planning pack; Gate 88 complete on `main`, Gate 89 next" in execution_log
-    assert "### LEAF-G88-001 — Promote the financial-calendar planning pack into the active planning control surfaces" in execution_log
+    assert "Status: active execution log for the financial-calendar planning pack; Gate 88 and Gate 89 complete on `main`, Gate 90 next" in execution_log
+    assert "### LEAF-G89-001 — Define the deterministic crosswalk from bundle fact families into repo-native target surfaces" in execution_log
 
 
 def test_repo_root_docs_no_longer_claim_a_three_file_quartet_or_unconditional_scope_note() -> None:
@@ -89,5 +91,8 @@ def test_gate88_leaves_are_complete_and_gate89_begins_the_remaining_queue() -> N
     assert len(gate88) == 5
     assert all(leaf["status"] == "complete" for leaf in gate88)
     assert all(leaf["id"] not in leaves["remaining_leaf_ids"] for leaf in gate88)
-    gate89_first = next(leaf for leaf in leaves["leaves"] if leaf["id"] == "LEAF-G89-001")
-    assert gate89_first["status"] == "planned; next active leaf"
+    gate89 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 89"]
+    assert len(gate89) == 4
+    assert all(leaf["status"] == "complete" for leaf in gate89)
+    gate90_first = next(leaf for leaf in leaves["leaves"] if leaf["id"] == "LEAF-G90-001")
+    assert gate90_first["status"] == "planned; next active leaf"
