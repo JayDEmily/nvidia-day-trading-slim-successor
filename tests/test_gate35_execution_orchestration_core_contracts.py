@@ -27,7 +27,9 @@ EXPECTED_GATE35_ORDER = [
 ]
 
 
-def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_honesty() -> None:
+def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_honesty() -> (
+    None
+):
     """Gate 35 should close exactly the six planned execution-orchestration items."""
 
     supportive = build_gate_execution_contract_bundle()
@@ -46,10 +48,15 @@ def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_ho
         "archive-module-053",
         "archive-module-050",
     ]
-    assert all(output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value for output in ordered)
+    assert all(
+        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value
+        for output in ordered
+    )
 
     entry_planner = cast(EntryPlannerContractOutput, outputs["entry_planner"])
-    position_allocator = cast(PositionAllocatorContractOutput, outputs["position_allocator"])
+    position_allocator = cast(
+        PositionAllocatorContractOutput, outputs["position_allocator"]
+    )
     order_simulator = cast(OrderSimulatorContractOutput, outputs["order_simulator"])
     broker_adapter = cast(BrokerAdapterContractOutput, outputs["broker_adapter"])
     run_trading_bot = cast(RunTradingBotContractOutput, outputs["run_trading_bot"])
@@ -61,7 +68,10 @@ def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_ho
     assert broker_adapter.routing_state == "fenced_no_broker_bridge"
     assert run_trading_bot.dispatch_state == "dry_run_preview_only"
     assert execution_tags.tagging_state == "tagged"
-    assert execution_tags.upstream_contract_slugs == ["position_book", "fill_feedback_router"]
+    assert execution_tags.upstream_contract_slugs == [
+        "position_book",
+        "fill_feedback_router",
+    ]
 
 
 def test_gate35_stress_keeps_orchestration_core_preview_only() -> None:

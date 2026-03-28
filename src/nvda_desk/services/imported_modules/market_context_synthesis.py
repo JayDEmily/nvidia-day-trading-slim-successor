@@ -70,7 +70,9 @@ def _dependency_fences(
 class MarketContextSynthesisContractService:
     """Emit Gate-29 synthesis contracts in frozen order."""
 
-    def evaluate(self, context: MarketContextSynthesisContext) -> list[MarketContextSynthesisContractEmission]:
+    def evaluate(
+        self, context: MarketContextSynthesisContext
+    ) -> list[MarketContextSynthesisContractEmission]:
         outputs: list[MarketContextSynthesisPayload] = [self._run_signal_scan(context)]
         return [
             self._emit_packet(
@@ -110,11 +112,20 @@ class MarketContextSynthesisContractService:
         )
         return MarketContextSynthesisContractEmission(output=output, packet=packet)
 
-    def _run_signal_scan(self, context: MarketContextSynthesisContext) -> RunSignalScanContractOutput:
+    def _run_signal_scan(
+        self, context: MarketContextSynthesisContext
+    ) -> RunSignalScanContractOutput:
         allowed = context.posture.permission_state.value == "allow"
         constructive = context.engine_score.engine_score >= 0.6
-        watch_mode = bool(context.eligibility.watch_only_candidates) and not context.eligibility.add_candidates
-        scan_state = "scan_ready" if allowed and constructive else "scan_watch_only" if watch_mode else "scan_suppressed"
+        watch_mode = (
+            bool(context.eligibility.watch_only_candidates)
+            and not context.eligibility.add_candidates
+        )
+        scan_state = (
+            "scan_ready"
+            if allowed and constructive
+            else "scan_watch_only" if watch_mode else "scan_suppressed"
+        )
         enabled_passes = [
             "macro_bias",
             "options_behaviour",
@@ -124,7 +135,11 @@ class MarketContextSynthesisContractService:
             enabled_passes.append("macro_bias_override")
         if context.temporal.event_window_state not in {"clear_window", "event_clear"}:
             enabled_passes.append("event_window_guard")
-        candidate_count = len(context.eligibility.add_candidates) if scan_state == "scan_ready" else len(context.eligibility.watch_only_candidates)
+        candidate_count = (
+            len(context.eligibility.add_candidates)
+            if scan_state == "scan_ready"
+            else len(context.eligibility.watch_only_candidates)
+        )
         return RunSignalScanContractOutput(
             canonical_id="archive-module-052",
             canonical_slug="run_signal_scan",

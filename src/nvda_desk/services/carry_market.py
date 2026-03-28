@@ -32,13 +32,21 @@ class OvernightCarryMarketService:
         self._market_state_service = market_state_service
         self._service = OvernightCarryEvaluatorService()
 
-    def evaluate_from_market(self, payload: OvernightCarryMarketInput) -> OvernightCarryMarketOutput:
-        bars = self._market_state_service.get_intraday_bars(symbol=payload.symbol, ts=payload.evaluation_ts, limit=60).bars
+    def evaluate_from_market(
+        self, payload: OvernightCarryMarketInput
+    ) -> OvernightCarryMarketOutput:
+        bars = self._market_state_service.get_intraday_bars(
+            symbol=payload.symbol, ts=payload.evaluation_ts, limit=60
+        ).bars
         if not bars:
             derived = CarryDerivedContext(
                 evaluation_ts=payload.evaluation_ts,
                 last_bar_ts=payload.evaluation_ts,
-                close_phase=(payload.close_state_handoff.close_phase if payload.close_state_handoff is not None else self._classifier.classify(payload.evaluation_ts).phase),
+                close_phase=(
+                    payload.close_state_handoff.close_phase
+                    if payload.close_state_handoff is not None
+                    else self._classifier.classify(payload.evaluation_ts).phase
+                ),
                 close_distance_to_vwap_pct=0.0,
                 realised_vol_pct=0.0,
                 vix_level=0.0,
@@ -47,7 +55,9 @@ class OvernightCarryMarketService:
         else:
             last_bar = bars[-1]
             vwap = self._session_vwap(bars)
-            close_distance = 0.0 if vwap == 0 else ((float(last_bar.close) - vwap) / vwap) * 100
+            close_distance = (
+                0.0 if vwap == 0 else ((float(last_bar.close) - vwap) / vwap) * 100
+            )
             realised_vol = self._realised_vol_pct(bars)
             vix_level = self._latest_close_or_zero("VIX", payload.evaluation_ts)
             vvix_level = self._latest_close_or_zero("VVIX", payload.evaluation_ts)
@@ -80,11 +90,13 @@ class OvernightCarryMarketService:
                 open_orders_count=payload.open_orders_count,
             )
         )
-        adjusted_action, adjusted_exposure, adjustment_reasons = self._apply_handoff_constraints(
-            handoff=payload.close_state_handoff,
-            recommendation=output.carry_recommendation,
-            action=output.carry_action,
-            exposure=output.overnight_exposure_pct,
+        adjusted_action, adjusted_exposure, adjustment_reasons = (
+            self._apply_handoff_constraints(
+                handoff=payload.close_state_handoff,
+                recommendation=output.carry_recommendation,
+                action=output.carry_action,
+                exposure=output.overnight_exposure_pct,
+            )
         )
         adjusted_recommendation = self._recommendation_for_action(adjusted_action)
         rationale_codes = list(output.rationale_codes)
@@ -121,9 +133,17 @@ class OvernightCarryMarketService:
         ):
             if fallback in handoff.allowed_actions:
                 if fallback is CarryAction.HOLD_SMALL:
-                    return fallback, min(exposure, handoff.overnight_deployable_capital_pct, 10.0), [f"handoff:downgraded_from:{action.value}"]
+                    return (
+                        fallback,
+                        min(exposure, handoff.overnight_deployable_capital_pct, 10.0),
+                        [f"handoff:downgraded_from:{action.value}"],
+                    )
                 if fallback is CarryAction.HOLD_BASELINE:
-                    return fallback, min(exposure, handoff.overnight_deployable_capital_pct), [f"handoff:downgraded_from:{action.value}"]
+                    return (
+                        fallback,
+                        min(exposure, handoff.overnight_deployable_capital_pct),
+                        [f"handoff:downgraded_from:{action.value}"],
+                    )
                 return fallback, 0.0, [f"handoff:downgraded_from:{action.value}"]
         # defensive fallback
         if recommendation is CarryRecommendation.BLOCK:
@@ -141,7 +161,9 @@ class OvernightCarryMarketService:
 
     def _latest_close_or_zero(self, symbol: str, ts: datetime) -> float:
         snapshot = self._market_state_service.get_market_snapshot(symbol=symbol, ts=ts)
-        return float(snapshot.latest_bar.close) if snapshot.latest_bar is not None else 0.0
+        return (
+            float(snapshot.latest_bar.close) if snapshot.latest_bar is not None else 0.0
+        )
 
     def _session_vwap(self, bars: list[Bar1mPayload]) -> float:
         pv_total = 0.0

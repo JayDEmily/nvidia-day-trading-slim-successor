@@ -243,7 +243,9 @@ class DmpV2Packet(BaseModel):
     producer: DmpV2Producer
     contract: DmpV2Contract
     lineage: DmpV2Lineage = Field(default_factory=DmpV2Lineage)
-    execution_context: DmpV2ExecutionContext = Field(default_factory=DmpV2ExecutionContext)
+    execution_context: DmpV2ExecutionContext = Field(
+        default_factory=DmpV2ExecutionContext
+    )
     blocks: list[DmpV2Block] = Field(default_factory=list, min_length=1)
     summary: DmpV2Summary
     validation: DmpV2Validation = Field(default_factory=DmpV2Validation)
@@ -251,7 +253,9 @@ class DmpV2Packet(BaseModel):
 
     @property
     def packet_identity(self) -> DmpV2PacketIdentityCompat:
-        return DmpV2PacketIdentityCompat(packet_id=self.packet_id, emitted_at=self.producer.emitted_at)
+        return DmpV2PacketIdentityCompat(
+            packet_id=self.packet_id, emitted_at=self.producer.emitted_at
+        )
 
     @property
     def grammar_role(self) -> DmpGrammarRole:
@@ -264,11 +268,18 @@ class DmpV2Packet(BaseModel):
     @property
     def schema_identifiers(self) -> DmpV2SchemaIdentifiersCompat:
         compat = self.extensions.get("schema_identifiers", {})
-        if isinstance(compat, dict) and {"payload_model_name", "payload_module_path"} <= compat.keys():
+        if (
+            isinstance(compat, dict)
+            and {"payload_model_name", "payload_module_path"} <= compat.keys()
+        ):
             return DmpV2SchemaIdentifiersCompat.model_validate(compat)
-        object_block = next((block for block in self.blocks if block.block_type == "object_block"), None)
+        object_block = next(
+            (block for block in self.blocks if block.block_type == "object_block"), None
+        )
         if object_block is None:
-            raise AttributeError("DMP v2 packet has no object block for schema compatibility view")
+            raise AttributeError(
+                "DMP v2 packet has no object block for schema compatibility view"
+            )
         module_path, _, model_name = object_block.schema_id.rpartition(".")
         return DmpV2SchemaIdentifiersCompat(
             payload_model_name=model_name,
@@ -278,7 +289,11 @@ class DmpV2Packet(BaseModel):
 
     @property
     def trace_references(self) -> DmpV2TraceReferencesCompat:
-        parent_packet_id = self.lineage.parent_packet_ids[-1] if self.lineage.parent_packet_ids else None
+        parent_packet_id = (
+            self.lineage.parent_packet_ids[-1]
+            if self.lineage.parent_packet_ids
+            else None
+        )
         return DmpV2TraceReferencesCompat(
             parent_packet_id=parent_packet_id,
             upstream_packet_ids=list(self.lineage.dependency_packet_ids),
@@ -307,21 +322,33 @@ class DmpV2Packet(BaseModel):
 
     @property
     def payload(self) -> BaseModel:
-        object_block = next((block for block in self.blocks if block.block_type == "object_block"), None)
+        object_block = next(
+            (block for block in self.blocks if block.block_type == "object_block"), None
+        )
         if object_block is None:
-            raise AttributeError("DMP v2 packet has no object block for payload compatibility view")
+            raise AttributeError(
+                "DMP v2 packet has no object block for payload compatibility view"
+            )
         schema = self.schema_identifiers
         module = import_module(schema.payload_module_path)
-        model_cls = getattr(module, schema.output_model_name or schema.payload_model_name)
+        model_cls = getattr(
+            module, schema.output_model_name or schema.payload_model_name
+        )
         return cast(BaseModel, model_cls.model_validate(object_block.data))
 
     @model_validator(mode="after")
     def _validate_block_contract(self) -> DmpV2Packet:
         present_block_kinds = [block.block_type for block in self.blocks]
-        missing_required = [kind for kind in self.contract.required_blocks if kind not in present_block_kinds]
+        missing_required = [
+            kind
+            for kind in self.contract.required_blocks
+            if kind not in present_block_kinds
+        ]
         if missing_required:
             raise ValueError(f"required block kinds missing: {missing_required}")
-        declared = set(self.contract.required_blocks) | set(self.contract.optional_blocks)
+        declared = set(self.contract.required_blocks) | set(
+            self.contract.optional_blocks
+        )
         undeclared = [kind for kind in present_block_kinds if kind not in declared]
         if undeclared:
             raise ValueError(f"undeclared block kinds present: {undeclared}")
@@ -392,8 +419,16 @@ def build_dmp_v2_packet_from_payload(
     """Build one canonical DMP v2 packet directly from a typed payload model."""
 
     payload_model = payload.__class__
-    grammar_role_value = grammar_role.value if isinstance(grammar_role, DmpGrammarRole) else str(grammar_role)
-    behaviour_class_value = behaviour_class.value if isinstance(behaviour_class, DmpBehaviourClass) else str(behaviour_class)
+    grammar_role_value = (
+        grammar_role.value
+        if isinstance(grammar_role, DmpGrammarRole)
+        else str(grammar_role)
+    )
+    behaviour_class_value = (
+        behaviour_class.value
+        if isinstance(behaviour_class, DmpBehaviourClass)
+        else str(behaviour_class)
+    )
     resolved_output_model = output_model_name or payload_model.__name__
     payload_extensions = {
         "schema_identifiers": {
@@ -425,7 +460,13 @@ def build_dmp_v2_packet_from_payload(
             payload_contract_id=f"{grammar_role_value}.output@1.0.0",
             compatibility_version="2",
             required_blocks=["object_block"],
-            optional_blocks=["summary_block", "metrics_block", "table_block", "timeseries_block", "artifact_ref_block"],
+            optional_blocks=[
+                "summary_block",
+                "metrics_block",
+                "table_block",
+                "timeseries_block",
+                "artifact_ref_block",
+            ],
         ),
         lineage=DmpV2Lineage(
             parent_packet_ids=list(parent_packet_ids or []),

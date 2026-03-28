@@ -1492,7 +1492,7 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Scope: build aggregate review-governance surfaces from genuine evidence-bearing paths.
 - Outcome:
   - Runtime review now emits `stability_scorecards`, `review_eligibility`, and `candidate_governance` instead of leaving those schema hooks dead.
-  - Candidate-governance release remains reserved until promotion evidence is complete, and releases only under bounded ready conditions.
+  - Candidate-governance release remains reserved until promotion evidence is complete and explicit comparison context exists; no placeholder candidate IDs are emitted from runtime-only review.
 - Validation rerun on `main`:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate77_review_failure_taxonomy.py tests/test_replay_compare_runtime.py`
 
@@ -1513,6 +1513,7 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
 - Outcome:
   - Economic-behaviour checks now consider bounded multi-axis failures, not just deployability spread.
   - Fragility and ablation reports now expose report-level `economic_axis_failures` for each unstable surface.
+  - The widened `active_playbook_rate` and `conflict_count` thresholds are frozen on `StabilityComparisonRule` instead of being hidden inside service code.
 - Validation rerun on `main`:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate85_horizon_economic_behaviour.py tests/test_gate79_horizon_discovery_harness.py tests/test_replay_compare_runtime.py`
 
@@ -1526,3 +1527,19 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Planning/control surfaces now close the corrective pack through Gate 86 on `main`.
 - Validation rerun on `main`:
   - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate86_event_ingestion_precedence_and_closeout.py tests/test_gate72_event_ingestion_provenance.py tests/test_successor_pack_anti_drift.py`
+
+### Gate 87 audit-remediation closeout
+
+- Branch: `work/gate87-audit-fixes-20260328`
+- Scope: repair the residual defects found by the Gate 86 self-audit without reopening the corrective runtime tranche.
+- Outcome:
+  - Restored the missing Gate 69 predecessor-pack closeout note so preserved successor-pack evidence and its integrity tests agree again.
+  - Gate 82 review packets now use the same canonical phase/carry and event/options projectors as modifier runtime.
+  - Gate 83 candidate-governance release now requires explicit comparison context and no longer emits placeholder champion/challenger IDs from runtime-only review.
+  - Gate 85 widened economic thresholds now live on `StabilityComparisonRule`, and repo-wide `black --check src tests`, `mypy src tests`, and `ruff check src tests` are green.
+  - Removed the stale pytest `asyncio_mode` config warning.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q`
+  - `black --check src tests`
+  - `PYTHONPATH=src .venv/bin/python -m mypy src tests`
+  - `ruff check src tests`

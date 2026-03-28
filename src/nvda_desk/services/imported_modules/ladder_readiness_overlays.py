@@ -70,7 +70,9 @@ def _dependency_fences(
 class LadderReadinessContractService:
     """Emit Gate-33 ladder-readiness overlays in frozen order."""
 
-    def evaluate(self, context: LadderReadinessContext) -> list[LadderReadinessContractEmission]:
+    def evaluate(
+        self, context: LadderReadinessContext
+    ) -> list[LadderReadinessContractEmission]:
         outputs: list[LadderReadinessPayload] = [self._vvix_ladder_shaper(context)]
         return [
             self._emit_packet(
@@ -110,7 +112,9 @@ class LadderReadinessContractService:
         )
         return LadderReadinessContractEmission(output=output, packet=packet)
 
-    def _vvix_ladder_shaper(self, context: LadderReadinessContext) -> VvixLadderShaperContractOutput:
+    def _vvix_ladder_shaper(
+        self, context: LadderReadinessContext
+    ) -> VvixLadderShaperContractOutput:
         ladder = context.ladder_constructor.ladder_strikes
         vix_spread_state = context.options_flow.vix_spread_state
         vix_level = context.macro_data_capture.vix_level
@@ -122,7 +126,9 @@ class LadderReadinessContractService:
             vvix_regime = "vvix_elevated"
             multiplier = 1.15
             state = "modestly_widened"
-        elif vix_spread_state == "spread_calm" and (vix_level is None or vix_level <= 20.0):
+        elif vix_spread_state == "spread_calm" and (
+            vix_level is None or vix_level <= 20.0
+        ):
             vvix_regime = "vvix_calm"
             multiplier = 0.9
             state = "compressed_for_calm_regime"
@@ -133,7 +139,9 @@ class LadderReadinessContractService:
 
         if ladder:
             anchor = ladder[0]
-            reshaped_ladder = [round(anchor + ((strike - anchor) * multiplier), 2) for strike in ladder]
+            reshaped_ladder = [
+                round(anchor + ((strike - anchor) * multiplier), 2) for strike in ladder
+            ]
         else:
             reshaped_ladder = []
             state = "no_ladder_available"

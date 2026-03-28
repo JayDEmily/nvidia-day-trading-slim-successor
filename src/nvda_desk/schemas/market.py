@@ -56,7 +56,9 @@ class SessionAlignmentExpectation(StrEnum):
     USE_LAST_COMPLETE_SESSION = "use_last_complete_session"
     NO_PARTIAL_SESSION_PROJECTION = "no_partial_session_projection"
     MAP_TO_NEXT_US_CASH_OPEN = "map_to_next_us_cash_open"
-    WEEKEND_AND_HOLIDAY_GAPS_MUST_STAY_EXPLICIT = "weekend_and_holiday_gaps_must_stay_explicit"
+    WEEKEND_AND_HOLIDAY_GAPS_MUST_STAY_EXPLICIT = (
+        "weekend_and_holiday_gaps_must_stay_explicit"
+    )
 
 
 class ExcludedPrecursorSource(StrEnum):
@@ -91,7 +93,9 @@ class PrecursorUniverseAuthorityPacket(BaseModel):
     venues: list[PrecursorVenueContract] = Field(default_factory=list)
     raw_fields: list[RawPrecursorField] = Field(default_factory=list)
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
-    session_alignment_expectations: list[SessionAlignmentExpectation] = Field(default_factory=list)
+    session_alignment_expectations: list[SessionAlignmentExpectation] = Field(
+        default_factory=list
+    )
     excluded_sources: list[ExcludedPrecursorSource] = Field(default_factory=list)
 
 
@@ -100,8 +104,12 @@ class PrecursorTimestampDiscipline(StrEnum):
 
     LAST_COMPLETE_SESSION_ONLY = "last_complete_session_only"
     VENUE_LOCAL_CLOSE_REQUIRED = "venue_local_close_required"
-    REQUEST_TIME_MUST_NOT_PRECEDE_SOURCE_TIME = "request_time_must_not_precede_source_time"
-    NO_FORWARD_FILL_ACROSS_US_DECISION_WINDOW = "no_forward_fill_across_us_decision_window"
+    REQUEST_TIME_MUST_NOT_PRECEDE_SOURCE_TIME = (
+        "request_time_must_not_precede_source_time"
+    )
+    NO_FORWARD_FILL_ACROSS_US_DECISION_WINDOW = (
+        "no_forward_fill_across_us_decision_window"
+    )
 
 
 class PrecursorFreshnessState(StrEnum):
@@ -168,7 +176,9 @@ class PrecursorStitchingResult(BaseModel):
     active_slices: list[PrecursorVenueSlice] = Field(default_factory=list)
     missing_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
     dropped_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
-    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(
+        default_factory=list
+    )
     contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
     posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
     lineage_keys: list[str] = Field(default_factory=list)
@@ -181,10 +191,16 @@ class PrecursorStitchingAuthorityPacket(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     venue_order: list[PrecursorVenueUniverse] = Field(default_factory=list)
-    timestamp_disciplines: list[PrecursorTimestampDiscipline] = Field(default_factory=list)
+    timestamp_disciplines: list[PrecursorTimestampDiscipline] = Field(
+        default_factory=list
+    )
     freshness_states: list[PrecursorFreshnessState] = Field(default_factory=list)
-    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
-    contradiction_classes: list[PrecursorContradictionClass] = Field(default_factory=list)
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(
+        default_factory=list
+    )
+    contradiction_classes: list[PrecursorContradictionClass] = Field(
+        default_factory=list
+    )
     posture_states: list[PrecursorPostureState] = Field(default_factory=list)
 
 
@@ -200,7 +216,9 @@ class PrecursorRuntimePacket(BaseModel):
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
     contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
     posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
-    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(
+        default_factory=list
+    )
     lineage_keys: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
 

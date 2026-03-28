@@ -74,7 +74,9 @@ def _dependency_fences(
 class ExecutionPlanningContractService:
     """Emit Gate-21 execution-planning contracts in frozen order."""
 
-    def evaluate(self, context: ExecutionPlanningContext) -> list[ExecutionPlanningContractEmission]:
+    def evaluate(
+        self, context: ExecutionPlanningContext
+    ) -> list[ExecutionPlanningContractEmission]:
         outputs: list[ExecutionPlanningPayload] = [
             self._broker_adapter(context),
             self._entry_planner(context),
@@ -120,13 +122,17 @@ class ExecutionPlanningContractService:
         )
         return ExecutionPlanningContractEmission(output=output, packet=packet)
 
-    def _broker_adapter(self, context: ExecutionPlanningContext) -> BrokerAdapterContractOutput:
+    def _broker_adapter(
+        self, context: ExecutionPlanningContext
+    ) -> BrokerAdapterContractOutput:
         return BrokerAdapterContractOutput(
             canonical_id="archive-module-054",
             canonical_slug="broker_adapter",
             grammar_role=DmpGrammarRole.EXPRESSION_EXECUTION.value,
             computation_mode=ContractComputationMode.FENCED_CONTRACT_ONLY,
-            dependency_fences=_dependency_fences(["broker_requests", "runtime_translation"]),
+            dependency_fences=_dependency_fences(
+                ["broker_requests", "runtime_translation"]
+            ),
             upstream_contract_slugs=[],
             contract_notes=[
                 "Gate 21 preserves the broker boundary as an explicit dry-run contract only.",
@@ -137,8 +143,14 @@ class ExecutionPlanningContractService:
             routing_state="fenced_no_broker_bridge",
         )
 
-    def _entry_planner(self, context: ExecutionPlanningContext) -> EntryPlannerContractOutput:
-        active_playbook = context.execution.active_playbook_ids[0] if context.execution.active_playbook_ids else None
+    def _entry_planner(
+        self, context: ExecutionPlanningContext
+    ) -> EntryPlannerContractOutput:
+        active_playbook = (
+            context.execution.active_playbook_ids[0]
+            if context.execution.active_playbook_ids
+            else None
+        )
         if not active_playbook or context.posture.permission_state.value == "block":
             return EntryPlannerContractOutput(
                 canonical_id="archive-module-027",
@@ -149,7 +161,11 @@ class ExecutionPlanningContractService:
                     ["fill_bias_adjuster", "ladder_constructor", "slv_validator"],
                     satisfied={"fill_bias_adjuster", "ladder_constructor"},
                 ),
-                upstream_contract_slugs=["fill_bias_adjuster", "ladder_constructor", "entry_gate"],
+                upstream_contract_slugs=[
+                    "fill_bias_adjuster",
+                    "ladder_constructor",
+                    "entry_gate",
+                ],
                 contract_notes=[
                     "Entry planning remains suppressed when no active playbook exists or posture permission is fully blocked.",
                 ],
@@ -175,7 +191,11 @@ class ExecutionPlanningContractService:
                 ["fill_bias_adjuster", "ladder_constructor", "slv_validator"],
                 satisfied={"fill_bias_adjuster", "ladder_constructor"},
             ),
-            upstream_contract_slugs=["fill_bias_adjuster", "ladder_constructor", "entry_gate"],
+            upstream_contract_slugs=[
+                "fill_bias_adjuster",
+                "ladder_constructor",
+                "entry_gate",
+            ],
             contract_notes=[
                 "SLV validation remains fenced; Gate 21 only preserves a deterministic execution-planning shape.",
                 "A temporal or entry-gate veto may still block dispatch even when a preview plan exists.",
@@ -183,12 +203,18 @@ class ExecutionPlanningContractService:
             planned_playbook=active_playbook,
             order_style=context.execution.entry_style,
             planned_limit_price=planned_limit_price,
-            planned_scale_steps=[round(step, 2) for step in context.execution.scaling_plan],
-            planned_ladder_strikes=[round(level, 2) for level in context.ladder_constructor.ladder_strikes],
+            planned_scale_steps=[
+                round(step, 2) for step in context.execution.scaling_plan
+            ],
+            planned_ladder_strikes=[
+                round(level, 2) for level in context.ladder_constructor.ladder_strikes
+            ],
             planner_state="advisory_plan_ready",
         )
 
-    def _position_allocator(self, context: ExecutionPlanningContext) -> PositionAllocatorContractOutput:
+    def _position_allocator(
+        self, context: ExecutionPlanningContext
+    ) -> PositionAllocatorContractOutput:
         planner = self._entry_planner(context)
         if planner.planner_state != "advisory_plan_ready":
             return PositionAllocatorContractOutput(
@@ -199,10 +225,14 @@ class ExecutionPlanningContractService:
                 dependency_fences=_dependency_fences(
                     ["engine_score", "entry_planner", "spot_prices"],
                     satisfied={"engine_score"},
-                    proxied={"spot_prices": "proxied from the current options-flow spot-price surface"},
+                    proxied={
+                        "spot_prices": "proxied from the current options-flow spot-price surface"
+                    },
                 ),
                 upstream_contract_slugs=["engine_score", "entry_planner"],
-                contract_notes=["No advisory allocation is emitted when the entry planner is suppressed."],
+                contract_notes=[
+                    "No advisory allocation is emitted when the entry planner is suppressed."
+                ],
                 target_position_pct=0.0,
                 tranche_sizes=[],
                 conviction_band="stand_down",
@@ -211,7 +241,9 @@ class ExecutionPlanningContractService:
 
         target_position_pct = round(sum(context.execution.scaling_plan), 2)
         conviction_band = (
-            "high_conviction" if context.engine_score.engine_score >= 0.75 else "medium_conviction"
+            "high_conviction"
+            if context.engine_score.engine_score >= 0.75
+            else "medium_conviction"
         )
         return PositionAllocatorContractOutput(
             canonical_id="archive-module-028",
@@ -221,7 +253,9 @@ class ExecutionPlanningContractService:
             dependency_fences=_dependency_fences(
                 ["engine_score", "entry_planner", "spot_prices"],
                 satisfied={"engine_score", "entry_planner"},
-                proxied={"spot_prices": "proxied from the current options-flow spot-price surface"},
+                proxied={
+                    "spot_prices": "proxied from the current options-flow spot-price surface"
+                },
             ),
             upstream_contract_slugs=["engine_score", "entry_planner"],
             contract_notes=[
@@ -233,33 +267,56 @@ class ExecutionPlanningContractService:
             allocation_state="advisory_allocation_ready",
         )
 
-    def _order_simulator(self, context: ExecutionPlanningContext) -> OrderSimulatorContractOutput:
+    def _order_simulator(
+        self, context: ExecutionPlanningContext
+    ) -> OrderSimulatorContractOutput:
         planner = self._entry_planner(context)
         allocator = self._position_allocator(context)
-        if planner.planner_state != "advisory_plan_ready" or allocator.target_position_pct <= 0.0:
+        if (
+            planner.planner_state != "advisory_plan_ready"
+            or allocator.target_position_pct <= 0.0
+        ):
             return OrderSimulatorContractOutput(
                 canonical_id="archive-module-029",
                 canonical_slug="order_simulator",
                 grammar_role=DmpGrammarRole.EXPRESSION_EXECUTION.value,
                 computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
                 dependency_fences=_dependency_fences(
-                    ["entry_planner", "position_allocator", "spot_prices", "spot_vwap_10s"],
+                    [
+                        "entry_planner",
+                        "position_allocator",
+                        "spot_prices",
+                        "spot_vwap_10s",
+                    ],
                     satisfied={"entry_planner", "position_allocator"},
-                    proxied={"spot_prices": "proxied from the current options-flow spot-price surface"},
+                    proxied={
+                        "spot_prices": "proxied from the current options-flow spot-price surface"
+                    },
                 ),
                 upstream_contract_slugs=["entry_planner", "position_allocator"],
-                contract_notes=["Simulation remains dormant when no advisory entry plan exists."],
+                contract_notes=[
+                    "Simulation remains dormant when no advisory entry plan exists."
+                ],
                 simulated_fill_price=None,
                 slippage_bps=None,
                 fill_probability=0.0,
                 simulation_state="simulation_suppressed",
             )
 
-        baseline_price = planner.planned_limit_price or context.spot_data_capture.spot_price or 100.0
-        slippage_bps = 2.0 if context.fill_bias_adjuster.fill_bias == "passive_improve" else 8.0
-        simulated_fill_price = round(baseline_price * (1.0 + (slippage_bps / 10000.0)), 4)
+        baseline_price = (
+            planner.planned_limit_price or context.spot_data_capture.spot_price or 100.0
+        )
+        slippage_bps = (
+            2.0 if context.fill_bias_adjuster.fill_bias == "passive_improve" else 8.0
+        )
+        simulated_fill_price = round(
+            baseline_price * (1.0 + (slippage_bps / 10000.0)), 4
+        )
         fill_probability = round(
-            max(0.0, min(1.0, 0.45 + (context.fill_bias_adjuster.adjustment_score * 0.4))),
+            max(
+                0.0,
+                min(1.0, 0.45 + (context.fill_bias_adjuster.adjustment_score * 0.4)),
+            ),
             4,
         )
         state = (
@@ -275,9 +332,15 @@ class ExecutionPlanningContractService:
             dependency_fences=_dependency_fences(
                 ["entry_planner", "position_allocator", "spot_prices", "spot_vwap_10s"],
                 satisfied={"entry_planner", "position_allocator"},
-                proxied={"spot_prices": "proxied from the current options-flow spot-price surface"},
+                proxied={
+                    "spot_prices": "proxied from the current options-flow spot-price surface"
+                },
             ),
-            upstream_contract_slugs=["entry_planner", "position_allocator", "fill_bias_adjuster"],
+            upstream_contract_slugs=[
+                "entry_planner",
+                "position_allocator",
+                "fill_bias_adjuster",
+            ],
             contract_notes=[
                 "VWAP tick accumulation remains fenced, so slippage is still a deterministic preview rather than a fill claim.",
             ],
@@ -287,9 +350,13 @@ class ExecutionPlanningContractService:
             simulation_state=state,
         )
 
-    def _run_trading_bot(self, context: ExecutionPlanningContext) -> RunTradingBotContractOutput:
+    def _run_trading_bot(
+        self, context: ExecutionPlanningContext
+    ) -> RunTradingBotContractOutput:
         simulator = self._order_simulator(context)
-        active_dispatches = 1 if simulator.simulation_state.startswith("advisory_fill_preview") else 0
+        active_dispatches = (
+            1 if simulator.simulation_state.startswith("advisory_fill_preview") else 0
+        )
         dispatch_state = "dry_run_preview_only" if active_dispatches else "stand_down"
         start_reason = (
             "preview_contract_chain_ready"

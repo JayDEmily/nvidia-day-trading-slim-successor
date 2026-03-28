@@ -37,8 +37,16 @@ from nvda_desk.schemas.cognition import (
     TemporalContextInput,
     TemporalContextOutput,
 )
-from nvda_desk.schemas.dmp import CognitionStagePayload, DmpBehaviourClass, DmpGrammarRole
-from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock, DmpV2Packet, build_dmp_v2_packet_from_payload
+from nvda_desk.schemas.dmp import (
+    CognitionStagePayload,
+    DmpBehaviourClass,
+    DmpGrammarRole,
+)
+from nvda_desk.schemas.dmp_v2 import (
+    DmpV2ObjectBlock,
+    DmpV2Packet,
+    build_dmp_v2_packet_from_payload,
+)
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ArchetypeMatcherContractOutput,
     ContractComputationMode,
@@ -67,7 +75,9 @@ from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.review_explanation import ReviewExplanationService
-from nvda_desk.services.state_conditioned_modifier import StateConditionedModifierService
+from nvda_desk.services.state_conditioned_modifier import (
+    StateConditionedModifierService,
+)
 from nvda_desk.services.temporal_context import TemporalContextService
 
 
@@ -153,7 +163,10 @@ class DeskCognitionRuntime:
         self,
         emission: TrancheAContractEmission,
     ) -> ImportedModuleMaturityState:
-        if emission.output.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY:
+        if (
+            emission.output.computation_mode
+            is ContractComputationMode.FENCED_CONTRACT_ONLY
+        ):
             return ImportedModuleMaturityState.CONCEPT_CONTRACT_ONLY
         if any(
             fence.status is ContractDependencyStatus.FENCED_MISSING_SOURCE
@@ -187,7 +200,9 @@ class DeskCognitionRuntime:
             for emission in emissions
         ]
         maturity_counts = dict(
-            sorted(Counter(citation.maturity_state.value for citation in citations).items())
+            sorted(
+                Counter(citation.maturity_state.value for citation in citations).items()
+            )
         )
         return citations, maturity_counts
 
@@ -240,7 +255,9 @@ class DeskCognitionRuntime:
                 coefficient_set_id=coefficient_set_id,
             )
         )
-        posture = self._posture_with_contract_citations(posture, selector_contract_emissions)
+        posture = self._posture_with_contract_citations(
+            posture, selector_contract_emissions
+        )
         modifier_runtime_packet = self._modifiers.evaluate(
             temporal_input=temporal_input,
             temporal=temporal,
@@ -257,7 +274,9 @@ class DeskCognitionRuntime:
                 posture=posture,
             )
         )
-        eligibility = self._eligibility_with_contract_citations(eligibility, selector_contract_emissions)
+        eligibility = self._eligibility_with_contract_citations(
+            eligibility, selector_contract_emissions
+        )
         execution = self._execution.evaluate(
             ExecutionExpressionInput(
                 temporal=temporal,
@@ -268,7 +287,9 @@ class DeskCognitionRuntime:
                 modifier_runtime_packet=modifier_runtime_packet,
             )
         )
-        execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
+        execution = self._modifiers.apply_to_execution(
+            execution, modifier_runtime_packet
+        )
         review = self._review.evaluate(
             ReviewExplanationInput(
                 temporal=temporal,
@@ -313,8 +334,10 @@ class DeskCognitionRuntime:
             packet_lineage=list(packet_lineage),
             stage_packet_ids=stage_packet_ids,
         )
-        imported_module_citations, imported_module_maturity_counts = self._build_imported_module_citations(
-            tuple((*upstream_contract_emissions, *selector_contract_emissions))
+        imported_module_citations, imported_module_maturity_counts = (
+            self._build_imported_module_citations(
+                tuple((*upstream_contract_emissions, *selector_contract_emissions))
+            )
         )
         review = review.model_copy(
             update={
@@ -325,13 +348,16 @@ class DeskCognitionRuntime:
                     **review.review_packet,
                     "dmp_lineage": review_lineage.model_dump(mode="json"),
                     "imported_module_citations": [
-                        citation.model_dump(mode="json") for citation in imported_module_citations
+                        citation.model_dump(mode="json")
+                        for citation in imported_module_citations
                     ],
                     "imported_module_maturity_counts": imported_module_maturity_counts,
                 },
             }
         )
-        stage_packets[BindingStageName.REVIEW] = stage_packets[BindingStageName.REVIEW].model_copy(
+        stage_packets[BindingStageName.REVIEW] = stage_packets[
+            BindingStageName.REVIEW
+        ].model_copy(
             update={
                 "lineage": stage_packets[BindingStageName.REVIEW].lineage.model_copy(
                     update={"review_trace_id": f"review-trace::{review_packet_id}"}
@@ -339,15 +365,16 @@ class DeskCognitionRuntime:
                 "blocks": [
                     DmpV2ObjectBlock(
                         block_id="payload",
-                        schema_id=stage_packets[BindingStageName.REVIEW].blocks[0].schema_id,
+                        schema_id=stage_packets[BindingStageName.REVIEW]
+                        .blocks[0]
+                        .schema_id,
                         data=review.model_dump(mode="json"),
                     )
                 ],
             }
         )
         ordered_packets = tuple(
-            stage_packets[stage_name]
-            for stage_name, _, _, _ in self._STAGE_SPECS
+            stage_packets[stage_name] for stage_name, _, _, _ in self._STAGE_SPECS
         )
         return DeskCognitionRuntimeResult(
             temporal=temporal,
@@ -360,8 +387,20 @@ class DeskCognitionRuntime:
             stage_packets=ordered_packets,
             packet_lineage=tuple(packet.packet_id for packet in ordered_packets),
             stage_packet_ids=stage_packet_ids,
-            contract_packets=tuple(emission.packet for emission in (*upstream_contract_emissions, *selector_contract_emissions)),
-            contract_packet_ids={emission.output.canonical_slug: emission.packet.packet_id for emission in (*upstream_contract_emissions, *selector_contract_emissions)},
+            contract_packets=tuple(
+                emission.packet
+                for emission in (
+                    *upstream_contract_emissions,
+                    *selector_contract_emissions,
+                )
+            ),
+            contract_packet_ids={
+                emission.output.canonical_slug: emission.packet.packet_id
+                for emission in (
+                    *upstream_contract_emissions,
+                    *selector_contract_emissions,
+                )
+            },
         )
 
     def _posture_with_contract_citations(
@@ -369,28 +408,46 @@ class DeskCognitionRuntime:
         posture: PostureRiskOutput,
         selector_emissions: list[TrancheAContractEmission],
     ) -> PostureRiskOutput:
-        citation_map = {emission.output.canonical_slug: emission.output for emission in selector_emissions}
-        signal_conflict = cast(SignalConflictDetectorContractOutput, citation_map['signal_conflict_detector'])
-        confidence = cast(ModelConfidenceScorerContractOutput, citation_map['model_confidence_scorer'])
-        conviction = cast(ConvictionTierAllocatorContractOutput, citation_map['conviction_tier_allocator'])
+        citation_map = {
+            emission.output.canonical_slug: emission.output
+            for emission in selector_emissions
+        }
+        signal_conflict = cast(
+            SignalConflictDetectorContractOutput,
+            citation_map["signal_conflict_detector"],
+        )
+        confidence = cast(
+            ModelConfidenceScorerContractOutput, citation_map["model_confidence_scorer"]
+        )
+        conviction = cast(
+            ConvictionTierAllocatorContractOutput,
+            citation_map["conviction_tier_allocator"],
+        )
         extra_reasons = [
             f"contract:signal_conflict_detector:{signal_conflict.conflict_state}",
             f"contract:model_confidence_scorer:{confidence.confidence_band}",
             f"contract:conviction_tier_allocator:{conviction.conviction_tier}",
         ]
-        return posture.model_copy(update={"reasons": [*posture.reasons, *extra_reasons]})
+        return posture.model_copy(
+            update={"reasons": [*posture.reasons, *extra_reasons]}
+        )
 
     def _eligibility_with_contract_citations(
         self,
         eligibility: PlaybookEligibilityOutput,
         selector_emissions: list[TrancheAContractEmission],
     ) -> PlaybookEligibilityOutput:
-        citation_map = {emission.output.canonical_slug: emission.output for emission in selector_emissions}
-        entry_gate = cast(EntryGateContractOutput, citation_map['entry_gate'])
+        citation_map = {
+            emission.output.canonical_slug: emission.output
+            for emission in selector_emissions
+        }
+        entry_gate = cast(EntryGateContractOutput, citation_map["entry_gate"])
         ladder = cast(
-            LadderConstructorContractOutput, citation_map['ladder_constructor']
+            LadderConstructorContractOutput, citation_map["ladder_constructor"]
         )
-        archetype = cast(ArchetypeMatcherContractOutput, citation_map['archetype_matcher'])
+        archetype = cast(
+            ArchetypeMatcherContractOutput, citation_map["archetype_matcher"]
+        )
         reasons = [
             *eligibility.reasons,
             f"contract:entry_gate:{entry_gate.suppression_tag}",
@@ -401,11 +458,19 @@ class DeskCognitionRuntime:
         for candidate in eligibility.candidates:
             candidate_reasons = list(candidate.reasons)
             if archetype.matched_playbook == candidate.playbook_id:
-                candidate_reasons.append(f"contract:archetype_matcher:{archetype.pattern_tag}")
-            if entry_gate.suppression_tag != 'clear':
-                candidate_reasons.append(f"contract:entry_gate:{entry_gate.suppression_tag}")
-            updated_candidates.append(candidate.model_copy(update={"reasons": candidate_reasons}))
-        return eligibility.model_copy(update={"reasons": reasons, "candidates": updated_candidates})
+                candidate_reasons.append(
+                    f"contract:archetype_matcher:{archetype.pattern_tag}"
+                )
+            if entry_gate.suppression_tag != "clear":
+                candidate_reasons.append(
+                    f"contract:entry_gate:{entry_gate.suppression_tag}"
+                )
+            updated_candidates.append(
+                candidate.model_copy(update={"reasons": candidate_reasons})
+            )
+        return eligibility.model_copy(
+            update={"reasons": reasons, "candidates": updated_candidates}
+        )
 
     def _build_stage_packets(
         self,
@@ -419,7 +484,12 @@ class DeskCognitionRuntime:
         upstream_packet_ids: list[str] = []
         trace_id = f"trace::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
         run_id = f"run::{emitted_at.isoformat()}::{stack_id or 'no_stack'}::{coefficient_set_id or 'no_coeffs'}"
-        for stage_name, grammar_role, input_model_name, output_model_name in self._STAGE_SPECS:
+        for (
+            stage_name,
+            grammar_role,
+            input_model_name,
+            output_model_name,
+        ) in self._STAGE_SPECS:
             packet = build_dmp_v2_packet_from_payload(
                 packet_id=self._packet_id(
                     emitted_at=emitted_at,
@@ -431,13 +501,17 @@ class DeskCognitionRuntime:
                 grammar_role=grammar_role,
                 behaviour_class=DmpBehaviourClass.STAGE_OUTPUT,
                 payload=stage_outputs[stage_name],
-                trader_summary=self._packet_summary(stage_name, stage_outputs[stage_name]),
+                trader_summary=self._packet_summary(
+                    stage_name, stage_outputs[stage_name]
+                ),
                 stack_id=stack_id,
                 coefficient_set_id=coefficient_set_id,
                 dependencies=self._dependencies_for_stage(stage_name),
                 input_model_name=input_model_name,
                 output_model_name=output_model_name,
-                parent_packet_ids=[upstream_packet_ids[-1]] if upstream_packet_ids else [],
+                parent_packet_ids=(
+                    [upstream_packet_ids[-1]] if upstream_packet_ids else []
+                ),
                 dependency_packet_ids=list(upstream_packet_ids),
                 trace_id=trace_id,
                 run_id=run_id,
@@ -457,7 +531,12 @@ class DeskCognitionRuntime:
         stack_id: str | None,
         coefficient_set_id: str | None,
     ) -> str:
-        token = emitted_at.isoformat().replace("+00:00", "Z").replace(":", "").replace("-", "")
+        token = (
+            emitted_at.isoformat()
+            .replace("+00:00", "Z")
+            .replace(":", "")
+            .replace("-", "")
+        )
         parts = [stage_name.value, token]
         if stack_id:
             parts.append(stack_id)
@@ -498,19 +577,29 @@ class DeskCognitionRuntime:
             ],
         }[stage_name]
 
-    def _packet_summary(self, stage_name: BindingStageName, payload: CognitionStagePayload) -> str:
+    def _packet_summary(
+        self, stage_name: BindingStageName, payload: CognitionStagePayload
+    ) -> str:
         if stage_name is BindingStageName.TEMPORAL:
             if isinstance(payload, TemporalContextOutput):
                 return f"{payload.desk_window} / {payload.session_phase.value}"
-            raise TypeError("Temporal DMP payload drifted away from TemporalContextOutput")
+            raise TypeError(
+                "Temporal DMP payload drifted away from TemporalContextOutput"
+            )
         if stage_name is BindingStageName.REGIME:
             if isinstance(payload, MarketRegimeContextOutput):
                 return f"{payload.volatility_regime.value} / {payload.signal_conflict_state}"
-            raise TypeError("Regime DMP payload drifted away from MarketRegimeContextOutput")
+            raise TypeError(
+                "Regime DMP payload drifted away from MarketRegimeContextOutput"
+            )
         if stage_name is BindingStageName.OPTIONS_FLOW:
             if isinstance(payload, OptionsFlowContextOutput):
-                return f"{payload.options_behavior_cluster} / {payload.gamma_state.value}"
-            raise TypeError("Options-flow DMP payload drifted away from OptionsFlowContextOutput")
+                return (
+                    f"{payload.options_behavior_cluster} / {payload.gamma_state.value}"
+                )
+            raise TypeError(
+                "Options-flow DMP payload drifted away from OptionsFlowContextOutput"
+            )
         if stage_name is BindingStageName.POSTURE:
             if isinstance(payload, PostureRiskOutput):
                 return f"{payload.permission_state.value} / {payload.posture_label}"
@@ -521,11 +610,15 @@ class DeskCognitionRuntime:
                     f"adds={payload.add_candidates or ['none']} / "
                     f"watch={payload.watch_only_candidates or ['none']}"
                 )
-            raise TypeError("Eligibility DMP payload drifted away from PlaybookEligibilityOutput")
+            raise TypeError(
+                "Eligibility DMP payload drifted away from PlaybookEligibilityOutput"
+            )
         if stage_name is BindingStageName.EXECUTION:
             if isinstance(payload, ExecutionExpressionOutput):
                 return f"{payload.entry_style} / active={payload.active_playbook_ids or ['none']}"
-            raise TypeError("Execution DMP payload drifted away from ExecutionExpressionOutput")
+            raise TypeError(
+                "Execution DMP payload drifted away from ExecutionExpressionOutput"
+            )
         if isinstance(payload, ReviewExplanationOutput):
             return payload.summary
         raise TypeError("Review DMP payload drifted away from ReviewExplanationOutput")

@@ -77,11 +77,15 @@ class RealDataLoaderService:
         """Prepare a provenance-preserving runtime dataset from one real-data bundle."""
 
         ordered_bars = sorted(bundle.bars, key=lambda bar: bar.ts)
-        ordered_chains = sorted(bundle.option_chain_snapshots, key=lambda snapshot: snapshot.ts)
+        ordered_chains = sorted(
+            bundle.option_chain_snapshots, key=lambda snapshot: snapshot.ts
+        )
         if not ordered_bars:
             raise ValueError("real-data bundle must contain at least one bar")
         if not ordered_chains:
-            raise ValueError("real-data bundle must contain at least one option-chain snapshot")
+            raise ValueError(
+                "real-data bundle must contain at least one option-chain snapshot"
+            )
 
         bar_timestamps = [bar.ts for bar in ordered_bars]
         event_store = EventStoreService(bundle.events)
@@ -116,11 +120,17 @@ class RealDataLoaderService:
             snapshots=snapshots,
         )
 
-    def build_fixture_pack(self, bundle: RealDataBundle, *, pack_id: str) -> PreparedRuntimeFixturePack:
+    def build_fixture_pack(
+        self, bundle: RealDataBundle, *, pack_id: str
+    ) -> PreparedRuntimeFixturePack:
         """Build one deterministic prepared-runtime fixture pack from a raw bundle."""
 
-        prepared_dataset = self.prepare_runtime_dataset(bundle, dataset_id=f"{pack_id}-dataset")
-        sanity_report = self.build_runtime_snapshot_sanity_report(bundle, prepared_dataset)
+        prepared_dataset = self.prepare_runtime_dataset(
+            bundle, dataset_id=f"{pack_id}-dataset"
+        )
+        sanity_report = self.build_runtime_snapshot_sanity_report(
+            bundle, prepared_dataset
+        )
         return PreparedRuntimeFixturePack(
             pack_id=pack_id,
             bundle=bundle,
@@ -135,8 +145,12 @@ class RealDataLoaderService:
     ) -> RuntimeSnapshotSanityReport:
         """Emit a deterministic sanity report for one prepared runtime dataset."""
 
-        used_bar_ts = {snapshot.lineage.aligned_bar_ts for snapshot in prepared_dataset.snapshots}
-        used_chain_ts = {snapshot.lineage.chain_ts for snapshot in prepared_dataset.snapshots}
+        used_bar_ts = {
+            snapshot.lineage.aligned_bar_ts for snapshot in prepared_dataset.snapshots
+        }
+        used_chain_ts = {
+            snapshot.lineage.chain_ts for snapshot in prepared_dataset.snapshots
+        }
         sequence_lengths = Counter(
             snapshot.snapshot_sequence_id
             for snapshot in prepared_dataset.snapshots
@@ -146,15 +160,26 @@ class RealDataLoaderService:
         duplicate_chain_ts_count = len(bundle.option_chain_snapshots) - len(
             {snapshot.ts for snapshot in bundle.option_chain_snapshots}
         )
-        max_bar_age_seconds = max((snapshot.bar_age_seconds for snapshot in prepared_dataset.snapshots), default=0)
+        max_bar_age_seconds = max(
+            (snapshot.bar_age_seconds for snapshot in prepared_dataset.snapshots),
+            default=0,
+        )
         monotonic_snapshot_timestamps = all(
             left.ts <= right.ts
-            for left, right in zip(prepared_dataset.snapshots, prepared_dataset.snapshots[1:], strict=False)
+            for left, right in zip(
+                prepared_dataset.snapshots, prepared_dataset.snapshots[1:], strict=False
+            )
         )
         total_bars = len(bundle.bars)
         total_chains = len(bundle.option_chain_snapshots)
-        aligned_bar_coverage_pct = round((len(used_bar_ts) / total_bars) * 100.0, 4) if total_bars else 0.0
-        aligned_chain_coverage_pct = round((len(used_chain_ts) / total_chains) * 100.0, 4) if total_chains else 0.0
+        aligned_bar_coverage_pct = (
+            round((len(used_bar_ts) / total_bars) * 100.0, 4) if total_bars else 0.0
+        )
+        aligned_chain_coverage_pct = (
+            round((len(used_chain_ts) / total_chains) * 100.0, 4)
+            if total_chains
+            else 0.0
+        )
         reasons = [
             f"prepared_snapshot_count:{len(prepared_dataset.snapshots)}",
             f"aligned_bar_coverage_pct:{aligned_bar_coverage_pct}",
@@ -175,7 +200,9 @@ class RealDataLoaderService:
             total_bars=total_bars,
             total_chain_snapshots=total_chains,
             prepared_snapshot_count=len(prepared_dataset.snapshots),
-            repeated_sequence_count=sum(1 for length in sequence_lengths.values() if length >= 2),
+            repeated_sequence_count=sum(
+                1 for length in sequence_lengths.values() if length >= 2
+            ),
             max_sequence_length=max(sequence_lengths.values(), default=0),
             orphan_bar_count=max(total_bars - len(used_bar_ts), 0),
             orphan_chain_count=max(total_chains - len(used_chain_ts), 0),
@@ -185,7 +212,11 @@ class RealDataLoaderService:
             aligned_chain_coverage_pct=aligned_chain_coverage_pct,
             max_bar_age_seconds=max_bar_age_seconds,
             monotonic_snapshot_timestamps=monotonic_snapshot_timestamps,
-            event_linked_snapshot_count=sum(1 for snapshot in prepared_dataset.snapshots if snapshot.next_event_at is not None),
+            event_linked_snapshot_count=sum(
+                1
+                for snapshot in prepared_dataset.snapshots
+                if snapshot.next_event_at is not None
+            ),
             reasons=reasons,
         )
 
@@ -213,37 +244,51 @@ class RealDataLoaderService:
         bars_up_to_ts = [bar for bar in ordered_bars if bar.ts <= chain.ts]
         prior_close_price = self._prior_close_price(chain.ts, ordered_bars)
         session_vwap = self._session_vwap(bars_up_to_ts)
-        vwap_5m_ago = self._session_vwap(bars_up_to_ts[:-5]) if len(bars_up_to_ts) > 5 else None
+        vwap_5m_ago = (
+            self._session_vwap(bars_up_to_ts[:-5]) if len(bars_up_to_ts) > 5 else None
+        )
         opening_range_high, opening_range_low = self._opening_range_5m(ordered_bars)
         dominant_strike = self._dominant_strike(front_quotes)
-        spot_to_pin_distance_pct = self._spot_to_pin_distance_pct(aligned_bar.close, dominant_strike)
+        spot_to_pin_distance_pct = self._spot_to_pin_distance_pct(
+            aligned_bar.close, dominant_strike
+        )
         repeated_sequence = self._build_repeated_snapshot_sequence(
             current_chain=chain,
             ordered_chains=ordered_chains,
             ordered_bars=ordered_bars,
         )
         pin_progression_sequence = [
-            PreparedPinProgressionPoint(ts=point.ts, distance_to_pin_pct=point.spot_to_pin_distance_pct)
+            PreparedPinProgressionPoint(
+                ts=point.ts, distance_to_pin_pct=point.spot_to_pin_distance_pct
+            )
             for point in repeated_sequence
         ]
         pin_progression_bias = self._pin_progression_bias(pin_progression_sequence)
-        live_event_snapshot = event_store.build_live_event_snapshot(requested_at=chain.ts, symbol=bundle.provenance.symbol)
+        live_event_snapshot = event_store.build_live_event_snapshot(
+            requested_at=chain.ts, symbol=bundle.provenance.symbol
+        )
         next_event = live_event_snapshot.next_event
         event_ids = [event.event_id for event in live_event_snapshot.nearby_events]
         bar_age_seconds = max(0, int((chain.ts - aligned_bar.ts).total_seconds()))
         distance_to_vwap_pct = None
         if session_vwap not in {None, 0.0}:
             assert session_vwap is not None
-            distance_to_vwap_pct = round(self._pct_change(float(aligned_bar.close), float(session_vwap)), 4)
+            distance_to_vwap_pct = round(
+                self._pct_change(float(aligned_bar.close), float(session_vwap)), 4
+            )
         vwap_slope_5m_pct = None
         if session_vwap not in {None, 0.0} and vwap_5m_ago not in {None, 0.0}:
             assert session_vwap is not None
             assert vwap_5m_ago is not None
-            vwap_slope_5m_pct = round(self._pct_change(float(session_vwap), float(vwap_5m_ago)), 4)
+            vwap_slope_5m_pct = round(
+                self._pct_change(float(session_vwap), float(vwap_5m_ago)), 4
+            )
         prior_session_return_pct = 0.0
         if prior_close_price not in {None, 0.0} and session_open_price is not None:
             assert prior_close_price is not None
-            prior_session_return_pct = round(self._pct_change(float(session_open_price), float(prior_close_price)), 4)
+            prior_session_return_pct = round(
+                self._pct_change(float(session_open_price), float(prior_close_price)), 4
+            )
         return PreparedRuntimeSnapshot(
             ts=chain.ts,
             symbol=bundle.provenance.symbol,
@@ -253,19 +298,33 @@ class RealDataLoaderService:
             prior_close_price=prior_close_price,
             session_open_price=session_open_price,
             interval_volume_shares=float(aligned_bar.volume),
-            cumulative_session_volume=round(sum(float(bar.volume) for bar in bars_up_to_ts), 4),
+            cumulative_session_volume=round(
+                sum(float(bar.volume) for bar in bars_up_to_ts), 4
+            ),
             session_vwap=round(session_vwap, 4) if session_vwap is not None else None,
             distance_to_vwap_pct=distance_to_vwap_pct,
             vwap_slope_5m_pct=vwap_slope_5m_pct,
             opening_range_high_5m=opening_range_high,
             opening_range_low_5m=opening_range_low,
-            opening_range_break_count=self._opening_range_break_count(bars_up_to_ts, opening_range_high, opening_range_low),
-            price_realised_vol_5m_pct=round(self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=5), 4),
-            price_realised_vol_15m_pct=round(self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=15), 4),
-            relative_volume_ratio=round(self._relative_volume_ratio(bars_up_to_ts, lookback_bars=5), 4),
-            rolling_range_5m_pct=round(self._rolling_range_pct(bars_up_to_ts, lookback_bars=5), 4),
+            opening_range_break_count=self._opening_range_break_count(
+                bars_up_to_ts, opening_range_high, opening_range_low
+            ),
+            price_realised_vol_5m_pct=round(
+                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=5), 4
+            ),
+            price_realised_vol_15m_pct=round(
+                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=15), 4
+            ),
+            relative_volume_ratio=round(
+                self._relative_volume_ratio(bars_up_to_ts, lookback_bars=5), 4
+            ),
+            rolling_range_5m_pct=round(
+                self._rolling_range_pct(bars_up_to_ts, lookback_bars=5), 4
+            ),
             impulse_age_bars=self._impulse_age_bars(bars_up_to_ts, threshold_pct=0.35),
-            intraday_move_pct=self._pct_change(float(aligned_bar.close), session_open_price),
+            intraday_move_pct=self._pct_change(
+                float(aligned_bar.close), session_open_price
+            ),
             prior_session_return_pct=prior_session_return_pct,
             front_expiry=front_expiry,
             next_expiry=next_expiry,
@@ -274,26 +333,52 @@ class RealDataLoaderService:
             front_atm_iv=round(self._average_defined(front_call.iv, front_put.iv), 4),
             next_atm_iv=round(self._average_defined(next_call.iv, next_put.iv), 4),
             put_call_skew=round((front_put.iv or 0.0) - (front_call.iv or 0.0), 4),
-            gamma_pressure_score=round(min(1.0, self._gamma_pressure_score(front_quotes)), 4),
+            gamma_pressure_score=round(
+                min(1.0, self._gamma_pressure_score(front_quotes)), 4
+            ),
             call_put_imbalance=round(self._call_put_imbalance(front_quotes), 4),
-            oi_concentration=round(self._oi_concentration(front_quotes, aligned_bar.close), 4),
+            oi_concentration=round(
+                self._oi_concentration(front_quotes, aligned_bar.close), 4
+            ),
             atm_straddle_value=round(self._mid(front_call) + self._mid(front_put), 4),
-            front_realised_vol=round(self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=6), 4),
-            next_realised_vol=round(self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=12), 4),
-            snapshot_sequence_id=chain.sequence.sequence_id if chain.sequence is not None else None,
-            snapshot_index=chain.sequence.snapshot_index if chain.sequence is not None else 0,
-            snapshot_count=chain.sequence.snapshot_count if chain.sequence is not None else 1,
-            snapshot_window_minutes=chain.sequence.window_minutes if chain.sequence is not None else None,
+            front_realised_vol=round(
+                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=6), 4
+            ),
+            next_realised_vol=round(
+                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=12), 4
+            ),
+            snapshot_sequence_id=(
+                chain.sequence.sequence_id if chain.sequence is not None else None
+            ),
+            snapshot_index=(
+                chain.sequence.snapshot_index if chain.sequence is not None else 0
+            ),
+            snapshot_count=(
+                chain.sequence.snapshot_count if chain.sequence is not None else 1
+            ),
+            snapshot_window_minutes=(
+                chain.sequence.window_minutes if chain.sequence is not None else None
+            ),
             dominant_strike=dominant_strike,
             spot_to_pin_distance_pct=spot_to_pin_distance_pct,
             pin_progression_bias=pin_progression_bias,
             next_event_at=next_event.event_at if next_event is not None else None,
             live_event_snapshot=live_event_snapshot,
-            call_oi_near_spot=round(self._near_spot_oi(front_quotes, aligned_bar.close, side="call"), 4),
-            put_oi_near_spot=round(self._near_spot_oi(front_quotes, aligned_bar.close, side="put"), 4),
-            front_volume_near_spot=round(self._near_spot_volume(front_quotes, aligned_bar.close), 4),
-            next_volume_near_spot=round(self._near_spot_volume(next_quotes, aligned_bar.close), 4),
-            nearby_strike_clusters=self._nearby_strike_clusters(front_quotes, aligned_bar.close),
+            call_oi_near_spot=round(
+                self._near_spot_oi(front_quotes, aligned_bar.close, side="call"), 4
+            ),
+            put_oi_near_spot=round(
+                self._near_spot_oi(front_quotes, aligned_bar.close, side="put"), 4
+            ),
+            front_volume_near_spot=round(
+                self._near_spot_volume(front_quotes, aligned_bar.close), 4
+            ),
+            next_volume_near_spot=round(
+                self._near_spot_volume(next_quotes, aligned_bar.close), 4
+            ),
+            nearby_strike_clusters=self._nearby_strike_clusters(
+                front_quotes, aligned_bar.close
+            ),
             repeated_snapshot_sequence=repeated_sequence,
             tenor_iv_curve=self._tenor_iv_curve(chain, aligned_bar.close),
             pin_progression_sequence=pin_progression_sequence,
@@ -306,7 +391,9 @@ class RealDataLoaderService:
                 bar_age_seconds=bar_age_seconds,
                 event_ids=event_ids,
                 event_lineage_keys=list(live_event_snapshot.lineage_keys),
-                sequence_id=chain.sequence.sequence_id if chain.sequence is not None else None,
+                sequence_id=(
+                    chain.sequence.sequence_id if chain.sequence is not None else None
+                ),
             ),
         )
 
@@ -329,7 +416,9 @@ class RealDataLoaderService:
             return None
         return bar
 
-    def _nearest_call_put(self, quotes: Sequence[OptionQuote], spot_price: float) -> tuple[OptionQuote, OptionQuote]:
+    def _nearest_call_put(
+        self, quotes: Sequence[OptionQuote], spot_price: float
+    ) -> tuple[OptionQuote, OptionQuote]:
         """Return the nearest call and put quotes around spot."""
 
         calls = [quote for quote in quotes if quote.side == "call"]
@@ -370,14 +459,20 @@ class RealDataLoaderService:
     def _call_put_imbalance(self, quotes: Sequence[OptionQuote]) -> float:
         """Build a bounded front-expiry call/put volume imbalance."""
 
-        call_volume = sum(float(quote.volume or 0.0) for quote in quotes if quote.side == "call")
-        put_volume = sum(float(quote.volume or 0.0) for quote in quotes if quote.side == "put")
+        call_volume = sum(
+            float(quote.volume or 0.0) for quote in quotes if quote.side == "call"
+        )
+        put_volume = sum(
+            float(quote.volume or 0.0) for quote in quotes if quote.side == "put"
+        )
         total = call_volume + put_volume
         if total <= 0.0:
             return 0.0
         return (call_volume - put_volume) / total
 
-    def _oi_concentration(self, quotes: Sequence[OptionQuote], spot_price: float) -> float:
+    def _oi_concentration(
+        self, quotes: Sequence[OptionQuote], spot_price: float
+    ) -> float:
         """Build a bounded OI concentration proxy around spot."""
 
         total_oi = sum(float(quote.oi or 0.0) for quote in quotes)
@@ -390,16 +485,21 @@ class RealDataLoaderService:
         )
         return near_spot_oi / total_oi
 
-    def _near_spot_oi(self, quotes: Sequence[OptionQuote], spot_price: float, *, side: str) -> float:
+    def _near_spot_oi(
+        self, quotes: Sequence[OptionQuote], spot_price: float, *, side: str
+    ) -> float:
         """Return near-spot open interest for one side of the chain."""
 
         return sum(
             float(quote.oi or 0.0)
             for quote in quotes
-            if quote.side == side and abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) <= 0.02
+            if quote.side == side
+            and abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) <= 0.02
         )
 
-    def _near_spot_volume(self, quotes: Sequence[OptionQuote], spot_price: float) -> float:
+    def _near_spot_volume(
+        self, quotes: Sequence[OptionQuote], spot_price: float
+    ) -> float:
         """Return near-spot volume for one expiry slice."""
 
         return sum(
@@ -413,15 +513,22 @@ class RealDataLoaderService:
 
         if not quotes:
             return None
-        dominant_quote = max(quotes, key=lambda quote: float(quote.oi or 0.0) + float(quote.volume or 0.0))
+        dominant_quote = max(
+            quotes,
+            key=lambda quote: float(quote.oi or 0.0) + float(quote.volume or 0.0),
+        )
         return float(dominant_quote.strike)
 
-    def _spot_to_pin_distance_pct(self, spot_price: float, dominant_strike: float | None) -> float:
+    def _spot_to_pin_distance_pct(
+        self, spot_price: float, dominant_strike: float | None
+    ) -> float:
         """Return the live distance from spot to the dominant strike."""
 
         if dominant_strike is None:
             return 0.0
-        return round(abs((spot_price - dominant_strike) / max(spot_price, 1.0)) * 100.0, 4)
+        return round(
+            abs((spot_price - dominant_strike) / max(spot_price, 1.0)) * 100.0, 4
+        )
 
     def _build_repeated_snapshot_sequence(
         self,
@@ -448,19 +555,35 @@ class RealDataLoaderService:
             if len(expiries) < 2:
                 continue
             front_expiry, next_expiry = expiries[:2]
-            front_quotes = [quote for quote in chain.quotes if quote.expiry == front_expiry]
-            next_quotes = [quote for quote in chain.quotes if quote.expiry == next_expiry]
-            front_call, front_put = self._nearest_call_put(front_quotes, aligned_bar.close)
+            front_quotes = [
+                quote for quote in chain.quotes if quote.expiry == front_expiry
+            ]
+            next_quotes = [
+                quote for quote in chain.quotes if quote.expiry == next_expiry
+            ]
+            front_call, front_put = self._nearest_call_put(
+                front_quotes, aligned_bar.close
+            )
             next_call, next_put = self._nearest_call_put(next_quotes, aligned_bar.close)
             dominant_strike = self._dominant_strike(front_quotes)
             points.append(
                 PreparedSequencePoint(
                     ts=chain.ts,
-                    front_atm_iv=round(self._average_defined(front_call.iv, front_put.iv), 4),
-                    next_atm_iv=round(self._average_defined(next_call.iv, next_put.iv), 4),
-                    put_call_skew=round((front_put.iv or 0.0) - (front_call.iv or 0.0), 4),
-                    gamma_pressure_score=round(min(1.0, self._gamma_pressure_score(front_quotes)), 4),
-                    spot_to_pin_distance_pct=self._spot_to_pin_distance_pct(aligned_bar.close, dominant_strike),
+                    front_atm_iv=round(
+                        self._average_defined(front_call.iv, front_put.iv), 4
+                    ),
+                    next_atm_iv=round(
+                        self._average_defined(next_call.iv, next_put.iv), 4
+                    ),
+                    put_call_skew=round(
+                        (front_put.iv or 0.0) - (front_call.iv or 0.0), 4
+                    ),
+                    gamma_pressure_score=round(
+                        min(1.0, self._gamma_pressure_score(front_quotes)), 4
+                    ),
+                    spot_to_pin_distance_pct=self._spot_to_pin_distance_pct(
+                        aligned_bar.close, dominant_strike
+                    ),
                 )
             )
         return points
@@ -481,7 +604,9 @@ class RealDataLoaderService:
             if chain.sequence is not None and chain.sequence.sequence_id == sequence_id
         ]
 
-    def _tenor_iv_curve(self, chain: OptionChainSnapshot, spot_price: float) -> list[PreparedTenorPoint]:
+    def _tenor_iv_curve(
+        self, chain: OptionChainSnapshot, spot_price: float
+    ) -> list[PreparedTenorPoint]:
         """Build a deterministic IV tenor curve from one chain snapshot."""
 
         tenor_points: list[PreparedTenorPoint] = []
@@ -496,7 +621,9 @@ class RealDataLoaderService:
             )
         return tenor_points
 
-    def _nearby_strike_clusters(self, quotes: Sequence[OptionQuote], spot_price: float) -> list[PreparedStrikeCluster]:
+    def _nearby_strike_clusters(
+        self, quotes: Sequence[OptionQuote], spot_price: float
+    ) -> list[PreparedStrikeCluster]:
         """Build deterministic nearby strike-cluster observations around spot."""
 
         nearby_quotes = [
@@ -517,12 +644,18 @@ class RealDataLoaderService:
                     side=quote.side,
                     open_interest=float(quote.oi or 0.0),
                     volume=float(quote.volume or 0.0),
-                    distance_to_spot_pct=round(abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) * 100.0, 4),
+                    distance_to_spot_pct=round(
+                        abs((float(quote.strike) - spot_price) / max(spot_price, 1.0))
+                        * 100.0,
+                        4,
+                    ),
                 )
             )
         return clusters
 
-    def _pin_progression_bias(self, sequence: Sequence[PreparedPinProgressionPoint]) -> str:
+    def _pin_progression_bias(
+        self, sequence: Sequence[PreparedPinProgressionPoint]
+    ) -> str:
         """Infer whether repeated snapshots are pinning in or releasing away."""
 
         if len(sequence) < 2:
@@ -538,13 +671,20 @@ class RealDataLoaderService:
             return "pin_stable"
         return "pin_noise"
 
-    def _next_event(self, ts: datetime, events: Sequence[EventRecord]) -> EventRecord | None:
+    def _next_event(
+        self, ts: datetime, events: Sequence[EventRecord]
+    ) -> EventRecord | None:
         """Return the next event at or after one timestamp."""
 
-        future_events = sorted((event for event in events if event.event_at >= ts), key=lambda event: event.event_at)
+        future_events = sorted(
+            (event for event in events if event.event_at >= ts),
+            key=lambda event: event.event_at,
+        )
         return future_events[0] if future_events else None
 
-    def _prior_close_price(self, ts: datetime, ordered_bars: Sequence[BarRecord]) -> float | None:
+    def _prior_close_price(
+        self, ts: datetime, ordered_bars: Sequence[BarRecord]
+    ) -> float | None:
         """Return the prior-session close when the bundle spans multiple dates."""
 
         prior_bars = [bar for bar in ordered_bars if bar.ts.date() < ts.date()]
@@ -558,10 +698,18 @@ class RealDataLoaderService:
         total_volume = sum(float(bar.volume) for bar in bars)
         if total_volume <= 0.0:
             return None
-        weighted_total = sum((((float(bar.high) + float(bar.low) + float(bar.close)) / 3.0) * float(bar.volume)) for bar in bars)
+        weighted_total = sum(
+            (
+                ((float(bar.high) + float(bar.low) + float(bar.close)) / 3.0)
+                * float(bar.volume)
+            )
+            for bar in bars
+        )
         return weighted_total / total_volume
 
-    def _opening_range_5m(self, ordered_bars: Sequence[BarRecord]) -> tuple[float | None, float | None]:
+    def _opening_range_5m(
+        self, ordered_bars: Sequence[BarRecord]
+    ) -> tuple[float | None, float | None]:
         """Return the first five-bar opening range for the current session."""
 
         if not ordered_bars:
@@ -570,7 +718,9 @@ class RealDataLoaderService:
         same_day = [bar for bar in ordered_bars if bar.ts.date() == session_date][:5]
         if not same_day:
             return None, None
-        return round(max(float(bar.high) for bar in same_day), 4), round(min(float(bar.low) for bar in same_day), 4)
+        return round(max(float(bar.high) for bar in same_day), 4), round(
+            min(float(bar.low) for bar in same_day), 4
+        )
 
     def _opening_range_break_count(
         self,
@@ -586,16 +736,19 @@ class RealDataLoaderService:
         return sum(
             1
             for bar in post_range
-            if float(bar.close) > opening_range_high or float(bar.close) < opening_range_low
+            if float(bar.close) > opening_range_high
+            or float(bar.close) < opening_range_low
         )
 
-    def _relative_volume_ratio(self, bars: Sequence[BarRecord], *, lookback_bars: int) -> float:
+    def _relative_volume_ratio(
+        self, bars: Sequence[BarRecord], *, lookback_bars: int
+    ) -> float:
         """Return current bar volume divided by recent average bar volume."""
 
         if not bars:
             return 0.0
         current = float(bars[-1].volume)
-        baseline_window = [float(bar.volume) for bar in bars[-(lookback_bars + 1):-1]]
+        baseline_window = [float(bar.volume) for bar in bars[-(lookback_bars + 1) : -1]]
         if not baseline_window:
             return 1.0
         baseline = sum(baseline_window) / len(baseline_window)
@@ -603,7 +756,9 @@ class RealDataLoaderService:
             return 1.0
         return current / baseline
 
-    def _rolling_range_pct(self, bars: Sequence[BarRecord], *, lookback_bars: int) -> float:
+    def _rolling_range_pct(
+        self, bars: Sequence[BarRecord], *, lookback_bars: int
+    ) -> float:
         """Return the recent high-low range as a percent of the latest close."""
 
         window = list(bars[-lookback_bars:])
@@ -616,28 +771,38 @@ class RealDataLoaderService:
             return 0.0
         return ((highest - lowest) / latest_close) * 100.0
 
-    def _impulse_age_bars(self, bars: Sequence[BarRecord], *, threshold_pct: float) -> int | None:
+    def _impulse_age_bars(
+        self, bars: Sequence[BarRecord], *, threshold_pct: float
+    ) -> int | None:
         """Return bars since the last threshold-sized close-to-close impulse."""
 
         closes = [float(bar.close) for bar in bars]
         if len(closes) < 2:
             return None
         bars_since = 0
-        for left, right in zip(reversed(closes[:-1]), reversed(closes[1:]), strict=False):
+        for left, right in zip(
+            reversed(closes[:-1]), reversed(closes[1:]), strict=False
+        ):
             move_pct = abs(((right / left) - 1.0) * 100.0) if left > 0.0 else 0.0
             if move_pct >= threshold_pct:
                 return bars_since
             bars_since += 1
         return bars_since
 
-    def _realised_vol_proxy(self, ts: datetime, ordered_bars: Sequence[BarRecord], *, lookback_bars: int) -> float:
+    def _realised_vol_proxy(
+        self, ts: datetime, ordered_bars: Sequence[BarRecord], *, lookback_bars: int
+    ) -> float:
         """Build a simple deterministic realised-vol proxy from recent bars."""
 
         bars_up_to_ts = [bar for bar in ordered_bars if bar.ts <= ts]
         closes = [float(bar.close) for bar in bars_up_to_ts[-lookback_bars:]]
         if len(closes) < 2:
             return 0.0
-        returns = [((right / left) - 1.0) * 100.0 for left, right in zip(closes, closes[1:], strict=False) if left > 0.0]
+        returns = [
+            ((right / left) - 1.0) * 100.0
+            for left, right in zip(closes, closes[1:], strict=False)
+            if left > 0.0
+        ]
         if not returns:
             return 0.0
         mean = sum(returns) / len(returns)

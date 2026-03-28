@@ -90,8 +90,12 @@ class ImportedModuleReviewCitation(BaseModel):
     grammar_role: str = Field(min_length=1)
     computation_mode: str = Field(min_length=1)
     maturity_state: ImportedModuleMaturityState
-    approval_state: ImportedModuleApprovalState = ImportedModuleApprovalState.NOT_APPROVED
-    dependency_fences: list[ImportedModuleDependencySurface] = Field(default_factory=list)
+    approval_state: ImportedModuleApprovalState = (
+        ImportedModuleApprovalState.NOT_APPROVED
+    )
+    dependency_fences: list[ImportedModuleDependencySurface] = Field(
+        default_factory=list
+    )
     contract_notes: list[str] = Field(default_factory=list)
 
 
@@ -143,9 +147,6 @@ class ReviewGovernanceSurface(BaseModel):
     override_audit_notes: list[str] = Field(default_factory=list)
 
 
-
-
-
 class TemporalEventWindowSurface(BaseModel):
     """Gate 67 hook exposing bounded event-window semantics to review packets."""
 
@@ -155,8 +156,6 @@ class TemporalEventWindowSurface(BaseModel):
     risk_timing_class: EventRiskTimingClass
     carry_sensitivity: EventCarrySensitivity
     event_family: str = Field(min_length=1)
-
-
 
 
 class PrecursorGovernanceSurface(BaseModel):
@@ -178,11 +177,11 @@ class PrecursorRuntimeBindingSurface(BaseModel):
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
     contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
     posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
-    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(
+        default_factory=list
+    )
     lineage_keys: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
-
-
 
 
 class PhaseCarryoverPolicySurface(BaseModel):
@@ -234,7 +233,23 @@ class CandidateGovernanceSurface(BaseModel):
     dormant_candidate_ids: list[str] = Field(default_factory=list)
     retired_candidate_ids: list[str] = Field(default_factory=list)
     comparison_outcome: CandidateComparisonOutcome | None = None
-    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
+    adjudication_disposition: AdjudicationDisposition = (
+        AdjudicationDisposition.RESERVED_UNTOUCHED
+    )
+
+
+class CandidateComparisonContext(BaseModel):
+    """Explicit bounded comparison context required before releasing candidate adjudication."""
+
+    candidate_shape: CandidateSetShape
+    champion_candidate_id: str = Field(min_length=1)
+    shadow_challenger_ids: list[str] = Field(default_factory=list)
+    dormant_candidate_ids: list[str] = Field(default_factory=list)
+    retired_candidate_ids: list[str] = Field(default_factory=list)
+    comparison_outcome: CandidateComparisonOutcome
+    adjudication_disposition: AdjudicationDisposition = (
+        AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON
+    )
 
 
 class ReviewFailureClass(StrEnum):

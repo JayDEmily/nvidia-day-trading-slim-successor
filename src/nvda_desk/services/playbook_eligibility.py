@@ -48,7 +48,10 @@ class PlaybookEligibilityService:
         self._registry = registry_service or PlaybookRegistryService()
         self._variant_evaluators: dict[
             str,
-            Callable[[PlaybookEligibilityInput, list[str], SetupVariantSpec], SetupVariantCandidate],
+            Callable[
+                [PlaybookEligibilityInput, list[str], SetupVariantSpec],
+                SetupVariantCandidate,
+            ],
         ] = {
             "opening_drive_continuation": self._continuation_ladder,
             "midday_compression_release": self._compression_breakout,
@@ -69,34 +72,74 @@ class PlaybookEligibilityService:
         ]
         family_candidates = self._family_candidates(setup_variant_candidates)
         candidates = self._playbook_candidates(setup_variant_candidates)
-        add_candidates = [candidate.playbook_id for candidate in candidates if candidate.action_bias.value == "add"]
-        hold_candidates = [candidate.playbook_id for candidate in candidates if candidate.action_bias.value == "hold"]
-        trim_candidates = [candidate.playbook_id for candidate in candidates if candidate.action_bias.value == "trim"]
-        reduce_candidates = [candidate.playbook_id for candidate in candidates if candidate.action_bias.value == "reduce"]
-        hedge_candidates = [candidate.playbook_id for candidate in candidates if candidate.action_bias.value == "hedge"]
+        add_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.action_bias.value == "add"
+        ]
+        hold_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.action_bias.value == "hold"
+        ]
+        trim_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.action_bias.value == "trim"
+        ]
+        reduce_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.action_bias.value == "reduce"
+        ]
+        hedge_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.action_bias.value == "hedge"
+        ]
         probe_candidates = [
             candidate.playbook_id
             for candidate in candidates
-            if candidate.decision is PlaybookDecision.ELIGIBLE and candidate.sizing_fraction <= 0.15
+            if candidate.decision is PlaybookDecision.ELIGIBLE
+            and candidate.sizing_fraction <= 0.15
         ]
-        watch_only_candidates = [candidate.playbook_id for candidate in candidates if candidate.decision is PlaybookDecision.WATCH_ONLY]
+        watch_only_candidates = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.decision is PlaybookDecision.WATCH_ONLY
+        ]
         rejected_playbook_reasons = {
             candidate.playbook_id: candidate.reasons
             for candidate in candidates
             if candidate.decision is not PlaybookDecision.ELIGIBLE
         }
-        active_family_ids = [candidate.family_id for candidate in family_candidates if candidate.decision is PlaybookDecision.ELIGIBLE]
-        watch_family_ids = [candidate.family_id for candidate in family_candidates if candidate.decision is PlaybookDecision.WATCH_ONLY]
+        active_family_ids = [
+            candidate.family_id
+            for candidate in family_candidates
+            if candidate.decision is PlaybookDecision.ELIGIBLE
+        ]
+        watch_family_ids = [
+            candidate.family_id
+            for candidate in family_candidates
+            if candidate.decision is PlaybookDecision.WATCH_ONLY
+        ]
         active_setup_variant_ids = [
-            candidate.setup_variant_id for candidate in setup_variant_candidates if candidate.decision is PlaybookDecision.ELIGIBLE
+            candidate.setup_variant_id
+            for candidate in setup_variant_candidates
+            if candidate.decision is PlaybookDecision.ELIGIBLE
         ]
         watch_setup_variant_ids = [
-            candidate.setup_variant_id for candidate in setup_variant_candidates if candidate.decision is PlaybookDecision.WATCH_ONLY
+            candidate.setup_variant_id
+            for candidate in setup_variant_candidates
+            if candidate.decision is PlaybookDecision.WATCH_ONLY
         ]
         reasons = [f"permission_state:{payload.posture.permission_state.value}"]
         reasons.extend(f"no_trade:{reason}" for reason in no_trade_reasons)
         reasons.extend(f"active_family:{family_id}" for family_id in active_family_ids)
-        reasons.extend(f"active_setup_variant:{setup_variant_id}" for setup_variant_id in active_setup_variant_ids)
+        reasons.extend(
+            f"active_setup_variant:{setup_variant_id}"
+            for setup_variant_id in active_setup_variant_ids
+        )
         return PlaybookEligibilityOutput(
             family_candidates=family_candidates,
             setup_variant_candidates=setup_variant_candidates,
@@ -180,21 +223,35 @@ class PlaybookEligibilityService:
             reasons=list(reasons),
         )
 
-    def _family_candidates(self, setup_variant_candidates: list[SetupVariantCandidate]) -> list[PlaybookFamilyCandidate]:
+    def _family_candidates(
+        self, setup_variant_candidates: list[SetupVariantCandidate]
+    ) -> list[PlaybookFamilyCandidate]:
         grouped: dict[str, list[SetupVariantCandidate]] = defaultdict(list)
         for candidate in setup_variant_candidates:
             grouped[candidate.family_id].append(candidate)
         family_candidates: list[PlaybookFamilyCandidate] = []
         for family in self._registry.document().families:
             variants = grouped.get(family.family_id, [])
-            active_variants = [item.setup_variant_id for item in variants if item.decision is PlaybookDecision.ELIGIBLE]
-            watch_variants = [item.setup_variant_id for item in variants if item.decision is PlaybookDecision.WATCH_ONLY]
+            active_variants = [
+                item.setup_variant_id
+                for item in variants
+                if item.decision is PlaybookDecision.ELIGIBLE
+            ]
+            watch_variants = [
+                item.setup_variant_id
+                for item in variants
+                if item.decision is PlaybookDecision.WATCH_ONLY
+            ]
             active_playbook_ids: list[str] = []
             watch_playbook_ids: list[str] = []
             for variant_id in active_variants:
-                active_playbook_ids.extend(self._registry.active_playbook_ids_for_setup_variant(variant_id))
+                active_playbook_ids.extend(
+                    self._registry.active_playbook_ids_for_setup_variant(variant_id)
+                )
             for variant_id in watch_variants:
-                watch_playbook_ids.extend(self._registry.active_playbook_ids_for_setup_variant(variant_id))
+                watch_playbook_ids.extend(
+                    self._registry.active_playbook_ids_for_setup_variant(variant_id)
+                )
             if active_variants:
                 decision = PlaybookDecision.ELIGIBLE
                 reasons = [f"eligible_variants:{active_variants}"]
@@ -217,17 +274,29 @@ class PlaybookEligibilityService:
             )
         return family_candidates
 
-    def _playbook_candidates(self, setup_variant_candidates: list[SetupVariantCandidate]) -> list[PlaybookCandidate]:
+    def _playbook_candidates(
+        self, setup_variant_candidates: list[SetupVariantCandidate]
+    ) -> list[PlaybookCandidate]:
         candidates: list[PlaybookCandidate] = []
         for variant_candidate in setup_variant_candidates:
-            for spec in self._registry.playbooks_for_setup_variant(variant_candidate.setup_variant_id):
-                profile_name = self._profile_name_for_decision(variant_candidate.decision)
-                reasons = [f"derived_from_setup_variant:{variant_candidate.setup_variant_id}"]
+            for spec in self._registry.playbooks_for_setup_variant(
+                variant_candidate.setup_variant_id
+            ):
+                profile_name = self._profile_name_for_decision(
+                    variant_candidate.decision
+                )
+                reasons = [
+                    f"derived_from_setup_variant:{variant_candidate.setup_variant_id}"
+                ]
                 reasons.extend(variant_candidate.reasons)
-                candidates.append(self._candidate_from_profile(spec, profile_name, reasons))
+                candidates.append(
+                    self._candidate_from_profile(spec, profile_name, reasons)
+                )
         return candidates
 
-    def _profile_name_for_decision(self, decision: PlaybookDecision) -> Literal["eligible", "watch_only", "ineligible"]:
+    def _profile_name_for_decision(
+        self, decision: PlaybookDecision
+    ) -> Literal["eligible", "watch_only", "ineligible"]:
         if decision is PlaybookDecision.ELIGIBLE:
             return "eligible"
         if decision is PlaybookDecision.WATCH_ONLY:
@@ -238,7 +307,10 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if payload.posture.permission_state.value == "block":
             reasons.append("permission_blocked")
-        if payload.temporal.event_window_state in {"event_live_window", "event_imminent_window"}:
+        if payload.temporal.event_window_state in {
+            "event_live_window",
+            "event_imminent_window",
+        }:
             reasons.append("event_window_veto")
         if payload.options_flow.options_behavior_cluster == "event_suppressed":
             reasons.append("options_surface_event_suppressed")
@@ -253,17 +325,50 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if (
             payload.regime.sector_leadership_state == "semis_leading"
             and payload.regime.breadth_state.value == "supportive"
-            and payload.temporal.desk_window in {"early_anchor", "mid_morning", "trend_window", "late_session"}
-            and payload.options_flow.options_behavior_cluster not in {"negative_gamma_flush", "event_suppressed"}
+            and payload.temporal.desk_window
+            in {"early_anchor", "mid_morning", "trend_window", "late_session"}
+            and payload.options_flow.options_behavior_cluster
+            not in {"negative_gamma_flush", "event_suppressed"}
         ):
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.ADD, sizing_fraction=0.35, hedge_overlay=False, reasons=["leadership_and_breadth_supportive"])
-        if payload.regime.sector_leadership_state in {"nvda_only_leadership", "leadership_mixed"}:
-            return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["leadership_not_clean_enough"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["continuation_not_supported"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.ADD,
+                sizing_fraction=0.35,
+                hedge_overlay=False,
+                reasons=["leadership_and_breadth_supportive"],
+            )
+        if payload.regime.sector_leadership_state in {
+            "nvda_only_leadership",
+            "leadership_mixed",
+        }:
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.WATCH_ONLY,
+                action_bias=PlaybookAction.HOLD,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["leadership_not_clean_enough"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["continuation_not_supported"],
+        )
 
     def _negative_gamma_flush(
         self,
@@ -274,12 +379,43 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
-        if payload.temporal.recent_path_tag == "intraday_flush" and payload.options_flow.options_behavior_cluster == "negative_gamma_flush":
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
+        if (
+            payload.temporal.recent_path_tag == "intraday_flush"
+            and payload.options_flow.options_behavior_cluster == "negative_gamma_flush"
+        ):
             if payload.posture.permission_state.value == "derisk":
-                return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=True, reasons=["hostile_flush_context"])
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.ADD, sizing_fraction=0.1, hedge_overlay=True, reasons=["buyable_flush_probe"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["no_negative_gamma_flush_context"])
+                return self._variant_candidate(
+                    variant,
+                    decision=PlaybookDecision.WATCH_ONLY,
+                    action_bias=PlaybookAction.HOLD,
+                    sizing_fraction=0.0,
+                    hedge_overlay=True,
+                    reasons=["hostile_flush_context"],
+                )
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.ADD,
+                sizing_fraction=0.1,
+                hedge_overlay=True,
+                reasons=["buyable_flush_probe"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["no_negative_gamma_flush_context"],
+        )
 
     def _pin_reversion(
         self,
@@ -290,17 +426,48 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if (
             payload.options_flow.pin_risk_state in {"pin_risk_high", "pin_risk_present"}
-            and payload.options_flow.strike_cluster_state in {"live_pin_cluster", "inferred_pin_cluster"}
-            and payload.options_flow.pin_progression_state in {"pinning_in", "pin_stable"}
-            and payload.temporal.desk_window in {"lunch", "trend_window", "late_session", "close"}
+            and payload.options_flow.strike_cluster_state
+            in {"live_pin_cluster", "inferred_pin_cluster"}
+            and payload.options_flow.pin_progression_state
+            in {"pinning_in", "pin_stable"}
+            and payload.temporal.desk_window
+            in {"lunch", "trend_window", "late_session", "close"}
         ):
             if payload.options_flow.dealer_pressure_state == "dealer_destabilising":
-                return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["pin_active_but_flow_destabilising"])
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.TRIM, sizing_fraction=0.2, hedge_overlay=False, reasons=["pin_reversion_supported"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["no_pin_reversion_context"])
+                return self._variant_candidate(
+                    variant,
+                    decision=PlaybookDecision.WATCH_ONLY,
+                    action_bias=PlaybookAction.HOLD,
+                    sizing_fraction=0.0,
+                    hedge_overlay=False,
+                    reasons=["pin_active_but_flow_destabilising"],
+                )
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.TRIM,
+                sizing_fraction=0.2,
+                hedge_overlay=False,
+                reasons=["pin_reversion_supported"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["no_pin_reversion_context"],
+        )
 
     def _compression_breakout(
         self,
@@ -311,17 +478,54 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if (
-            payload.options_flow.options_behavior_cluster == "compression_breakout_ready"
-            and payload.temporal.desk_window in {"lunch", "trend_window", "late_session"}
+            payload.options_flow.options_behavior_cluster
+            == "compression_breakout_ready"
+            and payload.temporal.desk_window
+            in {"lunch", "trend_window", "late_session"}
         ):
             if payload.posture.permission_state.value == "derisk":
-                return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["compression_ready_but_posture_derisk"])
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.ADD, sizing_fraction=0.25, hedge_overlay=False, reasons=["compression_breakout_supported"])
+                return self._variant_candidate(
+                    variant,
+                    decision=PlaybookDecision.WATCH_ONLY,
+                    action_bias=PlaybookAction.HOLD,
+                    sizing_fraction=0.0,
+                    hedge_overlay=False,
+                    reasons=["compression_ready_but_posture_derisk"],
+                )
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.ADD,
+                sizing_fraction=0.25,
+                hedge_overlay=False,
+                reasons=["compression_breakout_supported"],
+            )
         if payload.options_flow.gamma_state.value == "supportive":
-            return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["supportive_options_need_more_confirmation"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["compression_not_supported"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.WATCH_ONLY,
+                action_bias=PlaybookAction.HOLD,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["supportive_options_need_more_confirmation"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["compression_not_supported"],
+        )
 
     def _front_expiry_pin_pressure(
         self,
@@ -332,20 +536,64 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if payload.temporal.expiry_cycle_state not in {"expiry_day", "front_week"}:
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["not_front_expiry_window"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["not_front_expiry_window"],
+            )
         if payload.temporal.desk_window not in {"early_anchor", "mid_morning"}:
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["pin_pressure_window_not_open"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["pin_pressure_window_not_open"],
+            )
         if (
             payload.options_flow.pin_risk_state in {"pin_risk_high", "pin_risk_present"}
-            and payload.options_flow.strike_cluster_state in {"live_pin_cluster", "inferred_pin_cluster"}
-            and payload.options_flow.pin_progression_state in {"pinning_in", "pin_stable"}
+            and payload.options_flow.strike_cluster_state
+            in {"live_pin_cluster", "inferred_pin_cluster"}
+            and payload.options_flow.pin_progression_state
+            in {"pinning_in", "pin_stable"}
         ):
             if payload.options_flow.dealer_pressure_state == "dealer_destabilising":
-                return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["pin_build_visible_but_flow_destabilising"])
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.TRIM, sizing_fraction=0.2, hedge_overlay=False, reasons=["front_expiry_pin_pressure_supported"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["no_front_expiry_pin_pressure_context"])
+                return self._variant_candidate(
+                    variant,
+                    decision=PlaybookDecision.WATCH_ONLY,
+                    action_bias=PlaybookAction.HOLD,
+                    sizing_fraction=0.0,
+                    hedge_overlay=False,
+                    reasons=["pin_build_visible_but_flow_destabilising"],
+                )
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.TRIM,
+                sizing_fraction=0.2,
+                hedge_overlay=False,
+                reasons=["front_expiry_pin_pressure_supported"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["no_front_expiry_pin_pressure_context"],
+        )
 
     def _term_structure_dislocation(
         self,
@@ -356,21 +604,77 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if payload.temporal.expiry_cycle_state == "far_cycle":
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["term_dislocation_not_relevant_far_cycle"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["term_dislocation_not_relevant_far_cycle"],
+            )
         if payload.options_flow.term_structure_state.value == "flat":
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["term_structure_flat"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["term_structure_flat"],
+            )
         if (
-            payload.options_flow.tenor_curve_state in {"backwardated_curve", "hump_curve", "front_loaded_curve", "back_loaded_curve"}
-            and payload.options_flow.iv_rv_curve_state in {"front_expiry_rich", "next_expiry_rich", "both_expiries_rich"}
-            and payload.options_flow.repeated_snapshot_state in {"stable_recheck", "escalating_pressure"}
-            and payload.temporal.desk_window in {"early_anchor", "mid_morning", "trend_window"}
+            payload.options_flow.tenor_curve_state
+            in {
+                "backwardated_curve",
+                "hump_curve",
+                "front_loaded_curve",
+                "back_loaded_curve",
+            }
+            and payload.options_flow.iv_rv_curve_state
+            in {"front_expiry_rich", "next_expiry_rich", "both_expiries_rich"}
+            and payload.options_flow.repeated_snapshot_state
+            in {"stable_recheck", "escalating_pressure"}
+            and payload.temporal.desk_window
+            in {"early_anchor", "mid_morning", "trend_window"}
         ):
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.ADD, sizing_fraction=0.25, hedge_overlay=False, reasons=["term_structure_dislocation_supported"])
-        if payload.options_flow.tenor_curve_state in {"backwardated_curve", "hump_curve", "front_loaded_curve", "back_loaded_curve"}:
-            return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["term_structure_dislocation_needs_iv_confirmation"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["no_term_structure_dislocation_context"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.ADD,
+                sizing_fraction=0.25,
+                hedge_overlay=False,
+                reasons=["term_structure_dislocation_supported"],
+            )
+        if payload.options_flow.tenor_curve_state in {
+            "backwardated_curve",
+            "hump_curve",
+            "front_loaded_curve",
+            "back_loaded_curve",
+        }:
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.WATCH_ONLY,
+                action_bias=PlaybookAction.HOLD,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["term_structure_dislocation_needs_iv_confirmation"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["no_term_structure_dislocation_context"],
+        )
 
     def _skew_pressure_reversal(
         self,
@@ -381,19 +685,68 @@ class PlaybookEligibilityService:
         reasons: list[str] = []
         if no_trade_reasons:
             reasons.extend(no_trade_reasons)
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=reasons)
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=reasons,
+            )
         if payload.options_flow.options_behavior_cluster == "negative_gamma_flush":
-            return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["full_flush_already_has_priority"])
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.INELIGIBLE,
+                action_bias=PlaybookAction.REDUCE,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["full_flush_already_has_priority"],
+            )
         if (
             payload.options_flow.dealer_pressure_state == "dealer_destabilising"
-            and payload.options_flow.skew_evolution_state in {"downside_skew_expanding", "upside_skew_expanding"}
-            and payload.options_flow.repeated_snapshot_state in {"stable_recheck", "cooling_pressure"}
-            and payload.options_flow.options_behavior_cluster in {"dealer_flow_tension", "balanced_options_state"}
-            and payload.temporal.desk_window in {"early_anchor", "mid_morning", "trend_window"}
+            and payload.options_flow.skew_evolution_state
+            in {"downside_skew_expanding", "upside_skew_expanding"}
+            and payload.options_flow.repeated_snapshot_state
+            in {"stable_recheck", "cooling_pressure"}
+            and payload.options_flow.options_behavior_cluster
+            in {"dealer_flow_tension", "balanced_options_state"}
+            and payload.temporal.desk_window
+            in {"early_anchor", "mid_morning", "trend_window"}
         ):
             if payload.posture.permission_state.value == "derisk":
-                return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=True, reasons=["skew_reversal_visible_but_posture_derisk"])
-            return self._variant_candidate(variant, decision=PlaybookDecision.ELIGIBLE, action_bias=PlaybookAction.ADD, sizing_fraction=0.2, hedge_overlay=True, reasons=["skew_pressure_reversal_supported"])
-        if payload.options_flow.skew_evolution_state in {"downside_skew_expanding", "upside_skew_expanding"}:
-            return self._variant_candidate(variant, decision=PlaybookDecision.WATCH_ONLY, action_bias=PlaybookAction.HOLD, sizing_fraction=0.0, hedge_overlay=False, reasons=["skew_pressure_visible_needs_reversal_confirmation"])
-        return self._variant_candidate(variant, decision=PlaybookDecision.INELIGIBLE, action_bias=PlaybookAction.REDUCE, sizing_fraction=0.0, hedge_overlay=False, reasons=["no_skew_pressure_reversal_context"])
+                return self._variant_candidate(
+                    variant,
+                    decision=PlaybookDecision.WATCH_ONLY,
+                    action_bias=PlaybookAction.HOLD,
+                    sizing_fraction=0.0,
+                    hedge_overlay=True,
+                    reasons=["skew_reversal_visible_but_posture_derisk"],
+                )
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.ELIGIBLE,
+                action_bias=PlaybookAction.ADD,
+                sizing_fraction=0.2,
+                hedge_overlay=True,
+                reasons=["skew_pressure_reversal_supported"],
+            )
+        if payload.options_flow.skew_evolution_state in {
+            "downside_skew_expanding",
+            "upside_skew_expanding",
+        }:
+            return self._variant_candidate(
+                variant,
+                decision=PlaybookDecision.WATCH_ONLY,
+                action_bias=PlaybookAction.HOLD,
+                sizing_fraction=0.0,
+                hedge_overlay=False,
+                reasons=["skew_pressure_visible_needs_reversal_confirmation"],
+            )
+        return self._variant_candidate(
+            variant,
+            decision=PlaybookDecision.INELIGIBLE,
+            action_bias=PlaybookAction.REDUCE,
+            sizing_fraction=0.0,
+            hedge_overlay=False,
+            reasons=["no_skew_pressure_reversal_context"],
+        )

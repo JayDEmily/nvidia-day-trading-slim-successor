@@ -6,7 +6,9 @@ import json
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-LEAF_LEDGER = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json"
+LEAF_LEDGER = (
+    REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json"
+)
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 PLANS = REPO_ROOT / "PLANS.md"
 
@@ -20,7 +22,9 @@ def test_gate_46_to_50_are_complete_and_gate_45_stays_retired() -> None:
     assert "Gate 45 — retired placeholder on `main`" in plans
     assert "Gates 46–50 — complete on `main`" in plans
     assert "Gate 45 is retired as a placeholder" in gate_map
-    assert "Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main`" in gate_map
+    assert (
+        "Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main`" in gate_map
+    )
 
 
 def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:
@@ -38,7 +42,9 @@ def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:
     }
 
     for prefix, count in expected_prefixes.items():
-        matching = [leaf for leaf_id, leaf in leaves.items() if leaf_id.startswith(prefix)]
+        matching = [
+            leaf for leaf_id, leaf in leaves.items() if leaf_id.startswith(prefix)
+        ]
         assert len(matching) == count
         assert all(leaf["status"] == "complete" for leaf in matching)
 
@@ -46,6 +52,11 @@ def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:
     assert not {
         leaf_id
         for leaf_id in remaining
-        if leaf_id.startswith(("LEAF-G46-", "LEAF-G47-", "LEAF-G48-", "LEAF-G49-", "LEAF-G50-"))
+        if leaf_id.startswith(
+            ("LEAF-G46-", "LEAF-G47-", "LEAF-G48-", "LEAF-G49-", "LEAF-G50-")
+        )
     }
-    assert leaf_ledger["execution_status"] == "gates_46_to_50_complete_on_main_gate_51_complete_on_main"
+    assert (
+        leaf_ledger["execution_status"]
+        == "gates_46_to_50_complete_on_main_gate_51_complete_on_main"
+    )

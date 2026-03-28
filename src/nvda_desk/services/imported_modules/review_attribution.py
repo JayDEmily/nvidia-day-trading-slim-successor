@@ -78,15 +78,23 @@ def _dependency_fences(
 class ReviewAttributionContractService:
     """Emit Gate-23 review-chain contracts in frozen order."""
 
-    def evaluate(self, context: ReviewAttributionContext) -> list[ReviewAttributionContractEmission]:
+    def evaluate(
+        self, context: ReviewAttributionContext
+    ) -> list[ReviewAttributionContractEmission]:
         profit_loss_ledger = self._profit_loss_ledger(context)
-        module_trace_attribution = self._module_trace_attribution(context, profit_loss_ledger)
+        module_trace_attribution = self._module_trace_attribution(
+            context, profit_loss_ledger
+        )
         daily_summary = self._daily_summary(context, profit_loss_ledger)
         feedback_summary = self._feedback_summary_writer(context, profit_loss_ledger)
         module_scores = self._module_score_attributor(context, profit_loss_ledger)
         variant_trace = self._variant_trace_logger(context)
-        variant_performance = self._variant_performance_tracker(context, profit_loss_ledger)
-        confidence_divergence = self._confidence_divergence_logger(context, profit_loss_ledger)
+        variant_performance = self._variant_performance_tracker(
+            context, profit_loss_ledger
+        )
+        confidence_divergence = self._confidence_divergence_logger(
+            context, profit_loss_ledger
+        )
         macro_alignment = self._macro_alignment_checker(context)
         outputs: list[ReviewAttributionPayload] = [
             profit_loss_ledger,
@@ -137,7 +145,9 @@ class ReviewAttributionContractService:
         )
         return ReviewAttributionContractEmission(output=output, packet=packet)
 
-    def _profit_loss_ledger(self, context: ReviewAttributionContext) -> ProfitLossLedgerContractOutput:
+    def _profit_loss_ledger(
+        self, context: ReviewAttributionContext
+    ) -> ProfitLossLedgerContractOutput:
         realized = round(0.35 if context.execution.active_playbook_ids else 0.0, 4)
         if context.trade_logger.trade_log_state != "preview_trade_log_ready":
             realized = 0.0
@@ -148,14 +158,26 @@ class ReviewAttributionContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["closed_positions"],
-                proxied={"closed_positions": "proxied from the advisory trade-log surface and current mark-to-market preview"},
+                proxied={
+                    "closed_positions": "proxied from the advisory trade-log surface and current mark-to-market preview"
+                },
             ),
-            upstream_contract_slugs=["unrealized_tracker", "trade_logger", "position_book"],
-            contract_notes=["P&L remains a deterministic preview ledger rather than a booked statement."],
+            upstream_contract_slugs=[
+                "unrealized_tracker",
+                "trade_logger",
+                "position_book",
+            ],
+            contract_notes=[
+                "P&L remains a deterministic preview ledger rather than a booked statement."
+            ],
             realized_pnl_pct=realized,
             unrealized_pnl_pct=context.unrealized_tracker.unrealized_pnl_pct,
             gross_exposure_pct=context.position_book.live_position_pct,
-            ledger_state=("preview_pnl_ready" if context.position_book.live_position_pct > 0.0 else "flat"),
+            ledger_state=(
+                "preview_pnl_ready"
+                if context.position_book.live_position_pct > 0.0
+                else "flat"
+            ),
         )
 
     def _module_trace_attribution(
@@ -176,10 +198,14 @@ class ReviewAttributionContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["execution_decisions", "signal_outputs"],
-                proxied={"signal_outputs": "proxied from the review packet and execution-tag surfaces"},
+                proxied={
+                    "signal_outputs": "proxied from the review packet and execution-tag surfaces"
+                },
             ),
             upstream_contract_slugs=["execution_tags", "trade_logger"],
-            contract_notes=["Attribution stays bounded to the deterministic packet chain already present in review output."],
+            contract_notes=[
+                "Attribution stays bounded to the deterministic packet chain already present in review output."
+            ],
             leading_modules=leading_modules,
             attribution_confidence=confidence,
             attribution_state=("coherent" if confidence >= 0.75 else "thin"),
@@ -210,9 +236,15 @@ class ReviewAttributionContractService:
                 satisfied={"profit_loss_ledger", "trade_log"},
             ),
             upstream_contract_slugs=["profit_loss_ledger", "trade_logger"],
-            contract_notes=["The daily summary is an operator artefact derived only from preview execution state."],
+            contract_notes=[
+                "The daily summary is an operator artefact derived only from preview execution state."
+            ],
             summary_headline=headline,
-            day_state=("positive_preview" if profit_loss_ledger.unrealized_pnl_pct >= 0.0 else "negative_preview"),
+            day_state=(
+                "positive_preview"
+                if profit_loss_ledger.unrealized_pnl_pct >= 0.0
+                else "negative_preview"
+            ),
             key_points=key_points,
         )
 
@@ -221,7 +253,11 @@ class ReviewAttributionContractService:
         context: ReviewAttributionContext,
         profit_loss_ledger: ProfitLossLedgerContractOutput,
     ) -> FeedbackSummaryWriterContractOutput:
-        grade = "A" if profit_loss_ledger.unrealized_pnl_pct >= 0.5 else "B" if profit_loss_ledger.unrealized_pnl_pct >= 0.0 else "C"
+        grade = (
+            "A"
+            if profit_loss_ledger.unrealized_pnl_pct >= 0.5
+            else "B" if profit_loss_ledger.unrealized_pnl_pct >= 0.0 else "C"
+        )
         actions = [
             "keep preview chain deterministic",
             "inspect broker fences before widening scope",
@@ -235,10 +271,14 @@ class ReviewAttributionContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["evaluator_outputs"],
-                proxied={"evaluator_outputs": "proxied from review packet, execution tags, and preview P&L state"},
+                proxied={
+                    "evaluator_outputs": "proxied from review packet, execution tags, and preview P&L state"
+                },
             ),
             upstream_contract_slugs=["profit_loss_ledger", "execution_tags"],
-            contract_notes=["Feedback remains an operator-facing summary rather than an optimisation loop."],
+            contract_notes=[
+                "Feedback remains an operator-facing summary rather than an optimisation loop."
+            ],
             feedback_grade=grade,
             feedback_actions=actions,
             summary_state="feedback_written",
@@ -264,15 +304,21 @@ class ReviewAttributionContractService:
             dependency_fences=_dependency_fences(
                 ["module_attribution_log", "profit_loss_ledger"],
                 satisfied={"profit_loss_ledger"},
-                proxied={"module_attribution_log": "proxied from the deterministic review packet and execution-tag surfaces"},
+                proxied={
+                    "module_attribution_log": "proxied from the deterministic review packet and execution-tag surfaces"
+                },
             ),
             upstream_contract_slugs=["profit_loss_ledger", "module_trace_attribution"],
-            contract_notes=["Scores remain bounded to preview evidence and do not imply promotion state."],
+            contract_notes=[
+                "Scores remain bounded to preview evidence and do not imply promotion state."
+            ],
             module_scores=scores,
             score_state="scored",
         )
 
-    def _variant_trace_logger(self, context: ReviewAttributionContext) -> VariantTraceLoggerContractOutput:
+    def _variant_trace_logger(
+        self, context: ReviewAttributionContext
+    ) -> VariantTraceLoggerContractOutput:
         variant_id = f"{context.execution.entry_style}::{context.temporal.desk_window}"
         return VariantTraceLoggerContractOutput(
             canonical_id="archive-module-040",
@@ -287,7 +333,9 @@ class ReviewAttributionContractService:
                 },
             ),
             upstream_contract_slugs=["trade_logger", "execution_tags"],
-            contract_notes=["Variant tracing remains a preview ledger keyed to the live deterministic entry style only."],
+            contract_notes=[
+                "Variant tracing remains a preview ledger keyed to the live deterministic entry style only."
+            ],
             variant_id=variant_id,
             active_playbooks=list(context.execution.active_playbook_ids),
             trace_state="variant_traced",
@@ -305,7 +353,11 @@ class ReviewAttributionContractService:
             ),
             4,
         )
-        band = "strong" if performance_score >= 0.65 else "mixed" if performance_score >= 0.45 else "weak"
+        band = (
+            "strong"
+            if performance_score >= 0.65
+            else "mixed" if performance_score >= 0.45 else "weak"
+        )
         return VariantPerformanceTrackerContractOutput(
             canonical_id="archive-evaluator-eval04",
             canonical_slug="variant_performance_tracker",
@@ -314,7 +366,9 @@ class ReviewAttributionContractService:
             dependency_fences=_dependency_fences(
                 ["profit_loss_ledger", "variant_trace"],
                 satisfied={"profit_loss_ledger"},
-                proxied={"variant_trace": "proxied from the deterministic variant-trace logger"},
+                proxied={
+                    "variant_trace": "proxied from the deterministic variant-trace logger"
+                },
             ),
             upstream_contract_slugs=["profit_loss_ledger", "variant_trace_logger"],
             contract_notes=["Variant performance stays descriptive and preview-only."],
@@ -334,7 +388,9 @@ class ReviewAttributionContractService:
             observed_confidence = 0.35
         else:
             observed_confidence = 0.45
-        divergence_score = round(abs(context.engine_score.engine_score - observed_confidence), 4)
+        divergence_score = round(
+            abs(context.engine_score.engine_score - observed_confidence), 4
+        )
         return ConfidenceDivergenceLoggerContractOutput(
             canonical_id="archive-evaluator-eval05",
             canonical_slug="confidence_divergence_logger",
@@ -345,13 +401,17 @@ class ReviewAttributionContractService:
                 satisfied={"engine_score", "profit_loss_ledger"},
             ),
             upstream_contract_slugs=["engine_score", "profit_loss_ledger"],
-            contract_notes=["Confidence divergence compares preview P&L with the current engine-score surface only."],
+            contract_notes=[
+                "Confidence divergence compares preview P&L with the current engine-score surface only."
+            ],
             divergence_score=divergence_score,
             divergence_state=("aligned" if divergence_score <= 0.1 else "divergent"),
             compared_fields=["engine_score", "unrealized_pnl_pct"],
         )
 
-    def _macro_alignment_checker(self, context: ReviewAttributionContext) -> MacroAlignmentCheckerContractOutput:
+    def _macro_alignment_checker(
+        self, context: ReviewAttributionContext
+    ) -> MacroAlignmentCheckerContractOutput:
         macro_flags: list[str] = []
         if context.regime.fx_stress_state != "fx_neutral":
             macro_flags.append("fx_stress")
@@ -367,11 +427,15 @@ class ReviewAttributionContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["macro_metrics", "trade_log"],
-                proxied={"macro_metrics": "proxied from the current regime and macro-signal contract surfaces"},
+                proxied={
+                    "macro_metrics": "proxied from the current regime and macro-signal contract surfaces"
+                },
                 satisfied={"trade_log"},
             ),
             upstream_contract_slugs=["macro_signal_score", "trade_logger"],
-            contract_notes=["Macro alignment stays descriptive and must not masquerade as a live veto beyond current posture logic."],
+            contract_notes=[
+                "Macro alignment stays descriptive and must not masquerade as a live veto beyond current posture logic."
+            ],
             macro_alignment_state=("aligned" if not macro_flags else "cautious"),
             alignment_score=alignment_score,
             macro_flags=macro_flags,

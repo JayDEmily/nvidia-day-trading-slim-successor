@@ -57,7 +57,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             in gate_map
         )
         or (
-            "Current active gate: **none — the corrective reconstruction pack is closed through Gate 86 on `main`**."
+            "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**."
             in gate_map
         )
     )

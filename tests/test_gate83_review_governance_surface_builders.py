@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from nvda_desk.config import Settings
-from nvda_desk.schemas.review import PromotionEvidencePacket
+from nvda_desk.schemas.review import CandidateComparisonContext, PromotionEvidencePacket
 from nvda_desk.schemas.state_policy import (
     AdjudicationDisposition,
     CandidateComparisonOutcome,
+    CandidateSetShape,
     CorridorBreachSeverity,
     ReviewChangeBudget,
     ReviewOutcome,
@@ -70,7 +71,20 @@ def test_gate83_candidate_governance_builder_releases_comparison_when_promotion_
             ],
             missing_sections=[],
             notes=["gate83_test_ready"],
-        )
+        ),
+        comparison_context=CandidateComparisonContext(
+            candidate_shape=CandidateSetShape(
+                max_candidate_count=2,
+                max_shadow_challengers=1,
+                allow_dormant_candidates=True,
+                allow_retired_candidates=True,
+                reserved_adjudication_spans=1,
+            ),
+            champion_candidate_id="candidate_a",
+            shadow_challenger_ids=["candidate_b"],
+            comparison_outcome=CandidateComparisonOutcome.RETAIN_CHAMPION,
+            adjudication_disposition=AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON,
+        ),
     )
 
     assert (
@@ -78,5 +92,28 @@ def test_gate83_candidate_governance_builder_releases_comparison_when_promotion_
         is AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON
     )
     assert surface.comparison_outcome is CandidateComparisonOutcome.RETAIN_CHAMPION
-    assert surface.champion_candidate_id == "current_champion"
-    assert surface.shadow_challenger_ids == ["shadow_challenger_01"]
+    assert surface.champion_candidate_id == "candidate_a"
+    assert surface.shadow_challenger_ids == ["candidate_b"]
+
+
+def test_gate83_candidate_governance_builder_stays_reserved_without_comparison_context() -> (
+    None
+):
+    surface = ReviewExplanationService()._candidate_governance(
+        PromotionEvidencePacket(
+            ready_for_candidate_review=True,
+            required_sections=[
+                "event_lineage_keys",
+                "precursor_lineage_keys",
+                "modifier_policy_ids",
+            ],
+            missing_sections=[],
+            notes=["gate83_ready_but_no_context"],
+        )
+    )
+
+    assert (
+        surface.adjudication_disposition is AdjudicationDisposition.RESERVED_UNTOUCHED
+    )
+    assert surface.comparison_outcome is None
+    assert surface.champion_candidate_id is None

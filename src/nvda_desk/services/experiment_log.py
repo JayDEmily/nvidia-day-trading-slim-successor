@@ -38,8 +38,14 @@ class ExperimentLogService:
                 module_id=module_id,
                 experiment_type=experiment_type,
                 config_name=config_name,
-                requested_at=requested_at.astimezone(UTC) if requested_at.tzinfo else requested_at.replace(tzinfo=UTC),
-                ranking_score=None if ranking_score is None else round(ranking_score, 6),
+                requested_at=(
+                    requested_at.astimezone(UTC)
+                    if requested_at.tzinfo
+                    else requested_at.replace(tzinfo=UTC)
+                ),
+                ranking_score=(
+                    None if ranking_score is None else round(ranking_score, 6)
+                ),
                 input_json=self._dump_payload(input_payload),
                 output_json=self._dump_payload(output_payload),
             )
@@ -63,7 +69,9 @@ class ExperimentLogService:
                 stmt = stmt.where(ExperimentRun.experiment_type == experiment_type)
             stmt = stmt.order_by(desc(ExperimentRun.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return ExperimentRunListResponse(experiments=[self._to_payload(row) for row in rows])
+        return ExperimentRunListResponse(
+            experiments=[self._to_payload(row) for row in rows]
+        )
 
     def latest_run(
         self,

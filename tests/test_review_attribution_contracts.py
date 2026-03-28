@@ -13,7 +13,9 @@ from nvda_desk.schemas.imported_modules.review_attribution import (
     ProfitLossLedgerContractOutput,
     VariantTraceLoggerContractOutput,
 )
-from nvda_desk.services.imported_modules.review_attribution import ReviewAttributionContractService
+from nvda_desk.services.imported_modules.review_attribution import (
+    ReviewAttributionContractService,
+)
 from tests.contract_chain_fixtures import build_gate23_context
 
 EXPECTED_GATE23_ORDER = [
@@ -33,7 +35,9 @@ def test_review_attribution_contracts_emit_the_frozen_nine_modules_in_order() ->
     """Gate 23 should emit the review-chain contracts in the frozen gate-map order."""
 
     emissions = ReviewAttributionContractService().evaluate(build_gate23_context())
-    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE23_ORDER
+    assert [
+        emission.output.canonical_slug for emission in emissions
+    ] == EXPECTED_GATE23_ORDER
     assert [emission.packet.grammar_role for emission in emissions[:7]] == [
         DmpGrammarRole.REVIEW_EXPLANATION,
         DmpGrammarRole.REVIEW_EXPLANATION,
@@ -47,7 +51,10 @@ def test_review_attribution_contracts_emit_the_frozen_nine_modules_in_order() ->
         DmpGrammarRole.POSTURE_RISK_PERMISSION,
         DmpGrammarRole.POSTURE_RISK_PERMISSION,
     ]
-    assert all(emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions)
+    assert all(
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
+        for emission in emissions
+    )
 
 
 def test_review_attribution_builds_preview_pnl_and_variant_trace_surfaces() -> None:
@@ -55,12 +62,20 @@ def test_review_attribution_builds_preview_pnl_and_variant_trace_surfaces() -> N
 
     outputs = {
         emission.output.canonical_slug: emission.output
-        for emission in ReviewAttributionContractService().evaluate(build_gate23_context())
+        for emission in ReviewAttributionContractService().evaluate(
+            build_gate23_context()
+        )
     }
-    profit_loss_ledger = cast(ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"])
+    profit_loss_ledger = cast(
+        ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"]
+    )
     daily_summary = cast(DailySummaryContractOutput, outputs["daily_summary"])
-    module_score_attributor = cast(ModuleScoreAttributorContractOutput, outputs["module_score_attributor"])
-    variant_trace_logger = cast(VariantTraceLoggerContractOutput, outputs["variant_trace_logger"])
+    module_score_attributor = cast(
+        ModuleScoreAttributorContractOutput, outputs["module_score_attributor"]
+    )
+    variant_trace_logger = cast(
+        VariantTraceLoggerContractOutput, outputs["variant_trace_logger"]
+    )
 
     assert profit_loss_ledger.ledger_state == "preview_pnl_ready"
     assert profit_loss_ledger.gross_exposure_pct == 65.0
@@ -77,14 +92,20 @@ def test_review_attribution_marks_macro_and_confidence_stress_honestly() -> None
 
     outputs = {
         emission.output.canonical_slug: emission.output
-        for emission in ReviewAttributionContractService().evaluate(build_gate23_context(stressed=True))
+        for emission in ReviewAttributionContractService().evaluate(
+            build_gate23_context(stressed=True)
+        )
     }
-    profit_loss_ledger = cast(ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"])
+    profit_loss_ledger = cast(
+        ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"]
+    )
     confidence_divergence = cast(
         ConfidenceDivergenceLoggerContractOutput,
         outputs["confidence_divergence_logger"],
     )
-    macro_alignment = cast(MacroAlignmentCheckerContractOutput, outputs["macro_alignment_checker"])
+    macro_alignment = cast(
+        MacroAlignmentCheckerContractOutput, outputs["macro_alignment_checker"]
+    )
 
     assert profit_loss_ledger.ledger_state == "preview_pnl_ready"
     assert profit_loss_ledger.unrealized_pnl_pct < 0.0

@@ -21,24 +21,45 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate71_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 71 — Modifier precedence, caps, vetoes, and kill-switches\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 71 — Modifier precedence, caps, vetoes, and kill-switches\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 71 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:13] == [
-        "Gate 59", "Gate 60", "Gate 61", "Gate 62", "Gate 63", "Gate 64", "Gate 65",
-        "Gate 66", "Gate 67", "Gate 68", "Gate 69", "Gate 70", "Gate 71",
+        "Gate 59",
+        "Gate 60",
+        "Gate 61",
+        "Gate 62",
+        "Gate 63",
+        "Gate 64",
+        "Gate 65",
+        "Gate 66",
+        "Gate 67",
+        "Gate 68",
+        "Gate 69",
+        "Gate 70",
+        "Gate 71",
     ]
     assert successor_pack_position(leaves["active_gate"]) >= 72
     gate71 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 71"]
@@ -53,22 +74,40 @@ def test_gate71_docs_freeze_precedence_and_kill_switch_law() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Modifier-control law" in normative
-    assert "precedence bands are `kill_switch`, `hard_block`, `event_options_stress`, `phase_carry`, `precursor`, `regime`, and `baseline`" in normative
+    assert (
+        "precedence bands are `kill_switch`, `hard_block`, `event_options_stress`, `phase_carry`, `precursor`, `regime`, and `baseline`"
+        in normative
+    )
     assert "lineage must record which precedence band won" in normative
 
     assert "## Gate 71 modifier-control-law authority" in operating_model
-    assert "compatible modifiers combine through bounded algebra and then clamp to approved caps/floors" in operating_model
+    assert (
+        "compatible modifiers combine through bounded algebra and then clamp to approved caps/floors"
+        in operating_model
+    )
 
     assert "### 5c. Modifier-control-law objects" in domain_model
-    assert "**When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**" in guardrails
+    assert (
+        "**When multiple states are active, precedence, vetoes, caps, and kill-switches must follow the frozen control law — no blended judgement soup.**"
+        in guardrails
+    )
 
 
 def test_gate71_schema_surface_exposes_precedence_clamps_and_review_hook() -> None:
     assert [item.value for item in ModifierPriorityBand] == [
-        "kill_switch", "hard_block", "event_options_stress", "phase_carry", "precursor", "regime", "baseline",
+        "kill_switch",
+        "hard_block",
+        "event_options_stress",
+        "phase_carry",
+        "precursor",
+        "regime",
+        "baseline",
     ]
     assert [item.value for item in CombinationLaw] == [
-        "most_restrictive_wins", "multiply_then_clamp", "additive_offset_then_clamp", "block_overrides_scale",
+        "most_restrictive_wins",
+        "multiply_then_clamp",
+        "additive_offset_then_clamp",
+        "block_overrides_scale",
     ]
     assert [item.value for item in KillSwitchCondition] == [
         "event_live_hard_block",
@@ -82,11 +121,17 @@ def test_gate71_schema_surface_exposes_precedence_clamps_and_review_hook() -> No
         target_surface=MutableRuntimeSurface.MAX_RISK_PER_TRADE,
         floor=0.1,
         cap=0.5,
-        notes=["Combined modifiers may not push max risk per trade outside the frozen corridor."],
+        notes=[
+            "Combined modifiers may not push max risk per trade outside the frozen corridor."
+        ],
     )
     veto = ModifierVetoRule(
         controlling_band=ModifierPriorityBand.HARD_BLOCK,
-        suppressed_bands=[ModifierPriorityBand.PHASE_CARRY, ModifierPriorityBand.PRECURSOR, ModifierPriorityBand.BASELINE],
+        suppressed_bands=[
+            ModifierPriorityBand.PHASE_CARRY,
+            ModifierPriorityBand.PRECURSOR,
+            ModifierPriorityBand.BASELINE,
+        ],
         notes=["A hard block suppresses softer posture modifiers entirely."],
     )
     authority = ModifierControlLawAuthorityResponse(
@@ -96,17 +141,33 @@ def test_gate71_schema_surface_exposes_precedence_clamps_and_review_hook() -> No
             kill_switch_conditions=list(KillSwitchCondition),
             clamp_rules=[clamp],
             veto_rules=[veto],
-            lineage_fields=["winning_precedence_band", "applied_combination_laws", "suppressed_state_labels", "triggered_kill_switch"],
+            lineage_fields=[
+                "winning_precedence_band",
+                "applied_combination_laws",
+                "suppressed_state_labels",
+                "triggered_kill_switch",
+            ],
         )
     )
     surface = ModifierControlLawSurface(
-        active_precedence_bands=[ModifierPriorityBand.EVENT_OPTIONS_STRESS, ModifierPriorityBand.PHASE_CARRY],
-        applied_combination_laws=[CombinationLaw.MOST_RESTRICTIVE_WINS, CombinationLaw.MULTIPLY_THEN_CLAMP],
+        active_precedence_bands=[
+            ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+            ModifierPriorityBand.PHASE_CARRY,
+        ],
+        applied_combination_laws=[
+            CombinationLaw.MOST_RESTRICTIVE_WINS,
+            CombinationLaw.MULTIPLY_THEN_CLAMP,
+        ],
         suppressed_state_labels=["baseline_opening_bias"],
     )
-    review = ReviewExplanationOutput(summary="control law bounded", review_packet={}, modifier_control_law=surface)
+    review = ReviewExplanationOutput(
+        summary="control law bounded", review_packet={}, modifier_control_law=surface
+    )
 
-    assert authority.authority.veto_rules[0].controlling_band is ModifierPriorityBand.HARD_BLOCK
+    assert (
+        authority.authority.veto_rules[0].controlling_band
+        is ModifierPriorityBand.HARD_BLOCK
+    )
     assert review.modifier_control_law == surface
 
 

@@ -72,7 +72,12 @@ INVENTORY_KEYWORDS = (
     "hedge",
     "overnight",
 )
-STRUCTURED_SOURCE_FORMS = {"json_spec", "yaml_spec", "python_script", "implemented_code"}
+STRUCTURED_SOURCE_FORMS = {
+    "json_spec",
+    "yaml_spec",
+    "python_script",
+    "implemented_code",
+}
 REPORT_INPUTS = {
     "registry_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_REGISTRY.jsonl",
     "mapping_seed": "docs/planning/2026-03-23_GATE_B_SOURCE_GRAMMAR_MAPPING.json",
@@ -119,14 +124,21 @@ class CanonicalImportRegistryService:
 
     def load_registry_seed(self) -> list[CanonicalImportRegistrySeedItem]:
         """Load the frozen source registry used for deterministic Gate-B refreshes."""
-        return self._load_jsonl(self.registry_seed_path, CanonicalImportRegistrySeedItem)
+        return self._load_jsonl(
+            self.registry_seed_path, CanonicalImportRegistrySeedItem
+        )
 
     def load_mapping_seed(self) -> list[CanonicalGrammarMappingSeedEntry]:
         """Load the frozen source grammar mapping used for deterministic refreshes."""
         raw = json.loads(self.mapping_seed_path.read_text(encoding="utf-8"))
         if not isinstance(raw, dict) or not isinstance(raw.get("items"), list):
-            raise TypeError("gate-b source grammar mapping must be a JSON object with an items list")
-        return [CanonicalGrammarMappingSeedEntry.model_validate(item) for item in raw["items"]]
+            raise TypeError(
+                "gate-b source grammar mapping must be a JSON object with an items list"
+            )
+        return [
+            CanonicalGrammarMappingSeedEntry.model_validate(item)
+            for item in raw["items"]
+        ]
 
     def load_registry(self) -> list[CanonicalImportRegistryItem]:
         """Load and validate the enriched canonical import registry."""
@@ -136,8 +148,12 @@ class CanonicalImportRegistryService:
         """Load and validate the enriched canonical grammar mapping."""
         raw = json.loads(self.grammar_mapping_path.read_text(encoding="utf-8"))
         if not isinstance(raw, dict) or not isinstance(raw.get("items"), list):
-            raise TypeError("canonical grammar mapping must be a JSON object with an items list")
-        return [CanonicalGrammarMappingEntry.model_validate(item) for item in raw["items"]]
+            raise TypeError(
+                "canonical grammar mapping must be a JSON object with an items list"
+            )
+        return [
+            CanonicalGrammarMappingEntry.model_validate(item) for item in raw["items"]
+        ]
 
     def coverage_summary(self) -> dict[str, int]:
         """Return a small coverage summary for registry and mapping consistency."""
@@ -155,10 +171,16 @@ class CanonicalImportRegistryService:
         item_class_counts = Counter(item.item_class for item in registry)
         maturity_counts = Counter(item.maturity_state.value for item in registry)
         runtime_target_counts = Counter(item.runtime_target.value for item in registry)
-        readiness_counts = Counter(item.implementation_readiness.value for item in registry if item.implementation_readiness)
+        readiness_counts = Counter(
+            item.implementation_readiness.value
+            for item in registry
+            if item.implementation_readiness
+        )
         source_form_counts: Counter[str] = Counter()
         for item in registry:
-            source_form_counts.update(record.source_form.value for record in item.provenance)
+            source_form_counts.update(
+                record.source_form.value for record in item.provenance
+            )
         return {
             "total_items": len(registry),
             "coverage_summary": self.coverage_summary(),
@@ -172,7 +194,11 @@ class CanonicalImportRegistryService:
 
     def canonical_ids_for_runtime_target(self, runtime_target: str) -> list[str]:
         """Return sorted canonical IDs for one runtime target."""
-        return sorted(item.canonical_id for item in self.load_registry() if item.runtime_target.value == runtime_target)
+        return sorted(
+            item.canonical_id
+            for item in self.load_registry()
+            if item.runtime_target.value == runtime_target
+        )
 
     def assert_no_loss(self, *, expected_total: int) -> None:
         """Raise if the canonical registry count drifts from the preserved universe."""
@@ -186,26 +212,40 @@ class CanonicalImportRegistryService:
         """Return deterministic role and runtime summaries for the grammar mapping."""
         mapping = self.load_mapping()
         grammar_role_counts = Counter(item.grammar_role.value for item in mapping)
-        architecture_role_counts = Counter(item.architecture_role.value for item in mapping)
+        architecture_role_counts = Counter(
+            item.architecture_role.value for item in mapping
+        )
         runtime_target_counts = Counter(item.runtime_target.value for item in mapping)
-        implementation_state_counts = Counter(item.implementation_state.value for item in mapping)
+        implementation_state_counts = Counter(
+            item.implementation_state.value for item in mapping
+        )
         contract_status_counts = Counter(
-            item.runtime_contract_status.value for item in mapping if item.runtime_contract_status
+            item.runtime_contract_status.value
+            for item in mapping
+            if item.runtime_contract_status
         )
         return {
             "total_items": len(mapping),
             "grammar_role_counts": dict(sorted(grammar_role_counts.items())),
             "architecture_role_counts": dict(sorted(architecture_role_counts.items())),
             "runtime_target_counts": dict(sorted(runtime_target_counts.items())),
-            "implementation_state_counts": dict(sorted(implementation_state_counts.items())),
-            "runtime_contract_status_counts": dict(sorted(contract_status_counts.items())),
+            "implementation_state_counts": dict(
+                sorted(implementation_state_counts.items())
+            ),
+            "runtime_contract_status_counts": dict(
+                sorted(contract_status_counts.items())
+            ),
             "runtime_gap_report": self.runtime_gap_report(),
             "report_inputs": REPORT_INPUTS,
         }
 
     def grammar_role_ids(self, grammar_role: str) -> list[str]:
         """Return sorted canonical IDs for one grammar role."""
-        return sorted(item.canonical_id for item in self.load_mapping() if item.grammar_role.value == grammar_role)
+        return sorted(
+            item.canonical_id
+            for item in self.load_mapping()
+            if item.grammar_role.value == grammar_role
+        )
 
     def runtime_gap_report(self) -> dict[str, object]:
         """Return a deterministic gap report between runtime targets and grammar roles."""
@@ -216,7 +256,9 @@ class CanonicalImportRegistryService:
             if not role_items:
                 continue
             roles[role.value] = {
-                target.value: sum(1 for item in role_items if item.runtime_target == target)
+                target.value: sum(
+                    1 for item in role_items if item.runtime_target == target
+                )
                 for target in RuntimeTarget
             }
         return {"total_items": len(mapping), "roles": roles}
@@ -225,8 +267,12 @@ class CanonicalImportRegistryService:
         """Return runtime-target depth counts split by class, category, and desk role."""
         registry = self.load_registry()
         mapping = self.load_mapping()
-        by_item_class = self._runtime_target_breakdown(registry, lambda item: item.item_class)
-        by_category = self._runtime_target_breakdown(registry, lambda item: item.category)
+        by_item_class = self._runtime_target_breakdown(
+            registry, lambda item: item.item_class
+        )
+        by_category = self._runtime_target_breakdown(
+            registry, lambda item: item.category
+        )
         by_runtime_target = Counter(item.runtime_target.value for item in registry)
         by_grammar_role: dict[str, dict[str, int]] = {}
         for role in GRAMMAR_ROLE_ORDER:
@@ -237,7 +283,9 @@ class CanonicalImportRegistryService:
                 "priority": ROLE_PRIORITY[role],
                 "total_items": len(role_rows),
                 **{
-                    target.value: sum(1 for item in role_rows if item.runtime_target == target)
+                    target.value: sum(
+                        1 for item in role_rows if item.runtime_target == target
+                    )
                     for target in RuntimeTarget
                 },
             }
@@ -253,12 +301,25 @@ class CanonicalImportRegistryService:
     def executable_backlog_view(self) -> dict[str, object]:
         """Return the executable backlog excluding evidence-only artefacts."""
         registry = self.load_registry()
-        executable_items = [item for item in registry if item.runtime_target != RuntimeTarget.EVIDENCE_ONLY]
-        readiness_counts = Counter(item.implementation_readiness.value for item in executable_items if item.implementation_readiness)
-        role_counts = Counter(
-            item.primary_grammar_role.value for item in executable_items if item.primary_grammar_role is not None
+        executable_items = [
+            item
+            for item in registry
+            if item.runtime_target != RuntimeTarget.EVIDENCE_ONLY
+        ]
+        readiness_counts = Counter(
+            item.implementation_readiness.value
+            for item in executable_items
+            if item.implementation_readiness
         )
-        sorted_items = sorted(executable_items, key=lambda item: (item.desk_role_priority, item.canonical_slug))
+        role_counts = Counter(
+            item.primary_grammar_role.value
+            for item in executable_items
+            if item.primary_grammar_role is not None
+        )
+        sorted_items = sorted(
+            executable_items,
+            key=lambda item: (item.desk_role_priority, item.canonical_slug),
+        )
         return {
             "total_items": len(registry),
             "executable_backlog_count": len(executable_items),
@@ -269,9 +330,17 @@ class CanonicalImportRegistryService:
                 {
                     "canonical_id": item.canonical_id,
                     "canonical_slug": item.canonical_slug,
-                    "primary_grammar_role": item.primary_grammar_role.value if item.primary_grammar_role else None,
+                    "primary_grammar_role": (
+                        item.primary_grammar_role.value
+                        if item.primary_grammar_role
+                        else None
+                    ),
                     "desk_role_priority": item.desk_role_priority,
-                    "implementation_readiness": item.implementation_readiness.value if item.implementation_readiness else None,
+                    "implementation_readiness": (
+                        item.implementation_readiness.value
+                        if item.implementation_readiness
+                        else None
+                    ),
                     "readiness_blockers": item.readiness_blockers,
                 }
                 for item in sorted_items
@@ -287,7 +356,9 @@ class CanonicalImportRegistryService:
         structured_source_ids: list[str] = []
         for item in registry:
             source_forms = {record.source_form.value for record in item.provenance}
-            if any(source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms):
+            if any(
+                source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms
+            ):
                 structured_source_ids.append(item.canonical_id)
             if "implemented_code" in source_forms:
                 implemented_or_translated_ids.append(item.canonical_id)
@@ -319,9 +390,21 @@ class CanonicalImportRegistryService:
             role_items = [item for item in mapping if item.grammar_role == role]
             if not role_items:
                 continue
-            implemented_count = sum(1 for item in role_items if item.runtime_target == RuntimeTarget.IMPLEMENTED_RUNTIME)
-            concept_count = sum(1 for item in role_items if item.runtime_target == RuntimeTarget.CONCEPT_CONTRACT)
-            evidence_count = sum(1 for item in role_items if item.runtime_target == RuntimeTarget.EVIDENCE_ONLY)
+            implemented_count = sum(
+                1
+                for item in role_items
+                if item.runtime_target == RuntimeTarget.IMPLEMENTED_RUNTIME
+            )
+            concept_count = sum(
+                1
+                for item in role_items
+                if item.runtime_target == RuntimeTarget.CONCEPT_CONTRACT
+            )
+            evidence_count = sum(
+                1
+                for item in role_items
+                if item.runtime_target == RuntimeTarget.EVIDENCE_ONLY
+            )
             ready_count = sum(
                 1
                 for item in role_items
@@ -339,15 +422,21 @@ class CanonicalImportRegistryService:
                     "evidence_only_count": evidence_count,
                     "remaining_backlog_count": concept_count + evidence_count,
                     "ready_for_contract_import_count": ready_count,
-                    "implemented_runtime_pct": round((implemented_count / total_items) * 100, 2),
+                    "implemented_runtime_pct": round(
+                        (implemented_count / total_items) * 100, 2
+                    ),
                 }
             )
         return {
             "roles": rows,
             "summary": {
                 "total_roles": len(rows),
-                "implemented_runtime_count": sum(row["implemented_runtime_count"] for row in rows),
-                "ready_for_contract_import_count": sum(row["ready_for_contract_import_count"] for row in rows),
+                "implemented_runtime_count": sum(
+                    row["implemented_runtime_count"] for row in rows
+                ),
+                "ready_for_contract_import_count": sum(
+                    row["ready_for_contract_import_count"] for row in rows
+                ),
             },
             "report_inputs": REPORT_INPUTS,
         }
@@ -358,27 +447,47 @@ class CanonicalImportRegistryService:
         mapping_seed = self.load_mapping_seed()
         seed_mapping_by_id = {item.canonical_id: item for item in mapping_seed}
         if {item.canonical_id for item in registry_seed} != set(seed_mapping_by_id):
-            raise ValueError("Gate-B seed registry and seed mapping cover different canonical IDs")
+            raise ValueError(
+                "Gate-B seed registry and seed mapping cover different canonical IDs"
+            )
 
         registry = self._enriched_registry(registry_seed, seed_mapping_by_id)
-        mapping = self._enriched_mapping(mapping_seed, {item.canonical_id: item for item in registry})
+        mapping = self._enriched_mapping(
+            mapping_seed, {item.canonical_id: item for item in registry}
+        )
 
-        self.registry_path.write_text("\n".join(item.model_dump_json() for item in registry) + "\n", encoding="utf-8")
+        self.registry_path.write_text(
+            "\n".join(item.model_dump_json() for item in registry) + "\n",
+            encoding="utf-8",
+        )
         self.grammar_mapping_path.write_text(
-            json.dumps({"items": [item.model_dump(mode="json") for item in mapping]}, indent=2) + "\n",
+            json.dumps(
+                {"items": [item.model_dump(mode="json") for item in mapping]}, indent=2
+            )
+            + "\n",
             encoding="utf-8",
         )
         self._write_report(OUTPUT_FILES["registry_summary"], self.registry_summary())
-        self._write_report(OUTPUT_FILES["mapping_summary"], self.grammar_mapping_summary())
+        self._write_report(
+            OUTPUT_FILES["mapping_summary"], self.grammar_mapping_summary()
+        )
         self._write_report(OUTPUT_FILES["runtime_depth"], self.runtime_depth_report())
-        self._write_report(OUTPUT_FILES["executable_backlog"], self.executable_backlog_view())
-        self._write_report(OUTPUT_FILES["provenance_depth"], self.provenance_depth_audit())
-        self._write_report(OUTPUT_FILES["import_depth_by_role"], self.import_depth_target_report())
+        self._write_report(
+            OUTPUT_FILES["executable_backlog"], self.executable_backlog_view()
+        )
+        self._write_report(
+            OUTPUT_FILES["provenance_depth"], self.provenance_depth_audit()
+        )
+        self._write_report(
+            OUTPUT_FILES["import_depth_by_role"], self.import_depth_target_report()
+        )
 
     def _write_report(self, relative_path: str, payload: dict[str, object]) -> None:
         """Write one JSON report under docs/planning."""
         report_path = self._project_root / relative_path
-        report_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        report_path.write_text(
+            json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
 
     def _load_jsonl(self, path: Path, model: type[T]) -> list[T]:
         """Load one JSONL file into a list of validated models."""
@@ -397,7 +506,9 @@ class CanonicalImportRegistryService:
         for key in sorted({group_key(item) for item in row_list}):
             group_rows = [item for item in row_list if group_key(item) == key]
             grouped[str(key)] = {
-                target.value: sum(1 for item in group_rows if item.runtime_target == target)
+                target.value: sum(
+                    1 for item in group_rows if item.runtime_target == target
+                )
                 for target in RuntimeTarget
             }
         return grouped
@@ -472,8 +583,14 @@ class CanonicalImportRegistryService:
         rationale: list[str],
     ) -> list[str]:
         """Infer playbook-family affinity tags from preserved item text."""
-        tokens = set(self._text_tokens(canonical_slug, category, summary, notes, *rationale))
-        matches = [family for family, keywords in PLAYBOOK_KEYWORDS.items() if any(keyword in tokens for keyword in keywords)]
+        tokens = set(
+            self._text_tokens(canonical_slug, category, summary, notes, *rationale)
+        )
+        matches = [
+            family
+            for family, keywords in PLAYBOOK_KEYWORDS.items()
+            if any(keyword in tokens for keyword in keywords)
+        ]
         return sorted(matches)
 
     def _infer_options_affinity(
@@ -508,7 +625,10 @@ class CanonicalImportRegistryService:
         rationale: list[str],
     ) -> bool:
         """Infer whether an item directly supports inventory and capital governance."""
-        if grammar_role in {GrammarRole.POSTURE_RISK_PERMISSION, GrammarRole.EXPRESSION_EXECUTION}:
+        if grammar_role in {
+            GrammarRole.POSTURE_RISK_PERMISSION,
+            GrammarRole.EXPRESSION_EXECUTION,
+        }:
             return True
         tokens = set(
             self._text_tokens(
@@ -528,14 +648,18 @@ class CanonicalImportRegistryService:
         """Tokenize text parts for deterministic affinity inference."""
         return re.findall(r"[a-z0-9_]+", " ".join(parts).lower())
 
-    def _infer_readiness(self, item: CanonicalImportRegistrySeedItem) -> ImplementationReadiness:
+    def _infer_readiness(
+        self, item: CanonicalImportRegistrySeedItem
+    ) -> ImplementationReadiness:
         """Infer a deterministic implementation-readiness state for one item."""
         if item.runtime_target == RuntimeTarget.IMPLEMENTED_RUNTIME:
             return ImplementationReadiness.IMPLEMENTED_RUNTIME
         if item.runtime_target == RuntimeTarget.EVIDENCE_ONLY:
             return ImplementationReadiness.EVIDENCE_ONLY
         source_forms = {record.source_form.value for record in item.provenance}
-        has_structured_source = any(source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms)
+        has_structured_source = any(
+            source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms
+        )
         has_explicit_io = bool(item.known_inputs or item.known_outputs)
         if has_structured_source and has_explicit_io:
             return ImplementationReadiness.READY_FOR_CONTRACT_IMPORT
@@ -553,14 +677,20 @@ class CanonicalImportRegistryService:
             return ["evidence_only_preservation"]
         source_forms = {record.source_form.value for record in item.provenance}
         blockers = ["missing_runtime_translation"]
-        if not any(source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms):
+        if not any(
+            source_form in STRUCTURED_SOURCE_FORMS for source_form in source_forms
+        ):
             blockers.append("needs_structured_source_form")
         if not item.known_inputs and not item.known_outputs:
             blockers.append("missing_explicit_io_contract")
-        blockers.extend(f"dependency:{dependency}" for dependency in sorted(item.known_dependencies))
+        blockers.extend(
+            f"dependency:{dependency}" for dependency in sorted(item.known_dependencies)
+        )
         return blockers
 
-    def _runtime_contract_status(self, item: CanonicalGrammarMappingSeedEntry) -> RuntimeContractStatus:
+    def _runtime_contract_status(
+        self, item: CanonicalGrammarMappingSeedEntry
+    ) -> RuntimeContractStatus:
         """Infer the runtime contract completeness state for one mapping entry."""
         if item.runtime_target == RuntimeTarget.IMPLEMENTED_RUNTIME:
             return RuntimeContractStatus.IMPLEMENTED_BINDING_CONTRACT

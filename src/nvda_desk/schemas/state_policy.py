@@ -242,7 +242,6 @@ class NonActionAuthorityPacket(BaseModel):
     override_dispositions: list[OverrideDisposition] = Field(default_factory=list)
 
 
-
 class ScorecardAxis(StrEnum):
     """Canonical Gate 62 scorecard axes for governed stability review."""
 
@@ -511,7 +510,9 @@ class CandidateLedgerRecord(BaseModel):
     role: CandidateRole
     locked_from_research: bool = True
     evidence_span_ids: list[str] = Field(default_factory=list)
-    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
+    adjudication_disposition: AdjudicationDisposition = (
+        AdjudicationDisposition.RESERVED_UNTOUCHED
+    )
     notes: list[str] = Field(default_factory=list)
 
 
@@ -522,9 +523,10 @@ class CandidateGovernanceAuthorityPacket(BaseModel):
 
     allowed_roles: list[CandidateRole] = Field(default_factory=list)
     comparison_outcomes: list[CandidateComparisonOutcome] = Field(default_factory=list)
-    adjudication_dispositions: list[AdjudicationDisposition] = Field(default_factory=list)
+    adjudication_dispositions: list[AdjudicationDisposition] = Field(
+        default_factory=list
+    )
     candidate_shape: CandidateSetShape
-
 
 
 class EventOptionsStressState(StrEnum):
@@ -595,7 +597,6 @@ class EventOptionsStressAuthorityPacket(BaseModel):
     policy_records: list[EventOptionsStressPolicyRecord] = Field(default_factory=list)
 
 
-
 class ModifierPriorityBand(StrEnum):
     """Deterministic precedence bands for Gate 71 control law."""
 
@@ -622,7 +623,9 @@ class KillSwitchCondition(StrEnum):
 
     EVENT_LIVE_HARD_BLOCK = "event_live_hard_block"
     EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA = "event_suppressed_with_negative_gamma"
-    PRECURSOR_CONTRADICTION_WITH_EXPIRY_DISTORTION = "precursor_contradiction_with_expiry_distortion"
+    PRECURSOR_CONTRADICTION_WITH_EXPIRY_DISTORTION = (
+        "precursor_contradiction_with_expiry_distortion"
+    )
     DATA_QUALITY_HARD_BLOCK = "data_quality_hard_block"
     OPERATOR_OR_BROKER_HARD_BLOCK = "operator_or_broker_hard_block"
 

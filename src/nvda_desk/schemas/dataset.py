@@ -212,9 +212,13 @@ class PreparedRuntimeSnapshot(BaseModel):
     front_volume_near_spot: float = Field(ge=0.0, default=0.0)
     next_volume_near_spot: float = Field(ge=0.0, default=0.0)
     nearby_strike_clusters: list[PreparedStrikeCluster] = Field(default_factory=list)
-    repeated_snapshot_sequence: list[PreparedSequencePoint] = Field(default_factory=list)
+    repeated_snapshot_sequence: list[PreparedSequencePoint] = Field(
+        default_factory=list
+    )
     tenor_iv_curve: list[PreparedTenorPoint] = Field(default_factory=list)
-    pin_progression_sequence: list[PreparedPinProgressionPoint] = Field(default_factory=list)
+    pin_progression_sequence: list[PreparedPinProgressionPoint] = Field(
+        default_factory=list
+    )
     lineage: PreparedRuntimeLineage
 
 

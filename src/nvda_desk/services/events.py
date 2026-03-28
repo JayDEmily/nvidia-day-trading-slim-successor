@@ -33,8 +33,16 @@ class EventsService:
 
     def list_sessions(self, limit: int = 20) -> SessionCalendarListResponse:
         with self._session_factory() as session:
-            rows = list(session.scalars(select(SessionCalendar).order_by(desc(SessionCalendar.session_date)).limit(limit)))
-        return SessionCalendarListResponse(sessions=[self._to_session_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    select(SessionCalendar)
+                    .order_by(desc(SessionCalendar.session_date))
+                    .limit(limit)
+                )
+            )
+        return SessionCalendarListResponse(
+            sessions=[self._to_session_payload(row) for row in rows]
+        )
 
     def create_event(self, payload: MarketEventCreate) -> MarketEventPayload:
         with self._session_factory() as session:
@@ -44,25 +52,49 @@ class EventsService:
             session.refresh(row)
             return self._to_event_payload(row)
 
-    def list_events(self, symbol: str | None = None, limit: int = 20) -> MarketEventListResponse:
+    def list_events(
+        self, symbol: str | None = None, limit: int = 20
+    ) -> MarketEventListResponse:
         with self._session_factory() as session:
             stmt = select(MarketEvent)
             if symbol:
-                stmt = stmt.where(or_(MarketEvent.symbol == symbol, MarketEvent.symbol.is_(None)))
-            rows = list(session.scalars(stmt.order_by(desc(MarketEvent.event_ts)).limit(limit)))
-        return MarketEventListResponse(events=[self._to_event_payload(row) for row in rows])
+                stmt = stmt.where(
+                    or_(MarketEvent.symbol == symbol, MarketEvent.symbol.is_(None))
+                )
+            rows = list(
+                session.scalars(stmt.order_by(desc(MarketEvent.event_ts)).limit(limit))
+            )
+        return MarketEventListResponse(
+            events=[self._to_event_payload(row) for row in rows]
+        )
 
-    def get_proximity(self, *, requested_at: datetime, symbol: str | None = None) -> EventProximityResponse:
+    def get_proximity(
+        self, *, requested_at: datetime, symbol: str | None = None
+    ) -> EventProximityResponse:
         window_before = requested_at - timedelta(hours=4)
         window_after = requested_at + timedelta(hours=24)
         with self._session_factory() as session:
-            stmt = select(MarketEvent).where(MarketEvent.event_ts >= window_before).where(MarketEvent.event_ts <= window_after)
+            stmt = (
+                select(MarketEvent)
+                .where(MarketEvent.event_ts >= window_before)
+                .where(MarketEvent.event_ts <= window_after)
+            )
             if symbol:
-                stmt = stmt.where(or_(MarketEvent.symbol == symbol, MarketEvent.symbol.is_(None)))
+                stmt = stmt.where(
+                    or_(MarketEvent.symbol == symbol, MarketEvent.symbol.is_(None))
+                )
             rows = list(session.scalars(stmt.order_by(asc(MarketEvent.event_ts))))
-        aware_requested_at = requested_at.astimezone(UTC) if requested_at.tzinfo else requested_at.replace(tzinfo=UTC)
-        recent = [row for row in rows if self._aware(row.event_ts) <= aware_requested_at]
-        upcoming = [row for row in rows if self._aware(row.event_ts) > aware_requested_at]
+        aware_requested_at = (
+            requested_at.astimezone(UTC)
+            if requested_at.tzinfo
+            else requested_at.replace(tzinfo=UTC)
+        )
+        recent = [
+            row for row in rows if self._aware(row.event_ts) <= aware_requested_at
+        ]
+        upcoming = [
+            row for row in rows if self._aware(row.event_ts) > aware_requested_at
+        ]
         risk_window_open = any(row.impact_level in {"medium", "high"} for row in rows)
         return EventProximityResponse(
             requested_at=aware_requested_at,

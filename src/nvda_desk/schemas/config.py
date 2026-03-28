@@ -85,20 +85,17 @@ class StrategyVariantPayload(BaseModel):
     description: str
     enabled_module_counts: dict[str, int] = Field(default_factory=dict)
     weight_overrides: dict[str, float] = Field(default_factory=dict)
-    coefficient_overrides: dict[str, dict[str, float | int | str | bool]] = Field(default_factory=dict)
+    coefficient_overrides: dict[str, dict[str, float | int | str | bool]] = Field(
+        default_factory=dict
+    )
     runtime_overrides: dict[str, object] = Field(default_factory=dict)
     supported_sandbox_overrides: list[str] = Field(default_factory=list)
-
-
 
 
 class DeskCalendarAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 66 desk-calendar packet."""
 
     authority: DeskCalendarAuthorityPacket
-
-
-
 
 
 class PrecursorUniverseAuthorityResponse(BaseModel):
@@ -111,8 +108,6 @@ class PrecursorStitchingAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 75 precursor-stitching packet."""
 
     authority: PrecursorStitchingAuthorityPacket
-
-
 
 
 class PhaseCarryoverPolicyAuthorityResponse(BaseModel):
@@ -137,7 +132,6 @@ class NonActionAuthorityResponse(BaseModel):
     """Future config/API hook for the frozen Gate 61 non-action authority packet."""
 
     authority: NonActionAuthorityPacket
-
 
 
 class StabilityAuthorityResponse(BaseModel):

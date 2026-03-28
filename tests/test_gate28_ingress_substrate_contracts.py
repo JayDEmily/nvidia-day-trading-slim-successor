@@ -19,8 +19,12 @@ from nvda_desk.schemas.imported_modules.tranche_a import (
     RealizedVolatilityEngineContractOutput,
     TrancheAUpstreamContext,
 )
-from nvda_desk.services.imported_modules.market_substrate import MarketSubstrateContractService
-from nvda_desk.services.imported_modules.tranche_a import TrancheAUpstreamContractService
+from nvda_desk.services.imported_modules.market_substrate import (
+    MarketSubstrateContractService,
+)
+from nvda_desk.services.imported_modules.tranche_a import (
+    TrancheAUpstreamContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
@@ -118,11 +122,19 @@ def test_gate28_coverage_is_closed_in_frozen_order_with_honest_ingress_fences() 
     vwap_accumulator = cast(VwapAccumulatorContractOutput, outputs["vwap_accumulator"])
     vwap_roc = cast(VwapRocContractOutput, outputs["vwap_roc"])
     macro_data = cast(MacroDataCaptureContractOutput, outputs["macro_data_capture"])
-    realized_vol = cast(RealizedVolatilityEngineContractOutput, outputs["realized_volatility_engine"])
+    realized_vol = cast(
+        RealizedVolatilityEngineContractOutput, outputs["realized_volatility_engine"]
+    )
 
     assert event_flag.grammar_role == DmpGrammarRole.TEMPORAL_CONTEXT.value
     assert event_flag.dependency_fences[0].status.value == "proxied_from_runtime"
-    assert vwap_accumulator.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY
+    assert (
+        vwap_accumulator.computation_mode
+        is ContractComputationMode.FENCED_CONTRACT_ONLY
+    )
     assert vwap_roc.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY
-    assert macro_data.computation_mode is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+    assert (
+        macro_data.computation_mode
+        is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+    )
     assert realized_vol.proxy_basis == ["front_realised_vol", "next_realised_vol"]

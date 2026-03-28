@@ -54,6 +54,62 @@ class _PolicyApplication:
     notes: tuple[str, ...] = ()
 
 
+def project_day_phase_state(temporal: TemporalContextOutput) -> DayPhaseState:
+    """Return the canonical Gate 69 day-phase projection for one temporal snapshot."""
+
+    mapping = {
+        "open_disorder": DayPhaseState.OPENING_DISORDER,
+        "early_anchor": DayPhaseState.OPENING_RESOLUTION,
+        "mid_morning": DayPhaseState.TREND_WINDOW,
+        "lunch": DayPhaseState.MIDDAY_COMPRESSION,
+        "trend_window": DayPhaseState.TREND_WINDOW,
+        "late_session": DayPhaseState.LATE_SESSION,
+        "close": DayPhaseState.CLOSE_AUCTION,
+        "after_hours": DayPhaseState.POST_CLOSE,
+        "closed": DayPhaseState.POST_CLOSE,
+        "pre_market": DayPhaseState.OPENING_RESOLUTION,
+    }
+    return mapping.get(temporal.desk_window, DayPhaseState.TREND_WINDOW)
+
+
+def project_carry_horizon_state(temporal: TemporalContextOutput) -> CarryHorizonState:
+    """Return the canonical Gate 69 carry-horizon projection for one temporal snapshot."""
+
+    if temporal.event_proximity_state in {
+        "event_same_day",
+        "event_scheduled",
+    } and temporal.desk_window in {"late_session", "close"}:
+        return CarryHorizonState.EVENT_CARRY_SETUP
+    if temporal.desk_window == "close":
+        return CarryHorizonState.OVERNIGHT_SETUP
+    return CarryHorizonState.INTRADAY_ONLY
+
+
+def project_event_option_state_labels(
+    temporal: TemporalContextOutput,
+    options_flow: OptionsFlowContextOutput,
+) -> set[str]:
+    """Return the canonical Gate 70 event/options-stress labels for one runtime snapshot."""
+
+    labels: set[str] = set()
+    if temporal.event_window_state == "event_live_window":
+        labels.add("event_live")
+    elif temporal.event_window_state == "event_imminent_window":
+        labels.add("event_imminent")
+    if options_flow.options_behavior_cluster == "event_suppressed":
+        labels.add("event_suppressed")
+    if options_flow.gamma_state is GammaState.DESTABILISING:
+        labels.add("negative_gamma_stress")
+    if (
+        options_flow.pin_risk_state in {"pin_risk_present", "pin_risk_high"}
+        or options_flow.options_behavior_cluster == "pin_reversion_ready"
+    ):
+        labels.add("pin_risk")
+    if temporal.expiry_cycle_state == "expiry_day":
+        labels.add("expiry_distortion")
+    return labels
+
+
 class StateConditionedModifierService:
     """Apply frozen Gate 78 modifier law without changing cognition grammar.
 
@@ -120,10 +176,14 @@ class StateConditionedModifierService:
     ) -> ModifierRuntimePacket:
         """Return one typed Gate 78 modifier packet for this runtime snapshot."""
 
-        active_state_fields = self._active_state_fields(temporal, regime, options_flow, posture)
+        active_state_fields = self._active_state_fields(
+            temporal, regime, options_flow, posture
+        )
         policy_applications: list[_PolicyApplication] = []
         active_policy_ids: list[str] = []
-        active_precedence_bands: set[ModifierPriorityBand] = {ModifierPriorityBand.BASELINE}
+        active_precedence_bands: set[ModifierPriorityBand] = {
+            ModifierPriorityBand.BASELINE
+        }
         applied_combination_laws: set[CombinationLaw] = set()
         suppressed_state_labels: list[str] = []
         conflict_classes: list[SignalConflictClass] = []
@@ -134,9 +194,14 @@ class StateConditionedModifierService:
 
         day_phase_state = self._day_phase_state(temporal)
         carry_horizon_state = self._carry_horizon_state(temporal)
-        if day_phase_state in {DayPhaseState.LATE_SESSION, DayPhaseState.CLOSE_AUCTION} or carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY:
+        if (
+            day_phase_state in {DayPhaseState.LATE_SESSION, DayPhaseState.CLOSE_AUCTION}
+            or carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY
+        ):
             active_precedence_bands.add(ModifierPriorityBand.PHASE_CARRY)
-            policy_id = f"phase_carry:{day_phase_state.value}:{carry_horizon_state.value}"
+            policy_id = (
+                f"phase_carry:{day_phase_state.value}:{carry_horizon_state.value}"
+            )
             active_policy_ids.append(policy_id)
             applied_combination_laws.add(CombinationLaw.MULTIPLY_THEN_CLAMP)
             policy_applications.append(
@@ -145,8 +210,14 @@ class StateConditionedModifierService:
                     band=ModifierPriorityBand.PHASE_CARRY,
                     target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                     transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
-                    scale=0.50 if carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY else 0.70,
-                    notes=("late_or_carry_sensitive_phase_compresses_fresh_deployable_capital",),
+                    scale=(
+                        0.50
+                        if carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY
+                        else 0.70
+                    ),
+                    notes=(
+                        "late_or_carry_sensitive_phase_compresses_fresh_deployable_capital",
+                    ),
                 )
             )
             policy_applications.append(
@@ -170,19 +241,34 @@ class StateConditionedModifierService:
             triggered_kill_switch = KillSwitchCondition.EVENT_LIVE_HARD_BLOCK
             stand_down_class = NonActionClass.EVENT_RISK_STAND_DOWN
             degradation_step = DegradationStep.VETO
-            suppressed_state_labels.extend(["phase_carry", "precursor", "regime", "baseline"])
+            suppressed_state_labels.extend(
+                ["phase_carry", "precursor", "regime", "baseline"]
+            )
             notes.append("event_live_hard_block_engaged")
-        if "event_suppressed" in event_states and "negative_gamma_stress" in event_states and triggered_kill_switch is None:
-            triggered_kill_switch = KillSwitchCondition.EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA
+        if (
+            "event_suppressed" in event_states
+            and "negative_gamma_stress" in event_states
+            and triggered_kill_switch is None
+        ):
+            triggered_kill_switch = (
+                KillSwitchCondition.EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA
+            )
             stand_down_class = NonActionClass.OPTIONS_FLOW_STAND_DOWN
             degradation_step = DegradationStep.VETO
-            suppressed_state_labels.extend(["phase_carry", "precursor", "regime", "baseline"])
+            suppressed_state_labels.extend(
+                ["phase_carry", "precursor", "regime", "baseline"]
+            )
             notes.append("event_suppressed_with_negative_gamma_engaged_kill_switch")
         if triggered_kill_switch is None:
             if "negative_gamma_stress" in event_states:
                 policy_id = "event_options:negative_gamma_stress"
                 active_policy_ids.append(policy_id)
-                applied_combination_laws.update({CombinationLaw.MULTIPLY_THEN_CLAMP, CombinationLaw.BLOCK_OVERRIDES_SCALE})
+                applied_combination_laws.update(
+                    {
+                        CombinationLaw.MULTIPLY_THEN_CLAMP,
+                        CombinationLaw.BLOCK_OVERRIDES_SCALE,
+                    }
+                )
                 policy_applications.append(
                     _PolicyApplication(
                         policy_id=policy_id,
@@ -214,7 +300,11 @@ class StateConditionedModifierService:
                     )
                 )
                 conflict_classes.append(SignalConflictClass.POSTURE_DEGRADATION)
-                degradation_step = max(degradation_step, DegradationStep.SIZE_REDUCED, key=self._degradation_rank)
+                degradation_step = max(
+                    degradation_step,
+                    DegradationStep.SIZE_REDUCED,
+                    key=self._degradation_rank,
+                )
             if "pin_risk" in event_states:
                 policy_id = "event_options:pin_risk"
                 active_policy_ids.append(policy_id)
@@ -232,7 +322,12 @@ class StateConditionedModifierService:
             if "event_imminent" in event_states:
                 policy_id = "event_options:event_imminent"
                 active_policy_ids.append(policy_id)
-                applied_combination_laws.update({CombinationLaw.MULTIPLY_THEN_CLAMP, CombinationLaw.ADDITIVE_OFFSET_THEN_CLAMP})
+                applied_combination_laws.update(
+                    {
+                        CombinationLaw.MULTIPLY_THEN_CLAMP,
+                        CombinationLaw.ADDITIVE_OFFSET_THEN_CLAMP,
+                    }
+                )
                 policy_applications.append(
                     _PolicyApplication(
                         policy_id=policy_id,
@@ -253,20 +348,30 @@ class StateConditionedModifierService:
                         notes=("event_imminent_tightens_entry_gate_floor",),
                     )
                 )
-                degradation_step = max(degradation_step, DegradationStep.CONFIDENCE_REDUCED, key=self._degradation_rank)
+                degradation_step = max(
+                    degradation_step,
+                    DegradationStep.CONFIDENCE_REDUCED,
+                    key=self._degradation_rank,
+                )
 
         precursor = temporal_input.precursor_runtime_packet
         if precursor is not None:
             active_precedence_bands.add(ModifierPriorityBand.PRECURSOR)
             if precursor.contradiction_class is not PrecursorContradictionClass.NONE:
                 conflict_classes.append(SignalConflictClass.OBSERVATION_DIVERGENCE)
-                notes.append(f"precursor_contradiction:{precursor.contradiction_class.value}")
+                notes.append(
+                    f"precursor_contradiction:{precursor.contradiction_class.value}"
+                )
             if precursor.posture_state is PrecursorPostureState.UNRESOLVED_CONTEXT:
-                triggered_kill_switch = triggered_kill_switch or KillSwitchCondition.DATA_QUALITY_HARD_BLOCK
+                triggered_kill_switch = (
+                    triggered_kill_switch or KillSwitchCondition.DATA_QUALITY_HARD_BLOCK
+                )
                 stand_down_class = NonActionClass.DATA_QUALITY_STAND_DOWN
                 degradation_step = DegradationStep.VETO
                 suppressed_state_labels.extend(["regime", "baseline"])
-                notes.append("precursor_unresolved_context_forced_data_quality_hard_block")
+                notes.append(
+                    "precursor_unresolved_context_forced_data_quality_hard_block"
+                )
             elif triggered_kill_switch is None:
                 if precursor.posture_state is PrecursorPostureState.STAND_DOWN_PRESSURE:
                     policy_id = "precursor:stand_down_pressure"
@@ -279,11 +384,17 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.40,
-                            notes=("precursor_stand_down_pressure_compresses_deployable_capital",),
+                            notes=(
+                                "precursor_stand_down_pressure_compresses_deployable_capital",
+                            ),
                         )
                     )
                     stand_down_class = NonActionClass.DATA_QUALITY_STAND_DOWN
-                    degradation_step = max(degradation_step, DegradationStep.STAND_DOWN, key=self._degradation_rank)
+                    degradation_step = max(
+                        degradation_step,
+                        DegradationStep.STAND_DOWN,
+                        key=self._degradation_rank,
+                    )
                 elif precursor.posture_state is PrecursorPostureState.TIGHTENED_POSTURE:
                     policy_id = "precursor:tightened_posture"
                     active_policy_ids.append(policy_id)
@@ -295,11 +406,19 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.75,
-                            notes=("precursor_tightened_posture_reduces_deployable_capital",),
+                            notes=(
+                                "precursor_tightened_posture_reduces_deployable_capital",
+                            ),
                         )
                     )
-                    degradation_step = max(degradation_step, DegradationStep.CONFIRMATION_TIGHTENED, key=self._degradation_rank)
-                elif precursor.posture_state is PrecursorPostureState.DEGRADED_CONFIDENCE:
+                    degradation_step = max(
+                        degradation_step,
+                        DegradationStep.CONFIRMATION_TIGHTENED,
+                        key=self._degradation_rank,
+                    )
+                elif (
+                    precursor.posture_state is PrecursorPostureState.DEGRADED_CONFIDENCE
+                ):
                     policy_id = "precursor:degraded_confidence"
                     active_policy_ids.append(policy_id)
                     applied_combination_laws.add(CombinationLaw.MULTIPLY_THEN_CLAMP)
@@ -310,7 +429,9 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.85,
-                            notes=("precursor_degraded_confidence_reduces_deployable_capital",),
+                            notes=(
+                                "precursor_degraded_confidence_reduces_deployable_capital",
+                            ),
                         )
                     )
 
@@ -334,7 +455,11 @@ class StateConditionedModifierService:
                 )
             )
             conflict_classes.append(SignalConflictClass.POSTURE_DEGRADATION)
-            degradation_step = max(degradation_step, DegradationStep.SIZE_REDUCED, key=self._degradation_rank)
+            degradation_step = max(
+                degradation_step,
+                DegradationStep.SIZE_REDUCED,
+                key=self._degradation_rank,
+            )
 
         resolved_surfaces, effective_lineage = self._resolve_surfaces(
             policy_applications=policy_applications,
@@ -348,7 +473,9 @@ class StateConditionedModifierService:
                 active_policy_ids=active_policy_ids,
                 triggered_kill_switch=triggered_kill_switch,
             )
-            effective_lineage = self._hard_block_lineage(resolved_surfaces, active_policy_ids)
+            effective_lineage = self._hard_block_lineage(
+                resolved_surfaces, active_policy_ids
+            )
             active_precedence_bands.add(ModifierPriorityBand.KILL_SWITCH)
             applied_combination_laws.add(CombinationLaw.BLOCK_OVERRIDES_SCALE)
             conflict_classes.append(SignalConflictClass.HARD_VETO_CONFLICT)
@@ -359,21 +486,33 @@ class StateConditionedModifierService:
             active_policy_ids=active_policy_ids,
             resolved_surfaces=resolved_surfaces,
             effective_lineage=effective_lineage,
-            active_precedence_bands=sorted(active_precedence_bands, key=self._band_sort),
-            applied_combination_laws=sorted(applied_combination_laws, key=lambda item: item.value),
+            active_precedence_bands=sorted(
+                active_precedence_bands, key=self._band_sort
+            ),
+            applied_combination_laws=sorted(
+                applied_combination_laws, key=lambda item: item.value
+            ),
             triggered_kill_switch=triggered_kill_switch,
             suppressed_state_labels=sorted(set(suppressed_state_labels)),
             stand_down_class=stand_down_class,
             conflict_classes=sorted(set(conflict_classes), key=lambda item: item.value),
             degradation_step=degradation_step,
-            override_disposition=OverrideDisposition.FORBIDDEN if triggered_kill_switch else OverrideDisposition.NOT_APPLICABLE,
+            override_disposition=(
+                OverrideDisposition.FORBIDDEN
+                if triggered_kill_switch
+                else OverrideDisposition.NOT_APPLICABLE
+            ),
             notes=notes,
         )
 
-    def apply_to_posture(self, posture: PostureRiskOutput, packet: ModifierRuntimePacket) -> PostureRiskOutput:
+    def apply_to_posture(
+        self, posture: PostureRiskOutput, packet: ModifierRuntimePacket
+    ) -> PostureRiskOutput:
         """Return posture output with bounded Gate 78 policy effects applied."""
 
-        target_fresh = self._resolved_numeric(packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT)
+        target_fresh = self._resolved_numeric(
+            packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
+        )
         reasons = list(posture.reasons)
         if packet.active_policy_ids:
             reasons.append(f"modifier_runtime_policies:{packet.active_policy_ids}")
@@ -382,7 +521,9 @@ class StateConditionedModifierService:
         if packet.stand_down_class is not None:
             reasons.append(f"stand_down_class:{packet.stand_down_class.value}")
         if packet.conflict_classes:
-            reasons.append(f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}")
+            reasons.append(
+                f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}"
+            )
         if target_fresh is None:
             target_fresh = posture.fresh_deployable_capital_pct
 
@@ -394,7 +535,10 @@ class StateConditionedModifierService:
             "override_disposition": packet.override_disposition,
             "reasons": reasons,
         }
-        if packet.triggered_kill_switch is not None or packet.degradation_step in {DegradationStep.VETO, DegradationStep.STAND_DOWN}:
+        if packet.triggered_kill_switch is not None or packet.degradation_step in {
+            DegradationStep.VETO,
+            DegradationStep.STAND_DOWN,
+        }:
             update.update(
                 {
                     "permission_state": PermissionState.BLOCK,
@@ -405,14 +549,22 @@ class StateConditionedModifierService:
                 }
             )
         else:
-            adjusted_fresh = round(min(posture.fresh_deployable_capital_pct, target_fresh), 4)
-            adjusted_overnight = round(min(posture.overnight_deployable_capital_pct, adjusted_fresh), 4)
+            adjusted_fresh = round(
+                min(posture.fresh_deployable_capital_pct, target_fresh), 4
+            )
+            adjusted_overnight = round(
+                min(posture.overnight_deployable_capital_pct, adjusted_fresh), 4
+            )
             update["fresh_deployable_capital_pct"] = adjusted_fresh
             update["overnight_deployable_capital_pct"] = adjusted_overnight
-            if posture.permission_state is PermissionState.ALLOW and packet.degradation_step in {
-                DegradationStep.CONFIDENCE_REDUCED,
-                DegradationStep.WATCH_ONLY,
-            }:
+            if (
+                posture.permission_state is PermissionState.ALLOW
+                and packet.degradation_step
+                in {
+                    DegradationStep.CONFIDENCE_REDUCED,
+                    DegradationStep.WATCH_ONLY,
+                }
+            ):
                 update["permission_state"] = PermissionState.DERISK
                 update["posture_label"] = "state_conditioned_derisk"
                 if posture.inventory_action_bias == "add":
@@ -426,8 +578,12 @@ class StateConditionedModifierService:
     ) -> ExecutionExpressionOutput:
         """Return execution output with additive Gate 78 policy effects applied."""
 
-        hedge_required = self._resolved_boolean(packet, MutableRuntimeSurface.HEDGE_REQUIRED)
-        target_fresh = self._resolved_numeric(packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT)
+        hedge_required = self._resolved_boolean(
+            packet, MutableRuntimeSurface.HEDGE_REQUIRED
+        )
+        target_fresh = self._resolved_numeric(
+            packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
+        )
         update: dict[str, object] = {"modifier_runtime_packet": packet}
         reasons = list(execution.reasons)
         if hedge_required and not execution.hedge_required:
@@ -438,7 +594,9 @@ class StateConditionedModifierService:
                 exit_reasons.append("modifier_runtime_required_hedge")
             update["exit_reasons"] = exit_reasons
         if target_fresh is not None:
-            update["target_fresh_deployable_pct"] = round(min(execution.target_fresh_deployable_pct, target_fresh), 4)
+            update["target_fresh_deployable_pct"] = round(
+                min(execution.target_fresh_deployable_pct, target_fresh), 4
+            )
         update["reasons"] = reasons
         return execution.model_copy(update=update)
 
@@ -458,17 +616,30 @@ class StateConditionedModifierService:
         for application in policy_applications:
             grouped.setdefault(application.target_surface, []).append(application)
 
-        for surface in sorted(numeric_surfaces | boolean_surfaces, key=lambda item: item.value):
-            policies = sorted(grouped.get(surface, []), key=lambda item: self._band_sort(item.band), reverse=True)
+        for surface in sorted(
+            numeric_surfaces | boolean_surfaces, key=lambda item: item.value
+        ):
+            policies = sorted(
+                grouped.get(surface, []),
+                key=lambda item: self._band_sort(item.band),
+                reverse=True,
+            )
             if surface in self._BASELINE_NUMERIC:
                 baseline_value = self._BASELINE_NUMERIC[surface]
                 value = baseline_value
                 notes: list[str] = []
                 clamped = False
                 for policy in policies:
-                    if policy.transform_type is ModifierTransformType.MULTIPLICATIVE_SCALE and policy.scale is not None:
+                    if (
+                        policy.transform_type
+                        is ModifierTransformType.MULTIPLICATIVE_SCALE
+                        and policy.scale is not None
+                    ):
                         value *= policy.scale
-                    elif policy.transform_type is ModifierTransformType.ADDITIVE_OFFSET and policy.additive_offset is not None:
+                    elif (
+                        policy.transform_type is ModifierTransformType.ADDITIVE_OFFSET
+                        and policy.additive_offset is not None
+                    ):
                         value += policy.additive_offset
                     if policy.clamp_floor is not None and value < policy.clamp_floor:
                         value = policy.clamp_floor
@@ -485,7 +656,9 @@ class StateConditionedModifierService:
                 if cap is not None and value > cap:
                     value = cap
                     clamped = True
-                winning_band = policies[0].band if policies else ModifierPriorityBand.BASELINE
+                winning_band = (
+                    policies[0].band if policies else ModifierPriorityBand.BASELINE
+                )
                 source_policy_ids = [policy.policy_id for policy in policies]
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
@@ -503,7 +676,11 @@ class StateConditionedModifierService:
                         target_surface=surface,
                         baseline_reference=f"baseline:{surface.value}",
                         active_modifier_policy_ids=source_policy_ids,
-                        explanation_id=None if not source_policy_ids else f"effective:{surface.value}:{source_policy_ids[0]}",
+                        explanation_id=(
+                            None
+                            if not source_policy_ids
+                            else f"effective:{surface.value}:{source_policy_ids[0]}"
+                        ),
                     )
                 )
             else:
@@ -514,7 +691,9 @@ class StateConditionedModifierService:
                     if policy.boolean_value is not None:
                         value = value or policy.boolean_value
                     notes.extend(policy.notes)
-                winning_band = policies[0].band if policies else ModifierPriorityBand.BASELINE
+                winning_band = (
+                    policies[0].band if policies else ModifierPriorityBand.BASELINE
+                )
                 source_policy_ids = [policy.policy_id for policy in policies]
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
@@ -531,7 +710,11 @@ class StateConditionedModifierService:
                         target_surface=surface,
                         baseline_reference=f"baseline:{surface.value}",
                         active_modifier_policy_ids=source_policy_ids,
-                        explanation_id=None if not source_policy_ids else f"effective:{surface.value}:{source_policy_ids[0]}",
+                        explanation_id=(
+                            None
+                            if not source_policy_ids
+                            else f"effective:{surface.value}:{source_policy_ids[0]}"
+                        ),
                     )
                 )
         if triggered_kill_switch is not None and not active_policy_ids:
@@ -547,15 +730,24 @@ class StateConditionedModifierService:
     ) -> list[ResolvedRuntimeSurfaceValue]:
         updated: list[ResolvedRuntimeSurfaceValue] = []
         for surface in resolved_surfaces:
-            if surface.target_surface is MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT:
+            if (
+                surface.target_surface
+                is MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
+            ):
                 updated.append(
                     surface.model_copy(
                         update={
                             "effective_numeric_value": 0.0,
                             "winning_precedence_band": ModifierPriorityBand.KILL_SWITCH,
-                            "source_policy_ids": [*surface.source_policy_ids, triggered_kill_switch.value],
+                            "source_policy_ids": [
+                                *surface.source_policy_ids,
+                                triggered_kill_switch.value,
+                            ],
                             "clamped": True,
-                            "notes": [*surface.notes, "kill_switch_zeroed_fresh_deployable_capital"],
+                            "notes": [
+                                *surface.notes,
+                                "kill_switch_zeroed_fresh_deployable_capital",
+                            ],
                         }
                     )
                 )
@@ -572,19 +764,26 @@ class StateConditionedModifierService:
             EffectiveCoefficientLineage(
                 target_surface=surface.target_surface,
                 baseline_reference=f"baseline:{surface.target_surface.value}",
-                active_modifier_policy_ids=[*active_policy_ids, *surface.source_policy_ids],
+                active_modifier_policy_ids=[
+                    *active_policy_ids,
+                    *surface.source_policy_ids,
+                ],
                 explanation_id=f"effective:{surface.target_surface.value}:kill_switch",
             )
             for surface in resolved_surfaces
         ]
 
-    def _resolved_numeric(self, packet: ModifierRuntimePacket, surface: MutableRuntimeSurface) -> float | None:
+    def _resolved_numeric(
+        self, packet: ModifierRuntimePacket, surface: MutableRuntimeSurface
+    ) -> float | None:
         for item in packet.resolved_surfaces:
             if item.target_surface is surface:
                 return item.effective_numeric_value
         return None
 
-    def _resolved_boolean(self, packet: ModifierRuntimePacket, surface: MutableRuntimeSurface) -> bool | None:
+    def _resolved_boolean(
+        self, packet: ModifierRuntimePacket, surface: MutableRuntimeSurface
+    ) -> bool | None:
         for item in packet.resolved_surfaces:
             if item.target_surface is surface:
                 return item.effective_boolean_value
@@ -627,46 +826,19 @@ class StateConditionedModifierService:
         return sorted(fields, key=lambda item: item.value)
 
     def _day_phase_state(self, temporal: TemporalContextOutput) -> DayPhaseState:
-        mapping = {
-            "open_disorder": DayPhaseState.OPENING_DISORDER,
-            "early_anchor": DayPhaseState.OPENING_RESOLUTION,
-            "mid_morning": DayPhaseState.TREND_WINDOW,
-            "lunch": DayPhaseState.MIDDAY_COMPRESSION,
-            "trend_window": DayPhaseState.TREND_WINDOW,
-            "late_session": DayPhaseState.LATE_SESSION,
-            "close": DayPhaseState.CLOSE_AUCTION,
-            "after_hours": DayPhaseState.POST_CLOSE,
-            "closed": DayPhaseState.POST_CLOSE,
-            "pre_market": DayPhaseState.OPENING_RESOLUTION,
-        }
-        return mapping.get(temporal.desk_window, DayPhaseState.TREND_WINDOW)
+        return project_day_phase_state(temporal)
 
-    def _carry_horizon_state(self, temporal: TemporalContextOutput) -> CarryHorizonState:
-        if temporal.event_proximity_state in {"event_same_day", "event_scheduled"} and temporal.desk_window in {"late_session", "close"}:
-            return CarryHorizonState.EVENT_CARRY_SETUP
-        if temporal.desk_window == "close":
-            return CarryHorizonState.OVERNIGHT_SETUP
-        return CarryHorizonState.INTRADAY_ONLY
+    def _carry_horizon_state(
+        self, temporal: TemporalContextOutput
+    ) -> CarryHorizonState:
+        return project_carry_horizon_state(temporal)
 
     def _event_option_state_labels(
         self,
         temporal: TemporalContextOutput,
         options_flow: OptionsFlowContextOutput,
     ) -> set[str]:
-        labels: set[str] = set()
-        if temporal.event_window_state == "event_live_window":
-            labels.add("event_live")
-        elif temporal.event_window_state == "event_imminent_window":
-            labels.add("event_imminent")
-        if options_flow.options_behavior_cluster == "event_suppressed":
-            labels.add("event_suppressed")
-        if options_flow.gamma_state is GammaState.DESTABILISING:
-            labels.add("negative_gamma_stress")
-        if options_flow.pin_risk_state in {"pin_risk_present", "pin_risk_high"} or options_flow.options_behavior_cluster == "pin_reversion_ready":
-            labels.add("pin_risk")
-        if temporal.expiry_cycle_state == "expiry_day":
-            labels.add("expiry_distortion")
-        return labels
+        return project_event_option_state_labels(temporal, options_flow)
 
     def _band_sort(self, band: ModifierPriorityBand) -> int:
         return self._PRECEDENCE_ORDER[band]

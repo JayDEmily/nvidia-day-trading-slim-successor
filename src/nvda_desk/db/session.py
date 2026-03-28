@@ -12,7 +12,6 @@ def create_engine_from_url(database_url: str) -> Engine:
     return create_engine(database_url, future=True, connect_args=connect_args)
 
 
-
 def create_session_factory(database_url: str) -> sessionmaker[Session]:
     engine = create_engine_from_url(database_url)
     return sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)

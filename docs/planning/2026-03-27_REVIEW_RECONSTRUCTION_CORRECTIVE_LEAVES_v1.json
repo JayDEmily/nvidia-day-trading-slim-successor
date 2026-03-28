@@ -667,10 +667,174 @@
       "merge_gate": "Gate 86 must close the corrective pass with proof, not with prose.",
       "status": "complete",
       "execution_sequence": 16
+    },
+    {
+      "id": "LEAF-G87-017",
+      "gate": "Gate 87",
+      "title": "Repair Gate 69 predecessor-pack closeout evidence drift",
+      "prerequisites": [
+        "LEAF-G86-016"
+      ],
+      "scope": "Make the preserved V6 successor pack internally consistent again without reopening Gates 59-79.",
+      "files_expected": [
+        "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
+        "tests/test_gate69_phase_carry_policy.py"
+      ],
+      "allowed_touches": [
+        "docs/planning/**",
+        "tests/**"
+      ],
+      "must_not_touch": [
+        "src/**",
+        "frontend/**",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Restore the missing Gate 69 closeout note in the preserved V6 successor-pack gates file.",
+        "Keep the predecessor pack preserved as historical evidence rather than reactivating it."
+      ],
+      "validation_tasks": [
+        "Prove the Gate 69 integrity test passes against the restored predecessor-pack evidence."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate69_phase_carry_policy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "The preserved predecessor pack and its integrity tests agree again.",
+      "merge_gate": "Gate 87 must repair lineage/control truth without reopening the successor pack.",
+      "status": "complete",
+      "execution_sequence": 17
+    },
+    {
+      "id": "LEAF-G87-018",
+      "gate": "Gate 87",
+      "title": "Share Gate 82 projector law between modifier runtime and review reconstruction",
+      "prerequisites": [
+        "LEAF-G87-017"
+      ],
+      "scope": "Remove divergent Gate 82 review reconstruction heuristics and project review surfaces from the same canonical temporal/options law used by modifier runtime.",
+      "files_expected": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate82_review_surface_runtime_emission.py"
+      ],
+      "allowed_touches": [
+        "src/**",
+        "tests/**",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Extract canonical phase/carry and event/options projector helpers from modifier runtime.",
+        "Make review surface emission consume those exact helpers.",
+        "Adjust Gate 82 tests to prove parity with runtime truth rather than post-hoc heuristics."
+      ],
+      "validation_tasks": [
+        "Run the Gate 82 test set and the linked runtime regression tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate82_review_surface_runtime_emission.py tests/test_gate78_modifier_runtime_integration.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Gate 82 review packets project from the same canonical law source as runtime.",
+      "merge_gate": "No divergent review-only phase/carry mapping may remain after Gate 87.",
+      "status": "complete",
+      "execution_sequence": 18
+    },
+    {
+      "id": "LEAF-G87-019",
+      "gate": "Gate 87",
+      "title": "Require explicit comparison context before releasing candidate governance",
+      "prerequisites": [
+        "LEAF-G87-018"
+      ],
+      "scope": "Stop Gate 83 candidate governance from inventing champion/challenger identities when runtime review has no bounded comparison context.",
+      "files_expected": [
+        "src/nvda_desk/schemas/review.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate83_review_governance_surface_builders.py"
+      ],
+      "allowed_touches": [
+        "src/**",
+        "tests/**",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Add an explicit typed comparison-context input for candidate-governance release.",
+        "Keep candidate governance reserved when promotion evidence exists but bounded comparison context does not.",
+        "Update Gate 83 docs/tests so they describe the honest release condition."
+      ],
+      "validation_tasks": [
+        "Run the Gate 83 governance builder tests and linked review regression tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate77_review_failure_taxonomy.py"
+      ],
+      "full_suite_required": false,
+      "pass_gate": "Candidate governance no longer emits placeholder IDs from runtime-only review.",
+      "merge_gate": "Gate 87 must keep candidate release reserved until explicit comparison context exists.",
+      "status": "complete",
+      "execution_sequence": 19
+    },
+    {
+      "id": "LEAF-G87-020",
+      "gate": "Gate 87",
+      "title": "Freeze Gate 85 widened thresholds in schema and restore static hygiene",
+      "prerequisites": [
+        "LEAF-G87-019"
+      ],
+      "scope": "Move widened Gate 85 thresholds into the frozen rule schema and close the pyproject, mypy, ruff, and black hygiene tail.",
+      "files_expected": [
+        "src/nvda_desk/schemas/calibration.py",
+        "src/nvda_desk/services/replay_compare.py",
+        "pyproject.toml",
+        "tests/test_gate84_failure_taxonomy_evidence_floor.py",
+        "tests/test_gate85_horizon_economic_behaviour.py"
+      ],
+      "allowed_touches": [
+        "src/**",
+        "tests/**",
+        "pyproject.toml",
+        "docs/planning/**"
+      ],
+      "must_not_touch": [
+        "frontend/**",
+        "alembic/**",
+        "fixtures/legacy/**"
+      ],
+      "implementation_tasks": [
+        "Freeze the active-playbook-rate and conflict-count spreads on StabilityComparisonRule.",
+        "Make replay_compare consume those schema thresholds.",
+        "Remove the stale pytest asyncio config warning and restore repo-wide black/mypy/ruff cleanliness."
+      ],
+      "validation_tasks": [
+        "Run Gate 84/85 tests, black --check src tests, mypy src tests, and ruff check src tests."
+      ],
+      "test_commands": [
+        "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate84_failure_taxonomy_evidence_floor.py tests/test_gate85_horizon_economic_behaviour.py",
+        "black --check src tests",
+        "PYTHONPATH=src .venv/bin/python -m mypy src tests",
+        "ruff check src tests"
+      ],
+      "full_suite_required": true,
+      "pass_gate": "The widened Gate 85 rule is frozen in schema and repo-wide static hygiene is green.",
+      "merge_gate": "Gate 87 closes only when docs, runtime, tests, and static tooling all agree again.",
+      "status": "complete",
+      "execution_sequence": 20
     }
   ],
-  "execution_status": "gate_86_complete_on_main_corrective_pack_closed_after_gate_86",
-  "completed_at": "2026-03-28T00:40:00Z",
+  "execution_status": "gate_87_complete_on_main_corrective_pack_closed_after_gate_87",
+  "completed_at": "2026-03-28T02:30:00Z",
   "completed_leaf_ids": [
     "LEAF-G80-001",
     "LEAF-G80-002",
@@ -687,7 +851,11 @@
     "LEAF-G85-013",
     "LEAF-G85-014",
     "LEAF-G86-015",
-    "LEAF-G86-016"
+    "LEAF-G86-016",
+    "LEAF-G87-017",
+    "LEAF-G87-018",
+    "LEAF-G87-019",
+    "LEAF-G87-020"
   ],
   "remaining_leaf_ids": [],
   "completed_gate_ids": [
@@ -697,8 +865,9 @@
     "Gate 83",
     "Gate 84",
     "Gate 85",
-    "Gate 86"
+    "Gate 86",
+    "Gate 87"
   ],
   "active_gate": "none",
-  "historical_note": "The corrective reconstruction pack repaired the review-visible reconstruction seam after Gate 79 and closed through Gate 86 on main without reopening the closed V6 successor pack."
+  "historical_note": "Gates 80-87 closed the corrective review-reconstruction seam after Gate 79; Gate 87 then repaired the post-closeout audit defects without reopening the runtime tranche."
 }

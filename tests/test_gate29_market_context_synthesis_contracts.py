@@ -29,12 +29,18 @@ from nvda_desk.schemas.imported_modules.market_substrate import (
     VwapRocContractOutput,
 )
 from nvda_desk.schemas.imported_modules.tranche_a import TrancheAUpstreamContext
-from nvda_desk.services.imported_modules.context_scanners import ContextScannerContractService
+from nvda_desk.services.imported_modules.context_scanners import (
+    ContextScannerContractService,
+)
 from nvda_desk.services.imported_modules.market_context_synthesis import (
     MarketContextSynthesisContractService,
 )
-from nvda_desk.services.imported_modules.market_substrate import MarketSubstrateContractService
-from nvda_desk.services.imported_modules.tranche_a import TrancheAUpstreamContractService
+from nvda_desk.services.imported_modules.market_substrate import (
+    MarketSubstrateContractService,
+)
+from nvda_desk.services.imported_modules.tranche_a import (
+    TrancheAUpstreamContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
@@ -143,12 +149,29 @@ def _bundle(*, stressed: bool = False) -> Gate29Bundle:
                 options_flow=options_flow,
                 posture=posture,
                 eligibility=eligibility,
-                spot_data_capture=cast(SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"]),
-                peer_equity_capture=cast(PeerEquityCaptureContractOutput, substrate_outputs["peer_equity_capture"]),
-                options_data_capture=cast(OptionsDataCaptureContractOutput, substrate_outputs["options_data_capture"]),
-                options_metadata_capture=cast(OptionsMetadataCaptureContractOutput, substrate_outputs["options_metadata_capture"]),
-                macro_data_capture=cast(MacroDataCaptureContractOutput, substrate_outputs["macro_data_capture"]),
-                vwap_accumulator=cast(VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]),
+                spot_data_capture=cast(
+                    SpotDataCaptureContractOutput,
+                    substrate_outputs["spot_data_capture"],
+                ),
+                peer_equity_capture=cast(
+                    PeerEquityCaptureContractOutput,
+                    substrate_outputs["peer_equity_capture"],
+                ),
+                options_data_capture=cast(
+                    OptionsDataCaptureContractOutput,
+                    substrate_outputs["options_data_capture"],
+                ),
+                options_metadata_capture=cast(
+                    OptionsMetadataCaptureContractOutput,
+                    substrate_outputs["options_metadata_capture"],
+                ),
+                macro_data_capture=cast(
+                    MacroDataCaptureContractOutput,
+                    substrate_outputs["macro_data_capture"],
+                ),
+                vwap_accumulator=cast(
+                    VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]
+                ),
                 vwap_roc=cast(VwapRocContractOutput, substrate_outputs["vwap_roc"]),
                 stack_id="core_full_stack",
                 coefficient_set_id="full_stack_base",
@@ -165,8 +188,13 @@ def _bundle(*, stressed: bool = False) -> Gate29Bundle:
                 options_flow=options_flow,
                 posture=posture,
                 eligibility=eligibility,
-                macro_signal_score=cast(MacroSignalScoreContractOutput, scanner_outputs["macro_signal_score"]),
-                engine_score=cast(EngineScoreContractOutput, scanner_outputs["engine_score"]),
+                macro_signal_score=cast(
+                    MacroSignalScoreContractOutput,
+                    scanner_outputs["macro_signal_score"],
+                ),
+                engine_score=cast(
+                    EngineScoreContractOutput, scanner_outputs["engine_score"]
+                ),
                 stack_id="core_full_stack",
                 coefficient_set_id="full_stack_base",
             )
@@ -179,7 +207,9 @@ def _bundle(*, stressed: bool = False) -> Gate29Bundle:
     )
 
 
-def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_advisory() -> None:
+def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_advisory() -> (
+    None
+):
     """Gate 29 should close exactly the seven planned synthesis items without execution leakage."""
 
     supportive = _bundle()
@@ -189,7 +219,10 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
         **supportive.scanner_outputs,
         **supportive.synthesis_outputs,
     }
-    ordered = [cast(_CanonicalOutput, supportive_outputs[slug]) for slug in EXPECTED_GATE29_ORDER]
+    ordered = [
+        cast(_CanonicalOutput, supportive_outputs[slug])
+        for slug in EXPECTED_GATE29_ORDER
+    ]
 
     assert [_slug(output) for output in ordered] == EXPECTED_GATE29_ORDER
     assert [_canonical_id(output) for output in ordered] == [
@@ -202,10 +235,19 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
         "archive-module-052",
     ]
 
-    run_signal_scan = cast(RunSignalScanContractOutput, supportive_outputs["run_signal_scan"])
+    run_signal_scan = cast(
+        RunSignalScanContractOutput, supportive_outputs["run_signal_scan"]
+    )
     assert run_signal_scan.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
-    assert run_signal_scan.upstream_contract_slugs == ["macro_signal_score", "engine_score"]
-    assert {fence.dependency for fence in run_signal_scan.dependency_fences if fence.status.value == "satisfied"} == {
+    assert run_signal_scan.upstream_contract_slugs == [
+        "macro_signal_score",
+        "engine_score",
+    ]
+    assert {
+        fence.dependency
+        for fence in run_signal_scan.dependency_fences
+        if fence.status.value == "satisfied"
+    } == {
         "context_scanner:macro_signal_score",
         "context_scanner:engine_score",
     }
@@ -213,6 +255,8 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
     assert run_signal_scan.dependency_fences[0].status.value == "proxied_from_runtime"
     assert run_signal_scan.scan_state == "scan_ready"
 
-    stressed_scan = cast(RunSignalScanContractOutput, stressed.synthesis_outputs["run_signal_scan"])
+    stressed_scan = cast(
+        RunSignalScanContractOutput, stressed.synthesis_outputs["run_signal_scan"]
+    )
     assert stressed_scan.scan_state in {"scan_watch_only", "scan_suppressed"}
     assert "No execution trigger" in stressed_scan.contract_notes[1]

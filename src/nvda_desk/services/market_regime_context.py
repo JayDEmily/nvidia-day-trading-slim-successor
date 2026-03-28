@@ -34,8 +34,12 @@ class MarketRegimeContextService:
         nvda_vs_nq = round(payload.nvda_return_pct - payload.nq_return_pct, 4)
         nvda_vs_es = round(payload.nvda_return_pct - payload.es_return_pct, 4)
         sox_vs_nq = round(payload.sox_return_pct - payload.nq_return_pct, 4)
-        beta_leadership_score = round(((nvda_vs_nq + nvda_vs_es) / 2.0) + (sox_vs_nq * 0.5), 4)
-        volatility_regime = self._volatility_regime(payload.vix_level, payload.vvix_level)
+        beta_leadership_score = round(
+            ((nvda_vs_nq + nvda_vs_es) / 2.0) + (sox_vs_nq * 0.5), 4
+        )
+        volatility_regime = self._volatility_regime(
+            payload.vix_level, payload.vvix_level
+        )
         breadth_state = self._breadth_state(payload.breadth_score)
         breadth_concentration_state = self._breadth_concentration_state(
             payload.breadth_score,
@@ -95,7 +99,9 @@ class MarketRegimeContextService:
             reasons=reasons,
         )
 
-    def _volatility_regime(self, vix_level: float, vvix_level: float) -> VolatilityRegime:
+    def _volatility_regime(
+        self, vix_level: float, vvix_level: float
+    ) -> VolatilityRegime:
         if vix_level >= 28.0 or vvix_level >= 110.0:
             return VolatilityRegime.STRESSED
         if vix_level >= 20.0 or vvix_level >= 90.0:
@@ -109,7 +115,9 @@ class MarketRegimeContextService:
             return BreadthState.MIXED
         return BreadthState.WEAK
 
-    def _breadth_concentration_state(self, breadth_score: float, concentration_score: float) -> str:
+    def _breadth_concentration_state(
+        self, breadth_score: float, concentration_score: float
+    ) -> str:
         if breadth_score >= 0.65 and concentration_score <= 0.55:
             return "broad_risk_on"
         if breadth_score >= 0.55 and concentration_score > 0.70:
@@ -130,11 +138,20 @@ class MarketRegimeContextService:
         return "vol_of_vol_calm"
 
     def _sector_leadership_state(self, payload: MarketRegimeContextInput) -> str:
-        if payload.nvda_return_pct > payload.nq_return_pct and payload.sox_return_pct > payload.nq_return_pct:
+        if (
+            payload.nvda_return_pct > payload.nq_return_pct
+            and payload.sox_return_pct > payload.nq_return_pct
+        ):
             return "semis_leading"
-        if payload.nvda_return_pct < payload.nq_return_pct and payload.sox_return_pct < payload.nq_return_pct:
+        if (
+            payload.nvda_return_pct < payload.nq_return_pct
+            and payload.sox_return_pct < payload.nq_return_pct
+        ):
             return "semis_lagging"
-        if payload.nvda_return_pct > payload.nq_return_pct and payload.sox_return_pct <= payload.nq_return_pct:
+        if (
+            payload.nvda_return_pct > payload.nq_return_pct
+            and payload.sox_return_pct <= payload.nq_return_pct
+        ):
             return "nvda_only_leadership"
         return "leadership_mixed"
 
@@ -165,9 +182,15 @@ class MarketRegimeContextService:
         volatility_regime: VolatilityRegime,
         nvda_vs_nq: float,
     ) -> str:
-        if sector_leadership_state in {"semis_leading", "nvda_only_leadership"} and breadth_state is BreadthState.WEAK:
+        if (
+            sector_leadership_state in {"semis_leading", "nvda_only_leadership"}
+            and breadth_state is BreadthState.WEAK
+        ):
             return "leadership_without_breadth"
-        if sector_leadership_state == "semis_lagging" and breadth_state is BreadthState.SUPPORTIVE:
+        if (
+            sector_leadership_state == "semis_lagging"
+            and breadth_state is BreadthState.SUPPORTIVE
+        ):
             return "index_support_nvda_lag"
         if volatility_regime is VolatilityRegime.STRESSED and nvda_vs_nq > 1.0:
             return "panic_tape_with_single_name_resilience"

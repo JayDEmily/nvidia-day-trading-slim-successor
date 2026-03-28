@@ -24,9 +24,15 @@ from nvda_desk.schemas.imported_modules.tranche_a import (
     IvVsRvAnalysisContractOutput,
     TrancheAUpstreamContext,
 )
-from nvda_desk.services.imported_modules.context_scanners import ContextScannerContractService
-from nvda_desk.services.imported_modules.market_substrate import MarketSubstrateContractService
-from nvda_desk.services.imported_modules.tranche_a import TrancheAUpstreamContractService
+from nvda_desk.services.imported_modules.context_scanners import (
+    ContextScannerContractService,
+)
+from nvda_desk.services.imported_modules.market_substrate import (
+    MarketSubstrateContractService,
+)
+from nvda_desk.services.imported_modules.tranche_a import (
+    TrancheAUpstreamContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
@@ -114,12 +120,29 @@ def test_gate30_coverage_is_closed_in_frozen_order_with_honest_options_fences() 
                 options_flow=options_flow,
                 posture=posture,
                 eligibility=eligibility,
-                spot_data_capture=cast(SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"]),
-                peer_equity_capture=cast(PeerEquityCaptureContractOutput, substrate_outputs["peer_equity_capture"]),
-                options_data_capture=cast(OptionsDataCaptureContractOutput, substrate_outputs["options_data_capture"]),
-                options_metadata_capture=cast(OptionsMetadataCaptureContractOutput, substrate_outputs["options_metadata_capture"]),
-                macro_data_capture=cast(MacroDataCaptureContractOutput, substrate_outputs["macro_data_capture"]),
-                vwap_accumulator=cast(VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]),
+                spot_data_capture=cast(
+                    SpotDataCaptureContractOutput,
+                    substrate_outputs["spot_data_capture"],
+                ),
+                peer_equity_capture=cast(
+                    PeerEquityCaptureContractOutput,
+                    substrate_outputs["peer_equity_capture"],
+                ),
+                options_data_capture=cast(
+                    OptionsDataCaptureContractOutput,
+                    substrate_outputs["options_data_capture"],
+                ),
+                options_metadata_capture=cast(
+                    OptionsMetadataCaptureContractOutput,
+                    substrate_outputs["options_metadata_capture"],
+                ),
+                macro_data_capture=cast(
+                    MacroDataCaptureContractOutput,
+                    substrate_outputs["macro_data_capture"],
+                ),
+                vwap_accumulator=cast(
+                    VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]
+                ),
                 vwap_roc=cast(VwapRocContractOutput, substrate_outputs["vwap_roc"]),
                 stack_id="core_full_stack",
                 coefficient_set_id="full_stack_base",
@@ -145,16 +168,33 @@ def test_gate30_coverage_is_closed_in_frozen_order_with_honest_options_fences() 
         "archive-module-019",
     ]
 
-    options_data_capture = cast(OptionsDataCaptureContractOutput, outputs["options_data_capture"])
-    options_metadata_capture = cast(OptionsMetadataCaptureContractOutput, outputs["options_metadata_capture"])
+    options_data_capture = cast(
+        OptionsDataCaptureContractOutput, outputs["options_data_capture"]
+    )
+    options_metadata_capture = cast(
+        OptionsMetadataCaptureContractOutput, outputs["options_metadata_capture"]
+    )
     gamma_pressure = cast(GammaPressureContractOutput, outputs["gamma_pressure"])
     iv_vs_rv = cast(IvVsRvAnalysisContractOutput, outputs["iv_vs_rv_analysis"])
 
-    assert options_data_capture.computation_mode is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
-    assert options_metadata_capture.computation_mode is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+    assert (
+        options_data_capture.computation_mode
+        is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+    )
+    assert (
+        options_metadata_capture.computation_mode
+        is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+    )
     assert gamma_pressure.dependency_fences[0].dependency == "options_chain"
     assert gamma_pressure.dependency_fences[0].status.value == "proxied_from_runtime"
-    assert {fence.dependency for fence in iv_vs_rv.dependency_fences if fence.status.value == "satisfied"} == {
+    assert {
+        fence.dependency
+        for fence in iv_vs_rv.dependency_fences
+        if fence.status.value == "satisfied"
+    } == {
         "rv_metrics",
     }
-    assert outputs["vol_corridor"].grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
+    assert (
+        outputs["vol_corridor"].grammar_role
+        == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
+    )

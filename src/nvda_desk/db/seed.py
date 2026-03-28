@@ -49,9 +49,24 @@ def seed_dev_data(session: Session) -> DevSeedSummary:
         instrument.symbol: instrument
         for instrument in session.scalars(select(Instrument)).all()
     }
-    _seed_intraday_bars(session, instrument=instrument_map["NVDA"], base_price=Decimal("118.00"), profile="nvda")
-    _seed_intraday_bars(session, instrument=instrument_map["VIX"], base_price=Decimal("18.50"), profile="vix")
-    _seed_intraday_bars(session, instrument=instrument_map["VVIX"], base_price=Decimal("88.00"), profile="vvix")
+    _seed_intraday_bars(
+        session,
+        instrument=instrument_map["NVDA"],
+        base_price=Decimal("118.00"),
+        profile="nvda",
+    )
+    _seed_intraday_bars(
+        session,
+        instrument=instrument_map["VIX"],
+        base_price=Decimal("18.50"),
+        profile="vix",
+    )
+    _seed_intraday_bars(
+        session,
+        instrument=instrument_map["VVIX"],
+        base_price=Decimal("88.00"),
+        profile="vvix",
+    )
     _seed_option_snapshots(session, instrument=instrument_map["NVDA"])
     _seed_session_calendars(session)
     _seed_market_events(session)
@@ -76,7 +91,11 @@ def _seed_intraday_bars(
 ) -> None:
     start = datetime(2026, 3, 18, 13, 30, tzinfo=UTC)
     existing_bars = list(
-        session.scalars(select(Bar1m).where(Bar1m.instrument_id == instrument.id).order_by(Bar1m.ts_utc))
+        session.scalars(
+            select(Bar1m)
+            .where(Bar1m.instrument_id == instrument.id)
+            .order_by(Bar1m.ts_utc)
+        )
     )
     target_bar_count = 240
     next_index = len(existing_bars)
@@ -108,19 +127,31 @@ def _drift_for(*, profile: str, index: int) -> Decimal:
         return (
             Decimal("0.15")
             if index < 30
-            else Decimal("0.04") if index < 90 else Decimal("-0.03") if index < 150 else Decimal("0.01")
+            else (
+                Decimal("0.04")
+                if index < 90
+                else Decimal("-0.03") if index < 150 else Decimal("0.01")
+            )
         )
     if profile == "vix":
         return (
             Decimal("0.05")
             if index < 30
-            else Decimal("0.02") if index < 90 else Decimal("-0.01") if index < 150 else Decimal("0.00")
+            else (
+                Decimal("0.02")
+                if index < 90
+                else Decimal("-0.01") if index < 150 else Decimal("0.00")
+            )
         )
     if profile == "vvix":
         return (
             Decimal("0.08")
             if index < 30
-            else Decimal("0.03") if index < 90 else Decimal("-0.02") if index < 150 else Decimal("0.00")
+            else (
+                Decimal("0.03")
+                if index < 90
+                else Decimal("-0.02") if index < 150 else Decimal("0.00")
+            )
         )
     return Decimal("0.00")
 

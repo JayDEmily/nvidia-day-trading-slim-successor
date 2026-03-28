@@ -50,6 +50,7 @@ The active corrective reconstruction pair from Gate 80 onward is:
 - Gates 59–79 — complete on `main`
 - Gate 80 — complete on `main` (corrective tranche reset and anti-drift freeze)
 - Gates 81–86 — complete on `main`
+- Gate 87 — complete on `main` (audit-remediation and closeout-integrity sweep)
 
 ## Sequential execution rule
 
@@ -91,6 +92,7 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 78 runtime modifier integration complete on `main`, with one typed modifier packet now preserving effective coefficients, kill-switches, stand-down outcomes, and modifier lineage through posture, execution, and review;
 - Gate 79 walk-forward harness authority complete on `main`, with bounded window-generation, offset-comparison, discovery, fragility, ablation, and downstream-binding contracts now frozen for later testing without starting unconstrained historical search;
 - Gate 80 corrective tranche reset complete on `main`, with the corrective reconstruction pair now inserted as the live post-Gate-79 planning surface, the authority docs cleaned, and anti-drift proof added without reopening Gates 59–79;
+- Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–86) complete on `main`.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) complete on `main`.

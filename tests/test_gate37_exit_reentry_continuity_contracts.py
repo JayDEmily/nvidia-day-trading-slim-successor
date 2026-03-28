@@ -41,14 +41,25 @@ def test_gate37_coverage_is_closed_in_frozen_order_with_exit_chain_honesty() -> 
         "archive-module-045",
         "archive-module-047",
     ]
-    assert all(output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value for output in ordered)
+    assert all(
+        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value
+        for output in ordered
+    )
 
-    dynamic_partial_exit = cast(DynamicPartialExitModelContractOutput, outputs["dynamic_partial_exit_model"])
+    dynamic_partial_exit = cast(
+        DynamicPartialExitModelContractOutput, outputs["dynamic_partial_exit_model"]
+    )
     take_profit = cast(TakeProfitContractOutput, outputs["take_profit"])
     trailing_stop = cast(TrailingStopContractOutput, outputs["trailing_stop"])
-    trade_reentry = cast(TradeReentryMarkerContractOutput, outputs["trade_reentry_marker"])
-    fill_feedback = cast(FillFeedbackRouterContractOutput, outputs["fill_feedback_router"])
-    ladder_continuity = cast(LadderContinuityTrackerContractOutput, outputs["ladder_continuity_tracker"])
+    trade_reentry = cast(
+        TradeReentryMarkerContractOutput, outputs["trade_reentry_marker"]
+    )
+    fill_feedback = cast(
+        FillFeedbackRouterContractOutput, outputs["fill_feedback_router"]
+    )
+    ladder_continuity = cast(
+        LadderContinuityTrackerContractOutput, outputs["ladder_continuity_tracker"]
+    )
 
     assert dynamic_partial_exit.model_state == "advisory_partial_exit_ready"
     assert take_profit.take_profit_state == "targets_ready"
@@ -65,9 +76,15 @@ def test_gate37_stress_keeps_exit_chain_preview_only_without_fill_theatre() -> N
     stressed = build_gate_execution_contract_bundle(stressed=True)
     outputs = stressed.lifecycle_outputs
 
-    trade_reentry = cast(TradeReentryMarkerContractOutput, outputs["trade_reentry_marker"])
-    fill_feedback = cast(FillFeedbackRouterContractOutput, outputs["fill_feedback_router"])
-    ladder_continuity = cast(LadderContinuityTrackerContractOutput, outputs["ladder_continuity_tracker"])
+    trade_reentry = cast(
+        TradeReentryMarkerContractOutput, outputs["trade_reentry_marker"]
+    )
+    fill_feedback = cast(
+        FillFeedbackRouterContractOutput, outputs["fill_feedback_router"]
+    )
+    ladder_continuity = cast(
+        LadderContinuityTrackerContractOutput, outputs["ladder_continuity_tracker"]
+    )
 
     assert trade_reentry.reentry_allowed is False
     assert trade_reentry.reentry_state == "position_still_live"

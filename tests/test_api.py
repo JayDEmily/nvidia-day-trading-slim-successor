@@ -50,7 +50,9 @@ def _build_service_bundle(tmp_path: Path) -> MarketServiceBundle:
     return MarketServiceBundle(
         market=market,
         slv_market=slv_market,
-        slv_replay=StrategicLadderReplayService(session_factory, classifier, market, slv_market, risk),
+        slv_replay=StrategicLadderReplayService(
+            session_factory, classifier, market, slv_market, risk
+        ),
         carry_market=OvernightCarryMarketService(session_factory, classifier, market),
         risk=risk,
     )
@@ -58,9 +60,15 @@ def _build_service_bundle(tmp_path: Path) -> MarketServiceBundle:
 
 def _client_with_service(bundle: MarketServiceBundle) -> Iterator[TestClient]:
     app.dependency_overrides[get_market_state_service] = lambda: bundle.market
-    app.dependency_overrides[get_strategic_ladder_market_service] = lambda: bundle.slv_market
-    app.dependency_overrides[get_strategic_ladder_replay_service] = lambda: bundle.slv_replay
-    app.dependency_overrides[get_overnight_carry_market_service] = lambda: bundle.carry_market
+    app.dependency_overrides[get_strategic_ladder_market_service] = (
+        lambda: bundle.slv_market
+    )
+    app.dependency_overrides[get_strategic_ladder_replay_service] = (
+        lambda: bundle.slv_replay
+    )
+    app.dependency_overrides[get_overnight_carry_market_service] = (
+        lambda: bundle.carry_market
+    )
     app.dependency_overrides[get_risk_gateway_service] = lambda: bundle.risk
     try:
         with TestClient(app) as client:
@@ -94,7 +102,10 @@ def test_market_temporal_state_and_session_clock() -> None:
     session_clock_payload = session_clock_response.json()
     assert session_clock_payload["phase"] == "open_disorder"
     assert session_clock_payload["minutes_since_open"] == 5
-    assert session_clock_payload["compatibility_policy"] == "legacy_wrapper_over_temporal_state"
+    assert (
+        session_clock_payload["compatibility_policy"]
+        == "legacy_wrapper_over_temporal_state"
+    )
 
 
 def test_config_routes() -> None:
@@ -102,7 +113,9 @@ def test_config_routes() -> None:
         runtime_response = client.get("/config/runtime-settings")
         coefficient_response = client.get("/config/coefficients/S06")
         variants_response = client.get("/config/strategy-variants/conservative")
-        missing_variant_response = client.get("/config/strategy-variants/does-not-exist")
+        missing_variant_response = client.get(
+            "/config/strategy-variants/does-not-exist"
+        )
     assert runtime_response.status_code == 200
     assert runtime_response.json()["environment"]["symbol"] == "NVDA"
     assert coefficient_response.status_code == 200
@@ -288,9 +301,22 @@ def test_overnight_carry_from_market_endpoint(tmp_path: Path) -> None:
         )
     assert response.status_code == 200
     payload = response.json()
-    assert payload["derived_context"]["close_phase"] in {"midday_compression", "post_lunch_drift"}
-    assert payload["carry_recommendation"] in {"hold_small", "increase", "flatten", "block"}
-    assert payload["carry_action"] in {"hold_small", "add_carry", "flatten", "block_carry"}
+    assert payload["derived_context"]["close_phase"] in {
+        "midday_compression",
+        "post_lunch_drift",
+    }
+    assert payload["carry_recommendation"] in {
+        "hold_small",
+        "increase",
+        "flatten",
+        "block",
+    }
+    assert payload["carry_action"] in {
+        "hold_small",
+        "add_carry",
+        "flatten",
+        "block_carry",
+    }
 
 
 def test_risk_gateway_endpoint(tmp_path: Path) -> None:
@@ -314,7 +340,9 @@ def test_risk_gateway_endpoint(tmp_path: Path) -> None:
                 "conflict_tags": [],
             },
         )
-        list_response = client.get("/risk/decisions", params={"module_id": "slv-v3-replay"})
+        list_response = client.get(
+            "/risk/decisions", params={"module_id": "slv-v3-replay"}
+        )
     assert response.status_code == 200
     payload = response.json()
     assert payload["action"] == "block"

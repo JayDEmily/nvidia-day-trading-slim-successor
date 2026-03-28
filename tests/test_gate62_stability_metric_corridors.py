@@ -27,24 +27,44 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate62_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 62 — Stability-metric algebra and corridor schema\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 62 — Stability-metric algebra and corridor schema\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 62 closeout note" in gates_text
-    assert leaves['execution_status'].startswith('gate_') and ('_successor_pack_active_from_gate_' in leaves['execution_status'] or '_successor_pack_closed_after_gate_' in leaves['execution_status'])
-    assert leaves['completed_gate_ids'][:6] == ['Gate 59', 'Gate 60', 'Gate 61', 'Gate 62', 'Gate 63', 'Gate 64']
-    assert successor_pack_position(leaves['active_gate']) >= 65
+    assert leaves["execution_status"].startswith("gate_") and (
+        "_successor_pack_active_from_gate_" in leaves["execution_status"]
+        or "_successor_pack_closed_after_gate_" in leaves["execution_status"]
+    )
+    assert leaves["completed_gate_ids"][:6] == [
+        "Gate 59",
+        "Gate 60",
+        "Gate 61",
+        "Gate 62",
+        "Gate 63",
+        "Gate 64",
+    ]
+    assert successor_pack_position(leaves["active_gate"]) >= 65
 
     gate62 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 62"]
     assert len(gate62) == 6
@@ -58,16 +78,28 @@ def test_gate62_docs_freeze_scorecards_corridors_and_persistence() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Stability corridor and scorecard law" in normative
-    assert "canonical scorecard axes are diagnosis quality, decision quality, economic quality, execution quality, and posture-law fidelity" in normative
-    assert "every governed stability surface is assessed against a corridor algebra with target, tolerated-drift, and breach zones" in normative
+    assert (
+        "canonical scorecard axes are diagnosis quality, decision quality, economic quality, execution quality, and posture-law fidelity"
+        in normative
+    )
+    assert (
+        "every governed stability surface is assessed against a corridor algebra with target, tolerated-drift, and breach zones"
+        in normative
+    )
     assert "a surface may be `breathing`, `drifting`, or `decaying`" in normative
 
     assert "## Gate 62 stability authority" in operating_model
-    assert "metric families stay explicit: level, slope, acceleration, persistence, dispersion, corridor width, breach frequency, breach severity, and coverage" in operating_model
+    assert (
+        "metric families stay explicit: level, slope, acceleration, persistence, dispersion, corridor width, breach frequency, breach severity, and coverage"
+        in operating_model
+    )
     assert "persistence and hysteresis prevent one noisy block" in operating_model
 
     assert "### 4c. Stability metric and corridor objects" in domain_model
-    assert "**Stability must be judged against frozen scorecards and corridor zones, not one-off outcome snapshots.**" in guardrails
+    assert (
+        "**Stability must be judged against frozen scorecards and corridor zones, not one-off outcome snapshots.**"
+        in guardrails
+    )
 
 
 def test_gate62_schema_surface_matches_frozen_authority() -> None:
@@ -89,11 +121,31 @@ def test_gate62_schema_surface_matches_frozen_authority() -> None:
         "breach_severity",
         "coverage",
     ]
-    assert [item.value for item in MetricTriggerMode] == ["descriptive_only", "review_trigger"]
-    assert [item.value for item in CorridorZone] == ["target", "tolerated_drift", "breach"]
-    assert [item.value for item in CorridorBreachSeverity] == ["none", "drifting", "material", "severe"]
-    assert [item.value for item in BehaviourStabilityState] == ["breathing", "drifting", "decaying"]
-    assert [item.value for item in CoverageSliceClass] == ["event_class", "regime_slice", "session_slice"]
+    assert [item.value for item in MetricTriggerMode] == [
+        "descriptive_only",
+        "review_trigger",
+    ]
+    assert [item.value for item in CorridorZone] == [
+        "target",
+        "tolerated_drift",
+        "breach",
+    ]
+    assert [item.value for item in CorridorBreachSeverity] == [
+        "none",
+        "drifting",
+        "material",
+        "severe",
+    ]
+    assert [item.value for item in BehaviourStabilityState] == [
+        "breathing",
+        "drifting",
+        "decaying",
+    ]
+    assert [item.value for item in CoverageSliceClass] == [
+        "event_class",
+        "regime_slice",
+        "session_slice",
+    ]
 
     scorecard = SurfaceStabilityScorecard(
         surface_id="entry_gate_score_floor",
@@ -133,8 +185,13 @@ def test_gate62_schema_surface_matches_frozen_authority() -> None:
             )
         ],
     )
-    review = ReviewExplanationOutput(summary="stable enough", review_packet={}, stability_scorecards=[scorecard])
-    assert review.stability_scorecards[0].behaviour_state is BehaviourStabilityState.DRIFTING
+    review = ReviewExplanationOutput(
+        summary="stable enough", review_packet={}, stability_scorecards=[scorecard]
+    )
+    assert (
+        review.stability_scorecards[0].behaviour_state
+        is BehaviourStabilityState.DRIFTING
+    )
 
     authority = StabilityAuthorityResponse(
         authority=StabilityAuthorityPacket(
@@ -157,4 +214,6 @@ def test_gate62_vocabulary_terms_are_generated_and_committed() -> None:
     assert committed == generated
     vocab = json.loads(committed)
     slugs = {entry["canonical_slug"] for entry in vocab["entries"]}
-    assert {"stability_scorecard", "corridor_zone", "review_evidence_block"}.issubset(slugs)
+    assert {"stability_scorecard", "corridor_zone", "review_evidence_block"}.issubset(
+        slugs
+    )

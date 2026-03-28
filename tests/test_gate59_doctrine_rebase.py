@@ -60,7 +60,7 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
         "Current active gate: **Gate 81 in the corrective reconstruction pack**."
         in gate_map
     ) or (
-        "Current active gate: **none — the corrective reconstruction pack is closed through Gate 86 on `main`**."
+        "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**."
         in gate_map
     )
 

@@ -143,11 +143,19 @@ class ExecutionTemplateSpec(BaseModel):
     thesis_invalidation_state: str = Field(min_length=1)
     invalidation_reasons: list[str] = Field(default_factory=list)
     exit_reasons: list[str] = Field(default_factory=list)
-    hedge_exit_reason: str = Field(default="overlay_hedge_if_gamma_reaccelerates", min_length=1)
+    hedge_exit_reason: str = Field(
+        default="overlay_hedge_if_gamma_reaccelerates", min_length=1
+    )
     respect_posture_biases: bool = True
-    posture_override_actions: list[str] = Field(default_factory=lambda: ["reduce", "trim", "hedge"])
-    inventory_pressure_states: list[str] = Field(default_factory=lambda: ["trapped", "full"])
-    inventory_pressure_exit_reason: str = Field(default="respect_inventory_pressure", min_length=1)
+    posture_override_actions: list[str] = Field(
+        default_factory=lambda: ["reduce", "trim", "hedge"]
+    )
+    inventory_pressure_states: list[str] = Field(
+        default_factory=lambda: ["trapped", "full"]
+    )
+    inventory_pressure_exit_reason: str = Field(
+        default="respect_inventory_pressure", min_length=1
+    )
 
     @model_validator(mode="after")
     def _validate_scaling_steps(self) -> Self:
@@ -194,13 +202,17 @@ class PlaybookRegistryDocument(BaseModel):
         variant_id_set = set(variant_ids)
         for variant in self.setup_variants:
             if variant.family_id not in family_id_set:
-                raise ValueError(f"unknown family for setup variant {variant.setup_variant_id}: {variant.family_id}")
+                raise ValueError(
+                    f"unknown family for setup variant {variant.setup_variant_id}: {variant.family_id}"
+                )
             if variant.execution_expression_id not in template_id_set:
                 raise ValueError(
                     f"unknown execution expression for setup variant {variant.setup_variant_id}: "
                     f"{variant.execution_expression_id}"
                 )
-        variant_lookup = {variant.setup_variant_id: variant for variant in self.setup_variants}
+        variant_lookup = {
+            variant.setup_variant_id: variant for variant in self.setup_variants
+        }
         for playbook in self.playbooks:
             if playbook.execution_template_id not in template_id_set:
                 raise ValueError(
@@ -213,7 +225,9 @@ class PlaybookRegistryDocument(BaseModel):
                     f"{playbook.execution_expression_id}"
                 )
             if playbook.family_id not in family_id_set:
-                raise ValueError(f"unknown family for playbook {playbook.playbook_id}: {playbook.family_id}")
+                raise ValueError(
+                    f"unknown family for playbook {playbook.playbook_id}: {playbook.family_id}"
+                )
             if playbook.setup_variant_id not in variant_id_set:
                 raise ValueError(
                     f"unknown setup variant for playbook {playbook.playbook_id}: {playbook.setup_variant_id}"
@@ -232,12 +246,18 @@ class PlaybookRegistryDocument(BaseModel):
     def ordered_playbooks(self) -> list[PlaybookSpec]:
         """Return active playbooks in deterministic priority order."""
 
-        return sorted((playbook for playbook in self.playbooks if playbook.active), key=lambda item: item.priority)
+        return sorted(
+            (playbook for playbook in self.playbooks if playbook.active),
+            key=lambda item: item.priority,
+        )
 
     def ordered_setup_variants(self) -> list[SetupVariantSpec]:
         """Return active setup variants in deterministic priority order."""
 
-        return sorted((variant for variant in self.setup_variants if variant.active), key=lambda item: item.priority)
+        return sorted(
+            (variant for variant in self.setup_variants if variant.active),
+            key=lambda item: item.priority,
+        )
 
     def execution_template_index(self) -> dict[str, ExecutionTemplateSpec]:
         """Return deterministic template lookup by id."""
@@ -272,4 +292,9 @@ class PlaybookRegistryDocument(BaseModel):
     def to_yaml_text(self) -> str:
         """Serialise the registry to deterministic YAML text."""
 
-        return cast(str, yaml.safe_dump(self.model_dump(mode="json"), sort_keys=False, allow_unicode=False))
+        return cast(
+            str,
+            yaml.safe_dump(
+                self.model_dump(mode="json"), sort_keys=False, allow_unicode=False
+            ),
+        )

@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 from types import SimpleNamespace
+from typing import cast
 
 from nvda_desk.config import Settings
+from nvda_desk.schemas.cognition import ReviewExplanationInput
 from nvda_desk.schemas.events import (
     DeskEventClass,
     EventMaterialityTier,
@@ -22,7 +24,11 @@ from nvda_desk.schemas.market import (
     PrecursorRuntimePacket,
     PrecursorVenueUniverse,
 )
-from nvda_desk.schemas.review import ReviewFailureClass, ReviewResolutionClass
+from nvda_desk.schemas.review import (
+    ReviewEligibilitySurface,
+    ReviewFailureClass,
+    ReviewResolutionClass,
+)
 from nvda_desk.schemas.state_policy import (
     CorridorBreachSeverity,
     ReviewChangeBudget,
@@ -72,9 +78,9 @@ def _precursor_packet() -> PrecursorRuntimePacket:
     )
 
 
-def _review_eligibility(severity: CorridorBreachSeverity):
-    from nvda_desk.schemas.review import ReviewEligibilitySurface
-
+def _review_eligibility(
+    severity: CorridorBreachSeverity,
+) -> ReviewEligibilitySurface:
     return ReviewEligibilitySurface(
         evidence_block=ReviewEvidenceBlock(
             surface_class=ReviewSurfaceClass.POLICY_SURFACE,
@@ -134,7 +140,9 @@ def test_gate84_failure_taxonomy_reaches_ontology_sizing_and_bad_luck_paths() ->
         posture=SimpleNamespace(permission_state=SimpleNamespace(value="allow")),
     )
     ontology = service._failure_taxonomy(
-        ontology_payload, [], _review_eligibility(CorridorBreachSeverity.MATERIAL)
+        cast(ReviewExplanationInput, ontology_payload),
+        [],
+        _review_eligibility(CorridorBreachSeverity.MATERIAL),
     )
     assert ontology.primary_failure_class is ReviewFailureClass.ONTOLOGY_FAILURE
     assert ontology.evidence_floor is not None
@@ -151,7 +159,9 @@ def test_gate84_failure_taxonomy_reaches_ontology_sizing_and_bad_luck_paths() ->
         posture=SimpleNamespace(permission_state=SimpleNamespace(value="allow")),
     )
     sizing = service._failure_taxonomy(
-        sizing_payload, [], _review_eligibility(CorridorBreachSeverity.MATERIAL)
+        cast(ReviewExplanationInput, sizing_payload),
+        [],
+        _review_eligibility(CorridorBreachSeverity.MATERIAL),
     )
     assert sizing.primary_failure_class is ReviewFailureClass.SIZING_FAILURE
     assert sizing.resolution is ReviewResolutionClass.UNRESOLVED
@@ -166,7 +176,9 @@ def test_gate84_failure_taxonomy_reaches_ontology_sizing_and_bad_luck_paths() ->
         posture=SimpleNamespace(permission_state=SimpleNamespace(value="allow")),
     )
     bad_luck = service._failure_taxonomy(
-        bad_luck_payload, [], _review_eligibility(CorridorBreachSeverity.SEVERE)
+        cast(ReviewExplanationInput, bad_luck_payload),
+        [],
+        _review_eligibility(CorridorBreachSeverity.SEVERE),
     )
     assert bad_luck.primary_failure_class is None
     assert bad_luck.resolution is ReviewResolutionClass.BAD_LUCK

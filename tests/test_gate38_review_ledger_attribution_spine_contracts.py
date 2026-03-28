@@ -21,7 +21,9 @@ EXPECTED_GATE38_ORDER = [
 ]
 
 
-def test_gate38_coverage_is_closed_in_frozen_order_with_preview_review_honesty() -> None:
+def test_gate38_coverage_is_closed_in_frozen_order_with_preview_review_honesty() -> (
+    None
+):
     """Gate 38 should close exactly the four planned review-spine items."""
 
     supportive = build_gate_execution_contract_bundle()
@@ -35,11 +37,20 @@ def test_gate38_coverage_is_closed_in_frozen_order_with_preview_review_honesty()
         "archive-evaluator-eval01",
         "archive-module-041",
     ]
-    assert all(output.grammar_role == DmpGrammarRole.REVIEW_EXPLANATION.value for output in ordered)
+    assert all(
+        output.grammar_role == DmpGrammarRole.REVIEW_EXPLANATION.value
+        for output in ordered
+    )
 
-    profit_loss_ledger = cast(ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"])
-    module_trace = cast(ModuleTraceAttributionContractOutput, outputs["module_trace_attribution"])
-    module_scores = cast(ModuleScoreAttributorContractOutput, outputs["module_score_attributor"])
+    profit_loss_ledger = cast(
+        ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"]
+    )
+    module_trace = cast(
+        ModuleTraceAttributionContractOutput, outputs["module_trace_attribution"]
+    )
+    module_scores = cast(
+        ModuleScoreAttributorContractOutput, outputs["module_score_attributor"]
+    )
     daily_summary = cast(DailySummaryContractOutput, outputs["daily_summary"])
 
     assert profit_loss_ledger.ledger_state == "preview_pnl_ready"
@@ -56,12 +67,22 @@ def test_gate38_stress_keeps_review_spine_descriptive_and_not_booked() -> None:
     stressed = build_gate_execution_contract_bundle(stressed=True)
     outputs = stressed.review_outputs
 
-    profit_loss_ledger = cast(ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"])
-    module_trace = cast(ModuleTraceAttributionContractOutput, outputs["module_trace_attribution"])
+    profit_loss_ledger = cast(
+        ProfitLossLedgerContractOutput, outputs["profit_loss_ledger"]
+    )
+    module_trace = cast(
+        ModuleTraceAttributionContractOutput, outputs["module_trace_attribution"]
+    )
     daily_summary = cast(DailySummaryContractOutput, outputs["daily_summary"])
 
     assert profit_loss_ledger.unrealized_pnl_pct < 0.0
-    assert profit_loss_ledger.contract_notes[0] == "P&L remains a deterministic preview ledger rather than a booked statement."
+    assert (
+        profit_loss_ledger.contract_notes[0]
+        == "P&L remains a deterministic preview ledger rather than a booked statement."
+    )
     assert 0.0 <= module_trace.attribution_confidence <= 1.0
     assert daily_summary.day_state == "negative_preview"
-    assert daily_summary.contract_notes[0] == "The daily summary is an operator artefact derived only from preview execution state."
+    assert (
+        daily_summary.contract_notes[0]
+        == "The daily summary is an operator artefact derived only from preview execution state."
+    )

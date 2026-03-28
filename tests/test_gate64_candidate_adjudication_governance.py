@@ -19,20 +19,30 @@ from nvda_desk.schemas.state_policy import (
 from scripts.build_canonical_vocabulary import build_document
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate64_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 64 — Candidate, champion, challenger, and adjudication governance\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 64 — Candidate, champion, challenger, and adjudication governance\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 64 closeout note" in gates_text
 
     gate64 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 64"]
@@ -47,16 +57,28 @@ def test_gate64_docs_freeze_candidate_roles_and_reserved_adjudication() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Candidate and adjudication law" in normative
-    assert "candidate roles are limited to champion, shadow challenger, dormant candidate, and retired candidate" in normative
+    assert (
+        "candidate roles are limited to champion, shadow challenger, dormant candidate, and retired candidate"
+        in normative
+    )
     assert "at least one reserved adjudication span remains untouched" in normative
     assert "research reset rather than another runtime tweak" in normative
 
     assert "## Gate 64 candidate governance authority" in operating_model
-    assert "champion, shadow challenger, dormant candidate, and retired candidate are the only governed role labels" in operating_model
-    assert "retain champion, promote challenger, demote to dormant, retire candidate, or reset to research" in operating_model
+    assert (
+        "champion, shadow challenger, dormant candidate, and retired candidate are the only governed role labels"
+        in operating_model
+    )
+    assert (
+        "retain champion, promote challenger, demote to dormant, retire candidate, or reset to research"
+        in operating_model
+    )
 
     assert "### 4e. Candidate governance and adjudication objects" in domain_model
-    assert "**Reserved adjudication spans must stay protected until governed final comparison consumes them.**" in guardrails
+    assert (
+        "**Reserved adjudication spans must stay protected until governed final comparison consumes them.**"
+        in guardrails
+    )
 
 
 def test_gate64_schema_surface_exposes_candidate_roles_and_ledger_hooks() -> None:
@@ -86,7 +108,9 @@ def test_gate64_schema_surface_exposes_candidate_roles_and_ledger_hooks() -> Non
         allow_retired_candidates=True,
         reserved_adjudication_spans=1,
     )
-    ledger = CandidateLedgerRecord(candidate_id="candidate_a", role=CandidateRole.CHAMPION)
+    ledger = CandidateLedgerRecord(
+        candidate_id="candidate_a", role=CandidateRole.CHAMPION
+    )
     governance = CandidateGovernanceSurface(
         candidate_shape=shape,
         champion_candidate_id="candidate_a",
@@ -96,7 +120,9 @@ def test_gate64_schema_surface_exposes_candidate_roles_and_ledger_hooks() -> Non
         comparison_outcome=CandidateComparisonOutcome.RETAIN_CHAMPION,
         adjudication_disposition=AdjudicationDisposition.RESERVED_UNTOUCHED,
     )
-    review = ReviewExplanationOutput(summary="champion retained", review_packet={}, candidate_governance=governance)
+    review = ReviewExplanationOutput(
+        summary="champion retained", review_packet={}, candidate_governance=governance
+    )
     assert review.candidate_governance == governance
     assert ledger.role is CandidateRole.CHAMPION
 

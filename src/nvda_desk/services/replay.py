@@ -18,11 +18,15 @@ from nvda_desk.schemas.replay import (
 
 
 class ReplayService:
-    def __init__(self, classifier: SessionClockClassifier, session_factory: sessionmaker[Session]):
+    def __init__(
+        self, classifier: SessionClockClassifier, session_factory: sessionmaker[Session]
+    ):
         self._classifier = classifier
         self._session_factory = session_factory
 
-    def replay_session_phases(self, symbol: str, start_ts: datetime, end_ts: datetime) -> ReplaySessionResponse:
+    def replay_session_phases(
+        self, symbol: str, start_ts: datetime, end_ts: datetime
+    ) -> ReplaySessionResponse:
         with self._session_factory() as session:
             stmt = (
                 select(Bar1m)
@@ -36,7 +40,11 @@ class ReplayService:
 
         grouped: dict[SessionClockPhase, list[Bar1m]] = defaultdict(list)
         for bar in bars:
-            effective_ts = bar.ts_utc if bar.ts_utc.tzinfo is not None else bar.ts_utc.replace(tzinfo=UTC)
+            effective_ts = (
+                bar.ts_utc
+                if bar.ts_utc.tzinfo is not None
+                else bar.ts_utc.replace(tzinfo=UTC)
+            )
             phase = self._classifier.classify(effective_ts).phase
             grouped[phase].append(bar)
 
@@ -73,13 +81,14 @@ class ReplayService:
         )
 
 
-
 def serialize_horizon_discovery_response(
     response: ReplayHorizonDiscoveryResponse,
     output_path: str | Path,
 ) -> str:
     """Serialise a Gate 79 harness response to stable JSON."""
 
-    serialised = json.dumps(response.model_dump(mode="json"), indent=2, sort_keys=True) + "\n"
+    serialised = (
+        json.dumps(response.model_dump(mode="json"), indent=2, sort_keys=True) + "\n"
+    )
     Path(output_path).write_text(serialised)
     return serialised

@@ -13,7 +13,9 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.schemas.cognition import OptionsFlowContextOutput, TemporalContextOutput
-from nvda_desk.schemas.imported_modules.market_substrate import MacroDataCaptureContractOutput
+from nvda_desk.schemas.imported_modules.market_substrate import (
+    MacroDataCaptureContractOutput,
+)
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ContractComputationMode,
     ContractDependencyFence,

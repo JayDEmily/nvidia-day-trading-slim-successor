@@ -101,9 +101,10 @@ def review_daily_packet(
         ExecutionRecordsService(session_factory),
         EventsService(session_factory),
     )
-    packet = service.daily_packet(report_date=datetime.fromisoformat(report_date).date(), symbol=symbol)
+    packet = service.daily_packet(
+        report_date=datetime.fromisoformat(report_date).date(), symbol=symbol
+    )
     typer.echo(packet.model_dump_json(indent=2))
-
 
 
 def _ensure_parent_dir(database_url: str) -> None:

@@ -942,12 +942,12 @@ class ReplayComparisonService:
             active_playbook_spread = max(
                 metric.active_playbook_rate for metric in values
             ) - min(metric.active_playbook_rate for metric in values)
-            if active_playbook_spread > 0.35:
+            if active_playbook_spread > rule.max_active_playbook_rate_spread:
                 window_failures.append("active_playbook_rate_spread")
             conflict_spread = max(
                 metric.mean_conflict_count for metric in values
             ) - min(metric.mean_conflict_count for metric in values)
-            if conflict_spread > 1.5:
+            if conflict_spread > rule.max_conflict_count_spread:
                 window_failures.append("conflict_count_spread")
             if (
                 min(metric.review_completeness_rate for metric in values)

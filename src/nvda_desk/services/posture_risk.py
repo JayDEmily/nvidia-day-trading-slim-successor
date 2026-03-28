@@ -36,11 +36,21 @@ class PostureRiskService:
 
         inventory_posture_state = self._inventory_posture_state(payload)
         thesis_state = self._thesis_state(payload)
-        capital_lockup_state = self._capital_lockup_state(payload.inventory.capital_lockup_pct)
-        adverse_excursion_state = self._adverse_excursion_state(payload.inventory.adverse_excursion_pct)
-        time_stop_state = self._time_stop_state(payload.inventory.time_stop_minutes_remaining)
-        fresh_vs_inventory_state = self._fresh_vs_inventory_state(payload, inventory_posture_state)
-        signal_conflict_state = self._signal_conflict_state(payload, inventory_posture_state)
+        capital_lockup_state = self._capital_lockup_state(
+            payload.inventory.capital_lockup_pct
+        )
+        adverse_excursion_state = self._adverse_excursion_state(
+            payload.inventory.adverse_excursion_pct
+        )
+        time_stop_state = self._time_stop_state(
+            payload.inventory.time_stop_minutes_remaining
+        )
+        fresh_vs_inventory_state = self._fresh_vs_inventory_state(
+            payload, inventory_posture_state
+        )
+        signal_conflict_state = self._signal_conflict_state(
+            payload, inventory_posture_state
+        )
         reasons: list[str] = [
             f"inventory_posture_state:{inventory_posture_state}",
             f"thesis_state:{thesis_state}",
@@ -53,10 +63,17 @@ class PostureRiskService:
         permission_state = PermissionState.ALLOW
         posture_label = inventory_posture_state
         inventory_action_bias = "hold"
-        fresh_deployable = min(payload.inventory.fresh_cash_pct, payload.risk_budget_remaining_pct)
-        overnight_deployable = max(0.0, fresh_deployable - payload.inventory.overnight_inventory_pct)
+        fresh_deployable = min(
+            payload.inventory.fresh_cash_pct, payload.risk_budget_remaining_pct
+        )
+        overnight_deployable = max(
+            0.0, fresh_deployable - payload.inventory.overnight_inventory_pct
+        )
 
-        if payload.temporal.session_phase in {SessionClockPhase.CLOSED, SessionClockPhase.AFTER_HOURS}:
+        if payload.temporal.session_phase in {
+            SessionClockPhase.CLOSED,
+            SessionClockPhase.AFTER_HOURS,
+        }:
             permission_state = PermissionState.BLOCK
             posture_label = "closed_window"
             reasons.append("temporal_no_trade_window")
@@ -115,7 +132,18 @@ class PostureRiskService:
             overnight_deployable = 0.0
             inventory_action_bias = "reduce"
         elif permission_state is PermissionState.DERISK:
-            fresh_deployable = round(min(fresh_deployable, 15.0 if payload.options_flow.options_behavior_cluster == "negative_gamma_flush" else 30.0), 4)
+            fresh_deployable = round(
+                min(
+                    fresh_deployable,
+                    (
+                        15.0
+                        if payload.options_flow.options_behavior_cluster
+                        == "negative_gamma_flush"
+                        else 30.0
+                    ),
+                ),
+                4,
+            )
             overnight_deployable = round(min(overnight_deployable, 10.0), 4)
             if inventory_posture_state in {"trapped", "full"}:
                 inventory_action_bias = "trim"
@@ -126,7 +154,11 @@ class PostureRiskService:
         else:
             fresh_deployable = round(min(fresh_deployable, 55.0), 4)
             overnight_deployable = round(min(overnight_deployable, 20.0), 4)
-            inventory_action_bias = "add" if fresh_vs_inventory_state == "fresh_capital_available" else "hold"
+            inventory_action_bias = (
+                "add"
+                if fresh_vs_inventory_state == "fresh_capital_available"
+                else "hold"
+            )
 
         thesis_pressure_score = round(
             min(
@@ -134,7 +166,11 @@ class PostureRiskService:
                 max(
                     0.0,
                     (payload.inventory.capital_lockup_pct / 100.0 * 0.25)
-                    + (min(abs(payload.inventory.adverse_excursion_pct), 15.0) / 15.0 * 0.25)
+                    + (
+                        min(abs(payload.inventory.adverse_excursion_pct), 15.0)
+                        / 15.0
+                        * 0.25
+                    )
                     + (0.20 if thesis_state == "fragile" else 0.0)
                     + (0.15 if signal_conflict_state != "aligned_signals" else 0.0)
                     + (0.25 if time_stop_state == "time_stop_near" else 0.0)
@@ -166,9 +202,15 @@ class PostureRiskService:
         inventory = payload.inventory
         if inventory.existing_inventory_pct <= 0.0 and inventory.open_orders_count == 0:
             return "flat"
-        if inventory.capital_lockup_pct >= 75.0 or (inventory.existing_inventory_pct >= 70.0 and inventory.fresh_cash_pct <= 15.0):
+        if inventory.capital_lockup_pct >= 75.0 or (
+            inventory.existing_inventory_pct >= 70.0
+            and inventory.fresh_cash_pct <= 15.0
+        ):
             return "capital_locked"
-        if inventory.cost_basis_gap_pct <= -6.0 and inventory.existing_inventory_pct >= 20.0:
+        if (
+            inventory.cost_basis_gap_pct <= -6.0
+            and inventory.existing_inventory_pct >= 20.0
+        ):
             return "trapped"
         if inventory.existing_inventory_pct <= 10.0:
             return "probe"
@@ -186,17 +228,27 @@ class PostureRiskService:
             return "fragile"
         return "valid"
 
-    def _fresh_vs_inventory_state(self, payload: PostureRiskInput, inventory_posture_state: str) -> str:
+    def _fresh_vs_inventory_state(
+        self, payload: PostureRiskInput, inventory_posture_state: str
+    ) -> str:
         inventory = payload.inventory
         if inventory_posture_state in {"capital_locked", "trapped"}:
             return "inventory_locked"
-        if inventory.fresh_cash_pct <= 10.0 and inventory.existing_inventory_pct >= 25.0:
+        if (
+            inventory.fresh_cash_pct <= 10.0
+            and inventory.existing_inventory_pct >= 25.0
+        ):
             return "inventory_only"
-        if inventory.fresh_cash_pct >= 30.0 and inventory.existing_inventory_pct <= 20.0:
+        if (
+            inventory.fresh_cash_pct >= 30.0
+            and inventory.existing_inventory_pct <= 20.0
+        ):
             return "fresh_capital_available"
         return "balanced_capital_mix"
 
-    def _signal_conflict_state(self, payload: PostureRiskInput, inventory_posture_state: str) -> str:
+    def _signal_conflict_state(
+        self, payload: PostureRiskInput, inventory_posture_state: str
+    ) -> str:
         conflict_tags: list[str] = []
         if payload.regime.signal_conflict_state != "aligned_regime":
             conflict_tags.append(payload.regime.signal_conflict_state)
@@ -206,7 +258,10 @@ class PostureRiskService:
             and payload.options_flow.options_behavior_cluster == "negative_gamma_flush"
         ):
             conflict_tags.append("leadership_vs_hostile_options")
-        if inventory_posture_state in {"trapped", "capital_locked"} and payload.options_flow.gamma_state.value == "destabilising":
+        if (
+            inventory_posture_state in {"trapped", "capital_locked"}
+            and payload.options_flow.gamma_state.value == "destabilising"
+        ):
             conflict_tags.append("inventory_stress_with_destabilising_gamma")
         if payload.options_flow.options_behavior_cluster == "event_suppressed":
             conflict_tags.append("event_suppressed")

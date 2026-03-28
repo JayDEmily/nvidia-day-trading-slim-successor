@@ -14,12 +14,16 @@ from nvda_desk.schemas.cognition import (
     PostureRiskOutput,
     TemporalContextOutput,
 )
-from nvda_desk.schemas.imported_modules.context_scanners import EngineScoreContractOutput
+from nvda_desk.schemas.imported_modules.context_scanners import (
+    EngineScoreContractOutput,
+)
 from nvda_desk.schemas.imported_modules.market_substrate import (
     SpotDataCaptureContractOutput,
     VwapAccumulatorContractOutput,
 )
-from nvda_desk.schemas.imported_modules.posture_enrichers import FillBiasAdjusterContractOutput
+from nvda_desk.schemas.imported_modules.posture_enrichers import (
+    FillBiasAdjusterContractOutput,
+)
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ContractComputationMode,
     ContractDependencyFence,

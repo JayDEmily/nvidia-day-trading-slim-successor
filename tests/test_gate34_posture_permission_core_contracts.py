@@ -19,7 +19,9 @@ EXPECTED_GATE34_ORDER = [
 ]
 
 
-def test_gate34_coverage_is_closed_in_frozen_order_with_non_approved_permission_honesty() -> None:
+def test_gate34_coverage_is_closed_in_frozen_order_with_non_approved_permission_honesty() -> (
+    None
+):
     """Gate 34 should close exactly the three posture core contracts."""
 
     supportive = build_gate_support_bundle()
@@ -32,11 +34,20 @@ def test_gate34_coverage_is_closed_in_frozen_order_with_non_approved_permission_
         "archive-module-051",
         "archive-module-043",
     ]
-    assert all(output.grammar_role == DmpGrammarRole.POSTURE_RISK_PERMISSION.value for output in ordered)
+    assert all(
+        output.grammar_role == DmpGrammarRole.POSTURE_RISK_PERMISSION.value
+        for output in ordered
+    )
 
-    signal_conflict = cast(SignalConflictDetectorContractOutput, outputs["signal_conflict_detector"])
-    confidence = cast(ModelConfidenceScorerContractOutput, outputs["model_confidence_scorer"])
-    conviction = cast(ConvictionTierAllocatorContractOutput, outputs["conviction_tier_allocator"])
+    signal_conflict = cast(
+        SignalConflictDetectorContractOutput, outputs["signal_conflict_detector"]
+    )
+    confidence = cast(
+        ModelConfidenceScorerContractOutput, outputs["model_confidence_scorer"]
+    )
+    conviction = cast(
+        ConvictionTierAllocatorContractOutput, outputs["conviction_tier_allocator"]
+    )
 
     assert signal_conflict.conflict_state in {"aligned", "conflicted"}
     assert confidence.confidence_band in {"high", "medium", "low"}
@@ -49,9 +60,15 @@ def test_gate34_stress_degrades_confidence_and_conviction_honestly() -> None:
 
     stressed = build_gate_support_bundle(stressed=True)
     outputs = stressed.selector_outputs
-    confidence = cast(ModelConfidenceScorerContractOutput, outputs["model_confidence_scorer"])
-    conviction = cast(ConvictionTierAllocatorContractOutput, outputs["conviction_tier_allocator"])
-    signal_conflict = cast(SignalConflictDetectorContractOutput, outputs["signal_conflict_detector"])
+    confidence = cast(
+        ModelConfidenceScorerContractOutput, outputs["model_confidence_scorer"]
+    )
+    conviction = cast(
+        ConvictionTierAllocatorContractOutput, outputs["conviction_tier_allocator"]
+    )
+    signal_conflict = cast(
+        SignalConflictDetectorContractOutput, outputs["signal_conflict_detector"]
+    )
 
     assert confidence.confidence_band in {"medium", "low"}
     assert conviction.conviction_tier in {"tier_2", "tier_3"}

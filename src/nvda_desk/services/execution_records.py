@@ -49,7 +49,9 @@ class ExecutionRecordsService:
     def __init__(self, session_factory: sessionmaker[Session]):
         self._session_factory = session_factory
 
-    def record_signal(self, payload: ModuleSignalEventCreate) -> ModuleSignalEventPayload:
+    def record_signal(
+        self, payload: ModuleSignalEventCreate
+    ) -> ModuleSignalEventPayload:
         with self._session_factory() as session:
             row = ModuleSignalEvent(
                 symbol=payload.symbol,
@@ -65,13 +67,21 @@ class ExecutionRecordsService:
             session.refresh(row)
             return self._to_signal_payload(row)
 
-    def list_signals(self, module_id: str | None = None, limit: int = 20) -> ModuleSignalEventListResponse:
+    def list_signals(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> ModuleSignalEventListResponse:
         with self._session_factory() as session:
             stmt = select(ModuleSignalEvent)
             if module_id:
                 stmt = stmt.where(ModuleSignalEvent.module_id == module_id)
-            rows = list(session.scalars(stmt.order_by(desc(ModuleSignalEvent.created_at)).limit(limit)))
-        return ModuleSignalEventListResponse(signal_events=[self._to_signal_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    stmt.order_by(desc(ModuleSignalEvent.created_at)).limit(limit)
+                )
+            )
+        return ModuleSignalEventListResponse(
+            signal_events=[self._to_signal_payload(row) for row in rows]
+        )
 
     def record_veto(self, payload: ModuleVetoEventCreate) -> ModuleVetoEventPayload:
         with self._session_factory() as session:
@@ -88,13 +98,21 @@ class ExecutionRecordsService:
             session.refresh(row)
             return self._to_veto_payload(row)
 
-    def list_vetoes(self, module_id: str | None = None, limit: int = 20) -> ModuleVetoEventListResponse:
+    def list_vetoes(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> ModuleVetoEventListResponse:
         with self._session_factory() as session:
             stmt = select(ModuleVetoEvent)
             if module_id:
                 stmt = stmt.where(ModuleVetoEvent.module_id == module_id)
-            rows = list(session.scalars(stmt.order_by(desc(ModuleVetoEvent.created_at)).limit(limit)))
-        return ModuleVetoEventListResponse(veto_events=[self._to_veto_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    stmt.order_by(desc(ModuleVetoEvent.created_at)).limit(limit)
+                )
+            )
+        return ModuleVetoEventListResponse(
+            veto_events=[self._to_veto_payload(row) for row in rows]
+        )
 
     def record_risk_block(self, payload: RiskBlockEventCreate) -> RiskBlockEventPayload:
         with self._session_factory() as session:
@@ -111,13 +129,21 @@ class ExecutionRecordsService:
             session.refresh(row)
             return self._to_risk_block_payload(row)
 
-    def list_risk_blocks(self, module_id: str | None = None, limit: int = 20) -> RiskBlockEventListResponse:
+    def list_risk_blocks(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> RiskBlockEventListResponse:
         with self._session_factory() as session:
             stmt = select(RiskBlockEvent)
             if module_id:
                 stmt = stmt.where(RiskBlockEvent.module_id == module_id)
-            rows = list(session.scalars(stmt.order_by(desc(RiskBlockEvent.created_at)).limit(limit)))
-        return RiskBlockEventListResponse(risk_block_events=[self._to_risk_block_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    stmt.order_by(desc(RiskBlockEvent.created_at)).limit(limit)
+                )
+            )
+        return RiskBlockEventListResponse(
+            risk_block_events=[self._to_risk_block_payload(row) for row in rows]
+        )
 
     def place_paper_order(self, payload: BrokerPaperOrderInput) -> BrokerOrderPayload:
         with self._session_factory() as session:
@@ -167,9 +193,18 @@ class ExecutionRecordsService:
                     notional=notional,
                 )
             )
-            self._derive_position(session, payload.symbol, payload.side, quantity, fill_price, requested_at)
+            self._derive_position(
+                session,
+                payload.symbol,
+                payload.side,
+                quantity,
+                fill_price,
+                requested_at,
+            )
             session.flush()
-            capital = self._derive_capital_state(session, payload.side, notional, requested_at)
+            capital = self._derive_capital_state(
+                session, payload.side, notional, requested_at
+            )
             session.commit()
             return BrokerOrderPayload(
                 order_intent_id=intent.id,
@@ -184,25 +219,53 @@ class ExecutionRecordsService:
 
     def list_order_events(self, limit: int = 20) -> BrokerOrderEventListResponse:
         with self._session_factory() as session:
-            rows = list(session.scalars(select(OrderEventRecord).order_by(desc(OrderEventRecord.created_at)).limit(limit)))
-        return BrokerOrderEventListResponse(order_events=[self._to_order_event_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    select(OrderEventRecord)
+                    .order_by(desc(OrderEventRecord.created_at))
+                    .limit(limit)
+                )
+            )
+        return BrokerOrderEventListResponse(
+            order_events=[self._to_order_event_payload(row) for row in rows]
+        )
 
     def list_fill_events(self, limit: int = 20) -> BrokerFillEventListResponse:
         with self._session_factory() as session:
-            rows = list(session.scalars(select(FillEventRecord).order_by(desc(FillEventRecord.created_at)).limit(limit)))
-        return BrokerFillEventListResponse(fill_events=[self._to_fill_event_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    select(FillEventRecord)
+                    .order_by(desc(FillEventRecord.created_at))
+                    .limit(limit)
+                )
+            )
+        return BrokerFillEventListResponse(
+            fill_events=[self._to_fill_event_payload(row) for row in rows]
+        )
 
-    def list_positions(self, symbol: str | None = None, limit: int = 20) -> PositionSnapshotListResponse:
+    def list_positions(
+        self, symbol: str | None = None, limit: int = 20
+    ) -> PositionSnapshotListResponse:
         with self._session_factory() as session:
             stmt = select(PositionSnapshot)
             if symbol:
                 stmt = stmt.where(PositionSnapshot.symbol == symbol)
-            rows = list(session.scalars(stmt.order_by(desc(PositionSnapshot.snapshot_ts)).limit(limit)))
-        return PositionSnapshotListResponse(positions=[self._to_position_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    stmt.order_by(desc(PositionSnapshot.snapshot_ts)).limit(limit)
+                )
+            )
+        return PositionSnapshotListResponse(
+            positions=[self._to_position_payload(row) for row in rows]
+        )
 
     def latest_capital_state(self) -> CapitalStateSnapshotPayload:
         with self._session_factory() as session:
-            row = session.scalar(select(CapitalStateSnapshot).order_by(desc(CapitalStateSnapshot.snapshot_ts)).limit(1))
+            row = session.scalar(
+                select(CapitalStateSnapshot)
+                .order_by(desc(CapitalStateSnapshot.snapshot_ts))
+                .limit(1)
+            )
             if row is None:
                 row = CapitalStateSnapshot(
                     snapshot_ts=datetime.now(tz=UTC),
@@ -248,13 +311,21 @@ class ExecutionRecordsService:
             session.refresh(row)
             return self._to_daily_pnl_payload(row)
 
-    def list_daily_pnl(self, symbol: str | None = None, limit: int = 20) -> DailyPnlReportListResponse:
+    def list_daily_pnl(
+        self, symbol: str | None = None, limit: int = 20
+    ) -> DailyPnlReportListResponse:
         with self._session_factory() as session:
             stmt = select(DailyPnlReport)
             if symbol:
                 stmt = stmt.where(DailyPnlReport.symbol == symbol)
-            rows = list(session.scalars(stmt.order_by(desc(DailyPnlReport.report_date)).limit(limit)))
-        return DailyPnlReportListResponse(reports=[self._to_daily_pnl_payload(row) for row in rows])
+            rows = list(
+                session.scalars(
+                    stmt.order_by(desc(DailyPnlReport.report_date)).limit(limit)
+                )
+            )
+        return DailyPnlReportListResponse(
+            reports=[self._to_daily_pnl_payload(row) for row in rows]
+        )
 
     def _derive_position(
         self,
@@ -266,7 +337,10 @@ class ExecutionRecordsService:
         snapshot_ts: datetime,
     ) -> None:
         prior = session.scalar(
-            select(PositionSnapshot).where(PositionSnapshot.symbol == symbol).order_by(desc(PositionSnapshot.snapshot_ts)).limit(1)
+            select(PositionSnapshot)
+            .where(PositionSnapshot.symbol == symbol)
+            .order_by(desc(PositionSnapshot.snapshot_ts))
+            .limit(1)
         )
         prior_qty = prior.quantity if prior is not None else Decimal("0")
         prior_avg = prior.average_price if prior is not None else fill_price
@@ -280,7 +354,9 @@ class ExecutionRecordsService:
             avg_price = prior_avg
         market_price = self._latest_price(session, symbol) or fill_price
         market_value = new_qty * market_price
-        unrealized = (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
+        unrealized = (
+            (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
+        )
         session.add(
             PositionSnapshot(
                 symbol=symbol,
@@ -301,12 +377,20 @@ class ExecutionRecordsService:
         notional: Decimal,
         snapshot_ts: datetime,
     ) -> CapitalStateSnapshot:
-        prior = session.scalar(select(CapitalStateSnapshot).order_by(desc(CapitalStateSnapshot.snapshot_ts)).limit(1))
+        prior = session.scalar(
+            select(CapitalStateSnapshot)
+            .order_by(desc(CapitalStateSnapshot.snapshot_ts))
+            .limit(1)
+        )
         starting_cash = prior.cash if prior is not None else Decimal("100000.000000")
         cash = starting_cash - notional if side == "buy" else starting_cash + notional
         latest_positions = self._latest_positions(session)
-        gross_exposure = sum((abs(row.market_value) for row in latest_positions), start=Decimal("0"))
-        net_exposure = sum((row.market_value for row in latest_positions), start=Decimal("0"))
+        gross_exposure = sum(
+            (abs(row.market_value) for row in latest_positions), start=Decimal("0")
+        )
+        net_exposure = sum(
+            (row.market_value for row in latest_positions), start=Decimal("0")
+        )
         equity = cash + net_exposure
         row = CapitalStateSnapshot(
             snapshot_ts=snapshot_ts,
@@ -325,7 +409,10 @@ class ExecutionRecordsService:
         rows: list[PositionSnapshot] = []
         for symbol in symbols:
             row = session.scalar(
-                select(PositionSnapshot).where(PositionSnapshot.symbol == symbol).order_by(desc(PositionSnapshot.snapshot_ts)).limit(1)
+                select(PositionSnapshot)
+                .where(PositionSnapshot.symbol == symbol)
+                .order_by(desc(PositionSnapshot.snapshot_ts))
+                .limit(1)
             )
             if row is not None:
                 rows.append(row)
@@ -413,7 +500,9 @@ class ExecutionRecordsService:
             source=row.source,
         )
 
-    def _to_capital_payload(self, row: CapitalStateSnapshot) -> CapitalStateSnapshotPayload:
+    def _to_capital_payload(
+        self, row: CapitalStateSnapshot
+    ) -> CapitalStateSnapshotPayload:
         return CapitalStateSnapshotPayload(
             capital_state_snapshot_id=row.id,
             created_at=row.created_at,

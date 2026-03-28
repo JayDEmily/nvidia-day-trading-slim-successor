@@ -18,7 +18,9 @@ class PromotionService:
     def __init__(self, session_factory: sessionmaker[Session]):
         self._session_factory = session_factory
 
-    def record_decision(self, payload: PromotionDecisionCreate) -> PromotionDecisionPayload:
+    def record_decision(
+        self, payload: PromotionDecisionCreate
+    ) -> PromotionDecisionPayload:
         with self._session_factory() as session:
             row = PromotionDecision(
                 module_id=payload.module_id,
@@ -34,14 +36,18 @@ class PromotionService:
             session.refresh(row)
             return self._to_payload(row)
 
-    def list_decisions(self, module_id: str | None = None, limit: int = 20) -> PromotionDecisionListResponse:
+    def list_decisions(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> PromotionDecisionListResponse:
         with self._session_factory() as session:
             stmt = select(PromotionDecision)
             if module_id:
                 stmt = stmt.where(PromotionDecision.module_id == module_id)
             stmt = stmt.order_by(desc(PromotionDecision.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return PromotionDecisionListResponse(decisions=[self._to_payload(row) for row in rows])
+        return PromotionDecisionListResponse(
+            decisions=[self._to_payload(row) for row in rows]
+        )
 
     def _to_payload(self, row: PromotionDecision) -> PromotionDecisionPayload:
         return PromotionDecisionPayload(

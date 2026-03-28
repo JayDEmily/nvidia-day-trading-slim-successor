@@ -66,7 +66,9 @@ class ServiceBundle:
             slv_market,
             risk,
         )
-        self.carry_market = OvernightCarryMarketService(session_factory, classifier, market)
+        self.carry_market = OvernightCarryMarketService(
+            session_factory, classifier, market
+        )
         self.risk = risk
         self.slv_experiments = StrategicLadderExperimentService(
             classifier,
@@ -75,7 +77,9 @@ class ServiceBundle:
             self.experiments,
             self.config_surface,
         )
-        self.capital_allocator = CapitalAllocatorService(self.experiments, self.config_surface)
+        self.capital_allocator = CapitalAllocatorService(
+            self.experiments, self.config_surface
+        )
 
 
 def _client_with_services(bundle: ServiceBundle) -> Iterator[TestClient]:
@@ -84,12 +88,22 @@ def _client_with_services(bundle: ServiceBundle) -> Iterator[TestClient]:
     app.dependency_overrides[get_evaluation_log_service] = lambda: bundle.evals
     app.dependency_overrides[get_experiment_log_service] = lambda: bundle.experiments
     app.dependency_overrides[get_replay_service] = lambda: bundle.replay
-    app.dependency_overrides[get_strategic_ladder_market_service] = lambda: bundle.slv_market
-    app.dependency_overrides[get_strategic_ladder_replay_service] = lambda: bundle.slv_replay
-    app.dependency_overrides[get_strategic_ladder_experiment_service] = lambda: bundle.slv_experiments
-    app.dependency_overrides[get_overnight_carry_market_service] = lambda: bundle.carry_market
+    app.dependency_overrides[get_strategic_ladder_market_service] = (
+        lambda: bundle.slv_market
+    )
+    app.dependency_overrides[get_strategic_ladder_replay_service] = (
+        lambda: bundle.slv_replay
+    )
+    app.dependency_overrides[get_strategic_ladder_experiment_service] = (
+        lambda: bundle.slv_experiments
+    )
+    app.dependency_overrides[get_overnight_carry_market_service] = (
+        lambda: bundle.carry_market
+    )
     app.dependency_overrides[get_risk_gateway_service] = lambda: bundle.risk
-    app.dependency_overrides[get_capital_allocator_service] = lambda: bundle.capital_allocator
+    app.dependency_overrides[get_capital_allocator_service] = (
+        lambda: bundle.capital_allocator
+    )
     try:
         with TestClient(app) as client:
             yield client
@@ -174,7 +188,10 @@ def test_record_strategic_ladder_market_eval(tmp_path: Path) -> None:
     assert payload["module_id"] == "slv-v2-market"
     assert payload["output_payload"]["snapshots_considered"] == 2
     assert payload["verdict"] in {"pass", "review"}
-    assert payload["output_payload"]["rung_decisions"][0]["decision"] in {"keep", "adjust"}
+    assert payload["output_payload"]["rung_decisions"][0]["decision"] in {
+        "keep",
+        "adjust",
+    }
 
 
 def test_record_strategic_ladder_replay_eval(tmp_path: Path) -> None:
@@ -205,7 +222,10 @@ def test_record_strategic_ladder_replay_eval(tmp_path: Path) -> None:
     payload = response.json()
     assert payload["module_id"] == "slv-v3-replay"
     assert payload["output_payload"]["entry_phase"] == "open_disorder"
-    assert payload["output_payload"]["supervisory_overlay"]["action"] in {"allow", "derisk"}
+    assert payload["output_payload"]["supervisory_overlay"]["action"] in {
+        "allow",
+        "derisk",
+    }
     assert len(payload["output_payload"]["rung_outcomes"]) == 2
 
 
@@ -330,7 +350,6 @@ def test_slv_walk_forward_persists_experiment(tmp_path: Path) -> None:
     assert listed[0]["experiment_type"] == "walk_forward"
 
 
-
 def test_slv_fragility_persists_failure_modes(tmp_path: Path) -> None:
     bundle = ServiceBundle(tmp_path)
     for client in _client_with_services(bundle):
@@ -370,7 +389,6 @@ def test_slv_fragility_persists_failure_modes(tmp_path: Path) -> None:
     assert isinstance(payload["failure_modes"], list)
 
 
-
 def test_slv_batch_ranking_and_allocator(tmp_path: Path) -> None:
     bundle = ServiceBundle(tmp_path)
     for client in _client_with_services(bundle):
@@ -401,7 +419,13 @@ def test_slv_batch_ranking_and_allocator(tmp_path: Path) -> None:
                     "2026-03-18T15:05:00Z",
                 ],
                 "variant_names": ["baseline", "conservative"],
-                "variants": [{"name": "vwap-plus", "vwap_offset_pct": 0.5, "coefficient_group_name": "S08"}],
+                "variants": [
+                    {
+                        "name": "vwap-plus",
+                        "vwap_offset_pct": 0.5,
+                        "coefficient_group_name": "S08",
+                    }
+                ],
                 "batch_name": "batch-1",
             },
         )
@@ -433,12 +457,18 @@ def test_slv_batch_ranking_and_allocator(tmp_path: Path) -> None:
     assert len(batch_payload["ranked_variants"]) == 3
     ranked_names = {item["name"] for item in batch_payload["ranked_variants"]}
     assert {"baseline", "conservative", "vwap-plus"}.issubset(ranked_names)
-    assert batch_payload["ranked_variants"][0]["ranking_score"] >= batch_payload["ranked_variants"][1]["ranking_score"]
+    assert (
+        batch_payload["ranked_variants"][0]["ranking_score"]
+        >= batch_payload["ranked_variants"][1]["ranking_score"]
+    )
     assert allocation_response.status_code == 200
     allocation_payload = allocation_response.json()
     assert allocation_payload["allocations"][0]["module_id"] == "slv-v3-replay"
     assert allocation_payload["cash_reserve_pct"] >= 0.0
-    assert "variant_weight_override_applied" in allocation_payload["allocations"][0]["reasons"]
+    assert (
+        "variant_weight_override_applied"
+        in allocation_payload["allocations"][0]["reasons"]
+    )
 
 
 def test_unknown_strategy_variant_returns_404(tmp_path: Path) -> None:

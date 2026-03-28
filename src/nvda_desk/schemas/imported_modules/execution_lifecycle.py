@@ -22,7 +22,9 @@ from nvda_desk.schemas.imported_modules.execution_planning import (
     PositionAllocatorContractOutput,
     RunTradingBotContractOutput,
 )
-from nvda_desk.schemas.imported_modules.market_substrate import SpotDataCaptureContractOutput
+from nvda_desk.schemas.imported_modules.market_substrate import (
+    SpotDataCaptureContractOutput,
+)
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ContractComputationMode,
     ContractDependencyFence,

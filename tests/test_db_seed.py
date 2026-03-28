@@ -30,10 +30,18 @@ def test_seed_dev_populates_sqlite(tmp_path: Path) -> None:
         vix = session.scalar(select(Instrument).where(Instrument.symbol == "VIX"))
         vvix = session.scalar(select(Instrument).where(Instrument.symbol == "VVIX"))
         assert nvda is not None and vix is not None and vvix is not None
-        bars = session.scalars(select(Bar1m).where(Bar1m.instrument_id == nvda.id)).all()
-        vix_bars = session.scalars(select(Bar1m).where(Bar1m.instrument_id == vix.id)).all()
-        vvix_bars = session.scalars(select(Bar1m).where(Bar1m.instrument_id == vvix.id)).all()
-        option_snapshots = session.scalars(select(OptionSnapshot).where(OptionSnapshot.instrument_id == nvda.id)).all()
+        bars = session.scalars(
+            select(Bar1m).where(Bar1m.instrument_id == nvda.id)
+        ).all()
+        vix_bars = session.scalars(
+            select(Bar1m).where(Bar1m.instrument_id == vix.id)
+        ).all()
+        vvix_bars = session.scalars(
+            select(Bar1m).where(Bar1m.instrument_id == vvix.id)
+        ).all()
+        option_snapshots = session.scalars(
+            select(OptionSnapshot).where(OptionSnapshot.instrument_id == nvda.id)
+        ).all()
     assert len(bars) == 240
     assert len(vix_bars) == 240
     assert len(vvix_bars) == 240

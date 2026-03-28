@@ -324,6 +324,8 @@ class StabilityComparisonRule(BaseModel):
     max_veto_correctness_spread: float = Field(ge=0.0, default=0.25)
     max_playbook_precision_spread: float = Field(ge=0.0, default=0.25)
     max_fresh_deployable_spread: float = Field(ge=0.0, default=20.0)
+    max_active_playbook_rate_spread: float = Field(ge=0.0, default=0.35)
+    max_conflict_count_spread: float = Field(ge=0.0, default=1.5)
     min_review_completeness_rate: float = Field(ge=0.0, le=1.0, default=0.9)
     minimum_forward_windows: int = Field(ge=1, default=2)
 

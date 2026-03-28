@@ -38,6 +38,8 @@ def test_gate85_report_level_fragility_and_ablation_expose_failed_economic_axes(
             max_veto_correctness_spread=0.3,
             max_playbook_precision_spread=0.3,
             max_fresh_deployable_spread=5.0,
+            max_active_playbook_rate_spread=0.35,
+            max_conflict_count_spread=1.5,
             min_review_completeness_rate=0.8,
             minimum_forward_windows=2,
         ),

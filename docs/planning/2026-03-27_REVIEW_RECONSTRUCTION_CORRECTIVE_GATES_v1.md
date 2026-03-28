@@ -1,8 +1,8 @@
 # 2026-03-27 Review Reconstruction Corrective Gates v1
 
-Status: complete on `main`; corrective tranche closed
+Status: complete on `main`; corrective tranche closed through Gate 87
 
-Version: v1.1
+Version: v1.2
 
 ## Purpose
 
@@ -208,11 +208,11 @@ Depends on: Gate 82
 
 ### Objective
 
-Create real producers for `stability_scorecards`, `ReviewEligibilitySurface`, and `CandidateGovernanceSurface`, bound to genuine replay/review evidence rather than fabricated runtime shorthand.
+Create real producers for `stability_scorecards`, `ReviewEligibilitySurface`, and `CandidateGovernanceSurface`, bound to bounded runtime review evidence and explicit comparison context rather than fabricated placeholders.
 
 ### Why this gate exists
 
-These surfaces require aggregate evidence. A single runtime snapshot cannot honestly invent them, but leaving them as dead hooks is worse. The repo needs explicit builders and bindings that consume corridor, lineage, and horizon artefacts when that evidence exists.
+These surfaces require explicit evidence. A single runtime snapshot cannot honestly invent candidate comparison outcomes, but leaving these hooks dead is worse. The repo needs builders that consume corridor and lineage evidence in runtime review, while keeping candidate release reserved until bounded comparison context actually exists.
 
 ### Scope
 
@@ -231,7 +231,7 @@ These surfaces require aggregate evidence. A single runtime snapshot cannot hone
 
 ### Definition of done
 
-The aggregate governance surfaces are emitted only from real evidence-bearing paths and are no longer passive schema placeholders.
+The aggregate governance surfaces are emitted only from bounded evidence-bearing paths and are no longer passive schema placeholders or hardcoded theatre.
 
 ### Gate outputs
 
@@ -241,7 +241,7 @@ The aggregate governance surfaces are emitted only from real evidence-bearing pa
 
 ### Gate 83 closeout note
 
-Gate 83 is complete on `main`. The previously dead aggregate governance hooks now emit through real evidence-bearing paths: runtime review surfaces populate `stability_scorecards`, `review_eligibility`, and `candidate_governance`, while candidate-governance release remains reserved unless promotion evidence is genuinely ready.
+Gate 83 is complete on `main`. The previously dead aggregate governance hooks now emit through bounded evidence-bearing paths: runtime review surfaces populate `stability_scorecards`, `review_eligibility`, and `candidate_governance`, while candidate-governance release remains reserved unless promotion evidence is genuinely ready and explicit comparison context is present.
 
 ## Gate 84 — Failure-taxonomy and evidence-floor deepening
 
@@ -325,7 +325,7 @@ Horizon discovery still stays deterministic and bounded, but “economic behavio
 
 ### Gate 85 closeout note
 
-Gate 85 is complete on `main`. Horizon discovery now judges bounded multi-axis economic behaviour rather than fresh-deployable spread alone, and both fragility and ablation surfaces now expose the specific failed economic axes as compact review-safe hints.
+Gate 85 is complete on `main`. Horizon discovery now judges bounded multi-axis economic behaviour rather than fresh-deployable spread alone, and both fragility and ablation surfaces now expose the specific failed economic axes as compact review-safe hints, with the widened thresholds frozen on `StabilityComparisonRule` rather than hidden inside service code.
 
 ## Gate 86 — Event-ingestion source precedence refinement and corrective closeout
 
@@ -368,3 +368,49 @@ Event-source precedence is explicit and reviewable, and the corrective tranche c
 ### Gate 86 closeout note
 
 Gate 86 is complete on `main`. Event ingestion now resolves winners through explicit bounded precedence over outage state, freshness, confidence tier, and source class while preserving visible conflicts and lineage, and the corrective review-reconstruction tranche is closed through Gate 86 on `main`.
+
+## Gate 87 — Audit remediation and closeout integrity sweep
+
+Status: complete on `main`
+
+Depends on: Gate 86
+
+### Objective
+
+Repair the post-closeout seams found by the Gate 86 self-audit without reopening the corrective runtime tranche.
+
+### Why this gate exists
+
+The corrective tranche materially fixed the original review reconstruction hole, but the audit found four residual truthfulness/control defects and three hygiene defects: one predecessor-pack closeout note drift, one review/runtime phase-carry divergence, one candidate-governance placeholder release path, one hidden Gate 85 threshold pair, repo-wide formatting drift, and a small pytest config/mypy hygiene tail.
+
+### Scope
+
+- restore the missing Gate 69 predecessor-pack closeout note so lineage/control tests match the preserved evidence pack again
+- make review phase/carry and event/options surfaces use the same canonical projector functions as modifier runtime
+- reserve candidate-governance release unless both promotion evidence and explicit comparison context exist
+- freeze widened Gate 85 economic thresholds on `StabilityComparisonRule`
+- remove the stale pytest `asyncio_mode` config warning
+- restore repo-wide `black --check src tests`, `mypy src tests`, and `ruff check src tests`
+
+### Out of scope
+
+- reopening Gates 59–86 for new feature work
+- introducing free-form candidate search or replay-driven promotion machinery
+- changing broker/runtime behaviour beyond the audited seam fixes above
+
+### Definition of done
+
+The audit defects are genuinely closed: docs, schema, runtime review surfaces, static checks, and preserved predecessor evidence all agree again.
+
+### Gate outputs
+
+- repaired predecessor-pack closeout evidence
+- shared review/runtime projector law for Gate 82 surfaces
+- honest candidate-governance release contract
+- frozen Gate 85 threshold schema
+- restored formatting/type/lint hygiene across `src` and `tests`
+
+### Gate 87 closeout note
+
+Gate 87 is complete on `main`. The post-closeout audit seams are repaired: Gate 69 predecessor evidence is internally consistent again, Gate 82 review packets now project from the same canonical law as modifier runtime, candidate-governance release requires explicit comparison context instead of placeholders, Gate 85 widened thresholds now live in the frozen rule schema, and repo-wide pytest/mypy/ruff/black hygiene is clean.
+

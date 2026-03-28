@@ -163,7 +163,9 @@ class StrategyVariantDefinition(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     description: str
-    enabled_modules: VariantEnabledModules = Field(default_factory=VariantEnabledModules)
+    enabled_modules: VariantEnabledModules = Field(
+        default_factory=VariantEnabledModules
+    )
     overrides: VariantOverrides = Field(default_factory=VariantOverrides)
 
 

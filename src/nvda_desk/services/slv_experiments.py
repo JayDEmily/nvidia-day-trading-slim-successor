@@ -30,7 +30,10 @@ from nvda_desk.schemas.slv import (
     StrategicLadderReplayInput,
     StrategicLadderReplayOutput,
 )
-from nvda_desk.services.config_surface import ConfigSurfaceLookupError, ConfigSurfaceService
+from nvda_desk.services.config_surface import (
+    ConfigSurfaceLookupError,
+    ConfigSurfaceService,
+)
 from nvda_desk.services.experiment_log import ExperimentLogService
 from nvda_desk.services.market_state import MarketStateService
 from nvda_desk.services.slv_replay import StrategicLadderReplayService
@@ -115,7 +118,9 @@ class StrategicLadderExperimentService:
             strategy_variant_name=payload.strategy_variant_name,
             coefficient_group_name=payload.coefficient_group_name,
         )
-        baseline = self._run_replay(base_payload=configured_payload, anchor_ts=configured_payload.entry_ts)
+        baseline = self._run_replay(
+            base_payload=configured_payload, anchor_ts=configured_payload.entry_ts
+        )
         scenario_results: list[FragilityScenarioResult] = []
         failure_evidence: dict[str, list[str]] = defaultdict(list)
         drops: list[float] = []
@@ -126,7 +131,9 @@ class StrategicLadderExperimentService:
                 anchor_ts=configured_payload.entry_ts,
             )
             replay_output = self._replay.replay_from_market(replay_input)
-            score_drop = max(0.0, baseline.replay_output.replay_score - replay_output.replay_score)
+            score_drop = max(
+                0.0, baseline.replay_output.replay_score - replay_output.replay_score
+            )
             drops.append(score_drop)
             scenario_result = FragilityScenarioResult(
                 name=scenario.name,
@@ -153,7 +160,9 @@ class StrategicLadderExperimentService:
             fragility_score=max(0.0, min(1.0, fragility_score)),
             worst_case_drop=round(max(drops, default=0.0), 4),
             scenario_results=scenario_results,
-            failure_modes=self._failure_modes_from_evidence(failure_evidence, max(len(scenarios), 1)),
+            failure_modes=self._failure_modes_from_evidence(
+                failure_evidence, max(len(scenarios), 1)
+            ),
         )
         recorded = self._experiment_log.record(
             symbol=payload.base_payload.symbol,
@@ -174,9 +183,15 @@ class StrategicLadderExperimentService:
         ranked_variants: list[RankedVariantSummary] = []
         variants = list(payload.variants)
         for variant_name in payload.variant_names:
-            variants.append(BatchVariantConfig(name=variant_name, strategy_variant_name=variant_name))
+            variants.append(
+                BatchVariantConfig(
+                    name=variant_name, strategy_variant_name=variant_name
+                )
+            )
         if not variants:
-            raise ValueError("at least one explicit variant or named strategy variant is required")
+            raise ValueError(
+                "at least one explicit variant or named strategy variant is required"
+            )
         for variant in variants:
             configured_payload = self._apply_named_overrides(
                 payload.base_payload,
@@ -184,15 +199,26 @@ class StrategicLadderExperimentService:
                 coefficient_group_name=variant.coefficient_group_name,
             )
             walk_forward_input = StrategicLadderWalkForwardInput(
-                base_payload=self._variant_payload(configured_payload, variant=variant, anchor_ts=payload.base_payload.entry_ts),
-                anchor_timestamps=[anchor + timedelta(minutes=variant.entry_offset_minutes) for anchor in payload.anchor_timestamps],
+                base_payload=self._variant_payload(
+                    configured_payload,
+                    variant=variant,
+                    anchor_ts=payload.base_payload.entry_ts,
+                ),
+                anchor_timestamps=[
+                    anchor + timedelta(minutes=variant.entry_offset_minutes)
+                    for anchor in payload.anchor_timestamps
+                ],
                 config_name=variant.name,
                 strategy_variant_name=variant.strategy_variant_name,
                 coefficient_group_name=variant.coefficient_group_name,
             )
             walk_forward_output = self.walk_forward_from_market(walk_forward_input)
             fragility_input = StrategicLadderFragilityInput(
-                base_payload=self._variant_payload(configured_payload, variant=variant, anchor_ts=payload.base_payload.entry_ts),
+                base_payload=self._variant_payload(
+                    configured_payload,
+                    variant=variant,
+                    anchor_ts=payload.base_payload.entry_ts,
+                ),
                 config_name=variant.name,
                 strategy_variant_name=variant.strategy_variant_name,
                 coefficient_group_name=variant.coefficient_group_name,
@@ -256,15 +282,21 @@ class StrategicLadderExperimentService:
             phase_key = context.replay_output.entry_phase.value
             volatility_key = context.volatility_bucket
             risk_key = result.supervisory_overlay.action.value
-            phase_accumulators[phase_key] = phase_accumulators.get(phase_key, _BucketAccumulator()).add(
+            phase_accumulators[phase_key] = phase_accumulators.get(
+                phase_key, _BucketAccumulator()
+            ).add(
                 passed=passed,
                 score=result.replay_score,
             )
-            volatility_accumulators[volatility_key] = volatility_accumulators.get(volatility_key, _BucketAccumulator()).add(
+            volatility_accumulators[volatility_key] = volatility_accumulators.get(
+                volatility_key, _BucketAccumulator()
+            ).add(
                 passed=passed,
                 score=result.replay_score,
             )
-            risk_accumulators[risk_key] = risk_accumulators.get(risk_key, _BucketAccumulator()).add(
+            risk_accumulators[risk_key] = risk_accumulators.get(
+                risk_key, _BucketAccumulator()
+            ).add(
                 passed=passed,
                 score=result.replay_score,
             )
@@ -280,7 +312,9 @@ class StrategicLadderExperimentService:
                     total_rungs=len(result.rung_outcomes),
                 )
             )
-            self._collect_walk_forward_failures(context=context, failure_evidence=failure_evidence)
+            self._collect_walk_forward_failures(
+                context=context, failure_evidence=failure_evidence
+            )
 
         evaluation_count = len(contexts)
         output = StrategicLadderWalkForwardOutput(
@@ -293,7 +327,9 @@ class StrategicLadderExperimentService:
             phase_buckets=self._bucket_summaries(phase_accumulators),
             volatility_buckets=self._bucket_summaries(volatility_accumulators),
             risk_action_buckets=self._bucket_summaries(risk_accumulators),
-            failure_modes=self._failure_modes_from_evidence(failure_evidence, evaluation_count),
+            failure_modes=self._failure_modes_from_evidence(
+                failure_evidence, evaluation_count
+            ),
         )
         return output
 
@@ -303,7 +339,9 @@ class StrategicLadderExperimentService:
         base_payload: StrategicLadderReplayInput,
         anchor_ts: datetime,
     ) -> _ReplayContext:
-        replay_input = self._materialize_market_payload(base_payload=base_payload, anchor_ts=anchor_ts)
+        replay_input = self._materialize_market_payload(
+            base_payload=base_payload, anchor_ts=anchor_ts
+        )
         replay_output = self._replay.replay_from_market(replay_input)
         return _ReplayContext(
             replay_input=replay_input,
@@ -334,7 +372,9 @@ class StrategicLadderExperimentService:
         base_payload: StrategicLadderReplayInput,
         anchor_ts: datetime,
     ) -> StrategicLadderReplayInput:
-        snapshot = self._market_state.get_market_snapshot(symbol=base_payload.symbol, ts=anchor_ts)
+        snapshot = self._market_state.get_market_snapshot(
+            symbol=base_payload.symbol, ts=anchor_ts
+        )
         spot_price = base_payload.spot_price
         if snapshot.latest_bar is not None:
             spot_price = float(snapshot.latest_bar.close)
@@ -358,18 +398,27 @@ class StrategicLadderExperimentService:
         variant: BatchVariantConfig | FragilityScenarioInput,
         anchor_ts: datetime,
     ) -> StrategicLadderReplayInput:
-        replay_input = self._materialize_market_payload(base_payload=base_payload, anchor_ts=anchor_ts)
+        replay_input = self._materialize_market_payload(
+            base_payload=base_payload, anchor_ts=anchor_ts
+        )
         adjusted_rungs = [
             LadderRungMarketInput(
-                price=round(rung.price * (1.0 + (variant.rung_price_shift_pct / 100.0)), 4),
+                price=round(
+                    rung.price * (1.0 + (variant.rung_price_shift_pct / 100.0)), 4
+                ),
                 size_units=round(rung.size_units * variant.rung_size_scale, 4),
             )
             for rung in replay_input.rungs
         ]
         lookahead_minutes = replay_input.lookahead_minutes
-        if isinstance(variant, BatchVariantConfig) and variant.lookahead_minutes is not None:
+        if (
+            isinstance(variant, BatchVariantConfig)
+            and variant.lookahead_minutes is not None
+        ):
             lookahead_minutes = variant.lookahead_minutes
-        adjusted_ts = replay_input.entry_ts + timedelta(minutes=variant.entry_offset_minutes)
+        adjusted_ts = replay_input.entry_ts + timedelta(
+            minutes=variant.entry_offset_minutes
+        )
         return replay_input.model_copy(
             update={
                 "entry_ts": adjusted_ts,
@@ -379,7 +428,8 @@ class StrategicLadderExperimentService:
                     4,
                 ),
                 "iv_hv_divergence_pct": round(
-                    replay_input.iv_hv_divergence_pct + variant.iv_hv_divergence_offset_pct,
+                    replay_input.iv_hv_divergence_pct
+                    + variant.iv_hv_divergence_offset_pct,
                     4,
                 ),
                 "lookahead_minutes": lookahead_minutes,
@@ -387,7 +437,9 @@ class StrategicLadderExperimentService:
             }
         )
 
-    def _distance_to_vwap_pct(self, *, symbol: str, ts: datetime, fallback: float) -> float:
+    def _distance_to_vwap_pct(
+        self, *, symbol: str, ts: datetime, fallback: float
+    ) -> float:
         bars = self._market_state.get_intraday_bars(symbol=symbol, ts=ts, limit=15).bars
         if not bars:
             return fallback
@@ -428,10 +480,14 @@ class StrategicLadderExperimentService:
             failure_evidence["overlay_blocked"].append(evidence)
         if self._filled_rung_count(result.rung_outcomes) == 0:
             failure_evidence["no_fills"].append(evidence)
-        if self._drawdown_count(result.rung_outcomes) > self._bounce_count(result.rung_outcomes):
+        if self._drawdown_count(result.rung_outcomes) > self._bounce_count(
+            result.rung_outcomes
+        ):
             failure_evidence["drawdown_dominant"].append(evidence)
         if result.replay_score < 0.45:
-            failure_evidence[f"phase_underperformance:{result.entry_phase.value}"].append(evidence)
+            failure_evidence[
+                f"phase_underperformance:{result.entry_phase.value}"
+            ].append(evidence)
         if context.volatility_bucket == "high" and result.replay_score < 0.45:
             failure_evidence["high_volatility_underperformance"].append(evidence)
         if result.market_validation.overall_decision != result.overall_decision:
@@ -463,13 +519,23 @@ class StrategicLadderExperimentService:
     def _default_fragility_scenarios(self) -> list[FragilityScenarioInput]:
         return [
             FragilityScenarioInput(name="time_delay_5m", entry_offset_minutes=5),
-            FragilityScenarioInput(name="rung_shift_up_0_5pct", rung_price_shift_pct=0.5),
-            FragilityScenarioInput(name="rung_shift_down_0_5pct", rung_price_shift_pct=-0.5),
-            FragilityScenarioInput(name="vwap_distance_plus_0_75pct", vwap_offset_pct=0.75),
-            FragilityScenarioInput(name="iv_hv_plus_10pct", iv_hv_divergence_offset_pct=10.0),
+            FragilityScenarioInput(
+                name="rung_shift_up_0_5pct", rung_price_shift_pct=0.5
+            ),
+            FragilityScenarioInput(
+                name="rung_shift_down_0_5pct", rung_price_shift_pct=-0.5
+            ),
+            FragilityScenarioInput(
+                name="vwap_distance_plus_0_75pct", vwap_offset_pct=0.75
+            ),
+            FragilityScenarioInput(
+                name="iv_hv_plus_10pct", iv_hv_divergence_offset_pct=10.0
+            ),
         ]
 
-    def _bucket_summaries(self, accumulators: dict[str, _BucketAccumulator]) -> list[RegimeBucketSummary]:
+    def _bucket_summaries(
+        self, accumulators: dict[str, _BucketAccumulator]
+    ) -> list[RegimeBucketSummary]:
         return [
             RegimeBucketSummary(
                 bucket=bucket,
@@ -526,7 +592,11 @@ class StrategicLadderExperimentService:
         pass_rate: float,
         fragility_score: float,
     ) -> float:
-        score = (average_forward_score * 0.55) + (pass_rate * 0.25) + ((1.0 - fragility_score) * 0.20)
+        score = (
+            (average_forward_score * 0.55)
+            + (pass_rate * 0.25)
+            + ((1.0 - fragility_score) * 0.20)
+        )
         return round(max(0.0, min(1.0, score)), 4)
 
     def _filled_rung_count(self, outcomes: Iterable[LadderReplayRungOutcome]) -> int:

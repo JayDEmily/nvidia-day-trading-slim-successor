@@ -23,8 +23,12 @@ from nvda_desk.schemas.imported_modules.market_substrate import (
     VwapAccumulatorContractOutput,
     VwapRocContractOutput,
 )
-from nvda_desk.services.imported_modules.context_scanners import ContextScannerContractService
-from nvda_desk.services.imported_modules.market_substrate import MarketSubstrateContractService
+from nvda_desk.services.imported_modules.context_scanners import (
+    ContextScannerContractService,
+)
+from nvda_desk.services.imported_modules.market_substrate import (
+    MarketSubstrateContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
@@ -84,12 +88,25 @@ def _context_from_fixture(*, stressed: bool = False) -> ContextScannerContext:
         emission.output.canonical_slug: emission.output
         for emission in MarketSubstrateContractService().evaluate(substrate_context)
     }
-    spot_data_capture = cast(SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"])
-    peer_equity_capture = cast(PeerEquityCaptureContractOutput, substrate_outputs["peer_equity_capture"])
-    options_data_capture = cast(OptionsDataCaptureContractOutput, substrate_outputs["options_data_capture"])
-    options_metadata_capture = cast(OptionsMetadataCaptureContractOutput, substrate_outputs["options_metadata_capture"])
-    macro_data_capture = cast(MacroDataCaptureContractOutput, substrate_outputs["macro_data_capture"])
-    vwap_accumulator = cast(VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"])
+    spot_data_capture = cast(
+        SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"]
+    )
+    peer_equity_capture = cast(
+        PeerEquityCaptureContractOutput, substrate_outputs["peer_equity_capture"]
+    )
+    options_data_capture = cast(
+        OptionsDataCaptureContractOutput, substrate_outputs["options_data_capture"]
+    )
+    options_metadata_capture = cast(
+        OptionsMetadataCaptureContractOutput,
+        substrate_outputs["options_metadata_capture"],
+    )
+    macro_data_capture = cast(
+        MacroDataCaptureContractOutput, substrate_outputs["macro_data_capture"]
+    )
+    vwap_accumulator = cast(
+        VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]
+    )
     vwap_roc = cast(VwapRocContractOutput, substrate_outputs["vwap_roc"])
 
     return ContextScannerContext(
@@ -118,7 +135,9 @@ def test_context_scanner_contracts_emit_the_frozen_eight_modules_in_order() -> N
     """Gate 19 should emit the eight context/scanner contracts in gate-map order."""
 
     emissions = ContextScannerContractService().evaluate(_context_from_fixture())
-    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE19_ORDER
+    assert [
+        emission.output.canonical_slug for emission in emissions
+    ] == EXPECTED_GATE19_ORDER
     assert [emission.packet.grammar_role for emission in emissions] == [
         DmpGrammarRole.MARKET_REGIME_CONTEXT,
         DmpGrammarRole.OPTIONS_FLOW_CONTEXT,
@@ -129,17 +148,26 @@ def test_context_scanner_contracts_emit_the_frozen_eight_modules_in_order() -> N
         DmpGrammarRole.MARKET_REGIME_CONTEXT,
         DmpGrammarRole.MARKET_REGIME_CONTEXT,
     ]
-    assert all(emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions)
+    assert all(
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
+        for emission in emissions
+    )
 
 
-def test_context_scanner_contracts_keep_provenance_explicit_for_execution_context_and_engine_score() -> None:
+def test_context_scanner_contracts_keep_provenance_explicit_for_execution_context_and_engine_score() -> (
+    None
+):
     """Gate 19 should keep provenance explicit for the two aggregate scanner contracts."""
 
     emissions = {
         emission.output.canonical_slug: emission.output
-        for emission in ContextScannerContractService().evaluate(_context_from_fixture())
+        for emission in ContextScannerContractService().evaluate(
+            _context_from_fixture()
+        )
     }
-    execution_context = cast(ExecutionContextScoreContractOutput, emissions["execution_context_score"])
+    execution_context = cast(
+        ExecutionContextScoreContractOutput, emissions["execution_context_score"]
+    )
     engine_score = cast(EngineScoreContractOutput, emissions["engine_score"])
 
     assert execution_context.upstream_contract_slugs == [
@@ -150,7 +178,11 @@ def test_context_scanner_contracts_keep_provenance_explicit_for_execution_contex
     ]
     assert execution_context.execution_state == "deployable_context"
     assert execution_context.context_score > 0.7
-    assert {fence.dependency for fence in execution_context.dependency_fences if fence.status.value == "satisfied"} == {
+    assert {
+        fence.dependency
+        for fence in execution_context.dependency_fences
+        if fence.status.value == "satisfied"
+    } == {
         "market_substrate:spot_data_capture",
         "market_substrate:options_data_capture",
         "market_substrate:options_metadata_capture",
@@ -164,20 +196,32 @@ def test_context_scanner_contracts_keep_provenance_explicit_for_execution_contex
     ]
     assert engine_score.conviction_band == "constructive"
     assert engine_score.engine_score > 0.65
-    assert {fence.dependency for fence in engine_score.dependency_fences if fence.status.value == "satisfied"} == {
+    assert {
+        fence.dependency
+        for fence in engine_score.dependency_fences
+        if fence.status.value == "satisfied"
+    } == {
         "context_scanner:macro_signal_score",
         "context_scanner:execution_context_score",
         "context_scanner:options_behaviour_cluster",
     }
 
 
-def test_context_scanner_contracts_reflect_stressed_conditions_without_fake_approval_state() -> None:
+def test_context_scanner_contracts_reflect_stressed_conditions_without_fake_approval_state() -> (
+    None
+):
     """Gate 19 should degrade the stressed fixture honestly while staying packet-safe."""
 
-    emissions = ContextScannerContractService().evaluate(_context_from_fixture(stressed=True))
-    outputs = {emission.output.canonical_slug: emission.output for emission in emissions}
+    emissions = ContextScannerContractService().evaluate(
+        _context_from_fixture(stressed=True)
+    )
+    outputs = {
+        emission.output.canonical_slug: emission.output for emission in emissions
+    }
     engine_score = cast(EngineScoreContractOutput, outputs["engine_score"])
-    execution_context = cast(ExecutionContextScoreContractOutput, outputs["execution_context_score"])
+    execution_context = cast(
+        ExecutionContextScoreContractOutput, outputs["execution_context_score"]
+    )
     vix_spread = cast(VixSpreadDetectorContractOutput, outputs["vix_spread_detector"])
 
     assert execution_context.execution_state == "do_not_press"

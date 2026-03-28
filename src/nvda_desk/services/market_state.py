@@ -26,7 +26,11 @@ from nvda_desk.schemas.market import (
     PrecursorVenueSlice,
     PrecursorVenueUniverse,
 )
-from nvda_desk.schemas.options import OptionSnapshotPayload, OptionSurfaceResponse, OptionType
+from nvda_desk.schemas.options import (
+    OptionSnapshotPayload,
+    OptionSurfaceResponse,
+    OptionType,
+)
 from nvda_desk.schemas.session_clock import SessionClockFeaturePayload
 from nvda_desk.schemas.temporal_surface import (
     SessionClockCompatibilityPayload,
@@ -50,7 +54,9 @@ class MarketStateService:
         return SessionClockCompatibilityPayload.from_state(state)
 
     def get_temporal_state(self, ts: datetime) -> TemporalStateFeaturePayload:
-        return TemporalStateFeaturePayload.from_state(self._temporal_classifier.classify(TemporalSignalInput(ts=ts)))
+        return TemporalStateFeaturePayload.from_state(
+            self._temporal_classifier.classify(TemporalSignalInput(ts=ts))
+        )
 
     def get_market_snapshot(self, symbol: str, ts: datetime) -> MarketSnapshotResponse:
         latest_bar = self._get_latest_bar(symbol=symbol, ts=ts)
@@ -90,13 +96,19 @@ class MarketStateService:
             lineage_keys.extend(slice_.lineage_keys)
             if self._timestamp_misaligned(requested_at=requested_at, slice_=slice_):
                 dropped_venues.append(slice_.venue)
-                fallback_dispositions.append(PrecursorFallbackDisposition.REQUIRE_STAND_DOWN_PRESSURE)
+                fallback_dispositions.append(
+                    PrecursorFallbackDisposition.REQUIRE_STAND_DOWN_PRESSURE
+                )
                 notes.append(f"timestamp_misalignment:{slice_.venue.value}")
                 continue
             active_slices.append(slice_)
             fallback_dispositions.append(self._fallback_for_slice(slice_))
 
-        missing_venues = [venue for venue in authority.venue_order if venue not in {slice_.venue for slice_ in active_slices}]
+        missing_venues = [
+            venue
+            for venue in authority.venue_order
+            if venue not in {slice_.venue for slice_ in active_slices}
+        ]
         contradiction_class = self._contradiction_class(active_slices)
         posture_state = self._posture_state(
             active_slices=active_slices,
@@ -121,7 +133,9 @@ class MarketStateService:
             notes=notes,
         )
 
-    def to_precursor_runtime_packet(self, result: PrecursorStitchingResult) -> PrecursorRuntimePacket:
+    def to_precursor_runtime_packet(
+        self, result: PrecursorStitchingResult
+    ) -> PrecursorRuntimePacket:
         """Convert stitched precursor truth into the additive runtime packet shape."""
 
         derived_fields = sorted(
@@ -145,7 +159,9 @@ class MarketStateService:
             notes=result.notes,
         )
 
-    def get_intraday_bars(self, symbol: str, ts: datetime, limit: int = 30) -> IntradayBarsResponse:
+    def get_intraday_bars(
+        self, symbol: str, ts: datetime, limit: int = 30
+    ) -> IntradayBarsResponse:
         bars = self._get_intraday_bars(symbol=symbol, ts=ts, limit=limit)
         return IntradayBarsResponse(symbol=symbol, requested_at=ts, bars=bars)
 
@@ -178,7 +194,9 @@ class MarketStateService:
         bars = self._get_intraday_bars(symbol=symbol, ts=ts, limit=1)
         return bars[0] if bars else None
 
-    def _get_intraday_bars(self, symbol: str, ts: datetime, limit: int) -> list[Bar1mPayload]:
+    def _get_intraday_bars(
+        self, symbol: str, ts: datetime, limit: int
+    ) -> list[Bar1mPayload]:
         if self._session_factory is None:
             return []
         try:
@@ -197,7 +215,11 @@ class MarketStateService:
         rows.reverse()
         return [
             Bar1mPayload(
-                ts_utc=row.ts_utc if row.ts_utc.tzinfo is not None else row.ts_utc.replace(tzinfo=UTC),
+                ts_utc=(
+                    row.ts_utc
+                    if row.ts_utc.tzinfo is not None
+                    else row.ts_utc.replace(tzinfo=UTC)
+                ),
                 open=row.open,
                 high=row.high,
                 low=row.low,
@@ -219,10 +241,14 @@ class MarketStateService:
             return []
         try:
             with self._session_factory() as session:
-                instrument = session.scalar(select(Instrument).where(Instrument.symbol == symbol))
+                instrument = session.scalar(
+                    select(Instrument).where(Instrument.symbol == symbol)
+                )
                 if instrument is None:
                     return []
-                chosen_expiry = expiry or self._infer_expiry(session, instrument.id, as_of_date)
+                chosen_expiry = expiry or self._infer_expiry(
+                    session, instrument.id, as_of_date
+                )
                 if chosen_expiry is None:
                     return []
                 stmt = (
@@ -238,7 +264,9 @@ class MarketStateService:
             return []
         return [self._to_option_payload(row) for row in rows]
 
-    def _infer_expiry(self, session: Session, instrument_id: int, as_of_date: date) -> date | None:
+    def _infer_expiry(
+        self, session: Session, instrument_id: int, as_of_date: date
+    ) -> date | None:
         stmt = (
             select(OptionSnapshot.expiry)
             .where(OptionSnapshot.instrument_id == instrument_id)
@@ -267,15 +295,21 @@ class MarketStateService:
             source_pages=row.source_pages,
         )
 
-    def _timestamp_misaligned(self, *, requested_at: datetime, slice_: PrecursorVenueSlice) -> bool:
+    def _timestamp_misaligned(
+        self, *, requested_at: datetime, slice_: PrecursorVenueSlice
+    ) -> bool:
         disciplines = {
             PrecursorTimestampDiscipline.REQUEST_TIME_MUST_NOT_PRECEDE_SOURCE_TIME,
             PrecursorTimestampDiscipline.NO_FORWARD_FILL_ACROSS_US_DECISION_WINDOW,
         }
         _ = disciplines  # keep lint honest about the explicit Gate 75 dependency.
-        return slice_.session_close_at > requested_at or slice_.observed_at > requested_at
+        return (
+            slice_.session_close_at > requested_at or slice_.observed_at > requested_at
+        )
 
-    def _fallback_for_slice(self, slice_: PrecursorVenueSlice) -> PrecursorFallbackDisposition:
+    def _fallback_for_slice(
+        self, slice_: PrecursorVenueSlice
+    ) -> PrecursorFallbackDisposition:
         if slice_.freshness_state is PrecursorFreshnessState.CURRENT:
             return PrecursorFallbackDisposition.CONTINUE_NORMALLY
         if slice_.freshness_state is PrecursorFreshnessState.DEGRADED:
@@ -284,7 +318,9 @@ class MarketStateService:
             return PrecursorFallbackDisposition.REQUIRE_STAND_DOWN_PRESSURE
         return PrecursorFallbackDisposition.CONTINUE_WITHOUT_VENUE
 
-    def _contradiction_class(self, active_slices: list[PrecursorVenueSlice]) -> PrecursorContradictionClass:
+    def _contradiction_class(
+        self, active_slices: list[PrecursorVenueSlice]
+    ) -> PrecursorContradictionClass:
         if not active_slices:
             return PrecursorContradictionClass.BROAD_CROSS_VENUE_CONFLICT
 
@@ -298,14 +334,18 @@ class MarketStateService:
             return PrecursorContradictionClass.DIRECTIONAL_SPLIT
 
         futures_cash_divergence = any(
-            field is DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE and abs(value) >= 0.5
+            field is DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE
+            and abs(value) >= 0.5
             for slice_ in active_slices
             for field, value in slice_.derived_values.items()
         )
         if futures_cash_divergence:
             return PrecursorContradictionClass.FUTURES_CASH_DIVERGENCE
 
-        degraded_count = sum(slice_.freshness_state is not PrecursorFreshnessState.CURRENT for slice_ in active_slices)
+        degraded_count = sum(
+            slice_.freshness_state is not PrecursorFreshnessState.CURRENT
+            for slice_ in active_slices
+        )
         if degraded_count >= 2:
             return PrecursorContradictionClass.BROAD_CROSS_VENUE_CONFLICT
         return PrecursorContradictionClass.NONE
@@ -326,6 +366,9 @@ class MarketStateService:
             return PrecursorPostureState.STAND_DOWN_PRESSURE
         if contradiction_class is PrecursorContradictionClass.DIRECTIONAL_SPLIT:
             return PrecursorPostureState.TIGHTENED_POSTURE
-        if missing_venues or any(slice_.freshness_state is not PrecursorFreshnessState.CURRENT for slice_ in active_slices):
+        if missing_venues or any(
+            slice_.freshness_state is not PrecursorFreshnessState.CURRENT
+            for slice_ in active_slices
+        ):
             return PrecursorPostureState.DEGRADED_CONFIDENCE
         return PrecursorPostureState.NORMAL_CONFIDENCE

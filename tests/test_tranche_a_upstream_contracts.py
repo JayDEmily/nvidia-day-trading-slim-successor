@@ -14,7 +14,9 @@ from nvda_desk.schemas.imported_modules.tranche_a import (
     TrancheAUpstreamContext,
     VolumeSpikeFilterContractOutput,
 )
-from nvda_desk.services.imported_modules.tranche_a import TrancheAUpstreamContractService
+from nvda_desk.services.imported_modules.tranche_a import (
+    TrancheAUpstreamContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.temporal_context import TemporalContextService
@@ -75,23 +77,39 @@ def test_tranche_a_upstream_contracts_emit_the_frozen_seven_modules_in_order() -
         DmpGrammarRole.OPTIONS_FLOW_CONTEXT,
         DmpGrammarRole.OPTIONS_FLOW_CONTEXT,
     ]
-    assert all(emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions)
+    assert all(
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
+        for emission in emissions
+    )
 
 
 def test_tranche_a_upstream_contracts_keep_fenced_dependencies_explicit() -> None:
     """Gate 15 should not hide missing live dependencies behind fake runtime readiness."""
 
-    emissions = {emission.output.canonical_slug: emission.output for emission in TrancheAUpstreamContractService().evaluate(_supportive_context())}
+    emissions = {
+        emission.output.canonical_slug: emission.output
+        for emission in TrancheAUpstreamContractService().evaluate(
+            _supportive_context()
+        )
+    }
     volume = cast(VolumeSpikeFilterContractOutput, emissions["volume_spike_filter"])
     peer = cast(PeerDivergenceContractOutput, emissions["peer_divergence"])
     gamma = cast(GammaPressureContractOutput, emissions["gamma_pressure"])
 
     assert volume.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY
-    assert {fence.dependency for fence in volume.dependency_fences if fence.status.value == "fenced_missing_source"} == {
+    assert {
+        fence.dependency
+        for fence in volume.dependency_fences
+        if fence.status.value == "fenced_missing_source"
+    } == {
         "spot_prices",
         "spot_volume_series",
     }
-    assert any(fence.dependency == "peer_equities" and fence.status.value == "proxied_from_runtime" for fence in peer.dependency_fences)
+    assert any(
+        fence.dependency == "peer_equities"
+        and fence.status.value == "proxied_from_runtime"
+        for fence in peer.dependency_fences
+    )
     assert gamma.zone_gamma in {"supportive", "neutral", "destabilising"}
     assert gamma.signal_score >= 0.0
 
@@ -100,12 +118,25 @@ def test_tranche_a_upstream_packets_upgrade_to_v2_and_remain_lineage_ready() -> 
     """Gate 15 should keep upstream contract packets DMP-serialisable and review-lineage ready."""
 
     emissions = TrancheAUpstreamContractService().evaluate(_supportive_context())
-    skew = next(emission for emission in emissions if emission.output.canonical_slug == "skew_inflection")
-    ivrv = next(emission for emission in emissions if emission.output.canonical_slug == "iv_vs_rv_analysis")
+    skew = next(
+        emission
+        for emission in emissions
+        if emission.output.canonical_slug == "skew_inflection"
+    )
+    ivrv = next(
+        emission
+        for emission in emissions
+        if emission.output.canonical_slug == "iv_vs_rv_analysis"
+    )
     ivrv_output = cast(IvVsRvAnalysisContractOutput, ivrv.output)
 
     assert skew.packet.protocol_version == "dmp.v2"
-    assert skew.packet.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
+    assert (
+        skew.packet.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
+    )
     assert skew.packet.summary.trader_summary.startswith("skew_inflection")
     assert ivrv_output.ivrv_ratio is None or ivrv_output.ivrv_ratio > 0.0
-    assert ivrv.packet.schema_identifiers.output_model_name == "IvVsRvAnalysisContractOutput"
+    assert (
+        ivrv.packet.schema_identifiers.output_model_name
+        == "IvVsRvAnalysisContractOutput"
+    )

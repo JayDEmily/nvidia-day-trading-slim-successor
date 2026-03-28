@@ -53,7 +53,9 @@ def get_config_surface_service() -> ConfigSurfaceService:
 
 @lru_cache(maxsize=1)
 def get_market_state_service() -> MarketStateService:
-    return MarketStateService(get_session_clock_classifier(), session_factory=get_db_session_factory())
+    return MarketStateService(
+        get_session_clock_classifier(), session_factory=get_db_session_factory()
+    )
 
 
 @lru_cache(maxsize=1)
@@ -130,7 +132,9 @@ def get_strategic_ladder_experiment_service() -> StrategicLadderExperimentServic
 
 @lru_cache(maxsize=1)
 def get_capital_allocator_service() -> CapitalAllocatorService:
-    return CapitalAllocatorService(get_experiment_log_service(), get_config_surface_service())
+    return CapitalAllocatorService(
+        get_experiment_log_service(), get_config_surface_service()
+    )
 
 
 @lru_cache(maxsize=1)

@@ -29,7 +29,9 @@ class Instrument(Base):
     asset_class: Mapped[str] = mapped_column(String(32))
     venue: Mapped[str] = mapped_column(String(32), default="NASDAQ")
 
-    bars: Mapped[list[Bar1m]] = relationship(back_populates="instrument", cascade="all, delete-orphan")
+    bars: Mapped[list[Bar1m]] = relationship(
+        back_populates="instrument", cascade="all, delete-orphan"
+    )
 
 
 class Bar1m(Base):
@@ -40,7 +42,9 @@ class Bar1m(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    instrument_id: Mapped[int] = mapped_column(ForeignKey("instrument.id", ondelete="CASCADE"))
+    instrument_id: Mapped[int] = mapped_column(
+        ForeignKey("instrument.id", ondelete="CASCADE")
+    )
     ts_utc: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     open: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     high: Mapped[Decimal] = mapped_column(Numeric(18, 6))
@@ -73,7 +77,9 @@ class OptionSnapshot(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    instrument_id: Mapped[int] = mapped_column(ForeignKey("instrument.id", ondelete="CASCADE"))
+    instrument_id: Mapped[int] = mapped_column(
+        ForeignKey("instrument.id", ondelete="CASCADE")
+    )
     as_of_date: Mapped[date] = mapped_column(Date())
     expiry: Mapped[date | None] = mapped_column(Date(), nullable=True)
     option_type: Mapped[str] = mapped_column(String(8), index=True)
@@ -96,7 +102,9 @@ class ResearchNote(Base):
     __tablename__ = "research_note"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     title: Mapped[str] = mapped_column(String(255))
     thesis: Mapped[str] = mapped_column(Text())
@@ -111,7 +119,9 @@ class EvaluationRun(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     module_name: Mapped[str] = mapped_column(String(255))
@@ -127,11 +137,18 @@ class ExperimentRun(Base):
     __tablename__ = "experiment_run"
     __table_args__ = (
         Index("ix_experiment_run_module_created", "module_id", "created_at"),
-        Index("ix_experiment_run_module_type_created", "module_id", "experiment_type", "created_at"),
+        Index(
+            "ix_experiment_run_module_type_created",
+            "module_id",
+            "experiment_type",
+            "created_at",
+        ),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     experiment_type: Mapped[str] = mapped_column(String(32), index=True)
@@ -149,14 +166,15 @@ class RiskDecisionLog(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     action: Mapped[str] = mapped_column(String(16), index=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     input_json: Mapped[str] = mapped_column(Text())
     output_json: Mapped[str] = mapped_column(Text())
-
 
 
 class ModuleSpec(Base):
@@ -166,7 +184,9 @@ class ModuleSpec(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     name: Mapped[str] = mapped_column(String(255))
     module_class: Mapped[str] = mapped_column(String(32))
@@ -185,7 +205,9 @@ class PromotionDecision(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     from_status: Mapped[str] = mapped_column(String(32), index=True)
     to_status: Mapped[str] = mapped_column(String(32), index=True)
@@ -198,7 +220,9 @@ class PromotionDecision(Base):
 class SessionCalendar(Base):
     __tablename__ = "session_calendar"
     __table_args__ = (
-        UniqueConstraint("session_date", "venue", name="uq_session_calendar_date_venue"),
+        UniqueConstraint(
+            "session_date", "venue", name="uq_session_calendar_date_venue"
+        ),
         Index("ix_session_calendar_date", "session_date"),
     )
 
@@ -219,7 +243,9 @@ class MarketEvent(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
     event_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
     event_type: Mapped[str] = mapped_column(String(64), index=True)
@@ -236,7 +262,9 @@ class ModuleSignalEvent(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
@@ -253,7 +281,9 @@ class ModuleVetoEvent(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
@@ -269,7 +299,9 @@ class RiskBlockEvent(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
@@ -288,7 +320,9 @@ class OrderIntentRecord(Base):
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     module_id: Mapped[str] = mapped_column(String(128), index=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
@@ -303,13 +337,15 @@ class OrderIntentRecord(Base):
 
 class OrderEventRecord(Base):
     __tablename__ = "order_event"
-    __table_args__ = (
-        Index("ix_order_event_intent_ts", "order_intent_id", "event_ts"),
-    )
+    __table_args__ = (Index("ix_order_event_intent_ts", "order_intent_id", "event_ts"),)
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    order_intent_id: Mapped[int] = mapped_column(ForeignKey("order_intent.id", ondelete="CASCADE"))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    order_intent_id: Mapped[int] = mapped_column(
+        ForeignKey("order_intent.id", ondelete="CASCADE")
+    )
     event_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     status: Mapped[str] = mapped_column(String(32), index=True)
     detail: Mapped[str] = mapped_column(Text())
@@ -318,13 +354,15 @@ class OrderEventRecord(Base):
 
 class FillEventRecord(Base):
     __tablename__ = "fill_event"
-    __table_args__ = (
-        Index("ix_fill_event_intent_ts", "order_intent_id", "fill_ts"),
-    )
+    __table_args__ = (Index("ix_fill_event_intent_ts", "order_intent_id", "fill_ts"),)
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    order_intent_id: Mapped[int] = mapped_column(ForeignKey("order_intent.id", ondelete="CASCADE"))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    order_intent_id: Mapped[int] = mapped_column(
+        ForeignKey("order_intent.id", ondelete="CASCADE")
+    )
     fill_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     quantity: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     fill_price: Mapped[Decimal] = mapped_column(Numeric(18, 6))
@@ -333,12 +371,12 @@ class FillEventRecord(Base):
 
 class PositionSnapshot(Base):
     __tablename__ = "position_snapshot"
-    __table_args__ = (
-        Index("ix_position_snapshot_symbol_ts", "symbol", "snapshot_ts"),
-    )
+    __table_args__ = (Index("ix_position_snapshot_symbol_ts", "symbol", "snapshot_ts"),)
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     snapshot_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     quantity: Mapped[Decimal] = mapped_column(Numeric(18, 6))
@@ -351,12 +389,12 @@ class PositionSnapshot(Base):
 
 class CapitalStateSnapshot(Base):
     __tablename__ = "capital_state_snapshot"
-    __table_args__ = (
-        Index("ix_capital_state_snapshot_ts", "snapshot_ts"),
-    )
+    __table_args__ = (Index("ix_capital_state_snapshot_ts", "snapshot_ts"),)
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     snapshot_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     cash: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     equity: Mapped[Decimal] = mapped_column(Numeric(18, 6))
@@ -369,12 +407,16 @@ class CapitalStateSnapshot(Base):
 class DailyPnlReport(Base):
     __tablename__ = "daily_pnl_report"
     __table_args__ = (
-        UniqueConstraint("symbol", "report_date", name="uq_daily_pnl_report_symbol_date"),
+        UniqueConstraint(
+            "symbol", "report_date", name="uq_daily_pnl_report_symbol_date"
+        ),
         Index("ix_daily_pnl_report_date", "report_date"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     symbol: Mapped[str] = mapped_column(String(32), index=True)
     report_date: Mapped[date] = mapped_column(Date(), index=True)
     realized_pnl: Mapped[Decimal] = mapped_column(Numeric(18, 6))

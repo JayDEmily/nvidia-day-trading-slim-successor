@@ -9,7 +9,9 @@ from nvda_desk.schemas.imported_modules.ladder_readiness_overlays import (
     LadderReadinessContext,
     VvixLadderShaperContractOutput,
 )
-from nvda_desk.schemas.imported_modules.market_substrate import MacroDataCaptureContractOutput
+from nvda_desk.schemas.imported_modules.market_substrate import (
+    MacroDataCaptureContractOutput,
+)
 from nvda_desk.schemas.imported_modules.posture_enrichers import (
     FillBiasAdjusterContractOutput,
     VolatilitySentimentIndexContractOutput,
@@ -35,8 +37,14 @@ def _vvix_outputs(*, stressed: bool = False) -> dict[str, object]:
             emitted_at=bundle.fixture.temporal_input.ts,
             temporal=bundle.runtime.temporal,
             options_flow=bundle.runtime.options_flow,
-            ladder_constructor=cast(LadderConstructorContractOutput, bundle.selector_outputs["ladder_constructor"]),
-            macro_data_capture=cast(MacroDataCaptureContractOutput, bundle.substrate_outputs["macro_data_capture"]),
+            ladder_constructor=cast(
+                LadderConstructorContractOutput,
+                bundle.selector_outputs["ladder_constructor"],
+            ),
+            macro_data_capture=cast(
+                MacroDataCaptureContractOutput,
+                bundle.substrate_outputs["macro_data_capture"],
+            ),
             stack_id="core_full_stack",
             coefficient_set_id="full_stack_base",
         )
@@ -44,7 +52,9 @@ def _vvix_outputs(*, stressed: bool = False) -> dict[str, object]:
     return {emission.output.canonical_slug: emission.output for emission in emissions}
 
 
-def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlays() -> None:
+def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlays() -> (
+    None
+):
     """Gate 33 should close exactly the four ladder/readiness overlays."""
 
     supportive = build_gate_support_bundle()
@@ -63,16 +73,26 @@ def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlay
         "legacy-module-002",
     ]
 
-    ladder_constructor = cast(LadderConstructorContractOutput, outputs["ladder_constructor"])
+    ladder_constructor = cast(
+        LadderConstructorContractOutput, outputs["ladder_constructor"]
+    )
     fill_bias = cast(FillBiasAdjusterContractOutput, outputs["fill_bias_adjuster"])
     vvix_shaper = cast(VvixLadderShaperContractOutput, outputs["vvix_ladder_shaper"])
-    volatility_sentiment = cast(VolatilitySentimentIndexContractOutput, outputs["volatility_sentiment_index"])
+    volatility_sentiment = cast(
+        VolatilitySentimentIndexContractOutput, outputs["volatility_sentiment_index"]
+    )
 
     assert ladder_constructor.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value
     assert fill_bias.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value
     assert vvix_shaper.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
-    assert volatility_sentiment.grammar_role == DmpGrammarRole.POSTURE_RISK_PERMISSION.value
-    assert vvix_shaper.upstream_contract_slugs == ["ladder_constructor", "macro_data_capture"]
+    assert (
+        volatility_sentiment.grammar_role
+        == DmpGrammarRole.POSTURE_RISK_PERMISSION.value
+    )
+    assert vvix_shaper.upstream_contract_slugs == [
+        "ladder_constructor",
+        "macro_data_capture",
+    ]
     assert vvix_shaper.dependency_fences[0].dependency == "ladder_constructor"
     assert vvix_shaper.dependency_fences[0].status.value == "satisfied"
     assert vvix_shaper.dependency_fences[1].dependency == "macro_metrics"
@@ -81,7 +101,9 @@ def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlay
     assert vvix_shaper.ladder_width_multiplier > 0.0
 
 
-def test_gate33_stress_widens_vvix_overlay_without_claiming_live_broker_readiness() -> None:
+def test_gate33_stress_widens_vvix_overlay_without_claiming_live_broker_readiness() -> (
+    None
+):
     """Gate 33 should widen honestly under stress and keep readiness overlays advisory only."""
 
     outputs = {
@@ -90,9 +112,14 @@ def test_gate33_stress_widens_vvix_overlay_without_claiming_live_broker_readines
         **_vvix_outputs(stressed=True),
     }
     vvix_shaper = cast(VvixLadderShaperContractOutput, outputs["vvix_ladder_shaper"])
-    volatility_sentiment = cast(VolatilitySentimentIndexContractOutput, outputs["volatility_sentiment_index"])
+    volatility_sentiment = cast(
+        VolatilitySentimentIndexContractOutput, outputs["volatility_sentiment_index"]
+    )
 
     assert vvix_shaper.vvix_regime in {"vvix_elevated", "vvix_spike"}
     assert vvix_shaper.ladder_width_multiplier >= 1.15
-    assert volatility_sentiment.sentiment_state in {"hostile_volatility_sentiment", "mixed_volatility_sentiment"}
+    assert volatility_sentiment.sentiment_state in {
+        "hostile_volatility_sentiment",
+        "mixed_volatility_sentiment",
+    }
     assert "No broker route" in vvix_shaper.contract_notes[1]

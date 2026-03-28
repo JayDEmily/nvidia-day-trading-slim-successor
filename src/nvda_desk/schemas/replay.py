@@ -6,7 +6,10 @@ from decimal import Decimal
 from pydantic import BaseModel, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
-from nvda_desk.schemas.calibration import HorizonDiscoveryReport, WalkForwardHarnessAuthorityPacket
+from nvda_desk.schemas.calibration import (
+    HorizonDiscoveryReport,
+    WalkForwardHarnessAuthorityPacket,
+)
 
 
 class ReplayPhaseSummary(BaseModel):
@@ -27,7 +30,6 @@ class ReplaySessionResponse(BaseModel):
     end_ts: datetime
     total_bars: int = Field(ge=0)
     phase_summaries: list[ReplayPhaseSummary]
-
 
 
 class ReplayHorizonDiscoveryRequest(BaseModel):

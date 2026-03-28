@@ -64,12 +64,16 @@ class BrokerAdapter(Protocol):
 
 
 class OpenAIOrchestrator(Protocol):
-    async def respond(self, request: OpenAIResponseRequest) -> OpenAIResponseArtifact: ...
+    async def respond(
+        self, request: OpenAIResponseRequest
+    ) -> OpenAIResponseArtifact: ...
 
 
 class InMemoryBrokerAdapter:
     def __init__(self) -> None:
-        self._account = AccountState(cash=100000.0, equity=100000.0, buying_power=100000.0)
+        self._account = AccountState(
+            cash=100000.0, equity=100000.0, buying_power=100000.0
+        )
         self._positions: list[Position] = []
         self._events: list[OrderEvent] = []
 
@@ -84,13 +88,21 @@ class InMemoryBrokerAdapter:
         submitted_at = datetime.now(tz=UTC)
         notional = order.quantity * (order.limit_price or 0.0)
         if order.side.lower() == "buy":
-            self._account = self._account.model_copy(update={
-                "cash": round(max(self._account.cash - notional, 0.0), 4),
-                "equity": round(self._account.equity, 4),
-                "buying_power": round(max(self._account.buying_power - notional, 0.0), 4),
-            })
+            self._account = self._account.model_copy(
+                update={
+                    "cash": round(max(self._account.cash - notional, 0.0), 4),
+                    "equity": round(self._account.equity, 4),
+                    "buying_power": round(
+                        max(self._account.buying_power - notional, 0.0), 4
+                    ),
+                }
+            )
         self._positions.append(
-            Position(symbol=order.symbol, quantity=order.quantity, average_price=order.limit_price or 0.0)
+            Position(
+                symbol=order.symbol,
+                quantity=order.quantity,
+                average_price=order.limit_price or 0.0,
+            )
         )
         self._events.append(
             OrderEvent(
@@ -100,7 +112,9 @@ class InMemoryBrokerAdapter:
                 event_ts=submitted_at,
             )
         )
-        return BrokerOrderRef(order_id=order_id, status="filled", submitted_at=submitted_at)
+        return BrokerOrderRef(
+            order_id=order_id, status="filled", submitted_at=submitted_at
+        )
 
     async def cancel_order(self, order_id: str) -> None:
         self._events.append(

@@ -88,9 +88,11 @@ class RiskGatewayService:
                 symbol=payload.symbol,
                 module_id=payload.module_id,
                 action=decision.action.value,
-                requested_at=payload.requested_at.astimezone(UTC)
-                if payload.requested_at.tzinfo
-                else payload.requested_at.replace(tzinfo=UTC),
+                requested_at=(
+                    payload.requested_at.astimezone(UTC)
+                    if payload.requested_at.tzinfo
+                    else payload.requested_at.replace(tzinfo=UTC)
+                ),
                 input_json=self._dump_model(payload),
                 output_json=self._dump_model(decision),
             )
@@ -99,14 +101,18 @@ class RiskGatewayService:
             session.refresh(row)
             return self._to_payload(row)
 
-    def list_decisions(self, module_id: str | None = None, limit: int = 20) -> RiskDecisionListResponse:
+    def list_decisions(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> RiskDecisionListResponse:
         with self._session_factory() as session:
             stmt = select(RiskDecisionLog)
             if module_id:
                 stmt = stmt.where(RiskDecisionLog.module_id == module_id)
             stmt = stmt.order_by(desc(RiskDecisionLog.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return RiskDecisionListResponse(decisions=[self._to_payload(row) for row in rows])
+        return RiskDecisionListResponse(
+            decisions=[self._to_payload(row) for row in rows]
+        )
 
     def _dump_model(self, model: BaseModel) -> str:
         return json.dumps(model.model_dump(mode="json"))

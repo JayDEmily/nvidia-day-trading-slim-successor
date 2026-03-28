@@ -100,9 +100,15 @@ def test_desk_cognition_runtime_emits_family_specific_execution_plan() -> None:
         ),
         risk_budget_remaining_pct=68.0,
     )
-    assert result.execution.active_playbook_ids == ["continuation_ladder", "compression_breakout"]
+    assert result.execution.active_playbook_ids == [
+        "continuation_ladder",
+        "compression_breakout",
+    ]
     assert result.execution.entry_style == "trend_ladder_3_step"
-    assert result.execution.playbook_execution_styles["continuation_ladder"] == "trend_ladder_3_step"
+    assert (
+        result.execution.playbook_execution_styles["continuation_ladder"]
+        == "trend_ladder_3_step"
+    )
     assert result.execution.scaling_plan == [11.0, 16.5, 27.5]
     assert result.execution.thesis_invalidation_state == "trend_structure_broken"
     assert "leadership_lost" in result.execution.invalidation_reasons
@@ -286,13 +292,15 @@ def test_review_packets_expose_conflict_density_and_contradictions() -> None:
     )
     assert result.review.signal_conflict_density > 0.0
     assert "regime_signal_conflict" in result.review.conflict_tags
-    assert any(item.contradiction_id == "regime_signal_conflict" for item in result.review.contradictions)
+    assert any(
+        item.contradiction_id == "regime_signal_conflict"
+        for item in result.review.contradictions
+    )
     assert "module_attribution" in result.review.review_packet
     conflicts = cast(list[str], result.review.review_packet["conflicts"])
     assert "regime_signal_conflict" in conflicts
     packet = cast(dict[str, Any], result.review.review_packet["execution"])
     assert packet["entry_style"] == "no_trade"
-
 
 
 def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
@@ -354,11 +362,21 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     )
 
     assert len(result.stage_packets) == 7
-    assert result.stage_packets[5].payload.model_dump(mode="json") == result.execution.model_dump(mode="json")
-    assert result.stage_packets[6].payload.model_dump(mode="json") == result.review.model_dump(mode="json")
+    assert result.stage_packets[5].payload.model_dump(
+        mode="json"
+    ) == result.execution.model_dump(mode="json")
+    assert result.stage_packets[6].payload.model_dump(
+        mode="json"
+    ) == result.review.model_dump(mode="json")
     assert isinstance(result.stage_packets[5].blocks[0], DmpV2ObjectBlock)
     assert isinstance(result.stage_packets[6].blocks[0], DmpV2ObjectBlock)
-    assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(mode="json")
-    assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
+    assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(
+        mode="json"
+    )
+    assert result.stage_packets[6].blocks[0].data == result.review.model_dump(
+        mode="json"
+    )
     assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_id
-    assert result.stage_packets[6].lineage.parent_packet_ids == [result.stage_packets[5].packet_id]
+    assert result.stage_packets[6].lineage.parent_packet_ids == [
+        result.stage_packets[5].packet_id
+    ]

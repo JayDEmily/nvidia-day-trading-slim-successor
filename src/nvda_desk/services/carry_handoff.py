@@ -13,7 +13,11 @@ from nvda_desk.schemas.cognition import (
     PostureRiskOutput,
     TemporalContextOutput,
 )
-from nvda_desk.schemas.overnight import CarryAction, CarryHorizon, CloseStateCarryHandoff
+from nvda_desk.schemas.overnight import (
+    CarryAction,
+    CarryHorizon,
+    CloseStateCarryHandoff,
+)
 
 
 class CarryHandoffBuilder:
@@ -47,11 +51,29 @@ class CarryHandoffBuilder:
         inventory: InventoryState,
         execution: ExecutionExpressionOutput,
     ) -> CloseStateCarryHandoff:
-        aware_ts = evaluation_ts.astimezone(self._tz) if evaluation_ts.tzinfo else evaluation_ts.replace(tzinfo=self._tz)
+        aware_ts = (
+            evaluation_ts.astimezone(self._tz)
+            if evaluation_ts.tzinfo
+            else evaluation_ts.replace(tzinfo=self._tz)
+        )
         next_session_open_ts = self._next_session_open(aware_ts)
-        weekend_window = aware_ts.weekday() >= 5 or (next_session_open_ts.date() - aware_ts.date()).days >= 2
-        event_carry_window = temporal.event_window_state in {"event_imminent_window", "event_live_window"}
-        horizon = CarryHorizon.WEEKEND if weekend_window else (CarryHorizon.EVENT_CARRY if event_carry_window else CarryHorizon.OVERNIGHT)
+        weekend_window = (
+            aware_ts.weekday() >= 5
+            or (next_session_open_ts.date() - aware_ts.date()).days >= 2
+        )
+        event_carry_window = temporal.event_window_state in {
+            "event_imminent_window",
+            "event_live_window",
+        }
+        horizon = (
+            CarryHorizon.WEEKEND
+            if weekend_window
+            else (
+                CarryHorizon.EVENT_CARRY
+                if event_carry_window
+                else CarryHorizon.OVERNIGHT
+            )
+        )
         allowed_actions = self._allowed_actions(
             permission_state=posture.permission_state.value,
             horizon=horizon,
@@ -61,7 +83,9 @@ class CarryHandoffBuilder:
             overnight_inventory_pct=inventory.overnight_inventory_pct,
             active_playbook_ids=execution.active_playbook_ids,
         )
-        recommended_action_ceiling = allowed_actions[-1] if allowed_actions else CarryAction.BLOCK_CARRY
+        recommended_action_ceiling = (
+            allowed_actions[-1] if allowed_actions else CarryAction.BLOCK_CARRY
+        )
         rationale_codes: list[str] = [f"horizon:{horizon.value}"]
         if weekend_window:
             rationale_codes.append("weekend_window")
@@ -69,7 +93,10 @@ class CarryHandoffBuilder:
             rationale_codes.append("event_carry_window")
         if posture.permission_state.value != "allow":
             rationale_codes.append(f"permission:{posture.permission_state.value}")
-        if inventory.existing_inventory_pct > 0 or inventory.overnight_inventory_pct > 0:
+        if (
+            inventory.existing_inventory_pct > 0
+            or inventory.overnight_inventory_pct > 0
+        ):
             rationale_codes.append("existing_inventory_present")
         else:
             rationale_codes.append("no_existing_inventory")
@@ -123,15 +150,28 @@ class CarryHandoffBuilder:
         if permission_state == "derisk":
             allowed = [CarryAction.FLATTEN, CarryAction.HOLD_SMALL]
         else:
-            allowed = [CarryAction.FLATTEN, CarryAction.HOLD_SMALL, CarryAction.HOLD_BASELINE, CarryAction.ADD_CARRY]
+            allowed = [
+                CarryAction.FLATTEN,
+                CarryAction.HOLD_SMALL,
+                CarryAction.HOLD_BASELINE,
+                CarryAction.ADD_CARRY,
+            ]
         has_position = existing_inventory_pct > 0 or overnight_inventory_pct > 0
         has_active_intraday_thesis = bool(active_playbook_ids)
         if thesis_state != "valid":
-            allowed = [action for action in allowed if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}]
+            allowed = [
+                action
+                for action in allowed
+                if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}
+            ]
         if not has_position:
-            allowed = [action for action in allowed if action is not CarryAction.HOLD_BASELINE]
+            allowed = [
+                action for action in allowed if action is not CarryAction.HOLD_BASELINE
+            ]
             if not has_active_intraday_thesis:
-                allowed = [action for action in allowed if action is CarryAction.FLATTEN]
+                allowed = [
+                    action for action in allowed if action is CarryAction.FLATTEN
+                ]
         if horizon is CarryHorizon.WEEKEND and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
         if event_carry_window and CarryAction.ADD_CARRY in allowed:

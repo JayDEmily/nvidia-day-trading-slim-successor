@@ -40,12 +40,20 @@ class OptionsFlowContextService:
         term_structure_state = self._term_structure_state(term_structure_spread)
         skew_state = self._skew_state(payload.put_call_skew)
         gamma_state = self._gamma_state(payload.gamma_pressure_score)
-        implied_move_envelope_pct = round((payload.atm_straddle_value / max(payload.spot_price, 1.0)) * 100.0, 4)
-        iv_rv_front_state = self._iv_rv_state(payload.front_atm_iv, payload.front_realised_vol)
-        iv_rv_next_state = self._iv_rv_state(payload.next_atm_iv, payload.next_realised_vol)
+        implied_move_envelope_pct = round(
+            (payload.atm_straddle_value / max(payload.spot_price, 1.0)) * 100.0, 4
+        )
+        iv_rv_front_state = self._iv_rv_state(
+            payload.front_atm_iv, payload.front_realised_vol
+        )
+        iv_rv_next_state = self._iv_rv_state(
+            payload.next_atm_iv, payload.next_realised_vol
+        )
         iv_rv_curve_state = self._iv_rv_curve_state(iv_rv_front_state, iv_rv_next_state)
         vix_spread_state = self._vix_spread_state(payload.vix_level, payload.vvix_level)
-        pin_risk_state = self._pin_risk_state(payload.spot_to_pin_distance_pct, payload.oi_concentration)
+        pin_risk_state = self._pin_risk_state(
+            payload.spot_to_pin_distance_pct, payload.oi_concentration
+        )
         dealer_pressure_state = self._dealer_pressure_state(
             payload.gamma_pressure_score,
             payload.vanna_proxy,
@@ -60,7 +68,9 @@ class OptionsFlowContextService:
         repeated_snapshot_state = self._repeated_snapshot_state(payload)
         skew_evolution_state = self._skew_evolution_state(payload)
         tenor_curve_state = self._tenor_curve_state(payload)
-        pin_progression_state, pin_progression_velocity = self._pin_progression_state(payload.pin_progression_sequence)
+        pin_progression_state, pin_progression_velocity = self._pin_progression_state(
+            payload.pin_progression_sequence
+        )
         options_behavior_cluster = self._options_behavior_cluster(
             gamma_state=gamma_state,
             skew_state=skew_state,
@@ -83,9 +93,21 @@ class OptionsFlowContextService:
                     + (payload.oi_concentration * 0.10)
                     + (min(abs(payload.vanna_proxy), 1.0) * 0.05)
                     + (min(abs(payload.charm_proxy), 1.0) * 0.05)
-                    + (0.15 if repeated_snapshot_state == "escalating_pressure" else 0.0)
-                    + (0.10 if pin_risk_state in {"pin_risk_present", "pin_risk_high"} else 0.0)
-                    + (0.15 if vix_spread_state in {"vvix_elevated", "vvix_dislocation"} else 0.0),
+                    + (
+                        0.15
+                        if repeated_snapshot_state == "escalating_pressure"
+                        else 0.0
+                    )
+                    + (
+                        0.10
+                        if pin_risk_state in {"pin_risk_present", "pin_risk_high"}
+                        else 0.0
+                    )
+                    + (
+                        0.15
+                        if vix_spread_state in {"vvix_elevated", "vvix_dislocation"}
+                        else 0.0
+                    ),
                 ),
             ),
             4,
@@ -185,7 +207,9 @@ class OptionsFlowContextService:
             return "spread_calm"
         return "spread_moderate"
 
-    def _pin_risk_state(self, spot_to_pin_distance_pct: float, oi_concentration: float) -> str:
+    def _pin_risk_state(
+        self, spot_to_pin_distance_pct: float, oi_concentration: float
+    ) -> str:
         if abs(spot_to_pin_distance_pct) <= 0.35 and oi_concentration >= 0.60:
             return "pin_risk_high"
         if abs(spot_to_pin_distance_pct) <= 0.75 and oi_concentration >= 0.45:
@@ -199,7 +223,12 @@ class OptionsFlowContextService:
         charm_proxy: float,
         call_put_imbalance: float,
     ) -> str:
-        flow_pressure = gamma_pressure_score + max(vanna_proxy, 0.0) + max(charm_proxy, 0.0) + abs(call_put_imbalance)
+        flow_pressure = (
+            gamma_pressure_score
+            + max(vanna_proxy, 0.0)
+            + max(charm_proxy, 0.0)
+            + abs(call_put_imbalance)
+        )
         if flow_pressure >= 1.6:
             return "dealer_destabilising"
         if flow_pressure <= 0.45:
@@ -277,7 +306,9 @@ class OptionsFlowContextService:
             return "back_loaded_curve"
         return "two_point_flat_curve"
 
-    def _pin_progression_state(self, sequence: list[PinProgressionPoint]) -> tuple[str, float | None]:
+    def _pin_progression_state(
+        self, sequence: list[PinProgressionPoint]
+    ) -> tuple[str, float | None]:
         if len(sequence) < 2:
             return "untracked", None
         ordered = sorted(sequence, key=lambda point: point.ts)
@@ -306,7 +337,10 @@ class OptionsFlowContextService:
         iv_rv_front_state: str,
         pin_progression_state: str,
     ) -> str:
-        if vix_spread_state in {"vvix_dislocation", "vvix_elevated"} and iv_rv_front_state == "iv_rich":
+        if (
+            vix_spread_state in {"vvix_dislocation", "vvix_elevated"}
+            and iv_rv_front_state == "iv_rich"
+        ):
             return "event_suppressed"
         if (
             gamma_state is GammaState.DESTABILISING
@@ -324,7 +358,13 @@ class OptionsFlowContextService:
         if (
             gamma_state is GammaState.SUPPORTIVE
             and repeated_snapshot_state in {"cooling_pressure", "stable_recheck"}
-            and tenor_curve_state in {"contango_curve", "flat_curve", "two_point_flat_curve", "back_loaded_curve"}
+            and tenor_curve_state
+            in {
+                "contango_curve",
+                "flat_curve",
+                "two_point_flat_curve",
+                "back_loaded_curve",
+            }
         ):
             return "compression_breakout_ready"
         if dealer_pressure_state == "dealer_destabilising":

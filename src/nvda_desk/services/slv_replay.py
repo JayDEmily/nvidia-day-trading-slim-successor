@@ -36,7 +36,9 @@ class StrategicLadderReplayService:
         self._market_validator = market_validator
         self._risk_gateway = risk_gateway
 
-    def replay_from_market(self, payload: StrategicLadderReplayInput) -> StrategicLadderReplayOutput:
+    def replay_from_market(
+        self, payload: StrategicLadderReplayInput
+    ) -> StrategicLadderReplayOutput:
         market_validation = self._market_validator.evaluate_from_market(
             StrategicLadderValidatorMarketInput(
                 descriptor=payload.descriptor,
@@ -56,15 +58,24 @@ class StrategicLadderReplayService:
         )
         overlay = self._build_overlay(payload)
         end_ts = payload.entry_ts + timedelta(minutes=payload.lookahead_minutes)
-        bars = self._market_state_service.get_intraday_bars(symbol=payload.symbol, ts=end_ts, limit=payload.lookahead_minutes + 1).bars
+        bars = self._market_state_service.get_intraday_bars(
+            symbol=payload.symbol, ts=end_ts, limit=payload.lookahead_minutes + 1
+        ).bars
         bars = [bar for bar in bars if payload.entry_ts <= bar.ts_utc <= end_ts]
-        rung_outcomes = [self._replay_rung(rung.price, rung.size_units, bars) for rung in payload.rungs]
+        rung_outcomes = [
+            self._replay_rung(rung.price, rung.size_units, bars)
+            for rung in payload.rungs
+        ]
 
-        positive_hits = sum(1 for outcome in rung_outcomes if outcome.outcome_label == "bounce")
+        positive_hits = sum(
+            1 for outcome in rung_outcomes if outcome.outcome_label == "bounce"
+        )
         fill_count = sum(1 for outcome in rung_outcomes if outcome.filled)
         replay_score = 0.0
         if rung_outcomes:
-            replay_score = (positive_hits / len(rung_outcomes)) * max(overlay.confidence_scalar, 0.0)
+            replay_score = (positive_hits / len(rung_outcomes)) * max(
+                overlay.confidence_scalar, 0.0
+            )
             if fill_count == 0:
                 replay_score *= 0.3
         reasons = list(market_validation.reasons)
@@ -77,7 +88,9 @@ class StrategicLadderReplayService:
             overall = LadderOverallDecision.REJECT
             confidence = LadderConfidence.LOW
             replay_score = 0.0
-        elif overlay.action.value == "derisk" and overall is LadderOverallDecision.ACCEPT:
+        elif (
+            overlay.action.value == "derisk" and overall is LadderOverallDecision.ACCEPT
+        ):
             overall = LadderOverallDecision.ADJUST
             confidence = LadderConfidence.MEDIUM
             replay_score *= 0.7
@@ -98,12 +111,28 @@ class StrategicLadderReplayService:
         )
 
     def _build_overlay(self, payload: StrategicLadderReplayInput) -> SupervisoryOverlay:
-        vix_snapshot = self._market_state_service.get_market_snapshot(symbol="VIX", ts=payload.entry_ts)
-        vvix_snapshot = self._market_state_service.get_market_snapshot(symbol="VVIX", ts=payload.entry_ts)
-        vix_level = float(vix_snapshot.latest_bar.close) if vix_snapshot.latest_bar is not None else 0.0
-        vvix_level = float(vvix_snapshot.latest_bar.close) if vvix_snapshot.latest_bar is not None else 0.0
-        vix_change = self._symbol_change_pct(symbol="VIX", entry_ts=payload.entry_ts, lookback_minutes=15)
-        vvix_change = self._symbol_change_pct(symbol="VVIX", entry_ts=payload.entry_ts, lookback_minutes=15)
+        vix_snapshot = self._market_state_service.get_market_snapshot(
+            symbol="VIX", ts=payload.entry_ts
+        )
+        vvix_snapshot = self._market_state_service.get_market_snapshot(
+            symbol="VVIX", ts=payload.entry_ts
+        )
+        vix_level = (
+            float(vix_snapshot.latest_bar.close)
+            if vix_snapshot.latest_bar is not None
+            else 0.0
+        )
+        vvix_level = (
+            float(vvix_snapshot.latest_bar.close)
+            if vvix_snapshot.latest_bar is not None
+            else 0.0
+        )
+        vix_change = self._symbol_change_pct(
+            symbol="VIX", entry_ts=payload.entry_ts, lookback_minutes=15
+        )
+        vvix_change = self._symbol_change_pct(
+            symbol="VVIX", entry_ts=payload.entry_ts, lookback_minutes=15
+        )
         decision = self._risk_gateway.evaluate(
             RiskPolicyInput(
                 symbol=payload.symbol,
@@ -131,8 +160,12 @@ class StrategicLadderReplayService:
             vvix_level=decision.vvix_level,
         )
 
-    def _symbol_change_pct(self, *, symbol: str, entry_ts: datetime, lookback_minutes: int) -> float:
-        bars = self._market_state_service.get_intraday_bars(symbol=symbol, ts=entry_ts, limit=lookback_minutes + 1).bars
+    def _symbol_change_pct(
+        self, *, symbol: str, entry_ts: datetime, lookback_minutes: int
+    ) -> float:
+        bars = self._market_state_service.get_intraday_bars(
+            symbol=symbol, ts=entry_ts, limit=lookback_minutes + 1
+        ).bars
         if len(bars) < 2:
             return 0.0
         first = float(bars[0].close)
@@ -141,8 +174,12 @@ class StrategicLadderReplayService:
             return 0.0
         return ((last - first) / first) * 100.0
 
-    def _replay_rung(self, price: float, size_units: float, bars: list[Bar1mPayload]) -> LadderReplayRungOutcome:
-        fill_bar = next((bar for bar in bars if float(bar.low) <= price <= float(bar.high)), None)
+    def _replay_rung(
+        self, price: float, size_units: float, bars: list[Bar1mPayload]
+    ) -> LadderReplayRungOutcome:
+        fill_bar = next(
+            (bar for bar in bars if float(bar.low) <= price <= float(bar.high)), None
+        )
         if fill_bar is None:
             return LadderReplayRungOutcome(
                 price=price,

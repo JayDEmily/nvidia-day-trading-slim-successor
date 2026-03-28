@@ -6,7 +6,10 @@ from sqlalchemy import desc, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.db.models import ResearchNote
-from nvda_desk.schemas.calibration import HorizonDiscoveryOutcome, HorizonDiscoveryReport
+from nvda_desk.schemas.calibration import (
+    HorizonDiscoveryOutcome,
+    HorizonDiscoveryReport,
+)
 from nvda_desk.schemas.research import (
     HorizonDiscoveryResearchSummary,
     ResearchNoteCreate,
@@ -35,9 +38,15 @@ class ResearchService:
 
     def list_notes(self, limit: int = 20) -> ResearchNoteListResponse:
         with self._session_factory() as session:
-            stmt = select(ResearchNote).order_by(desc(ResearchNote.created_at)).limit(limit)
+            stmt = (
+                select(ResearchNote)
+                .order_by(desc(ResearchNote.created_at))
+                .limit(limit)
+            )
             notes = list(session.scalars(stmt))
-        return ResearchNoteListResponse(notes=[self._to_payload(note) for note in notes])
+        return ResearchNoteListResponse(
+            notes=[self._to_payload(note) for note in notes]
+        )
 
     def _to_payload(self, note: ResearchNote) -> ResearchNotePayload:
         return ResearchNotePayload(
@@ -50,8 +59,9 @@ class ResearchService:
             tags=list(json.loads(note.tags_json)),
         )
 
-
-    def build_horizon_discovery_summary(self, report: HorizonDiscoveryReport) -> HorizonDiscoveryResearchSummary:
+    def build_horizon_discovery_summary(
+        self, report: HorizonDiscoveryReport
+    ) -> HorizonDiscoveryResearchSummary:
         """Collapse Gate 79 outputs into a bounded research-facing summary."""
 
         stable = []

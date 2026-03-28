@@ -24,24 +24,48 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate74_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 74 — Preserve event richness into live cognition input\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 74 — Preserve event richness into live cognition input\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 74 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:16] == [
-        "Gate 59", "Gate 60", "Gate 61", "Gate 62", "Gate 63", "Gate 64", "Gate 65", "Gate 66",
-        "Gate 67", "Gate 68", "Gate 69", "Gate 70", "Gate 71", "Gate 72", "Gate 73", "Gate 74",
+        "Gate 59",
+        "Gate 60",
+        "Gate 61",
+        "Gate 62",
+        "Gate 63",
+        "Gate 64",
+        "Gate 65",
+        "Gate 66",
+        "Gate 67",
+        "Gate 68",
+        "Gate 69",
+        "Gate 70",
+        "Gate 71",
+        "Gate 72",
+        "Gate 73",
+        "Gate 74",
     ]
     assert successor_pack_position(leaves["active_gate"]) >= 75
     gate74 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 74"]
@@ -56,15 +80,26 @@ def test_gate74_docs_freeze_live_event_richness_law() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Live event-richness law" in normative
-    assert "preserve event identity, materiality, provenance counts, nearby-event summaries, and lineage keys" in normative
-    assert "`next_event_at` remains as an explicit backwards-compatible compatibility field" in normative
+    assert (
+        "preserve event identity, materiality, provenance counts, nearby-event summaries, and lineage keys"
+        in normative
+    )
+    assert (
+        "`next_event_at` remains as an explicit backwards-compatible compatibility field"
+        in normative
+    )
 
     assert "## Gate 74 live event-richness authority" in operating_model
     assert "`TemporalContextInput.live_event_snapshot`" in operating_model
 
     assert "### 4l. Live event-richness objects" in domain_model
-    assert "`PreparedRuntimeSnapshot.live_event_snapshot` and `TemporalContextInput.live_event_snapshot`" in domain_model
-    assert "`next_event_at` may remain only as a derived compatibility hint" in guardrails
+    assert (
+        "`PreparedRuntimeSnapshot.live_event_snapshot` and `TemporalContextInput.live_event_snapshot`"
+        in domain_model
+    )
+    assert (
+        "`next_event_at` may remain only as a derived compatibility hint" in guardrails
+    )
 
 
 def test_gate74_schema_surface_and_service_preserve_live_event_truth() -> None:

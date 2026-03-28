@@ -5,7 +5,9 @@ from __future__ import annotations
 from typing import Any, cast
 
 from nvda_desk.schemas.dmp import DmpGrammarRole
-from nvda_desk.schemas.imported_modules.posture_enrichers import TailHedgeInjectorContractOutput
+from nvda_desk.schemas.imported_modules.posture_enrichers import (
+    TailHedgeInjectorContractOutput,
+)
 from nvda_desk.schemas.imported_modules.review_attribution import (
     ConfidenceDivergenceLoggerContractOutput,
     FeedbackSummaryWriterContractOutput,
@@ -34,7 +36,9 @@ def _gate39_outputs(*, stressed: bool = False) -> list[object]:
     return [merged_outputs[slug] for slug in EXPECTED_GATE39_ORDER]
 
 
-def test_gate39_coverage_is_closed_in_frozen_order_and_exhausts_remaining_backlog() -> None:
+def test_gate39_coverage_is_closed_in_frozen_order_and_exhausts_remaining_backlog() -> (
+    None
+):
     """Gate 39 should close exactly the six remaining ready-import items in frozen order."""
 
     ordered: list[Any] = _gate39_outputs()

@@ -90,7 +90,11 @@ class TemporalStateClassifier:
         self._after_hours_end = time(hour=settings.after_hours_end_hour)
 
     def classify(self, payload: TemporalSignalInput) -> TemporalState:
-        market_ts = payload.ts.astimezone(self._tz) if payload.ts.tzinfo else payload.ts.replace(tzinfo=self._tz)
+        market_ts = (
+            payload.ts.astimezone(self._tz)
+            if payload.ts.tzinfo
+            else payload.ts.replace(tzinfo=self._tz)
+        )
         now_min = market_ts.hour * 60 + market_ts.minute
         pre_market_start_min = self._minutes_from_midnight(self._pre_market_start)
         regular_open_min = self._minutes_from_midnight(self._regular_open)
@@ -119,7 +123,9 @@ class TemporalStateClassifier:
             is_regular_hours = True
             minutes_since_open = now_min - regular_open_min
             minutes_to_close = regular_close_min - now_min
-            legacy_phase = self._legacy_phase(minutes_since_open=minutes_since_open, minutes_to_close=minutes_to_close)
+            legacy_phase = self._legacy_phase(
+                minutes_since_open=minutes_since_open, minutes_to_close=minutes_to_close
+            )
             phase, evidence = self._behavioural_phase(
                 payload,
                 minutes_since_open=minutes_since_open,
@@ -127,7 +133,12 @@ class TemporalStateClassifier:
                 legacy_phase=legacy_phase,
                 coverage_ratio=coverage_ratio,
             )
-            confidence = self._phase_confidence(legacy_phase=legacy_phase, phase=phase, coverage_ratio=coverage_ratio, evidence=evidence)
+            confidence = self._phase_confidence(
+                legacy_phase=legacy_phase,
+                phase=phase,
+                coverage_ratio=coverage_ratio,
+                evidence=evidence,
+            )
             is_power_hour = phase is SessionClockPhase.POWER_HOUR
         else:
             phase = SessionClockPhase.AFTER_HOURS
@@ -168,7 +179,10 @@ class TemporalStateClassifier:
             return SessionClockPhase.POWER_HOUR, evidence
 
         if coverage_ratio < 0.375:
-            return legacy_phase, ["signal_coverage:insufficient", f"fallback_phase:{legacy_phase.value}"]
+            return legacy_phase, [
+                "signal_coverage:insufficient",
+                f"fallback_phase:{legacy_phase.value}",
+            ]
 
         rv5 = payload.price_realised_vol_5m_pct or 0.0
         rv15 = payload.price_realised_vol_15m_pct or 0.0
@@ -178,7 +192,9 @@ class TemporalStateClassifier:
         vwap_slope = fabs(payload.vwap_slope_5m_pct or 0.0)
         range5 = payload.rolling_range_5m_pct or 0.0
         break_count = payload.opening_range_break_count or 0
-        impulse_age = payload.impulse_age_bars if payload.impulse_age_bars is not None else 999
+        impulse_age = (
+            payload.impulse_age_bars if payload.impulse_age_bars is not None else 999
+        )
 
         if minutes_since_open <= 75:
             disorder_hits = sum(
@@ -242,13 +258,19 @@ class TemporalStateClassifier:
             )
             if trend_hits >= 4:
                 return (
-                    SessionClockPhase.INSTITUTIONAL_REPRICING if minutes_since_open < 180 else SessionClockPhase.POST_LUNCH_DRIFT,
+                    (
+                        SessionClockPhase.INSTITUTIONAL_REPRICING
+                        if minutes_since_open < 180
+                        else SessionClockPhase.POST_LUNCH_DRIFT
+                    ),
                     ["behavioural_phase:signal_override", f"trend_hits:{trend_hits}"],
                 )
 
         return legacy_phase, [f"fallback_phase:{legacy_phase.value}"]
 
-    def _legacy_phase(self, *, minutes_since_open: int, minutes_to_close: int) -> SessionClockPhase:
+    def _legacy_phase(
+        self, *, minutes_since_open: int, minutes_to_close: int
+    ) -> SessionClockPhase:
         if minutes_to_close <= 30:
             return SessionClockPhase.DEALER_UNWIND_CLOSE
         if minutes_to_close <= 60:
@@ -274,12 +296,20 @@ class TemporalStateClassifier:
         if phase == legacy_phase and coverage_ratio < 0.375:
             return 0.72
         base = 0.82 if phase == legacy_phase else 0.88
-        if any(tag.startswith("open_disorder_hits:") or tag.startswith("early_anchor_hits:") or tag.startswith("midday_compression_hits:") or tag.startswith("trend_hits:") for tag in evidence):
+        if any(
+            tag.startswith("open_disorder_hits:")
+            or tag.startswith("early_anchor_hits:")
+            or tag.startswith("midday_compression_hits:")
+            or tag.startswith("trend_hits:")
+            for tag in evidence
+        ):
             base += 0.04
         return min(0.98, round(base + min(0.08, coverage_ratio * 0.1), 4))
 
     def _signal_coverage_ratio(self, payload: TemporalSignalInput) -> float:
-        present = sum(1 for field in self._SIGNAL_FIELDS if getattr(payload, field) is not None)
+        present = sum(
+            1 for field in self._SIGNAL_FIELDS if getattr(payload, field) is not None
+        )
         return round(present / len(self._SIGNAL_FIELDS), 4)
 
     def _minutes_from_midnight(self, value: time) -> int:

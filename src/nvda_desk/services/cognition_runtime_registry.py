@@ -131,13 +131,23 @@ class DeskCognitionRuntimeRegistryService:
         for grammar_role, service_path, input_path, output_path in self._LAYER_SPECS:
             input_model = self._resolve_model(input_path)
             output_model = self._resolve_model(output_path)
-            required_input_fields, optional_input_fields = self._split_fields(input_model)
-            required_output_fields, optional_output_fields = self._split_fields(output_model)
-            required_output_override = self._CONTRACT_REQUIRED_FIELD_OVERRIDES.get(grammar_role, set())
+            required_input_fields, optional_input_fields = self._split_fields(
+                input_model
+            )
+            required_output_fields, optional_output_fields = self._split_fields(
+                output_model
+            )
+            required_output_override = self._CONTRACT_REQUIRED_FIELD_OVERRIDES.get(
+                grammar_role, set()
+            )
             if required_output_override:
-                required_output_fields = sorted(set(required_output_fields) | required_output_override)
+                required_output_fields = sorted(
+                    set(required_output_fields) | required_output_override
+                )
                 optional_output_fields = [
-                    field_name for field_name in optional_output_fields if field_name not in required_output_override
+                    field_name
+                    for field_name in optional_output_fields
+                    if field_name not in required_output_override
                 ]
             contracts.append(
                 RuntimeLayerContract(
@@ -155,7 +165,9 @@ class DeskCognitionRuntimeRegistryService:
             )
         return contracts
 
-    def build_trace_packet(self, *, grammar_role: str, summary: str) -> TraceStagePacket:
+    def build_trace_packet(
+        self, *, grammar_role: str, summary: str
+    ) -> TraceStagePacket:
         """Build one deterministic trace-stage packet for an executed runtime layer.
 
         Purpose:
@@ -168,7 +180,11 @@ class DeskCognitionRuntimeRegistryService:
             The packet is derived from the ordered runtime contract registry.
         """
 
-        contract = next(contract for contract in self.layer_contracts() if contract.grammar_role == grammar_role)
+        contract = next(
+            contract
+            for contract in self.layer_contracts()
+            if contract.grammar_role == grammar_role
+        )
         return TraceStagePacket(
             grammar_role=contract.grammar_role,
             service_path=contract.service_path,
@@ -217,9 +233,13 @@ class DeskCognitionRuntimeRegistryService:
         for contract in self.layer_contracts():
             service_class = self._resolve_object(contract.service_path)
             docstring = service_class.__doc__ or ""
-            absent_sections = [section for section in required_sections if section not in docstring]
+            absent_sections = [
+                section for section in required_sections if section not in docstring
+            ]
             if absent_sections:
-                missing.append(f"{contract.service_class_name}:{','.join(absent_sections)}")
+                missing.append(
+                    f"{contract.service_class_name}:{','.join(absent_sections)}"
+                )
         if missing:
             raise ValueError(f"runtime service docstring drifted: {'; '.join(missing)}")
 

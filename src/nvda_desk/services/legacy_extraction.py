@@ -13,7 +13,9 @@ class LegacyExtractionService:
         path = self._repo_root / relative_path
         if not path.exists():
             raise ValueError(f"missing extraction artefact: {relative_path}")
-        return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+        return [
+            json.loads(line) for line in path.read_text().splitlines() if line.strip()
+        ]
 
     def inventory_summary(self) -> dict[str, Any]:
         items = self.load_jsonl("backlog/remaining_legacy_source_inventory.jsonl")

@@ -40,12 +40,17 @@ def test_walk_forward_window_generation_is_chronological_and_no_leakage() -> Non
 
     windows = service.build_walk_forward_windows(fixture_pack.scenarios, authority)
     assert windows
-    assert {window.surface_key for window in windows} == {"gamma_pressure", "event_policy"}
+    assert {window.surface_key for window in windows} == {
+        "gamma_pressure",
+        "event_policy",
+    }
     for window in windows:
         assert window.start_index < window.end_index
         if window.role is WalkForwardWindowRole.FORWARD:
             assert len(window.scenario_ids) == window.block_sessions
-    forward_windows = [window for window in windows if window.role is WalkForwardWindowRole.FORWARD]
+    forward_windows = [
+        window for window in windows if window.role is WalkForwardWindowRole.FORWARD
+    ]
     assert any(window.block_sessions == 1 for window in forward_windows)
     assert any(window.block_sessions == 2 for window in forward_windows)
 
@@ -63,11 +68,16 @@ def test_harness_from_fixture_pack_returns_bounded_report_and_bindings() -> None
         surface_keys=["default_review_surface"],
     )
 
-    response = service.discover_review_horizons_from_fixture_pack(FIXTURE_PACK, authority)
+    response = service.discover_review_horizons_from_fixture_pack(
+        FIXTURE_PACK, authority
+    )
 
     assert response.fixture_pack_id == "gate-f-replay-regression-v1"
     assert response.report.group_results[0].surface_key == "default_review_surface"
-    assert response.report.downstream_binding.review_consumer_mode.value == "review_context_only"
+    assert (
+        response.report.downstream_binding.review_consumer_mode.value
+        == "review_context_only"
+    )
     assert response.report.fragility.hidden_fragility_detected in {True, False}
     assert response.report.event_slice_reports
     assert response.report.regime_slice_reports
@@ -137,7 +147,10 @@ def test_offset_sensitive_and_coverage_insufficient_outcomes_are_explicit() -> N
     for window in windows:
         if window.role is not WalkForwardWindowRole.FORWARD:
             continue
-        if window.surface_key == "surface_offset_sensitive" and window.block_sessions == 1:
+        if (
+            window.surface_key == "surface_offset_sensitive"
+            and window.block_sessions == 1
+        ):
             alpha_score = 1.0 if window.offset_id == "offset_0" else 0.6
             beta_score = 0.8 if window.offset_id == "offset_0" else 1.1
             report.slice_reports[window.window_id] = {
@@ -168,7 +181,12 @@ def test_offset_sensitive_and_coverage_insufficient_outcomes_are_explicit() -> N
                     mean_conflict_count=0.0,
                 ),
             }
-        elif window.surface_key == "surface_too_short" and window.block_sessions == 1 and window.offset_id == "offset_0" and "iter_0::forward" in window.window_id:
+        elif (
+            window.surface_key == "surface_too_short"
+            and window.block_sessions == 1
+            and window.offset_id == "offset_0"
+            and "iter_0::forward" in window.window_id
+        ):
             report.slice_reports[window.window_id] = {
                 "alpha": ComparisonMetrics(
                     run_count=1,
@@ -192,7 +210,16 @@ def test_offset_sensitive_and_coverage_insufficient_outcomes_are_explicit() -> N
         scenarios=fixture_pack.scenarios,
     )
     result_map = {result.surface_key: result for result in harness_report.group_results}
-    assert result_map["surface_offset_sensitive"].outcome is HorizonDiscoveryOutcome.OFFSET_SENSITIVE
-    assert result_map["surface_offset_sensitive"].offset_outcome is OffsetComparisonOutcome.OFFSET_SENSITIVE
-    assert result_map["surface_too_short"].outcome is HorizonDiscoveryOutcome.COVERAGE_INSUFFICIENT
+    assert (
+        result_map["surface_offset_sensitive"].outcome
+        is HorizonDiscoveryOutcome.OFFSET_SENSITIVE
+    )
+    assert (
+        result_map["surface_offset_sensitive"].offset_outcome
+        is OffsetComparisonOutcome.OFFSET_SENSITIVE
+    )
+    assert (
+        result_map["surface_too_short"].outcome
+        is HorizonDiscoveryOutcome.COVERAGE_INSUFFICIENT
+    )
     assert harness_report.fragility.hidden_fragility_detected is True

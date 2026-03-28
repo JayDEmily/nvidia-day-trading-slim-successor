@@ -27,7 +27,6 @@ class ResearchNoteListResponse(BaseModel):
     notes: list[ResearchNotePayload]
 
 
-
 class HorizonDiscoveryResearchSummary(BaseModel):
     """Bounded research-facing summary for Gate 79 harness outputs."""
 

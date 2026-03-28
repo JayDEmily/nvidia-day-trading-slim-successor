@@ -18,6 +18,7 @@ from nvda_desk.schemas.cognition import (
 from nvda_desk.schemas.events import EventSemanticPhase
 from nvda_desk.schemas.market import SessionAlignmentExpectation
 from nvda_desk.schemas.review import (
+    CandidateComparisonContext,
     CandidateGovernanceSurface,
     EconomicContributionPacket,
     EconomicContributionTag,
@@ -37,14 +38,12 @@ from nvda_desk.schemas.review import (
 )
 from nvda_desk.schemas.risk import (
     CarryHorizonState,
-    DayPhaseState,
     PhaseBehaviourClass,
     PhaseNoActionBias,
 )
 from nvda_desk.schemas.state_policy import (
     AdjudicationDisposition,
     BehaviourStabilityState,
-    CandidateComparisonOutcome,
     CandidateSetShape,
     CorridorBounds,
     CorridorBreachSeverity,
@@ -72,6 +71,11 @@ from nvda_desk.schemas.temporal_surface import (
     EventProximityState,
     EventRiskTimingClass,
     EventWindowState,
+)
+from nvda_desk.services.state_conditioned_modifier import (
+    project_carry_horizon_state,
+    project_day_phase_state,
+    project_event_option_state_labels,
 )
 
 
@@ -460,60 +464,76 @@ class ReviewExplanationService:
     def _phase_carry_policy(
         self, payload: ReviewExplanationInput
     ) -> PhaseCarryoverPolicySurface | None:
+        day_phase_state = project_day_phase_state(payload.temporal)
+        carry_horizon_state = project_carry_horizon_state(payload.temporal)
+        active_policy_ids = set()
+        if payload.modifier_runtime_packet is not None:
+            active_policy_ids = set(payload.modifier_runtime_packet.active_policy_ids)
+        phase_policy_active = any(
+            policy_id.startswith("phase_carry:") for policy_id in active_policy_ids
+        )
+        behaviour_class = PhaseBehaviourClass.NORMAL_OPERATION
+        no_action_bias = PhaseNoActionBias.NEUTRAL
+        if carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY:
+            behaviour_class = PhaseBehaviourClass.CARRY_PREPARATION
+            no_action_bias = PhaseNoActionBias.PREFERRED
+        elif phase_policy_active:
+            behaviour_class = PhaseBehaviourClass.COMPRESSED_DEPLOYMENT
+            no_action_bias = PhaseNoActionBias.PREFERRED
         return PhaseCarryoverPolicySurface(
-            day_phase_state=self._day_phase_state(payload.temporal.desk_window),
-            carry_horizon_state=self._carry_horizon_state(payload),
-            behaviour_class=(
-                PhaseBehaviourClass.NO_ACTION_PREFERRED
-                if payload.posture.permission_state.value == "block"
-                else PhaseBehaviourClass.NORMAL_OPERATION
+            day_phase_state=day_phase_state,
+            carry_horizon_state=carry_horizon_state,
+            behaviour_class=behaviour_class,
+            no_action_bias=no_action_bias,
+            notes=list(payload.temporal.reasons)
+            + (
+                ["phase_carry_policy_emitted_from_modifier_runtime"]
+                if phase_policy_active
+                else []
             ),
-            no_action_bias=(
-                PhaseNoActionBias.REQUIRED
-                if payload.posture.permission_state.value == "block"
-                else PhaseNoActionBias.NEUTRAL
-            ),
-            notes=list(payload.temporal.reasons),
         )
 
     def _event_options_stress_policy(
         self, payload: ReviewExplanationInput
     ) -> EventOptionsStressPolicySurface | None:
+        active_labels = project_event_option_state_labels(
+            payload.temporal, payload.options_flow
+        )
         active_states: list[EventOptionsStressState] = []
-        if (
-            payload.temporal.event_proximity_state
-            == EventProximityState.EVENT_IMMINENT.value
-        ):
+        if "event_imminent" in active_labels:
             active_states.append(EventOptionsStressState.EVENT_IMMINENT)
-        if (
-            payload.temporal.event_window_state
-            == EventWindowState.EVENT_LIVE_WINDOW.value
-        ):
+        if "event_live" in active_labels:
             active_states.append(EventOptionsStressState.EVENT_LIVE)
-        if payload.posture.permission_state.value == "block":
+        if "event_suppressed" in active_labels:
             active_states.append(EventOptionsStressState.EVENT_SUPPRESSED)
-        if payload.options_flow.gamma_state.value == "destabilising":
+        if "negative_gamma_stress" in active_labels:
             active_states.append(EventOptionsStressState.NEGATIVE_GAMMA_STRESS)
-        if payload.options_flow.options_behavior_cluster == "pin_risk":
+        if "pin_risk" in active_labels:
             active_states.append(EventOptionsStressState.PIN_RISK)
-        if payload.temporal.expiry_cycle_state in {"expiry_day", "front_week"}:
+        if "expiry_distortion" in active_labels:
             active_states.append(EventOptionsStressState.EXPIRY_DISTORTION)
         if not active_states:
             return None
-        hard_block = payload.posture.permission_state.value == "block"
-        behaviour_class = (
-            EventOptionsBehaviourClass.HARD_BLOCK
-            if hard_block
-            else EventOptionsBehaviourClass.TIGHTENED_THRESHOLDS
-        )
+        packet = payload.modifier_runtime_packet
+        active_policy_ids = set() if packet is None else set(packet.active_policy_ids)
+        hard_block = packet is not None and packet.triggered_kill_switch is not None
+        if hard_block:
+            behaviour_class = EventOptionsBehaviourClass.HARD_BLOCK
+        elif "event_options:negative_gamma_stress" in active_policy_ids:
+            behaviour_class = EventOptionsBehaviourClass.HEDGED_ONLY
+        elif "event_options:pin_risk" in active_policy_ids:
+            behaviour_class = EventOptionsBehaviourClass.SIZE_CAPPED
+        else:
+            behaviour_class = EventOptionsBehaviourClass.TIGHTENED_THRESHOLDS
         effect_types: list[PolicyEffectType] = []
-        if EventOptionsStressState.EVENT_SUPPRESSED in active_states:
+        if hard_block:
             effect_types.append(PolicyEffectType.BLOCK)
-        if EventOptionsStressState.NEGATIVE_GAMMA_STRESS in active_states:
+        if "event_options:negative_gamma_stress" in active_policy_ids:
             effect_types.append(PolicyEffectType.HEDGE)
-        if EventOptionsStressState.EXPIRY_DISTORTION in active_states:
             effect_types.append(PolicyEffectType.CAP)
-        if EventOptionsStressState.EVENT_IMMINENT in active_states:
+        if "event_options:pin_risk" in active_policy_ids:
+            effect_types.append(PolicyEffectType.CAP)
+        if "event_options:event_imminent" in active_policy_ids:
             effect_types.append(PolicyEffectType.DEGRADE)
         if not effect_types:
             effect_types.append(PolicyEffectType.SUPPRESS)
@@ -522,7 +542,12 @@ class ReviewExplanationService:
             behaviour_class=behaviour_class,
             effect_types=effect_types,
             hard_block=hard_block,
-            notes=list(payload.options_flow.reasons),
+            notes=list(payload.options_flow.reasons)
+            + (
+                ["event_options_policy_emitted_from_modifier_runtime"]
+                if packet is not None
+                else []
+            ),
         )
 
     def _modifier_control_law(
@@ -708,25 +733,26 @@ class ReviewExplanationService:
         ]
 
     def _candidate_governance(
-        self, promotion_evidence: PromotionEvidencePacket
+        self,
+        promotion_evidence: PromotionEvidencePacket,
+        comparison_context: CandidateComparisonContext | None = None,
     ) -> CandidateGovernanceSurface:
-        if promotion_evidence.ready_for_candidate_review:
+        if (
+            promotion_evidence.ready_for_candidate_review
+            and comparison_context is not None
+        ):
             return CandidateGovernanceSurface(
-                candidate_shape=CandidateSetShape(
-                    max_candidate_count=2,
-                    max_shadow_challengers=1,
-                    allow_dormant_candidates=True,
-                    allow_retired_candidates=True,
-                    reserved_adjudication_spans=1,
-                ),
-                champion_candidate_id="current_champion",
-                shadow_challenger_ids=["shadow_challenger_01"],
-                comparison_outcome=CandidateComparisonOutcome.RETAIN_CHAMPION,
-                adjudication_disposition=AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON,
+                candidate_shape=comparison_context.candidate_shape,
+                champion_candidate_id=comparison_context.champion_candidate_id,
+                shadow_challenger_ids=list(comparison_context.shadow_challenger_ids),
+                dormant_candidate_ids=list(comparison_context.dormant_candidate_ids),
+                retired_candidate_ids=list(comparison_context.retired_candidate_ids),
+                comparison_outcome=comparison_context.comparison_outcome,
+                adjudication_disposition=comparison_context.adjudication_disposition,
             )
         return CandidateGovernanceSurface(
             candidate_shape=CandidateSetShape(
-                max_candidate_count=1,
+                max_candidate_count=2,
                 max_shadow_challengers=0,
                 allow_dormant_candidates=True,
                 allow_retired_candidates=True,
@@ -901,35 +927,3 @@ class ReviewExplanationService:
                 "gate77_review_packet_requires_lineage_before_later_candidate_adjudication"
             ],
         )
-
-    def _day_phase_state(self, desk_window: str) -> DayPhaseState:
-        mapping = {
-            "open_disorder": DayPhaseState.OPENING_DISORDER,
-            "early_anchor": DayPhaseState.OPENING_RESOLUTION,
-            "mid_morning": DayPhaseState.TREND_WINDOW,
-            "lunch": DayPhaseState.MIDDAY_COMPRESSION,
-            "trend_window": DayPhaseState.LATE_SESSION,
-            "late_session": DayPhaseState.LATE_SESSION,
-            "close": DayPhaseState.CLOSE_AUCTION,
-            "after_hours": DayPhaseState.POST_CLOSE,
-            "closed": DayPhaseState.POST_CLOSE,
-            "pre_market": DayPhaseState.OPENING_DISORDER,
-        }
-        return mapping.get(desk_window, DayPhaseState.TREND_WINDOW)
-
-    def _carry_horizon_state(
-        self, payload: ReviewExplanationInput
-    ) -> CarryHorizonState:
-        if (
-            payload.temporal.event_window_state
-            == EventWindowState.EVENT_LIVE_WINDOW.value
-        ):
-            return CarryHorizonState.EVENT_CARRY_SETUP
-        if payload.temporal.desk_window in {"late_session", "close", "after_hours"}:
-            return CarryHorizonState.OVERNIGHT_SETUP
-        if (
-            payload.temporal_input is not None
-            and payload.temporal_input.ts.weekday() == 4
-        ):
-            return CarryHorizonState.WEEKEND_SETUP
-        return CarryHorizonState.INTRADAY_ONLY

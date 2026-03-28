@@ -21,7 +21,11 @@ from nvda_desk.services.research import ResearchService
 
 
 class _StubSessionFactory:
-    def __call__(self) -> None:  # pragma: no cover - ResearchService methods under test do not hit the DB.
+    def __call__(
+        self,
+    ) -> (
+        None
+    ):  # pragma: no cover - ResearchService methods under test do not hit the DB.
         raise RuntimeError("not used")
 
 

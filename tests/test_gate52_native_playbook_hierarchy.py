@@ -11,7 +11,10 @@ from nvda_desk.schemas.cognition import (
     TemporalContextInput,
     TenorCurvePoint,
 )
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
+from nvda_desk.services.cognition_runtime import (
+    DeskCognitionRuntime,
+    DeskCognitionRuntimeResult,
+)
 
 
 def _supportive_runtime_result() -> DeskCognitionRuntimeResult:
@@ -98,21 +101,46 @@ def test_gate52_emits_native_family_and_setup_variant_candidates() -> None:
     result = _supportive_runtime_result()
     eligibility = result.eligibility
 
-    assert eligibility.active_family_ids == ["trend_continuation", "compression_release"]
-    assert eligibility.active_setup_variant_ids == ["opening_drive_continuation", "midday_compression_release"]
-    family_index = {candidate.family_id: candidate for candidate in eligibility.family_candidates}
-    assert family_index["trend_continuation"].active_playbook_ids == ["continuation_ladder"]
-    variant_index = {candidate.setup_variant_id: candidate for candidate in eligibility.setup_variant_candidates}
-    assert variant_index["opening_drive_continuation"].legacy_playbook_id == "continuation_ladder"
-    assert variant_index["opening_drive_continuation"].execution_expression_id == "continuation_ladder_exec"
+    assert eligibility.active_family_ids == [
+        "trend_continuation",
+        "compression_release",
+    ]
+    assert eligibility.active_setup_variant_ids == [
+        "opening_drive_continuation",
+        "midday_compression_release",
+    ]
+    family_index = {
+        candidate.family_id: candidate for candidate in eligibility.family_candidates
+    }
+    assert family_index["trend_continuation"].active_playbook_ids == [
+        "continuation_ladder"
+    ]
+    variant_index = {
+        candidate.setup_variant_id: candidate
+        for candidate in eligibility.setup_variant_candidates
+    }
+    assert (
+        variant_index["opening_drive_continuation"].legacy_playbook_id
+        == "continuation_ladder"
+    )
+    assert (
+        variant_index["opening_drive_continuation"].execution_expression_id
+        == "continuation_ladder_exec"
+    )
 
 
 def test_gate52_execution_tracks_family_and_setup_lineage() -> None:
     result = _supportive_runtime_result()
     execution = result.execution
 
-    assert execution.active_playbook_ids == ["continuation_ladder", "compression_breakout"]
-    assert execution.active_setup_variant_ids == ["opening_drive_continuation", "midday_compression_release"]
+    assert execution.active_playbook_ids == [
+        "continuation_ladder",
+        "compression_breakout",
+    ]
+    assert execution.active_setup_variant_ids == [
+        "opening_drive_continuation",
+        "midday_compression_release",
+    ]
     assert execution.active_family_ids == ["trend_continuation", "compression_release"]
     assert execution.lead_playbook_id == "continuation_ladder"
     assert execution.lead_setup_variant_id == "opening_drive_continuation"

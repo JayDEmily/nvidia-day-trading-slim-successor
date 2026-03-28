@@ -21,20 +21,30 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate67_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 67 — Temporal event-window semantics\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 67 — Temporal event-window semantics\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 67 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:9] == [
         "Gate 59",
@@ -61,14 +71,26 @@ def test_gate67_docs_freeze_event_window_and_overlap_law() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Temporal event-window law" in normative
-    assert "event proximity states are `no_event_context`, `event_scheduled`, `event_same_day`, `event_same_session`, `event_imminent`, and `event_live_or_passed`" in normative
-    assert "event-window states are `clear_window`, `same_session_event_window`, `event_imminent_window`, `event_live_window`, `event_cooling_off_window`, and `event_memory_window`" in normative
+    assert (
+        "event proximity states are `no_event_context`, `event_scheduled`, `event_same_day`, `event_same_session`, `event_imminent`, and `event_live_or_passed`"
+        in normative
+    )
+    assert (
+        "event-window states are `clear_window`, `same_session_event_window`, `event_imminent_window`, `event_live_window`, `event_cooling_off_window`, and `event_memory_window`"
+        in normative
+    )
 
     assert "## Gate 67 temporal event-window authority" in operating_model
-    assert "overlapping windows must resolve through explicit priority classes rather than informal discretion" in operating_model
+    assert (
+        "overlapping windows must resolve through explicit priority classes rather than informal discretion"
+        in operating_model
+    )
 
     assert "### 4h. Temporal event-window objects" in domain_model
-    assert "**Event-window semantics must stay typed; `near event` or `probably clear by now` is not lawful runtime language.**" in guardrails
+    assert (
+        "**Event-window semantics must stay typed; `near event` or `probably clear by now` is not lawful runtime language.**"
+        in guardrails
+    )
 
 
 def test_gate67_schema_surface_exposes_window_overlap_and_memory_states() -> None:
@@ -137,7 +159,11 @@ def test_gate67_schema_surface_exposes_window_overlap_and_memory_states() -> Non
         carry_sensitivity=EventCarrySensitivity.CARRY_SENSITIVE,
         event_family="nvda_earnings",
     )
-    review = ReviewExplanationOutput(summary="event window bounded", review_packet={}, event_window_governance=surface)
+    review = ReviewExplanationOutput(
+        summary="event window bounded",
+        review_packet={},
+        event_window_governance=surface,
+    )
     assert authority.authority.window_contracts[0].memory_minutes == 1440
     assert review.event_window_governance == surface
 

@@ -18,7 +18,10 @@ from nvda_desk.db.models import (
     PositionSnapshot,
     RiskBlockEvent,
 )
-from nvda_desk.schemas.execution_records import DailyPnlReportCreate, DailyPnlReportPayload
+from nvda_desk.schemas.execution_records import (
+    DailyPnlReportCreate,
+    DailyPnlReportPayload,
+)
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.review import (
     DailyReviewPacket,
@@ -44,11 +47,21 @@ class ReviewPacketService:
 
     def module_health(self, module_id: str) -> ModuleHealthPacket:
         with self._session_factory() as session:
-            evaluation_count = self._count(session, EvaluationRun, EvaluationRun.module_id == module_id)
-            experiment_count = self._count(session, ExperimentRun, ExperimentRun.module_id == module_id)
-            signal_event_count = self._count(session, ModuleSignalEvent, ModuleSignalEvent.module_id == module_id)
-            veto_event_count = self._count(session, ModuleVetoEvent, ModuleVetoEvent.module_id == module_id)
-            risk_block_event_count = self._count(session, RiskBlockEvent, RiskBlockEvent.module_id == module_id)
+            evaluation_count = self._count(
+                session, EvaluationRun, EvaluationRun.module_id == module_id
+            )
+            experiment_count = self._count(
+                session, ExperimentRun, ExperimentRun.module_id == module_id
+            )
+            signal_event_count = self._count(
+                session, ModuleSignalEvent, ModuleSignalEvent.module_id == module_id
+            )
+            veto_event_count = self._count(
+                session, ModuleVetoEvent, ModuleVetoEvent.module_id == module_id
+            )
+            risk_block_event_count = self._count(
+                session, RiskBlockEvent, RiskBlockEvent.module_id == module_id
+            )
             order_event_count = self._count_order_events(session, module_id)
             fill_event_count = self._count_fill_events(session, module_id)
             position_snapshot_count = self._count_positions(session)
@@ -60,12 +73,19 @@ class ReviewPacketService:
             )
             last_fill_at = session.scalar(
                 select(FillEventRecord.fill_ts)
-                .join(OrderIntentRecord, OrderIntentRecord.id == FillEventRecord.order_intent_id)
+                .join(
+                    OrderIntentRecord,
+                    OrderIntentRecord.id == FillEventRecord.order_intent_id,
+                )
                 .where(OrderIntentRecord.module_id == module_id)
                 .order_by(desc(FillEventRecord.fill_ts))
                 .limit(1)
             )
-            latest_daily_pnl = session.scalar(select(DailyPnlReport).order_by(desc(DailyPnlReport.report_date)).limit(1))
+            latest_daily_pnl = session.scalar(
+                select(DailyPnlReport)
+                .order_by(desc(DailyPnlReport.report_date))
+                .limit(1)
+            )
             open_positions = list(
                 session.scalars(
                     select(PositionSnapshot.symbol)
@@ -78,7 +98,13 @@ class ReviewPacketService:
             module_id=module_id,
             evaluation_count=evaluation_count,
             experiment_count=experiment_count,
-            latest_daily_pnl=None if latest_daily_pnl is None else self._execution_records_service._to_daily_pnl_payload(latest_daily_pnl),
+            latest_daily_pnl=(
+                None
+                if latest_daily_pnl is None
+                else self._execution_records_service._to_daily_pnl_payload(
+                    latest_daily_pnl
+                )
+            ),
             record_counts=RecordCountSummary(
                 signal_event_count=signal_event_count,
                 veto_event_count=veto_event_count,
@@ -93,7 +119,9 @@ class ReviewPacketService:
         )
 
     @staticmethod
-    def render_precursor_runtime_binding(packet: PrecursorRuntimePacket | None) -> dict[str, object] | None:
+    def render_precursor_runtime_binding(
+        packet: PrecursorRuntimePacket | None,
+    ) -> dict[str, object] | None:
         """Return a review-safe serialisation of the additive precursor runtime packet."""
 
         if packet is None:
@@ -101,7 +129,9 @@ class ReviewPacketService:
         return packet.model_dump(mode="json")
 
     @staticmethod
-    def render_failure_taxonomy(packet: ReviewFailurePacket | None) -> dict[str, object] | None:
+    def render_failure_taxonomy(
+        packet: ReviewFailurePacket | None,
+    ) -> dict[str, object] | None:
         """Return a review-safe serialisation of the Gate 77 failure packet."""
 
         if packet is None:
@@ -109,21 +139,30 @@ class ReviewPacketService:
         return packet.model_dump(mode="json")
 
     @staticmethod
-    def render_promotion_evidence(packet: PromotionEvidencePacket | None) -> dict[str, object] | None:
+    def render_promotion_evidence(
+        packet: PromotionEvidencePacket | None,
+    ) -> dict[str, object] | None:
         """Return a review-safe serialisation of Gate 77 promotion evidence."""
 
         if packet is None:
             return None
         return packet.model_dump(mode="json")
 
-    def daily_packet(self, *, report_date: date, symbol: str = "NVDA") -> DailyReviewPacket:
+    def daily_packet(
+        self, *, report_date: date, symbol: str = "NVDA"
+    ) -> DailyReviewPacket:
         account_state = self._execution_records_service.latest_capital_state()
-        positions = self._execution_records_service.list_positions(symbol=symbol, limit=20).positions
-        daily_report = self._daily_report_or_zero(symbol=symbol, report_date=report_date)
+        positions = self._execution_records_service.list_positions(
+            symbol=symbol, limit=20
+        ).positions
+        daily_report = self._daily_report_or_zero(
+            symbol=symbol, report_date=report_date
+        )
         module_ids = self._active_module_ids(report_date)
         module_health = [self.module_health(module_id) for module_id in module_ids]
         recent_events = self._events_service.get_proximity(
-            requested_at=datetime.combine(report_date, datetime.min.time(), tzinfo=UTC) + timedelta(hours=20),
+            requested_at=datetime.combine(report_date, datetime.min.time(), tzinfo=UTC)
+            + timedelta(hours=20),
             symbol=symbol,
         )
         return DailyReviewPacket(
@@ -144,7 +183,9 @@ class ReviewPacketService:
         symbol: str,
         report_date: date,
     ) -> DailyPnlReportPayload:
-        reports = self._execution_records_service.list_daily_pnl(symbol=symbol, limit=20).reports
+        reports = self._execution_records_service.list_daily_pnl(
+            symbol=symbol, limit=20
+        ).reports
         for report in reports:
             if report.report_date == report_date:
                 return report
@@ -174,20 +215,32 @@ class ReviewPacketService:
                 )
             }
             if not module_ids:
-                fallback = session.scalar(select(ModuleSignalEvent.module_id).order_by(desc(ModuleSignalEvent.created_at)).limit(1))
+                fallback = session.scalar(
+                    select(ModuleSignalEvent.module_id)
+                    .order_by(desc(ModuleSignalEvent.created_at))
+                    .limit(1)
+                )
                 if fallback is not None:
                     module_ids.add(fallback)
         return sorted(module_ids)
 
-    def _count(self, session: Session, model: type[object], criterion: ColumnElement[bool]) -> int:
-        return int(session.scalar(select(func.count()).select_from(model).where(criterion)) or 0)
+    def _count(
+        self, session: Session, model: type[object], criterion: ColumnElement[bool]
+    ) -> int:
+        return int(
+            session.scalar(select(func.count()).select_from(model).where(criterion))
+            or 0
+        )
 
     def _count_order_events(self, session: Session, module_id: str) -> int:
         return int(
             session.scalar(
                 select(func.count())
                 .select_from(OrderEventRecord)
-                .join(OrderIntentRecord, OrderIntentRecord.id == OrderEventRecord.order_intent_id)
+                .join(
+                    OrderIntentRecord,
+                    OrderIntentRecord.id == OrderEventRecord.order_intent_id,
+                )
                 .where(OrderIntentRecord.module_id == module_id)
             )
             or 0
@@ -198,11 +251,16 @@ class ReviewPacketService:
             session.scalar(
                 select(func.count())
                 .select_from(FillEventRecord)
-                .join(OrderIntentRecord, OrderIntentRecord.id == FillEventRecord.order_intent_id)
+                .join(
+                    OrderIntentRecord,
+                    OrderIntentRecord.id == FillEventRecord.order_intent_id,
+                )
                 .where(OrderIntentRecord.module_id == module_id)
             )
             or 0
         )
 
     def _count_positions(self, session: Session) -> int:
-        return int(session.scalar(select(func.count()).select_from(PositionSnapshot)) or 0)
+        return int(
+            session.scalar(select(func.count()).select_from(PositionSnapshot)) or 0
+        )

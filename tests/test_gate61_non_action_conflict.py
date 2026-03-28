@@ -18,23 +18,43 @@ from nvda_desk.schemas.state_policy import (
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate61_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 61 — Non-action, conflict hierarchy, and discretion boundaries\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 61 — Non-action, conflict hierarchy, and discretion boundaries\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 61 closeout note" in gates_text
-    assert leaves['execution_status'].startswith('gate_') and ('_successor_pack_active_from_gate_' in leaves['execution_status'] or '_successor_pack_closed_after_gate_' in leaves['execution_status'])
-    assert leaves['completed_gate_ids'][:6] == ['Gate 59', 'Gate 60', 'Gate 61', 'Gate 62', 'Gate 63', 'Gate 64']
-    assert successor_pack_position(leaves['active_gate']) >= 65
+    assert leaves["execution_status"].startswith("gate_") and (
+        "_successor_pack_active_from_gate_" in leaves["execution_status"]
+        or "_successor_pack_closed_after_gate_" in leaves["execution_status"]
+    )
+    assert leaves["completed_gate_ids"][:6] == [
+        "Gate 59",
+        "Gate 60",
+        "Gate 61",
+        "Gate 62",
+        "Gate 63",
+        "Gate 64",
+    ]
+    assert successor_pack_position(leaves["active_gate"]) >= 65
 
     gate61 = [leaf for leaf in leaves["leaves"] if leaf["gate"] == "Gate 61"]
     assert len(gate61) == 5
@@ -51,10 +71,16 @@ def test_gate61_docs_forbid_forced_action_and_runtime_discretion() -> None:
     assert "discretionary runtime override is forbidden" in normative
 
     assert "## Gate 61 non-action and conflict authority" in operating_model
-    assert "The deterministic desk is allowed to decide **not** to participate." in operating_model
+    assert (
+        "The deterministic desk is allowed to decide **not** to participate."
+        in operating_model
+    )
     assert "stand-down remains first-class" in operating_model
 
-    assert "**No forced-action bias; stand-down is a valid governed outcome.**" in guardrails
+    assert (
+        "**No forced-action bias; stand-down is a valid governed outcome.**"
+        in guardrails
+    )
     assert "**Discretionary runtime override is forbidden.**" in guardrails
 
 
@@ -98,7 +124,9 @@ def test_gate61_schema_exposes_review_governance_surface() -> None:
         override_disposition=OverrideDisposition.AUDIT_ANNOTATION_ONLY,
         override_audit_notes=["manual note captured"],
     )
-    review = ReviewExplanationOutput(summary="held fire", review_packet={}, review_governance=governance)
+    review = ReviewExplanationOutput(
+        summary="held fire", review_packet={}, review_governance=governance
+    )
     assert review.review_governance == governance
 
     authority = NonActionAuthorityResponse(
@@ -109,10 +137,17 @@ def test_gate61_schema_exposes_review_governance_surface() -> None:
             override_dispositions=list(OverrideDisposition),
         )
     )
-    assert authority.authority.override_dispositions[-1] is OverrideDisposition.FORBIDDEN
+    assert (
+        authority.authority.override_dispositions[-1] is OverrideDisposition.FORBIDDEN
+    )
 
 
 def test_gate61_vocabulary_terms_are_present() -> None:
     vocab = json.loads(VOCAB_PATH.read_text(encoding="utf-8"))
     slugs = {entry["canonical_slug"] for entry in vocab["entries"]}
-    assert {"stand_down_class", "conflict_class", "degradation_step", "override_disposition"}.issubset(slugs)
+    assert {
+        "stand_down_class",
+        "conflict_class",
+        "degradation_step",
+        "override_disposition",
+    }.issubset(slugs)

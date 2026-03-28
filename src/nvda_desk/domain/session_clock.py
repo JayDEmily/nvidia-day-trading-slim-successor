@@ -32,6 +32,7 @@ class SessionClockState:
     is_power_hour: bool
     phase_confidence: float
 
+
 class SessionClockClassifier:
     """Compatibility wrapper projecting the Step-1 temporal-state engine.
 
@@ -45,9 +46,14 @@ class SessionClockClassifier:
         self._settings = settings
 
     def classify(self, ts: datetime) -> SessionClockState:
-        from nvda_desk.domain.temporal_state import TemporalSignalInput, TemporalStateClassifier
+        from nvda_desk.domain.temporal_state import (
+            TemporalSignalInput,
+            TemporalStateClassifier,
+        )
 
-        state = TemporalStateClassifier(self._settings).classify(TemporalSignalInput(ts=ts))
+        state = TemporalStateClassifier(self._settings).classify(
+            TemporalSignalInput(ts=ts)
+        )
         return SessionClockState(
             phase=state.phase,
             market_timezone=state.market_timezone,

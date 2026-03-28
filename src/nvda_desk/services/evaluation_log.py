@@ -9,7 +9,11 @@ from sqlalchemy import desc, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.db.models import EvaluationRun
-from nvda_desk.schemas.eval import EvaluationRunListResponse, EvaluationRunPayload, EvalVerdict
+from nvda_desk.schemas.eval import (
+    EvaluationRunListResponse,
+    EvaluationRunPayload,
+    EvalVerdict,
+)
 from nvda_desk.schemas.module import ModuleDescriptor
 
 
@@ -36,7 +40,11 @@ class EvaluationLogService:
                 module_class=descriptor.module_class.value,
                 verdict=verdict,
                 score=score,
-                requested_at=requested_at.astimezone(UTC) if requested_at.tzinfo else requested_at.replace(tzinfo=UTC),
+                requested_at=(
+                    requested_at.astimezone(UTC)
+                    if requested_at.tzinfo
+                    else requested_at.replace(tzinfo=UTC)
+                ),
                 input_json=self._dump_model(input_payload),
                 output_json=self._dump_model(output_payload),
             )
@@ -45,14 +53,18 @@ class EvaluationLogService:
             session.refresh(row)
             return self._to_payload(row)
 
-    def list_runs(self, module_id: str | None = None, limit: int = 20) -> EvaluationRunListResponse:
+    def list_runs(
+        self, module_id: str | None = None, limit: int = 20
+    ) -> EvaluationRunListResponse:
         with self._session_factory() as session:
             stmt = select(EvaluationRun)
             if module_id:
                 stmt = stmt.where(EvaluationRun.module_id == module_id)
             stmt = stmt.order_by(desc(EvaluationRun.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return EvaluationRunListResponse(evaluations=[self._to_payload(row) for row in rows])
+        return EvaluationRunListResponse(
+            evaluations=[self._to_payload(row) for row in rows]
+        )
 
     def _dump_model(self, model: BaseModel) -> str:
         return json.dumps(model.model_dump(mode="json"))

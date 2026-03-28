@@ -76,7 +76,9 @@ def _dependency_fences(
 class MarketSubstrateContractService:
     """Emit Gate-18 shared market-data substrate contracts in frozen order."""
 
-    def evaluate(self, context: MarketSubstrateContext) -> list[MarketSubstrateContractEmission]:
+    def evaluate(
+        self, context: MarketSubstrateContext
+    ) -> list[MarketSubstrateContractEmission]:
         outputs: list[MarketSubstratePayload] = [
             self._spot_data_capture(context),
             self._peer_equity_capture(context),
@@ -124,7 +126,9 @@ class MarketSubstrateContractService:
         )
         return MarketSubstrateContractEmission(output=output, packet=packet)
 
-    def _spot_data_capture(self, context: MarketSubstrateContext) -> SpotDataCaptureContractOutput:
+    def _spot_data_capture(
+        self, context: MarketSubstrateContext
+    ) -> SpotDataCaptureContractOutput:
         return SpotDataCaptureContractOutput(
             canonical_id="archive-module-001",
             canonical_slug="spot_data_capture",
@@ -144,7 +148,9 @@ class MarketSubstrateContractService:
             proxy_basis=["options_flow_input.spot_price"],
         )
 
-    def _peer_equity_capture(self, context: MarketSubstrateContext) -> PeerEquityCaptureContractOutput:
+    def _peer_equity_capture(
+        self, context: MarketSubstrateContext
+    ) -> PeerEquityCaptureContractOutput:
         return PeerEquityCaptureContractOutput(
             canonical_id="archive-module-007",
             canonical_slug="peer_equity_capture",
@@ -168,7 +174,9 @@ class MarketSubstrateContractService:
             capture_state="runtime_peer_proxy",
         )
 
-    def _options_data_capture(self, context: MarketSubstrateContext) -> OptionsDataCaptureContractOutput:
+    def _options_data_capture(
+        self, context: MarketSubstrateContext
+    ) -> OptionsDataCaptureContractOutput:
         snapshot_count = len(context.options_flow_input.repeated_snapshot_sequence)
         return OptionsDataCaptureContractOutput(
             canonical_id="archive-module-003",
@@ -187,10 +195,16 @@ class MarketSubstrateContractService:
             snapshot_count=snapshot_count,
             front_atm_iv=context.options_flow_input.front_atm_iv,
             next_atm_iv=context.options_flow_input.next_atm_iv,
-            capture_state="runtime_options_proxy" if snapshot_count or context.options_flow_input.front_atm_iv else "runtime_options_summary_proxy",
+            capture_state=(
+                "runtime_options_proxy"
+                if snapshot_count or context.options_flow_input.front_atm_iv
+                else "runtime_options_summary_proxy"
+            ),
         )
 
-    def _options_metadata_capture(self, context: MarketSubstrateContext) -> OptionsMetadataCaptureContractOutput:
+    def _options_metadata_capture(
+        self, context: MarketSubstrateContext
+    ) -> OptionsMetadataCaptureContractOutput:
         return OptionsMetadataCaptureContractOutput(
             canonical_id="archive-module-004",
             canonical_slug="options_metadata_capture",
@@ -211,7 +225,9 @@ class MarketSubstrateContractService:
             metadata_state="runtime_metadata_proxy",
         )
 
-    def _macro_data_capture(self, context: MarketSubstrateContext) -> MacroDataCaptureContractOutput:
+    def _macro_data_capture(
+        self, context: MarketSubstrateContext
+    ) -> MacroDataCaptureContractOutput:
         return MacroDataCaptureContractOutput(
             canonical_id="archive-module-005",
             canonical_slug="macro_data_capture",
@@ -228,12 +244,16 @@ class MarketSubstrateContractService:
             ],
             vix_level=context.regime_input.vix_level,
             vvix_level=context.regime_input.vvix_level,
-            curve_10s2s=round(context.regime_input.us10y - context.regime_input.us2y, 4),
+            curve_10s2s=round(
+                context.regime_input.us10y - context.regime_input.us2y, 4
+            ),
             usdjpy=context.regime_input.usdjpy,
             capture_state="runtime_macro_proxy",
         )
 
-    def _vwap_accumulator(self, context: MarketSubstrateContext) -> VwapAccumulatorContractOutput:
+    def _vwap_accumulator(
+        self, context: MarketSubstrateContext
+    ) -> VwapAccumulatorContractOutput:
         return VwapAccumulatorContractOutput(
             canonical_id="archive-module-002",
             canonical_slug="vwap_accumulator",

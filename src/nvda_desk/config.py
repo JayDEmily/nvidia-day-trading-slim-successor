@@ -18,6 +18,5 @@ class Settings(BaseSettings):
     playbook_registry_path: str = Field(default="config/playbook_registry.example.yaml")
 
 
-
 def get_settings() -> Settings:
     return Settings()

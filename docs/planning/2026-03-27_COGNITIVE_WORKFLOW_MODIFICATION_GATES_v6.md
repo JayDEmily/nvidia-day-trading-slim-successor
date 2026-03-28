@@ -605,6 +605,10 @@ A bounded phase/carryover policy matrix exists and identifies what changes, what
 - policy-matrix vocabulary updates
 - targeted schema and consistency tests
 
+### Gate 69 closeout note
+
+Gate 69 is complete on `main`. The repo now freezes one bounded phase/carry matrix over approved day-phase states and carry-horizon states, including explicit non-action bias and mutable-surface targeting before later event/options-stress or precedence gates.
+
 ## Gate 70 — Event and options-stress policy matrix
 
 Status: complete on `main`

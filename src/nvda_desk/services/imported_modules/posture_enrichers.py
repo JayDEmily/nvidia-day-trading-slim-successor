@@ -76,7 +76,9 @@ def _dependency_fences(
 class PostureEnricherContractService:
     """Emit Gate-20 enrichers in frozen order."""
 
-    def evaluate(self, context: PostureEnricherContext) -> list[PostureEnricherContractEmission]:
+    def evaluate(
+        self, context: PostureEnricherContext
+    ) -> list[PostureEnricherContractEmission]:
         outputs: list[PostureEnricherPayload] = [
             self._fill_bias_adjuster(context),
             self._archetype_tagger(context),
@@ -123,8 +125,13 @@ class PostureEnricherContractService:
         )
         return PostureEnricherContractEmission(output=output, packet=packet)
 
-    def _fill_bias_adjuster(self, context: PostureEnricherContext) -> FillBiasAdjusterContractOutput:
-        base = context.execution_context_score.context_score * context.macro_adaptive_weighting_filter.weight_multiplier
+    def _fill_bias_adjuster(
+        self, context: PostureEnricherContext
+    ) -> FillBiasAdjusterContractOutput:
+        base = (
+            context.execution_context_score.context_score
+            * context.macro_adaptive_weighting_filter.weight_multiplier
+        )
         if context.posture.permission_state.value == "block":
             base *= 0.25
             bias_tag = "do_not_work_orders"
@@ -171,8 +178,13 @@ class PostureEnricherContractService:
             fill_bias=fill_bias,
         )
 
-    def _archetype_tagger(self, context: PostureEnricherContext) -> ArchetypeTaggerContractOutput:
-        if context.engine_score.conviction_band == "constructive" and context.temporal.desk_window in {"trend_window", "late_session"}:
+    def _archetype_tagger(
+        self, context: PostureEnricherContext
+    ) -> ArchetypeTaggerContractOutput:
+        if (
+            context.engine_score.conviction_band == "constructive"
+            and context.temporal.desk_window in {"trend_window", "late_session"}
+        ):
             archetype_tag = "trend_constructive"
             confidence = 0.78
         elif context.posture.permission_state.value == "block":
@@ -208,8 +220,13 @@ class PostureEnricherContractService:
             confidence=confidence,
         )
 
-    def _compression_regime_detector(self, context: PostureEnricherContext) -> CompressionRegimeDetectorContractOutput:
-        if context.vol_corridor.compression_flag == "tight_corridor" and context.execution_context_score.context_score >= 0.6:
+    def _compression_regime_detector(
+        self, context: PostureEnricherContext
+    ) -> CompressionRegimeDetectorContractOutput:
+        if (
+            context.vol_corridor.compression_flag == "tight_corridor"
+            and context.execution_context_score.context_score >= 0.6
+        ):
             compression_state = "compression_ready"
             signal_score = 0.82
         elif context.vol_corridor.compression_flag == "wide_corridor":
@@ -235,7 +252,11 @@ class PostureEnricherContractService:
                     "context_scanner:options_behaviour_cluster",
                 },
             ),
-            upstream_contract_slugs=["vol_corridor", "execution_context_score", "options_behaviour_cluster"],
+            upstream_contract_slugs=[
+                "vol_corridor",
+                "execution_context_score",
+                "options_behaviour_cluster",
+            ],
             contract_notes=[
                 "Compression regime detection remains a bounded qualifier only and does not create a new playbook family.",
             ],
@@ -243,7 +264,9 @@ class PostureEnricherContractService:
             signal_score=signal_score,
         )
 
-    def _obv_vi_flow_confirmation(self, context: PostureEnricherContext) -> ObvViFlowConfirmationContractOutput:
+    def _obv_vi_flow_confirmation(
+        self, context: PostureEnricherContext
+    ) -> ObvViFlowConfirmationContractOutput:
         return ObvViFlowConfirmationContractOutput(
             canonical_id="legacy-module-003",
             canonical_slug="obv_vi_flow_confirmation",
@@ -265,7 +288,9 @@ class PostureEnricherContractService:
             confirmation_score=0.0,
         )
 
-    def _tail_hedge_injector(self, context: PostureEnricherContext) -> TailHedgeInjectorContractOutput:
+    def _tail_hedge_injector(
+        self, context: PostureEnricherContext
+    ) -> TailHedgeInjectorContractOutput:
         hostile_pressure = fmean(
             [
                 1.0 - context.macro_signal_score.macro_score,
@@ -306,7 +331,11 @@ class PostureEnricherContractService:
                     "runtime:posture_risk": "proxied from the current permission state so the overlay stays advisory rather than becoming an automated hedge engine",
                 },
             ),
-            upstream_contract_slugs=["macro_signal_score", "vix_spread_detector", "engine_score"],
+            upstream_contract_slugs=[
+                "macro_signal_score",
+                "vix_spread_detector",
+                "engine_score",
+            ],
             contract_notes=[
                 "Tail hedge injection remains advisory-only; it suggests overlay intensity without placing hedges or mutating live positions.",
             ],
@@ -315,7 +344,9 @@ class PostureEnricherContractService:
             injector_state=injector_state,
         )
 
-    def _volatility_sentiment_index(self, context: PostureEnricherContext) -> VolatilitySentimentIndexContractOutput:
+    def _volatility_sentiment_index(
+        self, context: PostureEnricherContext
+    ) -> VolatilitySentimentIndexContractOutput:
         supportive = fmean(
             [
                 context.macro_signal_score.macro_score,

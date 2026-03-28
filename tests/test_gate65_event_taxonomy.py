@@ -22,20 +22,30 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+)
+LEAVES = (
+    REPO_ROOT
+    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
+)
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+VOCAB_PATH = (
+    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+)
 
 
 def test_gate65_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "## Gate 65 — Canonical event taxonomy\n\nStatus: complete on `main`" in gates_text
+    assert (
+        "## Gate 65 — Canonical event taxonomy\n\nStatus: complete on `main`"
+        in gates_text
+    )
     assert "### Gate 65 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:7] == [
         "Gate 59",
@@ -60,14 +70,26 @@ def test_gate65_docs_freeze_bounded_event_identity() -> None:
     guardrails = GUARDRAILS.read_text(encoding="utf-8")
 
     assert "## Event taxonomy law" in normative
-    assert "runtime and review may only consume events through the bounded top-level classes" in normative
-    assert "event identity must separate the event existing, the market pricing it, and the realised reaction" in normative
+    assert (
+        "runtime and review may only consume events through the bounded top-level classes"
+        in normative
+    )
+    assert (
+        "event identity must separate the event existing, the market pricing it, and the realised reaction"
+        in normative
+    )
 
     assert "## Gate 65 event-taxonomy authority" in operating_model
-    assert "every event keeps semantic separation between known risk, priced risk, and realised reaction" in operating_model
+    assert (
+        "every event keeps semantic separation between known risk, priced risk, and realised reaction"
+        in operating_model
+    )
 
     assert "### 4f. Event taxonomy objects" in domain_model
-    assert "**Event identity must stay inside the frozen bounded taxonomy; no free-text event-class drift.**" in guardrails
+    assert (
+        "**Event identity must stay inside the frozen bounded taxonomy; no free-text event-class drift.**"
+        in guardrails
+    )
 
 
 def test_gate65_schema_surface_matches_frozen_authority() -> None:
@@ -111,7 +133,9 @@ def test_gate65_schema_surface_matches_frozen_authority() -> None:
     )
 
     assert record.subclass == "nvda_earnings"
-    assert authority.policy_subclasses[-1] is PolicyEventSubclass.US_EXPORT_CONTROL_ACTION
+    assert (
+        authority.policy_subclasses[-1] is PolicyEventSubclass.US_EXPORT_CONTROL_ACTION
+    )
 
 
 def test_gate65_vocabulary_terms_are_present_and_generated() -> None:
@@ -120,5 +144,8 @@ def test_gate65_vocabulary_terms_are_present_and_generated() -> None:
     committed_slugs = {entry["canonical_slug"] for entry in committed["entries"]}
 
     assert "event_taxonomy" in generated
-    assert generated["event_taxonomy"].maps_to_contract == "nvda_desk.schemas.events.EventTaxonomyAuthorityPacket"
+    assert (
+        generated["event_taxonomy"].maps_to_contract
+        == "nvda_desk.schemas.events.EventTaxonomyAuthorityPacket"
+    )
     assert "event_taxonomy" in committed_slugs

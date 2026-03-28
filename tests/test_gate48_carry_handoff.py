@@ -18,7 +18,9 @@ from nvda_desk.schemas.overnight import CarryAction, CarryHorizon
 from nvda_desk.services.carry_handoff import CarryHandoffBuilder
 
 
-def _temporal_output(*, ts: str, event_window_state: str = "clear_window") -> TemporalContextOutput:
+def _temporal_output(
+    *, ts: str, event_window_state: str = "clear_window"
+) -> TemporalContextOutput:
     return TemporalContextOutput(
         session_phase=SessionClockPhase.DEALER_UNWIND_CLOSE,
         desk_window="close",
@@ -36,7 +38,9 @@ def _temporal_output(*, ts: str, event_window_state: str = "clear_window") -> Te
     )
 
 
-def _options_output(*, cluster: str = "pin_reversion_ready", dealer_pressure: str = "dealer_balancing") -> OptionsFlowContextOutput:
+def _options_output(
+    *, cluster: str = "pin_reversion_ready", dealer_pressure: str = "dealer_balancing"
+) -> OptionsFlowContextOutput:
     return OptionsFlowContextOutput(
         term_structure_state=TermStructureState.FLAT,
         skew_state=SkewState.BALANCED,
@@ -59,7 +63,9 @@ def _options_output(*, cluster: str = "pin_reversion_ready", dealer_pressure: st
     )
 
 
-def _posture_output(permission: PermissionState = PermissionState.ALLOW) -> PostureRiskOutput:
+def _posture_output(
+    permission: PermissionState = PermissionState.ALLOW,
+) -> PostureRiskOutput:
     return PostureRiskOutput(
         permission_state=permission,
         posture_label="test",
@@ -78,7 +84,9 @@ def _posture_output(permission: PermissionState = PermissionState.ALLOW) -> Post
     )
 
 
-def _inventory_state(*, existing: float = 12.0, overnight: float = 5.0, open_orders: int = 0) -> InventoryState:
+def _inventory_state(
+    *, existing: float = 12.0, overnight: float = 5.0, open_orders: int = 0
+) -> InventoryState:
     return InventoryState(
         existing_inventory_pct=existing,
         fresh_cash_pct=60.0,
@@ -99,11 +107,18 @@ def _execution_output(active: list[str]) -> ExecutionExpressionOutput:
         active_setup_variant_ids=active_setup_variant_ids,
         active_family_ids=active_family_ids,
         lead_playbook_id=active[0] if active else None,
-        lead_setup_variant_id=active_setup_variant_ids[0] if active_setup_variant_ids else None,
+        lead_setup_variant_id=(
+            active_setup_variant_ids[0] if active_setup_variant_ids else None
+        ),
         lead_family_id=active_family_ids[0] if active_family_ids else None,
         entry_style="pin_fade_scaler",
-        playbook_execution_styles={playbook_id: "pin_fade_scaler" for playbook_id in active},
-        setup_variant_execution_styles={setup_variant_id: "pin_fade_scaler" for setup_variant_id in active_setup_variant_ids},
+        playbook_execution_styles={
+            playbook_id: "pin_fade_scaler" for playbook_id in active
+        },
+        setup_variant_execution_styles={
+            setup_variant_id: "pin_fade_scaler"
+            for setup_variant_id in active_setup_variant_ids
+        },
         hedge_required=False,
         inventory_action="hold",
         fresh_capital_action="hold",
@@ -133,14 +148,19 @@ def test_carry_handoff_builder_treats_friday_close_as_weekend_branch() -> None:
     assert handoff.horizon is CarryHorizon.WEEKEND
     assert handoff.weekend_window is True
     assert CarryAction.ADD_CARRY not in handoff.allowed_actions
-    assert handoff.recommended_action_ceiling in {CarryAction.HOLD_BASELINE, CarryAction.HOLD_SMALL}
+    assert handoff.recommended_action_ceiling in {
+        CarryAction.HOLD_BASELINE,
+        CarryAction.HOLD_SMALL,
+    }
 
 
 def test_carry_handoff_builder_blocks_add_carry_inside_event_carry_window() -> None:
     handoff = CarryHandoffBuilder().build(
         symbol="NVDA",
         evaluation_ts=datetime.fromisoformat("2026-03-24T15:45:00-04:00"),
-        temporal=_temporal_output(ts="2026-03-24T15:45:00-04:00", event_window_state="event_imminent_window"),
+        temporal=_temporal_output(
+            ts="2026-03-24T15:45:00-04:00", event_window_state="event_imminent_window"
+        ),
         options_flow=_options_output(cluster="event_suppressed"),
         posture=_posture_output(),
         inventory=_inventory_state(),

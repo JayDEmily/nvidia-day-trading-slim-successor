@@ -19,7 +19,9 @@ from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
 
 
-def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order() -> None:
+def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order() -> (
+    None
+):
     """Gate 43 should extend the registry with the new options-first playbooks."""
 
     registry = PlaybookRegistryService()
@@ -33,12 +35,23 @@ def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order
         "term_structure_dislocation",
         "skew_pressure_reversal",
     ]
-    assert registry.template_for_playbook("front_expiry_pin_pressure").entry_style == "front_pin_scaler"
-    assert registry.template_for_playbook("term_structure_dislocation").entry_style == "term_dislocation_probe"
-    assert registry.template_for_playbook("skew_pressure_reversal").entry_style == "skew_reversal_scaler"
+    assert (
+        registry.template_for_playbook("front_expiry_pin_pressure").entry_style
+        == "front_pin_scaler"
+    )
+    assert (
+        registry.template_for_playbook("term_structure_dislocation").entry_style
+        == "term_dislocation_probe"
+    )
+    assert (
+        registry.template_for_playbook("skew_pressure_reversal").entry_style
+        == "skew_reversal_scaler"
+    )
 
 
-def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_paths() -> None:
+def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_paths() -> (
+    None
+):
     """Front-expiry pin pressure should qualify only in the focused expiry-window setup."""
 
     runtime = DeskCognitionRuntime(Settings())
@@ -155,7 +168,9 @@ def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_pa
     assert result.execution.inventory_action == "trim"
 
 
-def test_runtime_promotes_term_structure_dislocation_when_curve_and_iv_rv_diverge() -> None:
+def test_runtime_promotes_term_structure_dislocation_when_curve_and_iv_rv_diverge() -> (
+    None
+):
     """Term-structure dislocation should use the new options-first playbook only in a real curve shock."""
 
     runtime = DeskCognitionRuntime(Settings())
@@ -252,7 +267,9 @@ def test_runtime_promotes_term_structure_dislocation_when_curve_and_iv_rv_diverg
     assert result.execution.entry_style == "term_dislocation_probe"
 
 
-def test_runtime_promotes_skew_pressure_reversal_when_dealer_tension_cools_without_a_flush() -> None:
+def test_runtime_promotes_skew_pressure_reversal_when_dealer_tension_cools_without_a_flush() -> (
+    None
+):
     """Skew-pressure reversal should stay separate from the full negative-gamma flush playbook."""
 
     runtime = DeskCognitionRuntime(Settings())

@@ -20,8 +20,13 @@ from nvda_desk.schemas.imported_modules.tranche_a import (
     EntryGateContractOutput,
     TrancheASelectorContext,
 )
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
-from nvda_desk.services.imported_modules.tranche_a import TrancheASelectorContractService
+from nvda_desk.services.cognition_runtime import (
+    DeskCognitionRuntime,
+    DeskCognitionRuntimeResult,
+)
+from nvda_desk.services.imported_modules.tranche_a import (
+    TrancheASelectorContractService,
+)
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.posture_risk import PostureRiskService
@@ -150,7 +155,10 @@ def test_selector_contract_service_emits_the_six_tranche_a_selectors_in_order() 
         DmpGrammarRole.PLAYBOOK_ELIGIBILITY,
         DmpGrammarRole.PLAYBOOK_ELIGIBILITY,
     ]
-    assert all(emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions)
+    assert all(
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
+        for emission in emissions
+    )
 
 
 def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> None:
@@ -159,11 +167,16 @@ def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> 
     result = _supportive_runtime_result()
     archetype_packet_id = result.contract_packet_ids["archetype_matcher"]
     archetype_packet = next(
-        packet for packet in result.contract_packets if packet.packet_identity.packet_id == archetype_packet_id
+        packet
+        for packet in result.contract_packets
+        if packet.packet_identity.packet_id == archetype_packet_id
     )
     archetype_output = cast(ArchetypeMatcherContractOutput, archetype_packet.payload)
 
-    assert result.execution.active_playbook_ids == ["continuation_ladder", "compression_breakout"]
+    assert result.execution.active_playbook_ids == [
+        "continuation_ladder",
+        "compression_breakout",
+    ]
     assert result.execution.entry_style == "trend_ladder_3_step"
     assert result.execution.scaling_plan == [11.0, 16.5, 27.5]
     assert len(result.contract_packets) == 13
@@ -175,19 +188,33 @@ def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> 
         "ladder_constructor",
         "archetype_matcher",
     }
-    assert any(reason.startswith("contract:signal_conflict_detector:") for reason in result.posture.reasons)
-    assert any(reason.startswith("contract:entry_gate:") for reason in result.eligibility.reasons)
-    assert any(reason.startswith("contract:archetype_matcher:") for reason in result.eligibility.reasons)
+    assert any(
+        reason.startswith("contract:signal_conflict_detector:")
+        for reason in result.posture.reasons
+    )
+    assert any(
+        reason.startswith("contract:entry_gate:")
+        for reason in result.eligibility.reasons
+    )
+    assert any(
+        reason.startswith("contract:archetype_matcher:")
+        for reason in result.eligibility.reasons
+    )
     if archetype_output.matched_playbook is not None:
         matched_candidate = next(
             candidate
             for candidate in result.eligibility.candidates
             if candidate.playbook_id == archetype_output.matched_playbook
         )
-        assert any(reason.startswith("contract:archetype_matcher:") for reason in matched_candidate.reasons)
+        assert any(
+            reason.startswith("contract:archetype_matcher:")
+            for reason in matched_candidate.reasons
+        )
 
 
-def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks() -> None:
+def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks() -> (
+    None
+):
     """Gate 16 should propagate entry-gate veto citations into candidate reasons without adding playbooks."""
 
     runtime = DeskCognitionRuntime(Settings())
@@ -244,19 +271,32 @@ def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks
     )
     entry_packet_id = result.contract_packet_ids["entry_gate"]
     entry_packet = next(
-        packet for packet in result.contract_packets if packet.packet_identity.packet_id == entry_packet_id
+        packet
+        for packet in result.contract_packets
+        if packet.packet_identity.packet_id == entry_packet_id
     )
     entry_output = cast(EntryGateContractOutput, entry_packet.payload)
     archetype_packet_id = result.contract_packet_ids["archetype_matcher"]
     archetype_packet = next(
-        packet for packet in result.contract_packets if packet.packet_identity.packet_id == archetype_packet_id
+        packet
+        for packet in result.contract_packets
+        if packet.packet_identity.packet_id == archetype_packet_id
     )
     archetype_output = cast(ArchetypeMatcherContractOutput, archetype_packet.payload)
 
     assert result.execution.active_playbook_ids == []
     assert entry_output.suppression_tag == "event_window_veto"
-    assert archetype_output.matched_playbook in {None, "continuation_ladder", "compression_breakout", "pin_reversion", "negative_gamma_flush"}
+    assert archetype_output.matched_playbook in {
+        None,
+        "continuation_ladder",
+        "compression_breakout",
+        "pin_reversion",
+        "negative_gamma_flush",
+    }
     assert all(
-        any(reason == "contract:entry_gate:event_window_veto" for reason in candidate.reasons)
+        any(
+            reason == "contract:entry_gate:event_window_veto"
+            for reason in candidate.reasons
+        )
         for candidate in result.eligibility.candidates
     )

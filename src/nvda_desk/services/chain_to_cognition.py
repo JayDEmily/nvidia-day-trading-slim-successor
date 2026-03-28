@@ -36,7 +36,9 @@ class ChainToCognitionService:
         inference or mutable runtime state is introduced.
     """
 
-    def convert_snapshot(self, snapshot: PreparedRuntimeSnapshot) -> RealDataCognitionInputs:
+    def convert_snapshot(
+        self, snapshot: PreparedRuntimeSnapshot
+    ) -> RealDataCognitionInputs:
         """Convert one prepared runtime snapshot into cognition-ready inputs."""
 
         temporal_input = TemporalContextInput(
@@ -108,7 +110,9 @@ class ChainToCognitionService:
                 for point in snapshot.tenor_iv_curve
             ],
             pin_progression_sequence=[
-                PinProgressionPoint(ts=point.ts, distance_to_pin_pct=point.distance_to_pin_pct)
+                PinProgressionPoint(
+                    ts=point.ts, distance_to_pin_pct=point.distance_to_pin_pct
+                )
                 for point in snapshot.pin_progression_sequence
             ],
         )
@@ -119,7 +123,11 @@ class ChainToCognitionService:
             options_flow_input=options_flow_input,
         )
 
-    def convert_dataset(self, prepared_dataset: PreparedRuntimeDataset) -> list[RealDataCognitionInputs]:
+    def convert_dataset(
+        self, prepared_dataset: PreparedRuntimeDataset
+    ) -> list[RealDataCognitionInputs]:
         """Convert a prepared runtime dataset into cognition-ready input packets."""
 
-        return [self.convert_snapshot(snapshot) for snapshot in prepared_dataset.snapshots]
+        return [
+            self.convert_snapshot(snapshot) for snapshot in prepared_dataset.snapshots
+        ]

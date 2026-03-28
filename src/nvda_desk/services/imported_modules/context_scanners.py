@@ -78,7 +78,9 @@ def _dependency_fences(
 class ContextScannerContractService:
     """Emit Gate-19 context/scanner contracts in frozen order."""
 
-    def evaluate(self, context: ContextScannerContext) -> list[ContextScannerContractEmission]:
+    def evaluate(
+        self, context: ContextScannerContext
+    ) -> list[ContextScannerContractEmission]:
         outputs: list[ContextScannerPayload] = []
         macro_signal = self._macro_signal_score(context)
         execution_context = self._execution_context_score(context)
@@ -87,7 +89,9 @@ class ContextScannerContractService:
         options_behaviour = self._options_behaviour_cluster(context)
         asia_precursor = self._asia_precursor_context_filter(context)
         macro_weighting = self._macro_adaptive_weighting_filter(context, macro_signal)
-        engine_score = self._engine_score(context, macro_signal, execution_context, options_behaviour)
+        engine_score = self._engine_score(
+            context, macro_signal, execution_context, options_behaviour
+        )
         outputs.extend(
             [
                 macro_signal,
@@ -138,11 +142,19 @@ class ContextScannerContractService:
         )
         return ContextScannerContractEmission(output=output, packet=packet)
 
-    def _macro_signal_score(self, context: ContextScannerContext) -> MacroSignalScoreContractOutput:
+    def _macro_signal_score(
+        self, context: ContextScannerContext
+    ) -> MacroSignalScoreContractOutput:
         macro_pressure = 0.0
-        if context.macro_data_capture.vix_level is not None and context.macro_data_capture.vix_level >= 25.0:
+        if (
+            context.macro_data_capture.vix_level is not None
+            and context.macro_data_capture.vix_level >= 25.0
+        ):
             macro_pressure += 0.45
-        if context.macro_data_capture.curve_10s2s is not None and context.macro_data_capture.curve_10s2s <= 0.0:
+        if (
+            context.macro_data_capture.curve_10s2s is not None
+            and context.macro_data_capture.curve_10s2s <= 0.0
+        ):
             macro_pressure += 0.25
         if context.temporal.event_window_state != "clear_window":
             macro_pressure += 0.15
@@ -181,7 +193,9 @@ class ContextScannerContractService:
             event_sensitivity=context.temporal.event_window_state,
         )
 
-    def _execution_context_score(self, context: ContextScannerContext) -> ExecutionContextScoreContractOutput:
+    def _execution_context_score(
+        self, context: ContextScannerContext
+    ) -> ExecutionContextScoreContractOutput:
         raw_score = 0.45
         if context.posture.permission_state.value == "allow":
             raw_score += 0.2
@@ -242,10 +256,19 @@ class ContextScannerContractService:
             desk_window=context.temporal.desk_window,
         )
 
-    def _vix_spread_detector(self, context: ContextScannerContext) -> VixSpreadDetectorContractOutput:
+    def _vix_spread_detector(
+        self, context: ContextScannerContext
+    ) -> VixSpreadDetectorContractOutput:
         spread = None
-        if context.macro_data_capture.vix_level is not None and context.macro_data_capture.vvix_level is not None:
-            spread = round(context.macro_data_capture.vvix_level - context.macro_data_capture.vix_level, 4)
+        if (
+            context.macro_data_capture.vix_level is not None
+            and context.macro_data_capture.vvix_level is not None
+        ):
+            spread = round(
+                context.macro_data_capture.vvix_level
+                - context.macro_data_capture.vix_level,
+                4,
+            )
         if spread is None:
             risk_tag = "spread_unavailable"
             signal_score = 0.0
@@ -282,12 +305,20 @@ class ContextScannerContractService:
             signal_score=signal_score,
         )
 
-    def _vol_corridor(self, context: ContextScannerContext) -> VolCorridorContractOutput:
+    def _vol_corridor(
+        self, context: ContextScannerContext
+    ) -> VolCorridorContractOutput:
         if (
             context.options_data_capture.front_atm_iv is not None
             and context.options_data_capture.next_atm_iv is not None
         ):
-            corridor_width = round(abs(context.options_data_capture.front_atm_iv - context.options_data_capture.next_atm_iv), 4)
+            corridor_width = round(
+                abs(
+                    context.options_data_capture.front_atm_iv
+                    - context.options_data_capture.next_atm_iv
+                ),
+                4,
+            )
         else:
             corridor_width = None
         if corridor_width is None:
@@ -321,7 +352,10 @@ class ContextScannerContractService:
                     "runtime:options_flow_context": "proxied from the current options-flow tenor-curve state to preserve runtime alignment",
                 },
             ),
-            upstream_contract_slugs=["options_data_capture", "options_metadata_capture"],
+            upstream_contract_slugs=[
+                "options_data_capture",
+                "options_metadata_capture",
+            ],
             contract_notes=[
                 "Vol corridor is reconstructed from the current options substrate and tenor context; no separate live corridor engine is implied.",
             ],
@@ -330,8 +364,13 @@ class ContextScannerContractService:
             signal_score=signal_score,
         )
 
-    def _options_behaviour_cluster(self, context: ContextScannerContext) -> OptionsBehaviourClusterContractOutput:
-        if context.options_flow.gamma_state.value == "destabilising" and context.regime.volatility_regime.value == "stressed":
+    def _options_behaviour_cluster(
+        self, context: ContextScannerContext
+    ) -> OptionsBehaviourClusterContractOutput:
+        if (
+            context.options_flow.gamma_state.value == "destabilising"
+            and context.regime.volatility_regime.value == "stressed"
+        ):
             cluster_tag = "stress_transition"
             signal_score = 0.2
         elif context.options_flow.options_behavior_cluster == "balanced_options_state":
@@ -359,7 +398,10 @@ class ContextScannerContractService:
                     "runtime:options_flow_context": "proxied from the current options-behaviour cluster and gamma-state outputs",
                 },
             ),
-            upstream_contract_slugs=["options_data_capture", "options_metadata_capture"],
+            upstream_contract_slugs=[
+                "options_data_capture",
+                "options_metadata_capture",
+            ],
             contract_notes=[
                 "The contract deepens options-behaviour labelling without claiming a separate monolithic options-state engine is already promoted.",
             ],
@@ -367,7 +409,9 @@ class ContextScannerContractService:
             signal_score=signal_score,
         )
 
-    def _asia_precursor_context_filter(self, context: ContextScannerContext) -> AsiaPrecursorContextFilterContractOutput:
+    def _asia_precursor_context_filter(
+        self, context: ContextScannerContext
+    ) -> AsiaPrecursorContextFilterContractOutput:
         precursor_score = 0.5
         if (context.macro_data_capture.usdjpy or 0.0) >= 147.0:
             precursor_score += 0.2
@@ -459,7 +503,13 @@ class ContextScannerContractService:
         execution_context: ExecutionContextScoreContractOutput,
         options_behaviour: OptionsBehaviourClusterContractOutput,
     ) -> EngineScoreContractOutput:
-        base = fmean([macro_signal.macro_score, execution_context.context_score, options_behaviour.signal_score])
+        base = fmean(
+            [
+                macro_signal.macro_score,
+                execution_context.context_score,
+                options_behaviour.signal_score,
+            ]
+        )
         if context.posture.permission_state.value == "block":
             base -= 0.15
         elif context.posture.permission_state.value == "derisk":
