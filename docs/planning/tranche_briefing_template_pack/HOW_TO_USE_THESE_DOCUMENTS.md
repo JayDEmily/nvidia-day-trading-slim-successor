@@ -1,0 +1,103 @@
+# How to use these documents
+
+## What this pack is for
+
+This pack is a reusable planning kit.
+
+Its normal use case is:
+- a **planning thread** reads the repo and writes a tranche brief;
+- a **coding thread** executes that brief gate by gate;
+- the repo is then packaged as a full-history zip so the next thread starts from durable evidence instead of chat memory.
+
+## Ordered workflow
+
+1. Read the repo's normative stack.
+2. Read `AGENTS.md`.
+3. Read `PLANS.md`.
+4. Read the active vocabulary authority.
+5. Read the active packet or contract authority.
+6. Trace the live workflow surfaces that the new tranche will affect.
+7. Populate the generic gate template and leaves template using repo-specific truth only.
+8. Create or update one active gate master, one active leaves ledger, and one active execution log.
+9. Hand that pack to the coding thread.
+10. The coding thread executes one gate at a time on one work branch at a time.
+
+## Do not fill blanks
+
+If a planning thread does not know:
+- the source of truth for a concept,
+- the canonical workflow position of a change,
+- the packet or contract shape,
+- the vocabulary term to use,
+- or the exact files/surfaces affected,
+
+then the thread must inspect the repo and resolve that gap before writing the brief.
+
+Do not paper over unknowns with vague wording.
+Do not leave a coding thread to invent architecture during execution.
+
+## Minimum coding-thread bootstrap
+
+```bash
+git init
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -U pip
+python -m pip install -e .[dev]
+```
+
+If the repo uses a stricter bootstrap such as `uv sync --extra dev`, follow the repo's own doctrine instead.
+
+The important point is: the package must be installed in a repo-local environment so tests run against the live source tree without relying on `PYTHONPATH` hacks.
+
+## Gate execution loop
+
+For each gate:
+
+1. Create a fresh work branch from `main`.
+2. Read the gate MD and the leaves for that gate literally.
+3. Complete only the leaves assigned to that gate.
+4. Run the declared validation commands in the repo-local environment.
+5. Update the control surfaces together:
+   - `PLANS.md`
+   - active gate master
+   - active leaves ledger
+   - active execution log
+6. Merge to `main` only after the gate is green.
+7. Create a fresh full-history zip from that exact green repo state.
+
+## Evidence rule
+
+A gate is not done until all of the following exist in the same reply or handover artefact:
+- branch name;
+- commit hash on the work branch;
+- commit hash on `main` after merge;
+- exact validation commands;
+- observed test results;
+- a fresh full-history zip with `.git` included.
+
+## Packaging rule
+
+Exclude only repo-local runtime junk such as:
+- `.venv/`
+- `__pycache__/`
+- `.pytest_cache/`
+- `.ruff_cache/`
+- `.mypy_cache/`
+
+Do not exclude `.git/`.
+
+## Example final zip command
+
+```bash
+zip -r repo_full_handover.zip . -x '.venv/*' '__pycache__/*' '.pytest_cache/*' '.ruff_cache/*' '.mypy_cache/*'
+```
+
+## Success condition
+
+The brief is good when a coding thread can execute it without inventing:
+- repo intent,
+- vocabulary,
+- packet rules,
+- workflow placement,
+- or definition of done.

@@ -1,0 +1,174 @@
+{
+  "governing_plan": "docs/planning/YYYY-MM-DD_<TRANCHE_NAME>_GATES_v2.md",
+  "version": "v2.0",
+  "execution_status": "<gate_X_active>",
+  "active_gate": "Gate <N>",
+  "supersedes": [
+    "<older active leaves ledger if any>"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G<N>-001",
+    "LEAF-G<N>-002",
+    "LEAF-G<N+1>-001"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G<N>-001",
+      "gate": "Gate <N>",
+      "title": "<short imperative title>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "<vocabulary authority>",
+        "<packet/data contract authority>"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [
+        "<term 1>",
+        "<term 2>"
+      ],
+      "repo_surfaces": [
+        "<file path>",
+        "<file path>"
+      ],
+      "inputs": [
+        "<external input or internal file>",
+        "<external input or internal file>"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Freeze the exact retain/retire/amend/add decision for the affected surfaces in the gate master and leaves ledger.",
+        "Edit only the declared repo surfaces needed for this leaf.",
+        "Update the planning control surfaces required by this leaf if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent terminology without checking the vocabulary authority first.",
+        "Do not copy external packet examples verbatim if the repo contract differs.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "<lint command>",
+        "<targeted test command>"
+      ],
+      "expected_evidence": [
+        "<specific file changed>",
+        "<test result text>",
+        "<commit or execution log receipt if this leaf closes a gate>"
+      ],
+      "definition_of_done": [
+        "<observable condition 1>",
+        "<observable condition 2>"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "<gate map>",
+        "<active leaves ledger>",
+        "<active execution log>"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state."
+    },
+    {
+      "id": "LEAF-G<N>-002",
+      "gate": "Gate <N>",
+      "title": "<second bounded leaf>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G<N>-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "<vocabulary authority>",
+        "<workflow surface docs>"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [
+        "<term>"
+      ],
+      "repo_surfaces": [
+        "<file path>"
+      ],
+      "inputs": [
+        "<input>"
+      ],
+      "ordered_actions": [
+        "<step 1>",
+        "<step 2>"
+      ],
+      "forbidden_actions": [
+        "<forbidden shortcut>"
+      ],
+      "validation_commands": [
+        "<command>"
+      ],
+      "expected_evidence": [
+        "<evidence>"
+      ],
+      "definition_of_done": [
+        "<observable condition>"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G<N+1>-001",
+      "gate": "Gate <N+1>",
+      "title": "<next gate opening leaf>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G<N>-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "<file path>"
+      ],
+      "inputs": [
+        "<input>"
+      ],
+      "ordered_actions": [
+        "<step 1>",
+        "<step 2>"
+      ],
+      "forbidden_actions": [
+        "<forbidden shortcut>"
+      ],
+      "validation_commands": [
+        "<command>"
+      ],
+      "expected_evidence": [
+        "<evidence>"
+      ],
+      "definition_of_done": [
+        "<observable condition>"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    }
+  ]
+}
