@@ -129,7 +129,9 @@ class EventTaxonomyAuthorityPacket(BaseModel):
     macro_subclasses: list[MacroEventSubclass] = Field(default_factory=list)
     policy_subclasses: list[PolicyEventSubclass] = Field(default_factory=list)
     expiry_subclasses: list[ExpiryEventSubclass] = Field(default_factory=list)
-    venue_session_subclasses: list[VenueSessionEventSubclass] = Field(default_factory=list)
+    venue_session_subclasses: list[VenueSessionEventSubclass] = Field(
+        default_factory=list
+    )
 
 
 class ExpiryCalendarInteraction(StrEnum):
@@ -194,7 +196,6 @@ class EventProximityResponse(BaseModel):
     event_risk_window_open: bool
     upcoming_events: list[MarketEventPayload]
     recent_events: list[MarketEventPayload]
-
 
 
 class EventSourceClass(StrEnum):
@@ -273,7 +274,9 @@ class EventSourceProvenance(BaseModel):
     observed_at: datetime
     freshness_state: EventFreshnessState
     confidence_tier: EventConfidenceTier
-    conflict_disposition: SourceConflictDisposition = SourceConflictDisposition.KEEP_CONFLICT_VISIBLE
+    conflict_disposition: SourceConflictDisposition = (
+        SourceConflictDisposition.KEEP_CONFLICT_VISIBLE
+    )
     outage_policy: SourceOutagePolicy | None = None
     lineage_key: str = Field(min_length=1)
     notes: list[str] = Field(default_factory=list)
@@ -337,7 +340,6 @@ class EventIngestionAuthorityPacket(BaseModel):
     outage_policies: list[SourceOutagePolicy] = Field(default_factory=list)
 
 
-
 class ReplayEventConsumerMode(StrEnum):
     """Shared consumer modes allowed to read the bounded event store."""
 
@@ -375,10 +377,11 @@ class EventStoreAuthorityPacket(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     default_query_window: EventQueryWindow
-    default_materiality_floor: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT
+    default_materiality_floor: EventMaterialityTier = (
+        EventMaterialityTier.POSTURE_RELEVANT
+    )
     replay_modes: list[ReplayEventConsumerMode] = Field(default_factory=list)
     lineage_required: bool = True
-
 
 
 class LiveEventReference(BaseModel):
@@ -391,6 +394,8 @@ class LiveEventReference(BaseModel):
     event_at: datetime
     event_type: str = Field(min_length=1)
     label: str = Field(min_length=1)
+    event_class: DeskEventClass | None = None
+    semantic_phase: EventSemanticPhase = EventSemanticPhase.KNOWN_RISK
     materiality_tier: EventMaterialityTier = EventMaterialityTier.MONITOR
     provenance_count: int = Field(ge=0, default=0)
     lineage_keys: list[str] = Field(default_factory=list)

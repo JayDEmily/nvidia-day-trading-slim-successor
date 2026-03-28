@@ -1463,3 +1463,66 @@ This block is a truthful receipt-recovery pass added on branch `anti-drift` afte
   - Deduplicated `docs/05_GUARDRAILS.md`, repaired stale V6 header/tail drift, and cleaned normative/README/AGENTS guidance so authority and active-work pointers agree again.
 - Validation rerun on `main`:
   - `.venv/bin/python -m pytest -q tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py tests/test_gate59_doctrine_rebase.py tests/test_successor_pack_anti_drift.py tests/test_gate80_corrective_pass_reset.py`
+
+
+### Gate 81 corrective closeout
+
+- Branch: `main`
+- Scope: preserve missing live-event semantics, consume them in temporal context, and emit event-window / precursor governance as first-class review surfaces.
+- Outcome:
+  - `LiveEventReference` now preserves `event_class` and `semantic_phase` through the live event packet and event-store conversion path.
+  - Temporal context now consumes rich live-event semantics when present instead of relying only on `next_event_at`.
+  - Review now emits typed `event_window_governance` and `precursor_governance` surfaces with lineage-preserving runtime truth.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate81_live_event_temporal_semantics.py tests/test_gate74_live_event_richness.py tests/test_temporal_context_runtime.py tests/test_real_data_loader.py`
+
+### Gate 82 corrective closeout
+
+- Branch: `main`
+- Scope: emit explicit phase/carry and event/options-stress review packets from applied runtime law.
+- Outcome:
+  - Review now emits typed `phase_carry_policy` and `event_options_stress_policy` surfaces rather than leaving posture-law reconstruction implicit.
+  - `modifier_control_law`, phase/carry, and event/options-stress outputs now agree on the kill-switch path for live-event hard blocks.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate82_review_surface_runtime_emission.py tests/test_gate81_live_event_temporal_semantics.py tests/test_gate78_modifier_runtime_integration.py`
+
+### Gate 83 corrective closeout
+
+- Branch: `main`
+- Scope: build aggregate review-governance surfaces from genuine evidence-bearing paths.
+- Outcome:
+  - Runtime review now emits `stability_scorecards`, `review_eligibility`, and `candidate_governance` instead of leaving those schema hooks dead.
+  - Candidate-governance release remains reserved until promotion evidence is complete, and releases only under bounded ready conditions.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate83_review_governance_surface_builders.py tests/test_gate77_review_failure_taxonomy.py tests/test_replay_compare_runtime.py`
+
+### Gate 84 corrective closeout
+
+- Branch: `main`
+- Scope: deepen the Gate 77 failure packet and bind evidence floors materially.
+- Outcome:
+  - `ReviewFailurePacket.evidence_floor` now binds from governed review evidence where present.
+  - The bounded taxonomy now materially reaches `SIZING_FAILURE`, `ONTOLOGY_FAILURE`, and `BAD_LUCK` instead of leaving them as decorative vocabulary.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate84_failure_taxonomy_evidence_floor.py tests/test_gate77_review_failure_taxonomy.py`
+
+### Gate 85 corrective closeout
+
+- Branch: `main`
+- Scope: widen horizon economic-behaviour checks and expose failed axes in report-level surfaces.
+- Outcome:
+  - Economic-behaviour checks now consider bounded multi-axis failures, not just deployability spread.
+  - Fragility and ablation reports now expose report-level `economic_axis_failures` for each unstable surface.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate85_horizon_economic_behaviour.py tests/test_gate79_horizon_discovery_harness.py tests/test_replay_compare_runtime.py`
+
+### Gate 86 corrective closeout
+
+- Branch: `main`
+- Scope: refine event-ingestion precedence and close the corrective tranche cleanly.
+- Outcome:
+  - Event-ingestion winner selection now follows explicit bounded precedence over outage state, freshness, confidence tier, and source class while preserving visible conflict notes.
+  - Gate 86 complete on `main`.
+  - Planning/control surfaces now close the corrective pack through Gate 86 on `main`.
+- Validation rerun on `main`:
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_gate86_event_ingestion_precedence_and_closeout.py tests/test_gate72_event_ingestion_provenance.py tests/test_successor_pack_anti_drift.py`

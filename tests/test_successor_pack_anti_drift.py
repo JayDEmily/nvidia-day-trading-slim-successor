@@ -48,11 +48,18 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
 
     assert "V6 successor pack is closed through Gate 79 on `main`" in gate_map
     assert (
-        "Current active gate: **Gate 81 in the corrective reconstruction pack**."
-        in gate_map
-    ) or (
-        "Current active gate: **none — the V6 successor pack is closed through Gate 79 on `main`**."
-        in gate_map
+        (
+            "Current active gate: **Gate 81 in the corrective reconstruction pack**."
+            in gate_map
+        )
+        or (
+            "Current active gate: **none — the V6 successor pack is closed through Gate 79 on `main`**."
+            in gate_map
+        )
+        or (
+            "Current active gate: **none — the corrective reconstruction pack is closed through Gate 86 on `main`**."
+            in gate_map
+        )
     )
 
 

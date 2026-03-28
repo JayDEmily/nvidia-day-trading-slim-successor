@@ -32,7 +32,9 @@ class EventStoreService:
     """
 
     def __init__(self, records: Sequence[NormalisedEventRecord]):
-        self._records = sorted(records, key=lambda record: (record.event_at, record.record_id))
+        self._records = sorted(
+            records, key=lambda record: (record.event_at, record.record_id)
+        )
 
     def query(
         self,
@@ -43,15 +45,23 @@ class EventStoreService:
         minimum_materiality: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT,
         replay_mode: ReplayEventConsumerMode = ReplayEventConsumerMode.RUNTIME_NEARBY,
     ) -> EventStoreQueryResult:
-        window = query_window or EventQueryWindow(lookback_minutes=240, lookahead_minutes=1440)
+        window = query_window or EventQueryWindow(
+            lookback_minutes=240, lookahead_minutes=1440
+        )
         lower = self._aware(requested_at) - timedelta(minutes=window.lookback_minutes)
         upper = self._aware(requested_at) + timedelta(minutes=window.lookahead_minutes)
         nearby = [
             record
             for record in self._records
-            if lower <= self._aware(record.event_at) <= upper and self._symbol_matches(record.symbol, symbol)
+            if lower <= self._aware(record.event_at) <= upper
+            and self._symbol_matches(record.symbol, symbol)
         ]
-        material = [record for record in nearby if self._materiality_rank(record.materiality_tier) >= self._materiality_rank(minimum_materiality)]
+        material = [
+            record
+            for record in nearby
+            if self._materiality_rank(record.materiality_tier)
+            >= self._materiality_rank(minimum_materiality)
+        ]
         lineage_map = {record.record_id: list(record.lineage_keys) for record in nearby}
         return EventStoreQueryResult(
             requested_at=self._aware(requested_at),
@@ -62,7 +72,6 @@ class EventStoreService:
             lineage_map=lineage_map,
             replay_mode=replay_mode,
         )
-
 
     def build_live_event_snapshot(
         self,
@@ -80,18 +89,30 @@ class EventStoreService:
             replay_mode=ReplayEventConsumerMode.RUNTIME_NEARBY,
         )
         next_event = min(
-            (record for record in result.nearby_events if self._aware(record.event_at) >= self._aware(requested_at)),
+            (
+                record
+                for record in result.nearby_events
+                if self._aware(record.event_at) >= self._aware(requested_at)
+            ),
             key=lambda record: record.event_at,
             default=None,
         )
-        lineage_keys = sorted({key for keys in result.lineage_map.values() for key in keys})
+        lineage_keys = sorted(
+            {key for keys in result.lineage_map.values() for key in keys}
+        )
         return LiveEventSnapshot(
             requested_at=result.requested_at,
             symbol=result.symbol,
             query_window=result.query_window,
-            next_event=self._to_live_reference(next_event) if next_event is not None else None,
-            nearby_events=[self._to_live_reference(record) for record in result.nearby_events],
-            material_events=[self._to_live_reference(record) for record in result.material_events],
+            next_event=(
+                self._to_live_reference(next_event) if next_event is not None else None
+            ),
+            nearby_events=[
+                self._to_live_reference(record) for record in result.nearby_events
+            ],
+            material_events=[
+                self._to_live_reference(record) for record in result.material_events
+            ],
             lineage_keys=lineage_keys,
         )
 
@@ -101,7 +122,6 @@ class EventStoreService:
                 return list(record.lineage_keys)
         return []
 
-
     def _to_live_reference(self, record: NormalisedEventRecord) -> LiveEventReference:
         return LiveEventReference(
             record_id=record.record_id,
@@ -109,6 +129,8 @@ class EventStoreService:
             event_at=record.event_at,
             event_type=record.event_type,
             label=record.label,
+            event_class=record.event_class,
+            semantic_phase=record.semantic_phase,
             materiality_tier=record.materiality_tier,
             provenance_count=len(record.provenance),
             lineage_keys=list(record.lineage_keys),
@@ -123,7 +145,9 @@ class EventStoreService:
         }
         return ordering[tier]
 
-    def _symbol_matches(self, record_symbol: str | None, requested_symbol: str | None) -> bool:
+    def _symbol_matches(
+        self, record_symbol: str | None, requested_symbol: str | None
+    ) -> bool:
         return requested_symbol is None or record_symbol in {None, requested_symbol}
 
     def _aware(self, ts: datetime) -> datetime:

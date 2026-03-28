@@ -128,7 +128,7 @@
       "full_suite_required": false,
       "pass_gate": "The live event packet preserves the governed fields required by temporal and review semantics.",
       "merge_gate": "Gate 81 must enrich existing event truth without introducing unbounded news semantics.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 3
     },
     {
@@ -168,7 +168,7 @@
       "full_suite_required": false,
       "pass_gate": "Temporal event states are now derived from governed live-event truth when available, with explicit fallback only when it is absent.",
       "merge_gate": "Gate 81 must preserve deterministic temporal semantics and not drift into informal event interpretation.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 4
     },
     {
@@ -210,7 +210,7 @@
       "full_suite_required": false,
       "pass_gate": "Runtime review output exposes event-window and precursor governance as real typed surfaces.",
       "merge_gate": "Gate 81 closes only when those surfaces are emitted by code, not merely declared by schema.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 5
     },
     {
@@ -252,7 +252,7 @@
       "full_suite_required": false,
       "pass_gate": "Phase/carry posture behaviour is now reconstructable from a first-class review packet.",
       "merge_gate": "Gate 82 must reconstruct existing law only; it must not redesign modifier precedence.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 6
     },
     {
@@ -294,7 +294,7 @@
       "full_suite_required": false,
       "pass_gate": "Event/options-stress posture behaviour is now reconstructable from a first-class review packet.",
       "merge_gate": "Gate 82 closes only when review output can explain applied posture law without reverse-engineering from permission state alone.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 7
     },
     {
@@ -337,7 +337,7 @@
       "full_suite_required": false,
       "pass_gate": "Stability scorecards are now emitted from real evidence-bearing paths and are no longer dead schema hooks.",
       "merge_gate": "Gate 83 must preserve evidence honesty: no single-snapshot fabrication.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 8
     },
     {
@@ -379,7 +379,7 @@
       "full_suite_required": false,
       "pass_gate": "Review eligibility becomes a real emitted governance surface when supported by evidence.",
       "merge_gate": "Gate 83 must not fake eligibility from narrative commentary or one-off heuristics.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 9
     },
     {
@@ -421,7 +421,7 @@
       "full_suite_required": false,
       "pass_gate": "Candidate governance becomes a real emitted surface with bounded states and inputs.",
       "merge_gate": "Gate 83 closes only when candidate governance is either emitted from real evidence or explicitly reserved by emitted doctrine-compliant state.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 10
     },
     {
@@ -463,7 +463,7 @@
       "full_suite_required": false,
       "pass_gate": "Failure packets carry explicit evidence floors rather than empty placeholders.",
       "merge_gate": "Gate 84 must keep evidence floors typed and bounded, not free-text.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 11
     },
     {
@@ -503,7 +503,7 @@
       "full_suite_required": false,
       "pass_gate": "Failure and resolution classes are now materially differentiated and evidenced.",
       "merge_gate": "Gate 84 closes only when the deepened classes are both reachable and bounded.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 12
     },
     {
@@ -544,7 +544,7 @@
       "full_suite_required": false,
       "pass_gate": "Horizon discovery now evaluates economic behaviour on more than one thin proxy while remaining deterministic.",
       "merge_gate": "Gate 85 must widen the rule in bounded form and not redesign the harness wholesale.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 13
     },
     {
@@ -583,7 +583,7 @@
       "full_suite_required": false,
       "pass_gate": "Economic instability is now reviewable by axis rather than hidden inside a single spread result.",
       "merge_gate": "Gate 85 closes only when fragility/ablation reports reveal why the economic rule failed.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 14
     },
     {
@@ -625,7 +625,7 @@
       "full_suite_required": false,
       "pass_gate": "Event winner selection is now explicit, bounded, and reviewable.",
       "merge_gate": "Gate 86 must refine precedence without introducing hidden heuristics.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 15
     },
     {
@@ -665,17 +665,15 @@
       "full_suite_required": false,
       "pass_gate": "The corrective tranche can close only when the repo proves the review reconstruction seam is repaired end to end.",
       "merge_gate": "Gate 86 must close the corrective pass with proof, not with prose.",
-      "status": "planned",
+      "status": "complete",
       "execution_sequence": 16
     }
   ],
-  "execution_status": "gate_80_complete_on_main_corrective_pack_active_from_gate_81",
-  "completed_at": "2026-03-27T22:55:00Z",
+  "execution_status": "gate_86_complete_on_main_corrective_pack_closed_after_gate_86",
+  "completed_at": "2026-03-28T00:40:00Z",
   "completed_leaf_ids": [
     "LEAF-G80-001",
-    "LEAF-G80-002"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G80-002",
     "LEAF-G81-003",
     "LEAF-G81-004",
     "LEAF-G81-005",
@@ -691,9 +689,16 @@
     "LEAF-G86-015",
     "LEAF-G86-016"
   ],
+  "remaining_leaf_ids": [],
   "completed_gate_ids": [
-    "Gate 80"
+    "Gate 80",
+    "Gate 81",
+    "Gate 82",
+    "Gate 83",
+    "Gate 84",
+    "Gate 85",
+    "Gate 86"
   ],
-  "active_gate": "Gate 81",
-  "historical_note": "This corrective pack is a bounded follow-on to the closed 2026-03-27 cognitive-workflow successor pack. It exists to repair the review-visible reconstruction seam found by code audit after Gate 79."
+  "active_gate": "none",
+  "historical_note": "The corrective reconstruction pack repaired the review-visible reconstruction seam after Gate 79 and closed through Gate 86 on main without reopening the closed V6 successor pack."
 }

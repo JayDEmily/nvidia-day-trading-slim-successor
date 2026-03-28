@@ -15,17 +15,63 @@ from nvda_desk.schemas.cognition import (
     ReviewExplanationOutput,
     StageReasonPacket,
 )
+from nvda_desk.schemas.events import EventSemanticPhase
+from nvda_desk.schemas.market import SessionAlignmentExpectation
 from nvda_desk.schemas.review import (
+    CandidateGovernanceSurface,
     EconomicContributionPacket,
     EconomicContributionTag,
+    EventOptionsStressPolicySurface,
     ModifierControlLawSurface,
+    PhaseCarryoverPolicySurface,
+    PrecursorGovernanceSurface,
     PrecursorRuntimeBindingSurface,
     PromotionEvidencePacket,
+    ReviewEligibilitySurface,
     ReviewFailureClass,
     ReviewFailurePacket,
     ReviewGovernanceSurface,
     ReviewLineagePacket,
     ReviewResolutionClass,
+    TemporalEventWindowSurface,
+)
+from nvda_desk.schemas.risk import (
+    CarryHorizonState,
+    DayPhaseState,
+    PhaseBehaviourClass,
+    PhaseNoActionBias,
+)
+from nvda_desk.schemas.state_policy import (
+    AdjudicationDisposition,
+    BehaviourStabilityState,
+    CandidateComparisonOutcome,
+    CandidateSetShape,
+    CorridorBounds,
+    CorridorBreachSeverity,
+    CoverageSliceClass,
+    CoverageSliceScore,
+    EventOptionsBehaviourClass,
+    EventOptionsStressState,
+    MetricTriggerMode,
+    PersistenceHysteresisSpec,
+    PolicyEffectType,
+    ReviewChangeBudget,
+    ReviewEvidenceBlock,
+    ReviewOutcome,
+    ReviewSurfaceClass,
+    ReviewTriggerClass,
+    RuntimeSurfaceClass,
+    ScorecardAxis,
+    StabilityMetricFamily,
+    StabilityMetricObservation,
+    SurfaceStabilityScorecard,
+)
+from nvda_desk.schemas.temporal_surface import (
+    EventCarrySensitivity,
+    EventOverlapClass,
+    EventProximityState,
+    EventRiskTimingClass,
+    EventWindowState,
 )
 
 
@@ -115,16 +161,30 @@ class ReviewExplanationService:
             for tag in conflict_tags
         ]
         module_attribution = self._module_attribution(stage_reason_packets)
-        stage_summaries = {packet.stage: "; ".join(packet.reasons) for packet in stage_reason_packets}
+        stage_summaries = {
+            packet.stage: "; ".join(packet.reasons) for packet in stage_reason_packets
+        }
         desk_readout = self._desk_readout(payload)
+        event_window_governance = self._event_window_governance(payload)
+        precursor_governance = self._precursor_governance(payload)
         precursor_runtime_binding = self._precursor_runtime_binding(payload)
         review_governance = self._review_governance(payload)
+        phase_carry_policy = self._phase_carry_policy(payload)
+        event_options_stress_policy = self._event_options_stress_policy(payload)
         modifier_control_law = self._modifier_control_law(payload)
         effective_policy = self._effective_policy(payload)
         review_lineage = self._review_lineage(payload)
-        failure_taxonomy = self._failure_taxonomy(payload, conflict_tags)
-        economic_accountability = self._economic_accountability(failure_taxonomy)
         promotion_evidence = self._promotion_evidence(review_lineage)
+        review_eligibility = self._review_eligibility(payload, promotion_evidence)
+        stability_scorecards = self._stability_scorecards(review_eligibility)
+        candidate_governance = self._candidate_governance(promotion_evidence)
+        failure_taxonomy = self._failure_taxonomy(
+            payload,
+            conflict_tags,
+            review_eligibility,
+        )
+        economic_accountability = self._economic_accountability(failure_taxonomy)
+
         review_packet: dict[str, object] = {
             "temporal": payload.temporal.model_dump(mode="json"),
             "regime": payload.regime.model_dump(mode="json"),
@@ -134,32 +194,75 @@ class ReviewExplanationService:
             "execution": payload.execution.model_dump(mode="json"),
             "hierarchy_summary": {
                 "active_family_ids": list(payload.execution.active_family_ids),
-                "active_setup_variant_ids": list(payload.execution.active_setup_variant_ids),
+                "active_setup_variant_ids": list(
+                    payload.execution.active_setup_variant_ids
+                ),
                 "lead_family_id": payload.execution.lead_family_id,
                 "lead_setup_variant_id": payload.execution.lead_setup_variant_id,
                 "lead_playbook_id": payload.execution.lead_playbook_id,
             },
             "stage_summaries": stage_summaries,
-            "stage_reason_packets": [packet.model_dump(mode="json") for packet in stage_reason_packets],
-            "rejected_playbooks": [packet.model_dump(mode="json") for packet in rejected_playbooks],
-            "contradictions": [surface.model_dump(mode="json") for surface in contradictions],
+            "stage_reason_packets": [
+                packet.model_dump(mode="json") for packet in stage_reason_packets
+            ],
+            "rejected_playbooks": [
+                packet.model_dump(mode="json") for packet in rejected_playbooks
+            ],
+            "contradictions": [
+                surface.model_dump(mode="json") for surface in contradictions
+            ],
             "module_attribution": module_attribution,
             "signal_conflict_density": signal_conflict_density,
             "desk_readout": desk_readout,
             "conflicts": conflict_tags,
+            "review_lineage": review_lineage.model_dump(mode="json"),
+            "failure_taxonomy": failure_taxonomy.model_dump(mode="json"),
+            "economic_accountability": economic_accountability.model_dump(mode="json"),
+            "promotion_evidence": promotion_evidence.model_dump(mode="json"),
         }
+        if event_window_governance is not None:
+            review_packet["event_window_governance"] = (
+                event_window_governance.model_dump(mode="json")
+            )
+        if precursor_governance is not None:
+            review_packet["precursor_governance"] = precursor_governance.model_dump(
+                mode="json"
+            )
         if precursor_runtime_binding is not None:
-            review_packet["precursor_runtime_binding"] = precursor_runtime_binding.model_dump(mode="json")
+            review_packet["precursor_runtime_binding"] = (
+                precursor_runtime_binding.model_dump(mode="json")
+            )
         if review_governance is not None:
-            review_packet["review_governance"] = review_governance.model_dump(mode="json")
+            review_packet["review_governance"] = review_governance.model_dump(
+                mode="json"
+            )
+        if phase_carry_policy is not None:
+            review_packet["phase_carry_policy"] = phase_carry_policy.model_dump(
+                mode="json"
+            )
+        if event_options_stress_policy is not None:
+            review_packet["event_options_stress_policy"] = (
+                event_options_stress_policy.model_dump(mode="json")
+            )
         if modifier_control_law is not None:
-            review_packet["modifier_control_law"] = modifier_control_law.model_dump(mode="json")
+            review_packet["modifier_control_law"] = modifier_control_law.model_dump(
+                mode="json"
+            )
         if effective_policy is not None:
             review_packet["effective_policy"] = effective_policy.model_dump(mode="json")
-        review_packet["review_lineage"] = review_lineage.model_dump(mode="json")
-        review_packet["failure_taxonomy"] = failure_taxonomy.model_dump(mode="json")
-        review_packet["economic_accountability"] = economic_accountability.model_dump(mode="json")
-        review_packet["promotion_evidence"] = promotion_evidence.model_dump(mode="json")
+        if review_eligibility is not None:
+            review_packet["review_eligibility"] = review_eligibility.model_dump(
+                mode="json"
+            )
+        if stability_scorecards:
+            review_packet["stability_scorecards"] = [
+                scorecard.model_dump(mode="json") for scorecard in stability_scorecards
+            ]
+        if candidate_governance is not None:
+            review_packet["candidate_governance"] = candidate_governance.model_dump(
+                mode="json"
+            )
+
         return ReviewExplanationOutput(
             summary=summary,
             conflict_tags=conflict_tags,
@@ -169,9 +272,16 @@ class ReviewExplanationService:
             contradictions=contradictions,
             module_attribution=module_attribution,
             effective_policy=effective_policy,
+            stability_scorecards=stability_scorecards,
             review_governance=review_governance,
-            modifier_control_law=modifier_control_law,
+            event_window_governance=event_window_governance,
+            precursor_governance=precursor_governance,
             precursor_runtime_binding=precursor_runtime_binding,
+            phase_carry_policy=phase_carry_policy,
+            event_options_stress_policy=event_options_stress_policy,
+            modifier_control_law=modifier_control_law,
+            review_eligibility=review_eligibility,
+            candidate_governance=candidate_governance,
             review_lineage=review_lineage,
             failure_taxonomy=failure_taxonomy,
             economic_accountability=economic_accountability,
@@ -185,7 +295,10 @@ class ReviewExplanationService:
             conflict_tags.append("regime_signal_conflict")
         if payload.posture.signal_conflict_state != "aligned_signals":
             conflict_tags.append("posture_signal_conflict")
-        if payload.eligibility.no_trade_reasons and payload.execution.active_playbook_ids:
+        if (
+            payload.eligibility.no_trade_reasons
+            and payload.execution.active_playbook_ids
+        ):
             conflict_tags.append("event_veto_breached")
         if (
             payload.options_flow.gamma_state.value == "destabilising"
@@ -193,11 +306,16 @@ class ReviewExplanationService:
             and not payload.execution.hedge_required
         ):
             conflict_tags.append("missing_hedge_under_destabilising_gamma")
-        if payload.posture.inventory_posture_state in {"trapped", "capital_locked"} and payload.execution.inventory_action == "add":
+        if (
+            payload.posture.inventory_posture_state in {"trapped", "capital_locked"}
+            and payload.execution.inventory_action == "add"
+        ):
             conflict_tags.append("adding_into_locked_inventory")
         return conflict_tags
 
-    def _module_attribution(self, stage_reason_packets: list[StageReasonPacket]) -> dict[str, float]:
+    def _module_attribution(
+        self, stage_reason_packets: list[StageReasonPacket]
+    ) -> dict[str, float]:
         raw_scores = {
             packet.stage: max(1.0, float(len(packet.reasons)))
             for packet in stage_reason_packets
@@ -229,15 +347,87 @@ class ReviewExplanationService:
     def _contradiction_stages(self, tag: str) -> list[str]:
         stage_map = {
             "regime_signal_conflict": ["regime", "posture", "review_explanation"],
-            "posture_signal_conflict": ["options_flow", "posture", "review_explanation"],
+            "posture_signal_conflict": [
+                "options_flow",
+                "posture",
+                "review_explanation",
+            ],
             "event_veto_breached": ["temporal", "eligibility", "execution"],
             "missing_hedge_under_destabilising_gamma": ["options_flow", "execution"],
             "adding_into_locked_inventory": ["posture", "execution"],
         }
         return stage_map.get(tag, ["review_explanation"])
 
-    def _precursor_runtime_binding(self, payload: ReviewExplanationInput) -> PrecursorRuntimeBindingSurface | None:
-        packet = None if payload.temporal_input is None else payload.temporal_input.precursor_runtime_packet
+    def _event_window_governance(
+        self, payload: ReviewExplanationInput
+    ) -> TemporalEventWindowSurface | None:
+        snapshot = (
+            None
+            if payload.temporal_input is None
+            else payload.temporal_input.live_event_snapshot
+        )
+        next_event = None if snapshot is None else snapshot.next_event
+        if next_event is None:
+            return None
+        semantic_phase = next_event.semantic_phase
+        risk_timing = EventRiskTimingClass.PRICED_RISK
+        carry_sensitivity = EventCarrySensitivity.INTRADAY_ONLY
+        if semantic_phase is EventSemanticPhase.REALISED_REACTION:
+            risk_timing = EventRiskTimingClass.REALISED_REACTION
+            carry_sensitivity = EventCarrySensitivity.NEXT_SESSION_MEMORY
+        elif semantic_phase is EventSemanticPhase.PRICED_RISK:
+            risk_timing = EventRiskTimingClass.PRICED_RISK
+            carry_sensitivity = EventCarrySensitivity.CARRY_SENSITIVE
+        elif (
+            payload.temporal.event_window_state
+            == EventWindowState.EVENT_LIVE_WINDOW.value
+        ):
+            risk_timing = EventRiskTimingClass.LIVE_RELEASE
+            carry_sensitivity = EventCarrySensitivity.CARRY_SENSITIVE
+        event_family = (
+            next_event.event_class.value
+            if next_event.event_class is not None
+            else next_event.event_type
+        )
+        return TemporalEventWindowSurface(
+            proximity_state=EventProximityState(payload.temporal.event_proximity_state),
+            window_state=EventWindowState(payload.temporal.event_window_state),
+            overlap_class=EventOverlapClass.SINGLE_EVENT,
+            risk_timing_class=risk_timing,
+            carry_sensitivity=carry_sensitivity,
+            event_family=event_family,
+        )
+
+    def _precursor_governance(
+        self, payload: ReviewExplanationInput
+    ) -> PrecursorGovernanceSurface | None:
+        packet = (
+            None
+            if payload.temporal_input is None
+            else payload.temporal_input.precursor_runtime_packet
+        )
+        if packet is None:
+            return None
+        return PrecursorGovernanceSurface(
+            active_venues=list(packet.active_venues),
+            derived_fields=list(packet.derived_fields),
+            session_alignment=[
+                SessionAlignmentExpectation.USE_LAST_COMPLETE_SESSION,
+                SessionAlignmentExpectation.NO_PARTIAL_SESSION_PROJECTION,
+                SessionAlignmentExpectation.MAP_TO_NEXT_US_CASH_OPEN,
+                SessionAlignmentExpectation.WEEKEND_AND_HOLIDAY_GAPS_MUST_STAY_EXPLICIT,
+            ],
+            notes=list(packet.notes),
+        )
+
+    def _precursor_runtime_binding(
+        self, payload: ReviewExplanationInput
+    ) -> PrecursorRuntimeBindingSurface | None:
+        packet = (
+            None
+            if payload.temporal_input is None
+            else payload.temporal_input.precursor_runtime_packet
+        )
         if packet is None:
             return None
         return PrecursorRuntimeBindingSurface(
@@ -253,7 +443,9 @@ class ReviewExplanationService:
             notes=list(packet.notes),
         )
 
-    def _review_governance(self, payload: ReviewExplanationInput) -> ReviewGovernanceSurface | None:
+    def _review_governance(
+        self, payload: ReviewExplanationInput
+    ) -> ReviewGovernanceSurface | None:
         packet = payload.modifier_runtime_packet
         if packet is None:
             return None
@@ -265,7 +457,77 @@ class ReviewExplanationService:
             override_audit_notes=list(packet.notes),
         )
 
-    def _modifier_control_law(self, payload: ReviewExplanationInput) -> ModifierControlLawSurface | None:
+    def _phase_carry_policy(
+        self, payload: ReviewExplanationInput
+    ) -> PhaseCarryoverPolicySurface | None:
+        return PhaseCarryoverPolicySurface(
+            day_phase_state=self._day_phase_state(payload.temporal.desk_window),
+            carry_horizon_state=self._carry_horizon_state(payload),
+            behaviour_class=(
+                PhaseBehaviourClass.NO_ACTION_PREFERRED
+                if payload.posture.permission_state.value == "block"
+                else PhaseBehaviourClass.NORMAL_OPERATION
+            ),
+            no_action_bias=(
+                PhaseNoActionBias.REQUIRED
+                if payload.posture.permission_state.value == "block"
+                else PhaseNoActionBias.NEUTRAL
+            ),
+            notes=list(payload.temporal.reasons),
+        )
+
+    def _event_options_stress_policy(
+        self, payload: ReviewExplanationInput
+    ) -> EventOptionsStressPolicySurface | None:
+        active_states: list[EventOptionsStressState] = []
+        if (
+            payload.temporal.event_proximity_state
+            == EventProximityState.EVENT_IMMINENT.value
+        ):
+            active_states.append(EventOptionsStressState.EVENT_IMMINENT)
+        if (
+            payload.temporal.event_window_state
+            == EventWindowState.EVENT_LIVE_WINDOW.value
+        ):
+            active_states.append(EventOptionsStressState.EVENT_LIVE)
+        if payload.posture.permission_state.value == "block":
+            active_states.append(EventOptionsStressState.EVENT_SUPPRESSED)
+        if payload.options_flow.gamma_state.value == "destabilising":
+            active_states.append(EventOptionsStressState.NEGATIVE_GAMMA_STRESS)
+        if payload.options_flow.options_behavior_cluster == "pin_risk":
+            active_states.append(EventOptionsStressState.PIN_RISK)
+        if payload.temporal.expiry_cycle_state in {"expiry_day", "front_week"}:
+            active_states.append(EventOptionsStressState.EXPIRY_DISTORTION)
+        if not active_states:
+            return None
+        hard_block = payload.posture.permission_state.value == "block"
+        behaviour_class = (
+            EventOptionsBehaviourClass.HARD_BLOCK
+            if hard_block
+            else EventOptionsBehaviourClass.TIGHTENED_THRESHOLDS
+        )
+        effect_types: list[PolicyEffectType] = []
+        if EventOptionsStressState.EVENT_SUPPRESSED in active_states:
+            effect_types.append(PolicyEffectType.BLOCK)
+        if EventOptionsStressState.NEGATIVE_GAMMA_STRESS in active_states:
+            effect_types.append(PolicyEffectType.HEDGE)
+        if EventOptionsStressState.EXPIRY_DISTORTION in active_states:
+            effect_types.append(PolicyEffectType.CAP)
+        if EventOptionsStressState.EVENT_IMMINENT in active_states:
+            effect_types.append(PolicyEffectType.DEGRADE)
+        if not effect_types:
+            effect_types.append(PolicyEffectType.SUPPRESS)
+        return EventOptionsStressPolicySurface(
+            active_states=active_states,
+            behaviour_class=behaviour_class,
+            effect_types=effect_types,
+            hard_block=hard_block,
+            notes=list(payload.options_flow.reasons),
+        )
+
+    def _modifier_control_law(
+        self, payload: ReviewExplanationInput
+    ) -> ModifierControlLawSurface | None:
         packet = payload.modifier_runtime_packet
         if packet is None:
             return None
@@ -277,7 +539,9 @@ class ReviewExplanationService:
             notes=list(packet.notes),
         )
 
-    def _effective_policy(self, payload: ReviewExplanationInput) -> EffectivePolicySnapshot | None:
+    def _effective_policy(
+        self, payload: ReviewExplanationInput
+    ) -> EffectivePolicySnapshot | None:
         packet = payload.modifier_runtime_packet
         if packet is None:
             return None
@@ -286,15 +550,30 @@ class ReviewExplanationService:
     def _review_lineage(self, payload: ReviewExplanationInput) -> ReviewLineagePacket:
         event_lineage_keys = []
         precursor_lineage_keys = []
-        if payload.temporal_input is not None and payload.temporal_input.live_event_snapshot is not None:
-            event_lineage_keys = list(payload.temporal_input.live_event_snapshot.lineage_keys)
-        if payload.temporal_input is not None and payload.temporal_input.precursor_runtime_packet is not None:
-            precursor_lineage_keys = list(payload.temporal_input.precursor_runtime_packet.lineage_keys)
+        if (
+            payload.temporal_input is not None
+            and payload.temporal_input.live_event_snapshot is not None
+        ):
+            event_lineage_keys = list(
+                payload.temporal_input.live_event_snapshot.lineage_keys
+            )
+        if (
+            payload.temporal_input is not None
+            and payload.temporal_input.precursor_runtime_packet is not None
+        ):
+            precursor_lineage_keys = list(
+                payload.temporal_input.precursor_runtime_packet.lineage_keys
+            )
         modifier_policy_ids = []
         effective_targets = []
         if payload.modifier_runtime_packet is not None:
-            modifier_policy_ids = list(payload.modifier_runtime_packet.active_policy_ids)
-            effective_targets = [lineage.target_surface.value for lineage in payload.modifier_runtime_packet.effective_lineage]
+            modifier_policy_ids = list(
+                payload.modifier_runtime_packet.active_policy_ids
+            )
+            effective_targets = [
+                lineage.target_surface.value
+                for lineage in payload.modifier_runtime_packet.effective_lineage
+            ]
         return ReviewLineagePacket(
             event_lineage_keys=event_lineage_keys,
             precursor_lineage_keys=precursor_lineage_keys,
@@ -303,27 +582,219 @@ class ReviewExplanationService:
             posture_change_reasons=list(payload.posture.reasons),
         )
 
-    def _failure_taxonomy(self, payload: ReviewExplanationInput, conflict_tags: list[str]) -> ReviewFailurePacket:
-        runtime_precursor = None if payload.temporal_input is None else payload.temporal_input.precursor_runtime_packet
+    def _review_eligibility(
+        self,
+        payload: ReviewExplanationInput,
+        promotion_evidence: PromotionEvidencePacket,
+    ) -> ReviewEligibilitySurface:
+        sample_count = (
+            len(promotion_evidence.required_sections)
+            - len(promotion_evidence.missing_sections)
+        ) + len(payload.execution.active_playbook_ids)
+        event_slice_count = (
+            1 if payload.temporal.event_proximity_state != "no_event_context" else 0
+        )
+        regime_slice_count = 1 if payload.regime.reasons else 0
+        coverage_ratio = min(1.0, max(0.2, sample_count / 5.0))
+        breach_severity = CorridorBreachSeverity.NONE
+        if payload.posture.permission_state.value == "block":
+            breach_severity = CorridorBreachSeverity.MATERIAL
+        if len(promotion_evidence.missing_sections) >= 2:
+            breach_severity = CorridorBreachSeverity.SEVERE
+        evidence_block = ReviewEvidenceBlock(
+            surface_class=ReviewSurfaceClass.POLICY_SURFACE,
+            surface_id="review_reconstruction_runtime",
+            sample_count=sample_count,
+            session_count=1,
+            event_slice_count=event_slice_count,
+            regime_slice_count=regime_slice_count,
+            coverage_ratio=coverage_ratio,
+            breach_severity=breach_severity,
+            persistence_blocks=max(1, len(payload.execution.active_playbook_ids) or 1),
+            hysteresis_passed=coverage_ratio >= 0.6,
+        )
+        trigger_classes: list[ReviewTriggerClass] = []
+        if breach_severity in {
+            CorridorBreachSeverity.MATERIAL,
+            CorridorBreachSeverity.SEVERE,
+        }:
+            trigger_classes.append(ReviewTriggerClass.MATERIAL_CORRIDOR_BREACH)
+        if breach_severity is CorridorBreachSeverity.SEVERE:
+            trigger_classes.append(ReviewTriggerClass.SEVERE_CORRIDOR_BREACH)
+        if not evidence_block.hysteresis_passed:
+            trigger_classes.append(ReviewTriggerClass.PERSISTENCE_FAILURE)
+        if coverage_ratio < 0.5:
+            trigger_classes.append(ReviewTriggerClass.COVERAGE_COLLAPSE)
+        eligible = bool(trigger_classes)
+        governed_outcome = ReviewOutcome.REVIEW_NOT_ELIGIBLE
+        change_budget = ReviewChangeBudget.NONE
+        if eligible and promotion_evidence.ready_for_candidate_review:
+            governed_outcome = ReviewOutcome.CANDIDATE_REPLACEMENT_REQUEST
+            change_budget = ReviewChangeBudget.CANDIDATE_SWAP_ONLY
+        elif eligible:
+            governed_outcome = ReviewOutcome.BOUNDED_ADJUSTMENT_REQUEST
+            change_budget = ReviewChangeBudget.BOUNDED_SINGLE_SURFACE
+        return ReviewEligibilitySurface(
+            evidence_block=evidence_block,
+            trigger_classes=trigger_classes,
+            eligible=eligible,
+            governed_outcome=governed_outcome,
+            change_budget=change_budget,
+        )
+
+    def _stability_scorecards(
+        self, review_eligibility: ReviewEligibilitySurface | None
+    ) -> list[SurfaceStabilityScorecard]:
+        if review_eligibility is None:
+            return []
+        evidence = review_eligibility.evidence_block
+        behaviour_state = (
+            BehaviourStabilityState.BREATHING
+            if evidence.breach_severity is CorridorBreachSeverity.NONE
+            else BehaviourStabilityState.DRIFTING
+        )
+        return [
+            SurfaceStabilityScorecard(
+                surface_id=evidence.surface_id,
+                surface_class=RuntimeSurfaceClass.REVIEW_ONLY_METRIC,
+                metric_observations=[
+                    StabilityMetricObservation(
+                        axis=ScorecardAxis.ECONOMIC_QUALITY,
+                        metric_family=StabilityMetricFamily.COVERAGE,
+                        trigger_mode=MetricTriggerMode.REVIEW_TRIGGER,
+                        value=evidence.coverage_ratio,
+                        notes=["bounded_gate83_review_eligibility_binding"],
+                    )
+                ],
+                corridor=CorridorBounds(
+                    central_tendency=evidence.coverage_ratio,
+                    tolerated_spread=0.1,
+                    target_low=0.8,
+                    target_high=1.0,
+                    drift_low=0.6,
+                    drift_high=1.0,
+                    breach_low=0.0,
+                    breach_high=1.0,
+                ),
+                breach_severity=evidence.breach_severity,
+                behaviour_state=behaviour_state,
+                persistence=PersistenceHysteresisSpec(
+                    minimum_blocks=1,
+                    confirmation_blocks=1,
+                    recovery_blocks=1,
+                    cooldown_blocks=0,
+                ),
+                coverage_slices=[
+                    CoverageSliceScore(
+                        slice_class=CoverageSliceClass.EVENT_CLASS,
+                        slice_label="event_context",
+                        observation_count=evidence.event_slice_count,
+                        coverage_ratio=1.0 if evidence.event_slice_count else 0.0,
+                    ),
+                    CoverageSliceScore(
+                        slice_class=CoverageSliceClass.REGIME_SLICE,
+                        slice_label="regime_context",
+                        observation_count=evidence.regime_slice_count,
+                        coverage_ratio=1.0 if evidence.regime_slice_count else 0.0,
+                    ),
+                    CoverageSliceScore(
+                        slice_class=CoverageSliceClass.SESSION_SLICE,
+                        slice_label="runtime_snapshot",
+                        observation_count=evidence.session_count,
+                        coverage_ratio=1.0 if evidence.session_count else 0.0,
+                    ),
+                ],
+            )
+        ]
+
+    def _candidate_governance(
+        self, promotion_evidence: PromotionEvidencePacket
+    ) -> CandidateGovernanceSurface:
+        if promotion_evidence.ready_for_candidate_review:
+            return CandidateGovernanceSurface(
+                candidate_shape=CandidateSetShape(
+                    max_candidate_count=2,
+                    max_shadow_challengers=1,
+                    allow_dormant_candidates=True,
+                    allow_retired_candidates=True,
+                    reserved_adjudication_spans=1,
+                ),
+                champion_candidate_id="current_champion",
+                shadow_challenger_ids=["shadow_challenger_01"],
+                comparison_outcome=CandidateComparisonOutcome.RETAIN_CHAMPION,
+                adjudication_disposition=AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON,
+            )
+        return CandidateGovernanceSurface(
+            candidate_shape=CandidateSetShape(
+                max_candidate_count=1,
+                max_shadow_challengers=0,
+                allow_dormant_candidates=True,
+                allow_retired_candidates=True,
+                reserved_adjudication_spans=1,
+            ),
+            comparison_outcome=None,
+            adjudication_disposition=AdjudicationDisposition.RESERVED_UNTOUCHED,
+        )
+
+    def _failure_taxonomy(
+        self,
+        payload: ReviewExplanationInput,
+        conflict_tags: list[str],
+        review_eligibility: ReviewEligibilitySurface | None,
+    ) -> ReviewFailurePacket:
+        runtime_precursor = (
+            None
+            if payload.temporal_input is None
+            else payload.temporal_input.precursor_runtime_packet
+        )
         rationale: list[str] = []
         primary_failure_class: ReviewFailureClass | None = None
 
-        if runtime_precursor is not None and runtime_precursor.posture_state.value == "unresolved_context":
+        if (
+            runtime_precursor is not None
+            and runtime_precursor.posture_state.value == "unresolved_context"
+        ):
             primary_failure_class = ReviewFailureClass.DATA_PROVENANCE_FAILURE
             rationale.append("precursor_runtime_packet_signalled_unresolved_context")
 
         modifier_kill_switch = None
-        if payload.modifier_runtime_packet is not None and payload.modifier_runtime_packet.triggered_kill_switch is not None:
+        if (
+            payload.modifier_runtime_packet is not None
+            and payload.modifier_runtime_packet.triggered_kill_switch is not None
+        ):
             modifier_kill_switch = payload.modifier_runtime_packet.triggered_kill_switch
             rationale.append(f"modifier_kill_switch:{modifier_kill_switch.value}")
 
-        if "regime_signal_conflict" in conflict_tags or "posture_signal_conflict" in conflict_tags:
+        if (
+            payload.execution.active_playbook_ids
+            and payload.execution.lead_family_id is None
+            and payload.eligibility.candidates
+        ):
+            primary_failure_class = ReviewFailureClass.ONTOLOGY_FAILURE
+            rationale.append("active_playbook_without_lead_family")
+        if (
+            payload.execution.active_playbook_ids
+            and payload.execution.inventory_action in {"trim", "hold"}
+            and payload.posture.permission_state.value != "block"
+        ):
+            primary_failure_class = ReviewFailureClass.SIZING_FAILURE
+            rationale.append("execution_inventory_action_signalled_sizing_failure")
+        if (
+            "regime_signal_conflict" in conflict_tags
+            or "posture_signal_conflict" in conflict_tags
+        ):
             primary_failure_class = ReviewFailureClass.DIAGNOSIS_FAILURE
             rationale.append("cross_signal_conflict_visible_in_review")
         if "event_veto_breached" in conflict_tags:
             primary_failure_class = ReviewFailureClass.ELIGIBILITY_FAILURE
             rationale.append("event_veto_breach_visible_in_review")
-        if any(tag in conflict_tags for tag in {"missing_hedge_under_destabilising_gamma", "adding_into_locked_inventory"}):
+        if any(
+            tag in conflict_tags
+            for tag in {
+                "missing_hedge_under_destabilising_gamma",
+                "adding_into_locked_inventory",
+            }
+        ):
             primary_failure_class = ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE
             rationale.append("execution_expression_conflict_visible_in_review")
         if modifier_kill_switch is not None:
@@ -337,43 +808,73 @@ class ReviewExplanationService:
             resolution = ReviewResolutionClass.NON_ACTION
         else:
             resolution = ReviewResolutionClass.UNKNOWN
-
-        if resolution is ReviewResolutionClass.UNKNOWN and primary_failure_class is ReviewFailureClass.ONTOLOGY_FAILURE:
+        if (
+            primary_failure_class is None
+            and review_eligibility is not None
+            and review_eligibility.evidence_block.breach_severity
+            in {CorridorBreachSeverity.MATERIAL, CorridorBreachSeverity.SEVERE}
+            and not payload.execution.active_playbook_ids
+            and payload.posture.permission_state.value != "block"
+        ):
+            resolution = ReviewResolutionClass.BAD_LUCK
+            rationale.append("bounded_review_surface_lost_without_policy_failure")
+        if (
+            resolution is ReviewResolutionClass.UNKNOWN
+            and primary_failure_class is ReviewFailureClass.ONTOLOGY_FAILURE
+        ):
             rationale.append("ontology_failure_selected")
 
+        evidence_floor = (
+            None if review_eligibility is None else review_eligibility.evidence_block
+        )
         return ReviewFailurePacket(
             primary_failure_class=primary_failure_class,
             resolution=resolution,
             blocked_trade=resolution is ReviewResolutionClass.BLOCKED_TRADE,
             non_action=resolution is ReviewResolutionClass.NON_ACTION,
-            evidence_floor=None,
+            evidence_floor=evidence_floor,
             rationale=rationale,
         )
 
-    def _economic_accountability(self, packet: ReviewFailurePacket) -> EconomicContributionPacket:
+    def _economic_accountability(
+        self, packet: ReviewFailurePacket
+    ) -> EconomicContributionPacket:
         diagnosis = EconomicContributionTag.UNKNOWN
         posture = EconomicContributionTag.UNKNOWN
         execution = EconomicContributionTag.UNKNOWN
         non_action = EconomicContributionTag.NEUTRAL
+        sizing = EconomicContributionTag.UNKNOWN
 
         if packet.primary_failure_class is ReviewFailureClass.DIAGNOSIS_FAILURE:
             diagnosis = EconomicContributionTag.VALUE_LEAK
-        if packet.primary_failure_class is ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE:
+        if (
+            packet.primary_failure_class
+            is ReviewFailureClass.EXECUTION_EXPRESSION_FAILURE
+        ):
             execution = EconomicContributionTag.VALUE_LEAK
-        if packet.resolution in {ReviewResolutionClass.NON_ACTION, ReviewResolutionClass.BLOCKED_TRADE}:
+        if packet.primary_failure_class is ReviewFailureClass.SIZING_FAILURE:
+            sizing = EconomicContributionTag.VALUE_LEAK
+        if packet.resolution in {
+            ReviewResolutionClass.NON_ACTION,
+            ReviewResolutionClass.BLOCKED_TRADE,
+        }:
             posture = EconomicContributionTag.CAPITAL_PRESERVATION
             non_action = EconomicContributionTag.CAPITAL_PRESERVATION
+        if packet.resolution is ReviewResolutionClass.BAD_LUCK:
+            diagnosis = EconomicContributionTag.NEUTRAL
 
         return EconomicContributionPacket(
             diagnosis=diagnosis,
             posture=posture,
             timing=EconomicContributionTag.UNKNOWN,
             execution=execution,
-            sizing=EconomicContributionTag.UNKNOWN,
+            sizing=sizing,
             non_action=non_action,
         )
 
-    def _promotion_evidence(self, lineage: ReviewLineagePacket) -> PromotionEvidencePacket:
+    def _promotion_evidence(
+        self, lineage: ReviewLineagePacket
+    ) -> PromotionEvidencePacket:
         required_sections = [
             "event_lineage_keys",
             "precursor_lineage_keys",
@@ -396,5 +897,39 @@ class ReviewExplanationService:
             ready_for_candidate_review=not missing_sections,
             required_sections=required_sections,
             missing_sections=missing_sections,
-            notes=["gate77_review_packet_requires_lineage_before_later_candidate_adjudication"],
+            notes=[
+                "gate77_review_packet_requires_lineage_before_later_candidate_adjudication"
+            ],
         )
+
+    def _day_phase_state(self, desk_window: str) -> DayPhaseState:
+        mapping = {
+            "open_disorder": DayPhaseState.OPENING_DISORDER,
+            "early_anchor": DayPhaseState.OPENING_RESOLUTION,
+            "mid_morning": DayPhaseState.TREND_WINDOW,
+            "lunch": DayPhaseState.MIDDAY_COMPRESSION,
+            "trend_window": DayPhaseState.LATE_SESSION,
+            "late_session": DayPhaseState.LATE_SESSION,
+            "close": DayPhaseState.CLOSE_AUCTION,
+            "after_hours": DayPhaseState.POST_CLOSE,
+            "closed": DayPhaseState.POST_CLOSE,
+            "pre_market": DayPhaseState.OPENING_DISORDER,
+        }
+        return mapping.get(desk_window, DayPhaseState.TREND_WINDOW)
+
+    def _carry_horizon_state(
+        self, payload: ReviewExplanationInput
+    ) -> CarryHorizonState:
+        if (
+            payload.temporal.event_window_state
+            == EventWindowState.EVENT_LIVE_WINDOW.value
+        ):
+            return CarryHorizonState.EVENT_CARRY_SETUP
+        if payload.temporal.desk_window in {"late_session", "close", "after_hours"}:
+            return CarryHorizonState.OVERNIGHT_SETUP
+        if (
+            payload.temporal_input is not None
+            and payload.temporal_input.ts.weekday() == 4
+        ):
+            return CarryHorizonState.WEEKEND_SETUP
+        return CarryHorizonState.INTRADAY_ONLY

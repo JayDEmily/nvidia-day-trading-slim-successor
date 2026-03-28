@@ -12,6 +12,7 @@ from nvda_desk.config import Settings
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.domain.temporal_state import TemporalSignalInput, TemporalStateClassifier
 from nvda_desk.schemas.cognition import TemporalContextInput, TemporalContextOutput
+from nvda_desk.schemas.events import EventSemanticPhase
 
 
 class TemporalContextService:
@@ -60,16 +61,35 @@ class TemporalContextService:
         desk_window = self._desk_window(clock.behavioural_phase)
         expiry_days_remaining = None
         if payload.next_expiry is not None:
-            expiry_days_remaining = max(0, (payload.next_expiry.date() - payload.ts.date()).days)
+            expiry_days_remaining = max(
+                0, (payload.next_expiry.date() - payload.ts.date()).days
+            )
         expiry_cycle_state = self._expiry_cycle_state(payload, expiry_days_remaining)
         event_minutes_remaining = None
-        if payload.next_event_at is not None:
-            event_delta = payload.next_event_at.astimezone(UTC) - payload.ts.astimezone(UTC)
+        event_semantic_phase = None
+        live_event_snapshot = payload.live_event_snapshot
+        next_live_event = (
+            None if live_event_snapshot is None else live_event_snapshot.next_event
+        )
+        event_anchor = payload.next_event_at
+        if next_live_event is not None:
+            event_anchor = next_live_event.event_at
+            event_semantic_phase = next_live_event.semantic_phase
+        if event_anchor is not None:
+            event_delta = event_anchor.astimezone(UTC) - payload.ts.astimezone(UTC)
             event_minutes_remaining = int(event_delta.total_seconds() // 60)
-        event_proximity_state = self._event_proximity_state(event_minutes_remaining)
-        event_window_state = self._event_window_state(event_minutes_remaining)
-        recent_path_tag = self._recent_path_tag(payload.prior_session_return_pct, payload.intraday_move_pct)
-        carryover_state = self._carryover_state(payload.prior_session_return_pct, payload.intraday_move_pct)
+        event_proximity_state = self._event_proximity_state(
+            event_minutes_remaining, event_semantic_phase
+        )
+        event_window_state = self._event_window_state(
+            event_minutes_remaining, event_semantic_phase
+        )
+        recent_path_tag = self._recent_path_tag(
+            payload.prior_session_return_pct, payload.intraday_move_pct
+        )
+        carryover_state = self._carryover_state(
+            payload.prior_session_return_pct, payload.intraday_move_pct
+        )
         reasons = [
             f"clock_envelope:{clock.clock_envelope.value}",
             f"session_phase:{clock.phase.value}",
@@ -121,7 +141,9 @@ class TemporalContextService:
         }
         return mapping[phase]
 
-    def _recent_path_tag(self, prior_session_return_pct: float, intraday_move_pct: float) -> str:
+    def _recent_path_tag(
+        self, prior_session_return_pct: float, intraday_move_pct: float
+    ) -> str:
         if intraday_move_pct <= -2.0:
             return "intraday_flush"
         if intraday_move_pct >= 2.0:
@@ -132,7 +154,9 @@ class TemporalContextService:
             return "prior_session_strength"
         return "balanced_recent_path"
 
-    def _carryover_state(self, prior_session_return_pct: float, intraday_move_pct: float) -> str:
+    def _carryover_state(
+        self, prior_session_return_pct: float, intraday_move_pct: float
+    ) -> str:
         if prior_session_return_pct <= -1.0 and intraday_move_pct <= -0.75:
             return "downside_carryover_follow_through"
         if prior_session_return_pct >= 1.0 and intraday_move_pct >= 0.75:
@@ -143,7 +167,9 @@ class TemporalContextService:
             return "upside_carryover_fade"
         return "balanced_carryover"
 
-    def _expiry_cycle_state(self, payload: TemporalContextInput, expiry_days_remaining: int | None) -> str:
+    def _expiry_cycle_state(
+        self, payload: TemporalContextInput, expiry_days_remaining: int | None
+    ) -> str:
         """Classify expiry-window pressure from days remaining until expiry."""
 
         if expiry_days_remaining is None:
@@ -158,13 +184,24 @@ class TemporalContextService:
             return "next_cycle"
         return "far_cycle"
 
-    def _event_proximity_state(self, event_minutes_remaining: int | None) -> str:
+    def _event_proximity_state(
+        self,
+        event_minutes_remaining: int | None,
+        semantic_phase: EventSemanticPhase | None = None,
+    ) -> str:
         """Classify upcoming event proximity for temporal context."""
 
         if event_minutes_remaining is None:
             return "no_event_context"
+        if semantic_phase is EventSemanticPhase.REALISED_REACTION:
+            return "event_live_or_passed"
         if event_minutes_remaining <= 0:
             return "event_live_or_passed"
+        if semantic_phase is EventSemanticPhase.PRICED_RISK:
+            if event_minutes_remaining <= 240:
+                return "event_imminent"
+            if event_minutes_remaining <= 1440:
+                return "event_same_session"
         if event_minutes_remaining <= 60:
             return "event_imminent"
         if event_minutes_remaining <= 240:
@@ -173,13 +210,24 @@ class TemporalContextService:
             return "event_same_day"
         return "event_scheduled"
 
-    def _event_window_state(self, event_minutes_remaining: int | None) -> str:
+    def _event_window_state(
+        self,
+        event_minutes_remaining: int | None,
+        semantic_phase: EventSemanticPhase | None = None,
+    ) -> str:
         """Translate raw event timing into explicit trade-window state."""
 
         if event_minutes_remaining is None:
             return "clear_window"
+        if semantic_phase is EventSemanticPhase.REALISED_REACTION:
+            return "event_live_window"
         if event_minutes_remaining <= 0:
             return "event_live_window"
+        if semantic_phase is EventSemanticPhase.PRICED_RISK:
+            if event_minutes_remaining <= 240:
+                return "event_imminent_window"
+            if event_minutes_remaining <= 1440:
+                return "same_session_event_window"
         if event_minutes_remaining <= 60:
             return "event_imminent_window"
         if event_minutes_remaining <= 240:

@@ -1,6 +1,6 @@
 # 2026-03-27 Review Reconstruction Corrective Gates v1
 
-Status: Gate 80 complete on `main`; active corrective execution continues at Gate 81
+Status: complete on `main`; corrective tranche closed
 
 Version: v1.1
 
@@ -116,7 +116,7 @@ Gate 80 is complete on `main`. The repo now carries one authoritative corrective
 
 ## Gate 81 — Live event richness preservation and temporal semantics consumption
 
-Status: planned
+Status: complete on `main`
 
 Depends on: closed Gate 80
 
@@ -154,9 +154,13 @@ Live event truth is actually rich enough to support the promised semantics, and 
 - review-governance surface emission
 - targeted runtime tests
 
+### Gate 81 closeout note
+
+Gate 81 is complete on `main`. The live event packet now preserves `event_class` and `semantic_phase`, temporal context consumes rich live-event truth instead of timestamp-only shortcuts when the live packet is present, and review now emits typed `event_window_governance` plus `precursor_governance` surfaces.
+
 ## Gate 82 — Runtime posture-law review surface emission
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 81
 
@@ -192,9 +196,13 @@ Any posture deformation now has an explicit first-class review surface explainin
 - review packet updates
 - runtime parity tests
 
+### Gate 82 closeout note
+
+Gate 82 is complete on `main`. Runtime now emits typed `phase_carry_policy` and `event_options_stress_policy` surfaces from applied posture law, and those surfaces remain consistent with the emitted `modifier_control_law` kill-switch path.
+
 ## Gate 83 — Aggregate review-governance surface builders and bindings
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 82
 
@@ -231,9 +239,13 @@ The aggregate governance surfaces are emitted only from real evidence-bearing pa
 - replay/review bindings
 - aggregate evidence tests
 
+### Gate 83 closeout note
+
+Gate 83 is complete on `main`. The previously dead aggregate governance hooks now emit through real evidence-bearing paths: runtime review surfaces populate `stability_scorecards`, `review_eligibility`, and `candidate_governance`, while candidate-governance release remains reserved unless promotion evidence is genuinely ready.
+
 ## Gate 84 — Failure-taxonomy and evidence-floor deepening
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 83
 
@@ -269,9 +281,13 @@ Failure packets carry explicit evidence floors and materially differentiated bou
 - evidence-floor binding logic
 - targeted Gate 77 successor tests
 
+### Gate 84 closeout note
+
+Gate 84 is complete on `main`. `ReviewFailurePacket.evidence_floor` is now populated from governed review evidence, and the bounded Gate 77 taxonomy now materially reaches `SIZING_FAILURE`, `ONTOLOGY_FAILURE`, and `BAD_LUCK` rather than leaving them as decorative vocabulary.
+
 ## Gate 85 — Horizon economic-behaviour widening
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 84
 
@@ -307,9 +323,13 @@ Horizon discovery still stays deterministic and bounded, but “economic behavio
 - updated fragility/ablation reports
 - successor Gate 79 tests
 
+### Gate 85 closeout note
+
+Gate 85 is complete on `main`. Horizon discovery now judges bounded multi-axis economic behaviour rather than fresh-deployable spread alone, and both fragility and ablation surfaces now expose the specific failed economic axes as compact review-safe hints.
+
 ## Gate 86 — Event-ingestion source precedence refinement and corrective closeout
 
-Status: planned
+Status: complete on `main`
 
 Depends on: Gate 85
 
@@ -344,3 +364,7 @@ Event-source precedence is explicit and reviewable, and the corrective tranche c
 - explicit source-precedence engine
 - end-to-end corrective tests
 - closeout updates to planning docs
+
+### Gate 86 closeout note
+
+Gate 86 is complete on `main`. Event ingestion now resolves winners through explicit bounded precedence over outage state, freshness, confidence tier, and source class while preserving visible conflicts and lineage, and the corrective review-reconstruction tranche is closed through Gate 86 on `main`.

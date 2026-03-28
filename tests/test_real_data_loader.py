@@ -12,7 +12,12 @@ from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.real_data_loader import RealDataLoaderService
 from nvda_desk.services.temporal_context import TemporalContextService
 
-FIXTURE_PACK_PATH = Path(__file__).resolve().parents[1] / "fixtures" / "real_data" / "gate_e_prepared_runtime_fixture_pack.json"
+FIXTURE_PACK_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "fixtures"
+    / "real_data"
+    / "gate_e_prepared_runtime_fixture_pack.json"
+)
 
 
 def _load_fixture_pack() -> PreparedRuntimeFixturePack:
@@ -31,12 +36,16 @@ def test_gate_e_fixture_pack_round_trips_from_disk() -> None:
     assert pack.model_dump(mode="json") == raw
 
 
-def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_events() -> None:
+def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_events() -> (
+    None
+):
     """Prepared runtime datasets should align chains to bars and preserve sequence lineage."""
 
     service = RealDataLoaderService()
     pack = _load_fixture_pack()
-    rebuilt = service.prepare_runtime_dataset(pack.bundle, dataset_id=pack.prepared_dataset.dataset_id)
+    rebuilt = service.prepare_runtime_dataset(
+        pack.bundle, dataset_id=pack.prepared_dataset.dataset_id
+    )
 
     assert rebuilt == pack.prepared_dataset
     assert len(rebuilt.snapshots) == 3
@@ -51,16 +60,26 @@ def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_ev
     assert first_snapshot.snapshot_sequence_id == "seq-opening-balance"
     assert first_snapshot.snapshot_count == 3
     assert first_snapshot.lineage.event_ids == ["evt-1", "evt-2"]
-    assert first_snapshot.lineage.event_lineage_keys == ["src:ir:evt-1", "src:macro:evt-2"]
+    assert first_snapshot.lineage.event_lineage_keys == [
+        "src:ir:evt-1",
+        "src:macro:evt-2",
+    ]
     assert first_snapshot.live_event_snapshot is not None
     assert first_snapshot.live_event_snapshot.next_event is not None
     assert first_snapshot.live_event_snapshot.next_event.event_id == "evt-1"
-    assert [event.event_id for event in first_snapshot.live_event_snapshot.nearby_events] == ["evt-1", "evt-2"]
-    assert first_snapshot.repeated_snapshot_sequence[-1].ts.isoformat() == "2026-03-23T14:12:00+00:00"
+    assert [
+        event.event_id for event in first_snapshot.live_event_snapshot.nearby_events
+    ] == ["evt-1", "evt-2"]
+    assert (
+        first_snapshot.repeated_snapshot_sequence[-1].ts.isoformat()
+        == "2026-03-23T14:12:00+00:00"
+    )
     assert first_snapshot.pin_progression_bias == "pinning_in"
 
 
-def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs() -> None:
+def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs() -> (
+    None
+):
     """Prepared runtime snapshots should convert directly into cognition-ready inputs."""
 
     pack = _load_fixture_pack()
@@ -77,7 +96,10 @@ def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs()
     assert converted.options_flow_input.call_oi_near_spot == snapshot.call_oi_near_spot
     assert len(converted.options_flow_input.repeated_snapshot_sequence) == 3
     assert len(converted.options_flow_input.tenor_iv_curve) == 3
-    assert converted.options_flow_input.pin_progression_sequence[-1].distance_to_pin_pct < converted.options_flow_input.pin_progression_sequence[0].distance_to_pin_pct
+    assert (
+        converted.options_flow_input.pin_progression_sequence[-1].distance_to_pin_pct
+        < converted.options_flow_input.pin_progression_sequence[0].distance_to_pin_pct
+    )
 
 
 def test_runtime_snapshot_sanity_report_is_deterministic() -> None:
@@ -85,7 +107,9 @@ def test_runtime_snapshot_sanity_report_is_deterministic() -> None:
 
     service = RealDataLoaderService()
     pack = _load_fixture_pack()
-    rebuilt_report = service.build_runtime_snapshot_sanity_report(pack.bundle, pack.prepared_dataset)
+    rebuilt_report = service.build_runtime_snapshot_sanity_report(
+        pack.bundle, pack.prepared_dataset
+    )
 
     assert rebuilt_report == pack.sanity_report
     assert rebuilt_report.prepared_snapshot_count == 3
@@ -109,13 +133,22 @@ def test_gate_e_runtime_path_validation() -> None:
     temporal_service = TemporalContextService(Settings())
     options_service = OptionsFlowContextService()
 
-    temporal_outputs = [temporal_service.evaluate(packet.temporal_input) for packet in converted_inputs]
-    options_outputs = [options_service.evaluate(packet.options_flow_input) for packet in converted_inputs]
+    temporal_outputs = [
+        temporal_service.evaluate(packet.temporal_input) for packet in converted_inputs
+    ]
+    options_outputs = [
+        options_service.evaluate(packet.options_flow_input)
+        for packet in converted_inputs
+    ]
 
     assert len(temporal_outputs) == 3
     assert len(options_outputs) == 3
     assert temporal_outputs[0].event_window_state == "same_session_event_window"
-    assert all(output.repeated_snapshot_state in {"escalating_pressure", "pinning_build", "stable_recheck"} for output in options_outputs)
+    assert all(
+        output.repeated_snapshot_state
+        in {"escalating_pressure", "pinning_build", "stable_recheck"}
+        for output in options_outputs
+    )
     assert options_outputs[0].pin_progression_state == "pinning_in"
     assert options_outputs[0].dominant_strike == 118.0
     assert options_outputs[0].options_behavior_cluster in {

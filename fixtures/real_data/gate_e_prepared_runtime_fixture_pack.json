@@ -635,6 +635,8 @@
             "event_at": "2026-03-23T15:30:00Z",
             "event_type": "macro",
             "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
             "materiality_tier": "posture_relevant",
             "provenance_count": 1,
             "lineage_keys": [
@@ -648,6 +650,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -660,6 +664,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -674,6 +680,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -686,6 +694,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -863,6 +873,8 @@
             "event_at": "2026-03-23T15:30:00Z",
             "event_type": "macro",
             "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
             "materiality_tier": "posture_relevant",
             "provenance_count": 1,
             "lineage_keys": [
@@ -876,6 +888,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -888,6 +902,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -902,6 +918,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -914,6 +932,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -1091,6 +1111,8 @@
             "event_at": "2026-03-23T15:30:00Z",
             "event_type": "macro",
             "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
             "materiality_tier": "posture_relevant",
             "provenance_count": 1,
             "lineage_keys": [
@@ -1104,6 +1126,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -1116,6 +1140,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -1130,6 +1156,8 @@
               "event_at": "2026-03-23T15:30:00Z",
               "event_type": "macro",
               "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [
@@ -1142,6 +1170,8 @@
               "event_at": "2026-03-24T12:30:00Z",
               "event_type": "macro",
               "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
               "materiality_tier": "posture_relevant",
               "provenance_count": 1,
               "lineage_keys": [

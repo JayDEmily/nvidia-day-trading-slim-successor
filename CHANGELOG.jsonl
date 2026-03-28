@@ -84,3 +84,4 @@
 {"ts":"2026-03-27T19:05:00Z","scope":"gate77","summary":"Post-closeout fix: restore Gate 77 test-file mypy compliance on merged main."}
 {"ts":"2026-03-27T19:35:00Z","scope":"gate78","summary":"Complete Gate 78 runtime integration of state-conditioned modifiers across posture, execution, review, and replay baselines."}
 {"ts":"2026-03-27T22:55:00Z","scope":"gate80","summary":"Complete Gate 80 corrective-pass reset, guidance-doc cleanup, guardrail deduplication, and planning-surface anti-drift proof on main."}
+{"ts":"2026-03-28T00:45:00Z","scope":"gate86","summary":"Complete corrective review-reconstruction tranche through Gate 86 on main, including live-event semantic preservation, runtime review-surface emission, aggregate governance builders, evidence-floor binding, widened horizon economics, explicit event-source precedence, and planning closeout."}

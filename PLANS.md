@@ -49,7 +49,7 @@ The active corrective reconstruction pair from Gate 80 onward is:
 - Gates 56–58 — complete on `main`
 - Gates 59–79 — complete on `main`
 - Gate 80 — complete on `main` (corrective tranche reset and anti-drift freeze)
-- Gates 81–86 — planned corrective follow-on tranche; Gate 81 is next
+- Gates 81–86 — complete on `main`
 
 ## Sequential execution rule
 
@@ -93,4 +93,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 80 corrective tranche reset complete on `main`, with the corrective reconstruction pair now inserted as the live post-Gate-79 planning surface, the authority docs cleaned, and anti-drift proof added without reopening Gates 59–79;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. The corrective reconstruction pack is now the active post-Gate-79 planning surface, and Gate 81 is the next gate.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–86) complete on `main`.
