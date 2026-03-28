@@ -45,89 +45,99 @@ This maintenance step establishes the active planning pack and control surfaces 
 
 - Branch: `work/gate-88-financial-calendar-closeout-20260328`
 - Start commit: `0220db1`
-- End commit: pending finalisation after validation
+- End commit: `aac9c1e`
 - Files touched:
   - `PLANS.md`
   - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
-- Validations run: pending finalisation after validation
+- Validations run:
+  - `.venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → passed
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → `21 passed`
 - Full suite required: `false`
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - Gate 88 closeout updates move the active planning control surfaces from “Gate 88 next” to “Gate 88 complete on main, Gate 89 next”.
   - The active planning pack remains singular and repo-native.
 - Stop conditions hit: none
-- Merge status: pending
-- Notes: Final receipt fields are completed after the bounded validation slice runs green.
+- Merge status: merged to `main` via fast-forward at `aac9c1e`
+- Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
 
 ### LEAF-G88-002 — Freeze the retain, retire-from-authority, and amend matrix for affected temporal and event surfaces
 
 - Branch: `work/gate-88-financial-calendar-closeout-20260328`
 - Start commit: `0220db1`
-- End commit: pending finalisation after validation
+- End commit: `aac9c1e`
 - Files touched:
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
-- Validations run: pending finalisation after validation
+- Validations run:
+  - `.venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → passed
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → `21 passed`
 - Full suite required: `false`
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - The workflow transition matrix remains explicit by exact class and field name and is now carried forward as closed Gate 88 doctrine.
 - Stop conditions hit: none
-- Merge status: pending
-- Notes: Final receipt fields are completed after the bounded validation slice runs green.
+- Merge status: merged to `main` via fast-forward at `aac9c1e`
+- Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
 
 ### LEAF-G88-003 — Freeze vocabulary discipline and the source-of-truth hierarchy for the financial-calendar tranche
 
 - Branch: `work/gate-88-financial-calendar-closeout-20260328`
 - Start commit: `0220db1`
-- End commit: pending finalisation after validation
+- End commit: `aac9c1e`
 - Files touched:
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
-- Validations run: pending finalisation after validation
+- Validations run:
+  - `.venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → passed
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → `21 passed`
 - Full suite required: `false`
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - Vocabulary discipline and source-of-truth hierarchy remain frozen in the active planning pack and are now recorded as completed Gate 88 doctrine.
 - Stop conditions hit: none
-- Merge status: pending
-- Notes: Final receipt fields are completed after the bounded validation slice runs green.
+- Merge status: merged to `main` via fast-forward at `aac9c1e`
+- Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
 
 ### LEAF-G88-004 — Freeze the canonical transit rule and explicit non-goals
 
 - Branch: `work/gate-88-financial-calendar-closeout-20260328`
 - Start commit: `0220db1`
-- End commit: pending finalisation after validation
+- End commit: `aac9c1e`
 - Files touched:
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
   - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
-- Validations run: pending finalisation after validation
+- Validations run:
+  - `.venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → passed
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → `21 passed`
 - Full suite required: `false`
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - The canonical transit rule remains explicit and anti-flattening rules now govern Gate 88 closeout and Gate 89 activation together.
 - Stop conditions hit: none
-- Merge status: pending
-- Notes: Final receipt fields are completed after the bounded validation slice runs green.
+- Merge status: merged to `main` via fast-forward at `aac9c1e`
+- Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
 
 ### LEAF-G88-005 — Add planning anti-drift tests proving Gate 88 closeout and Gate 89 activation
 
 - Branch: `work/gate-88-financial-calendar-closeout-20260328`
 - Start commit: `0220db1`
-- End commit: pending finalisation after validation
+- End commit: `aac9c1e`
 - Files touched:
   - `tests/test_financial_calendar_planning_v3.py`
   - `tests/test_successor_pack_anti_drift.py`
   - `tests/test_gate80_corrective_pass_reset.py`
   - `tests/test_gate59_doctrine_rebase.py`
-- Validations run: pending finalisation after validation
+- Validations run:
+  - `.venv/bin/python -m ruff check tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → passed
+  - `PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_financial_calendar_planning_v3.py tests/test_successor_pack_anti_drift.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_planning_gate_authority_consistency.py` → `21 passed`
 - Full suite required: `false`
 - Full suite command/result: not required by the leaf
 - Exact evidence:
   - Planning tests are amended so Gate 88 is complete on main, Gate 89 is next, and predecessor-pack tests tolerate the new active-gate truth without reopening older doctrine.
 - Stop conditions hit: none
-- Merge status: pending
-- Notes: Final receipt fields are completed after the bounded validation slice runs green.
+- Merge status: merged to `main` via fast-forward at `aac9c1e`
+- Notes: Receipt finalised on `main` after the bounded validation slice and fast-forward merge completed.
