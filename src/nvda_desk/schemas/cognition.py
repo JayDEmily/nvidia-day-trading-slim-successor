@@ -285,9 +285,7 @@ class OptionsFlowContextInput(BaseModel):
     vanna_proxy: float = 0.0
     charm_proxy: float = 0.0
     nearby_strike_clusters: list[StrikeClusterObservation] = Field(default_factory=list)
-    repeated_snapshot_sequence: list[OptionsFlowMicroSnapshot] = Field(
-        default_factory=list
-    )
+    repeated_snapshot_sequence: list[OptionsFlowMicroSnapshot] = Field(default_factory=list)
     tenor_iv_curve: list[TenorCurvePoint] = Field(default_factory=list)
     pin_progression_sequence: list[PinProgressionPoint] = Field(default_factory=list)
 
@@ -608,9 +606,7 @@ class ReviewExplanationOutput(BaseModel):
     rejected_playbooks: list[RejectedPlaybookReason] = Field(default_factory=list)
     contradictions: list[ContradictionSurface] = Field(default_factory=list)
     module_attribution: dict[str, float] = Field(default_factory=dict)
-    imported_module_citations: list[ImportedModuleReviewCitation] = Field(
-        default_factory=list
-    )
+    imported_module_citations: list[ImportedModuleReviewCitation] = Field(default_factory=list)
     imported_module_maturity_counts: dict[str, int] = Field(default_factory=dict)
     effective_policy: EffectivePolicySnapshot | None = None
     stability_scorecards: list[SurfaceStabilityScorecard] = Field(default_factory=list)

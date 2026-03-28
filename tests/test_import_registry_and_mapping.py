@@ -54,8 +54,7 @@ def test_refresh_rebuilds_enriched_surfaces_from_seed_inputs() -> None:
     assert rebuilt_first.canonical_slug == "archetype_matcher"
     assert rebuilt_first.desk_role_priority == 50
     assert (
-        rebuilt_first.implementation_readiness
-        == ImplementationReadiness.READY_FOR_CONTRACT_IMPORT
+        rebuilt_first.implementation_readiness == ImplementationReadiness.READY_FOR_CONTRACT_IMPORT
     )
 
 
@@ -100,9 +99,7 @@ def test_canonical_registry_summary_matches_preservation_split() -> None:
     }
     assert maturity_counts["conceptual_preserved"] >= 61
     assert runtime_target_counts["implemented_runtime"] == 10
-    assert (
-        readiness_counts[ImplementationReadiness.READY_FOR_CONTRACT_IMPORT.value] >= 1
-    )
+    assert readiness_counts[ImplementationReadiness.READY_FOR_CONTRACT_IMPORT.value] >= 1
     assert summary["report_inputs"] == EXPECTED_REPORT_INPUTS
 
 
@@ -125,13 +122,9 @@ def test_registry_rows_expose_priority_readiness_and_affinity_fields() -> None:
         item for item in registry if item.canonical_slug == "ladder_constructor"
     )
     options_fragment = next(
-        item
-        for item in registry
-        if item.canonical_slug == "options_flow_context_first_class"
+        item for item in registry if item.canonical_slug == "options_flow_context_first_class"
     )
-    macro_shock = next(
-        item for item in registry if item.canonical_slug == "macro_shock_responder"
-    )
+    macro_shock = next(item for item in registry if item.canonical_slug == "macro_shock_responder")
 
     assert ladder_constructor.primary_grammar_role == GrammarRole.PLAYBOOK_ELIGIBILITY
     assert ladder_constructor.desk_role_priority == 50
@@ -142,17 +135,11 @@ def test_registry_rows_expose_priority_readiness_and_affinity_fields() -> None:
     assert ladder_constructor.playbook_affinity == ["continuation_ladder"]
     assert ladder_constructor.options_affinity is True
 
-    assert (
-        options_fragment.implementation_readiness
-        == ImplementationReadiness.EVIDENCE_ONLY
-    )
+    assert options_fragment.implementation_readiness == ImplementationReadiness.EVIDENCE_ONLY
     assert options_fragment.readiness_blockers == ["evidence_only_preservation"]
     assert options_fragment.options_affinity is True
 
-    assert (
-        macro_shock.implementation_readiness
-        == ImplementationReadiness.IMPLEMENTED_RUNTIME
-    )
+    assert macro_shock.implementation_readiness == ImplementationReadiness.IMPLEMENTED_RUNTIME
     assert macro_shock.inventory_affinity is True
 
 
@@ -163,18 +150,13 @@ def test_canonical_grammar_mapping_summary_exposes_role_and_contract_coverage() 
     runtime_target_counts = cast(dict[str, int], summary["runtime_target_counts"])
     grammar_role_counts = cast(dict[str, int], summary["grammar_role_counts"])
     architecture_role_counts = cast(dict[str, int], summary["architecture_role_counts"])
-    contract_status_counts = cast(
-        dict[str, int], summary["runtime_contract_status_counts"]
-    )
+    contract_status_counts = cast(dict[str, int], summary["runtime_contract_status_counts"])
     gap_report = cast(dict[str, Any], summary["runtime_gap_report"])
     assert summary["total_items"] == 129
     assert runtime_target_counts["implemented_runtime"] == 10
     assert grammar_role_counts["review_explanation"] >= 26
     assert architecture_role_counts["evidence_component"] == 26
-    assert (
-        contract_status_counts[RuntimeContractStatus.IMPLEMENTED_BINDING_CONTRACT.value]
-        == 10
-    )
+    assert contract_status_counts[RuntimeContractStatus.IMPLEMENTED_BINDING_CONTRACT.value] == 10
     assert gap_report["roles"]["options_flow_context"]["concept_contract"] >= 1
     assert summary["report_inputs"] == EXPECTED_REPORT_INPUTS
 
@@ -183,33 +165,22 @@ def test_mapping_rows_expose_contract_status_priority_and_affinity_fields() -> N
     """Mapping rows should expose Gate-B contract and affinity fields."""
     service = CanonicalImportRegistryService(Path.cwd())
     mapping = service.load_mapping()
-    macro_shock = next(
-        item for item in mapping if item.canonical_slug == "macro_shock_responder"
-    )
+    macro_shock = next(item for item in mapping if item.canonical_slug == "macro_shock_responder")
     options_fragment = next(
-        item
-        for item in mapping
-        if item.canonical_slug == "options_flow_context_first_class"
+        item for item in mapping if item.canonical_slug == "options_flow_context_first_class"
     )
     ladder_constructor = next(
         item for item in mapping if item.canonical_slug == "ladder_constructor"
     )
 
-    assert (
-        macro_shock.runtime_contract_status
-        == RuntimeContractStatus.IMPLEMENTED_BINDING_CONTRACT
-    )
+    assert macro_shock.runtime_contract_status == RuntimeContractStatus.IMPLEMENTED_BINDING_CONTRACT
     assert macro_shock.desk_role_priority == 40
     assert macro_shock.inventory_affinity is True
     assert (
-        options_fragment.runtime_contract_status
-        == RuntimeContractStatus.EVIDENCE_ONLY_NO_CONTRACT
+        options_fragment.runtime_contract_status == RuntimeContractStatus.EVIDENCE_ONLY_NO_CONTRACT
     )
     assert options_fragment.options_affinity is True
-    assert (
-        ladder_constructor.runtime_contract_status
-        == RuntimeContractStatus.CONCEPT_CONTRACT_ONLY
-    )
+    assert ladder_constructor.runtime_contract_status == RuntimeContractStatus.CONCEPT_CONTRACT_ONLY
     assert ladder_constructor.playbook_affinity == ["continuation_ladder"]
 
 
@@ -232,9 +203,7 @@ def test_runtime_depth_report_exposes_category_and_role_breakdown() -> None:
     assert report["report_inputs"] == EXPECTED_REPORT_INPUTS
 
 
-def test_gate_b_reports_exist_and_exclude_evidence_only_from_executable_backlog() -> (
-    None
-):
+def test_gate_b_reports_exist_and_exclude_evidence_only_from_executable_backlog() -> None:
     """Gate-B reports should exist, remain parseable, and expose the expected splits."""
     service = CanonicalImportRegistryService(Path.cwd())
     depth_report = cast(dict[str, Any], service.runtime_depth_report())
@@ -289,10 +258,7 @@ TRANCHE_A_ITEM_ORDER = [
 
 def _load_tranche_a_manifest() -> dict[str, Any]:
     manifest_path = (
-        Path.cwd()
-        / "docs"
-        / "planning"
-        / "2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.json"
+        Path.cwd() / "docs" / "planning" / "2026-03-24_CONTRACT_IMPORT_TRANCHE_A_MANIFEST.json"
     )
     return cast(dict[str, Any], json.loads(manifest_path.read_text(encoding="utf-8")))
 
@@ -311,21 +277,12 @@ def test_tranche_a_manifest_exists_and_remains_frozen_to_thirteen_items() -> Non
     items = cast(list[dict[str, Any]], manifest["items"])
     assert len(items) == 13
     assert [item["canonical_id"] for item in items] == TRANCHE_A_ITEM_ORDER
-    assert {item["planned_leaf_outcome"] for item in items[:7]} == {
-        "contract_surface_only"
-    }
-    assert {item["planned_leaf_outcome"] for item in items[7:]} == {
-        "runtime_integrated_advisory"
-    }
-    assert (
-        manifest["outcome_bands"]["approved_live_runtime"]
-        == "Forbidden inside tranche A."
-    )
+    assert {item["planned_leaf_outcome"] for item in items[:7]} == {"contract_surface_only"}
+    assert {item["planned_leaf_outcome"] for item in items[7:]} == {"runtime_integrated_advisory"}
+    assert manifest["outcome_bands"]["approved_live_runtime"] == "Forbidden inside tranche A."
 
 
-def test_tranche_a_manifest_rows_match_backlog_readiness_blockers_and_role_order() -> (
-    None
-):
+def test_tranche_a_manifest_rows_match_backlog_readiness_blockers_and_role_order() -> None:
     """Gate 14 manifest rows should stay aligned to the executable backlog and grammar mapping."""
     service = CanonicalImportRegistryService(Path.cwd())
     registry = {item.canonical_id: item for item in service.load_registry()}
@@ -343,10 +300,7 @@ def test_tranche_a_manifest_rows_match_backlog_readiness_blockers_and_role_order
             == ImplementationReadiness.READY_FOR_CONTRACT_IMPORT
         )
         assert row["primary_grammar_role"] == mapping_item.grammar_role.value
-        assert (
-            row["runtime_contract_status"]
-            == RuntimeContractStatus.CONCEPT_CONTRACT_ONLY.value
-        )
+        assert row["runtime_contract_status"] == RuntimeContractStatus.CONCEPT_CONTRACT_ONLY.value
         assert row["readiness_blockers"] == registry_item.readiness_blockers
         assert row["dependencies"] == registry_item.known_dependencies
         assert row["known_inputs"] == registry_item.known_inputs

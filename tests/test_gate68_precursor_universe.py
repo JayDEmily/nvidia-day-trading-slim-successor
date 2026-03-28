@@ -22,20 +22,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate68_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -77,10 +70,7 @@ def test_gate68_docs_freeze_bounded_precursor_scope() -> None:
         "the precursor universe is bounded to JPX cash equity indices, HKEX cash equity indices, Mainland China cash equity indices, and CFFEX index futures"
         in normative
     )
-    assert (
-        "Europe, commodities, crypto, and single-stock chatter remain excluded"
-        in normative
-    )
+    assert "Europe, commodities, crypto, and single-stock chatter remain excluded" in normative
 
     assert "## Gate 68 precursor-universe authority" in operating_model
     assert (
@@ -181,9 +171,7 @@ def test_gate68_schema_surface_exposes_allowed_fields_and_exclusions() -> None:
         review_packet={},
         precursor_governance=surface,
     )
-    assert (
-        authority.authority.venues[0].source_class is PrecursorSourceClass.INDEX_FUTURES
-    )
+    assert authority.authority.venues[0].source_class is PrecursorSourceClass.INDEX_FUTURES
     assert review.precursor_governance == surface
 
 

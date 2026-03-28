@@ -94,17 +94,9 @@ def test_gate82_runtime_emits_phase_and_event_options_policy_surfaces() -> None:
     )
 
     assert result.review.phase_carry_policy is not None
-    assert (
-        result.review.phase_carry_policy.day_phase_state is DayPhaseState.TREND_WINDOW
-    )
-    assert (
-        result.review.phase_carry_policy.carry_horizon_state
-        is CarryHorizonState.INTRADAY_ONLY
-    )
-    assert (
-        result.review.phase_carry_policy.behaviour_class
-        is PhaseBehaviourClass.NORMAL_OPERATION
-    )
+    assert result.review.phase_carry_policy.day_phase_state is DayPhaseState.TREND_WINDOW
+    assert result.review.phase_carry_policy.carry_horizon_state is CarryHorizonState.INTRADAY_ONLY
+    assert result.review.phase_carry_policy.behaviour_class is PhaseBehaviourClass.NORMAL_OPERATION
     assert result.review.phase_carry_policy.no_action_bias is PhaseNoActionBias.NEUTRAL
 
     assert result.review.event_options_stress_policy is not None
@@ -152,16 +144,11 @@ def test_gate82_review_surfaces_use_the_same_phase_carry_and_event_state_project
     assert result.review.phase_carry_policy.day_phase_state is project_day_phase_state(
         result.temporal
     )
-    assert (
-        result.review.phase_carry_policy.carry_horizon_state
-        is project_carry_horizon_state(result.temporal)
+    assert result.review.phase_carry_policy.carry_horizon_state is project_carry_horizon_state(
+        result.temporal
     )
-    projected_labels = project_event_option_state_labels(
-        result.temporal, result.options_flow
-    )
-    assert {
-        state.value for state in result.review.event_options_stress_policy.active_states
-    } == {
+    projected_labels = project_event_option_state_labels(result.temporal, result.options_flow)
+    assert {state.value for state in result.review.event_options_stress_policy.active_states} == {
         {
             "event_imminent": EventOptionsStressState.EVENT_IMMINENT.value,
             "event_live": EventOptionsStressState.EVENT_LIVE.value,

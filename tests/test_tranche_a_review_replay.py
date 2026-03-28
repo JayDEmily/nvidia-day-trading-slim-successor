@@ -33,9 +33,7 @@ EXPECTED_TRANCHE_A_ORDER = [
 ]
 
 
-def test_review_packet_cites_tranche_a_modules_with_honest_maturity_and_no_fake_approval() -> (
-    None
-):
+def test_review_packet_cites_tranche_a_modules_with_honest_maturity_and_no_fake_approval() -> None:
     """Gate 17 should surface tranche-A lineage in review without promotion theatre."""
 
     fixture = supportive_runtime_fixture()
@@ -50,9 +48,7 @@ def test_review_packet_cites_tranche_a_modules_with_honest_maturity_and_no_fake_
     )
 
     citations = result.review.imported_module_citations
-    assert [
-        citation.canonical_slug for citation in citations
-    ] == EXPECTED_TRANCHE_A_ORDER
+    assert [citation.canonical_slug for citation in citations] == EXPECTED_TRANCHE_A_ORDER
     assert len(citations) == 13
     assert (
         result.review.review_packet["imported_module_maturity_counts"]
@@ -84,9 +80,7 @@ def test_review_packet_cites_tranche_a_modules_with_honest_maturity_and_no_fake_
     )
 
 
-def test_replay_run_result_carries_tranche_a_citations_without_changing_report_shape() -> (
-    None
-):
+def test_replay_run_result_carries_tranche_a_citations_without_changing_report_shape() -> None:
     """Gate 17 should carry tranche-A citation state into replay results without drift."""
 
     service = ReplayComparisonService(Settings())
@@ -100,10 +94,7 @@ def test_replay_run_result_carries_tranche_a_citations_without_changing_report_s
     assert [
         citation.canonical_slug for citation in run.imported_module_citations
     ] == EXPECTED_TRANCHE_A_ORDER
-    assert (
-        run.imported_module_maturity_counts
-        == run.review.imported_module_maturity_counts
-    )
+    assert run.imported_module_maturity_counts == run.review.imported_module_maturity_counts
     assert run.imported_module_maturity_counts["concept_contract_only"] >= 1
     assert all(
         citation.approval_state is ImportedModuleApprovalState.NOT_APPROVED

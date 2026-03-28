@@ -128,13 +128,7 @@ def test_gate28_coverage_is_closed_in_frozen_order_with_honest_ingress_fences() 
 
     assert event_flag.grammar_role == DmpGrammarRole.TEMPORAL_CONTEXT.value
     assert event_flag.dependency_fences[0].status.value == "proxied_from_runtime"
-    assert (
-        vwap_accumulator.computation_mode
-        is ContractComputationMode.FENCED_CONTRACT_ONLY
-    )
+    assert vwap_accumulator.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY
     assert vwap_roc.computation_mode is ContractComputationMode.FENCED_CONTRACT_ONLY
-    assert (
-        macro_data.computation_mode
-        is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
-    )
+    assert macro_data.computation_mode is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
     assert realized_vol.proxy_basis == ["front_realised_vol", "next_realised_vol"]

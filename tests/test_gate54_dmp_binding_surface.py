@@ -15,9 +15,7 @@ def test_runtime_keeps_v2_as_the_only_live_stage_packet_surface() -> None:
 
     assert result.stage_packets
     assert all(packet.protocol_version == "dmp.v2" for packet in result.stage_packets)
-    assert result.packet_lineage == tuple(
-        packet.packet_id for packet in result.stage_packets
-    )
+    assert result.packet_lineage == tuple(packet.packet_id for packet in result.stage_packets)
 
 
 def test_dmp_docs_state_gate54_as_historical_freeze_and_v2_as_current_target() -> None:

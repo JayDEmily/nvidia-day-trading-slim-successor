@@ -37,8 +37,7 @@ def test_gate83_runtime_emits_review_eligibility_stability_and_reserved_candidat
         is ReviewOutcome.BOUNDED_ADJUSTMENT_REQUEST
     )
     assert (
-        result.review.review_eligibility.change_budget
-        is ReviewChangeBudget.BOUNDED_SINGLE_SURFACE
+        result.review.review_eligibility.change_budget is ReviewChangeBudget.BOUNDED_SINGLE_SURFACE
     )
     assert set(result.review.review_eligibility.trigger_classes) >= {
         ReviewTriggerClass.MATERIAL_CORRIDOR_BREACH,
@@ -87,18 +86,13 @@ def test_gate83_candidate_governance_builder_releases_comparison_when_promotion_
         ),
     )
 
-    assert (
-        surface.adjudication_disposition
-        is AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON
-    )
+    assert surface.adjudication_disposition is AdjudicationDisposition.RELEASED_FOR_FINAL_COMPARISON
     assert surface.comparison_outcome is CandidateComparisonOutcome.RETAIN_CHAMPION
     assert surface.champion_candidate_id == "candidate_a"
     assert surface.shadow_challenger_ids == ["candidate_b"]
 
 
-def test_gate83_candidate_governance_builder_stays_reserved_without_comparison_context() -> (
-    None
-):
+def test_gate83_candidate_governance_builder_stays_reserved_without_comparison_context() -> None:
     surface = ReviewExplanationService()._candidate_governance(
         PromotionEvidencePacket(
             ready_for_candidate_review=True,
@@ -112,8 +106,6 @@ def test_gate83_candidate_governance_builder_stays_reserved_without_comparison_c
         )
     )
 
-    assert (
-        surface.adjudication_disposition is AdjudicationDisposition.RESERVED_UNTOUCHED
-    )
+    assert surface.adjudication_disposition is AdjudicationDisposition.RESERVED_UNTOUCHED
     assert surface.comparison_outcome is None
     assert surface.champion_candidate_id is None

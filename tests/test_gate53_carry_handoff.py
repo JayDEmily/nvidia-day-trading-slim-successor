@@ -28,9 +28,7 @@ class _FakeClassifier:
     def classify(
         self, _ts: datetime
     ) -> object:  # pragma: no cover - fallback path not exercised here
-        raise AssertionError(
-            "classifier fallback should not be used when handoff is supplied"
-        )
+        raise AssertionError("classifier fallback should not be used when handoff is supplied")
 
 
 class _FakeSnapshot:
@@ -38,17 +36,13 @@ class _FakeSnapshot:
 
 
 class _FakeMarketStateService:
-    def get_intraday_bars(
-        self, *, symbol: str, ts: datetime, limit: int
-    ) -> object:  # noqa: ARG002
+    def get_intraday_bars(self, *, symbol: str, ts: datetime, limit: int) -> object:  # noqa: ARG002
         class _Bars:
             bars: list[object] = []
 
         return _Bars()
 
-    def get_market_snapshot(
-        self, *, symbol: str, ts: datetime
-    ) -> _FakeSnapshot:  # noqa: ARG002
+    def get_market_snapshot(self, *, symbol: str, ts: datetime) -> _FakeSnapshot:  # noqa: ARG002
         return _FakeSnapshot()
 
 

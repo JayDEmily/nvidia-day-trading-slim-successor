@@ -139,11 +139,7 @@ class MarketStateService:
         """Convert stitched precursor truth into the additive runtime packet shape."""
 
         derived_fields = sorted(
-            {
-                field
-                for slice_ in result.active_slices
-                for field in slice_.derived_values
-            },
+            {field for slice_ in result.active_slices for field in slice_.derived_values},
             key=lambda item: item.value,
         )
         return PrecursorRuntimePacket(
@@ -159,9 +155,7 @@ class MarketStateService:
             notes=result.notes,
         )
 
-    def get_intraday_bars(
-        self, symbol: str, ts: datetime, limit: int = 30
-    ) -> IntradayBarsResponse:
+    def get_intraday_bars(self, symbol: str, ts: datetime, limit: int = 30) -> IntradayBarsResponse:
         bars = self._get_intraday_bars(symbol=symbol, ts=ts, limit=limit)
         return IntradayBarsResponse(symbol=symbol, requested_at=ts, bars=bars)
 
@@ -194,9 +188,7 @@ class MarketStateService:
         bars = self._get_intraday_bars(symbol=symbol, ts=ts, limit=1)
         return bars[0] if bars else None
 
-    def _get_intraday_bars(
-        self, symbol: str, ts: datetime, limit: int
-    ) -> list[Bar1mPayload]:
+    def _get_intraday_bars(self, symbol: str, ts: datetime, limit: int) -> list[Bar1mPayload]:
         if self._session_factory is None:
             return []
         try:
@@ -216,9 +208,7 @@ class MarketStateService:
         return [
             Bar1mPayload(
                 ts_utc=(
-                    row.ts_utc
-                    if row.ts_utc.tzinfo is not None
-                    else row.ts_utc.replace(tzinfo=UTC)
+                    row.ts_utc if row.ts_utc.tzinfo is not None else row.ts_utc.replace(tzinfo=UTC)
                 ),
                 open=row.open,
                 high=row.high,
@@ -241,14 +231,10 @@ class MarketStateService:
             return []
         try:
             with self._session_factory() as session:
-                instrument = session.scalar(
-                    select(Instrument).where(Instrument.symbol == symbol)
-                )
+                instrument = session.scalar(select(Instrument).where(Instrument.symbol == symbol))
                 if instrument is None:
                     return []
-                chosen_expiry = expiry or self._infer_expiry(
-                    session, instrument.id, as_of_date
-                )
+                chosen_expiry = expiry or self._infer_expiry(session, instrument.id, as_of_date)
                 if chosen_expiry is None:
                     return []
                 stmt = (
@@ -264,9 +250,7 @@ class MarketStateService:
             return []
         return [self._to_option_payload(row) for row in rows]
 
-    def _infer_expiry(
-        self, session: Session, instrument_id: int, as_of_date: date
-    ) -> date | None:
+    def _infer_expiry(self, session: Session, instrument_id: int, as_of_date: date) -> date | None:
         stmt = (
             select(OptionSnapshot.expiry)
             .where(OptionSnapshot.instrument_id == instrument_id)
@@ -295,21 +279,15 @@ class MarketStateService:
             source_pages=row.source_pages,
         )
 
-    def _timestamp_misaligned(
-        self, *, requested_at: datetime, slice_: PrecursorVenueSlice
-    ) -> bool:
+    def _timestamp_misaligned(self, *, requested_at: datetime, slice_: PrecursorVenueSlice) -> bool:
         disciplines = {
             PrecursorTimestampDiscipline.REQUEST_TIME_MUST_NOT_PRECEDE_SOURCE_TIME,
             PrecursorTimestampDiscipline.NO_FORWARD_FILL_ACROSS_US_DECISION_WINDOW,
         }
         _ = disciplines  # keep lint honest about the explicit Gate 75 dependency.
-        return (
-            slice_.session_close_at > requested_at or slice_.observed_at > requested_at
-        )
+        return slice_.session_close_at > requested_at or slice_.observed_at > requested_at
 
-    def _fallback_for_slice(
-        self, slice_: PrecursorVenueSlice
-    ) -> PrecursorFallbackDisposition:
+    def _fallback_for_slice(self, slice_: PrecursorVenueSlice) -> PrecursorFallbackDisposition:
         if slice_.freshness_state is PrecursorFreshnessState.CURRENT:
             return PrecursorFallbackDisposition.CONTINUE_NORMALLY
         if slice_.freshness_state is PrecursorFreshnessState.DEGRADED:
@@ -334,8 +312,7 @@ class MarketStateService:
             return PrecursorContradictionClass.DIRECTIONAL_SPLIT
 
         futures_cash_divergence = any(
-            field is DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE
-            and abs(value) >= 0.5
+            field is DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE and abs(value) >= 0.5
             for slice_ in active_slices
             for field, value in slice_.derived_values.items()
         )

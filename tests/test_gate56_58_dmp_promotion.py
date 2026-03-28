@@ -15,13 +15,9 @@ def test_runtime_uses_v2_as_only_live_stage_packet_surface() -> None:
 
     assert result.stage_packets
     assert all(packet.protocol_version == "dmp.v2" for packet in result.stage_packets)
-    assert result.packet_lineage == tuple(
-        packet.packet_id for packet in result.stage_packets
-    )
+    assert result.packet_lineage == tuple(packet.packet_id for packet in result.stage_packets)
     assert result.contract_packets
-    assert all(
-        packet.protocol_version == "dmp.v2" for packet in result.contract_packets
-    )
+    assert all(packet.protocol_version == "dmp.v2" for packet in result.contract_packets)
 
 
 def test_docs_mark_v2_canonical_and_v1_historical() -> None:

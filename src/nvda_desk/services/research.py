@@ -38,15 +38,9 @@ class ResearchService:
 
     def list_notes(self, limit: int = 20) -> ResearchNoteListResponse:
         with self._session_factory() as session:
-            stmt = (
-                select(ResearchNote)
-                .order_by(desc(ResearchNote.created_at))
-                .limit(limit)
-            )
+            stmt = select(ResearchNote).order_by(desc(ResearchNote.created_at)).limit(limit)
             notes = list(session.scalars(stmt))
-        return ResearchNoteListResponse(
-            notes=[self._to_payload(note) for note in notes]
-        )
+        return ResearchNoteListResponse(notes=[self._to_payload(note) for note in notes])
 
     def _to_payload(self, note: ResearchNote) -> ResearchNotePayload:
         return ResearchNotePayload(

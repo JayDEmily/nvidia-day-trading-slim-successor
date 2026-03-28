@@ -30,35 +30,26 @@ def test_execution_planning_contracts_emit_the_frozen_five_modules_in_order() ->
     """Gate 21 should emit the five execution-planning contracts in gate-map order."""
 
     emissions = ExecutionPlanningContractService().evaluate(build_gate21_context())
-    assert [
-        emission.output.canonical_slug for emission in emissions
-    ] == EXPECTED_GATE21_ORDER
+    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE21_ORDER
     assert all(
         emission.packet.grammar_role is DmpGrammarRole.EXPRESSION_EXECUTION
         for emission in emissions
     )
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
-def test_execution_planning_keeps_broker_boundary_fenced_and_entry_preview_advisory() -> (
-    None
-):
+def test_execution_planning_keeps_broker_boundary_fenced_and_entry_preview_advisory() -> None:
     """Gate 21 should stop at a dry-run boundary while preserving a usable preview plan."""
 
     outputs = {
         emission.output.canonical_slug: emission.output
-        for emission in ExecutionPlanningContractService().evaluate(
-            build_gate21_context()
-        )
+        for emission in ExecutionPlanningContractService().evaluate(build_gate21_context())
     }
     broker_adapter = cast(BrokerAdapterContractOutput, outputs["broker_adapter"])
     entry_planner = cast(EntryPlannerContractOutput, outputs["entry_planner"])
-    position_allocator = cast(
-        PositionAllocatorContractOutput, outputs["position_allocator"]
-    )
+    position_allocator = cast(PositionAllocatorContractOutput, outputs["position_allocator"])
     order_simulator = cast(OrderSimulatorContractOutput, outputs["order_simulator"])
     run_trading_bot = cast(RunTradingBotContractOutput, outputs["run_trading_bot"])
 

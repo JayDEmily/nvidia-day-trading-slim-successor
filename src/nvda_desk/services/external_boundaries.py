@@ -64,16 +64,12 @@ class BrokerAdapter(Protocol):
 
 
 class OpenAIOrchestrator(Protocol):
-    async def respond(
-        self, request: OpenAIResponseRequest
-    ) -> OpenAIResponseArtifact: ...
+    async def respond(self, request: OpenAIResponseRequest) -> OpenAIResponseArtifact: ...
 
 
 class InMemoryBrokerAdapter:
     def __init__(self) -> None:
-        self._account = AccountState(
-            cash=100000.0, equity=100000.0, buying_power=100000.0
-        )
+        self._account = AccountState(cash=100000.0, equity=100000.0, buying_power=100000.0)
         self._positions: list[Position] = []
         self._events: list[OrderEvent] = []
 
@@ -92,9 +88,7 @@ class InMemoryBrokerAdapter:
                 update={
                     "cash": round(max(self._account.cash - notional, 0.0), 4),
                     "equity": round(self._account.equity, 4),
-                    "buying_power": round(
-                        max(self._account.buying_power - notional, 0.0), 4
-                    ),
+                    "buying_power": round(max(self._account.buying_power - notional, 0.0), 4),
                 }
             )
         self._positions.append(
@@ -112,9 +106,7 @@ class InMemoryBrokerAdapter:
                 event_ts=submitted_at,
             )
         )
-        return BrokerOrderRef(
-            order_id=order_id, status="filled", submitted_at=submitted_at
-        )
+        return BrokerOrderRef(order_id=order_id, status="filled", submitted_at=submitted_at)
 
     async def cancel_order(self, order_id: str) -> None:
         self._events.append(

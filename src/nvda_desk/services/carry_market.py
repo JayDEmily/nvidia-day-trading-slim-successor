@@ -55,9 +55,7 @@ class OvernightCarryMarketService:
         else:
             last_bar = bars[-1]
             vwap = self._session_vwap(bars)
-            close_distance = (
-                0.0 if vwap == 0 else ((float(last_bar.close) - vwap) / vwap) * 100
-            )
+            close_distance = 0.0 if vwap == 0 else ((float(last_bar.close) - vwap) / vwap) * 100
             realised_vol = self._realised_vol_pct(bars)
             vix_level = self._latest_close_or_zero("VIX", payload.evaluation_ts)
             vvix_level = self._latest_close_or_zero("VVIX", payload.evaluation_ts)
@@ -90,13 +88,11 @@ class OvernightCarryMarketService:
                 open_orders_count=payload.open_orders_count,
             )
         )
-        adjusted_action, adjusted_exposure, adjustment_reasons = (
-            self._apply_handoff_constraints(
-                handoff=payload.close_state_handoff,
-                recommendation=output.carry_recommendation,
-                action=output.carry_action,
-                exposure=output.overnight_exposure_pct,
-            )
+        adjusted_action, adjusted_exposure, adjustment_reasons = self._apply_handoff_constraints(
+            handoff=payload.close_state_handoff,
+            recommendation=output.carry_recommendation,
+            action=output.carry_action,
+            exposure=output.overnight_exposure_pct,
         )
         adjusted_recommendation = self._recommendation_for_action(adjusted_action)
         rationale_codes = list(output.rationale_codes)
@@ -161,9 +157,7 @@ class OvernightCarryMarketService:
 
     def _latest_close_or_zero(self, symbol: str, ts: datetime) -> float:
         snapshot = self._market_state_service.get_market_snapshot(symbol=symbol, ts=ts)
-        return (
-            float(snapshot.latest_bar.close) if snapshot.latest_bar is not None else 0.0
-        )
+        return float(snapshot.latest_bar.close) if snapshot.latest_bar is not None else 0.0
 
     def _session_vwap(self, bars: list[Bar1mPayload]) -> float:
         pv_total = 0.0

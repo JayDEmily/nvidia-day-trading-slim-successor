@@ -24,20 +24,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate74_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -97,9 +90,7 @@ def test_gate74_docs_freeze_live_event_richness_law() -> None:
         "`PreparedRuntimeSnapshot.live_event_snapshot` and `TemporalContextInput.live_event_snapshot`"
         in domain_model
     )
-    assert (
-        "`next_event_at` may remain only as a derived compatibility hint" in guardrails
-    )
+    assert "`next_event_at` may remain only as a derived compatibility hint" in guardrails
 
 
 def test_gate74_schema_surface_and_service_preserve_live_event_truth() -> None:

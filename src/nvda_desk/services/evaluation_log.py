@@ -53,18 +53,14 @@ class EvaluationLogService:
             session.refresh(row)
             return self._to_payload(row)
 
-    def list_runs(
-        self, module_id: str | None = None, limit: int = 20
-    ) -> EvaluationRunListResponse:
+    def list_runs(self, module_id: str | None = None, limit: int = 20) -> EvaluationRunListResponse:
         with self._session_factory() as session:
             stmt = select(EvaluationRun)
             if module_id:
                 stmt = stmt.where(EvaluationRun.module_id == module_id)
             stmt = stmt.order_by(desc(EvaluationRun.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return EvaluationRunListResponse(
-            evaluations=[self._to_payload(row) for row in rows]
-        )
+        return EvaluationRunListResponse(evaluations=[self._to_payload(row) for row in rows])
 
     def _dump_model(self, model: BaseModel) -> str:
         return json.dumps(model.model_dump(mode="json"))

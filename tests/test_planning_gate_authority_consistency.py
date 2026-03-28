@@ -6,9 +6,7 @@ import json
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-LEAF_LEDGER = (
-    REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json"
-)
+LEAF_LEDGER = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 PLANS = REPO_ROOT / "PLANS.md"
 
@@ -46,6 +44,4 @@ def test_completed_leaf_ids_match_leaf_entries() -> None:
 
     leaf_ids = [leaf["id"] for leaf in leaves]
     assert len(leaf_ids) == len(set(leaf_ids))
-    assert completed_ids == {
-        leaf["id"] for leaf in leaves if leaf["status"] == "complete"
-    }
+    assert completed_ids == {leaf["id"] for leaf in leaves if leaf["status"] == "complete"}

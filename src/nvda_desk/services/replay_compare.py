@@ -66,8 +66,7 @@ class ReplayComparisonService:
         raw = json.loads(Path(path).read_text())
         payload = raw if isinstance(raw, dict) else {"stack_definitions": raw}
         definitions = [
-            StackDefinition.model_validate(item)
-            for item in payload.get("stack_definitions", [])
+            StackDefinition.model_validate(item) for item in payload.get("stack_definitions", [])
         ]
         return {
             definition.stack_id: definition
@@ -105,9 +104,7 @@ class ReplayComparisonService:
     ) -> tuple[list[ReplayRunResult], ComparisonReport]:
         """Run deterministic comparisons and return run-level results plus report."""
 
-        ordered_scenarios = sorted(
-            scenarios, key=lambda item: (item.ts, item.scenario_id)
-        )
+        ordered_scenarios = sorted(scenarios, key=lambda item: (item.ts, item.scenario_id))
         ordered_sets = sorted(coefficient_sets, key=lambda item: item.set_id)
         stack_index = {
             definition.stack_id: definition
@@ -122,18 +119,12 @@ class ReplayComparisonService:
         scenario_ids = [scenario.scenario_id for scenario in ordered_scenarios]
         overall_reports = {
             coefficient_set.set_id: self._aggregate_runs(
-                [
-                    run
-                    for run in runs
-                    if run.coefficient_set_id == coefficient_set.set_id
-                ]
+                [run for run in runs if run.coefficient_set_id == coefficient_set.set_id]
             )
             for coefficient_set in ordered_sets
         }
         slice_reports: dict[str, dict[str, ComparisonMetrics]] = {}
-        for slice_definition in sorted(
-            walk_forward_slices or [], key=lambda item: item.slice_id
-        ):
+        for slice_definition in sorted(walk_forward_slices or [], key=lambda item: item.slice_id):
             slice_reports[slice_definition.slice_id] = {
                 coefficient_set.set_id: self._aggregate_runs(
                     [
@@ -145,9 +136,7 @@ class ReplayComparisonService:
                 )
                 for coefficient_set in ordered_sets
             }
-        stack_vs_stack_summary = self._stack_vs_stack_summary(
-            ordered_sets, overall_reports
-        )
+        stack_vs_stack_summary = self._stack_vs_stack_summary(ordered_sets, overall_reports)
         return runs, ComparisonReport(
             fixture_pack_id=fixture_pack_id,
             scenario_ids=scenario_ids,
@@ -156,14 +145,10 @@ class ReplayComparisonService:
             stack_vs_stack_summary=stack_vs_stack_summary,
         )
 
-    def serialize_report(
-        self, report: ComparisonReport, output_path: str | Path
-    ) -> str:
+    def serialize_report(self, report: ComparisonReport, output_path: str | Path) -> str:
         """Serialise a comparison report to stable JSON and write it to disk."""
 
-        serialised = json.dumps(
-            report.model_dump(mode="json"), indent=2, sort_keys=True
-        )
+        serialised = json.dumps(report.model_dump(mode="json"), indent=2, sort_keys=True)
         Path(output_path).write_text(serialised + "\n")
         return serialised + "\n"
 
@@ -186,9 +171,7 @@ class ReplayComparisonService:
             ts=self._coerce_datetime(payload["ts"]),
             next_expiry=self._optional_datetime(payload.get("next_expiry")),
             next_event_at=self._optional_datetime(payload.get("next_event_at")),
-            prior_session_return_pct=self._get_float(
-                payload, "prior_session_return_pct", 0.0
-            ),
+            prior_session_return_pct=self._get_float(payload, "prior_session_return_pct", 0.0),
             intraday_move_pct=self._get_float(payload, "intraday_move_pct", 0.0),
         )
         regime_input = MarketRegimeContextInput(
@@ -198,9 +181,7 @@ class ReplayComparisonService:
             sox_return_pct=self._get_float(payload, "sox_return_pct"),
             breadth_score=self._get_float(payload, "breadth_score"),
             concentration_score=self._get_float(payload, "concentration_score"),
-            vix_level=self._override_float(
-                "vix_level", payload, applied_sub_coefficients, 1.0
-            ),
+            vix_level=self._override_float("vix_level", payload, applied_sub_coefficients, 1.0),
             vvix_level=self._get_float(payload, "vvix_level"),
             us10y=self._get_float(payload, "us10y"),
             us2y=self._get_float(payload, "us2y"),
@@ -223,21 +204,13 @@ class ReplayComparisonService:
             atm_straddle_value=self._get_float(payload, "atm_straddle_value"),
             front_realised_vol=self._get_float(payload, "front_realised_vol", 0.0),
             next_realised_vol=self._get_float(payload, "next_realised_vol", 0.0),
-            vix_level=self._override_float(
-                "vix_level", payload, applied_sub_coefficients, 1.0
-            ),
+            vix_level=self._override_float("vix_level", payload, applied_sub_coefficients, 1.0),
             vvix_level=self._get_float(payload, "vvix_level", 0.0),
-            spot_to_pin_distance_pct=self._get_float(
-                payload, "spot_to_pin_distance_pct", 0.0
-            ),
+            spot_to_pin_distance_pct=self._get_float(payload, "spot_to_pin_distance_pct", 0.0),
             call_oi_near_spot=self._get_float(payload, "call_oi_near_spot", 0.0),
             put_oi_near_spot=self._get_float(payload, "put_oi_near_spot", 0.0),
-            front_volume_near_spot=self._get_float(
-                payload, "front_volume_near_spot", 0.0
-            ),
-            next_volume_near_spot=self._get_float(
-                payload, "next_volume_near_spot", 0.0
-            ),
+            front_volume_near_spot=self._get_float(payload, "front_volume_near_spot", 0.0),
+            next_volume_near_spot=self._get_float(payload, "next_volume_near_spot", 0.0),
             vanna_proxy=self._get_float(payload, "vanna_proxy", 0.0),
             charm_proxy=self._get_float(payload, "charm_proxy", 0.0),
             repeated_snapshot_sequence=[
@@ -249,9 +222,7 @@ class ReplayComparisonService:
             ],
             tenor_iv_curve=[
                 TenorCurvePoint.model_validate(item)
-                for item in cast(
-                    list[dict[str, object]], payload.get("tenor_iv_curve", [])
-                )
+                for item in cast(list[dict[str, object]], payload.get("tenor_iv_curve", []))
             ],
             pin_progression_sequence=[
                 PinProgressionPoint.model_validate(item)
@@ -261,9 +232,7 @@ class ReplayComparisonService:
             ],
             nearby_strike_clusters=[
                 StrikeClusterObservation.model_validate(item)
-                for item in cast(
-                    list[dict[str, object]], payload.get("nearby_strike_clusters", [])
-                )
+                for item in cast(list[dict[str, object]], payload.get("nearby_strike_clusters", []))
             ],
         )
         runtime_result = self._runtime.run(
@@ -271,9 +240,7 @@ class ReplayComparisonService:
             regime_input=regime_input,
             options_flow_input=options_input,
             inventory_state=InventoryState.model_validate(payload["inventory_state"]),
-            risk_budget_remaining_pct=self._get_float(
-                payload, "risk_budget_remaining_pct"
-            ),
+            risk_budget_remaining_pct=self._get_float(payload, "risk_budget_remaining_pct"),
             stack_id=stack_definition.stack_id,
             coefficient_set_id=coefficient_set.set_id,
         )
@@ -293,8 +260,7 @@ class ReplayComparisonService:
         )
         contradiction_count = len(runtime_result.review.contradictions)
         contradiction_rate = round(
-            contradiction_count
-            / max(len(scenario.expectation.expected_review_stages), 1),
+            contradiction_count / max(len(scenario.expectation.expected_review_stages), 1),
             4,
         )
         score_components = self._score_components(
@@ -369,34 +335,22 @@ class ReplayComparisonService:
         count = float(len(runs))
         return ComparisonMetrics(
             run_count=len(runs),
-            veto_rate=round(
-                sum(1.0 if run.veto_observed else 0.0 for run in runs) / count, 4
-            ),
-            veto_correctness_rate=round(
-                sum(run.veto_correct for run in runs) / count, 4
-            ),
+            veto_rate=round(sum(1.0 if run.veto_observed else 0.0 for run in runs) / count, 4),
+            veto_correctness_rate=round(sum(run.veto_correct for run in runs) / count, 4),
             mean_fresh_deployable_pct=round(
                 sum(run.target_fresh_deployable_pct for run in runs) / count, 4
             ),
             mean_replay_score=round(sum(run.replay_score for run in runs) / count, 4),
-            mean_contradiction_rate=round(
-                sum(run.contradiction_rate for run in runs) / count, 4
-            ),
-            mean_playbook_precision=round(
-                sum(run.playbook_precision for run in runs) / count, 4
-            ),
-            review_completeness_rate=round(
-                sum(run.review_completeness for run in runs) / count, 4
-            ),
+            mean_contradiction_rate=round(sum(run.contradiction_rate for run in runs) / count, 4),
+            mean_playbook_precision=round(sum(run.playbook_precision for run in runs) / count, 4),
+            review_completeness_rate=round(sum(run.review_completeness for run in runs) / count, 4),
             active_playbook_rate=round(
                 sum(1.0 if run.active_playbook_ids else 0.0 for run in runs) / count, 4
             ),
             mean_active_playbook_count=round(
                 sum(float(len(run.active_playbook_ids)) for run in runs) / count, 4
             ),
-            mean_conflict_count=round(
-                sum(float(run.conflict_count) for run in runs) / count, 4
-            ),
+            mean_conflict_count=round(sum(float(run.conflict_count) for run in runs) / count, 4),
         )
 
     def _stack_vs_stack_summary(
@@ -417,13 +371,11 @@ class ReplayComparisonService:
                         left_stack_id=left.stack_id,
                         right_stack_id=right.stack_id,
                         delta_mean_replay_score=round(
-                            left_report.mean_replay_score
-                            - right_report.mean_replay_score,
+                            left_report.mean_replay_score - right_report.mean_replay_score,
                             4,
                         ),
                         delta_veto_correctness_rate=round(
-                            left_report.veto_correctness_rate
-                            - right_report.veto_correctness_rate,
+                            left_report.veto_correctness_rate - right_report.veto_correctness_rate,
                             4,
                         ),
                         delta_mean_playbook_precision=round(
@@ -456,14 +408,10 @@ class ReplayComparisonService:
         filtered = list(active_playbook_ids)
         if stack_definition.enabled_playbooks:
             allowed = set(stack_definition.enabled_playbooks)
-            filtered = [
-                playbook_id for playbook_id in filtered if playbook_id in allowed
-            ]
+            filtered = [playbook_id for playbook_id in filtered if playbook_id in allowed]
         if stack_definition.disabled_playbooks:
             blocked = set(stack_definition.disabled_playbooks)
-            filtered = [
-                playbook_id for playbook_id in filtered if playbook_id not in blocked
-            ]
+            filtered = [playbook_id for playbook_id in filtered if playbook_id not in blocked]
         return filtered
 
     def _playbook_precision(
@@ -501,12 +449,9 @@ class ReplayComparisonService:
         applied_sub_coefficients: dict[str, float],
     ) -> dict[str, float]:
         playbook_weights = [
-            applied_module_weights.get(playbook_id, 1.0)
-            for playbook_id in active_playbook_ids
+            applied_module_weights.get(playbook_id, 1.0) for playbook_id in active_playbook_ids
         ]
-        playbook_weight = (
-            sum(playbook_weights) / len(playbook_weights) if playbook_weights else 0.0
-        )
+        playbook_weight = sum(playbook_weights) / len(playbook_weights) if playbook_weights else 0.0
         sub_coefficient_scalar = (
             sum(applied_sub_coefficients.values()) / len(applied_sub_coefficients)
             if applied_sub_coefficients
@@ -519,9 +464,7 @@ class ReplayComparisonService:
         }[permission_state]
         return {
             "base_capital": round(target_fresh_deployable_pct / 100.0, 4),
-            "execution_weight": round(
-                applied_module_weights.get("execution_expression", 1.0), 4
-            ),
+            "execution_weight": round(applied_module_weights.get("execution_expression", 1.0), 4),
             "playbook_weight": round(playbook_weight, 4),
             "sub_coefficient_scalar": round(sub_coefficient_scalar, 4),
             "permission_scalar": round(permission_scalar, 4),
@@ -569,9 +512,7 @@ class ReplayComparisonService:
         """Run the bounded Gate 79 harness from a checked-in replay fixture pack."""
 
         fixture_pack = self.load_fixture_pack(path)
-        generated_windows = self.build_walk_forward_windows(
-            fixture_pack.scenarios, authority
-        )
+        generated_windows = self.build_walk_forward_windows(fixture_pack.scenarios, authority)
         forward_slices = [
             WalkForwardSliceDefinition(
                 slice_id=window.window_id,
@@ -621,15 +562,11 @@ class ReplayComparisonService:
                         if authority.window_mode is WalkForwardWindowMode.ANCHORED:
                             calibration_start = offset.offset_sessions
                             calibration_end = (
-                                calibration_start
-                                + authority.calibration_window
-                                + growth
+                                calibration_start + authority.calibration_window + growth
                             )
                         else:
                             calibration_start = rolling_start
-                            calibration_end = (
-                                calibration_start + authority.calibration_window
-                            )
+                            calibration_end = calibration_start + authority.calibration_window
                         validation_start = calibration_end
                         validation_end = validation_start + authority.validation_window
                         forward_start = validation_end
@@ -685,9 +622,7 @@ class ReplayComparisonService:
 
         scenario_index = {scenario.scenario_id: scenario for scenario in scenarios}
         forward_windows = [
-            window
-            for window in generated_windows
-            if window.role is WalkForwardWindowRole.FORWARD
+            window for window in generated_windows if window.role is WalkForwardWindowRole.FORWARD
         ]
         group_results: list[GroupReviewHorizonResult] = []
         unstable_keys: list[str] = []
@@ -695,9 +630,7 @@ class ReplayComparisonService:
         report_level_economic_axis_failures: dict[str, list[str]] = {}
         for surface_key in authority.surface_keys:
             surface_windows = [
-                window
-                for window in forward_windows
-                if window.surface_key == surface_key
+                window for window in forward_windows if window.surface_key == surface_key
             ]
             result = self._evaluate_surface_key(
                 surface_key, surface_windows, report, authority.stability_rule
@@ -730,9 +663,7 @@ class ReplayComparisonService:
                 offset_sensitive_surface_keys=sorted(offset_sensitive_keys),
                 unstable_surface_keys=sorted(unstable_keys),
                 economic_axis_failures=report_level_economic_axis_failures,
-                notes=[
-                    "Harness outputs are bounded evidence surfaces, not promotion decisions."
-                ],
+                notes=["Harness outputs are bounded evidence surfaces, not promotion decisions."],
             ),
             ablation=self._ablation_report(report, report_level_economic_axis_failures),
             downstream_binding=authority.downstream_binding,
@@ -762,9 +693,7 @@ class ReplayComparisonService:
             block_windows = block_groups[block_sessions]
             evaluated_window_ids.extend(window.window_id for window in block_windows)
             populated_windows = [
-                window
-                for window in block_windows
-                if report.slice_reports.get(window.window_id)
+                window for window in block_windows if report.slice_reports.get(window.window_id)
             ]
             if len(populated_windows) < rule.minimum_forward_windows:
                 continue
@@ -789,13 +718,9 @@ class ReplayComparisonService:
                     unstable_offsets.append(offset_id)
             if not any_metrics:
                 continue
-            ranking_consistent = (
-                len({tuple(ranking) for ranking in offset_rankings}) <= 1
-            )
+            ranking_consistent = len({tuple(ranking) for ranking in offset_rankings}) <= 1
             decision_consistent = len(unstable_offsets) == 0
-            economic_axis_failures = self._economic_axis_failures(
-                block_windows, report, rule
-            )
+            economic_axis_failures = self._economic_axis_failures(block_windows, report, rule)
             aggregated_economic_axes.update(
                 axis for axes in economic_axis_failures.values() for axis in axes
             )
@@ -832,13 +757,7 @@ class ReplayComparisonService:
             else OffsetComparisonOutcome.FLAPPING
         )
         if all(
-            len(
-                [
-                    window
-                    for window in group
-                    if report.slice_reports.get(window.window_id)
-                ]
-            )
+            len([window for window in group if report.slice_reports.get(window.window_id)])
             < rule.minimum_forward_windows
             for group in block_groups.values()
         ):
@@ -886,12 +805,12 @@ class ReplayComparisonService:
             veto_spread = max(item.veto_correctness_rate for item in summaries) - min(
                 item.veto_correctness_rate for item in summaries
             )
-            playbook_spread = max(
+            playbook_spread = max(item.mean_playbook_precision for item in summaries) - min(
                 item.mean_playbook_precision for item in summaries
-            ) - min(item.mean_playbook_precision for item in summaries)
-            fresh_spread = max(
+            )
+            fresh_spread = max(item.mean_fresh_deployable_pct for item in summaries) - min(
                 item.mean_fresh_deployable_pct for item in summaries
-            ) - min(item.mean_fresh_deployable_pct for item in summaries)
+            )
             if replay_spread > rule.max_replay_score_spread:
                 return False
             if veto_spread > rule.max_veto_correctness_spread:
@@ -907,19 +826,12 @@ class ReplayComparisonService:
                 return False
         return True
 
-    def _ranking_for_offset(
-        self, metrics_by_set: dict[str, list[ComparisonMetrics]]
-    ) -> list[str]:
+    def _ranking_for_offset(self, metrics_by_set: dict[str, list[ComparisonMetrics]]) -> list[str]:
         ranked = []
         for set_id, summaries in metrics_by_set.items():
-            mean_score = sum(item.mean_replay_score for item in summaries) / len(
-                summaries
-            )
+            mean_score = sum(item.mean_replay_score for item in summaries) / len(summaries)
             ranked.append((set_id, mean_score))
-        return [
-            set_id
-            for set_id, _score in sorted(ranked, key=lambda item: (-item[1], item[0]))
-        ]
+        return [set_id for set_id, _score in sorted(ranked, key=lambda item: (-item[1], item[0]))]
 
     def _economic_axis_failures(
         self,
@@ -934,19 +846,19 @@ class ReplayComparisonService:
                 continue
             window_failures: list[str] = []
             values = list(slice_metrics.values())
-            fresh_spread = max(
+            fresh_spread = max(metric.mean_fresh_deployable_pct for metric in values) - min(
                 metric.mean_fresh_deployable_pct for metric in values
-            ) - min(metric.mean_fresh_deployable_pct for metric in values)
+            )
             if fresh_spread > rule.max_fresh_deployable_spread:
                 window_failures.append("fresh_deployable_spread")
-            active_playbook_spread = max(
+            active_playbook_spread = max(metric.active_playbook_rate for metric in values) - min(
                 metric.active_playbook_rate for metric in values
-            ) - min(metric.active_playbook_rate for metric in values)
+            )
             if active_playbook_spread > rule.max_active_playbook_rate_spread:
                 window_failures.append("active_playbook_rate_spread")
-            conflict_spread = max(
+            conflict_spread = max(metric.mean_conflict_count for metric in values) - min(
                 metric.mean_conflict_count for metric in values
-            ) - min(metric.mean_conflict_count for metric in values)
+            )
             if conflict_spread > rule.max_conflict_count_spread:
                 window_failures.append("conflict_count_spread")
             if (
@@ -994,9 +906,7 @@ class ReplayComparisonService:
             for label in sorted(scenario_counter)
         ]
 
-    def _labels_for_dimension(
-        self, dimension: str, scenario: ReplayScenarioRecord
-    ) -> list[str]:
+    def _labels_for_dimension(self, dimension: str, scenario: ReplayScenarioRecord) -> list[str]:
         payload = scenario.payload
         if dimension == "event":
             if payload.get("event_slice"):

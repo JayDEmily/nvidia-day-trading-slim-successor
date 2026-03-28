@@ -1,4 +1,5 @@
 PYTHON ?= .venv/bin/python
+BLACK ?= $(PYTHON) -m black
 RUFF ?= $(PYTHON) -m ruff
 MYPY ?= $(PYTHON) -m mypy
 PYTEST ?= $(PYTHON) -m pytest
@@ -6,7 +7,7 @@ UVICORN ?= $(PYTHON) -m uvicorn
 ALEMBIC ?= $(PYTHON) -m alembic
 UV ?= uv
 
-.PHONY: install refresh-registry-artifacts gate-e-check gate-f-check test test-unit lint typecheck check run-api init-db seed-dev db-up db-down migrate alembic-sql
+.PHONY: install refresh-registry-artifacts gate-e-check gate-f-check format format-check test test-unit lint typecheck check run-api init-db seed-dev db-up db-down migrate alembic-sql
 
 install:
 	$(UV) sync --extra dev
@@ -25,13 +26,19 @@ test:
 
 test-unit: test
 
+format:
+	$(BLACK) src tests scripts alembic
+
+format-check:
+	$(BLACK) --check src tests scripts alembic
+
 lint:
 	$(RUFF) check src tests
 
 typecheck:
 	$(MYPY) src tests
 
-check: lint typecheck test
+check: format-check lint typecheck test
 
 init-db:
 	$(PYTHON) -m nvda_desk.cli init-db

@@ -46,17 +46,13 @@ class Bundle:
             self.session_factory,
             OvernightCarryMarketService(self.session_factory, classifier, market),
         )
-        self.review = ReviewPacketService(
-            self.session_factory, self.execution, self.events
-        )
+        self.review = ReviewPacketService(self.session_factory, self.execution, self.events)
 
 
 def _client(bundle: Bundle) -> Iterator[TestClient]:
     app.dependency_overrides[get_events_service] = lambda: bundle.events
     app.dependency_overrides[get_execution_records_service] = lambda: bundle.execution
-    app.dependency_overrides[get_overnight_carry_replay_service] = (
-        lambda: bundle.carry_replay
-    )
+    app.dependency_overrides[get_overnight_carry_replay_service] = lambda: bundle.carry_replay
     app.dependency_overrides[get_review_packet_service] = lambda: bundle.review
     try:
         with TestClient(app) as client:
@@ -77,9 +73,7 @@ def test_legacy_jsonl_artifacts_parse() -> None:
         "backlog/legacy_module_backlog_additions.jsonl",
     ]:
         path = repo_root / rel_path
-        rows = [
-            json.loads(line) for line in path.read_text().splitlines() if line.strip()
-        ]
+        rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
         assert rows
 
 
@@ -171,12 +165,8 @@ def test_cli_wrappers(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("NVDA_DESK_DATABASE_URL", database_url)
     inventory = runner.invoke(cli_app, ["legacy-source-inventory"])
     fixtures = runner.invoke(cli_app, ["legacy-fixture-summary"])
-    carry = runner.invoke(
-        cli_app, ["carry-replay", "--evaluation-ts", "2026-03-18T17:29:00Z"]
-    )
-    review = runner.invoke(
-        cli_app, ["review-daily-packet", "--report-date", "2026-03-18"]
-    )
+    carry = runner.invoke(cli_app, ["carry-replay", "--evaluation-ts", "2026-03-18T17:29:00Z"])
+    review = runner.invoke(cli_app, ["review-daily-packet", "--report-date", "2026-03-18"])
     assert inventory.exit_code == 0
     assert fixtures.exit_code == 0
     assert carry.exit_code == 0

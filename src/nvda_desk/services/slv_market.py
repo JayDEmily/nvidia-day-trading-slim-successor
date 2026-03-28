@@ -42,14 +42,10 @@ class StrategicLadderMarketService:
         option_type: OptionType | None = None,
     ) -> list[OptionSnapshotPayload]:
         with self._session_factory() as session:
-            instrument = session.scalar(
-                select(Instrument).where(Instrument.symbol == symbol)
-            )
+            instrument = session.scalar(select(Instrument).where(Instrument.symbol == symbol))
             if instrument is None:
                 return []
-            chosen_expiry = expiry or self._infer_expiry(
-                session, instrument.id, as_of_date
-            )
+            chosen_expiry = expiry or self._infer_expiry(session, instrument.id, as_of_date)
             if chosen_expiry is None:
                 return []
             stmt = (
@@ -96,9 +92,7 @@ class StrategicLadderMarketService:
                 strike_zone_signals=[],
             )
 
-        scored_surface = self._score_surface(
-            surface=surface, spot_price=payload.spot_price
-        )
+        scored_surface = self._score_surface(surface=surface, spot_price=payload.spot_price)
         strike_zone_signals = self._top_signals(scored_surface)
         rung_results: list[LadderRungMarketResult] = []
         rung_scores: list[float] = []
@@ -110,9 +104,7 @@ class StrategicLadderMarketService:
                 key=lambda item: abs(float(item.snapshot.strike) - rung.price),
             )
             matched_proximity_pct = (
-                abs(float(matched.snapshot.strike) - rung.price)
-                / payload.spot_price
-                * 100
+                abs(float(matched.snapshot.strike) - rung.price) / payload.spot_price * 100
             )
             raw_score = (matched.strike_pressure_score * 0.6) + (
                 matched.fill_plausibility_score * 0.4
@@ -124,10 +116,7 @@ class StrategicLadderMarketService:
             if payload.iv_hv_divergence_pct > 20:
                 raw_score -= 0.1
                 reasons.append("iv_hv_divergence_elevated")
-            if (
-                abs(payload.distance_to_vwap_pct)
-                > payload.distance_to_vwap_soft_limit_pct
-            ):
+            if abs(payload.distance_to_vwap_pct) > payload.distance_to_vwap_soft_limit_pct:
                 raw_score -= 0.1
                 reasons.append("distance_to_vwap_elevated")
             if matched.fill_plausibility_score < 0.35:
@@ -177,12 +166,8 @@ class StrategicLadderMarketService:
             rung_scores.append(score)
 
         ladder_score = sum(rung_scores) / len(rung_scores)
-        drop_count = sum(
-            1 for item in rung_results if item.decision is LadderRungDecision.DROP
-        )
-        adjust_count = sum(
-            1 for item in rung_results if item.decision is LadderRungDecision.ADJUST
-        )
+        drop_count = sum(1 for item in rung_results if item.decision is LadderRungDecision.DROP)
+        adjust_count = sum(1 for item in rung_results if item.decision is LadderRungDecision.ADJUST)
 
         ladder_accept_threshold = min(
             max(payload.entry_gate_score_floor + 0.07, keep_threshold), 0.95
@@ -192,9 +177,7 @@ class StrategicLadderMarketService:
         if drop_count == len(rung_results) or ladder_score < ladder_reject_threshold:
             overall = LadderOverallDecision.REJECT
             confidence = LadderConfidence.LOW
-        elif (
-            drop_count > 0 or adjust_count > 0 or ladder_score < ladder_accept_threshold
-        ):
+        elif drop_count > 0 or adjust_count > 0 or ladder_score < ladder_accept_threshold:
             overall = LadderOverallDecision.ADJUST
             confidence = LadderConfidence.MEDIUM
         else:
@@ -206,9 +189,7 @@ class StrategicLadderMarketService:
         if not overall_reasons:
             overall_reasons.append("surface_backed_validation_complete")
 
-        expiry_used = (
-            scored_surface[0].snapshot.expiry if scored_surface else payload.expiry
-        )
+        expiry_used = scored_surface[0].snapshot.expiry if scored_surface else payload.expiry
         return StrategicLadderValidatorMarketOutput(
             ladder_validity_score=max(0.0, min(1.0, ladder_score)),
             overall_decision=overall,
@@ -232,28 +213,20 @@ class StrategicLadderMarketService:
         for row in rows:
             proximity_pct = abs(float(row.strike) - spot_price) / spot_price * 100
             oi_norm = (
-                0.5
-                if row.open_interest is None
-                else min((row.open_interest or 0) / max_oi, 1.0)
+                0.5 if row.open_interest is None else min((row.open_interest or 0) / max_oi, 1.0)
             )
-            volume_norm = (
-                0.5 if row.volume is None else min((row.volume or 0) / max_volume, 1.0)
-            )
+            volume_norm = 0.5 if row.volume is None else min((row.volume or 0) / max_volume, 1.0)
             proximity_norm = max(0.0, 1.0 - min(proximity_pct / 3.0, 1.0))
             strike_pressure_score = (
                 (oi_norm * 0.45) + (volume_norm * 0.25) + (proximity_norm * 0.30)
             )
             spread_pct = self._spread_pct_of_mid(row)
             spread_quality = (
-                0.5
-                if spread_pct is None
-                else max(0.0, 1.0 - min(spread_pct / 25.0, 1.0))
+                0.5 if spread_pct is None else max(0.0, 1.0 - min(spread_pct / 25.0, 1.0))
             )
             fill_plausibility_score = min(
                 1.0,
-                (volume_norm * 0.35)
-                + (spread_quality * 0.45)
-                + (proximity_norm * 0.20),
+                (volume_norm * 0.35) + (spread_quality * 0.45) + (proximity_norm * 0.20),
             )
             scored.append(
                 _ScoredSnapshot(
@@ -265,9 +238,7 @@ class StrategicLadderMarketService:
             )
         return scored
 
-    def _top_signals(
-        self, scored_surface: list[_ScoredSnapshot]
-    ) -> list[StrikeZoneSignal]:
+    def _top_signals(self, scored_surface: list[_ScoredSnapshot]) -> list[StrikeZoneSignal]:
         ranked = sorted(
             scored_surface,
             key=lambda item: (item.strike_pressure_score, item.fill_plausibility_score),
@@ -286,9 +257,7 @@ class StrategicLadderMarketService:
             for item in ranked
         ]
 
-    def _infer_expiry(
-        self, session: Session, instrument_id: int, as_of_date: date
-    ) -> date | None:
+    def _infer_expiry(self, session: Session, instrument_id: int, as_of_date: date) -> date | None:
         stmt = (
             select(OptionSnapshot.expiry)
             .where(OptionSnapshot.instrument_id == instrument_id)

@@ -27,9 +27,7 @@ EXPECTED_GATE35_ORDER = [
 ]
 
 
-def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_honesty() -> (
-    None
-):
+def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_honesty() -> None:
     """Gate 35 should close exactly the six planned execution-orchestration items."""
 
     supportive = build_gate_execution_contract_bundle()
@@ -49,14 +47,11 @@ def test_gate35_coverage_is_closed_in_frozen_order_with_dry_run_orchestration_ho
         "archive-module-050",
     ]
     assert all(
-        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value
-        for output in ordered
+        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value for output in ordered
     )
 
     entry_planner = cast(EntryPlannerContractOutput, outputs["entry_planner"])
-    position_allocator = cast(
-        PositionAllocatorContractOutput, outputs["position_allocator"]
-    )
+    position_allocator = cast(PositionAllocatorContractOutput, outputs["position_allocator"])
     order_simulator = cast(OrderSimulatorContractOutput, outputs["order_simulator"])
     broker_adapter = cast(BrokerAdapterContractOutput, outputs["broker_adapter"])
     run_trading_bot = cast(RunTradingBotContractOutput, outputs["run_trading_bot"])

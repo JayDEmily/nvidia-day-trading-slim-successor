@@ -78,9 +78,7 @@ def _dependency_fences(
 class ContextScannerContractService:
     """Emit Gate-19 context/scanner contracts in frozen order."""
 
-    def evaluate(
-        self, context: ContextScannerContext
-    ) -> list[ContextScannerContractEmission]:
+    def evaluate(self, context: ContextScannerContext) -> list[ContextScannerContractEmission]:
         outputs: list[ContextScannerPayload] = []
         macro_signal = self._macro_signal_score(context)
         execution_context = self._execution_context_score(context)
@@ -142,9 +140,7 @@ class ContextScannerContractService:
         )
         return ContextScannerContractEmission(output=output, packet=packet)
 
-    def _macro_signal_score(
-        self, context: ContextScannerContext
-    ) -> MacroSignalScoreContractOutput:
+    def _macro_signal_score(self, context: ContextScannerContext) -> MacroSignalScoreContractOutput:
         macro_pressure = 0.0
         if (
             context.macro_data_capture.vix_level is not None
@@ -265,8 +261,7 @@ class ContextScannerContractService:
             and context.macro_data_capture.vvix_level is not None
         ):
             spread = round(
-                context.macro_data_capture.vvix_level
-                - context.macro_data_capture.vix_level,
+                context.macro_data_capture.vvix_level - context.macro_data_capture.vix_level,
                 4,
             )
         if spread is None:
@@ -305,9 +300,7 @@ class ContextScannerContractService:
             signal_score=signal_score,
         )
 
-    def _vol_corridor(
-        self, context: ContextScannerContext
-    ) -> VolCorridorContractOutput:
+    def _vol_corridor(self, context: ContextScannerContext) -> VolCorridorContractOutput:
         if (
             context.options_data_capture.front_atm_iv is not None
             and context.options_data_capture.next_atm_iv is not None

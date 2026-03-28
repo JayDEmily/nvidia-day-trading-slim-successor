@@ -9,16 +9,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 EXECUTION_LOG = (
-    REPO_ROOT
-    / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md"
+    REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md"
 )
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
 
 
@@ -31,8 +25,7 @@ def test_corrective_pair_is_the_active_post_gate79_pointer() -> None:
     assert "Gate 80 — complete on `main`" in plans
     assert (
         "Gate 81 is next" in plans
-        or "Corrective review-reconstruction tranche (Gates 80–87) complete on `main`."
-        in plans
+        or "Corrective review-reconstruction tranche (Gates 80–87) complete on `main`." in plans
     )
     assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in plans
 
@@ -41,8 +34,7 @@ def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
     gate_map = GATE_MAP.read_text()
 
     assert (
-        "Current active gate: **Gate 81 in the corrective reconstruction pack**."
-        in gate_map
+        "Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map
     ) or (
         "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**."
         in gate_map
@@ -79,7 +71,5 @@ def test_gate80_execution_log_and_guardrails_cleanup_are_recorded() -> None:
     assert (
         "Status: Gate 80 complete on `main`; active corrective execution continues at Gate 81"
         in gates
-    ) or (
-        "Status: complete on `main`; corrective tranche closed through Gate 87" in gates
-    )
+    ) or ("Status: complete on `main`; corrective tranche closed through Gate 87" in gates)
     assert "### Gate 80 closeout note" in gates

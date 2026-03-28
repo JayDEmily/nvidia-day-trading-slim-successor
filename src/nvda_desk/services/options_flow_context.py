@@ -43,12 +43,8 @@ class OptionsFlowContextService:
         implied_move_envelope_pct = round(
             (payload.atm_straddle_value / max(payload.spot_price, 1.0)) * 100.0, 4
         )
-        iv_rv_front_state = self._iv_rv_state(
-            payload.front_atm_iv, payload.front_realised_vol
-        )
-        iv_rv_next_state = self._iv_rv_state(
-            payload.next_atm_iv, payload.next_realised_vol
-        )
+        iv_rv_front_state = self._iv_rv_state(payload.front_atm_iv, payload.front_realised_vol)
+        iv_rv_next_state = self._iv_rv_state(payload.next_atm_iv, payload.next_realised_vol)
         iv_rv_curve_state = self._iv_rv_curve_state(iv_rv_front_state, iv_rv_next_state)
         vix_spread_state = self._vix_spread_state(payload.vix_level, payload.vvix_level)
         pin_risk_state = self._pin_risk_state(
@@ -93,21 +89,9 @@ class OptionsFlowContextService:
                     + (payload.oi_concentration * 0.10)
                     + (min(abs(payload.vanna_proxy), 1.0) * 0.05)
                     + (min(abs(payload.charm_proxy), 1.0) * 0.05)
-                    + (
-                        0.15
-                        if repeated_snapshot_state == "escalating_pressure"
-                        else 0.0
-                    )
-                    + (
-                        0.10
-                        if pin_risk_state in {"pin_risk_present", "pin_risk_high"}
-                        else 0.0
-                    )
-                    + (
-                        0.15
-                        if vix_spread_state in {"vvix_elevated", "vvix_dislocation"}
-                        else 0.0
-                    ),
+                    + (0.15 if repeated_snapshot_state == "escalating_pressure" else 0.0)
+                    + (0.10 if pin_risk_state in {"pin_risk_present", "pin_risk_high"} else 0.0)
+                    + (0.15 if vix_spread_state in {"vvix_elevated", "vvix_dislocation"} else 0.0),
                 ),
             ),
             4,
@@ -207,9 +191,7 @@ class OptionsFlowContextService:
             return "spread_calm"
         return "spread_moderate"
 
-    def _pin_risk_state(
-        self, spot_to_pin_distance_pct: float, oi_concentration: float
-    ) -> str:
+    def _pin_risk_state(self, spot_to_pin_distance_pct: float, oi_concentration: float) -> str:
         if abs(spot_to_pin_distance_pct) <= 0.35 and oi_concentration >= 0.60:
             return "pin_risk_high"
         if abs(spot_to_pin_distance_pct) <= 0.75 and oi_concentration >= 0.45:

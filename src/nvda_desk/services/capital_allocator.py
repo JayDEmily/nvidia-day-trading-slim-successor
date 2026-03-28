@@ -35,9 +35,7 @@ class CapitalAllocatorService:
             hot_threshold=hot_threshold,
         )
         deployable_pct = max(0.0, 100.0 - reserve_pct)
-        scored_candidates: list[
-            tuple[str, str, float, float, list[str], float, float, float]
-        ] = []
+        scored_candidates: list[tuple[str, str, float, float, list[str], float, float, float]] = []
         for candidate in payload.candidates:
             walk_forward = self._experiment_log.latest_run(
                 module_id=candidate.module_id,
@@ -104,9 +102,7 @@ class CapitalAllocatorService:
                     module_id=module_id,
                     module_name=module_name,
                     allocation_pct=round(allocation_pct, 4),
-                    allocated_capital=round(
-                        payload.total_capital * (allocation_pct / 100.0), 4
-                    ),
+                    allocated_capital=round(payload.total_capital * (allocation_pct / 100.0), 4),
                     quality_score=round(min(weighted_score, 1.0), 4),
                     regime_fit_score=round(regime_fit_score, 4),
                     reasons=reasons,
@@ -118,9 +114,7 @@ class CapitalAllocatorService:
             requested_at=payload.requested_at,
             total_capital=payload.total_capital,
             cash_reserve_pct=cash_reserve_pct,
-            cash_reserve_capital=round(
-                payload.total_capital * (cash_reserve_pct / 100.0), 4
-            ),
+            cash_reserve_capital=round(payload.total_capital * (cash_reserve_pct / 100.0), 4),
             allocations=allocations,
         )
 
@@ -142,9 +136,7 @@ class CapitalAllocatorService:
         average_score = float(walk_output.get("average_forward_score", 0.0))
         pass_rate = float(walk_output.get("pass_rate", 0.0))
         fragility_score = float(fragility.output_payload.get("fragility_score", 1.0))
-        phase_fit = self._bucket_score(
-            walk_output.get("phase_buckets", []), requested_phase
-        )
+        phase_fit = self._bucket_score(walk_output.get("phase_buckets", []), requested_phase)
         volatility_fit = self._bucket_score(
             walk_output.get("volatility_buckets", []),
             requested_volatility_bucket,

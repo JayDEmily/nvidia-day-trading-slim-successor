@@ -36,9 +36,7 @@ def test_gate_e_fixture_pack_round_trips_from_disk() -> None:
     assert pack.model_dump(mode="json") == raw
 
 
-def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_events() -> (
-    None
-):
+def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_events() -> None:
     """Prepared runtime datasets should align chains to bars and preserve sequence lineage."""
 
     service = RealDataLoaderService()
@@ -67,19 +65,17 @@ def test_prepare_runtime_dataset_aligns_repeated_chain_sequence_with_bars_and_ev
     assert first_snapshot.live_event_snapshot is not None
     assert first_snapshot.live_event_snapshot.next_event is not None
     assert first_snapshot.live_event_snapshot.next_event.event_id == "evt-1"
-    assert [
-        event.event_id for event in first_snapshot.live_event_snapshot.nearby_events
-    ] == ["evt-1", "evt-2"]
+    assert [event.event_id for event in first_snapshot.live_event_snapshot.nearby_events] == [
+        "evt-1",
+        "evt-2",
+    ]
     assert (
-        first_snapshot.repeated_snapshot_sequence[-1].ts.isoformat()
-        == "2026-03-23T14:12:00+00:00"
+        first_snapshot.repeated_snapshot_sequence[-1].ts.isoformat() == "2026-03-23T14:12:00+00:00"
     )
     assert first_snapshot.pin_progression_bias == "pinning_in"
 
 
-def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs() -> (
-    None
-):
+def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs() -> None:
     """Prepared runtime snapshots should convert directly into cognition-ready inputs."""
 
     pack = _load_fixture_pack()
@@ -137,16 +133,14 @@ def test_gate_e_runtime_path_validation() -> None:
         temporal_service.evaluate(packet.temporal_input) for packet in converted_inputs
     ]
     options_outputs = [
-        options_service.evaluate(packet.options_flow_input)
-        for packet in converted_inputs
+        options_service.evaluate(packet.options_flow_input) for packet in converted_inputs
     ]
 
     assert len(temporal_outputs) == 3
     assert len(options_outputs) == 3
     assert temporal_outputs[0].event_window_state == "same_session_event_window"
     assert all(
-        output.repeated_snapshot_state
-        in {"escalating_pressure", "pinning_build", "stable_recheck"}
+        output.repeated_snapshot_state in {"escalating_pressure", "pinning_build", "stable_recheck"}
         for output in options_outputs
     )
     assert options_outputs[0].pin_progression_state == "pinning_in"

@@ -52,9 +52,7 @@ def _vvix_outputs(*, stressed: bool = False) -> dict[str, object]:
     return {emission.output.canonical_slug: emission.output for emission in emissions}
 
 
-def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlays() -> (
-    None
-):
+def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlays() -> None:
     """Gate 33 should close exactly the four ladder/readiness overlays."""
 
     supportive = build_gate_support_bundle()
@@ -73,9 +71,7 @@ def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlay
         "legacy-module-002",
     ]
 
-    ladder_constructor = cast(
-        LadderConstructorContractOutput, outputs["ladder_constructor"]
-    )
+    ladder_constructor = cast(LadderConstructorContractOutput, outputs["ladder_constructor"])
     fill_bias = cast(FillBiasAdjusterContractOutput, outputs["fill_bias_adjuster"])
     vvix_shaper = cast(VvixLadderShaperContractOutput, outputs["vvix_ladder_shaper"])
     volatility_sentiment = cast(
@@ -85,10 +81,7 @@ def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlay
     assert ladder_constructor.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value
     assert fill_bias.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value
     assert vvix_shaper.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
-    assert (
-        volatility_sentiment.grammar_role
-        == DmpGrammarRole.POSTURE_RISK_PERMISSION.value
-    )
+    assert volatility_sentiment.grammar_role == DmpGrammarRole.POSTURE_RISK_PERMISSION.value
     assert vvix_shaper.upstream_contract_slugs == [
         "ladder_constructor",
         "macro_data_capture",
@@ -101,9 +94,7 @@ def test_gate33_coverage_is_closed_in_frozen_order_with_honest_readiness_overlay
     assert vvix_shaper.ladder_width_multiplier > 0.0
 
 
-def test_gate33_stress_widens_vvix_overlay_without_claiming_live_broker_readiness() -> (
-    None
-):
+def test_gate33_stress_widens_vvix_overlay_without_claiming_live_broker_readiness() -> None:
     """Gate 33 should widen honestly under stress and keep readiness overlays advisory only."""
 
     outputs = {

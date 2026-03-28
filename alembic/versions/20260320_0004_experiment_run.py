@@ -4,6 +4,7 @@ Revision ID: 20260320_0004
 Revises: 20260319_0003
 Create Date: 2026-03-20 15:05:00Z
 """
+
 from __future__ import annotations
 
 from alembic import op
@@ -19,7 +20,12 @@ def upgrade() -> None:
     op.create_table(
         "experiment_run",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("experiment_type", sa.String(length=32), nullable=False),
@@ -32,7 +38,9 @@ def upgrade() -> None:
     )
     op.create_index("ix_experiment_run_symbol", "experiment_run", ["symbol"], unique=False)
     op.create_index("ix_experiment_run_module_id", "experiment_run", ["module_id"], unique=False)
-    op.create_index("ix_experiment_run_experiment_type", "experiment_run", ["experiment_type"], unique=False)
+    op.create_index(
+        "ix_experiment_run_experiment_type", "experiment_run", ["experiment_type"], unique=False
+    )
     op.create_index(
         "ix_experiment_run_config_name",
         "experiment_run",

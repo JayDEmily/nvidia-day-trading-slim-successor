@@ -19,9 +19,7 @@ from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
 
 
-def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order() -> (
-    None
-):
+def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order() -> None:
     """Gate 43 should extend the registry with the new options-first playbooks."""
 
     registry = PlaybookRegistryService()
@@ -49,9 +47,7 @@ def test_registry_exposes_the_new_options_first_playbooks_in_deterministic_order
     )
 
 
-def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_paths() -> (
-    None
-):
+def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_paths() -> None:
     """Front-expiry pin pressure should qualify only in the focused expiry-window setup."""
 
     runtime = DeskCognitionRuntime(Settings())
@@ -168,9 +164,7 @@ def test_runtime_promotes_front_expiry_pin_pressure_without_displacing_legacy_pa
     assert result.execution.inventory_action == "trim"
 
 
-def test_runtime_promotes_term_structure_dislocation_when_curve_and_iv_rv_diverge() -> (
-    None
-):
+def test_runtime_promotes_term_structure_dislocation_when_curve_and_iv_rv_diverge() -> None:
     """Term-structure dislocation should use the new options-first playbook only in a real curve shock."""
 
     runtime = DeskCognitionRuntime(Settings())

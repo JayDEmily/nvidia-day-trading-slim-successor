@@ -36,18 +36,13 @@ def test_gate36_coverage_is_closed_in_frozen_order_with_preview_state_honesty() 
         "archive-module-032",
     ]
     assert all(
-        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value
-        for output in ordered
+        output.grammar_role == DmpGrammarRole.EXPRESSION_EXECUTION.value for output in ordered
     )
 
-    execution_log_writer = cast(
-        ExecutionLogWriterContractOutput, outputs["execution_log_writer"]
-    )
+    execution_log_writer = cast(ExecutionLogWriterContractOutput, outputs["execution_log_writer"])
     position_book = cast(PositionBookContractOutput, outputs["position_book"])
     trade_logger = cast(TradeLoggerContractOutput, outputs["trade_logger"])
-    unrealized_tracker = cast(
-        UnrealizedTrackerContractOutput, outputs["unrealized_tracker"]
-    )
+    unrealized_tracker = cast(UnrealizedTrackerContractOutput, outputs["unrealized_tracker"])
 
     assert execution_log_writer.log_state == "preview_events_logged"
     assert "broker_requests" in execution_log_writer.missing_surfaces
@@ -65,9 +60,7 @@ def test_gate36_stress_keeps_state_spine_descriptive_and_unbooked() -> None:
 
     position_book = cast(PositionBookContractOutput, outputs["position_book"])
     trade_logger = cast(TradeLoggerContractOutput, outputs["trade_logger"])
-    unrealized_tracker = cast(
-        UnrealizedTrackerContractOutput, outputs["unrealized_tracker"]
-    )
+    unrealized_tracker = cast(UnrealizedTrackerContractOutput, outputs["unrealized_tracker"])
 
     assert position_book.book_state in {"preview_position_open", "flat_or_locked"}
     assert trade_logger.trade_log_state == "idle"

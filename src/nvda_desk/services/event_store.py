@@ -32,9 +32,7 @@ class EventStoreService:
     """
 
     def __init__(self, records: Sequence[NormalisedEventRecord]):
-        self._records = sorted(
-            records, key=lambda record: (record.event_at, record.record_id)
-        )
+        self._records = sorted(records, key=lambda record: (record.event_at, record.record_id))
 
     def query(
         self,
@@ -45,9 +43,7 @@ class EventStoreService:
         minimum_materiality: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT,
         replay_mode: ReplayEventConsumerMode = ReplayEventConsumerMode.RUNTIME_NEARBY,
     ) -> EventStoreQueryResult:
-        window = query_window or EventQueryWindow(
-            lookback_minutes=240, lookahead_minutes=1440
-        )
+        window = query_window or EventQueryWindow(lookback_minutes=240, lookahead_minutes=1440)
         lower = self._aware(requested_at) - timedelta(minutes=window.lookback_minutes)
         upper = self._aware(requested_at) + timedelta(minutes=window.lookahead_minutes)
         nearby = [
@@ -97,22 +93,14 @@ class EventStoreService:
             key=lambda record: record.event_at,
             default=None,
         )
-        lineage_keys = sorted(
-            {key for keys in result.lineage_map.values() for key in keys}
-        )
+        lineage_keys = sorted({key for keys in result.lineage_map.values() for key in keys})
         return LiveEventSnapshot(
             requested_at=result.requested_at,
             symbol=result.symbol,
             query_window=result.query_window,
-            next_event=(
-                self._to_live_reference(next_event) if next_event is not None else None
-            ),
-            nearby_events=[
-                self._to_live_reference(record) for record in result.nearby_events
-            ],
-            material_events=[
-                self._to_live_reference(record) for record in result.material_events
-            ],
+            next_event=(self._to_live_reference(next_event) if next_event is not None else None),
+            nearby_events=[self._to_live_reference(record) for record in result.nearby_events],
+            material_events=[self._to_live_reference(record) for record in result.material_events],
             lineage_keys=lineage_keys,
         )
 
@@ -145,9 +133,7 @@ class EventStoreService:
         }
         return ordering[tier]
 
-    def _symbol_matches(
-        self, record_symbol: str | None, requested_symbol: str | None
-    ) -> bool:
+    def _symbol_matches(self, record_symbol: str | None, requested_symbol: str | None) -> bool:
         return requested_symbol is None or record_symbol in {None, requested_symbol}
 
     def _aware(self, ts: datetime) -> datetime:

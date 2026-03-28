@@ -66,9 +66,7 @@ class ServiceBundle:
             slv_market,
             risk,
         )
-        self.carry_market = OvernightCarryMarketService(
-            session_factory, classifier, market
-        )
+        self.carry_market = OvernightCarryMarketService(session_factory, classifier, market)
         self.risk = risk
         self.slv_experiments = StrategicLadderExperimentService(
             classifier,
@@ -77,9 +75,7 @@ class ServiceBundle:
             self.experiments,
             self.config_surface,
         )
-        self.capital_allocator = CapitalAllocatorService(
-            self.experiments, self.config_surface
-        )
+        self.capital_allocator = CapitalAllocatorService(self.experiments, self.config_surface)
 
 
 def _client_with_services(bundle: ServiceBundle) -> Iterator[TestClient]:
@@ -88,22 +84,14 @@ def _client_with_services(bundle: ServiceBundle) -> Iterator[TestClient]:
     app.dependency_overrides[get_evaluation_log_service] = lambda: bundle.evals
     app.dependency_overrides[get_experiment_log_service] = lambda: bundle.experiments
     app.dependency_overrides[get_replay_service] = lambda: bundle.replay
-    app.dependency_overrides[get_strategic_ladder_market_service] = (
-        lambda: bundle.slv_market
-    )
-    app.dependency_overrides[get_strategic_ladder_replay_service] = (
-        lambda: bundle.slv_replay
-    )
+    app.dependency_overrides[get_strategic_ladder_market_service] = lambda: bundle.slv_market
+    app.dependency_overrides[get_strategic_ladder_replay_service] = lambda: bundle.slv_replay
     app.dependency_overrides[get_strategic_ladder_experiment_service] = (
         lambda: bundle.slv_experiments
     )
-    app.dependency_overrides[get_overnight_carry_market_service] = (
-        lambda: bundle.carry_market
-    )
+    app.dependency_overrides[get_overnight_carry_market_service] = lambda: bundle.carry_market
     app.dependency_overrides[get_risk_gateway_service] = lambda: bundle.risk
-    app.dependency_overrides[get_capital_allocator_service] = (
-        lambda: bundle.capital_allocator
-    )
+    app.dependency_overrides[get_capital_allocator_service] = lambda: bundle.capital_allocator
     try:
         with TestClient(app) as client:
             yield client
@@ -465,10 +453,7 @@ def test_slv_batch_ranking_and_allocator(tmp_path: Path) -> None:
     allocation_payload = allocation_response.json()
     assert allocation_payload["allocations"][0]["module_id"] == "slv-v3-replay"
     assert allocation_payload["cash_reserve_pct"] >= 0.0
-    assert (
-        "variant_weight_override_applied"
-        in allocation_payload["allocations"][0]["reasons"]
-    )
+    assert "variant_weight_override_applied" in allocation_payload["allocations"][0]["reasons"]
 
 
 def test_unknown_strategy_variant_returns_404(tmp_path: Path) -> None:

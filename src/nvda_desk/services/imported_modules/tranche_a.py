@@ -87,9 +87,7 @@ def _dependency_fences(
 class TrancheAUpstreamContractService:
     """Import tranche-A temporal, regime, and options detectors as typed contracts."""
 
-    def evaluate(
-        self, context: TrancheAUpstreamContext
-    ) -> list[TrancheAContractEmission]:
+    def evaluate(self, context: TrancheAUpstreamContext) -> list[TrancheAContractEmission]:
         """Emit the seven upstream tranche-A contract surfaces in grammar order."""
 
         outputs: list[TrancheAImportedPayload] = [
@@ -167,9 +165,7 @@ class TrancheAUpstreamContractService:
             event_flags=event_flags,
             next_event_minutes=context.temporal.event_minutes_remaining,
             event_window_state=context.temporal.event_window_state,
-            capture_state=(
-                "event_flags_present" if event_flags else "no_known_event_flags"
-            ),
+            capture_state=("event_flags_present" if event_flags else "no_known_event_flags"),
         )
 
     def _realized_volatility_engine(
@@ -224,9 +220,7 @@ class TrancheAUpstreamContractService:
             detection_state="dependency_fenced",
         )
 
-    def _peer_divergence(
-        self, context: TrancheAUpstreamContext
-    ) -> PeerDivergenceContractOutput:
+    def _peer_divergence(self, context: TrancheAUpstreamContext) -> PeerDivergenceContractOutput:
         peer_proxy_returns = [
             context.regime_input.nq_return_pct,
             context.regime_input.es_return_pct,
@@ -257,12 +251,8 @@ class TrancheAUpstreamContractService:
             peer_basis=["nq_return_pct", "es_return_pct", "sox_return_pct"],
         )
 
-    def _gamma_pressure(
-        self, context: TrancheAUpstreamContext
-    ) -> GammaPressureContractOutput:
-        signal_score = round(
-            min(1.0, abs(context.options_flow_input.gamma_pressure_score)), 4
-        )
+    def _gamma_pressure(self, context: TrancheAUpstreamContext) -> GammaPressureContractOutput:
+        signal_score = round(min(1.0, abs(context.options_flow_input.gamma_pressure_score)), 4)
         return GammaPressureContractOutput(
             canonical_id="archive-module-011",
             canonical_slug="gamma_pressure",
@@ -283,9 +273,7 @@ class TrancheAUpstreamContractService:
             zone_gamma=context.options_flow.gamma_state.value,
         )
 
-    def _iv_vs_rv_analysis(
-        self, context: TrancheAUpstreamContext
-    ) -> IvVsRvAnalysisContractOutput:
+    def _iv_vs_rv_analysis(self, context: TrancheAUpstreamContext) -> IvVsRvAnalysisContractOutput:
         rv = context.options_flow_input.front_realised_vol
         iv = context.options_flow_input.front_atm_iv
         ratio = round(iv / rv, 4) if rv > 0 else None
@@ -310,15 +298,11 @@ class TrancheAUpstreamContractService:
             signal_score=round(min(1.0, abs((ratio or 1.0) - 1.0)), 4),
         )
 
-    def _skew_inflection(
-        self, context: TrancheAUpstreamContext
-    ) -> SkewInflectionContractOutput:
+    def _skew_inflection(self, context: TrancheAUpstreamContext) -> SkewInflectionContractOutput:
         snapshots = context.options_flow_input.repeated_snapshot_sequence
         skew_change = None
         if len(snapshots) >= 2:
-            skew_change = round(
-                snapshots[-1].put_call_skew - snapshots[0].put_call_skew, 4
-            )
+            skew_change = round(snapshots[-1].put_call_skew - snapshots[0].put_call_skew, 4)
         if skew_change is None:
             inflection_tag = "single_snapshot_only"
             signal_score = 0.0
@@ -354,9 +338,7 @@ class TrancheAUpstreamContractService:
 class TrancheASelectorContractService:
     """Import tranche-A posture and eligibility selectors as typed contracts."""
 
-    def evaluate(
-        self, context: TrancheASelectorContext
-    ) -> list[TrancheAContractEmission]:
+    def evaluate(self, context: TrancheASelectorContext) -> list[TrancheAContractEmission]:
         """Emit the six posture and eligibility selectors in grammar order."""
 
         outputs: list[TrancheAImportedPayload] = [
@@ -440,22 +422,14 @@ class TrancheASelectorContractService:
     def _model_confidence_scorer(
         self, context: TrancheASelectorContext
     ) -> ModelConfidenceScorerContractOutput:
-        signal_bonus = (
-            0.15 if context.regime.signal_conflict_state == "aligned_regime" else 0.0
-        )
-        gamma_penalty = (
-            0.25 if context.options_flow.gamma_state.value == "destabilising" else 0.0
-        )
-        permission_bonus = (
-            0.20 if context.posture.permission_state.value == "allow" else 0.05
-        )
+        signal_bonus = 0.15 if context.regime.signal_conflict_state == "aligned_regime" else 0.0
+        gamma_penalty = 0.25 if context.options_flow.gamma_state.value == "destabilising" else 0.0
+        permission_bonus = 0.20 if context.posture.permission_state.value == "allow" else 0.05
         confidence = round(
             max(0.0, min(1.0, 0.45 + signal_bonus + permission_bonus - gamma_penalty)),
             4,
         )
-        band = (
-            "high" if confidence >= 0.75 else "medium" if confidence >= 0.5 else "low"
-        )
+        band = "high" if confidence >= 0.75 else "medium" if confidence >= 0.5 else "low"
         return ModelConfidenceScorerContractOutput(
             canonical_id="archive-module-051",
             canonical_slug="model_confidence_scorer",
@@ -484,10 +458,7 @@ class TrancheASelectorContractService:
         )
         if context.regime.volatility_regime.value == "stressed":
             score -= 0.2
-        if (
-            context.options_flow.options_behavior_cluster
-            == "compression_breakout_ready"
-        ):
+        if context.options_flow.options_behavior_cluster == "compression_breakout_ready":
             score += 0.1
         score = round(max(0.0, min(1.0, score)), 4)
         tier = "tier_1" if score >= 0.75 else "tier_2" if score >= 0.5 else "tier_3"
@@ -515,14 +486,9 @@ class TrancheASelectorContractService:
         if context.temporal.event_window_state not in {"clear_window", "event_clear"}:
             entry_allowed = False
             suppression_tag = "event_window_veto"
-        if (
-            context.posture.permission_state.value == "derisk"
-            and suppression_tag == "clear"
-        ):
+        if context.posture.permission_state.value == "derisk" and suppression_tag == "clear":
             suppression_tag = "derisk_only"
-        confidence = (
-            0.75 if entry_allowed else 0.25 if suppression_tag == "derisk_only" else 0.0
-        )
+        confidence = 0.75 if entry_allowed else 0.25 if suppression_tag == "derisk_only" else 0.0
         return EntryGateContractOutput(
             canonical_id="archive-module-023",
             canonical_slug="entry_gate",
@@ -534,9 +500,7 @@ class TrancheASelectorContractService:
                     "engine_score": "proxied from current posture permission and temporal veto surfaces"
                 },
             ),
-            contract_notes=[
-                "Entry gate remains advisory until a richer score stack exists."
-            ],
+            contract_notes=["Entry gate remains advisory until a richer score stack exists."],
             entry_allowed=entry_allowed,
             entry_confidence=confidence,
             suppression_tag=suppression_tag,
@@ -568,9 +532,7 @@ class TrancheASelectorContractService:
         spot = context.options_flow.dominant_strike or 0.0
         if spot == 0.0:
             spot = 100.0
-        span = round(
-            max(1.0, abs(context.options_flow.implied_move_envelope_pct) * 0.5), 2
-        )
+        span = round(max(1.0, abs(context.options_flow.implied_move_envelope_pct) * 0.5), 2)
         ladder = [round(spot - span, 2), round(spot, 2), round(spot + span, 2)]
         return LadderConstructorContractOutput(
             canonical_id="archive-module-024",

@@ -184,9 +184,7 @@ def test_posture_enricher_contracts_emit_the_frozen_six_modules_in_order() -> No
     """Gate 20 should emit the six enrichers in gate-map order."""
 
     emissions = PostureEnricherContractService().evaluate(_context_from_fixture())
-    assert [
-        emission.output.canonical_slug for emission in emissions
-    ] == EXPECTED_GATE20_ORDER
+    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE20_ORDER
     assert [emission.packet.grammar_role for emission in emissions] == [
         DmpGrammarRole.PLAYBOOK_ELIGIBILITY,
         DmpGrammarRole.PLAYBOOK_ELIGIBILITY,
@@ -196,8 +194,7 @@ def test_posture_enricher_contracts_emit_the_frozen_six_modules_in_order() -> No
         DmpGrammarRole.POSTURE_RISK_PERMISSION,
     ]
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
@@ -208,9 +205,7 @@ def test_posture_enrichers_keep_fill_bias_and_tail_hedge_advisory_with_explicit_
 
     outputs = {
         emission.output.canonical_slug: emission.output
-        for emission in PostureEnricherContractService().evaluate(
-            _context_from_fixture()
-        )
+        for emission in PostureEnricherContractService().evaluate(_context_from_fixture())
     }
     fill_bias = cast(FillBiasAdjusterContractOutput, outputs["fill_bias_adjuster"])
     tail_hedge = cast(TailHedgeInjectorContractOutput, outputs["tail_hedge_injector"])
@@ -252,17 +247,11 @@ def test_posture_enrichers_keep_fill_bias_and_tail_hedge_advisory_with_explicit_
     }
 
 
-def test_posture_enrichers_reflect_stressed_conditions_and_keep_obv_flow_fenced() -> (
-    None
-):
+def test_posture_enrichers_reflect_stressed_conditions_and_keep_obv_flow_fenced() -> None:
     """Gate 20 should degrade honestly under stress and fence missing OBV tape dependencies."""
 
-    emissions = PostureEnricherContractService().evaluate(
-        _context_from_fixture(stressed=True)
-    )
-    outputs = {
-        emission.output.canonical_slug: emission.output for emission in emissions
-    }
+    emissions = PostureEnricherContractService().evaluate(_context_from_fixture(stressed=True))
+    outputs = {emission.output.canonical_slug: emission.output for emission in emissions}
     tail_hedge = cast(TailHedgeInjectorContractOutput, outputs["tail_hedge_injector"])
     volatility_sentiment = cast(
         VolatilitySentimentIndexContractOutput, outputs["volatility_sentiment_index"]
@@ -284,6 +273,4 @@ def test_posture_enrichers_reflect_stressed_conditions_and_keep_obv_flow_fenced(
         "market_volume_series",
         "intraday_obv_curve",
     }
-    assert emissions[-1].packet.summary.trader_summary.startswith(
-        "volatility_sentiment_index"
-    )
+    assert emissions[-1].packet.summary.trader_summary.startswith("volatility_sentiment_index")

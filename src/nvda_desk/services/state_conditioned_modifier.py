@@ -176,14 +176,10 @@ class StateConditionedModifierService:
     ) -> ModifierRuntimePacket:
         """Return one typed Gate 78 modifier packet for this runtime snapshot."""
 
-        active_state_fields = self._active_state_fields(
-            temporal, regime, options_flow, posture
-        )
+        active_state_fields = self._active_state_fields(temporal, regime, options_flow, posture)
         policy_applications: list[_PolicyApplication] = []
         active_policy_ids: list[str] = []
-        active_precedence_bands: set[ModifierPriorityBand] = {
-            ModifierPriorityBand.BASELINE
-        }
+        active_precedence_bands: set[ModifierPriorityBand] = {ModifierPriorityBand.BASELINE}
         applied_combination_laws: set[CombinationLaw] = set()
         suppressed_state_labels: list[str] = []
         conflict_classes: list[SignalConflictClass] = []
@@ -199,9 +195,7 @@ class StateConditionedModifierService:
             or carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY
         ):
             active_precedence_bands.add(ModifierPriorityBand.PHASE_CARRY)
-            policy_id = (
-                f"phase_carry:{day_phase_state.value}:{carry_horizon_state.value}"
-            )
+            policy_id = f"phase_carry:{day_phase_state.value}:{carry_horizon_state.value}"
             active_policy_ids.append(policy_id)
             applied_combination_laws.add(CombinationLaw.MULTIPLY_THEN_CLAMP)
             policy_applications.append(
@@ -211,13 +205,9 @@ class StateConditionedModifierService:
                     target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                     transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                     scale=(
-                        0.50
-                        if carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY
-                        else 0.70
+                        0.50 if carry_horizon_state is not CarryHorizonState.INTRADAY_ONLY else 0.70
                     ),
-                    notes=(
-                        "late_or_carry_sensitive_phase_compresses_fresh_deployable_capital",
-                    ),
+                    notes=("late_or_carry_sensitive_phase_compresses_fresh_deployable_capital",),
                 )
             )
             policy_applications.append(
@@ -241,23 +231,17 @@ class StateConditionedModifierService:
             triggered_kill_switch = KillSwitchCondition.EVENT_LIVE_HARD_BLOCK
             stand_down_class = NonActionClass.EVENT_RISK_STAND_DOWN
             degradation_step = DegradationStep.VETO
-            suppressed_state_labels.extend(
-                ["phase_carry", "precursor", "regime", "baseline"]
-            )
+            suppressed_state_labels.extend(["phase_carry", "precursor", "regime", "baseline"])
             notes.append("event_live_hard_block_engaged")
         if (
             "event_suppressed" in event_states
             and "negative_gamma_stress" in event_states
             and triggered_kill_switch is None
         ):
-            triggered_kill_switch = (
-                KillSwitchCondition.EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA
-            )
+            triggered_kill_switch = KillSwitchCondition.EVENT_SUPPRESSED_WITH_NEGATIVE_GAMMA
             stand_down_class = NonActionClass.OPTIONS_FLOW_STAND_DOWN
             degradation_step = DegradationStep.VETO
-            suppressed_state_labels.extend(
-                ["phase_carry", "precursor", "regime", "baseline"]
-            )
+            suppressed_state_labels.extend(["phase_carry", "precursor", "regime", "baseline"])
             notes.append("event_suppressed_with_negative_gamma_engaged_kill_switch")
         if triggered_kill_switch is None:
             if "negative_gamma_stress" in event_states:
@@ -359,9 +343,7 @@ class StateConditionedModifierService:
             active_precedence_bands.add(ModifierPriorityBand.PRECURSOR)
             if precursor.contradiction_class is not PrecursorContradictionClass.NONE:
                 conflict_classes.append(SignalConflictClass.OBSERVATION_DIVERGENCE)
-                notes.append(
-                    f"precursor_contradiction:{precursor.contradiction_class.value}"
-                )
+                notes.append(f"precursor_contradiction:{precursor.contradiction_class.value}")
             if precursor.posture_state is PrecursorPostureState.UNRESOLVED_CONTEXT:
                 triggered_kill_switch = (
                     triggered_kill_switch or KillSwitchCondition.DATA_QUALITY_HARD_BLOCK
@@ -369,9 +351,7 @@ class StateConditionedModifierService:
                 stand_down_class = NonActionClass.DATA_QUALITY_STAND_DOWN
                 degradation_step = DegradationStep.VETO
                 suppressed_state_labels.extend(["regime", "baseline"])
-                notes.append(
-                    "precursor_unresolved_context_forced_data_quality_hard_block"
-                )
+                notes.append("precursor_unresolved_context_forced_data_quality_hard_block")
             elif triggered_kill_switch is None:
                 if precursor.posture_state is PrecursorPostureState.STAND_DOWN_PRESSURE:
                     policy_id = "precursor:stand_down_pressure"
@@ -384,9 +364,7 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.40,
-                            notes=(
-                                "precursor_stand_down_pressure_compresses_deployable_capital",
-                            ),
+                            notes=("precursor_stand_down_pressure_compresses_deployable_capital",),
                         )
                     )
                     stand_down_class = NonActionClass.DATA_QUALITY_STAND_DOWN
@@ -406,9 +384,7 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.75,
-                            notes=(
-                                "precursor_tightened_posture_reduces_deployable_capital",
-                            ),
+                            notes=("precursor_tightened_posture_reduces_deployable_capital",),
                         )
                     )
                     degradation_step = max(
@@ -416,9 +392,7 @@ class StateConditionedModifierService:
                         DegradationStep.CONFIRMATION_TIGHTENED,
                         key=self._degradation_rank,
                     )
-                elif (
-                    precursor.posture_state is PrecursorPostureState.DEGRADED_CONFIDENCE
-                ):
+                elif precursor.posture_state is PrecursorPostureState.DEGRADED_CONFIDENCE:
                     policy_id = "precursor:degraded_confidence"
                     active_policy_ids.append(policy_id)
                     applied_combination_laws.add(CombinationLaw.MULTIPLY_THEN_CLAMP)
@@ -429,9 +403,7 @@ class StateConditionedModifierService:
                             target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
                             transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
                             scale=0.85,
-                            notes=(
-                                "precursor_degraded_confidence_reduces_deployable_capital",
-                            ),
+                            notes=("precursor_degraded_confidence_reduces_deployable_capital",),
                         )
                     )
 
@@ -473,9 +445,7 @@ class StateConditionedModifierService:
                 active_policy_ids=active_policy_ids,
                 triggered_kill_switch=triggered_kill_switch,
             )
-            effective_lineage = self._hard_block_lineage(
-                resolved_surfaces, active_policy_ids
-            )
+            effective_lineage = self._hard_block_lineage(resolved_surfaces, active_policy_ids)
             active_precedence_bands.add(ModifierPriorityBand.KILL_SWITCH)
             applied_combination_laws.add(CombinationLaw.BLOCK_OVERRIDES_SCALE)
             conflict_classes.append(SignalConflictClass.HARD_VETO_CONFLICT)
@@ -486,12 +456,8 @@ class StateConditionedModifierService:
             active_policy_ids=active_policy_ids,
             resolved_surfaces=resolved_surfaces,
             effective_lineage=effective_lineage,
-            active_precedence_bands=sorted(
-                active_precedence_bands, key=self._band_sort
-            ),
-            applied_combination_laws=sorted(
-                applied_combination_laws, key=lambda item: item.value
-            ),
+            active_precedence_bands=sorted(active_precedence_bands, key=self._band_sort),
+            applied_combination_laws=sorted(applied_combination_laws, key=lambda item: item.value),
             triggered_kill_switch=triggered_kill_switch,
             suppressed_state_labels=sorted(set(suppressed_state_labels)),
             stand_down_class=stand_down_class,
@@ -521,9 +487,7 @@ class StateConditionedModifierService:
         if packet.stand_down_class is not None:
             reasons.append(f"stand_down_class:{packet.stand_down_class.value}")
         if packet.conflict_classes:
-            reasons.append(
-                f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}"
-            )
+            reasons.append(f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}")
         if target_fresh is None:
             target_fresh = posture.fresh_deployable_capital_pct
 
@@ -549,22 +513,16 @@ class StateConditionedModifierService:
                 }
             )
         else:
-            adjusted_fresh = round(
-                min(posture.fresh_deployable_capital_pct, target_fresh), 4
-            )
+            adjusted_fresh = round(min(posture.fresh_deployable_capital_pct, target_fresh), 4)
             adjusted_overnight = round(
                 min(posture.overnight_deployable_capital_pct, adjusted_fresh), 4
             )
             update["fresh_deployable_capital_pct"] = adjusted_fresh
             update["overnight_deployable_capital_pct"] = adjusted_overnight
-            if (
-                posture.permission_state is PermissionState.ALLOW
-                and packet.degradation_step
-                in {
-                    DegradationStep.CONFIDENCE_REDUCED,
-                    DegradationStep.WATCH_ONLY,
-                }
-            ):
+            if posture.permission_state is PermissionState.ALLOW and packet.degradation_step in {
+                DegradationStep.CONFIDENCE_REDUCED,
+                DegradationStep.WATCH_ONLY,
+            }:
                 update["permission_state"] = PermissionState.DERISK
                 update["posture_label"] = "state_conditioned_derisk"
                 if posture.inventory_action_bias == "add":
@@ -578,9 +536,7 @@ class StateConditionedModifierService:
     ) -> ExecutionExpressionOutput:
         """Return execution output with additive Gate 78 policy effects applied."""
 
-        hedge_required = self._resolved_boolean(
-            packet, MutableRuntimeSurface.HEDGE_REQUIRED
-        )
+        hedge_required = self._resolved_boolean(packet, MutableRuntimeSurface.HEDGE_REQUIRED)
         target_fresh = self._resolved_numeric(
             packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
         )
@@ -616,9 +572,7 @@ class StateConditionedModifierService:
         for application in policy_applications:
             grouped.setdefault(application.target_surface, []).append(application)
 
-        for surface in sorted(
-            numeric_surfaces | boolean_surfaces, key=lambda item: item.value
-        ):
+        for surface in sorted(numeric_surfaces | boolean_surfaces, key=lambda item: item.value):
             policies = sorted(
                 grouped.get(surface, []),
                 key=lambda item: self._band_sort(item.band),
@@ -631,8 +585,7 @@ class StateConditionedModifierService:
                 clamped = False
                 for policy in policies:
                     if (
-                        policy.transform_type
-                        is ModifierTransformType.MULTIPLICATIVE_SCALE
+                        policy.transform_type is ModifierTransformType.MULTIPLICATIVE_SCALE
                         and policy.scale is not None
                     ):
                         value *= policy.scale
@@ -656,9 +609,7 @@ class StateConditionedModifierService:
                 if cap is not None and value > cap:
                     value = cap
                     clamped = True
-                winning_band = (
-                    policies[0].band if policies else ModifierPriorityBand.BASELINE
-                )
+                winning_band = policies[0].band if policies else ModifierPriorityBand.BASELINE
                 source_policy_ids = [policy.policy_id for policy in policies]
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
@@ -691,9 +642,7 @@ class StateConditionedModifierService:
                     if policy.boolean_value is not None:
                         value = value or policy.boolean_value
                     notes.extend(policy.notes)
-                winning_band = (
-                    policies[0].band if policies else ModifierPriorityBand.BASELINE
-                )
+                winning_band = policies[0].band if policies else ModifierPriorityBand.BASELINE
                 source_policy_ids = [policy.policy_id for policy in policies]
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
@@ -730,10 +679,7 @@ class StateConditionedModifierService:
     ) -> list[ResolvedRuntimeSurfaceValue]:
         updated: list[ResolvedRuntimeSurfaceValue] = []
         for surface in resolved_surfaces:
-            if (
-                surface.target_surface
-                is MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
-            ):
+            if surface.target_surface is MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT:
                 updated.append(
                     surface.model_copy(
                         update={
@@ -828,9 +774,7 @@ class StateConditionedModifierService:
     def _day_phase_state(self, temporal: TemporalContextOutput) -> DayPhaseState:
         return project_day_phase_state(temporal)
 
-    def _carry_horizon_state(
-        self, temporal: TemporalContextOutput
-    ) -> CarryHorizonState:
+    def _carry_horizon_state(self, temporal: TemporalContextOutput) -> CarryHorizonState:
         return project_carry_horizon_state(temporal)
 
     def _event_option_state_labels(

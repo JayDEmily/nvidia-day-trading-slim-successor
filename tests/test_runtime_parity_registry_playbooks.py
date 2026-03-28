@@ -32,12 +32,12 @@ def test_registry_service_exposes_live_playbook_priority_and_templates() -> None
         "skew_pressure_reversal",
     ]
     assert (
-        registry.template_for_playbook("continuation_ladder").entry_style
-        == "trend_ladder_3_step"
+        registry.template_for_playbook("continuation_ladder").entry_style == "trend_ladder_3_step"
     )
-    assert registry.template_for_playbook(
-        "negative_gamma_flush"
-    ).scaling_step_factors == [0.10, 0.15]
+    assert registry.template_for_playbook("negative_gamma_flush").scaling_step_factors == [
+        0.10,
+        0.15,
+    ]
 
 
 def test_registry_backed_runtime_preserves_supportive_playbook_outputs() -> None:
@@ -221,6 +221,4 @@ def test_registry_backed_runtime_preserves_pin_reversion_path() -> None:
 
     assert result.execution.active_playbook_ids == ["pin_reversion"]
     assert result.execution.entry_style == "pin_fade_scaler"
-    assert result.execution.playbook_execution_styles == {
-        "pin_reversion": "pin_fade_scaler"
-    }
+    assert result.execution.playbook_execution_styles == {"pin_reversion": "pin_fade_scaler"}

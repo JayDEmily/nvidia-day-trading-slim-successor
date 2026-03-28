@@ -7,12 +7,8 @@ from nvda_desk.services.playbook_registry import PlaybookRegistryService
 from scripts.build_canonical_vocabulary import build_document
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
-FEED_PATH = (
-    REPO_ROOT / "data/vocabulary/feeder/2026-03-26_GATE55_WORKFLOW_ALIGNMENT_FEED.md"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+FEED_PATH = REPO_ROOT / "data/vocabulary/feeder/2026-03-26_GATE55_WORKFLOW_ALIGNMENT_FEED.md"
 
 
 def test_gate55_canonical_vocabulary_matches_generator_output() -> None:
@@ -30,8 +26,7 @@ def test_gate55_workflow_terms_have_explicit_canonical_owners() -> None:
         == "nvda_desk.schemas.overnight.CloseStateCarryHandoff"
     )
     assert (
-        vocab["carry_horizon_branch"].maps_to_contract
-        == "nvda_desk.schemas.overnight.CarryHorizon"
+        vocab["carry_horizon_branch"].maps_to_contract == "nvda_desk.schemas.overnight.CarryHorizon"
     )
     assert (
         vocab["playbook_family"].maps_to_contract

@@ -121,9 +121,7 @@ def test_gate84_runtime_populates_evidence_floor_for_blocked_trade_path() -> Non
         result.review.failure_taxonomy.primary_failure_class
         is ReviewFailureClass.POSTURE_POLICY_FAILURE
     )
-    assert (
-        result.review.failure_taxonomy.resolution is ReviewResolutionClass.BLOCKED_TRADE
-    )
+    assert result.review.failure_taxonomy.resolution is ReviewResolutionClass.BLOCKED_TRADE
     assert result.review.failure_taxonomy.evidence_floor is not None
 
 

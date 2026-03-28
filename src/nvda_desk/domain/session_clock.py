@@ -51,9 +51,7 @@ class SessionClockClassifier:
             TemporalStateClassifier,
         )
 
-        state = TemporalStateClassifier(self._settings).classify(
-            TemporalSignalInput(ts=ts)
-        )
+        state = TemporalStateClassifier(self._settings).classify(TemporalSignalInput(ts=ts))
         return SessionClockState(
             phase=state.phase,
             market_timezone=state.market_timezone,

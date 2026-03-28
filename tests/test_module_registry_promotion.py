@@ -92,9 +92,7 @@ def test_promotion_decision_roundtrip(tmp_path: Path) -> None:
                 "approved_by": "operator",
             },
         )
-        list_response = client.get(
-            "/modules/promotions", params={"module_id": "slv-v1"}
-        )
+        list_response = client.get("/modules/promotions", params={"module_id": "slv-v1"})
     assert create_response.status_code == 200
     created = create_response.json()
     assert created["module_id"] == "slv-v1"

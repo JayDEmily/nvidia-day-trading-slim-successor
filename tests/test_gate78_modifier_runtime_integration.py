@@ -31,20 +31,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def _tightened_precursor_packet() -> PrecursorRuntimePacket:
@@ -79,9 +72,7 @@ def _unresolved_precursor_packet() -> PrecursorRuntimePacket:
         derived_fields=[DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE],
         contradiction_class=PrecursorContradictionClass.BROAD_CROSS_VENUE_CONFLICT,
         posture_state=PrecursorPostureState.UNRESOLVED_CONTEXT,
-        fallback_dispositions=[
-            PrecursorFallbackDisposition.REQUIRE_STAND_DOWN_PRESSURE
-        ],
+        fallback_dispositions=[PrecursorFallbackDisposition.REQUIRE_STAND_DOWN_PRESSURE],
         lineage_keys=["precursor:cffex:hard-block"],
     )
 
@@ -234,9 +225,7 @@ def test_gate78_runtime_exposes_kill_switch_and_blocked_trade_outcomes() -> None
         result.review.failure_taxonomy.primary_failure_class
         is ReviewFailureClass.POSTURE_POLICY_FAILURE
     )
-    assert (
-        result.review.failure_taxonomy.resolution is ReviewResolutionClass.BLOCKED_TRADE
-    )
+    assert result.review.failure_taxonomy.resolution is ReviewResolutionClass.BLOCKED_TRADE
     assert result.review.review_packet["effective_policy"]
 
 

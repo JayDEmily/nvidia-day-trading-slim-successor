@@ -135,9 +135,7 @@ def test_gate81_runtime_review_emits_event_window_and_precursor_governance() -> 
     )
     assert result.review.event_window_governance is not None
     assert result.review.event_window_governance.event_family == "macro"
-    assert (
-        result.review.event_window_governance.risk_timing_class.value == "priced_risk"
-    )
+    assert result.review.event_window_governance.risk_timing_class.value == "priced_risk"
     assert result.review.precursor_governance is not None
     assert result.review.precursor_governance.active_venues == [
         PrecursorVenueUniverse.JPX_CASH_INDEX_COMPLEX

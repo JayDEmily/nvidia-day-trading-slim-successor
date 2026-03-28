@@ -23,9 +23,7 @@ EXPECTED_GATE31_ORDER = [
 ]
 
 
-def test_gate31_coverage_is_closed_in_frozen_order_with_honest_composite_boundaries() -> (
-    None
-):
+def test_gate31_coverage_is_closed_in_frozen_order_with_honest_composite_boundaries() -> None:
     """Gate 31 should close exactly the four planned higher-order composite items."""
 
     supportive = build_gate_support_bundle()
@@ -70,9 +68,7 @@ def test_gate31_coverage_is_closed_in_frozen_order_with_honest_composite_boundar
     assert obv_confirmation.dependency_fences[0].status.value == "fenced_missing_source"
 
 
-def test_gate31_stressed_context_keeps_composites_descriptive_rather_than_promotional() -> (
-    None
-):
+def test_gate31_stressed_context_keeps_composites_descriptive_rather_than_promotional() -> None:
     """Gate 31 should degrade honestly under stress and avoid approval theatre."""
 
     stressed = build_gate_support_bundle(stressed=True)

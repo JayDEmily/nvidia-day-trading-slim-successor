@@ -51,9 +51,9 @@ class EventIngestionService:
     def normalise(
         self, observations: Sequence[RawEventSourceObservation]
     ) -> list[NormalisedEventRecord]:
-        grouped: dict[
-            tuple[str | None, str, str, str], list[RawEventSourceObservation]
-        ] = defaultdict(list)
+        grouped: dict[tuple[str | None, str, str, str], list[RawEventSourceObservation]] = (
+            defaultdict(list)
+        )
         for observation in observations:
             key = (
                 observation.symbol,

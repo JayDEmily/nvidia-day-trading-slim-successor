@@ -21,20 +21,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate67_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -42,8 +35,7 @@ def test_gate67_status_closeout_and_leaf_progress_are_recorded() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert (
-        "## Gate 67 — Temporal event-window semantics\n\nStatus: complete on `main`"
-        in gates_text
+        "## Gate 67 — Temporal event-window semantics\n\nStatus: complete on `main`" in gates_text
     )
     assert "### Gate 67 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:9] == [

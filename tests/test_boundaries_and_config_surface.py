@@ -22,14 +22,11 @@ def test_config_bundle_parses_typed_weights_and_variants() -> None:
         .value
         == 1.5
     )
+    assert bundle.strategy_variants.variants["conservative"].overrides.weights["S06"] == 0.25
     assert (
-        bundle.strategy_variants.variants["conservative"].overrides.weights["S06"]
-        == 0.25
-    )
-    assert (
-        bundle.strategy_variants.variants["conservative"].overrides.coefficients[
-            "L3_01"
-        ]["score_floor"]
+        bundle.strategy_variants.variants["conservative"].overrides.coefficients["L3_01"][
+            "score_floor"
+        ]
         == 0.72
     )
 
@@ -54,17 +51,13 @@ async def _exercise_boundary_stubs() -> tuple[str, str, int]:
     events = [event async for event in broker.stream_order_events()]
     orchestrator = NullOpenAIOrchestrator()
     artifact = await orchestrator.respond(
-        OpenAIResponseRequest(
-            prompt="Summarise risk state", tool_names=["risk_gateway"]
-        )
+        OpenAIResponseRequest(prompt="Summarise risk state", tool_names=["risk_gateway"])
     )
     return ref.status, artifact.status, len(events)
 
 
 def test_external_boundary_stubs_remain_offline() -> None:
-    broker_status, orchestrator_status, event_count = asyncio.run(
-        _exercise_boundary_stubs()
-    )
+    broker_status, orchestrator_status, event_count = asyncio.run(_exercise_boundary_stubs())
     assert broker_status == "filled"
     assert orchestrator_status == "unverified_stub"
     assert event_count == 1

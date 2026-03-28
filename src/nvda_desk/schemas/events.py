@@ -129,9 +129,7 @@ class EventTaxonomyAuthorityPacket(BaseModel):
     macro_subclasses: list[MacroEventSubclass] = Field(default_factory=list)
     policy_subclasses: list[PolicyEventSubclass] = Field(default_factory=list)
     expiry_subclasses: list[ExpiryEventSubclass] = Field(default_factory=list)
-    venue_session_subclasses: list[VenueSessionEventSubclass] = Field(
-        default_factory=list
-    )
+    venue_session_subclasses: list[VenueSessionEventSubclass] = Field(default_factory=list)
 
 
 class ExpiryCalendarInteraction(StrEnum):
@@ -377,9 +375,7 @@ class EventStoreAuthorityPacket(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     default_query_window: EventQueryWindow
-    default_materiality_floor: EventMaterialityTier = (
-        EventMaterialityTier.POSTURE_RELEVANT
-    )
+    default_materiality_floor: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT
     replay_modes: list[ReplayEventConsumerMode] = Field(default_factory=list)
     lineage_required: bool = True
 

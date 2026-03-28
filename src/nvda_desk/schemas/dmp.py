@@ -197,11 +197,7 @@ CognitionStagePayload = (
 )
 
 CalibrationPayload = (
-    StackDefinition
-    | CoefficientSet
-    | CoefficientAuditPacket
-    | ReplayRunResult
-    | ComparisonReport
+    StackDefinition | CoefficientSet | CoefficientAuditPacket | ReplayRunResult | ComparisonReport
 )
 
 ImportedModulePayload = (

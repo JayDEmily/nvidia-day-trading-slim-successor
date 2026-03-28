@@ -25,30 +25,20 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate73_status_closeout_and_leaf_progress_are_recorded() -> None:
     gates_text = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert (
-        "## Gate 73 — Event store and query surfaces\n\nStatus: complete on `main`"
-        in gates_text
-    )
+    assert "## Gate 73 — Event store and query surfaces\n\nStatus: complete on `main`" in gates_text
     assert "### Gate 73 closeout note" in gates_text
     assert leaves["completed_gate_ids"][:15] == [
         "Gate 59",
@@ -90,9 +80,7 @@ def test_gate73_docs_freeze_shared_event_truth_law() -> None:
     )
 
     assert "## Gate 73 shared event-store and query authority" in operating_model
-    assert (
-        "material-event filters now use explicit materiality floors" in operating_model
-    )
+    assert "material-event filters now use explicit materiality floors" in operating_model
 
     assert "### 4k. Shared event-store and query objects" in domain_model
     assert (
@@ -109,9 +97,7 @@ def test_gate73_schema_surface_and_service_share_nearby_truth() -> None:
     ]
     authority = EventStoreAuthorityResponse(
         authority=EventStoreAuthorityPacket(
-            default_query_window=EventQueryWindow(
-                lookback_minutes=240, lookahead_minutes=1440
-            ),
+            default_query_window=EventQueryWindow(lookback_minutes=240, lookahead_minutes=1440),
             default_materiality_floor=EventMaterialityTier.POSTURE_RELEVANT,
             replay_modes=list(ReplayEventConsumerMode),
             lineage_required=True,

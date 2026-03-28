@@ -63,13 +63,10 @@ class StrategicLadderReplayService:
         ).bars
         bars = [bar for bar in bars if payload.entry_ts <= bar.ts_utc <= end_ts]
         rung_outcomes = [
-            self._replay_rung(rung.price, rung.size_units, bars)
-            for rung in payload.rungs
+            self._replay_rung(rung.price, rung.size_units, bars) for rung in payload.rungs
         ]
 
-        positive_hits = sum(
-            1 for outcome in rung_outcomes if outcome.outcome_label == "bounce"
-        )
+        positive_hits = sum(1 for outcome in rung_outcomes if outcome.outcome_label == "bounce")
         fill_count = sum(1 for outcome in rung_outcomes if outcome.filled)
         replay_score = 0.0
         if rung_outcomes:
@@ -88,9 +85,7 @@ class StrategicLadderReplayService:
             overall = LadderOverallDecision.REJECT
             confidence = LadderConfidence.LOW
             replay_score = 0.0
-        elif (
-            overlay.action.value == "derisk" and overall is LadderOverallDecision.ACCEPT
-        ):
+        elif overlay.action.value == "derisk" and overall is LadderOverallDecision.ACCEPT:
             overall = LadderOverallDecision.ADJUST
             confidence = LadderConfidence.MEDIUM
             replay_score *= 0.7
@@ -118,14 +113,10 @@ class StrategicLadderReplayService:
             symbol="VVIX", ts=payload.entry_ts
         )
         vix_level = (
-            float(vix_snapshot.latest_bar.close)
-            if vix_snapshot.latest_bar is not None
-            else 0.0
+            float(vix_snapshot.latest_bar.close) if vix_snapshot.latest_bar is not None else 0.0
         )
         vvix_level = (
-            float(vvix_snapshot.latest_bar.close)
-            if vvix_snapshot.latest_bar is not None
-            else 0.0
+            float(vvix_snapshot.latest_bar.close) if vvix_snapshot.latest_bar is not None else 0.0
         )
         vix_change = self._symbol_change_pct(
             symbol="VIX", entry_ts=payload.entry_ts, lookback_minutes=15
@@ -177,9 +168,7 @@ class StrategicLadderReplayService:
     def _replay_rung(
         self, price: float, size_units: float, bars: list[Bar1mPayload]
     ) -> LadderReplayRungOutcome:
-        fill_bar = next(
-            (bar for bar in bars if float(bar.low) <= price <= float(bar.high)), None
-        )
+        fill_bar = next((bar for bar in bars if float(bar.low) <= price <= float(bar.high)), None)
         if fill_bar is None:
             return LadderReplayRungOutcome(
                 price=price,

@@ -4,6 +4,7 @@ Revision ID: 20260320_0005
 Revises: 20260320_0004
 Create Date: 2026-03-20 19:35:00Z
 """
+
 from __future__ import annotations
 
 from alembic import op
@@ -33,7 +34,12 @@ def upgrade() -> None:
     op.create_table(
         "market_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=True),
         sa.Column("event_ts", sa.DateTime(timezone=True), nullable=False),
         sa.Column("event_type", sa.String(length=64), nullable=False),
@@ -46,12 +52,19 @@ def upgrade() -> None:
     op.create_index("ix_market_event_symbol", "market_event", ["symbol"], unique=False)
     op.create_index("ix_market_event_ts", "market_event", ["event_ts"], unique=False)
     op.create_index("ix_market_event_event_type", "market_event", ["event_type"], unique=False)
-    op.create_index("ix_market_event_symbol_ts", "market_event", ["symbol", "event_ts"], unique=False)
+    op.create_index(
+        "ix_market_event_symbol_ts", "market_event", ["symbol", "event_ts"], unique=False
+    )
 
     op.create_table(
         "module_signal_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("requested_at", sa.DateTime(timezone=True), nullable=False),
@@ -61,15 +74,31 @@ def upgrade() -> None:
         sa.Column("payload_json", sa.Text(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_module_signal_event_symbol", "module_signal_event", ["symbol"], unique=False)
-    op.create_index("ix_module_signal_event_module_id", "module_signal_event", ["module_id"], unique=False)
-    op.create_index("ix_module_signal_event_signal_code", "module_signal_event", ["signal_code"], unique=False)
-    op.create_index("ix_module_signal_event_module_created", "module_signal_event", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_module_signal_event_symbol", "module_signal_event", ["symbol"], unique=False
+    )
+    op.create_index(
+        "ix_module_signal_event_module_id", "module_signal_event", ["module_id"], unique=False
+    )
+    op.create_index(
+        "ix_module_signal_event_signal_code", "module_signal_event", ["signal_code"], unique=False
+    )
+    op.create_index(
+        "ix_module_signal_event_module_created",
+        "module_signal_event",
+        ["module_id", "created_at"],
+        unique=False,
+    )
 
     op.create_table(
         "module_veto_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("requested_at", sa.DateTime(timezone=True), nullable=False),
@@ -79,31 +108,59 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_module_veto_event_symbol", "module_veto_event", ["symbol"], unique=False)
-    op.create_index("ix_module_veto_event_module_id", "module_veto_event", ["module_id"], unique=False)
-    op.create_index("ix_module_veto_event_veto_code", "module_veto_event", ["veto_code"], unique=False)
-    op.create_index("ix_module_veto_event_module_created", "module_veto_event", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_module_veto_event_module_id", "module_veto_event", ["module_id"], unique=False
+    )
+    op.create_index(
+        "ix_module_veto_event_veto_code", "module_veto_event", ["veto_code"], unique=False
+    )
+    op.create_index(
+        "ix_module_veto_event_module_created",
+        "module_veto_event",
+        ["module_id", "created_at"],
+        unique=False,
+    )
 
     op.create_table(
         "risk_block_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("requested_at", sa.DateTime(timezone=True), nullable=False),
         sa.Column("linked_risk_decision_id", sa.Integer(), nullable=True),
         sa.Column("reason_codes_json", sa.Text(), nullable=False),
         sa.Column("payload_json", sa.Text(), nullable=False),
-        sa.ForeignKeyConstraint(["linked_risk_decision_id"], ["risk_decision_log.id"], ondelete="SET NULL"),
+        sa.ForeignKeyConstraint(
+            ["linked_risk_decision_id"], ["risk_decision_log.id"], ondelete="SET NULL"
+        ),
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_risk_block_event_symbol", "risk_block_event", ["symbol"], unique=False)
-    op.create_index("ix_risk_block_event_module_id", "risk_block_event", ["module_id"], unique=False)
-    op.create_index("ix_risk_block_event_module_created", "risk_block_event", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_risk_block_event_module_id", "risk_block_event", ["module_id"], unique=False
+    )
+    op.create_index(
+        "ix_risk_block_event_module_created",
+        "risk_block_event",
+        ["module_id", "created_at"],
+        unique=False,
+    )
 
     op.create_table(
         "order_intent",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("requested_at", sa.DateTime(timezone=True), nullable=False),
@@ -119,14 +176,23 @@ def upgrade() -> None:
     op.create_index("ix_order_intent_symbol", "order_intent", ["symbol"], unique=False)
     op.create_index("ix_order_intent_module_id", "order_intent", ["module_id"], unique=False)
     op.create_index("ix_order_intent_side", "order_intent", ["side"], unique=False)
-    op.create_index("ix_order_intent_client_order_ref", "order_intent", ["client_order_ref"], unique=True)
+    op.create_index(
+        "ix_order_intent_client_order_ref", "order_intent", ["client_order_ref"], unique=True
+    )
     op.create_index("ix_order_intent_status", "order_intent", ["status"], unique=False)
-    op.create_index("ix_order_intent_module_created", "order_intent", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_order_intent_module_created", "order_intent", ["module_id", "created_at"], unique=False
+    )
 
     op.create_table(
         "order_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("order_intent_id", sa.Integer(), nullable=False),
         sa.Column("event_ts", sa.DateTime(timezone=True), nullable=False),
         sa.Column("status", sa.String(length=32), nullable=False),
@@ -136,12 +202,19 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_order_event_status", "order_event", ["status"], unique=False)
-    op.create_index("ix_order_event_intent_ts", "order_event", ["order_intent_id", "event_ts"], unique=False)
+    op.create_index(
+        "ix_order_event_intent_ts", "order_event", ["order_intent_id", "event_ts"], unique=False
+    )
 
     op.create_table(
         "fill_event",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("order_intent_id", sa.Integer(), nullable=False),
         sa.Column("fill_ts", sa.DateTime(timezone=True), nullable=False),
         sa.Column("quantity", sa.Numeric(18, 6), nullable=False),
@@ -150,12 +223,19 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(["order_intent_id"], ["order_intent.id"], ondelete="CASCADE"),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_fill_event_intent_ts", "fill_event", ["order_intent_id", "fill_ts"], unique=False)
+    op.create_index(
+        "ix_fill_event_intent_ts", "fill_event", ["order_intent_id", "fill_ts"], unique=False
+    )
 
     op.create_table(
         "position_snapshot",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("snapshot_ts", sa.DateTime(timezone=True), nullable=False),
         sa.Column("quantity", sa.Numeric(18, 6), nullable=False),
@@ -167,12 +247,22 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_position_snapshot_symbol", "position_snapshot", ["symbol"], unique=False)
-    op.create_index("ix_position_snapshot_symbol_ts", "position_snapshot", ["symbol", "snapshot_ts"], unique=False)
+    op.create_index(
+        "ix_position_snapshot_symbol_ts",
+        "position_snapshot",
+        ["symbol", "snapshot_ts"],
+        unique=False,
+    )
 
     op.create_table(
         "capital_state_snapshot",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("snapshot_ts", sa.DateTime(timezone=True), nullable=False),
         sa.Column("cash", sa.Numeric(18, 6), nullable=False),
         sa.Column("equity", sa.Numeric(18, 6), nullable=False),
@@ -182,12 +272,19 @@ def upgrade() -> None:
         sa.Column("source", sa.String(length=32), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_capital_state_snapshot_ts", "capital_state_snapshot", ["snapshot_ts"], unique=False)
+    op.create_index(
+        "ix_capital_state_snapshot_ts", "capital_state_snapshot", ["snapshot_ts"], unique=False
+    )
 
     op.create_table(
         "daily_pnl_report",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("report_date", sa.Date(), nullable=False),
         sa.Column("realized_pnl", sa.Numeric(18, 6), nullable=False),
@@ -200,7 +297,9 @@ def upgrade() -> None:
         sa.UniqueConstraint("symbol", "report_date", name="uq_daily_pnl_report_symbol_date"),
     )
     op.create_index("ix_daily_pnl_report_symbol", "daily_pnl_report", ["symbol"], unique=False)
-    op.create_index("ix_daily_pnl_report_report_date", "daily_pnl_report", ["report_date"], unique=False)
+    op.create_index(
+        "ix_daily_pnl_report_report_date", "daily_pnl_report", ["report_date"], unique=False
+    )
     op.create_index("ix_daily_pnl_report_date", "daily_pnl_report", ["report_date"], unique=False)
 
 

@@ -81,9 +81,7 @@ class VocabularyDocument(BaseModel):
                 if owner != entry.canonical_slug:
                     raise ValueError(f"alias used by multiple entries: {alias}")
             if entry.canonical_slug in entry.allowed_aliases:
-                raise ValueError(
-                    f"canonical slug cannot also be an alias: {entry.canonical_slug}"
-                )
+                raise ValueError(f"canonical slug cannot also be an alias: {entry.canonical_slug}")
         return self
 
     def entry_index(self) -> dict[str, VocabularyEntry]:
@@ -101,6 +99,6 @@ class VocabularyDocument(BaseModel):
         return cls.from_json_text(Path(path).read_text(encoding="utf-8"))
 
     def to_json_text(self) -> str:
-        return orjson.dumps(
-            self.model_dump(mode="json"), option=orjson.OPT_INDENT_2
-        ).decode("utf-8")
+        return orjson.dumps(self.model_dump(mode="json"), option=orjson.OPT_INDENT_2).decode(
+            "utf-8"
+        )

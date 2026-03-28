@@ -19,20 +19,13 @@ from nvda_desk.schemas.state_policy import (
 from scripts.build_canonical_vocabulary import build_document
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate64_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -108,9 +101,7 @@ def test_gate64_schema_surface_exposes_candidate_roles_and_ledger_hooks() -> Non
         allow_retired_candidates=True,
         reserved_adjudication_spans=1,
     )
-    ledger = CandidateLedgerRecord(
-        candidate_id="candidate_a", role=CandidateRole.CHAMPION
-    )
+    ledger = CandidateLedgerRecord(candidate_id="candidate_a", role=CandidateRole.CHAMPION)
     governance = CandidateGovernanceSurface(
         candidate_shape=shape,
         champion_candidate_id="candidate_a",

@@ -33,22 +33,17 @@ EXPECTED_GATE22_ORDER = [
 ]
 
 
-def test_execution_lifecycle_contracts_emit_the_frozen_eleven_modules_in_order() -> (
-    None
-):
+def test_execution_lifecycle_contracts_emit_the_frozen_eleven_modules_in_order() -> None:
     """Gate 22 should emit the execution-lifecycle chain in the frozen gate-map order."""
 
     emissions = ExecutionLifecycleContractService().evaluate(build_gate22_context())
-    assert [
-        emission.output.canonical_slug for emission in emissions
-    ] == EXPECTED_GATE22_ORDER
+    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE22_ORDER
     assert all(
         emission.packet.grammar_role is DmpGrammarRole.EXPRESSION_EXECUTION
         for emission in emissions
     )
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
@@ -57,18 +52,12 @@ def test_execution_lifecycle_builds_a_preview_position_and_traceable_tags() -> N
 
     outputs = {
         emission.output.canonical_slug: emission.output
-        for emission in ExecutionLifecycleContractService().evaluate(
-            build_gate22_context()
-        )
+        for emission in ExecutionLifecycleContractService().evaluate(build_gate22_context())
     }
     trailing_stop = cast(TrailingStopContractOutput, outputs["trailing_stop"])
-    unrealized_tracker = cast(
-        UnrealizedTrackerContractOutput, outputs["unrealized_tracker"]
-    )
+    unrealized_tracker = cast(UnrealizedTrackerContractOutput, outputs["unrealized_tracker"])
     position_book = cast(PositionBookContractOutput, outputs["position_book"])
-    execution_log_writer = cast(
-        ExecutionLogWriterContractOutput, outputs["execution_log_writer"]
-    )
+    execution_log_writer = cast(ExecutionLogWriterContractOutput, outputs["execution_log_writer"])
     execution_tags = cast(ExecutionTagsContractOutput, outputs["execution_tags"])
     trade_logger = cast(TradeLoggerContractOutput, outputs["trade_logger"])
 
@@ -85,9 +74,7 @@ def test_execution_lifecycle_builds_a_preview_position_and_traceable_tags() -> N
     assert trade_logger.record_count == execution_log_writer.event_count
 
 
-def test_execution_lifecycle_degrades_to_permission_constrained_state_under_stress() -> (
-    None
-):
+def test_execution_lifecycle_degrades_to_permission_constrained_state_under_stress() -> None:
     """Gate 22 should keep a truthful constrained state when the stressed fixture blocks entry."""
 
     outputs = {
@@ -96,9 +83,7 @@ def test_execution_lifecycle_degrades_to_permission_constrained_state_under_stre
             build_gate22_context(stressed=True)
         )
     }
-    unrealized_tracker = cast(
-        UnrealizedTrackerContractOutput, outputs["unrealized_tracker"]
-    )
+    unrealized_tracker = cast(UnrealizedTrackerContractOutput, outputs["unrealized_tracker"])
     execution_tags = cast(ExecutionTagsContractOutput, outputs["execution_tags"])
     trade_logger = cast(TradeLoggerContractOutput, outputs["trade_logger"])
 

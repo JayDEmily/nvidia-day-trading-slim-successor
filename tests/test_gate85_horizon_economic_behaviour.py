@@ -19,9 +19,7 @@ from nvda_desk.services.replay_compare import ReplayComparisonService
 FIXTURE_PACK = Path("fixtures/replay/gate_f_replay_regression_fixture_pack.json")
 
 
-def test_gate85_report_level_fragility_and_ablation_expose_failed_economic_axes() -> (
-    None
-):
+def test_gate85_report_level_fragility_and_ablation_expose_failed_economic_axes() -> None:
     service = ReplayComparisonService(Settings())
     fixture_pack = service.load_fixture_pack(FIXTURE_PACK)
     authority = WalkForwardHarnessAuthorityPacket(
@@ -93,8 +91,7 @@ def test_gate85_report_level_fragility_and_ablation_expose_failed_economic_axes(
 
     assert harness_report.group_results[0].economic_behaviour_consistent is False
     assert any(
-        note.startswith("economic_axis_failures:")
-        for note in harness_report.group_results[0].notes
+        note.startswith("economic_axis_failures:") for note in harness_report.group_results[0].notes
     )
     assert harness_report.fragility.economic_axis_failures["surface_economic_fail"] == [
         "active_playbook_rate_spread",

@@ -40,9 +40,7 @@ class PlaybookRegistryService:
         """Return the cached typed registry document."""
 
         if self._document is None:
-            self._document = PlaybookRegistryDocument.from_yaml_path(
-                self._registry_path
-            )
+            self._document = PlaybookRegistryDocument.from_yaml_path(self._registry_path)
         return self._document
 
     def ordered_playbooks(self) -> list[PlaybookSpec]:
@@ -68,9 +66,7 @@ class PlaybookRegistryService:
     def playbook_index(self) -> dict[str, PlaybookSpec]:
         """Return deterministic playbook lookup by id."""
 
-        return {
-            playbook.playbook_id: playbook for playbook in self.document().playbooks
-        }
+        return {playbook.playbook_id: playbook for playbook in self.document().playbooks}
 
     def family_index(self) -> dict[str, PlaybookFamilySpec]:
         """Return deterministic family lookup by id."""
@@ -115,8 +111,7 @@ class PlaybookRegistryService:
         """Return active playbook ids linked to one setup variant in priority order."""
 
         return [
-            playbook.playbook_id
-            for playbook in self.playbooks_for_setup_variant(setup_variant_id)
+            playbook.playbook_id for playbook in self.playbooks_for_setup_variant(setup_variant_id)
         ]
 
     def template(self, template_id: str) -> ExecutionTemplateSpec:

@@ -37,9 +37,7 @@ def test_market_regime_context_flags_narrow_stress_and_cross_asset_pressure() ->
     assert result.cross_asset_pressure_score >= 0.8
 
 
-def test_market_regime_context_exposes_semis_leading_without_breadth_as_conflict() -> (
-    None
-):
+def test_market_regime_context_exposes_semis_leading_without_breadth_as_conflict() -> None:
     """Gate D should separate single-name leadership from broad participation."""
 
     service = MarketRegimeContextService()
@@ -63,9 +61,7 @@ def test_market_regime_context_exposes_semis_leading_without_breadth_as_conflict
     assert result.breadth_concentration_state == "narrow_stress"
 
 
-def test_market_regime_context_marks_broad_risk_on_when_leadership_and_breadth_align() -> (
-    None
-):
+def test_market_regime_context_marks_broad_risk_on_when_leadership_and_breadth_align() -> None:
     """Gate D should surface broad participation cleanly when beta and breadth agree."""
 
     service = MarketRegimeContextService()

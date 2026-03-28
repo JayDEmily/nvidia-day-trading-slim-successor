@@ -88,9 +88,7 @@ def _context_from_fixture(*, stressed: bool = False) -> ContextScannerContext:
         emission.output.canonical_slug: emission.output
         for emission in MarketSubstrateContractService().evaluate(substrate_context)
     }
-    spot_data_capture = cast(
-        SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"]
-    )
+    spot_data_capture = cast(SpotDataCaptureContractOutput, substrate_outputs["spot_data_capture"])
     peer_equity_capture = cast(
         PeerEquityCaptureContractOutput, substrate_outputs["peer_equity_capture"]
     )
@@ -104,9 +102,7 @@ def _context_from_fixture(*, stressed: bool = False) -> ContextScannerContext:
     macro_data_capture = cast(
         MacroDataCaptureContractOutput, substrate_outputs["macro_data_capture"]
     )
-    vwap_accumulator = cast(
-        VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"]
-    )
+    vwap_accumulator = cast(VwapAccumulatorContractOutput, substrate_outputs["vwap_accumulator"])
     vwap_roc = cast(VwapRocContractOutput, substrate_outputs["vwap_roc"])
 
     return ContextScannerContext(
@@ -135,9 +131,7 @@ def test_context_scanner_contracts_emit_the_frozen_eight_modules_in_order() -> N
     """Gate 19 should emit the eight context/scanner contracts in gate-map order."""
 
     emissions = ContextScannerContractService().evaluate(_context_from_fixture())
-    assert [
-        emission.output.canonical_slug for emission in emissions
-    ] == EXPECTED_GATE19_ORDER
+    assert [emission.output.canonical_slug for emission in emissions] == EXPECTED_GATE19_ORDER
     assert [emission.packet.grammar_role for emission in emissions] == [
         DmpGrammarRole.MARKET_REGIME_CONTEXT,
         DmpGrammarRole.OPTIONS_FLOW_CONTEXT,
@@ -149,8 +143,7 @@ def test_context_scanner_contracts_emit_the_frozen_eight_modules_in_order() -> N
         DmpGrammarRole.MARKET_REGIME_CONTEXT,
     ]
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
@@ -161,9 +154,7 @@ def test_context_scanner_contracts_keep_provenance_explicit_for_execution_contex
 
     emissions = {
         emission.output.canonical_slug: emission.output
-        for emission in ContextScannerContractService().evaluate(
-            _context_from_fixture()
-        )
+        for emission in ContextScannerContractService().evaluate(_context_from_fixture())
     }
     execution_context = cast(
         ExecutionContextScoreContractOutput, emissions["execution_context_score"]
@@ -212,12 +203,8 @@ def test_context_scanner_contracts_reflect_stressed_conditions_without_fake_appr
 ):
     """Gate 19 should degrade the stressed fixture honestly while staying packet-safe."""
 
-    emissions = ContextScannerContractService().evaluate(
-        _context_from_fixture(stressed=True)
-    )
-    outputs = {
-        emission.output.canonical_slug: emission.output for emission in emissions
-    }
+    emissions = ContextScannerContractService().evaluate(_context_from_fixture(stressed=True))
+    outputs = {emission.output.canonical_slug: emission.output for emission in emissions}
     engine_score = cast(EngineScoreContractOutput, outputs["engine_score"])
     execution_context = cast(
         ExecutionContextScoreContractOutput, outputs["execution_context_score"]

@@ -143,19 +143,11 @@ class ExecutionTemplateSpec(BaseModel):
     thesis_invalidation_state: str = Field(min_length=1)
     invalidation_reasons: list[str] = Field(default_factory=list)
     exit_reasons: list[str] = Field(default_factory=list)
-    hedge_exit_reason: str = Field(
-        default="overlay_hedge_if_gamma_reaccelerates", min_length=1
-    )
+    hedge_exit_reason: str = Field(default="overlay_hedge_if_gamma_reaccelerates", min_length=1)
     respect_posture_biases: bool = True
-    posture_override_actions: list[str] = Field(
-        default_factory=lambda: ["reduce", "trim", "hedge"]
-    )
-    inventory_pressure_states: list[str] = Field(
-        default_factory=lambda: ["trapped", "full"]
-    )
-    inventory_pressure_exit_reason: str = Field(
-        default="respect_inventory_pressure", min_length=1
-    )
+    posture_override_actions: list[str] = Field(default_factory=lambda: ["reduce", "trim", "hedge"])
+    inventory_pressure_states: list[str] = Field(default_factory=lambda: ["trapped", "full"])
+    inventory_pressure_exit_reason: str = Field(default="respect_inventory_pressure", min_length=1)
 
     @model_validator(mode="after")
     def _validate_scaling_steps(self) -> Self:
@@ -210,9 +202,7 @@ class PlaybookRegistryDocument(BaseModel):
                     f"unknown execution expression for setup variant {variant.setup_variant_id}: "
                     f"{variant.execution_expression_id}"
                 )
-        variant_lookup = {
-            variant.setup_variant_id: variant for variant in self.setup_variants
-        }
+        variant_lookup = {variant.setup_variant_id: variant for variant in self.setup_variants}
         for playbook in self.playbooks:
             if playbook.execution_template_id not in template_id_set:
                 raise ValueError(
@@ -294,7 +284,5 @@ class PlaybookRegistryDocument(BaseModel):
 
         return cast(
             str,
-            yaml.safe_dump(
-                self.model_dump(mode="json"), sort_keys=False, allow_unicode=False
-            ),
+            yaml.safe_dump(self.model_dump(mode="json"), sort_keys=False, allow_unicode=False),
         )

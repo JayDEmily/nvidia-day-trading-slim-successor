@@ -38,15 +38,12 @@ def test_gate32_coverage_is_closed_in_frozen_order_with_bridge_dependencies() ->
         "archive-module-023",
     ]
 
-    archetype_matcher = cast(
-        ArchetypeMatcherContractOutput, outputs["archetype_matcher"]
-    )
+    archetype_matcher = cast(ArchetypeMatcherContractOutput, outputs["archetype_matcher"])
     archetype_tagger = cast(ArchetypeTaggerContractOutput, outputs["archetype_tagger"])
     entry_gate = cast(EntryGateContractOutput, outputs["entry_gate"])
 
     assert all(
-        output.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value
-        for output in ordered
+        output.grammar_role == DmpGrammarRole.PLAYBOOK_ELIGIBILITY.value for output in ordered
     )
     assert archetype_matcher.matched_playbook in {
         "continuation_ladder",
@@ -64,9 +61,7 @@ def test_gate32_coverage_is_closed_in_frozen_order_with_bridge_dependencies() ->
     assert entry_gate.suppression_tag == "event_window_veto"
 
 
-def test_gate32_event_window_veto_keeps_entry_gate_honest_without_new_playbooks() -> (
-    None
-):
+def test_gate32_event_window_veto_keeps_entry_gate_honest_without_new_playbooks() -> None:
     """Gate 32 should cite veto state cleanly under stress and keep archetypes bounded."""
 
     stressed = build_gate_support_bundle(stressed=True)
@@ -75,9 +70,7 @@ def test_gate32_event_window_veto_keeps_entry_gate_honest_without_new_playbooks(
         **stressed.selector_outputs,
     }
     entry_gate = cast(EntryGateContractOutput, outputs["entry_gate"])
-    archetype_matcher = cast(
-        ArchetypeMatcherContractOutput, outputs["archetype_matcher"]
-    )
+    archetype_matcher = cast(ArchetypeMatcherContractOutput, outputs["archetype_matcher"])
 
     assert entry_gate.entry_allowed is False
     assert entry_gate.suppression_tag in {"permission_blocked", "event_window_veto"}

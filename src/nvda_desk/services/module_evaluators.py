@@ -18,21 +18,15 @@ from nvda_desk.schemas.slv import (
 
 
 class StrategicLadderValidatorService:
-    def evaluate(
-        self, payload: StrategicLadderValidatorInput
-    ) -> StrategicLadderValidatorOutput:
+    def evaluate(self, payload: StrategicLadderValidatorInput) -> StrategicLadderValidatorOutput:
         rung_results: list[LadderRungResult] = []
         score_components: list[float] = []
         overall_reasons: list[str] = []
 
         for rung in payload.rungs:
             reasons: list[str] = []
-            score = (rung.strike_pressure_score * 0.55) + (
-                rung.fill_plausibility_score * 0.45
-            )
-            distance_pct = (
-                abs((payload.spot_price - rung.price) / payload.spot_price) * 100
-            )
+            score = (rung.strike_pressure_score * 0.55) + (rung.fill_plausibility_score * 0.45)
+            distance_pct = abs((payload.spot_price - rung.price) / payload.spot_price) * 100
             if distance_pct > 5:
                 score -= 0.25
                 reasons.append("rung_too_far_from_spot")
@@ -67,12 +61,8 @@ class StrategicLadderValidatorService:
             score_components.append(max(0.0, min(1.0, score)))
 
         ladder_score = sum(score_components) / len(score_components)
-        drop_count = sum(
-            1 for item in rung_results if item.decision is LadderRungDecision.DROP
-        )
-        adjust_count = sum(
-            1 for item in rung_results if item.decision is LadderRungDecision.ADJUST
-        )
+        drop_count = sum(1 for item in rung_results if item.decision is LadderRungDecision.DROP)
+        adjust_count = sum(1 for item in rung_results if item.decision is LadderRungDecision.ADJUST)
 
         if payload.iv_hv_divergence_pct > 25:
             overall_reasons.append("iv_hv_divergence_elevated")
@@ -105,9 +95,7 @@ class StrategicLadderValidatorService:
 
 
 class OvernightCarryEvaluatorService:
-    def evaluate(
-        self, payload: OvernightCarryEvaluatorInput
-    ) -> OvernightCarryEvaluatorOutput:
+    def evaluate(self, payload: OvernightCarryEvaluatorInput) -> OvernightCarryEvaluatorOutput:
         rationale_codes: list[str] = []
         risk_hot = payload.vix_level >= 30 or payload.vvix_level >= 110
         precursor_supportive = payload.asia_precursor_composite > 0.2
@@ -130,10 +118,7 @@ class OvernightCarryEvaluatorService:
             exposure = 0.0
             keep_orders_active = False
             review_required = True
-        elif (
-            payload.close_phase is SessionClockPhase.DEALER_UNWIND_CLOSE
-            and precursor_supportive
-        ):
+        elif payload.close_phase is SessionClockPhase.DEALER_UNWIND_CLOSE and precursor_supportive:
             recommendation = CarryRecommendation.INCREASE
             exposure = min(25.0, payload.risk_budget_remaining_pct)
             keep_orders_active = False

@@ -18,9 +18,7 @@ from nvda_desk.schemas.overnight import CarryAction, CarryHorizon
 from nvda_desk.services.carry_handoff import CarryHandoffBuilder
 
 
-def _temporal_output(
-    *, ts: str, event_window_state: str = "clear_window"
-) -> TemporalContextOutput:
+def _temporal_output(*, ts: str, event_window_state: str = "clear_window") -> TemporalContextOutput:
     return TemporalContextOutput(
         session_phase=SessionClockPhase.DEALER_UNWIND_CLOSE,
         desk_window="close",
@@ -107,17 +105,12 @@ def _execution_output(active: list[str]) -> ExecutionExpressionOutput:
         active_setup_variant_ids=active_setup_variant_ids,
         active_family_ids=active_family_ids,
         lead_playbook_id=active[0] if active else None,
-        lead_setup_variant_id=(
-            active_setup_variant_ids[0] if active_setup_variant_ids else None
-        ),
+        lead_setup_variant_id=(active_setup_variant_ids[0] if active_setup_variant_ids else None),
         lead_family_id=active_family_ids[0] if active_family_ids else None,
         entry_style="pin_fade_scaler",
-        playbook_execution_styles={
-            playbook_id: "pin_fade_scaler" for playbook_id in active
-        },
+        playbook_execution_styles={playbook_id: "pin_fade_scaler" for playbook_id in active},
         setup_variant_execution_styles={
-            setup_variant_id: "pin_fade_scaler"
-            for setup_variant_id in active_setup_variant_ids
+            setup_variant_id: "pin_fade_scaler" for setup_variant_id in active_setup_variant_ids
         },
         hedge_required=False,
         inventory_action="hold",

@@ -47,15 +47,9 @@ class LegacyVWAPCase:
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OPTION_FIXTURE_PATH = (
-    REPO_ROOT
-    / "fixtures"
-    / "legacy"
-    / "options_snapshots"
-    / "options_data_csv_output_admitted.csv"
+    REPO_ROOT / "fixtures" / "legacy" / "options_snapshots" / "options_data_csv_output_admitted.csv"
 )
-VWAP_CASE_FIXTURE_PATH = (
-    REPO_ROOT / "fixtures" / "legacy" / "vwap_cases" / "admitted_cases.jsonl"
-)
+VWAP_CASE_FIXTURE_PATH = REPO_ROOT / "fixtures" / "legacy" / "vwap_cases" / "admitted_cases.jsonl"
 
 
 def load_legacy_option_fixture_rows(
@@ -66,8 +60,7 @@ def load_legacy_option_fixture_rows(
         reader = csv.DictReader(handle)
         return [
             LegacyOptionFixtureRow(
-                source_document=(row.get("source_document") or "unknown").strip()
-                or "unknown",
+                source_document=(row.get("source_document") or "unknown").strip() or "unknown",
                 source_pages=(row.get("source_pages") or "").strip(),
                 date=_parse_date_required(row.get("date")),
                 expiry=_parse_date_optional(row.get("expiry")),

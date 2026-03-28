@@ -76,9 +76,7 @@ def _dependency_fences(
 class PostureEnricherContractService:
     """Emit Gate-20 enrichers in frozen order."""
 
-    def evaluate(
-        self, context: PostureEnricherContext
-    ) -> list[PostureEnricherContractEmission]:
+    def evaluate(self, context: PostureEnricherContext) -> list[PostureEnricherContractEmission]:
         outputs: list[PostureEnricherPayload] = [
             self._fill_bias_adjuster(context),
             self._archetype_tagger(context),
@@ -178,9 +176,7 @@ class PostureEnricherContractService:
             fill_bias=fill_bias,
         )
 
-    def _archetype_tagger(
-        self, context: PostureEnricherContext
-    ) -> ArchetypeTaggerContractOutput:
+    def _archetype_tagger(self, context: PostureEnricherContext) -> ArchetypeTaggerContractOutput:
         if (
             context.engine_score.conviction_band == "constructive"
             and context.temporal.desk_window in {"trend_window", "late_session"}

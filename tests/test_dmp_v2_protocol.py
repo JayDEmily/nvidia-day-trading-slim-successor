@@ -202,9 +202,7 @@ def test_dmp_v2_supports_inline_tables_timeseries_and_artifact_references() -> N
     assert timeseries.points[1].values["front_atm_iv"] == 0.6
 
 
-def test_build_dmp_v2_packet_from_payload_preserves_identity_context_and_lineage() -> (
-    None
-):
+def test_build_dmp_v2_packet_from_payload_preserves_identity_context_and_lineage() -> None:
     """Canonical packet building should preserve ids, context, and lineage without a v1 shim."""
 
     packet = build_dmp_v2_packet_from_payload(
@@ -238,6 +236,4 @@ def test_build_dmp_v2_packet_from_payload_preserves_identity_context_and_lineage
         "pkt-upstream-001",
     ]
     assert packet.dependencies == ["temporal_state_v2"]
-    assert packet.payload.model_dump(mode="json") == _temporal_payload().model_dump(
-        mode="json"
-    )
+    assert packet.payload.model_dump(mode="json") == _temporal_payload().model_dump(mode="json")

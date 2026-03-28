@@ -92,9 +92,7 @@ class EventWindowAuthorityPacket(BaseModel):
 class TemporalStateFeaturePayload(BaseModel):
     """Canonical outward Step-1 surface for timestamp-driven temporal lookups."""
 
-    phase: str = Field(
-        description="Compatibility phase label projected from temporal state"
-    )
+    phase: str = Field(description="Compatibility phase label projected from temporal state")
     behavioural_phase: str
     clock_envelope: ClockEnvelope
     market_timezone: str

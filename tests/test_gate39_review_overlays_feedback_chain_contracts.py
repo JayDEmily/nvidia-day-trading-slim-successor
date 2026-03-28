@@ -36,9 +36,7 @@ def _gate39_outputs(*, stressed: bool = False) -> list[object]:
     return [merged_outputs[slug] for slug in EXPECTED_GATE39_ORDER]
 
 
-def test_gate39_coverage_is_closed_in_frozen_order_and_exhausts_remaining_backlog() -> (
-    None
-):
+def test_gate39_coverage_is_closed_in_frozen_order_and_exhausts_remaining_backlog() -> None:
     """Gate 39 should close exactly the six remaining ready-import items in frozen order."""
 
     ordered: list[Any] = _gate39_outputs()

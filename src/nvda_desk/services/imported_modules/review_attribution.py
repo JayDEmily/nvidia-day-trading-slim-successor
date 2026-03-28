@@ -82,19 +82,13 @@ class ReviewAttributionContractService:
         self, context: ReviewAttributionContext
     ) -> list[ReviewAttributionContractEmission]:
         profit_loss_ledger = self._profit_loss_ledger(context)
-        module_trace_attribution = self._module_trace_attribution(
-            context, profit_loss_ledger
-        )
+        module_trace_attribution = self._module_trace_attribution(context, profit_loss_ledger)
         daily_summary = self._daily_summary(context, profit_loss_ledger)
         feedback_summary = self._feedback_summary_writer(context, profit_loss_ledger)
         module_scores = self._module_score_attributor(context, profit_loss_ledger)
         variant_trace = self._variant_trace_logger(context)
-        variant_performance = self._variant_performance_tracker(
-            context, profit_loss_ledger
-        )
-        confidence_divergence = self._confidence_divergence_logger(
-            context, profit_loss_ledger
-        )
+        variant_performance = self._variant_performance_tracker(context, profit_loss_ledger)
+        confidence_divergence = self._confidence_divergence_logger(context, profit_loss_ledger)
         macro_alignment = self._macro_alignment_checker(context)
         outputs: list[ReviewAttributionPayload] = [
             profit_loss_ledger,
@@ -174,9 +168,7 @@ class ReviewAttributionContractService:
             unrealized_pnl_pct=context.unrealized_tracker.unrealized_pnl_pct,
             gross_exposure_pct=context.position_book.live_position_pct,
             ledger_state=(
-                "preview_pnl_ready"
-                if context.position_book.live_position_pct > 0.0
-                else "flat"
+                "preview_pnl_ready" if context.position_book.live_position_pct > 0.0 else "flat"
             ),
         )
 
@@ -366,9 +358,7 @@ class ReviewAttributionContractService:
             dependency_fences=_dependency_fences(
                 ["profit_loss_ledger", "variant_trace"],
                 satisfied={"profit_loss_ledger"},
-                proxied={
-                    "variant_trace": "proxied from the deterministic variant-trace logger"
-                },
+                proxied={"variant_trace": "proxied from the deterministic variant-trace logger"},
             ),
             upstream_contract_slugs=["profit_loss_ledger", "variant_trace_logger"],
             contract_notes=["Variant performance stays descriptive and preview-only."],
@@ -388,9 +378,7 @@ class ReviewAttributionContractService:
             observed_confidence = 0.35
         else:
             observed_confidence = 0.45
-        divergence_score = round(
-            abs(context.engine_score.engine_score - observed_confidence), 4
-        )
+        divergence_score = round(abs(context.engine_score.engine_score - observed_confidence), 4)
         return ConfidenceDivergenceLoggerContractOutput(
             canonical_id="archive-evaluator-eval05",
             canonical_slug="confidence_divergence_logger",

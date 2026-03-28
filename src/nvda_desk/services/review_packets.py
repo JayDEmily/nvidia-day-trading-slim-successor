@@ -82,9 +82,7 @@ class ReviewPacketService:
                 .limit(1)
             )
             latest_daily_pnl = session.scalar(
-                select(DailyPnlReport)
-                .order_by(desc(DailyPnlReport.report_date))
-                .limit(1)
+                select(DailyPnlReport).order_by(desc(DailyPnlReport.report_date)).limit(1)
             )
             open_positions = list(
                 session.scalars(
@@ -101,9 +99,7 @@ class ReviewPacketService:
             latest_daily_pnl=(
                 None
                 if latest_daily_pnl is None
-                else self._execution_records_service._to_daily_pnl_payload(
-                    latest_daily_pnl
-                )
+                else self._execution_records_service._to_daily_pnl_payload(latest_daily_pnl)
             ),
             record_counts=RecordCountSummary(
                 signal_event_count=signal_event_count,
@@ -148,16 +144,12 @@ class ReviewPacketService:
             return None
         return packet.model_dump(mode="json")
 
-    def daily_packet(
-        self, *, report_date: date, symbol: str = "NVDA"
-    ) -> DailyReviewPacket:
+    def daily_packet(self, *, report_date: date, symbol: str = "NVDA") -> DailyReviewPacket:
         account_state = self._execution_records_service.latest_capital_state()
         positions = self._execution_records_service.list_positions(
             symbol=symbol, limit=20
         ).positions
-        daily_report = self._daily_report_or_zero(
-            symbol=symbol, report_date=report_date
-        )
+        daily_report = self._daily_report_or_zero(symbol=symbol, report_date=report_date)
         module_ids = self._active_module_ids(report_date)
         module_health = [self.module_health(module_id) for module_id in module_ids]
         recent_events = self._events_service.get_proximity(
@@ -183,9 +175,7 @@ class ReviewPacketService:
         symbol: str,
         report_date: date,
     ) -> DailyPnlReportPayload:
-        reports = self._execution_records_service.list_daily_pnl(
-            symbol=symbol, limit=20
-        ).reports
+        reports = self._execution_records_service.list_daily_pnl(symbol=symbol, limit=20).reports
         for report in reports:
             if report.report_date == report_date:
                 return report
@@ -224,13 +214,8 @@ class ReviewPacketService:
                     module_ids.add(fallback)
         return sorted(module_ids)
 
-    def _count(
-        self, session: Session, model: type[object], criterion: ColumnElement[bool]
-    ) -> int:
-        return int(
-            session.scalar(select(func.count()).select_from(model).where(criterion))
-            or 0
-        )
+    def _count(self, session: Session, model: type[object], criterion: ColumnElement[bool]) -> int:
+        return int(session.scalar(select(func.count()).select_from(model).where(criterion)) or 0)
 
     def _count_order_events(self, session: Session, module_id: str) -> int:
         return int(
@@ -261,6 +246,4 @@ class ReviewPacketService:
         )
 
     def _count_positions(self, session: Session) -> int:
-        return int(
-            session.scalar(select(func.count()).select_from(PositionSnapshot)) or 0
-        )
+        return int(session.scalar(select(func.count()).select_from(PositionSnapshot)) or 0)

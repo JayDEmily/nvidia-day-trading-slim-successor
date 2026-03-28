@@ -71,9 +71,7 @@ def test_events_routes_and_proximity(tmp_path: Path) -> None:
     assert len(payload["recent_events"]) == 1
     assert create_event.status_code == 200
     assert list_events.status_code == 200
-    assert any(
-        event["title"] == "Analyst call" for event in list_events.json()["events"]
-    )
+    assert any(event["title"] == "Analyst call" for event in list_events.json()["events"])
     assert sessions.status_code == 200
     assert len(sessions.json()["sessions"]) >= 2
 
@@ -125,15 +123,9 @@ def test_execution_and_broker_routes(tmp_path: Path) -> None:
                 "payload": {"source": "test"},
             },
         )
-        signal_list = client.get(
-            "/execution/signals", params={"module_id": "slv-v2-market"}
-        )
-        veto_list = client.get(
-            "/execution/vetoes", params={"module_id": "slv-v2-market"}
-        )
-        block_list = client.get(
-            "/execution/risk-blocks", params={"module_id": "slv-v2-market"}
-        )
+        signal_list = client.get("/execution/signals", params={"module_id": "slv-v2-market"})
+        veto_list = client.get("/execution/vetoes", params={"module_id": "slv-v2-market"})
+        block_list = client.get("/execution/risk-blocks", params={"module_id": "slv-v2-market"})
         order_events = client.get("/broker/order-events")
         fill_events = client.get("/broker/fill-events")
         positions = client.get("/broker/positions", params={"symbol": "NVDA"})
@@ -159,30 +151,14 @@ def test_execution_and_broker_routes(tmp_path: Path) -> None:
     order_payload = order.json()
     assert order_payload["status"] == "filled"
     assert order_payload["filled_quantity"] == 5.0
-    assert (
-        signal_list.status_code == 200 and len(signal_list.json()["signal_events"]) == 1
-    )
+    assert signal_list.status_code == 200 and len(signal_list.json()["signal_events"]) == 1
     assert veto_list.status_code == 200 and len(veto_list.json()["veto_events"]) == 1
-    assert (
-        block_list.status_code == 200
-        and len(block_list.json()["risk_block_events"]) == 1
-    )
-    assert (
-        order_events.status_code == 200
-        and len(order_events.json()["order_events"]) == 2
-    )
-    assert (
-        fill_events.status_code == 200 and len(fill_events.json()["fill_events"]) == 1
-    )
-    assert (
-        positions.status_code == 200
-        and positions.json()["positions"][0]["quantity"] == 5.0
-    )
+    assert block_list.status_code == 200 and len(block_list.json()["risk_block_events"]) == 1
+    assert order_events.status_code == 200 and len(order_events.json()["order_events"]) == 2
+    assert fill_events.status_code == 200 and len(fill_events.json()["fill_events"]) == 1
+    assert positions.status_code == 200 and positions.json()["positions"][0]["quantity"] == 5.0
     assert positions.json()["positions"][0]["market_value"] == 620.0
     assert account.status_code == 200 and account.json()["cash"] == 99510.0
     assert account.json()["gross_exposure"] == 620.0
     assert pnl.status_code == 200
-    assert (
-        pnl_list.status_code == 200
-        and pnl_list.json()["reports"][0]["trade_count"] == 1
-    )
+    assert pnl_list.status_code == 200 and pnl_list.json()["reports"][0]["trade_count"] == 1

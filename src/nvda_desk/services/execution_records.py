@@ -49,9 +49,7 @@ class ExecutionRecordsService:
     def __init__(self, session_factory: sessionmaker[Session]):
         self._session_factory = session_factory
 
-    def record_signal(
-        self, payload: ModuleSignalEventCreate
-    ) -> ModuleSignalEventPayload:
+    def record_signal(self, payload: ModuleSignalEventCreate) -> ModuleSignalEventPayload:
         with self._session_factory() as session:
             row = ModuleSignalEvent(
                 symbol=payload.symbol,
@@ -75,9 +73,7 @@ class ExecutionRecordsService:
             if module_id:
                 stmt = stmt.where(ModuleSignalEvent.module_id == module_id)
             rows = list(
-                session.scalars(
-                    stmt.order_by(desc(ModuleSignalEvent.created_at)).limit(limit)
-                )
+                session.scalars(stmt.order_by(desc(ModuleSignalEvent.created_at)).limit(limit))
             )
         return ModuleSignalEventListResponse(
             signal_events=[self._to_signal_payload(row) for row in rows]
@@ -106,13 +102,9 @@ class ExecutionRecordsService:
             if module_id:
                 stmt = stmt.where(ModuleVetoEvent.module_id == module_id)
             rows = list(
-                session.scalars(
-                    stmt.order_by(desc(ModuleVetoEvent.created_at)).limit(limit)
-                )
+                session.scalars(stmt.order_by(desc(ModuleVetoEvent.created_at)).limit(limit))
             )
-        return ModuleVetoEventListResponse(
-            veto_events=[self._to_veto_payload(row) for row in rows]
-        )
+        return ModuleVetoEventListResponse(veto_events=[self._to_veto_payload(row) for row in rows])
 
     def record_risk_block(self, payload: RiskBlockEventCreate) -> RiskBlockEventPayload:
         with self._session_factory() as session:
@@ -137,9 +129,7 @@ class ExecutionRecordsService:
             if module_id:
                 stmt = stmt.where(RiskBlockEvent.module_id == module_id)
             rows = list(
-                session.scalars(
-                    stmt.order_by(desc(RiskBlockEvent.created_at)).limit(limit)
-                )
+                session.scalars(stmt.order_by(desc(RiskBlockEvent.created_at)).limit(limit))
             )
         return RiskBlockEventListResponse(
             risk_block_events=[self._to_risk_block_payload(row) for row in rows]
@@ -148,7 +138,9 @@ class ExecutionRecordsService:
     def place_paper_order(self, payload: BrokerPaperOrderInput) -> BrokerOrderPayload:
         with self._session_factory() as session:
             requested_at = self._aware(payload.requested_at)
-            client_order_ref = f"paper-{int(requested_at.timestamp())}-{payload.symbol.lower()}-{payload.side}"
+            client_order_ref = (
+                f"paper-{int(requested_at.timestamp())}-{payload.symbol.lower()}-{payload.side}"
+            )
             intent = OrderIntentRecord(
                 symbol=payload.symbol,
                 module_id=payload.module_id,
@@ -202,9 +194,7 @@ class ExecutionRecordsService:
                 requested_at,
             )
             session.flush()
-            capital = self._derive_capital_state(
-                session, payload.side, notional, requested_at
-            )
+            capital = self._derive_capital_state(session, payload.side, notional, requested_at)
             session.commit()
             return BrokerOrderPayload(
                 order_intent_id=intent.id,
@@ -234,9 +224,7 @@ class ExecutionRecordsService:
         with self._session_factory() as session:
             rows = list(
                 session.scalars(
-                    select(FillEventRecord)
-                    .order_by(desc(FillEventRecord.created_at))
-                    .limit(limit)
+                    select(FillEventRecord).order_by(desc(FillEventRecord.created_at)).limit(limit)
                 )
             )
         return BrokerFillEventListResponse(
@@ -251,9 +239,7 @@ class ExecutionRecordsService:
             if symbol:
                 stmt = stmt.where(PositionSnapshot.symbol == symbol)
             rows = list(
-                session.scalars(
-                    stmt.order_by(desc(PositionSnapshot.snapshot_ts)).limit(limit)
-                )
+                session.scalars(stmt.order_by(desc(PositionSnapshot.snapshot_ts)).limit(limit))
             )
         return PositionSnapshotListResponse(
             positions=[self._to_position_payload(row) for row in rows]
@@ -319,13 +305,9 @@ class ExecutionRecordsService:
             if symbol:
                 stmt = stmt.where(DailyPnlReport.symbol == symbol)
             rows = list(
-                session.scalars(
-                    stmt.order_by(desc(DailyPnlReport.report_date)).limit(limit)
-                )
+                session.scalars(stmt.order_by(desc(DailyPnlReport.report_date)).limit(limit))
             )
-        return DailyPnlReportListResponse(
-            reports=[self._to_daily_pnl_payload(row) for row in rows]
-        )
+        return DailyPnlReportListResponse(reports=[self._to_daily_pnl_payload(row) for row in rows])
 
     def _derive_position(
         self,
@@ -354,9 +336,7 @@ class ExecutionRecordsService:
             avg_price = prior_avg
         market_price = self._latest_price(session, symbol) or fill_price
         market_value = new_qty * market_price
-        unrealized = (
-            (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
-        )
+        unrealized = (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
         session.add(
             PositionSnapshot(
                 symbol=symbol,
@@ -378,9 +358,7 @@ class ExecutionRecordsService:
         snapshot_ts: datetime,
     ) -> CapitalStateSnapshot:
         prior = session.scalar(
-            select(CapitalStateSnapshot)
-            .order_by(desc(CapitalStateSnapshot.snapshot_ts))
-            .limit(1)
+            select(CapitalStateSnapshot).order_by(desc(CapitalStateSnapshot.snapshot_ts)).limit(1)
         )
         starting_cash = prior.cash if prior is not None else Decimal("100000.000000")
         cash = starting_cash - notional if side == "buy" else starting_cash + notional
@@ -388,9 +366,7 @@ class ExecutionRecordsService:
         gross_exposure = sum(
             (abs(row.market_value) for row in latest_positions), start=Decimal("0")
         )
-        net_exposure = sum(
-            (row.market_value for row in latest_positions), start=Decimal("0")
-        )
+        net_exposure = sum((row.market_value for row in latest_positions), start=Decimal("0"))
         equity = cash + net_exposure
         row = CapitalStateSnapshot(
             snapshot_ts=snapshot_ts,
@@ -500,9 +476,7 @@ class ExecutionRecordsService:
             source=row.source,
         )
 
-    def _to_capital_payload(
-        self, row: CapitalStateSnapshot
-    ) -> CapitalStateSnapshotPayload:
+    def _to_capital_payload(self, row: CapitalStateSnapshot) -> CapitalStateSnapshotPayload:
         return CapitalStateSnapshotPayload(
             capital_state_snapshot_id=row.id,
             created_at=row.created_at,

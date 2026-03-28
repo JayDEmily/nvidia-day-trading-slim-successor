@@ -510,9 +510,7 @@ class CandidateLedgerRecord(BaseModel):
     role: CandidateRole
     locked_from_research: bool = True
     evidence_span_ids: list[str] = Field(default_factory=list)
-    adjudication_disposition: AdjudicationDisposition = (
-        AdjudicationDisposition.RESERVED_UNTOUCHED
-    )
+    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
     notes: list[str] = Field(default_factory=list)
 
 
@@ -523,9 +521,7 @@ class CandidateGovernanceAuthorityPacket(BaseModel):
 
     allowed_roles: list[CandidateRole] = Field(default_factory=list)
     comparison_outcomes: list[CandidateComparisonOutcome] = Field(default_factory=list)
-    adjudication_dispositions: list[AdjudicationDisposition] = Field(
-        default_factory=list
-    )
+    adjudication_dispositions: list[AdjudicationDisposition] = Field(default_factory=list)
     candidate_shape: CandidateSetShape
 
 

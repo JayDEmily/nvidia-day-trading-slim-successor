@@ -136,7 +136,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="step0_calendar_horizon",
             maps_to_contract="docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md",
             allowed_aliases=["step_0", "horizon_router"],
-            notes=["Explicit runtime routing concern that selects intraday vs carry evaluation horizon."],
+            notes=[
+                "Explicit runtime routing concern that selects intraday vs carry evaluation horizon."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="candidate_family_generation",
@@ -178,7 +180,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="carry_horizon",
             maps_to_contract="nvda_desk.schemas.overnight.CloseStateCarryHandoff",
             allowed_aliases=["close_state_handoff"],
-            notes=["Typed bridge from intraday close-state into overnight/weekend/event carry evaluation."],
+            notes=[
+                "Typed bridge from intraday close-state into overnight/weekend/event carry evaluation."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="carry_horizon_branch",
@@ -196,7 +200,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.cognition.RuntimeStateVector",
             allowed_aliases=["approved_state_vector"],
-            notes=["Gate 60 freezes the readable runtime state fields before policy matrices exist."],
+            notes=[
+                "Gate 60 freezes the readable runtime state fields before policy matrices exist."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="baseline_coefficient",
@@ -206,7 +212,9 @@ def build_document() -> VocabularyDocument:
             maps_to_contract="nvda_desk.schemas.state_policy.RuntimeSurfaceClass",
             allowed_aliases=["release_coefficient"],
             disallowed_phrases=["live_tuning"],
-            notes=["May change only through reviewed release, never through runtime self-adjustment."],
+            notes=[
+                "May change only through reviewed release, never through runtime self-adjustment."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="state_conditioned_modifier",
@@ -216,7 +224,9 @@ def build_document() -> VocabularyDocument:
             maps_to_contract="nvda_desk.schemas.state_policy.ModifierPolicySpec",
             allowed_aliases=["bounded_modifier"],
             disallowed_phrases=["freeform_override"],
-            notes=["Approved runtime policy object that deforms posture without mutating cognition grammar."],
+            notes=[
+                "Approved runtime policy object that deforms posture without mutating cognition grammar."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="effective_coefficient",
@@ -234,7 +244,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="planning_governance",
             maps_to_contract="nvda_desk.schemas.market.PrecursorStitchingAuthorityPacket",
             allowed_aliases=["precursor_fallback_law", "precursor_contradiction_law"],
-            notes=["Gate 75 freezes venue order, fallback, stale-data, and contradiction handling before runtime binding."],
+            notes=[
+                "Gate 75 freezes venue order, fallback, stale-data, and contradiction handling before runtime binding."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="precursor_runtime_packet",
@@ -252,7 +264,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.review.ReviewFailurePacket",
             allowed_aliases=["failure_classification_packet"],
-            notes=["Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."],
+            notes=[
+                "Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="modifier_runtime_packet",
@@ -261,7 +275,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="posture_risk",
             maps_to_contract="nvda_desk.schemas.state_policy.ModifierRuntimePacket",
             allowed_aliases=["runtime_modifier_packet", "effective_modifier_packet"],
-            notes=["Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."],
+            notes=[
+                "Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="prohibited_runtime_variation",
@@ -271,7 +287,9 @@ def build_document() -> VocabularyDocument:
             maps_to_contract="nvda_desk.schemas.state_policy.ProhibitedRuntimeSurface",
             allowed_aliases=["locked_surface"],
             disallowed_phrases=["runtime_rewrite"],
-            notes=["Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."],
+            notes=[
+                "Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="stand_down_class",
@@ -289,7 +307,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.SignalConflictClass",
             allowed_aliases=["signal_conflict_class"],
-            notes=["Ordered conflict severity remains visible in review rather than being silently absorbed."],
+            notes=[
+                "Ordered conflict severity remains visible in review rather than being silently absorbed."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="degradation_step",
@@ -308,7 +328,9 @@ def build_document() -> VocabularyDocument:
             maps_to_contract="nvda_desk.schemas.state_policy.OverrideDisposition",
             allowed_aliases=["override_status"],
             disallowed_phrases=["trader_feel_override"],
-            notes=["Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."],
+            notes=[
+                "Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="stability_scorecard",
@@ -317,7 +339,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.SurfaceStabilityScorecard",
             allowed_aliases=["surface_scorecard"],
-            notes=["Gate 62 freezes the multi-axis stability surface before review law or candidate comparison."],
+            notes=[
+                "Gate 62 freezes the multi-axis stability surface before review law or candidate comparison."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="corridor_zone",
@@ -326,7 +350,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.CorridorZone",
             allowed_aliases=["target_drift_breach_zone"],
-            notes=["Target, tolerated-drift, and breach zones remain explicit in governed scorecards."],
+            notes=[
+                "Target, tolerated-drift, and breach zones remain explicit in governed scorecards."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="review_evidence_block",
@@ -335,7 +361,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.ReviewEvidenceBlock",
             allowed_aliases=["evidence_floor_block"],
-            notes=["Gate 63 requires explicit evidence floors before a surface may become review-eligible."],
+            notes=[
+                "Gate 63 requires explicit evidence floors before a surface may become review-eligible."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="review_outcome",
@@ -344,7 +372,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.ReviewOutcome",
             allowed_aliases=["governed_review_outcome"],
-            notes=["Includes review_not_eligible and review_no_change as first-class governed results."],
+            notes=[
+                "Includes review_not_eligible and review_no_change as first-class governed results."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="candidate_role",
@@ -353,7 +383,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.CandidateRole",
             allowed_aliases=["candidate_state_role"],
-            notes=["Gate 64 limits candidate roles to champion, shadow challenger, dormant candidate, and retired candidate."],
+            notes=[
+                "Gate 64 limits candidate roles to champion, shadow challenger, dormant candidate, and retired candidate."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="adjudication_disposition",
@@ -362,7 +394,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.AdjudicationDisposition",
             allowed_aliases=["reserved_span_state"],
-            notes=["The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."],
+            notes=[
+                "The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="event_taxonomy",
@@ -371,7 +405,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="temporal_context",
             maps_to_contract="nvda_desk.schemas.events.EventTaxonomyAuthorityPacket",
             allowed_aliases=["bounded_event_identity"],
-            notes=["Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."],
+            notes=[
+                "Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="desk_calendar_contract",
@@ -380,7 +416,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="temporal_context",
             maps_to_contract="nvda_desk.schemas.session_clock.DeskCalendarAuthorityPacket",
             allowed_aliases=["venue_calendar_authority"],
-            notes=["Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."],
+            notes=[
+                "Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="event_window_state",
@@ -389,7 +427,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="temporal_context",
             maps_to_contract="nvda_desk.schemas.temporal_surface.EventWindowAuthorityPacket",
             allowed_aliases=["event_window_semantics"],
-            notes=["Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."],
+            notes=[
+                "Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="precursor_universe",
@@ -398,7 +438,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="market_context",
             maps_to_contract="nvda_desk.schemas.market.PrecursorUniverseAuthorityPacket",
             allowed_aliases=["asia_precursor_context"],
-            notes=["Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."],
+            notes=[
+                "Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="phase_carry_policy",
@@ -407,7 +449,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="posture_risk",
             maps_to_contract="nvda_desk.schemas.risk.PhaseCarryoverPolicyAuthorityPacket",
             allowed_aliases=["ordinary_session_policy_matrix"],
-            notes=["Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."],
+            notes=[
+                "Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="event_options_stress_policy",
@@ -416,7 +460,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="posture_risk",
             maps_to_contract="nvda_desk.schemas.state_policy.EventOptionsStressAuthorityPacket",
             allowed_aliases=["event_stress_matrix", "options_stress_policy"],
-            notes=["Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."],
+            notes=[
+                "Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="modifier_control_law",
@@ -425,7 +471,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.state_policy.ModifierControlLawAuthorityPacket",
             allowed_aliases=["precedence_matrix", "kill_switch_law"],
-            notes=["Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."],
+            notes=[
+                "Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="event_provenance_contract",
@@ -434,7 +482,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="research_doctrine",
             maps_to_contract="nvda_desk.schemas.events.EventIngestionAuthorityPacket",
             allowed_aliases=["event_source_normalisation", "event_ingestion_contract"],
-            notes=["Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."],
+            notes=[
+                "Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="shared_event_store",
@@ -443,7 +493,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="review_explanation",
             maps_to_contract="nvda_desk.schemas.events.EventStoreAuthorityPacket",
             allowed_aliases=["event_store_query", "shared_event_truth"],
-            notes=["Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."],
+            notes=[
+                "Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="live_event_richness",
@@ -452,7 +504,9 @@ def build_document() -> VocabularyDocument:
             stage_owner="temporal_context",
             maps_to_contract="nvda_desk.schemas.events.LiveEventRichnessAuthorityPacket",
             allowed_aliases=["live_event_snapshot", "event_rich_temporal_input"],
-            notes=["Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."],
+            notes=[
+                "Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."
+            ],
         ),
     ]
     for horizon in PlaybookHorizon:
@@ -494,7 +548,11 @@ def build_document() -> VocabularyDocument:
                 execution_expression=variant.execution_expression_id,
                 horizon=variant.horizon.value,
                 maps_to_contract="nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-                allowed_aliases=[f"legacy_playbook:{variant.legacy_playbook_id}"] if variant.legacy_playbook_id else [],
+                allowed_aliases=(
+                    [f"legacy_playbook:{variant.legacy_playbook_id}"]
+                    if variant.legacy_playbook_id
+                    else []
+                ),
                 notes=list(variant.notes),
             )
         )
@@ -513,32 +571,34 @@ def build_document() -> VocabularyDocument:
                 notes=[template.thesis_invalidation_state],
             )
         )
-    entries.extend([
-        VocabularyEntry(
-            canonical_slug="walk_forward_harness",
-            canonical_label="Walk Forward Harness",
-            category=VocabularyCategory.WORKFLOW,
-            stage_owner="review_replay",
-            maps_to_contract="nvda_desk.schemas.calibration.WalkForwardHarnessAuthorityPacket",
-            notes=["Frozen Gate 79 review-horizon discovery harness contract."],
-        ),
-        VocabularyEntry(
-            canonical_slug="review_horizon_discovery",
-            canonical_label="Review Horizon Discovery",
-            category=VocabularyCategory.WORKFLOW,
-            stage_owner="review_replay",
-            maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryReport",
-            notes=["Bounded Gate 79 horizon-discovery output surface."],
-        ),
-        VocabularyEntry(
-            canonical_slug="offset_sensitive",
-            canonical_label="Offset Sensitive",
-            category=VocabularyCategory.WORKFLOW,
-            stage_owner="review_replay",
-            maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
-            notes=["Gate 79 outcome meaning offsets disagree materially."],
-        ),
-    ])
+    entries.extend(
+        [
+            VocabularyEntry(
+                canonical_slug="walk_forward_harness",
+                canonical_label="Walk Forward Harness",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="review_replay",
+                maps_to_contract="nvda_desk.schemas.calibration.WalkForwardHarnessAuthorityPacket",
+                notes=["Frozen Gate 79 review-horizon discovery harness contract."],
+            ),
+            VocabularyEntry(
+                canonical_slug="review_horizon_discovery",
+                canonical_label="Review Horizon Discovery",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="review_replay",
+                maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryReport",
+                notes=["Bounded Gate 79 horizon-discovery output surface."],
+            ),
+            VocabularyEntry(
+                canonical_slug="offset_sensitive",
+                canonical_label="Offset Sensitive",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="review_replay",
+                maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
+                notes=["Gate 79 outcome meaning offsets disagree materially."],
+            ),
+        ]
+    )
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
         registry_version="gate79-review-horizon-alignment-2026-03-27",

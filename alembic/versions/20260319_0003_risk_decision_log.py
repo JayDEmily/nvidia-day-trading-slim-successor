@@ -4,6 +4,7 @@ Revision ID: 20260319_0003
 Revises: 20260319_0002
 Create Date: 2026-03-19 13:35:00Z
 """
+
 from __future__ import annotations
 
 from alembic import op
@@ -19,7 +20,12 @@ def upgrade() -> None:
     op.create_table(
         "risk_decision_log",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("action", sa.String(length=16), nullable=False),
@@ -29,9 +35,16 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_risk_decision_log_symbol", "risk_decision_log", ["symbol"], unique=False)
-    op.create_index("ix_risk_decision_log_module_id", "risk_decision_log", ["module_id"], unique=False)
+    op.create_index(
+        "ix_risk_decision_log_module_id", "risk_decision_log", ["module_id"], unique=False
+    )
     op.create_index("ix_risk_decision_log_action", "risk_decision_log", ["action"], unique=False)
-    op.create_index("ix_risk_decision_log_module_created", "risk_decision_log", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_risk_decision_log_module_created",
+        "risk_decision_log",
+        ["module_id", "created_at"],
+        unique=False,
+    )
 
 
 def downgrade() -> None:

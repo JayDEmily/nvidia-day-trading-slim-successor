@@ -78,8 +78,7 @@ def test_tranche_a_upstream_contracts_emit_the_frozen_seven_modules_in_order() -
         DmpGrammarRole.OPTIONS_FLOW_CONTEXT,
     ]
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
@@ -88,9 +87,7 @@ def test_tranche_a_upstream_contracts_keep_fenced_dependencies_explicit() -> Non
 
     emissions = {
         emission.output.canonical_slug: emission.output
-        for emission in TrancheAUpstreamContractService().evaluate(
-            _supportive_context()
-        )
+        for emission in TrancheAUpstreamContractService().evaluate(_supportive_context())
     }
     volume = cast(VolumeSpikeFilterContractOutput, emissions["volume_spike_filter"])
     peer = cast(PeerDivergenceContractOutput, emissions["peer_divergence"])
@@ -106,8 +103,7 @@ def test_tranche_a_upstream_contracts_keep_fenced_dependencies_explicit() -> Non
         "spot_volume_series",
     }
     assert any(
-        fence.dependency == "peer_equities"
-        and fence.status.value == "proxied_from_runtime"
+        fence.dependency == "peer_equities" and fence.status.value == "proxied_from_runtime"
         for fence in peer.dependency_fences
     )
     assert gamma.zone_gamma in {"supportive", "neutral", "destabilising"}
@@ -119,24 +115,15 @@ def test_tranche_a_upstream_packets_upgrade_to_v2_and_remain_lineage_ready() -> 
 
     emissions = TrancheAUpstreamContractService().evaluate(_supportive_context())
     skew = next(
-        emission
-        for emission in emissions
-        if emission.output.canonical_slug == "skew_inflection"
+        emission for emission in emissions if emission.output.canonical_slug == "skew_inflection"
     )
     ivrv = next(
-        emission
-        for emission in emissions
-        if emission.output.canonical_slug == "iv_vs_rv_analysis"
+        emission for emission in emissions if emission.output.canonical_slug == "iv_vs_rv_analysis"
     )
     ivrv_output = cast(IvVsRvAnalysisContractOutput, ivrv.output)
 
     assert skew.packet.protocol_version == "dmp.v2"
-    assert (
-        skew.packet.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
-    )
+    assert skew.packet.producer.grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
     assert skew.packet.summary.trader_summary.startswith("skew_inflection")
     assert ivrv_output.ivrv_ratio is None or ivrv_output.ivrv_ratio > 0.0
-    assert (
-        ivrv.packet.schema_identifiers.output_model_name
-        == "IvVsRvAnalysisContractOutput"
-    )
+    assert ivrv.packet.schema_identifiers.output_model_name == "IvVsRvAnalysisContractOutput"

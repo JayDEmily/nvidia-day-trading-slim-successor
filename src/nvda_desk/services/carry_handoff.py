@@ -58,8 +58,7 @@ class CarryHandoffBuilder:
         )
         next_session_open_ts = self._next_session_open(aware_ts)
         weekend_window = (
-            aware_ts.weekday() >= 5
-            or (next_session_open_ts.date() - aware_ts.date()).days >= 2
+            aware_ts.weekday() >= 5 or (next_session_open_ts.date() - aware_ts.date()).days >= 2
         )
         event_carry_window = temporal.event_window_state in {
             "event_imminent_window",
@@ -68,11 +67,7 @@ class CarryHandoffBuilder:
         horizon = (
             CarryHorizon.WEEKEND
             if weekend_window
-            else (
-                CarryHorizon.EVENT_CARRY
-                if event_carry_window
-                else CarryHorizon.OVERNIGHT
-            )
+            else (CarryHorizon.EVENT_CARRY if event_carry_window else CarryHorizon.OVERNIGHT)
         )
         allowed_actions = self._allowed_actions(
             permission_state=posture.permission_state.value,
@@ -93,10 +88,7 @@ class CarryHandoffBuilder:
             rationale_codes.append("event_carry_window")
         if posture.permission_state.value != "allow":
             rationale_codes.append(f"permission:{posture.permission_state.value}")
-        if (
-            inventory.existing_inventory_pct > 0
-            or inventory.overnight_inventory_pct > 0
-        ):
+        if inventory.existing_inventory_pct > 0 or inventory.overnight_inventory_pct > 0:
             rationale_codes.append("existing_inventory_present")
         else:
             rationale_codes.append("no_existing_inventory")
@@ -165,13 +157,9 @@ class CarryHandoffBuilder:
                 if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}
             ]
         if not has_position:
-            allowed = [
-                action for action in allowed if action is not CarryAction.HOLD_BASELINE
-            ]
+            allowed = [action for action in allowed if action is not CarryAction.HOLD_BASELINE]
             if not has_active_intraday_thesis:
-                allowed = [
-                    action for action in allowed if action is CarryAction.FLATTEN
-                ]
+                allowed = [action for action in allowed if action is CarryAction.FLATTEN]
         if horizon is CarryHorizon.WEEKEND and CarryAction.ADD_CARRY in allowed:
             allowed.remove(CarryAction.ADD_CARRY)
         if event_carry_window and CarryAction.ADD_CARRY in allowed:

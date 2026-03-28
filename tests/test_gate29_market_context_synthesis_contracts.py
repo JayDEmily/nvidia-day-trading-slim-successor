@@ -192,9 +192,7 @@ def _bundle(*, stressed: bool = False) -> Gate29Bundle:
                     MacroSignalScoreContractOutput,
                     scanner_outputs["macro_signal_score"],
                 ),
-                engine_score=cast(
-                    EngineScoreContractOutput, scanner_outputs["engine_score"]
-                ),
+                engine_score=cast(EngineScoreContractOutput, scanner_outputs["engine_score"]),
                 stack_id="core_full_stack",
                 coefficient_set_id="full_stack_base",
             )
@@ -207,9 +205,7 @@ def _bundle(*, stressed: bool = False) -> Gate29Bundle:
     )
 
 
-def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_advisory() -> (
-    None
-):
+def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_advisory() -> None:
     """Gate 29 should close exactly the seven planned synthesis items without execution leakage."""
 
     supportive = _bundle()
@@ -219,10 +215,7 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
         **supportive.scanner_outputs,
         **supportive.synthesis_outputs,
     }
-    ordered = [
-        cast(_CanonicalOutput, supportive_outputs[slug])
-        for slug in EXPECTED_GATE29_ORDER
-    ]
+    ordered = [cast(_CanonicalOutput, supportive_outputs[slug]) for slug in EXPECTED_GATE29_ORDER]
 
     assert [_slug(output) for output in ordered] == EXPECTED_GATE29_ORDER
     assert [_canonical_id(output) for output in ordered] == [
@@ -235,9 +228,7 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
         "archive-module-052",
     ]
 
-    run_signal_scan = cast(
-        RunSignalScanContractOutput, supportive_outputs["run_signal_scan"]
-    )
+    run_signal_scan = cast(RunSignalScanContractOutput, supportive_outputs["run_signal_scan"])
     assert run_signal_scan.grammar_role == DmpGrammarRole.MARKET_REGIME_CONTEXT.value
     assert run_signal_scan.upstream_contract_slugs == [
         "macro_signal_score",
@@ -255,8 +246,6 @@ def test_gate29_coverage_is_closed_in_frozen_order_and_run_signal_scan_stays_adv
     assert run_signal_scan.dependency_fences[0].status.value == "proxied_from_runtime"
     assert run_signal_scan.scan_state == "scan_ready"
 
-    stressed_scan = cast(
-        RunSignalScanContractOutput, stressed.synthesis_outputs["run_signal_scan"]
-    )
+    stressed_scan = cast(RunSignalScanContractOutput, stressed.synthesis_outputs["run_signal_scan"])
     assert stressed_scan.scan_state in {"scan_watch_only", "scan_suppressed"}
     assert "No execution trigger" in stressed_scan.contract_notes[1]

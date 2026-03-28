@@ -21,20 +21,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate69_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -87,9 +80,7 @@ def test_gate69_docs_freeze_phase_carry_and_no_action_law() -> None:
     )
 
     assert "## Gate 69 phase-and-carryover policy authority" in operating_model
-    assert (
-        "the matrix only targets approved mutable runtime surfaces" in operating_model
-    )
+    assert "the matrix only targets approved mutable runtime surfaces" in operating_model
 
     assert "### 5a. Phase-and-carryover policy objects" in domain_model
     assert (
@@ -157,13 +148,8 @@ def test_gate69_schema_surface_extends_state_vector_and_policy_matrix() -> None:
         summary="phase policy bounded", review_packet={}, phase_carry_policy=surface
     )
 
-    assert {"day_phase_state", "carry_horizon_state"}.issubset(
-        set(RuntimeStateVector.model_fields)
-    )
-    assert (
-        authority.authority.policy_records[0].no_action_bias
-        is PhaseNoActionBias.PREFERRED
-    )
+    assert {"day_phase_state", "carry_horizon_state"}.issubset(set(RuntimeStateVector.model_fields))
+    assert authority.authority.policy_records[0].no_action_bias is PhaseNoActionBias.PREFERRED
     assert review.phase_carry_policy == surface
 
 

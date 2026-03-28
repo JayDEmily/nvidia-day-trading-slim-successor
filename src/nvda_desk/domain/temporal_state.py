@@ -192,9 +192,7 @@ class TemporalStateClassifier:
         vwap_slope = fabs(payload.vwap_slope_5m_pct or 0.0)
         range5 = payload.rolling_range_5m_pct or 0.0
         break_count = payload.opening_range_break_count or 0
-        impulse_age = (
-            payload.impulse_age_bars if payload.impulse_age_bars is not None else 999
-        )
+        impulse_age = payload.impulse_age_bars if payload.impulse_age_bars is not None else 999
 
         if minutes_since_open <= 75:
             disorder_hits = sum(
@@ -268,9 +266,7 @@ class TemporalStateClassifier:
 
         return legacy_phase, [f"fallback_phase:{legacy_phase.value}"]
 
-    def _legacy_phase(
-        self, *, minutes_since_open: int, minutes_to_close: int
-    ) -> SessionClockPhase:
+    def _legacy_phase(self, *, minutes_since_open: int, minutes_to_close: int) -> SessionClockPhase:
         if minutes_to_close <= 30:
             return SessionClockPhase.DEALER_UNWIND_CLOSE
         if minutes_to_close <= 60:
@@ -307,9 +303,7 @@ class TemporalStateClassifier:
         return min(0.98, round(base + min(0.08, coverage_ratio * 0.1), 4))
 
     def _signal_coverage_ratio(self, payload: TemporalSignalInput) -> float:
-        present = sum(
-            1 for field in self._SIGNAL_FIELDS if getattr(payload, field) is not None
-        )
+        present = sum(1 for field in self._SIGNAL_FIELDS if getattr(payload, field) is not None)
         return round(present / len(self._SIGNAL_FIELDS), 4)
 
     def _minutes_from_midnight(self, value: time) -> int:

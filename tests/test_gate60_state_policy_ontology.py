@@ -18,18 +18,11 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate60_status_and_closeout_are_recorded() -> None:
@@ -134,10 +127,7 @@ def test_gate60_schema_surface_matches_frozen_ontology() -> None:
             allowed_transform_types=list(ModifierTransformType),
         )
     )
-    assert (
-        authority.authority.mutable_surfaces[0]
-        is MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR
-    )
+    assert authority.authority.mutable_surfaces[0] is MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR
 
 
 def test_gate60_vocabulary_terms_are_generated_and_committed() -> None:

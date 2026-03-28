@@ -12,18 +12,12 @@ PLANS = REPO_ROOT / "PLANS.md"
 AGENTS = REPO_ROOT / "AGENTS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 EXECUTION_LOG = (
-    REPO_ROOT
-    / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md"
+    REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md"
 )
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 
 
-def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate() -> (
-    None
-):
+def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
@@ -48,10 +42,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
 
     assert "V6 successor pack is closed through Gate 79 on `main`" in gate_map
     assert (
-        (
-            "Current active gate: **Gate 81 in the corrective reconstruction pack**."
-            in gate_map
-        )
+        ("Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map)
         or (
             "Current active gate: **none — the V6 successor pack is closed through Gate 79 on `main`**."
             in gate_map
@@ -66,10 +57,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
 def test_execution_log_contains_successor_pack_receipt_recovery_block() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert (
-        "### Anti-drift receipt recovery — Gates 59–64 successor-pack closeout"
-        in execution_log
-    )
+    assert "### Anti-drift receipt recovery — Gates 59–64 successor-pack closeout" in execution_log
     assert "Source merge commit: `000cc98`" in execution_log
     assert "Source merge commit: `ba37c55`" in execution_log
     assert "Source merge commit: `0765452`" in execution_log

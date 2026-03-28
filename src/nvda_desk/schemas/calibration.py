@@ -59,9 +59,7 @@ class StackDefinition(BaseModel):
     module_weights: dict[str, float] = Field(default_factory=dict)
     sub_coefficients: dict[str, float] = Field(default_factory=dict)
     module_weight_contracts: list[ModuleWeightContract] = Field(default_factory=list)
-    sub_coefficient_contracts: list[SubCoefficientContract] = Field(
-        default_factory=list
-    )
+    sub_coefficient_contracts: list[SubCoefficientContract] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def populate_explicit_contract_lists(self) -> StackDefinition:
@@ -91,9 +89,7 @@ class CoefficientSet(BaseModel):
     module_weights: dict[str, float] = Field(default_factory=dict)
     sub_coefficients: dict[str, float] = Field(default_factory=dict)
     module_weight_contracts: list[ModuleWeightContract] = Field(default_factory=list)
-    sub_coefficient_contracts: list[SubCoefficientContract] = Field(
-        default_factory=list
-    )
+    sub_coefficient_contracts: list[SubCoefficientContract] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def populate_explicit_contract_lists(self) -> CoefficientSet:
@@ -120,9 +116,7 @@ class ScenarioExpectation(BaseModel):
     expected_veto: bool = False
     expected_playbooks: list[str] = Field(default_factory=list)
     expected_permission_state: str | None = None
-    expected_review_stages: list[str] = Field(
-        default_factory=lambda: list(EXPECTED_REVIEW_STAGES)
-    )
+    expected_review_stages: list[str] = Field(default_factory=lambda: list(EXPECTED_REVIEW_STAGES))
 
 
 class ReplayScenarioRecord(BaseModel):
@@ -194,9 +188,7 @@ class ReplayRunResult(BaseModel):
     conflict_count: int = 0
     coefficient_audit: CoefficientAuditPacket
     review: ReviewExplanationOutput
-    imported_module_citations: list[ImportedModuleReviewCitation] = Field(
-        default_factory=list
-    )
+    imported_module_citations: list[ImportedModuleReviewCitation] = Field(default_factory=list)
     imported_module_maturity_counts: dict[str, int] = Field(default_factory=dict)
     packet_lineage: ReplayPacketLineage | None = None
 
@@ -385,12 +377,8 @@ class HorizonDiscoveryBinding(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    review_consumer_mode: DownstreamConsumerMode = (
-        DownstreamConsumerMode.REVIEW_CONTEXT_ONLY
-    )
-    candidate_consumer_mode: DownstreamConsumerMode = (
-        DownstreamConsumerMode.CANDIDATE_CONTEXT_ONLY
-    )
+    review_consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.REVIEW_CONTEXT_ONLY
+    candidate_consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.CANDIDATE_CONTEXT_ONLY
     research_consumer_mode: DownstreamConsumerMode = (
         DownstreamConsumerMode.RESEARCH_RESET_CONTEXT_ONLY
     )
@@ -434,13 +422,9 @@ class WalkForwardHarnessAuthorityPacket(BaseModel):
             ChronologyRule.NO_FUTURE_LEAKAGE,
         ]
     )
-    stability_rule: StabilityComparisonRule = Field(
-        default_factory=StabilityComparisonRule
-    )
+    stability_rule: StabilityComparisonRule = Field(default_factory=StabilityComparisonRule)
     surface_keys: list[str] = Field(default_factory=list)
-    downstream_binding: HorizonDiscoveryBinding = Field(
-        default_factory=HorizonDiscoveryBinding
-    )
+    downstream_binding: HorizonDiscoveryBinding = Field(default_factory=HorizonDiscoveryBinding)
     no_go_language: str = (
         "Do not replace discovered evidence blocks with guessed calendar numbers or folklore horizons."
     )
@@ -451,9 +435,7 @@ class WalkForwardHarnessAuthorityPacket(BaseModel):
             self.candidate_forward_blocks = [1]
         self.candidate_forward_blocks = sorted(set(self.candidate_forward_blocks))
         if not self.start_offsets:
-            self.start_offsets = [
-                WalkForwardStartOffset(offset_id="offset_0", offset_sessions=0)
-            ]
+            self.start_offsets = [WalkForwardStartOffset(offset_id="offset_0", offset_sessions=0)]
         if not self.surface_keys:
             self.surface_keys = ["coefficient_groups_default"]
         return self
@@ -472,6 +454,4 @@ class HorizonDiscoveryReport(BaseModel):
     session_slice_reports: list[ContextSliceReport] = Field(default_factory=list)
     fragility: FragilitySignalReport = Field(default_factory=FragilitySignalReport)
     ablation: AblationSignalReport = Field(default_factory=AblationSignalReport)
-    downstream_binding: HorizonDiscoveryBinding = Field(
-        default_factory=HorizonDiscoveryBinding
-    )
+    downstream_binding: HorizonDiscoveryBinding = Field(default_factory=HorizonDiscoveryBinding)

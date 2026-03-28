@@ -41,9 +41,7 @@ class OvernightCarryReplayService:
             close_state_handoff=payload.close_state_handoff,
         )
         carry_eval = self._carry_market_service.evaluate_from_market(market_input)
-        close_price = self._latest_price(
-            symbol=payload.symbol, ts=payload.evaluation_ts
-        )
+        close_price = self._latest_price(symbol=payload.symbol, ts=payload.evaluation_ts)
         if close_price is None:
             raise ValueError(f"no market bars available for symbol: {payload.symbol}")
         if (
@@ -53,15 +51,11 @@ class OvernightCarryReplayService:
             next_open_ts = payload.close_state_handoff.next_session_open_ts
             weekend_window = payload.close_state_handoff.weekend_window
         else:
-            next_open_ts, weekend_window = self._next_session_open(
-                payload.evaluation_ts
-            )
+            next_open_ts, weekend_window = self._next_session_open(payload.evaluation_ts)
         event_window_open = (
             payload.close_state_handoff.event_carry_window
             if payload.close_state_handoff is not None
-            else self._event_window_open(
-                symbol=payload.symbol, requested_at=payload.evaluation_ts
-            )
+            else self._event_window_open(symbol=payload.symbol, requested_at=payload.evaluation_ts)
         )
         next_open_price_reference, reference_source = self._project_next_open_price(
             symbol=payload.symbol,
@@ -78,11 +72,7 @@ class OvernightCarryReplayService:
             else (
                 CarryHorizon.WEEKEND
                 if weekend_window
-                else (
-                    CarryHorizon.EVENT_CARRY
-                    if event_window_open
-                    else CarryHorizon.OVERNIGHT
-                )
+                else (CarryHorizon.EVENT_CARRY if event_window_open else CarryHorizon.OVERNIGHT)
             )
         )
         paths = [
@@ -142,9 +132,7 @@ class OvernightCarryReplayService:
         event_window_open: bool,
         carry_eval: object,
     ) -> tuple[float, str]:
-        market_open_price = self._latest_price(
-            symbol=symbol, ts=next_open_ts, exact_or_after=True
-        )
+        market_open_price = self._latest_price(symbol=symbol, ts=next_open_ts, exact_or_after=True)
         if market_open_price is not None:
             return market_open_price, "market_bar"
         modifier = 0.0
@@ -190,9 +178,7 @@ class OvernightCarryReplayService:
         requested_date = aware_ts.date()
         with self._session_factory() as session:
             current = session.scalar(
-                select(SessionCalendar).where(
-                    SessionCalendar.session_date == requested_date
-                )
+                select(SessionCalendar).where(SessionCalendar.session_date == requested_date)
             )
             if current is None:
                 return aware_ts + timedelta(days=1), requested_date.weekday() == 4
@@ -229,18 +215,14 @@ class OvernightCarryReplayService:
     ) -> float | None:
         aware_ts = self._aware(ts)
         with self._session_factory() as session:
-            instrument = session.scalar(
-                select(Instrument).where(Instrument.symbol == symbol)
-            )
+            instrument = session.scalar(select(Instrument).where(Instrument.symbol == symbol))
             if instrument is None:
                 return None
             stmt = select(Bar1m).where(Bar1m.instrument_id == instrument.id)
             if exact_or_after:
                 stmt = stmt.where(Bar1m.ts_utc >= aware_ts).order_by(asc(Bar1m.ts_utc))
             else:
-                stmt = stmt.where(Bar1m.ts_utc <= aware_ts).order_by(
-                    Bar1m.ts_utc.desc()
-                )
+                stmt = stmt.where(Bar1m.ts_utc <= aware_ts).order_by(Bar1m.ts_utc.desc())
             row = session.scalar(stmt.limit(1))
         return None if row is None else float(Decimal(row.close))
 

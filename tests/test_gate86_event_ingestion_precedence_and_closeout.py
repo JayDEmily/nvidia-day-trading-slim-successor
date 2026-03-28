@@ -19,9 +19,7 @@ from nvda_desk.schemas.events import (
 from nvda_desk.services.event_ingestion import EventIngestionService
 
 
-def test_gate86_authoritative_source_wins_with_visible_conflict_and_outage_notes() -> (
-    None
-):
+def test_gate86_authoritative_source_wins_with_visible_conflict_and_outage_notes() -> None:
     records = EventIngestionService().normalise(
         [
             RawEventSourceObservation(

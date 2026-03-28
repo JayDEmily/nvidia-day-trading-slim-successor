@@ -70,9 +70,7 @@ def _dependency_fences(
 class LadderReadinessContractService:
     """Emit Gate-33 ladder-readiness overlays in frozen order."""
 
-    def evaluate(
-        self, context: LadderReadinessContext
-    ) -> list[LadderReadinessContractEmission]:
+    def evaluate(self, context: LadderReadinessContext) -> list[LadderReadinessContractEmission]:
         outputs: list[LadderReadinessPayload] = [self._vvix_ladder_shaper(context)]
         return [
             self._emit_packet(
@@ -126,9 +124,7 @@ class LadderReadinessContractService:
             vvix_regime = "vvix_elevated"
             multiplier = 1.15
             state = "modestly_widened"
-        elif vix_spread_state == "spread_calm" and (
-            vix_level is None or vix_level <= 20.0
-        ):
+        elif vix_spread_state == "spread_calm" and (vix_level is None or vix_level <= 20.0):
             vvix_regime = "vvix_calm"
             multiplier = 0.9
             state = "compressed_for_calm_regime"

@@ -16,9 +16,7 @@ from nvda_desk.schemas.cognition import (
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
 
 
-def test_options_flow_context_detects_negative_gamma_flush_and_vvix_dislocation() -> (
-    None
-):
+def test_options_flow_context_detects_negative_gamma_flush_and_vvix_dislocation() -> None:
     """Gate D should convert hostile repeated snapshots into a real flush classifier."""
 
     service = OptionsFlowContextService()

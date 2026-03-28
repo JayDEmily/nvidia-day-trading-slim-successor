@@ -4,6 +4,7 @@ Revision ID: 20260318_0001
 Revises: None
 Create Date: 2026-03-18 21:40:00Z
 """
+
 from __future__ import annotations
 
 from alembic import op
@@ -46,7 +47,12 @@ def upgrade() -> None:
     op.create_table(
         "research_note",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("title", sa.String(length=255), nullable=False),
         sa.Column("thesis", sa.Text(), nullable=False),
@@ -59,7 +65,12 @@ def upgrade() -> None:
     op.create_table(
         "evaluation_run",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("symbol", sa.String(length=32), nullable=False),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("module_name", sa.String(length=255), nullable=False),
@@ -71,7 +82,12 @@ def upgrade() -> None:
         sa.Column("output_json", sa.Text(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_evaluation_run_module_created", "evaluation_run", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_evaluation_run_module_created",
+        "evaluation_run",
+        ["module_id", "created_at"],
+        unique=False,
+    )
     op.create_index("ix_evaluation_run_symbol", "evaluation_run", ["symbol"], unique=False)
     op.create_index("ix_evaluation_run_module_id", "evaluation_run", ["module_id"], unique=False)
     op.create_index("ix_evaluation_run_verdict", "evaluation_run", ["verdict"], unique=False)
@@ -79,7 +95,12 @@ def upgrade() -> None:
     op.create_table(
         "module_spec",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("name", sa.String(length=255), nullable=False),
         sa.Column("module_class", sa.String(length=32), nullable=False),
@@ -91,14 +112,21 @@ def upgrade() -> None:
         sa.Column("source_refs_json", sa.Text(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_module_spec_module_created", "module_spec", ["module_id", "created_at"], unique=False)
+    op.create_index(
+        "ix_module_spec_module_created", "module_spec", ["module_id", "created_at"], unique=False
+    )
     op.create_index("ix_module_spec_module_id", "module_spec", ["module_id"], unique=False)
     op.create_index("ix_module_spec_status", "module_spec", ["status"], unique=False)
 
     op.create_table(
         "promotion_decision",
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP"), nullable=False),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            server_default=sa.text("CURRENT_TIMESTAMP"),
+            nullable=False,
+        ),
         sa.Column("module_id", sa.String(length=128), nullable=False),
         sa.Column("from_status", sa.String(length=32), nullable=False),
         sa.Column("to_status", sa.String(length=32), nullable=False),
@@ -108,10 +136,21 @@ def upgrade() -> None:
         sa.Column("approved_by", sa.String(length=255), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index("ix_promotion_decision_module_created", "promotion_decision", ["module_id", "created_at"], unique=False)
-    op.create_index("ix_promotion_decision_module_id", "promotion_decision", ["module_id"], unique=False)
-    op.create_index("ix_promotion_decision_from_status", "promotion_decision", ["from_status"], unique=False)
-    op.create_index("ix_promotion_decision_to_status", "promotion_decision", ["to_status"], unique=False)
+    op.create_index(
+        "ix_promotion_decision_module_created",
+        "promotion_decision",
+        ["module_id", "created_at"],
+        unique=False,
+    )
+    op.create_index(
+        "ix_promotion_decision_module_id", "promotion_decision", ["module_id"], unique=False
+    )
+    op.create_index(
+        "ix_promotion_decision_from_status", "promotion_decision", ["from_status"], unique=False
+    )
+    op.create_index(
+        "ix_promotion_decision_to_status", "promotion_decision", ["to_status"], unique=False
+    )
 
 
 def downgrade() -> None:

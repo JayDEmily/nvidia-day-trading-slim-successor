@@ -110,9 +110,7 @@ class RiskGatewayService:
                 stmt = stmt.where(RiskDecisionLog.module_id == module_id)
             stmt = stmt.order_by(desc(RiskDecisionLog.created_at)).limit(limit)
             rows = list(session.scalars(stmt))
-        return RiskDecisionListResponse(
-            decisions=[self._to_payload(row) for row in rows]
-        )
+        return RiskDecisionListResponse(decisions=[self._to_payload(row) for row in rows])
 
     def _dump_model(self, model: BaseModel) -> str:
         return json.dumps(model.model_dump(mode="json"))

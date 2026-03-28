@@ -100,8 +100,7 @@ class PlaybookEligibilityService:
         probe_candidates = [
             candidate.playbook_id
             for candidate in candidates
-            if candidate.decision is PlaybookDecision.ELIGIBLE
-            and candidate.sizing_fraction <= 0.15
+            if candidate.decision is PlaybookDecision.ELIGIBLE and candidate.sizing_fraction <= 0.15
         ]
         watch_only_candidates = [
             candidate.playbook_id
@@ -282,16 +281,10 @@ class PlaybookEligibilityService:
             for spec in self._registry.playbooks_for_setup_variant(
                 variant_candidate.setup_variant_id
             ):
-                profile_name = self._profile_name_for_decision(
-                    variant_candidate.decision
-                )
-                reasons = [
-                    f"derived_from_setup_variant:{variant_candidate.setup_variant_id}"
-                ]
+                profile_name = self._profile_name_for_decision(variant_candidate.decision)
+                reasons = [f"derived_from_setup_variant:{variant_candidate.setup_variant_id}"]
                 reasons.extend(variant_candidate.reasons)
-                candidates.append(
-                    self._candidate_from_profile(spec, profile_name, reasons)
-                )
+                candidates.append(self._candidate_from_profile(spec, profile_name, reasons))
         return candidates
 
     def _profile_name_for_decision(
@@ -438,10 +431,8 @@ class PlaybookEligibilityService:
             payload.options_flow.pin_risk_state in {"pin_risk_high", "pin_risk_present"}
             and payload.options_flow.strike_cluster_state
             in {"live_pin_cluster", "inferred_pin_cluster"}
-            and payload.options_flow.pin_progression_state
-            in {"pinning_in", "pin_stable"}
-            and payload.temporal.desk_window
-            in {"lunch", "trend_window", "late_session", "close"}
+            and payload.options_flow.pin_progression_state in {"pinning_in", "pin_stable"}
+            and payload.temporal.desk_window in {"lunch", "trend_window", "late_session", "close"}
         ):
             if payload.options_flow.dealer_pressure_state == "dealer_destabilising":
                 return self._variant_candidate(
@@ -487,10 +478,8 @@ class PlaybookEligibilityService:
                 reasons=reasons,
             )
         if (
-            payload.options_flow.options_behavior_cluster
-            == "compression_breakout_ready"
-            and payload.temporal.desk_window
-            in {"lunch", "trend_window", "late_session"}
+            payload.options_flow.options_behavior_cluster == "compression_breakout_ready"
+            and payload.temporal.desk_window in {"lunch", "trend_window", "late_session"}
         ):
             if payload.posture.permission_state.value == "derisk":
                 return self._variant_candidate(
@@ -566,8 +555,7 @@ class PlaybookEligibilityService:
             payload.options_flow.pin_risk_state in {"pin_risk_high", "pin_risk_present"}
             and payload.options_flow.strike_cluster_state
             in {"live_pin_cluster", "inferred_pin_cluster"}
-            and payload.options_flow.pin_progression_state
-            in {"pinning_in", "pin_stable"}
+            and payload.options_flow.pin_progression_state in {"pinning_in", "pin_stable"}
         ):
             if payload.options_flow.dealer_pressure_state == "dealer_destabilising":
                 return self._variant_candidate(
@@ -642,8 +630,7 @@ class PlaybookEligibilityService:
             in {"front_expiry_rich", "next_expiry_rich", "both_expiries_rich"}
             and payload.options_flow.repeated_snapshot_state
             in {"stable_recheck", "escalating_pressure"}
-            and payload.temporal.desk_window
-            in {"early_anchor", "mid_morning", "trend_window"}
+            and payload.temporal.desk_window in {"early_anchor", "mid_morning", "trend_window"}
         ):
             return self._variant_candidate(
                 variant,
@@ -710,8 +697,7 @@ class PlaybookEligibilityService:
             in {"stable_recheck", "cooling_pressure"}
             and payload.options_flow.options_behavior_cluster
             in {"dealer_flow_tension", "balanced_options_state"}
-            and payload.temporal.desk_window
-            in {"early_anchor", "mid_morning", "trend_window"}
+            and payload.temporal.desk_window in {"early_anchor", "mid_morning", "trend_window"}
         ):
             if payload.posture.permission_state.value == "derisk":
                 return self._variant_candidate(

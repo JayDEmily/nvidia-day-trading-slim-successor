@@ -168,9 +168,7 @@ def test_gate30_coverage_is_closed_in_frozen_order_with_honest_options_fences() 
         "archive-module-019",
     ]
 
-    options_data_capture = cast(
-        OptionsDataCaptureContractOutput, outputs["options_data_capture"]
-    )
+    options_data_capture = cast(OptionsDataCaptureContractOutput, outputs["options_data_capture"])
     options_metadata_capture = cast(
         OptionsMetadataCaptureContractOutput, outputs["options_metadata_capture"]
     )
@@ -178,8 +176,7 @@ def test_gate30_coverage_is_closed_in_frozen_order_with_honest_options_fences() 
     iv_vs_rv = cast(IvVsRvAnalysisContractOutput, outputs["iv_vs_rv_analysis"])
 
     assert (
-        options_data_capture.computation_mode
-        is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
+        options_data_capture.computation_mode is ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY
     )
     assert (
         options_metadata_capture.computation_mode
@@ -194,7 +191,4 @@ def test_gate30_coverage_is_closed_in_frozen_order_with_honest_options_fences() 
     } == {
         "rv_metrics",
     }
-    assert (
-        outputs["vol_corridor"].grammar_role
-        == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value
-    )
+    assert outputs["vol_corridor"].grammar_role == DmpGrammarRole.OPTIONS_FLOW_CONTEXT.value

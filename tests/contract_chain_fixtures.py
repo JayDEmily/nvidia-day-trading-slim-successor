@@ -202,9 +202,7 @@ def _build_support_bundle(*, stressed: bool) -> GateSupportBundle:
                     VixSpreadDetectorContractOutput,
                     scanner_outputs["vix_spread_detector"],
                 ),
-                vol_corridor=cast(
-                    VolCorridorContractOutput, scanner_outputs["vol_corridor"]
-                ),
+                vol_corridor=cast(VolCorridorContractOutput, scanner_outputs["vol_corridor"]),
                 options_behaviour_cluster=cast(
                     OptionsBehaviourClusterContractOutput,
                     scanner_outputs["options_behaviour_cluster"],
@@ -217,9 +215,7 @@ def _build_support_bundle(*, stressed: bool) -> GateSupportBundle:
                     MacroAdaptiveWeightingFilterContractOutput,
                     scanner_outputs["macro_adaptive_weighting_filter"],
                 ),
-                engine_score=cast(
-                    EngineScoreContractOutput, scanner_outputs["engine_score"]
-                ),
+                engine_score=cast(EngineScoreContractOutput, scanner_outputs["engine_score"]),
                 stack_id="core_full_stack",
                 coefficient_set_id="full_stack_base",
             )
@@ -269,9 +265,7 @@ def build_gate21_context(*, stressed: bool = False) -> ExecutionPlanningContext:
         posture=bundle.runtime.posture,
         eligibility=bundle.runtime.eligibility,
         execution=bundle.runtime.execution,
-        engine_score=cast(
-            EngineScoreContractOutput, bundle.scanner_outputs["engine_score"]
-        ),
+        engine_score=cast(EngineScoreContractOutput, bundle.scanner_outputs["engine_score"]),
         entry_gate=cast(EntryGateContractOutput, bundle.selector_outputs["entry_gate"]),
         ladder_constructor=cast(
             LadderConstructorContractOutput,
@@ -312,19 +306,13 @@ def build_gate22_context(*, stressed: bool = False) -> ExecutionLifecycleContext
         inventory=bundle.fixture.inventory_state,
         entry_gate=gate21_context.entry_gate,
         spot_data_capture=gate21_context.spot_data_capture,
-        broker_adapter=cast(
-            BrokerAdapterContractOutput, gate21_outputs["broker_adapter"]
-        ),
+        broker_adapter=cast(BrokerAdapterContractOutput, gate21_outputs["broker_adapter"]),
         entry_planner=cast(EntryPlannerContractOutput, gate21_outputs["entry_planner"]),
         position_allocator=cast(
             PositionAllocatorContractOutput, gate21_outputs["position_allocator"]
         ),
-        order_simulator=cast(
-            OrderSimulatorContractOutput, gate21_outputs["order_simulator"]
-        ),
-        run_trading_bot=cast(
-            RunTradingBotContractOutput, gate21_outputs["run_trading_bot"]
-        ),
+        order_simulator=cast(OrderSimulatorContractOutput, gate21_outputs["order_simulator"]),
+        run_trading_bot=cast(RunTradingBotContractOutput, gate21_outputs["run_trading_bot"]),
         stack_id="core_full_stack",
         coefficient_set_id="full_stack_base",
     )
@@ -349,9 +337,7 @@ def build_gate23_context(*, stressed: bool = False) -> ReviewAttributionContext:
         eligibility=bundle.runtime.eligibility,
         execution=bundle.runtime.execution,
         review=bundle.runtime.review,
-        engine_score=cast(
-            EngineScoreContractOutput, bundle.scanner_outputs["engine_score"]
-        ),
+        engine_score=cast(EngineScoreContractOutput, bundle.scanner_outputs["engine_score"]),
         macro_signal_score=cast(
             MacroSignalScoreContractOutput, bundle.scanner_outputs["macro_signal_score"]
         ),
@@ -359,18 +345,14 @@ def build_gate23_context(*, stressed: bool = False) -> ReviewAttributionContext:
             UnrealizedTrackerContractOutput, gate22_outputs["unrealized_tracker"]
         ),
         position_book=cast(PositionBookContractOutput, gate22_outputs["position_book"]),
-        execution_tags=cast(
-            ExecutionTagsContractOutput, gate22_outputs["execution_tags"]
-        ),
+        execution_tags=cast(ExecutionTagsContractOutput, gate22_outputs["execution_tags"]),
         trade_logger=cast(TradeLoggerContractOutput, gate22_outputs["trade_logger"]),
         stack_id="core_full_stack",
         coefficient_set_id="full_stack_base",
     )
 
 
-def build_gate_execution_contract_bundle(
-    *, stressed: bool = False
-) -> GateExecutionContractBundle:
+def build_gate_execution_contract_bundle(*, stressed: bool = False) -> GateExecutionContractBundle:
     """Build the deterministic execution-chain contract outputs used by Gates 35 through 39."""
 
     support_bundle = _build_support_bundle(stressed=stressed)

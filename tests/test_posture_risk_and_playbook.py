@@ -151,13 +151,9 @@ def test_playbook_eligibility_surfaces_continuation_and_compression_families() -
             posture=posture,
         )
     )
-    decisions = {
-        candidate.playbook_id: candidate.decision
-        for candidate in eligibility.candidates
-    }
+    decisions = {candidate.playbook_id: candidate.decision for candidate in eligibility.candidates}
     action_biases = {
-        candidate.playbook_id: candidate.action_bias
-        for candidate in eligibility.candidates
+        candidate.playbook_id: candidate.action_bias for candidate in eligibility.candidates
     }
     assert decisions["continuation_ladder"] is PlaybookDecision.ELIGIBLE
     assert decisions["compression_breakout"] is PlaybookDecision.ELIGIBLE
@@ -253,10 +249,7 @@ def test_playbook_eligibility_distinguishes_probe_only_negative_gamma_flush() ->
             posture=posture,
         )
     )
-    decisions = {
-        candidate.playbook_id: candidate.decision
-        for candidate in eligibility.candidates
-    }
+    decisions = {candidate.playbook_id: candidate.decision for candidate in eligibility.candidates}
     assert decisions["negative_gamma_flush"] is PlaybookDecision.ELIGIBLE
     assert "negative_gamma_flush" in eligibility.probe_candidates
     assert "negative_gamma_flush" in eligibility.add_candidates
@@ -303,6 +296,5 @@ def test_playbook_eligibility_applies_event_window_veto() -> None:
     )
     assert "event_window_veto" in eligibility.no_trade_reasons
     assert all(
-        candidate.decision is not PlaybookDecision.ELIGIBLE
-        for candidate in eligibility.candidates
+        candidate.decision is not PlaybookDecision.ELIGIBLE for candidate in eligibility.candidates
     )

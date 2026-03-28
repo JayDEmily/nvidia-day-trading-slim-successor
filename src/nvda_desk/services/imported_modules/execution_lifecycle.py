@@ -146,14 +146,10 @@ class ExecutionLifecycleContractService:
                 computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
                 dependency_fences=_dependency_fences(
                     ["position_state", "signals"],
-                    proxied={
-                        "signals": "proxied from the current execution exit-plan surface"
-                    },
+                    proxied={"signals": "proxied from the current execution exit-plan surface"},
                 ),
                 upstream_contract_slugs=["order_simulator"],
-                contract_notes=[
-                    "No exit ladder exists while the execution preview is suppressed."
-                ],
+                contract_notes=["No exit ladder exists while the execution preview is suppressed."],
                 partial_exit_levels=[],
                 partial_exit_fracs=[],
                 model_state="no_exit_plan",
@@ -171,9 +167,7 @@ class ExecutionLifecycleContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["position_state", "signals"],
-                proxied={
-                    "signals": "proxied from the current execution exit-plan surface"
-                },
+                proxied={"signals": "proxied from the current execution exit-plan surface"},
             ),
             upstream_contract_slugs=["order_simulator", "entry_planner"],
             contract_notes=["Dynamic partial exits remain an advisory preview only."],
@@ -182,9 +176,7 @@ class ExecutionLifecycleContractService:
             model_state="advisory_partial_exit_ready",
         )
 
-    def _take_profit(
-        self, context: ExecutionLifecycleContext
-    ) -> TakeProfitContractOutput:
+    def _take_profit(self, context: ExecutionLifecycleContext) -> TakeProfitContractOutput:
         partial_exit = self._dynamic_partial_exit_model(context)
         return TakeProfitContractOutput(
             canonical_id="archive-module-034",
@@ -214,9 +206,7 @@ class ExecutionLifecycleContractService:
             ),
         )
 
-    def _trailing_stop(
-        self, context: ExecutionLifecycleContext
-    ) -> TrailingStopContractOutput:
+    def _trailing_stop(self, context: ExecutionLifecycleContext) -> TrailingStopContractOutput:
         fill_price = context.order_simulator.simulated_fill_price
         if fill_price is None:
             return TrailingStopContractOutput(
@@ -290,15 +280,12 @@ class ExecutionLifecycleContractService:
             unrealized_pnl_pct=unrealized_pnl_pct,
             tracker_state=(
                 "flat"
-                if fill_price is None
-                and context.inventory.existing_inventory_pct <= 0.0
+                if fill_price is None and context.inventory.existing_inventory_pct <= 0.0
                 else "preview_mark_to_market"
             ),
         )
 
-    def _position_book(
-        self, context: ExecutionLifecycleContext
-    ) -> PositionBookContractOutput:
+    def _position_book(self, context: ExecutionLifecycleContext) -> PositionBookContractOutput:
         live_position_pct = round(
             min(
                 100.0,
@@ -322,9 +309,7 @@ class ExecutionLifecycleContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["execution_log", "fills"],
-                proxied={
-                    "execution_log": "proxied from the advisory execution-chain surfaces"
-                },
+                proxied={"execution_log": "proxied from the advisory execution-chain surfaces"},
             ),
             upstream_contract_slugs=["position_allocator", "order_simulator"],
             contract_notes=[
@@ -375,13 +360,9 @@ class ExecutionLifecycleContractService:
     def _ladder_continuity_tracker(
         self, context: ExecutionLifecycleContext
     ) -> LadderContinuityTrackerContractOutput:
-        ladder_bytes = repr(context.entry_planner.planned_ladder_strikes).encode(
-            "utf-8"
-        )
+        ladder_bytes = repr(context.entry_planner.planned_ladder_strikes).encode("utf-8")
         ladder_hash = (
-            sha1(ladder_bytes, usedforsecurity=False).hexdigest()[:12]
-            if ladder_bytes
-            else None
+            sha1(ladder_bytes, usedforsecurity=False).hexdigest()[:12] if ladder_bytes else None
         )
         continuity_score = 1.0 if context.entry_planner.planned_ladder_strikes else 0.0
         return LadderContinuityTrackerContractOutput(
@@ -477,16 +458,12 @@ class ExecutionLifecycleContractService:
             contract_notes=[
                 "The log writer emits preview events only and keeps missing broker surfaces explicit."
             ],
-            log_state=(
-                "preview_events_logged" if event_count > 1 else "stand_down_logged"
-            ),
+            log_state=("preview_events_logged" if event_count > 1 else "stand_down_logged"),
             event_count=event_count,
             missing_surfaces=missing_surfaces,
         )
 
-    def _execution_tags(
-        self, context: ExecutionLifecycleContext
-    ) -> ExecutionTagsContractOutput:
+    def _execution_tags(self, context: ExecutionLifecycleContext) -> ExecutionTagsContractOutput:
         position_book = self._position_book(context)
         fill_feedback_router = self._fill_feedback_router(context)
         tags = [
@@ -503,21 +480,15 @@ class ExecutionLifecycleContractService:
             computation_mode=ContractComputationMode.DERIVED_FROM_RUNTIME_PROXY,
             dependency_fences=_dependency_fences(
                 ["execution_decisions", "signals"],
-                proxied={
-                    "signals": "proxied from the current execution and posture outputs"
-                },
+                proxied={"signals": "proxied from the current execution and posture outputs"},
             ),
             upstream_contract_slugs=["position_book", "fill_feedback_router"],
-            contract_notes=[
-                "Tags remain an explainability surface for preview execution only."
-            ],
+            contract_notes=["Tags remain an explainability surface for preview execution only."],
             tags=tags,
             tagging_state="tagged",
         )
 
-    def _trade_logger(
-        self, context: ExecutionLifecycleContext
-    ) -> TradeLoggerContractOutput:
+    def _trade_logger(self, context: ExecutionLifecycleContext) -> TradeLoggerContractOutput:
         execution_log_writer = self._execution_log_writer(context)
         last_event = (
             "preview_order_ready"

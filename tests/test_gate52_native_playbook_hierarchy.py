@@ -109,20 +109,12 @@ def test_gate52_emits_native_family_and_setup_variant_candidates() -> None:
         "opening_drive_continuation",
         "midday_compression_release",
     ]
-    family_index = {
-        candidate.family_id: candidate for candidate in eligibility.family_candidates
-    }
-    assert family_index["trend_continuation"].active_playbook_ids == [
-        "continuation_ladder"
-    ]
+    family_index = {candidate.family_id: candidate for candidate in eligibility.family_candidates}
+    assert family_index["trend_continuation"].active_playbook_ids == ["continuation_ladder"]
     variant_index = {
-        candidate.setup_variant_id: candidate
-        for candidate in eligibility.setup_variant_candidates
+        candidate.setup_variant_id: candidate for candidate in eligibility.setup_variant_candidates
     }
-    assert (
-        variant_index["opening_drive_continuation"].legacy_playbook_id
-        == "continuation_ladder"
-    )
+    assert variant_index["opening_drive_continuation"].legacy_playbook_id == "continuation_ladder"
     assert (
         variant_index["opening_drive_continuation"].execution_expression_id
         == "continuation_ladder_exec"

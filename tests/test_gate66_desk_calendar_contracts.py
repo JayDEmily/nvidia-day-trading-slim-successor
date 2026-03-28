@@ -24,20 +24,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate66_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -180,9 +173,7 @@ def test_gate66_schema_surface_matches_frozen_calendar_authority() -> None:
             SessionBridgeRule.HK_HOLIDAY_EVE_HALF_DAY,
             SessionBridgeRule.PRECURSOR_NEXT_US_SESSION_ONLY,
         ],
-        notes=[
-            "HKEX runs half days on the eves of Christmas, New Year, and Lunar New Year."
-        ],
+        notes=["HKEX runs half days on the eves of Christmas, New Year, and Lunar New Year."],
     )
     china = VenueSessionContract(
         venue=TradingVenue.SSE_CASH,
@@ -228,13 +219,8 @@ def test_gate66_schema_surface_matches_frozen_calendar_authority() -> None:
         ],
     )
 
-    assert authority.authority.venues[0].bridge_rules == [
-        SessionBridgeRule.US_EARLY_CLOSE
-    ]
-    assert (
-        interaction.expiry_calendar_interaction
-        is ExpiryCalendarInteraction.EARLY_CLOSE_EXPIRY
-    )
+    assert authority.authority.venues[0].bridge_rules == [SessionBridgeRule.US_EARLY_CLOSE]
+    assert interaction.expiry_calendar_interaction is ExpiryCalendarInteraction.EARLY_CLOSE_EXPIRY
 
 
 def test_gate66_vocabulary_terms_are_present_and_generated() -> None:

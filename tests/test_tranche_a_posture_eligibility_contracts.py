@@ -156,8 +156,7 @@ def test_selector_contract_service_emits_the_six_tranche_a_selectors_in_order() 
         DmpGrammarRole.PLAYBOOK_ELIGIBILITY,
     ]
     assert all(
-        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT
-        for emission in emissions
+        emission.packet.behaviour_class is DmpBehaviourClass.MODULE_OUTPUT for emission in emissions
     )
 
 
@@ -189,16 +188,11 @@ def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> 
         "archetype_matcher",
     }
     assert any(
-        reason.startswith("contract:signal_conflict_detector:")
-        for reason in result.posture.reasons
+        reason.startswith("contract:signal_conflict_detector:") for reason in result.posture.reasons
     )
+    assert any(reason.startswith("contract:entry_gate:") for reason in result.eligibility.reasons)
     assert any(
-        reason.startswith("contract:entry_gate:")
-        for reason in result.eligibility.reasons
-    )
-    assert any(
-        reason.startswith("contract:archetype_matcher:")
-        for reason in result.eligibility.reasons
+        reason.startswith("contract:archetype_matcher:") for reason in result.eligibility.reasons
     )
     if archetype_output.matched_playbook is not None:
         matched_candidate = next(
@@ -207,14 +201,11 @@ def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> 
             if candidate.playbook_id == archetype_output.matched_playbook
         )
         assert any(
-            reason.startswith("contract:archetype_matcher:")
-            for reason in matched_candidate.reasons
+            reason.startswith("contract:archetype_matcher:") for reason in matched_candidate.reasons
         )
 
 
-def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks() -> (
-    None
-):
+def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks() -> None:
     """Gate 16 should propagate entry-gate veto citations into candidate reasons without adding playbooks."""
 
     runtime = DeskCognitionRuntime(Settings())
@@ -294,9 +285,6 @@ def test_event_veto_selector_citation_propagates_without_inventing_new_playbooks
         "negative_gamma_flush",
     }
     assert all(
-        any(
-            reason == "contract:entry_gate:event_window_veto"
-            for reason in candidate.reasons
-        )
+        any(reason == "contract:entry_gate:event_window_veto" for reason in candidate.reasons)
         for candidate in result.eligibility.candidates
     )

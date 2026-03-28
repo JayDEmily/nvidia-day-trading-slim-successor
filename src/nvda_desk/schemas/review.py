@@ -90,12 +90,8 @@ class ImportedModuleReviewCitation(BaseModel):
     grammar_role: str = Field(min_length=1)
     computation_mode: str = Field(min_length=1)
     maturity_state: ImportedModuleMaturityState
-    approval_state: ImportedModuleApprovalState = (
-        ImportedModuleApprovalState.NOT_APPROVED
-    )
-    dependency_fences: list[ImportedModuleDependencySurface] = Field(
-        default_factory=list
-    )
+    approval_state: ImportedModuleApprovalState = ImportedModuleApprovalState.NOT_APPROVED
+    dependency_fences: list[ImportedModuleDependencySurface] = Field(default_factory=list)
     contract_notes: list[str] = Field(default_factory=list)
 
 
@@ -177,9 +173,7 @@ class PrecursorRuntimeBindingSurface(BaseModel):
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
     contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
     posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
-    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(
-        default_factory=list
-    )
+    fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)
     lineage_keys: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
 
@@ -233,9 +227,7 @@ class CandidateGovernanceSurface(BaseModel):
     dormant_candidate_ids: list[str] = Field(default_factory=list)
     retired_candidate_ids: list[str] = Field(default_factory=list)
     comparison_outcome: CandidateComparisonOutcome | None = None
-    adjudication_disposition: AdjudicationDisposition = (
-        AdjudicationDisposition.RESERVED_UNTOUCHED
-    )
+    adjudication_disposition: AdjudicationDisposition = AdjudicationDisposition.RESERVED_UNTOUCHED
 
 
 class CandidateComparisonContext(BaseModel):

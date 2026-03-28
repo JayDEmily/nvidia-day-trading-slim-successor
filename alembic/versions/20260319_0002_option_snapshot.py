@@ -4,6 +4,7 @@ Revision ID: 20260319_0002
 Revises: 20260318_0001
 Create Date: 2026-03-19 12:35:00Z
 """
+
 from __future__ import annotations
 
 from alembic import op
@@ -51,7 +52,9 @@ def upgrade() -> None:
         ["instrument_id", "as_of_date", "expiry", "option_type", "strike"],
         unique=False,
     )
-    op.create_index("ix_option_snapshot_option_type", "option_snapshot", ["option_type"], unique=False)
+    op.create_index(
+        "ix_option_snapshot_option_type", "option_snapshot", ["option_type"], unique=False
+    )
 
 
 def downgrade() -> None:

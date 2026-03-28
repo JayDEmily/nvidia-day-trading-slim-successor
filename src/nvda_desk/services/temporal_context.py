@@ -61,16 +61,12 @@ class TemporalContextService:
         desk_window = self._desk_window(clock.behavioural_phase)
         expiry_days_remaining = None
         if payload.next_expiry is not None:
-            expiry_days_remaining = max(
-                0, (payload.next_expiry.date() - payload.ts.date()).days
-            )
+            expiry_days_remaining = max(0, (payload.next_expiry.date() - payload.ts.date()).days)
         expiry_cycle_state = self._expiry_cycle_state(payload, expiry_days_remaining)
         event_minutes_remaining = None
         event_semantic_phase = None
         live_event_snapshot = payload.live_event_snapshot
-        next_live_event = (
-            None if live_event_snapshot is None else live_event_snapshot.next_event
-        )
+        next_live_event = None if live_event_snapshot is None else live_event_snapshot.next_event
         event_anchor = payload.next_event_at
         if next_live_event is not None:
             event_anchor = next_live_event.event_at
@@ -81,9 +77,7 @@ class TemporalContextService:
         event_proximity_state = self._event_proximity_state(
             event_minutes_remaining, event_semantic_phase
         )
-        event_window_state = self._event_window_state(
-            event_minutes_remaining, event_semantic_phase
-        )
+        event_window_state = self._event_window_state(event_minutes_remaining, event_semantic_phase)
         recent_path_tag = self._recent_path_tag(
             payload.prior_session_return_pct, payload.intraday_move_pct
         )
@@ -141,9 +135,7 @@ class TemporalContextService:
         }
         return mapping[phase]
 
-    def _recent_path_tag(
-        self, prior_session_return_pct: float, intraday_move_pct: float
-    ) -> str:
+    def _recent_path_tag(self, prior_session_return_pct: float, intraday_move_pct: float) -> str:
         if intraday_move_pct <= -2.0:
             return "intraday_flush"
         if intraday_move_pct >= 2.0:
@@ -154,9 +146,7 @@ class TemporalContextService:
             return "prior_session_strength"
         return "balanced_recent_path"
 
-    def _carryover_state(
-        self, prior_session_return_pct: float, intraday_move_pct: float
-    ) -> str:
+    def _carryover_state(self, prior_session_return_pct: float, intraday_move_pct: float) -> str:
         if prior_session_return_pct <= -1.0 and intraday_move_pct <= -0.75:
             return "downside_carryover_follow_through"
         if prior_session_return_pct >= 1.0 and intraday_move_pct >= 0.75:

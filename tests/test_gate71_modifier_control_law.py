@@ -21,20 +21,13 @@ from scripts.build_canonical_vocabulary import build_document
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
-VOCAB_PATH = (
-    REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
-)
+VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
 def test_gate71_status_closeout_and_leaf_progress_are_recorded() -> None:
@@ -121,9 +114,7 @@ def test_gate71_schema_surface_exposes_precedence_clamps_and_review_hook() -> No
         target_surface=MutableRuntimeSurface.MAX_RISK_PER_TRADE,
         floor=0.1,
         cap=0.5,
-        notes=[
-            "Combined modifiers may not push max risk per trade outside the frozen corridor."
-        ],
+        notes=["Combined modifiers may not push max risk per trade outside the frozen corridor."],
     )
     veto = ModifierVetoRule(
         controlling_band=ModifierPriorityBand.HARD_BLOCK,
@@ -164,10 +155,7 @@ def test_gate71_schema_surface_exposes_precedence_clamps_and_review_hook() -> No
         summary="control law bounded", review_packet={}, modifier_control_law=surface
     )
 
-    assert (
-        authority.authority.veto_rules[0].controlling_band
-        is ModifierPriorityBand.HARD_BLOCK
-    )
+    assert authority.authority.veto_rules[0].controlling_band is ModifierPriorityBand.HARD_BLOCK
     assert review.modifier_control_law == surface
 
 

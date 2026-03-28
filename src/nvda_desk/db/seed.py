@@ -46,8 +46,7 @@ def seed_dev_data(session: Session) -> DevSeedSummary:
     session.flush()
 
     instrument_map = {
-        instrument.symbol: instrument
-        for instrument in session.scalars(select(Instrument)).all()
+        instrument.symbol: instrument for instrument in session.scalars(select(Instrument)).all()
     }
     _seed_intraday_bars(
         session,
@@ -92,9 +91,7 @@ def _seed_intraday_bars(
     start = datetime(2026, 3, 18, 13, 30, tzinfo=UTC)
     existing_bars = list(
         session.scalars(
-            select(Bar1m)
-            .where(Bar1m.instrument_id == instrument.id)
-            .order_by(Bar1m.ts_utc)
+            select(Bar1m).where(Bar1m.instrument_id == instrument.id).order_by(Bar1m.ts_utc)
         )
     )
     target_bar_count = 240

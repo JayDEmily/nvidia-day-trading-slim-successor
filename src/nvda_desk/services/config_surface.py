@@ -80,9 +80,7 @@ class ConfigSurfaceService:
                 coefficient_override_keys=sorted(variant.overrides.coefficients.keys()),
                 supported_sandbox_overrides=self._variant_supported_overrides(variant),
             )
-            for name, variant in sorted(
-                self.bundle().strategy_variants.variants.items()
-            )
+            for name, variant in sorted(self.bundle().strategy_variants.variants.items())
         ]
         return StrategyVariantListResponse(variants=variants)
 
@@ -120,9 +118,7 @@ class ConfigSurfaceService:
         if overrides.zone_score_threshold is not None:
             update["zone_score_threshold"] = overrides.zone_score_threshold
         if overrides.distance_to_vwap_soft_limit_pct is not None:
-            update["distance_to_vwap_soft_limit_pct"] = (
-                overrides.distance_to_vwap_soft_limit_pct
-            )
+            update["distance_to_vwap_soft_limit_pct"] = overrides.distance_to_vwap_soft_limit_pct
         if overrides.risk_vix_caution_threshold is not None:
             update["risk_vix_caution_threshold"] = overrides.risk_vix_caution_threshold
         if overrides.risk_vix_hot_threshold is not None:
@@ -149,9 +145,7 @@ class ConfigSurfaceService:
 
         if strategy_variant_name is not None:
             variant = self._lookup_strategy_variant(strategy_variant_name)
-            entry_gate = variant.overrides.coefficients.get("L3_01", {}).get(
-                "score_floor"
-            )
+            entry_gate = variant.overrides.coefficients.get("L3_01", {}).get("score_floor")
             if isinstance(entry_gate, int | float):
                 entry_gate_score_floor = float(entry_gate)
                 sources.append(f"variant:{strategy_variant_name}:L3_01.score_floor")
@@ -160,27 +154,19 @@ class ConfigSurfaceService:
             )
             if isinstance(zone_threshold, int | float):
                 zone_score_threshold = float(zone_threshold)
-                sources.append(
-                    f"variant:{strategy_variant_name}:L3_03.zone_score_threshold"
-                )
-            risk_budget = variant.overrides.coefficients.get("L4_02", {}).get(
-                "max_risk_per_trade"
-            )
+                sources.append(f"variant:{strategy_variant_name}:L3_03.zone_score_threshold")
+            risk_budget = variant.overrides.coefficients.get("L4_02", {}).get("max_risk_per_trade")
             if isinstance(risk_budget, int | float):
                 risk_budget_remaining_pct = max(
                     5.0, min((float(risk_budget) / 500.0) * 100.0, 100.0)
                 )
-                sources.append(
-                    f"variant:{strategy_variant_name}:L4_02.max_risk_per_trade"
-                )
+                sources.append(f"variant:{strategy_variant_name}:L4_02.max_risk_per_trade")
 
         if coefficient_group_name is not None:
             _, group = self._lookup_coefficient_group(coefficient_group_name)
             if coefficient_group_name == "S06":
                 risk_threshold = group.coefficients.get("vix_risk_threshold")
-                if risk_threshold is not None and isinstance(
-                    risk_threshold.value, int | float
-                ):
+                if risk_threshold is not None and isinstance(risk_threshold.value, int | float):
                     risk_vix_caution = float(risk_threshold.value)
                     risk_vix_hot = float(risk_threshold.value) + 8.0
                     sources.append("coeff:S06.vix_risk_threshold")
@@ -220,16 +206,12 @@ class ConfigSurfaceService:
         if coefficient_group_name == "S06":
             _, group = self._lookup_coefficient_group(coefficient_group_name)
             risk_threshold = group.coefficients.get("vix_risk_threshold")
-            if risk_threshold is not None and isinstance(
-                risk_threshold.value, int | float
-            ):
+            if risk_threshold is not None and isinstance(risk_threshold.value, int | float):
                 caution = float(risk_threshold.value)
                 return caution, caution + 8.0
         return 18.0, 25.0
 
-    def _lookup_coefficient_group(
-        self, key: str
-    ) -> tuple[str, CoefficientModuleConfig]:
+    def _lookup_coefficient_group(self, key: str) -> tuple[str, CoefficientModuleConfig]:
         runtime = self.bundle().coefficients_registry.runtime
         for layer_name in (
             "layer1_signals",
@@ -281,9 +263,7 @@ class ConfigSurfaceService:
             return ["distance_to_vwap_soft_limit_pct"]
         return []
 
-    def _variant_supported_overrides(
-        self, variant: StrategyVariantDefinition
-    ) -> list[str]:
+    def _variant_supported_overrides(self, variant: StrategyVariantDefinition) -> list[str]:
         supported: list[str] = []
         if "L3_01" in variant.overrides.coefficients:
             supported.append("entry_gate_score_floor")

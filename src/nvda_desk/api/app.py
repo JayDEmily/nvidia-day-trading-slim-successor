@@ -152,39 +152,23 @@ ResearchDep = Annotated[ResearchService, Depends(get_research_service)]
 EvalLogDep = Annotated[EvaluationLogService, Depends(get_evaluation_log_service)]
 ExperimentLogDep = Annotated[ExperimentLogService, Depends(get_experiment_log_service)]
 EventsDep = Annotated[EventsService, Depends(get_events_service)]
-ExecutionRecordsDep = Annotated[
-    ExecutionRecordsService, Depends(get_execution_records_service)
-]
+ExecutionRecordsDep = Annotated[ExecutionRecordsService, Depends(get_execution_records_service)]
 ReplayDep = Annotated[ReplayService, Depends(get_replay_service)]
-ModuleRegistryDep = Annotated[
-    ModuleRegistryService, Depends(get_module_registry_service)
-]
+ModuleRegistryDep = Annotated[ModuleRegistryService, Depends(get_module_registry_service)]
 PromotionDep = Annotated[PromotionService, Depends(get_promotion_service)]
-SLVMarketDep = Annotated[
-    StrategicLadderMarketService, Depends(get_strategic_ladder_market_service)
-]
-SLVReplayDep = Annotated[
-    StrategicLadderReplayService, Depends(get_strategic_ladder_replay_service)
-]
+SLVMarketDep = Annotated[StrategicLadderMarketService, Depends(get_strategic_ladder_market_service)]
+SLVReplayDep = Annotated[StrategicLadderReplayService, Depends(get_strategic_ladder_replay_service)]
 SLVExperimentDep = Annotated[
     StrategicLadderExperimentService,
     Depends(get_strategic_ladder_experiment_service),
 ]
-CarryMarketDep = Annotated[
-    OvernightCarryMarketService, Depends(get_overnight_carry_market_service)
-]
-CarryReplayDep = Annotated[
-    OvernightCarryReplayService, Depends(get_overnight_carry_replay_service)
-]
+CarryMarketDep = Annotated[OvernightCarryMarketService, Depends(get_overnight_carry_market_service)]
+CarryReplayDep = Annotated[OvernightCarryReplayService, Depends(get_overnight_carry_replay_service)]
 RiskGatewayDep = Annotated[RiskGatewayService, Depends(get_risk_gateway_service)]
-CapitalAllocatorDep = Annotated[
-    CapitalAllocatorService, Depends(get_capital_allocator_service)
-]
+CapitalAllocatorDep = Annotated[CapitalAllocatorService, Depends(get_capital_allocator_service)]
 ConfigSurfaceDep = Annotated[ConfigSurfaceService, Depends(get_config_surface_service)]
 ReviewPacketDep = Annotated[ReviewPacketService, Depends(get_review_packet_service)]
-TimestampQuery = Annotated[
-    datetime | None, Query(description="UTC or timezone-aware timestamp")
-]
+TimestampQuery = Annotated[datetime | None, Query(description="UTC or timezone-aware timestamp")]
 StartTimestampQuery = Annotated[
     datetime, Query(description="Inclusive UTC or timezone-aware start timestamp")
 ]
@@ -193,18 +177,12 @@ EndTimestampQuery = Annotated[
 ]
 SymbolQuery = Annotated[str, Query(description="Requested symbol", min_length=1)]
 LimitQuery = Annotated[int, Query(description="Maximum bars to return", ge=1, le=390)]
-OptionTypeQuery = Annotated[
-    OptionType | None, Query(description="Optional option side filter")
-]
-ResearchLimitQuery = Annotated[
-    int, Query(description="Maximum notes to return", ge=1, le=100)
-]
+OptionTypeQuery = Annotated[OptionType | None, Query(description="Optional option side filter")]
+ResearchLimitQuery = Annotated[int, Query(description="Maximum notes to return", ge=1, le=100)]
 ModuleLimitQuery = Annotated[
     int, Query(description="Maximum specs or decisions to return", ge=1, le=100)
 ]
-ModuleIdQuery = Annotated[
-    str | None, Query(description="Optional module_id filter", min_length=1)
-]
+ModuleIdQuery = Annotated[str | None, Query(description="Optional module_id filter", min_length=1)]
 ExperimentTypeQuery = Annotated[
     ExperimentType | None, Query(description="Optional experiment type filter")
 ]
@@ -395,9 +373,7 @@ def replay_session_phases(
     service: ReplayDep = None,  # type: ignore[assignment]
 ) -> ReplaySessionResponse:
     assert service is not None
-    return service.replay_session_phases(
-        symbol=symbol, start_ts=start_ts, end_ts=end_ts
-    )
+    return service.replay_session_phases(symbol=symbol, start_ts=start_ts, end_ts=end_ts)
 
 
 @app.post("/research/notes")
@@ -516,9 +492,7 @@ def list_experiment_runs(
     service: ExperimentLogDep = None,  # type: ignore[assignment]
 ) -> ExperimentRunListResponse:
     assert service is not None
-    return service.list_runs(
-        module_id=module_id, experiment_type=experiment_type, limit=limit
-    )
+    return service.list_runs(module_id=module_id, experiment_type=experiment_type, limit=limit)
 
 
 @app.post("/evals/strategic-ladder-validator")
@@ -830,9 +804,7 @@ def get_module_health_packet(
 
 @app.get("/review/daily-packet")
 def get_daily_review_packet(
-    report_date: Annotated[
-        datetime, Query(description="Requested report date timestamp")
-    ],
+    report_date: Annotated[datetime, Query(description="Requested report date timestamp")],
     symbol: SymbolQuery = "NVDA",
     service: ReviewPacketDep = None,  # type: ignore[assignment]
 ) -> DailyReviewPacket:

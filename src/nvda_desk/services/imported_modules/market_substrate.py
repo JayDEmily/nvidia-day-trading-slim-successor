@@ -76,9 +76,7 @@ def _dependency_fences(
 class MarketSubstrateContractService:
     """Emit Gate-18 shared market-data substrate contracts in frozen order."""
 
-    def evaluate(
-        self, context: MarketSubstrateContext
-    ) -> list[MarketSubstrateContractEmission]:
+    def evaluate(self, context: MarketSubstrateContext) -> list[MarketSubstrateContractEmission]:
         outputs: list[MarketSubstratePayload] = [
             self._spot_data_capture(context),
             self._peer_equity_capture(context),
@@ -126,9 +124,7 @@ class MarketSubstrateContractService:
         )
         return MarketSubstrateContractEmission(output=output, packet=packet)
 
-    def _spot_data_capture(
-        self, context: MarketSubstrateContext
-    ) -> SpotDataCaptureContractOutput:
+    def _spot_data_capture(self, context: MarketSubstrateContext) -> SpotDataCaptureContractOutput:
         return SpotDataCaptureContractOutput(
             canonical_id="archive-module-001",
             canonical_slug="spot_data_capture",
@@ -244,16 +240,12 @@ class MarketSubstrateContractService:
             ],
             vix_level=context.regime_input.vix_level,
             vvix_level=context.regime_input.vvix_level,
-            curve_10s2s=round(
-                context.regime_input.us10y - context.regime_input.us2y, 4
-            ),
+            curve_10s2s=round(context.regime_input.us10y - context.regime_input.us2y, 4),
             usdjpy=context.regime_input.usdjpy,
             capture_state="runtime_macro_proxy",
         )
 
-    def _vwap_accumulator(
-        self, context: MarketSubstrateContext
-    ) -> VwapAccumulatorContractOutput:
+    def _vwap_accumulator(self, context: MarketSubstrateContext) -> VwapAccumulatorContractOutput:
         return VwapAccumulatorContractOutput(
             canonical_id="archive-module-002",
             canonical_slug="vwap_accumulator",

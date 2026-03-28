@@ -11,13 +11,8 @@ from tests._successor_pack_helpers import successor_pack_position
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
-GATES = (
-    REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
-)
-LEAVES = (
-    REPO_ROOT
-    / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
-)
+GATES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json"
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
 GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
@@ -25,8 +20,7 @@ LEGACY_GATES_V45 = (
     REPO_ROOT / "docs/legacy/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md"
 )
 LEGACY_LEAVES_V45 = (
-    REPO_ROOT
-    / "docs/legacy/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json"
+    REPO_ROOT / "docs/legacy/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json"
 )
 
 
@@ -36,16 +30,11 @@ def _section(text: str, heading: str, next_heading: str) -> str:
     return text[start:end]
 
 
-def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_active() -> (
-    None
-):
+def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_active() -> None:
     plans = PLANS.read_text()
     gate_map = GATE_MAP.read_text()
 
-    assert (
-        "Completed predecessor modification pairs retained as in-repo evidence are:"
-        in plans
-    )
+    assert "Completed predecessor modification pairs retained as in-repo evidence are:" in plans
     assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in plans
     assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json" in plans
     assert "The active corrective reconstruction pair from Gate 80 onward is:" in plans
@@ -57,8 +46,7 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
     assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in gate_map
     assert "active corrective reconstruction gate surface" in gate_map
     assert (
-        "Current active gate: **Gate 81 in the corrective reconstruction pack**."
-        in gate_map
+        "Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map
     ) or (
         "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**."
         in gate_map
@@ -75,32 +63,13 @@ def test_v6_gates_doc_is_self_contained_and_governing_inputs_do_not_depend_on_mi
         "## Historical salvage consulted for Gate 59 closeout",
     )
 
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md" not in governing_inputs
-    )
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json"
-        not in governing_inputs
-    )
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md"
-        not in governing_inputs
-    )
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json"
-        not in governing_inputs
-    )
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v5.md" not in governing_inputs
-    )
-    assert (
-        "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v5.json"
-        not in governing_inputs
-    )
-    assert (
-        "No missing `v4` or `v5` draft is a governing dependency of this tranche."
-        in gates_text
-    )
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4.md" not in governing_inputs
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4.json" not in governing_inputs
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md" not in governing_inputs
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json" not in governing_inputs
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v5.md" not in governing_inputs
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v5.json" not in governing_inputs
+    assert "No missing `v4` or `v5` draft is a governing dependency of this tranche." in gates_text
     assert "Status: complete on `main`" in _section(
         gates_text,
         "## Gate 59 — Doctrine rebase and tranche reset",
@@ -120,19 +89,14 @@ def test_gate59_doctrine_statements_land_across_normative_operating_and_guardrai
         in normative
     )
     assert (
-        "live paper is the falsification and promotion surface for locked candidates"
-        in normative
+        "live paper is the falsification and promotion surface for locked candidates" in normative
     )
     assert "review does not imply change" in normative.lower()
-    assert (
-        "runtime never invents new coefficients or hidden policy in place"
-        in normative.lower()
-    )
+    assert "runtime never invents new coefficients or hidden policy in place" in normative.lower()
 
     assert "Historical replay is the research/discovery surface." in operating_model
     assert (
-        "Live paper is the falsification/promotion surface for locked candidates"
-        in operating_model
+        "Live paper is the falsification/promotion surface for locked candidates" in operating_model
     )
     assert "Review may end in `no_change`" in operating_model
 
@@ -144,10 +108,7 @@ def test_gate59_doctrine_statements_land_across_normative_operating_and_guardrai
         "**Live paper is falsification/promotion only, never in-place coefficient discovery.**"
         in guardrails
     )
-    assert (
-        "**Runtime never invents coefficients or hidden policy in place.**"
-        in guardrails
-    )
+    assert "**Runtime never invents coefficients or hidden policy in place.**" in guardrails
 
 
 def test_v6_leaves_ledger_marks_gate59_complete_and_gate60_next() -> None:
@@ -190,8 +151,7 @@ def test_v6_gate_order_and_leaves_order_are_monotonic() -> None:
     leaves = json.loads(LEAVES.read_text())
 
     gate_numbers_from_md = [
-        int(match)
-        for match in re.findall(r"^## Gate (\d+) —", gates_text, flags=re.MULTILINE)
+        int(match) for match in re.findall(r"^## Gate (\d+) —", gates_text, flags=re.MULTILINE)
     ]
     assert gate_numbers_from_md == list(range(59, 80))
 

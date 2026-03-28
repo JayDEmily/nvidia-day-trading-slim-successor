@@ -6,9 +6,7 @@ DOCS_ROOT = Path("docs")
 
 
 def test_no_dated_historical_markdown_files_live_at_docs_root() -> None:
-    dated_root_docs = sorted(
-        path.name for path in DOCS_ROOT.glob("20*.md") if path.is_file()
-    )
+    dated_root_docs = sorted(path.name for path in DOCS_ROOT.glob("20*.md") if path.is_file())
     assert dated_root_docs == []
 
 
@@ -26,12 +24,8 @@ def test_status_and_legacy_readmes_exist() -> None:
 
 def test_gate59_salvage_archive_lives_under_docs_legacy() -> None:
     assert (
-        DOCS_ROOT
-        / "legacy"
-        / "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md"
+        DOCS_ROOT / "legacy" / "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v4_5.md"
     ).exists()
     assert (
-        DOCS_ROOT
-        / "legacy"
-        / "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json"
+        DOCS_ROOT / "legacy" / "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v4_5.json"
     ).exists()

@@ -132,9 +132,7 @@ def get_strategic_ladder_experiment_service() -> StrategicLadderExperimentServic
 
 @lru_cache(maxsize=1)
 def get_capital_allocator_service() -> CapitalAllocatorService:
-    return CapitalAllocatorService(
-        get_experiment_log_service(), get_config_surface_service()
-    )
+    return CapitalAllocatorService(get_experiment_log_service(), get_config_surface_service())
 
 
 @lru_cache(maxsize=1)
