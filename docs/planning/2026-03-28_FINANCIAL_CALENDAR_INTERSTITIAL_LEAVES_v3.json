@@ -1,0 +1,338 @@
+{
+  "governing_plan": "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md",
+  "version": "v3.0",
+  "execution_status": "gate_88_financial_calendar_pack_active",
+  "active_gate": "Gate 88",
+  "supersedes": [
+    "conversation-claimed financial calendar interstitial planning artefacts not present in the restored repo",
+    "any partial interstitial-only draft that did not merge the downstream calendar tranche"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G88-001",
+    "LEAF-G88-002",
+    "LEAF-G88-003",
+    "LEAF-G88-004",
+    "LEAF-G88-005",
+    "LEAF-G89-001",
+    "LEAF-G89-002",
+    "LEAF-G89-003",
+    "LEAF-G89-004",
+    "LEAF-G90-001",
+    "LEAF-G90-002",
+    "LEAF-G90-003",
+    "LEAF-G90-004",
+    "LEAF-G91-001",
+    "LEAF-G91-002",
+    "LEAF-G91-003",
+    "LEAF-G91-004",
+    "LEAF-G92-001",
+    "LEAF-G92-002",
+    "LEAF-G92-003",
+    "LEAF-G92-004",
+    "LEAF-G93-001",
+    "LEAF-G93-002",
+    "LEAF-G93-003"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_quartet_must_move_together": true,
+    "canonical_transit_rule": [
+      "checked_in_reference_artifacts",
+      "deterministic_canonical_projection",
+      "shared_event_store_and_runtime_packet_preservation",
+      "bounded_temporal_context_outputs",
+      "downstream_consumers"
+    ],
+    "must_not_flatten_into": [
+      "session_clock_as_canonical_truth",
+      "next_event_at_as_primary_event_system",
+      "single_event_window_state_without_preserved_rich_runtime_packets"
+    ],
+    "retire_from_authority_not_delete": true,
+    "dmp_v2_example_packet_must_not_be_copied_verbatim": true,
+    "external_tranche_inputs_must_be_landed_under_repo_control": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G88-001",
+      "gate": "Gate 88",
+      "title": "Promote the financial-calendar quartet into the active planning surfaces",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": [],
+      "deliverables": [
+        "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md",
+        "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json",
+        "docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "LEAF-G88-002",
+      "gate": "Gate 88",
+      "title": "Freeze the retain, retire-from-authority, and amend matrix for affected temporal and event surfaces",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G88-001"],
+      "deliverables": [
+        "workflow transition matrix in the governing plan",
+        "explicit canonical versus compatibility-only disposition for session_clock, next_event_at, thin CRUD sinks, event store, and temporal context"
+      ]
+    },
+    {
+      "id": "LEAF-G88-003",
+      "gate": "Gate 88",
+      "title": "Freeze vocabulary discipline and the source-of-truth hierarchy for the financial-calendar tranche",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G88-002"],
+      "deliverables": [
+        "vocabulary discipline section in the governing plan",
+        "source-of-truth hierarchy for external tranche inputs versus repo-native authority"
+      ]
+    },
+    {
+      "id": "LEAF-G88-004",
+      "gate": "Gate 88",
+      "title": "Freeze the canonical transit rule and explicit non-goals",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G88-003"],
+      "deliverables": [
+        "canonical transit rule in the governing plan",
+        "explicit non-goals forbidding calendar-as-alpha and silent compatibility-surface promotion"
+      ]
+    },
+    {
+      "id": "LEAF-G88-005",
+      "gate": "Gate 88",
+      "title": "Add planning anti-drift tests proving Gate 88 is next and the new quartet is active",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G88-004"],
+      "deliverables": [
+        "tests/test_financial_calendar_planning_v3.py",
+        "updated planning authority tests"
+      ]
+    },
+    {
+      "id": "LEAF-G89-001",
+      "gate": "Gate 89",
+      "title": "Define the deterministic crosswalk from bundle fact families into repo-native target surfaces",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G88-005"],
+      "deliverables": [
+        "crosswalk spec covering desk calendar, event records, event store, precursor runtime packet, and temporal consumers"
+      ]
+    },
+    {
+      "id": "LEAF-G89-002",
+      "gate": "Gate 89",
+      "title": "Freeze rich-field retention rules for provenance, review, and runtime explanation",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G89-001"],
+      "deliverables": [
+        "retained-field matrix covering venue, jurisdiction, layer identity, source status, runtime tags, and evaluation tags"
+      ]
+    },
+    {
+      "id": "LEAF-G89-003",
+      "gate": "Gate 89",
+      "title": "Freeze repo-native DMP v2 producer identifiers for the financial-calendar reference-bundle lane",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G89-002"],
+      "deliverables": [
+        "repo-native grammar_role and behaviour_class choices",
+        "repo-native packet_schema_id and payload contract identifiers",
+        "approved object_block and artifact_ref_block layout"
+      ]
+    },
+    {
+      "id": "LEAF-G89-004",
+      "gate": "Gate 89",
+      "title": "Add validation proof that the lane no longer depends on incompatible external example identifiers",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G89-003"],
+      "deliverables": [
+        "tests proving the frozen producer identifiers are compatible with the repo helper layer"
+      ]
+    },
+    {
+      "id": "LEAF-G90-001",
+      "gate": "Gate 90",
+      "title": "Land the external tranche artefacts under a repo-controlled reference-data path",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G89-004"],
+      "deliverables": [
+        "checked-in reference-data path under data/reference/financial_calendar",
+        "repo-native manifest discipline"
+      ]
+    },
+    {
+      "id": "LEAF-G90-002",
+      "gate": "Gate 90",
+      "title": "Implement the raw import seam without wiring the artefacts straight into runtime policy",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G90-001"],
+      "deliverables": [
+        "raw import service or repository seam",
+        "tests proving import is provenance-bearing and non-behavioural at this stage"
+      ]
+    },
+    {
+      "id": "LEAF-G90-003",
+      "gate": "Gate 90",
+      "title": "Preserve provenance-bearing bundle metadata required by runtime and review",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G90-002"],
+      "deliverables": [
+        "imported record fields for venue, jurisdiction, layer, source status, runtime tags, and evaluation tags"
+      ]
+    },
+    {
+      "id": "LEAF-G90-004",
+      "gate": "Gate 90",
+      "title": "Record import proof in the execution log without claiming behavioural activation",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G90-003"],
+      "deliverables": [
+        "execution-log entry for Gate 90"
+      ]
+    },
+    {
+      "id": "LEAF-G91-001",
+      "gate": "Gate 91",
+      "title": "Project venue-state facts into desk-calendar authority surfaces",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G90-004"],
+      "deliverables": [
+        "canonical desk-calendar projection"
+      ]
+    },
+    {
+      "id": "LEAF-G91-002",
+      "gate": "Gate 91",
+      "title": "Project macro, expiry, earnings, and precursor-state facts into provenance-bearing event records",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G91-001"],
+      "deliverables": [
+        "canonical event-record projection"
+      ]
+    },
+    {
+      "id": "LEAF-G91-003",
+      "gate": "Gate 91",
+      "title": "Extend event-store records where necessary so rich meaning survives canonical projection",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G91-002"],
+      "deliverables": [
+        "event-store extensions and tests"
+      ]
+    },
+    {
+      "id": "LEAF-G91-004",
+      "gate": "Gate 91",
+      "title": "Prove thin CRUD sinks remain subordinate compatibility layers",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G91-003"],
+      "deliverables": [
+        "tests proving the canonical projection path does not collapse into SessionCalendarCreate or MarketEventCreate as the sole sink"
+      ]
+    },
+    {
+      "id": "LEAF-G92-001",
+      "gate": "Gate 92",
+      "title": "Amend temporal derivation to consume rich canonical event and calendar truth",
+      "status": "planned",
+      "full_suite_required": true,
+      "depends_on": ["LEAF-G91-004"],
+      "deliverables": [
+        "temporal-context amendments and tests"
+      ]
+    },
+    {
+      "id": "LEAF-G92-002",
+      "gate": "Gate 92",
+      "title": "Amend carry/session routing so next-session logic uses desk-calendar authority instead of weekday heuristics",
+      "status": "planned",
+      "full_suite_required": true,
+      "depends_on": ["LEAF-G92-001"],
+      "deliverables": [
+        "carry/session alignment amendments and tests"
+      ]
+    },
+    {
+      "id": "LEAF-G92-003",
+      "gate": "Gate 92",
+      "title": "Preserve compatibility hints explicitly while keeping them non-canonical",
+      "status": "planned",
+      "full_suite_required": true,
+      "depends_on": ["LEAF-G92-002"],
+      "deliverables": [
+        "compatibility shims and tests for next_event_at and session_clock outward surfaces"
+      ]
+    },
+    {
+      "id": "LEAF-G92-004",
+      "gate": "Gate 92",
+      "title": "Prove downstream consumers still read bounded runtime state without erasing preserved rich packets",
+      "status": "planned",
+      "full_suite_required": true,
+      "depends_on": ["LEAF-G92-003"],
+      "deliverables": [
+        "runtime/review proofs for bounded-state consumption plus preserved explanation packets"
+      ]
+    },
+    {
+      "id": "LEAF-G93-001",
+      "gate": "Gate 93",
+      "title": "Close the tranche honestly across PLANS, gate map, leaf ledger, and execution log",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G92-004"],
+      "deliverables": [
+        "closeout updates across the planning quartet"
+      ]
+    },
+    {
+      "id": "LEAF-G93-002",
+      "gate": "Gate 93",
+      "title": "Document retained compatibility-only surfaces after tranche closeout",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G93-001"],
+      "deliverables": [
+        "closeout note covering retained compatibility-only surfaces"
+      ]
+    },
+    {
+      "id": "LEAF-G93-003",
+      "gate": "Gate 93",
+      "title": "Add anti-drift proof that the repo cannot claim completion while still pointing at an older active pack",
+      "status": "planned",
+      "full_suite_required": false,
+      "depends_on": ["LEAF-G93-002"],
+      "deliverables": [
+        "closeout anti-drift tests"
+      ]
+    }
+  ]
+}

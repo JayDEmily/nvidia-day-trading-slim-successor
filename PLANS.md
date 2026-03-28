@@ -9,14 +9,13 @@ This file is the canonical repo-root execution pointer.
 The governing canonical gate authority remains:
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 
-The bounded-scope note remains:
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md`
+The active governing pack is self-contained; there is no separate bounded-scope note for the financial-calendar tranche.
 
-The canonical leaf ledger remains:
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json`
+The active canonical leaf ledger is:
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
 
-The sequential execution log remains:
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md`
+The active sequential execution log is:
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
 
 Completed predecessor modification pairs retained as in-repo evidence are:
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
@@ -24,9 +23,14 @@ Completed predecessor modification pairs retained as in-repo evidence are:
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json`
 
-The active corrective reconstruction pair from Gate 80 onward is:
+The completed corrective reconstruction pair retained as predecessor evidence is:
 - `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`
 - `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`
+
+The active financial-calendar planning quartet from Gate 88 onward is:
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
 
 `PLANS.md` remains short. Detailed execution logic lives in the planning files above.
 
@@ -51,6 +55,7 @@ The active corrective reconstruction pair from Gate 80 onward is:
 - Gate 80 — complete on `main` (corrective tranche reset and anti-drift freeze)
 - Gates 81–86 — complete on `main`
 - Gate 87 — complete on `main` (audit-remediation and closeout-integrity sweep)
+- Gate 88 — planned; next active gate on `main` (financial-calendar workflow transition reset, authority disposition, and vocabulary freeze)
 
 ## Sequential execution rule
 
@@ -58,7 +63,7 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Anti-drift closeout rule
 
-Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed.
+Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed. For the active financial-calendar pack, those surfaces are `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`, and `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`.
 
 ## Current repo state
 
@@ -95,4 +100,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) complete on `main`.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The active post-Gate-87 planning authority is the financial-calendar interstitial pack, with Gate 88 as the next executable gate on `main`.

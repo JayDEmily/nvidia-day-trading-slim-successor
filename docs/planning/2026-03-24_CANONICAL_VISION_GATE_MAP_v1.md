@@ -4,15 +4,15 @@ Status: Active canonical gate authority
 Version: v1.9  
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.  
 Paired files:
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_PLAN_v3.md` — bounded-scope note only
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_LEAVES_v3.json` — canonical leaf ledger
-- `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` — sequential execution receipts
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md` — active financial-calendar gate surface
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json` — active financial-calendar leaf ledger
+- `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md` — active financial-calendar execution log
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_FINDINGS.md` — frozen audit findings input
 - `docs/audit/2026-03-25_preimplementation_audit/AUDIT_PLANNING_INPUT.md` — audit-produced planning consequences
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md` — closed successor-pack evidence for Gates 59–79
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json` — closed successor-pack leaf ledger for Gates 59–79
-- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md` — active corrective reconstruction gate surface
-- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json` — active corrective reconstruction leaf ledger
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md` — closed corrective reconstruction evidence for Gates 80–87
+- `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json` — closed corrective reconstruction leaf ledger for Gates 80–87
 
 ## 0. Purpose
 
@@ -25,7 +25,7 @@ It exists to do five things only:
 4. define downstream leafed gates for the next bounded architecture tranche;
 5. state the binding gate-entry, gate-exit, and merge rules.
 
-The bounded-scope note explains why the current slice is intentionally narrow.  
+The governing plan explains why the current slice is intentionally narrow.  
 The leaf ledger holds leaf-level implementation detail.  
 The execution log holds receipts.
 
@@ -48,7 +48,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**. Gate 80 is complete on `main`; Gates 81–87 are complete on `main`; the V6 successor pack is closed through Gate 79 on `main`; the attached `_v4_5` salvage pair is archived under `docs/legacy/` and is not active authority.
+Current active gate: **Gate 88 in the financial-calendar interstitial pack**. Gates 80–87 are complete on `main` as closed corrective-reconstruction evidence; the V6 successor pack is closed through Gate 79 on `main`; the financial-calendar interstitial pack is the active post-Gate-87 authority; the attached `_v4_5` salvage pair remains archived under `docs/legacy/` and is not active authority.
 
 ## 2. Current completed tranche and successor pack
 
@@ -64,7 +64,7 @@ One leaf at a time. One gate at a time. Gates 46–50 are now complete on `main`
 
 ## 3. Downstream gate map
 
-The successor cognitive-workflow modification pack is closed through Gate 79, and the corrective reconstruction pack is now active:
+The successor cognitive-workflow modification pack is closed through Gate 79, the corrective reconstruction pack is closed through Gate 87, and the financial-calendar interstitial pack is now active:
 
 | Gate | Status | Meaning now | Control surface |
 |---|---|---|---|
@@ -104,6 +104,12 @@ The successor cognitive-workflow modification pack is closed through Gate 79, an
 | Gate 85 | complete on `main` | widen horizon economic-behaviour checks and expose failed economic axes in fragility and ablation reports | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `tests/test_gate85_horizon_economic_behaviour.py` |
 | Gate 86 | complete on `main` | refine explicit event-source precedence and close the corrective reconstruction tranche with end-to-end anti-drift proof | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `tests/test_gate86_event_ingestion_precedence_and_closeout.py` |
 | Gate 87 | complete on `main` | repair post-closeout audit seams across predecessor-pack lineage, shared review/runtime projector law, candidate-governance release truthfulness, frozen Gate 85 thresholds, and repo-wide static hygiene | `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md`, `tests/test_gate69_phase_carry_policy.py`, `tests/test_gate82_review_surface_runtime_emission.py`, `tests/test_gate83_review_governance_surface_builders.py`, `tests/test_gate85_horizon_economic_behaviour.py` |
+| Gate 88 | planned; next active gate | freeze the financial-calendar workflow transition, authority disposition, vocabulary discipline, and anti-drift promotion of the new active quartet before any import code lands | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`, `tests/test_financial_calendar_planning_v3.py` |
+| Gate 89 | planned | freeze the deterministic crosswalk and repo-native DMP v2 producer contract for the financial-calendar reference-bundle lane | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json` |
+| Gate 90 | planned | land checked-in reference artefacts and the provenance-bearing import seam without wiring raw bundle facts straight into runtime behaviour | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json` |
+| Gate 91 | planned | project the imported reference facts into canonical desk-calendar, event, and shared event-store surfaces without losing rich meaning | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json` |
+| Gate 92 | planned | amend temporal and carry/session routing so rich canonical calendar truth survives bounded runtime projection instead of collapsing into legacy timestamp-only shortcuts | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json` |
+| Gate 93 | planned | close the tranche honestly across the active planning quartet and prove anti-drift closeout for the post-Gate-87 financial-calendar work | `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_GATES_v3.md`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`, `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md` |
 
 ## 4. Global execution rules
 
@@ -114,4 +120,4 @@ The successor cognitive-workflow modification pack is closed through Gate 79, an
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; there is no active corrective gate.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gate 88 is the next active gate in the financial-calendar interstitial pack.
