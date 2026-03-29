@@ -2,13 +2,16 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "planned_on_testing_branch_not_active_on_main",
-  "active_gate": "Gate 94",
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "execution_status": "gate_94_testing_module_pack_active_from_gate_95",
+  "active_gate": "Gate 95",
+  "completed_gate_ids": [
+    "Gate 94"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G94-001",
-    "LEAF-G94-002",
+    "LEAF-G94-002"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G95-001",
     "LEAF-G95-002",
     "LEAF-G96-001",
@@ -39,7 +42,7 @@
       "gate": "Gate 94",
       "title": "Promote the testing doctrine and testing-module planning pair onto main",
       "objective": "Move the testing doctrine and the new testing-module planning pair from the testing branch into repo-active authority surfaces.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
@@ -94,7 +97,7 @@
       "gate": "Gate 94",
       "title": "Install active planning pointers and anti-drift proof for Gate 94 closeout",
       "objective": "Make the testing-module pack the active post-Gate-93 planning authority and prove the quartet moves together.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",

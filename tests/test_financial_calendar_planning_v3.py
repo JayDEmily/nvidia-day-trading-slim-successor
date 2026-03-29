@@ -14,7 +14,7 @@ LEAVES = REPO_ROOT / "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGR
 EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md"
 
 
-def test_active_planning_surfaces_point_at_the_runtime_integration_pack() -> None:
+def test_runtime_integration_pack_is_retained_as_closed_predecessor_evidence() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     agents = AGENTS.read_text(encoding="utf-8")
@@ -24,8 +24,9 @@ def test_active_planning_surfaces_point_at_the_runtime_integration_pack() -> Non
     assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md" in plans
     assert "Gate 91 — complete on `main`" in plans
     assert "Gate 92 — complete on `main`" in plans
+    assert "Gate 93 — complete on `main`" in plans
 
-    assert "Current active gate: **none — the financial-calendar runtime-integration pack is closed through Gate 93 on `main`**." in gate_map
+    assert "Current active gate: **Gate 95 in the testing-module pack**." in gate_map
     assert "| Gate 91 | complete on `main` |" in gate_map
     assert "| Gate 92 | complete on `main` |" in gate_map
     assert "| Gate 93 | complete on `main` |" in gate_map

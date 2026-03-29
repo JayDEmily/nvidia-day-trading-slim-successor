@@ -79,6 +79,7 @@ It is the first repo-native testing pack whose sole purpose is to tighten eviden
 1. Build one canonical prepared-runtime harness.
 2. Run one full cognition pass from that canonical harness.
 3. Freeze deterministic output and lineage expectations.
+4. Do not broaden to many scenarios before one lawful single-run harness is stable.
 
 ### Gate 97 sequencing summary
 1. Add lawful-output invariants across canonical scenarios.

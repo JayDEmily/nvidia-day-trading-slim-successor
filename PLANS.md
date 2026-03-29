@@ -9,13 +9,14 @@ This file is the canonical repo-root execution pointer.
 The governing canonical gate authority remains:
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 
-The active governing pack is self-contained; there is no separate bounded-scope note for the financial-calendar tranche.
+The active governing pack is:
+- `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`
 
 The active canonical leaf ledger is:
-- `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`
+- `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
 
 The active sequential execution log is:
-- `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`
+- `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`
 
 Completed predecessor modification pairs retained as in-repo evidence are:
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
@@ -32,7 +33,7 @@ The predecessor financial-calendar interstitial pack retained as Gate 88–90 ev
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
 
-The latest financial-calendar runtime-integration pack from Gate 91 onward is:
+The completed financial-calendar runtime-integration pack retained as predecessor evidence is:
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`
@@ -67,6 +68,9 @@ The latest financial-calendar runtime-integration pack from Gate 91 onward is:
 - Gate 91 — complete on `main` (canonical projection into desk-calendar authority, canonical event truth, live-event richness, and precursor runtime surfaces)
 - Gate 92 — complete on `main` (temporal transition amendment, desk-calendar-aware carry routing, and bounded runtime projection)
 - Gate 93 — complete on `main` (downstream consumer alignment, review semantics, anti-drift closeout, and tranche packaging proof)
+- Gate 94 — complete on `main` (testing-module doctrine promotion, planning-pack activation, and anti-drift closeout)
+- Gate 95 — next active gate on `main` (Phase 0 workbook-viability closeout)
+- Gates 96–100 — planned in the active testing-module pack
 
 ## Sequential execution rule
 
@@ -74,7 +78,7 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Anti-drift closeout rule
 
-Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed. For the active financial-calendar pack, those surfaces are `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`, and `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`.
+Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed. For the active testing-module pack, those surfaces are `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`, and `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`.
 
 ## Current repo state
 
@@ -111,4 +115,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is now closed through Gate 93 on `main`. No later active gate is declared in-repo yet; the latest closed pack remains the runtime-integration pack until a lawful successor surface is authored.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gate 94 is complete on `main`, Gate 95 is next, and Gates 96–100 remain planned until executed sequentially.
