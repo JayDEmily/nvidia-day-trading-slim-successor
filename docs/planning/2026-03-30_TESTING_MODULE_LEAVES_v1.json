@@ -2,15 +2,16 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "gate_99_testing_module_pack_active_from_gate_100",
-  "active_gate": "Gate 100",
+  "execution_status": "gate_100_testing_module_pack_closed_on_main",
+  "active_gate": "none \u2014 testing-module pack closed through Gate 100 on main",
   "completed_gate_ids": [
     "Gate 94",
     "Gate 95",
     "Gate 96",
     "Gate 97",
     "Gate 98",
-    "Gate 99"
+    "Gate 99",
+    "Gate 100"
   ],
   "completed_leaf_ids": [
     "LEAF-G94-001",
@@ -24,12 +25,11 @@
     "LEAF-G98-001",
     "LEAF-G98-002",
     "LEAF-G99-001",
-    "LEAF-G99-002"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G99-002",
     "LEAF-G100-001",
     "LEAF-G100-002"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "branch_per_gate": true,
     "one_gate_at_a_time": true,
@@ -630,7 +630,7 @@
       "gate": "Gate 100",
       "title": "Freeze the bounded deterministic scenario matrix",
       "objective": "Promote a small materially distinct deterministic scenario matrix without opening a scenario sprawl problem.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "fixtures/replay/gate_f_replay_regression_fixture_pack.json"
@@ -674,7 +674,7 @@
       "gate": "Gate 100",
       "title": "Close the testing-module pack honestly and package the repo",
       "objective": "Update the planning quartet together, mark the testing-module pack closed through Gate 100 on main, and produce the repo zip from the exact green state.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
