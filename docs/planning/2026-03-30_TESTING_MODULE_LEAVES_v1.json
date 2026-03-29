@@ -1,0 +1,721 @@
+{
+  "version": "v1.0",
+  "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
+  "supersedes": [],
+  "execution_status": "planned_on_testing_branch_not_active_on_main",
+  "active_gate": "Gate 94",
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G94-001",
+    "LEAF-G94-002",
+    "LEAF-G95-001",
+    "LEAF-G95-002",
+    "LEAF-G96-001",
+    "LEAF-G96-002",
+    "LEAF-G97-001",
+    "LEAF-G97-002",
+    "LEAF-G98-001",
+    "LEAF-G98-002",
+    "LEAF-G99-001",
+    "LEAF-G99-002",
+    "LEAF-G100-001",
+    "LEAF-G100-002"
+  ],
+  "global_rules": {
+    "branch_per_gate": true,
+    "one_gate_at_a_time": true,
+    "one_leaf_at_a_time": true,
+    "testing_doctrine_is_binding": true,
+    "phase0_failure_must_remain_honest": true,
+    "no_invented_raw_inputs": true,
+    "prepared_runtime_inputs_allowed_where_doctrine_explicitly_allows": true,
+    "planning_control_surfaces_must_move_together": true,
+    "zip_required_before_gate_can_be_called_done": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G94-001",
+      "gate": "Gate 94",
+      "title": "Promote the testing doctrine and testing-module planning pair onto main",
+      "objective": "Move the testing doctrine and the new testing-module planning pair from the testing branch into repo-active authority surfaces.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "testing branch doctrine/audit commit",
+        "current Gate 93 main baseline"
+      ],
+      "ordered_actions": [
+        "Cherry-pick the doctrine freeze and the testing-module planning pair onto a fresh Gate 94 branch from main.",
+        "Keep the content authoritative and repo-native; do not smuggle later gate implementation into Gate 94."
+      ],
+      "forbidden_actions": [
+        "Do not claim Phase 0 is closed on main before the audit artefacts are present on main.",
+        "Do not alter runtime behaviour in Gate 94."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate94_testing_module_planning.py"
+      ],
+      "expected_evidence": [
+        "testing doctrine present on main",
+        "testing-module planning pair present on main"
+      ],
+      "definition_of_done": [
+        "Gate 94 planning artefacts are on main",
+        "later gate implementation has not been smuggled into this planning gate"
+      ],
+      "vocabulary_terms_checked": [
+        "testing_doctrine",
+        "prepared_runtime",
+        "scenario_matrix"
+      ],
+      "workflow_intent_assertion": "Gate 94 activates testing authority only. It does not pretend the later test phases already exist.",
+      "depends_on": [],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G94-002",
+      "gate": "Gate 94",
+      "title": "Install active planning pointers and anti-drift proof for Gate 94 closeout",
+      "objective": "Make the testing-module pack the active post-Gate-93 planning authority and prove the quartet moves together.",
+      "status": "planned",
+      "authority_docs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/05_GUARDRAILS.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md",
+        "tests/test_gate94_testing_module_planning.py"
+      ],
+      "inputs": [
+        "Gate 94 planning artefacts on branch"
+      ],
+      "ordered_actions": [
+        "Create the execution log for the testing-module pack.",
+        "Update the active control surfaces so Gate 94 is complete on main and Gate 95 is next.",
+        "Add planning anti-drift tests."
+      ],
+      "forbidden_actions": [
+        "Do not leave any one of the four control surfaces pointing at Gate 93 closeout.",
+        "Do not reopen the financial-calendar pack."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate94_testing_module_planning.py tests/test_financial_calendar_planning_v3.py"
+      ],
+      "expected_evidence": [
+        "active planning quartet points at the testing-module pack",
+        "Gate 94 complete / Gate 95 next is test-backed"
+      ],
+      "definition_of_done": [
+        "Gate 94 is the completed first gate in the testing-module ledger",
+        "Gate 95 is the active next gate"
+      ],
+      "vocabulary_terms_checked": [
+        "active_gate",
+        "execution_log",
+        "anti_drift"
+      ],
+      "workflow_intent_assertion": "Gate 94 closes only when the testing-module pack is truly the active authority.",
+      "depends_on": [
+        "LEAF-G94-001"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G95-001",
+      "gate": "Gate 95",
+      "title": "Promote the Phase 0 workbook audit artefacts onto main",
+      "objective": "Move the Phase 0 workbook-audit artefacts and script onto main without widening the verdict beyond what was actually proved.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json",
+        "scripts/phase0_signal_workbook_audit.py"
+      ],
+      "inputs": [
+        "testing-branch Phase 0 artefacts",
+        "current workbook xlsx"
+      ],
+      "ordered_actions": [
+        "Cherry-pick the Phase 0 audit artefacts onto a fresh Gate 95 branch from main.",
+        "Keep the fail/pass verdict exactly as observed."
+      ],
+      "forbidden_actions": [
+        "Do not fabricate a pass verdict.",
+        "Do not invent missing raw signals in docs or code."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_testing_phase0_foundation.py"
+      ],
+      "expected_evidence": [
+        "Phase 0 audit md/json on main",
+        "Phase 0 audit script on main"
+      ],
+      "definition_of_done": [
+        "Phase 0 artefacts exist on main",
+        "the verdict remains honest"
+      ],
+      "vocabulary_terms_checked": [
+        "raw_signal",
+        "derived_signal",
+        "fail_missing_raw_truth"
+      ],
+      "workflow_intent_assertion": "Gate 95 is a truth-preservation gate, not a workaround gate.",
+      "depends_on": [
+        "LEAF-G94-002"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G95-002",
+      "gate": "Gate 95",
+      "title": "Freeze the Phase 0 fail/pass verdict in planning and test surfaces",
+      "objective": "Advance the active gate to Gate 96 only after Phase 0 status is frozen honestly in the testing-module control surfaces.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md",
+        "tests/test_gate94_testing_module_planning.py"
+      ],
+      "inputs": [
+        "Phase 0 artefacts on main"
+      ],
+      "ordered_actions": [
+        "Update the testing-module ledger and execution log so Gate 95 is complete and Gate 96 is next.",
+        "Tighten planning tests to assert the Gate 95 closeout state."
+      ],
+      "forbidden_actions": [
+        "Do not mark Gate 95 complete while the artefacts are only on a side branch."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate94_testing_module_planning.py tests/test_testing_phase0_foundation.py"
+      ],
+      "expected_evidence": [
+        "Gate 95 complete / Gate 96 next is test-backed"
+      ],
+      "definition_of_done": [
+        "testing-module ledger records Gate 95 closed honestly"
+      ],
+      "vocabulary_terms_checked": [
+        "phase_zero",
+        "active_gate"
+      ],
+      "workflow_intent_assertion": "Gate 95 closes the workbook-truth question before runtime harness work begins.",
+      "depends_on": [
+        "LEAF-G95-001"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G96-001",
+      "gate": "Gate 96",
+      "title": "Build the canonical prepared-runtime full-chain harness helper",
+      "objective": "Create one reusable helper that bridges a checked-in prepared snapshot plus explicit companion regime/inventory truth into a full runtime invocation surface.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "tests/test_gate96_canonical_runtime_harness.py"
+      ],
+      "inputs": [
+        "gate_e prepared-runtime fixture pack",
+        "supportive regime/inventory fixture"
+      ],
+      "ordered_actions": [
+        "Create a typed helper for building canonical runtime harness inputs from a prepared snapshot.",
+        "Keep the companion regime/inventory truth explicit and bounded."
+      ],
+      "forbidden_actions": [
+        "Do not pretend regime or inventory came from the real-data workbook path.",
+        "Do not generalise this helper into a free-form scenario factory."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate96_canonical_runtime_harness.py -k helper"
+      ],
+      "expected_evidence": [
+        "typed canonical harness helper exists",
+        "tests prove helper preserves snapshot lineage"
+      ],
+      "definition_of_done": [
+        "canonical harness helper is reusable and explicit"
+      ],
+      "vocabulary_terms_checked": [
+        "prepared_runtime",
+        "canonical_harness",
+        "lineage"
+      ],
+      "workflow_intent_assertion": "Gate 96 uses prepared-runtime ingress explicitly because Gate 95 kept raw-workbook failure honest.",
+      "depends_on": [
+        "LEAF-G95-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G96-002",
+      "gate": "Gate 96",
+      "title": "Freeze one deterministic full-chain canonical harness run",
+      "objective": "Run one canonical prepared-runtime snapshot through the full cognition runtime and assert stable outputs and packet lineage.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate96_canonical_runtime_harness.py"
+      ],
+      "inputs": [
+        "canonical harness helper"
+      ],
+      "ordered_actions": [
+        "Run the full runtime twice from the canonical harness and assert deterministic equality.",
+        "Freeze the key runtime outputs and stage-packet lineage in tests."
+      ],
+      "forbidden_actions": [
+        "Do not broaden to multiple scenarios yet."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate96_canonical_runtime_harness.py"
+      ],
+      "expected_evidence": [
+        "full-chain canonical harness run is deterministic"
+      ],
+      "definition_of_done": [
+        "Gate 96 proves one lawful single-run harness"
+      ],
+      "vocabulary_terms_checked": [
+        "deterministic_regression",
+        "stage_packet_ids"
+      ],
+      "workflow_intent_assertion": "Gate 96 is the single-run proving gate before invariants and scenario expansion.",
+      "depends_on": [
+        "LEAF-G96-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G97-001",
+      "gate": "Gate 97",
+      "title": "Add lawful-output invariants for permissive versus blocked runtime states",
+      "objective": "Assert the core runtime laws across canonical supportive, stressed, and prepared-runtime scenarios.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "supportive runtime fixture",
+        "stressed runtime fixture",
+        "canonical prepared-runtime harness"
+      ],
+      "ordered_actions": [
+        "Add shared scenario builders.",
+        "Assert block implies zero deployable capital and no active execution path.",
+        "Assert active execution implies non-blocked posture."
+      ],
+      "forbidden_actions": [
+        "Do not assert implementation trivia that is not runtime law."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate97_runtime_invariants.py -k lawful"
+      ],
+      "expected_evidence": [
+        "lawful-output invariants cover three canonical scenarios"
+      ],
+      "definition_of_done": [
+        "core veto and permissive laws are test-backed"
+      ],
+      "vocabulary_terms_checked": [
+        "permission_state",
+        "target_fresh_deployable_pct"
+      ],
+      "workflow_intent_assertion": "Gate 97 freezes laws, not one-off anecdotes.",
+      "depends_on": [
+        "LEAF-G96-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G97-002",
+      "gate": "Gate 97",
+      "title": "Add packet-lineage and stage-order invariants",
+      "objective": "Assert that packet lineage and stage ordering stay lawful across the canonical invariant scenarios.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "runtime result packet surfaces"
+      ],
+      "ordered_actions": [
+        "Assert packet lineage starts at temporal and ends at review.",
+        "Assert stage-reason packet order remains temporal -> regime -> options_flow -> posture -> eligibility -> execution."
+      ],
+      "forbidden_actions": [
+        "Do not treat unordered review reasons as lawful lineage proof."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate97_runtime_invariants.py -k lineage"
+      ],
+      "expected_evidence": [
+        "packet-lineage and stage-order invariants are explicit"
+      ],
+      "definition_of_done": [
+        "runtime lineage law is test-backed"
+      ],
+      "vocabulary_terms_checked": [
+        "packet_lineage",
+        "stage_reason_packets"
+      ],
+      "workflow_intent_assertion": "Gate 97 keeps lineage as a first-class runtime law surface.",
+      "depends_on": [
+        "LEAF-G97-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G98-001",
+      "gate": "Gate 98",
+      "title": "Add parametrized gamma-pressure threshold-edge tests",
+      "objective": "Probe modifier-sensitive threshold edges with bounded parametrized cases rather than one hand-picked value.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate98_threshold_edges.py"
+      ],
+      "inputs": [
+        "supportive runtime fixture"
+      ],
+      "ordered_actions": [
+        "Parametrize gamma-pressure inputs across low, neutral, and destabilising edges.",
+        "Assert target fresh deployable capital is monotonic non-increasing as hostile pressure rises."
+      ],
+      "forbidden_actions": [
+        "Do not widen this into repo-wide random input generation."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate98_threshold_edges.py -k gamma"
+      ],
+      "expected_evidence": [
+        "gamma-pressure edge behaviour is bounded and monotonic"
+      ],
+      "definition_of_done": [
+        "at least one modifier-sensitive edge family is covered parametrically"
+      ],
+      "vocabulary_terms_checked": [
+        "gamma_pressure",
+        "degradation_step"
+      ],
+      "workflow_intent_assertion": "Gate 98 attacks threshold edges where example-driven tests are too polite.",
+      "depends_on": [
+        "LEAF-G97-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G98-002",
+      "gate": "Gate 98",
+      "title": "Add parametrized event-window edge tests",
+      "objective": "Probe temporal event-window edges across same-session, imminent, and live transitions.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/temporal_context.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate98_threshold_edges.py"
+      ],
+      "inputs": [
+        "supportive runtime fixture"
+      ],
+      "ordered_actions": [
+        "Parametrize next-event offsets around the same-session -> imminent -> live boundary.",
+        "Assert lawful permission transitions and non-increasing fresh deployable capital."
+      ],
+      "forbidden_actions": [
+        "Do not assert unsupported raw-data coverage from these synthetic edge offsets."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate98_threshold_edges.py -k event_window"
+      ],
+      "expected_evidence": [
+        "event-window edge behaviour is covered parametrically"
+      ],
+      "definition_of_done": [
+        "temporal edge transitions are tested without widening scope"
+      ],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_imminent_window",
+        "event_live_window"
+      ],
+      "workflow_intent_assertion": "Gate 98 targets edge logic, not broad scenario count inflation.",
+      "depends_on": [
+        "LEAF-G98-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G99-001",
+      "gate": "Gate 99",
+      "title": "Add adjacent-snapshot sequence tests for the canonical prepared-runtime dataset",
+      "objective": "Run the checked-in prepared-runtime snapshot sequence in order and assert lawful non-illegal transitions across adjacent snapshots.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate99_runtime_transitions.py"
+      ],
+      "inputs": [
+        "prepared-runtime dataset",
+        "canonical harness helper"
+      ],
+      "ordered_actions": [
+        "Run all snapshots in order through the full runtime.",
+        "Assert event timing decreases monotonically and execution permissiveness does not increase illegally once pressure rises."
+      ],
+      "forbidden_actions": [
+        "Do not reorder the sequence or cherry-pick only the favourable snapshots."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate99_runtime_transitions.py -k adjacent"
+      ],
+      "expected_evidence": [
+        "adjacent-snapshot transitions are test-backed"
+      ],
+      "definition_of_done": [
+        "canonical sequence behaviour is frozen across adjacent snapshots"
+      ],
+      "vocabulary_terms_checked": [
+        "adjacent_snapshot",
+        "flow_tension_score"
+      ],
+      "workflow_intent_assertion": "Gate 99 is where sequence bugs lose their hiding place.",
+      "depends_on": [
+        "LEAF-G98-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G99-002",
+      "gate": "Gate 99",
+      "title": "Add ordered event-window transition tests",
+      "objective": "Freeze a lawful allow -> derisk -> block transition across ordered event-time offsets.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate99_runtime_transitions.py"
+      ],
+      "inputs": [
+        "supportive runtime fixture"
+      ],
+      "ordered_actions": [
+        "Run ordered event offsets from same-session to imminent to live.",
+        "Assert permission-state severity and deployable-capital severity do not reverse illegally."
+      ],
+      "forbidden_actions": [
+        "Do not convert this into independent unordered threshold tests; those belong to Gate 98."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate99_runtime_transitions.py -k ordered_event"
+      ],
+      "expected_evidence": [
+        "ordered event-window sequence remains lawful"
+      ],
+      "definition_of_done": [
+        "transition law is covered separately from static edges"
+      ],
+      "vocabulary_terms_checked": [
+        "ordered_transition",
+        "permission_state"
+      ],
+      "workflow_intent_assertion": "Gate 99 checks movement, not just snapshots.",
+      "depends_on": [
+        "LEAF-G99-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G100-001",
+      "gate": "Gate 100",
+      "title": "Freeze the bounded deterministic scenario matrix",
+      "objective": "Promote a small materially distinct deterministic scenario matrix without opening a scenario sprawl problem.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "fixtures/replay/gate_f_replay_regression_fixture_pack.json"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "gate_f replay regression pack"
+      ],
+      "ordered_actions": [
+        "Use the checked-in replay pack as the bounded initial expansion set.",
+        "Assert the matrix preserves materially different state/output combinations across trend, flush, event, and pin."
+      ],
+      "forbidden_actions": [
+        "Do not add an unbounded number of new scenarios.",
+        "Do not mutate coefficient search or stack logic in this testing gate."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "expected_evidence": [
+        "bounded deterministic scenario matrix is frozen by tests"
+      ],
+      "definition_of_done": [
+        "Phase 5 is implemented with a controlled initial matrix"
+      ],
+      "vocabulary_terms_checked": [
+        "scenario_matrix",
+        "deterministic_fixture_pack"
+      ],
+      "workflow_intent_assertion": "Gate 100 broadens only after Gates 96-99 have already tightened the single-run and transition surfaces.",
+      "depends_on": [
+        "LEAF-G99-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G100-002",
+      "gate": "Gate 100",
+      "title": "Close the testing-module pack honestly and package the repo",
+      "objective": "Update the planning quartet together, mark the testing-module pack closed through Gate 100 on main, and produce the repo zip from the exact green state.",
+      "status": "planned",
+      "authority_docs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md",
+        "tests/test_gate94_testing_module_planning.py"
+      ],
+      "inputs": [
+        "all prior testing-module gate receipts"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so the testing-module pack is closed through Gate 100 on main.",
+        "Run the bounded closeout proof slice.",
+        "Create the full-history zip from the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not leave the active-gate pointer ambiguous.",
+        "Do not call the pack closed without packaging proof."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate94_testing_module_planning.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate97_runtime_invariants.py tests/test_gate98_threshold_edges.py tests/test_gate99_runtime_transitions.py tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "expected_evidence": [
+        "testing-module pack closed through Gate 100 on main",
+        "zip created from exact green state"
+      ],
+      "definition_of_done": [
+        "no later active gate remains declared for this testing-module pack"
+      ],
+      "vocabulary_terms_checked": [
+        "pack_closed",
+        "zip_proof"
+      ],
+      "workflow_intent_assertion": "Gate 100 closes only when the testing module is both implemented and honestly recorded.",
+      "depends_on": [
+        "LEAF-G100-001"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    }
+  ]
+}
