@@ -4,13 +4,14 @@
   "supersedes": [
     "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v1.json"
   ],
-  "execution_status": "gate_92_financial_calendar_temporal_transition_active_after_gate_91",
-  "active_gate": "Gate 92",
+  "execution_status": "gate_93_financial_calendar_downstream_alignment_active_after_gate_92",
+  "active_gate": "Gate 93",
   "completed_gate_ids": [
     "Gate 88",
     "Gate 89",
     "Gate 90",
-    "Gate 91"
+    "Gate 91",
+    "Gate 92"
   ],
   "completed_leaf_ids": [
     "LEAF-G91-001",
@@ -18,15 +19,15 @@
     "LEAF-G91-003",
     "LEAF-G91-004",
     "LEAF-G91-005",
-    "LEAF-G91-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G91-006",
     "LEAF-G92-001",
     "LEAF-G92-002",
     "LEAF-G92-003",
     "LEAF-G92-004",
     "LEAF-G92-005",
-    "LEAF-G92-006",
+    "LEAF-G92-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G93-001",
     "LEAF-G93-002",
     "LEAF-G93-003",
@@ -385,7 +386,7 @@
       "gate": "Gate 92",
       "title": "Widen runtime carriage into cognition input from rich canonical packets",
       "objective": "Widen runtime carriage and cognition input so rich canonical calendar/event meaning reaches TemporalContextService through lawful packet surfaces.",
-      "status": "planned; next active leaf",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/03_DOMAIN_MODEL.md",
@@ -439,7 +440,7 @@
       "gate": "Gate 92",
       "title": "Amend temporal event-window derivation to use rich canonical event truth",
       "objective": "Amend temporal event-window derivation so overlap, cooling-off, memory, and carry-sensitive event semantics come from rich canonical event truth.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/02_OPERATING_MODEL.md",
@@ -492,7 +493,7 @@
       "gate": "Gate 92",
       "title": "Amend temporal venue/session derivation to use desk-calendar authority",
       "objective": "Amend temporal venue/session derivation so session state reflects desk-calendar authority, including half-days, closures, and venue-state truth.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/02_OPERATING_MODEL.md",
@@ -545,7 +546,7 @@
       "gate": "Gate 92",
       "title": "Amend carry routing to use desk-calendar truth for next-session logic",
       "objective": "Amend carry routing so next-session logic, half-days, and closures use desk-calendar truth rather than weekday heuristics.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/02_OPERATING_MODEL.md",
@@ -599,7 +600,7 @@
       "gate": "Gate 92",
       "title": "Preserve compatibility hints explicitly while proving they are non-canonical",
       "objective": "Preserve compatibility hints such as next_event_at explicitly while proving they are subordinate to rich canonical carriers.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "AGENTS.md",
@@ -653,7 +654,7 @@
       "gate": "Gate 92",
       "title": "Prove bounded temporal outputs preserve the rich meaning required by later consumers",
       "objective": "Add bounded proof that the temporal outputs now preserve the rich meaning later consumers need without exposing raw packets directly.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/05_GUARDRAILS.md"
@@ -705,7 +706,7 @@
       "gate": "Gate 93",
       "title": "Align playbook eligibility with richer bounded temporal state",
       "objective": "Align playbook eligibility so it distinguishes richer bounded temporal/event states without reading raw import-stage or packet internals directly.",
-      "status": "planned",
+      "status": "planned; next active leaf",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/05_GUARDRAILS.md",

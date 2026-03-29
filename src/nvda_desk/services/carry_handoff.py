@@ -56,14 +56,20 @@ class CarryHandoffBuilder:
             if evaluation_ts.tzinfo
             else evaluation_ts.replace(tzinfo=self._tz)
         )
-        next_session_open_ts = self._next_session_open(aware_ts)
+        next_session_open_ts = temporal.next_session_open_hint or self._next_session_open(aware_ts)
         weekend_window = (
-            aware_ts.weekday() >= 5 or (next_session_open_ts.date() - aware_ts.date()).days >= 2
+            aware_ts.weekday() >= 5
+            or "full_holiday" in temporal.calendar_closure_classes
+            or (next_session_open_ts.date() - aware_ts.date()).days >= 2
         )
-        event_carry_window = temporal.event_window_state in {
-            "event_imminent_window",
-            "event_live_window",
-        }
+        event_carry_window = (
+            temporal.event_window_state in {
+                "event_imminent_window",
+                "event_live_window",
+                "event_cooling_off_window",
+            }
+            or temporal.event_carry_sensitivity in {"carry_sensitive", "next_session_memory"}
+        )
         horizon = (
             CarryHorizon.WEEKEND
             if weekend_window
@@ -84,8 +90,11 @@ class CarryHandoffBuilder:
         rationale_codes: list[str] = [f"horizon:{horizon.value}"]
         if weekend_window:
             rationale_codes.append("weekend_window")
+        if temporal.calendar_closure_classes:
+            rationale_codes.append(f"calendar_closure:{','.join(temporal.calendar_closure_classes)}")
         if event_carry_window:
             rationale_codes.append("event_carry_window")
+            rationale_codes.append(f"event_carry_sensitivity:{temporal.event_carry_sensitivity}")
         if posture.permission_state.value != "allow":
             rationale_codes.append(f"permission:{posture.permission_state.value}")
         if inventory.existing_inventory_pct > 0 or inventory.overnight_inventory_pct > 0:

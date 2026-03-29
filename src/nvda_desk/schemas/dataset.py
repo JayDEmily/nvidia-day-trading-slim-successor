@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from nvda_desk.schemas.cognition import OptionsFlowContextInput, TemporalContextInput
 from nvda_desk.schemas.events import LiveEventSnapshot, NormalisedEventRecord
 from nvda_desk.schemas.market import PrecursorRuntimePacket
+from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 
 
 class ProvenanceRecord(BaseModel):
@@ -207,6 +208,9 @@ class PreparedRuntimeSnapshot(BaseModel):
     next_event_at: datetime | None = None
     live_event_snapshot: LiveEventSnapshot | None = None
     precursor_runtime_packet: PrecursorRuntimePacket | None = None
+    desk_calendar_authority: DeskCalendarAuthorityPacket | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
     call_oi_near_spot: float = Field(ge=0.0, default=0.0)
     put_oi_near_spot: float = Field(ge=0.0, default=0.0)
     front_volume_near_spot: float = Field(ge=0.0, default=0.0)

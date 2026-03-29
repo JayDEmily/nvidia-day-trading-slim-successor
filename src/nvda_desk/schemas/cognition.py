@@ -33,6 +33,7 @@ from nvda_desk.schemas.review import (
     TemporalEventWindowSurface,
 )
 from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState
+from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     DegradationStep,
     EffectiveCoefficientLineage,
@@ -132,6 +133,7 @@ class TemporalContextInput(BaseModel):
     next_event_at: datetime | None = None
     live_event_snapshot: LiveEventSnapshot | None = None
     precursor_runtime_packet: PrecursorRuntimePacket | None = None
+    desk_calendar_authority: DeskCalendarAuthorityPacket | None = None
     prior_session_return_pct: float = 0.0
     intraday_move_pct: float = 0.0
     prior_close_price: float | None = None
@@ -170,6 +172,13 @@ class TemporalContextOutput(BaseModel):
     event_minutes_remaining: int | None = None
     event_proximity_state: str
     event_window_state: str
+    event_overlap_class: str = "single_event"
+    event_risk_timing_class: str = "priced_risk"
+    event_carry_sensitivity: str = "intraday_only"
+    active_event_family: str | None = None
+    calendar_closure_classes: list[str] = Field(default_factory=list)
+    session_bridge_rules: list[str] = Field(default_factory=list)
+    next_session_open_hint: datetime | None = None
     recent_path_tag: str
     carryover_state: str
     reasons: list[str] = Field(default_factory=list)

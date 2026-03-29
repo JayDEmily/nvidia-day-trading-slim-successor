@@ -45,6 +45,7 @@ class ChainToCognitionService:
             next_event_at=snapshot.next_event_at,
             live_event_snapshot=snapshot.live_event_snapshot,
             precursor_runtime_packet=snapshot.precursor_runtime_packet,
+            desk_calendar_authority=snapshot.desk_calendar_authority,
             prior_session_return_pct=snapshot.prior_session_return_pct,
             intraday_move_pct=snapshot.intraday_move_pct,
             prior_close_price=snapshot.prior_close_price,

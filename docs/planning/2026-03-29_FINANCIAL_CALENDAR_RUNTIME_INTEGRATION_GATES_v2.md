@@ -1,4 +1,4 @@
-Status: active on `main`; Gate 91 complete on `main`; Gate 92 is the next executable gate
+Status: active on `main`; Gates 91-92 complete on `main`; Gate 93 is the next executable gate
 
 # 2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md
 
@@ -185,7 +185,8 @@ The financial calendar is upstream information authority. It describes what kind
 - retained rich fields survive projection where runtime or review later need them;
 - tests prove the projection path does not treat `SessionCalendarCreate`, `MarketEventCreate`, or raw import records as the sole runtime truth sink.
 
-### Gate 92: Temporal-context and carry-routing transition onto rich canonical truth
+### Gate 92: Temporal-context and carry-routing transition onto rich canonical truth  
+Status: complete on `main` via `work/gate-92-financial-calendar-temporal-transition-20260329`
 
 **Objective**
 - Amend step-1 temporal derivation so it uses rich canonical calendar/event truth and desk-calendar-aware session routing instead of a single anchor timestamp plus weekday heuristics.
@@ -196,6 +197,7 @@ The financial calendar is upstream information authority. It describes what kind
 - compatibility hints remain available explicitly but are proven non-canonical.
 
 ### Gate 93: Downstream consumer alignment, review semantics, and tranche closeout
+Status: planned; next executable gate on `main`
 
 **Objective**
 - Align downstream consumers and review surfaces with the richer bounded temporal/runtime state, then close the tranche honestly across the planning control surfaces.

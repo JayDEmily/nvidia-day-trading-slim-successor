@@ -23,12 +23,12 @@ def test_active_planning_surfaces_point_at_the_runtime_integration_pack() -> Non
     assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json" in plans
     assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md" in plans
     assert "Gate 91 — complete on `main`" in plans
-    assert "Gate 92 — planned; next active gate on `main`" in plans
+    assert "Gate 92 — complete on `main`" in plans
 
-    assert "Current active gate: **Gate 92 in the financial-calendar runtime-integration pack**." in gate_map
+    assert "Current active gate: **Gate 93 in the financial-calendar runtime-integration pack**." in gate_map
     assert "| Gate 91 | complete on `main` |" in gate_map
-    assert "| Gate 92 | planned; next active gate |" in gate_map
-    assert "| Gate 93 | planned |" in gate_map
+    assert "| Gate 92 | complete on `main` |" in gate_map
+    assert "| Gate 93 | planned; next active gate |" in gate_map
 
     assert "the active execution log named by repo-root `PLANS.md`" in agents
 
@@ -46,13 +46,13 @@ def test_gates_doc_freezes_projection_transition_and_non_canonical_rules() -> No
     assert "next_event_at` as the sole event system" in gates
 
 
-def test_leaves_doc_marks_gate91_complete_and_gate92_active() -> None:
+def test_leaves_doc_marks_gate92_complete_and_gate93_active() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert leaves["governing_plan"] == "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md"
-    assert leaves["execution_status"] == "gate_92_financial_calendar_temporal_transition_active_after_gate_91"
-    assert leaves["active_gate"] == "Gate 92"
-    assert leaves["completed_gate_ids"] == ["Gate 88", "Gate 89", "Gate 90", "Gate 91"]
+    assert leaves["execution_status"] == "gate_93_financial_calendar_downstream_alignment_active_after_gate_92"
+    assert leaves["active_gate"] == "Gate 93"
+    assert leaves["completed_gate_ids"] == ["Gate 88", "Gate 89", "Gate 90", "Gate 91", "Gate 92"]
     assert leaves["completed_leaf_ids"] == [
         "LEAF-G91-001",
         "LEAF-G91-002",
@@ -60,15 +60,21 @@ def test_leaves_doc_marks_gate91_complete_and_gate92_active() -> None:
         "LEAF-G91-004",
         "LEAF-G91-005",
         "LEAF-G91-006",
+        "LEAF-G92-001",
+        "LEAF-G92-002",
+        "LEAF-G92-003",
+        "LEAF-G92-004",
+        "LEAF-G92-005",
+        "LEAF-G92-006",
     ]
-    assert leaves["remaining_leaf_ids"][0] == "LEAF-G92-001"
+    assert leaves["remaining_leaf_ids"][0] == "LEAF-G93-001"
     assert leaves["global_rules"]["raw_bundle_and_import_records_must_not_be_direct_downstream_inputs"] is True
     assert leaves["global_rules"]["compatibility_hints_must_remain_explicitly_non_canonical"] is True
 
 
-def test_execution_log_contains_gate91_entries_and_gate92_next_status() -> None:
+def test_execution_log_contains_gate92_entries_and_gate93_next_status() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "Status: active execution log for the reviewed financial-calendar runtime-integration tranche; Gate 91 complete on `main`, Gate 92 next" in execution_log
+    assert "Status: active execution log for the reviewed financial-calendar runtime-integration tranche; Gates 91-92 complete on `main`, Gate 93 next" in execution_log
     assert "### LEAF-G91-001 — Project venue-state facts into desk-calendar authority surfaces" in execution_log
-    assert "### LEAF-G91-006 — Prove thin CRUD sinks and raw import records remain subordinate and non-canonical" in execution_log
+    assert "### LEAF-G92-006 — Prove bounded temporal outputs preserve the rich meaning required by later consumers" in execution_log

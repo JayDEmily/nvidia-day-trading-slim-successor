@@ -49,7 +49,7 @@ class EventStoreService:
         nearby = [
             record
             for record in self._records
-            if lower <= self._aware(record.event_at) <= upper
+            if self._record_intersects_query_window(record, lower=lower, upper=upper)
             and self._symbol_matches(record.symbol, symbol)
         ]
         material = [
@@ -136,6 +136,21 @@ class EventStoreService:
             provenance_count=len(record.provenance),
             lineage_keys=list(record.lineage_keys),
         )
+
+
+    def _record_intersects_query_window(
+        self,
+        record: NormalisedEventRecord,
+        *,
+        lower: datetime,
+        upper: datetime,
+    ) -> bool:
+        event_at = self._aware(record.event_at)
+        window_start = self._aware(record.window_start_at or record.event_at)
+        window_end = self._aware(record.window_end_at or record.event_at)
+        effective_start = min(event_at, window_start)
+        effective_end = max(event_at, window_end)
+        return effective_end >= lower and effective_start <= upper
 
     def _materiality_rank(self, tier: EventMaterialityTier) -> int:
         ordering = {
