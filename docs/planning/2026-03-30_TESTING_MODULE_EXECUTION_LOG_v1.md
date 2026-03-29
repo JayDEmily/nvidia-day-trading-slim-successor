@@ -1,4 +1,4 @@
-Status: active execution log for the testing-module pack; Gate 94 complete on `main`, Gate 95 next
+Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next
 
 # 2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md
 
@@ -37,3 +37,30 @@ This execution log records the sequential execution receipts for the testing-mod
 - Exact evidence: active planning quartet now points at the testing-module pack, Gate 94 is complete, and Gate 95 is next.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `139d69a`
+
+
+## Gate 95 receipts
+
+### LEAF-G95-001 — Promote the Phase 0 workbook audit artefacts onto main
+
+- Branch: `work/gate-95-testing-phase0-closeout-20260330`
+- Start commit: `72c4733`
+- End commit: `ee2e919`
+- Files touched: `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md`, `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json`, `scripts/phase0_signal_workbook_audit.py`
+- Validations run: targeted Phase 0 truth slice
+- Full suite required: no
+- Exact evidence: the Phase 0 audit artefacts are now on `main` and remain unchanged in verdict.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `ee2e919`
+
+### LEAF-G95-002 — Freeze the Phase 0 fail/pass verdict in planning and test surfaces
+
+- Branch: `work/gate-95-testing-phase0-closeout-20260330`
+- Start commit: `72c4733`
+- End commit: `ee2e919`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`, `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`, `tests/test_gate94_testing_module_planning.py`, `tests/test_gate95_phase0_closeout.py`
+- Validations run: targeted Phase 0 truth slice
+- Full suite required: no
+- Exact evidence: the active control surfaces now record Gate 95 complete, Gate 96 next, and the audit script reproduces the checked-in fail-state JSON exactly.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `ee2e919`

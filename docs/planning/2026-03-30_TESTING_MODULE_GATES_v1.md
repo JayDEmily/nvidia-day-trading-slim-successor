@@ -168,3 +168,8 @@ It is the first repo-native testing pack whose sole purpose is to tighten eviden
 - materially different scenario states are frozen by tests rather than prose;
 - `PLANS.md`, the gate map, the active leaf ledger, and the active execution log all point to testing-pack closeout together;
 - a full-history zip exists from the exact green repo state.
+
+
+## Gate 95 closeout note
+
+Gate 95 is complete on `main` once the Phase 0 workbook-audit artefacts are present on `main`, the audit script reproduces the checked-in JSON verdict, the testing-module control surfaces move together to Gate 96 next, and the repo continues to record the workbook verdict as `fail_missing_raw_truth` until new raw capture is supplied.

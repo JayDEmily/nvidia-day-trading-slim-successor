@@ -2,18 +2,19 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "gate_94_testing_module_pack_active_from_gate_95",
-  "active_gate": "Gate 95",
+  "execution_status": "gate_95_testing_module_pack_active_from_gate_96",
+  "active_gate": "Gate 96",
   "completed_gate_ids": [
-    "Gate 94"
+    "Gate 94",
+    "Gate 95"
   ],
   "completed_leaf_ids": [
     "LEAF-G94-001",
-    "LEAF-G94-002"
+    "LEAF-G94-002",
+    "LEAF-G95-001",
+    "LEAF-G95-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G95-001",
-    "LEAF-G95-002",
     "LEAF-G96-001",
     "LEAF-G96-002",
     "LEAF-G97-001",
@@ -154,7 +155,7 @@
       "gate": "Gate 95",
       "title": "Promote the Phase 0 workbook audit artefacts onto main",
       "objective": "Move the Phase 0 workbook-audit artefacts and script onto main without widening the verdict beyond what was actually proved.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md"
@@ -207,7 +208,7 @@
       "gate": "Gate 95",
       "title": "Freeze the Phase 0 fail/pass verdict in planning and test surfaces",
       "objective": "Advance the active gate to Gate 96 only after Phase 0 status is frozen honestly in the testing-module control surfaces.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
         "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md"
