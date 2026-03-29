@@ -1,4 +1,4 @@
-Status: active execution log for the testing-module pack; Gates 94-98 complete on `main`, Gate 99 next
+Status: active execution log for the testing-module pack; Gates 94-99 complete on `main`, Gate 100 next
 
 # 2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md
 
@@ -145,3 +145,30 @@ This execution log records the sequential execution receipts for the testing-mod
 - Exact evidence: same-session, imminent, and live event offsets now prove lawful allow/derisk/block transitions without illegal sideways behaviour.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `a3f0208`
+
+
+## Gate 99 receipts
+
+### LEAF-G99-001 — Add adjacent-snapshot sequence tests for the canonical prepared-runtime dataset
+
+- Branch: `work/gate-99-runtime-transitions-20260330`
+- Start commit: `8e37cf1`
+- End commit: `68b7dd3`
+- Files touched: `tests/test_gate99_runtime_transitions.py`
+- Validations run: targeted Gate 99 transition slice
+- Full suite required: no
+- Exact evidence: the three checked-in prepared snapshots now prove monotonic event timing, increasing pressure, and non-illegal execution compression across adjacent runtime states.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `68b7dd3`
+
+### LEAF-G99-002 — Add ordered event-window transition tests
+
+- Branch: `work/gate-99-runtime-transitions-20260330`
+- Start commit: `8e37cf1`
+- End commit: `68b7dd3`
+- Files touched: `tests/test_gate99_runtime_transitions.py`, planning control surfaces
+- Validations run: targeted Gate 99 transition slice
+- Full suite required: no
+- Exact evidence: ordered same-session -> imminent -> live offsets now prove a lawful allow -> derisk -> block progression.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `68b7dd3`

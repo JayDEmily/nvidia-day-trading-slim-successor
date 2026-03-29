@@ -2,14 +2,15 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "gate_98_testing_module_pack_active_from_gate_99",
-  "active_gate": "Gate 99",
+  "execution_status": "gate_99_testing_module_pack_active_from_gate_100",
+  "active_gate": "Gate 100",
   "completed_gate_ids": [
     "Gate 94",
     "Gate 95",
     "Gate 96",
     "Gate 97",
-    "Gate 98"
+    "Gate 98",
+    "Gate 99"
   ],
   "completed_leaf_ids": [
     "LEAF-G94-001",
@@ -21,11 +22,11 @@
     "LEAF-G97-001",
     "LEAF-G97-002",
     "LEAF-G98-001",
-    "LEAF-G98-002"
+    "LEAF-G98-002",
+    "LEAF-G99-001",
+    "LEAF-G99-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G99-001",
-    "LEAF-G99-002",
     "LEAF-G100-001",
     "LEAF-G100-002"
   ],
@@ -539,7 +540,7 @@
       "gate": "Gate 99",
       "title": "Add adjacent-snapshot sequence tests for the canonical prepared-runtime dataset",
       "objective": "Run the checked-in prepared-runtime snapshot sequence in order and assert lawful non-illegal transitions across adjacent snapshots.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
@@ -583,7 +584,7 @@
       "gate": "Gate 99",
       "title": "Add ordered event-window transition tests",
       "objective": "Freeze a lawful allow -> derisk -> block transition across ordered event-time offsets.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/posture_risk.py"

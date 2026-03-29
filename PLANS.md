@@ -73,8 +73,8 @@ The completed financial-calendar runtime-integration pack retained as predecesso
 - Gate 96 — complete on `main` (canonical prepared-runtime full-chain harness)
 - Gate 97 — complete on `main` (lawful-output and invariant testing)
 - Gate 98 — complete on `main` (targeted threshold-edge and precedence tests)
-- Gate 99 — next active gate on `main` (transition and adjacent-snapshot testing)
-- Gate 100 — planned in the active testing-module pack
+- Gate 99 — complete on `main` (transition and adjacent-snapshot testing)
+- Gate 100 — next active gate on `main` (controlled scenario-matrix expansion and closeout)
 
 ## Sequential execution rule
 
@@ -119,4 +119,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–98 are complete on `main`, Gate 99 is next, and Gate 100 remains planned until executed sequentially.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–99 are complete on `main`, Gate 100 is next, and no later gate in this pack remains available until Gate 100 closes honestly.

@@ -188,3 +188,8 @@ Gate 97 is complete on `main` once lawful-output and lineage-order invariants ru
 ## Gate 98 closeout note
 
 Gate 98 is complete on `main` once bounded parametrized tests cover modifier-sensitive gamma-pressure edges and temporal event-window edges, the assertions prove monotonic or non-illegal transitions instead of only one hand-picked value, and the active testing-module control surfaces advance to Gate 99 next.
+
+
+## Gate 99 closeout note
+
+Gate 99 is complete on `main` once adjacent prepared-runtime snapshots and ordered event-time offsets are tested in sequence, the assertions prove non-illegal transitions rather than isolated static edges, and the active testing-module control surfaces advance to Gate 100 next.
