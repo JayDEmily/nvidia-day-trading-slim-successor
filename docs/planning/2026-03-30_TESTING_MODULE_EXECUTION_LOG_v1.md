@@ -1,4 +1,4 @@
-Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next
+Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next
 
 # 2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md
 
@@ -91,3 +91,30 @@ This execution log records the sequential execution receipts for the testing-mod
 - Exact evidence: the canonical prepared-runtime harness run is deterministic across repeated execution, freezes expected outputs, and records stable packet lineage.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `5b07838`
+
+
+## Gate 97 receipts
+
+### LEAF-G97-001 — Add lawful-output invariants for permissive versus blocked runtime states
+
+- Branch: `work/gate-97-runtime-invariants-20260330`
+- Start commit: `711d9b6`
+- End commit: `53d770b`
+- Files touched: `tests/test_gate97_runtime_invariants.py`
+- Validations run: targeted Gate 97 invariant slice
+- Full suite required: no
+- Exact evidence: blocked scenarios now prove zero deployable capital and zero active execution paths, while permissive scenarios prove active execution never leaks out of blocked posture.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `53d770b`
+
+### LEAF-G97-002 — Add packet-lineage and stage-order invariants
+
+- Branch: `work/gate-97-runtime-invariants-20260330`
+- Start commit: `711d9b6`
+- End commit: `53d770b`
+- Files touched: `tests/test_gate97_runtime_invariants.py`, planning control surfaces
+- Validations run: targeted Gate 97 invariant slice
+- Full suite required: no
+- Exact evidence: stage-reason order and packet-lineage order are now frozen across the supportive, stressed, and canonical prepared-runtime scenarios.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `53d770b`

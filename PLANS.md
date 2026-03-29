@@ -71,8 +71,9 @@ The completed financial-calendar runtime-integration pack retained as predecesso
 - Gate 94 — complete on `main` (testing-module doctrine promotion, planning-pack activation, and anti-drift closeout)
 - Gate 95 — complete on `main` (Phase 0 workbook-viability closeout and honest fail-state freeze)
 - Gate 96 — complete on `main` (canonical prepared-runtime full-chain harness)
-- Gate 97 — next active gate on `main` (lawful-output and invariant testing)
-- Gates 98–100 — planned in the active testing-module pack
+- Gate 97 — complete on `main` (lawful-output and invariant testing)
+- Gate 98 — next active gate on `main` (targeted threshold-edge and precedence tests)
+- Gates 99–100 — planned in the active testing-module pack
 
 ## Sequential execution rule
 
@@ -117,4 +118,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–96 are complete on `main`, Gate 97 is next, and Gates 98–100 remain planned until executed sequentially.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–97 are complete on `main`, Gate 98 is next, and Gates 99–100 remain planned until executed sequentially.

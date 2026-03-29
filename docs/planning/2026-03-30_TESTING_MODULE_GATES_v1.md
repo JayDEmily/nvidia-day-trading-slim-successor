@@ -178,3 +178,8 @@ Gate 95 is complete on `main` once the Phase 0 workbook-audit artefacts are pres
 ## Gate 96 closeout note
 
 Gate 96 is complete on `main` once one canonical prepared-runtime snapshot plus explicit companion regime/inventory truth runs deterministically through `DeskCognitionRuntime.run(...)`, the helper preserves snapshot lineage explicitly, the expected outputs are frozen by tests, and the active testing-module control surfaces advance to Gate 97 next.
+
+
+## Gate 97 closeout note
+
+Gate 97 is complete on `main` once lawful-output and lineage-order invariants run across the supportive runtime fixture, the stressed runtime fixture, and the canonical prepared-runtime harness, and the active testing-module control surfaces advance to Gate 98 next.
