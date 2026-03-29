@@ -2,13 +2,14 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "gate_97_testing_module_pack_active_from_gate_98",
-  "active_gate": "Gate 98",
+  "execution_status": "gate_98_testing_module_pack_active_from_gate_99",
+  "active_gate": "Gate 99",
   "completed_gate_ids": [
     "Gate 94",
     "Gate 95",
     "Gate 96",
-    "Gate 97"
+    "Gate 97",
+    "Gate 98"
   ],
   "completed_leaf_ids": [
     "LEAF-G94-001",
@@ -18,11 +19,11 @@
     "LEAF-G96-001",
     "LEAF-G96-002",
     "LEAF-G97-001",
-    "LEAF-G97-002"
+    "LEAF-G97-002",
+    "LEAF-G98-001",
+    "LEAF-G98-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G98-001",
-    "LEAF-G98-002",
     "LEAF-G99-001",
     "LEAF-G99-002",
     "LEAF-G100-001",
@@ -448,7 +449,7 @@
       "gate": "Gate 98",
       "title": "Add parametrized gamma-pressure threshold-edge tests",
       "objective": "Probe modifier-sensitive threshold edges with bounded parametrized cases rather than one hand-picked value.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/state_conditioned_modifier.py"
@@ -491,7 +492,7 @@
       "gate": "Gate 98",
       "title": "Add parametrized event-window edge tests",
       "objective": "Probe temporal event-window edges across same-session, imminent, and live transitions.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/temporal_context.py"

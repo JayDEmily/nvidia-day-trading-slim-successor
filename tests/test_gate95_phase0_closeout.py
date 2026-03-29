@@ -25,14 +25,14 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
 
     assert "Gate 95 — complete on `main`" in plans
     assert ("Gate 96 — next active gate on `main`" in plans) or ("Gate 96 — complete on `main`" in plans)
-    assert ("Current active gate: **Gate 96 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 97 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 98 in the testing-module pack**." in gate_map)
+    assert ("Current active gate: **Gate 96 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 97 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 98 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 99 in the testing-module pack**." in gate_map)
     assert "| Gate 95 | complete on `main` |" in gate_map
     assert ("| Gate 96 | planned; next active gate |" in gate_map) or ("| Gate 96 | complete on `main` |" in gate_map)
-    assert leaves["execution_status"] in {"gate_95_testing_module_pack_active_from_gate_96", "gate_96_testing_module_pack_active_from_gate_97", "gate_97_testing_module_pack_active_from_gate_98"}
-    assert leaves["active_gate"] in {"Gate 96", "Gate 97", "Gate 98"}
+    assert leaves["execution_status"] in {"gate_95_testing_module_pack_active_from_gate_96", "gate_96_testing_module_pack_active_from_gate_97", "gate_97_testing_module_pack_active_from_gate_98", "gate_98_testing_module_pack_active_from_gate_99"}
+    assert leaves["active_gate"] in {"Gate 96", "Gate 97", "Gate 98", "Gate 99"}
     assert leaves["completed_gate_ids"][:2] == ["Gate 94", "Gate 95"]
     assert leaves["completed_leaf_ids"][:4] == ["LEAF-G94-001", "LEAF-G94-002", "LEAF-G95-001", "LEAF-G95-002"]
-    assert ("Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next" in execution_log)
+    assert ("Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-98 complete on `main`, Gate 99 next" in execution_log)
 
 
 def test_phase0_audit_script_reproduces_checked_in_json(tmp_path: Path) -> None:

@@ -183,3 +183,8 @@ Gate 96 is complete on `main` once one canonical prepared-runtime snapshot plus 
 ## Gate 97 closeout note
 
 Gate 97 is complete on `main` once lawful-output and lineage-order invariants run across the supportive runtime fixture, the stressed runtime fixture, and the canonical prepared-runtime harness, and the active testing-module control surfaces advance to Gate 98 next.
+
+
+## Gate 98 closeout note
+
+Gate 98 is complete on `main` once bounded parametrized tests cover modifier-sensitive gamma-pressure edges and temporal event-window edges, the assertions prove monotonic or non-illegal transitions instead of only one hand-picked value, and the active testing-module control surfaces advance to Gate 99 next.

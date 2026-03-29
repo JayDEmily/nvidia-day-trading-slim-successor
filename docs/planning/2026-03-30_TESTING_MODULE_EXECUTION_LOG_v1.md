@@ -1,4 +1,4 @@
-Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next
+Status: active execution log for the testing-module pack; Gates 94-98 complete on `main`, Gate 99 next
 
 # 2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md
 
@@ -118,3 +118,30 @@ This execution log records the sequential execution receipts for the testing-mod
 - Exact evidence: stage-reason order and packet-lineage order are now frozen across the supportive, stressed, and canonical prepared-runtime scenarios.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `53d770b`
+
+
+## Gate 98 receipts
+
+### LEAF-G98-001 — Add parametrized gamma-pressure threshold-edge tests
+
+- Branch: `work/gate-98-threshold-edges-20260330`
+- Start commit: `e8f98b9`
+- End commit: `a3f0208`
+- Files touched: `tests/test_gate98_threshold_edges.py`
+- Validations run: targeted Gate 98 threshold-edge slice
+- Full suite required: no
+- Exact evidence: gamma-pressure edge cases now prove a bounded monotonic fresh-deployable transition from normal to size-reduced posture.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `a3f0208`
+
+### LEAF-G98-002 — Add parametrized event-window edge tests
+
+- Branch: `work/gate-98-threshold-edges-20260330`
+- Start commit: `e8f98b9`
+- End commit: `a3f0208`
+- Files touched: `tests/test_gate98_threshold_edges.py`, planning control surfaces
+- Validations run: targeted Gate 98 threshold-edge slice
+- Full suite required: no
+- Exact evidence: same-session, imminent, and live event offsets now prove lawful allow/derisk/block transitions without illegal sideways behaviour.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `a3f0208`
