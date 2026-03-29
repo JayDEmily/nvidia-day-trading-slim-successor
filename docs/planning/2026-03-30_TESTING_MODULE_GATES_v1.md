@@ -173,3 +173,8 @@ It is the first repo-native testing pack whose sole purpose is to tighten eviden
 ## Gate 95 closeout note
 
 Gate 95 is complete on `main` once the Phase 0 workbook-audit artefacts are present on `main`, the audit script reproduces the checked-in JSON verdict, the testing-module control surfaces move together to Gate 96 next, and the repo continues to record the workbook verdict as `fail_missing_raw_truth` until new raw capture is supplied.
+
+
+## Gate 96 closeout note
+
+Gate 96 is complete on `main` once one canonical prepared-runtime snapshot plus explicit companion regime/inventory truth runs deterministically through `DeskCognitionRuntime.run(...)`, the helper preserves snapshot lineage explicitly, the expected outputs are frozen by tests, and the active testing-module control surfaces advance to Gate 97 next.

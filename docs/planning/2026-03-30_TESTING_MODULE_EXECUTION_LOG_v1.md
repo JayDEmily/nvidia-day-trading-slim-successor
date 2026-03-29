@@ -1,4 +1,4 @@
-Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next
+Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next
 
 # 2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md
 
@@ -64,3 +64,30 @@ This execution log records the sequential execution receipts for the testing-mod
 - Exact evidence: the active control surfaces now record Gate 95 complete, Gate 96 next, and the audit script reproduces the checked-in fail-state JSON exactly.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `ee2e919`
+
+
+## Gate 96 receipts
+
+### LEAF-G96-001 — Build the canonical prepared-runtime full-chain harness helper
+
+- Branch: `work/gate-96-canonical-runtime-harness-20260330`
+- Start commit: `b1ca710`
+- End commit: `5b07838`
+- Files touched: `src/nvda_desk/testing/canonical_runtime_harness.py`, `tests/test_gate96_canonical_runtime_harness.py`
+- Validations run: targeted Gate 96 harness slice
+- Full suite required: no
+- Exact evidence: one typed helper now converts a checked-in prepared snapshot plus explicit regime/inventory truth into a bounded full-runtime harness input.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `5b07838`
+
+### LEAF-G96-002 — Freeze one deterministic full-chain canonical harness run
+
+- Branch: `work/gate-96-canonical-runtime-harness-20260330`
+- Start commit: `b1ca710`
+- End commit: `5b07838`
+- Files touched: `tests/test_gate96_canonical_runtime_harness.py`, planning control surfaces
+- Validations run: targeted Gate 96 harness slice
+- Full suite required: no
+- Exact evidence: the canonical prepared-runtime harness run is deterministic across repeated execution, freezes expected outputs, and records stable packet lineage.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `5b07838`

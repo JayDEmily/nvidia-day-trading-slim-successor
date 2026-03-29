@@ -2,21 +2,22 @@
   "version": "v1.0",
   "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
   "supersedes": [],
-  "execution_status": "gate_95_testing_module_pack_active_from_gate_96",
-  "active_gate": "Gate 96",
+  "execution_status": "gate_96_testing_module_pack_active_from_gate_97",
+  "active_gate": "Gate 97",
   "completed_gate_ids": [
     "Gate 94",
-    "Gate 95"
+    "Gate 95",
+    "Gate 96"
   ],
   "completed_leaf_ids": [
     "LEAF-G94-001",
     "LEAF-G94-002",
     "LEAF-G95-001",
-    "LEAF-G95-002"
+    "LEAF-G95-002",
+    "LEAF-G96-001",
+    "LEAF-G96-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G96-001",
-    "LEAF-G96-002",
     "LEAF-G97-001",
     "LEAF-G97-002",
     "LEAF-G98-001",
@@ -260,7 +261,7 @@
       "gate": "Gate 96",
       "title": "Build the canonical prepared-runtime full-chain harness helper",
       "objective": "Create one reusable helper that bridges a checked-in prepared snapshot plus explicit companion regime/inventory truth into a full runtime invocation surface.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
@@ -308,7 +309,7 @@
       "gate": "Gate 96",
       "title": "Freeze one deterministic full-chain canonical harness run",
       "objective": "Run one canonical prepared-runtime snapshot through the full cognition runtime and assert stable outputs and packet lineage.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/cognition_runtime.py"
