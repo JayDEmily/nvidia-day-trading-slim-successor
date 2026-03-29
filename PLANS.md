@@ -32,7 +32,7 @@ The predecessor financial-calendar interstitial pack retained as Gate 88–90 ev
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_LEAVES_v3.json`
 - `docs/planning/2026-03-28_FINANCIAL_CALENDAR_INTERSTITIAL_EXECUTION_LOG_v1.md`
 
-The active financial-calendar runtime-integration pack from Gate 91 onward is:
+The latest financial-calendar runtime-integration pack from Gate 91 onward is:
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`
@@ -66,6 +66,7 @@ The active financial-calendar runtime-integration pack from Gate 91 onward is:
 - Gate 90 — complete on `main` (checked-in reference artefacts, repo manifest, provenance-bearing import seam, and non-behavioural proof)
 - Gate 91 — complete on `main` (canonical projection into desk-calendar authority, canonical event truth, live-event richness, and precursor runtime surfaces)
 - Gate 92 — complete on `main` (temporal transition amendment, desk-calendar-aware carry routing, and bounded runtime projection)
+- Gate 93 — complete on `main` (downstream consumer alignment, review semantics, anti-drift closeout, and tranche packaging proof)
 
 ## Sequential execution rule
 
@@ -110,4 +111,4 @@ The persisted `main` baseline is now closed through Gate 79 and records Gate 7 e
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The active post-Gate-90 planning authority is the financial-calendar runtime-integration pack, with Gates 91-92 complete on `main` and Gate 93 as the next executable gate on `main`.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is now closed through Gate 93 on `main`. No later active gate is declared in-repo yet; the latest closed pack remains the runtime-integration pack until a lawful successor surface is authored.

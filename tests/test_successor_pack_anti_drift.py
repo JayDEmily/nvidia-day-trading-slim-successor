@@ -75,6 +75,10 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **Gate 93 in the financial-calendar runtime-integration pack**."
             in gate_map
         )
+        or (
+            "Current active gate: **none — the financial-calendar runtime-integration pack is closed through Gate 93 on `main`**."
+            in gate_map
+        )
     )
 
 

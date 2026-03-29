@@ -15,7 +15,6 @@ from nvda_desk.schemas.cognition import (
     ReviewExplanationOutput,
     StageReasonPacket,
 )
-from nvda_desk.schemas.events import EventSemanticPhase
 from nvda_desk.schemas.market import SessionAlignmentExpectation
 from nvda_desk.schemas.review import (
     CandidateComparisonContext,
@@ -347,31 +346,25 @@ class ReviewExplanationService:
             None if payload.temporal_input is None else payload.temporal_input.live_event_snapshot
         )
         next_event = None if snapshot is None else snapshot.next_event
-        if next_event is None:
+        if next_event is None and payload.temporal.active_event_family is None:
             return None
-        semantic_phase = next_event.semantic_phase
-        risk_timing = EventRiskTimingClass.PRICED_RISK
-        carry_sensitivity = EventCarrySensitivity.INTRADAY_ONLY
-        if semantic_phase is EventSemanticPhase.REALISED_REACTION:
-            risk_timing = EventRiskTimingClass.REALISED_REACTION
-            carry_sensitivity = EventCarrySensitivity.NEXT_SESSION_MEMORY
-        elif semantic_phase is EventSemanticPhase.PRICED_RISK:
-            risk_timing = EventRiskTimingClass.PRICED_RISK
-            carry_sensitivity = EventCarrySensitivity.CARRY_SENSITIVE
-        elif payload.temporal.event_window_state == EventWindowState.EVENT_LIVE_WINDOW.value:
-            risk_timing = EventRiskTimingClass.LIVE_RELEASE
-            carry_sensitivity = EventCarrySensitivity.CARRY_SENSITIVE
-        event_family = (
-            next_event.event_class.value
-            if next_event.event_class is not None
-            else next_event.event_type
+        event_family = payload.temporal.active_event_family or (
+            next_event.event_subclass
+            if next_event is not None and next_event.event_subclass is not None
+            else (
+                next_event.event_class.value
+                if next_event is not None and next_event.event_class is not None
+                else (None if next_event is None else next_event.event_type)
+            )
         )
+        if event_family is None:
+            return None
         return TemporalEventWindowSurface(
             proximity_state=EventProximityState(payload.temporal.event_proximity_state),
             window_state=EventWindowState(payload.temporal.event_window_state),
-            overlap_class=EventOverlapClass.SINGLE_EVENT,
-            risk_timing_class=risk_timing,
-            carry_sensitivity=carry_sensitivity,
+            overlap_class=EventOverlapClass(payload.temporal.event_overlap_class),
+            risk_timing_class=EventRiskTimingClass(payload.temporal.event_risk_timing_class),
+            carry_sensitivity=EventCarrySensitivity(payload.temporal.event_carry_sensitivity),
             event_family=event_family,
         )
 

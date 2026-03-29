@@ -305,9 +305,34 @@ class PlaybookEligibilityService:
             "event_imminent_window",
         }:
             reasons.append("event_window_veto")
+            event_family = payload.temporal.active_event_family or ""
+            if self._is_macro_or_policy_family(event_family):
+                reasons.append("macro_event_window_veto")
+            elif self._is_company_family(event_family):
+                reasons.append("company_event_window_veto")
+            elif self._is_expiry_family(event_family) or payload.temporal.expiry_cycle_state == "expiry_day":
+                reasons.append("expiry_event_window_veto")
+        if self._has_venue_session_distortion(payload):
+            reasons.append("venue_session_distortion")
         if payload.options_flow.options_behavior_cluster == "event_suppressed":
             reasons.append("options_surface_event_suppressed")
         return reasons
+
+    def _has_venue_session_distortion(self, payload: PlaybookEligibilityInput) -> bool:
+        if not payload.temporal.calendar_closure_classes:
+            return False
+        return payload.temporal.desk_window in {"late_session", "close", "closed"}
+
+    def _is_macro_or_policy_family(self, event_family: str) -> bool:
+        family = event_family.lower()
+        return any(token in family for token in {"fomc", "cpi", "ppi", "pce", "nfp", "gdp", "macro", "policy"})
+
+    def _is_company_family(self, event_family: str) -> bool:
+        family = event_family.lower()
+        return "earnings" in family or family.startswith("nvda_") or family.startswith("mega_cap_ai_")
+
+    def _is_expiry_family(self, event_family: str) -> bool:
+        return "expiry" in event_family.lower() or "opex" in event_family.lower()
 
     def _continuation_ladder(
         self,

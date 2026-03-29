@@ -1,4 +1,4 @@
-Status: active on `main`; Gates 91-92 complete on `main`; Gate 93 is the next executable gate
+Status: closed on `main`; Gates 91-93 complete on `main`; no later active gate declared in-repo
 
 # 2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md
 
@@ -197,7 +197,7 @@ Status: complete on `main` via `work/gate-92-financial-calendar-temporal-transit
 - compatibility hints remain available explicitly but are proven non-canonical.
 
 ### Gate 93: Downstream consumer alignment, review semantics, and tranche closeout
-Status: planned; next executable gate on `main`
+Status: complete on `main` via `work/gate-93-financial-calendar-downstream-alignment-20260329`
 
 **Objective**
 - Align downstream consumers and review surfaces with the richer bounded temporal/runtime state, then close the tranche honestly across the planning control surfaces.

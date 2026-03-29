@@ -225,7 +225,9 @@ class StateConditionedModifierService:
                 notes.append("carry_sensitive_phase_reduced_operating_confidence")
 
         event_states = self._event_option_state_labels(temporal, options_flow)
-        if event_states:
+        event_family_class = self._event_family_class(temporal)
+        venue_session_distortion = self._has_venue_session_distortion(temporal)
+        if event_states or venue_session_distortion:
             active_precedence_bands.add(ModifierPriorityBand.EVENT_OPTIONS_STRESS)
         if "event_live" in event_states:
             triggered_kill_switch = KillSwitchCondition.EVENT_LIVE_HARD_BLOCK
@@ -336,6 +338,107 @@ class StateConditionedModifierService:
                     degradation_step,
                     DegradationStep.CONFIDENCE_REDUCED,
                     key=self._degradation_rank,
+                )
+            if event_family_class == "macro" and event_states.intersection({"event_imminent", "event_live"}):
+                policy_id = "event_options:macro_event_window"
+                active_policy_ids.append(policy_id)
+                applied_combination_laws.update(
+                    {
+                        CombinationLaw.MULTIPLY_THEN_CLAMP,
+                        CombinationLaw.ADDITIVE_OFFSET_THEN_CLAMP,
+                    }
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=policy_id,
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
+                        transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
+                        scale=0.60,
+                        notes=("macro_event_window_compresses_deployable_capital",),
+                    )
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=f"{policy_id}:entry_gate",
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR,
+                        transform_type=ModifierTransformType.ADDITIVE_OFFSET,
+                        additive_offset=0.05,
+                        notes=("macro_event_window_raises_entry_gate_floor",),
+                    )
+                )
+            if event_family_class == "company" and event_states.intersection({"event_imminent", "event_live"}):
+                policy_id = "event_options:company_event_window"
+                active_policy_ids.append(policy_id)
+                applied_combination_laws.update(
+                    {
+                        CombinationLaw.MULTIPLY_THEN_CLAMP,
+                        CombinationLaw.ADDITIVE_OFFSET_THEN_CLAMP,
+                    }
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=policy_id,
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
+                        transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
+                        scale=0.72,
+                        notes=("company_event_window_compresses_deployable_capital",),
+                    )
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=f"{policy_id}:entry_gate",
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR,
+                        transform_type=ModifierTransformType.ADDITIVE_OFFSET,
+                        additive_offset=0.03,
+                        notes=("company_event_window_raises_entry_gate_floor",),
+                    )
+                )
+            if "expiry_distortion" in event_states:
+                policy_id = "event_options:expiry_distortion"
+                active_policy_ids.append(policy_id)
+                applied_combination_laws.add(CombinationLaw.MULTIPLY_THEN_CLAMP)
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=policy_id,
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
+                        transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
+                        scale=0.82,
+                        notes=("expiry_distortion_compresses_deployable_capital",),
+                    )
+                )
+            if venue_session_distortion:
+                policy_id = "event_options:venue_session_distortion"
+                active_policy_ids.append(policy_id)
+                applied_combination_laws.update(
+                    {
+                        CombinationLaw.MULTIPLY_THEN_CLAMP,
+                        CombinationLaw.ADDITIVE_OFFSET_THEN_CLAMP,
+                    }
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=policy_id,
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
+                        transform_type=ModifierTransformType.MULTIPLICATIVE_SCALE,
+                        scale=0.85,
+                        notes=("venue_session_distortion_compresses_deployable_capital",),
+                    )
+                )
+                policy_applications.append(
+                    _PolicyApplication(
+                        policy_id=f"{policy_id}:entry_gate",
+                        band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
+                        target_surface=MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR,
+                        transform_type=ModifierTransformType.ADDITIVE_OFFSET,
+                        additive_offset=0.02,
+                        notes=("venue_session_distortion_raises_entry_gate_floor",),
+                    )
                 )
 
         precursor = temporal_input.precursor_runtime_packet
@@ -783,6 +886,20 @@ class StateConditionedModifierService:
         options_flow: OptionsFlowContextOutput,
     ) -> set[str]:
         return project_event_option_state_labels(temporal, options_flow)
+
+
+    def _event_family_class(self, temporal: TemporalContextOutput) -> str | None:
+        event_family = (temporal.active_event_family or '').lower()
+        if any(token in event_family for token in {"fomc", "cpi", "ppi", "pce", "nfp", "gdp", "macro", "policy"}):
+            return "macro"
+        if "earnings" in event_family or event_family.startswith("nvda_") or event_family.startswith("mega_cap_ai_"):
+            return "company"
+        if "expiry" in event_family or temporal.expiry_cycle_state == "expiry_day":
+            return "expiry"
+        return None
+
+    def _has_venue_session_distortion(self, temporal: TemporalContextOutput) -> bool:
+        return bool(temporal.calendar_closure_classes)
 
     def _band_sort(self, band: ModifierPriorityBand) -> int:
         return self._PRECEDENCE_ORDER[band]

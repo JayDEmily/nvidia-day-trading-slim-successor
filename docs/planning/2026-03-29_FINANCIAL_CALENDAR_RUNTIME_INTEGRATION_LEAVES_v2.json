@@ -4,14 +4,15 @@
   "supersedes": [
     "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v1.json"
   ],
-  "execution_status": "gate_93_financial_calendar_downstream_alignment_active_after_gate_92",
-  "active_gate": "Gate 93",
+  "execution_status": "gate_93_financial_calendar_runtime_integration_closed_on_main",
+  "active_gate": "none \u2014 runtime-integration pack closed through Gate 93 on main",
   "completed_gate_ids": [
     "Gate 88",
     "Gate 89",
     "Gate 90",
     "Gate 91",
-    "Gate 92"
+    "Gate 92",
+    "Gate 93"
   ],
   "completed_leaf_ids": [
     "LEAF-G91-001",
@@ -25,15 +26,14 @@
     "LEAF-G92-003",
     "LEAF-G92-004",
     "LEAF-G92-005",
-    "LEAF-G92-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G92-006",
     "LEAF-G93-001",
     "LEAF-G93-002",
     "LEAF-G93-003",
     "LEAF-G93-004",
     "LEAF-G93-005"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_gate_at_a_time": true,
     "one_leaf_at_a_time": true,
@@ -706,7 +706,7 @@
       "gate": "Gate 93",
       "title": "Align playbook eligibility with richer bounded temporal state",
       "objective": "Align playbook eligibility so it distinguishes richer bounded temporal/event states without reading raw import-stage or packet internals directly.",
-      "status": "planned; next active leaf",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/05_GUARDRAILS.md",
@@ -758,7 +758,7 @@
       "gate": "Gate 93",
       "title": "Align state-conditioned modifier with richer bounded temporal state",
       "objective": "Align the state-conditioned modifier so it distinguishes richer bounded temporal/event states without reading raw import-stage or packet internals directly.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/05_GUARDRAILS.md",
@@ -810,7 +810,7 @@
       "gate": "Gate 93",
       "title": "Align review explanation with overlap classes and preserved runtime packets",
       "objective": "Align review explanation so overlap classes, carry sensitivity, and preserved runtime packet meaning survive explanation faithfully.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/02_OPERATING_MODEL.md",
         "docs/05_GUARDRAILS.md",
@@ -864,7 +864,7 @@
       "gate": "Gate 93",
       "title": "Close the tranche honestly across plans, gate map, leaves ledger, and execution log",
       "objective": "Advance the planning control surfaces together so repo truth matches the completed Gates 91-93 state.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "AGENTS.md",
         "PLANS.md",
@@ -930,7 +930,7 @@
       "gate": "Gate 93",
       "title": "Add anti-drift proof that runtime integration cannot be claimed complete while legacy active truth remains",
       "objective": "Add or amend planning tests so the repo cannot claim the runtime-integration tranche is complete while control surfaces still point to the older pack or older active gate truth.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "AGENTS.md",
         "PLANS.md",

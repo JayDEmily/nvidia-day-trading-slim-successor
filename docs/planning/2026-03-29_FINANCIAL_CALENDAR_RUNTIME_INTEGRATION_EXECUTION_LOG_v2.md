@@ -1,6 +1,6 @@
 # 2026-03-29 Financial Calendar Runtime Integration Execution Log v2
 
-Status: active execution log for the reviewed financial-calendar runtime-integration tranche; Gates 91-92 complete on `main`, Gate 93 next
+Status: closed execution log for the reviewed financial-calendar runtime-integration tranche; Gates 91-93 complete on `main`, no active gate
 
 ## Purpose
 
@@ -207,3 +207,73 @@ This v2 log exists because the v1 pack was reviewed and found to need tighter le
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `1a6ed97`
 - Notes: Gate 92 closes only when rich meaning survives into bounded temporal outputs.
+
+### LEAF-G93-001 — Align playbook eligibility with richer bounded temporal state
+
+- Branch: `work/gate-93-financial-calendar-downstream-alignment-20260329`
+- Start commit: `4e67808`
+- End commit: pending Gate 93 branch commit
+- Files touched: `src/nvda_desk/services/playbook_eligibility.py`, `tests/test_gate93_financial_calendar_downstream_alignment.py`
+- Validations run: targeted Gate 93 downstream-alignment slice in repo `.venv`
+- Full suite required: no
+- Full suite command/result: not required for Gate 93 closeout
+- Exact evidence: playbook eligibility now preserves the generic `event_window_veto` while also surfacing `macro_event_window_veto`, `company_event_window_veto`, or `venue_session_distortion` when richer bounded temporal state warrants it.
+- Stop conditions hit: none
+- Merge status: pending until Gate 93 branch commit
+- Notes: downstream eligibility now distinguishes event family and venue-session distortion without reading raw calendar records directly.
+
+### LEAF-G93-002 — Align state-conditioned modifier with richer bounded temporal state
+
+- Branch: `work/gate-93-financial-calendar-downstream-alignment-20260329`
+- Start commit: `4e67808`
+- End commit: pending Gate 93 branch commit
+- Files touched: `src/nvda_desk/services/state_conditioned_modifier.py`, `tests/test_gate93_financial_calendar_downstream_alignment.py`
+- Validations run: targeted Gate 93 downstream-alignment slice in repo `.venv`
+- Full suite required: no
+- Full suite command/result: not required for Gate 93 closeout
+- Exact evidence: modifier runtime packets now emit distinct policy IDs for `event_options:macro_event_window`, `event_options:company_event_window`, `event_options:expiry_distortion`, and `event_options:venue_session_distortion` when the richer bounded temporal state demands them.
+- Stop conditions hit: none
+- Merge status: pending until Gate 93 branch commit
+- Notes: downstream policy remains bounded and deterministic while distinguishing the new calendar semantics.
+
+### LEAF-G93-003 — Align review explanation with overlap classes and preserved runtime packets
+
+- Branch: `work/gate-93-financial-calendar-downstream-alignment-20260329`
+- Start commit: `4e67808`
+- End commit: pending Gate 93 branch commit
+- Files touched: `src/nvda_desk/services/review_explanation.py`, `tests/test_gate93_financial_calendar_downstream_alignment.py`
+- Validations run: targeted Gate 93 downstream-alignment slice in repo `.venv`
+- Full suite required: no
+- Full suite command/result: not required for Gate 93 closeout
+- Exact evidence: review event-window governance now respects `event_overlap_class`, `event_risk_timing_class`, `event_carry_sensitivity`, and `active_event_family` from bounded temporal truth instead of hard-coding `single_event` semantics.
+- Stop conditions hit: none
+- Merge status: pending until Gate 93 branch commit
+- Notes: review packets now reflect the richer runtime meaning rather than re-inventing it poorly.
+
+### LEAF-G93-004 — Close the tranche honestly across plans, gate map, leaves ledger, and execution log
+
+- Branch: `work/gate-93-financial-calendar-downstream-alignment-20260329`
+- Start commit: `4e67808`
+- End commit: pending Gate 93 branch commit
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md`, `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`, `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`
+- Validations run: targeted Gate 93 downstream-alignment slice in repo `.venv`
+- Full suite required: no
+- Full suite command/result: not required for Gate 93 closeout
+- Exact evidence: all planning control surfaces now agree that Gates 91-93 are complete on `main` and that no later active gate is declared yet.
+- Stop conditions hit: none
+- Merge status: pending until Gate 93 branch commit
+- Notes: closeout evidence is recorded before packaging.
+
+### LEAF-G93-005 — Add anti-drift proof that runtime integration cannot be claimed complete while legacy active truth remains
+
+- Branch: `work/gate-93-financial-calendar-downstream-alignment-20260329`
+- Start commit: `4e67808`
+- End commit: pending Gate 93 branch commit
+- Files touched: `tests/test_financial_calendar_planning_v3.py`, `tests/test_successor_pack_anti_drift.py`, `tests/test_gate93_financial_calendar_downstream_alignment.py`
+- Validations run: targeted Gate 93 downstream-alignment slice in repo `.venv`
+- Full suite required: no
+- Full suite command/result: not required for Gate 93 closeout
+- Exact evidence: planning tests now fail if the repo claims Gate 93 completion while any control surface still names Gate 93 as active or leaves an older financial-calendar pack active.
+- Stop conditions hit: none
+- Merge status: pending until Gate 93 branch commit
+- Notes: anti-drift closes the tranche honestly instead of leaving a booby trap for the next thread.
