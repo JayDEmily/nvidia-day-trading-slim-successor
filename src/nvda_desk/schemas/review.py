@@ -24,6 +24,7 @@ from nvda_desk.schemas.market import (
     PrecursorFallbackDisposition,
     PrecursorPostureState,
     PrecursorVenueUniverse,
+    RawPrecursorField,
     SessionAlignmentExpectation,
 )
 from nvda_desk.schemas.risk import (
@@ -171,7 +172,9 @@ class PrecursorRuntimeBindingSurface(BaseModel):
     stitched_order: list[PrecursorVenueUniverse] = Field(default_factory=list)
     active_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
     missing_venues: list[PrecursorVenueUniverse] = Field(default_factory=list)
+    raw_fields: list[RawPrecursorField] = Field(default_factory=list)
     derived_fields: list[DerivedPrecursorField] = Field(default_factory=list)
+    derived_values: dict[DerivedPrecursorField, float] = Field(default_factory=dict)
     contradiction_class: PrecursorContradictionClass = PrecursorContradictionClass.NONE
     posture_state: PrecursorPostureState = PrecursorPostureState.NORMAL_CONFIDENCE
     fallback_dispositions: list[PrecursorFallbackDisposition] = Field(default_factory=list)

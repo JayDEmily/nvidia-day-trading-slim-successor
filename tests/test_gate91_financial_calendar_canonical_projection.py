@@ -58,8 +58,10 @@ def test_gate91_projects_precursor_venue_state_into_runtime_packet() -> None:
     assert PrecursorVenueUniverse.JPX_CASH_INDEX_COMPLEX in packet.missing_venues
     assert PrecursorVenueUniverse.HKEX_CASH_INDEX_COMPLEX in packet.missing_venues
     assert PrecursorVenueUniverse.MAINLAND_CHINA_CASH_INDEX_COMPLEX in packet.missing_venues
-    assert packet.posture_state is PrecursorPostureState.DEGRADED_CONFIDENCE
-    assert any("JPX cash market closed" in note for note in packet.notes)
+    assert packet.active_venues == [PrecursorVenueUniverse.CFFEX_INDEX_FUTURES_COMPLEX]
+    assert packet.contradiction_class.value == "futures_cash_divergence"
+    assert packet.posture_state is PrecursorPostureState.STAND_DOWN_PRESSURE
+    assert "missing_venue:jpx_cash_index_complex" in packet.notes
 
 
 

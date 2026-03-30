@@ -53,8 +53,9 @@ This file is the canonical repo-root execution router.
 
 - historical-evaluation readiness pack active from Gate 115
 - Gates 115-116 are complete on `main`
-- Gate 117 is the active gate
-- Gates 118-121 are planned in dependency order and not yet executable
+- Gates 115-117 are complete on `main`
+- Gate 118 is the active gate
+- Gates 119-121 are planned in dependency order and not yet executable
 
 ## Sequential execution rule
 

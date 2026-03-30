@@ -25,11 +25,14 @@ from nvda_desk.schemas.financial_calendar import (
 )
 from nvda_desk.schemas.market import (
     DerivedPrecursorField,
-    PrecursorContradictionClass,
-    PrecursorFallbackDisposition,
-    PrecursorPostureState,
+    PrecursorFreshnessState,
     PrecursorRuntimePacket,
+    PrecursorSourceClass,
+    PrecursorStitchingAuthorityPacket,
+    PrecursorTimestampDiscipline,
+    PrecursorVenueSlice,
     PrecursorVenueUniverse,
+    RawPrecursorField,
 )
 from nvda_desk.schemas.session_clock import (
     CalendarClosureClass,
@@ -40,10 +43,13 @@ from nvda_desk.schemas.session_clock import (
     VenueSessionContract,
     VenueTimezone,
 )
+from nvda_desk.config import Settings
+from nvda_desk.domain.session_clock import SessionClockClassifier
 from nvda_desk.services.event_ingestion import EventIngestionService
 from nvda_desk.services.event_store import EventStoreService
 from nvda_desk.services.financial_calendar_import import FinancialCalendarImportService
 from nvda_desk.services.financial_calendar_reference import financial_calendar_crosswalk
+from nvda_desk.services.market_state import MarketStateService
 
 
 class FinancialCalendarProjectionService:
@@ -96,6 +102,7 @@ class FinancialCalendarProjectionService:
         self._import_service = FinancialCalendarImportService(self._repo_root)
         self._bundle = self._import_service.import_bundle()
         self._crosswalk = financial_calendar_crosswalk()
+        self._market_state = MarketStateService(classifier=SessionClockClassifier(Settings()))
 
     @property
     def imported_bundle(self) -> FinancialCalendarImportedBundle:
@@ -221,10 +228,21 @@ class FinancialCalendarProjectionService:
         )
 
     def project_precursor_runtime_packet(self, *, requested_at: datetime) -> PrecursorRuntimePacket:
+        authority = PrecursorStitchingAuthorityPacket(
+            venue_order=list(PrecursorVenueUniverse),
+            timestamp_disciplines=list(PrecursorTimestampDiscipline),
+        )
+        slices = self._project_precursor_slices(requested_at=requested_at)
+        result = self._market_state.stitch_precursor_context(
+            requested_at=requested_at,
+            authority=authority,
+            slices=slices,
+        )
+        return self._market_state.to_precursor_runtime_packet(result)
+
+    def _project_precursor_slices(self, *, requested_at: datetime) -> list[PrecursorVenueSlice]:
         requested_day = requested_at.date()
         grouped: dict[PrecursorVenueUniverse, list[FinancialCalendarImportedRecord]] = defaultdict(list)
-        lineage_keys: list[str] = []
-        notes: list[str] = []
         for record in self._bundle.imported_records:
             if record.layer_id.value != "layer_04_asia_precursor_venue_context":
                 continue
@@ -234,41 +252,93 @@ class FinancialCalendarProjectionService:
                 universe = self._PRECURSOR_VENUE_MAPPING.get(venue_name)
                 if universe is not None:
                     grouped[universe].append(record)
-            lineage_keys.append(record.import_lineage_key)
-            notes.append(record.title)
-        active_venues: list[PrecursorVenueUniverse] = []
-        missing_venues: list[PrecursorVenueUniverse] = []
-        derived_fields: set[DerivedPrecursorField] = {DerivedPrecursorField.PRECURSOR_PRESSURE_SCORE}
-        fallback: set[PrecursorFallbackDisposition] = {PrecursorFallbackDisposition.CONTINUE_NORMALLY}
-        posture_state = PrecursorPostureState.NORMAL_CONFIDENCE
+
+        cash_missing = {
+            venue
+            for venue in (
+                PrecursorVenueUniverse.JPX_CASH_INDEX_COMPLEX,
+                PrecursorVenueUniverse.HKEX_CASH_INDEX_COMPLEX,
+                PrecursorVenueUniverse.MAINLAND_CHINA_CASH_INDEX_COMPLEX,
+            )
+            if any(self._record_closes_precursor(record) for record in grouped.get(venue, []))
+        }
+        slices: list[PrecursorVenueSlice] = []
         for universe in PrecursorVenueUniverse:
             records = grouped.get(universe, [])
-            if not records:
-                active_venues.append(universe)
-                continue
             if any(self._record_closes_precursor(record) for record in records):
-                missing_venues.append(universe)
-                derived_fields.add(DerivedPrecursorField.CARRY_RISK_WARNING_SCORE)
-                posture_state = PrecursorPostureState.DEGRADED_CONFIDENCE
-                fallback.add(PrecursorFallbackDisposition.CONTINUE_WITH_DEGRADED_CONFIDENCE)
-            else:
-                active_venues.append(universe)
-                if any("half_day" in tag for record in records for tag in record.runtime_tags):
-                    derived_fields.add(DerivedPrecursorField.CARRY_RISK_WARNING_SCORE)
-                    posture_state = PrecursorPostureState.TIGHTENED_POSTURE
-        stitched_order = [venue for venue in PrecursorVenueUniverse if venue in {*active_venues, *missing_venues}]
-        return PrecursorRuntimePacket(
-            requested_at=requested_at,
-            stitched_order=stitched_order,
-            active_venues=active_venues,
-            missing_venues=missing_venues,
-            derived_fields=sorted(derived_fields, key=lambda item: item.value),
-            contradiction_class=PrecursorContradictionClass.NONE,
-            posture_state=posture_state,
-            fallback_dispositions=sorted(fallback, key=lambda item: item.value),
-            lineage_keys=sorted(dict.fromkeys(lineage_keys)),
-            notes=sorted(dict.fromkeys(notes)),
+                continue
+            half_day = any("half_day" in tag for record in records for tag in record.runtime_tags)
+            holiday_open = any("holiday_trading_active" in tag for record in records for tag in record.runtime_tags)
+            source_class = self._source_class_for_precursor_venue(universe)
+            session_close_at = self._projected_precursor_close_at(requested_at=requested_at, venue=universe)
+            observed_at = session_close_at + timedelta(minutes=5)
+            directional = 0.25
+            agreement = 0.8
+            divergence = 0.0
+            persistence = 0.3
+            pressure = 0.2
+            carry_warning = 0.0
+            freshness = PrecursorFreshnessState.CURRENT
+            notes = [record.title for record in records]
+            if half_day:
+                directional = 0.0
+                agreement = 0.35
+                persistence = 0.15
+                pressure = -0.25
+                carry_warning = 0.55
+                freshness = PrecursorFreshnessState.DEGRADED
+            if holiday_open:
+                directional = 0.35
+                agreement = 0.5
+                persistence = 0.4
+                pressure = 0.15
+            if universe is PrecursorVenueUniverse.CFFEX_INDEX_FUTURES_COMPLEX and cash_missing:
+                divergence = 0.8
+                pressure = -0.65
+                carry_warning = 0.8
+                notes.append("futures_cash_divergence_from_calendar_projection")
+            slices.append(
+                PrecursorVenueSlice(
+                    venue=universe,
+                    source_class=source_class,
+                    session_close_at=session_close_at,
+                    observed_at=observed_at,
+                    freshness_state=freshness,
+                    raw_values={RawPrecursorField.CLOSE_TIMESTAMP: session_close_at},
+                    derived_values={
+                        DerivedPrecursorField.DIRECTIONAL_COMPOSITE_SCORE: directional,
+                        DerivedPrecursorField.CROSS_VENUE_AGREEMENT_SCORE: agreement,
+                        DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE: divergence,
+                        DerivedPrecursorField.IMPULSE_PERSISTENCE_SCORE: persistence,
+                        DerivedPrecursorField.PRECURSOR_PRESSURE_SCORE: pressure,
+                        DerivedPrecursorField.CARRY_RISK_WARNING_SCORE: carry_warning,
+                    },
+                    lineage_keys=[record.import_lineage_key for record in records],
+                    notes=notes,
+                )
+            )
+        return slices
+
+    def _source_class_for_precursor_venue(self, venue: PrecursorVenueUniverse) -> PrecursorSourceClass:
+        if venue is PrecursorVenueUniverse.CFFEX_INDEX_FUTURES_COMPLEX:
+            return PrecursorSourceClass.INDEX_FUTURES
+        return PrecursorSourceClass.CASH_EQUITY_INDEX
+
+    def _projected_precursor_close_at(
+        self, *, requested_at: datetime, venue: PrecursorVenueUniverse
+    ) -> datetime:
+        hour_by_venue = {
+            PrecursorVenueUniverse.JPX_CASH_INDEX_COMPLEX: 6,
+            PrecursorVenueUniverse.HKEX_CASH_INDEX_COMPLEX: 8,
+            PrecursorVenueUniverse.MAINLAND_CHINA_CASH_INDEX_COMPLEX: 7,
+            PrecursorVenueUniverse.CFFEX_INDEX_FUTURES_COMPLEX: 7,
+        }
+        close_at = requested_at.replace(
+            hour=hour_by_venue.get(venue, 6), minute=0, second=0, microsecond=0
         )
+        if close_at > requested_at:
+            close_at -= timedelta(days=1)
+        return close_at
 
     def _match_crosswalk(
         self, record: FinancialCalendarImportedRecord

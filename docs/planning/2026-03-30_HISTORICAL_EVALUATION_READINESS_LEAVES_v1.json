@@ -1,14 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_116_complete_gate_117_active_on_main",
-  "active_gate": "Gate 117",
+  "execution_status": "gate_117_complete_gate_118_active_on_main",
+  "active_gate": "Gate 118",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
   "completed_gate_ids": [
     115,
-    116
+    116,
+    "Gate 117"
   ],
   "completed_leaf_ids": [
     "LEAF-G115-001",
@@ -23,16 +24,29 @@
     "LEAF-G116-003",
     "LEAF-G116-004",
     "LEAF-G116-005",
-    "LEAF-G116-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G116-006",
     "LEAF-G117-001",
     "LEAF-G117-002",
     "LEAF-G117-003",
     "LEAF-G117-004",
     "LEAF-G117-005",
     "LEAF-G117-006",
-    "LEAF-G117-007",
+    "LEAF-G117-007"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G115-001",
+    "LEAF-G115-002",
+    "LEAF-G115-003",
+    "LEAF-G115-004",
+    "LEAF-G115-005",
+    "LEAF-G115-006",
+    "LEAF-G115-007",
+    "LEAF-G116-001",
+    "LEAF-G116-002",
+    "LEAF-G116-003",
+    "LEAF-G116-004",
+    "LEAF-G116-005",
+    "LEAF-G116-006",
     "LEAF-G118-001",
     "LEAF-G118-002",
     "LEAF-G118-003",
@@ -991,7 +1005,7 @@
       "gate": "Gate 117",
       "title": "Freeze precursor economics field inventory",
       "objective": "Freeze the raw and derived precursor economics fields that are allowed to influence runtime packets and contradictions.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G116-006"
       ],
@@ -1057,7 +1071,7 @@
       "gate": "Gate 117",
       "title": "Map precursor ingestion and stitch path",
       "objective": "Trace how precursor economics should be ingested and stitched through market-state rather than bloating calendar projection.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-001"
       ],
@@ -1123,7 +1137,7 @@
       "gate": "Gate 117",
       "title": "Compute contradiction-aware precursor packet",
       "objective": "Implement the precursor runtime packet through the precursor and market-state path with explicit contradiction classes.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-002"
       ],
@@ -1189,7 +1203,7 @@
       "gate": "Gate 117",
       "title": "Feed precursor outputs into posture inputs",
       "objective": "Ensure precursor economics flow into the downstream runtime context that posture and candidate selection will actually consume.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-003"
       ],
@@ -1255,7 +1269,7 @@
       "gate": "Gate 117",
       "title": "Build supportive and hostile precursor fixtures",
       "objective": "Add bounded precursor fixtures covering supportive, hostile, and contradictory precursor states.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-004"
       ],
@@ -1321,7 +1335,7 @@
       "gate": "Gate 117",
       "title": "Add downstream posture and review tests",
       "objective": "Prove that differing precursor states cause lawful downstream posture and review differences.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-005"
       ],
@@ -1387,7 +1401,7 @@
       "gate": "Gate 117",
       "title": "Close Gate 117 honestly",
       "objective": "Advance the planning quartet, record Gate 117 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G117-006"
       ],

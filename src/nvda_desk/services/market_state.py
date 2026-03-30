@@ -20,6 +20,7 @@ from nvda_desk.schemas.market import (
     PrecursorFreshnessState,
     PrecursorPostureState,
     PrecursorRuntimePacket,
+    RawPrecursorField,
     PrecursorStitchingAuthorityPacket,
     PrecursorStitchingResult,
     PrecursorTimestampDiscipline,
@@ -94,6 +95,7 @@ class MarketStateService:
 
         for slice_ in sorted_slices:
             lineage_keys.extend(slice_.lineage_keys)
+            notes.extend(slice_.notes)
             if self._timestamp_misaligned(requested_at=requested_at, slice_=slice_):
                 dropped_venues.append(slice_.venue)
                 fallback_dispositions.append(
@@ -138,16 +140,20 @@ class MarketStateService:
     ) -> PrecursorRuntimePacket:
         """Convert stitched precursor truth into the additive runtime packet shape."""
 
-        derived_fields = sorted(
-            {field for slice_ in result.active_slices for field in slice_.derived_values},
+        raw_fields = sorted(
+            {field for slice_ in result.active_slices for field in slice_.raw_values},
             key=lambda item: item.value,
         )
+        derived_values = self._aggregate_derived_values(result.active_slices)
+        derived_fields = sorted(derived_values, key=lambda item: item.value)
         return PrecursorRuntimePacket(
             requested_at=result.requested_at,
             stitched_order=result.stitched_order,
             active_venues=[slice_.venue for slice_ in result.active_slices],
             missing_venues=result.missing_venues,
+            raw_fields=raw_fields,
             derived_fields=derived_fields,
+            derived_values=derived_values,
             contradiction_class=result.contradiction_class,
             posture_state=result.posture_state,
             fallback_dispositions=result.fallback_dispositions,
@@ -183,6 +189,26 @@ class MarketStateService:
             option_type=option_type,
             snapshots=snapshots,
         )
+
+
+    def _aggregate_derived_values(
+        self, active_slices: list[PrecursorVenueSlice]
+    ) -> dict[DerivedPrecursorField, float]:
+        aggregates: dict[DerivedPrecursorField, list[float]] = {}
+        for slice_ in active_slices:
+            for field, value in slice_.derived_values.items():
+                aggregates.setdefault(field, []).append(float(value))
+        result: dict[DerivedPrecursorField, float] = {}
+        for field, values in aggregates.items():
+            if field in {
+                DerivedPrecursorField.CARRY_RISK_WARNING_SCORE,
+                DerivedPrecursorField.FUTURES_CASH_DIVERGENCE_SCORE,
+            }:
+                aggregate = max(values, key=abs)
+            else:
+                aggregate = sum(values) / len(values)
+            result[field] = round(aggregate, 4)
+        return result
 
     def _get_latest_bar(self, symbol: str, ts: datetime) -> Bar1mPayload | None:
         bars = self._get_intraday_bars(symbol=symbol, ts=ts, limit=1)
@@ -334,6 +360,10 @@ class MarketStateService:
         contradiction_class: PrecursorContradictionClass,
         missing_venues: list[PrecursorVenueUniverse],
     ) -> PrecursorPostureState:
+        aggregated = self._aggregate_derived_values(active_slices)
+        precursor_pressure = aggregated.get(DerivedPrecursorField.PRECURSOR_PRESSURE_SCORE, 0.0)
+        carry_warning = aggregated.get(DerivedPrecursorField.CARRY_RISK_WARNING_SCORE, 0.0)
+
         if contradiction_class in {
             PrecursorContradictionClass.TIMESTAMP_MISALIGNMENT,
             PrecursorContradictionClass.BROAD_CROSS_VENUE_CONFLICT,
@@ -341,7 +371,11 @@ class MarketStateService:
             return PrecursorPostureState.UNRESOLVED_CONTEXT
         if contradiction_class is PrecursorContradictionClass.FUTURES_CASH_DIVERGENCE:
             return PrecursorPostureState.STAND_DOWN_PRESSURE
+        if precursor_pressure <= -0.55 or carry_warning >= 0.75:
+            return PrecursorPostureState.STAND_DOWN_PRESSURE
         if contradiction_class is PrecursorContradictionClass.DIRECTIONAL_SPLIT:
+            return PrecursorPostureState.TIGHTENED_POSTURE
+        if precursor_pressure <= -0.2 or carry_warning >= 0.45:
             return PrecursorPostureState.TIGHTENED_POSTURE
         if missing_venues or any(
             slice_.freshness_state is not PrecursorFreshnessState.CURRENT

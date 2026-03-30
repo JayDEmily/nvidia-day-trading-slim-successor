@@ -1,6 +1,6 @@
 # 2026-03-30 Historical Evaluation Readiness Execution Log v1
 
-Status: active execution log for the historical-evaluation readiness pack; Gates 115-116 complete on `main`, Gate 117 next
+Status: active execution log for the historical-evaluation readiness pack; Gates 115-117 complete on `main`, Gate 118 next
 
 ## Purpose
 
@@ -75,6 +75,30 @@ For every completed leaf record:
   - `PYTHONPATH=src pytest -q tests/test_gate116_event_class_temporal_windows.py tests/test_gate81_live_event_temporal_semantics.py tests/test_gate92_financial_calendar_temporal_transition.py`
 - Observed results:
   - `12 passed`
+- Full suite required: `false`
+- Stop condition hit: `none`
+- Receipt recorded: `live`
+
+
+## Gate 117 receipts
+
+- Gate id: `117`
+- Branch: `work/gate-117-precursor-economics-20260330`
+- Start commit: `8eb87d7`
+- Branch end commit before fast-forward: `8f4b256`
+- Leaves closed: `LEAF-G117-001` through `LEAF-G117-007`
+- Files touched:
+  - `src/nvda_desk/schemas/market.py`
+  - `src/nvda_desk/schemas/review.py`
+  - `src/nvda_desk/services/market_state.py`
+  - `src/nvda_desk/services/financial_calendar_projection.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `tests/test_gate117_precursor_economics.py`
+  - `tests/test_gate91_financial_calendar_canonical_projection.py`
+- Validation commands:
+  - `PYTHONPATH=src pytest -q tests/test_gate117_precursor_economics.py tests/test_gate91_financial_calendar_canonical_projection.py tests/test_gate81_live_event_temporal_semantics.py`
+- Observed results:
+  - `8 passed`
 - Full suite required: `false`
 - Stop condition hit: `none`
 - Receipt recorded: `live`
