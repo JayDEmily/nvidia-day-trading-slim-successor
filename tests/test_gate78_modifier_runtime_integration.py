@@ -20,6 +20,7 @@ from nvda_desk.schemas.state_policy import (
     ModifierPriorityBand,
     ModifierRuntimePacket,
     MutableRuntimeSurface,
+    PolicyStageOwner,
     ResolvedRuntimeSurfaceValue,
 )
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
@@ -149,7 +150,14 @@ def test_gate78_schema_surface_exposes_modifier_runtime_packet() -> None:
         resolved_surfaces=[
             ResolvedRuntimeSurfaceValue(
                 target_surface=MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT,
+                owner_stage=PolicyStageOwner.EXECUTION,
+                authority_version="2026-03-31.tranche1",
+                baseline_reference=(
+                    "coefficient_authority:2026-03-31.tranche1:target_fresh_deployable_pct"
+                ),
                 baseline_numeric_value=55.0,
+                minimum_numeric_value=0.0,
+                maximum_numeric_value=55.0,
                 effective_numeric_value=20.625,
                 winning_precedence_band=ModifierPriorityBand.PHASE_CARRY,
                 source_policy_ids=["phase_carry:late_session:event_carry_setup"],
@@ -182,8 +190,20 @@ def test_gate78_runtime_applies_deterministic_modifier_caps_and_lineage() -> Non
 
     assert result.posture.modifier_runtime_packet is not None
     assert result.posture.permission_state.value == "derisk"
-    assert result.execution.target_fresh_deployable_pct == 20.625
     assert result.execution.modifier_runtime_packet is not None
+    resolved_by_surface = {
+        item.target_surface: item for item in result.execution.modifier_runtime_packet.resolved_surfaces
+    }
+    resolved_target = resolved_by_surface[MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT]
+    assert resolved_target.authority_version == "2026-03-31.tranche1"
+    assert resolved_target.baseline_reference == (
+        "coefficient_authority:2026-03-31.tranche1:target_fresh_deployable_pct"
+    )
+    assert resolved_target.baseline_numeric_value == 55.0
+    assert resolved_target.minimum_numeric_value == 0.0
+    assert resolved_target.maximum_numeric_value == 55.0
+    assert resolved_target.effective_numeric_value == 20.625
+    assert result.execution.target_fresh_deployable_pct == 13.4062
     assert result.review.effective_policy is not None
     assert result.review.review_lineage is not None
     assert (

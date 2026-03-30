@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gates 122-123 complete on `main`, Gate 124 active, Gates 125-127 planned
+Status: active signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose
@@ -262,6 +262,12 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 - canonical scenario outputs remain behaviourally equivalent except where the new authority path is intentionally more explicit;
 - legacy constants are retired from final authority and left only as compatibility scaffolding if still needed.
 
+### Gate 124 closeout note
+
+- Gate 124 completed on `main` by loading mutable-surface baselines, floors, and caps from `config/coefficient_authority.v1.yaml` inside `StateConditionedModifierService` and carrying governed authority metadata into `ResolvedRuntimeSurfaceValue`.
+- The inherited Gate 121 drift in the old Gate 78 expectation is now made explicit: modifier-packet target-fresh remains 20.625 for the stressed late-session scenario, while final-risk derisk then compresses execution output to 13.4062.
+- Canonical vocabulary was regenerated so the declared Gate 124 proof slice no longer fails on stale committed JSON.
+
 ### Gate 125: Make effective-coefficient lineage review-visible
 
 **Objective**
@@ -279,6 +285,7 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 - review packets expose baseline value, effective value, clamp state, precedence band, and source policy ids for every admitted mutable surface;
 - posture, execution, and review consume the same typed resolved-surface packet;
 - regression tests prove the lineage chain survives both prepared and raw canonical paths.
+
 
 ### Gate 126: Admit a bounded temporal-threshold authority subset
 

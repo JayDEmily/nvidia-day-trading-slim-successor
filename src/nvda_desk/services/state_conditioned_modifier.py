@@ -7,7 +7,10 @@ mutable runtime surfaces, and emits a typed runtime packet with full lineage.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
 
+from nvda_desk.config_models import CoefficientAuthorityDocument, default_coefficient_authority_path
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     GammaState,
@@ -110,6 +113,13 @@ def project_event_option_state_labels(
     return labels
 
 
+@lru_cache(maxsize=8)
+def _load_governed_coefficient_authority(path: str) -> CoefficientAuthorityDocument:
+    """Load the governed coefficient authority document from one resolved path."""
+
+    return CoefficientAuthorityDocument.from_yaml_path(Path(path))
+
+
 class StateConditionedModifierService:
     """Apply frozen Gate 78 modifier law without changing cognition grammar.
 
@@ -122,21 +132,9 @@ class StateConditionedModifierService:
         `ModifierRuntimePacket` carrying resolved mutable-surface values and
         review-visible application lineage.
     Determinism:
-        Uses checked-in baseline values, precedence bands, and fixed rules only.
+        Uses checked-in governed authority, precedence bands, and fixed rules only.
     """
 
-    _BASELINE_NUMERIC: dict[MutableRuntimeSurface, float] = {
-        MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.65,
-        MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: 0.50,
-        MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT: 1.50,
-        MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD: 24.0,
-        MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD: 32.0,
-        MutableRuntimeSurface.MAX_RISK_PER_TRADE: 0.35,
-        MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT: 55.0,
-    }
-    _BASELINE_BOOLEAN: dict[MutableRuntimeSurface, bool] = {
-        MutableRuntimeSurface.HEDGE_REQUIRED: False,
-    }
     _PRECEDENCE_ORDER: dict[ModifierPriorityBand, int] = {
         ModifierPriorityBand.BASELINE: 0,
         ModifierPriorityBand.REGIME: 1,
@@ -146,6 +144,39 @@ class StateConditionedModifierService:
         ModifierPriorityBand.HARD_BLOCK: 5,
         ModifierPriorityBand.KILL_SWITCH: 6,
     }
+
+    def __init__(
+        self,
+        *,
+        authority_path: Path | None = None,
+        authority_document: CoefficientAuthorityDocument | None = None,
+    ) -> None:
+        """Load the governed mutable-surface authority for runtime use."""
+
+        self._authority_document = authority_document or _load_governed_coefficient_authority(
+            str((authority_path or default_coefficient_authority_path()).resolve())
+        )
+        self._mutable_surface_authority = self._authority_document.mutable_surface_index()
+        self._baseline_numeric = {
+            surface: float(spec.baseline)
+            for surface, spec in self._authority_document.mutable_numeric_surface_index().items()
+            if spec.activation_gate == "Gate 124"
+        }
+        self._baseline_boolean = {
+            surface: bool(spec.baseline)
+            for surface, spec in self._authority_document.mutable_boolean_surface_index().items()
+            if spec.activation_gate == "Gate 124"
+        }
+        self._surface_floors = {
+            surface: float(spec.minimum)
+            for surface, spec in self._authority_document.mutable_numeric_surface_index().items()
+            if spec.activation_gate == "Gate 124"
+        }
+        self._surface_caps = {
+            surface: float(spec.maximum)
+            for surface, spec in self._authority_document.mutable_numeric_surface_index().items()
+            if spec.activation_gate == "Gate 124"
+        }
     _SURFACE_FLOORS: dict[MutableRuntimeSurface, float] = {
         MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.50,
         MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: 0.35,
@@ -683,8 +714,8 @@ class StateConditionedModifierService:
         triggered_kill_switch: KillSwitchCondition | None,
         active_policy_ids: list[str],
     ) -> tuple[list[ResolvedRuntimeSurfaceValue], list[EffectiveCoefficientLineage]]:
-        numeric_surfaces = set(self._BASELINE_NUMERIC)
-        boolean_surfaces = set(self._BASELINE_BOOLEAN)
+        numeric_surfaces = set(self._baseline_numeric)
+        boolean_surfaces = set(self._baseline_boolean)
         resolved: list[ResolvedRuntimeSurfaceValue] = []
         lineage: list[EffectiveCoefficientLineage] = []
         grouped: dict[MutableRuntimeSurface, list[_PolicyApplication]] = {}
@@ -697,8 +728,9 @@ class StateConditionedModifierService:
                 key=lambda item: self._band_sort(item.band),
                 reverse=True,
             )
-            if surface in self._BASELINE_NUMERIC:
-                baseline_value = self._BASELINE_NUMERIC[surface]
+            if surface in self._baseline_numeric:
+                authority = self._mutable_surface_authority[surface]
+                baseline_value = self._baseline_numeric[surface]
                 value = baseline_value
                 notes: list[str] = []
                 clamped = False
@@ -720,8 +752,8 @@ class StateConditionedModifierService:
                         value = policy.clamp_cap
                         clamped = True
                     notes.extend(policy.notes)
-                floor = self._SURFACE_FLOORS.get(surface)
-                cap = self._SURFACE_CAPS.get(surface)
+                floor = self._surface_floors.get(surface)
+                cap = self._surface_caps.get(surface)
                 if floor is not None and value < floor:
                     value = floor
                     clamped = True
@@ -733,7 +765,14 @@ class StateConditionedModifierService:
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
                         target_surface=surface,
+                        owner_stage=authority.owner_stage,
+                        authority_version=self._authority_document.authority_version,
+                        baseline_reference=(
+                            f"coefficient_authority:{self._authority_document.authority_version}:{surface.value}"
+                        ),
                         baseline_numeric_value=baseline_value,
+                        minimum_numeric_value=self._surface_floors.get(surface),
+                        maximum_numeric_value=self._surface_caps.get(surface),
                         effective_numeric_value=round(value, 4),
                         winning_precedence_band=winning_band,
                         source_policy_ids=source_policy_ids,
@@ -744,7 +783,9 @@ class StateConditionedModifierService:
                 lineage.append(
                     EffectiveCoefficientLineage(
                         target_surface=surface,
-                        baseline_reference=f"baseline:{surface.value}",
+                        baseline_reference=(
+                            f"coefficient_authority:{self._authority_document.authority_version}:{surface.value}"
+                        ),
                         active_modifier_policy_ids=source_policy_ids,
                         explanation_id=(
                             None
@@ -754,7 +795,8 @@ class StateConditionedModifierService:
                     )
                 )
             else:
-                baseline_value = self._BASELINE_BOOLEAN[surface]
+                authority = self._mutable_surface_authority[surface]
+                baseline_value = self._baseline_boolean[surface]
                 value = baseline_value
                 notes = []
                 for policy in policies:
@@ -766,6 +808,11 @@ class StateConditionedModifierService:
                 resolved.append(
                     ResolvedRuntimeSurfaceValue(
                         target_surface=surface,
+                        owner_stage=authority.owner_stage,
+                        authority_version=self._authority_document.authority_version,
+                        baseline_reference=(
+                            f"coefficient_authority:{self._authority_document.authority_version}:{surface.value}"
+                        ),
                         baseline_boolean_value=baseline_value,
                         effective_boolean_value=value,
                         winning_precedence_band=winning_band,
@@ -776,7 +823,9 @@ class StateConditionedModifierService:
                 lineage.append(
                     EffectiveCoefficientLineage(
                         target_surface=surface,
-                        baseline_reference=f"baseline:{surface.value}",
+                        baseline_reference=(
+                            f"coefficient_authority:{self._authority_document.authority_version}:{surface.value}"
+                        ),
                         active_modifier_policy_ids=source_policy_ids,
                         explanation_id=(
                             None
@@ -828,7 +877,9 @@ class StateConditionedModifierService:
         return [
             EffectiveCoefficientLineage(
                 target_surface=surface.target_surface,
-                baseline_reference=f"baseline:{surface.target_surface.value}",
+                baseline_reference=(
+                    f"coefficient_authority:{self._authority_document.authority_version}:{surface.target_surface.value}"
+                ),
                 active_modifier_policy_ids=[
                     *active_policy_ids,
                     *surface.source_policy_ids,

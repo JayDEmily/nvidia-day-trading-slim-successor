@@ -666,8 +666,13 @@ class ResolvedRuntimeSurfaceValue(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     target_surface: MutableRuntimeSurface
+    owner_stage: PolicyStageOwner
+    authority_version: str = Field(min_length=1)
+    baseline_reference: str = Field(min_length=1)
     baseline_numeric_value: float | None = None
     baseline_boolean_value: bool | None = None
+    minimum_numeric_value: float | None = None
+    maximum_numeric_value: float | None = None
     effective_numeric_value: float | None = None
     effective_boolean_value: bool | None = None
     winning_precedence_band: ModifierPriorityBand

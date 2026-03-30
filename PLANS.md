@@ -54,7 +54,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- signal-coefficient authority pack active on `main`; Gates 122-123 complete and Gate 124 now active
+- signal-coefficient authority pack active on `main`; Gates 122-124 complete and Gate 125 now active
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt
 

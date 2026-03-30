@@ -20,4 +20,4 @@ Files:
 - `coefficients_registry.example.yaml`
 - `strategy_variants.example.yaml`
 
-Use the example files as compatibility/reference inputs when promoting more of the archive into typed runtime configuration. Do not treat `coefficients_registry.example.yaml` as interchangeable with `coefficient_authority.v1.yaml`.
+Use the example files as compatibility/reference inputs when promoting more of the archive into typed runtime configuration. Do not treat `coefficients_registry.example.yaml` as interchangeable with `coefficient_authority.v1.yaml`. Gate 124 runtime mutable-surface baselines, floors, and caps now load from `coefficient_authority.v1.yaml`; the salvage registry remains reference-only.

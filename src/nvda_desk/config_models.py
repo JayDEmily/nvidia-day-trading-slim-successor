@@ -391,6 +391,12 @@ class CoefficientAuthorityDocument(BaseModel):
                 raise ValueError("risk_vix_hot_threshold must stay above risk_vix_caution_threshold across the full envelope")
         return self
 
+    def mutable_numeric_surface_index(self) -> dict[MutableRuntimeSurface, MutableNumericSurfaceAuthoritySpec]:
+        return {item.surface_id: item for item in self.mutable_numeric_surfaces}
+
+    def mutable_boolean_surface_index(self) -> dict[MutableRuntimeSurface, MutableBooleanSurfaceAuthoritySpec]:
+        return {item.surface_id: item for item in self.mutable_boolean_surfaces}
+
     def mutable_surface_index(self) -> dict[MutableRuntimeSurface, MutableNumericSurfaceAuthoritySpec | MutableBooleanSurfaceAuthoritySpec]:
         payload: dict[MutableRuntimeSurface, MutableNumericSurfaceAuthoritySpec | MutableBooleanSurfaceAuthoritySpec] = {
             item.surface_id: item for item in self.mutable_numeric_surfaces
@@ -411,6 +417,15 @@ class CoefficientAuthorityDocument(BaseModel):
 
     def to_yaml_text(self) -> str:
         return yaml.safe_dump(self.model_dump(mode="json"), sort_keys=False)
+
+
+
+
+def default_coefficient_authority_path(repo_root: Path | None = None) -> Path:
+    """Return the repo-native governed coefficient authority file path."""
+
+    resolved_root = repo_root or Path(__file__).resolve().parents[2]
+    return resolved_root / "config" / "coefficient_authority.v1.yaml"
 
 
 class VariantEnabledModules(BaseModel):
@@ -485,7 +500,7 @@ def load_config_bundle(config_dir: Path) -> ConfigBundle:
             _load_yaml(config_dir / "coefficients_registry.example.yaml")
         ),
         coefficient_authority=CoefficientAuthorityDocument.model_validate(
-            _load_yaml(config_dir / "coefficient_authority.v1.yaml")
+            _load_yaml(config_dir / default_coefficient_authority_path(config_dir.parent).name)
         ),
         strategy_variants=StrategyVariantsDocument.model_validate(
             _load_yaml(config_dir / "strategy_variants.example.yaml")

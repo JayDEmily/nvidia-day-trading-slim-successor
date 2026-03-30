@@ -1,14 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_123_complete_gate_124_active_on_main",
-  "active_gate": "Gate 124",
+  "execution_status": "gate_124_complete_gate_125_active_on_main",
+  "active_gate": "Gate 125",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
   "completed_gate_ids": [
     "Gate 122",
-    "Gate 123"
+    "Gate 123",
+    "Gate 124"
   ],
   "completed_leaf_ids": [
     "LEAF-G122-001",
@@ -16,12 +17,12 @@
     "LEAF-G122-003",
     "LEAF-G123-001",
     "LEAF-G123-002",
-    "LEAF-G123-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G123-003",
     "LEAF-G124-001",
     "LEAF-G124-002",
-    "LEAF-G124-003",
+    "LEAF-G124-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G125-001",
     "LEAF-G125-002",
     "LEAF-G125-003",
@@ -438,7 +439,7 @@
       "gate": "Gate 124",
       "title": "Externalise mutable-surface baselines and bounds",
       "objective": "Move the eight admitted mutable-surface baselines, floors, and caps onto the governed authority surface without changing their current values.",
-      "status": "active",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G123-003"
       ],
@@ -500,7 +501,7 @@
       "gate": "Gate 124",
       "title": "Wire governed authority through the runtime packet",
       "objective": "Ensure modifier runtime packets and downstream consumers use the governed authority-loaded baselines and bounds rather than private parallel copies.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G124-001"
       ],
@@ -560,7 +561,7 @@
       "gate": "Gate 124",
       "title": "Freeze no-drift scenario regressions for externalised surfaces",
       "objective": "Prove the authority-source move did not deform canonical scenario outputs beyond the intended explicit authority-chain change.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G124-002"
       ],
@@ -624,7 +625,7 @@
       "gate": "Gate 125",
       "title": "Extend review contracts for resolved-surface lineage",
       "objective": "Add the contract fields needed for review surfaces to show baseline value, effective value, clamp state, precedence band, and source policy ids per mutable surface.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G124-003"
       ],
