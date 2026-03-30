@@ -58,7 +58,7 @@ For every completed leaf record:
 - Gate id: `116`
 - Branch: `work/gate-116-event-class-temporal-windows-20260330`
 - Start commit: `6215a4b`
-- End / merged main commit: `d30a3d8`
+- Branch end commit before fast-forward: `9e2eacd`
 - Leaves closed: `LEAF-G116-001` through `LEAF-G116-006`
 - Files touched:
   - `src/nvda_desk/services/temporal_context.py`
