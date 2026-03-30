@@ -1,0 +1,166 @@
+{
+  "governing_plan": "docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "research_mode_clarity_microtranche_closed_through_gate_114_on_main",
+  "active_gate": "none — research-mode clarity microtranche closed through Gate 114 on main",
+  "supersedes": [
+    "none — no active pack existed before Gate 114"
+  ],
+  "completed_gate_ids": [
+    "Gate 114"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G114-001",
+    "LEAF-G114-002",
+    "LEAF-G114-003"
+  ],
+  "remaining_leaf_ids": [],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "research_mode_must_seek_edge_before_readiness_commentary": true,
+    "readiness_caveats_belong_to_reporting_mode_unless_requested": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G114-001",
+      "gate": "Gate 114",
+      "title": "Amend frozen authority docs",
+      "objective": "Make the research-versus-reporting distinction explicit in the frozen normative, operating-model, and process-law docs.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "This leaf changes repo process-law and operator-behaviour wording only; it does not change runtime logic.",
+      "vocabulary_terms_checked": [
+        "research-mode",
+        "reporting mode",
+        "implementation-readiness"
+      ],
+      "repo_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md"
+      ],
+      "inputs": [
+        "current frozen authority docs",
+        "user instruction to make the distinction explicit"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and locate the existing research/runtime split.",
+        "Insert explicit research-mode versus reporting-mode wording without changing runtime law.",
+        "Keep the changes bounded to behaviour/process-law surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not change runtime module behaviour.",
+        "Do not rewrite unrelated normative sections.",
+        "Do not invent new runtime vocabulary."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate114_research_mode_clarity_microtranche.py"
+      ],
+      "notes": "Completed on the Gate 114 work branch and merged to main."
+    },
+    {
+      "id": "LEAF-G114-002",
+      "gate": "Gate 114",
+      "title": "Propagate wording into planning templates",
+      "objective": "Make the template pack carry the same research-mode rule for future planning threads.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G114-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/README.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps future planning packs aligned with the new process-law wording.",
+      "vocabulary_terms_checked": [
+        "brainstorm mode",
+        "candidate edge"
+      ],
+      "repo_surfaces": [
+        "docs/planning/tranche_briefing_template_pack/README.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
+      ],
+      "inputs": [
+        "LEAF-G114-001 wording"
+      ],
+      "ordered_actions": [
+        "Update template-pack guidance to keep research-mode idea-first.",
+        "Keep execution-thread reminders intact.",
+        "Avoid turning the template pack into a status diary."
+      ],
+      "forbidden_actions": [
+        "Do not add new template files for this microtranche.",
+        "Do not change unrelated template sections."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate114_research_mode_clarity_microtranche.py"
+      ],
+      "notes": "Completed on the Gate 114 work branch and merged to main."
+    },
+    {
+      "id": "LEAF-G114-003",
+      "gate": "Gate 114",
+      "title": "Close the microtranche honestly",
+      "objective": "Add the guard test, update the planning quartet, and freeze the zip artefact name.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G114-001",
+        "LEAF-G114-002"
+      ],
+      "authority_docs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf updates the routing quartet and proves the microtranche closed without leaving stale active-gate text behind.",
+      "vocabulary_terms_checked": [
+        "latest closed pack retained as evidence"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_CLOSEOUT.md",
+        "tests/test_gate114_research_mode_clarity_microtranche.py",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "green validation slice",
+        "final zip artefact name"
+      ],
+      "ordered_actions": [
+        "Write the guard test for the new wording and closed-pack state.",
+        "Update the router, gate map, leaves ledger, and execution log together.",
+        "Freeze the closeout receipt and changelog entry."
+      ],
+      "forbidden_actions": [
+        "Do not leave a fake active pack behind.",
+        "Do not call the gate closed without the packaged artefact name."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py"
+      ],
+      "notes": "Completed on the Gate 114 work branch and merged to main."
+    }
+  ]
+}

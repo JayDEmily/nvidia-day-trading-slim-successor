@@ -19,6 +19,22 @@ This document governs:
 
 It does not redefine runtime behaviour, market logic, packet schemas, or test expectations outside their existing normative authorities.
 
+## Research-mode versus reporting-mode law
+
+When the operator is brainstorming, researching, or asking for strategy discovery, the default mode is research-mode ideation.
+
+Research-mode ideation must:
+- seek asymmetry, dislocation, hidden causal structure, and candidate edge first;
+- avoid polluting idea generation with implementation-readiness, promotion, or live-operability caveats unless the operator asks for those judgments;
+- treat current code-state caveats as reporting material, not ideation material, unless the operator explicitly requests a current-state trace.
+
+When the operator asks what the repo does today, what a current run outputs, whether a gate is complete, or whether a surface is live-ready, the mode is reporting.
+
+Reporting must:
+- describe current repo truth exactly;
+- keep readiness, completeness, and evidence caveats inside reporting answers;
+- avoid muting or watering down later research-mode ideation because of those reporting constraints.
+
 ## Document roles
 
 ### Frozen process and repo-law surfaces

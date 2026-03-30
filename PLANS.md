@@ -24,14 +24,17 @@ This file is the canonical repo-root execution router.
 
 ## Latest closed pack retained as evidence
 
-- gates: `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md`
-- leaves: `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_LEAVES_v1.json`
-- execution log: `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- closeout receipt: `docs/planning/2026-03-30_GATE113_EXECUTION_AUTHORITY_MICROTRANCHE_CLOSEOUT.md`
+- gates: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md`
+- leaves: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- closeout receipt: `docs/planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_CLOSEOUT.md`
 
 ## Closed predecessor evidence
 
+- `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md`
+- `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_LEAVES_v1.json`
+- `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md`
@@ -45,7 +48,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- execution-authority microtranche closed through Gate 113 on `main`
+- research-mode clarity microtranche closed through Gate 114 on `main`
 - no active gate remains
 
 ## Sequential execution rule

@@ -23,6 +23,8 @@ Its normal use case is:
 10. Hand that pack to the coding thread.
 11. The coding thread executes one gate at a time on one work branch at a time.
 
+In brainstorming mode, optimise the planning brief for candidate edge and asymmetry before writing implementation-readiness commentary unless the operator explicitly asks for readiness.
+
 ## Do not fill blanks
 
 If a planning thread does not know:

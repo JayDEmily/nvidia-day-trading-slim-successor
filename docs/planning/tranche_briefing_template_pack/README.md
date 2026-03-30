@@ -53,3 +53,7 @@ Git history preserves older brief packs, so the active repo tree should prefer t
 ## Execution-thread reminder
 
 When a planning pack becomes active, the coding thread must reread the vocabulary authority and the packet/data contract authority named in that pack before implementing the approved gate.
+
+## Research-thread reminder
+
+When the operator is brainstorming or researching a new tranche, the planning thread should pursue candidate edge and asymmetry first, then label implementation readiness only if the operator asks for current-state, promotion, or live-operability judgment.

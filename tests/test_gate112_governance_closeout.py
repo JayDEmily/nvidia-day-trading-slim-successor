@@ -23,7 +23,7 @@ def test_governance_pack_is_closed_honestly_across_the_quartet() -> None:
 
     assert "## Active pack\n\n- none" in plans
     assert ("repo-process governance pack closed through Gate 112 on `main`" in plans) or ("2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md" in plans)
-    assert ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map)
+    assert ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map) or ("Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**." in gate_map)
     assert "| Gate 112 | complete on `main` |" in gate_map
     assert "Status: closed repo-process governance pack on `main`; Gates 107-112 complete, no active gate" in gates
     assert leaves["execution_status"] == "repo_process_governance_pack_closed_through_gate_112_on_main"

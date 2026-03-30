@@ -38,6 +38,7 @@ The following are frozen unless deliberately revised with a changelog entry:
 - all order paths pass through posture, risk, deployable-capital governance, and ledger surfaces;
 - replayability, auditability, and explanation are first-class requirements;
 - the human desk operator lens is the binding design lens for every module, feature, and coefficient.
+- research-mode ideation must seek asymmetry, dislocation, and edge before discussing implementation readiness; implementation-state caveats belong to reporting mode unless the user explicitly asks for readiness, promotion, or live-operability judgment.
 
 ## Desk Cognition Grammar (binding runtime order)
 
@@ -57,6 +58,8 @@ No module bypasses this order.
 
 The repo preserves a stable cognition grammar and only allows bounded, approved change in operating posture. That means:
 
+- research and discovery surfaces optimise first for candidate quality, asymmetry, and hidden causal edge;
+- implementation-state caveats are mandatory in reporting and promotion judgment, but they must not pre-empt ideation unless the user asks for readiness, operability, or live-release judgment;
 - historical replay is the research and discovery surface;
 - live paper is the falsification and promotion surface for locked candidates;
 - review does not imply change, and **no change** is a valid governed outcome;

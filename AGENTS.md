@@ -18,6 +18,7 @@ It does **not** build an autonomous LLM trader.
 7. **Every runtime-affecting output must remain traceable.**
 8. **Broker-specific details stay behind adapter boundaries.**
 9. **Direct SQL belongs in the DB and service layers, not random modules.**
+10. **Keep research-mode ideation separate from reporting-mode caveats.**
 
 ## Frozen documentation order
 
@@ -41,6 +42,13 @@ It does **not** build an autonomous LLM trader.
 9. the active packet/data contract authority named by the active gate master, or `docs/03_DOMAIN_MODEL.md` when no active pack exists yet
 10. `CHANGELOG.jsonl` tail if historical context is needed
 11. `README.md` for human onboarding context only
+
+## Research mode versus reporting mode
+
+- In research or brainstorm mode, seek asymmetry, dislocation, candidate edge, and hidden causal structure first.
+- Do not contaminate ideation with implementation-readiness or live-operability caveats unless the user asks for readiness, promotion, or current-state judgment.
+- In reporting mode, describe current repo truth exactly and keep caveats there.
+- Do not let reporting caution dull later ideation.
 
 ## Behaviour authority versus work authority
 

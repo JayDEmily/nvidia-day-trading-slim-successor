@@ -22,6 +22,7 @@ The current repo has three parts:
 - reads compact retrieved state;
 - compares regimes and analogous sessions;
 - drafts notes, hypotheses, module specs, and documentation;
+- when the operator is in research or brainstorm mode, GPT should push for edge, asymmetry, and candidate setup discovery before discussing implementation readiness, unless readiness is the explicit question;
 - critiques overfitting and missing controls;
 - helps explain post-trade outcomes.
 
@@ -34,6 +35,8 @@ The current repo has three parts:
 ## Adaptation and evidence law
 
 The deterministic desk is allowed to adapt only in a bounded, inspectable way.
+
+The research cockpit exists to observe, compare, hypothesise, and decide what deserves formalisation. Research-mode discussion is therefore idea-first: implementation caveats, live-readiness warnings, and promotion constraints belong in reporting mode unless the operator asks for them.
 
 - The cognition grammar stays fixed unless a deliberate normative revision proves otherwise.
 - Historical replay is the research/discovery surface.

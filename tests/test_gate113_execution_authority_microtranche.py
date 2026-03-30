@@ -50,7 +50,7 @@ def test_routed_pack_or_latest_closed_pack_names_authorities_cleanly() -> None:
     assert leaves["global_rules"]["execution_thread_must_reread_named_packet_contract_authority"] is True
     assert leaves["execution_status"] == "execution_authority_microtranche_closed_through_gate_113_on_main"
     assert leaves["active_gate"] == "none — execution-authority microtranche closed through Gate 113 on main"
-    assert "Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map
+    assert ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map) or ("Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**." in gate_map)
     assert "Status: closed execution log for the execution-authority microtranche; Gate 113 complete on `main`, no active gate" in execution_log
     assert "Gate 113 complete on `main`; execution-authority microtranche closed honestly" in closeout
     assert "nvda_repo_execution_authority_microtranche_closed_gate113_main_2026-03-30.zip" in closeout
