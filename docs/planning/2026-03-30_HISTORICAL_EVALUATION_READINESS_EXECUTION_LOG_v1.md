@@ -1,6 +1,6 @@
 # 2026-03-30 Historical Evaluation Readiness Execution Log v1
 
-Status: active execution log for the historical-evaluation readiness pack; Gates 115-117 complete on `main`, Gate 118 next
+Status: active execution log for the historical-evaluation readiness pack; Gates 115-118 complete on `main`, Gate 119 next
 
 ## Purpose
 
@@ -99,6 +99,28 @@ For every completed leaf record:
   - `PYTHONPATH=src pytest -q tests/test_gate117_precursor_economics.py tests/test_gate91_financial_calendar_canonical_projection.py tests/test_gate81_live_event_temporal_semantics.py`
 - Observed results:
   - `8 passed`
+- Full suite required: `false`
+- Stop condition hit: `none`
+- Receipt recorded: `live`
+
+
+## Gate 118 receipts
+
+- Gate id: `118`
+- Branch: `work/gate-118-mutable-surface-wire-or-shrink-20260330`
+- Start commit: `73b628a`
+- End / merged main commit: `recorded as the Gate 118 branch tip at merge time; see git history for the exact branch-tip hash`
+- Leaves closed: `LEAF-G118-001` through `LEAF-G118-006`
+- Files touched:
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `src/nvda_desk/services/state_conditioned_modifier.py`
+  - `tests/test_gate118_mutable_surface_operability.py`
+  - `docs/planning/2026-03-30_GATE118_MUTABLE_SURFACE_RECONCILIATION.md`
+- Validation commands:
+  - `PYTHONPATH=src pytest -q tests/test_gate118_mutable_surface_operability.py tests/test_gate97_runtime_invariants.py tests/test_gate117_precursor_economics.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
+- Observed results:
+  - `16 passed`
 - Full suite required: `false`
 - Stop condition hit: `none`
 - Receipt recorded: `live`

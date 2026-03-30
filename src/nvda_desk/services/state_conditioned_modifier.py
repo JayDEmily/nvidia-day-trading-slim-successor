@@ -645,6 +645,18 @@ class StateConditionedModifierService:
         )
         update: dict[str, object] = {"modifier_runtime_packet": packet}
         reasons = list(execution.reasons)
+        numeric_surface_field_map = {
+            MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: "entry_gate_score_floor",
+            MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: "zone_score_threshold",
+            MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT: "distance_to_vwap_soft_limit_pct",
+            MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD: "risk_vix_caution_threshold",
+            MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD: "risk_vix_hot_threshold",
+            MutableRuntimeSurface.MAX_RISK_PER_TRADE: "max_risk_per_trade",
+        }
+        for surface, field_name in numeric_surface_field_map.items():
+            effective = self._resolved_numeric(packet, surface)
+            if effective is not None:
+                update[field_name] = round(effective, 4)
         if hedge_required and not execution.hedge_required:
             update["hedge_required"] = True
             reasons.append("modifier_runtime_required_hedge")
@@ -652,10 +664,14 @@ class StateConditionedModifierService:
             if "modifier_runtime_required_hedge" not in exit_reasons:
                 exit_reasons.append("modifier_runtime_required_hedge")
             update["exit_reasons"] = exit_reasons
+        elif hedge_required is not None:
+            update["hedge_required"] = hedge_required
         if target_fresh is not None:
             update["target_fresh_deployable_pct"] = round(
                 min(execution.target_fresh_deployable_pct, target_fresh), 4
             )
+        if any(policy_id.startswith("precursor:") for policy_id in packet.active_policy_ids):
+            reasons.append("modifier_runtime_surfaces_extended_to_execution_output")
         update["reasons"] = reasons
         return execution.model_copy(update=update)
 

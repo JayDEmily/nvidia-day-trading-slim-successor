@@ -493,6 +493,12 @@ class ExecutionExpressionOutput(BaseModel):
     entry_style: str
     playbook_execution_styles: dict[str, str] = Field(default_factory=dict)
     setup_variant_execution_styles: dict[str, str] = Field(default_factory=dict)
+    entry_gate_score_floor: float = 0.65
+    zone_score_threshold: float = 0.50
+    distance_to_vwap_soft_limit_pct: float = 1.50
+    risk_vix_caution_threshold: float = 24.0
+    risk_vix_hot_threshold: float = 32.0
+    max_risk_per_trade: float = 0.35
     hedge_required: bool
     inventory_action: str
     fresh_capital_action: str

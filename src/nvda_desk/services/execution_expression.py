@@ -11,6 +11,7 @@ from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     PlaybookDecision,
 )
+from nvda_desk.schemas.state_policy import MutableRuntimeSurface
 from nvda_desk.schemas.playbook_registry import ExecutionTemplateSpec
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
 
@@ -33,12 +34,25 @@ class ExecutionExpressionService:
     def __init__(self, registry_service: PlaybookRegistryService | None = None):
         self._registry = registry_service or PlaybookRegistryService()
 
+
+    _SURFACE_DEFAULTS: dict[MutableRuntimeSurface, float | bool] = {
+        MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.65,
+        MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: 0.50,
+        MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT: 1.50,
+        MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD: 24.0,
+        MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD: 32.0,
+        MutableRuntimeSurface.MAX_RISK_PER_TRADE: 0.35,
+        MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT: 55.0,
+        MutableRuntimeSurface.HEDGE_REQUIRED: False,
+    }
+
     def evaluate(self, payload: ExecutionExpressionInput) -> ExecutionExpressionOutput:
         """Create deterministic expression and execution state for one snapshot."""
 
         candidates = {
             candidate.playbook_id: candidate for candidate in payload.eligibility.candidates
         }
+        operative_surfaces = self._operative_surfaces(payload.modifier_runtime_packet)
         ordered_playbook_ids = self._registry.active_playbook_ids()
         active_playbook_ids = [
             playbook_id
@@ -75,7 +89,13 @@ class ExecutionExpressionService:
                 entry_style="no_trade",
                 playbook_execution_styles={},
                 setup_variant_execution_styles={},
-                hedge_required=False,
+                entry_gate_score_floor=operative_surfaces["entry_gate_score_floor"],
+                zone_score_threshold=operative_surfaces["zone_score_threshold"],
+                distance_to_vwap_soft_limit_pct=operative_surfaces["distance_to_vwap_soft_limit_pct"],
+                risk_vix_caution_threshold=operative_surfaces["risk_vix_caution_threshold"],
+                risk_vix_hot_threshold=operative_surfaces["risk_vix_hot_threshold"],
+                max_risk_per_trade=operative_surfaces["max_risk_per_trade"],
+                hedge_required=bool(operative_surfaces["hedge_required"]),
                 inventory_action="reduce",
                 fresh_capital_action="reduce",
                 thesis_invalidation_state="defer_to_risk_gate",
@@ -87,7 +107,7 @@ class ExecutionExpressionService:
                 reasons=reasons,
             )
 
-        hedge_required = (
+        hedge_required = bool(operative_surfaces["hedge_required"]) or (
             bool(payload.eligibility.hedge_candidates)
             or payload.options_flow.gamma_state.value == "destabilising"
         )
@@ -179,6 +199,12 @@ class ExecutionExpressionService:
             entry_style=entry_style,
             playbook_execution_styles=playbook_execution_styles,
             setup_variant_execution_styles=setup_variant_execution_styles,
+            entry_gate_score_floor=operative_surfaces["entry_gate_score_floor"],
+            zone_score_threshold=operative_surfaces["zone_score_threshold"],
+            distance_to_vwap_soft_limit_pct=operative_surfaces["distance_to_vwap_soft_limit_pct"],
+            risk_vix_caution_threshold=operative_surfaces["risk_vix_caution_threshold"],
+            risk_vix_hot_threshold=operative_surfaces["risk_vix_hot_threshold"],
+            max_risk_per_trade=operative_surfaces["max_risk_per_trade"],
             hedge_required=hedge_required,
             inventory_action=inventory_action,
             fresh_capital_action=fresh_capital_action,
@@ -215,3 +241,37 @@ class ExecutionExpressionService:
         ):
             return payload.posture.inventory_action_bias
         return template.default_inventory_action
+
+    def _operative_surfaces(self, packet) -> dict[str, float | bool]:
+        if packet is None:
+            return {
+                "entry_gate_score_floor": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR]),
+                "zone_score_threshold": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.ZONE_SCORE_THRESHOLD]),
+                "distance_to_vwap_soft_limit_pct": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT]),
+                "risk_vix_caution_threshold": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD]),
+                "risk_vix_hot_threshold": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD]),
+                "max_risk_per_trade": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.MAX_RISK_PER_TRADE]),
+                "hedge_required": bool(self._SURFACE_DEFAULTS[MutableRuntimeSurface.HEDGE_REQUIRED]),
+            }
+
+        def numeric(surface: MutableRuntimeSurface) -> float:
+            for item in packet.resolved_surfaces:
+                if item.target_surface is surface and item.effective_numeric_value is not None:
+                    return float(item.effective_numeric_value)
+            return float(self._SURFACE_DEFAULTS[surface])
+
+        def boolean(surface: MutableRuntimeSurface) -> bool:
+            for item in packet.resolved_surfaces:
+                if item.target_surface is surface and item.effective_boolean_value is not None:
+                    return bool(item.effective_boolean_value)
+            return bool(self._SURFACE_DEFAULTS[surface])
+
+        return {
+            "entry_gate_score_floor": numeric(MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR),
+            "zone_score_threshold": numeric(MutableRuntimeSurface.ZONE_SCORE_THRESHOLD),
+            "distance_to_vwap_soft_limit_pct": numeric(MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT),
+            "risk_vix_caution_threshold": numeric(MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD),
+            "risk_vix_hot_threshold": numeric(MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD),
+            "max_risk_per_trade": numeric(MutableRuntimeSurface.MAX_RISK_PER_TRADE),
+            "hedge_required": boolean(MutableRuntimeSurface.HEDGE_REQUIRED),
+        }

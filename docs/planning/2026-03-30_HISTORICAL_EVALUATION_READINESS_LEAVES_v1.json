@@ -1,15 +1,16 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_117_complete_gate_118_active_on_main",
-  "active_gate": "Gate 118",
+  "execution_status": "gate_118_complete_gate_119_active_on_main",
+  "active_gate": "Gate 119",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
   "completed_gate_ids": [
     115,
     116,
-    "Gate 117"
+    "Gate 117",
+    "Gate 118"
   ],
   "completed_leaf_ids": [
     "LEAF-G115-001",
@@ -31,28 +32,15 @@
     "LEAF-G117-004",
     "LEAF-G117-005",
     "LEAF-G117-006",
-    "LEAF-G117-007"
-  ],
-  "remaining_leaf_ids": [
-    "LEAF-G115-001",
-    "LEAF-G115-002",
-    "LEAF-G115-003",
-    "LEAF-G115-004",
-    "LEAF-G115-005",
-    "LEAF-G115-006",
-    "LEAF-G115-007",
-    "LEAF-G116-001",
-    "LEAF-G116-002",
-    "LEAF-G116-003",
-    "LEAF-G116-004",
-    "LEAF-G116-005",
-    "LEAF-G116-006",
+    "LEAF-G117-007",
     "LEAF-G118-001",
     "LEAF-G118-002",
     "LEAF-G118-003",
     "LEAF-G118-004",
     "LEAF-G118-005",
-    "LEAF-G118-006",
+    "LEAF-G118-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G119-001",
     "LEAF-G119-002",
     "LEAF-G119-003",
@@ -1477,7 +1465,7 @@
       "gate": "Gate 118",
       "title": "Inventory declared mutable surfaces",
       "objective": "List every mutable surface the repo currently claims is active in modifiers, posture, execution, and review.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G117-007"
       ],
@@ -1545,7 +1533,7 @@
       "gate": "Gate 118",
       "title": "Map each mutable surface to a downstream consumer",
       "objective": "For every declared mutable surface, prove the consumer path or mark the surface unsupported.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-001"
       ],
@@ -1613,7 +1601,7 @@
       "gate": "Gate 118",
       "title": "Wire missing operative consumers",
       "objective": "Implement the missing downstream consumers for surfaces that should already have teeth.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-002"
       ],
@@ -1681,7 +1669,7 @@
       "gate": "Gate 118",
       "title": "Shrink unsupported declarations",
       "objective": "Retire or narrow surfaces that remain policy decoration rather than runtime authority.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-003"
       ],
@@ -1749,7 +1737,7 @@
       "gate": "Gate 118",
       "title": "Add one regression per surviving mutable surface",
       "objective": "Add targeted tests that prove each surviving surface still changes runtime behaviour lawfully.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-004"
       ],
@@ -1817,7 +1805,7 @@
       "gate": "Gate 118",
       "title": "Close Gate 118 honestly",
       "objective": "Advance the planning quartet, record Gate 118 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-005"
       ],
