@@ -141,6 +141,23 @@ class PreparedPinProgressionPoint(BaseModel):
     distance_to_pin_pct: float
 
 
+
+
+class PreparedNormalisedFeatureSet(BaseModel):
+    """Deterministic normalised prepared-runtime feature carriage with provenance."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    intraday_move_vs_rolling_range_5m: float | None = None
+    distance_to_vwap_vs_rolling_range_5m: float | None = None
+    intraday_move_vs_price_realised_vol_15m: float | None = None
+    front_iv_vs_front_realised_vol_ratio: float | None = None
+    next_iv_vs_next_realised_vol_ratio: float | None = None
+    atm_straddle_vs_spot_pct: float | None = None
+    near_spot_front_volume_share: float | None = None
+    provenance: dict[str, list[str]] = Field(default_factory=dict)
+
+
 class PreparedRuntimeLineage(BaseModel):
     """Explicit lineage retained for one prepared runtime snapshot."""
 
@@ -184,6 +201,7 @@ class PreparedRuntimeSnapshot(BaseModel):
     rolling_range_5m_pct: float | None = None
     impulse_age_bars: int | None = None
     intraday_move_pct: float
+    normalised_features: PreparedNormalisedFeatureSet | None = None
     prior_session_return_pct: float = 0.0
     front_expiry: datetime
     next_expiry: datetime
@@ -253,6 +271,7 @@ class RuntimeSnapshotSanityReport(BaseModel):
     aligned_chain_coverage_pct: float = Field(ge=0.0, le=100.0)
     max_bar_age_seconds: int = Field(ge=0)
     monotonic_snapshot_timestamps: bool
+    normalised_feature_snapshot_coverage_pct: float = Field(ge=0.0, le=100.0, default=0.0)
     event_linked_snapshot_count: int = Field(ge=0)
     reasons: list[str] = Field(default_factory=list)
 
@@ -277,3 +296,4 @@ class RealDataCognitionInputs(BaseModel):
     lineage: PreparedRuntimeLineage
     temporal_input: TemporalContextInput
     options_flow_input: OptionsFlowContextInput
+    normalised_features: PreparedNormalisedFeatureSet | None = None

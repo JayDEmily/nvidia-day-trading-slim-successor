@@ -2596,6 +2596,10 @@ Ownership:
 - conversion/runtime bridge in `src/nvda_desk/services/chain_to_cognition.py`
 - review exposure in `src/nvda_desk/services/review_explanation.py`
 
+#### Gate 115 note: normalised prepared-runtime feature carriage
+
+`PreparedNormalisedFeatureSet` freezes one bounded feature-carriage packet for regime-aware normalised fields derived during raw-to-prepared conversion. It is carried on `PreparedRuntimeSnapshot.normalised_features` and preserved into `RealDataCognitionInputs.normalised_features` so later gates can use richer cross-regime inputs without inventing a second hidden feature path. The packet also keeps per-feature provenance field names explicit rather than hiding formula ancestry in prose.
+
 ### 4o. Review failure-taxonomy objects
 
 Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.

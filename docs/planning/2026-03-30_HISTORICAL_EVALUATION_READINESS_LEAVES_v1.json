@@ -1,21 +1,24 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115",
-  "active_gate": "Gate 115",
+  "execution_status": "gate_115_complete_gate_116_active_on_main",
+  "active_gate": "Gate 116",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    115
+  ],
+  "completed_leaf_ids": [
     "LEAF-G115-001",
     "LEAF-G115-002",
     "LEAF-G115-003",
     "LEAF-G115-004",
     "LEAF-G115-005",
     "LEAF-G115-006",
-    "LEAF-G115-007",
+    "LEAF-G115-007"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G116-001",
     "LEAF-G116-002",
     "LEAF-G116-003",
@@ -97,7 +100,7 @@
       "gate": "Gate 115",
       "title": "Freeze canonical normalised feature inventory",
       "objective": "Freeze the accepted regime-aware normalised feature list, field names, and provenance expectations before feature code changes begin.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -163,7 +166,7 @@
       "gate": "Gate 115",
       "title": "Map current raw-to-prepared feature carriage",
       "objective": "Trace which raw and derived surfaces already exist and map where each proposed normalised feature will enter the prepared dataset.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-001"
       ],
@@ -231,7 +234,7 @@
       "gate": "Gate 115",
       "title": "Implement deterministic normalisation calculations",
       "objective": "Add the bounded normalisation calculations and horizons to the prepared-runtime builder without inventing unauthorised packet names.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-002"
       ],
@@ -299,7 +302,7 @@
       "gate": "Gate 115",
       "title": "Carry normalised features into cognition ingress",
       "objective": "Ensure the new prepared fields survive through chain-to-cognition conversion and are visible to the runtime ingress types that need them.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-003"
       ],
@@ -367,7 +370,7 @@
       "gate": "Gate 115",
       "title": "Upgrade fixtures and fixture provenance",
       "objective": "Extend the canonical raw and prepared fixtures so the normalised fields can be proven deterministically in replay and sanity reports.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-004"
       ],
@@ -435,7 +438,7 @@
       "gate": "Gate 115",
       "title": "Add bounded validation and parity proofs",
       "objective": "Add targeted tests proving the normalised fields are deterministic, provenance-carrying, and stable across raw-to-prepared conversion.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-005"
       ],
@@ -503,7 +506,7 @@
       "gate": "Gate 115",
       "title": "Close Gate 115 honestly",
       "objective": "Advance the planning quartet, record the Gate 115 receipts, and freeze the packaged artefact after the feature substrate is green.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-006"
       ],

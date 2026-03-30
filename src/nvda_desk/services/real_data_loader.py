@@ -21,6 +21,7 @@ from nvda_desk.schemas.dataset import (
     OptionChainSnapshot,
     OptionQuote,
     PreparedPinProgressionPoint,
+    PreparedNormalisedFeatureSet,
     PreparedRuntimeDataset,
     PreparedRuntimeFixturePack,
     PreparedRuntimeLineage,
@@ -160,6 +161,23 @@ class RealDataLoaderService:
         )
         total_bars = len(bundle.bars)
         total_chains = len(bundle.option_chain_snapshots)
+        normalised_feature_snapshot_coverage_pct = (
+            round(
+                (
+                    sum(
+                        1
+                        for snapshot in prepared_dataset.snapshots
+                        if snapshot.normalised_features is not None
+                        and bool(snapshot.normalised_features.provenance)
+                    )
+                    / len(prepared_dataset.snapshots)
+                )
+                * 100.0,
+                4,
+            )
+            if prepared_dataset.snapshots
+            else 0.0
+        )
         aligned_bar_coverage_pct = (
             round((len(used_bar_ts) / total_bars) * 100.0, 4) if total_bars else 0.0
         )
@@ -173,6 +191,7 @@ class RealDataLoaderService:
             f"orphan_bar_count:{max(total_bars - len(used_bar_ts), 0)}",
             f"orphan_chain_count:{max(total_chains - len(used_chain_ts), 0)}",
             f"max_bar_age_seconds:{max_bar_age_seconds}",
+            f"normalised_feature_snapshot_coverage_pct:{normalised_feature_snapshot_coverage_pct}",
         ]
         if duplicate_bar_ts_count:
             reasons.append(f"duplicate_bar_ts_count:{duplicate_bar_ts_count}")
@@ -196,6 +215,7 @@ class RealDataLoaderService:
             aligned_chain_coverage_pct=aligned_chain_coverage_pct,
             max_bar_age_seconds=max_bar_age_seconds,
             monotonic_snapshot_timestamps=monotonic_snapshot_timestamps,
+            normalised_feature_snapshot_coverage_pct=normalised_feature_snapshot_coverage_pct,
             event_linked_snapshot_count=sum(
                 1 for snapshot in prepared_dataset.snapshots if snapshot.next_event_at is not None
             ),
@@ -244,6 +264,12 @@ class RealDataLoaderService:
             for point in repeated_sequence
         ]
         pin_progression_bias = self._pin_progression_bias(pin_progression_sequence)
+        front_realised_vol = round(
+            self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=6), 4
+        )
+        next_realised_vol = round(
+            self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=12), 4
+        )
         live_event_snapshot = event_store.build_live_event_snapshot(
             requested_at=chain.ts, symbol=bundle.provenance.symbol
         )
@@ -267,6 +293,36 @@ class RealDataLoaderService:
             prior_session_return_pct = round(
                 self._pct_change(float(session_open_price), float(prior_close_price)), 4
             )
+        price_realised_vol_5m_pct = round(
+            self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=5), 4
+        )
+        price_realised_vol_15m_pct = round(
+            self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=15), 4
+        )
+        relative_volume_ratio = round(
+            self._relative_volume_ratio(bars_up_to_ts, lookback_bars=5), 4
+        )
+        rolling_range_5m_pct = round(self._rolling_range_pct(bars_up_to_ts, lookback_bars=5), 4)
+        intraday_move_pct = self._pct_change(float(aligned_bar.close), session_open_price)
+        front_atm_iv = round(self._average_defined(front_call.iv, front_put.iv), 4)
+        next_atm_iv = round(self._average_defined(next_call.iv, next_put.iv), 4)
+        atm_straddle_value = round(self._mid(front_call) + self._mid(front_put), 4)
+        front_volume_near_spot = round(self._near_spot_volume(front_quotes, aligned_bar.close), 4)
+        next_volume_near_spot = round(self._near_spot_volume(next_quotes, aligned_bar.close), 4)
+        normalised_features = self._normalised_features(
+            intraday_move_pct=intraday_move_pct,
+            rolling_range_5m_pct=rolling_range_5m_pct,
+            distance_to_vwap_pct=distance_to_vwap_pct,
+            price_realised_vol_15m_pct=price_realised_vol_15m_pct,
+            front_atm_iv=front_atm_iv,
+            next_atm_iv=next_atm_iv,
+            front_realised_vol=front_realised_vol,
+            next_realised_vol=next_realised_vol,
+            atm_straddle_value=atm_straddle_value,
+            spot_price=float(aligned_bar.close),
+            front_volume_near_spot=front_volume_near_spot,
+            total_front_volume=sum(float(quote.volume or 0.0) for quote in front_quotes),
+        )
         return PreparedRuntimeSnapshot(
             ts=chain.ts,
             symbol=bundle.provenance.symbol,
@@ -285,36 +341,27 @@ class RealDataLoaderService:
             opening_range_break_count=self._opening_range_break_count(
                 bars_up_to_ts, opening_range_high, opening_range_low
             ),
-            price_realised_vol_5m_pct=round(
-                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=5), 4
-            ),
-            price_realised_vol_15m_pct=round(
-                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=15), 4
-            ),
-            relative_volume_ratio=round(
-                self._relative_volume_ratio(bars_up_to_ts, lookback_bars=5), 4
-            ),
-            rolling_range_5m_pct=round(self._rolling_range_pct(bars_up_to_ts, lookback_bars=5), 4),
+            price_realised_vol_5m_pct=price_realised_vol_5m_pct,
+            price_realised_vol_15m_pct=price_realised_vol_15m_pct,
+            relative_volume_ratio=relative_volume_ratio,
+            rolling_range_5m_pct=rolling_range_5m_pct,
             impulse_age_bars=self._impulse_age_bars(bars_up_to_ts, threshold_pct=0.35),
-            intraday_move_pct=self._pct_change(float(aligned_bar.close), session_open_price),
+            intraday_move_pct=intraday_move_pct,
+            normalised_features=normalised_features,
             prior_session_return_pct=prior_session_return_pct,
             front_expiry=front_expiry,
             next_expiry=next_expiry,
             front_dte=max(0, (front_expiry.date() - chain.ts.date()).days),
             next_dte=max(0, (next_expiry.date() - chain.ts.date()).days),
-            front_atm_iv=round(self._average_defined(front_call.iv, front_put.iv), 4),
-            next_atm_iv=round(self._average_defined(next_call.iv, next_put.iv), 4),
+            front_atm_iv=front_atm_iv,
+            next_atm_iv=next_atm_iv,
             put_call_skew=round((front_put.iv or 0.0) - (front_call.iv or 0.0), 4),
             gamma_pressure_score=round(min(1.0, self._gamma_pressure_score(front_quotes)), 4),
             call_put_imbalance=round(self._call_put_imbalance(front_quotes), 4),
             oi_concentration=round(self._oi_concentration(front_quotes, aligned_bar.close), 4),
-            atm_straddle_value=round(self._mid(front_call) + self._mid(front_put), 4),
-            front_realised_vol=round(
-                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=6), 4
-            ),
-            next_realised_vol=round(
-                self._realised_vol_proxy(chain.ts, ordered_bars, lookback_bars=12), 4
-            ),
+            atm_straddle_value=atm_straddle_value,
+            front_realised_vol=front_realised_vol,
+            next_realised_vol=next_realised_vol,
             snapshot_sequence_id=(
                 chain.sequence.sequence_id if chain.sequence is not None else None
             ),
@@ -334,10 +381,8 @@ class RealDataLoaderService:
             put_oi_near_spot=round(
                 self._near_spot_oi(front_quotes, aligned_bar.close, side="put"), 4
             ),
-            front_volume_near_spot=round(
-                self._near_spot_volume(front_quotes, aligned_bar.close), 4
-            ),
-            next_volume_near_spot=round(self._near_spot_volume(next_quotes, aligned_bar.close), 4),
+            front_volume_near_spot=front_volume_near_spot,
+            next_volume_near_spot=next_volume_near_spot,
             nearby_strike_clusters=self._nearby_strike_clusters(front_quotes, aligned_bar.close),
             repeated_snapshot_sequence=repeated_sequence,
             tenor_iv_curve=self._tenor_iv_curve(chain, aligned_bar.close),
@@ -475,6 +520,51 @@ class RealDataLoaderService:
         if dominant_strike is None:
             return 0.0
         return round(abs((spot_price - dominant_strike) / max(spot_price, 1.0)) * 100.0, 4)
+
+    def _normalised_features(
+        self,
+        *,
+        intraday_move_pct: float,
+        rolling_range_5m_pct: float,
+        distance_to_vwap_pct: float | None,
+        price_realised_vol_15m_pct: float,
+        front_atm_iv: float,
+        next_atm_iv: float,
+        front_realised_vol: float,
+        next_realised_vol: float,
+        atm_straddle_value: float,
+        spot_price: float,
+        front_volume_near_spot: float,
+        total_front_volume: float,
+    ) -> PreparedNormalisedFeatureSet:
+        """Build the bounded normalised prepared-runtime feature set."""
+
+        provenance = {
+            "intraday_move_vs_rolling_range_5m": ["intraday_move_pct", "rolling_range_5m_pct"],
+            "distance_to_vwap_vs_rolling_range_5m": ["distance_to_vwap_pct", "rolling_range_5m_pct"],
+            "intraday_move_vs_price_realised_vol_15m": ["intraday_move_pct", "price_realised_vol_15m_pct"],
+            "front_iv_vs_front_realised_vol_ratio": ["front_atm_iv", "front_realised_vol"],
+            "next_iv_vs_next_realised_vol_ratio": ["next_atm_iv", "next_realised_vol"],
+            "atm_straddle_vs_spot_pct": ["atm_straddle_value", "spot_price"],
+            "near_spot_front_volume_share": ["front_volume_near_spot", "front_expiry_total_volume"],
+        }
+        return PreparedNormalisedFeatureSet(
+            intraday_move_vs_rolling_range_5m=self._safe_ratio(intraday_move_pct, rolling_range_5m_pct),
+            distance_to_vwap_vs_rolling_range_5m=self._safe_ratio(distance_to_vwap_pct, rolling_range_5m_pct),
+            intraday_move_vs_price_realised_vol_15m=self._safe_ratio(intraday_move_pct, price_realised_vol_15m_pct),
+            front_iv_vs_front_realised_vol_ratio=self._safe_ratio(front_atm_iv, front_realised_vol),
+            next_iv_vs_next_realised_vol_ratio=self._safe_ratio(next_atm_iv, next_realised_vol),
+            atm_straddle_vs_spot_pct=self._safe_ratio(atm_straddle_value * 100.0, spot_price),
+            near_spot_front_volume_share=self._safe_ratio(front_volume_near_spot, total_front_volume),
+            provenance=provenance,
+        )
+
+    def _safe_ratio(self, numerator: float | None, denominator: float | None) -> float | None:
+        """Return one bounded ratio while keeping missing or zero denominators explicit."""
+
+        if numerator is None or denominator is None or abs(denominator) <= 1e-9:
+            return None
+        return round(float(numerator) / float(denominator), 4)
 
     def _build_repeated_snapshot_sequence(
         self,

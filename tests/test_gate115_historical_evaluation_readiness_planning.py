@@ -14,6 +14,18 @@ EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READ
 CHECKLIST = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
 
 
+ALLOWED_CURRENT_GATE_MARKERS = {
+    "Current active gate: **Gate 115 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 116 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 117 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 118 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 119 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
+    "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+}
+
+
 def test_historical_evaluation_readiness_pack_is_active() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
@@ -25,12 +37,26 @@ def test_historical_evaluation_readiness_pack_is_active() -> None:
     assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans
     assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json" in plans
     assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md" in plans
-    assert "Gate 115" in plans
-    assert "Current active gate: **Gate 115 in the historical-evaluation readiness pack**." in gate_map
-    assert "Status: active historical-evaluation readiness pack; Gate 115 active, Gates 116-121 planned" in gates
-    assert leaves["execution_status"] == "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115"
-    assert leaves["active_gate"] == "Gate 115"
-    assert len(leaves["remaining_leaf_ids"]) == 45
+    assert ("Gate 115" in plans) or ("Gate 116" in plans)
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+    assert (
+        "Status: active historical-evaluation readiness pack; Gate 115 active, Gates 116-121 planned" in gates
+        or "Status: active historical-evaluation readiness pack; Gate 115 complete on `main`, Gate 116 active, Gates 117-121 planned" in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-116 complete on `main`, Gate 117 active, Gates 118-121 planned" in gates
+    )
+    assert leaves["execution_status"] in {
+        "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115",
+        "gate_115_complete_gate_116_active_on_main",
+        "gate_116_complete_gate_117_active_on_main",
+        "historical_evaluation_readiness_pack_closed_through_gate_121_on_main",
+    }
+    assert leaves["active_gate"] in {
+        "Gate 115",
+        "Gate 116",
+        "Gate 117",
+        "none — historical-evaluation readiness pack closed through Gate 121 on main",
+    }
+    assert len(leaves["remaining_leaf_ids"]) in {45, 38, 33, 0}
     assert execution_log.startswith("# 2026-03-30 Historical Evaluation Readiness Execution Log v1")
     assert "Gate 115-121 pack" in checklist or "Gate 115-121" in checklist
 

@@ -8,207 +8,27 @@
   ],
   "entries": [
     {
-      "canonical_slug": "temporal_context",
-      "canonical_label": "Temporal Context",
-      "category": "stage",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.TemporalContextOutput",
-      "allowed_aliases": [
-        "step_1",
-        "time_phase_context"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Binding Stage 1 grammar slot."
-      ]
-    },
-    {
-      "canonical_slug": "market_regime_context",
-      "canonical_label": "Market Regime Context",
-      "category": "stage",
-      "stage_owner": "market_regime_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.MarketRegimeContextOutput",
-      "allowed_aliases": [
-        "regime_context"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "options_flow_context",
-      "canonical_label": "Options and Flow Context",
-      "category": "stage",
-      "stage_owner": "options_flow_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.OptionsFlowContextOutput",
-      "allowed_aliases": [
-        "options_context",
-        "flow_context"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "posture_risk_permission",
-      "canonical_label": "Posture and Risk Permission",
-      "category": "stage",
-      "stage_owner": "posture_risk_permission",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.PostureRiskOutput",
-      "allowed_aliases": [
-        "posture_risk",
-        "permission_layer"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "playbook_eligibility",
-      "canonical_label": "Playbook Eligibility",
-      "category": "stage",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.PlaybookEligibilityOutput",
-      "allowed_aliases": [
-        "selector_layer"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "expression_execution",
-      "canonical_label": "Expression and Execution",
-      "category": "stage",
-      "stage_owner": "expression_execution",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
-      "allowed_aliases": [
-        "execution_expression"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "review_explanation",
-      "canonical_label": "Review and Explanation",
-      "category": "stage",
+      "canonical_slug": "adjudication_disposition",
+      "canonical_label": "Adjudication Disposition",
+      "category": "workflow",
       "stage_owner": "review_explanation",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.ReviewExplanationOutput",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.AdjudicationDisposition",
       "allowed_aliases": [
-        "review_packet",
-        "reason_packet"
+        "reserved_span_state"
       ],
       "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "temporal_state",
-      "canonical_label": "Temporal State",
-      "category": "compatibility_surface",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.temporal_surface.TemporalStateFeaturePayload",
-      "allowed_aliases": [
-        "step1_temporal_state"
-      ],
-      "disallowed_phrases": [
-        "hard_clock_truth"
-      ],
-      "notes": []
-    },
-    {
-      "canonical_slug": "session_clock",
-      "canonical_label": "Session Clock",
-      "category": "compatibility_surface",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.session_clock.SessionClockFeaturePayload",
-      "allowed_aliases": [
-        "session_clock_wrapper"
-      ],
-      "disallowed_phrases": [
-        "canonical_step1_truth"
-      ],
       "notes": [
-        "Explicit compatibility wrapper retained over temporal_state."
+        "The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."
       ]
     },
     {
-      "canonical_slug": "raw_primitive",
-      "canonical_label": "Raw Primitive",
-      "category": "data_classification",
-      "stage_owner": "research_doctrine",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "raw",
-      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
-      "allowed_aliases": [
-        "raw_signal"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "derived_feature",
-      "canonical_label": "Derived Feature",
-      "category": "data_classification",
-      "stage_owner": "research_doctrine",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "derived",
-      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
-      "allowed_aliases": [
-        "derived_state"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "vocabulary_workflow",
-      "canonical_label": "Vocabulary Workflow",
+      "canonical_slug": "baseline_coefficient",
+      "canonical_label": "Baseline Coefficient",
       "category": "workflow",
       "stage_owner": "planning_governance",
       "family": null,
@@ -216,12 +36,16 @@
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.RuntimeSurfaceClass",
       "allowed_aliases": [
-        "consolidation_workflow"
+        "release_coefficient"
       ],
-      "disallowed_phrases": [],
-      "notes": []
+      "disallowed_phrases": [
+        "live_tuning"
+      ],
+      "notes": [
+        "May change only through reviewed release, never through runtime self-adjustment."
+      ]
     },
     {
       "canonical_slug": "calendar_horizon_gate",
@@ -264,55 +88,23 @@
       ]
     },
     {
-      "canonical_slug": "playbook_family",
-      "canonical_label": "Playbook Family",
+      "canonical_slug": "candidate_role",
+      "canonical_label": "Candidate Role",
       "category": "workflow",
-      "stage_owner": "playbook_eligibility",
+      "stage_owner": "review_explanation",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.CandidateRole",
       "allowed_aliases": [
-        "family_layer"
+        "candidate_state_role"
       ],
       "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "setup_variant",
-      "canonical_label": "Setup Variant",
-      "category": "workflow",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-      "allowed_aliases": [
-        "deterministic_setup_variant"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "execution_expression",
-      "canonical_label": "Execution Expression",
-      "category": "workflow",
-      "stage_owner": "expression_execution",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
-      "allowed_aliases": [
-        "execution_shape"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
+      "notes": [
+        "Gate 64 limits candidate roles to champion, shadow challenger, dormant candidate, and retired candidate."
+      ]
     },
     {
       "canonical_slug": "carry_handoff",
@@ -353,8 +145,46 @@
       ]
     },
     {
-      "canonical_slug": "state_vector",
-      "canonical_label": "State Vector",
+      "canonical_slug": "compression_breakout_exec",
+      "canonical_label": "Compression Release Ladder",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "compression_release",
+      "setup_variant": "midday_compression_release",
+      "execution_expression": "compression_breakout_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "compression_release_ladder"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "compression_failed_or_event_window_opened"
+      ]
+    },
+    {
+      "canonical_slug": "compression_release",
+      "canonical_label": "Compression Release",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "compression_release",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:compression_release"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Top-level family for compression breakout setups."
+      ]
+    },
+    {
+      "canonical_slug": "conflict_class",
+      "canonical_label": "Conflict Class",
       "category": "workflow",
       "stage_owner": "review_explanation",
       "family": null,
@@ -362,55 +192,106 @@
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.cognition.RuntimeStateVector",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.SignalConflictClass",
       "allowed_aliases": [
-        "approved_state_vector"
+        "signal_conflict_class"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Gate 60 freezes the readable runtime state fields before policy matrices exist."
+        "Ordered conflict severity remains visible in review rather than being silently absorbed."
       ]
     },
     {
-      "canonical_slug": "baseline_coefficient",
-      "canonical_label": "Baseline Coefficient",
+      "canonical_slug": "continuation_ladder_exec",
+      "canonical_label": "Trend Ladder 3 Step",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "trend_continuation",
+      "setup_variant": "opening_drive_continuation",
+      "execution_expression": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "trend_ladder_3_step"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "trend_structure_broken"
+      ]
+    },
+    {
+      "canonical_slug": "corridor_zone",
+      "canonical_label": "Corridor Zone",
       "category": "workflow",
-      "stage_owner": "planning_governance",
+      "stage_owner": "review_explanation",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.RuntimeSurfaceClass",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.CorridorZone",
       "allowed_aliases": [
-        "release_coefficient"
+        "target_drift_breach_zone"
       ],
-      "disallowed_phrases": [
-        "live_tuning"
-      ],
+      "disallowed_phrases": [],
       "notes": [
-        "May change only through reviewed release, never through runtime self-adjustment."
+        "Target, tolerated-drift, and breach zones remain explicit in governed scorecards."
       ]
     },
     {
-      "canonical_slug": "state_conditioned_modifier",
-      "canonical_label": "State-Conditioned Modifier",
+      "canonical_slug": "degradation_step",
+      "canonical_label": "Degradation Step",
       "category": "workflow",
-      "stage_owner": "planning_governance",
+      "stage_owner": "posture_risk_permission",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierPolicySpec",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.DegradationStep",
       "allowed_aliases": [
-        "bounded_modifier"
+        "posture_degradation_step"
       ],
-      "disallowed_phrases": [
-        "freeform_override"
-      ],
+      "disallowed_phrases": [],
       "notes": [
-        "Approved runtime policy object that deforms posture without mutating cognition grammar."
+        "Ordered ladder from confirmation tightening through stand-down and veto."
+      ]
+    },
+    {
+      "canonical_slug": "derived_feature",
+      "canonical_label": "Derived Feature",
+      "category": "data_classification",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+      "allowed_aliases": [
+        "derived_state"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "desk_calendar_contract",
+      "canonical_label": "Desk Calendar Contract",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.session_clock.DeskCalendarAuthorityPacket",
+      "allowed_aliases": [
+        "venue_calendar_authority"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."
       ]
     },
     {
@@ -433,28 +314,65 @@
       ]
     },
     {
-      "canonical_slug": "precursor_stitching",
-      "canonical_label": "Precursor Stitching",
+      "canonical_slug": "event_carry",
+      "canonical_label": "Event Carry",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "event_carry",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_event_carry"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "event_options_stress_policy",
+      "canonical_label": "Event and Options-Stress Policy",
       "category": "workflow",
-      "stage_owner": "planning_governance",
+      "stage_owner": "posture_risk",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.market.PrecursorStitchingAuthorityPacket",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.EventOptionsStressAuthorityPacket",
       "allowed_aliases": [
-        "precursor_fallback_law",
-        "precursor_contradiction_law"
+        "event_stress_matrix",
+        "options_stress_policy"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Gate 75 freezes venue order, fallback, stale-data, and contradiction handling before runtime binding."
+        "Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."
       ]
     },
     {
-      "canonical_slug": "precursor_runtime_packet",
-      "canonical_label": "Precursor Runtime Packet",
+      "canonical_slug": "event_provenance_contract",
+      "canonical_label": "Event Provenance Contract",
+      "category": "workflow",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.EventIngestionAuthorityPacket",
+      "allowed_aliases": [
+        "event_source_normalisation",
+        "event_ingestion_contract"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."
+      ]
+    },
+    {
+      "canonical_slug": "event_taxonomy",
+      "canonical_label": "Event Taxonomy",
       "category": "workflow",
       "stage_owner": "temporal_context",
       "family": null,
@@ -462,18 +380,18 @@
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.market.PrecursorRuntimePacket",
+      "maps_to_contract": "nvda_desk.schemas.events.EventTaxonomyAuthorityPacket",
       "allowed_aliases": [
-        "precursor_context_packet"
+        "bounded_event_identity"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Gate 76 preserves precursor truth additively into runtime and review packets."
+        "Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."
       ]
     },
     {
-      "canonical_slug": "financial_calendar_reference_bundle",
-      "canonical_label": "Financial Calendar Reference Bundle",
+      "canonical_slug": "event_window_state",
+      "canonical_label": "Event Window State",
       "category": "workflow",
       "stage_owner": "temporal_context",
       "family": null,
@@ -481,14 +399,48 @@
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.financial_calendar.FinancialCalendarBundleMetadata",
+      "maps_to_contract": "nvda_desk.schemas.temporal_surface.EventWindowAuthorityPacket",
       "allowed_aliases": [
-        "financial_calendar_bundle"
+        "event_window_semantics"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Repo-controlled scheduled-facts artefact lane for the post-Gate-87 financial-calendar tranche."
+        "Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."
       ]
+    },
+    {
+      "canonical_slug": "execution_expression",
+      "canonical_label": "Execution Expression",
+      "category": "workflow",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "execution_shape"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "expression_execution",
+      "canonical_label": "Expression and Execution",
+      "category": "stage",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "execution_expression"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
     },
     {
       "canonical_slug": "financial_calendar_crosswalk",
@@ -529,260 +481,8 @@
       ]
     },
     {
-      "canonical_slug": "review_failure_taxonomy",
-      "canonical_label": "Review Failure Taxonomy",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.review.ReviewFailurePacket",
-      "allowed_aliases": [
-        "failure_classification_packet"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."
-      ]
-    },
-    {
-      "canonical_slug": "modifier_runtime_packet",
-      "canonical_label": "Modifier Runtime Packet",
-      "category": "workflow",
-      "stage_owner": "posture_risk",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierRuntimePacket",
-      "allowed_aliases": [
-        "runtime_modifier_packet",
-        "effective_modifier_packet"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."
-      ]
-    },
-    {
-      "canonical_slug": "prohibited_runtime_variation",
-      "canonical_label": "Prohibited Runtime Variation",
-      "category": "workflow",
-      "stage_owner": "planning_governance",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ProhibitedRuntimeSurface",
-      "allowed_aliases": [
-        "locked_surface"
-      ],
-      "disallowed_phrases": [
-        "runtime_rewrite"
-      ],
-      "notes": [
-        "Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."
-      ]
-    },
-    {
-      "canonical_slug": "stand_down_class",
-      "canonical_label": "Stand-Down Class",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.NonActionClass",
-      "allowed_aliases": [
-        "non_action_class"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 61 makes disciplined non-participation a first-class governed outcome."
-      ]
-    },
-    {
-      "canonical_slug": "conflict_class",
-      "canonical_label": "Conflict Class",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.SignalConflictClass",
-      "allowed_aliases": [
-        "signal_conflict_class"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Ordered conflict severity remains visible in review rather than being silently absorbed."
-      ]
-    },
-    {
-      "canonical_slug": "degradation_step",
-      "canonical_label": "Degradation Step",
-      "category": "workflow",
-      "stage_owner": "posture_risk_permission",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.DegradationStep",
-      "allowed_aliases": [
-        "posture_degradation_step"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Ordered ladder from confirmation tightening through stand-down and veto."
-      ]
-    },
-    {
-      "canonical_slug": "override_disposition",
-      "canonical_label": "Override Disposition",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.OverrideDisposition",
-      "allowed_aliases": [
-        "override_status"
-      ],
-      "disallowed_phrases": [
-        "trader_feel_override"
-      ],
-      "notes": [
-        "Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."
-      ]
-    },
-    {
-      "canonical_slug": "stability_scorecard",
-      "canonical_label": "Stability Scorecard",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.SurfaceStabilityScorecard",
-      "allowed_aliases": [
-        "surface_scorecard"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 62 freezes the multi-axis stability surface before review law or candidate comparison."
-      ]
-    },
-    {
-      "canonical_slug": "corridor_zone",
-      "canonical_label": "Corridor Zone",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.CorridorZone",
-      "allowed_aliases": [
-        "target_drift_breach_zone"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Target, tolerated-drift, and breach zones remain explicit in governed scorecards."
-      ]
-    },
-    {
-      "canonical_slug": "review_evidence_block",
-      "canonical_label": "Review Evidence Block",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ReviewEvidenceBlock",
-      "allowed_aliases": [
-        "evidence_floor_block"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 63 requires explicit evidence floors before a surface may become review-eligible."
-      ]
-    },
-    {
-      "canonical_slug": "review_outcome",
-      "canonical_label": "Review Outcome",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ReviewOutcome",
-      "allowed_aliases": [
-        "governed_review_outcome"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Includes review_not_eligible and review_no_change as first-class governed results."
-      ]
-    },
-    {
-      "canonical_slug": "candidate_role",
-      "canonical_label": "Candidate Role",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.CandidateRole",
-      "allowed_aliases": [
-        "candidate_state_role"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 64 limits candidate roles to champion, shadow challenger, dormant candidate, and retired candidate."
-      ]
-    },
-    {
-      "canonical_slug": "adjudication_disposition",
-      "canonical_label": "Adjudication Disposition",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.AdjudicationDisposition",
-      "allowed_aliases": [
-        "reserved_span_state"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "The reserved adjudication span stays explicit so live paper cannot quietly exhaust it."
-      ]
-    },
-    {
-      "canonical_slug": "event_taxonomy",
-      "canonical_label": "Event Taxonomy",
+      "canonical_slug": "financial_calendar_reference_bundle",
+      "canonical_label": "Financial Calendar Reference Bundle",
       "category": "workflow",
       "stage_owner": "temporal_context",
       "family": null,
@@ -790,519 +490,13 @@
       "execution_expression": null,
       "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.events.EventTaxonomyAuthorityPacket",
+      "maps_to_contract": "nvda_desk.schemas.financial_calendar.FinancialCalendarBundleMetadata",
       "allowed_aliases": [
-        "bounded_event_identity"
+        "financial_calendar_bundle"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Gate 65 freezes desk-relevant event classes, subclasses, materiality, and semantic phases."
-      ]
-    },
-    {
-      "canonical_slug": "desk_calendar_contract",
-      "canonical_label": "Desk Calendar Contract",
-      "category": "workflow",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.session_clock.DeskCalendarAuthorityPacket",
-      "allowed_aliases": [
-        "venue_calendar_authority"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 66 freezes venue/timezone/closure/bridge semantics before runtime plumbing."
-      ]
-    },
-    {
-      "canonical_slug": "event_window_state",
-      "canonical_label": "Event Window State",
-      "category": "workflow",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.temporal_surface.EventWindowAuthorityPacket",
-      "allowed_aliases": [
-        "event_window_semantics"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 67 freezes event proximity, overlap, cooling-off, and event-memory semantics before later policy gates."
-      ]
-    },
-    {
-      "canonical_slug": "precursor_universe",
-      "canonical_label": "Precursor Universe",
-      "category": "workflow",
-      "stage_owner": "market_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.market.PrecursorUniverseAuthorityPacket",
-      "allowed_aliases": [
-        "asia_precursor_context"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."
-      ]
-    },
-    {
-      "canonical_slug": "phase_carry_policy",
-      "canonical_label": "Phase Carry Policy",
-      "category": "workflow",
-      "stage_owner": "posture_risk",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.risk.PhaseCarryoverPolicyAuthorityPacket",
-      "allowed_aliases": [
-        "ordinary_session_policy_matrix"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."
-      ]
-    },
-    {
-      "canonical_slug": "event_options_stress_policy",
-      "canonical_label": "Event and Options-Stress Policy",
-      "category": "workflow",
-      "stage_owner": "posture_risk",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.EventOptionsStressAuthorityPacket",
-      "allowed_aliases": [
-        "event_stress_matrix",
-        "options_stress_policy"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 70 freezes imminent/live event risk and options-stress posture law before precedence control."
-      ]
-    },
-    {
-      "canonical_slug": "modifier_control_law",
-      "canonical_label": "Modifier Control Law",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierControlLawAuthorityPacket",
-      "allowed_aliases": [
-        "precedence_matrix",
-        "kill_switch_law"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."
-      ]
-    },
-    {
-      "canonical_slug": "event_provenance_contract",
-      "canonical_label": "Event Provenance Contract",
-      "category": "workflow",
-      "stage_owner": "research_doctrine",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.events.EventIngestionAuthorityPacket",
-      "allowed_aliases": [
-        "event_source_normalisation",
-        "event_ingestion_contract"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 72 freezes source inventory, freshness, confidence, conflict, and outage semantics for event truth."
-      ]
-    },
-    {
-      "canonical_slug": "shared_event_store",
-      "canonical_label": "Shared Event Store",
-      "category": "workflow",
-      "stage_owner": "review_explanation",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.events.EventStoreAuthorityPacket",
-      "allowed_aliases": [
-        "event_store_query",
-        "shared_event_truth"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."
-      ]
-    },
-    {
-      "canonical_slug": "live_event_richness",
-      "canonical_label": "Live Event Richness",
-      "category": "workflow",
-      "stage_owner": "temporal_context",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.events.LiveEventRichnessAuthorityPacket",
-      "allowed_aliases": [
-        "live_event_snapshot",
-        "event_rich_temporal_input"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."
-      ]
-    },
-    {
-      "canonical_slug": "intraday",
-      "canonical_label": "Intraday",
-      "category": "horizon",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
-      "allowed_aliases": [
-        "carry_intraday"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "overnight",
-      "canonical_label": "Overnight",
-      "category": "horizon",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": "overnight",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
-      "allowed_aliases": [
-        "carry_overnight"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "weekend",
-      "canonical_label": "Weekend",
-      "category": "horizon",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": "weekend",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
-      "allowed_aliases": [
-        "carry_weekend"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "event_carry",
-      "canonical_label": "Event Carry",
-      "category": "horizon",
-      "stage_owner": "playbook_eligibility",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": "event_carry",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
-      "allowed_aliases": [
-        "carry_event_carry"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "trend_continuation",
-      "canonical_label": "Trend Continuation",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "trend_continuation",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:trend_continuation"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Top-level family for continuation and ladder-style deployment."
-      ]
-    },
-    {
-      "canonical_slug": "compression_release",
-      "canonical_label": "Compression Release",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "compression_release",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:compression_release"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Top-level family for compression breakout setups."
-      ]
-    },
-    {
-      "canonical_slug": "pin_behaviour",
-      "canonical_label": "Pin Behaviour",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "pin_behaviour",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:pin_behaviour"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Includes both generic pin reversion and front-expiry-specific pin pressure."
-      ]
-    },
-    {
-      "canonical_slug": "gamma_destabilisation",
-      "canonical_label": "Gamma Destabilisation",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "gamma_destabilisation",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:gamma_destabilisation"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Hostile negative-gamma conditions."
-      ]
-    },
-    {
-      "canonical_slug": "term_structure_dislocation",
-      "canonical_label": "Term Structure Dislocation",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "term_structure_dislocation",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:term_structure_dislocation"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Options-first curve family."
-      ]
-    },
-    {
-      "canonical_slug": "skew_pressure_transition",
-      "canonical_label": "Skew Pressure Transition",
-      "category": "playbook_family",
-      "stage_owner": "playbook_eligibility",
-      "family": "skew_pressure_transition",
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
-      "allowed_aliases": [
-        "family:skew_pressure_transition"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Options-first skew family."
-      ]
-    },
-    {
-      "canonical_slug": "opening_drive_continuation",
-      "canonical_label": "Opening Drive Continuation",
-      "category": "setup_variant",
-      "stage_owner": "playbook_eligibility",
-      "family": "trend_continuation",
-      "setup_variant": "opening_drive_continuation",
-      "execution_expression": "continuation_ladder_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-      "allowed_aliases": [
-        "legacy_playbook:continuation_ladder"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Legacy continuation ladder path expressed as a setup variant."
-      ]
-    },
-    {
-      "canonical_slug": "continuation_ladder_exec",
-      "canonical_label": "Trend Ladder 3 Step",
-      "category": "execution_expression",
-      "stage_owner": "expression_execution",
-      "family": "trend_continuation",
-      "setup_variant": "opening_drive_continuation",
-      "execution_expression": "continuation_ladder_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
-      "allowed_aliases": [
-        "trend_ladder_3_step"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "trend_structure_broken"
-      ]
-    },
-    {
-      "canonical_slug": "midday_compression_release",
-      "canonical_label": "Midday Compression Release",
-      "category": "setup_variant",
-      "stage_owner": "playbook_eligibility",
-      "family": "compression_release",
-      "setup_variant": "midday_compression_release",
-      "execution_expression": "compression_breakout_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-      "allowed_aliases": [
-        "legacy_playbook:compression_breakout"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "Legacy compression breakout path as explicit setup variant."
-      ]
-    },
-    {
-      "canonical_slug": "compression_breakout_exec",
-      "canonical_label": "Compression Release Ladder",
-      "category": "execution_expression",
-      "stage_owner": "expression_execution",
-      "family": "compression_release",
-      "setup_variant": "midday_compression_release",
-      "execution_expression": "compression_breakout_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
-      "allowed_aliases": [
-        "compression_release_ladder"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "compression_failed_or_event_window_opened"
-      ]
-    },
-    {
-      "canonical_slug": "late_session_pin_reversion",
-      "canonical_label": "Late Session Pin Reversion",
-      "category": "setup_variant",
-      "stage_owner": "playbook_eligibility",
-      "family": "pin_behaviour",
-      "setup_variant": "late_session_pin_reversion",
-      "execution_expression": "pin_reversion_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-      "allowed_aliases": [
-        "legacy_playbook:pin_reversion"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "pin_reversion_exec",
-      "canonical_label": "Pin Fade Scaler",
-      "category": "execution_expression",
-      "stage_owner": "expression_execution",
-      "family": "pin_behaviour",
-      "setup_variant": "late_session_pin_reversion",
-      "execution_expression": "pin_reversion_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
-      "allowed_aliases": [
-        "pin_fade_scaler"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "pin_released_or_flow_reaccelerated"
-      ]
-    },
-    {
-      "canonical_slug": "negative_gamma_flush_probe",
-      "canonical_label": "Negative Gamma Flush Probe",
-      "category": "setup_variant",
-      "stage_owner": "playbook_eligibility",
-      "family": "gamma_destabilisation",
-      "setup_variant": "negative_gamma_flush_probe",
-      "execution_expression": "negative_gamma_flush_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
-      "allowed_aliases": [
-        "legacy_playbook:negative_gamma_flush"
-      ],
-      "disallowed_phrases": [],
-      "notes": []
-    },
-    {
-      "canonical_slug": "negative_gamma_flush_exec",
-      "canonical_label": "Probe Then Hedge",
-      "category": "execution_expression",
-      "stage_owner": "expression_execution",
-      "family": "gamma_destabilisation",
-      "setup_variant": "negative_gamma_flush_probe",
-      "execution_expression": "negative_gamma_flush_exec",
-      "horizon": "intraday",
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
-      "allowed_aliases": [
-        "probe_then_hedge"
-      ],
-      "disallowed_phrases": [],
-      "notes": [
-        "flush_accelerates_or_bounce_fails"
+        "Repo-controlled scheduled-facts artefact lane for the post-Gate-87 financial-calendar tranche."
       ]
     },
     {
@@ -1359,40 +553,658 @@
       "notes": []
     },
     {
-      "canonical_slug": "term_structure_dislocation_exec",
-      "canonical_label": "Term Dislocation Probe",
-      "category": "execution_expression",
-      "stage_owner": "expression_execution",
-      "family": "term_structure_dislocation",
-      "setup_variant": "front_next_curve_dislocation",
-      "execution_expression": "term_structure_dislocation_exec",
-      "horizon": "intraday",
+      "canonical_slug": "gamma_destabilisation",
+      "canonical_label": "Gamma Destabilisation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "gamma_destabilisation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
       "allowed_aliases": [
-        "term_dislocation_probe"
+        "family:gamma_destabilisation"
       ],
       "disallowed_phrases": [],
       "notes": [
-        "term_structure_normalised"
+        "Hostile negative-gamma conditions."
       ]
     },
     {
-      "canonical_slug": "skew_relaxation_reversal",
-      "canonical_label": "Skew Relaxation Reversal",
+      "canonical_slug": "intraday",
+      "canonical_label": "Intraday",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_intraday"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "late_session_pin_reversion",
+      "canonical_label": "Late Session Pin Reversion",
       "category": "setup_variant",
       "stage_owner": "playbook_eligibility",
-      "family": "skew_pressure_transition",
-      "setup_variant": "skew_relaxation_reversal",
-      "execution_expression": "skew_pressure_reversal_exec",
+      "family": "pin_behaviour",
+      "setup_variant": "late_session_pin_reversion",
+      "execution_expression": "pin_reversion_exec",
       "horizon": "intraday",
       "raw_or_derived": "not_applicable",
       "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
       "allowed_aliases": [
-        "legacy_playbook:skew_pressure_reversal"
+        "legacy_playbook:pin_reversion"
       ],
       "disallowed_phrases": [],
       "notes": []
+    },
+    {
+      "canonical_slug": "live_event_richness",
+      "canonical_label": "Live Event Richness",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.LiveEventRichnessAuthorityPacket",
+      "allowed_aliases": [
+        "live_event_snapshot",
+        "event_rich_temporal_input"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 74 preserves event identity, impact, provenance, nearby summaries, and lineage into live cognition packets."
+      ]
+    },
+    {
+      "canonical_slug": "market_regime_context",
+      "canonical_label": "Market Regime Context",
+      "category": "stage",
+      "stage_owner": "market_regime_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.MarketRegimeContextOutput",
+      "allowed_aliases": [
+        "regime_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "midday_compression_release",
+      "canonical_label": "Midday Compression Release",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "compression_release",
+      "setup_variant": "midday_compression_release",
+      "execution_expression": "compression_breakout_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:compression_breakout"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Legacy compression breakout path as explicit setup variant."
+      ]
+    },
+    {
+      "canonical_slug": "modifier_control_law",
+      "canonical_label": "Modifier Control Law",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierControlLawAuthorityPacket",
+      "allowed_aliases": [
+        "precedence_matrix",
+        "kill_switch_law"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 71 freezes precedence, compatible combination algebra, clamps, vetoes, and kill-switches."
+      ]
+    },
+    {
+      "canonical_slug": "modifier_runtime_packet",
+      "canonical_label": "Modifier Runtime Packet",
+      "category": "workflow",
+      "stage_owner": "posture_risk",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierRuntimePacket",
+      "allowed_aliases": [
+        "runtime_modifier_packet",
+        "effective_modifier_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 78 materialises one typed runtime packet carrying effective coefficients, kill-switch outcomes, and modifier lineage."
+      ]
+    },
+    {
+      "canonical_slug": "negative_gamma_flush_exec",
+      "canonical_label": "Probe Then Hedge",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "gamma_destabilisation",
+      "setup_variant": "negative_gamma_flush_probe",
+      "execution_expression": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "probe_then_hedge"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "flush_accelerates_or_bounce_fails"
+      ]
+    },
+    {
+      "canonical_slug": "negative_gamma_flush_probe",
+      "canonical_label": "Negative Gamma Flush Probe",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "gamma_destabilisation",
+      "setup_variant": "negative_gamma_flush_probe",
+      "execution_expression": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:negative_gamma_flush"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "normalised_prepared_runtime_feature_set",
+      "canonical_label": "Normalised Prepared Runtime Feature Set",
+      "category": "contract_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "intraday",
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.dataset.PreparedNormalisedFeatureSet",
+      "allowed_aliases": [
+        "normalised_features",
+        "prepared_normalised_features"
+      ],
+      "disallowed_phrases": [
+        "mystery feature layer"
+      ],
+      "notes": [
+        "Gate 115 bounded feature-carriage packet for raw-to-prepared normalised runtime fields and explicit provenance."
+      ]
+    },
+    {
+      "canonical_slug": "offset_sensitive",
+      "canonical_label": "Offset Sensitive",
+      "category": "workflow",
+      "stage_owner": "review_replay",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 79 outcome meaning offsets disagree materially."
+      ]
+    },
+    {
+      "canonical_slug": "opening_drive_continuation",
+      "canonical_label": "Opening Drive Continuation",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "trend_continuation",
+      "setup_variant": "opening_drive_continuation",
+      "execution_expression": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:continuation_ladder"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Legacy continuation ladder path expressed as a setup variant."
+      ]
+    },
+    {
+      "canonical_slug": "options_flow_context",
+      "canonical_label": "Options and Flow Context",
+      "category": "stage",
+      "stage_owner": "options_flow_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.OptionsFlowContextOutput",
+      "allowed_aliases": [
+        "options_context",
+        "flow_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "overnight",
+      "canonical_label": "Overnight",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "overnight",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_overnight"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "override_disposition",
+      "canonical_label": "Override Disposition",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.OverrideDisposition",
+      "allowed_aliases": [
+        "override_status"
+      ],
+      "disallowed_phrases": [
+        "trader_feel_override"
+      ],
+      "notes": [
+        "Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."
+      ]
+    },
+    {
+      "canonical_slug": "phase_carry_policy",
+      "canonical_label": "Phase Carry Policy",
+      "category": "workflow",
+      "stage_owner": "posture_risk",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.risk.PhaseCarryoverPolicyAuthorityPacket",
+      "allowed_aliases": [
+        "ordinary_session_policy_matrix"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 69 freezes ordinary day-phase and carryover posture law before later event-stress matrices."
+      ]
+    },
+    {
+      "canonical_slug": "pin_behaviour",
+      "canonical_label": "Pin Behaviour",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "pin_behaviour",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:pin_behaviour"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Includes both generic pin reversion and front-expiry-specific pin pressure."
+      ]
+    },
+    {
+      "canonical_slug": "pin_reversion_exec",
+      "canonical_label": "Pin Fade Scaler",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "pin_behaviour",
+      "setup_variant": "late_session_pin_reversion",
+      "execution_expression": "pin_reversion_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "pin_fade_scaler"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "pin_released_or_flow_reaccelerated"
+      ]
+    },
+    {
+      "canonical_slug": "playbook_eligibility",
+      "canonical_label": "Playbook Eligibility",
+      "category": "stage",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PlaybookEligibilityOutput",
+      "allowed_aliases": [
+        "selector_layer"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "playbook_family",
+      "canonical_label": "Playbook Family",
+      "category": "workflow",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family_layer"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "posture_risk_permission",
+      "canonical_label": "Posture and Risk Permission",
+      "category": "stage",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PostureRiskOutput",
+      "allowed_aliases": [
+        "posture_risk",
+        "permission_layer"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "precursor_runtime_packet",
+      "canonical_label": "Precursor Runtime Packet",
+      "category": "workflow",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorRuntimePacket",
+      "allowed_aliases": [
+        "precursor_context_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 76 preserves precursor truth additively into runtime and review packets."
+      ]
+    },
+    {
+      "canonical_slug": "precursor_stitching",
+      "canonical_label": "Precursor Stitching",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorStitchingAuthorityPacket",
+      "allowed_aliases": [
+        "precursor_fallback_law",
+        "precursor_contradiction_law"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 75 freezes venue order, fallback, stale-data, and contradiction handling before runtime binding."
+      ]
+    },
+    {
+      "canonical_slug": "precursor_universe",
+      "canonical_label": "Precursor Universe",
+      "category": "workflow",
+      "stage_owner": "market_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.market.PrecursorUniverseAuthorityPacket",
+      "allowed_aliases": [
+        "asia_precursor_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 68 freezes the bounded ex-US precursor venue universe plus approved raw and derived field families."
+      ]
+    },
+    {
+      "canonical_slug": "prohibited_runtime_variation",
+      "canonical_label": "Prohibited Runtime Variation",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ProhibitedRuntimeSurface",
+      "allowed_aliases": [
+        "locked_surface"
+      ],
+      "disallowed_phrases": [
+        "runtime_rewrite"
+      ],
+      "notes": [
+        "Surfaces such as grammar order, calendar truth, and baseline values remain locked at runtime."
+      ]
+    },
+    {
+      "canonical_slug": "raw_primitive",
+      "canonical_label": "Raw Primitive",
+      "category": "data_classification",
+      "stage_owner": "research_doctrine",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "raw",
+      "maps_to_contract": "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+      "allowed_aliases": [
+        "raw_signal"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "review_evidence_block",
+      "canonical_label": "Review Evidence Block",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ReviewEvidenceBlock",
+      "allowed_aliases": [
+        "evidence_floor_block"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 63 requires explicit evidence floors before a surface may become review-eligible."
+      ]
+    },
+    {
+      "canonical_slug": "review_explanation",
+      "canonical_label": "Review and Explanation",
+      "category": "stage",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ReviewExplanationOutput",
+      "allowed_aliases": [
+        "review_packet",
+        "reason_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "review_failure_taxonomy",
+      "canonical_label": "Review Failure Taxonomy",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.review.ReviewFailurePacket",
+      "allowed_aliases": [
+        "failure_classification_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 77 freezes trader-grade failure classes and non-action outputs for later review and promotion evidence."
+      ]
+    },
+    {
+      "canonical_slug": "review_horizon_discovery",
+      "canonical_label": "Review Horizon Discovery",
+      "category": "workflow",
+      "stage_owner": "review_replay",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.calibration.HorizonDiscoveryReport",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded Gate 79 horizon-discovery output surface."
+      ]
+    },
+    {
+      "canonical_slug": "review_outcome",
+      "canonical_label": "Review Outcome",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ReviewOutcome",
+      "allowed_aliases": [
+        "governed_review_outcome"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Includes review_not_eligible and review_no_change as first-class governed results."
+      ]
+    },
+    {
+      "canonical_slug": "session_clock",
+      "canonical_label": "Session Clock",
+      "category": "compatibility_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.session_clock.SessionClockFeaturePayload",
+      "allowed_aliases": [
+        "session_clock_wrapper"
+      ],
+      "disallowed_phrases": [
+        "canonical_step1_truth"
+      ],
+      "notes": [
+        "Explicit compatibility wrapper retained over temporal_state."
+      ]
+    },
+    {
+      "canonical_slug": "setup_variant",
+      "canonical_label": "Setup Variant",
+      "category": "workflow",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "deterministic_setup_variant"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "shared_event_store",
+      "canonical_label": "Shared Event Store",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.events.EventStoreAuthorityPacket",
+      "allowed_aliases": [
+        "event_store_query",
+        "shared_event_truth"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 73 freezes nearby-event windows, materiality floors, lineage retrieval, and replay-consumer semantics."
+      ]
     },
     {
       "canonical_slug": "skew_pressure_reversal_exec",
@@ -1414,6 +1226,233 @@
       ]
     },
     {
+      "canonical_slug": "skew_pressure_transition",
+      "canonical_label": "Skew Pressure Transition",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "skew_pressure_transition",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:skew_pressure_transition"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Options-first skew family."
+      ]
+    },
+    {
+      "canonical_slug": "skew_relaxation_reversal",
+      "canonical_label": "Skew Relaxation Reversal",
+      "category": "setup_variant",
+      "stage_owner": "playbook_eligibility",
+      "family": "skew_pressure_transition",
+      "setup_variant": "skew_relaxation_reversal",
+      "execution_expression": "skew_pressure_reversal_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.SetupVariantSpec",
+      "allowed_aliases": [
+        "legacy_playbook:skew_pressure_reversal"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "stability_scorecard",
+      "canonical_label": "Stability Scorecard",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.SurfaceStabilityScorecard",
+      "allowed_aliases": [
+        "surface_scorecard"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 62 freezes the multi-axis stability surface before review law or candidate comparison."
+      ]
+    },
+    {
+      "canonical_slug": "stand_down_class",
+      "canonical_label": "Stand-Down Class",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.NonActionClass",
+      "allowed_aliases": [
+        "non_action_class"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 61 makes disciplined non-participation a first-class governed outcome."
+      ]
+    },
+    {
+      "canonical_slug": "state_conditioned_modifier",
+      "canonical_label": "State-Conditioned Modifier",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.state_policy.ModifierPolicySpec",
+      "allowed_aliases": [
+        "bounded_modifier"
+      ],
+      "disallowed_phrases": [
+        "freeform_override"
+      ],
+      "notes": [
+        "Approved runtime policy object that deforms posture without mutating cognition grammar."
+      ]
+    },
+    {
+      "canonical_slug": "state_vector",
+      "canonical_label": "State Vector",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.RuntimeStateVector",
+      "allowed_aliases": [
+        "approved_state_vector"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 60 freezes the readable runtime state fields before policy matrices exist."
+      ]
+    },
+    {
+      "canonical_slug": "temporal_context",
+      "canonical_label": "Temporal Context",
+      "category": "stage",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.TemporalContextOutput",
+      "allowed_aliases": [
+        "step_1",
+        "time_phase_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Binding Stage 1 grammar slot."
+      ]
+    },
+    {
+      "canonical_slug": "temporal_state",
+      "canonical_label": "Temporal State",
+      "category": "compatibility_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.temporal_surface.TemporalStateFeaturePayload",
+      "allowed_aliases": [
+        "step1_temporal_state"
+      ],
+      "disallowed_phrases": [
+        "hard_clock_truth"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_slug": "term_structure_dislocation",
+      "canonical_label": "Term Structure Dislocation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "term_structure_dislocation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:term_structure_dislocation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Options-first curve family."
+      ]
+    },
+    {
+      "canonical_slug": "term_structure_dislocation_exec",
+      "canonical_label": "Term Dislocation Probe",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": "term_structure_dislocation",
+      "setup_variant": "front_next_curve_dislocation",
+      "execution_expression": "term_structure_dislocation_exec",
+      "horizon": "intraday",
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.ExecutionTemplateSpec",
+      "allowed_aliases": [
+        "term_dislocation_probe"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "term_structure_normalised"
+      ]
+    },
+    {
+      "canonical_slug": "trend_continuation",
+      "canonical_label": "Trend Continuation",
+      "category": "playbook_family",
+      "stage_owner": "playbook_eligibility",
+      "family": "trend_continuation",
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec",
+      "allowed_aliases": [
+        "family:trend_continuation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Top-level family for continuation and ladder-style deployment."
+      ]
+    },
+    {
+      "canonical_slug": "vocabulary_workflow",
+      "canonical_label": "Vocabulary Workflow",
+      "category": "workflow",
+      "stage_owner": "planning_governance",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+      "allowed_aliases": [
+        "consolidation_workflow"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
       "canonical_slug": "walk_forward_harness",
       "canonical_label": "Walk Forward Harness",
       "category": "workflow",
@@ -1431,38 +1470,21 @@
       ]
     },
     {
-      "canonical_slug": "review_horizon_discovery",
-      "canonical_label": "Review Horizon Discovery",
-      "category": "workflow",
-      "stage_owner": "review_replay",
+      "canonical_slug": "weekend",
+      "canonical_label": "Weekend",
+      "category": "horizon",
+      "stage_owner": "playbook_eligibility",
       "family": null,
       "setup_variant": null,
       "execution_expression": null,
-      "horizon": null,
+      "horizon": "weekend",
       "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.calibration.HorizonDiscoveryReport",
-      "allowed_aliases": [],
+      "maps_to_contract": "nvda_desk.schemas.playbook_registry.PlaybookHorizon",
+      "allowed_aliases": [
+        "carry_weekend"
+      ],
       "disallowed_phrases": [],
-      "notes": [
-        "Bounded Gate 79 horizon-discovery output surface."
-      ]
-    },
-    {
-      "canonical_slug": "offset_sensitive",
-      "canonical_label": "Offset Sensitive",
-      "category": "workflow",
-      "stage_owner": "review_replay",
-      "family": null,
-      "setup_variant": null,
-      "execution_expression": null,
-      "horizon": null,
-      "raw_or_derived": "not_applicable",
-      "maps_to_contract": "nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
-      "allowed_aliases": [],
-      "disallowed_phrases": [],
-      "notes": [
-        "Gate 79 outcome meaning offsets disagree materially."
-      ]
+      "notes": []
     }
   ]
 }

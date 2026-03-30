@@ -118,6 +118,7 @@ class ChainToCognitionService:
             lineage=snapshot.lineage,
             temporal_input=temporal_input,
             options_flow_input=options_flow_input,
+            normalised_features=snapshot.normalised_features,
         )
 
     def convert_dataset(
