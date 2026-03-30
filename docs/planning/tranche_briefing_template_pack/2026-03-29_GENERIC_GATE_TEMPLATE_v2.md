@@ -77,6 +77,10 @@ If the repo has a workflow/cognition model, say how this tranche fits into that 
 - `<packet/data contract>` is mandatory reading for any leaf that changes envelope shape, carriage, import/export, lineage, validation, or compatibility.
 - External examples must not be copied verbatim unless they are already repo-native and compatibility-safe.
 
+## Document-touch checklist
+
+Name the checklist file for this tranche and state which frozen and live control surfaces must move if execution proceeds.
+
 ## Testing and promotion discipline
 
 - Repo-local environment required: `<e.g. .venv>`

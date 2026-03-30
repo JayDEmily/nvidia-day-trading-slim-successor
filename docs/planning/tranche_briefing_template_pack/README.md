@@ -17,14 +17,16 @@ Do not improvise a new planning structure unless the repo doctrine has explicitl
 - `2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`
 - `2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`
 - `2026-03-29_WORKED_EXAMPLE_FINANCIAL_CALENDAR_SKELETON_v2.md`
+- `2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`
+- `2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md`
 - `HOW_TO_USE_THESE_DOCUMENTS.md`
 
 ## How to use it
 
 1. Read `HOW_TO_USE_THESE_DOCUMENTS.md` first.
-2. Read the repo's normative stack, active control surfaces, vocabulary authority, and packet/contract authority.
-3. Populate the generic gate template and leaves template with repo-specific truth.
-4. Write only one active gate master and one active leaves ledger for the tranche.
+2. Read the repo's normative stack, the permanent process-law doc, active control surfaces, vocabulary authority, and packet/contract authority.
+3. Populate the generic gate template, leaves template, execution-log template, and document-touch checklist with repo-specific truth.
+4. Write only one active gate master, one active leaves ledger, and one active execution log for the tranche.
 5. Ensure the leaves are granular enough that a coding thread can execute them without filling in blanks.
 
 ## Non-negotiable briefing rules
@@ -34,6 +36,7 @@ Do not improvise a new planning structure unless the repo doctrine has explicitl
 - Do **not** plan packet or interface work without reading the packet/contract authority first.
 - Do **not** plan workflow changes in the abstract; trace the live workflow surfaces first.
 - Do **not** let a rich upstream source be collapsed back into legacy thin compatibility surfaces unless that collapse is an explicit, bounded runtime derivation.
+- Do **not** skip the document-touch checklist.
 - Do **not** treat a gate as done without green tests, synchronized control-surface updates, and a fresh full-history zip from the exact green repo state.
 
 ## Why this exists

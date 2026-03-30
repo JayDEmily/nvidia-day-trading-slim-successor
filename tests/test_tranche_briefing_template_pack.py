@@ -13,11 +13,13 @@ DOCTRINE = PACK_DIR / "2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md"
 GATE_TEMPLATE = PACK_DIR / "2026-03-29_GENERIC_GATE_TEMPLATE_v2.md"
 LEAVES_TEMPLATE = PACK_DIR / "2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json"
 WORKED_EXAMPLE = PACK_DIR / "2026-03-29_WORKED_EXAMPLE_FINANCIAL_CALENDAR_SKELETON_v2.md"
+EXECUTION_LOG_TEMPLATE = PACK_DIR / "2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md"
+DOCUMENT_TOUCH_TEMPLATE = PACK_DIR / "2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md"
 
 
 def test_template_pack_contains_expected_files() -> None:
     assert PACK_DIR.is_dir()
-    for path in [README, HOWTO, DOCTRINE, GATE_TEMPLATE, LEAVES_TEMPLATE, WORKED_EXAMPLE]:
+    for path in [README, HOWTO, DOCTRINE, GATE_TEMPLATE, LEAVES_TEMPLATE, WORKED_EXAMPLE, EXECUTION_LOG_TEMPLATE, DOCUMENT_TOUCH_TEMPLATE]:
         assert path.is_file(), path
 
 
@@ -30,11 +32,14 @@ def test_readme_and_howto_define_planning_thread_to_coding_thread_flow() -> None
     assert "Do **not** fill blanks with guesses." in readme
     assert "vocabulary authority" in readme
     assert "packet/contract authority" in readme
+    assert "document-touch checklist" in readme
 
     assert "planning thread" in howto
     assert "coding thread" in howto
+    assert "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md" in howto
     assert "python -m pip install -e .[dev]" in howto
     assert "Do not paper over unknowns with vague wording." in howto
+    assert "document-touch checklist" in howto
     assert "fresh full-history zip" in howto
 
 
@@ -44,19 +49,24 @@ def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_and_contr
     leaves = json.loads(LEAVES_TEMPLATE.read_text(encoding="utf-8"))
 
     assert "Mandatory pre-write scan for every new tranche" in doctrine
+    assert "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md" in doctrine
     assert "Vocabulary authority" in doctrine
     assert "Packet / contract authority" in doctrine
     assert "Live workflow surfaces" in doctrine
+    assert "Document-touch checklist requirement" in doctrine
     assert "Do not fill blanks with guesses." in doctrine
 
     assert "## Intent and workflow anchor" in gate_template
     assert "## Retain / retire-from-authority / amend / add matrix" in gate_template
     assert "## Packet / contract discipline" in gate_template
+    assert "## Document-touch checklist" in gate_template
 
     assert leaves["global_rules"]["vocabulary_authority_mandatory_before_new_naming"] is True
     assert leaves["global_rules"]["packet_contract_authority_mandatory_when_contracts_change"] is True
     assert leaves["global_rules"]["workflow_trace_mandatory_before_planning_new_behavior"] is True
+    assert leaves["global_rules"]["document_touch_checklist_required"] is True
     assert leaves["global_rules"]["do_not_fill_unknowns_with_guesswork"] is True
     first_leaf = leaves["leaves"][0]
     assert "workflow_intent_assertion" in first_leaf
     assert "vocabulary_terms_checked" in first_leaf
+    assert "document_touch_surfaces" in first_leaf

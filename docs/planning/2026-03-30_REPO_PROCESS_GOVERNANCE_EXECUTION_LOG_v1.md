@@ -1,6 +1,6 @@
 # 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1
 
-Status: active execution log for the repo-process governance pack; Gates 107-108 complete on `main`, Gate 109 next
+Status: active execution log for the repo-process governance pack; Gates 107-109 complete on `main`, Gate 110 next
 
 ## Purpose
 
@@ -57,3 +57,29 @@ Carry the sequential execution receipts for Gates 107–112.
 - Exact evidence: the gate map names Gate 109 as the next active governance gate and the active governance trio agrees.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 108 closeout
+
+## Gate 109 receipts
+
+### LEAF-G109-001 — Add missing template surfaces
+
+- Branch: `work/gate-109-template-pack-canon-20260330`
+- Start commit: `4a6fe78`
+- End commit: `gate-109-on-main`
+- Files touched: `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md`
+- Validations run: targeted template-pack proof slice
+- Full suite required: no
+- Exact evidence: the template pack now contains canonical execution-log and document-touch checklist templates.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 109 closeout
+
+### LEAF-G109-002 — Canonise the template-pack guidance
+
+- Branch: `work/gate-109-template-pack-canon-20260330`
+- Start commit: `4a6fe78`
+- End commit: `gate-109-on-main`
+- Files touched: `docs/planning/tranche_briefing_template_pack/README.md`, `docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`, `tests/test_tranche_briefing_template_pack.py`, governance-pack planning trio
+- Validations run: targeted template-pack proof slice
+- Full suite required: no
+- Exact evidence: the template pack now names the process-law layer, router discipline, and mandatory document-touch checklist, and Gate 110 is the next active governance gate.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 109 closeout

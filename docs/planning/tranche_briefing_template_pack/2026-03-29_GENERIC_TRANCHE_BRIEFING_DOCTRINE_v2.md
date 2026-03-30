@@ -18,12 +18,13 @@ It is designed to be copied into any repo that needs deterministic, low-drift pl
 The control stack is:
 
 1. **Normative documents** define the repo's intent, workflow, architecture, contracts, and non-negotiable rules.
-2. **AGENTS.md** defines stable behavioural guidance for the model/operator inside the repo.
-3. **PLANS.md** points to the currently active tranche and nothing more.
-4. **Gate master MD** defines the tranche contract gate by gate.
-5. **Leaves JSON** defines the executable atoms and the proof required for each atom.
-6. **Execution log** records receipts only.
-7. **CHANGELOG** records what changed, not what should happen next.
+2. **docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md** freezes planning mode, execution mode, and router law.
+3. **AGENTS.md** defines stable behavioural guidance for the model/operator inside the repo.
+4. **PLANS.md** points to the currently active tranche and nothing more.
+5. **Gate master MD** defines the tranche contract gate by gate.
+6. **Leaves JSON** defines the executable atoms and the proof required for each atom.
+7. **Execution log** records receipts only.
+8. **CHANGELOG** records what changed, not what should happen next.
 
 A gate is not complete until:
 - the code/docs for that gate are complete;
@@ -131,6 +132,7 @@ This step is mandatory whenever the tranche changes:
 
 ### B. Active control surfaces
 Read:
+- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 - `AGENTS.md`
 - `PLANS.md`
 - current active gate master
@@ -227,3 +229,9 @@ Every new tranche must make these explicit early, not buried later:
 - Do not let a coding thread discover the packet contract during execution.
 - Do not let vocabulary admission happen informally.
 - Do not call a gate done without a fresh full-history zip.
+
+
+## Document-touch checklist requirement
+
+Every tranche must carry an explicit document-touch checklist.
+If the checklist is absent, the planning pack is incomplete even if the gates and leaves look polished.

@@ -23,7 +23,8 @@
     "workflow_trace_mandatory_before_planning_new_behavior": true,
     "retire_from_authority_not_delete": true,
     "zip_required_before_gate_can_be_called_done": true,
-    "do_not_fill_unknowns_with_guesswork": true
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true
   },
   "leaves": [
     {
@@ -84,7 +85,12 @@
         "<active execution log>"
       ],
       "full_suite_required": false,
-      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state."
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ]
     },
     {
       "id": "LEAF-G<N>-002",
@@ -127,7 +133,12 @@
         "<observable condition>"
       ],
       "closeout_updates_required": [],
-      "full_suite_required": false
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ]
     },
     {
       "id": "LEAF-G<N+1>-001",
@@ -168,7 +179,12 @@
         "<observable condition>"
       ],
       "closeout_updates_required": [],
-      "full_suite_required": false
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ]
     }
   ]
 }

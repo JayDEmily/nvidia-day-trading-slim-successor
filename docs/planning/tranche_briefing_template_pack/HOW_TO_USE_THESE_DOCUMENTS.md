@@ -12,15 +12,16 @@ Its normal use case is:
 ## Ordered workflow
 
 1. Read the repo's normative stack.
-2. Read `AGENTS.md`.
-3. Read `PLANS.md`.
-4. Read the active vocabulary authority.
-5. Read the active packet or contract authority.
-6. Trace the live workflow surfaces that the new tranche will affect.
-7. Populate the generic gate template and leaves template using repo-specific truth only.
-8. Create or update one active gate master, one active leaves ledger, and one active execution log.
-9. Hand that pack to the coding thread.
-10. The coding thread executes one gate at a time on one work branch at a time.
+2. Read `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`.
+3. Read `AGENTS.md`.
+4. Read `PLANS.md`.
+5. Read the active vocabulary authority.
+6. Read the active packet or contract authority.
+7. Trace the live workflow surfaces that the new tranche will affect.
+8. Populate the generic gate template, leaves template, execution-log template, and document-touch checklist using repo-specific truth only.
+9. Create or update one active gate master, one active leaves ledger, and one active execution log.
+10. Hand that pack to the coding thread.
+11. The coding thread executes one gate at a time on one work branch at a time.
 
 ## Do not fill blanks
 
@@ -48,7 +49,7 @@ python -m pip install -e .[dev]
 
 If the repo uses a stricter bootstrap such as `uv sync --extra dev`, follow the repo's own doctrine instead.
 
-The important point is: the package must be installed in a repo-local environment so tests run against the live source tree without relying on `PYTHONPATH` hacks.
+The important point is: the package must be installed in a repo-local environment so tests run against the live source tree without relying on `PYTHONPATH` hacks. The template pack should still declare exact validation commands even when a planning thread used a temporary bootstrap during inspection.
 
 ## Gate execution loop
 
@@ -101,3 +102,9 @@ The brief is good when a coding thread can execute it without inventing:
 - packet rules,
 - workflow placement,
 - or definition of done.
+
+
+## Document-touch checklist
+
+Every new planning pack must include an explicit document-touch checklist.
+It is the written answer to: which frozen law surfaces were checked, which live router surfaces were checked, and which surfaces must be updated if execution proceeds.
