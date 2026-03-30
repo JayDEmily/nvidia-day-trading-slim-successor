@@ -1,4 +1,4 @@
-Status: active successor testing pack on `main`; Gates 101-103 complete, Gate 104 is the next active gate
+Status: active successor testing pack on `main`; Gates 101-104 complete, Gate 105 is the next active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
@@ -57,7 +57,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gates 101-103 are complete on `main`. Gate 104 is the next active gate. No later successor gate may start until Gate 104 is complete or explicitly blocked.
+- Gates 101-104 are complete on `main`. Gate 105 is the next active gate. No later successor gate may start until Gate 105 is complete or explicitly blocked.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -83,6 +83,7 @@ Out of scope:
 ### Gate 104 sequencing summary
 1. Add targeted Hypothesis/property and stateful tests only for the bounded high-risk services.
 2. Freeze monotonicity, threshold, and sequence law where hand-picked examples are weakest.
+3. Gate 104 is now complete on `main`; Gate 105 may begin.
 
 ### Gate 105 sequencing summary
 1. Add typed ingress tests that distinguish accepted coercion from prohibited coercion.
@@ -138,6 +139,7 @@ Out of scope:
 - property/stateful tests exist for the selected high-risk services only;
 - the tests prove bounded threshold, monotonicity, and transition rules;
 - the repo does not gain indiscriminate property-test sprawl.
+- Status: complete on `main`; see `docs/planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md`.
 
 ### Gate 105: Typed ingress and DB/API seam hardening
 

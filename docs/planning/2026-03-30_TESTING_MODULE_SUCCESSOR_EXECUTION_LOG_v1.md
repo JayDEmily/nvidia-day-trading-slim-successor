@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gates 101-103 complete on `main`, Gate 104 next
+Status: active execution log for the successor testing pack; Gates 101-104 complete on `main`, Gate 105 next
 
 ## Purpose
 
@@ -8,8 +8,8 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Do not begin Gate 105 until Gate 104 is complete and merged to `main`.
-- If Gate 104 cannot add targeted property/stateful testing honestly, stop the pack there and record the blocker explicitly.
+- Do not begin Gate 106 until Gate 105 is complete and merged to `main`.
+- If Gate 105 cannot harden typed ingress or repo-native DB/API seams honestly, stop the pack there and record the blocker explicitly.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
 ## Gate 101 receipts
@@ -90,11 +90,33 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 103 closeout
 
-## Planned receipt skeleton
+## Gate 104 receipts
 
-### Gate 104 receipts
-- `LEAF-G104-001` — add targeted property tests for the bounded high-risk services
-- `LEAF-G104-002` — add targeted stateful sequence tests
+### LEAF-G104-001 — add targeted property tests for the bounded high-risk services
+
+- Branch: `work/gate-104-property-stateful-20260330`
+- Start commit: `8a18642`
+- End commit: `gate-104-closeout-on-main`
+- Files touched: `tests/test_gate104_property_stateful.py`, `pyproject.toml`, `docs/planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md`, planning control surfaces
+- Validations run: targeted Gate 104 proof slice
+- Full suite required: no
+- Exact evidence: Hypothesis-backed property tests now cover bounded modifier and playbook-eligibility law without widening beyond the named high-risk services.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 104 closeout
+
+### LEAF-G104-002 — add targeted stateful sequence tests
+
+- Branch: `work/gate-104-property-stateful-20260330`
+- Start commit: `8a18642`
+- End commit: `gate-104-closeout-on-main`
+- Files touched: `tests/test_gate104_property_stateful.py`, `docs/planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md`, planning control surfaces
+- Validations run: targeted Gate 104 proof slice
+- Full suite required: no
+- Exact evidence: generated event-store query sequences now freeze monotonic next-event progression and lineage-subset law across ordered requests.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 104 closeout
+
+## Planned receipt skeleton
 
 ### Gate 105 receipts
 - `LEAF-G105-001` — add typed ingress coercion-versus-strictness tests

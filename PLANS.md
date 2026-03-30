@@ -86,8 +86,9 @@ The completed first testing-module pack retained as predecessor evidence is:
 - Gate 101 — complete on `main` in the successor testing pack (canonical raw-truth bundle admission from repo truth)
 - Gate 102 — complete on `main` in the successor testing pack (raw -> prepared -> cognition -> review end-to-end harness)
 - Gate 103 — complete on `main` in the successor testing pack (raw/prepared parity and lawful-output expansion)
-- Gate 104 — next active gate on `main` in the successor testing pack (targeted property/stateful testing)
-- Gates 105–106 — planned in the successor testing pack; not started on `main`
+- Gate 104 — complete on `main` in the successor testing pack (targeted property/stateful testing)
+- Gate 105 — next active gate on `main` in the successor testing pack (typed ingress and DB/API seam hardening)
+- Gate 106 — planned in the successor testing pack; not started on `main`
 
 ## Sequential execution rule
 
@@ -99,7 +100,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 103 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–103 are merged on `main`, and the successor testing pack is active from Gate 104, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 104 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–104 are merged on `main`, and the successor testing pack is active from Gate 105, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;

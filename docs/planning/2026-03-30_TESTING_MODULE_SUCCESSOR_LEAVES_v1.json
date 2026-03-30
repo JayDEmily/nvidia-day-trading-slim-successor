@@ -6,12 +6,13 @@
     "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
     "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
   ],
-  "execution_status": "gate_104_successor_testing_pack_active_on_main",
-  "active_gate": "Gate 104",
+  "execution_status": "gate_105_successor_testing_pack_active_on_main",
+  "active_gate": "Gate 105",
   "completed_gate_ids": [
     "Gate 101",
     "Gate 102",
-    "Gate 103"
+    "Gate 103",
+    "Gate 104"
   ],
   "completed_leaf_ids": [
     "LEAF-G101-001",
@@ -19,11 +20,11 @@
     "LEAF-G102-001",
     "LEAF-G102-002",
     "LEAF-G103-001",
-    "LEAF-G103-002"
+    "LEAF-G103-002",
+    "LEAF-G104-001",
+    "LEAF-G104-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G104-001",
-    "LEAF-G104-002",
     "LEAF-G105-001",
     "LEAF-G105-002",
     "LEAF-G106-001",
@@ -271,7 +272,7 @@
       "gate": "Gate 104",
       "title": "Add targeted property tests for the bounded high-risk services",
       "objective": "Use Hypothesis/property testing only on the selected services where bounded edge exploration has the highest payoff.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/state_conditioned_modifier.py",
@@ -307,7 +308,7 @@
       "gate": "Gate 104",
       "title": "Add targeted stateful sequence tests",
       "objective": "Use stateful testing where ordered transitions matter more than isolated values.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/event_store.py"
@@ -345,7 +346,7 @@
       "gate": "Gate 105",
       "title": "Add typed ingress coercion-versus-strictness tests",
       "objective": "Freeze which coercions are allowed and which are prohibited on the selected typed ingress surfaces.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/"
@@ -380,7 +381,7 @@
       "gate": "Gate 105",
       "title": "Add repo-native DB/API seam validation",
       "objective": "Exercise transaction-boundary and HTTP dependency seams using the repo venv and official test patterns.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/api/app.py",
