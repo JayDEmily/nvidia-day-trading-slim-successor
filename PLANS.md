@@ -10,13 +10,16 @@ The governing canonical gate authority remains:
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 
 The active governing pack is:
-- `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`
+- `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md`
 
 The active canonical leaf ledger is:
-- `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
+- `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`
 
 The active sequential execution log is:
-- `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md`
+
+The active bounded-scope note is:
+- `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md`
 
 Completed predecessor modification pairs retained as in-repo evidence are:
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v1.md`
@@ -38,6 +41,11 @@ The completed financial-calendar runtime-integration pack retained as predecesso
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md`
 - `docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_README_v2.md`
+
+The completed first testing-module pack retained as predecessor evidence is:
+- `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`
+- `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
+- `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`
 
 `PLANS.md` remains short. Detailed execution logic lives in the planning files above.
 
@@ -75,6 +83,8 @@ The completed financial-calendar runtime-integration pack retained as predecesso
 - Gate 98 — complete on `main` (targeted threshold-edge and precedence tests)
 - Gate 99 — complete on `main` (transition and adjacent-snapshot testing)
 - Gate 100 — complete on `main` (controlled scenario-matrix expansion, closeout, and packaging proof)
+- Gate 101 — next active gate on `main` in the successor testing pack (canonical raw-truth bundle admission)
+- Gates 102–106 — planned in the successor testing pack; not started on `main`
 
 ## Sequential execution rule
 
@@ -82,11 +92,11 @@ Active work proceeds one leaf at a time, one gate at a time, with the execution 
 
 ## Anti-drift closeout rule
 
-Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed. For the active testing-module pack, those surfaces are `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`, and `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`.
+Before any later gate can be treated as active, the closing pass for the current gate must update all of the following together in the same branch: `PLANS.md`, the active gate map, the active leaf ledger, and the active execution log. If any one of those four surfaces still points at an older gate, the gate is not closed. For the active successor testing pack, those surfaces are `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md`.
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 79 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–79 are merged on `main`, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 100 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–100 are merged on `main`, and the successor testing pack is active from Gate 101, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;

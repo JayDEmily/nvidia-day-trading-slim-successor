@@ -1,0 +1,488 @@
+{
+  "version": "v1",
+  "governing_plan": "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md",
+  "supersedes": [
+    "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
+    "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
+    "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
+  ],
+  "execution_status": "gate_101_successor_testing_pack_active_on_main",
+  "active_gate": "Gate 101",
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G101-001",
+    "LEAF-G101-002",
+    "LEAF-G102-001",
+    "LEAF-G102-002",
+    "LEAF-G103-001",
+    "LEAF-G103-002",
+    "LEAF-G104-001",
+    "LEAF-G104-002",
+    "LEAF-G105-001",
+    "LEAF-G105-002",
+    "LEAF-G106-001",
+    "LEAF-G106-002"
+  ],
+  "global_rules": {
+    "successor_pack_must_execute_sequentially": true,
+    "gate_101_raw_truth_is_a_hard_gate": true,
+    "phase0_failure_must_remain_honest": true,
+    "no_downstream_gate_begins_while_gate101_is_open_or_blocked": true,
+    "prepared_runtime_coverage_is_not_raw_ingress_coverage": true,
+    "property_testing_must_remain_targeted": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G101-001",
+      "gate": "Gate 101",
+      "title": "Inventory raw-ingress requirements against the checked-in runtime path",
+      "objective": "Map the exact raw bundle surfaces required by RealDataBundle, real_data_loader, and downstream cognition ingress before admitting any canonical raw artefact.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/real_data_loader.py"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "ordered_actions": [
+        "Inventory the required raw surfaces and mark which are already present versus absent.",
+        "Name the exact canonical artefact path expected for the admitted bundle.",
+        "Record a stop condition if any required raw surface is still absent."
+      ],
+      "forbidden_actions": [
+        "Do not broaden workbook doctrine into runtime truth.",
+        "Do not start Gate 102 from prepared data while claiming Gate 101 passed."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_testing_phase0_foundation.py"
+      ],
+      "expected_evidence": [
+        "explicit raw-ingress inventory and stop condition"
+      ],
+      "definition_of_done": [
+        "required raw surfaces are frozen explicitly before any canonical bundle admission is attempted"
+      ],
+      "depends_on": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G101-002",
+      "gate": "Gate 101",
+      "title": "Admit one canonical raw bundle or freeze a blocker honestly",
+      "objective": "Check in or otherwise admit one lawful raw bundle, or stop the pack with an explicit blocker if the raw truth does not exist.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md"
+      ],
+      "repo_surfaces": [
+        "fixtures/real_data/",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json"
+      ],
+      "ordered_actions": [
+        "Admit one canonical raw bundle only if all required raw surfaces exist.",
+        "Generate only mechanically derivable downstream surfaces.",
+        "If the bundle cannot be admitted, freeze the blocker and stop the successor pack."
+      ],
+      "forbidden_actions": [
+        "Do not fabricate missing option-chain rows or event rows.",
+        "Do not mark Gate 101 complete while any required raw surface is absent."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate101_successor_planning.py -k raw"
+      ],
+      "expected_evidence": [
+        "canonical raw bundle admitted or explicit blocker frozen"
+      ],
+      "definition_of_done": [
+        "Gate 101 truth is explicit enough that Gate 102 either can begin lawfully or is clearly blocked"
+      ],
+      "depends_on": [
+        "LEAF-G101-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G102-001",
+      "gate": "Gate 102",
+      "title": "Build the canonical raw-path harness",
+      "objective": "Create one deterministic test harness that starts at the admitted raw bundle and reaches review outputs through the checked-in runtime path.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/",
+        "tests/"
+      ],
+      "ordered_actions": [
+        "Build the raw-path harness helper.",
+        "Exercise real_data_loader, chain_to_cognition, and DeskCognitionRuntime.run(...) in one test path."
+      ],
+      "forbidden_actions": [
+        "Do not bypass the raw loader while claiming raw-path coverage."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "expected_evidence": [
+        "raw-path harness exists"
+      ],
+      "definition_of_done": [
+        "one canonical raw-path run is executable"
+      ],
+      "depends_on": [
+        "LEAF-G101-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G102-002",
+      "gate": "Gate 102",
+      "title": "Freeze deterministic outputs and lineage for the canonical raw path",
+      "objective": "Assert stable runtime outputs, packet lineage, and review surfaces for the admitted raw-path harness.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "ordered_actions": [
+        "Freeze deterministic expectations for the canonical raw-path run.",
+        "Record any admissible differences explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not rely on prose only."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate102_raw_runtime_harness.py -k deterministic"
+      ],
+      "expected_evidence": [
+        "raw-path outputs and lineage frozen by tests"
+      ],
+      "definition_of_done": [
+        "Gate 102 proves a deterministic raw-path run"
+      ],
+      "depends_on": [
+        "LEAF-G102-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G103-001",
+      "gate": "Gate 103",
+      "title": "Freeze bounded parity between the raw and prepared canonical paths",
+      "objective": "Assert parity on the lawful surfaces that should agree between the canonical raw-path harness and the canonical prepared-runtime harness.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/testing/canonical_runtime_harness.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "ordered_actions": [
+        "Define the comparable parity surface.",
+        "Assert agreement or document admissible divergence."
+      ],
+      "forbidden_actions": [
+        "Do not demand bit-for-bit equality where the two paths are not semantically identical."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "expected_evidence": [
+        "bounded raw/prepared parity surface frozen"
+      ],
+      "definition_of_done": [
+        "comparable lawful surfaces are no longer hand-waved"
+      ],
+      "depends_on": [
+        "LEAF-G102-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G103-002",
+      "gate": "Gate 103",
+      "title": "Extend lawful-output invariants to the canonical raw path",
+      "objective": "Run the invariant regime against the raw path as well as the prepared path.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate103_raw_prepared_parity.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "ordered_actions": [
+        "Expand the invariant suite to cover the raw path.",
+        "Keep blocked, derisked, and permissive laws explicit."
+      ],
+      "forbidden_actions": [
+        "Do not weaken the prepared-path invariant suite to make parity easier."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate103_raw_prepared_parity.py -k invariant"
+      ],
+      "expected_evidence": [
+        "lawful-output invariants cover the raw path"
+      ],
+      "definition_of_done": [
+        "Gate 103 closes the gap between raw-path harnessing and runtime-law testing"
+      ],
+      "depends_on": [
+        "LEAF-G103-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G104-001",
+      "gate": "Gate 104",
+      "title": "Add targeted property tests for the bounded high-risk services",
+      "objective": "Use Hypothesis/property testing only on the selected services where bounded edge exploration has the highest payoff.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/playbook_eligibility.py"
+      ],
+      "repo_surfaces": [
+        "tests/"
+      ],
+      "ordered_actions": [
+        "Add bounded property tests for threshold and monotonicity law.",
+        "Keep the strategy set narrow and deterministic enough for CI."
+      ],
+      "forbidden_actions": [
+        "Do not spray property tests repo-wide."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate104_property_stateful.py -k property"
+      ],
+      "expected_evidence": [
+        "property tests close bounded state-space gaps"
+      ],
+      "definition_of_done": [
+        "selected services gain bounded edge exploration without sprawl"
+      ],
+      "depends_on": [
+        "LEAF-G103-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G104-002",
+      "gate": "Gate 104",
+      "title": "Add targeted stateful sequence tests",
+      "objective": "Use stateful testing where ordered transitions matter more than isolated values.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/services/event_store.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate104_property_stateful.py"
+      ],
+      "ordered_actions": [
+        "Add stateful tests for selected event-window or store transitions.",
+        "Assert sequence law rather than static examples only."
+      ],
+      "forbidden_actions": [
+        "Do not duplicate Gate 99 snapshot-transition tests; this gate is for generated state sequences."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate104_property_stateful.py -k stateful"
+      ],
+      "expected_evidence": [
+        "stateful sequence law is test-backed"
+      ],
+      "definition_of_done": [
+        "Gate 104 adds the generated sequence layer that the first pack intentionally skipped"
+      ],
+      "depends_on": [
+        "LEAF-G104-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G105-001",
+      "gate": "Gate 105",
+      "title": "Add typed ingress coercion-versus-strictness tests",
+      "objective": "Freeze which coercions are allowed and which are prohibited on the selected typed ingress surfaces.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/schemas/"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "ordered_actions": [
+        "Select the ingress models that matter most.",
+        "Add explicit acceptance and rejection cases."
+      ],
+      "forbidden_actions": [
+        "Do not blanket-enable strict mode repo-wide without doctrine change."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate105_ingress_db_api.py -k ingress"
+      ],
+      "expected_evidence": [
+        "ingress coercion rules are explicit"
+      ],
+      "definition_of_done": [
+        "coercion drift stops being an implied behaviour"
+      ],
+      "depends_on": [
+        "LEAF-G104-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G105-002",
+      "gate": "Gate 105",
+      "title": "Add repo-native DB/API seam validation",
+      "objective": "Exercise transaction-boundary and HTTP dependency seams using the repo venv and official test patterns.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "src/nvda_desk/api/app.py",
+        "src/nvda_desk/db/session.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "ordered_actions": [
+        "Add SQLAlchemy transaction/session tests for selected service seams.",
+        "Add bounded FastAPI TestClient dependency-override tests for selected endpoints."
+      ],
+      "forbidden_actions": [
+        "Do not claim repo-native DB/API coverage from a dependency-missing shell outside the repo venv."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate105_ingress_db_api.py -k 'db or api'"
+      ],
+      "expected_evidence": [
+        "DB/API seam correctness proven in the intended repo environment"
+      ],
+      "definition_of_done": [
+        "boundary tests cover persistence and HTTP seams explicitly"
+      ],
+      "depends_on": [
+        "LEAF-G105-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G106-001",
+      "gate": "Gate 106",
+      "title": "Close the successor pack honestly across the planning quartet",
+      "objective": "Update the planning quartet only after Gates 101\u2013105 are truly complete.",
+      "status": "planned",
+      "authority_docs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together.",
+        "Do not leave the next active gate ambiguous."
+      ],
+      "forbidden_actions": [
+        "Do not call the successor pack closed while Gate 101 is still blocked or open."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate101_successor_planning.py"
+      ],
+      "expected_evidence": [
+        "planning quartet agrees on closeout"
+      ],
+      "definition_of_done": [
+        "no ambiguity remains about successor-pack status"
+      ],
+      "depends_on": [
+        "LEAF-G105-002"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G106-002",
+      "gate": "Gate 106",
+      "title": "Package the repo from the exact green state",
+      "objective": "Cut the full-history zip from the exact green successor-pack closeout state.",
+      "status": "planned",
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "ordered_actions": [
+        "Run the targeted proof matrix for Gates 101\u2013105.",
+        "Create the zip from that exact state."
+      ],
+      "forbidden_actions": [
+        "Do not package from a dirty tree."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python3 -m pytest -q tests/test_gate101_successor_planning.py"
+      ],
+      "expected_evidence": [
+        "zip created from exact green state"
+      ],
+      "definition_of_done": [
+        "packaging proof exists"
+      ],
+      "depends_on": [
+        "LEAF-G106-001"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    }
+  ]
+}
