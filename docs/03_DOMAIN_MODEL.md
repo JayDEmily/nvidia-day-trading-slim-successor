@@ -2602,6 +2602,14 @@ Ownership:
 
 `PreparedNormalisedFeatureSet` freezes one bounded feature-carriage packet for regime-aware normalised fields derived during raw-to-prepared conversion. It is carried on `PreparedRuntimeSnapshot.normalised_features` and preserved into `RealDataCognitionInputs.normalised_features` so later gates can use richer cross-regime inputs without inventing a second hidden feature path. The packet also keeps per-feature provenance field names explicit rather than hiding formula ancestry in prose.
 
+#### Gate 119 note: candidate adjudication carriage
+
+`CandidateAdjudicationRecord` freezes the scored ranking record for each eligible playbook candidate. It is carried on `ExecutionExpressionOutput.candidate_adjudication` together with `contradiction_resolution`, `lead_selection_score`, and `lead_selection_reasons` so lead selection stops hiding behind registry order when multiple candidates are live.
+
+#### Gate 120 note: execution geometry carriage
+
+`ExecutionExpressionOutput` now also carries bounded execution-geometry fields so the runtime can express how a lead idea would actually be deployed rather than only which idea won. The governed geometry surface includes `passive_aggressive_bias`, `ladder_spacing_bps`, `max_chase_distance_bps`, `stop_distance_bps`, `take_profit_distance_bps`, `hedge_ratio`, `per_slice_risk_pct`, and `geometry_notes`.
+
 ### 4o. Review failure-taxonomy objects
 
 Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.

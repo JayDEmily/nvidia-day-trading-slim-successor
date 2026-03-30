@@ -21,6 +21,13 @@ execution_templates:
   exit_reasons:
   - trim_into_extension
   - exit_on_breadth_reversal
+  passive_aggressive_bias: aggressive
+  ladder_spacing_bps: 18.0
+  max_chase_distance_bps: 28.0
+  stop_distance_bps: 45.0
+  take_profit_distance_bps: 90.0
+  hedge_ratio: 0.25
+  base_risk_per_slice_pct: 0.12
 - template_id: compression_breakout_exec
   entry_style: compression_release_ladder
   watch_execution_style: watchlist
@@ -38,6 +45,13 @@ execution_templates:
   exit_reasons:
   - trim_after_range_expansion
   - exit_if_breakout_fails_back_into_range
+  passive_aggressive_bias: balanced
+  ladder_spacing_bps: 20.0
+  max_chase_distance_bps: 24.0
+  stop_distance_bps: 48.0
+  take_profit_distance_bps: 84.0
+  hedge_ratio: 0.2
+  base_risk_per_slice_pct: 0.11
 - template_id: pin_reversion_exec
   entry_style: pin_fade_scaler
   watch_execution_style: watchlist
@@ -54,6 +68,13 @@ execution_templates:
   exit_reasons:
   - exit_on_pin_release
   - reduce_as_close_window_ends
+  passive_aggressive_bias: passive
+  ladder_spacing_bps: 14.0
+  max_chase_distance_bps: 18.0
+  stop_distance_bps: 32.0
+  take_profit_distance_bps: 52.0
+  hedge_ratio: 0.15
+  base_risk_per_slice_pct: 0.09
 - template_id: negative_gamma_flush_exec
   entry_style: probe_then_hedge
   watch_execution_style: watchlist
@@ -70,6 +91,13 @@ execution_templates:
   exit_reasons:
   - de-risk_into_bounce
   - exit_if_hostile_flush_reaccelerates
+  passive_aggressive_bias: balanced
+  ladder_spacing_bps: 26.0
+  max_chase_distance_bps: 16.0
+  stop_distance_bps: 70.0
+  take_profit_distance_bps: 60.0
+  hedge_ratio: 0.6
+  base_risk_per_slice_pct: 0.08
 - template_id: front_expiry_pin_pressure_exec
   entry_style: front_pin_scaler
   watch_execution_style: watchlist
@@ -86,6 +114,13 @@ execution_templates:
   exit_reasons:
   - take_profit_into_pin
   - exit_on_pin_release
+  passive_aggressive_bias: passive
+  ladder_spacing_bps: 12.0
+  max_chase_distance_bps: 14.0
+  stop_distance_bps: 28.0
+  take_profit_distance_bps: 46.0
+  hedge_ratio: 0.2
+  base_risk_per_slice_pct: 0.08
 - template_id: term_structure_dislocation_exec
   entry_style: term_dislocation_probe
   watch_execution_style: watchlist
@@ -102,6 +137,13 @@ execution_templates:
   exit_reasons:
   - reduce_into_curve_normalisation
   - exit_if_dislocation_fades
+  passive_aggressive_bias: balanced
+  ladder_spacing_bps: 22.0
+  max_chase_distance_bps: 20.0
+  stop_distance_bps: 54.0
+  take_profit_distance_bps: 78.0
+  hedge_ratio: 0.3
+  base_risk_per_slice_pct: 0.1
 - template_id: skew_pressure_reversal_exec
   entry_style: skew_reversal_scaler
   watch_execution_style: watchlist
@@ -119,6 +161,13 @@ execution_templates:
   - de_risk_as_skew_normalises
   - exit_if_reversal_fails
   hedge_exit_reason: remove_hedge_when_skew_normalises
+  passive_aggressive_bias: balanced
+  ladder_spacing_bps: 16.0
+  max_chase_distance_bps: 18.0
+  stop_distance_bps: 40.0
+  take_profit_distance_bps: 62.0
+  hedge_ratio: 0.45
+  base_risk_per_slice_pct: 0.09
 playbooks:
 - playbook_id: continuation_ladder
   notes:

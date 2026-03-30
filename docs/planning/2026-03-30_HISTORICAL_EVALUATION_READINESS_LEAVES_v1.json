@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_118_complete_gate_119_active_on_main",
-  "active_gate": "Gate 119",
+  "execution_status": "gate_120_complete_gate_121_active_on_main",
+  "active_gate": "Gate 121",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
@@ -10,7 +10,9 @@
     115,
     116,
     "Gate 117",
-    "Gate 118"
+    "Gate 118",
+    "Gate 119",
+    "Gate 120"
   ],
   "completed_leaf_ids": [
     "LEAF-G115-001",
@@ -38,9 +40,7 @@
     "LEAF-G118-003",
     "LEAF-G118-004",
     "LEAF-G118-005",
-    "LEAF-G118-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G118-006",
     "LEAF-G119-001",
     "LEAF-G119-002",
     "LEAF-G119-003",
@@ -53,7 +53,9 @@
     "LEAF-G120-004",
     "LEAF-G120-005",
     "LEAF-G120-006",
-    "LEAF-G120-007",
+    "LEAF-G120-007"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G121-001",
     "LEAF-G121-002",
     "LEAF-G121-003",
@@ -1883,7 +1885,7 @@
       "gate": "Gate 119",
       "title": "Freeze candidate adjudication inputs and scores",
       "objective": "Freeze the score inputs, tie-break law, and contradiction handling for multi-candidate selection.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G118-006"
       ],
@@ -1952,7 +1954,7 @@
       "gate": "Gate 119",
       "title": "Implement deterministic lead-candidate scoring",
       "objective": "Replace registry-order lead choice with an explicit adjudication score and principled tiebreak sequence.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-001"
       ],
@@ -2021,7 +2023,7 @@
       "gate": "Gate 119",
       "title": "Expose adjudication reasons in outputs",
       "objective": "Surface lead-candidate scores and contradiction reasons in execution and review outputs.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-002"
       ],
@@ -2090,7 +2092,7 @@
       "gate": "Gate 119",
       "title": "Add multi-eligible fixtures",
       "objective": "Create bounded fixtures where more than one candidate is live so adjudication is actually exercised.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-003"
       ],
@@ -2159,7 +2161,7 @@
       "gate": "Gate 119",
       "title": "Prove contradiction resolution behaviour",
       "objective": "Add tests showing mixed-context candidate selection is resolved by score and reasons rather than list order.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-004"
       ],
@@ -2228,7 +2230,7 @@
       "gate": "Gate 119",
       "title": "Close Gate 119 honestly",
       "objective": "Advance the planning quartet, record Gate 119 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-005"
       ],
@@ -2307,7 +2309,7 @@
       "gate": "Gate 120",
       "title": "Freeze execution geometry field set",
       "objective": "Freeze the execution-geometry fields the runtime may emit without inventing a parallel execution doctrine.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G119-006"
       ],
@@ -2376,7 +2378,7 @@
       "gate": "Gate 120",
       "title": "Extend execution templates and config",
       "objective": "Extend registry/config surfaces so ladder spacing, chase limits, stop geometry, and hedge guidance are configurable and typed.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-001"
       ],
@@ -2445,7 +2447,7 @@
       "gate": "Gate 120",
       "title": "Synthesize execution geometry from runtime context",
       "objective": "Implement geometry synthesis in execution expression using posture, event, and options context.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-002"
       ],
@@ -2514,7 +2516,7 @@
       "gate": "Gate 120",
       "title": "Enforce distance and risk constraints in geometry",
       "objective": "Make geometry outputs obey max-risk-per-trade and distance constraints rather than staying decorative.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-003"
       ],
@@ -2583,7 +2585,7 @@
       "gate": "Gate 120",
       "title": "Expose passive-aggressive and hedge guidance",
       "objective": "Emit passive-versus-aggressive bias and hedge-ratio guidance in execution outputs where the runtime law requires it.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-004"
       ],
@@ -2652,7 +2654,7 @@
       "gate": "Gate 120",
       "title": "Add deterministic execution-geometry tests",
       "objective": "Add targeted tests proving geometry differs lawfully under supportive, stressed, and event-sensitive contexts.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-005"
       ],
@@ -2721,7 +2723,7 @@
       "gate": "Gate 120",
       "title": "Close Gate 120 honestly",
       "objective": "Advance the planning quartet, record Gate 120 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-006"
       ],

@@ -1,6 +1,6 @@
 # 2026-03-30 Historical Evaluation Readiness Execution Log v1
 
-Status: active execution log for the historical-evaluation readiness pack; Gates 115-118 complete on `main`, Gate 119 next
+Status: active execution log for the historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 next
 
 ## Purpose
 
@@ -22,10 +22,6 @@ For every completed leaf record:
 - whether the receipt was recorded live or reconstructed after the fact.
 
 ## Pending receipt state
-
-- This pack is newly activated.
-- No Gate 115 leaf has executed yet.
-- The first execution receipt must be recorded on the Gate 115 work branch and then carried forward as later gates close.
 
 
 ## Gate 115 receipts
@@ -119,6 +115,55 @@ For every completed leaf record:
   - `docs/planning/2026-03-30_GATE118_MUTABLE_SURFACE_RECONCILIATION.md`
 - Validation commands:
   - `PYTHONPATH=src pytest -q tests/test_gate118_mutable_surface_operability.py tests/test_gate97_runtime_invariants.py tests/test_gate117_precursor_economics.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
+- Observed results:
+  - `23 passed`
+- Full suite required: `false`
+- Stop condition hit: `none`
+- Receipt recorded: `live`
+
+
+## Gate 119 receipts
+
+- Gate id: `119`
+- Branch: `work/gate-119-candidate-adjudication-20260330`
+- Start commit: `31c38a5`
+- End / merged main commit: `317254f`
+- Leaves closed: `LEAF-G119-001` through `LEAF-G119-006`
+- Files touched:
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `tests/test_gate119_candidate_adjudication.py`
+  - `docs/planning/2026-03-30_GATE119_CANDIDATE_ADJUDICATION.md`
+- Validation commands:
+  - `PYTHONPATH=src pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
+- Observed results:
+  - `9 passed`
+- Full suite required: `false`
+- Stop condition hit: `none`
+- Receipt recorded: `live`
+
+
+## Gate 120 receipts
+
+- Gate id: `120`
+- Branch: `work/gate-120-execution-geometry-20260330`
+- Start commit: `317254f`
+- End / merged main commit: `recorded from git history after merge to main`
+- Leaves closed: `LEAF-G120-001` through `LEAF-G120-007`
+- Files touched:
+  - `config/playbook_registry.example.yaml`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/schemas/playbook_registry.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `tests/test_gate120_execution_geometry.py`
+  - `docs/planning/2026-03-30_GATE120_EXECUTION_GEOMETRY.md`
+- Validation commands:
+  - `PYTHONPATH=src pytest -q tests/test_gate120_execution_geometry.py tests/test_playbook_registry.py tests/test_gate52_native_playbook_hierarchy.py tests/test_execution_review_runtime.py tests/test_gate118_mutable_surface_operability.py tests/test_gate100_bounded_scenario_matrix.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
 - Observed results:
   - `16 passed`
 - Full suite required: `false`

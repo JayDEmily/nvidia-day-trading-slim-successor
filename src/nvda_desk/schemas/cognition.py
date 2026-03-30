@@ -431,6 +431,22 @@ class PlaybookCandidate(BaseModel):
     reasons: list[str] = Field(default_factory=list)
 
 
+class CandidateAdjudicationRecord(BaseModel):
+    """Deterministic record of how one eligible playbook candidate was ranked."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    playbook_id: str
+    family_id: str | None = None
+    setup_variant_id: str | None = None
+    action_bias: PlaybookAction = PlaybookAction.HOLD
+    sizing_fraction: float = Field(default=0.0, ge=0.0, le=1.0)
+    score: float
+    registry_priority: int = Field(ge=1)
+    contradiction_tags: list[str] = Field(default_factory=list)
+    reasons: list[str] = Field(default_factory=list)
+
+
 class PlaybookEligibilityInput(BaseModel):
     """Inputs required to classify playbook eligibility."""
 
@@ -490,6 +506,11 @@ class ExecutionExpressionOutput(BaseModel):
     lead_playbook_id: str | None = None
     lead_setup_variant_id: str | None = None
     lead_family_id: str | None = None
+    adjudication_method: str = "candidate_score_v1"
+    contradiction_resolution: str | None = None
+    lead_selection_score: float | None = None
+    lead_selection_reasons: list[str] = Field(default_factory=list)
+    candidate_adjudication: list[CandidateAdjudicationRecord] = Field(default_factory=list)
     entry_style: str
     playbook_execution_styles: dict[str, str] = Field(default_factory=dict)
     setup_variant_execution_styles: dict[str, str] = Field(default_factory=dict)
@@ -499,6 +520,14 @@ class ExecutionExpressionOutput(BaseModel):
     risk_vix_caution_threshold: float = 24.0
     risk_vix_hot_threshold: float = 32.0
     max_risk_per_trade: float = 0.35
+    passive_aggressive_bias: str = "balanced"
+    ladder_spacing_bps: float = 0.0
+    max_chase_distance_bps: float = 0.0
+    stop_distance_bps: float = 0.0
+    take_profit_distance_bps: float = 0.0
+    hedge_ratio: float = 0.0
+    per_slice_risk_pct: float = 0.0
+    geometry_notes: list[str] = Field(default_factory=list)
     hedge_required: bool
     inventory_action: str
     fresh_capital_action: str

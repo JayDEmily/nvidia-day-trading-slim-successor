@@ -144,6 +144,13 @@ class ExecutionTemplateSpec(BaseModel):
     invalidation_reasons: list[str] = Field(default_factory=list)
     exit_reasons: list[str] = Field(default_factory=list)
     hedge_exit_reason: str = Field(default="overlay_hedge_if_gamma_reaccelerates", min_length=1)
+    passive_aggressive_bias: str = Field(default="balanced", min_length=1)
+    ladder_spacing_bps: float = Field(default=20.0, ge=0.0)
+    max_chase_distance_bps: float = Field(default=35.0, ge=0.0)
+    stop_distance_bps: float = Field(default=55.0, ge=0.0)
+    take_profit_distance_bps: float = Field(default=85.0, ge=0.0)
+    hedge_ratio: float = Field(default=0.0, ge=0.0, le=1.0)
+    base_risk_per_slice_pct: float = Field(default=0.10, ge=0.0)
     respect_posture_biases: bool = True
     posture_override_actions: list[str] = Field(default_factory=lambda: ["reduce", "trim", "hedge"])
     inventory_pressure_states: list[str] = Field(default_factory=lambda: ["trapped", "full"])

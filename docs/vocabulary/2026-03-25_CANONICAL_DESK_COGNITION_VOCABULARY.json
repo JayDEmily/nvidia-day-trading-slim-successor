@@ -68,6 +68,27 @@
       ]
     },
     {
+      "canonical_slug": "candidate_adjudication_record",
+      "canonical_label": "Candidate Adjudication Record",
+      "category": "runtime_output",
+      "stage_owner": "execution_expression",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.CandidateAdjudicationRecord",
+      "allowed_aliases": [
+        "candidate_ranking_record"
+      ],
+      "disallowed_phrases": [
+        "registry_order_guess"
+      ],
+      "notes": [
+        "Frozen scored ranking record for each eligible playbook candidate before lead selection is finalised."
+      ]
+    },
+    {
       "canonical_slug": "candidate_family_generation",
       "canonical_label": "Candidate Family Generation",
       "category": "workflow",
@@ -218,6 +239,27 @@
       "disallowed_phrases": [],
       "notes": [
         "trend_structure_broken"
+      ]
+    },
+    {
+      "canonical_slug": "contradiction_resolution",
+      "canonical_label": "Contradiction Resolution",
+      "category": "runtime_output",
+      "stage_owner": "execution_expression",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput.contradiction_resolution",
+      "allowed_aliases": [
+        "candidate_tension_resolution"
+      ],
+      "disallowed_phrases": [
+        "pick_the_first_one"
+      ],
+      "notes": [
+        "Explains how mixed eligible candidates were resolved into one lead candidate."
       ]
     },
     {
@@ -447,6 +489,25 @@
       "notes": []
     },
     {
+      "canonical_slug": "execution_geometry",
+      "canonical_label": "Execution Geometry",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "geometry_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded deployment geometry emitted after candidate adjudication."
+      ]
+    },
+    {
       "canonical_slug": "expression_execution",
       "canonical_label": "Expression and Execution",
       "category": "stage",
@@ -610,6 +671,21 @@
       "notes": []
     },
     {
+      "canonical_slug": "ladder_spacing_bps",
+      "canonical_label": "Ladder Spacing Bps",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
       "canonical_slug": "late_session_pin_reversion",
       "canonical_label": "Late Session Pin Reversion",
       "category": "setup_variant",
@@ -625,6 +701,25 @@
       ],
       "disallowed_phrases": [],
       "notes": []
+    },
+    {
+      "canonical_slug": "lead_selection_score",
+      "canonical_label": "Lead Selection Score",
+      "category": "runtime_output",
+      "stage_owner": "execution_expression",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput.lead_selection_score",
+      "allowed_aliases": [
+        "lead_score"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Deterministic score attached to the lead candidate after adjudication."
+      ]
     },
     {
       "canonical_slug": "live_event_richness",
@@ -660,6 +755,21 @@
       "allowed_aliases": [
         "regime_context"
       ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "max_chase_distance_bps",
+      "canonical_label": "Max Chase Distance Bps",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [],
       "disallowed_phrases": [],
       "notes": []
     },
@@ -871,6 +981,40 @@
       "notes": [
         "Gate 61 forbids smuggled discretionary runtime behaviour and allows only bounded audit/release pathways."
       ]
+    },
+    {
+      "canonical_slug": "passive_aggressive_bias",
+      "canonical_label": "Passive Aggressive Bias",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "execution_bias"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "per_slice_risk_pct",
+      "canonical_label": "Per Slice Risk Pct",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "slice_risk_pct"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
     },
     {
       "canonical_slug": "phase_carry_policy",
@@ -1359,6 +1503,38 @@
       "notes": [
         "Gate 60 freezes the readable runtime state fields before policy matrices exist."
       ]
+    },
+    {
+      "canonical_slug": "stop_distance_bps",
+      "canonical_label": "Stop Distance Bps",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "take_profit_distance_bps",
+      "canonical_label": "Take Profit Distance Bps",
+      "category": "execution_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionExpressionOutput",
+      "allowed_aliases": [
+        "tp_distance_bps"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
     },
     {
       "canonical_slug": "temporal_context",
