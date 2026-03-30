@@ -1,15 +1,16 @@
 {
   "governing_plan": "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_109_governance_pack_active_from_gate_110",
-  "active_gate": "Gate 110",
+  "execution_status": "gate_110_governance_pack_active_from_gate_111",
+  "active_gate": "Gate 111",
   "supersedes": [
     "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json"
   ],
   "completed_gate_ids": [
     "Gate 107",
     "Gate 108",
-    "Gate 109"
+    "Gate 109",
+    "Gate 110"
   ],
   "completed_leaf_ids": [
     "LEAF-G107-001",
@@ -17,11 +18,11 @@
     "LEAF-G108-001",
     "LEAF-G108-002",
     "LEAF-G109-001",
-    "LEAF-G109-002"
+    "LEAF-G109-002",
+    "LEAF-G110-001",
+    "LEAF-G110-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G110-001",
-    "LEAF-G110-002",
     "LEAF-G111-001",
     "LEAF-G111-002",
     "LEAF-G112-001",
@@ -337,7 +338,7 @@
       "gate": "Gate 110",
       "title": "Refine AGENTS frozen-doc and reading-order rules",
       "objective": "Add the process-law layer to AGENTS without turning AGENTS into a status log.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G109-002"
       ],
@@ -381,7 +382,7 @@
       "gate": "Gate 110",
       "title": "Stabilise authority hierarchy wording",
       "objective": "Make AGENTS explicit that PLANS routes active work while the process-law doc freezes how packs are created and maintained.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G110-001"
       ],

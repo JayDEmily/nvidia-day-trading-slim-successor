@@ -31,12 +31,12 @@ def test_template_pack_includes_process_law_and_missing_templates() -> None:
     assert leaves["global_rules"]["document_touch_checklist_required"] is True
 
 
-def test_governance_pack_advances_to_gate110() -> None:
+def test_governance_pack_advances_to_gate110_or_later() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
     assert "Gate 109 — complete on `main` in the repo-process governance pack" in plans
-    assert "Gate 110 — next active gate on `main` in the repo-process governance pack" in plans
-    assert "Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map
+    assert ("Gate 110 — next active gate on `main` in the repo-process governance pack" in plans) or ("Gate 110 — complete on `main` in the repo-process governance pack" in plans)
+    assert ("Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map)
     assert "| Gate 109 | complete on `main` |" in gate_map
-    assert "| Gate 110 | planned; next active gate |" in gate_map
+    assert ("| Gate 110 | planned; next active gate |" in gate_map) or ("| Gate 110 | complete on `main` |" in gate_map)

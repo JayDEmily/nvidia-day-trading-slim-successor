@@ -26,21 +26,24 @@ It does **not** build an autonomous LLM trader.
 3. `docs/03_DOMAIN_MODEL.md`
 4. `docs/04_TECHNICAL_ARCHITECTURE.md`
 5. `docs/05_GUARDRAILS.md`
+6. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 
 ## Agent reading order
 
 1. `docs/01_NORMATIVE.md`
-2. repo-root `PLANS.md`
-3. active gate master under `docs/planning/`
-4. active leaf ledger under `docs/planning/`
-5. active execution log under `docs/planning/`
-6. bounded-scope note under `docs/planning/` only if repo-root `PLANS.md` names one
-7. `CHANGELOG.jsonl` tail if historical context is needed
-8. `README.md` for human onboarding context only
+2. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
+3. repo-root `PLANS.md`
+4. active gate master under `docs/planning/` only if repo-root `PLANS.md` names one
+5. active leaf ledger under `docs/planning/` only if repo-root `PLANS.md` names one
+6. active execution log under `docs/planning/` only if repo-root `PLANS.md` names one
+7. bounded-scope note under `docs/planning/` only if repo-root `PLANS.md` names one
+8. `CHANGELOG.jsonl` tail if historical context is needed
+9. `README.md` for human onboarding context only
 
 ## Behaviour authority versus work authority
 
 - `AGENTS.md` governs **agent behaviour in the repo**.
+- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` governs **how planning packs are created, amended, routed, and closed**.
 - repo-root `PLANS.md` plus the active planning control surfaces govern **what work is active now**.
 - Completed predecessor packs may remain under `docs/planning/` as evidentiary receipts, but they are not active authority unless repo-root `PLANS.md` says so.
 

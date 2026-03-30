@@ -29,7 +29,8 @@ This file is the canonical repo-root execution router.
 
 - Gate 108 — complete on `main` in the repo-process governance pack
 - Gate 109 — complete on `main` in the repo-process governance pack
-- Gate 110 — next active gate on `main` in the repo-process governance pack
+- Gate 110 — complete on `main` in the repo-process governance pack
+- Gate 111 — next active gate on `main` in the repo-process governance pack
 
 ## Closed predecessor evidence
 

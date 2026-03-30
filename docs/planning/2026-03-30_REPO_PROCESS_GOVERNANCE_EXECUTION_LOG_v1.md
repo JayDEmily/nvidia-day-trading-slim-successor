@@ -1,6 +1,6 @@
 # 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1
 
-Status: active execution log for the repo-process governance pack; Gates 107-109 complete on `main`, Gate 110 next
+Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next
 
 ## Purpose
 
@@ -83,3 +83,29 @@ Carry the sequential execution receipts for Gates 107–112.
 - Exact evidence: the template pack now names the process-law layer, router discipline, and mandatory document-touch checklist, and Gate 110 is the next active governance gate.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 109 closeout
+
+## Gate 110 receipts
+
+### LEAF-G110-001 — Refine AGENTS frozen-doc and reading-order rules
+
+- Branch: `work/gate-110-agents-stabilisation-20260330`
+- Start commit: `8d56ab8`
+- End commit: `gate-110-on-main`
+- Files touched: `AGENTS.md`
+- Validations run: targeted governance/agents proof slice
+- Full suite required: no
+- Exact evidence: `AGENTS.md` now includes the permanent process-law layer in the frozen documentation order and reading order.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 110 closeout
+
+### LEAF-G110-002 — Stabilise authority hierarchy wording
+
+- Branch: `work/gate-110-agents-stabilisation-20260330`
+- Start commit: `8d56ab8`
+- End commit: `gate-110-on-main`
+- Files touched: `AGENTS.md`, governance-pack planning trio
+- Validations run: targeted governance/agents proof slice
+- Full suite required: no
+- Exact evidence: `AGENTS.md` now states that docs/06 governs pack creation/closeout while `PLANS.md` routes active work, and Gate 111 is the next active governance gate.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 110 closeout
