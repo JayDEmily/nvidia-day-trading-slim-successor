@@ -1,10 +1,10 @@
-Status: active successor testing pack on `main`; Gate 101 complete, Gate 102 is the next active gate
+Status: active successor testing pack on `main`; Gates 101-102 complete, Gate 103 is the next active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
 ## Purpose
 
-Define the successor testing tranche that follows the bounded Gate 94–100 pack. This pack exists because the first testing tranche closed honestly while leaving one material gap unresolved: Gate 101 admitted one canonical raw bundle from existing repo truth, but the full raw-ingress path is not yet proven end to end.
+Define the successor testing tranche that follows the bounded Gate 94–100 pack. This pack exists because the first testing tranche closed honestly while leaving one material gap unresolved: Gate 101 admitted one canonical raw bundle from existing repo truth, and Gate 102 proved one canonical raw-ingress path end to end.
 
 ## Why this pack exists
 
@@ -16,7 +16,6 @@ This successor pack turns those remaining obligations into one sequential execut
 
 In scope:
 - one admitted canonical raw bundle or an honest Gate 101 blocker;
-- one raw -> prepared -> cognition -> review end-to-end harness;
 - parity and lawful-output checks between the raw and prepared canonical paths;
 - targeted property/stateful testing on the bounded high-risk services;
 - typed ingress coercion-versus-strictness tests and repo-native DB/API seam validation;
@@ -58,7 +57,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gate 101 is complete on `main` and admitted one canonical raw bundle from repo truth. Gate 102 is the next active gate. No later successor gate may start until Gate 102 is complete or explicitly blocked.
+- Gates 101-102 are complete on `main`. Gate 103 is the next active gate. No later successor gate may start until Gate 103 is complete or explicitly blocked.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -74,6 +73,7 @@ Out of scope:
 1. Feed the admitted raw bundle through `real_data_loader` and `chain_to_cognition`.
 2. Run `DeskCognitionRuntime.run(...)` from that path.
 3. Freeze deterministic outputs, packet lineage, and review surfaces.
+4. Gate 102 is now complete on `main`; Gate 103 may begin.
 
 ### Gate 103 sequencing summary
 1. Compare the canonical raw path and the canonical prepared path where their surfaces are semantically comparable.
@@ -115,6 +115,7 @@ Out of scope:
 - one harness starts from the admitted raw bundle and reaches review outputs deterministically;
 - `real_data_loader`, `chain_to_cognition`, and `DeskCognitionRuntime.run(...)` are all exercised in the same test path;
 - stable outputs and packet lineage are frozen by tests.
+- Status: complete on `main`; see `docs/planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md`.
 
 ### Gate 103: Raw/prepared parity and lawful-output expansion
 

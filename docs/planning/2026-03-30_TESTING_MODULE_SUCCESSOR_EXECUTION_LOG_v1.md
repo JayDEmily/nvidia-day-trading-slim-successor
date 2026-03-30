@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gate 101 complete on `main`, Gate 102 next
+Status: active execution log for the successor testing pack; Gates 101-102 complete on `main`, Gate 103 next
 
 ## Purpose
 
@@ -8,8 +8,8 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Do not begin Gate 103 until Gate 102 is complete and merged to `main`.
-- If Gate 102 cannot prove the admitted raw bundle through the checked-in runtime path, stop the pack there and record the blocker explicitly.
+- Do not begin Gate 104 until Gate 103 is complete and merged to `main`.
+- If Gate 103 cannot freeze bounded parity or raw-path invariants honestly, stop the pack there and record the blocker explicitly.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
 ## Gate 101 receipts
@@ -38,11 +38,33 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward at `d81cd44`
 
-## Planned receipt skeleton
+## Gate 102 receipts
 
-### Gate 102 receipts
-- `LEAF-G102-001` — build the canonical raw-path harness
-- `LEAF-G102-002` — freeze deterministic outputs and lineage for the canonical raw path
+### LEAF-G102-001 — build the canonical raw-path harness
+
+- Branch: `work/gate-102-raw-runtime-harness-20260330`
+- Start commit: `8e68e06`
+- End commit: `gate-102-closeout-on-main`
+- Files touched: `src/nvda_desk/testing/canonical_raw_runtime_harness.py`, `tests/test_gate102_raw_runtime_harness.py`, `docs/planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md`, planning control surfaces
+- Validations run: targeted Gate 102 proof slice
+- Full suite required: no
+- Exact evidence: one admitted raw bundle now flows through `RealDataLoaderService.prepare_runtime_dataset(...)`, `ChainToCognitionService.convert_snapshot(...)`, and `DeskCognitionRuntime.run(...)` in one deterministic harness path.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 102 closeout
+
+### LEAF-G102-002 — freeze deterministic outputs and lineage for the canonical raw path
+
+- Branch: `work/gate-102-raw-runtime-harness-20260330`
+- Start commit: `8e68e06`
+- End commit: `gate-102-closeout-on-main`
+- Files touched: `tests/test_gate102_raw_runtime_harness.py`, `docs/planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md`, planning control surfaces
+- Validations run: targeted Gate 102 proof slice
+- Full suite required: no
+- Exact evidence: the canonical raw-path harness freezes stable outputs, stage packet ids, packet lineage, review packet equality, and the bounded runtime decision surfaces for the admitted raw run.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 102 closeout
+
+## Planned receipt skeleton
 
 ### Gate 103 receipts
 - `LEAF-G103-001` — freeze bounded parity between the raw and prepared canonical paths
