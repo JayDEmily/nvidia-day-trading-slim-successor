@@ -37,8 +37,10 @@ It does **not** build an autonomous LLM trader.
 5. active leaf ledger under `docs/planning/` only if repo-root `PLANS.md` names one
 6. active execution log under `docs/planning/` only if repo-root `PLANS.md` names one
 7. bounded-scope note under `docs/planning/` only if repo-root `PLANS.md` names one
-8. `CHANGELOG.jsonl` tail if historical context is needed
-9. `README.md` for human onboarding context only
+8. the active vocabulary authority named by the active gate master, or `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json` when no active pack exists yet
+9. the active packet/data contract authority named by the active gate master, or `docs/03_DOMAIN_MODEL.md` when no active pack exists yet
+10. `CHANGELOG.jsonl` tail if historical context is needed
+11. `README.md` for human onboarding context only
 
 ## Behaviour authority versus work authority
 

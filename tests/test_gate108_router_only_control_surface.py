@@ -27,7 +27,7 @@ def test_gate_map_and_governance_trio_agree_on_gate109_or_later() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert ("Current active gate: **Gate 109 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map)
+    assert ("Current active gate: **Gate 109 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map)
     assert ("| Gate 108 | complete on `main` |" in gate_map)
     assert ("| Gate 109 | planned; next active gate |" in gate_map) or ("| Gate 109 | complete on `main` |" in gate_map)
     assert leaves["execution_status"] in {"gate_108_governance_pack_active_from_gate_109", "gate_109_governance_pack_active_from_gate_110", "gate_110_governance_pack_active_from_gate_111", "gate_111_governance_pack_active_from_gate_112", "repo_process_governance_pack_closed_through_gate_112_on_main"}

@@ -48,3 +48,8 @@ This pack exists to reduce drift between:
 - the code that eventually gets written.
 
 Git history preserves older brief packs, so the active repo tree should prefer the latest usable template rather than a clutter pile of superseded planning notes.
+
+
+## Execution-thread reminder
+
+When a planning pack becomes active, the coding thread must reread the vocabulary authority and the packet/data contract authority named in that pack before implementing the approved gate.

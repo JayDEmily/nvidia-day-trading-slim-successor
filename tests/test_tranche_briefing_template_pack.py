@@ -41,6 +41,8 @@ def test_readme_and_howto_define_planning_thread_to_coding_thread_flow() -> None
     assert "Do not paper over unknowns with vague wording." in howto
     assert "document-touch checklist" in howto
     assert "fresh full-history zip" in howto
+    assert "vocabulary authority named in the active gates master" in howto
+    assert "packet/data contract authority named in the active gates master" in howto
 
 
 def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_and_contract_checks() -> None:
@@ -54,6 +56,7 @@ def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_and_contr
     assert "Packet / contract authority" in doctrine
     assert "Live workflow surfaces" in doctrine
     assert "Document-touch checklist requirement" in doctrine
+    assert "Execution-thread reread requirement" in doctrine
     assert "Do not fill blanks with guesses." in doctrine
 
     assert "## Intent and workflow anchor" in gate_template

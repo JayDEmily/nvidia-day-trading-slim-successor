@@ -65,6 +65,8 @@ Planning mode must answer, explicitly:
 - where it sits in the repo workflow;
 - what is in scope and out of scope;
 - what is retained, retired from authority, amended, or added;
+- which vocabulary authority execution must read for this tranche;
+- which packet/data contract authority execution must read for this tranche;
 - what tests or proof slices are required before a gate may be called complete.
 
 ## Execution mode
@@ -79,6 +81,8 @@ Before execution starts, the thread must read:
 5. the active leaves ledger named by `PLANS.md`, if one exists
 6. the active execution log named by `PLANS.md`, if one exists
 7. the bounded-scope note named by `PLANS.md`, if one exists
+8. the active vocabulary authority named by the active gates master; the baseline authority is `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+9. the active packet/data contract authority named by the active gates master; the baseline authority is `docs/03_DOMAIN_MODEL.md`
 
 Execution mode must obey:
 - one leaf at a time;
@@ -148,6 +152,7 @@ Any new planning pack must either:
 Stop and ask for clarification when:
 - the active control surfaces contradict each other materially;
 - the active pack does not say what gate is active;
+- the active pack does not name its vocabulary authority or packet/data contract authority cleanly;
 - the leaves ledger cannot be mapped to the active gates master;
 - required inputs for a gate are missing and cannot be derived lawfully;
 - the requested work would require pretending a closed gate is still active.

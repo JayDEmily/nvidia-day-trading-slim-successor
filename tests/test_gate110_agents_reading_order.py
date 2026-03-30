@@ -25,6 +25,6 @@ def test_governance_pack_advances_to_gate111_or_later() -> None:
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
     assert ("- none" in plans) or ("Gate 111 — next active gate on `main` in the repo-process governance pack" in plans) or ("closed through Gate 112" in plans)
-    assert ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map)
+    assert ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map)
     assert "| Gate 110 | complete on `main` |" in gate_map
     assert ("| Gate 111 | planned; next active gate |" in gate_map) or ("| Gate 111 | complete on `main` |" in gate_map)

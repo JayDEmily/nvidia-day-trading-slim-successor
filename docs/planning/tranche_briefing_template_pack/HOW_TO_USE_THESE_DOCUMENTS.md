@@ -108,3 +108,8 @@ The brief is good when a coding thread can execute it without inventing:
 
 Every new planning pack must include an explicit document-touch checklist.
 It is the written answer to: which frozen law surfaces were checked, which live router surfaces were checked, and which surfaces must be updated if execution proceeds.
+
+
+## Execution-thread re-read requirement
+
+Before coding starts, reread the vocabulary authority named in the active gates master and reread the packet/data contract authority named in the active gates master. If no active pack exists yet, use the baseline repo authorities named in `AGENTS.md` and `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`.

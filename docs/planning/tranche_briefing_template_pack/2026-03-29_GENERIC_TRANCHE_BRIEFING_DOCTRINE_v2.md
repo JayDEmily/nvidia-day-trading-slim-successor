@@ -235,3 +235,8 @@ Every new tranche must make these explicit early, not buried later:
 
 Every tranche must carry an explicit document-touch checklist.
 If the checklist is absent, the planning pack is incomplete even if the gates and leaves look polished.
+
+
+## Execution-thread reread requirement
+
+Every approved planning pack must name the vocabulary authority and packet/data contract authority the execution thread must reread before implementation begins.
