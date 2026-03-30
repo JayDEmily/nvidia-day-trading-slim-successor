@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_111_governance_pack_active_from_gate_112",
-  "active_gate": "Gate 112",
+  "execution_status": "repo_process_governance_pack_closed_through_gate_112_on_main",
+  "active_gate": "none \u2014 repo-process governance pack closed through Gate 112 on main",
   "supersedes": [
     "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json"
   ],
@@ -11,7 +11,8 @@
     "Gate 108",
     "Gate 109",
     "Gate 110",
-    "Gate 111"
+    "Gate 111",
+    "Gate 112"
   ],
   "completed_leaf_ids": [
     "LEAF-G107-001",
@@ -23,12 +24,11 @@
     "LEAF-G110-001",
     "LEAF-G110-002",
     "LEAF-G111-001",
-    "LEAF-G111-002"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G111-002",
     "LEAF-G112-001",
     "LEAF-G112-002"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -529,7 +529,7 @@
       "gate": "Gate 112",
       "title": "Close the governance pack honestly",
       "objective": "Update the planning quartet so the governance pack is closed through Gate 112 on main with no active gate remaining.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G111-002"
       ],
@@ -582,7 +582,7 @@
       "gate": "Gate 112",
       "title": "Package the repo from the exact green state",
       "objective": "Create a fresh full-history zip from the exact green governance-closeout state.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G112-001"
       ],

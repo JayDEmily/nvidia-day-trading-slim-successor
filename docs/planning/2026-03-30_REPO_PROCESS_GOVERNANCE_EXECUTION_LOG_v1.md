@@ -1,6 +1,6 @@
 # 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1
 
-Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next
+Status: closed execution log for the repo-process governance pack; Gates 107-112 complete on `main`, no active gate
 
 ## Purpose
 
@@ -135,3 +135,29 @@ Carry the sequential execution receipts for Gates 107–112.
 - Exact evidence: predecessor-pack tests remain meaningful under the router model without pretending predecessor packs are still active, and Gate 112 is the next active governance gate.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 111 closeout
+
+## Gate 112 receipts
+
+### LEAF-G112-001 — Close the governance pack honestly
+
+- Branch: `work/gate-112-governance-closeout-20260330`
+- Start commit: `b598cb2`
+- End commit: `gate-112-closeout-on-main`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md`, `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json`, `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-30_GATE112_REPO_PROCESS_GOVERNANCE_CLOSEOUT.md`
+- Validations run: final governance proof slice
+- Full suite required: no
+- Exact evidence: the planning quartet now agrees that the repo-process governance pack is closed through Gate 112 on `main` and no active gate remains.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 112 closeout
+
+### LEAF-G112-002 — Package the repo from the exact green state
+
+- Branch: `work/gate-112-governance-closeout-20260330`
+- Start commit: `b598cb2`
+- End commit: `gate-112-closeout-on-main`
+- Files touched: `docs/planning/2026-03-30_GATE112_REPO_PROCESS_GOVERNANCE_CLOSEOUT.md`, packaged repo artefact produced outside the tree from the exact green state
+- Validations run: final governance proof slice
+- Full suite required: no
+- Exact evidence: packaged artefact name frozen as `nvda_repo_process_governance_pack_closed_gate112_main_2026-03-30.zip`.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 112 closeout

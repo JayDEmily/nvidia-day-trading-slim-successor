@@ -1,4 +1,4 @@
-Status: active repo-process governance pack on `main`; Gates 107-111 complete, Gate 112 next
+Status: closed repo-process governance pack on `main`; Gates 107-112 complete, no active gate
 
 # 2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md
 
