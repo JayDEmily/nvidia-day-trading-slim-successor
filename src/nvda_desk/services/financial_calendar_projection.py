@@ -126,7 +126,7 @@ class FinancialCalendarProjectionService:
                         venue=venue,
                         timezone=self._VENUE_TIMEZONE[venue],
                         template=self._VENUE_TEMPLATE[venue],
-                        trading_days=[session_date.isoformat()],
+                        trading_days=self._future_trading_days(session_date, venue, lookahead_days=5),
                     )
                 updated_closures = sorted(
                     {*(existing.closure_classes), *event_closure_classes}, key=lambda item: item.value
@@ -332,6 +332,34 @@ class FinancialCalendarProjectionService:
         if "cooling_off" in record.runtime_tags:
             return EventSemanticPhase.REALISED_REACTION
         return crosswalk.semantic_phase
+
+    def _future_trading_days(
+        self, session_date: date, venue: TradingVenue, *, lookahead_days: int
+    ) -> list[str]:
+        """Project a bounded list of upcoming trading days for one venue."""
+
+        days: list[str] = []
+        cursor = session_date
+        while len(days) < lookahead_days:
+            if self._day_is_open_for_venue(cursor, venue):
+                days.append(cursor.isoformat())
+            cursor += timedelta(days=1)
+        return days
+
+    def _day_is_open_for_venue(self, session_date: date, venue: TradingVenue) -> bool:
+        """Return whether one venue should be treated as open on one calendar date."""
+
+        if session_date.weekday() >= 5:
+            return False
+        venue_aliases = {name for name, mapped in self._VENUE_MAPPING.items() if mapped is venue}
+        closure_classes: set[CalendarClosureClass] = set()
+        for record in self._bundle.imported_records:
+            if not (record.start_date <= session_date <= record.end_date):
+                continue
+            if not venue_aliases.intersection(record.venues):
+                continue
+            closure_classes.update(self._closure_classes_for_record(record))
+        return CalendarClosureClass.FULL_HOLIDAY not in closure_classes
 
     def _closure_classes_for_record(
         self, record: FinancialCalendarImportedRecord

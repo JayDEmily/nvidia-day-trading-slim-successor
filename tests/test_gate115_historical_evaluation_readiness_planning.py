@@ -56,7 +56,7 @@ def test_historical_evaluation_readiness_pack_is_active() -> None:
         "Gate 117",
         "none — historical-evaluation readiness pack closed through Gate 121 on main",
     }
-    assert len(leaves["remaining_leaf_ids"]) in {45, 38, 33, 0}
+    assert len(leaves["remaining_leaf_ids"]) in {45, 38, 32, 0}
     assert execution_log.startswith("# 2026-03-30 Historical Evaluation Readiness Execution Log v1")
     assert "Gate 115-121 pack" in checklist or "Gate 115-121" in checklist
 

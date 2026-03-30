@@ -151,6 +151,7 @@ class TemporalEventWindowSurface(BaseModel):
     overlap_class: EventOverlapClass = EventOverlapClass.SINGLE_EVENT
     risk_timing_class: EventRiskTimingClass
     carry_sensitivity: EventCarrySensitivity
+    timing_profile: str | None = None
     event_family: str = Field(min_length=1)
 
 

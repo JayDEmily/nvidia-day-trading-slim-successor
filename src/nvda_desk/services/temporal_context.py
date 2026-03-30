@@ -6,6 +6,7 @@ recent path into deterministic temporal state for downstream layers.
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -22,6 +23,16 @@ from nvda_desk.schemas.temporal_surface import (
     EventRiskTimingClass,
     EventWindowState,
 )
+
+
+@dataclass(frozen=True)
+class _EventTimingProfile:
+    profile_id: str
+    imminent_minutes: int
+    same_session_minutes: int
+    cooling_minutes: int
+    memory_minutes: int
+    overlap_buffer_minutes: int
 
 
 class TemporalContextService:
@@ -112,6 +123,7 @@ class TemporalContextService:
             f"event_overlap_class:{event_context['event_overlap_class']}",
             f"event_risk_timing_class:{event_context['event_risk_timing_class']}",
             f"event_carry_sensitivity:{event_context['event_carry_sensitivity']}",
+            f"event_timing_profile:{event_context['event_timing_profile']}",
             f"recent_path_tag:{recent_path_tag}",
             f"carryover_state:{carryover_state}",
             *clock.evidence_tags,
@@ -143,6 +155,7 @@ class TemporalContextService:
             event_overlap_class=event_context['event_overlap_class'],
             event_risk_timing_class=event_context['event_risk_timing_class'],
             event_carry_sensitivity=event_context['event_carry_sensitivity'],
+            event_timing_profile=event_context['event_timing_profile'],
             active_event_family=event_context['active_event_family'],
             calendar_closure_classes=closure_classes,
             session_bridge_rules=bridge_rules,
@@ -197,11 +210,25 @@ class TemporalContextService:
             microsecond=0,
         )
         closure_classes = set(payload.desk_calendar_authority.closure_classes)
+        primary_contract = next(
+            (
+                contract
+                for contract in payload.desk_calendar_authority.venues
+                if contract.venue.value == "nasdaq_us"
+            ),
+            payload.desk_calendar_authority.venues[0] if payload.desk_calendar_authority.venues else None,
+        )
+        trading_days = [] if primary_contract is None else [day for day in primary_contract.trading_days if "-" in day]
         if (
             CalendarClosureClass.FULL_HOLIDAY not in closure_classes
-            and (local_ts < candidate)
+            and local_ts.date().isoformat() in trading_days
+            and local_ts < candidate
         ):
             return candidate
+        future_days = [day for day in trading_days if day > local_ts.date().isoformat()]
+        if future_days:
+            next_open_date = datetime.fromisoformat(future_days[0]).date()
+            return candidate.replace(year=next_open_date.year, month=next_open_date.month, day=next_open_date.day)
         next_day = local_ts + timedelta(days=1)
         while next_day.weekday() >= 5:
             next_day += timedelta(days=1)
@@ -231,6 +258,7 @@ class TemporalContextService:
                 'event_overlap_class': EventOverlapClass.SINGLE_EVENT.value,
                 'event_risk_timing_class': EventRiskTimingClass.PRICED_RISK.value,
                 'event_carry_sensitivity': EventCarrySensitivity.INTRADAY_ONLY.value,
+                'event_timing_profile': None,
                 'active_event_family': None,
             }
         if event_reference is None:
@@ -241,6 +269,7 @@ class TemporalContextService:
                 'event_overlap_class': EventOverlapClass.SINGLE_EVENT.value,
                 'event_risk_timing_class': EventRiskTimingClass.PRICED_RISK.value,
                 'event_carry_sensitivity': EventCarrySensitivity.INTRADAY_ONLY.value,
+                'event_timing_profile': None,
                 'active_event_family': None,
             }
         reference = self._event_reference_context(payload.ts, event_reference)
@@ -253,6 +282,7 @@ class TemporalContextService:
             'event_overlap_class': overlap_class.value,
             'event_risk_timing_class': reference['risk_timing_class'],
             'event_carry_sensitivity': carry_sensitivity.value,
+            'event_timing_profile': self._event_timing_profile(event_reference).profile_id,
             'active_event_family': event_reference.event_subclass or (event_reference.event_class.value if event_reference.event_class is not None else event_reference.event_type),
         }
 
@@ -292,12 +322,17 @@ class TemporalContextService:
     ) -> dict[str, str | int | None]:
         ts_utc = ts.astimezone(UTC)
         anchor = reference.event_at.astimezone(UTC)
+        profile = self._event_timing_profile(reference)
         if reference.window_start_at is None and reference.window_end_at is None:
             minutes_remaining = int((anchor - ts_utc).total_seconds() // 60)
             return {
                 'minutes_remaining': minutes_remaining,
-                'proximity_state': self._event_proximity_state(minutes_remaining, reference.semantic_phase),
-                'window_state': self._event_window_state(minutes_remaining, reference.semantic_phase),
+                'proximity_state': self._event_proximity_state(
+                    minutes_remaining, reference.semantic_phase, profile
+                ),
+                'window_state': self._event_window_state(
+                    minutes_remaining, reference.semantic_phase, profile
+                ),
                 'risk_timing_class': (
                     EventRiskTimingClass.REALISED_REACTION.value
                     if minutes_remaining <= 0
@@ -317,10 +352,10 @@ class TemporalContextService:
             }
         if ts_utc < window_start:
             lead_minutes = int((window_start - ts_utc).total_seconds() // 60)
-            if lead_minutes <= 240:
+            if lead_minutes <= profile.imminent_minutes:
                 proximity = EventProximityState.EVENT_IMMINENT
                 window_state = EventWindowState.EVENT_IMMINENT_WINDOW
-            elif lead_minutes <= 1440:
+            elif lead_minutes <= profile.same_session_minutes:
                 proximity = EventProximityState.EVENT_SAME_SESSION
                 window_state = EventWindowState.SAME_SESSION_EVENT_WINDOW
             else:
@@ -334,14 +369,14 @@ class TemporalContextService:
                 'risk_timing_class': risk_timing.value,
             }
         minutes_since_end = int((ts_utc - window_end).total_seconds() // 60)
-        if minutes_since_end <= 240:
+        if minutes_since_end <= profile.cooling_minutes:
             return {
                 'minutes_remaining': -minutes_since_end,
                 'proximity_state': EventProximityState.EVENT_LIVE_OR_PASSED.value,
                 'window_state': EventWindowState.EVENT_COOLING_OFF_WINDOW.value,
                 'risk_timing_class': EventRiskTimingClass.COOLING_OFF.value,
             }
-        if minutes_since_end <= 1440:
+        if minutes_since_end <= profile.memory_minutes:
             return {
                 'minutes_remaining': -minutes_since_end,
                 'proximity_state': EventProximityState.EVENT_LIVE_OR_PASSED.value,
@@ -365,7 +400,12 @@ class TemporalContextService:
         for event in nearby_events:
             start = (event.window_start_at or event.event_at).astimezone(UTC)
             end = (event.window_end_at or event.event_at).astimezone(UTC)
-            if start - timedelta(minutes=240) <= ts_utc <= end + timedelta(minutes=240):
+            profile = self._event_timing_profile(event)
+            if (
+                start - timedelta(minutes=profile.overlap_buffer_minutes)
+                <= ts_utc
+                <= end + timedelta(minutes=profile.cooling_minutes)
+            ):
                 active_windows += 1
         if active_windows >= 3:
             return EventOverlapClass.HIGHER_PRIORITY_WINDOW_SUPERSEDES
@@ -434,10 +474,60 @@ class TemporalContextService:
             return "next_cycle"
         return "far_cycle"
 
+    def _event_timing_profile(self, reference: LiveEventReference) -> _EventTimingProfile:
+        """Return the bounded timing profile for one live event reference."""
+
+        subclass = reference.event_subclass or reference.event_type
+        if reference.event_class is DeskEventClass.POLICY:
+            return _EventTimingProfile(
+                profile_id=f"policy:{subclass}",
+                imminent_minutes=120,
+                same_session_minutes=480,
+                cooling_minutes=480,
+                memory_minutes=1440,
+                overlap_buffer_minutes=480,
+            )
+        if reference.event_class in {DeskEventClass.COMPANY, DeskEventClass.PEER_COMPANY}:
+            return _EventTimingProfile(
+                profile_id=f"company_like:{subclass}",
+                imminent_minutes=240,
+                same_session_minutes=1440,
+                cooling_minutes=720,
+                memory_minutes=2880,
+                overlap_buffer_minutes=720,
+            )
+        if reference.event_class is DeskEventClass.EXPIRY:
+            return _EventTimingProfile(
+                profile_id=f"expiry:{subclass}",
+                imminent_minutes=180,
+                same_session_minutes=1440,
+                cooling_minutes=240,
+                memory_minutes=720,
+                overlap_buffer_minutes=240,
+            )
+        if reference.event_class is DeskEventClass.VENUE_SESSION:
+            return _EventTimingProfile(
+                profile_id=f"venue_session:{subclass}",
+                imminent_minutes=240,
+                same_session_minutes=1440,
+                cooling_minutes=240,
+                memory_minutes=2880,
+                overlap_buffer_minutes=1440,
+            )
+        return _EventTimingProfile(
+            profile_id=f"macro_like:{subclass}",
+            imminent_minutes=90,
+            same_session_minutes=240,
+            cooling_minutes=240,
+            memory_minutes=720,
+            overlap_buffer_minutes=240,
+        )
+
     def _event_proximity_state(
         self,
         event_minutes_remaining: int | None,
         semantic_phase: EventSemanticPhase | None = None,
+        profile: _EventTimingProfile | None = None,
     ) -> str:
         """Classify upcoming event proximity for temporal context."""
 
@@ -447,14 +537,16 @@ class TemporalContextService:
             return "event_live_or_passed"
         if event_minutes_remaining <= 0:
             return "event_live_or_passed"
+        imminent_minutes = 60 if profile is None else profile.imminent_minutes
+        same_session_minutes = 240 if profile is None else profile.same_session_minutes
         if semantic_phase is EventSemanticPhase.PRICED_RISK:
-            if event_minutes_remaining <= 240:
+            if event_minutes_remaining <= imminent_minutes:
                 return "event_imminent"
-            if event_minutes_remaining <= 1440:
+            if event_minutes_remaining <= same_session_minutes:
                 return "event_same_session"
-        if event_minutes_remaining <= 60:
+        if event_minutes_remaining <= imminent_minutes:
             return "event_imminent"
-        if event_minutes_remaining <= 240:
+        if event_minutes_remaining <= same_session_minutes:
             return "event_same_session"
         if event_minutes_remaining <= 1440:
             return "event_same_day"
@@ -464,6 +556,7 @@ class TemporalContextService:
         self,
         event_minutes_remaining: int | None,
         semantic_phase: EventSemanticPhase | None = None,
+        profile: _EventTimingProfile | None = None,
     ) -> str:
         """Translate raw event timing into explicit trade-window state."""
 
@@ -473,13 +566,15 @@ class TemporalContextService:
             return "event_live_window"
         if event_minutes_remaining <= 0:
             return "event_live_window"
+        imminent_minutes = 60 if profile is None else profile.imminent_minutes
+        same_session_minutes = 240 if profile is None else profile.same_session_minutes
         if semantic_phase is EventSemanticPhase.PRICED_RISK:
-            if event_minutes_remaining <= 240:
+            if event_minutes_remaining <= imminent_minutes:
                 return "event_imminent_window"
-            if event_minutes_remaining <= 1440:
+            if event_minutes_remaining <= same_session_minutes:
                 return "same_session_event_window"
-        if event_minutes_remaining <= 60:
+        if event_minutes_remaining <= imminent_minutes:
             return "event_imminent_window"
-        if event_minutes_remaining <= 240:
+        if event_minutes_remaining <= same_session_minutes:
             return "same_session_event_window"
         return "clear_window"

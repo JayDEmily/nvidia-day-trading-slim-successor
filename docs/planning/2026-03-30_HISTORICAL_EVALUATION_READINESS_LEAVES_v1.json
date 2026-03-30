@@ -1,13 +1,14 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_115_complete_gate_116_active_on_main",
-  "active_gate": "Gate 116",
+  "execution_status": "gate_116_complete_gate_117_active_on_main",
+  "active_gate": "Gate 117",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
   "completed_gate_ids": [
-    115
+    115,
+    116
   ],
   "completed_leaf_ids": [
     "LEAF-G115-001",
@@ -16,15 +17,15 @@
     "LEAF-G115-004",
     "LEAF-G115-005",
     "LEAF-G115-006",
-    "LEAF-G115-007"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G115-007",
     "LEAF-G116-001",
     "LEAF-G116-002",
     "LEAF-G116-003",
     "LEAF-G116-004",
     "LEAF-G116-005",
-    "LEAF-G116-006",
+    "LEAF-G116-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G117-001",
     "LEAF-G117-002",
     "LEAF-G117-003",
@@ -584,7 +585,7 @@
       "gate": "Gate 116",
       "title": "Freeze event-class timing taxonomy",
       "objective": "Freeze the event families and their distinct pre/live/cooling/memory windows before changing temporal logic.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G115-007"
       ],
@@ -650,7 +651,7 @@
       "gate": "Gate 116",
       "title": "Implement per-class temporal windows",
       "objective": "Replace generic timing thresholds with event-class-specific timing law in temporal context.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G116-001"
       ],
@@ -716,7 +717,7 @@
       "gate": "Gate 116",
       "title": "Make next-session-open hints calendar-aware",
       "objective": "Use calendar authority rather than generic session assumptions when deriving next-session-open hints and overnight event context.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G116-002"
       ],
@@ -782,7 +783,7 @@
       "gate": "Gate 116",
       "title": "Propagate timing reasons and review fields",
       "objective": "Carry the richer event-window reasons into runtime packets and review-visible fields without losing bounded compatibility.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G116-003"
       ],
@@ -848,7 +849,7 @@
       "gate": "Gate 116",
       "title": "Add event-family regression coverage",
       "objective": "Add explicit tests for macro, company, expiry, and venue-session events across the major timing phases.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G116-004"
       ],
@@ -914,7 +915,7 @@
       "gate": "Gate 116",
       "title": "Close Gate 116 honestly",
       "objective": "Advance the planning quartet, record Gate 116 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G116-005"
       ],

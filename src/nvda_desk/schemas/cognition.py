@@ -175,6 +175,7 @@ class TemporalContextOutput(BaseModel):
     event_overlap_class: str = "single_event"
     event_risk_timing_class: str = "priced_risk"
     event_carry_sensitivity: str = "intraday_only"
+    event_timing_profile: str | None = None
     active_event_family: str | None = None
     calendar_closure_classes: list[str] = Field(default_factory=list)
     session_bridge_rules: list[str] = Field(default_factory=list)

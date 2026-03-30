@@ -207,6 +207,8 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
+Gate 116 note: `TemporalContextOutput.event_timing_profile` and `TemporalEventWindowSurface.timing_profile` make event-class timing law explicit so macro, company, expiry, and venue-session windows stop sharing one hidden generic countdown rule.
+
 ### 4i. Precursor-universe objects
 Typed contracts that freeze which ex-US precursor venues, raw fields, derived fields, and session-alignment expectations are lawful before stitching or runtime binding begins.
 

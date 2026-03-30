@@ -365,6 +365,7 @@ class ReviewExplanationService:
             overlap_class=EventOverlapClass(payload.temporal.event_overlap_class),
             risk_timing_class=EventRiskTimingClass(payload.temporal.event_risk_timing_class),
             carry_sensitivity=EventCarrySensitivity(payload.temporal.event_carry_sensitivity),
+            timing_profile=payload.temporal.event_timing_profile,
             event_family=event_family,
         )
 

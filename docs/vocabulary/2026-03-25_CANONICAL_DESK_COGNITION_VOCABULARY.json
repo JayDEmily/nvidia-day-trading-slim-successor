@@ -390,6 +390,27 @@
       ]
     },
     {
+      "canonical_slug": "event_timing_profile",
+      "canonical_label": "Event Timing Profile",
+      "category": "temporal_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "intraday",
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.TemporalContextOutput",
+      "allowed_aliases": [
+        "timing_profile"
+      ],
+      "disallowed_phrases": [
+        "one-size-fits-all event countdown"
+      ],
+      "notes": [
+        "Gate 116 explicit class-aware timing profile used by temporal context before downstream posture and review."
+      ]
+    },
+    {
       "canonical_slug": "event_window_state",
       "canonical_label": "Event Window State",
       "category": "workflow",
