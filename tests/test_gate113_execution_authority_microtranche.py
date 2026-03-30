@@ -17,6 +17,19 @@ CLOSEOUT = REPO_ROOT / "docs/planning/2026-03-30_GATE113_EXECUTION_AUTHORITY_MIC
 VOCAB = "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 PACKET = "docs/03_DOMAIN_MODEL.md"
 
+ALLOWED_CURRENT_GATE_MARKERS = {
+    "Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**.",
+    "Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**.",
+    "Current active gate: **Gate 115 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 116 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 117 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 118 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 119 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
+    "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+}
+
 
 def test_execution_mode_and_agents_name_authority_rereads() -> None:
     process_law = PROCESS_LAW.read_text(encoding="utf-8")
@@ -42,7 +55,7 @@ def test_routed_pack_or_latest_closed_pack_names_authorities_cleanly() -> None:
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     closeout = CLOSEOUT.read_text(encoding="utf-8")
 
-    assert "## Active pack\n\n- none" in plans
+    assert ("## Active pack\n\n- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
     assert "2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md" in plans
     assert VOCAB in gates
     assert PACKET in gates
@@ -50,7 +63,7 @@ def test_routed_pack_or_latest_closed_pack_names_authorities_cleanly() -> None:
     assert leaves["global_rules"]["execution_thread_must_reread_named_packet_contract_authority"] is True
     assert leaves["execution_status"] == "execution_authority_microtranche_closed_through_gate_113_on_main"
     assert leaves["active_gate"] == "none — execution-authority microtranche closed through Gate 113 on main"
-    assert ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map) or ("Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**." in gate_map)
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "Status: closed execution log for the execution-authority microtranche; Gate 113 complete on `main`, no active gate" in execution_log
     assert "Gate 113 complete on `main`; execution-authority microtranche closed honestly" in closeout
     assert "nvda_repo_execution_authority_microtranche_closed_gate113_main_2026-03-30.zip" in closeout

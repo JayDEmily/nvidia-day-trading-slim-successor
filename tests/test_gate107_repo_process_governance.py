@@ -14,6 +14,25 @@ GATES = REPO_ROOT / "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.m
 LEAVES = REPO_ROOT / "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json"
 EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
 
+ALLOWED_CURRENT_GATE_MARKERS = {
+    "Current active gate: **Gate 108 in the repo-process governance pack**.",
+    "Current active gate: **Gate 109 in the repo-process governance pack**.",
+    "Current active gate: **Gate 110 in the repo-process governance pack**.",
+    "Current active gate: **Gate 111 in the repo-process governance pack**.",
+    "Current active gate: **Gate 112 in the repo-process governance pack**.",
+    "Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**.",
+    "Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**.",
+    "Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**.",
+    "Current active gate: **Gate 115 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 116 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 117 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 118 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 119 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
+    "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+}
+
 
 def test_process_law_exists_and_has_precedence() -> None:
     process_law = PROCESS_LAW.read_text(encoding="utf-8")
@@ -36,8 +55,8 @@ def test_governance_pack_is_present_and_either_active_or_honestly_closed() -> No
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md" in plans
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json" in plans
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md" in plans
-    assert ("Gate 108" in plans) or ("Gate 109" in plans) or ("Gate 110" in plans) or ("Gate 111" in plans) or ("Gate 112" in plans) or ("closed through Gate 112" in plans) or ("closed through Gate 113" in plans)
-    assert ("Current active gate: **Gate 108 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 109 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map)
+    assert ("closed through Gate 112" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "Gate 107: Permanent process-law installation and governance-pack activation" in gates
     assert execution_log.startswith("# 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1")
     assert leaves["governing_plan"] == "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md"

@@ -1,0 +1,3217 @@
+{
+  "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115",
+  "active_gate": "Gate 115",
+  "supersedes": [
+    "none \u2014 no active pack existed before this planning tranche"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G115-001",
+    "LEAF-G115-002",
+    "LEAF-G115-003",
+    "LEAF-G115-004",
+    "LEAF-G115-005",
+    "LEAF-G115-006",
+    "LEAF-G115-007",
+    "LEAF-G116-001",
+    "LEAF-G116-002",
+    "LEAF-G116-003",
+    "LEAF-G116-004",
+    "LEAF-G116-005",
+    "LEAF-G116-006",
+    "LEAF-G117-001",
+    "LEAF-G117-002",
+    "LEAF-G117-003",
+    "LEAF-G117-004",
+    "LEAF-G117-005",
+    "LEAF-G117-006",
+    "LEAF-G117-007",
+    "LEAF-G118-001",
+    "LEAF-G118-002",
+    "LEAF-G118-003",
+    "LEAF-G118-004",
+    "LEAF-G118-005",
+    "LEAF-G118-006",
+    "LEAF-G119-001",
+    "LEAF-G119-002",
+    "LEAF-G119-003",
+    "LEAF-G119-004",
+    "LEAF-G119-005",
+    "LEAF-G119-006",
+    "LEAF-G120-001",
+    "LEAF-G120-002",
+    "LEAF-G120-003",
+    "LEAF-G120-004",
+    "LEAF-G120-005",
+    "LEAF-G120-006",
+    "LEAF-G120-007",
+    "LEAF-G121-001",
+    "LEAF-G121-002",
+    "LEAF-G121-003",
+    "LEAF-G121-004",
+    "LEAF-G121-005",
+    "LEAF-G121-006"
+  ],
+  "deferred_operator_review_ids": [
+    "C003",
+    "C007",
+    "C008",
+    "C010",
+    "C012",
+    "C015",
+    "C016"
+  ],
+  "rejected_operator_review_ids": [
+    "C002",
+    "C005",
+    "C017",
+    "C018",
+    "C019",
+    "C020",
+    "C021",
+    "C022",
+    "C023"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "accepted_operator_review_ids_must_be_mapped_explicitly": true,
+    "deferred_operator_review_ids_must_not_be_smuggled_into_execution": true,
+    "gate_order_is_dependency_first_not_brainstorm_order": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G115-001",
+      "gate": "Gate 115",
+      "title": "Freeze canonical normalised feature inventory",
+      "objective": "Freeze the accepted regime-aware normalised feature list, field names, and provenance expectations before feature code changes begin.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-002",
+      "gate": "Gate 115",
+      "title": "Map current raw-to-prepared feature carriage",
+      "objective": "Trace which raw and derived surfaces already exist and map where each proposed normalised feature will enter the prepared dataset.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-003",
+      "gate": "Gate 115",
+      "title": "Implement deterministic normalisation calculations",
+      "objective": "Add the bounded normalisation calculations and horizons to the prepared-runtime builder without inventing unauthorised packet names.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-004",
+      "gate": "Gate 115",
+      "title": "Carry normalised features into cognition ingress",
+      "objective": "Ensure the new prepared fields survive through chain-to-cognition conversion and are visible to the runtime ingress types that need them.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-005",
+      "gate": "Gate 115",
+      "title": "Upgrade fixtures and fixture provenance",
+      "objective": "Extend the canonical raw and prepared fixtures so the normalised fields can be proven deterministically in replay and sanity reports.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-006",
+      "gate": "Gate 115",
+      "title": "Add bounded validation and parity proofs",
+      "objective": "Add targeted tests proving the normalised fields are deterministic, provenance-carrying, and stable across raw-to-prepared conversion.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G115-007",
+      "gate": "Gate 115",
+      "title": "Close Gate 115 honestly",
+      "objective": "Advance the planning quartet, record the Gate 115 receipts, and freeze the packaged artefact after the feature substrate is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 115 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C011"
+      ],
+      "vocabulary_terms_checked": [
+        "normalised_feature",
+        "prepared_runtime",
+        "feature_provenance"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/real_data_loader.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-001",
+      "gate": "Gate 116",
+      "title": "Freeze event-class timing taxonomy",
+      "objective": "Freeze the event families and their distinct pre/live/cooling/memory windows before changing temporal logic.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G115-007"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-002",
+      "gate": "Gate 116",
+      "title": "Implement per-class temporal windows",
+      "objective": "Replace generic timing thresholds with event-class-specific timing law in temporal context.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-003",
+      "gate": "Gate 116",
+      "title": "Make next-session-open hints calendar-aware",
+      "objective": "Use calendar authority rather than generic session assumptions when deriving next-session-open hints and overnight event context.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-004",
+      "gate": "Gate 116",
+      "title": "Propagate timing reasons and review fields",
+      "objective": "Carry the richer event-window reasons into runtime packets and review-visible fields without losing bounded compatibility.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-005",
+      "gate": "Gate 116",
+      "title": "Add event-family regression coverage",
+      "objective": "Add explicit tests for macro, company, expiry, and venue-session events across the major timing phases.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G116-006",
+      "gate": "Gate 116",
+      "title": "Close Gate 116 honestly",
+      "objective": "Advance the planning quartet, record Gate 116 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/financial_calendar_projection.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 116 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "event_window_state",
+        "event_class",
+        "cooling_window"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/temporal_context.py",
+        "tests/test_gate81_live_event_temporal_semantics.py",
+        "tests/test_gate92_financial_calendar_temporal_transition.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-001",
+      "gate": "Gate 117",
+      "title": "Freeze precursor economics field inventory",
+      "objective": "Freeze the raw and derived precursor economics fields that are allowed to influence runtime packets and contradictions.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G116-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-002",
+      "gate": "Gate 117",
+      "title": "Map precursor ingestion and stitch path",
+      "objective": "Trace how precursor economics should be ingested and stitched through market-state rather than bloating calendar projection.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-003",
+      "gate": "Gate 117",
+      "title": "Compute contradiction-aware precursor packet",
+      "objective": "Implement the precursor runtime packet through the precursor and market-state path with explicit contradiction classes.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-004",
+      "gate": "Gate 117",
+      "title": "Feed precursor outputs into posture inputs",
+      "objective": "Ensure precursor economics flow into the downstream runtime context that posture and candidate selection will actually consume.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-005",
+      "gate": "Gate 117",
+      "title": "Build supportive and hostile precursor fixtures",
+      "objective": "Add bounded precursor fixtures covering supportive, hostile, and contradictory precursor states.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-006",
+      "gate": "Gate 117",
+      "title": "Add downstream posture and review tests",
+      "objective": "Prove that differing precursor states cause lawful downstream posture and review differences.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G117-007",
+      "gate": "Gate 117",
+      "title": "Close Gate 117 honestly",
+      "objective": "Advance the planning quartet, record Gate 117 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/market.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 117 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [],
+      "vocabulary_terms_checked": [
+        "precursor_economics",
+        "precursor_runtime_packet",
+        "contradiction_class"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/services/financial_calendar_projection.py",
+        "tests/test_market_state.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-001",
+      "gate": "Gate 118",
+      "title": "Inventory declared mutable surfaces",
+      "objective": "List every mutable surface the repo currently claims is active in modifiers, posture, execution, and review.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G117-007"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-002",
+      "gate": "Gate 118",
+      "title": "Map each mutable surface to a downstream consumer",
+      "objective": "For every declared mutable surface, prove the consumer path or mark the surface unsupported.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-003",
+      "gate": "Gate 118",
+      "title": "Wire missing operative consumers",
+      "objective": "Implement the missing downstream consumers for surfaces that should already have teeth.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-004",
+      "gate": "Gate 118",
+      "title": "Shrink unsupported declarations",
+      "objective": "Retire or narrow surfaces that remain policy decoration rather than runtime authority.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-005",
+      "gate": "Gate 118",
+      "title": "Add one regression per surviving mutable surface",
+      "objective": "Add targeted tests that prove each surviving surface still changes runtime behaviour lawfully.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G118-006",
+      "gate": "Gate 118",
+      "title": "Close Gate 118 honestly",
+      "objective": "Advance the planning quartet, record Gate 118 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 118 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "mutable_surface",
+        "hedge_required",
+        "target_fresh_deployable_pct"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-001",
+      "gate": "Gate 119",
+      "title": "Freeze candidate adjudication inputs and scores",
+      "objective": "Freeze the score inputs, tie-break law, and contradiction handling for multi-candidate selection.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G118-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-002",
+      "gate": "Gate 119",
+      "title": "Implement deterministic lead-candidate scoring",
+      "objective": "Replace registry-order lead choice with an explicit adjudication score and principled tiebreak sequence.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-003",
+      "gate": "Gate 119",
+      "title": "Expose adjudication reasons in outputs",
+      "objective": "Surface lead-candidate scores and contradiction reasons in execution and review outputs.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-004",
+      "gate": "Gate 119",
+      "title": "Add multi-eligible fixtures",
+      "objective": "Create bounded fixtures where more than one candidate is live so adjudication is actually exercised.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-005",
+      "gate": "Gate 119",
+      "title": "Prove contradiction resolution behaviour",
+      "objective": "Add tests showing mixed-context candidate selection is resolved by score and reasons rather than list order.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G119-006",
+      "gate": "Gate 119",
+      "title": "Close Gate 119 honestly",
+      "objective": "Advance the planning quartet, record Gate 119 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 119 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C013",
+        "C014"
+      ],
+      "vocabulary_terms_checked": [
+        "candidate_adjudication",
+        "lead_playbook_id",
+        "contradiction_resolution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "tests/test_gate100_bounded_scenario_matrix.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-001",
+      "gate": "Gate 120",
+      "title": "Freeze execution geometry field set",
+      "objective": "Freeze the execution-geometry fields the runtime may emit without inventing a parallel execution doctrine.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G119-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-002",
+      "gate": "Gate 120",
+      "title": "Extend execution templates and config",
+      "objective": "Extend registry/config surfaces so ladder spacing, chase limits, stop geometry, and hedge guidance are configurable and typed.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-003",
+      "gate": "Gate 120",
+      "title": "Synthesize execution geometry from runtime context",
+      "objective": "Implement geometry synthesis in execution expression using posture, event, and options context.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-004",
+      "gate": "Gate 120",
+      "title": "Enforce distance and risk constraints in geometry",
+      "objective": "Make geometry outputs obey max-risk-per-trade and distance constraints rather than staying decorative.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-005",
+      "gate": "Gate 120",
+      "title": "Expose passive-aggressive and hedge guidance",
+      "objective": "Emit passive-versus-aggressive bias and hedge-ratio guidance in execution outputs where the runtime law requires it.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-006",
+      "gate": "Gate 120",
+      "title": "Add deterministic execution-geometry tests",
+      "objective": "Add targeted tests proving geometry differs lawfully under supportive, stressed, and event-sensitive contexts.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G120-007",
+      "gate": "Gate 120",
+      "title": "Close Gate 120 honestly",
+      "objective": "Advance the planning quartet, record Gate 120 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-006"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 120 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C004",
+        "C006"
+      ],
+      "vocabulary_terms_checked": [
+        "execution_geometry",
+        "chase_limit",
+        "stop_geometry"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_gate105_ingress_db_api.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-001",
+      "gate": "Gate 121",
+      "title": "Freeze final risk-join contract",
+      "objective": "Freeze where the final risk gateway joins the runtime and what dispositions it may return.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G120-007"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-002",
+      "gate": "Gate 121",
+      "title": "Integrate risk gateway into runtime path",
+      "objective": "Join the final risk gateway after execution synthesis so posture, modifiers, execution, and final risk become one authority chain.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G121-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-003",
+      "gate": "Gate 121",
+      "title": "Make final risk reshape outputs visibly",
+      "objective": "Allow final risk to veto, derisk, or reshape execution output with review-visible lineage and reasons.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G121-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-004",
+      "gate": "Gate 121",
+      "title": "Add final-join regression coverage",
+      "objective": "Add allow, derisk, and block regressions for the new final risk join.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G121-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-005",
+      "gate": "Gate 121",
+      "title": "Prove legacy-versus-final-join differences explicitly",
+      "objective": "Add parity tests that show where the new final join changes behaviour rather than leaving the difference implicit.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G121-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G121-006",
+      "gate": "Gate 121",
+      "title": "Close Gate 121 honestly",
+      "objective": "Advance the planning quartet, record Gate 121 receipts, and freeze the packaged artefact from the exact green state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G121-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Gate 121 of the historical-evaluation readiness pack and must remain bounded to the upstream runtime-refinement work needed before broader historical evaluation.",
+      "accepted_operator_review_ids": [
+        "C009",
+        "C001"
+      ],
+      "vocabulary_terms_checked": [
+        "risk_gateway",
+        "final_risk_join",
+        "risk_disposition"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "inputs": [
+        "current repo surfaces named in the gate master",
+        "the accepted operator-review carry-forward decisions for this gate",
+        "green targeted validation slice for the gate"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Implement only the bounded repo surfaces named for this leaf.",
+        "Add or amend the targeted proof surfaces declared for this leaf.",
+        "Update the planning quartet, record receipts, and freeze the packaged artefact for this gate closeout."
+      ],
+      "forbidden_actions": [
+        "Do not invent new runtime terminology without checking the vocabulary authority first.",
+        "Do not widen scope into deferred operator-review ideas that were kept out of this pack.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q <targeted test slice for this leaf>",
+        "PYTHONPATH=src pytest -q <gate proof slice plus router/control-surface tests>"
+      ],
+      "expected_evidence": [
+        "bounded repo-surface diff",
+        "green targeted validation output",
+        "planning quartet updated together and zip artefact name frozen in the execution log"
+      ],
+      "definition_of_done": [
+        "bounded repo surfaces changed as planned",
+        "targeted validation for the leaf is green",
+        "gate closeout recorded in the execution log and router surfaces move together"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json",
+        "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+      ]
+    }
+  ]
+}

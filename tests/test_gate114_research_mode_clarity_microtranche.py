@@ -19,6 +19,18 @@ CLOSEOUT = REPO_ROOT / "docs/planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_C
 README = REPO_ROOT / "docs/planning/tranche_briefing_template_pack/README.md"
 HOWTO = REPO_ROOT / "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
 
+ALLOWED_CURRENT_GATE_MARKERS = {
+    "Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**.",
+    "Current active gate: **Gate 115 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 116 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 117 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 118 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 119 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
+    "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+}
+
 
 def test_research_mode_rule_is_explicit_in_authority_docs() -> None:
     normative = NORMATIVE.read_text(encoding="utf-8")
@@ -46,10 +58,10 @@ def test_planning_templates_and_closed_pack_reflect_gate114() -> None:
     readme = README.read_text(encoding="utf-8")
     howto = HOWTO.read_text(encoding="utf-8")
 
-    assert "## Active pack\n\n- none" in plans
+    assert ("## Active pack\n\n- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
     assert "2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md" in plans
-    assert "research-mode clarity microtranche closed through Gate 114 on `main`" in plans
-    assert "Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**." in gate_map
+    assert "2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md" in plans
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "| Gate 114 | complete on `main` |" in gate_map
     assert "Status: closed research-mode clarity microtranche on `main`; Gate 114 complete, no active gate" in gates
     assert leaves["execution_status"] == "research_mode_clarity_microtranche_closed_through_gate_114_on_main"

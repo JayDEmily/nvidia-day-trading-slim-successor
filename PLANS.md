@@ -20,7 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- none
+- gates: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`
+- leaves: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -48,8 +51,9 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- research-mode clarity microtranche closed through Gate 114 on `main`
-- no active gate remains
+- historical-evaluation readiness pack active from Gate 115
+- Gate 115 is the only active gate
+- Gates 116-121 are planned in dependency order and not yet executable
 
 ## Sequential execution rule
 

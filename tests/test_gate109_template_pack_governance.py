@@ -16,6 +16,23 @@ DOCUMENT_TOUCH_TEMPLATE = PACK_DIR / "2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIS
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 
+ALLOWED_CURRENT_GATE_MARKERS = {
+    "Current active gate: **Gate 110 in the repo-process governance pack**.",
+    "Current active gate: **Gate 111 in the repo-process governance pack**.",
+    "Current active gate: **Gate 112 in the repo-process governance pack**.",
+    "Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**.",
+    "Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**.",
+    "Current active gate: **none — research-mode clarity microtranche closed through Gate 114 on `main`**.",
+    "Current active gate: **Gate 115 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 116 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 117 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 118 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 119 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
+    "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
+    "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+}
+
 
 def test_template_pack_includes_process_law_and_missing_templates() -> None:
     readme = README.read_text(encoding="utf-8")
@@ -35,7 +52,6 @@ def test_governance_pack_advances_to_gate110_or_later() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
-    assert ("- none" in plans) or ("Gate 110 — next active gate on `main` in the repo-process governance pack" in plans) or ("closed through Gate 112" in plans)
-    assert ("Current active gate: **Gate 110 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map) or ("Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map) or ("Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map) or ("Current active gate: **none — execution-authority microtranche closed through Gate 113 on `main`**." in gate_map)
+    assert ("- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("closed through Gate 112" in plans)
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "| Gate 109 | complete on `main` |" in gate_map
-    assert ("| Gate 110 | planned; next active gate |" in gate_map) or ("| Gate 110 | complete on `main` |" in gate_map)

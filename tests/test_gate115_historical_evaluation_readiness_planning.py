@@ -1,0 +1,46 @@
+"""Gate 115 historical-evaluation readiness planning checks."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+PLANS = REPO_ROOT / "PLANS.md"
+GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+GATES = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md"
+LEAVES = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json"
+EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+CHECKLIST = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+
+
+def test_historical_evaluation_readiness_pack_is_active() -> None:
+    plans = PLANS.read_text(encoding="utf-8")
+    gate_map = GATE_MAP.read_text(encoding="utf-8")
+    gates = GATES.read_text(encoding="utf-8")
+    execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+    checklist = CHECKLIST.read_text(encoding="utf-8")
+    leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+
+    assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans
+    assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json" in plans
+    assert "2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md" in plans
+    assert "Gate 115" in plans
+    assert "Current active gate: **Gate 115 in the historical-evaluation readiness pack**." in gate_map
+    assert "Status: active historical-evaluation readiness pack; Gate 115 active, Gates 116-121 planned" in gates
+    assert leaves["execution_status"] == "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115"
+    assert leaves["active_gate"] == "Gate 115"
+    assert len(leaves["remaining_leaf_ids"]) == 45
+    assert execution_log.startswith("# 2026-03-30 Historical Evaluation Readiness Execution Log v1")
+    assert "Gate 115-121 pack" in checklist or "Gate 115-121" in checklist
+
+
+def test_operator_review_ids_are_mapped_and_deferred_ids_stay_out() -> None:
+    gates = GATES.read_text(encoding="utf-8")
+    leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+
+    for accepted in ("C011", "C013", "C014", "C004", "C006", "C009", "C001"):
+        assert accepted in gates
+    for deferred in leaves["deferred_operator_review_ids"]:
+        assert deferred not in gates
+    assert leaves["global_rules"]["gate_order_is_dependency_first_not_brainstorm_order"] is True
