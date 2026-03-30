@@ -22,11 +22,13 @@ def test_active_planning_surfaces_point_at_the_successor_testing_pack() -> None:
     assert "2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json" in plans
     assert "2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md" in plans
     assert "2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md" in plans
-    assert "Gate 101 — next active gate on `main` in the successor testing pack" in plans
-    assert "Gates 102–106 — planned in the successor testing pack; not started on `main`" in plans
+    assert "Gate 101 — complete on `main` in the successor testing pack" in plans
+    assert "Gate 102 — next active gate on `main` in the successor testing pack" in plans
+    assert "Gates 103–106 — planned in the successor testing pack; not started on `main`" in plans
 
-    assert "Current active gate: **Gate 101 in the successor testing pack**." in gate_map
-    assert "| Gate 101 | planned; next active gate |" in gate_map
+    assert "Current active gate: **Gate 102 in the successor testing pack**." in gate_map
+    assert "| Gate 101 | complete on `main` |" in gate_map
+    assert "| Gate 102 | planned; next active gate |" in gate_map
     assert "| Gate 106 | planned |" in gate_map
 
 
@@ -36,19 +38,20 @@ def test_successor_pack_docs_freeze_remaining_work_honestly() -> None:
 
     assert "Gate 101: Canonical raw-truth bundle admission" in gates
     assert "Gate 106: Successor-pack honest closeout and packaging" in gates
-    assert "there is still no admitted raw canonical runtime bundle in-repo" in gates
-    assert "If Gate 101 cannot lawfully admit one raw bundle" in scope_note
-    assert "do not pretend Gate 102 began" in scope_note
+    assert "Gate 101 admitted one canonical raw bundle from existing repo truth" in gates
+    assert "Gate 101 admitted one canonical raw bundle from existing repo truth" in scope_note
+    assert "do not pretend Gate 103 began" in scope_note
 
 
 def test_successor_leaves_freeze_gate101_as_the_next_active_gate() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert leaves["governing_plan"] == "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md"
-    assert leaves["execution_status"] == "gate_101_successor_testing_pack_active_on_main"
-    assert leaves["active_gate"] == "Gate 101"
-    assert leaves["completed_gate_ids"] == []
-    assert leaves["remaining_leaf_ids"][:2] == ["LEAF-G101-001", "LEAF-G101-002"]
+    assert leaves["execution_status"] == "gate_102_successor_testing_pack_active_on_main"
+    assert leaves["active_gate"] == "Gate 102"
+    assert leaves["completed_gate_ids"] == ["Gate 101"]
+    assert leaves["completed_leaf_ids"] == ["LEAF-G101-001", "LEAF-G101-002"]
+    assert leaves["remaining_leaf_ids"][:2] == ["LEAF-G102-001", "LEAF-G102-002"]
     assert leaves["global_rules"]["gate_101_raw_truth_is_a_hard_gate"] is True
     assert leaves["global_rules"]["prepared_runtime_coverage_is_not_raw_ingress_coverage"] is True
 
@@ -56,6 +59,7 @@ def test_successor_leaves_freeze_gate101_as_the_next_active_gate() -> None:
 def test_successor_execution_log_is_open_and_receipt_free() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "Status: active execution log for the successor testing pack; Gate 101 next on `main`, no successor-pack receipts recorded yet" in execution_log
-    assert "LEAF-G101-001" in execution_log
+    assert "Status: active execution log for the successor testing pack; Gate 101 complete on `main`, Gate 102 next" in execution_log
+    assert "### LEAF-G101-001" in execution_log
+    assert "### Gate 102 receipts" in execution_log
     assert "LEAF-G106-002" in execution_log

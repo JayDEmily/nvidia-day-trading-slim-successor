@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gate 101 next on `main`, no successor-pack receipts recorded yet
+Status: active execution log for the successor testing pack; Gate 101 complete on `main`, Gate 102 next
 
 ## Purpose
 
@@ -8,15 +8,37 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Do not begin Gate 102 until Gate 101 is complete and merged to `main`.
-- If Gate 101 cannot admit one lawful raw bundle, stop the pack there and record the blocker explicitly.
+- Do not begin Gate 103 until Gate 102 is complete and merged to `main`.
+- If Gate 102 cannot prove the admitted raw bundle through the checked-in runtime path, stop the pack there and record the blocker explicitly.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
-## Planned receipt skeleton
+## Gate 101 receipts
 
-### Gate 101 receipts
-- `LEAF-G101-001` — inventory raw-ingress requirements against the checked-in runtime path
-- `LEAF-G101-002` — admit one canonical raw bundle or freeze a blocker honestly
+### LEAF-G101-001 — inventory raw-ingress requirements against the checked-in runtime path
+
+- Branch: `work/gate-101-canonical-raw-bundle-admission-20260330`
+- Start commit: `10ee889`
+- End commit: `d81cd44`
+- Files touched: `docs/planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md`
+- Validations run: targeted Gate 101 proof slice
+- Full suite required: no
+- Exact evidence: the repo now records that the checked-in Gate E fixture pack already contained the raw surfaces required by `RealDataBundle` and the runtime preparation path.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `d81cd44`
+
+### LEAF-G101-002 — admit one canonical raw bundle or freeze a blocker honestly
+
+- Branch: `work/gate-101-canonical-raw-bundle-admission-20260330`
+- Start commit: `10ee889`
+- End commit: `d81cd44`
+- Files touched: `fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json`, `docs/planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md`, `tests/test_gate101_canonical_raw_bundle_admission.py`, planning control surfaces
+- Validations run: targeted Gate 101 proof slice
+- Full suite required: no
+- Exact evidence: the admitted canonical raw bundle matches the embedded raw `bundle` object from the checked-in Gate E fixture pack and mechanically rebuilds the checked-in prepared dataset plus sanity report.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward at `d81cd44`
+
+## Planned receipt skeleton
 
 ### Gate 102 receipts
 - `LEAF-G102-001` — build the canonical raw-path harness

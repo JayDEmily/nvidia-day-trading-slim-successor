@@ -6,13 +6,16 @@
     "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
     "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
   ],
-  "execution_status": "gate_101_successor_testing_pack_active_on_main",
-  "active_gate": "Gate 101",
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "execution_status": "gate_102_successor_testing_pack_active_on_main",
+  "active_gate": "Gate 102",
+  "completed_gate_ids": [
+    "Gate 101"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G101-001",
-    "LEAF-G101-002",
+    "LEAF-G101-002"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G102-001",
     "LEAF-G102-002",
     "LEAF-G103-001",
@@ -38,7 +41,7 @@
       "gate": "Gate 101",
       "title": "Inventory raw-ingress requirements against the checked-in runtime path",
       "objective": "Map the exact raw bundle surfaces required by RealDataBundle, real_data_loader, and downstream cognition ingress before admitting any canonical raw artefact.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
@@ -76,7 +79,7 @@
       "gate": "Gate 101",
       "title": "Admit one canonical raw bundle or freeze a blocker honestly",
       "objective": "Check in or otherwise admit one lawful raw bundle, or stop the pack with an explicit blocker if the raw truth does not exist.",
-      "status": "planned",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md"
@@ -118,7 +121,7 @@
       "gate": "Gate 102",
       "title": "Build the canonical raw-path harness",
       "objective": "Create one deterministic test harness that starts at the admitted raw bundle and reaches review outputs through the checked-in runtime path.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/real_data_loader.py",
@@ -156,7 +159,7 @@
       "gate": "Gate 102",
       "title": "Freeze deterministic outputs and lineage for the canonical raw path",
       "objective": "Assert stable runtime outputs, packet lineage, and review surfaces for the admitted raw-path harness.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md"
       ],

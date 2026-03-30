@@ -1,10 +1,10 @@
-Status: active successor testing pack on `main`; Gate 101 is the next active gate
+Status: active successor testing pack on `main`; Gate 101 complete, Gate 102 is the next active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
 ## Purpose
 
-Define the successor testing tranche that follows the bounded Gate 94–100 pack. This pack exists because the first testing tranche closed honestly while leaving one material gap unresolved: there is still no admitted raw canonical runtime bundle in-repo.
+Define the successor testing tranche that follows the bounded Gate 94–100 pack. This pack exists because the first testing tranche closed honestly while leaving one material gap unresolved: Gate 101 admitted one canonical raw bundle from existing repo truth, but the full raw-ingress path is not yet proven end to end.
 
 ## Why this pack exists
 
@@ -58,7 +58,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gate 101 is the next active gate. No later successor gate may start until Gate 101 is complete or explicitly blocked and the user supplies new raw truth.
+- Gate 101 is complete on `main` and admitted one canonical raw bundle from repo truth. Gate 102 is the next active gate. No later successor gate may start until Gate 102 is complete or explicitly blocked.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -68,7 +68,7 @@ Out of scope:
 1. Inventory the exact raw surfaces required by the checked-in runtime path.
 2. Admit one canonical timestamped raw bundle from repo truth or fresh user-supplied capture.
 3. Mechanically derive only the derived surfaces that are provably computable from that raw truth.
-4. If the raw bundle cannot be admitted, stop the pack honestly and record the blocker.
+4. Gate 101 is now complete from repo truth; Gate 102 may begin.
 
 ### Gate 102 sequencing summary
 1. Feed the admitted raw bundle through `real_data_loader` and `chain_to_cognition`.

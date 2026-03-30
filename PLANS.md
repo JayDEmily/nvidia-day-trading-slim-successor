@@ -83,8 +83,9 @@ The completed first testing-module pack retained as predecessor evidence is:
 - Gate 98 — complete on `main` (targeted threshold-edge and precedence tests)
 - Gate 99 — complete on `main` (transition and adjacent-snapshot testing)
 - Gate 100 — complete on `main` (controlled scenario-matrix expansion, closeout, and packaging proof)
-- Gate 101 — next active gate on `main` in the successor testing pack (canonical raw-truth bundle admission)
-- Gates 102–106 — planned in the successor testing pack; not started on `main`
+- Gate 101 — complete on `main` in the successor testing pack (canonical raw-truth bundle admission from repo truth)
+- Gate 102 — next active gate on `main` in the successor testing pack (raw -> prepared -> cognition -> review end-to-end harness)
+- Gates 103–106 — planned in the successor testing pack; not started on `main`
 
 ## Sequential execution rule
 
@@ -96,7 +97,7 @@ Before any later gate can be treated as active, the closing pass for the current
 
 ## Current repo state
 
-The persisted `main` baseline is now closed through Gate 100 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–100 are merged on `main`, and the successor testing pack is active from Gate 101, which means the repo now has:
+The persisted `main` baseline is now closed through Gate 101 and records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`. Gates 46–101 are merged on `main`, and the successor testing pack is active from Gate 102, which means the repo now has:
 - the frozen pre-implementation audit in-repo;
 - registry-v2 hierarchy with native family/setup-variant lineage;
 - formal close-state to carry-horizon handoff for overnight, weekend, and event carry;
@@ -129,4 +130,4 @@ The persisted `main` baseline is now closed through Gate 100 and records Gate 7 
 - Gate 87 audit-remediation closeout complete on `main`, with predecessor-pack evidence, review/runtime projector law, candidate-governance release conditions, widened economic thresholds, and repo-wide static hygiene now aligned with the audited truth state;
 - the attached `_v4_5` salvage artefacts preserved in-repo under `docs/legacy/` as provenance only.
 
-The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–100 are complete on `main`. The testing-module pack is closed through Gate 100 on `main` and retained as closed successor evidence.
+The V6 successor pack is closed through Gate 79 on `main`. Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence. The financial-calendar interstitial pack is retained as predecessor evidence through Gate 90 on `main`. The financial-calendar runtime-integration pack is closed through Gate 93 on `main` and retained as predecessor evidence. The testing-module pack is now the active post-Gate-93 authority: Gates 94–100 are complete on `main`. The testing-module pack is closed through Gate 100 on `main` and retained as closed successor evidence. Gate 101 is now complete on `main`, with one admitted canonical raw bundle preserved at `fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json`; Gate 102 is the next active gate in the successor testing pack.
