@@ -14,24 +14,24 @@ This file is the canonical repo-root execution router.
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 - `AGENTS.md`
 
-## Active execution control surfaces
+## Canonical gate map
 
-The governing canonical gate authority remains:
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 
-The active governing pack is:
-- `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md`
+## Active pack
 
-The active canonical leaf ledger is:
-- `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json`
+- gates: `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md`
+- leaves: `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md`
+- bounded-scope note: none
 
-The active sequential execution log is:
-- `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md`
+## Current state
 
-The active bounded-scope note is:
-- none
+- Gate 108 — complete on `main` in the repo-process governance pack
+- Gate 109 — next active gate on `main` in the repo-process governance pack
 
-Closed predecessor packs retained as evidence include:
+## Closed predecessor evidence
+
 - `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`
 - `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
 - `docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md`
@@ -39,11 +39,6 @@ Closed predecessor packs retained as evidence include:
 - `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`
 - `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md`
 - `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md`
-
-## Active execution state
-
-- Gate 107 — complete on `main` in the repo-process governance pack
-- Gate 108 — next active gate on `main` in the repo-process governance pack
 
 ## Sequential execution rule
 

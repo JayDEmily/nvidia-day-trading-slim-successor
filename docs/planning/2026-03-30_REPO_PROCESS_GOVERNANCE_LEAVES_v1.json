@@ -1,21 +1,22 @@
 {
   "governing_plan": "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_107_governance_pack_active_from_gate_108",
-  "active_gate": "Gate 108",
+  "execution_status": "gate_108_governance_pack_active_from_gate_109",
+  "active_gate": "Gate 109",
   "supersedes": [
     "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json"
   ],
   "completed_gate_ids": [
-    "Gate 107"
+    "Gate 107",
+    "Gate 108"
   ],
   "completed_leaf_ids": [
     "LEAF-G107-001",
-    "LEAF-G107-002"
+    "LEAF-G107-002",
+    "LEAF-G108-001",
+    "LEAF-G108-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G108-001",
-    "LEAF-G108-002",
     "LEAF-G109-001",
     "LEAF-G109-002",
     "LEAF-G110-001",
@@ -146,7 +147,7 @@
       "gate": "Gate 108",
       "title": "Reduce PLANS.md to a strict router",
       "objective": "Remove stale tranche-history narrative and leave PLANS.md as a single live routing surface.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G107-002"
       ],
@@ -190,7 +191,7 @@
       "gate": "Gate 108",
       "title": "Align the gate map with the router",
       "objective": "Make the canonical gate map agree with the cleaned router and predecessor evidence state.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G108-001"
       ],
