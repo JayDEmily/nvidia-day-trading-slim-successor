@@ -27,15 +27,16 @@ def test_active_planning_surfaces_point_at_the_successor_testing_pack() -> None:
     assert "Gate 103 — complete on `main` in the successor testing pack" in plans
     assert "Gate 104 — complete on `main` in the successor testing pack" in plans
     assert "Gate 105 — complete on `main` in the successor testing pack" in plans
-    assert "Gate 106 — next active gate on `main` in the successor testing pack" in plans
+    assert "Gate 106 — complete on `main` in the successor testing pack" in plans
+    assert "no active successor-testing gate remains on `main`" in plans
 
-    assert "Current active gate: **Gate 106 in the successor testing pack**." in gate_map
+    assert "Current active gate: **none — successor testing pack closed through Gate 106 on `main`**." in gate_map
     assert "| Gate 101 | complete on `main` |" in gate_map
     assert "| Gate 102 | complete on `main` |" in gate_map
     assert "| Gate 103 | complete on `main` |" in gate_map
     assert "| Gate 104 | complete on `main` |" in gate_map
     assert "| Gate 105 | complete on `main` |" in gate_map
-    assert "| Gate 106 | planned; next active gate |" in gate_map
+    assert "| Gate 106 | complete on `main` |" in gate_map
 
 
 def test_successor_pack_docs_freeze_remaining_work_honestly() -> None:
@@ -50,18 +51,18 @@ def test_successor_pack_docs_freeze_remaining_work_honestly() -> None:
     assert "Gate 103 froze bounded parity with the prepared harness and extended runtime-law invariants to the raw path." in scope_note
     assert "Gate 104 added targeted property/stateful testing to the bounded high-risk services." in scope_note
     assert "Gate 105 hardened typed ingress correctness plus repo-native DB/API seams." in scope_note
-    assert "Do not pretend the pack is closed." in scope_note
+    assert "Status: closed bounded-scope note retained as evidence for the successor testing pack; Gates 101-106 complete on `main`, no active gate" in scope_note
 
 
-def test_successor_leaves_freeze_gate105_complete_and_gate106_next() -> None:
+def test_successor_leaves_freeze_gate106_closeout() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert leaves["governing_plan"] == "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md"
-    assert leaves["execution_status"] == "gate_106_successor_testing_pack_active_on_main"
-    assert leaves["active_gate"] == "Gate 106"
-    assert leaves["completed_gate_ids"] == ["Gate 101", "Gate 102", "Gate 103", "Gate 104", "Gate 105"]
-    assert leaves["completed_leaf_ids"] == ["LEAF-G101-001", "LEAF-G101-002", "LEAF-G102-001", "LEAF-G102-002", "LEAF-G103-001", "LEAF-G103-002", "LEAF-G104-001", "LEAF-G104-002", "LEAF-G105-001", "LEAF-G105-002"]
-    assert leaves["remaining_leaf_ids"] == ["LEAF-G106-001", "LEAF-G106-002"]
+    assert leaves["execution_status"] == "successor_testing_pack_closed_through_gate_106_on_main"
+    assert leaves["active_gate"] == "none — successor testing pack closed through Gate 106 on main"
+    assert leaves["completed_gate_ids"] == ["Gate 101", "Gate 102", "Gate 103", "Gate 104", "Gate 105", "Gate 106"]
+    assert leaves["completed_leaf_ids"] == ["LEAF-G101-001", "LEAF-G101-002", "LEAF-G102-001", "LEAF-G102-002", "LEAF-G103-001", "LEAF-G103-002", "LEAF-G104-001", "LEAF-G104-002", "LEAF-G105-001", "LEAF-G105-002", "LEAF-G106-001", "LEAF-G106-002"]
+    assert leaves["remaining_leaf_ids"] == []
     assert leaves["global_rules"]["gate_101_raw_truth_is_a_hard_gate"] is True
     assert leaves["global_rules"]["prepared_runtime_coverage_is_not_raw_ingress_coverage"] is True
 
@@ -69,10 +70,10 @@ def test_successor_leaves_freeze_gate105_complete_and_gate106_next() -> None:
 def test_successor_execution_log_is_open_and_receipt_free() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "Status: active execution log for the successor testing pack; Gates 101-105 complete on `main`, Gate 106 next" in execution_log
+    assert "Status: closed execution log for the successor testing pack; Gates 101-106 complete on `main`, no active gate" in execution_log
     assert "### LEAF-G101-001" in execution_log
     assert "### LEAF-G102-001" in execution_log
     assert "### LEAF-G103-001" in execution_log
     assert "### LEAF-G104-001" in execution_log
     assert "### LEAF-G105-001" in execution_log
-    assert "### Gate 106 receipts" in execution_log
+    assert "### LEAF-G106-001" in execution_log

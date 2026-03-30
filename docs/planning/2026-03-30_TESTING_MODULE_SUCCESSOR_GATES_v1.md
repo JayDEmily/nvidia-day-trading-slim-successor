@@ -1,4 +1,4 @@
-Status: active successor testing pack on `main`; Gates 101-105 complete, Gate 106 is the next active gate
+Status: closed successor testing pack on `main`; Gates 101-106 complete, no active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
@@ -57,7 +57,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gates 101-105 are complete on `main`. Gate 106 is the next active gate. No later successor gate may start until Gate 106 is complete or explicitly blocked.
+- Gates 101-106 are complete on `main`. The successor testing pack is closed and no active gate remains.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -95,6 +95,7 @@ Out of scope:
 1. Close the successor pack honestly across the planning quartet.
 2. Run the targeted proof matrix for Gates 101–105.
 3. Package the repo from the exact green state.
+4. Gate 106 is now complete on `main`; the successor pack is closed.
 
 ## Gates
 
@@ -161,3 +162,4 @@ Out of scope:
 - `PLANS.md`, the gate map, the active leaf ledger, and the active execution log agree on successor-pack closeout;
 - targeted proof slices covering Gates 101–105 pass;
 - the repo is packaged from the exact green state.
+- Status: complete on `main`; see `docs/planning/2026-03-30_GATE106_SUCCESSOR_CLOSEOUT.md`.

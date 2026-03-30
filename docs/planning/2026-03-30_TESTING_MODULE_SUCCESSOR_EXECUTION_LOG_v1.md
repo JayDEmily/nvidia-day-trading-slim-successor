@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gates 101-105 complete on `main`, Gate 106 next
+Status: closed execution log for the successor testing pack; Gates 101-106 complete on `main`, no active gate
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Gate 106 is the closeout gate. Do not mark the pack closed unless the planning quartet, proof slice, and packaged repo all agree.
+- Gate 106 is the closeout gate. The planning quartet, proof slice, and packaged repo now agree on successor-pack closeout.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
 ## Gate 101 receipts
@@ -141,8 +141,28 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 105 closeout
 
-## Planned receipt skeleton
+## Gate 106 receipts
 
-### Gate 106 receipts
-- `LEAF-G106-001` — close the successor pack honestly across the planning quartet
-- `LEAF-G106-002` — package the repo from the exact green state
+### LEAF-G106-001 — close the successor pack honestly across the planning quartet
+
+- Branch: `work/gate-106-successor-closeout-20260330`
+- Start commit: `4a2acaa`
+- End commit: `gate-106-closeout-on-main`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-30_GATE106_SUCCESSOR_CLOSEOUT.md`, `tests/test_gate106_successor_closeout.py`
+- Validations run: final successor-pack proof slice
+- Full suite required: no
+- Exact evidence: the planning quartet now agrees that the successor testing pack is closed through Gate 106 on `main`.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 106 closeout
+
+### LEAF-G106-002 — package the repo from the exact green state
+
+- Branch: `work/gate-106-successor-closeout-20260330`
+- Start commit: `4a2acaa`
+- End commit: `gate-106-closeout-on-main`
+- Files touched: `docs/planning/2026-03-30_GATE106_SUCCESSOR_CLOSEOUT.md`, packaged repo artefact produced outside the tree from the exact green state
+- Validations run: final successor-pack proof slice
+- Full suite required: no
+- Exact evidence: packaged artefact name frozen as `nvda_repo_successor_testing_pack_closed_gate106_main_2026-03-30.zip`.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 106 closeout

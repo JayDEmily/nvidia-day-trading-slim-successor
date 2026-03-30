@@ -88,7 +88,8 @@ The completed first testing-module pack retained as predecessor evidence is:
 - Gate 103 — complete on `main` in the successor testing pack (raw/prepared parity and lawful-output expansion)
 - Gate 104 — complete on `main` in the successor testing pack (targeted property/stateful testing)
 - Gate 105 — complete on `main` in the successor testing pack (typed ingress and DB/API seam hardening)
-- Gate 106 — next active gate on `main` in the successor testing pack (honest closeout and packaging)
+- Gate 106 — complete on `main` in the successor testing pack (honest closeout and packaging)
+- no active successor-testing gate remains on `main`
 
 ## Sequential execution rule
 

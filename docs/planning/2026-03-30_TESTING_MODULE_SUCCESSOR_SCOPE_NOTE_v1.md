@@ -1,6 +1,6 @@
 # 2026-03-30 TESTING MODULE SUCCESSOR SCOPE NOTE
 
-Status: active bounded-scope note for the successor testing pack; Gates 102-105 complete on `main`, Gate 106 next
+Status: closed bounded-scope note retained as evidence for the successor testing pack; Gates 101-106 complete on `main`, no active gate
 
 ## Purpose
 
