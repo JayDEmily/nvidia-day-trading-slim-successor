@@ -1,0 +1,619 @@
+{
+  "governing_plan": "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_107_governance_pack_active_from_gate_108",
+  "active_gate": "Gate 108",
+  "supersedes": [
+    "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json"
+  ],
+  "completed_gate_ids": [
+    "Gate 107"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G107-001",
+    "LEAF-G107-002"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G108-001",
+    "LEAF-G108-002",
+    "LEAF-G109-001",
+    "LEAF-G109-002",
+    "LEAF-G110-001",
+    "LEAF-G110-002",
+    "LEAF-G111-001",
+    "LEAF-G111-002",
+    "LEAF-G112-001",
+    "LEAF-G112-002"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "plans_md_is_router_only": true,
+    "agents_md_is_behaviour_only": true,
+    "process_law_doc_must_remain_frozen": true,
+    "template_pack_must_define_gates_leaves_execution_log_and_document_touch_templates": true,
+    "zip_required_before_gate_can_be_called_done": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G107-001",
+      "gate": "Gate 107",
+      "title": "Install the permanent process-law document",
+      "objective": "Freeze one canonical process-law document and admit it into repo precedence.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf defines repo process law only; it must not change runtime behaviour.",
+      "vocabulary_terms_checked": [
+        "planning mode",
+        "execution mode",
+        "router",
+        "active pack"
+      ],
+      "repo_surfaces": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/01_NORMATIVE.md"
+      ],
+      "inputs": [
+        "approved governance-tranche plan"
+      ],
+      "ordered_actions": [
+        "Write the permanent process-law document.",
+        "Amend precedence so the new process-law document has an explicit place.",
+        "Keep runtime semantics out of scope."
+      ],
+      "forbidden_actions": [
+        "Do not turn the process-law document into a tranche diary."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md exists",
+        "docs/01_NORMATIVE.md includes docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
+      ],
+      "definition_of_done": [
+        "process-law document exists",
+        "precedence updated"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G107-002",
+      "gate": "Gate 107",
+      "title": "Activate the governance pack",
+      "objective": "Make the governance pack the live work authority and advance the next active gate to Gate 108.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G107-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf routes future work without reopening predecessor packs as active authority.",
+      "vocabulary_terms_checked": [
+        "active pack",
+        "predecessor evidence"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "governance pack"
+      ],
+      "ordered_actions": [
+        "Create the governance pack files.",
+        "Point PLANS.md and the gate map at the governance pack.",
+        "Record Gate 107 complete and Gate 108 next."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md pointing at the predecessor testing pack as active authority."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "governance pack files exist",
+        "Gate 108 is active"
+      ],
+      "definition_of_done": [
+        "governance pack active",
+        "Gate 108 next"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G108-001",
+      "gate": "Gate 108",
+      "title": "Reduce PLANS.md to a strict router",
+      "objective": "Remove stale tranche-history narrative and leave PLANS.md as a single live routing surface.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G107-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf governs routing only, not runtime behaviour.",
+      "vocabulary_terms_checked": [
+        "router",
+        "active pack"
+      ],
+      "repo_surfaces": [
+        "PLANS.md"
+      ],
+      "inputs": [
+        "current router text"
+      ],
+      "ordered_actions": [
+        "Strip stale tranche narrative from PLANS.md.",
+        "Keep only routing and anti-drift essentials.",
+        "Name the active governance pack cleanly."
+      ],
+      "forbidden_actions": [
+        "Do not turn PLANS.md into a status diary again."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md contains one active router state"
+      ],
+      "definition_of_done": [
+        "PLANS.md is router-only"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G108-002",
+      "gate": "Gate 108",
+      "title": "Align the gate map with the router",
+      "objective": "Make the canonical gate map agree with the cleaned router and predecessor evidence state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G108-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps the gate map truthful without reopening predecessor packs.",
+      "vocabulary_terms_checked": [
+        "predecessor evidence",
+        "active gate"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "clean router state"
+      ],
+      "ordered_actions": [
+        "Set Gate 109 as the next active gate.",
+        "Record Gate 108 receipts in the execution log."
+      ],
+      "forbidden_actions": [
+        "Do not leave the gate map on a closed predecessor pack."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 109 next in gate map"
+      ],
+      "definition_of_done": [
+        "router and gate map agree"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G109-001",
+      "gate": "Gate 109",
+      "title": "Add missing template surfaces",
+      "objective": "Add canonical execution-log and document-touch checklist templates to the template pack.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G108-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/README.md"
+      ],
+      "workflow_intent_assertion": "This leaf updates reusable planning scaffolding only.",
+      "vocabulary_terms_checked": [
+        "execution log",
+        "document-touch checklist"
+      ],
+      "repo_surfaces": [
+        "docs/planning/tranche_briefing_template_pack/*"
+      ],
+      "inputs": [
+        "existing template pack"
+      ],
+      "ordered_actions": [
+        "Add the missing template files.",
+        "Keep template naming and field discipline explicit."
+      ],
+      "forbidden_actions": [
+        "Do not create template files without documenting their role."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py"
+      ],
+      "expected_evidence": [
+        "template files exist"
+      ],
+      "definition_of_done": [
+        "execution-log template exists",
+        "document-touch template exists"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G109-002",
+      "gate": "Gate 109",
+      "title": "Canonise the template-pack guidance",
+      "objective": "Make the template guidance name the process law and router discipline explicitly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G109-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/*"
+      ],
+      "workflow_intent_assertion": "This leaf codifies how future brainstorms become packs.",
+      "vocabulary_terms_checked": [
+        "planning mode",
+        "execution mode",
+        "router"
+      ],
+      "repo_surfaces": [
+        "docs/planning/tranche_briefing_template_pack/*",
+        "tests/test_tranche_briefing_template_pack.py"
+      ],
+      "inputs": [
+        "updated template files"
+      ],
+      "ordered_actions": [
+        "Amend README, HOWTO, doctrine, and worked example guidance.",
+        "Advance the governance pack to Gate 110."
+      ],
+      "forbidden_actions": [
+        "Do not leave the template pack silent on document-touch discipline."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py"
+      ],
+      "expected_evidence": [
+        "template guidance mentions process law"
+      ],
+      "definition_of_done": [
+        "template guidance canonised"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G110-001",
+      "gate": "Gate 110",
+      "title": "Refine AGENTS frozen-doc and reading-order rules",
+      "objective": "Add the process-law layer to AGENTS without turning AGENTS into a status log.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G109-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md"
+      ],
+      "workflow_intent_assertion": "This leaf changes operator behaviour only where the reading order genuinely needs it.",
+      "vocabulary_terms_checked": [
+        "behaviour authority",
+        "work authority"
+      ],
+      "repo_surfaces": [
+        "AGENTS.md"
+      ],
+      "inputs": [
+        "process-law document",
+        "router discipline"
+      ],
+      "ordered_actions": [
+        "Insert the process-law document into AGENTS frozen documentation order and reading order.",
+        "Keep AGENTS behavioural."
+      ],
+      "forbidden_actions": [
+        "Do not add tranche history to AGENTS."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "AGENTS includes docs/06 in frozen documentation order"
+      ],
+      "definition_of_done": [
+        "AGENTS reading order refined"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G110-002",
+      "gate": "Gate 110",
+      "title": "Stabilise authority hierarchy wording",
+      "objective": "Make AGENTS explicit that PLANS routes active work while the process-law doc freezes how packs are created and maintained.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G110-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents future threads from improvising control-surface hierarchy.",
+      "vocabulary_terms_checked": [
+        "router",
+        "active pack",
+        "historical evidence"
+      ],
+      "repo_surfaces": [
+        "AGENTS.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "refined AGENTS"
+      ],
+      "ordered_actions": [
+        "Clarify behaviour authority versus work authority.",
+        "Advance the governance pack to Gate 111."
+      ],
+      "forbidden_actions": [
+        "Do not make AGENTS a second router."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "AGENTS hierarchy wording coherent with docs/06 and PLANS"
+      ],
+      "definition_of_done": [
+        "AGENTS stable and explicit"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G111-001",
+      "gate": "Gate 111",
+      "title": "Add governance integrity tests",
+      "objective": "Create tests that fail when the process-law, router, and active-pack surfaces drift apart.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G110-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf protects governance machinery with repo-native proof.",
+      "vocabulary_terms_checked": [
+        "governance guard tests"
+      ],
+      "repo_surfaces": [
+        "tests/*planning*",
+        "tests/*template*"
+      ],
+      "inputs": [
+        "router and process-law state"
+      ],
+      "ordered_actions": [
+        "Add governance-specific tests.",
+        "Assert process law, router, and gate map coherence."
+      ],
+      "forbidden_actions": [
+        "Do not leave the new process-law layer untested."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "new governance tests exist"
+      ],
+      "definition_of_done": [
+        "governance tests added"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G111-002",
+      "gate": "Gate 111",
+      "title": "Future-proof predecessor planning tests",
+      "objective": "Adjust older planning tests so closed predecessor packs remain valid evidence without blocking the new governance pack.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G111-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "AGENTS.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps old planning tests honest without freezing the repo at an obsolete active gate.",
+      "vocabulary_terms_checked": [
+        "predecessor evidence"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate94_testing_module_planning.py",
+        "tests/test_gate101_successor_planning.py",
+        "tests/test_gate106_successor_closeout.py"
+      ],
+      "inputs": [
+        "new governance state"
+      ],
+      "ordered_actions": [
+        "Update predecessor-pack tests to treat older packs as evidence only.",
+        "Advance the governance pack to Gate 112."
+      ],
+      "forbidden_actions": [
+        "Do not erase predecessor evidence checks entirely."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "old planning tests remain meaningful under the new router"
+      ],
+      "definition_of_done": [
+        "predecessor planning tests future-proofed"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G112-001",
+      "gate": "Gate 112",
+      "title": "Close the governance pack honestly",
+      "objective": "Update the planning quartet so the governance pack is closed through Gate 112 on main with no active gate remaining.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G111-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf is administrative closeout only.",
+      "vocabulary_terms_checked": [
+        "closed pack",
+        "no active gate"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-30_GATE112_REPO_PROCESS_GOVERNANCE_CLOSEOUT.md"
+      ],
+      "inputs": [
+        "completed governance tranche"
+      ],
+      "ordered_actions": [
+        "Close the planning quartet honestly.",
+        "Freeze the closeout doc."
+      ],
+      "forbidden_actions": [
+        "Do not leave a stale active-gate sentence behind."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "planning quartet says no active governance gate remains"
+      ],
+      "definition_of_done": [
+        "governance pack closed"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json",
+        "docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G112-002",
+      "gate": "Gate 112",
+      "title": "Package the repo from the exact green state",
+      "objective": "Create a fresh full-history zip from the exact green governance-closeout state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G112-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf packages evidence only.",
+      "vocabulary_terms_checked": [
+        "full-history zip"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_GATE112_REPO_PROCESS_GOVERNANCE_CLOSEOUT.md"
+      ],
+      "inputs": [
+        "closed governance pack"
+      ],
+      "ordered_actions": [
+        "Create the packaging artefact from the exact green repo state.",
+        "Freeze the artefact name in the closeout doc."
+      ],
+      "forbidden_actions": [
+        "Do not package from a dirty tree."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "fresh zip name frozen in closeout doc"
+      ],
+      "definition_of_done": [
+        "zip created"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false
+    }
+  ]
+}

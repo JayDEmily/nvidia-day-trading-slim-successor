@@ -15,13 +15,14 @@ If documents disagree, use this order:
 5. `docs/03_DOMAIN_MODEL.md`
 6. `docs/04_TECHNICAL_ARCHITECTURE.md`
 7. `docs/05_GUARDRAILS.md`
-8. `docs/TESTING_AND_PROMOTION.md`
-9. repo-root `PLANS.md`
-10. dated execution plans under `docs/planning/`
-11. `AGENTS.md`
-12. `README.md`
-13. `docs/status/*`
-14. `docs/legacy/*`
+8. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
+9. `docs/TESTING_AND_PROMOTION.md`
+10. repo-root `PLANS.md`
+11. dated execution plans under `docs/planning/`
+12. `AGENTS.md`
+13. `README.md`
+14. `docs/status/*`
+15. `docs/legacy/*`
 
 ## Frozen invariants
 
