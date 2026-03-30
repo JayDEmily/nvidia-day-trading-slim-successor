@@ -1,17 +1,20 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_121_closed_signal_coefficient_authority_pack_active_from_gate_122",
-  "active_gate": "Gate 122",
+  "execution_status": "gate_122_complete_gate_123_active_on_main",
+  "active_gate": "Gate 123",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 122"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G122-001",
     "LEAF-G122-002",
-    "LEAF-G122-003",
+    "LEAF-G122-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G123-001",
     "LEAF-G123-002",
     "LEAF-G123-003",
@@ -51,7 +54,7 @@
       "gate": "Gate 122",
       "title": "Freeze the tranche-one coefficient universe",
       "objective": "Freeze the admitted mutable surfaces, behavioural thresholds, and timing parameters that may participate in the first governed coefficient slice.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -113,7 +116,7 @@
       "gate": "Gate 122",
       "title": "Map bound types and sane starter envelopes",
       "objective": "Separate one-sided clamps, score thresholds, state-definition thresholds, and timing parameters so later bounds do not drift into absurd search ranges.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G122-001"
       ],
@@ -174,7 +177,7 @@
       "gate": "Gate 122",
       "title": "Freeze coefficient-relevant preflight drift receipts",
       "objective": "Record the existing coefficient-adjacent test drift so later coefficient execution does not inherit hidden failing surfaces.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G122-002"
       ],
@@ -245,7 +248,7 @@
       "gate": "Gate 123",
       "title": "Define the new typed coefficient-authority schema",
       "objective": "Add the governed coefficient-authority contract alongside the legacy example registry without collapsing them into one ambiguous shape.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G122-003"
       ],
@@ -1110,5 +1113,389 @@
         "CHANGELOG.jsonl"
       ]
     }
-  ]
+  ],
+  "tranche_one_authority": {
+    "mutable_runtime_surfaces": [
+      {
+        "surface_id": "entry_gate_score_floor",
+        "owner_stage": "eligibility",
+        "units": "score_fraction_0_to_1",
+        "bound_class": "score_threshold",
+        "asymmetry": "narrow_bidirectional",
+        "baseline": 0.65,
+        "minimum": 0.5,
+        "maximum": 0.85,
+        "allowed_upstream_drivers": [
+          "clock_envelope",
+          "event_window_state",
+          "signal_conflict_state",
+          "permission_state"
+        ]
+      },
+      {
+        "surface_id": "zone_score_threshold",
+        "owner_stage": "eligibility",
+        "units": "score_fraction_0_to_1",
+        "bound_class": "score_threshold",
+        "asymmetry": "narrow_bidirectional",
+        "baseline": 0.5,
+        "minimum": 0.35,
+        "maximum": 0.8,
+        "allowed_upstream_drivers": [
+          "clock_envelope",
+          "dealer_pressure_state",
+          "signal_conflict_state",
+          "permission_state"
+        ]
+      },
+      {
+        "surface_id": "distance_to_vwap_soft_limit_pct",
+        "owner_stage": "execution",
+        "units": "percent",
+        "bound_class": "one_sided_clamp",
+        "asymmetry": "narrow_bidirectional",
+        "baseline": 1.5,
+        "minimum": 0.4,
+        "maximum": 3.0,
+        "allowed_upstream_drivers": [
+          "clock_envelope",
+          "gamma_state",
+          "dealer_pressure_state",
+          "options_behavior_cluster"
+        ]
+      },
+      {
+        "surface_id": "risk_vix_caution_threshold",
+        "owner_stage": "posture",
+        "units": "volatility_index_points",
+        "bound_class": "score_threshold",
+        "asymmetry": "narrow_bidirectional",
+        "baseline": 24.0,
+        "minimum": 18.0,
+        "maximum": 40.0,
+        "allowed_upstream_drivers": [
+          "volatility_regime",
+          "event_window_state",
+          "signal_conflict_state"
+        ]
+      },
+      {
+        "surface_id": "risk_vix_hot_threshold",
+        "owner_stage": "posture",
+        "units": "volatility_index_points",
+        "bound_class": "score_threshold",
+        "asymmetry": "narrow_bidirectional",
+        "baseline": 32.0,
+        "minimum": 24.0,
+        "maximum": 50.0,
+        "allowed_upstream_drivers": [
+          "volatility_regime",
+          "event_window_state",
+          "signal_conflict_state"
+        ]
+      },
+      {
+        "surface_id": "max_risk_per_trade",
+        "owner_stage": "execution",
+        "units": "percent",
+        "bound_class": "one_sided_clamp",
+        "asymmetry": "downward_friendly",
+        "baseline": 0.35,
+        "minimum": 0.1,
+        "maximum": 0.55,
+        "allowed_upstream_drivers": [
+          "inventory_posture_state",
+          "fresh_vs_inventory_state",
+          "permission_state",
+          "gamma_state"
+        ]
+      },
+      {
+        "surface_id": "target_fresh_deployable_pct",
+        "owner_stage": "execution",
+        "units": "percent",
+        "bound_class": "one_sided_clamp",
+        "asymmetry": "downward_only",
+        "baseline": 55.0,
+        "minimum": 0.0,
+        "maximum": 55.0,
+        "allowed_upstream_drivers": [
+          "inventory_posture_state",
+          "fresh_vs_inventory_state",
+          "permission_state",
+          "capital_lockup_state"
+        ]
+      },
+      {
+        "surface_id": "hedge_required",
+        "owner_stage": "execution",
+        "units": "boolean_flag",
+        "bound_class": "boolean_requirement",
+        "asymmetry": "boolean_only",
+        "baseline": false,
+        "allowed_upstream_drivers": [
+          "gamma_state",
+          "signal_conflict_state",
+          "permission_state"
+        ]
+      }
+    ],
+    "temporal_thresholds": [
+      {
+        "parameter_id": "open_disorder_relvol_min",
+        "owner_stage": "temporal",
+        "units": "ratio",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 1.4,
+        "minimum": 1.1,
+        "maximum": 1.9,
+        "allowed_upstream_drivers": [
+          "relative_volume_ratio"
+        ]
+      },
+      {
+        "parameter_id": "open_disorder_rv5_bps_min",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 80.0,
+        "minimum": 50.0,
+        "maximum": 140.0,
+        "allowed_upstream_drivers": [
+          "rv5_bps"
+        ]
+      },
+      {
+        "parameter_id": "open_disorder_vwap_dist_bps_min",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 60.0,
+        "minimum": 35.0,
+        "maximum": 110.0,
+        "allowed_upstream_drivers": [
+          "distance_to_vwap_bps"
+        ]
+      },
+      {
+        "parameter_id": "anchor_vwap_dist_bps_max",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 35.0,
+        "minimum": 15.0,
+        "maximum": 60.0,
+        "allowed_upstream_drivers": [
+          "distance_to_vwap_bps"
+        ]
+      },
+      {
+        "parameter_id": "anchor_rv5_bps_max",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 60.0,
+        "minimum": 35.0,
+        "maximum": 90.0,
+        "allowed_upstream_drivers": [
+          "rv5_bps"
+        ]
+      },
+      {
+        "parameter_id": "anchor_relvol_min",
+        "owner_stage": "temporal",
+        "units": "ratio",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 0.9,
+        "minimum": 0.6,
+        "maximum": 1.1,
+        "allowed_upstream_drivers": [
+          "relative_volume_ratio"
+        ]
+      },
+      {
+        "parameter_id": "anchor_relvol_max",
+        "owner_stage": "temporal",
+        "units": "ratio",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 1.4,
+        "minimum": 1.2,
+        "maximum": 1.7,
+        "allowed_upstream_drivers": [
+          "relative_volume_ratio"
+        ]
+      },
+      {
+        "parameter_id": "anchor_impulse_age_min",
+        "owner_stage": "temporal",
+        "units": "minutes",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 5.0,
+        "minimum": 2.0,
+        "maximum": 10.0,
+        "allowed_upstream_drivers": [
+          "impulse_age_minutes"
+        ]
+      },
+      {
+        "parameter_id": "compression_rv5_bps_max",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 35.0,
+        "minimum": 15.0,
+        "maximum": 55.0,
+        "allowed_upstream_drivers": [
+          "rv5_bps"
+        ]
+      },
+      {
+        "parameter_id": "compression_range5_bps_max",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 40.0,
+        "minimum": 20.0,
+        "maximum": 65.0,
+        "allowed_upstream_drivers": [
+          "range5_bps"
+        ]
+      },
+      {
+        "parameter_id": "compression_vwap_dist_bps_max",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 25.0,
+        "minimum": 10.0,
+        "maximum": 45.0,
+        "allowed_upstream_drivers": [
+          "distance_to_vwap_bps"
+        ]
+      },
+      {
+        "parameter_id": "compression_relvol_max",
+        "owner_stage": "temporal",
+        "units": "ratio",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 0.9,
+        "minimum": 0.6,
+        "maximum": 1.1,
+        "allowed_upstream_drivers": [
+          "relative_volume_ratio"
+        ]
+      },
+      {
+        "parameter_id": "trend_vwap_slope_bps_min",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 15.0,
+        "minimum": 8.0,
+        "maximum": 30.0,
+        "allowed_upstream_drivers": [
+          "vwap_slope_5m_bps"
+        ]
+      },
+      {
+        "parameter_id": "trend_vwap_dist_bps_min",
+        "owner_stage": "temporal",
+        "units": "basis_points",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 30.0,
+        "minimum": 15.0,
+        "maximum": 55.0,
+        "allowed_upstream_drivers": [
+          "distance_to_vwap_bps"
+        ]
+      },
+      {
+        "parameter_id": "trend_relvol_min",
+        "owner_stage": "temporal",
+        "units": "ratio",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 1.05,
+        "minimum": 0.9,
+        "maximum": 1.35,
+        "allowed_upstream_drivers": [
+          "relative_volume_ratio"
+        ]
+      },
+      {
+        "parameter_id": "trend_impulse_age_max",
+        "owner_stage": "temporal",
+        "units": "minutes",
+        "bound_class": "state_definition_threshold",
+        "asymmetry": "semantic_threshold",
+        "baseline": 5.0,
+        "minimum": 2.0,
+        "maximum": 10.0,
+        "allowed_upstream_drivers": [
+          "impulse_age_minutes"
+        ]
+      }
+    ],
+    "timing_parameters": [
+      {
+        "parameter_id": "power_hour_window_min",
+        "owner_stage": "temporal",
+        "units": "minutes",
+        "bound_class": "timing_parameter",
+        "asymmetry": "clock_window",
+        "baseline": 60.0,
+        "minimum": 45.0,
+        "maximum": 75.0,
+        "allowed_upstream_drivers": [
+          "minutes_to_close"
+        ]
+      },
+      {
+        "parameter_id": "unwind_window_min",
+        "owner_stage": "temporal",
+        "units": "minutes",
+        "bound_class": "timing_parameter",
+        "asymmetry": "clock_window",
+        "baseline": 30.0,
+        "minimum": 20.0,
+        "maximum": 45.0,
+        "allowed_upstream_drivers": [
+          "minutes_to_close"
+        ]
+      }
+    ],
+    "explicit_exclusions": [
+      "raw_asia_japan_europe_precursor_coefficients",
+      "legacy_module_specific_salvage_coefficients",
+      "timing_parameters_as_alpha_weights",
+      "semantically_absurd_search_ranges"
+    ]
+  },
+  "inherited_preflight_drift": {
+    "proof_command": "PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate97_runtime_invariants.py tests/test_gate98_threshold_edges.py tests/test_gate102_raw_runtime_harness.py",
+    "observed_result": "20 passed, 6 failed",
+    "failing_tests": [
+      "tests/test_gate78_modifier_runtime_integration.py::test_gate78_runtime_applies_deterministic_modifier_caps_and_lineage",
+      "tests/test_gate78_modifier_runtime_integration.py::test_gate78_vocabulary_terms_are_generated_and_committed",
+      "tests/test_gate96_canonical_runtime_harness.py::test_canonical_runtime_harness_run_is_deterministic_and_freezes_outputs",
+      "tests/test_gate97_runtime_invariants.py::test_lineage_and_stage_order_invariants_hold_across_canonical_scenarios",
+      "tests/test_gate98_threshold_edges.py::test_gamma_pressure_edge_cases_are_monotonic_and_bounded[0.95-destabilising]",
+      "tests/test_gate102_raw_runtime_harness.py::test_canonical_raw_runtime_harness_run_is_deterministic_and_freezes_outputs"
+    ],
+    "interpretation": "Inherited drift frozen before Gate 123 schema work; later coefficient-authority execution must not claim these failures are newly introduced."
+  }
 }

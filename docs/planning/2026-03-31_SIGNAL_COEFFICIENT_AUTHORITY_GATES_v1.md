@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gate 122 active, Gates 123-127 planned
+Status: active signal-coefficient authority pack; Gate 122 complete on `main`, Gate 123 active, Gates 124-127 planned
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose
@@ -161,6 +161,70 @@ Checklist file: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_DOCUMENT_
 - the admitted tranche-one coefficient universe is frozen with baseline, floor/cap class, units, and exclusion rules;
 - timing parameters are separated from behavioural thresholds and from mutable runtime surfaces;
 - pre-existing drift relevant to coefficient work is recorded explicitly so later gates do not inherit hidden red surfaces.
+
+
+#### Gate 122 frozen mutable runtime surfaces
+
+| Surface | Owner stage | Units | Bound class | Baseline | Min | Max | Asymmetry | Notes |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
+| `entry_gate_score_floor` | `eligibility` | `score_fraction_0_to_1` | `score_threshold` | 0.65 | 0.50 | 0.85 | `narrow_bidirectional` | Permission-quality floor consumed before ladder admission. |
+| `zone_score_threshold` | `eligibility` | `score_fraction_0_to_1` | `score_threshold` | 0.50 | 0.35 | 0.80 | `narrow_bidirectional` | Zone-quality threshold remains tighter than any salvage variant override. |
+| `distance_to_vwap_soft_limit_pct` | `execution` | `percent` | `one_sided_clamp` | 1.50 | 0.40 | 3.00 | `narrow_bidirectional` | Operational distance cap, not an open-ended alpha multiplier. |
+| `risk_vix_caution_threshold` | `posture` | `volatility_index_points` | `score_threshold` | 24.00 | 18.00 | 40.00 | `narrow_bidirectional` | Caution threshold consumed by the final risk path via execution carriage. |
+| `risk_vix_hot_threshold` | `posture` | `volatility_index_points` | `score_threshold` | 32.00 | 24.00 | 50.00 | `narrow_bidirectional` | Hot threshold must stay above caution threshold at all times. |
+| `max_risk_per_trade` | `execution` | `percent` | `one_sided_clamp` | 0.35 | 0.10 | 0.55 | `downward_friendly` | Risk cap may tighten materially but must not explode upward. |
+| `target_fresh_deployable_pct` | `execution` | `percent` | `one_sided_clamp` | 55.00 | 0.00 | 55.00 | `downward_only` | Capital deployment cap is allowed to derisk to zero but not exceed baseline in tranche one. |
+| `hedge_required` | `execution` | `boolean_flag` | `boolean_requirement` | false | — | — | `boolean_only` | Boolean requirement surface, not a numeric search axis. |
+
+#### Gate 122 frozen temporal behavioural thresholds
+
+| Threshold | Owner stage | Units | Bound class | Starter | Min | Max | Allowed primitive drivers |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| `open_disorder_relvol_min` | `temporal` | `ratio` | `state_definition_threshold` | 1.40 | 1.10 | 1.90 | `relative_volume_ratio` |
+| `open_disorder_rv5_bps_min` | `temporal` | `basis_points` | `state_definition_threshold` | 80 | 50 | 140 | `rv5_bps` |
+| `open_disorder_vwap_dist_bps_min` | `temporal` | `basis_points` | `state_definition_threshold` | 60 | 35 | 110 | `distance_to_vwap_bps` |
+| `anchor_vwap_dist_bps_max` | `temporal` | `basis_points` | `state_definition_threshold` | 35 | 15 | 60 | `distance_to_vwap_bps` |
+| `anchor_rv5_bps_max` | `temporal` | `basis_points` | `state_definition_threshold` | 60 | 35 | 90 | `rv5_bps` |
+| `anchor_relvol_min` | `temporal` | `ratio` | `state_definition_threshold` | 0.90 | 0.60 | 1.10 | `relative_volume_ratio` |
+| `anchor_relvol_max` | `temporal` | `ratio` | `state_definition_threshold` | 1.40 | 1.20 | 1.70 | `relative_volume_ratio` |
+| `anchor_impulse_age_min` | `temporal` | `minutes` | `state_definition_threshold` | 5 | 2 | 10 | `impulse_age_minutes` |
+| `compression_rv5_bps_max` | `temporal` | `basis_points` | `state_definition_threshold` | 35 | 15 | 55 | `rv5_bps` |
+| `compression_range5_bps_max` | `temporal` | `basis_points` | `state_definition_threshold` | 40 | 20 | 65 | `range5_bps` |
+| `compression_vwap_dist_bps_max` | `temporal` | `basis_points` | `state_definition_threshold` | 25 | 10 | 45 | `distance_to_vwap_bps` |
+| `compression_relvol_max` | `temporal` | `ratio` | `state_definition_threshold` | 0.90 | 0.60 | 1.10 | `relative_volume_ratio` |
+| `trend_vwap_slope_bps_min` | `temporal` | `basis_points` | `state_definition_threshold` | 15 | 8 | 30 | `vwap_slope_5m_bps` |
+| `trend_vwap_dist_bps_min` | `temporal` | `basis_points` | `state_definition_threshold` | 30 | 15 | 55 | `distance_to_vwap_bps` |
+| `trend_relvol_min` | `temporal` | `ratio` | `state_definition_threshold` | 1.05 | 0.90 | 1.35 | `relative_volume_ratio` |
+| `trend_impulse_age_max` | `temporal` | `minutes` | `state_definition_threshold` | 5 | 2 | 10 | `impulse_age_minutes` |
+
+#### Gate 122 frozen timing parameters
+
+| Parameter | Owner stage | Units | Bound class | Starter | Min | Max | Allowed primitive drivers |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| `power_hour_window_min` | `temporal` | `minutes` | `timing_parameter` | 60 | 45 | 75 | `minutes_to_close` |
+| `unwind_window_min` | `temporal` | `minutes` | `timing_parameter` | 30 | 20 | 45 | `minutes_to_close` |
+
+#### Gate 122 explicit exclusions
+
+- raw Asia/Japan market-health coefficients remain excluded until the repo owns admitted raw Asia-session truth;
+- any legacy module-specific coefficient from `config/coefficients_registry.example.yaml` remains reference-only unless a later gate explicitly re-admits it;
+- timing parameters are separated from behavioural thresholds and from alpha-weight style coefficients;
+- no tranche-one numeric surface may carry absurd search space such as `0.01x` to `100x` style expansion.
+
+#### Gate 122 inherited preflight drift receipt
+
+Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
+
+- proof command: `PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate97_runtime_invariants.py tests/test_gate98_threshold_edges.py tests/test_gate102_raw_runtime_harness.py`
+- observed result: `20 passed, 6 failed`
+- inherited failing tests:
+  - `tests/test_gate78_modifier_runtime_integration.py::test_gate78_runtime_applies_deterministic_modifier_caps_and_lineage`
+  - `tests/test_gate78_modifier_runtime_integration.py::test_gate78_vocabulary_terms_are_generated_and_committed`
+  - `tests/test_gate96_canonical_runtime_harness.py::test_canonical_runtime_harness_run_is_deterministic_and_freezes_outputs`
+  - `tests/test_gate97_runtime_invariants.py::test_lineage_and_stage_order_invariants_hold_across_canonical_scenarios`
+  - `tests/test_gate98_threshold_edges.py::test_gamma_pressure_edge_cases_are_monotonic_and_bounded[0.95-destabilising]`
+  - `tests/test_gate102_raw_runtime_harness.py::test_canonical_raw_runtime_harness_run_is_deterministic_and_freezes_outputs`
+- interpretation: Gate 121 final-risk and event-window evolution already moved these expectations; Gate 123 must not pretend those surfaces are newly broken by coefficient-authority work.
 
 ### Gate 123: Install the governed coefficient-authority contract
 
