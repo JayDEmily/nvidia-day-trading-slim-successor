@@ -44,7 +44,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **Gate 121 in the historical-evaluation readiness pack**. Closed predecessor packs remain evidence only unless `PLANS.md` reactivates them explicitly.
+Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**. Closed predecessor packs remain evidence only unless `PLANS.md` reactivates them explicitly.
 
 ## 2. Selected completed-tranche evidence
 
@@ -133,7 +133,7 @@ The successor cognitive-workflow modification pack is closed through Gate 79, th
 | Gate 118 | complete on `main` | reconcile declared mutable surfaces with actual operative downstream consumers before richer execution and final-risk work | `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`, `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`, `docs/planning/2026-03-30_GATE118_MUTABLE_SURFACE_RECONCILIATION.md`, `tests/test_gate118_mutable_surface_operability.py` |
 | Gate 119 | complete on `main` | replace registry-order lead selection with explicit candidate adjudication and contradiction resolution | `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`, `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json` |
 | Gate 120 | complete on `main` | enrich execution outputs with real execution geometry after candidate adjudication is authoritative | `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`, `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`, `docs/planning/2026-03-30_GATE120_EXECUTION_GEOMETRY.md`, `tests/test_gate120_execution_geometry.py` |
-| Gate 121 | active gate | join final risk authority after execution synthesis so posture, modifiers, execution, and risk stop living as split permission worlds | `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`, `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json` |
+| Gate 121 | complete on `main` | join final risk authority after execution synthesis so posture, modifiers, execution, and risk stop living as split permission worlds, then close the historical-evaluation readiness pack honestly | `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`, `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`, `docs/planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md`, `tests/test_gate121_final_risk_gateway_join.py`, `tests/test_gate121_historical_evaluation_readiness_closeout.py` |
 
 ## 4. Global execution rules
 

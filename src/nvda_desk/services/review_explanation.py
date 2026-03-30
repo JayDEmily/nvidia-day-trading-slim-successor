@@ -98,12 +98,18 @@ class ReviewExplanationService:
 
         conflict_tags = self._conflict_tags(payload)
         signal_conflict_density = round(min(1.0, len(conflict_tags) / 5.0), 4)
+        final_risk_action = (
+            payload.execution.final_risk_join.action.value
+            if payload.execution.final_risk_join is not None
+            else "none"
+        )
         summary = (
             f"window={payload.temporal.desk_window}; "
             f"permission={payload.posture.permission_state.value}; "
             f"families={payload.execution.active_family_ids or ['none']}; "
             f"setups={payload.execution.active_setup_variant_ids or ['none']}; "
-            f"playbooks={payload.execution.active_playbook_ids or ['none']}"
+            f"playbooks={payload.execution.active_playbook_ids or ['none']}; "
+            f"final_risk={final_risk_action}"
         )
         stage_reason_packets = [
             StageReasonPacket(
@@ -145,6 +151,14 @@ class ReviewExplanationService:
                 reasons=payload.execution.reasons,
             ),
         ]
+        if payload.execution.final_risk_join is not None:
+            stage_reason_packets.append(
+                StageReasonPacket(
+                    stage="final_risk_join",
+                    summary=payload.execution.final_risk_join.action.value,
+                    reasons=payload.execution.final_risk_join.reasons,
+                )
+            )
         rejected_playbooks = [
             RejectedPlaybookReason(
                 playbook_id=candidate.playbook_id,
@@ -212,6 +226,11 @@ class ReviewExplanationService:
             "signal_conflict_density": signal_conflict_density,
             "desk_readout": desk_readout,
             "conflicts": conflict_tags,
+            "final_risk_join": (
+                payload.execution.final_risk_join.model_dump(mode="json")
+                if payload.execution.final_risk_join is not None
+                else None
+            ),
             "review_lineage": review_lineage.model_dump(mode="json"),
             "failure_taxonomy": failure_taxonomy.model_dump(mode="json"),
             "economic_accountability": economic_accountability.model_dump(mode="json"),

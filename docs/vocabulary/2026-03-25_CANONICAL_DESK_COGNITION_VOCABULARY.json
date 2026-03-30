@@ -525,6 +525,26 @@
       "notes": []
     },
     {
+      "canonical_slug": "final_risk_join",
+      "canonical_label": "Final Risk Join",
+      "category": "execution_expression",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": "final_risk_join",
+      "horizon": "intraday",
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.cognition.FinalRiskJoinSurface",
+      "allowed_aliases": [
+        "risk_gateway_join",
+        "final_risk_gateway_join"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Frozen Gate 121 final authority surface carried after execution synthesis."
+      ]
+    },
+    {
       "canonical_slug": "financial_calendar_crosswalk",
       "canonical_label": "Financial Calendar Crosswalk",
       "category": "workflow",
@@ -1311,6 +1331,25 @@
       "disallowed_phrases": [],
       "notes": [
         "Includes review_not_eligible and review_no_change as first-class governed results."
+      ]
+    },
+    {
+      "canonical_slug": "risk_disposition",
+      "canonical_label": "Risk Disposition",
+      "category": "risk_policy",
+      "stage_owner": "risk_gateway",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": "intraday",
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.risk.RiskAction",
+      "allowed_aliases": [
+        "risk_action"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Gate 121 freezes the final runtime disposition vocabulary to allow, derisk, or block."
       ]
     },
     {

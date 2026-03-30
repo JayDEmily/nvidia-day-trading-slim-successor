@@ -75,6 +75,7 @@ from nvda_desk.services.options_flow_context import OptionsFlowContextService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.review_explanation import ReviewExplanationService
+from nvda_desk.services.risk_gateway import RiskGatewayService
 from nvda_desk.services.state_conditioned_modifier import (
     StateConditionedModifierService,
 )
@@ -155,6 +156,7 @@ class DeskCognitionRuntime:
         self._eligibility = PlaybookEligibilityService()
         self._execution = ExecutionExpressionService()
         self._review = ReviewExplanationService()
+        self._risk_gateway = RiskGatewayService()
         self._modifiers = StateConditionedModifierService()
         self._tranche_a_upstream = TrancheAUpstreamContractService()
         self._tranche_a_selector = TrancheASelectorContractService()
@@ -281,6 +283,18 @@ class DeskCognitionRuntime:
             )
         )
         execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
+        final_risk_decision = self._risk_gateway.evaluate_runtime_join(
+            requested_at=temporal_input.ts,
+            temporal_input=temporal_input,
+            temporal=temporal,
+            regime_input=regime_input,
+            options_flow_input=options_flow_input,
+            posture=posture,
+            execution=execution,
+            inventory_state=inventory_state,
+            risk_budget_remaining_pct=risk_budget_remaining_pct,
+        )
+        execution = self._risk_gateway.apply_final_join(execution, final_risk_decision)
         review = self._review.evaluate(
             ReviewExplanationInput(
                 temporal=temporal,

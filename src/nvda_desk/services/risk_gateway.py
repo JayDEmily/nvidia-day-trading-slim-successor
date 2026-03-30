@@ -1,14 +1,28 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC
-from typing import cast
+from datetime import UTC, datetime
+from typing import TYPE_CHECKING, Any, cast
 
 from pydantic import BaseModel
-from sqlalchemy import desc, select
-from sqlalchemy.orm import Session, sessionmaker
 
-from nvda_desk.db.models import RiskDecisionLog
+if TYPE_CHECKING:
+    from sqlalchemy.orm import Session, sessionmaker
+else:
+    Session = Any
+    sessionmaker = Any
+
+from nvda_desk.schemas.cognition import (
+    ExecutionExpressionOutput,
+    FinalRiskJoinSurface,
+    InventoryState,
+    MarketRegimeContextInput,
+    OptionsFlowContextInput,
+    PermissionState,
+    PostureRiskOutput,
+    TemporalContextInput,
+    TemporalContextOutput,
+)
 from nvda_desk.schemas.risk import (
     RiskAction,
     RiskDecision,
@@ -19,7 +33,7 @@ from nvda_desk.schemas.risk import (
 
 
 class RiskGatewayService:
-    def __init__(self, session_factory: sessionmaker[Session]):
+    def __init__(self, session_factory: sessionmaker[Session] | None = None):
         self._session_factory = session_factory
 
     def evaluate(self, payload: RiskPolicyInput) -> RiskDecision:
@@ -36,9 +50,15 @@ class RiskGatewayService:
         if payload.gross_exposure_pct >= 95 or payload.risk_budget_remaining_pct <= 5:
             reasons.append("exposure_or_budget_breached")
             action = RiskAction.BLOCK
-        if payload.conflict_tags:
-            reasons.append("module_conflict_present")
+
+        hard_conflicts = [tag for tag in payload.conflict_tags if tag.startswith("hard_veto:")]
+        soft_conflicts = [tag for tag in payload.conflict_tags if not tag.startswith("hard_veto:")]
+        if hard_conflicts:
+            reasons.append("hard_conflict_block")
             action = RiskAction.BLOCK
+        elif soft_conflicts and action is RiskAction.ALLOW:
+            reasons.append("module_conflict_derisk")
+            action = RiskAction.DERISK
 
         volatility_hot = (
             payload.vix_level >= payload.vix_hot_threshold
@@ -81,7 +101,215 @@ class RiskGatewayService:
             vvix_change_pct_15m=payload.vvix_change_pct_15m,
         )
 
+    def evaluate_runtime_join(
+        self,
+        *,
+        requested_at: datetime,
+        temporal_input: TemporalContextInput,
+        temporal: TemporalContextOutput,
+        regime_input: MarketRegimeContextInput,
+        options_flow_input: OptionsFlowContextInput,
+        posture: PostureRiskOutput,
+        execution: ExecutionExpressionOutput,
+        inventory_state: InventoryState,
+        risk_budget_remaining_pct: float,
+        symbol: str = "NVDA",
+    ) -> RiskDecision:
+        market_decision = self.evaluate(
+            RiskPolicyInput(
+                symbol=symbol,
+                module_id=execution.lead_playbook_id or execution.lead_family_id or "desk_cognition_runtime",
+                requested_at=requested_at,
+                session_phase=temporal.session_phase,
+                vix_level=regime_input.vix_level,
+                vvix_level=regime_input.vvix_level,
+                vix_change_pct_15m=self._vix_change_proxy(temporal_input, options_flow_input),
+                vvix_change_pct_15m=self._vvix_change_proxy(
+                    temporal, regime_input, options_flow_input
+                ),
+                data_age_seconds=0,
+                gross_exposure_pct=inventory_state.existing_inventory_pct,
+                risk_budget_remaining_pct=risk_budget_remaining_pct,
+                open_orders_count=inventory_state.open_orders_count,
+                conflict_tags=self._runtime_conflict_tags(posture, execution),
+                vix_caution_threshold=execution.risk_vix_caution_threshold,
+                vix_hot_threshold=execution.risk_vix_hot_threshold,
+            )
+        )
+        action = market_decision.action
+        reasons = list(market_decision.reasons)
+        confidence_scalar = market_decision.confidence_scalar
+
+        if posture.permission_state is PermissionState.BLOCK:
+            action = RiskAction.BLOCK
+            confidence_scalar = 0.0
+            reasons = ["posture_block_join", *reasons]
+        elif posture.permission_state is PermissionState.DERISK and action is RiskAction.ALLOW:
+            action = RiskAction.DERISK
+            confidence_scalar = min(confidence_scalar, 0.65)
+            reasons = ["posture_derisk_join", *reasons]
+
+        if not reasons:
+            reasons = ["risk_gateway_clear"]
+
+        return RiskDecision(
+            action=action,
+            reasons=reasons,
+            confidence_scalar=confidence_scalar,
+            vix_level=market_decision.vix_level,
+            vvix_level=market_decision.vvix_level,
+            vix_change_pct_15m=market_decision.vix_change_pct_15m,
+            vvix_change_pct_15m=market_decision.vvix_change_pct_15m,
+        )
+
+    def apply_final_join(
+        self,
+        execution: ExecutionExpressionOutput,
+        decision: RiskDecision,
+    ) -> ExecutionExpressionOutput:
+        pre_active = list(execution.active_playbook_ids)
+        pre_lead = execution.lead_playbook_id
+        pre_entry_style = execution.entry_style
+        base_reasons = list(execution.reasons)
+        geometry_notes = list(execution.geometry_notes)
+        lineage_tags = [
+            "joined_after:execution_synthesis",
+            f"risk_action:{decision.action.value}",
+            f"lead_before_join:{pre_lead or 'none'}",
+        ]
+        if any(reason.startswith("posture_") for reason in decision.reasons):
+            lineage_tags.append("authority_source:posture")
+        if any(
+            "volatility" in reason or "order_pressure" in reason for reason in decision.reasons
+        ):
+            lineage_tags.append("authority_source:market_risk")
+
+        if decision.action is RiskAction.BLOCK:
+            geometry_notes.append("final_risk_block_execution")
+            entry_style = (
+                pre_entry_style
+                if pre_lead is None and pre_entry_style in {"no_trade", "blocked"}
+                else "final_risk_blocked"
+            )
+            return execution.model_copy(
+                update={
+                    "pre_final_risk_active_playbook_ids": pre_active,
+                    "pre_final_risk_lead_playbook_id": pre_lead,
+                    "pre_final_risk_entry_style": pre_entry_style,
+                    "active_playbook_ids": [],
+                    "active_setup_variant_ids": [],
+                    "active_family_ids": [],
+                    "lead_playbook_id": None,
+                    "lead_setup_variant_id": None,
+                    "lead_family_id": None,
+                    "entry_style": entry_style,
+                    "max_risk_per_trade": 0.0,
+                    "ladder_spacing_bps": 0.0,
+                    "max_chase_distance_bps": 0.0,
+                    "stop_distance_bps": 0.0,
+                    "take_profit_distance_bps": 0.0,
+                    "hedge_ratio": 0.0,
+                    "per_slice_risk_pct": 0.0,
+                    "geometry_notes": geometry_notes,
+                    "hedge_required": False,
+                    "inventory_action": "reduce",
+                    "fresh_capital_action": "block",
+                    "target_fresh_deployable_pct": 0.0,
+                    "scaling_plan": [],
+                    "final_risk_join": FinalRiskJoinSurface(
+                        action=decision.action,
+                        confidence_scalar=decision.confidence_scalar,
+                        reasons=list(decision.reasons),
+                        lineage_tags=lineage_tags,
+                        execution_effect="block_execution",
+                    ),
+                    "reasons": [*base_reasons, f"final_risk_join:{decision.action.value}"],
+                }
+            )
+
+        if decision.action is RiskAction.DERISK:
+            scalar = round(max(0.0, min(1.0, decision.confidence_scalar)), 4)
+            geometry_notes.append("final_risk_derisk_execution")
+            return execution.model_copy(
+                update={
+                    "pre_final_risk_active_playbook_ids": pre_active,
+                    "pre_final_risk_lead_playbook_id": pre_lead,
+                    "pre_final_risk_entry_style": pre_entry_style,
+                    "target_fresh_deployable_pct": round(
+                        execution.target_fresh_deployable_pct * scalar, 4
+                    ),
+                    "scaling_plan": [round(value * scalar, 4) for value in execution.scaling_plan],
+                    "max_risk_per_trade": round(execution.max_risk_per_trade * scalar, 4),
+                    "max_chase_distance_bps": round(
+                        execution.max_chase_distance_bps * scalar, 4
+                    ),
+                    "per_slice_risk_pct": round(execution.per_slice_risk_pct * scalar, 4),
+                    "hedge_required": True,
+                    "hedge_ratio": round(max(execution.hedge_ratio, 1.0 - scalar), 4),
+                    "fresh_capital_action": "derisk",
+                    "geometry_notes": geometry_notes,
+                    "final_risk_join": FinalRiskJoinSurface(
+                        action=decision.action,
+                        confidence_scalar=decision.confidence_scalar,
+                        reasons=list(decision.reasons),
+                        lineage_tags=lineage_tags,
+                        execution_effect="derisk_execution",
+                    ),
+                    "reasons": [*base_reasons, f"final_risk_join:{decision.action.value}"],
+                }
+            )
+
+        return execution.model_copy(
+            update={
+                "pre_final_risk_active_playbook_ids": pre_active,
+                "pre_final_risk_lead_playbook_id": pre_lead,
+                "pre_final_risk_entry_style": pre_entry_style,
+                "final_risk_join": FinalRiskJoinSurface(
+                    action=decision.action,
+                    confidence_scalar=decision.confidence_scalar,
+                    reasons=list(decision.reasons),
+                    lineage_tags=lineage_tags,
+                    execution_effect="allow_as_computed",
+                ),
+                "reasons": [*base_reasons, f"final_risk_join:{decision.action.value}"],
+            }
+        )
+
+    def _runtime_conflict_tags(
+        self,
+        posture: PostureRiskOutput,
+        execution: ExecutionExpressionOutput,
+    ) -> list[str]:
+        conflict_tags: list[str] = []
+        if posture.signal_conflict_state != "aligned_signals":
+            conflict_tags.append(posture.signal_conflict_state)
+        return conflict_tags
+
+    def _vix_change_proxy(
+        self,
+        temporal_input: TemporalContextInput,
+        options_flow_input: OptionsFlowContextInput,
+    ) -> float:
+        move_component = max(0.0, abs(temporal_input.intraday_move_pct) * 4.0)
+        gamma_component = max(0.0, options_flow_input.gamma_pressure_score - 0.6) * 20.0
+        return round(move_component + gamma_component, 4)
+
+    def _vvix_change_proxy(
+        self,
+        temporal: TemporalContextOutput,
+        regime_input: MarketRegimeContextInput,
+        options_flow_input: OptionsFlowContextInput,
+    ) -> float:
+        skew_component = max(0.0, options_flow_input.put_call_skew - 0.35) * 30.0
+        vol_of_vol_component = max(0.0, regime_input.vvix_level - 95.0) / 2.0
+        time_component = 6.0 if temporal.event_window_state == "event_imminent_window" else 0.0
+        return round(skew_component + vol_of_vol_component + time_component, 4)
+
     def record(self, payload: RiskPolicyInput) -> RiskDecisionPayload:
+        if self._session_factory is None:
+            raise RuntimeError("RiskGatewayService.record requires a session factory")
+        from nvda_desk.db.models import RiskDecisionLog
+
         decision = self.evaluate(payload)
         with self._session_factory() as session:
             row = RiskDecisionLog(
@@ -104,6 +332,11 @@ class RiskGatewayService:
     def list_decisions(
         self, module_id: str | None = None, limit: int = 20
     ) -> RiskDecisionListResponse:
+        if self._session_factory is None:
+            raise RuntimeError("RiskGatewayService.list_decisions requires a session factory")
+        from sqlalchemy import desc, select
+        from nvda_desk.db.models import RiskDecisionLog
+
         with self._session_factory() as session:
             stmt = select(RiskDecisionLog)
             if module_id:
@@ -115,7 +348,7 @@ class RiskGatewayService:
     def _dump_model(self, model: BaseModel) -> str:
         return json.dumps(model.model_dump(mode="json"))
 
-    def _to_payload(self, row: RiskDecisionLog) -> RiskDecisionPayload:
+    def _to_payload(self, row: Any) -> RiskDecisionPayload:
         output_payload = dict(json.loads(row.output_json))
         return RiskDecisionPayload(
             decision_id=row.id,

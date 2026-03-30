@@ -32,7 +32,7 @@ from nvda_desk.schemas.review import (
     ReviewLineagePacket,
     TemporalEventWindowSurface,
 )
-from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState
+from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState, RiskAction
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     DegradationStep,
@@ -495,6 +495,20 @@ class ExecutionExpressionInput(BaseModel):
     modifier_runtime_packet: ModifierRuntimePacket | None = None
 
 
+class FinalRiskJoinSurface(BaseModel):
+    """Structured record of the final risk authority join after execution synthesis."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    action: RiskAction
+    confidence_scalar: float = Field(ge=0.0, le=1.0)
+    reasons: list[str] = Field(default_factory=list)
+    joined_after_stage: str = "execution_synthesis"
+    source_service: str = "risk_gateway"
+    lineage_tags: list[str] = Field(default_factory=list)
+    execution_effect: str
+
+
 class ExecutionExpressionOutput(BaseModel):
     """Deterministic execution-expression output."""
 
@@ -503,6 +517,9 @@ class ExecutionExpressionOutput(BaseModel):
     active_playbook_ids: list[str] = Field(default_factory=list)
     active_setup_variant_ids: list[str] = Field(default_factory=list)
     active_family_ids: list[str] = Field(default_factory=list)
+    pre_final_risk_active_playbook_ids: list[str] = Field(default_factory=list)
+    pre_final_risk_lead_playbook_id: str | None = None
+    pre_final_risk_entry_style: str | None = None
     lead_playbook_id: str | None = None
     lead_setup_variant_id: str | None = None
     lead_family_id: str | None = None
@@ -538,6 +555,7 @@ class ExecutionExpressionOutput(BaseModel):
     exit_reasons: list[str] = Field(default_factory=list)
     exit_plan: list[str] = Field(default_factory=list)
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    final_risk_join: FinalRiskJoinSurface | None = None
     reasons: list[str] = Field(default_factory=list)
 
 

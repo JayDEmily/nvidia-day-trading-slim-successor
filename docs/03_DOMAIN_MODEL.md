@@ -2610,6 +2610,10 @@ Ownership:
 
 `ExecutionExpressionOutput` now also carries bounded execution-geometry fields so the runtime can express how a lead idea would actually be deployed rather than only which idea won. The governed geometry surface includes `passive_aggressive_bias`, `ladder_spacing_bps`, `max_chase_distance_bps`, `stop_distance_bps`, `take_profit_distance_bps`, `hedge_ratio`, `per_slice_risk_pct`, and `geometry_notes`.
 
+#### Gate 121 note: final-risk join carriage
+
+`ExecutionExpressionOutput` now also carries `pre_final_risk_active_playbook_ids`, `pre_final_risk_lead_playbook_id`, `pre_final_risk_entry_style`, and `final_risk_join` so the runtime can show exactly what execution looked like before the final risk join and how the join allowed, derisked, or veto-blocked the output. `FinalRiskJoinSurface` freezes the final disposition, reasons, lineage tags, and execution effect so review packets stop hiding the last authority step.
+
 ### 4o. Review failure-taxonomy objects
 
 Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.

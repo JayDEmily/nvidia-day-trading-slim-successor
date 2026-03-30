@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_120_complete_gate_121_active_on_main",
-  "active_gate": "Gate 121",
+  "execution_status": "historical_evaluation_readiness_pack_closed_through_gate_121_on_main",
+  "active_gate": "none \u2014 historical-evaluation readiness pack closed through Gate 121 on main",
   "supersedes": [
     "none \u2014 no active pack existed before this planning tranche"
   ],
@@ -12,7 +12,8 @@
     "Gate 117",
     "Gate 118",
     "Gate 119",
-    "Gate 120"
+    "Gate 120",
+    "Gate 121"
   ],
   "completed_leaf_ids": [
     "LEAF-G115-001",
@@ -53,9 +54,7 @@
     "LEAF-G120-004",
     "LEAF-G120-005",
     "LEAF-G120-006",
-    "LEAF-G120-007"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G120-007",
     "LEAF-G121-001",
     "LEAF-G121-002",
     "LEAF-G121-003",
@@ -63,6 +62,7 @@
     "LEAF-G121-005",
     "LEAF-G121-006"
   ],
+  "remaining_leaf_ids": [],
   "deferred_operator_review_ids": [
     "C003",
     "C007",
@@ -2802,7 +2802,7 @@
       "gate": "Gate 121",
       "title": "Freeze final risk-join contract",
       "objective": "Freeze where the final risk gateway joins the runtime and what dispositions it may return.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G120-007"
       ],
@@ -2871,7 +2871,7 @@
       "gate": "Gate 121",
       "title": "Integrate risk gateway into runtime path",
       "objective": "Join the final risk gateway after execution synthesis so posture, modifiers, execution, and final risk become one authority chain.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G121-001"
       ],
@@ -2940,7 +2940,7 @@
       "gate": "Gate 121",
       "title": "Make final risk reshape outputs visibly",
       "objective": "Allow final risk to veto, derisk, or reshape execution output with review-visible lineage and reasons.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G121-002"
       ],
@@ -3009,7 +3009,7 @@
       "gate": "Gate 121",
       "title": "Add final-join regression coverage",
       "objective": "Add allow, derisk, and block regressions for the new final risk join.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G121-003"
       ],
@@ -3078,7 +3078,7 @@
       "gate": "Gate 121",
       "title": "Prove legacy-versus-final-join differences explicitly",
       "objective": "Add parity tests that show where the new final join changes behaviour rather than leaving the difference implicit.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G121-004"
       ],
@@ -3147,7 +3147,7 @@
       "gate": "Gate 121",
       "title": "Close Gate 121 honestly",
       "objective": "Advance the planning quartet, record Gate 121 receipts, and freeze the packaged artefact from the exact green state.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G121-005"
       ],

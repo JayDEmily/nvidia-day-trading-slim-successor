@@ -47,6 +47,7 @@ def test_historical_evaluation_readiness_pack_is_active() -> None:
         or "Status: active historical-evaluation readiness pack; Gates 115-118 complete on `main`, Gate 119 active, Gates 120-121 planned" in gates
         or "Status: active historical-evaluation readiness pack; Gates 115-119 complete on `main`, Gate 120 active, Gate 121 planned" in gates
         or "Status: active historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 active" in gates
+        or "Status: closed historical-evaluation readiness pack on `main`; Gates 115-121 complete, no active gate" in gates
     )
     assert leaves["execution_status"] in {
         "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115",

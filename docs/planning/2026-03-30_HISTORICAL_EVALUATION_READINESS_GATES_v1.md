@@ -1,4 +1,4 @@
-Status: active historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 active
+Status: closed historical-evaluation readiness pack on `main`; Gates 115-121 complete, no active gate
 # 2026-03-30 Historical Evaluation Readiness Gates v1
 ## Purpose
 

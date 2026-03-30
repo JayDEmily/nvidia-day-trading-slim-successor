@@ -1,6 +1,6 @@
 # 2026-03-30 Historical Evaluation Readiness Execution Log v1
 
-Status: active execution log for the historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 next
+Status: closed execution log for the historical-evaluation readiness pack; Gates 115-121 complete on `main`, no active gate
 
 ## Purpose
 
@@ -22,6 +22,9 @@ For every completed leaf record:
 - whether the receipt was recorded live or reconstructed after the fact.
 
 ## Pending receipt state
+
+- none
+
 
 
 ## Gate 115 receipts
@@ -116,7 +119,7 @@ For every completed leaf record:
 - Validation commands:
   - `PYTHONPATH=src pytest -q tests/test_gate118_mutable_surface_operability.py tests/test_gate97_runtime_invariants.py tests/test_gate117_precursor_economics.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
 - Observed results:
-  - `23 passed`
+  - `24 passed`
 - Full suite required: `false`
 - Stop condition hit: `none`
 - Receipt recorded: `live`
@@ -166,6 +169,39 @@ For every completed leaf record:
   - `PYTHONPATH=src pytest -q tests/test_gate120_execution_geometry.py tests/test_playbook_registry.py tests/test_gate52_native_playbook_hierarchy.py tests/test_execution_review_runtime.py tests/test_gate118_mutable_surface_operability.py tests/test_gate100_bounded_scenario_matrix.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
 - Observed results:
   - `16 passed`
+- Full suite required: `false`
+- Stop condition hit: `none`
+- Receipt recorded: `live`
+
+
+## Gate 121 receipts
+
+- Gate id: `121`
+- Branch: `work/gate-121-final-risk-gateway-join-20260331`
+- Start commit: `25ef8b2`
+- End / merged main commit: `recorded from git history after merge to main`
+- Leaves closed: `LEAF-G121-001` through `LEAF-G121-006`
+- Files touched:
+  - `PLANS.md`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`
+  - `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`
+  - `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `src/nvda_desk/services/risk_gateway.py`
+  - `tests/test_gate103_raw_prepared_parity.py`
+  - `tests/test_gate115_historical_evaluation_readiness_planning.py`
+  - `tests/test_gate121_final_risk_gateway_join.py`
+  - `tests/test_gate121_historical_evaluation_readiness_closeout.py`
+- Validation commands:
+  - `PYTHONPATH=src pytest -q tests/test_gate121_final_risk_gateway_join.py tests/test_gate121_historical_evaluation_readiness_closeout.py tests/test_gate103_raw_prepared_parity.py tests/test_execution_review_runtime.py tests/test_gate120_execution_geometry.py tests/test_gate119_candidate_adjudication.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_document_hygiene.py`
+- Observed results:
+  - `24 passed`
 - Full suite required: `false`
 - Stop condition hit: `none`
 - Receipt recorded: `live`

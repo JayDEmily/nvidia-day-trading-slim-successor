@@ -74,6 +74,9 @@ def test_raw_and_prepared_runtime_results_match_on_frozen_lawful_surfaces() -> N
     assert raw_result.posture.permission_state == prepared_result.posture.permission_state
     assert raw_result.execution.target_fresh_deployable_pct == prepared_result.execution.target_fresh_deployable_pct
     assert raw_result.execution.active_playbook_ids == prepared_result.execution.active_playbook_ids
+    assert raw_result.execution.pre_final_risk_active_playbook_ids == prepared_result.execution.pre_final_risk_active_playbook_ids
+    assert raw_result.execution.final_risk_join == prepared_result.execution.final_risk_join
+    assert raw_result.review.review_packet["final_risk_join"] == prepared_result.review.review_packet["final_risk_join"]
     assert raw_result.review.summary == prepared_result.review.summary
 
 

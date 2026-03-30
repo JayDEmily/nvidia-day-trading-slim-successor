@@ -20,18 +20,15 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- none
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`
 - leaves: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`
 - execution log: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-
-## Latest closed pack retained as evidence
-
-- gates: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md`
-- leaves: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_LEAVES_v1.json`
-- execution log: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- closeout receipt: `docs/planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_CLOSEOUT.md`
+- gate receipt: `docs/planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md`
 
 ## Closed predecessor evidence
 
@@ -51,9 +48,9 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- historical-evaluation readiness pack active from Gate 115
-- Gates 115-120 are complete on `main`
-- Gate 121 is the active gate
+- no active pack
+- historical-evaluation readiness pack closed through Gate 121 on `main`
+- latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt
 
 ## Sequential execution rule
 
