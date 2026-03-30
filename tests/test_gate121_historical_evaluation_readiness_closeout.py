@@ -15,6 +15,7 @@ RECEIPT = REPO_ROOT / "docs/planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.
 
 
 ACTIVE_PACK_NONE_MARKER = "## Active pack\n\n- none"
+ACTIVE_PACK_SIGNAL_COEFF_MARKER = "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md"
 
 
 def test_historical_evaluation_readiness_pack_is_closed_honestly_across_the_quartet() -> None:
@@ -24,11 +25,17 @@ def test_historical_evaluation_readiness_pack_is_closed_honestly_across_the_quar
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert ACTIVE_PACK_NONE_MARKER in plans
+    assert (ACTIVE_PACK_NONE_MARKER in plans) or (ACTIVE_PACK_SIGNAL_COEFF_MARKER in plans)
     assert "historical-evaluation readiness pack closed through Gate 121 on `main`" in plans
     assert (
-        "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**."
-        in gate_map
+        "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**." in gate_map
+        or "Current active gate: **Gate 122 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 123 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 124 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 125 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 127 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map
     )
     assert "| Gate 121 | complete on `main` |" in gate_map
     assert (

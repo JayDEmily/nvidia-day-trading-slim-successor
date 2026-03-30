@@ -31,6 +31,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 120 in the historical-evaluation readiness pack**.",
     "Current active gate: **Gate 121 in the historical-evaluation readiness pack**.",
     "Current active gate: **none — historical-evaluation readiness pack closed through Gate 121 on `main`**.",
+    "Current active gate: **Gate 122 in the signal-coefficient authority pack**.",
+    "Current active gate: **Gate 123 in the signal-coefficient authority pack**.",
+    "Current active gate: **Gate 124 in the signal-coefficient authority pack**.",
+    "Current active gate: **Gate 125 in the signal-coefficient authority pack**.",
+    "Current active gate: **Gate 126 in the signal-coefficient authority pack**.",
+    "Current active gate: **Gate 127 in the signal-coefficient authority pack**.",
+    "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**.",
 }
 
 

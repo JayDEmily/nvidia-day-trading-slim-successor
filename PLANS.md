@@ -20,7 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- none
+- gates: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`
+- leaves: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -35,6 +38,9 @@ This file is the canonical repo-root execution router.
 - `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md`
 - `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_LEAVES_v1.json`
 - `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md`
+- `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_LEAVES_v1.json`
+- `docs/planning/2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json`
 - `docs/planning/2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md`
@@ -48,7 +54,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack
+- signal-coefficient authority pack active at Gate 122 on `main`-derived planning branch
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt
 

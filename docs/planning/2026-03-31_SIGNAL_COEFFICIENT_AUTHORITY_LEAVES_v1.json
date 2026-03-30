@@ -1,0 +1,1114 @@
+{
+  "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_121_closed_signal_coefficient_authority_pack_active_from_gate_122",
+  "active_gate": "Gate 122",
+  "supersedes": [
+    "no active pack after Gate 121 closeout"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G122-001",
+    "LEAF-G122-002",
+    "LEAF-G122-003",
+    "LEAF-G123-001",
+    "LEAF-G123-002",
+    "LEAF-G123-003",
+    "LEAF-G124-001",
+    "LEAF-G124-002",
+    "LEAF-G124-003",
+    "LEAF-G125-001",
+    "LEAF-G125-002",
+    "LEAF-G125-003",
+    "LEAF-G126-001",
+    "LEAF-G126-002",
+    "LEAF-G126-003",
+    "LEAF-G127-001",
+    "LEAF-G127-002"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "workbook_is_research_authority_not_runtime_authority": true,
+    "starter_bounds_must_be_semantically_bounded_not_search_wide": true,
+    "timing_parameters_are_not_alpha_coefficients": true,
+    "asia_precursor_proxies_remain_excluded_from_raw_coefficient_authority": true,
+    "gate_order_is_dependency_first_not_workbook_order": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G122-001",
+      "gate": "Gate 122",
+      "title": "Freeze the tranche-one coefficient universe",
+      "objective": "Freeze the admitted mutable surfaces, behavioural thresholds, and timing parameters that may participate in the first governed coefficient slice.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the workflow-authority boundary before any runtime change. It decides what later runtime and review leaves are even allowed to touch.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "inputs": [
+        "checked-in workbook starter bounds",
+        "external signal coefficient handoff analysis from planning thread",
+        "current hard-coded mutable-surface baselines"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current mutable-surface and temporal-threshold workflow surfaces.",
+        "Freeze the admitted tranche-one coefficient universe and explicit exclusions in the gate master and leaf ledger.",
+        "Record the owner stage, units, and bound class for each admitted surface."
+      ],
+      "forbidden_actions": [
+        "Do not admit workbook sheets as runtime authority by attachment alone.",
+        "Do not widen the coefficient universe to legacy salvage module knobs without explicit repo truth."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py"
+      ],
+      "expected_evidence": [
+        "planning docs name the admitted tranche-one universe",
+        "test_gate122_signal_coefficient_authority_planning.py passes"
+      ],
+      "definition_of_done": [
+        "the pack names the admitted mutable surfaces, threshold subset, and timing parameters explicitly",
+        "excluded future surfaces are named and justified explicitly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G122-002",
+      "gate": "Gate 122",
+      "title": "Map bound types and sane starter envelopes",
+      "objective": "Separate one-sided clamps, score thresholds, state-definition thresholds, and timing parameters so later bounds do not drift into absurd search ranges.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G122-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf still sits upstream of runtime edits. It translates raw candidate numbers into workflow-safe coefficient classes that later runtime leaves can consume honestly.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "inputs": [
+        "current mutable-surface baselines/floors/caps",
+        "workbook temporal threshold draft"
+      ],
+      "ordered_actions": [
+        "Classify each admitted item as clamp, score threshold, state-definition threshold, or timing parameter.",
+        "Freeze sane starter envelopes and asymmetry expectations for each class.",
+        "Record which items are bounded by semantic meaning rather than optimiser latitude."
+      ],
+      "forbidden_actions": [
+        "Do not treat timing windows as alpha coefficients.",
+        "Do not assign 100x or 0.01x search space to semantically narrow context signals."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py"
+      ],
+      "expected_evidence": [
+        "planning docs spell out bound classes and starter-envelope discipline"
+      ],
+      "definition_of_done": [
+        "starter-envelope logic is frozen in planning docs before schema work starts",
+        "timing parameters are explicitly separated from coefficient-search surfaces"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G122-003",
+      "gate": "Gate 122",
+      "title": "Freeze coefficient-relevant preflight drift receipts",
+      "objective": "Record the existing coefficient-adjacent test drift so later coefficient execution does not inherit hidden failing surfaces.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G122-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the proof-order boundary. It freezes what is already red before coefficient authority work lands so later gates can separate inherited drift from new regressions.",
+      "vocabulary_terms_checked": [
+        "modifier_runtime_packet",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md",
+        "tests/test_gate78_modifier_runtime_integration.py",
+        "tests/test_gate96_canonical_runtime_harness.py",
+        "tests/test_gate97_runtime_invariants.py",
+        "tests/test_gate98_threshold_edges.py",
+        "tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "inputs": [
+        "current coefficient-adjacent failing tests",
+        "planning-thread preflight results"
+      ],
+      "ordered_actions": [
+        "Freeze the coefficient-relevant preflight drift slice in the planning pack.",
+        "State which failing tests must be treated as inherited drift versus target proof surfaces for later gates.",
+        "Keep the execution log receipt-empty but ready for Gate 122 execution receipts."
+      ],
+      "forbidden_actions": [
+        "Do not mark inherited drift green by omission.",
+        "Do not broaden the proof slice beyond coefficient-relevant surfaces."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py"
+      ],
+      "expected_evidence": [
+        "planning docs record the inherited drift slice explicitly",
+        "execution log remains receipt-empty and status-truthful"
+      ],
+      "definition_of_done": [
+        "the pack names the inherited drift surfaces explicitly",
+        "Gate 122 closes only when inherited drift truth is preserved in downstream execution receipts"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G123-001",
+      "gate": "Gate 123",
+      "title": "Define the new typed coefficient-authority schema",
+      "objective": "Add the governed coefficient-authority contract alongside the legacy example registry without collapsing them into one ambiguous shape.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G122-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/config_models.py",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the configuration-authority boundary. It defines the file and validation shape that later runtime, review, and replay leaves will consume.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/config_models.py",
+        "config/README.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "current config schema",
+        "legacy coefficients_registry example file"
+      ],
+      "ordered_actions": [
+        "Design a new typed coefficient-authority schema that names owner stage, units, baseline, min, max, transform family, and allowed upstream drivers.",
+        "Document the distinction between the new authority surface and the legacy salvage/example registry.",
+        "Update the domain model if packet or config authority naming becomes contract-significant."
+      ],
+      "forbidden_actions": [
+        "Do not retrofit the legacy example registry into authority by hand-wavy comments.",
+        "Do not hide missing units or bound types behind free-text notes."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_playbook_registry.py"
+      ],
+      "expected_evidence": [
+        "new config schema exists and is documented",
+        "legacy example file is not mistaken for runtime authority"
+      ],
+      "definition_of_done": [
+        "a typed governed coefficient-authority contract exists",
+        "the legacy registry is explicitly reference-only unless later re-admitted"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/config_models.py",
+        "config/README.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G123-002",
+      "gate": "Gate 123",
+      "title": "Create the governed coefficient-authority file surface",
+      "objective": "Add the first governed authority file containing the admitted mutable surfaces, starter envelopes, and metadata declared by Gate 122.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G123-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "This leaf populates the first authority instance after the schema is frozen. Downstream runtime leaves must be able to load it deterministically.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier"
+      ],
+      "repo_surfaces": [
+        "config/*",
+        "src/nvda_desk/config_models.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "Gate 122 starter universe and envelopes",
+        "new config schema"
+      ],
+      "ordered_actions": [
+        "Create the governed coefficient-authority file with the admitted tranche-one surfaces only.",
+        "Record owner stage, units, baseline, min, max, asymmetry, and allowed upstream drivers for each admitted item.",
+        "Keep excluded future surfaces out of the file and name them only in planning docs."
+      ],
+      "forbidden_actions": [
+        "Do not backfill legacy module coefficients just because a placeholder exists.",
+        "Do not mix workbook-only research rows into runtime authority entries."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_playbook_registry.py"
+      ],
+      "expected_evidence": [
+        "governed authority file exists with tranche-one entries only"
+      ],
+      "definition_of_done": [
+        "the admitted tranche-one authority file exists and validates",
+        "excluded future surfaces are absent from runtime authority"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "config/*",
+        "config/README.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G123-003",
+      "gate": "Gate 123",
+      "title": "Add deterministic authority-file validation tests",
+      "objective": "Prove invalid units, surfaces, ranges, and transform families fail cleanly before runtime integration begins.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G123-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the authority-validation boundary. It prevents invalid coefficient metadata from reaching runtime consumers.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "tests/*coefficient*",
+        "src/nvda_desk/config_models.py",
+        "config/*"
+      ],
+      "inputs": [
+        "new authority schema",
+        "new authority file"
+      ],
+      "ordered_actions": [
+        "Add deterministic validation tests for unknown surfaces, absurd ranges, and illegal transform families.",
+        "Freeze negative-path expectations for invalid timing-parameter and threshold entries.",
+        "Keep the proof slice bounded to the new authority surface."
+      ],
+      "forbidden_actions": [
+        "Do not rely on manual inspection instead of executable validation.",
+        "Do not allow semantically absurd ranges to pass because the types are numeric."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_playbook_registry.py"
+      ],
+      "expected_evidence": [
+        "invalid authority entries fail deterministically"
+      ],
+      "definition_of_done": [
+        "authority-file validation tests exist and run green",
+        "the governed authority surface rejects semantically absurd entries"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/*coefficient*",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/README.md"
+      ]
+    },
+    {
+      "id": "LEAF-G124-001",
+      "gate": "Gate 124",
+      "title": "Externalise mutable-surface baselines and bounds",
+      "objective": "Move the eight admitted mutable-surface baselines, floors, and caps onto the governed authority surface without changing their current values.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G123-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/schemas/state_policy.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the runtime-authority boundary. It replaces private constants with governed authority while preserving the same lawful surface set.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient",
+        "modifier_runtime_packet"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/schemas/state_policy.py",
+        "config/*"
+      ],
+      "inputs": [
+        "current hard-coded baselines/floors/caps",
+        "governed authority file"
+      ],
+      "ordered_actions": [
+        "Map each admitted mutable surface to its governed authority entry.",
+        "Read the governed authority file inside StateConditionedModifierService rather than private constants.",
+        "Keep numeric values unchanged in this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not widen or retune the values while changing authority source.",
+        "Do not introduce fallback guesswork if the authority file is malformed."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate118_mutable_surface_operability.py tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "expected_evidence": [
+        "mutable-surface values load from governed authority with no numerical drift"
+      ],
+      "definition_of_done": [
+        "the runtime no longer treats hard-coded mutable-surface constants as final authority",
+        "admitted values match the pre-Gate-124 numeric behaviour"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/schemas/state_policy.py",
+        "config/*"
+      ]
+    },
+    {
+      "id": "LEAF-G124-002",
+      "gate": "Gate 124",
+      "title": "Wire governed authority through the runtime packet",
+      "objective": "Ensure modifier runtime packets and downstream consumers use the governed authority-loaded baselines and bounds rather than private parallel copies.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G124-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the packet-carriage boundary between modifier resolution and downstream execution/review consumption.",
+      "vocabulary_terms_checked": [
+        "modifier_runtime_packet",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "governed authority file",
+        "runtime modifier packet"
+      ],
+      "ordered_actions": [
+        "Propagate governed baseline metadata into the runtime packet and downstream consumers.",
+        "Delete or retire any parallel constant path that can disagree with governed authority.",
+        "Keep grammar order unchanged."
+      ],
+      "forbidden_actions": [
+        "Do not introduce a second private authority path in cognition_runtime.",
+        "Do not smuggle grammar-order changes into coefficient plumbing work."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "expected_evidence": [
+        "downstream consumers read the same governed authority-backed packet"
+      ],
+      "definition_of_done": [
+        "posture, execution, and runtime carriage point at the same governed baseline metadata",
+        "no private parallel constants remain authoritative"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ]
+    },
+    {
+      "id": "LEAF-G124-003",
+      "gate": "Gate 124",
+      "title": "Freeze no-drift scenario regressions for externalised surfaces",
+      "objective": "Prove the authority-source move did not deform canonical scenario outputs beyond the intended explicit authority-chain change.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G124-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the runtime-regression boundary. It proves the source-of-truth move is clean before review or temporal threshold work starts.",
+      "vocabulary_terms_checked": [
+        "modifier_runtime_packet",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate78_modifier_runtime_integration.py",
+        "tests/test_gate118_mutable_surface_operability.py",
+        "tests/test_gate121_final_risk_gateway_join.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "inputs": [
+        "canonical prepared and raw scenario outputs"
+      ],
+      "ordered_actions": [
+        "Run the declared scenario/regression slice against the governed-authority runtime.",
+        "Freeze any intentional output changes explicitly in the receipt.",
+        "Block Gate 125 if unplanned drift remains."
+      ],
+      "forbidden_actions": [
+        "Do not wave through output drift because the numbers are close.",
+        "Do not broaden the full suite unless the blast radius proves it necessary."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate118_mutable_surface_operability.py tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "expected_evidence": [
+        "regression slice stays green or intentional drift is explicit"
+      ],
+      "definition_of_done": [
+        "Gate 124 closes with explicit no-drift or intentional-drift evidence",
+        "runtime output differences are not left implicit"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/test_gate78_modifier_runtime_integration.py",
+        "tests/test_execution_review_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G125-001",
+      "gate": "Gate 125",
+      "title": "Extend review contracts for resolved-surface lineage",
+      "objective": "Add the contract fields needed for review surfaces to show baseline value, effective value, clamp state, precedence band, and source policy ids per mutable surface.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G124-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/state_policy.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the packet-contract boundary. It upgrades the review-visible shape without changing the cognition grammar itself.",
+      "vocabulary_terms_checked": [
+        "effective_coefficient",
+        "modifier_runtime_packet"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/state_policy.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "current resolved surface packet",
+        "current review packet"
+      ],
+      "ordered_actions": [
+        "Add or refine contract fields so resolved mutable-surface lineage can be carried into review outputs.",
+        "Update the domain model if the carriage shape changes materially.",
+        "Keep backward compatibility explicit if compatibility hints remain."
+      ],
+      "forbidden_actions": [
+        "Do not collapse resolved-surface lineage into free-text explanation only.",
+        "Do not leave the domain model stale after packet-shape changes."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "expected_evidence": [
+        "review contract exposes resolved-surface lineage fields"
+      ],
+      "definition_of_done": [
+        "review contracts can carry the admitted baseline-to-effective chain",
+        "domain-model authority stays aligned with the packet shape"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/state_policy.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G125-002",
+      "gate": "Gate 125",
+      "title": "Render baseline-to-effective lineage in review output",
+      "objective": "Make ReviewExplanationService surface the same resolved-surface chain that posture and execution already consume.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G125-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/review_explanation.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the downstream audit boundary. It prevents review from keeping a private simplified interpretation of coefficient effects.",
+      "vocabulary_terms_checked": [
+        "effective_coefficient",
+        "modifier_runtime_packet"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "governed authority-backed modifier packet",
+        "review contract fields"
+      ],
+      "ordered_actions": [
+        "Update review explanation assembly to render baseline, effective value, clamp state, precedence band, and source policies per mutable surface.",
+        "Keep posture and execution lineage references aligned with review output.",
+        "Preserve the existing cognition order and final-risk join semantics."
+      ],
+      "forbidden_actions": [
+        "Do not reconstruct a second coefficient story in review from free-text shortcuts.",
+        "Do not drop clamp or precedence-band evidence while prettifying review output."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "expected_evidence": [
+        "review output shows resolved-surface lineage explicitly"
+      ],
+      "definition_of_done": [
+        "review output carries the same coefficient chain that runtime computed",
+        "final-risk and execution review still agree on lineage ordering"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G125-003",
+      "gate": "Gate 125",
+      "title": "Freeze parity across prepared and raw review paths",
+      "objective": "Prove the resolved-surface lineage survives both canonical prepared and raw runtime paths.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G125-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the parity boundary across the admitted canonical paths.",
+      "vocabulary_terms_checked": [
+        "effective_coefficient",
+        "modifier_runtime_packet"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate103_raw_prepared_parity.py",
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "inputs": [
+        "canonical prepared and raw harnesses"
+      ],
+      "ordered_actions": [
+        "Run the declared parity slice across prepared and raw paths.",
+        "Freeze the review-visible coefficient lineage expectations in tests.",
+        "Block Gate 126 if the two canonical paths diverge unexpectedly."
+      ],
+      "forbidden_actions": [
+        "Do not claim parity because both paths are green if the resolved-surface packets differ silently.",
+        "Do not ignore final-risk join interactions while checking review parity."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate103_raw_prepared_parity.py tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py"
+      ],
+      "expected_evidence": [
+        "prepared/raw parity slice covers coefficient lineage explicitly"
+      ],
+      "definition_of_done": [
+        "the admitted coefficient lineage is parity-safe across canonical paths",
+        "later threshold authority work starts from one truthful review surface"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/test_gate103_raw_prepared_parity.py",
+        "tests/test_execution_review_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G126-001",
+      "gate": "Gate 126",
+      "title": "Freeze the bounded temporal threshold subset",
+      "objective": "Admit only the workbook-backed temporal behavioural thresholds and timing parameters that already map cleanly onto the live classifier.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G125-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the temporal-authority boundary between research workbook and live classifier.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "inputs": [
+        "workbook temporal threshold draft",
+        "current temporal_state classifier literals"
+      ],
+      "ordered_actions": [
+        "Map workbook-backed temporal thresholds and timing parameters to the live classifier surfaces they actually govern.",
+        "Keep only the subset that already has a lawful runtime home.",
+        "Leave excluded future regional/context coefficients out of this gate."
+      ],
+      "forbidden_actions": [
+        "Do not import the whole workbook circus tent into runtime authority.",
+        "Do not admit Asia/Japan raw coefficients by proxy under temporal naming."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate98_threshold_edges.py"
+      ],
+      "expected_evidence": [
+        "planning docs name the admitted temporal subset only"
+      ],
+      "definition_of_done": [
+        "the admitted temporal subset is bounded and traceable to live classifier surfaces",
+        "excluded future context coefficients remain out of runtime authority"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G126-002",
+      "gate": "Gate 126",
+      "title": "Refactor temporal_state to read governed thresholds",
+      "objective": "Replace the admitted temporal classifier literals with the governed authority subset while preserving lawful classifier behaviour.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G126-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Step 1 temporal classification and must not leak workbook logic around the existing classifier.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/domain/temporal_state.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "config/*"
+      ],
+      "inputs": [
+        "admitted temporal subset",
+        "current classifier logic"
+      ],
+      "ordered_actions": [
+        "Read the admitted threshold subset from governed authority inside temporal_state.",
+        "Keep the outward temporal packet shape stable unless the domain model is updated explicitly.",
+        "Preserve the existing session-window semantics as timing-parameter law rather than alpha coefficient lore."
+      ],
+      "forbidden_actions": [
+        "Do not re-architect temporal state classification while externalising thresholds.",
+        "Do not let workbook rows bypass the governed authority surface."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "expected_evidence": [
+        "temporal classifier reads governed thresholds and timing parameters"
+      ],
+      "definition_of_done": [
+        "temporal_state no longer treats admitted threshold literals as final authority",
+        "canonical prepared/raw harnesses remain lawful after the source-of-truth move"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/domain/temporal_state.py",
+        "config/*",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G126-003",
+      "gate": "Gate 126",
+      "title": "Freeze threshold-edge and canonical-path proofs",
+      "objective": "Prove the governed temporal threshold subset behaves lawfully at edges and across both prepared and raw canonical paths.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G126-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the threshold-edge proof boundary for Step 1 temporal authority.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate98_threshold_edges.py",
+        "tests/test_gate96_canonical_runtime_harness.py",
+        "tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "inputs": [
+        "canonical prepared and raw harnesses",
+        "threshold-edge fixtures"
+      ],
+      "ordered_actions": [
+        "Run the threshold-edge and canonical-path slice against the governed threshold subset.",
+        "Make any intentional threshold-output changes explicit in receipts.",
+        "Block Gate 127 if temporal authority drift remains unexplained."
+      ],
+      "forbidden_actions": [
+        "Do not call threshold-edge work done because only one canonical path stayed green.",
+        "Do not hide timing-parameter drift inside threshold tests."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py"
+      ],
+      "expected_evidence": [
+        "temporal threshold slice is green or intentional drift is explicit"
+      ],
+      "definition_of_done": [
+        "temporal authority work is proven across edge cases and both canonical paths",
+        "later replay visibility work starts from one truthful temporal surface"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/test_gate98_threshold_edges.py",
+        "tests/test_gate96_canonical_runtime_harness.py",
+        "tests/test_gate102_raw_runtime_harness.py"
+      ]
+    },
+    {
+      "id": "LEAF-G127-001",
+      "gate": "Gate 127",
+      "title": "Propagate coefficient snapshot visibility into replay and horizon outputs",
+      "objective": "Carry a stable coefficient snapshot identifier and admitted effective-surface evidence into replay and horizon comparison outputs.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G126-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/schemas/calibration.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the replay/horizon consumer boundary. It makes later coefficient review talk about the same governed state the runtime used.",
+      "vocabulary_terms_checked": [
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/schemas/calibration.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "governed coefficient authority snapshot",
+        "runtime resolved-surface packet"
+      ],
+      "ordered_actions": [
+        "Add a stable coefficient snapshot identifier or hash to replay/horizon outputs.",
+        "Expose the admitted effective-surface evidence needed for replay comparison without duplicating private logic.",
+        "Keep the replay path deterministic and typed."
+      ],
+      "forbidden_actions": [
+        "Do not let replay infer coefficient state indirectly from free-text review packets.",
+        "Do not duplicate runtime coefficient logic inside replay_compare."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_replay_compare_runtime.py tests/test_gate103_raw_prepared_parity.py"
+      ],
+      "expected_evidence": [
+        "replay and horizon outputs expose coefficient snapshot visibility"
+      ],
+      "definition_of_done": [
+        "replay consumers can see which governed coefficient state was used",
+        "coefficient-state comparison is deterministic and typed"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/schemas/calibration.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G127-002",
+      "gate": "Gate 127",
+      "title": "Close the pack honestly and package the exact green state",
+      "objective": "Update the planning quartet together, record final receipts, and package the repo from the exact green state when the signal-coefficient authority pack is complete.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G127-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the closeout boundary. It is the only leaf allowed to declare the pack closed.",
+      "vocabulary_terms_checked": [
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "all prior Gate 122-127 receipts",
+        "final green repo state"
+      ],
+      "ordered_actions": [
+        "Run the declared closeout proof slice after Gate 127 implementation is green.",
+        "Update PLANS.md, gate map, leaves ledger, and execution log together.",
+        "Create a fresh full-history zip from the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not mark the pack closed while any of the quartet still points at Gate 127 as active.",
+        "Do not package from a dirty or unverified repo state."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate121_historical_evaluation_readiness_closeout.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "planning quartet closes together",
+        "fresh full-history zip exists"
+      ],
+      "definition_of_done": [
+        "the signal-coefficient authority pack is closed honestly across the quartet",
+        "a fresh full-history zip is created from the exact green repo state"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    }
+  ]
+}
