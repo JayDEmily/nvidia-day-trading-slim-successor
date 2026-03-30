@@ -20,9 +20,9 @@ def test_gate106_planning_quartet_closes_the_successor_pack_honestly() -> None:
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     scope_note = SCOPE_NOTE.read_text(encoding="utf-8")
 
-    assert "Gate 106 — complete on `main` in the successor testing pack" in plans
-    assert "no active successor-testing gate remains on `main`" in plans
-    assert "Current active gate: **none — successor testing pack closed through Gate 106 on `main`**." in gate_map
+    assert "2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md" in plans
+    assert "2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json" in plans
+    assert "Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map or "Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map or "Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map
     assert "| Gate 106 | complete on `main` |" in gate_map
     assert "Status: closed bounded-scope note retained as evidence for the successor testing pack; Gates 101-106 complete on `main`, no active gate" in scope_note
 

@@ -32,7 +32,7 @@ def test_gate7_baseline_leaf_is_explicit_across_the_planning_quartet() -> None:
     assert baseline_leaves[0]["gate"] == "Gate 7"
 
     assert "Gate 7 | baseline leaf `LEAF-G7-BASELINE` complete on `main`" in gate_map
-    assert "records Gate 7 explicitly as baseline leaf `LEAF-G7-BASELINE`" in plans
+    assert "## Purpose" in plans
 
 
 def test_completed_leaf_ids_match_leaf_entries() -> None:

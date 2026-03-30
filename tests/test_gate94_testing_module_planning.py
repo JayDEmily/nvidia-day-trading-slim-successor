@@ -13,20 +13,16 @@ LEAVES = REPO_ROOT / "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json"
 EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
 
 
-def test_active_planning_surfaces_point_at_the_testing_module_pack() -> None:
+def test_testing_module_pack_is_retained_as_predecessor_evidence() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
     assert "2026-03-30_TESTING_MODULE_GATES_v1.md" in plans
     assert "2026-03-30_TESTING_MODULE_LEAVES_v1.json" in plans
     assert "2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md" in plans
-    assert "Gate 94 — complete on `main`" in plans
-    assert "Gate 94 — complete on `main`" in plans
-    assert ("Gate 95 — next active gate on `main`" in plans) or ("Gate 95 — complete on `main`" in plans)
-
-    assert ("Current active gate: **Gate 95 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 96 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 97 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 98 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 99 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 100 in the testing-module pack**." in gate_map) or ("Current active gate: **none — the testing-module pack is closed through Gate 100 on `main`**." in gate_map) or ("Current active gate: **Gate 101 in the successor testing pack**." in gate_map) or ("Current active gate: **Gate 102 in the successor testing pack**." in gate_map) or ("Current active gate: **Gate 103 in the successor testing pack**." in gate_map) or ("Current active gate: **Gate 104 in the successor testing pack**." in gate_map) or ("Current active gate: **Gate 105 in the successor testing pack**." in gate_map) or ("Current active gate: **Gate 106 in the successor testing pack**." in gate_map) or ("Current active gate: **none — successor testing pack closed through Gate 106 on `main`**." in gate_map)
+    assert "Current active gate: **Gate 111 in the repo-process governance pack**." in gate_map or "Current active gate: **Gate 112 in the repo-process governance pack**." in gate_map or "Current active gate: **none — repo-process governance pack closed through Gate 112 on `main`**." in gate_map
     assert "| Gate 94 | complete on `main` |" in gate_map
-    assert ("| Gate 95 | planned; next active gate |" in gate_map) or ("| Gate 95 | complete on `main` |" in gate_map)
+    assert "| Gate 100 | complete on `main` |" in gate_map
 
 
 def test_testing_module_gates_doc_freezes_phase_order_and_scope_rules() -> None:

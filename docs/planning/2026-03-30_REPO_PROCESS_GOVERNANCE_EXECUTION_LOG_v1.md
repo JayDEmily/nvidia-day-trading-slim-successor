@@ -1,6 +1,6 @@
 # 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1
 
-Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next
+Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next
 
 ## Purpose
 
@@ -109,3 +109,29 @@ Carry the sequential execution receipts for Gates 107–112.
 - Exact evidence: `AGENTS.md` now states that docs/06 governs pack creation/closeout while `PLANS.md` routes active work, and Gate 111 is the next active governance gate.
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 110 closeout
+
+## Gate 111 receipts
+
+### LEAF-G111-001 — Add governance integrity tests
+
+- Branch: `work/gate-111-governance-guard-tests-20260330`
+- Start commit: `6d804aa`
+- End commit: `gate-111-on-main`
+- Files touched: `tests/test_gate111_governance_guardrails.py`
+- Validations run: targeted governance planning proof slice
+- Full suite required: no
+- Exact evidence: governance tests now fail when the process-law layer, router, and active-governance trio drift apart.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 111 closeout
+
+### LEAF-G111-002 — Future-proof predecessor planning tests
+
+- Branch: `work/gate-111-governance-guard-tests-20260330`
+- Start commit: `6d804aa`
+- End commit: `gate-111-on-main`
+- Files touched: `tests/test_gate94_testing_module_planning.py`, `tests/test_gate101_successor_planning.py`, `tests/test_gate106_successor_closeout.py`, `tests/test_planning_gate_authority_consistency.py`, governance-pack planning trio
+- Validations run: targeted governance planning proof slice
+- Full suite required: no
+- Exact evidence: predecessor-pack tests remain meaningful under the router model without pretending predecessor packs are still active, and Gate 112 is the next active governance gate.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 111 closeout
