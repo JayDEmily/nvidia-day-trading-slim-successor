@@ -69,6 +69,8 @@ def test_raw_and_prepared_runtime_results_match_on_frozen_lawful_surfaces() -> N
     assert raw_result.stage_packet_ids == prepared_result.stage_packet_ids
     assert raw_result.packet_lineage == prepared_result.packet_lineage
     assert raw_result.review.review_packet == prepared_result.review.review_packet
+    assert raw_result.review.effective_policy == prepared_result.review.effective_policy
+    assert raw_result.review.review_lineage == prepared_result.review.review_lineage
     assert raw_result.temporal.event_window_state == prepared_result.temporal.event_window_state
     assert raw_result.options_flow.options_behavior_cluster == prepared_result.options_flow.options_behavior_cluster
     assert raw_result.posture.permission_state == prepared_result.posture.permission_state

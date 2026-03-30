@@ -546,7 +546,10 @@ class ReviewExplanationService:
         packet = payload.modifier_runtime_packet
         if packet is None:
             return None
-        return EffectivePolicySnapshot(active_lineage=list(packet.effective_lineage))
+        return EffectivePolicySnapshot(
+            active_lineage=list(packet.effective_lineage),
+            resolved_surfaces=list(packet.resolved_surfaces),
+        )
 
     def _review_lineage(self, payload: ReviewExplanationInput) -> ReviewLineagePacket:
         event_lineage_keys = []
@@ -565,17 +568,20 @@ class ReviewExplanationService:
             )
         modifier_policy_ids = []
         effective_targets = []
+        resolved_surfaces = []
         if payload.modifier_runtime_packet is not None:
             modifier_policy_ids = list(payload.modifier_runtime_packet.active_policy_ids)
             effective_targets = [
                 lineage.target_surface.value
                 for lineage in payload.modifier_runtime_packet.effective_lineage
             ]
+            resolved_surfaces = list(payload.modifier_runtime_packet.resolved_surfaces)
         return ReviewLineagePacket(
             event_lineage_keys=event_lineage_keys,
             precursor_lineage_keys=precursor_lineage_keys,
             modifier_policy_ids=modifier_policy_ids,
             effective_coefficient_targets=effective_targets,
+            resolved_surfaces=resolved_surfaces,
             posture_change_reasons=list(payload.posture.reasons),
         )
 

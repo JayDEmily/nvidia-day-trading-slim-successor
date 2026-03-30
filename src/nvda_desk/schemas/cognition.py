@@ -40,6 +40,7 @@ from nvda_desk.schemas.state_policy import (
     ModifierRuntimePacket,
     NonActionClass,
     OverrideDisposition,
+    ResolvedRuntimeSurfaceValue,
     SignalConflictClass,
     SurfaceStabilityScorecard,
 )
@@ -597,6 +598,7 @@ class EffectivePolicySnapshot(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     active_lineage: list[EffectiveCoefficientLineage] = Field(default_factory=list)
+    resolved_surfaces: list[ResolvedRuntimeSurfaceValue] = Field(default_factory=list)
 
 
 class ReviewExplanationInput(BaseModel):

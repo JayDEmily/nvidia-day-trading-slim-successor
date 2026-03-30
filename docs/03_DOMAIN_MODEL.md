@@ -2635,7 +2635,7 @@ Ownership:
 
 ### 5d. Runtime modifier integration objects
 
-Typed contracts that let runtime apply bounded modifier law once, expose the effective result honestly, and preserve lineage across posture, execution, and review.
+Typed contracts that let runtime apply bounded modifier law once, expose the effective result honestly, and preserve governed resolved-surface lineage across posture, execution, and review.
 
 Key examples:
 - `ResolvedRuntimeSurfaceValue`
@@ -2643,6 +2643,7 @@ Key examples:
 - `PostureRiskOutput.modifier_runtime_packet`
 - `ExecutionExpressionOutput.modifier_runtime_packet`
 - `ReviewExplanationOutput.effective_policy`
+- `ReviewLineagePacket.resolved_surfaces`
 
 Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
@@ -2663,7 +2664,7 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/config_models.py`
 - governed file surface in `config/coefficient_authority.v1.yaml`
-- runtime promotion begins in later gates rather than by attachment alone
+- runtime promotion for the eight admitted mutable surfaces now occurs through `StateConditionedModifierService`; later gates still govern temporal-threshold activation
 
 The governed authority file is not the same surface as the legacy `coefficients_registry.example.yaml`. The former freezes the admitted tranche-one authority chain; the latter remains salvage/example structure only.
 

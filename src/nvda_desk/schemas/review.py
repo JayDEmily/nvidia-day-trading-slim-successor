@@ -12,6 +12,8 @@ from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
+from nvda_desk.schemas.state_policy import ResolvedRuntimeSurfaceValue
+
 from nvda_desk.schemas.events import MarketEventPayload
 from nvda_desk.schemas.execution_records import (
     CapitalStateSnapshotPayload,
@@ -289,6 +291,7 @@ class ReviewLineagePacket(BaseModel):
     precursor_lineage_keys: list[str] = Field(default_factory=list)
     modifier_policy_ids: list[str] = Field(default_factory=list)
     effective_coefficient_targets: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[ResolvedRuntimeSurfaceValue] = Field(default_factory=list)
     posture_change_reasons: list[str] = Field(default_factory=list)
 
 

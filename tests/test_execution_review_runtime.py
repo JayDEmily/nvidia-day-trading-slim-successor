@@ -18,6 +18,7 @@ from nvda_desk.schemas.cognition import (
 )
 from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
 def test_desk_cognition_runtime_emits_family_specific_execution_plan() -> None:
@@ -372,3 +373,44 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
     assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_id
     assert result.stage_packets[6].lineage.parent_packet_ids == [result.stage_packets[5].packet_id]
+
+def test_review_packets_render_governed_resolved_surface_lineage() -> None:
+    """Gate 125 review output should expose the governed resolved-surface chain directly."""
+
+    fixture = supportive_runtime_fixture()
+    result = DeskCognitionRuntime(Settings()).run(
+        temporal_input=fixture.temporal_input.model_copy(
+            update={
+                "ts": datetime.fromisoformat("2026-03-23T15:20:00-04:00"),
+                "next_event_at": datetime.fromisoformat("2026-03-24T08:30:00-04:00"),
+            }
+        ),
+        regime_input=fixture.regime_input,
+        options_flow_input=fixture.options_flow_input,
+        inventory_state=fixture.inventory_state,
+        risk_budget_remaining_pct=fixture.risk_budget_remaining_pct,
+    )
+
+    assert result.execution.modifier_runtime_packet is not None
+    assert result.review.effective_policy is not None
+    assert result.review.review_lineage is not None
+    expected = [
+        item.model_dump(mode="json") for item in result.execution.modifier_runtime_packet.resolved_surfaces
+    ]
+    assert [item.model_dump(mode="json") for item in result.review.effective_policy.resolved_surfaces] == expected
+    assert [item.model_dump(mode="json") for item in result.review.review_lineage.resolved_surfaces] == expected
+    review_effective = cast(dict[str, Any], result.review.review_packet["effective_policy"])
+    assert cast(list[dict[str, Any]], review_effective["resolved_surfaces"]) == expected
+    target = next(
+        item for item in cast(list[dict[str, Any]], review_effective["resolved_surfaces"])
+        if item["target_surface"] == "target_fresh_deployable_pct"
+    )
+    assert target["baseline_numeric_value"] == 55.0
+    assert target["winning_precedence_band"] in {
+        "phase_carry",
+        "event_options_stress",
+        "baseline",
+    }
+    assert any(item["source_policy_ids"] for item in cast(list[dict[str, Any]], review_effective["resolved_surfaces"]))
+
+

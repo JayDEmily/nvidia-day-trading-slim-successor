@@ -1,15 +1,16 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_124_complete_gate_125_active_on_main",
-  "active_gate": "Gate 125",
+  "execution_status": "gate_125_complete_gate_126_active_on_main",
+  "active_gate": "Gate 126",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
   "completed_gate_ids": [
     "Gate 122",
     "Gate 123",
-    "Gate 124"
+    "Gate 124",
+    "Gate 125"
   ],
   "completed_leaf_ids": [
     "LEAF-G122-001",
@@ -20,12 +21,12 @@
     "LEAF-G123-003",
     "LEAF-G124-001",
     "LEAF-G124-002",
-    "LEAF-G124-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G124-003",
     "LEAF-G125-001",
     "LEAF-G125-002",
-    "LEAF-G125-003",
+    "LEAF-G125-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G126-001",
     "LEAF-G126-002",
     "LEAF-G126-003",
@@ -625,7 +626,7 @@
       "gate": "Gate 125",
       "title": "Extend review contracts for resolved-surface lineage",
       "objective": "Add the contract fields needed for review surfaces to show baseline value, effective value, clamp state, precedence band, and source policy ids per mutable surface.",
-      "status": "active",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G124-003"
       ],
@@ -686,7 +687,7 @@
       "gate": "Gate 125",
       "title": "Render baseline-to-effective lineage in review output",
       "objective": "Make ReviewExplanationService surface the same resolved-surface chain that posture and execution already consume.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G125-001"
       ],
@@ -745,7 +746,7 @@
       "gate": "Gate 125",
       "title": "Freeze parity across prepared and raw review paths",
       "objective": "Prove the resolved-surface lineage survives both canonical prepared and raw runtime paths.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G125-002"
       ],
@@ -808,7 +809,7 @@
       "gate": "Gate 126",
       "title": "Freeze the bounded temporal threshold subset",
       "objective": "Admit only the workbook-backed temporal behavioural thresholds and timing parameters that already map cleanly onto the live classifier.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G125-003"
       ],

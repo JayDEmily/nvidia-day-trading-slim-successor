@@ -1,6 +1,6 @@
 # 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1
 
-Status: active execution log for the signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned
+Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned
 
 ## Purpose
 
@@ -23,7 +23,7 @@ For every completed leaf record:
 
 ## Pending receipt state
 
-- Gate 124 externalised mutable-surface authority and Gate 125 is the next active review-visibility gate.
+- Gates 122-125 now freeze scope, governed authority, runtime authority carriage, and review-visible lineage; Gate 126 is the next active temporal-authority gate.
 
 ## Gate 122 receipts
 
@@ -106,7 +106,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-124-externalise-mutable-surface-authority-20260331`
 - Start commit: `8444bb0`
-- End commit: `gate-124-on-main`
+- End commit: `063eafd`
 - Files touched: `src/nvda_desk/config_models.py`, `src/nvda_desk/schemas/state_policy.py`, `src/nvda_desk/services/state_conditioned_modifier.py`, `tests/test_gate78_modifier_runtime_integration.py`, `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
 - Validations run: `PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate118_mutable_surface_operability.py tests/test_gate121_final_risk_gateway_join.py`
 - Observed results: mutable-surface baselines, floors, and caps now load from the governed authority file; stale Gate 78 expectations were refreshed to distinguish modifier-packet values from later final-risk derisk output; canonical vocabulary file now matches the generator again
@@ -118,7 +118,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-124-externalise-mutable-surface-authority-20260331`
 - Start commit: `8444bb0`
-- End commit: `gate-124-on-main`
+- End commit: `063eafd`
 - Files touched: `src/nvda_desk/schemas/state_policy.py`, `src/nvda_desk/services/state_conditioned_modifier.py`, `src/nvda_desk/services/review_explanation.py`, `src/nvda_desk/schemas/cognition.py`
 - Validations run: `PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py`
 - Observed results: resolved runtime surfaces now carry governed baseline references, authority version, owner stage, and numeric envelope metadata into posture/execution/review carriage without grammar-order drift
@@ -130,7 +130,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-124-externalise-mutable-surface-authority-20260331`
 - Start commit: `8444bb0`
-- End commit: `gate-124-on-main`
+- End commit: `063eafd`
 - Files touched: `tests/test_gate124_mutable_surface_authority.py`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md`, `CHANGELOG.jsonl`
 - Validations run: `PYTHONPATH=src pytest -q tests/test_gate78_modifier_runtime_integration.py tests/test_gate118_mutable_surface_operability.py tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate124_mutable_surface_authority.py`
 - Observed results: Gate 124 closed honestly across the planning quartet; governed-authority packet carriage is green and the pack advanced to Gate 125 on `main`
@@ -140,7 +140,41 @@ For every completed leaf record:
 
 ## Gate 125 receipts
 
-- none yet
+### LEAF-G125-001 — Extend review contracts for resolved-surface lineage
+
+- Branch: `work/gate-125-review-visible-coefficient-lineage-20260331`
+- Start commit: `063eafd`
+- End commit: `gate-125-on-main`
+- Files touched: `src/nvda_desk/schemas/review.py`, `src/nvda_desk/schemas/cognition.py`, `docs/03_DOMAIN_MODEL.md`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate103_raw_prepared_parity.py tests/test_gate125_review_visible_lineage.py`
+- Observed results: review-visible contracts now admit resolved-surface carriage directly rather than via free-text reconstruction
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G125-002 — Render baseline-to-effective lineage in review output
+
+- Branch: `work/gate-125-review-visible-coefficient-lineage-20260331`
+- Start commit: `063eafd`
+- End commit: `gate-125-on-main`
+- Files touched: `src/nvda_desk/services/review_explanation.py`, `tests/test_execution_review_runtime.py`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate125_review_visible_lineage.py`
+- Observed results: review output now emits the same resolved-surface chain runtime computed, including baseline reference, effective values, clamp state, precedence band, and source policy ids
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G125-003 — Freeze parity across prepared and raw review paths
+
+- Branch: `work/gate-125-review-visible-coefficient-lineage-20260331`
+- Start commit: `063eafd`
+- End commit: `gate-125-on-main`
+- Files touched: `tests/test_gate103_raw_prepared_parity.py`, `tests/test_gate125_review_visible_lineage.py`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE125_REVIEW_VISIBLE_COEFFICIENT_LINEAGE.md`, `CHANGELOG.jsonl`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate103_raw_prepared_parity.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate125_review_visible_lineage.py`
+- Observed results: Gate 125 closed honestly across the planning quartet; prepared and raw canonical paths preserve identical review-visible coefficient lineage; Gate 126 advanced to active on `main`
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
 
 ## Gate 126 receipts
 

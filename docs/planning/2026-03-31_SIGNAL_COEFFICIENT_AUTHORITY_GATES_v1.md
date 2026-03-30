@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned
+Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose
@@ -286,6 +286,11 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 - posture, execution, and review consume the same typed resolved-surface packet;
 - regression tests prove the lineage chain survives both prepared and raw canonical paths.
 
+### Gate 125 closeout note
+
+- Gate 125 completed on `main` by extending `EffectivePolicySnapshot` and `ReviewLineagePacket` with the same resolved-surface carriage used by the modifier runtime packet.
+- Review output now renders baseline reference, baseline/effective value, clamp state, precedence band, source policy ids, and authority version through `effective_policy.resolved_surfaces` and `review_lineage.resolved_surfaces`.
+- Prepared and raw canonical paths preserve that review-visible lineage without divergence.
 
 ### Gate 126: Admit a bounded temporal-threshold authority subset
 
