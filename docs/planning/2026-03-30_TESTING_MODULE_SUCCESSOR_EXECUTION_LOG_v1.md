@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gates 101-102 complete on `main`, Gate 103 next
+Status: active execution log for the successor testing pack; Gates 101-103 complete on `main`, Gate 104 next
 
 ## Purpose
 
@@ -8,8 +8,8 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Do not begin Gate 104 until Gate 103 is complete and merged to `main`.
-- If Gate 103 cannot freeze bounded parity or raw-path invariants honestly, stop the pack there and record the blocker explicitly.
+- Do not begin Gate 105 until Gate 104 is complete and merged to `main`.
+- If Gate 104 cannot add targeted property/stateful testing honestly, stop the pack there and record the blocker explicitly.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
 ## Gate 101 receipts
@@ -64,11 +64,33 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 102 closeout
 
-## Planned receipt skeleton
+## Gate 103 receipts
 
-### Gate 103 receipts
-- `LEAF-G103-001` — freeze bounded parity between the raw and prepared canonical paths
-- `LEAF-G103-002` — extend lawful-output invariants to the canonical raw path
+### LEAF-G103-001 — freeze bounded parity between the raw and prepared canonical paths
+
+- Branch: `work/gate-103-raw-prepared-parity-20260330`
+- Start commit: `7585f52`
+- End commit: `gate-103-closeout-on-main`
+- Files touched: `tests/test_gate103_raw_prepared_parity.py`, `docs/planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md`, planning control surfaces
+- Validations run: targeted Gate 103 proof slice
+- Full suite required: no
+- Exact evidence: the canonical raw-path harness and canonical prepared-runtime harness are equal on the bounded comparable surface frozen by Gate 103.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 103 closeout
+
+### LEAF-G103-002 — extend lawful-output invariants to the canonical raw path
+
+- Branch: `work/gate-103-raw-prepared-parity-20260330`
+- Start commit: `7585f52`
+- End commit: `gate-103-closeout-on-main`
+- Files touched: `tests/test_gate97_runtime_invariants.py`, `tests/test_gate103_raw_prepared_parity.py`, `docs/planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md`, planning control surfaces
+- Validations run: targeted Gate 103 proof slice
+- Full suite required: no
+- Exact evidence: Gate 97 runtime-law invariants now run against the canonical raw-path result as well as the supportive, stressed, and canonical prepared scenarios.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 103 closeout
+
+## Planned receipt skeleton
 
 ### Gate 104 receipts
 - `LEAF-G104-001` — add targeted property tests for the bounded high-risk services

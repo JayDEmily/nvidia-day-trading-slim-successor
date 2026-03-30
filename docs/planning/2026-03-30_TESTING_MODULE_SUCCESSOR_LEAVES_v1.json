@@ -6,21 +6,22 @@
     "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
     "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
   ],
-  "execution_status": "gate_103_successor_testing_pack_active_on_main",
-  "active_gate": "Gate 103",
+  "execution_status": "gate_104_successor_testing_pack_active_on_main",
+  "active_gate": "Gate 104",
   "completed_gate_ids": [
     "Gate 101",
-    "Gate 102"
+    "Gate 102",
+    "Gate 103"
   ],
   "completed_leaf_ids": [
     "LEAF-G101-001",
     "LEAF-G101-002",
     "LEAF-G102-001",
-    "LEAF-G102-002"
+    "LEAF-G102-002",
+    "LEAF-G103-001",
+    "LEAF-G103-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G103-001",
-    "LEAF-G103-002",
     "LEAF-G104-001",
     "LEAF-G104-002",
     "LEAF-G105-001",
@@ -197,7 +198,7 @@
       "gate": "Gate 103",
       "title": "Freeze bounded parity between the raw and prepared canonical paths",
       "objective": "Assert parity on the lawful surfaces that should agree between the canonical raw-path harness and the canonical prepared-runtime harness.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/testing/canonical_runtime_harness.py"
@@ -232,7 +233,7 @@
       "gate": "Gate 103",
       "title": "Extend lawful-output invariants to the canonical raw path",
       "objective": "Run the invariant regime against the raw path as well as the prepared path.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md"
       ],
@@ -270,7 +271,7 @@
       "gate": "Gate 104",
       "title": "Add targeted property tests for the bounded high-risk services",
       "objective": "Use Hypothesis/property testing only on the selected services where bounded edge exploration has the highest payoff.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/state_conditioned_modifier.py",
@@ -306,7 +307,7 @@
       "gate": "Gate 104",
       "title": "Add targeted stateful sequence tests",
       "objective": "Use stateful testing where ordered transitions matter more than isolated values.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/event_store.py"

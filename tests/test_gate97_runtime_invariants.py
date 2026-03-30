@@ -9,6 +9,7 @@ import pytest
 from nvda_desk.config import Settings
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.services.real_data_loader import RealDataLoaderService
+from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessService
 from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
 from nvda_desk.testing.cognition_fixtures import (
     stressed_runtime_fixture,
@@ -25,6 +26,24 @@ def _canonical_prepared_result():
     harness = CanonicalRuntimeHarnessService().build(
         dataset_id=pack.prepared_dataset.dataset_id,
         snapshot=pack.prepared_dataset.snapshots[0],
+        regime_input=supportive.regime_input,
+        inventory_state=supportive.inventory_state,
+        risk_budget_remaining_pct=supportive.risk_budget_remaining_pct,
+    )
+    return DeskCognitionRuntime(Settings()).run(
+        temporal_input=harness.temporal_input,
+        regime_input=harness.regime_input,
+        options_flow_input=harness.options_flow_input,
+        inventory_state=harness.inventory_state,
+        risk_budget_remaining_pct=harness.risk_budget_remaining_pct,
+    )
+
+
+def _canonical_raw_result():
+    supportive = supportive_runtime_fixture()
+    harness = CanonicalRawRuntimeHarnessService().build_from_path(
+        raw_bundle_path=Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json"),
+        dataset_id="gate-e-prepared-runtime-dataset",
         regime_input=supportive.regime_input,
         inventory_state=supportive.inventory_state,
         risk_budget_remaining_pct=supportive.risk_budget_remaining_pct,
@@ -66,8 +85,9 @@ def _stressed_result():
         ("supportive", _supportive_result()),
         ("stressed", _stressed_result()),
         ("canonical_prepared", _canonical_prepared_result()),
+        ("canonical_raw", _canonical_raw_result()),
     ],
-    ids=["supportive", "stressed", "canonical_prepared"],
+    ids=["supportive", "stressed", "canonical_prepared", "canonical_raw"],
 )
 def test_lawful_output_invariants_hold_across_canonical_scenarios(scenario_name: str, result) -> None:
     assert result.packet_lineage[0] == result.stage_packet_ids["temporal"]
@@ -87,7 +107,7 @@ def test_lawful_output_invariants_hold_across_canonical_scenarios(scenario_name:
 
 
 def test_lineage_and_stage_order_invariants_hold_across_canonical_scenarios() -> None:
-    for result in (_supportive_result(), _stressed_result(), _canonical_prepared_result()):
+    for result in (_supportive_result(), _stressed_result(), _canonical_prepared_result(), _canonical_raw_result()):
         assert [packet.stage for packet in result.review.stage_reason_packets] == EXPECTED_STAGE_ORDER
         assert list(result.stage_packet_ids) == EXPECTED_STAGE_ORDER + ["review"]
         assert result.packet_lineage == tuple(result.stage_packet_ids[stage] for stage in result.stage_packet_ids)

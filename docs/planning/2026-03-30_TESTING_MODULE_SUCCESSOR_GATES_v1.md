@@ -1,4 +1,4 @@
-Status: active successor testing pack on `main`; Gates 101-102 complete, Gate 103 is the next active gate
+Status: active successor testing pack on `main`; Gates 101-103 complete, Gate 104 is the next active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
@@ -57,7 +57,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gates 101-102 are complete on `main`. Gate 103 is the next active gate. No later successor gate may start until Gate 103 is complete or explicitly blocked.
+- Gates 101-103 are complete on `main`. Gate 104 is the next active gate. No later successor gate may start until Gate 104 is complete or explicitly blocked.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -78,6 +78,7 @@ Out of scope:
 ### Gate 103 sequencing summary
 1. Compare the canonical raw path and the canonical prepared path where their surfaces are semantically comparable.
 2. Expand invariant tests so lawful-output guarantees are asserted on the raw path too.
+3. Gate 103 is now complete on `main`; Gate 104 may begin.
 
 ### Gate 104 sequencing summary
 1. Add targeted Hypothesis/property and stateful tests only for the bounded high-risk services.
@@ -126,6 +127,7 @@ Out of scope:
 - a bounded parity surface between the raw and prepared canonical paths is frozen explicitly;
 - lawful-output invariants run against the raw path as well as the prepared path;
 - any admissible divergence is documented rather than hand-waved.
+- Status: complete on `main`; see `docs/planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md`.
 
 ### Gate 104: Targeted property and stateful testing
 
