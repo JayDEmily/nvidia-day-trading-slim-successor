@@ -1,6 +1,6 @@
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md
 
-Status: active execution log for the successor testing pack; Gates 101-104 complete on `main`, Gate 105 next
+Status: active execution log for the successor testing pack; Gates 101-105 complete on `main`, Gate 106 next
 
 ## Purpose
 
@@ -8,8 +8,7 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 
 ## Global rules
 
-- Do not begin Gate 106 until Gate 105 is complete and merged to `main`.
-- If Gate 105 cannot harden typed ingress or repo-native DB/API seams honestly, stop the pack there and record the blocker explicitly.
+- Gate 106 is the closeout gate. Do not mark the pack closed unless the planning quartet, proof slice, and packaged repo all agree.
 - The active planning quartet for this pack is `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`, and this file.
 
 ## Gate 101 receipts
@@ -116,11 +115,33 @@ Hold the sequential execution receipts for the successor testing pack beginning 
 - Stop conditions hit: none
 - Merge status: merged to `main` via fast-forward during Gate 104 closeout
 
-## Planned receipt skeleton
+## Gate 105 receipts
 
-### Gate 105 receipts
-- `LEAF-G105-001` — add typed ingress coercion-versus-strictness tests
-- `LEAF-G105-002` — add repo-native DB/API seam validation
+### LEAF-G105-001 — add typed ingress coercion-versus-strictness tests
+
+- Branch: `work/gate-105-ingress-db-api-20260330`
+- Start commit: `cc75702`
+- End commit: `gate-105-closeout-on-main`
+- Files touched: `tests/test_gate105_ingress_db_api.py`, `docs/planning/2026-03-30_GATE105_INGRESS_DB_API.md`, planning control surfaces
+- Validations run: targeted Gate 105 proof slice
+- Full suite required: no
+- Exact evidence: typed ingress tests now distinguish accepted coercion from strict rejection and prohibited shapes on the selected raw bundle surface.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 105 closeout
+
+### LEAF-G105-002 — add repo-native DB/API seam validation
+
+- Branch: `work/gate-105-ingress-db-api-20260330`
+- Start commit: `cc75702`
+- End commit: `gate-105-closeout-on-main`
+- Files touched: `tests/test_gate105_ingress_db_api.py`, `docs/planning/2026-03-30_GATE105_INGRESS_DB_API.md`, planning control surfaces
+- Validations run: targeted Gate 105 proof slice
+- Full suite required: no
+- Exact evidence: repo-native SQLAlchemy transaction tests and FastAPI dependency-override seam tests now freeze commit/rollback and lookup-error mapping behaviour.
+- Stop conditions hit: none
+- Merge status: merged to `main` via fast-forward during Gate 105 closeout
+
+## Planned receipt skeleton
 
 ### Gate 106 receipts
 - `LEAF-G106-001` — close the successor pack honestly across the planning quartet

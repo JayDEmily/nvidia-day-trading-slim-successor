@@ -1,4 +1,4 @@
-Status: active successor testing pack on `main`; Gates 101-104 complete, Gate 105 is the next active gate
+Status: active successor testing pack on `main`; Gates 101-105 complete, Gate 106 is the next active gate
 
 # 2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md
 
@@ -57,7 +57,7 @@ Out of scope:
 ## Successor-pack authority notes
 
 - The predecessor testing-module pack is closed through Gate 100 and remains evidentiary authority only.
-- Gates 101-104 are complete on `main`. Gate 105 is the next active gate. No later successor gate may start until Gate 105 is complete or explicitly blocked.
+- Gates 101-105 are complete on `main`. Gate 106 is the next active gate. No later successor gate may start until Gate 106 is complete or explicitly blocked.
 - Prepared-runtime coverage from Gate 96 remains valid, but it does not satisfy raw-ingress claims.
 - Property/stateful testing in this pack is targeted. It is not permission to spray Hypothesis across the repo.
 
@@ -89,6 +89,7 @@ Out of scope:
 1. Add typed ingress tests that distinguish accepted coercion from prohibited coercion.
 2. Add repo-native SQLAlchemy transaction-boundary tests.
 3. Add bounded FastAPI/TestClient dependency-override validation for critical endpoints in the repo venv.
+4. Gate 105 is now complete on `main`; Gate 106 may begin.
 
 ### Gate 106 sequencing summary
 1. Close the successor pack honestly across the planning quartet.

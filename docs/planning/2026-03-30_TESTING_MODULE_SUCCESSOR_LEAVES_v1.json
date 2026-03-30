@@ -6,13 +6,14 @@
     "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json",
     "docs/planning/2026-03-30_TESTING_MODULE_EXECUTION_LOG_v1.md"
   ],
-  "execution_status": "gate_105_successor_testing_pack_active_on_main",
-  "active_gate": "Gate 105",
+  "execution_status": "gate_106_successor_testing_pack_active_on_main",
+  "active_gate": "Gate 106",
   "completed_gate_ids": [
     "Gate 101",
     "Gate 102",
     "Gate 103",
-    "Gate 104"
+    "Gate 104",
+    "Gate 105"
   ],
   "completed_leaf_ids": [
     "LEAF-G101-001",
@@ -22,11 +23,11 @@
     "LEAF-G103-001",
     "LEAF-G103-002",
     "LEAF-G104-001",
-    "LEAF-G104-002"
+    "LEAF-G104-002",
+    "LEAF-G105-001",
+    "LEAF-G105-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G105-001",
-    "LEAF-G105-002",
     "LEAF-G106-001",
     "LEAF-G106-002"
   ],
@@ -346,7 +347,7 @@
       "gate": "Gate 105",
       "title": "Add typed ingress coercion-versus-strictness tests",
       "objective": "Freeze which coercions are allowed and which are prohibited on the selected typed ingress surfaces.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/"
@@ -381,7 +382,7 @@
       "gate": "Gate 105",
       "title": "Add repo-native DB/API seam validation",
       "objective": "Exercise transaction-boundary and HTTP dependency seams using the repo venv and official test patterns.",
-      "status": "planned_next_active_gate",
+      "status": "complete",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md",
         "src/nvda_desk/api/app.py",
@@ -420,7 +421,7 @@
       "gate": "Gate 106",
       "title": "Close the successor pack honestly across the planning quartet",
       "objective": "Update the planning quartet only after Gates 101\u2013105 are truly complete.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -458,7 +459,7 @@
       "gate": "Gate 106",
       "title": "Package the repo from the exact green state",
       "objective": "Cut the full-history zip from the exact green successor-pack closeout state.",
-      "status": "planned",
+      "status": "planned_next_active_gate",
       "authority_docs": [
         "docs/TESTING_AND_PROMOTION.md"
       ],
