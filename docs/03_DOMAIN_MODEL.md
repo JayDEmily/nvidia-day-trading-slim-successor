@@ -2649,6 +2649,24 @@ Ownership:
 - runtime integration in `src/nvda_desk/services/state_conditioned_modifier.py` and `src/nvda_desk/services/cognition_runtime.py`
 - review exposure in `src/nvda_desk/services/review_explanation.py`
 
+### 5e. Governed coefficient-authority objects
+
+Typed config contracts that freeze which admitted coefficient surfaces exist before runtime promotion reads them.
+
+Key examples:
+- `CoefficientAuthorityDocument`
+- `MutableNumericSurfaceAuthoritySpec`
+- `MutableBooleanSurfaceAuthoritySpec`
+- `TemporalThresholdAuthoritySpec`
+- `TimingParameterAuthoritySpec`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/config_models.py`
+- governed file surface in `config/coefficient_authority.v1.yaml`
+- runtime promotion begins in later gates rather than by attachment alone
+
+The governed authority file is not the same surface as the legacy `coefficients_registry.example.yaml`. The former freezes the admitted tranche-one authority chain; the latter remains salvage/example structure only.
+
 ## Gate 79 domain additions
 
 The domain now includes explicit walk-forward window contracts, horizon-discovery outputs, fragility/ablation reports, and downstream consumer bindings so review-horizon evidence is typed rather than implied.

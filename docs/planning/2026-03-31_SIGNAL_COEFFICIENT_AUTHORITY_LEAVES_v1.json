@@ -1,23 +1,24 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_122_complete_gate_123_active_on_main",
-  "active_gate": "Gate 123",
+  "execution_status": "gate_123_complete_gate_124_active_on_main",
+  "active_gate": "Gate 124",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
   "completed_gate_ids": [
-    "Gate 122"
+    "Gate 122",
+    "Gate 123"
   ],
   "completed_leaf_ids": [
     "LEAF-G122-001",
     "LEAF-G122-002",
-    "LEAF-G122-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G122-003",
     "LEAF-G123-001",
     "LEAF-G123-002",
-    "LEAF-G123-003",
+    "LEAF-G123-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G124-001",
     "LEAF-G124-002",
     "LEAF-G124-003",
@@ -248,7 +249,7 @@
       "gate": "Gate 123",
       "title": "Define the new typed coefficient-authority schema",
       "objective": "Add the governed coefficient-authority contract alongside the legacy example registry without collapsing them into one ambiguous shape.",
-      "status": "active",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G122-003"
       ],
@@ -311,7 +312,7 @@
       "gate": "Gate 123",
       "title": "Create the governed coefficient-authority file surface",
       "objective": "Add the first governed authority file containing the admitted mutable surfaces, starter envelopes, and metadata declared by Gate 122.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G123-001"
       ],
@@ -371,7 +372,7 @@
       "gate": "Gate 123",
       "title": "Add deterministic authority-file validation tests",
       "objective": "Prove invalid units, surfaces, ranges, and transform families fail cleanly before runtime integration begins.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G123-002"
       ],
@@ -437,7 +438,7 @@
       "gate": "Gate 124",
       "title": "Externalise mutable-surface baselines and bounds",
       "objective": "Move the eight admitted mutable-surface baselines, floors, and caps onto the governed authority surface without changing their current values.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G123-003"
       ],

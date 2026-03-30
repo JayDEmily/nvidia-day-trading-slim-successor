@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gate 122 complete on `main`, Gate 123 active, Gates 124-127 planned
+Status: active signal-coefficient authority pack; Gates 122-123 complete on `main`, Gate 124 active, Gates 125-127 planned
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose

@@ -23,3 +23,4 @@ def test_config_bundle_loads_example_yaml_files() -> None:
     assert bundle.evaluation_config.paths.output_dir == "./evaluator/outputs"
     assert "baseline" in bundle.strategy_variants.variants
     assert "runtime" in bundle.coefficients_registry.model_dump()
+    assert bundle.coefficient_authority.schema_version == "coefficient_authority.v1"

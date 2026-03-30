@@ -13,6 +13,7 @@ paths:
   output_dir: "./evaluator/outputs"
   module_registry_path: "./config/module_registry.yaml"
   coefficients_registry_path: "./config/coefficients_registry.yaml"
+  coefficient_authority_path: "./config/coefficient_authority.v1.yaml"
   strategy_variants_path: "./config/strategy_variants.yaml"
 
 scope:

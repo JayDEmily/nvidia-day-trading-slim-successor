@@ -1,6 +1,6 @@
 # 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1
 
-Status: active execution log for the signal-coefficient authority pack; Gate 122 complete on `main`, Gate 123 active, Gates 124-127 planned
+Status: active execution log for the signal-coefficient authority pack; Gates 122-123 complete on `main`, Gate 124 active, Gates 125-127 planned
 
 ## Purpose
 
@@ -65,7 +65,41 @@ For every completed leaf record:
 
 ## Gate 123 receipts
 
-- none yet
+### LEAF-G123-001 — Define the new typed coefficient-authority schema
+
+- Branch: `work/gate-123-coefficient-authority-contract-20260331`
+- Start commit: `679a51c`
+- End commit: `gate-123-on-main`
+- Files touched: `src/nvda_desk/config_models.py`, `config/README.md`, `docs/03_DOMAIN_MODEL.md`, `config/runtime_settings.example.yaml`, `config/evaluation_config.example.yaml`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_fixtures_and_config.py tests/test_boundaries_and_config_surface.py tests/test_playbook_registry.py tests/test_gate123_coefficient_authority.py`
+- Observed results: new typed authority schema exists, loader accepts it, and the legacy salvage registry remains explicitly reference-only
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G123-002 — Create the governed coefficient-authority file surface
+
+- Branch: `work/gate-123-coefficient-authority-contract-20260331`
+- Start commit: `679a51c`
+- End commit: `gate-123-on-main`
+- Files touched: `config/coefficient_authority.v1.yaml`, `config/README.md`, `docs/03_DOMAIN_MODEL.md`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_fixtures_and_config.py tests/test_boundaries_and_config_surface.py tests/test_playbook_registry.py tests/test_gate123_coefficient_authority.py`
+- Observed results: governed authority file now contains the admitted tranche-one runtime surfaces plus bounded temporal threshold/timing entries only
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G123-003 — Add deterministic authority-file validation tests
+
+- Branch: `work/gate-123-coefficient-authority-contract-20260331`
+- Start commit: `679a51c`
+- End commit: `gate-123-on-main`
+- Files touched: `tests/test_gate123_coefficient_authority.py`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate122_signal_coefficient_authority_closeout.py tests/test_gate123_coefficient_authority.py tests/test_fixtures_and_config.py tests/test_boundaries_and_config_surface.py tests/test_playbook_registry.py`
+- Observed results: invalid surface ids, absurd ranges, and illegal transform families now fail deterministically; Gate 123 closed honestly across the planning quartet and Gate 124 advanced to active on `main`
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
 
 ## Gate 124 receipts
 

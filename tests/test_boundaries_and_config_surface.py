@@ -4,6 +4,7 @@ import asyncio
 from pathlib import Path
 
 from nvda_desk.config_models import load_config_bundle
+from nvda_desk.schemas.state_policy import MutableRuntimeSurface
 from nvda_desk.services.config_surface import ConfigSurfaceService
 from nvda_desk.services.external_boundaries import (
     InMemoryBrokerAdapter,
@@ -28,6 +29,10 @@ def test_config_bundle_parses_typed_weights_and_variants() -> None:
             "score_floor"
         ]
         == 0.72
+    )
+    assert (
+        bundle.coefficient_authority.mutable_surface_index()[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR].baseline
+        == 0.65
     )
 
 
