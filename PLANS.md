@@ -20,7 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- none
+- gates: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md`
+- leaves: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -51,7 +54,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`
+- bounded trace scenario review pack active at Gate 133 on `main`
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt

@@ -1,0 +1,101 @@
+{
+  "governing_plan": "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md",
+  "version": 1,
+  "execution_status": "bounded_trace_scenario_review_active_at_gate_133",
+  "active_gate": "Gate 133",
+  "supersedes": [
+    "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 132"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G132-001",
+    "LEAF-G132-002",
+    "LEAF-G132-003"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G133-001",
+    "LEAF-G133-002",
+    "LEAF-G133-003",
+    "LEAF-G134-001",
+    "LEAF-G134-002"
+  ],
+  "global_rules": {
+    "scenario_pack_must_stay_bounded_small_and_coherent": true,
+    "sibling_pack_is_semantic_review_evidence_only": true,
+    "real_anchor_snapshot_must_remain_explicit": true,
+    "broad_human_sanity_outcomes_only_in_gate_133": true,
+    "pack_closeout_requires_no_active_pack_routed": true
+  },
+  "gates": {
+    "Gate 132": {
+      "status": "complete",
+      "objective": "Freeze one bounded sibling-scenario pack around an admitted prepared-runtime anchor.",
+      "leaf_ids": [
+        "LEAF-G132-001",
+        "LEAF-G132-002",
+        "LEAF-G132-003"
+      ]
+    },
+    "Gate 133": {
+      "status": "active",
+      "objective": "Freeze the bounded trace-review testing regime.",
+      "leaf_ids": [
+        "LEAF-G133-001",
+        "LEAF-G133-002",
+        "LEAF-G133-003"
+      ]
+    },
+    "Gate 134": {
+      "status": "planned",
+      "objective": "Emit the simplified bounded trace report and close the pack.",
+      "leaf_ids": [
+        "LEAF-G134-001",
+        "LEAF-G134-002"
+      ]
+    }
+  },
+  "leaves": {
+    "LEAF-G132-001": {
+      "gate": "Gate 132",
+      "status": "complete",
+      "title": "Freeze the admitted anchor and bounded sibling perturbation receipts"
+    },
+    "LEAF-G132-002": {
+      "gate": "Gate 132",
+      "status": "complete",
+      "title": "Add testing-only schema and runtime trace helpers for the sibling pack"
+    },
+    "LEAF-G132-003": {
+      "gate": "Gate 132",
+      "status": "complete",
+      "title": "Close Gate 132 and advance the pack to Gate 133"
+    },
+    "LEAF-G133-001": {
+      "gate": "Gate 133",
+      "status": "planned",
+      "title": "Freeze the doctrine for bounded trace-review proofs"
+    },
+    "LEAF-G133-002": {
+      "gate": "Gate 133",
+      "status": "planned",
+      "title": "Run the sibling pack and freeze broad human-sanity expectations"
+    },
+    "LEAF-G133-003": {
+      "gate": "Gate 133",
+      "status": "planned",
+      "title": "Close Gate 133 and advance the pack to Gate 134"
+    },
+    "LEAF-G134-001": {
+      "gate": "Gate 134",
+      "status": "planned",
+      "title": "Generate the simplified bounded trace report from live runtime outputs"
+    },
+    "LEAF-G134-002": {
+      "gate": "Gate 134",
+      "status": "planned",
+      "title": "Close the pack honestly and package the exact repo state"
+    }
+  }
+}
