@@ -35,7 +35,7 @@ def test_historical_evaluation_readiness_pack_is_closed_honestly_across_the_quar
         or "Current active gate: **Gate 125 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 127 in the signal-coefficient authority pack**." in gate_map
-        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map
+        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
     )
     assert "| Gate 121 | complete on `main` |" in gate_map
     assert (

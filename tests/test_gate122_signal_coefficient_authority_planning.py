@@ -21,6 +21,11 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 126 in the signal-coefficient authority pack**.",
     "Current active gate: **Gate 127 in the signal-coefficient authority pack**.",
     "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**.",
+    "Current active gate: **Gate 128 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 129 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
+    "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
 }
 
 
@@ -61,7 +66,7 @@ def test_signal_coefficient_authority_pack_is_active() -> None:
         "Gate 125",
         "Gate 126",
         "Gate 127",
-        "none — signal-coefficient authority pack closed through Gate 127 on main",
+        "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main",
     }
     assert len(leaves["remaining_leaf_ids"]) in {17, 14, 11, 8, 5, 2, 0}
     assert execution_log.startswith("# 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1")

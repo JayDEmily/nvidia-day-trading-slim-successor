@@ -20,7 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`
+- gates: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`
+- leaves: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`
+- execution log: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -51,7 +54,8 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`
+- post-flight repo consistency pack active at Gate 128 on `main`-derived planning branch
+- signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt
 

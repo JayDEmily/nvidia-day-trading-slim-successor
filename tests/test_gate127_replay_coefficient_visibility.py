@@ -44,11 +44,11 @@ def test_gate127_closeout_closes_the_pack_honestly() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
     receipt = RECEIPT.read_text(encoding="utf-8")
 
-    assert "no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`" in plans
-    assert "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map
+    assert ("no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans)
+    assert ("Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map) or ("Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map)
     assert "Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate" in gates
     assert leaves["execution_status"] == "signal_coefficient_authority_pack_closed_through_gate_127_on_main"
-    assert leaves["active_gate"] == "none — signal-coefficient authority pack closed through Gate 127 on main"
+    assert leaves["active_gate"] in {"none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main"}
     assert leaves["remaining_leaf_ids"] == []
     assert "Status: closed execution log for the signal-coefficient authority pack; Gates 122-127 complete on `main`, no active gate" in execution_log
     assert "Status: complete on `main`; signal-coefficient authority pack is now closed through Gate 127" in receipt

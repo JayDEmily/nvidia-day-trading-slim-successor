@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority  
-Version: v1.10  
+Version: v1.11  
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.  
 Paired files:
 - `docs/planning/2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md` — latest closed microtranche gate surface retained as evidence
@@ -44,7 +44,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**. Gates 122-127 are complete on `main`; no active pack is currently routed.
+Current active gate: **Gate 128 in the post-flight repo consistency pack**. Signal-coefficient authority is closed evidence; the post-flight repo consistency pack is the active planning surface.
 
 ## 2. Selected completed-tranche evidence
 
@@ -140,6 +140,10 @@ The successor cognitive-workflow modification pack is closed through Gate 79, th
 | Gate 125 | complete on `main` | surface one review-visible baseline-to-effective coefficient lineage chain so posture, execution, and review stop keeping private modifier interpretations | `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_GATE125_REVIEW_VISIBLE_COEFFICIENT_LINEAGE.md`, `tests/test_gate125_review_visible_lineage.py` |
 | Gate 126 | complete on `main` | admit a bounded temporal-threshold and timing-parameter authority subset from the workbook into governed runtime authority, update the canonical threshold-edge and harness expectations to current final-risk/event-window truth, and advance the pack to Gate 127 | `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md`, `tests/test_gate126_temporal_threshold_authority.py` |
 | Gate 127 | complete on `main` | align replay and horizon outputs with the governed coefficient state, surface stable coefficient snapshots in replay/horizon outputs, and close the signal-coefficient authority pack honestly | `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md`, `tests/test_gate127_replay_coefficient_visibility.py` |
+| Gate 128 | active planning gate on the working branch | modernise router and predecessor-evidence guard tests so they track the active-pack router model instead of obsolete literal `PLANS.md` eras | `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`, `tests/test_gate128_post_flight_repo_consistency_planning.py` |
+| Gate 129 | planned | align governed packet fixtures with current schema and remove dead post-externalisation leftovers without widening runtime behaviour | `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json` |
+| Gate 130 | planned | refresh stale runtime expectation tests to current post-final-risk and event-window truth using observed outputs only | `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json` |
+| Gate 131 | planned | rerun the synced full suite, clear any residual red surfaces, close the pack honestly, and package the exact green repo state | `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md` |
 
 ## 4. Global execution rules
 
@@ -150,4 +154,4 @@ The successor cognitive-workflow modification pack is closed through Gate 79, th
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; no active pack is currently routed.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; Gate 128 is active on the working branch; Gates 129-131 are planned.

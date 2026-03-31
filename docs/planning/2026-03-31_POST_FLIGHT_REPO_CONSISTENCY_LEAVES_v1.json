@@ -1,0 +1,330 @@
+{
+  "governing_plan": "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md",
+  "version": 1,
+  "execution_status": "gate_127_closed_post_flight_repo_consistency_pack_active_from_gate_128",
+  "active_gate": "Gate 128",
+  "supersedes": [
+    "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G128-001",
+    "LEAF-G128-002",
+    "LEAF-G128-003",
+    "LEAF-G129-001",
+    "LEAF-G129-002",
+    "LEAF-G129-003",
+    "LEAF-G130-001",
+    "LEAF-G130-002",
+    "LEAF-G130-003",
+    "LEAF-G131-001",
+    "LEAF-G131-002"
+  ],
+  "global_rules": {
+    "repo_local_dev_env_required_for_full_suite": true,
+    "router_assertions_must_track_modern_pack_state_not_obsolete_literal_plans_text": true,
+    "runtime_expectation_updates_must_be_backed_by_current_observed_outputs": true,
+    "no_new_runtime_architecture_or_coefficient_scope_expansion_in_this_pack": true,
+    "unsynced_sandbox_dependency_errors_are_environment_preconditions_not_repo_code_defects": true
+  },
+  "verified_postflight_inventory": {
+    "proof_command": "PYTHONPATH=src pytest -q",
+    "proof_environment": ".venv created by uv sync --extra dev",
+    "observed_result": "429 passed, 14 failed in 33.17s",
+    "failing_tests": [
+      "tests/test_financial_calendar_planning_v3.py::test_runtime_integration_pack_is_retained_as_closed_predecessor_evidence",
+      "tests/test_gate120_execution_geometry.py::test_gate120_max_risk_per_trade_caps_per_slice_risk",
+      "tests/test_gate125_review_visible_lineage.py::test_gate125_closeout_advances_pack_to_gate126",
+      "tests/test_gate126_temporal_threshold_authority.py::test_gate126_closeout_advances_pack_to_gate127",
+      "tests/test_gate46_50_planning_pack.py::test_gate_46_to_50_are_complete_and_gate_45_stays_retired",
+      "tests/test_gate51_cognitive_workflow_planning.py::test_gate51_outputs_pin_step0_and_candidate_boundaries",
+      "tests/test_gate59_doctrine_rebase.py::test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_active",
+      "tests/test_gate80_corrective_pass_reset.py::test_corrective_pair_is_the_active_post_gate79_pointer",
+      "tests/test_gate80_corrective_pass_reset.py::test_gate_map_marks_gate80_complete_and_gate81_next",
+      "tests/test_gate95_phase0_closeout.py::test_phase0_closeout_moves_active_gate_to_gate96",
+      "tests/test_gate97_runtime_invariants.py::test_lineage_and_stage_order_invariants_hold_across_canonical_scenarios",
+      "tests/test_gate99_runtime_transitions.py::test_adjacent_prepared_runtime_snapshots_transition_without_illegal_sideways_behaviour",
+      "tests/test_real_data_loader.py::test_gate_e_runtime_path_validation",
+      "tests/test_successor_pack_anti_drift.py::test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate"
+    ],
+    "unsynced_sandbox_note": "An unsynced sandbox run produced collection errors for sqlalchemy/hypothesis-backed tests; execution leaves must use the synced dev environment instead."
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G128-001",
+      "gate": "Gate 128",
+      "title": "Modernise router-only assertions to the current pack model",
+      "objective": "Replace obsolete `PLANS.md` string assertions with router-model assertions that tolerate the active post-flight pack while preserving predecessor evidence.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate107_repo_process_governance.py",
+        "tests/test_gate108_router_only_control_surface.py",
+        "tests/test_gate109_template_pack_governance.py",
+        "tests/test_gate110_agents_reading_order.py",
+        "tests/test_gate112_governance_closeout.py",
+        "tests/test_gate113_execution_authority_microtranche.py",
+        "tests/test_gate114_research_mode_clarity_microtranche.py",
+        "tests/test_gate115_historical_evaluation_readiness_planning.py",
+        "tests/test_financial_calendar_planning_v3.py",
+        "tests/test_gate125_review_visible_lineage.py",
+        "tests/test_gate126_temporal_threshold_authority.py"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate107_repo_process_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate109_template_pack_governance.py tests/test_gate110_agents_reading_order.py tests/test_gate112_governance_closeout.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_financial_calendar_planning_v3.py tests/test_gate125_review_visible_lineage.py tests/test_gate126_temporal_threshold_authority.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G128-002",
+      "gate": "Gate 128",
+      "title": "Refresh retained predecessor-evidence assertions across older planning packs",
+      "objective": "Update older planning-pack tests that still pin obsolete gate-router eras so they assert predecessor evidence honestly under the modern router law.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G128-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate46_50_planning_pack.py",
+        "tests/test_gate51_cognitive_workflow_planning.py",
+        "tests/test_gate59_doctrine_rebase.py",
+        "tests/test_gate80_corrective_pass_reset.py",
+        "tests/test_gate95_phase0_closeout.py",
+        "tests/test_successor_pack_anti_drift.py"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_gate95_phase0_closeout.py tests/test_successor_pack_anti_drift.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G128-003",
+      "gate": "Gate 128",
+      "title": "Close Gate 128 across the planning quartet",
+      "objective": "Advance the active pack honestly once the router and predecessor-evidence guard tests are modernised.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G128-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-31_GATE128_ROUTER_AND_PREDECESSOR_GUARD_MODERNISATION.md",
+        "CHANGELOG.jsonl"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate107_repo_process_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate109_template_pack_governance.py tests/test_gate110_agents_reading_order.py tests/test_gate112_governance_closeout.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_financial_calendar_planning_v3.py tests/test_gate125_review_visible_lineage.py tests/test_gate126_temporal_threshold_authority.py tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_gate95_phase0_closeout.py tests/test_successor_pack_anti_drift.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G129-001",
+      "gate": "Gate 129",
+      "title": "Align governed resolved-surface fixtures with the current schema",
+      "objective": "Repair stale test fixture construction so governed resolved-surface values include the fields now required by the packet contract.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G128-003"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/state_policy.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate120_execution_geometry.py",
+        "src/nvda_desk/schemas/state_policy.py"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate120_execution_geometry.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G129-002",
+      "gate": "Gate 129",
+      "title": "Remove dead post-externalisation constant leftovers or correct the receipts",
+      "objective": "Make Gate 124 externalisation claims and code agree by deleting unused private constants or documenting an intentional retention honestly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G129-001"
+      ],
+      "authority_docs": [
+        "docs/planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "docs/planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src python -m compileall -q src tests"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G129-003",
+      "gate": "Gate 129",
+      "title": "Close Gate 129 with governed packet/schema no-drift proofs",
+      "objective": "Freeze the governed packet-fixture alignment and dead-code cleanup across the planning quartet and advance Gate 130 honestly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G129-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-31_GATE129_GOVERNED_PACKET_FIXTURE_ALIGNMENT.md",
+        "CHANGELOG.jsonl"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate120_execution_geometry.py tests/test_gate124_mutable_surface_authority.py tests/test_gate125_review_visible_lineage.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G130-001",
+      "gate": "Gate 130",
+      "title": "Refresh canonical stage-order expectations to include the real final-risk join",
+      "objective": "Update stale invariant tests so they assert the current runtime stage order rather than a pre-Gate-121 execution tail.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G129-003"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate97_runtime_invariants.py"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate97_runtime_invariants.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G130-002",
+      "gate": "Gate 130",
+      "title": "Refresh prepared/raw/real-data event-window and derisk expectations",
+      "objective": "Update stale transition and real-data expectation tests to the current event-imminent and final-risk derisk truth using observed outputs.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G130-001"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/domain/temporal_state.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/risk_gateway.py"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate99_runtime_transitions.py",
+        "tests/test_real_data_loader.py"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate99_runtime_transitions.py tests/test_real_data_loader.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G130-003",
+      "gate": "Gate 130",
+      "title": "Close Gate 130 on evidence-backed runtime expectation proofs",
+      "objective": "Advance Gate 131 only after the refreshed invariant and transition expectations are frozen against current observed runtime truth.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G130-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md",
+        "CHANGELOG.jsonl"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate97_runtime_invariants.py tests/test_gate99_runtime_transitions.py tests/test_real_data_loader.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate126_temporal_threshold_authority.py"
+      ],
+      "full_suite_required": false
+    },
+    {
+      "id": "LEAF-G131-001",
+      "gate": "Gate 131",
+      "title": "Run the synced full-suite proof and clear any residual red surfaces",
+      "objective": "Use the repo-local dev environment to rerun the full test suite after Gates 128-130 and repair any remaining red surfaces needed for an honest green closeout.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G130-003"
+      ],
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q"
+      ],
+      "full_suite_required": true
+    },
+    {
+      "id": "LEAF-G131-002",
+      "gate": "Gate 131",
+      "title": "Close the post-flight pack honestly and package the exact green state",
+      "objective": "Update the planning quartet together, record final receipts, and create a fresh full-history zip from the exact green repo state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G131-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "AGENTS.md"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json",
+        "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-03-31_GATE131_POST_FLIGHT_PACK_CLOSEOUT.md",
+        "CHANGELOG.jsonl"
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_document_hygiene.py"
+      ],
+      "full_suite_required": true
+    }
+  ]
+}

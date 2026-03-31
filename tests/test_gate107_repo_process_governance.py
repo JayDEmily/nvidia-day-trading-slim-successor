@@ -38,6 +38,11 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 126 in the signal-coefficient authority pack**.",
     "Current active gate: **Gate 127 in the signal-coefficient authority pack**.",
     "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**.",
+    "Current active gate: **Gate 128 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 129 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
+    "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
+    "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
 }
 
 
@@ -62,7 +67,7 @@ def test_governance_pack_is_present_and_either_active_or_honestly_closed() -> No
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md" in plans
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json" in plans
     assert "2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md" in plans
-    assert ("closed through Gate 112" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+    assert ("closed through Gate 112" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans)
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "Gate 107: Permanent process-law installation and governance-pack activation" in gates
     assert execution_log.startswith("# 2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1")
