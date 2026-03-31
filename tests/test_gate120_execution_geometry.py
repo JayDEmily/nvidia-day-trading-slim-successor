@@ -80,7 +80,12 @@ def test_gate120_max_risk_per_trade_caps_per_slice_risk() -> None:
         resolved_surfaces=[
             ResolvedRuntimeSurfaceValue(
                 target_surface=MutableRuntimeSurface.MAX_RISK_PER_TRADE,
+                owner_stage="execution",
+                authority_version="2026-03-31.tranche1",
+                baseline_reference="coefficient_authority:2026-03-31.tranche1:max_risk_per_trade",
                 baseline_numeric_value=0.35,
+                minimum_numeric_value=0.10,
+                maximum_numeric_value=0.55,
                 effective_numeric_value=0.12,
                 winning_precedence_band=ModifierPriorityBand.EVENT_OPTIONS_STRESS,
                 source_policy_ids=["test_cap"],

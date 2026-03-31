@@ -20,7 +20,11 @@ def test_corrective_pair_is_the_active_post_gate79_pointer() -> None:
     plans = PLANS.read_text()
     gate_map = GATE_MAP.read_text()
 
-    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert (
+        "post-flight repo consistency pack active at Gate 128" in plans
+        or "post-flight repo consistency pack active at Gate 129" in plans
+        or "post-flight repo consistency pack active at Gate 130" in plans
+    )
     assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "historical-evaluation readiness pack closed through Gate 121" in plans
     assert "Gates 59–79 are complete on `main`" in gate_map
@@ -43,6 +47,8 @@ def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
         "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
     ) or (
         "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
+    ) or (
+        "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
     )
     assert "| Gate 80 | complete on `main` |" in gate_map
     assert (

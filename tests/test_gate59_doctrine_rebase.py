@@ -36,7 +36,11 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
 
     assert "historical-evaluation readiness pack closed through Gate 121" in plans
     assert "signal-coefficient authority pack closed through Gate 127" in plans
-    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert (
+        "post-flight repo consistency pack active at Gate 128" in plans
+        or "post-flight repo consistency pack active at Gate 129" in plans
+        or "post-flight repo consistency pack active at Gate 130" in plans
+    )
 
     assert "Gates 59–79 are complete on `main`" in gate_map
     assert "Gates 80–87 are complete on `main`" in gate_map
@@ -52,6 +56,8 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
         "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
     ) or (
         "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
+    ) or (
+        "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
     )
 
 

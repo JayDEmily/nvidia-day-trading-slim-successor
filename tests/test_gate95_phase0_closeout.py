@@ -23,7 +23,11 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert (
+        "post-flight repo consistency pack active at Gate 128" in plans
+        or "post-flight repo consistency pack active at Gate 129" in plans
+        or "post-flight repo consistency pack active at Gate 130" in plans
+    )
     assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "| Gate 95 | complete on `main` |" in gate_map
     assert (
@@ -39,12 +43,50 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
         or "Current active gate: **none — the testing-module pack is closed through Gate 100 on `main`**." in gate_map
         or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
+        or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
     )
-    assert leaves["execution_status"] in {"gate_95_testing_module_pack_active_from_gate_96", "gate_96_testing_module_pack_active_from_gate_97", "gate_97_testing_module_pack_active_from_gate_98", "gate_98_testing_module_pack_active_from_gate_99", "gate_99_testing_module_pack_active_from_gate_100", "gate_100_testing_module_pack_closed_on_main"}
-    assert leaves["active_gate"] in {"Gate 96", "Gate 97", "Gate 98", "Gate 99", "Gate 100", "none — testing-module pack closed through Gate 100 on main"}
+    assert leaves["execution_status"] in {
+        "gate_95_testing_module_pack_active_from_gate_96",
+        "gate_96_testing_module_pack_active_from_gate_97",
+        "gate_97_testing_module_pack_active_from_gate_98",
+        "gate_98_testing_module_pack_active_from_gate_99",
+        "gate_99_testing_module_pack_active_from_gate_100",
+        "gate_100_testing_module_pack_closed_on_main",
+    }
+    assert leaves["active_gate"] in {
+        "Gate 96",
+        "Gate 97",
+        "Gate 98",
+        "Gate 99",
+        "Gate 100",
+        "none — testing-module pack closed through Gate 100 on main",
+    }
     assert leaves["completed_gate_ids"][:2] == ["Gate 94", "Gate 95"]
-    assert leaves["completed_leaf_ids"][:4] == ["LEAF-G94-001", "LEAF-G94-002", "LEAF-G95-001", "LEAF-G95-002"]
-    assert ("Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-98 complete on `main`, Gate 99 next" in execution_log) or ("Status: active execution log for the testing-module pack; Gates 94-99 complete on `main`, Gate 100 next" in execution_log) or ("Status: closed execution log for the testing-module pack; Gates 94-100 complete on `main`, no active gate" in execution_log)
+    assert leaves["completed_leaf_ids"][:4] == [
+        "LEAF-G94-001",
+        "LEAF-G94-002",
+        "LEAF-G95-001",
+        "LEAF-G95-002",
+    ]
+    assert (
+        "Status: active execution log for the testing-module pack; Gates 94-95 complete on `main`, Gate 96 next"
+        in execution_log
+    ) or (
+        "Status: active execution log for the testing-module pack; Gates 94-96 complete on `main`, Gate 97 next"
+        in execution_log
+    ) or (
+        "Status: active execution log for the testing-module pack; Gates 94-97 complete on `main`, Gate 98 next"
+        in execution_log
+    ) or (
+        "Status: active execution log for the testing-module pack; Gates 94-98 complete on `main`, Gate 99 next"
+        in execution_log
+    ) or (
+        "Status: active execution log for the testing-module pack; Gates 94-99 complete on `main`, Gate 100 next"
+        in execution_log
+    ) or (
+        "Status: closed execution log for the testing-module pack; Gates 94-100 complete on `main`, no active gate"
+        in execution_log
+    )
 
 
 def test_phase0_audit_script_reproduces_checked_in_json(tmp_path: Path) -> None:

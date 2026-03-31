@@ -1,23 +1,24 @@
 {
   "governing_plan": "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_128_complete_gate_129_active_on_main",
-  "active_gate": "Gate 129",
+  "execution_status": "gate_129_complete_gate_130_active_on_main",
+  "active_gate": "Gate 130",
   "supersedes": [
     "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 128"
+    "Gate 128",
+    "Gate 129"
   ],
   "completed_leaf_ids": [
     "LEAF-G128-001",
     "LEAF-G128-002",
-    "LEAF-G128-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G128-003",
     "LEAF-G129-001",
     "LEAF-G129-002",
-    "LEAF-G129-003",
+    "LEAF-G129-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G130-001",
     "LEAF-G130-002",
     "LEAF-G130-003",
@@ -143,7 +144,7 @@
       "gate": "Gate 129",
       "title": "Align governed resolved-surface fixtures with the current schema",
       "objective": "Repair stale test fixture construction so governed resolved-surface values include the fields now required by the packet contract.",
-      "status": "active",
+      "status": "complete",
       "depends_on": [
         "LEAF-G128-003"
       ],
@@ -165,7 +166,7 @@
       "gate": "Gate 129",
       "title": "Remove dead post-externalisation constant leftovers or correct the receipts",
       "objective": "Make Gate 124 externalisation claims and code agree by deleting unused private constants or documenting an intentional retention honestly.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G129-001"
       ],
@@ -186,7 +187,7 @@
       "gate": "Gate 129",
       "title": "Close Gate 129 with governed packet/schema no-drift proofs",
       "objective": "Freeze the governed packet-fixture alignment and dead-code cleanup across the planning quartet and advance Gate 130 honestly.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G129-002"
       ],
@@ -212,7 +213,7 @@
       "gate": "Gate 130",
       "title": "Refresh canonical stage-order expectations to include the real final-risk join",
       "objective": "Update stale invariant tests so they assert the current runtime stage order rather than a pre-Gate-121 execution tail.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G129-003"
       ],

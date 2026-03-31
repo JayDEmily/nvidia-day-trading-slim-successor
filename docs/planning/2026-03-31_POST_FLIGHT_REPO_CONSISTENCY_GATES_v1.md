@@ -1,6 +1,6 @@
 # 2026-03-31 Post-Flight Repo Consistency Gates v1
 
-Status: active post-flight repo consistency pack; Gate 128 complete on `main`, Gate 129 active, Gates 130-131 planned
+Status: active post-flight repo consistency pack; Gates 128-129 complete on `main`, Gate 130 active, Gate 131 planned
 
 ## Purpose
 
@@ -84,7 +84,7 @@ Checklist file: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_
 - gate-map markers allow the active post-flight pack without erasing predecessor-pack evidence;
 - Gate 128 closes honestly across the planning quartet and advances Gate 129.
 
-### Gate 129: Governed packet fixture alignment and dead-code cleanup (active)
+### Gate 129: Governed packet fixture alignment and dead-code cleanup (complete on `main`)
 
 **Objective**
 - Align stale tests and helper constructors with governed coefficient packet fields added in Gates 124-127, and remove dead private leftovers that now contradict externalised authority receipts.
@@ -101,7 +101,7 @@ Checklist file: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_
 - dead private constant leftovers from Gate 124 are removed or explicitly retained with honest receipt wording;
 - Gate 129 closes honestly across the planning quartet and advances Gate 130.
 
-### Gate 130: Runtime expectation refresh to current final-risk and event-window truth
+### Gate 130: Runtime expectation refresh to current final-risk and event-window truth (active)
 
 **Objective**
 - Refresh stale runtime expectation tests to the current post-Gate-121/post-Gate-126 outputs using observed runtime evidence rather than pre-risk or pre-window assumptions.

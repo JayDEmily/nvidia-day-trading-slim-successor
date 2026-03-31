@@ -37,7 +37,11 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
     )
 
     assert "signal-coefficient authority pack closed through Gate 127" in plans
-    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert (
+        "post-flight repo consistency pack active at Gate 128" in plans
+        or "post-flight repo consistency pack active at Gate 129" in plans
+        or "post-flight repo consistency pack active at Gate 130" in plans
+    )
 
     assert "Gates 59–79 are complete on `main`" in gate_map
     assert (
@@ -84,6 +88,10 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         )
         or (
             "Current active gate: **Gate 129 in the post-flight repo consistency pack**."
+            in gate_map
+        )
+        or (
+            "Current active gate: **Gate 130 in the post-flight repo consistency pack**."
             in gate_map
         )
     )

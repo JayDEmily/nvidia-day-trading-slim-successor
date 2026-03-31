@@ -177,24 +177,6 @@ class StateConditionedModifierService:
             for surface, spec in self._authority_document.mutable_numeric_surface_index().items()
             if spec.activation_gate == "Gate 124"
         }
-    _SURFACE_FLOORS: dict[MutableRuntimeSurface, float] = {
-        MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.50,
-        MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: 0.35,
-        MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT: 0.40,
-        MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD: 18.0,
-        MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD: 24.0,
-        MutableRuntimeSurface.MAX_RISK_PER_TRADE: 0.10,
-        MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT: 0.0,
-    }
-    _SURFACE_CAPS: dict[MutableRuntimeSurface, float] = {
-        MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.85,
-        MutableRuntimeSurface.ZONE_SCORE_THRESHOLD: 0.80,
-        MutableRuntimeSurface.DISTANCE_TO_VWAP_SOFT_LIMIT_PCT: 3.00,
-        MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD: 40.0,
-        MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD: 50.0,
-        MutableRuntimeSurface.MAX_RISK_PER_TRADE: 0.55,
-        MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT: 55.0,
-    }
 
     def evaluate(
         self,
