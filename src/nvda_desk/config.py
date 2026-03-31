@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     regular_close_minute: int = Field(default=0, ge=0, le=59)
     after_hours_end_hour: int = Field(default=20, ge=0, le=23)
     playbook_registry_path: str = Field(default="config/playbook_registry.example.yaml")
+    coefficient_authority_path: str = Field(default="config/coefficient_authority.v1.yaml")
 
 
 def get_settings() -> Settings:

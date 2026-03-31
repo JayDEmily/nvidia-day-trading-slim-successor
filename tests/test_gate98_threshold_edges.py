@@ -44,7 +44,8 @@ def test_gamma_pressure_edge_cases_are_monotonic_and_bounded(
         assert result.execution.target_fresh_deployable_pct == 55.0
         assert result.posture.degradation_step == "normal"
     else:
-        assert result.execution.target_fresh_deployable_pct == 30.25
+        expected_target = 30.25 if gamma_pressure_score < 0.95 else 19.6625
+        assert result.execution.target_fresh_deployable_pct == expected_target
         assert result.posture.degradation_step == "size_reduced"
 
 

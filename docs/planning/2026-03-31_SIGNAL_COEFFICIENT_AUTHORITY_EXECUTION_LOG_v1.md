@@ -1,6 +1,6 @@
 # 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1
 
-Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned
+Status: active execution log for the signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active
 
 ## Purpose
 
@@ -23,7 +23,7 @@ For every completed leaf record:
 
 ## Pending receipt state
 
-- Gates 122-125 now freeze scope, governed authority, runtime authority carriage, and review-visible lineage; Gate 126 is the next active temporal-authority gate.
+- Gates 122-126 now freeze scope, governed authority, runtime authority carriage, review-visible lineage, and bounded temporal authority; Gate 127 is the next active replay-closeout gate.
 
 ## Gate 122 receipts
 
@@ -176,9 +176,44 @@ For every completed leaf record:
 - Stop conditions hit: none
 - Receipt recorded: live
 
+
 ## Gate 126 receipts
 
-- none yet
+### LEAF-G126-001 — Freeze the bounded temporal threshold subset
+
+- Branch: `work/gate-126-temporal-threshold-authority-20260331`
+- Start commit: `569aa64`
+- End commit: `gate-126-on-main`
+- Files touched: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `config/coefficient_authority.v1.yaml`, `tests/test_gate126_temporal_threshold_authority.py`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_gate126_temporal_threshold_authority.py::test_gate126_temporal_classifier_reads_governed_thresholds_and_timing_windows tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py`
+- Observed results: bounded temporal subset stays admitted exactly as frozen in the authority file; no excluded regional/raw coefficient leaked into runtime authority
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G126-002 — Refactor temporal_state to read governed thresholds
+
+- Branch: `work/gate-126-temporal-threshold-authority-20260331`
+- Start commit: `569aa64`
+- End commit: `gate-126-on-main`
+- Files touched: `src/nvda_desk/config.py`, `src/nvda_desk/config_models.py`, `src/nvda_desk/domain/temporal_state.py`, `docs/03_DOMAIN_MODEL.md`, `config/README.md`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_gate126_temporal_threshold_authority.py::test_gate126_temporal_classifier_reads_governed_thresholds_and_timing_windows tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py`
+- Observed results: admitted temporal thresholds and timing parameters now load from the governed authority file through typed ids and deterministic unit conversion helpers
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G126-003 — Freeze threshold-edge and canonical-path proofs
+
+- Branch: `work/gate-126-temporal-threshold-authority-20260331`
+- Start commit: `569aa64`
+- End commit: `gate-126-on-main`
+- Files touched: `tests/test_gate98_threshold_edges.py`, `tests/test_gate96_canonical_runtime_harness.py`, `tests/test_gate102_raw_runtime_harness.py`, `tests/test_gate126_temporal_threshold_authority.py`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md`, `CHANGELOG.jsonl`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_gate126_temporal_threshold_authority.py tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py`
+- Observed results: Gate 126 closed honestly across the planning quartet; prepared/raw harness expectations now match current event-imminent derisk truth and Gate 127 advanced to active on `main`
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
 
 ## Gate 127 receipts
 

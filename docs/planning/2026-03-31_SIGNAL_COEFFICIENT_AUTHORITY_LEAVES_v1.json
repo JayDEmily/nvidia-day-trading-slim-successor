@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_125_complete_gate_126_active_on_main",
-  "active_gate": "Gate 126",
+  "execution_status": "gate_126_complete_gate_127_active_on_main",
+  "active_gate": "Gate 127",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
@@ -10,7 +10,8 @@
     "Gate 122",
     "Gate 123",
     "Gate 124",
-    "Gate 125"
+    "Gate 125",
+    "Gate 126"
   ],
   "completed_leaf_ids": [
     "LEAF-G122-001",
@@ -24,12 +25,12 @@
     "LEAF-G124-003",
     "LEAF-G125-001",
     "LEAF-G125-002",
-    "LEAF-G125-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G125-003",
     "LEAF-G126-001",
     "LEAF-G126-002",
-    "LEAF-G126-003",
+    "LEAF-G126-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G127-001",
     "LEAF-G127-002"
   ],
@@ -809,7 +810,7 @@
       "gate": "Gate 126",
       "title": "Freeze the bounded temporal threshold subset",
       "objective": "Admit only the workbook-backed temporal behavioural thresholds and timing parameters that already map cleanly onto the live classifier.",
-      "status": "active",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G125-003"
       ],
@@ -869,7 +870,7 @@
       "gate": "Gate 126",
       "title": "Refactor temporal_state to read governed thresholds",
       "objective": "Replace the admitted temporal classifier literals with the governed authority subset while preserving lawful classifier behaviour.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G126-001"
       ],
@@ -928,7 +929,7 @@
       "gate": "Gate 126",
       "title": "Freeze threshold-edge and canonical-path proofs",
       "objective": "Prove the governed temporal threshold subset behaves lawfully at edges and across both prepared and raw canonical paths.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G126-002"
       ],
@@ -971,7 +972,7 @@
       ],
       "definition_of_done": [
         "temporal authority work is proven across edge cases and both canonical paths",
-        "later replay visibility work starts from one truthful temporal surface"
+        "prepared/raw harness expectations are updated to current governed runtime truth where legacy assertions had drifted"
       ],
       "closeout_updates_required": [
         "PLANS.md",
@@ -992,7 +993,7 @@
       "gate": "Gate 127",
       "title": "Propagate coefficient snapshot visibility into replay and horizon outputs",
       "objective": "Carry a stable coefficient snapshot identifier and admitted effective-surface evidence into replay and horizon comparison outputs.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G126-003"
       ],

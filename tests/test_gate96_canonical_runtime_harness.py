@@ -62,12 +62,12 @@ def test_canonical_runtime_harness_run_is_deterministic_and_freezes_outputs() ->
     assert first.packet_lineage == second.packet_lineage
     assert first.review.review_packet == second.review.review_packet
 
-    assert first.temporal.event_window_state == "same_session_event_window"
+    assert first.temporal.event_window_state == "event_imminent_window"
     assert first.options_flow.options_behavior_cluster == "balanced_options_state"
     assert first.posture.permission_state.value == "allow"
-    assert round(first.execution.target_fresh_deployable_pct, 4) == 30.25
-    assert first.eligibility.add_candidates == ["continuation_ladder"]
-    assert first.execution.active_playbook_ids == ["continuation_ladder"]
-    assert first.review.summary.startswith("window=early_anchor; permission=allow")
+    assert round(first.execution.target_fresh_deployable_pct, 4) == 0.0
+    assert first.eligibility.add_candidates == []
+    assert first.execution.active_playbook_ids == []
+    assert first.review.summary == "window=early_anchor; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=derisk"
     assert first.packet_lineage[0] == first.stage_packet_ids["temporal"]
     assert first.packet_lineage[-1] == first.stage_packet_ids["review"]

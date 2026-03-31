@@ -383,6 +383,18 @@ class CoefficientAuthorityDocument(BaseModel):
         timing_ids = [item.parameter_id for item in self.timing_parameters]
         if len(set(timing_ids)) != len(timing_ids):
             raise ValueError("duplicate timing parameter ids are not allowed")
+        timing_by_id = {item.parameter_id: item for item in self.timing_parameters}
+        power_hour = timing_by_id.get(TimingParameterId.POWER_HOUR_WINDOW_MIN)
+        unwind = timing_by_id.get(TimingParameterId.UNWIND_WINDOW_MIN)
+        if power_hour is not None and unwind is not None:
+            if not (
+                float(power_hour.minimum) > float(unwind.minimum)
+                and float(power_hour.baseline) > float(unwind.baseline)
+                and float(power_hour.maximum) > float(unwind.maximum)
+            ):
+                raise ValueError(
+                    "power_hour_window_min must stay above unwind_window_min across the full envelope"
+                )
         numeric_by_surface = {item.surface_id: item for item in self.mutable_numeric_surfaces}
         caution = numeric_by_surface.get(MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD)
         hot = numeric_by_surface.get(MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD)
@@ -403,6 +415,12 @@ class CoefficientAuthorityDocument(BaseModel):
         }
         payload.update({item.surface_id: item for item in self.mutable_boolean_surfaces})
         return payload
+
+    def temporal_threshold_index(self) -> dict[TemporalThresholdId, TemporalThresholdAuthoritySpec]:
+        return {item.threshold_id: item for item in self.temporal_thresholds}
+
+    def timing_parameter_index(self) -> dict[TimingParameterId, TimingParameterAuthoritySpec]:
+        return {item.parameter_id: item for item in self.timing_parameters}
 
     @classmethod
     def from_yaml_text(cls, text: str) -> "CoefficientAuthorityDocument":

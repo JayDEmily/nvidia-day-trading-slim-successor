@@ -3,10 +3,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, time
 from enum import StrEnum
+from functools import lru_cache
 from math import fabs
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from nvda_desk.config import Settings
+from nvda_desk.config_models import (
+    CoefficientAuthorityDocument,
+    TemporalThresholdId,
+    TimingParameterId,
+)
 from nvda_desk.domain.session_clock import SessionClockPhase
 
 
@@ -57,6 +64,15 @@ class TemporalState:
     evidence_tags: tuple[str, ...]
 
 
+
+
+@lru_cache(maxsize=8)
+def _load_governed_coefficient_authority(path: str) -> CoefficientAuthorityDocument:
+    """Load the governed coefficient authority document from one resolved path."""
+
+    return CoefficientAuthorityDocument.from_yaml_path(Path(path))
+
+
 class TemporalStateClassifier:
     """Signal-aware Step-1 temporal classifier.
 
@@ -88,6 +104,20 @@ class TemporalStateClassifier:
             minute=settings.regular_close_minute,
         )
         self._after_hours_end = time(hour=settings.after_hours_end_hour)
+        authority_document = _load_governed_coefficient_authority(
+            str(Path(settings.coefficient_authority_path).resolve())
+        )
+        self._authority_version = authority_document.authority_version
+        self._thresholds = {
+            threshold.threshold_id: float(threshold.baseline)
+            for threshold in authority_document.temporal_thresholds
+            if threshold.activation_gate == "Gate 126"
+        }
+        self._timing_parameters = {
+            parameter.parameter_id: int(parameter.baseline)
+            for parameter in authority_document.timing_parameters
+            if parameter.activation_gate == "Gate 126"
+        }
 
     def classify(self, payload: TemporalSignalInput) -> TemporalState:
         market_ts = (
@@ -170,10 +200,16 @@ class TemporalStateClassifier:
         legacy_phase: SessionClockPhase,
         coverage_ratio: float,
     ) -> tuple[SessionClockPhase, list[str]]:
-        if minutes_to_close <= 30:
-            return SessionClockPhase.DEALER_UNWIND_CLOSE, ["close_window:dealer_unwind"]
-        if minutes_to_close <= 60:
-            evidence = ["close_window:power_hour"]
+        if minutes_to_close <= self._timing_parameter(TimingParameterId.UNWIND_WINDOW_MIN):
+            return SessionClockPhase.DEALER_UNWIND_CLOSE, [
+                "close_window:dealer_unwind",
+                f"timing_authority_version:{self._authority_version}",
+            ]
+        if minutes_to_close <= self._timing_parameter(TimingParameterId.POWER_HOUR_WINDOW_MIN):
+            evidence = [
+                "close_window:power_hour",
+                f"timing_authority_version:{self._authority_version}",
+            ]
             if (payload.relative_volume_ratio or 0.0) >= 1.1:
                 evidence.append("power_hour:active_volume")
             return SessionClockPhase.POWER_HOUR, evidence
@@ -184,74 +220,78 @@ class TemporalStateClassifier:
                 f"fallback_phase:{legacy_phase.value}",
             ]
 
-        rv5 = payload.price_realised_vol_5m_pct or 0.0
-        rv15 = payload.price_realised_vol_15m_pct or 0.0
-        rv_ratio = (rv5 / rv15) if rv15 > 0.0 else None
+        rv5_bps = self._pct_to_bps(payload.price_realised_vol_5m_pct)
         rel_volume = payload.relative_volume_ratio or 0.0
-        vwap_distance = fabs(payload.distance_to_vwap_pct or 0.0)
-        vwap_slope = fabs(payload.vwap_slope_5m_pct or 0.0)
-        range5 = payload.rolling_range_5m_pct or 0.0
+        vwap_distance_bps = self._pct_to_bps_abs(payload.distance_to_vwap_pct)
+        vwap_slope_bps = self._pct_to_bps_abs(payload.vwap_slope_5m_pct)
+        range5_bps = self._pct_to_bps(payload.rolling_range_5m_pct)
         break_count = payload.opening_range_break_count or 0
-        impulse_age = payload.impulse_age_bars if payload.impulse_age_bars is not None else 999
+        impulse_age_minutes = (
+            int(payload.impulse_age_bars) if payload.impulse_age_bars is not None else 999
+        )
 
         if minutes_since_open <= 75:
             disorder_hits = sum(
                 (
                     break_count >= 2,
-                    rel_volume >= 1.35,
-                    vwap_distance >= 0.45,
-                    range5 >= 0.8,
-                    rv_ratio is not None and rv_ratio >= 1.15,
-                    impulse_age <= 2,
+                    rel_volume >= self._threshold(TemporalThresholdId.OPEN_DISORDER_RELVOL_MIN),
+                    vwap_distance_bps >= self._threshold(TemporalThresholdId.OPEN_DISORDER_VWAP_DIST_BPS_MIN),
+                    range5_bps >= 80.0,
+                    rv5_bps >= self._threshold(TemporalThresholdId.OPEN_DISORDER_RV5_BPS_MIN),
+                    impulse_age_minutes <= 2,
                 )
             )
             if disorder_hits >= 3:
                 return SessionClockPhase.OPEN_DISORDER, [
                     "behavioural_phase:signal_override",
                     f"open_disorder_hits:{disorder_hits}",
+                    f"threshold_authority_version:{self._authority_version}",
                 ]
 
         if 10 <= minutes_since_open <= 120:
             anchor_hits = sum(
                 (
-                    vwap_distance <= 0.2,
-                    range5 <= 0.45,
+                    vwap_distance_bps <= self._threshold(TemporalThresholdId.ANCHOR_VWAP_DIST_BPS_MAX),
+                    rv5_bps <= self._threshold(TemporalThresholdId.ANCHOR_RV5_BPS_MAX),
                     break_count <= 1,
-                    0.65 <= rel_volume <= 1.35,
-                    rv_ratio is not None and rv_ratio <= 1.05,
-                    impulse_age >= 4,
+                    self._threshold(TemporalThresholdId.ANCHOR_RELVOL_MIN)
+                    <= rel_volume
+                    <= self._threshold(TemporalThresholdId.ANCHOR_RELVOL_MAX),
+                    impulse_age_minutes >= self._threshold(TemporalThresholdId.ANCHOR_IMPULSE_AGE_MIN),
                 )
             )
             if anchor_hits >= 4:
                 return SessionClockPhase.EARLY_ANCHOR, [
                     "behavioural_phase:signal_override",
                     f"early_anchor_hits:{anchor_hits}",
+                    f"threshold_authority_version:{self._authority_version}",
                 ]
 
         if minutes_since_open >= 90:
             compression_hits = sum(
                 (
-                    vwap_distance <= 0.18,
-                    range5 <= 0.35,
-                    rel_volume <= 0.85,
-                    rv_ratio is not None and rv_ratio <= 0.9,
-                    impulse_age >= 6,
+                    vwap_distance_bps <= self._threshold(TemporalThresholdId.COMPRESSION_VWAP_DIST_BPS_MAX),
+                    range5_bps <= self._threshold(TemporalThresholdId.COMPRESSION_RANGE5_BPS_MAX),
+                    rel_volume <= self._threshold(TemporalThresholdId.COMPRESSION_RELVOL_MAX),
+                    rv5_bps <= self._threshold(TemporalThresholdId.COMPRESSION_RV5_BPS_MAX),
+                    impulse_age_minutes >= 6,
                 )
             )
             if compression_hits >= 4:
                 return SessionClockPhase.MIDDAY_COMPRESSION, [
                     "behavioural_phase:signal_override",
                     f"midday_compression_hits:{compression_hits}",
+                    f"threshold_authority_version:{self._authority_version}",
                 ]
 
         if minutes_since_open >= 45:
             trend_hits = sum(
                 (
-                    vwap_distance >= 0.3,
-                    vwap_slope >= 0.08,
-                    rel_volume >= 1.0,
-                    range5 >= 0.45,
-                    impulse_age <= 4,
+                    vwap_distance_bps >= self._threshold(TemporalThresholdId.TREND_VWAP_DIST_BPS_MIN),
+                    vwap_slope_bps >= self._threshold(TemporalThresholdId.TREND_VWAP_SLOPE_BPS_MIN),
+                    rel_volume >= self._threshold(TemporalThresholdId.TREND_RELVOL_MIN),
+                    range5_bps >= 45.0,
+                    impulse_age_minutes <= self._threshold(TemporalThresholdId.TREND_IMPULSE_AGE_MAX),
                 )
             )
             if trend_hits >= 4:
@@ -261,15 +301,19 @@ class TemporalStateClassifier:
                         if minutes_since_open < 180
                         else SessionClockPhase.POST_LUNCH_DRIFT
                     ),
-                    ["behavioural_phase:signal_override", f"trend_hits:{trend_hits}"],
+                    [
+                        "behavioural_phase:signal_override",
+                        f"trend_hits:{trend_hits}",
+                        f"threshold_authority_version:{self._authority_version}",
+                    ],
                 )
 
         return legacy_phase, [f"fallback_phase:{legacy_phase.value}"]
 
     def _legacy_phase(self, *, minutes_since_open: int, minutes_to_close: int) -> SessionClockPhase:
-        if minutes_to_close <= 30:
+        if minutes_to_close <= self._timing_parameter(TimingParameterId.UNWIND_WINDOW_MIN):
             return SessionClockPhase.DEALER_UNWIND_CLOSE
-        if minutes_to_close <= 60:
+        if minutes_to_close <= self._timing_parameter(TimingParameterId.POWER_HOUR_WINDOW_MIN):
             return SessionClockPhase.POWER_HOUR
         if minutes_since_open < 30:
             return SessionClockPhase.OPEN_DISORDER
@@ -301,6 +345,18 @@ class TemporalStateClassifier:
         ):
             base += 0.04
         return min(0.98, round(base + min(0.08, coverage_ratio * 0.1), 4))
+
+    def _threshold(self, threshold_id: TemporalThresholdId) -> float:
+        return self._thresholds[threshold_id]
+
+    def _timing_parameter(self, parameter_id: TimingParameterId) -> int:
+        return self._timing_parameters[parameter_id]
+
+    def _pct_to_bps(self, value: float | None) -> float:
+        return (value or 0.0) * 100.0
+
+    def _pct_to_bps_abs(self, value: float | None) -> float:
+        return fabs(value or 0.0) * 100.0
 
     def _signal_coverage_ratio(self, payload: TemporalSignalInput) -> float:
         present = sum(1 for field in self._SIGNAL_FIELDS if getattr(payload, field) is not None)

@@ -2664,7 +2664,7 @@ Key examples:
 Ownership:
 - binding schema authority in `src/nvda_desk/config_models.py`
 - governed file surface in `config/coefficient_authority.v1.yaml`
-- runtime promotion for the eight admitted mutable surfaces now occurs through `StateConditionedModifierService`; later gates still govern temporal-threshold activation
+- runtime promotion for the eight admitted mutable surfaces now occurs through `StateConditionedModifierService`; the admitted temporal threshold and timing subset now flows through `TemporalStateClassifier` from the same governed authority file rather than private classifier literals
 
 The governed authority file is not the same surface as the legacy `coefficients_registry.example.yaml`. The former freezes the admitted tranche-one authority chain; the latter remains salvage/example structure only.
 

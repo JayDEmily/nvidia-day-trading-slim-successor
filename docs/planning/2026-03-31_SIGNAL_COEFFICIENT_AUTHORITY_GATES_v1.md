@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned
+Status: active signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose
@@ -309,6 +309,12 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 - the admitted temporal thresholds and timing parameters are named, unit-safe, and bounded in governed authority rather than hidden in classifier literals;
 - the temporal classifier reads those admitted values deterministically;
 - threshold-edge, prepared-path, and raw-path proofs stay bounded and no excluded Asia/Japan raw coefficient leaks in by stealth.
+
+### Gate 126 closeout note
+
+- Gate 126 completed on `main` by wiring the admitted temporal threshold and timing subset from `config/coefficient_authority.v1.yaml` through `TemporalStateClassifier` using typed threshold ids and timing-parameter ids rather than private classifier literals.
+- The live classifier now compares workbook-backed basis-point and ratio thresholds directly against runtime primitives such as `price_realised_vol_5m_pct`, `distance_to_vwap_pct`, `vwap_slope_5m_pct`, `rolling_range_5m_pct`, and `relative_volume_ratio`, while keeping non-admitted hits like break-count floors explicit classifier law.
+- The declared Gate 126 proof slice is now aligned to current runtime truth: the gamma-pressure edge at `0.95` derisks to `19.6625`, and the canonical prepared/raw harnesses now prove `event_imminent_window` with `final_risk=derisk` and no active playbooks.
 
 ### Gate 127: Align replay visibility and close the pack honestly
 
