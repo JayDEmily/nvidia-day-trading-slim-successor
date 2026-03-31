@@ -138,7 +138,11 @@ def test_gate_e_runtime_path_validation() -> None:
 
     assert len(temporal_outputs) == 3
     assert len(options_outputs) == 3
-    assert temporal_outputs[0].event_window_state == "same_session_event_window"
+    assert [output.event_window_state for output in temporal_outputs] == [
+        "event_imminent_window",
+        "event_imminent_window",
+        "event_imminent_window",
+    ]
     assert all(
         output.repeated_snapshot_state in {"escalating_pressure", "pinning_build", "stable_recheck"}
         for output in options_outputs

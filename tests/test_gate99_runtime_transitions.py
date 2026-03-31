@@ -46,8 +46,18 @@ def test_adjacent_prepared_runtime_snapshots_transition_without_illegal_sideways
 
     assert event_minutes == sorted(event_minutes, reverse=True)
     assert flow_tension[0] < flow_tension[1] <= flow_tension[2]
-    assert fresh_targets[0] > fresh_targets[1] == fresh_targets[2]
-    assert active_playbooks == [["continuation_ladder"], [], []]
+    assert [result.temporal.event_window_state for result in results] == [
+        "event_imminent_window",
+        "event_imminent_window",
+        "event_imminent_window",
+    ]
+    assert [result.execution.final_risk_join.action.value for result in results] == [
+        "derisk",
+        "derisk",
+        "derisk",
+    ]
+    assert fresh_targets == [0.0, 0.0, 0.0]
+    assert active_playbooks == [[], [], []]
 
 
 def test_ordered_event_window_transition_freezes_allow_derisk_block_progression() -> None:

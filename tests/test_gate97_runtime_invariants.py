@@ -17,7 +17,8 @@ from nvda_desk.testing.cognition_fixtures import (
 )
 
 FIXTURE_PACK_PATH = Path("fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json")
-EXPECTED_STAGE_ORDER = ["temporal", "regime", "options_flow", "posture", "eligibility", "execution"]
+EXPECTED_REVIEW_STAGE_ORDER = ["temporal", "regime", "options_flow", "posture", "eligibility", "execution", "final_risk_join"]
+EXPECTED_PACKET_STAGE_ORDER = ["temporal", "regime", "options_flow", "posture", "eligibility", "execution"]
 
 
 def _canonical_prepared_result():
@@ -108,6 +109,6 @@ def test_lawful_output_invariants_hold_across_canonical_scenarios(scenario_name:
 
 def test_lineage_and_stage_order_invariants_hold_across_canonical_scenarios() -> None:
     for result in (_supportive_result(), _stressed_result(), _canonical_prepared_result(), _canonical_raw_result()):
-        assert [packet.stage for packet in result.review.stage_reason_packets] == EXPECTED_STAGE_ORDER
-        assert list(result.stage_packet_ids) == EXPECTED_STAGE_ORDER + ["review"]
+        assert [packet.stage for packet in result.review.stage_reason_packets] == EXPECTED_REVIEW_STAGE_ORDER
+        assert list(result.stage_packet_ids) == EXPECTED_PACKET_STAGE_ORDER + ["review"]
         assert result.packet_lineage == tuple(result.stage_packet_ids[stage] for stage in result.stage_packet_ids)

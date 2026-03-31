@@ -1,14 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_129_complete_gate_130_active_on_main",
-  "active_gate": "Gate 130",
+  "execution_status": "gate_130_complete_gate_131_active_on_main",
+  "active_gate": "Gate 131",
   "supersedes": [
     "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md"
   ],
   "completed_gate_ids": [
     "Gate 128",
-    "Gate 129"
+    "Gate 129",
+    "Gate 130"
   ],
   "completed_leaf_ids": [
     "LEAF-G128-001",
@@ -16,12 +17,12 @@
     "LEAF-G128-003",
     "LEAF-G129-001",
     "LEAF-G129-002",
-    "LEAF-G129-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G129-003",
     "LEAF-G130-001",
     "LEAF-G130-002",
-    "LEAF-G130-003",
+    "LEAF-G130-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G131-001",
     "LEAF-G131-002"
   ],
@@ -213,7 +214,7 @@
       "gate": "Gate 130",
       "title": "Refresh canonical stage-order expectations to include the real final-risk join",
       "objective": "Update stale invariant tests so they assert the current runtime stage order rather than a pre-Gate-121 execution tail.",
-      "status": "active",
+      "status": "complete",
       "depends_on": [
         "LEAF-G129-003"
       ],
@@ -235,7 +236,7 @@
       "gate": "Gate 130",
       "title": "Refresh prepared/raw/real-data event-window and derisk expectations",
       "objective": "Update stale transition and real-data expectation tests to the current event-imminent and final-risk derisk truth using observed outputs.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G130-001"
       ],
@@ -259,7 +260,7 @@
       "gate": "Gate 130",
       "title": "Close Gate 130 on evidence-backed runtime expectation proofs",
       "objective": "Advance Gate 131 only after the refreshed invariant and transition expectations are frozen against current observed runtime truth.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G130-002"
       ],
@@ -285,7 +286,7 @@
       "gate": "Gate 131",
       "title": "Run the synced full-suite proof and clear any residual red surfaces",
       "objective": "Use the repo-local dev environment to rerun the full test suite after Gates 128-130 and repair any remaining red surfaces needed for an honest green closeout.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G130-003"
       ],
