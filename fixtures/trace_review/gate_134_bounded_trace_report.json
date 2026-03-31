@@ -1,0 +1,136 @@
+{
+  "narrative_summary": [
+    "anchor_event_imminent: permission=allow; playbooks=['none']; final_risk=derisk; deploy=0.0000",
+    "clear_window_continuation: permission=allow; playbooks=['continuation_ladder']; final_risk=allow; deploy=55.0000",
+    "lunch_flattened: permission=allow; playbooks=['none']; final_risk=allow; deploy=0.0000",
+    "imminent_pin_derisk: permission=allow; playbooks=['none']; final_risk=derisk; deploy=0.0000",
+    "mild_down_block: permission=derisk; playbooks=['none']; final_risk=block; deploy=0.0000"
+  ],
+  "pack_id": "gate-132-bounded-trace-review-v1",
+  "runs": [
+    {
+      "active_playbook_ids": [],
+      "desk_window": "open_disorder",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 8.2583,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 83,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should look cautious but not insane: no moon-buying, event-aware derisk, no crash.",
+      "final_risk_action": "derisk",
+      "options_behavior_cluster": "balanced_options_state",
+      "permission_state": "allow",
+      "scenario_id": "anchor_event_imminent",
+      "summary": "window=open_disorder; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=derisk",
+      "target_fresh_deployable_pct": 0.0
+    },
+    {
+      "active_playbook_ids": [
+        "continuation_ladder"
+      ],
+      "desk_window": "early_anchor",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.65,
+        "hedge_required": false,
+        "max_risk_per_trade": 0.35,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 55.0,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 480,
+      "event_window_state": "clear_window",
+      "expected_human_read": "Should act like a normal supportive continuation: allow with one continuation playbook, not buy the moon.",
+      "final_risk_action": "allow",
+      "options_behavior_cluster": "balanced_options_state",
+      "permission_state": "allow",
+      "scenario_id": "clear_window_continuation",
+      "summary": "window=early_anchor; permission=allow; families=['trend_continuation']; setups=['opening_drive_continuation']; playbooks=['continuation_ladder']; final_risk=allow",
+      "target_fresh_deployable_pct": 55.0
+    },
+    {
+      "active_playbook_ids": [],
+      "desk_window": "lunch",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.65,
+        "hedge_required": false,
+        "max_risk_per_trade": 0.35,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 55.0,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 480,
+      "event_window_state": "clear_window",
+      "expected_human_read": "Should look normal and quiet: allow posture, no active playbook, no explosion.",
+      "final_risk_action": "allow",
+      "options_behavior_cluster": "balanced_options_state",
+      "permission_state": "allow",
+      "scenario_id": "lunch_flattened",
+      "summary": "window=lunch; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=allow",
+      "target_fresh_deployable_pct": 0.0
+    },
+    {
+      "active_playbook_ids": [],
+      "desk_window": "open_disorder",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 8.2583,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 12,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should derisk and stay small; still not a moon shot.",
+      "final_risk_action": "derisk",
+      "options_behavior_cluster": "balanced_options_state",
+      "permission_state": "allow",
+      "scenario_id": "imminent_pin_derisk",
+      "summary": "window=open_disorder; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=derisk",
+      "target_fresh_deployable_pct": 0.0
+    },
+    {
+      "active_playbook_ids": [],
+      "desk_window": "open_disorder",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 6.6066,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 83,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should not explode; a hard block or equivalent stand-down is fine here.",
+      "final_risk_action": "block",
+      "options_behavior_cluster": "balanced_options_state",
+      "permission_state": "derisk",
+      "scenario_id": "mild_down_block",
+      "summary": "window=open_disorder; permission=derisk; families=['none']; setups=['none']; playbooks=['none']; final_risk=block",
+      "target_fresh_deployable_pct": 0.0
+    }
+  ],
+  "scenario_ids": [
+    "anchor_event_imminent",
+    "clear_window_continuation",
+    "lunch_flattened",
+    "imminent_pin_derisk",
+    "mild_down_block"
+  ]
+}

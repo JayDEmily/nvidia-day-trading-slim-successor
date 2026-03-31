@@ -1,6 +1,6 @@
 # 2026-03-31 Bounded Trace Scenario Review Gates v1
 
-Status: active bounded trace scenario review pack; Gates 132-133 complete, Gate 134 active
+Status: closed bounded trace scenario review pack on `main`; Gates 132-134 complete, no active gate
 
 ## Purpose
 
@@ -86,7 +86,7 @@ Checklist file: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_DOCUMENT
 - proofs freeze broad outcomes only, such as continuation allowed, derisked, or blocked, rather than fragile micro-numerology;
 - Gate 133 closes honestly across the planning quartet and advances Gate 134.
 
-### Gate 134: Emit the simplified bounded trace report and close the pack
+### Gate 134: Emit the simplified bounded trace report and close the pack (complete on `main`)
 
 **Objective**
 - Generate one simple checked-in report from the bounded sibling pack so later threads can read what the runtime actually did without spelunking test output.
