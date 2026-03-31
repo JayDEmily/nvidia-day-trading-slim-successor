@@ -1,6 +1,6 @@
 # 2026-03-31 Bounded Trace Scenario Review Gates v1
 
-Status: active bounded trace scenario review pack; Gate 132 complete, Gate 133 active
+Status: active bounded trace scenario review pack; Gates 132-133 complete, Gate 134 active
 
 ## Purpose
 
@@ -69,7 +69,7 @@ Checklist file: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_DOCUMENT
 - the pack proves materially distinct but non-absurd desk states;
 - Gate 132 closes honestly across the planning quartet and advances Gate 133.
 
-### Gate 133: Freeze the bounded trace-review testing regime (active)
+### Gate 133: Freeze the bounded trace-review testing regime (complete on `main`)
 
 **Objective**
 - Add one narrow trace-review proof regime that runs the sibling scenarios through the live runtime and checks broad human-sanity outcomes rather than pretending to score alpha.

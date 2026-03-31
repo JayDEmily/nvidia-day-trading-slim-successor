@@ -130,6 +130,22 @@ Purpose:
 
 The first expansion set should stay bounded. Add scenarios only when they represent materially different desk states.
 
+### Phase 6 — bounded sibling trace review from one admitted real-data anchor
+
+Purpose:
+- run one human-readable logic review over a small sibling pack anchored to one admitted prepared-runtime snapshot.
+
+Requirements:
+- anchor one admitted prepared-runtime snapshot explicitly;
+- perturb only coherent field clusters, not random isolated numbers;
+- keep the sibling set bounded to 4-6 sibling scenarios;
+- mark the sibling pack as semantic review evidence only, not runtime authority or tuning truth.
+
+Success criteria:
+- every sibling scenario has explicit perturbation receipts and rationale;
+- the runtime trace outputs remain bounded, deterministic, and human-readable;
+- the simplified report says whether the runtime acted normal, derisked, or blocked without exploding.
+
 ## What not to do
 
 Do not:
@@ -162,7 +178,7 @@ Targets:
 Targeted pytest commands and file validations defined in the active leaf ledger.
 
 ### Testing-module phase validation
-Targeted proofs for Phase 0 through Phase 5 closeout.
+Targeted proofs for Phase 0 through Phase 6 closeout.
 
 Examples:
 - workbook viability audit output exists and matches the repo's current ingress requirements;

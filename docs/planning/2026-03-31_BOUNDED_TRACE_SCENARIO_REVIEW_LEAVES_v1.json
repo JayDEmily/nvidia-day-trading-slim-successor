@@ -1,23 +1,24 @@
 {
   "governing_plan": "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md",
   "version": 1,
-  "execution_status": "bounded_trace_scenario_review_active_at_gate_133",
-  "active_gate": "Gate 133",
+  "execution_status": "bounded_trace_scenario_review_active_at_gate_134",
+  "active_gate": "Gate 134",
   "supersedes": [
     "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 132"
+    "Gate 132",
+    "Gate 133"
   ],
   "completed_leaf_ids": [
     "LEAF-G132-001",
     "LEAF-G132-002",
-    "LEAF-G132-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G132-003",
     "LEAF-G133-001",
     "LEAF-G133-002",
-    "LEAF-G133-003",
+    "LEAF-G133-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G134-001",
     "LEAF-G134-002"
   ],
@@ -39,7 +40,7 @@
       ]
     },
     "Gate 133": {
-      "status": "active",
+      "status": "complete",
       "objective": "Freeze the bounded trace-review testing regime.",
       "leaf_ids": [
         "LEAF-G133-001",
@@ -48,7 +49,7 @@
       ]
     },
     "Gate 134": {
-      "status": "planned",
+      "status": "active",
       "objective": "Emit the simplified bounded trace report and close the pack.",
       "leaf_ids": [
         "LEAF-G134-001",
@@ -74,17 +75,17 @@
     },
     "LEAF-G133-001": {
       "gate": "Gate 133",
-      "status": "planned",
+      "status": "complete",
       "title": "Freeze the doctrine for bounded trace-review proofs"
     },
     "LEAF-G133-002": {
       "gate": "Gate 133",
-      "status": "planned",
+      "status": "complete",
       "title": "Run the sibling pack and freeze broad human-sanity expectations"
     },
     "LEAF-G133-003": {
       "gate": "Gate 133",
-      "status": "planned",
+      "status": "complete",
       "title": "Close Gate 133 and advance the pack to Gate 134"
     },
     "LEAF-G134-001": {

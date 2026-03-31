@@ -1,6 +1,6 @@
 # 2026-03-31 Bounded Trace Scenario Review Execution Log v1
 
-Status: Gate 132 complete; Gate 133 active
+Status: Gates 132-133 complete; Gate 134 active
 
 ## Gate 132 receipts
 
@@ -45,7 +45,7 @@ Status: Gate 132 complete; Gate 133 active
 - branch: `work/gate-133-bounded-trace-review-regime-20260331`
 - files touched: `docs/TESTING_AND_PROMOTION.md`
 - validation command: `PYTHONPATH=src pytest -q tests/test_gate133_bounded_trace_review_regime.py`
-- observed result: pending
+- observed result: `2 passed`
 - full suite required: no
 - stop condition hit: none
 - receipt capture mode: live
@@ -56,7 +56,7 @@ Status: Gate 132 complete; Gate 133 active
 - branch: `work/gate-133-bounded-trace-review-regime-20260331`
 - files touched: `tests/test_gate133_bounded_trace_review_regime.py`
 - validation command: `PYTHONPATH=src pytest -q tests/test_gate133_bounded_trace_review_regime.py tests/test_gate132_bounded_trace_scenario_pack.py`
-- observed result: pending
+- observed result: `5 passed`
 - full suite required: no
 - stop condition hit: none
 - receipt capture mode: live
@@ -67,7 +67,7 @@ Status: Gate 132 complete; Gate 133 active
 - branch: `work/gate-133-bounded-trace-review-regime-20260331`
 - files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md`, `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_LEAVES_v1.json`, `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md`, `CHANGELOG.jsonl`
 - validation command: `PYTHONPATH=src pytest -q tests/test_gate133_bounded_trace_review_regime.py tests/test_document_hygiene.py`
-- observed result: pending
+- observed result: `5 passed`
 - full suite required: no
 - stop condition hit: none
 - receipt capture mode: live
