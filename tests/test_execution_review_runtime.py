@@ -8,6 +8,7 @@ from typing import Any, cast
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
     InventoryState,
+    LifecycleAction,
     MarketRegimeContextInput,
     OptionsFlowContextInput,
     OptionsFlowMicroSnapshot,
@@ -113,6 +114,19 @@ def test_desk_cognition_runtime_emits_family_specific_execution_plan() -> None:
     assert result.execution.thesis_invalidation_state == "trend_structure_broken"
     assert "leadership_lost" in result.execution.invalidation_reasons
     assert "trim_into_extension" in result.execution.exit_reasons
+    assert result.execution.lifecycle_plan is not None
+    assert result.execution.lifecycle_plan.setup_variant_id == "opening_drive_continuation"
+    assert result.execution.lifecycle_plan.execution_expression_id == "continuation_ladder_exec"
+    assert result.execution.lifecycle_plan.tradable_expression_family.value == "single_leg_call_debit"
+    assert result.execution.lifecycle_plan.next_action is LifecycleAction.ADD
+    assert [action.value for action in result.execution.lifecycle_plan.allowed_actions] == [
+        "add",
+        "trim",
+        "flatten",
+        "hold_small_overnight",
+        "block_carry",
+    ]
+    assert "gate_136_additive_lifecycle_scaffold" in result.execution.lifecycle_plan.rationale_codes
 
 
 def test_desk_cognition_runtime_exposes_pin_reversion_review_packets() -> None:
@@ -371,6 +385,9 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     assert isinstance(result.stage_packets[6].blocks[0], DmpV2ObjectBlock)
     assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(mode="json")
     assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
+    execution_payload = cast(dict[str, Any], result.stage_packets[5].blocks[0].data)
+    assert execution_payload["lifecycle_plan"]["execution_expression_id"] == "continuation_ladder_exec"
+    assert execution_payload["lifecycle_plan"]["tradable_expression_family"] == "single_leg_call_debit"
     assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_id
     assert result.stage_packets[6].lineage.parent_packet_ids == [result.stage_packets[5].packet_id]
 

@@ -1,4 +1,4 @@
-Status: active opening-drive continuation lifecycle pilot pack; Gate 135 active, Gates 136-139 planned
+Status: active opening-drive continuation lifecycle pilot pack; Gates 135-136 complete on `main`, Gate 137 active, Gates 138-139 planned
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Gates v1
 
 ## Purpose
@@ -184,6 +184,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 
 ### Gate 135: Freeze the specimen, naming, and packet-preservation law
 
+**Status**
+- complete on `main`
+
 **Objective**
 - Freeze the canonical specimen, preserve the DMP v2 and execution-stage boundaries, define the retain/retire/amend/add matrix, and activate the lifecycle pilot pack truthfully.
 
@@ -203,6 +206,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 - the router, gate map, leaf ledger, and execution log all point truthfully at Gate 135 as the active gate.
 
 ### Gate 136: Add additive execution-stage lifecycle contracts
+
+**Status**
+- complete on `main`
 
 **Objective**
 - Add one bounded execution-stage ingress context and one bounded execution-stage lifecycle plan without breaking packet lineage or review/runtime payload continuity.
@@ -224,6 +230,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 - execution-stage payload continuity remains proven without changing the DMP v2 envelope.
 
 ### Gate 137: Compile the continuation specimen lifecycle inside expression execution
+
+**Status**
+- active next gate on `main`
 
 **Objective**
 - Turn the already-frozen tradable specimen family’s second half into a real lifecycle compiler: normalisation, invalidation, trim, stale-thesis, close-window, carry nomination, and hard-flat handling.

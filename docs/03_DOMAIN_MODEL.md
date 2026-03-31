@@ -2615,6 +2615,10 @@ Ownership:
 
 `ExecutionExpressionOutput` now also carries `pre_final_risk_active_playbook_ids`, `pre_final_risk_lead_playbook_id`, `pre_final_risk_entry_style`, and `final_risk_join` so the runtime can show exactly what execution looked like before the final risk join and how the join allowed, derisked, or veto-blocked the output. `FinalRiskJoinSurface` freezes the final disposition, reasons, lineage tags, and execution effect so review packets stop hiding the last authority step.
 
+#### Gate 136 note: additive lifecycle carriage for the continuation specimen
+
+`PositionContextInput` and `LifecyclePlanOutput` freeze the first lawful second-half lifecycle carriage for the `opening_drive_continuation` / `continuation_ladder_exec` specimen without replacing the existing execution-stage packet boundary. The bounded tradable expression family for this specimen is `single_leg_call_debit`, and the admitted lifecycle action set is limited to `add`, `trim`, `flatten`, `hold_small_overnight`, and `block_carry` until later gates broaden behaviour. `ExecutionExpressionInput.position_context` is the additive ingress slot for that bounded managed-position context, while `ExecutionExpressionOutput.lifecycle_plan` is the additive egress slot for the governed second-half plan. These fields are execution-stage payload enrichments only; they do not create a second packet, bypass DMP v2 lineage, or override the existing carry-handoff packet.
+
 ### 4o. Review failure-taxonomy objects
 
 Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.

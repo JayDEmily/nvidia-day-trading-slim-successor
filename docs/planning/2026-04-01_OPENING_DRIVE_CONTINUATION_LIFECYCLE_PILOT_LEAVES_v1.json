@@ -1,21 +1,25 @@
 {
   "governing_plan": "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_134_closed_opening_drive_continuation_lifecycle_pilot_active_from_gate_135",
-  "active_gate": "Gate 135",
+  "execution_status": "gate_136_complete_gate_137_active_on_main",
+  "active_gate": "Gate 137",
   "supersedes": [
     "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 135",
+    "Gate 136"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G135-001",
     "LEAF-G135-002",
     "LEAF-G135-003",
     "LEAF-G136-001",
     "LEAF-G136-002",
     "LEAF-G136-003",
-    "LEAF-G136-004",
+    "LEAF-G136-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G137-001",
     "LEAF-G137-002",
     "LEAF-G137-003",
@@ -99,7 +103,7 @@
       "gate": "Gate 135",
       "title": "Freeze the canonical specimen, naming discipline, and tradable-expression rule",
       "objective": "Freeze the canonical specimen, naming discipline, and the rule that one bounded tradable expression family plus its legal lifecycle actions must be admitted before lifecycle behaviour broadens.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -161,7 +165,7 @@
       "gate": "Gate 135",
       "title": "Trace the packet, carry, and ledger seams before writing behaviour",
       "objective": "Map the current execution-stage ingress/egress, carry handoff, and execution-record seams so later gates change the right chokepoints rather than inventing side channels.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G135-001"
       ],
@@ -230,7 +234,7 @@
       "gate": "Gate 135",
       "title": "Activate the planning quartet and route the repo truthfully",
       "objective": "Create the planning quartet, point the router and gate map at Gate 135, and keep the repo honest about the latest closed evidence.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G135-002"
       ],
@@ -301,7 +305,7 @@
       "gate": "Gate 136",
       "title": "Define additive execution-stage position context ingress",
       "objective": "Add one bounded nested ingress context and freeze one bounded tradable expression family plus its legal lifecycle action set so the execution stage can reason about a live managed specimen position without inventing a second packet.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G135-003"
       ],
@@ -364,7 +368,7 @@
       "gate": "Gate 136",
       "title": "Define additive execution-stage lifecycle plan egress",
       "objective": "Add one bounded lifecycle-plan egress object so the execution stage emits a governed second-half decision rather than only string-labelled exit reasons.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G136-001"
       ],
@@ -428,7 +432,7 @@
       "gate": "Gate 136",
       "title": "Admit any required lifecycle vocabulary and schema ownership",
       "objective": "Admit any newly required lifecycle terms lawfully and map them to the exact schema ownership they represent.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G136-002"
       ],
@@ -493,7 +497,7 @@
       "gate": "Gate 136",
       "title": "Prove execution-stage and DMP continuity before behaviour changes",
       "objective": "Prove the new lifecycle carriage remains additive and that the DMP wrapper still preserves the execution-stage payload identity cleanly before Gate 137 changes behaviour.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G136-003"
       ],
@@ -557,7 +561,7 @@
       "gate": "Gate 137",
       "title": "Normalise specimen position state before any close decision",
       "objective": "Turn the specimen\u2019s entry template plus the new position context into one normalised managed-state object for later lifecycle passes.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G136-004"
       ],
@@ -615,7 +619,7 @@
       "gate": "Gate 137",
       "title": "Implement invalidation and trim logic for the specimen",
       "objective": "Convert the specimen\u2019s invalidation and trim labels into deterministic lifecycle decisions grounded in the new managed state.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G137-001"
       ],
@@ -670,7 +674,7 @@
       "gate": "Gate 137",
       "title": "Implement stale-thesis, close-window, carry-nomination, and hard-flat logic",
       "objective": "Complete the specimen\u2019s second half by adding time-stop, late-session, carry nomination, and hard-flat behaviour on top of the managed state.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G137-002"
       ],
@@ -728,7 +732,7 @@
       "gate": "Gate 137",
       "title": "Freeze review-visible lifecycle proofs and close Gate 137",
       "objective": "Prove the specimen lifecycle behaves through the live runtime and review surfaces before downstream carry integration changes the handoff semantics.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G137-003"
       ],

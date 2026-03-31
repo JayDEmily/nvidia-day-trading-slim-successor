@@ -54,7 +54,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- opening-drive continuation lifecycle pilot pack active at Gate 135
+- opening-drive continuation lifecycle pilot pack active at Gate 137 after Gates 135-136 closed on `main`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`

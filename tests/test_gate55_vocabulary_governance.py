@@ -32,6 +32,16 @@ def test_gate55_workflow_terms_have_explicit_canonical_owners() -> None:
         vocab["playbook_family"].maps_to_contract
         == "nvda_desk.schemas.playbook_registry.PlaybookFamilySpec"
     )
+    assert vocab["position_context"].stage_owner == "expression_execution"
+    assert (
+        vocab["position_context"].maps_to_contract
+        == "nvda_desk.schemas.cognition.PositionContextInput"
+    )
+    assert vocab["lifecycle_plan"].stage_owner == "expression_execution"
+    assert (
+        vocab["lifecycle_plan"].maps_to_contract
+        == "nvda_desk.schemas.cognition.LifecyclePlanOutput"
+    )
     assert (
         vocab["setup_variant"].maps_to_contract
         == "nvda_desk.schemas.playbook_registry.SetupVariantSpec"
@@ -54,6 +64,8 @@ def test_gate55_registry_hierarchy_and_workflow_terms_are_all_covered() -> None:
         "execution_expression",
         "carry_handoff",
         "carry_horizon_branch",
+        "position_context",
+        "lifecycle_plan",
     }
     assert required_terms.issubset(vocab)
     for family in registry.families:

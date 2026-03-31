@@ -194,6 +194,28 @@ def build_document() -> VocabularyDocument:
             notes=["Separate horizon branch for overnight, weekend, and event carry decisions."],
         ),
         VocabularyEntry(
+            canonical_slug="position_context",
+            canonical_label="Position Context",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="expression_execution",
+            maps_to_contract="nvda_desk.schemas.cognition.PositionContextInput",
+            allowed_aliases=["managed_position_context"],
+            notes=[
+                "Additive execution-stage ingress slot for the bounded managed-position specimen context."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="lifecycle_plan",
+            canonical_label="Lifecycle Plan",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="expression_execution",
+            maps_to_contract="nvda_desk.schemas.cognition.LifecyclePlanOutput",
+            allowed_aliases=["second_half_plan"],
+            notes=[
+                "Additive execution-stage egress slot for the bounded second-half lifecycle plan."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="state_vector",
             canonical_label="State Vector",
             category=VocabularyCategory.WORKFLOW,

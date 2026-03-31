@@ -112,6 +112,22 @@ class PlaybookAction(StrEnum):
     HEDGE = "hedge"
 
 
+class TradableExpressionFamily(StrEnum):
+    """Bounded tradable expression families admitted to lifecycle carriage."""
+
+    SINGLE_LEG_CALL_DEBIT = "single_leg_call_debit"
+
+
+class LifecycleAction(StrEnum):
+    """Bounded lifecycle actions admitted before broad lifecycle compilation exists."""
+
+    ADD = "add"
+    TRIM = "trim"
+    FLATTEN = "flatten"
+    HOLD_SMALL_OVERNIGHT = "hold_small_overnight"
+    BLOCK_CARRY = "block_carry"
+
+
 class BindingStageName(StrEnum):
     """Deterministic names for the seven binding desk-runtime stages."""
 
@@ -483,6 +499,23 @@ class PlaybookEligibilityOutput(BaseModel):
     reasons: list[str] = Field(default_factory=list)
 
 
+class PositionContextInput(BaseModel):
+    """Bounded managed-position context carried into the execution stage."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    position_context_version: str = "position_context.v1"
+    setup_variant_id: str | None = None
+    execution_expression_id: str | None = None
+    tradable_expression_family: TradableExpressionFamily | None = None
+    legal_lifecycle_actions: list[LifecycleAction] = Field(default_factory=list)
+    position_active: bool | None = None
+    current_position_size_pct: float | None = Field(default=None, ge=0.0, le=100.0)
+    remaining_ladder_steps: int | None = Field(default=None, ge=0)
+    carry_state_eligible: bool | None = None
+    hard_flat_required: bool | None = None
+
+
 class ExecutionExpressionInput(BaseModel):
     """Inputs required to derive deterministic expression and execution."""
 
@@ -494,6 +527,7 @@ class ExecutionExpressionInput(BaseModel):
     posture: PostureRiskOutput
     eligibility: PlaybookEligibilityOutput
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    position_context: PositionContextInput | None = None
 
 
 class FinalRiskJoinSurface(BaseModel):
@@ -508,6 +542,26 @@ class FinalRiskJoinSurface(BaseModel):
     source_service: str = "risk_gateway"
     lineage_tags: list[str] = Field(default_factory=list)
     execution_effect: str
+
+
+class LifecyclePlanOutput(BaseModel):
+    """Bounded second-half lifecycle plan emitted by the execution stage."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    lifecycle_plan_version: str = "lifecycle_plan.v1"
+    setup_variant_id: str | None = None
+    execution_expression_id: str | None = None
+    tradable_expression_family: TradableExpressionFamily | None = None
+    legal_lifecycle_actions: list[LifecycleAction] = Field(default_factory=list)
+    lifecycle_state: str = "not_applicable"
+    next_action: LifecycleAction | None = None
+    allowed_actions: list[LifecycleAction] = Field(default_factory=list)
+    carry_candidate: bool = False
+    must_flatten_by_close: bool = False
+    fired_rules: list[str] = Field(default_factory=list)
+    blocked_rules: list[str] = Field(default_factory=list)
+    rationale_codes: list[str] = Field(default_factory=list)
 
 
 class ExecutionExpressionOutput(BaseModel):
@@ -555,6 +609,7 @@ class ExecutionExpressionOutput(BaseModel):
     invalidation_reasons: list[str] = Field(default_factory=list)
     exit_reasons: list[str] = Field(default_factory=list)
     exit_plan: list[str] = Field(default_factory=list)
+    lifecycle_plan: LifecyclePlanOutput | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
     final_risk_join: FinalRiskJoinSurface | None = None
     reasons: list[str] = Field(default_factory=list)

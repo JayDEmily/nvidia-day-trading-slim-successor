@@ -10,8 +10,12 @@ from nvda_desk.schemas.cognition import (
     CandidateAdjudicationRecord,
     ExecutionExpressionInput,
     ExecutionExpressionOutput,
+    LifecycleAction,
+    LifecyclePlanOutput,
     PlaybookCandidate,
     PlaybookDecision,
+    PositionContextInput,
+    TradableExpressionFamily,
 )
 from nvda_desk.schemas.state_policy import MutableRuntimeSurface
 from nvda_desk.schemas.playbook_registry import ExecutionTemplateSpec
@@ -33,9 +37,20 @@ class ExecutionExpressionService:
         Uses checked-in registry order and execution templates with no hidden fallbacks.
     """
 
+    _SPECIMEN_SETUP_VARIANT_ID = "opening_drive_continuation"
+    _SPECIMEN_EXECUTION_EXPRESSION_ID = "continuation_ladder_exec"
+    _SPECIMEN_LEGACY_PLAYBOOK_ID = "continuation_ladder"
+    _SPECIMEN_TRADABLE_EXPRESSION_FAMILY = TradableExpressionFamily.SINGLE_LEG_CALL_DEBIT
+    _SPECIMEN_LEGAL_LIFECYCLE_ACTIONS = [
+        LifecycleAction.ADD,
+        LifecycleAction.TRIM,
+        LifecycleAction.FLATTEN,
+        LifecycleAction.HOLD_SMALL_OVERNIGHT,
+        LifecycleAction.BLOCK_CARRY,
+    ]
+
     def __init__(self, registry_service: PlaybookRegistryService | None = None):
         self._registry = registry_service or PlaybookRegistryService()
-
 
     _SURFACE_DEFAULTS: dict[MutableRuntimeSurface, float | bool] = {
         MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR: 0.65,
@@ -113,6 +128,20 @@ class ExecutionExpressionService:
 
         if payload.posture.permission_state.value == "block":
             reasons.append("execution_blocked_by_permission")
+            position_context = self._normalise_position_context(
+                payload=payload,
+                lead_setup_variant_id=None,
+                lead_playbook_id=None,
+            )
+            lifecycle_plan = self._build_lifecycle_plan(
+                payload=payload,
+                position_context=position_context,
+                lead_setup_variant_id=None,
+                lead_playbook_id=None,
+                entry_style="no_trade",
+                inventory_action="reduce",
+                exit_reasons=["stand_aside_until_permission_clears"],
+            )
             return ExecutionExpressionOutput(
                 active_playbook_ids=[],
                 active_setup_variant_ids=[],
@@ -151,6 +180,7 @@ class ExecutionExpressionService:
                 invalidation_reasons=["risk_gate_blocked_execution"],
                 exit_reasons=["stand_aside_until_permission_clears"],
                 exit_plan=["stand_aside_until_permission_clears"],
+                lifecycle_plan=lifecycle_plan,
                 reasons=reasons,
             )
 
@@ -261,6 +291,21 @@ class ExecutionExpressionService:
             if hedge_exit_reason not in exit_reasons:
                 exit_reasons.append(hedge_exit_reason)
 
+        position_context = self._normalise_position_context(
+            payload=payload,
+            lead_setup_variant_id=lead_setup_variant_id,
+            lead_playbook_id=lead_playbook_id,
+        )
+        lifecycle_plan = self._build_lifecycle_plan(
+            payload=payload,
+            position_context=position_context,
+            lead_setup_variant_id=lead_setup_variant_id,
+            lead_playbook_id=lead_playbook_id,
+            entry_style=entry_style,
+            inventory_action=inventory_action,
+            exit_reasons=exit_reasons,
+        )
+
         return ExecutionExpressionOutput(
             active_playbook_ids=active_playbook_ids,
             active_setup_variant_ids=active_setup_variant_ids,
@@ -299,7 +344,118 @@ class ExecutionExpressionService:
             invalidation_reasons=invalidation_reasons,
             exit_reasons=exit_reasons,
             exit_plan=exit_plan,
+            lifecycle_plan=lifecycle_plan,
             reasons=reasons,
+        )
+
+    def _normalise_position_context(
+        self,
+        *,
+        payload: ExecutionExpressionInput,
+        lead_setup_variant_id: str | None,
+        lead_playbook_id: str | None,
+    ) -> PositionContextInput | None:
+        if payload.position_context is not None:
+            return payload.position_context
+        if not self._is_specimen_context(
+            payload=payload,
+            lead_setup_variant_id=lead_setup_variant_id,
+            lead_playbook_id=lead_playbook_id,
+        ):
+            return None
+        return PositionContextInput(
+            setup_variant_id=self._SPECIMEN_SETUP_VARIANT_ID,
+            execution_expression_id=self._SPECIMEN_EXECUTION_EXPRESSION_ID,
+            tradable_expression_family=self._SPECIMEN_TRADABLE_EXPRESSION_FAMILY,
+            legal_lifecycle_actions=list(self._SPECIMEN_LEGAL_LIFECYCLE_ACTIONS),
+        )
+
+    def _is_specimen_context(
+        self,
+        *,
+        payload: ExecutionExpressionInput,
+        lead_setup_variant_id: str | None,
+        lead_playbook_id: str | None,
+    ) -> bool:
+        if lead_setup_variant_id == self._SPECIMEN_SETUP_VARIANT_ID:
+            return True
+        if lead_playbook_id == self._SPECIMEN_LEGACY_PLAYBOOK_ID:
+            return True
+        if self._SPECIMEN_SETUP_VARIANT_ID in payload.eligibility.active_setup_variant_ids:
+            return True
+        if self._SPECIMEN_SETUP_VARIANT_ID in payload.eligibility.watch_setup_variant_ids:
+            return True
+        return False
+
+    def _inventory_action_to_lifecycle_action(self, inventory_action: str) -> LifecycleAction:
+        mapping = {
+            "add": LifecycleAction.ADD,
+            "trim": LifecycleAction.TRIM,
+            "reduce": LifecycleAction.FLATTEN,
+            "hold": LifecycleAction.HOLD_SMALL_OVERNIGHT,
+            "hedge": LifecycleAction.BLOCK_CARRY,
+        }
+        return mapping.get(inventory_action, LifecycleAction.BLOCK_CARRY)
+
+    def _build_lifecycle_plan(
+        self,
+        *,
+        payload: ExecutionExpressionInput,
+        position_context: PositionContextInput | None,
+        lead_setup_variant_id: str | None,
+        lead_playbook_id: str | None,
+        entry_style: str,
+        inventory_action: str,
+        exit_reasons: list[str],
+    ) -> LifecyclePlanOutput | None:
+        if position_context is None:
+            return None
+
+        allowed_actions = list(position_context.legal_lifecycle_actions)
+        next_action = self._inventory_action_to_lifecycle_action(inventory_action)
+        if next_action not in allowed_actions and allowed_actions:
+            next_action = allowed_actions[0]
+
+        if entry_style == "watch_only":
+            lifecycle_state = "watch_only_scaffold"
+        elif entry_style in {"no_trade", "stand_aside"}:
+            lifecycle_state = "inactive_scaffold"
+        else:
+            lifecycle_state = "entry_authorised_scaffold"
+
+        carry_candidate = bool(
+            lead_setup_variant_id == self._SPECIMEN_SETUP_VARIANT_ID
+            and entry_style not in {"no_trade", "stand_aside"}
+            and payload.temporal.desk_window == "late_session"
+            and payload.temporal.event_window_state == "clear"
+        )
+        blocked_rules = []
+        if payload.temporal.event_window_state != "clear":
+            blocked_rules.append("event_window_blocks_carry")
+        rationale_codes = [
+            f"setup_variant:{position_context.setup_variant_id or 'unbound'}",
+            f"execution_expression:{position_context.execution_expression_id or 'unbound'}",
+            f"lifecycle_state:{lifecycle_state}",
+            "gate_136_additive_lifecycle_scaffold",
+        ]
+        if lead_playbook_id is not None:
+            rationale_codes.append(f"lead_playbook:{lead_playbook_id}")
+        rationale_codes.append(
+            f"tradable_expression_family:{position_context.tradable_expression_family.value if position_context.tradable_expression_family else 'unbound'}"
+        )
+        return LifecyclePlanOutput(
+            setup_variant_id=position_context.setup_variant_id,
+            execution_expression_id=position_context.execution_expression_id,
+            tradable_expression_family=position_context.tradable_expression_family,
+            legal_lifecycle_actions=allowed_actions,
+            lifecycle_state=lifecycle_state,
+            next_action=next_action,
+            allowed_actions=allowed_actions,
+            carry_candidate=carry_candidate,
+            must_flatten_by_close=bool(position_context.hard_flat_required),
+            fired_rules=list(exit_reasons),
+            blocked_rules=blocked_rules,
+            rationale_codes=rationale_codes,
         )
 
     def _invalidation_reasons(

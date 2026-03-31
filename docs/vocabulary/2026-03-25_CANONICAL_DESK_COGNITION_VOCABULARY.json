@@ -353,6 +353,44 @@
       ]
     },
     {
+      "canonical_slug": "position_context",
+      "canonical_label": "Position Context",
+      "category": "workflow",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PositionContextInput",
+      "allowed_aliases": [
+        "managed_position_context"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive execution-stage ingress slot for the bounded managed-position specimen context."
+      ]
+    },
+    {
+      "canonical_slug": "lifecycle_plan",
+      "canonical_label": "Lifecycle Plan",
+      "category": "workflow",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.LifecyclePlanOutput",
+      "allowed_aliases": [
+        "second_half_plan"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive execution-stage egress slot for the bounded second-half lifecycle plan."
+      ]
+    },
+    {
       "canonical_slug": "state_vector",
       "canonical_label": "State Vector",
       "category": "workflow",

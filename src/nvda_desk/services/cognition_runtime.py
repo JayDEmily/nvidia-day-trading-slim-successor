@@ -23,6 +23,9 @@ from nvda_desk.schemas.cognition import (
     ExecutionExpressionInput,
     ExecutionExpressionOutput,
     InventoryState,
+    LifecycleAction,
+    PositionContextInput,
+    TradableExpressionFamily,
     MarketRegimeContextInput,
     MarketRegimeContextOutput,
     OptionsFlowContextInput,
@@ -280,6 +283,7 @@ class DeskCognitionRuntime:
                 posture=posture,
                 eligibility=eligibility,
                 modifier_runtime_packet=modifier_runtime_packet,
+                position_context=self._build_execution_position_context(eligibility),
             )
         )
         execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
@@ -453,6 +457,27 @@ class DeskCognitionRuntime:
                 candidate_reasons.append(f"contract:entry_gate:{entry_gate.suppression_tag}")
             updated_candidates.append(candidate.model_copy(update={"reasons": candidate_reasons}))
         return eligibility.model_copy(update={"reasons": reasons, "candidates": updated_candidates})
+
+    def _build_execution_position_context(
+        self,
+        eligibility: PlaybookEligibilityOutput,
+    ) -> PositionContextInput | None:
+        if "opening_drive_continuation" not in set(
+            eligibility.active_setup_variant_ids + eligibility.watch_setup_variant_ids
+        ):
+            return None
+        return PositionContextInput(
+            setup_variant_id="opening_drive_continuation",
+            execution_expression_id="continuation_ladder_exec",
+            tradable_expression_family=TradableExpressionFamily.SINGLE_LEG_CALL_DEBIT,
+            legal_lifecycle_actions=[
+                LifecycleAction.ADD,
+                LifecycleAction.TRIM,
+                LifecycleAction.FLATTEN,
+                LifecycleAction.HOLD_SMALL_OVERNIGHT,
+                LifecycleAction.BLOCK_CARRY,
+            ],
+        )
 
     def _build_stage_packets(
         self,
