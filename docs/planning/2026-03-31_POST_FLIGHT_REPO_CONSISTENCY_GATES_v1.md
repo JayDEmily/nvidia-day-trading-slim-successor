@@ -1,6 +1,6 @@
 # 2026-03-31 Post-Flight Repo Consistency Gates v1
 
-Status: active post-flight repo consistency pack; Gate 128 active, Gates 129-131 planned
+Status: active post-flight repo consistency pack; Gate 128 complete on `main`, Gate 129 active, Gates 130-131 planned
 
 ## Purpose
 
@@ -53,7 +53,7 @@ Checklist file: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_
 
 ## Gates
 
-### Gate 128: Router and predecessor-evidence guard modernisation
+### Gate 128: Router and predecessor-evidence guard modernisation (complete on `main`)
 
 **Objective**
 - Replace obsolete literal-router assertions with modern repo-process-law assertions so retained predecessor tests follow the current active-pack model instead of freezing old eras forever.
@@ -84,7 +84,7 @@ Checklist file: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_
 - gate-map markers allow the active post-flight pack without erasing predecessor-pack evidence;
 - Gate 128 closes honestly across the planning quartet and advances Gate 129.
 
-### Gate 129: Governed packet fixture alignment and dead-code cleanup
+### Gate 129: Governed packet fixture alignment and dead-code cleanup (active)
 
 **Objective**
 - Align stale tests and helper constructors with governed coefficient packet fields added in Gates 124-127, and remove dead private leftovers that now contradict externalised authority receipts.

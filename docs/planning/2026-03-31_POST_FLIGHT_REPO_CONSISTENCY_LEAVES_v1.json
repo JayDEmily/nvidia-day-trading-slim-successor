@@ -1,17 +1,20 @@
 {
   "governing_plan": "docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_127_closed_post_flight_repo_consistency_pack_active_from_gate_128",
-  "active_gate": "Gate 128",
+  "execution_status": "gate_128_complete_gate_129_active_on_main",
+  "active_gate": "Gate 129",
   "supersedes": [
     "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 128"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G128-001",
     "LEAF-G128-002",
-    "LEAF-G128-003",
+    "LEAF-G128-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G129-001",
     "LEAF-G129-002",
     "LEAF-G129-003",
@@ -56,7 +59,7 @@
       "gate": "Gate 128",
       "title": "Modernise router-only assertions to the current pack model",
       "objective": "Replace obsolete `PLANS.md` string assertions with router-model assertions that tolerate the active post-flight pack while preserving predecessor evidence.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
@@ -87,7 +90,7 @@
       "gate": "Gate 128",
       "title": "Refresh retained predecessor-evidence assertions across older planning packs",
       "objective": "Update older planning-pack tests that still pin obsolete gate-router eras so they assert predecessor evidence honestly under the modern router law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G128-001"
       ],
@@ -114,7 +117,7 @@
       "gate": "Gate 128",
       "title": "Close Gate 128 across the planning quartet",
       "objective": "Advance the active pack honestly once the router and predecessor-evidence guard tests are modernised.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G128-002"
       ],
@@ -140,7 +143,7 @@
       "gate": "Gate 129",
       "title": "Align governed resolved-surface fixtures with the current schema",
       "objective": "Repair stale test fixture construction so governed resolved-surface values include the fields now required by the packet contract.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [
         "LEAF-G128-003"
       ],

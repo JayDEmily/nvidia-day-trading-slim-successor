@@ -1,6 +1,6 @@
 # 2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1
 
-Status: active execution log for the post-flight repo consistency pack; Gate 128 active, Gates 129-131 planned
+Status: active execution log for the post-flight repo consistency pack; Gate 128 complete on `main`, Gate 129 active, Gates 130-131 planned
 
 ## Purpose
 
@@ -33,3 +33,43 @@ For every completed leaf record:
 - Gate 129: align governed packet fixtures, remove dead externalisation leftovers, and close to Gate 130.
 - Gate 130: refresh stale runtime expectations to current final-risk/event-window truth and close to Gate 131.
 - Gate 131: run the synced full-suite proof, close the pack honestly, and package the exact green repo state.
+
+
+## Gate 128 receipts
+
+### LEAF-G128-001 — Modernise router-only assertions to the current pack model
+- gate id: Gate 128
+- leaf id: LEAF-G128-001
+- branch: `work/gate-128-router-and-predecessor-guard-modernisation-20260331`
+- start commit: `2228c27`
+- files touched: `tests/test_financial_calendar_planning_v3.py`, `tests/test_gate125_review_visible_lineage.py`, `tests/test_gate126_temporal_threshold_authority.py`, `tests/test_gate46_50_planning_pack.py`, `tests/test_gate51_cognitive_workflow_planning.py`, `tests/test_gate59_doctrine_rebase.py`, `tests/test_gate80_corrective_pass_reset.py`, `tests/test_gate95_phase0_closeout.py`, `tests/test_successor_pack_anti_drift.py`
+- validation command: `PYTHONPATH=src pytest -q tests/test_gate107_repo_process_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate109_template_pack_governance.py tests/test_gate110_agents_reading_order.py tests/test_gate112_governance_closeout.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_financial_calendar_planning_v3.py tests/test_gate125_review_visible_lineage.py tests/test_gate126_temporal_threshold_authority.py`
+- observed result: `28 passed`
+- full suite required: no
+- stop condition hit: none
+- receipt capture mode: live
+
+### LEAF-G128-002 — Refresh retained predecessor-evidence assertions across older planning packs
+- gate id: Gate 128
+- leaf id: LEAF-G128-002
+- branch: `work/gate-128-router-and-predecessor-guard-modernisation-20260331`
+- start commit: `2228c27`
+- files touched: `tests/test_gate46_50_planning_pack.py`, `tests/test_gate51_cognitive_workflow_planning.py`, `tests/test_gate59_doctrine_rebase.py`, `tests/test_gate80_corrective_pass_reset.py`, `tests/test_gate95_phase0_closeout.py`, `tests/test_successor_pack_anti_drift.py`
+- validation command: `PYTHONPATH=src pytest -q tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_gate95_phase0_closeout.py tests/test_successor_pack_anti_drift.py`
+- observed result: `15 passed`
+- full suite required: no
+- stop condition hit: none
+- receipt capture mode: live
+
+### LEAF-G128-003 — Close Gate 128 across the planning quartet
+- gate id: Gate 128
+- leaf id: LEAF-G128-003
+- branch: `work/gate-128-router-and-predecessor-guard-modernisation-20260331`
+- start commit: `2228c27`
+- end commit or merged main commit: `TO_FILL_AFTER_COMMIT`
+- files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE128_ROUTER_AND_PREDECESSOR_GUARD_MODERNISATION.md`, `CHANGELOG.jsonl`
+- validation command: `PYTHONPATH=src pytest -q tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate107_repo_process_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate109_template_pack_governance.py tests/test_gate110_agents_reading_order.py tests/test_gate112_governance_closeout.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_financial_calendar_planning_v3.py tests/test_gate125_review_visible_lineage.py tests/test_gate126_temporal_threshold_authority.py tests/test_gate46_50_planning_pack.py tests/test_gate51_cognitive_workflow_planning.py tests/test_gate59_doctrine_rebase.py tests/test_gate80_corrective_pass_reset.py tests/test_gate95_phase0_closeout.py tests/test_successor_pack_anti_drift.py`
+- observed result: `43 passed`
+- full suite required: no
+- stop condition hit: none
+- receipt capture mode: live

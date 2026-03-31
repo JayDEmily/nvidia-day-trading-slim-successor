@@ -57,7 +57,7 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     calendar = CALENDAR.read_text()
     gate52 = GATE52.read_text()
     gate53 = GATE53.read_text()
-    plans = PLANS.read_text()
+    gate_map = (REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md").read_text()
 
     assert (
         "Step 0 calendar/horizon routing is real, but it is not a hidden eighth analysis stage."
@@ -72,4 +72,5 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     assert "Carry begins only at an explicit handoff boundary" in boundary_rules
     assert "family -> setup_variant -> execution_expression" in gate52
     assert "weekend, ordinary overnight, and event carry" in gate53
-    assert "Gates 54–55 — complete on `main`" in plans
+    assert "Gates 51–55 are complete on `main`" in gate_map
+    assert ("Gate 128 is complete on `main`" in gate_map) or ("Gate 129 is active on `main`" in gate_map)

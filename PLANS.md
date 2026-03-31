@@ -54,7 +54,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- post-flight repo consistency pack active at Gate 128 on `main`-derived planning branch
+- post-flight repo consistency pack active at Gate 129 on `main`
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt

@@ -17,10 +17,10 @@ def test_gate_46_to_50_are_complete_and_gate_45_stays_retired() -> None:
     gate_map = GATE_MAP.read_text()
     plans = PLANS.read_text()
 
-    assert "Gate 45 — retired placeholder on `main`" in plans
-    assert "Gates 46–50 — complete on `main`" in plans
+    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "Gate 45 is retired as a placeholder" in gate_map
-    assert "Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main`" in gate_map
+    assert "| Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` |" in gate_map
 
 
 def test_gate_46_to_50_leaves_are_present_and_marked_complete() -> None:

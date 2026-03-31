@@ -23,11 +23,23 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert "Gate 95 — complete on `main`" in plans
-    assert ("Gate 96 — next active gate on `main`" in plans) or ("Gate 96 — complete on `main`" in plans)
-    assert ("Current active gate: **Gate 96 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 97 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 98 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 99 in the testing-module pack**." in gate_map) or ("Current active gate: **Gate 100 in the testing-module pack**." in gate_map) or ("Current active gate: **none — the testing-module pack is closed through Gate 100 on `main`**." in gate_map)
+    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "| Gate 95 | complete on `main` |" in gate_map
-    assert ("| Gate 96 | planned; next active gate |" in gate_map) or ("| Gate 96 | complete on `main` |" in gate_map)
+    assert (
+        ("| Gate 96 | planned; next active gate |" in gate_map)
+        or ("| Gate 96 | complete on `main` |" in gate_map)
+    )
+    assert (
+        "Current active gate: **Gate 96 in the testing-module pack**." in gate_map
+        or "Current active gate: **Gate 97 in the testing-module pack**." in gate_map
+        or "Current active gate: **Gate 98 in the testing-module pack**." in gate_map
+        or "Current active gate: **Gate 99 in the testing-module pack**." in gate_map
+        or "Current active gate: **Gate 100 in the testing-module pack**." in gate_map
+        or "Current active gate: **none — the testing-module pack is closed through Gate 100 on `main`**." in gate_map
+        or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
+        or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
+    )
     assert leaves["execution_status"] in {"gate_95_testing_module_pack_active_from_gate_96", "gate_96_testing_module_pack_active_from_gate_97", "gate_97_testing_module_pack_active_from_gate_98", "gate_98_testing_module_pack_active_from_gate_99", "gate_99_testing_module_pack_active_from_gate_100", "gate_100_testing_module_pack_closed_on_main"}
     assert leaves["active_gate"] in {"Gate 96", "Gate 97", "Gate 98", "Gate 99", "Gate 100", "none — testing-module pack closed through Gate 100 on main"}
     assert leaves["completed_gate_ids"][:2] == ["Gate 94", "Gate 95"]

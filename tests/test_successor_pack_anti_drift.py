@@ -36,11 +36,10 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         or "_successor_pack_closed_after_gate_" in leaves["execution_status"]
     )
 
-    assert "- Gates 59–" in plans
-    assert "closed through Gate " in plans
-    assert "Gates 46–" in plans and "are merged on `main`" in plans
+    assert "signal-coefficient authority pack closed through Gate 127" in plans
+    assert "post-flight repo consistency pack active at Gate 12" in plans
 
-    assert "V6 successor pack is closed through Gate 79 on `main`" in gate_map
+    assert "Gates 59–79 are complete on `main`" in gate_map
     assert (
         ("Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map)
         or (
@@ -77,6 +76,14 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         )
         or (
             "Current active gate: **none — the financial-calendar runtime-integration pack is closed through Gate 93 on `main`**."
+            in gate_map
+        )
+        or (
+            "Current active gate: **Gate 128 in the post-flight repo consistency pack**."
+            in gate_map
+        )
+        or (
+            "Current active gate: **Gate 129 in the post-flight repo consistency pack**."
             in gate_map
         )
     )

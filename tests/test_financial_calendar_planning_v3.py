@@ -19,17 +19,18 @@ def test_runtime_integration_pack_is_retained_as_closed_predecessor_evidence() -
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     agents = AGENTS.read_text(encoding="utf-8")
 
-    assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md" in plans
-    assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json" in plans
-    assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_EXECUTION_LOG_v2.md" in plans
-    assert "Gate 91 — complete on `main`" in plans
-    assert "Gate 92 — complete on `main`" in plans
-    assert "Gate 93 — complete on `main`" in plans
+    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert "signal-coefficient authority pack closed through Gate 127" in plans
 
-    assert "Current active gate: **Gate 95 in the testing-module pack**." in gate_map
+    assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_GATES_v2.md" in gate_map
+    assert "2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_LEAVES_v2.json" in gate_map
     assert "| Gate 91 | complete on `main` |" in gate_map
     assert "| Gate 92 | complete on `main` |" in gate_map
     assert "| Gate 93 | complete on `main` |" in gate_map
+    assert (
+        "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
+        or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
+    )
 
     assert "the active execution log named by repo-root `PLANS.md`" in agents
 

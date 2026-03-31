@@ -18,20 +18,14 @@ GUARDRAILS = REPO_ROOT / "docs/05_GUARDRAILS.md"
 
 def test_corrective_pair_is_the_active_post_gate79_pointer() -> None:
     plans = PLANS.read_text()
+    gate_map = GATE_MAP.read_text()
 
-    assert (
-        "The active corrective reconstruction pair from Gate 80 onward is:" in plans
-        or "The completed corrective reconstruction pair retained as predecessor evidence is:" in plans
-    )
-    assert "2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md" in plans
-    assert "2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json" in plans
-    assert "Gate 80 — complete on `main`" in plans
-    assert (
-        "Gate 81 is next" in plans
-        or "Corrective review-reconstruction tranche (Gates 80–87) complete on `main`." in plans
-        or "Corrective review-reconstruction tranche (Gates 80–87) is complete on `main` and retained as predecessor evidence." in plans
-    )
-    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in plans
+    assert "post-flight repo consistency pack active at Gate 12" in plans
+    assert "signal-coefficient authority pack closed through Gate 127" in plans
+    assert "historical-evaluation readiness pack closed through Gate 121" in plans
+    assert "Gates 59–79 are complete on `main`" in gate_map
+    assert "Gates 80–87 are complete on `main`" in gate_map
+    assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in gate_map
 
 
 def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
@@ -40,14 +34,15 @@ def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
     assert (
         "Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map
     ) or (
-        "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**."
-        in gate_map
+        "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**." in gate_map
     ) or (
-        "Current active gate: **Gate 88 in the financial-calendar interstitial pack**."
-        in gate_map
+        "Current active gate: **Gate 88 in the financial-calendar interstitial pack**." in gate_map
     ) or (
-        "Current active gate: **Gate 89 in the financial-calendar interstitial pack**."
-        in gate_map
+        "Current active gate: **Gate 89 in the financial-calendar interstitial pack**." in gate_map
+    ) or (
+        "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
+    ) or (
+        "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
     )
     assert "| Gate 80 | complete on `main` |" in gate_map
     assert (
