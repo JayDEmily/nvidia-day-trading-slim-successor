@@ -47,6 +47,10 @@ def test_compare_from_fixture_pack_applies_stack_filters_weights_and_coefficient
     assert defensive_flush.veto_correct == 0.0
     assert defensive_trend.coefficient_audit.applied_module_weights["execution_expression"] == 0.7
     assert defensive_trend.coefficient_audit.applied_sub_coefficients["vix_level"] == 1.1
+    assert defensive_trend.coefficient_audit.governed_coefficient_snapshot_id is not None
+    assert defensive_trend.governed_coefficient_snapshot is not None
+    assert defensive_trend.governed_coefficient_snapshot.snapshot_id == defensive_trend.coefficient_audit.governed_coefficient_snapshot_id
+    assert defensive_trend.governed_coefficient_snapshot.resolved_surfaces
     assert defensive_trend.replay_score < run_index[("full_stack_base", "trend")].replay_score
 
     assert set(report.reports) == {"defensive_stack_tight", "full_stack_base"}
@@ -67,6 +71,8 @@ def test_walk_forward_slice_reports_and_stack_delta_summary_are_deterministic() 
     assert set(report.slice_reports) == {"holdout_window", "train_window"}
     assert report.slice_reports["train_window"]["full_stack_base"].run_count == 2
     assert report.slice_reports["holdout_window"]["defensive_stack_tight"].run_count == 2
+    assert set(report.coefficient_snapshots_by_set) == {"defensive_stack_tight", "full_stack_base"}
+    assert report.coefficient_snapshots_by_set["full_stack_base"]
     assert len(report.stack_vs_stack_summary) == 1
     summary = report.stack_vs_stack_summary[0]
     assert summary.left_set_id == "defensive_stack_tight"
@@ -104,6 +110,8 @@ def test_replay_runs_surface_packet_lineage_deterministically() -> None:
     )
 
     assert run.packet_lineage is not None
+    assert run.governed_coefficient_snapshot is not None
+    assert run.coefficient_audit.governed_coefficient_snapshot_id == run.governed_coefficient_snapshot.snapshot_id
     assert run.packet_lineage.packet_lineage[0] == run.packet_lineage.stage_packet_ids["temporal"]
     assert run.packet_lineage.packet_lineage[-1] == run.packet_lineage.stage_packet_ids["review"]
     assert (

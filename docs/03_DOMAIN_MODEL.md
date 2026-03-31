@@ -2544,6 +2544,7 @@ Key examples:
 - `EvaluationRunPayload`
 - `ExperimentRunPayload`
 - `ComparisonReport`
+- `GovernedCoefficientSnapshot`
 - `StackDefinition`
 - `CoefficientSet`
 - `DailyReviewPacket`

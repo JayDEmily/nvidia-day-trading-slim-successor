@@ -7,6 +7,7 @@ and serialises deterministic comparison reports.
 
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import Counter, defaultdict
 from datetime import datetime
@@ -22,6 +23,7 @@ from nvda_desk.schemas.calibration import (
     ComparisonReport,
     ContextSliceReport,
     FragilitySignalReport,
+    GovernedCoefficientSnapshot,
     GroupReviewHorizonResult,
     HorizonDiscoveryOutcome,
     HorizonDiscoveryReport,
@@ -137,11 +139,18 @@ class ReplayComparisonService:
                 for coefficient_set in ordered_sets
             }
         stack_vs_stack_summary = self._stack_vs_stack_summary(ordered_sets, overall_reports)
+        coefficient_snapshots_by_set = {
+            coefficient_set.set_id: self._collect_snapshot_evidence(
+                [run for run in runs if run.coefficient_set_id == coefficient_set.set_id]
+            )
+            for coefficient_set in ordered_sets
+        }
         return runs, ComparisonReport(
             fixture_pack_id=fixture_pack_id,
             scenario_ids=scenario_ids,
             reports=overall_reports,
             slice_reports=slice_reports,
+            coefficient_snapshots_by_set=coefficient_snapshots_by_set,
             stack_vs_stack_summary=stack_vs_stack_summary,
         )
 
@@ -270,6 +279,7 @@ class ReplayComparisonService:
             applied_module_weights=applied_module_weights,
             applied_sub_coefficients=applied_sub_coefficients,
         )
+        governed_snapshot = self._governed_coefficient_snapshot(runtime_result.review)
         replay_score = round(
             score_components["base_capital"]
             * score_components["execution_weight"]
@@ -286,6 +296,7 @@ class ReplayComparisonService:
             active_playbook_ids=active_playbook_ids,
             target_fresh_deployable_pct=runtime_result.execution.target_fresh_deployable_pct,
             replay_score=replay_score,
+            governed_coefficient_snapshot=governed_snapshot,
             veto_expected=veto_expected,
             veto_observed=veto_observed,
             veto_correct=1.0 if veto_observed == veto_expected else 0.0,
@@ -301,6 +312,9 @@ class ReplayComparisonService:
                 applied_module_weights=applied_module_weights,
                 applied_sub_coefficients=applied_sub_coefficients,
                 scoring_components=score_components,
+                governed_coefficient_snapshot_id=(
+                    governed_snapshot.snapshot_id if governed_snapshot is not None else None
+                ),
             ),
             review=runtime_result.review,
             imported_module_citations=runtime_result.review.imported_module_citations,
@@ -316,6 +330,44 @@ class ReplayComparisonService:
                 stage_packet_ids=runtime_result.stage_packet_ids,
             ),
         )
+
+    def _governed_coefficient_snapshot(
+        self,
+        review_output,
+    ) -> GovernedCoefficientSnapshot | None:
+        effective_policy = review_output.effective_policy
+        if effective_policy is None or not effective_policy.resolved_surfaces:
+            return None
+        resolved_surfaces = sorted(
+            effective_policy.resolved_surfaces,
+            key=lambda item: item.target_surface.value,
+        )
+        authority_versions = sorted({item.authority_version for item in resolved_surfaces})
+        authority_version = authority_versions[0] if len(authority_versions) == 1 else "+".join(authority_versions)
+        canonical_payload = {
+            "authority_version": authority_version,
+            "resolved_surfaces": [item.model_dump(mode="json") for item in resolved_surfaces],
+        }
+        digest = hashlib.sha256(
+            json.dumps(canonical_payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()[:16]
+        return GovernedCoefficientSnapshot(
+            snapshot_id=f"coefficient-snapshot::{authority_version}::{digest}",
+            authority_version=authority_version,
+            resolved_surfaces=resolved_surfaces,
+        )
+
+    def _collect_snapshot_evidence(
+        self,
+        runs: list[ReplayRunResult],
+    ) -> list[GovernedCoefficientSnapshot]:
+        unique: dict[str, GovernedCoefficientSnapshot] = {}
+        for run in runs:
+            snapshot = run.governed_coefficient_snapshot
+            if snapshot is None:
+                continue
+            unique.setdefault(snapshot.snapshot_id, snapshot)
+        return [unique[key] for key in sorted(unique)]
 
     def _aggregate_runs(self, runs: list[ReplayRunResult]) -> ComparisonMetrics:
         if not runs:

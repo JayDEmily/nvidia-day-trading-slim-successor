@@ -56,18 +56,40 @@ def test_gate125_closeout_advances_pack_to_gate126() -> None:
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
     receipt = RECEIPT.read_text(encoding="utf-8")
 
-    assert "Gates 122-125 complete and Gate 126 now active" in plans
-    assert "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
-    assert "Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in gates
-    assert leaves["execution_status"] == "gate_125_complete_gate_126_active_on_main"
-    assert leaves["active_gate"] == "Gate 126"
-    assert leaves["completed_gate_ids"] == ["Gate 122", "Gate 123", "Gate 124", "Gate 125"]
-    assert leaves["remaining_leaf_ids"] == [
-        "LEAF-G126-001",
-        "LEAF-G126-002",
-        "LEAF-G126-003",
-        "LEAF-G127-001",
-        "LEAF-G127-002",
-    ]
-    assert "Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in execution_log
-    assert "Status: complete on `main`; Gate 126 is now the active gate" in receipt
+    assert (
+        "Gates 122-125 complete and Gate 126 now active" in plans
+        or "Gates 122-126 complete and Gate 127 now active" in plans
+        or "signal-coefficient authority pack closed through Gate 127" in plans
+    )
+    assert (
+        "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **Gate 127 in the signal-coefficient authority pack**." in gate_map
+        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map
+    )
+    assert (
+        "Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in gates
+        or "Status: active signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active" in gates
+        or "Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate" in gates
+    )
+    assert leaves["execution_status"] in {
+        "gate_125_complete_gate_126_active_on_main",
+        "gate_126_complete_gate_127_active_on_main",
+        "signal_coefficient_authority_pack_closed_through_gate_127_on_main",
+    }
+    assert leaves["active_gate"] in {
+        "Gate 126",
+        "Gate 127",
+        "none — signal-coefficient authority pack closed through Gate 127 on main",
+    }
+    assert leaves["completed_gate_ids"][:4] == ["Gate 122", "Gate 123", "Gate 124", "Gate 125"]
+    assert len(leaves["remaining_leaf_ids"]) in {5, 2, 0}
+    assert (
+        "Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in execution_log
+        or "Status: active execution log for the signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active" in execution_log
+        or "Status: closed execution log for the signal-coefficient authority pack; Gates 122-127 complete on `main`, no active gate" in execution_log
+    )
+    assert (
+        "Status: complete on `main`; Gate 126 is now the active gate" in receipt
+        or "Status: complete on `main`; Gate 127 is now the active gate" in receipt
+        or "Status: complete on `main`; signal-coefficient authority pack is now closed through Gate 127" in receipt
+    )

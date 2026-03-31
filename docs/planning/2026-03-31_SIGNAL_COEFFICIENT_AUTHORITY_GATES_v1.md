@@ -1,4 +1,4 @@
-Status: active signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active
+Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate
 # 2026-03-31 Signal Coefficient Authority Gates v1
 
 ## Purpose
@@ -333,3 +333,9 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 - replay and horizon outputs expose a stable coefficient snapshot identifier plus the admitted effective-surface evidence they consume;
 - coefficient-state comparison is review-visible and parity-safe across canonical replay paths;
 - the planning quartet and packaging receipts close the pack honestly from the exact green repo state.
+
+### Gate 127 closeout note
+
+- Gate 127 completed on `main` by adding `GovernedCoefficientSnapshot` carriage to replay runs and comparison reports, hashing the admitted resolved-surface evidence into a stable snapshot id, and surfacing that same evidence through replay outputs rather than private runtime reconstruction.
+- The deterministic replay report baseline was refreshed to current runtime truth after Gate 126 changed the governed temporal path, so the checked-in comparison report now includes both refreshed means and governed snapshot evidence.
+- The signal-coefficient authority pack is now closed honestly through Gate 127; repo-root `PLANS.md` routes no active pack until a later planning pass creates one explicitly.

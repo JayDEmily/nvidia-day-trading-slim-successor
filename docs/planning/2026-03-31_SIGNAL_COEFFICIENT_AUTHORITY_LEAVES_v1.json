@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_126_complete_gate_127_active_on_main",
-  "active_gate": "Gate 127",
+  "execution_status": "signal_coefficient_authority_pack_closed_through_gate_127_on_main",
+  "active_gate": "none \u2014 signal-coefficient authority pack closed through Gate 127 on main",
   "supersedes": [
     "no active pack after Gate 121 closeout"
   ],
@@ -11,7 +11,8 @@
     "Gate 123",
     "Gate 124",
     "Gate 125",
-    "Gate 126"
+    "Gate 126",
+    "Gate 127"
   ],
   "completed_leaf_ids": [
     "LEAF-G122-001",
@@ -28,12 +29,11 @@
     "LEAF-G125-003",
     "LEAF-G126-001",
     "LEAF-G126-002",
-    "LEAF-G126-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G126-003",
     "LEAF-G127-001",
     "LEAF-G127-002"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -993,7 +993,7 @@
       "gate": "Gate 127",
       "title": "Propagate coefficient snapshot visibility into replay and horizon outputs",
       "objective": "Carry a stable coefficient snapshot identifier and admitted effective-surface evidence into replay and horizon comparison outputs.",
-      "status": "active",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G126-003"
       ],
@@ -1053,7 +1053,7 @@
       "gate": "Gate 127",
       "title": "Close the pack honestly and package the exact green state",
       "objective": "Update the planning quartet together, record final receipts, and package the repo from the exact green state when the signal-coefficient authority pack is complete.",
-      "status": "planned",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G127-001"
       ],

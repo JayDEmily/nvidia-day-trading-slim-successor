@@ -20,18 +20,15 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`
 - leaves: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`
 - execution log: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-
-## Latest closed pack retained as evidence
-
-- gates: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md`
-- leaves: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json`
-- execution log: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- gate receipt: `docs/planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md`
+- gate receipts: `docs/planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md` through `docs/planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md`
 
 ## Closed predecessor evidence
 
@@ -54,7 +51,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- signal-coefficient authority pack active on `main`; Gates 122-126 complete and Gate 127 now active
+- no active pack currently routed; signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt
 

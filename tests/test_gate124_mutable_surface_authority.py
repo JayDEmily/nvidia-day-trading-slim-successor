@@ -93,5 +93,15 @@ def test_gate124_closeout_advances_pack_but_allows_later_statuses() -> None:
         "none — signal-coefficient authority pack closed through Gate 127 on main",
     }
     assert leaves["completed_gate_ids"][:3] == ["Gate 122", "Gate 123", "Gate 124"]
-    assert "Status: complete on `main`; Gate 125 is now the active gate" in receipt or "Status: complete on `main`; Gate 126 is now the active gate" in receipt
-    assert "Status: active execution log for the signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned" in execution_log or "Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in execution_log
+    assert (
+        "Status: complete on `main`; Gate 125 is now the active gate" in receipt
+        or "Status: complete on `main`; Gate 126 is now the active gate" in receipt
+        or "Status: complete on `main`; Gate 127 is now the active gate" in receipt
+        or "Status: complete on `main`; signal-coefficient authority pack is now closed through Gate 127" in receipt
+    )
+    assert (
+        "Status: active execution log for the signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned" in execution_log
+        or "Status: active execution log for the signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in execution_log
+        or "Status: active execution log for the signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active" in execution_log
+        or "Status: closed execution log for the signal-coefficient authority pack; Gates 122-127 complete on `main`, no active gate" in execution_log
+    )

@@ -13,6 +13,7 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from nvda_desk.schemas.cognition import ReviewExplanationOutput
+from nvda_desk.schemas.state_policy import ResolvedRuntimeSurfaceValue
 from nvda_desk.schemas.review import ImportedModuleReviewCitation
 
 EXPECTED_REVIEW_STAGES = [
@@ -140,6 +141,18 @@ class WalkForwardSliceDefinition(BaseModel):
     scenario_ids: list[str] = Field(default_factory=list)
 
 
+
+
+class GovernedCoefficientSnapshot(BaseModel):
+    """Stable governed-coefficient evidence bound to replay and horizon outputs."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    snapshot_id: str
+    authority_version: str
+    resolved_surfaces: list[ResolvedRuntimeSurfaceValue] = Field(default_factory=list)
+
+
 class CoefficientAuditPacket(BaseModel):
     """Concrete record of weights and coefficients applied to one run."""
 
@@ -151,6 +164,7 @@ class CoefficientAuditPacket(BaseModel):
     applied_module_weights: dict[str, float] = Field(default_factory=dict)
     applied_sub_coefficients: dict[str, float] = Field(default_factory=dict)
     scoring_components: dict[str, float] = Field(default_factory=dict)
+    governed_coefficient_snapshot_id: str | None = None
 
 
 class ReplayPacketLineage(BaseModel):
@@ -178,6 +192,7 @@ class ReplayRunResult(BaseModel):
     active_playbook_ids: list[str] = Field(default_factory=list)
     target_fresh_deployable_pct: float
     replay_score: float
+    governed_coefficient_snapshot: GovernedCoefficientSnapshot | None = None
     veto_expected: bool
     veto_observed: bool
     veto_correct: float = Field(ge=0.0, le=1.0)
@@ -235,6 +250,7 @@ class ComparisonReport(BaseModel):
     scenario_ids: list[str] = Field(default_factory=list)
     reports: dict[str, ComparisonMetrics] = Field(default_factory=dict)
     slice_reports: dict[str, dict[str, ComparisonMetrics]] = Field(default_factory=dict)
+    coefficient_snapshots_by_set: dict[str, list[GovernedCoefficientSnapshot]] = Field(default_factory=dict)
     stack_vs_stack_summary: list[StackVersusStackSummary] = Field(default_factory=list)
 
 

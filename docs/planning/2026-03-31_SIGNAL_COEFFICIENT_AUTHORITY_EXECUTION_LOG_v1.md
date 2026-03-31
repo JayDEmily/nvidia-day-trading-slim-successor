@@ -1,6 +1,6 @@
 # 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1
 
-Status: active execution log for the signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active
+Status: closed execution log for the signal-coefficient authority pack; Gates 122-127 complete on `main`, no active gate
 
 ## Purpose
 
@@ -23,7 +23,7 @@ For every completed leaf record:
 
 ## Pending receipt state
 
-- Gates 122-126 now freeze scope, governed authority, runtime authority carriage, review-visible lineage, and bounded temporal authority; Gate 127 is the next active replay-closeout gate.
+- Gates 122-127 now freeze scope, governed authority, runtime authority carriage, review-visible lineage, bounded temporal authority, and replay-visible coefficient snapshots; the pack is closed honestly on `main`.
 
 ## Gate 122 receipts
 
@@ -217,4 +217,26 @@ For every completed leaf record:
 
 ## Gate 127 receipts
 
-- none yet
+### LEAF-G127-001 — Propagate coefficient snapshot visibility into replay and horizon outputs
+
+- Branch: `work/gate-127-replay-coefficient-visibility-20260331`
+- Start commit: `ca3c674`
+- End commit: `gate-127-on-main`
+- Files touched: `src/nvda_desk/services/replay_compare.py`, `src/nvda_desk/schemas/calibration.py`, `docs/03_DOMAIN_MODEL.md`, `fixtures/replay/gate_f_expected_report.json`, `tests/test_replay_compare_runtime.py`, `tests/test_gate127_replay_coefficient_visibility.py`, `tests/test_gate125_review_visible_lineage.py`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py tests/test_gate103_raw_prepared_parity.py`
+- Observed results: replay runs and comparison reports now carry stable governed coefficient snapshot ids plus the admitted resolved-surface evidence they consume
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
+
+### LEAF-G127-002 — Close the pack honestly and package the exact green state
+
+- Branch: `work/gate-127-replay-coefficient-visibility-20260331`
+- Start commit: `ca3c674`
+- End commit: `gate-127-on-main`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`, `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md`, `CHANGELOG.jsonl`
+- Validations run: `PYTHONPATH=src pytest -q tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate122_signal_coefficient_authority_closeout.py tests/test_gate123_coefficient_authority.py tests/test_gate124_mutable_surface_authority.py tests/test_gate125_review_visible_lineage.py tests/test_gate126_temporal_threshold_authority.py tests/test_gate127_replay_coefficient_visibility.py tests/test_replay_compare_runtime.py tests/test_gate98_threshold_edges.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py tests/test_gate103_raw_prepared_parity.py tests/test_gate121_historical_evaluation_readiness_closeout.py tests/test_document_hygiene.py`
+- Observed results: `45 passed`; Gate 127 closed honestly across the planning quartet; the signal-coefficient authority pack is now closed through Gate 127 on `main` and no active pack is routed
+- Full suite required: no
+- Stop conditions hit: none
+- Receipt recorded: live
