@@ -1,6 +1,6 @@
 # 2026-03-31 Post-Flight Repo Consistency Gates v1
 
-Status: active post-flight repo consistency pack; Gates 128-130 complete on `main`, Gate 131 active
+Status: closed post-flight repo consistency pack on `main`; Gates 128-131 complete, no active gate
 
 ## Purpose
 
@@ -118,7 +118,7 @@ Checklist file: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_
 - prepared/raw/real-data expectation tests match the current event-window and derisk outputs observed from the runtime;
 - Gate 130 closes honestly across the planning quartet and advances Gate 131.
 
-### Gate 131: Broad proof, residual cleanup, honest closeout, and packaging (active)
+### Gate 131: Broad proof, residual cleanup, honest closeout, and packaging (complete on `main`)
 
 **Objective**
 - Run the synced full-suite proof, clear any residual red surfaces created by Gates 128-130, then close the pack and package the exact green `main` state with full Git history.

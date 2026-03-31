@@ -1,6 +1,6 @@
 # 2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1
 
-Status: active execution log for the post-flight repo consistency pack; Gates 128-130 complete on `main`, Gate 131 active
+Status: closed execution log for the post-flight repo consistency pack; Gates 128-131 complete on `main`, no active gate
 
 ## Purpose
 
@@ -146,10 +146,38 @@ For every completed leaf record:
 - leaf id: LEAF-G130-003
 - branch: `work/gate-130-runtime-expectation-refresh-20260331`
 - start commit: `33d46aa`
-- end commit or merged main commit: `PENDING_GATE130_MAIN_COMMIT`
+- end commit or merged main commit: `cd706e6`
 - files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md`, `CHANGELOG.jsonl`, `tests/test_gate97_runtime_invariants.py`, `tests/test_gate99_runtime_transitions.py`, `tests/test_real_data_loader.py`
 - validation command: `PYTHONPATH=src pytest -q tests/test_gate97_runtime_invariants.py tests/test_gate99_runtime_transitions.py tests/test_real_data_loader.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate126_temporal_threshold_authority.py`
 - observed result: `17 passed`
 - full suite required: no
+- stop condition hit: none
+- receipt capture mode: live
+
+
+## Gate 131 receipts
+
+### LEAF-G131-001 — Run the synced full-suite proof and clear any residual red surfaces
+- gate id: Gate 131
+- leaf id: LEAF-G131-001
+- branch: `work/gate-131-post-flight-pack-closeout-20260331`
+- start commit: `cd706e6`
+- files touched: `tests/test_financial_calendar_planning_v3.py`, `tests/test_gate125_review_visible_lineage.py`, `tests/test_gate127_replay_coefficient_visibility.py`, `tests/test_gate128_post_flight_repo_consistency_planning.py`, `tests/test_gate46_50_planning_pack.py`, `tests/test_gate51_cognitive_workflow_planning.py`, `tests/test_gate59_doctrine_rebase.py`, `tests/test_gate80_corrective_pass_reset.py`, `tests/test_gate95_phase0_closeout.py`, `tests/test_successor_pack_anti_drift.py`
+- validation command: `PYTHONPATH=src pytest -q`
+- observed result: `443 passed in 32.62s`
+- full suite required: yes
+- stop condition hit: none
+- receipt capture mode: live
+
+### LEAF-G131-002 — Close the post-flight pack honestly and package the exact green state
+- gate id: Gate 131
+- leaf id: LEAF-G131-002
+- branch: `work/gate-131-post-flight-pack-closeout-20260331`
+- start commit: `cd706e6`
+- end commit or merged main commit: `fe6fbf0`
+- files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`, `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md`, `docs/planning/2026-03-31_GATE131_POST_FLIGHT_PACK_CLOSEOUT.md`, `CHANGELOG.jsonl`
+- validation command: `PYTHONPATH=src pytest -q tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_document_hygiene.py`
+- observed result: `6 passed`
+- full suite required: yes
 - stop condition hit: none
 - receipt capture mode: live

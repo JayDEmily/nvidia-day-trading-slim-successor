@@ -23,6 +23,8 @@ def test_runtime_integration_pack_is_retained_as_closed_predecessor_evidence() -
         "post-flight repo consistency pack active at Gate 128" in plans
         or "post-flight repo consistency pack active at Gate 129" in plans
         or "post-flight repo consistency pack active at Gate 130" in plans
+        or "post-flight repo consistency pack active at Gate 131" in plans
+        or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
     )
     assert "signal-coefficient authority pack closed through Gate 127" in plans
 
@@ -35,6 +37,8 @@ def test_runtime_integration_pack_is_retained_as_closed_predecessor_evidence() -
         "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
+        or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map
+        or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
     )
 
     assert "the active execution log named by repo-root `PLANS.md`" in agents

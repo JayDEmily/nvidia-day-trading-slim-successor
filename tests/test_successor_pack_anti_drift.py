@@ -41,6 +41,8 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         "post-flight repo consistency pack active at Gate 128" in plans
         or "post-flight repo consistency pack active at Gate 129" in plans
         or "post-flight repo consistency pack active at Gate 130" in plans
+        or "post-flight repo consistency pack active at Gate 131" in plans
+        or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
     )
 
     assert "Gates 59–79 are complete on `main`" in gate_map
@@ -92,6 +94,12 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         )
         or (
             "Current active gate: **Gate 130 in the post-flight repo consistency pack**."
+            in gate_map
+        ) or (
+            "Current active gate: **Gate 131 in the post-flight repo consistency pack**."
+            in gate_map
+        ) or (
+            "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**."
             in gate_map
         )
     )

@@ -20,18 +20,15 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- none
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md`
 - leaves: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json`
 - execution log: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-
-## Latest closed pack retained as evidence
-
-- gates: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md`
-- leaves: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json`
-- execution log: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- gate receipts: `docs/planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md` through `docs/planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md`
+- gate receipts: `docs/planning/2026-03-31_GATE128_ROUTER_AND_PREDECESSOR_GUARD_MODERNISATION.md` through `docs/planning/2026-03-31_GATE131_POST_FLIGHT_PACK_CLOSEOUT.md`
 
 ## Closed predecessor evidence
 
@@ -54,7 +51,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- post-flight repo consistency pack active at Gate 131 on `main`
+- no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt

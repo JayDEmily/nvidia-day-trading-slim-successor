@@ -39,14 +39,18 @@ def test_post_flight_repo_consistency_pack_is_active() -> None:
         "Status: active post-flight repo consistency pack; Gate 128 active, Gates 129-131 planned" in gates
         or "Status: active post-flight repo consistency pack; Gate 128 complete on `main`, Gate 129 active, Gates 130-131 planned" in gates
         or "Status: active post-flight repo consistency pack; Gates 128-129 complete on `main`, Gate 130 active, Gate 131 planned" in gates
+        or "Status: active post-flight repo consistency pack; Gates 128-130 complete on `main`, Gate 131 active" in gates
+        or "Status: closed post-flight repo consistency pack on `main`; Gates 128-131 complete, no active gate" in gates
     )
     assert leaves["execution_status"] in {
         "gate_127_closed_post_flight_repo_consistency_pack_active_from_gate_128",
         "gate_128_complete_gate_129_active_on_main",
         "gate_129_complete_gate_130_active_on_main",
+        "gate_130_complete_gate_131_active_on_main",
+        "post_flight_repo_consistency_pack_closed_through_gate_131_on_main",
     }
-    assert leaves["active_gate"] in {"Gate 128", "Gate 129", "Gate 130"}
-    assert len(leaves["remaining_leaf_ids"]) in {11, 8, 5}
+    assert leaves["active_gate"] in {"Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main"}
+    assert len(leaves["remaining_leaf_ids"]) in {11, 8, 5, 2, 0}
     assert execution_log.startswith("# 2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1")
     assert "Gate 128-131" in checklist or "Gate 128" in checklist
 
