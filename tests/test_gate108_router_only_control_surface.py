@@ -39,6 +39,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
+
+    "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
 }
 
 
@@ -46,7 +53,7 @@ def test_plans_md_is_router_only_and_points_at_gate109_or_later() -> None:
     plans = PLANS.read_text(encoding="utf-8")
 
     assert "## Active pack" in plans
-    assert ("- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans)
+    assert ("- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans)
     assert "The persisted `main` baseline is now closed through Gate 105" not in plans
     assert "Gate 102 is the next active gate" not in plans
 

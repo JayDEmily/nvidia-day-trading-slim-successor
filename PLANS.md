@@ -20,7 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- none
+- gates: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`
+- leaves: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -51,7 +54,8 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`
+- opening-drive continuation lifecycle pilot pack active at Gate 135
+- bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
 - latest recoverable runtime pack evidence is frozen in the historical-evaluation readiness quartet and Gate 121 receipt

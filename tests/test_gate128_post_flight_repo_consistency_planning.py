@@ -19,6 +19,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
+
+    "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
 }
 
 
@@ -30,10 +37,10 @@ def test_post_flight_repo_consistency_pack_is_active() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
-    assert "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json" in plans
-    assert "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md" in plans
-    assert "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans)
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
         "Status: active post-flight repo consistency pack; Gate 128 active, Gates 129-131 planned" in gates

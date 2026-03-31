@@ -41,6 +41,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
+
+    "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
 }
 
 

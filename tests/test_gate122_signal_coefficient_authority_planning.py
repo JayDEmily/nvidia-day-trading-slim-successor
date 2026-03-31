@@ -26,6 +26,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
+
+    "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
+    "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
 }
 
 
@@ -40,14 +47,17 @@ def test_signal_coefficient_authority_pack_is_active() -> None:
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans
     )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (

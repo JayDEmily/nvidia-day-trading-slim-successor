@@ -1,0 +1,1221 @@
+{
+  "governing_plan": "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+  "version": 1,
+  "execution_status": "gate_134_closed_opening_drive_continuation_lifecycle_pilot_active_from_gate_135",
+  "active_gate": "Gate 135",
+  "supersedes": [
+    "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G135-001",
+    "LEAF-G135-002",
+    "LEAF-G135-003",
+    "LEAF-G136-001",
+    "LEAF-G136-002",
+    "LEAF-G136-003",
+    "LEAF-G136-004",
+    "LEAF-G137-001",
+    "LEAF-G137-002",
+    "LEAF-G137-003",
+    "LEAF-G137-004",
+    "LEAF-G138-001",
+    "LEAF-G138-002",
+    "LEAF-G138-003",
+    "LEAF-G139-001",
+    "LEAF-G139-002",
+    "LEAF-G139-003",
+    "LEAF-G139-004"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "dmp_v2_execution_stage_envelope_must_remain_stable": true,
+    "continuation_lifecycle_pilot_is_single_setup_variant_only": true,
+    "carry_branch_must_consume_lifecycle_output_not_parallel_hidden_logic": true,
+    "new_runtime_terms_require_vocabulary_admission_before_merge": true,
+    "symbol_only_execution_records_are_not_sufficient_final_truth_after_gate_139": true,
+    "position_instance_scope_must_remain_bounded_to_the_specimen": true,
+    "zip_required_before_gate_can_be_called_done": true
+  },
+  "gates": {
+    "Gate 135": {
+      "status": "active",
+      "objective": "Freeze the specimen, naming, packet-preservation law, and truthful routing for the lifecycle pilot.",
+      "leaf_ids": [
+        "LEAF-G135-001",
+        "LEAF-G135-002",
+        "LEAF-G135-003"
+      ]
+    },
+    "Gate 136": {
+      "status": "planned",
+      "objective": "Add additive execution-stage lifecycle contracts and admit any required governed vocabulary.",
+      "leaf_ids": [
+        "LEAF-G136-001",
+        "LEAF-G136-002",
+        "LEAF-G136-003",
+        "LEAF-G136-004"
+      ]
+    },
+    "Gate 137": {
+      "status": "planned",
+      "objective": "Compile the continuation specimen lifecycle inside expression execution.",
+      "leaf_ids": [
+        "LEAF-G137-001",
+        "LEAF-G137-002",
+        "LEAF-G137-003",
+        "LEAF-G137-004"
+      ]
+    },
+    "Gate 138": {
+      "status": "planned",
+      "objective": "Integrate lifecycle output with the existing carry branch.",
+      "leaf_ids": [
+        "LEAF-G138-001",
+        "LEAF-G138-002",
+        "LEAF-G138-003"
+      ]
+    },
+    "Gate 139": {
+      "status": "planned",
+      "objective": "Add a bounded position-instance execution ledger and close the pack honestly.",
+      "leaf_ids": [
+        "LEAF-G139-001",
+        "LEAF-G139-002",
+        "LEAF-G139-003",
+        "LEAF-G139-004"
+      ]
+    }
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G135-001",
+      "gate": "Gate 135",
+      "title": "Freeze the canonical specimen and naming discipline",
+      "objective": "Lock the pilot to the canonical `opening_drive_continuation` / `continuation_ladder_exec` pair and record how the legacy `continuation_ladder` label survives as a compatibility bridge.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/playbook_registry.example.yaml"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the naming and authority boundary before any new behaviour is allowed. It decides exactly which specimen the later lifecycle work is allowed to touch.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec",
+        "continuation_ladder",
+        "carry_handoff",
+        "carry_horizon_branch"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "config/playbook_registry.example.yaml"
+      ],
+      "inputs": [
+        "live playbook registry",
+        "canonical vocabulary authority",
+        "execution-stage schema surfaces"
+      ],
+      "ordered_actions": [
+        "Read the vocabulary authority and the checked-in registry surfaces end to end.",
+        "Freeze the canonical specimen and the legacy-bridge naming rules in the gate master and leaves ledger.",
+        "State explicitly which labels are canonical runtime truth and which survive only as compatibility bridges."
+      ],
+      "forbidden_actions": [
+        "Do not let `continuation_ladder` remain the only canonical runtime label for this specimen.",
+        "Do not introduce new runtime names without first checking the vocabulary authority."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "planning docs name the canonical specimen explicitly",
+        "planning test passes"
+      ],
+      "definition_of_done": [
+        "the pack names the specimen and the live bridge surfaces explicitly",
+        "later leaves cannot broaden to other setup variants without amending the active pack first"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G135-002",
+      "gate": "Gate 135",
+      "title": "Trace the packet, carry, and ledger seams before writing behaviour",
+      "objective": "Map the current execution-stage ingress/egress, carry handoff, and execution-record seams so later gates change the right chokepoints rather than inventing side channels.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G135-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "src/nvda_desk/services/carry_market.py",
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/execution_records.py"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the workflow-trace boundary. It identifies which surfaces are authoritative today so later gates amend them additively instead of working around them.",
+      "vocabulary_terms_checked": [
+        "expression_execution",
+        "carry_handoff",
+        "carry_horizon_branch"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "inputs": [
+        "execution-stage schemas",
+        "carry packet schemas",
+        "execution-record schemas",
+        "domain-model authority"
+      ],
+      "ordered_actions": [
+        "Trace the ingress packet, egress packet, carry handoff, and symbol-level ledger surfaces through the live code path.",
+        "Freeze the retain/retire/amend/add matrix and the packet-preservation law in the planning docs.",
+        "Record the tranche-specific surfaces that later execution leaves must amend."
+      ],
+      "forbidden_actions": [
+        "Do not propose a second hidden packet path for lifecycle state.",
+        "Do not treat the symbol-only ledger as sufficient final truth once the pilot ledger gate is in scope."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "planning docs capture the packet-preservation law",
+        "document-touch checklist names the live seams explicitly"
+      ],
+      "definition_of_done": [
+        "the planning pack names the execution, carry, and ledger seams explicitly",
+        "the pack says exactly which downstream consumers must later consume the new lifecycle output"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G135-003",
+      "gate": "Gate 135",
+      "title": "Activate the planning quartet and route the repo truthfully",
+      "objective": "Create the planning quartet, point the router and gate map at Gate 135, and keep the repo honest about the latest closed evidence.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G135-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the control-surface routing boundary. It does not execute runtime code; it makes the planning state truthful so later execution can start lawfully.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "inputs": [
+        "active-pack routing law",
+        "latest closed bounded-trace pack evidence"
+      ],
+      "ordered_actions": [
+        "Create the planning quartet from repo-native templates while preserving the mandatory sections.",
+        "Update the router, gate map, changelog, and planning guard tests to the new active-pack truth.",
+        "Keep the execution log receipt-empty because no lifecycle leaf has executed yet."
+      ],
+      "forbidden_actions": [
+        "Do not pretend Gate 135 executed merely because the planning pack exists.",
+        "Do not drop the bounded trace scenario review pack from latest closed evidence."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "router and gate map both name Gate 135 as active",
+        "execution log remains receipt-empty",
+        "planning guard tests pass"
+      ],
+      "definition_of_done": [
+        "the repo has a truthful active planning pack again",
+        "the planning quartet and tests agree that Gate 135 is active and Gates 136-139 are planned"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    {
+      "id": "LEAF-G136-001",
+      "gate": "Gate 136",
+      "title": "Define additive execution-stage position context ingress",
+      "objective": "Add one bounded nested ingress context so the execution stage can reason about a live managed specimen position without inventing a second packet.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G135-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G136-002",
+      "gate": "Gate 136",
+      "title": "Define additive execution-stage lifecycle plan egress",
+      "objective": "Add one bounded lifecycle-plan egress object so the execution stage emits a governed second-half decision rather than only string-labelled exit reasons.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G136-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G136-003",
+      "gate": "Gate 136",
+      "title": "Admit any required lifecycle vocabulary and schema ownership",
+      "objective": "Admit any newly required lifecycle terms lawfully and map them to the exact schema ownership they represent.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G136-002"
+      ],
+      "authority_docs": [
+        "docs/vocabulary/README.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "scripts/build_canonical_vocabulary.py",
+        "tests/test_gate50_vocabulary_governance.py",
+        "tests/test_gate55_vocabulary_governance.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "tests/test_gate50_vocabulary_governance.py",
+        "tests/test_gate55_vocabulary_governance.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "tests/test_gate50_vocabulary_governance.py",
+        "tests/test_gate55_vocabulary_governance.py"
+      ]
+    },
+    {
+      "id": "LEAF-G136-004",
+      "gate": "Gate 136",
+      "title": "Prove execution-stage and DMP continuity before behaviour changes",
+      "objective": "Prove the new lifecycle carriage remains additive and that the DMP wrapper still preserves the execution-stage payload identity cleanly before Gate 137 changes behaviour.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G136-003"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G137-001",
+      "gate": "Gate 137",
+      "title": "Normalise specimen position state before any close decision",
+      "objective": "Turn the specimen\u2019s entry template plus the new position context into one normalised managed-state object for later lifecycle passes.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G136-004"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "config/playbook_registry.example.yaml",
+        "tests/test_execution_review_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G137-002",
+      "gate": "Gate 137",
+      "title": "Implement invalidation and trim logic for the specimen",
+      "objective": "Convert the specimen\u2019s invalidation and trim labels into deterministic lifecycle decisions grounded in the new managed state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G137-001"
+      ],
+      "authority_docs": [
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/services/execution_expression.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "tests/test_execution_review_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G137-003",
+      "gate": "Gate 137",
+      "title": "Implement stale-thesis, close-window, carry-nomination, and hard-flat logic",
+      "objective": "Complete the specimen\u2019s second half by adding time-stop, late-session, carry nomination, and hard-flat behaviour on top of the managed state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G137-002"
+      ],
+      "authority_docs": [
+        "docs/02_OPERATING_MODEL.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/carry_handoff.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "tests/test_execution_review_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G137-004",
+      "gate": "Gate 137",
+      "title": "Freeze review-visible lifecycle proofs and close Gate 137",
+      "objective": "Prove the specimen lifecycle behaves through the live runtime and review surfaces before downstream carry integration changes the handoff semantics.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G137-003"
+      ],
+      "authority_docs": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_execution_review_runtime.py",
+        "tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "tests/test_execution_review_runtime.py",
+        "tests/test_runtime_parity_registry_playbooks.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/test_execution_review_runtime.py",
+        "tests/test_runtime_parity_registry_playbooks.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G138-001",
+      "gate": "Gate 138",
+      "title": "Extend carry handoff with lifecycle nomination and ceilings",
+      "objective": "Add the bounded lifecycle nomination, carry ceiling, and flatten constraints the carry handoff needs to consume the specimen cleanly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G137-004"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/overnight.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ]
+    },
+    {
+      "id": "LEAF-G138-002",
+      "gate": "Gate 138",
+      "title": "Align carry evaluator downgrade logic with lifecycle-aware handoff",
+      "objective": "Make the carry evaluator consume the richer handoff and preserve deterministic downgrade/flatten behaviour for the specimen.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G138-001"
+      ],
+      "authority_docs": [
+        "src/nvda_desk/services/carry_market.py",
+        "src/nvda_desk/services/carry_handoff.py",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/carry_market.py",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/carry_market.py",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py"
+      ]
+    },
+    {
+      "id": "LEAF-G138-003",
+      "gate": "Gate 138",
+      "title": "Freeze carry-branch integration proofs and close Gate 138",
+      "objective": "Prove the carry branch now consumes lifecycle-aware specimen output and close the integration gate honestly before ledger work begins.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G138-002"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "tests/test_gate48_carry_handoff.py",
+        "tests/test_gate53_carry_handoff.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G139-001",
+      "gate": "Gate 139",
+      "title": "Freeze the bounded position-instance ledger contract",
+      "objective": "Define the smallest lawful execution-record contract that can persist and reconstruct one managed specimen position instance without pretending to solve all broker semantics.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G138-003"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/execution_records.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G139-002",
+      "gate": "Gate 139",
+      "title": "Add additive execution-record, DB, and service surfaces",
+      "objective": "Implement the new bounded persistence surfaces needed to record and rebuild specimen position instances.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G139-001"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/execution_records.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/execution_records.py"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/execution_records.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/execution_records.py"
+      ]
+    },
+    {
+      "id": "LEAF-G139-003",
+      "gate": "Gate 139",
+      "title": "Persist and reconstruct lifecycle-aware specimen state end to end",
+      "objective": "Prove the specimen lifecycle state can be persisted and reconstructed through the live execution-record services without a second hidden path.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G139-002"
+      ],
+      "authority_docs": [
+        "src/nvda_desk/services/execution_records.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "tests/test_execution_review_runtime.py"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_records.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/execution_records.py",
+        "tests/test_execution_review_runtime.py",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G139-004",
+      "gate": "Gate 139",
+      "title": "Close the lifecycle pilot pack honestly and package the exact repo state",
+      "objective": "Close the pilot pack through Gate 139 with the planning quartet, receipts, tests, and packaging all aligned.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G139-003"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "workflow_intent_assertion": "Bounded execution work for the active lifecycle pilot; this leaf must not broaden beyond the specimen or bypass the existing packet/carry boundaries.",
+      "vocabulary_terms_checked": [
+        "opening_drive_continuation",
+        "continuation_ladder_exec"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "active planning pack",
+        "live repo surfaces for the specimen"
+      ],
+      "ordered_actions": [
+        "Read the declared authorities and trace the live workflow through the affected surfaces.",
+        "Edit only the bounded surfaces named for this leaf.",
+        "Run the declared proof slice and record receipts if the leaf closes a gate."
+      ],
+      "forbidden_actions": [
+        "Do not invent side channels outside the declared packet and carry boundaries.",
+        "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
+      ],
+      "validation_commands": [
+        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "declared surfaces changed coherently",
+        "declared proof slice passes"
+      ],
+      "definition_of_done": [
+        "the bounded leaf objective is true in code/docs",
+        "the proof slice recorded for this leaf is green"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json",
+        "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    }
+  ]
+}
