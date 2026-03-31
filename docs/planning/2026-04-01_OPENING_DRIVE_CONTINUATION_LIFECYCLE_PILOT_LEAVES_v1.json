@@ -39,7 +39,9 @@
     "new_runtime_terms_require_vocabulary_admission_before_merge": true,
     "symbol_only_execution_records_are_not_sufficient_final_truth_after_gate_139": true,
     "position_instance_scope_must_remain_bounded_to_the_specimen": true,
-    "zip_required_before_gate_can_be_called_done": true
+    "zip_required_before_gate_can_be_called_done": true,
+    "bounded_tradable_expression_family_must_be_frozen_before_lifecycle_behaviour_broadens": true,
+    "leaf_validation_commands_require_repo_local_installed_env": true
   },
   "gates": {
     "Gate 135": {
@@ -95,8 +97,8 @@
     {
       "id": "LEAF-G135-001",
       "gate": "Gate 135",
-      "title": "Freeze the canonical specimen and naming discipline",
-      "objective": "Lock the pilot to the canonical `opening_drive_continuation` / `continuation_ladder_exec` pair and record how the legacy `continuation_ladder` label survives as a compatibility bridge.",
+      "title": "Freeze the canonical specimen, naming discipline, and tradable-expression rule",
+      "objective": "Freeze the canonical specimen, naming discipline, and the rule that one bounded tradable expression family plus its legal lifecycle actions must be admitted before lifecycle behaviour broadens.",
       "status": "planned",
       "depends_on": [],
       "authority_docs": [
@@ -127,24 +129,24 @@
         "execution-stage schema surfaces"
       ],
       "ordered_actions": [
-        "Read the vocabulary authority and the checked-in registry surfaces end to end.",
-        "Freeze the canonical specimen and the legacy-bridge naming rules in the gate master and leaves ledger.",
-        "State explicitly which labels are canonical runtime truth and which survive only as compatibility bridges."
+        "Verify the canonical specimen, execution expression, and legacy compatibility label from the live vocabulary and registry surfaces.",
+        "State explicitly that execution must freeze one bounded tradable expression family and its legal lifecycle actions before behaviour broadens beyond thin exit labels.",
+        "Record the retained labels, compatibility bridge, and forbidden naming drift in the planning docs."
       ],
       "forbidden_actions": [
         "Do not let `continuation_ladder` remain the only canonical runtime label for this specimen.",
         "Do not introduce new runtime names without first checking the vocabulary authority."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
-        "planning docs name the canonical specimen explicitly",
-        "planning test passes"
+        "planning docs name the specimen and legacy bridge truthfully",
+        "planning docs freeze the tradable-expression rule explicitly"
       ],
       "definition_of_done": [
-        "the pack names the specimen and the live bridge surfaces explicitly",
-        "later leaves cannot broaden to other setup variants without amending the active pack first"
+        "the specimen and execution-expression naming is frozen without ambiguity",
+        "the planning pack states the bounded tradable-expression freeze rule explicitly"
       ],
       "closeout_updates_required": [],
       "full_suite_required": false,
@@ -204,7 +206,7 @@
         "Do not treat the symbol-only ledger as sufficient final truth once the pilot ledger gate is in scope."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
         "planning docs capture the packet-preservation law",
@@ -268,7 +270,7 @@
         "Do not drop the bounded trace scenario review pack from latest closed evidence."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
+        ".venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
         "router and gate map both name Gate 135 as active",
@@ -298,7 +300,7 @@
       "id": "LEAF-G136-001",
       "gate": "Gate 136",
       "title": "Define additive execution-stage position context ingress",
-      "objective": "Add one bounded nested ingress context so the execution stage can reason about a live managed specimen position without inventing a second packet.",
+      "objective": "Add one bounded nested ingress context and freeze one bounded tradable expression family plus its legal lifecycle action set so the execution stage can reason about a live managed specimen position without inventing a second packet.",
       "status": "planned",
       "depends_on": [
         "LEAF-G135-003"
@@ -327,23 +329,24 @@
         "live repo surfaces for the specimen"
       ],
       "ordered_actions": [
-        "Read the declared authorities and trace the live workflow through the affected surfaces.",
-        "Edit only the bounded surfaces named for this leaf.",
-        "Run the declared proof slice and record receipts if the leaf closes a gate."
+        "Freeze one bounded tradable expression family and its legal lifecycle actions for the specimen before changing downstream lifecycle behaviour.",
+        "Define one bounded nested ingress context so the execution stage can reason about that managed specimen position without inventing a second packet.",
+        "Keep the ingress work additive to the existing execution-stage packet and record the bounded proof slice."
       ],
       "forbidden_actions": [
         "Do not invent side channels outside the declared packet and carry boundaries.",
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
+        "the bounded tradable specimen family is frozen in contract-bearing surfaces",
         "declared surfaces changed coherently",
         "declared proof slice passes"
       ],
       "definition_of_done": [
-        "the bounded leaf objective is true in code/docs",
+        "the bounded tradable specimen family and ingress context are true in code/docs",
         "the proof slice recorded for this leaf is green"
       ],
       "closeout_updates_required": [],
@@ -399,7 +402,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -464,7 +467,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py"
+        ".venv/bin/python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -524,10 +527,10 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_dmp_review_trace.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
       ],
       "expected_evidence": [
-        "declared surfaces changed coherently",
+        "execution-stage payload continuity remains intact across runtime, carry, and review consumers",
         "declared proof slice passes"
       ],
       "definition_of_done": [
@@ -588,7 +591,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
+        ".venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -644,7 +647,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py"
+        ".venv/bin/python -m pytest -q tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -701,7 +704,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_carry_review_cli_and_legacy.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -759,7 +762,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py"
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_dmp_review_trace.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -826,7 +829,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+        ".venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -886,7 +889,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py"
+        ".venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -946,7 +949,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py"
+        ".venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py tests/test_dmp_review_trace.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -1013,7 +1016,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+        ".venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_second_wave_records_and_events.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -1073,7 +1076,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py"
+        ".venv/bin/python -m pytest -q tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py tests/test_execution_review_runtime.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -1130,7 +1133,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py"
+        ".venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",
@@ -1191,7 +1194,7 @@
         "Do not broaden the lifecycle pilot into other playbooks without a pack amendment."
       ],
       "validation_commands": [
-        "PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_document_hygiene.py"
+        ".venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
         "declared surfaces changed coherently",

@@ -48,10 +48,15 @@ Current planned sequence: Gate 135 -> Gate 136 -> Gate 137 -> Gate 138 -> Gate 1
 - [x] `src/nvda_desk/db/models.py`
 - [x] `src/nvda_desk/services/execution_records.py`
 - [x] `tests/test_gate135_opening_drive_continuation_lifecycle_planning.py`
+- [x] `tests/test_gate119_candidate_adjudication.py`
+- [x] `tests/test_gate120_execution_geometry.py`
 - [x] `tests/test_execution_review_runtime.py`
+- [x] `tests/test_dmp_review_trace.py`
 - [x] `tests/test_gate48_carry_handoff.py`
 - [x] `tests/test_gate53_carry_handoff.py`
 - [x] `tests/test_runtime_parity_registry_playbooks.py`
+- [x] `tests/test_second_wave_records_and_events.py`
+- [x] `tests/test_carry_review_cli_and_legacy.py`
 - [x] `CHANGELOG.jsonl`
 
 ## Notes

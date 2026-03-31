@@ -71,6 +71,18 @@ Out of scope:
 - `tests/test_gate50_vocabulary_governance.py`
 - `tests/test_gate55_vocabulary_governance.py`
 
+## Active vocabulary authority for execution threads
+
+`docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json` is the mandatory vocabulary authority for every execution leaf in this pack until a later leaf lawfully amends it.
+
+The vocabulary generator and governance tests remain part of that authority whenever a leaf adds or amends governed terms.
+
+## Active packet / data contract authority for execution threads
+
+`docs/03_DOMAIN_MODEL.md` is the mandatory packet/data contract authority for every execution leaf in this pack.
+
+Live schema and service files are implementation surfaces. They must not be treated as a substitute for the domain model when packet meaning, lineage, or lawful downstream consumption is in question.
+
 ## Workflow placement
 
 This tranche sits inside Stage 6 of the binding desk cognition grammar: expression and execution. It is downstream of temporal context, regime context, options/flow context, posture permission, playbook eligibility, and candidate adjudication. It is upstream of review and explanation, and it provides the bounded lifecycle signal that the already-admitted carry branch and execution ledger must later consume.
@@ -80,16 +92,23 @@ Answer explicitly:
 - later carry review, review explanation, replay, and execution-ledger consumers must consume the lifecycle output and its persisted position-instance truth;
 - carry services, review builders, and ledger services must not infer lifecycle state from raw playbook eligibility or from a symbol-only order stream once the new contract exists.
 
+## Pilot tradable-expression discipline
+
+- No execution leaf may silently invent a free-form option structure for this specimen.
+- Before lifecycle behaviour broadens beyond thin exit labels, execution must freeze one bounded tradable expression family for the specimen and state its legal lifecycle actions, carry eligibility, and hard-flat semantics.
+- Until that freeze exists, no leaf may assume single-leg, vertical, hedge-overlay, or broader multi-leg semantics by implication.
+
 ## Intent and workflow anchor
 
 The binding lens remains the human desk cognition chain frozen in `docs/02_OPERATING_MODEL.md`. This pack must not reorder that grammar. It must instead make Stage 6 honest for one specimen:
 
 1. keep the selected setup variant and execution expression as the authoritative entry side;
 2. add one typed position context input so the execution stage can reason about a live managed position rather than only a fresh deployable percentage;
-3. add one typed lifecycle plan output so the execution stage emits a governed second-half decision object rather than only thin exit labels;
-4. compile the eight ordered lifecycle passes for the continuation specimen;
-5. hand late-session lifecycle state into the existing carry path;
-6. persist the bounded managed-position state so review and later runtime steps stop guessing what is open.
+3. freeze one bounded tradable expression family and its legal lifecycle action set for the specimen before downstream lifecycle behaviour broadens;
+4. add one typed lifecycle plan output so the execution stage emits a governed second-half decision object rather than only thin exit labels;
+5. compile the eight ordered lifecycle passes for the continuation specimen;
+6. hand late-session lifecycle state into the existing carry path;
+7. persist the bounded managed-position state so review and later runtime steps stop guessing what is open.
 
 ## Vocabulary anchor for this pack
 
@@ -153,8 +172,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 ## Testing and promotion discipline
 
 - Repo-local environment required: `.venv` created via `uv sync --extra dev`
+- Validation commands in the supporting leaf ledger are written for an installed repo-local `.venv`; they are not permission to rely on `PYTHONPATH=src`.
 - Minimum planning validation slice for this pack:
-  - `PYTHONPATH=src pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py`
 - A gate is not complete until:
   - the gate-specific proof slice runs green;
   - `PLANS.md`, the gate map, the active leaves ledger, and the active execution log move together;
@@ -199,13 +219,14 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 
 **Definition of done**
 - additive execution-stage lifecycle carriage exists in typed schema form;
+- one bounded tradable expression family and its legal lifecycle action set are frozen for the specimen before behaviour broadens;
 - any required new governed terms are admitted lawfully or explicitly deferred;
 - execution-stage payload continuity remains proven without changing the DMP v2 envelope.
 
 ### Gate 137: Compile the continuation specimen lifecycle inside expression execution
 
 **Objective**
-- Turn the specimen’s second half into a real lifecycle compiler: normalisation, invalidation, trim, stale-thesis, close-window, carry nomination, and hard-flat handling.
+- Turn the already-frozen tradable specimen family’s second half into a real lifecycle compiler: normalisation, invalidation, trim, stale-thesis, close-window, carry nomination, and hard-flat handling.
 
 **In-scope surfaces**
 - `src/nvda_desk/services/execution_expression.py`

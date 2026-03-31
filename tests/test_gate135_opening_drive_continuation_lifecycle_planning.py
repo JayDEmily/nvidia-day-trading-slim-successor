@@ -63,6 +63,10 @@ def test_opening_drive_continuation_lifecycle_pack_is_active() -> None:
     assert len(leaves["remaining_leaf_ids"]) in {18, 15, 11, 7, 4, 0}
     assert execution_log.startswith("# 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1")
     assert "Gate 135" in checklist
+    for leaf in leaves["leaves"]:
+        for command in leaf["validation_commands"]:
+            assert "PYTHONPATH=" not in command
+            assert command.startswith(".venv/bin/python -m pytest -q ")
 
 
 def test_pack_freezes_specimen_scope_and_packet_discipline() -> None:
@@ -72,6 +76,11 @@ def test_pack_freezes_specimen_scope_and_packet_discipline() -> None:
     assert "opening_drive_continuation" in gates
     assert "continuation_ladder_exec" in gates
     assert "This pack is additive by default." in gates
+    assert "## Active vocabulary authority for execution threads" in gates
+    assert "## Active packet / data contract authority for execution threads" in gates
+    assert "bounded tradable expression family" in gates
     assert leaves["global_rules"]["dmp_v2_execution_stage_envelope_must_remain_stable"] is True
     assert leaves["global_rules"]["continuation_lifecycle_pilot_is_single_setup_variant_only"] is True
     assert leaves["global_rules"]["carry_branch_must_consume_lifecycle_output_not_parallel_hidden_logic"] is True
+    assert leaves["global_rules"]["bounded_tradable_expression_family_must_be_frozen_before_lifecycle_behaviour_broadens"] is True
+    assert leaves["global_rules"]["leaf_validation_commands_require_repo_local_installed_env"] is True
