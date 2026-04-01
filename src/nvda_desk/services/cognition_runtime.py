@@ -283,7 +283,12 @@ class DeskCognitionRuntime:
                 posture=posture,
                 eligibility=eligibility,
                 modifier_runtime_packet=modifier_runtime_packet,
-                position_context=self._build_execution_position_context(eligibility),
+                position_context=self._build_execution_position_context(
+                    temporal=temporal,
+                    posture=posture,
+                    inventory_state=inventory_state,
+                    eligibility=eligibility,
+                ),
             )
         )
         execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
@@ -460,12 +465,33 @@ class DeskCognitionRuntime:
 
     def _build_execution_position_context(
         self,
+        *,
+        temporal: TemporalContextOutput,
+        posture: PostureRiskOutput,
+        inventory_state: InventoryState,
         eligibility: PlaybookEligibilityOutput,
     ) -> PositionContextInput | None:
         if "opening_drive_continuation" not in set(
             eligibility.active_setup_variant_ids + eligibility.watch_setup_variant_ids
         ):
             return None
+        current_position_size_pct = round(
+            inventory_state.existing_inventory_pct + inventory_state.overnight_inventory_pct,
+            4,
+        )
+        position_active = current_position_size_pct > 0.0
+        carry_state_eligible = (
+            position_active
+            and temporal.desk_window == "late_session"
+            and temporal.event_window_state in {"clear", "clear_window"}
+            and posture.permission_state.value == "allow"
+            and posture.thesis_state == "valid"
+        )
+        hard_flat_required = bool(
+            posture.time_stop_state == "time_stop_near"
+            or posture.permission_state.value == "derisk"
+            or temporal.minutes_to_close <= 5
+        )
         return PositionContextInput(
             setup_variant_id="opening_drive_continuation",
             execution_expression_id="continuation_ladder_exec",
@@ -477,6 +503,10 @@ class DeskCognitionRuntime:
                 LifecycleAction.HOLD_SMALL_OVERNIGHT,
                 LifecycleAction.BLOCK_CARRY,
             ],
+            position_active=position_active,
+            current_position_size_pct=current_position_size_pct,
+            carry_state_eligible=carry_state_eligible,
+            hard_flat_required=hard_flat_required,
         )
 
     def _build_stage_packets(

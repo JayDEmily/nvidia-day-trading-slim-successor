@@ -7,18 +7,22 @@ from typing import Any, cast
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
+    ExecutionExpressionInput,
     InventoryState,
     LifecycleAction,
     MarketRegimeContextInput,
     OptionsFlowContextInput,
     OptionsFlowMicroSnapshot,
     PinProgressionPoint,
+    PositionContextInput,
     StrikeClusterObservation,
     TemporalContextInput,
     TenorCurvePoint,
+    TradableExpressionFamily,
 )
 from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
@@ -431,3 +435,109 @@ def test_review_packets_render_governed_resolved_surface_lineage() -> None:
     assert any(item["source_policy_ids"] for item in cast(list[dict[str, Any]], review_effective["resolved_surfaces"]))
 
 
+
+
+def _supportive_execution_input_with_position_context(*, current_position_size_pct: float, desk_window: str = "trend_window", event_window_state: str = "clear_window", carry_state_eligible: bool = False, hard_flat_required: bool = False):
+    fixture = supportive_runtime_fixture()
+    runtime_result = DeskCognitionRuntime(Settings()).run(
+        temporal_input=fixture.temporal_input,
+        regime_input=fixture.regime_input,
+        options_flow_input=fixture.options_flow_input,
+        inventory_state=fixture.inventory_state,
+        risk_budget_remaining_pct=fixture.risk_budget_remaining_pct,
+    )
+    temporal = runtime_result.temporal.model_copy(
+        update={"desk_window": desk_window, "event_window_state": event_window_state}
+    )
+    return ExecutionExpressionInput(
+        temporal=temporal,
+        regime=runtime_result.regime,
+        options_flow=runtime_result.options_flow,
+        posture=runtime_result.posture,
+        eligibility=runtime_result.eligibility,
+        modifier_runtime_packet=runtime_result.execution.modifier_runtime_packet,
+        position_context=PositionContextInput(
+            setup_variant_id="opening_drive_continuation",
+            execution_expression_id="continuation_ladder_exec",
+            tradable_expression_family=TradableExpressionFamily.SINGLE_LEG_CALL_DEBIT,
+            legal_lifecycle_actions=[
+                LifecycleAction.ADD,
+                LifecycleAction.TRIM,
+                LifecycleAction.FLATTEN,
+                LifecycleAction.HOLD_SMALL_OVERNIGHT,
+                LifecycleAction.BLOCK_CARRY,
+            ],
+            position_active=current_position_size_pct > 0.0,
+            current_position_size_pct=current_position_size_pct,
+            carry_state_eligible=carry_state_eligible,
+            hard_flat_required=hard_flat_required,
+        ),
+    )
+
+
+def test_continuation_lifecycle_flattens_when_breadth_rolls_over() -> None:
+    payload = _supportive_execution_input_with_position_context(current_position_size_pct=22.0)
+    payload = payload.model_copy(
+        update={
+            "regime": payload.regime.model_copy(update={"breadth_state": type(payload.regime.breadth_state)("weak")}),
+        }
+    )
+
+    execution = ExecutionExpressionService().evaluate(payload)
+
+    assert execution.lifecycle_plan is not None
+    assert execution.lifecycle_plan.lifecycle_state == "specimen_invalidation_exit"
+    assert execution.lifecycle_plan.next_action is LifecycleAction.FLATTEN
+    assert "breadth_rollover" in execution.lifecycle_plan.fired_rules
+    assert execution.inventory_action == "reduce"
+    assert "breadth_rollover" in execution.exit_plan
+
+
+def test_continuation_lifecycle_flattens_in_late_session_when_ladder_is_incomplete() -> None:
+    payload = _supportive_execution_input_with_position_context(
+        current_position_size_pct=10.0,
+        desk_window="late_session",
+        carry_state_eligible=True,
+    )
+
+    execution = ExecutionExpressionService().evaluate(payload)
+
+    assert execution.lifecycle_plan is not None
+    assert execution.lifecycle_plan.lifecycle_state == "stale_thesis_flatten"
+    assert execution.lifecycle_plan.next_action is LifecycleAction.FLATTEN
+    assert execution.inventory_action == "reduce"
+    assert "close_window_stale_thesis" in execution.lifecycle_plan.fired_rules
+
+
+def test_continuation_lifecycle_nominates_small_overnight_when_full_and_late() -> None:
+    payload = _supportive_execution_input_with_position_context(
+        current_position_size_pct=55.0,
+        desk_window="late_session",
+        carry_state_eligible=True,
+    )
+
+    execution = ExecutionExpressionService().evaluate(payload)
+
+    assert execution.lifecycle_plan is not None
+    assert execution.lifecycle_plan.lifecycle_state == "carry_nomination_ready"
+    assert execution.lifecycle_plan.next_action is LifecycleAction.HOLD_SMALL_OVERNIGHT
+    assert execution.lifecycle_plan.carry_candidate is True
+    assert execution.inventory_action == "hold"
+    assert "late_session_carry_nomination" in execution.exit_plan
+
+
+def test_continuation_lifecycle_hard_flats_when_explicitly_required() -> None:
+    payload = _supportive_execution_input_with_position_context(
+        current_position_size_pct=22.0,
+        desk_window="late_session",
+        carry_state_eligible=True,
+        hard_flat_required=True,
+    )
+
+    execution = ExecutionExpressionService().evaluate(payload)
+
+    assert execution.lifecycle_plan is not None
+    assert execution.lifecycle_plan.lifecycle_state == "hard_flat_required"
+    assert execution.lifecycle_plan.next_action is LifecycleAction.FLATTEN
+    assert execution.inventory_action == "reduce"
+    assert "hard_flat_before_close" in execution.lifecycle_plan.fired_rules
