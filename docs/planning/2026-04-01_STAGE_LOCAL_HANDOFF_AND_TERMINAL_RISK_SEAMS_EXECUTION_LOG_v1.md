@@ -258,7 +258,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-148-review-trace-replay-legacy-seams-20260401`
 - Start commit: `4c352ea`
-- End commit or merged main commit: `TO_BE_CORRECTED_ON_MAIN_AFTER_MERGE`
+- End commit or merged main commit: `ae38f63`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
