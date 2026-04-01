@@ -1,0 +1,856 @@
+{
+  "governing_plan": "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+  "execution_status": "gate_141_complete_gate_142_active_on_main",
+  "active_gate": "Gate 142",
+  "completed_gate_ids": [
+    "Gate 141"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G141-001",
+    "LEAF-G141-002",
+    "LEAF-G141-003",
+    "LEAF-G141-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G142-001",
+    "LEAF-G142-002",
+    "LEAF-G142-003",
+    "LEAF-G143-001",
+    "LEAF-G143-002",
+    "LEAF-G143-003",
+    "LEAF-G144-001",
+    "LEAF-G144-002",
+    "LEAF-G145-001",
+    "LEAF-G145-002",
+    "LEAF-G146-001",
+    "LEAF-G146-002",
+    "LEAF-G147-001",
+    "LEAF-G147-002",
+    "LEAF-G147-003",
+    "LEAF-G148-001",
+    "LEAF-G148-002",
+    "LEAF-G148-003",
+    "LEAF-G149-001",
+    "LEAF-G149-002",
+    "LEAF-G149-003"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "one_branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_runtime_seam_changes": true,
+    "repo_local_installed_env_required": true,
+    "no_new_governed_runtime_vocabulary_in_gate_141": true,
+    "no_runtime_behavior_change_in_gate_141": true,
+    "full_history_zip_required_before_gate_can_be_called_done": true,
+    "document_touch_checklist_required": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G141-001",
+      "gate": "Gate 141",
+      "title": "Read the frozen authorities and trace the clean Gate 140 workflow",
+      "objective": "Freeze the observed current-state handoff chain before any later seam planning proceeds.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "This leaf is a planning-mode workflow trace across Stages 4-7 only; it does not change runtime behavior.",
+      "vocabulary_terms_checked": [
+        "posture_risk_permission",
+        "playbook_eligibility",
+        "execution_expression",
+        "modifier_runtime_packet",
+        "position_context",
+        "lifecycle_plan"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "clean main at commit 260b1a2"
+      ],
+      "ordered_actions": [
+        "Read the governing authorities in the repo-native order.",
+        "Trace the current handoff chain from posture through review on the clean Gate 140 baseline.",
+        "Record the observed workflow anchor in the Gate 141 receipt document."
+      ],
+      "forbidden_actions": [
+        "Do not invent new governed vocabulary in this leaf.",
+        "Do not edit runtime code in this leaf.",
+        "Do not treat discarded same-day drafts as authority."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 141 receipt document created",
+        "observed workflow anchor recorded from clean Gate 140 surfaces"
+      ],
+      "definition_of_done": [
+        "current workflow anchor is written without speculative future behavior",
+        "active vocabulary and packet/data authorities are named explicitly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Not required until Gate 149 closes the pack.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-01_GATE141_STAGE_LOCAL_HANDOFF_PACK_BOOTSTRAP.md"
+      ]
+    },
+    {
+      "id": "LEAF-G141-002",
+      "gate": "Gate 141",
+      "title": "Create the new planning quartet from the repo-native template law",
+      "objective": "Populate the new gates master, leaves ledger, execution log, and document-touch checklist from observed repo truth only.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G141-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
+      ],
+      "workflow_intent_assertion": "This leaf installs the mandatory active-pack scaffolding required before later execution gates can start.",
+      "vocabulary_terms_checked": [
+        "vocabulary_workflow"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "inputs": [
+        "template pack under docs/planning/tranche_briefing_template_pack/"
+      ],
+      "ordered_actions": [
+        "Write the new quartet with all mandatory sections and fields.",
+        "Keep later gates bounded and derived from observed workflow truth only."
+      ],
+      "forbidden_actions": [
+        "Do not leave placeholder text.",
+        "Do not omit the vocabulary or packet/data authority sections."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py"
+      ],
+      "expected_evidence": [
+        "new quartet files exist",
+        "later gates 142-149 are routed with bounded objectives"
+      ],
+      "definition_of_done": [
+        "quartet exists and is internally coherent",
+        "Gate 141 remains planning-only"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Not required until Gate 149 closes the pack.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_*"
+      ]
+    },
+    {
+      "id": "LEAF-G141-003",
+      "gate": "Gate 141",
+      "title": "Route the repo truthfully to Gate 142",
+      "objective": "Update the live router surfaces, changelog, and planning guards so Gate 141 closes honestly and Gate 142 becomes active.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G141-002"
+      ],
+      "authority_docs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf is the anti-drift closeout step required by repo process law.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate107_repo_process_governance.py",
+        "tests/test_gate108_router_only_control_surface.py",
+        "tests/test_gate109_template_pack_governance.py",
+        "tests/test_gate110_agents_reading_order.py",
+        "tests/test_gate111_governance_guardrails.py",
+        "tests/test_gate112_governance_closeout.py",
+        "tests/test_gate113_execution_authority_microtranche.py",
+        "tests/test_gate114_research_mode_clarity_microtranche.py",
+        "tests/test_gate115_historical_evaluation_readiness_planning.py",
+        "tests/test_gate122_signal_coefficient_authority_planning.py",
+        "tests/test_gate128_post_flight_repo_consistency_planning.py",
+        "tests/test_gate134_bounded_trace_reporting.py",
+        "tests/test_gate135_opening_drive_continuation_lifecycle_planning.py"
+      ],
+      "inputs": [
+        "new planning quartet"
+      ],
+      "ordered_actions": [
+        "Route PLANS to the new pack.",
+        "Add Gate 141-149 rows to the canonical gate map.",
+        "Advance the active gate marker to Gate 142.",
+        "Update guard tests to admit the new active-pack state.",
+        "Append changelog entry."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS in no-active-pack state.",
+        "Do not advance Gate 142 without updating the leaves ledger and execution log on the same branch."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all show Gate 141 complete and Gate 142 active",
+        "guard tests admit the new router state"
+      ],
+      "definition_of_done": [
+        "router truth is synchronized",
+        "guard tests pass in repo-local environment"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Not required until Gate 149 closes the pack.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    {
+      "id": "LEAF-G141-004",
+      "gate": "Gate 141",
+      "title": "Record the Gate 141 execution receipt in the active log",
+      "objective": "Capture the branch, validations, and observed planning evidence so Gate 141 closes with receipts rather than chat memory.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G141-003"
+      ],
+      "authority_docs": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes Gate 141 and leaves Gate 142 active with a receipt-bearing execution log.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "observed git branch and validation results"
+      ],
+      "ordered_actions": [
+        "Record the exact Gate 141 branch name, start commit, validations, and closeout state in the execution log."
+      ],
+      "forbidden_actions": [
+        "Do not leave the execution log receipt-empty after Gate 141 closes."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 141 receipt recorded live in execution log"
+      ],
+      "definition_of_done": [
+        "execution log status shows Gate 141 complete on main and Gate 142 next"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip deferred until Gate 149.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G142-001",
+      "gate": "Gate 142",
+      "title": "Trace the live overwrite chain and ownership boundaries",
+      "objective": "Trace the live overwrite chain and ownership boundaries.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G142-002",
+      "gate": "Gate 142",
+      "title": "Trace review, trace, and test consumers that currently depend on mutated outputs",
+      "objective": "Trace review, trace, and test consumers that currently depend on mutated outputs.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G142-003",
+      "gate": "Gate 142",
+      "title": "Freeze the retain/retire/amend/add matrix for later seam work",
+      "objective": "Freeze the retain/retire/amend/add matrix for later seam work.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G143-001",
+      "gate": "Gate 143",
+      "title": "Admit any preserved stage-local handoff contract fields that Gate 142 proves necessary",
+      "objective": "Admit any preserved stage-local handoff contract fields that Gate 142 proves necessary.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G143-002",
+      "gate": "Gate 143",
+      "title": "Carry preserved artefacts through immediate runtime and review entry surfaces additively",
+      "objective": "Carry preserved artefacts through immediate runtime and review entry surfaces additively.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G143-003",
+      "gate": "Gate 143",
+      "title": "Close Gate 143 honestly with updated router surfaces and proof slice",
+      "objective": "Close Gate 143 honestly with updated router surfaces and proof slice.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G144-001",
+      "gate": "Gate 144",
+      "title": "Separate posture hard invariants from posture-local envelope in contracts and services",
+      "objective": "Separate posture hard invariants from posture-local envelope in contracts and services.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G144-002",
+      "gate": "Gate 144",
+      "title": "Refresh downstream consumers and proof surfaces for the posture split",
+      "objective": "Refresh downstream consumers and proof surfaces for the posture split.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G145-001",
+      "gate": "Gate 145",
+      "title": "Move modifier authority toward emitted policy and review-visible resolved surfaces",
+      "objective": "Move modifier authority toward emitted policy and review-visible resolved surfaces.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G145-002",
+      "gate": "Gate 145",
+      "title": "Close Gate 145 with compatibility-bridge proof and updated router state",
+      "objective": "Close Gate 145 with compatibility-bridge proof and updated router state.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G146-001",
+      "gate": "Gate 146",
+      "title": "Constrain Stage 5 to admissibility and isolate Stage 6 candidate ownership",
+      "objective": "Constrain Stage 5 to admissibility and isolate Stage 6 candidate ownership.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G146-002",
+      "gate": "Gate 146",
+      "title": "Refresh candidate/execution proof slices and close Gate 146 honestly",
+      "objective": "Refresh candidate/execution proof slices and close Gate 146 honestly.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G147-001",
+      "gate": "Gate 147",
+      "title": "Freeze overlap classes between overlay evaluation and terminal-risk application",
+      "objective": "Freeze overlap classes between overlay evaluation and terminal-risk application.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G147-002",
+      "gate": "Gate 147",
+      "title": "Implement the terminal-risk seam with additive compatibility carriage",
+      "objective": "Implement the terminal-risk seam with additive compatibility carriage.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G147-003",
+      "gate": "Gate 147",
+      "title": "Close Gate 147 with updated review/replay lineage and router truth",
+      "objective": "Close Gate 147 with updated review/replay lineage and router truth.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G148-001",
+      "gate": "Gate 148",
+      "title": "Migrate review consumers to the preserved-seam model",
+      "objective": "Migrate review consumers to the preserved-seam model.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G148-002",
+      "gate": "Gate 148",
+      "title": "Refresh trace, replay, and legacy expectation tests",
+      "objective": "Refresh trace, replay, and legacy expectation tests.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G148-003",
+      "gate": "Gate 148",
+      "title": "Close Gate 148 with synchronized planning and test evidence",
+      "objective": "Close Gate 148 with synchronized planning and test evidence.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G149-001",
+      "gate": "Gate 149",
+      "title": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router",
+      "objective": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G149-002",
+      "gate": "Gate 149",
+      "title": "Run the declared full proof slice from a repo-local installed environment",
+      "objective": "Run the declared full proof slice from a repo-local installed environment.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    },
+    {
+      "id": "LEAF-G149-003",
+      "gate": "Gate 149",
+      "title": "Create the fresh full-history zip and close the pack honestly",
+      "objective": "Create the fresh full-history zip and close the pack honestly.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "Bounded later execution leaf defined by Gate 141 planning truth.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [],
+      "inputs": [],
+      "ordered_actions": [],
+      "forbidden_actions": [],
+      "validation_commands": [],
+      "expected_evidence": [],
+      "definition_of_done": [],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
+      "document_touch_surfaces": []
+    }
+  ]
+}

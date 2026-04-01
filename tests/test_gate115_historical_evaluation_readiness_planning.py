@@ -44,6 +44,15 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
     "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**.",
     "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**.",
+    "Current active gate: **Gate 142 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 143 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 144 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 145 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 146 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 147 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
 }
 
 
