@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gate 141 complete on `main`, Gate 142 active, Gates 143-149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-142 complete on `main`, Gate 143 active, Gates 144-149 planned
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -179,7 +179,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 142: Freeze the observed overwrite and ownership inventory
 
 **Status**
-- active on `main`
+- complete on `main`
 
 **Objective**
 - Trace the live overwrite chain, stage-local ownership boundaries, and downstream consumers that currently depend on mutated outputs before any additive seam contract is introduced.
@@ -187,7 +187,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 143: Admit additive stage-local handoff artefacts only where Gate 142 proves they are necessary
 
 **Status**
-- planned
+- active on `main`
 
 **Objective**
 - add any preserved stage-local handoff contracts and immediate carriage surfaces that Gate 142 proves necessary without changing terminal behaviour yet.
