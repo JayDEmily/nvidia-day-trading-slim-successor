@@ -1,6 +1,6 @@
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1
 
-Status: active execution log for the opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active
+Status: closed execution log for the opening-drive continuation lifecycle pilot pack on `main`; Gates 135-139 complete, no active gate
 
 ## Purpose
 
@@ -95,7 +95,6 @@ For every completed leaf record:
   - `src/nvda_desk/schemas/cognition.py`
   - `src/nvda_desk/services/cognition_runtime.py`
   - `docs/03_DOMAIN_MODEL.md`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py`
 - observed results:
@@ -115,7 +114,6 @@ For every completed leaf record:
 - exact files touched:
   - `src/nvda_desk/schemas/cognition.py`
   - `src/nvda_desk/services/execution_expression.py`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py`
 - observed results:
@@ -157,7 +155,6 @@ For every completed leaf record:
   - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
   - `docs/03_DOMAIN_MODEL.md`
   - `src/nvda_desk/services/cognition_runtime.py`
-  - `tests/test_execution_review_runtime.py`
   - `tests/test_gate134_bounded_trace_reporting.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_dmp_review_trace.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py`
@@ -181,7 +178,6 @@ For every completed leaf record:
 - exact files touched:
   - `src/nvda_desk/services/cognition_runtime.py`
   - `src/nvda_desk/services/execution_expression.py`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py`
 - observed results:
@@ -199,7 +195,6 @@ For every completed leaf record:
 - end commit or merged main commit: `fbb45b5`
 - exact files touched:
   - `src/nvda_desk/services/execution_expression.py`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py`
 - observed results:
@@ -218,7 +213,6 @@ For every completed leaf record:
 - exact files touched:
   - `src/nvda_desk/services/cognition_runtime.py`
   - `src/nvda_desk/services/execution_expression.py`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_carry_review_cli_and_legacy.py`
 - observed results:
@@ -241,7 +235,6 @@ For every completed leaf record:
   - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
   - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
   - `CHANGELOG.jsonl`
-  - `tests/test_execution_review_runtime.py`
 - exact validation commands:
   - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_dmp_review_trace.py`
   - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_dmp_review_trace.py`
@@ -307,7 +300,6 @@ For every completed leaf record:
   - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
   - `CHANGELOG.jsonl`
   - `docs/03_DOMAIN_MODEL.md`
-  - `tests/test_execution_review_runtime.py`
   - `tests/test_gate48_carry_handoff.py`
   - `tests/test_gate53_carry_handoff.py`
 - exact validation commands:
@@ -322,4 +314,36 @@ For every completed leaf record:
 
 ## Gate 139 receipts
 
-_Planned only; no receipts yet._
+### LEAF-G139-001 through LEAF-G139-004
+
+- branch: `work/gate-139-position-instance-ledger-20260401`
+- start commit: `10c8f5e`
+- exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
+  - `src/nvda_desk/api/app.py`
+  - `src/nvda_desk/db/__init__.py`
+  - `src/nvda_desk/db/models.py`
+  - `src/nvda_desk/schemas/execution_records.py`
+  - `src/nvda_desk/services/execution_records.py`
+  - `tests/test_carry_review_cli_and_legacy.py`
+  - `tests/test_gate134_bounded_trace_reporting.py`
+  - `tests/test_second_wave_records_and_events.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_second_wave_records_and_events.py`
+  - `.venv/bin/python -m pytest -q tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py tests/test_execution_review_runtime.py`
+  - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py tests/test_document_hygiene.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_second_wave_records_and_events.py tests/test_carry_review_cli_and_legacy.py`
+- observed results:
+  - Gate 139 proof slices remained green while the bounded position-instance ledger contract, persistence surface, and reconstruction route landed.
+  - The lifecycle pilot pack closed through Gate 139 and the planning router returned to no active pack on `main`.
+  - Symbol-level order, fill, and position snapshots remain available, but the continuation specimen now also has bounded persisted `position_instance_ref` truth.
+- full suite required: yes, gate-close slice
+- stop condition hit: none
+- receipt recorded: recorded live

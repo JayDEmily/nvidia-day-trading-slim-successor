@@ -275,7 +275,10 @@ class RiskBlockEvent(Base):
 
 class OrderIntentRecord(Base):
     __tablename__ = "order_intent"
-    __table_args__ = (Index("ix_order_intent_module_created", "module_id", "created_at"),)
+    __table_args__ = (
+        Index("ix_order_intent_module_created", "module_id", "created_at"),
+        Index("ix_order_intent_position_instance_created", "position_instance_ref", "created_at"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -286,6 +289,15 @@ class OrderIntentRecord(Base):
     quantity: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     order_type: Mapped[str] = mapped_column(String(16), default="limit")
     limit_price: Mapped[Decimal | None] = mapped_column(Numeric(18, 6), nullable=True)
+    position_instance_ref: Mapped[str | None] = mapped_column(String(128), nullable=True, index=True)
+    setup_variant_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    execution_expression_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    tradable_expression_family: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lifecycle_state: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lifecycle_action: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    current_position_size_pct: Mapped[Decimal | None] = mapped_column(Numeric(8, 3), nullable=True)
+    carry_state_eligible: Mapped[bool | None] = mapped_column(Boolean(), nullable=True)
+    hard_flat_required: Mapped[bool | None] = mapped_column(Boolean(), nullable=True)
     client_order_ref: Mapped[str] = mapped_column(String(128), unique=True, index=True)
     status: Mapped[str] = mapped_column(String(32), index=True)
     payload_json: Mapped[str] = mapped_column(Text(), default="{}")
@@ -330,6 +342,34 @@ class PositionSnapshot(Base):
     market_price: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     market_value: Mapped[Decimal] = mapped_column(Numeric(18, 6))
     unrealized_pnl: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    source: Mapped[str] = mapped_column(String(32), default="broker_offline")
+
+
+class PositionInstanceSnapshot(Base):
+    __tablename__ = "position_instance_snapshot"
+    __table_args__ = (
+        Index("ix_position_instance_snapshot_ref_ts", "position_instance_ref", "snapshot_ts"),
+        Index("ix_position_instance_snapshot_symbol_ts", "symbol", "snapshot_ts"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    position_instance_ref: Mapped[str] = mapped_column(String(128), index=True)
+    symbol: Mapped[str] = mapped_column(String(32), index=True)
+    snapshot_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    setup_variant_id: Mapped[str] = mapped_column(String(128))
+    execution_expression_id: Mapped[str] = mapped_column(String(128))
+    tradable_expression_family: Mapped[str] = mapped_column(String(64))
+    lifecycle_state: Mapped[str] = mapped_column(String(64))
+    lifecycle_action: Mapped[str] = mapped_column(String(32))
+    current_position_size_pct: Mapped[Decimal] = mapped_column(Numeric(8, 3), default=Decimal("0"))
+    quantity: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    average_price: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    market_price: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    market_value: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    unrealized_pnl: Mapped[Decimal] = mapped_column(Numeric(18, 6))
+    carry_state_eligible: Mapped[bool] = mapped_column(Boolean(), default=False)
+    hard_flat_required: Mapped[bool] = mapped_column(Boolean(), default=False)
     source: Mapped[str] = mapped_column(String(32), default="broker_offline")
 
 

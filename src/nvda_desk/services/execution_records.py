@@ -17,6 +17,7 @@ from nvda_desk.db.models import (
     ModuleVetoEvent,
     OrderEventRecord,
     OrderIntentRecord,
+    PositionInstanceSnapshot,
     PositionSnapshot,
     RiskBlockEvent,
 )
@@ -37,6 +38,8 @@ from nvda_desk.schemas.execution_records import (
     ModuleVetoEventCreate,
     ModuleVetoEventListResponse,
     ModuleVetoEventPayload,
+    PositionInstanceSnapshotListResponse,
+    PositionInstanceSnapshotPayload,
     PositionSnapshotListResponse,
     PositionSnapshotPayload,
     RiskBlockEventCreate,
@@ -149,6 +152,15 @@ class ExecutionRecordsService:
                 quantity=Decimal(str(payload.quantity)),
                 order_type=payload.order_type,
                 limit_price=Decimal(str(payload.limit_price)),
+                position_instance_ref=payload.position_instance_ref,
+                setup_variant_id=payload.setup_variant_id,
+                execution_expression_id=payload.execution_expression_id,
+                tradable_expression_family=payload.tradable_expression_family,
+                lifecycle_state=payload.lifecycle_state,
+                lifecycle_action=payload.lifecycle_action,
+                current_position_size_pct=self._decimal_or_none(payload.current_position_size_pct),
+                carry_state_eligible=payload.carry_state_eligible,
+                hard_flat_required=payload.hard_flat_required,
                 client_order_ref=client_order_ref,
                 status="filled",
                 payload_json=json.dumps(payload.payload),
@@ -193,6 +205,14 @@ class ExecutionRecordsService:
                 fill_price,
                 requested_at,
             )
+            self._derive_position_instance(
+                session,
+                payload=payload,
+                side=payload.side,
+                quantity=quantity,
+                fill_price=fill_price,
+                snapshot_ts=requested_at,
+            )
             session.flush()
             capital = self._derive_capital_state(session, payload.side, notional, requested_at)
             session.commit()
@@ -223,9 +243,7 @@ class ExecutionRecordsService:
     def list_fill_events(self, limit: int = 20) -> BrokerFillEventListResponse:
         with self._session_factory() as session:
             rows = list(
-                session.scalars(
-                    select(FillEventRecord).order_by(desc(FillEventRecord.created_at)).limit(limit)
-                )
+                session.scalars(select(FillEventRecord).order_by(desc(FillEventRecord.created_at)).limit(limit))
             )
         return BrokerFillEventListResponse(
             fill_events=[self._to_fill_event_payload(row) for row in rows]
@@ -243,6 +261,40 @@ class ExecutionRecordsService:
             )
         return PositionSnapshotListResponse(
             positions=[self._to_position_payload(row) for row in rows]
+        )
+
+    def list_position_instances(
+        self,
+        *,
+        symbol: str | None = None,
+        position_instance_ref: str | None = None,
+        limit: int = 20,
+    ) -> PositionInstanceSnapshotListResponse:
+        with self._session_factory() as session:
+            stmt = select(PositionInstanceSnapshot)
+            if symbol:
+                stmt = stmt.where(PositionInstanceSnapshot.symbol == symbol)
+            if position_instance_ref:
+                stmt = stmt.where(PositionInstanceSnapshot.position_instance_ref == position_instance_ref)
+            rows = list(
+                session.scalars(
+                    stmt.order_by(
+                        desc(PositionInstanceSnapshot.snapshot_ts),
+                        desc(PositionInstanceSnapshot.created_at),
+                    )
+                )
+            )
+        latest_by_ref: list[PositionInstanceSnapshot] = []
+        seen: set[str] = set()
+        for row in rows:
+            if row.position_instance_ref in seen:
+                continue
+            seen.add(row.position_instance_ref)
+            latest_by_ref.append(row)
+            if len(latest_by_ref) >= limit:
+                break
+        return PositionInstanceSnapshotListResponse(
+            position_instances=[self._to_position_instance_payload(row) for row in latest_by_ref]
         )
 
     def latest_capital_state(self) -> CapitalStateSnapshotPayload:
@@ -328,12 +380,14 @@ class ExecutionRecordsService:
         prior_avg = prior.average_price if prior is not None else fill_price
         signed_qty = quantity if side == "buy" else -quantity
         new_qty = prior_qty + signed_qty
-        if new_qty == 0:
-            avg_price = Decimal("0")
-        elif side == "buy" and prior_qty >= 0:
-            avg_price = ((prior_qty * prior_avg) + (quantity * fill_price)) / new_qty
-        else:
-            avg_price = prior_avg
+        avg_price = self._roll_average_price(
+            prior_qty=prior_qty,
+            prior_avg=prior_avg,
+            side=side,
+            quantity=quantity,
+            fill_price=fill_price,
+            new_qty=new_qty,
+        )
         market_price = self._latest_price(session, symbol) or fill_price
         market_value = new_qty * market_price
         unrealized = (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
@@ -346,6 +400,89 @@ class ExecutionRecordsService:
                 market_price=market_price,
                 market_value=market_value,
                 unrealized_pnl=unrealized,
+                source="broker_offline",
+            )
+        )
+
+    def _derive_position_instance(
+        self,
+        session: Session,
+        *,
+        payload: BrokerPaperOrderInput,
+        side: str,
+        quantity: Decimal,
+        fill_price: Decimal,
+        snapshot_ts: datetime,
+    ) -> None:
+        if payload.position_instance_ref is None:
+            return
+        prior = session.scalar(
+            select(PositionInstanceSnapshot)
+            .where(PositionInstanceSnapshot.position_instance_ref == payload.position_instance_ref)
+            .order_by(desc(PositionInstanceSnapshot.snapshot_ts), desc(PositionInstanceSnapshot.created_at))
+            .limit(1)
+        )
+        prior_qty = prior.quantity if prior is not None else Decimal("0")
+        prior_avg = prior.average_price if prior is not None else fill_price
+        signed_qty = quantity if side == "buy" else -quantity
+        new_qty = prior_qty + signed_qty
+        avg_price = self._roll_average_price(
+            prior_qty=prior_qty,
+            prior_avg=prior_avg,
+            side=side,
+            quantity=quantity,
+            fill_price=fill_price,
+            new_qty=new_qty,
+        )
+        market_price = self._latest_price(session, payload.symbol) or fill_price
+        market_value = new_qty * market_price
+        unrealized = (market_price - avg_price) * new_qty if new_qty != 0 else Decimal("0")
+        setup_variant_id = payload.setup_variant_id or (
+            prior.setup_variant_id if prior is not None else "opening_drive_continuation"
+        )
+        execution_expression_id = payload.execution_expression_id or (
+            prior.execution_expression_id if prior is not None else "continuation_ladder_exec"
+        )
+        tradable_expression_family = payload.tradable_expression_family or (
+            prior.tradable_expression_family if prior is not None else "single_leg_call_debit"
+        )
+        lifecycle_state = payload.lifecycle_state or (
+            prior.lifecycle_state if prior is not None else "position_open"
+        )
+        lifecycle_action = payload.lifecycle_action or self._default_lifecycle_action(side, new_qty)
+        current_position_size_pct = self._decimal_or_none(payload.current_position_size_pct)
+        if current_position_size_pct is None:
+            current_position_size_pct = (
+                prior.current_position_size_pct if prior is not None else Decimal("0")
+            )
+        carry_state_eligible = (
+            payload.carry_state_eligible
+            if payload.carry_state_eligible is not None
+            else (prior.carry_state_eligible if prior is not None else False)
+        )
+        hard_flat_required = (
+            payload.hard_flat_required
+            if payload.hard_flat_required is not None
+            else (prior.hard_flat_required if prior is not None else False)
+        )
+        session.add(
+            PositionInstanceSnapshot(
+                position_instance_ref=payload.position_instance_ref,
+                symbol=payload.symbol,
+                snapshot_ts=snapshot_ts,
+                setup_variant_id=setup_variant_id,
+                execution_expression_id=execution_expression_id,
+                tradable_expression_family=tradable_expression_family,
+                lifecycle_state=lifecycle_state,
+                lifecycle_action=lifecycle_action,
+                current_position_size_pct=current_position_size_pct,
+                quantity=new_qty,
+                average_price=avg_price,
+                market_price=market_price,
+                market_value=market_value,
+                unrealized_pnl=unrealized,
+                carry_state_eligible=carry_state_eligible,
+                hard_flat_required=hard_flat_required,
                 source="broker_offline",
             )
         )
@@ -476,6 +613,31 @@ class ExecutionRecordsService:
             source=row.source,
         )
 
+    def _to_position_instance_payload(
+        self, row: PositionInstanceSnapshot
+    ) -> PositionInstanceSnapshotPayload:
+        return PositionInstanceSnapshotPayload(
+            position_instance_snapshot_id=row.id,
+            created_at=row.created_at,
+            position_instance_ref=row.position_instance_ref,
+            symbol=row.symbol,
+            snapshot_ts=row.snapshot_ts,
+            setup_variant_id=row.setup_variant_id,
+            execution_expression_id=row.execution_expression_id,
+            tradable_expression_family=row.tradable_expression_family,
+            lifecycle_state=row.lifecycle_state,
+            lifecycle_action=row.lifecycle_action,
+            current_position_size_pct=float(row.current_position_size_pct),
+            quantity=float(row.quantity),
+            average_price=float(row.average_price),
+            market_price=float(row.market_price),
+            market_value=float(row.market_value),
+            unrealized_pnl=float(row.unrealized_pnl),
+            carry_state_eligible=bool(row.carry_state_eligible),
+            hard_flat_required=bool(row.hard_flat_required),
+            source=row.source,
+        )
+
     def _to_capital_payload(self, row: CapitalStateSnapshot) -> CapitalStateSnapshotPayload:
         return CapitalStateSnapshotPayload(
             capital_state_snapshot_id=row.id,
@@ -505,3 +667,31 @@ class ExecutionRecordsService:
 
     def _aware(self, ts: datetime) -> datetime:
         return ts.astimezone(UTC) if ts.tzinfo is not None else ts.replace(tzinfo=UTC)
+
+    @staticmethod
+    def _roll_average_price(
+        *,
+        prior_qty: Decimal,
+        prior_avg: Decimal,
+        side: str,
+        quantity: Decimal,
+        fill_price: Decimal,
+        new_qty: Decimal,
+    ) -> Decimal:
+        if new_qty == 0:
+            return Decimal("0")
+        if side == "buy" and prior_qty >= 0:
+            return ((prior_qty * prior_avg) + (quantity * fill_price)) / new_qty
+        return prior_avg
+
+    @staticmethod
+    def _default_lifecycle_action(side: str, new_qty: Decimal) -> str:
+        if new_qty == 0:
+            return "flatten"
+        return "add" if side == "buy" else "trim"
+
+    @staticmethod
+    def _decimal_or_none(value: float | None) -> Decimal | None:
+        if value is None:
+            return None
+        return Decimal(str(value))

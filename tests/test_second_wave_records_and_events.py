@@ -120,6 +120,15 @@ def test_execution_and_broker_routes(tmp_path: Path) -> None:
                 "side": "buy",
                 "quantity": 5,
                 "limit_price": 98.0,
+                "position_instance_ref": "odi-cont-001",
+                "setup_variant_id": "opening_drive_continuation",
+                "execution_expression_id": "continuation_ladder_exec",
+                "tradable_expression_family": "single_leg_call_debit",
+                "lifecycle_state": "carry_nomination_ready",
+                "lifecycle_action": "hold_small_overnight",
+                "current_position_size_pct": 12.5,
+                "carry_state_eligible": True,
+                "hard_flat_required": False,
                 "payload": {"source": "test"},
             },
         )
@@ -129,6 +138,7 @@ def test_execution_and_broker_routes(tmp_path: Path) -> None:
         order_events = client.get("/broker/order-events")
         fill_events = client.get("/broker/fill-events")
         positions = client.get("/broker/positions", params={"symbol": "NVDA"})
+        position_instances = client.get("/broker/position-instances", params={"symbol": "NVDA"})
         account = client.get("/broker/account-state")
         pnl = client.post(
             "/execution/daily-pnl",
@@ -158,6 +168,18 @@ def test_execution_and_broker_routes(tmp_path: Path) -> None:
     assert fill_events.status_code == 200 and len(fill_events.json()["fill_events"]) == 1
     assert positions.status_code == 200 and positions.json()["positions"][0]["quantity"] == 5.0
     assert positions.json()["positions"][0]["market_value"] == 620.0
+    assert position_instances.status_code == 200
+    instance = position_instances.json()["position_instances"][0]
+    assert instance["position_instance_ref"] == "odi-cont-001"
+    assert instance["setup_variant_id"] == "opening_drive_continuation"
+    assert instance["execution_expression_id"] == "continuation_ladder_exec"
+    assert instance["tradable_expression_family"] == "single_leg_call_debit"
+    assert instance["lifecycle_state"] == "carry_nomination_ready"
+    assert instance["lifecycle_action"] == "hold_small_overnight"
+    assert instance["current_position_size_pct"] == 12.5
+    assert instance["carry_state_eligible"] is True
+    assert instance["hard_flat_required"] is False
+    assert instance["quantity"] == 5.0
     assert account.status_code == 200 and account.json()["cash"] == 99510.0
     assert account.json()["gross_exposure"] == 620.0
     assert pnl.status_code == 200

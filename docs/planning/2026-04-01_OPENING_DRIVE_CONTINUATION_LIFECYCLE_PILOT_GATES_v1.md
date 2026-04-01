@@ -1,4 +1,4 @@
-Status: active opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active
+Status: closed opening-drive continuation lifecycle pilot pack on `main`; Gates 135-139 complete, no active gate
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Gates v1
 
 ## Purpose
@@ -272,7 +272,7 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 ### Gate 139: Add a bounded position-instance ledger and close the pack honestly
 
 **Status**
-- active next gate on `main`
+- complete on `main`
 
 **Objective**
 - Upgrade the execution ledger just enough to persist and reconstruct one managed continuation position instance, then close the lifecycle pilot pack honestly.

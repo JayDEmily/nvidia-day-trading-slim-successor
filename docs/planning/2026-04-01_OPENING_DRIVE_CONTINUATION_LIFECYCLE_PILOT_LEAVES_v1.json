@@ -1,14 +1,17 @@
 {
   "governing_plan": "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_138_complete_gate_139_active_on_main",
-  "active_gate": "Gate 139",
+  "execution_status": "opening_drive_continuation_lifecycle_pilot_pack_closed_through_gate_139_on_main",
+  "active_gate": "none \u2014 opening-drive continuation lifecycle pilot pack closed through Gate 139 on main",
   "supersedes": [
     "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md"
   ],
   "completed_gate_ids": [
     "Gate 135",
-    "Gate 136"
+    "Gate 136",
+    "Gate 137",
+    "Gate 138",
+    "Gate 139"
   ],
   "completed_leaf_ids": [
     "LEAF-G135-001",
@@ -17,14 +20,20 @@
     "LEAF-G136-001",
     "LEAF-G136-002",
     "LEAF-G136-003",
-    "LEAF-G136-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G136-004",
+    "LEAF-G137-001",
+    "LEAF-G137-002",
+    "LEAF-G137-003",
+    "LEAF-G137-004",
+    "LEAF-G138-001",
+    "LEAF-G138-002",
+    "LEAF-G138-003",
     "LEAF-G139-001",
     "LEAF-G139-002",
     "LEAF-G139-003",
     "LEAF-G139-004"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -42,7 +51,7 @@
   },
   "gates": {
     "Gate 135": {
-      "status": "active",
+      "status": "complete_on_main",
       "objective": "Freeze the specimen, naming, packet-preservation law, and truthful routing for the lifecycle pilot.",
       "leaf_ids": [
         "LEAF-G135-001",
@@ -51,7 +60,7 @@
       ]
     },
     "Gate 136": {
-      "status": "planned",
+      "status": "complete_on_main",
       "objective": "Add additive execution-stage lifecycle contracts and admit any required governed vocabulary.",
       "leaf_ids": [
         "LEAF-G136-001",
@@ -61,7 +70,7 @@
       ]
     },
     "Gate 137": {
-      "status": "planned",
+      "status": "complete_on_main",
       "objective": "Compile the continuation specimen lifecycle inside expression execution.",
       "leaf_ids": [
         "LEAF-G137-001",
@@ -71,7 +80,7 @@
       ]
     },
     "Gate 138": {
-      "status": "planned",
+      "status": "complete_on_main",
       "objective": "Integrate lifecycle output with the existing carry branch.",
       "leaf_ids": [
         "LEAF-G138-001",
@@ -80,7 +89,7 @@
       ]
     },
     "Gate 139": {
-      "status": "planned",
+      "status": "complete_on_main",
       "objective": "Add a bounded position-instance execution ledger and close the pack honestly.",
       "leaf_ids": [
         "LEAF-G139-001",
@@ -977,7 +986,7 @@
       "gate": "Gate 139",
       "title": "Freeze the bounded position-instance ledger contract",
       "objective": "Define the smallest lawful execution-record contract that can persist and reconstruct one managed specimen position instance without pretending to solve all broker semantics.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G138-003"
       ],
@@ -1039,7 +1048,7 @@
       "gate": "Gate 139",
       "title": "Add additive execution-record, DB, and service surfaces",
       "objective": "Implement the new bounded persistence surfaces needed to record and rebuild specimen position instances.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G139-001"
       ],
@@ -1097,7 +1106,7 @@
       "gate": "Gate 139",
       "title": "Persist and reconstruct lifecycle-aware specimen state end to end",
       "objective": "Prove the specimen lifecycle state can be persisted and reconstructed through the live execution-record services without a second hidden path.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G139-002"
       ],
@@ -1154,7 +1163,7 @@
       "gate": "Gate 139",
       "title": "Close the lifecycle pilot pack honestly and package the exact repo state",
       "objective": "Close the pilot pack through Gate 139 with the planning quartet, receipts, tests, and packaging all aligned.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G139-003"
       ],

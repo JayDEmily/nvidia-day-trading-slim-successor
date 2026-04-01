@@ -2621,6 +2621,8 @@ Ownership:
 
 Gate 138 extends `CloseStateCarryHandoff` so the existing carry branch can consume the specimen lifecycle state directly. `lifecycle_setup_variant_id`, `lifecycle_execution_expression_id`, `lifecycle_state`, `lifecycle_next_action`, `lifecycle_carry_candidate`, `lifecycle_action_ceiling`, and the lifecycle rule/rationale arrays are additive handoff fields only. They preserve the existing `carry_handoff` packet boundary while making carry ceilings and flatten decisions traceable to the same execution-stage lifecycle plan.
 
+Gate 139 adds one bounded persistence truth for that same specimen without pretending to solve the whole broker domain. `BrokerPaperOrderInput` may now carry additive specimen fields such as `position_instance_ref`, `setup_variant_id`, `execution_expression_id`, `tradable_expression_family`, lifecycle state/action, and the bounded carry / hard-flat flags. `PositionInstanceSnapshotPayload` is the additive persisted-view contract that reconstructs one managed continuation specimen through the existing execution-record service. Symbol-level order, fill, and position snapshots remain available, but once this gate closes they are no longer the only final execution truth for the specimen.
+
 ### 4o. Review failure-taxonomy objects
 
 Typed contracts that let review packets distinguish failure class, resolution class, economic accountability, and promotion evidence without collapsing everything to raw P&L pain.

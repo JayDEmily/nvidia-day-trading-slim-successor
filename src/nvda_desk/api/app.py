@@ -73,6 +73,7 @@ from nvda_desk.schemas.execution_records import (
     ModuleVetoEventCreate,
     ModuleVetoEventListResponse,
     ModuleVetoEventPayload,
+    PositionInstanceSnapshotListResponse,
     PositionSnapshotListResponse,
     RiskBlockEventCreate,
     RiskBlockEventListResponse,
@@ -783,6 +784,21 @@ def list_broker_positions(
 ) -> PositionSnapshotListResponse:
     assert service is not None
     return service.list_positions(symbol=symbol, limit=limit)
+
+
+@app.get("/broker/position-instances")
+def list_broker_position_instances(
+    symbol: SymbolQuery = "NVDA",
+    position_instance_ref: str | None = None,
+    limit: ModuleLimitQuery = 20,
+    service: ExecutionRecordsDep = None,  # type: ignore[assignment]
+) -> PositionInstanceSnapshotListResponse:
+    assert service is not None
+    return service.list_position_instances(
+        symbol=symbol,
+        position_instance_ref=position_instance_ref,
+        limit=limit,
+    )
 
 
 @app.get("/broker/account-state")

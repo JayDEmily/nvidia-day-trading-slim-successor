@@ -6,6 +6,8 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 OrderSide = Literal["buy", "sell"]
+TradableExpressionFamilyValue = Literal["single_leg_call_debit"]
+LifecycleActionValue = Literal["add", "trim", "flatten", "hold_small_overnight", "block_carry"]
 
 
 class ModuleSignalEventCreate(BaseModel):
@@ -71,6 +73,15 @@ class BrokerPaperOrderInput(BaseModel):
     quantity: float = Field(gt=0)
     limit_price: float = Field(gt=0)
     order_type: str = Field(default="limit", min_length=1)
+    position_instance_ref: str | None = Field(default=None, min_length=1)
+    setup_variant_id: str | None = Field(default=None, min_length=1)
+    execution_expression_id: str | None = Field(default=None, min_length=1)
+    tradable_expression_family: TradableExpressionFamilyValue | None = None
+    lifecycle_state: str | None = Field(default=None, min_length=1)
+    lifecycle_action: LifecycleActionValue | None = None
+    current_position_size_pct: float | None = Field(default=None, ge=0, le=100)
+    carry_state_eligible: bool | None = None
+    hard_flat_required: bool | None = None
     payload: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -128,6 +139,32 @@ class PositionSnapshotPayload(BaseModel):
 
 class PositionSnapshotListResponse(BaseModel):
     positions: list[PositionSnapshotPayload]
+
+
+class PositionInstanceSnapshotPayload(BaseModel):
+    position_instance_snapshot_id: int
+    created_at: datetime
+    position_instance_ref: str
+    symbol: str
+    snapshot_ts: datetime
+    setup_variant_id: str
+    execution_expression_id: str
+    tradable_expression_family: TradableExpressionFamilyValue
+    lifecycle_state: str
+    lifecycle_action: LifecycleActionValue
+    current_position_size_pct: float = Field(ge=0, le=100)
+    quantity: float
+    average_price: float = Field(ge=0)
+    market_price: float = Field(ge=0)
+    market_value: float
+    unrealized_pnl: float
+    carry_state_eligible: bool
+    hard_flat_required: bool
+    source: str
+
+
+class PositionInstanceSnapshotListResponse(BaseModel):
+    position_instances: list[PositionInstanceSnapshotPayload]
 
 
 class CapitalStateSnapshotPayload(BaseModel):

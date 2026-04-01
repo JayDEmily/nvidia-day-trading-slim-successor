@@ -44,7 +44,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**. Bounded trace scenario review is closed evidence on `main`; Gates 132-134 are complete on `main`; Gates 135-138 are now complete on `main`; the lifecycle pilot quartet remains active.
+Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**. Bounded trace scenario review is closed evidence on `main`; Gates 132-134 are complete on `main`; Gates 135-139 are now complete on `main`; no active planning pack is routed.
 
 ## 2. Selected completed-tranche evidence
 
@@ -151,7 +151,7 @@ Earlier planning tranches remain closed evidence through Gate 134. The opening-d
 | Gate 136 | planned | add additive execution-stage lifecycle contracts, admit any required governed vocabulary, and prove DMP/runtime continuity before behaviour changes | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
 | Gate 137 | planned | compile the continuation specimen lifecycle inside expression execution so Stage 6 stops reducing the second half to thin exit labels | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
 | Gate 138 | complete on `main` | integrate lifecycle output with the existing carry branch so late-session continuation management remains one chain | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
-| Gate 139 | active next gate on `main` | add a bounded position-instance execution ledger for the specimen and close the lifecycle pilot pack honestly | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
+| Gate 139 | complete on `main` | add a bounded position-instance execution ledger for the specimen and close the lifecycle pilot pack honestly | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
 
 ## 4. Global execution rules
 

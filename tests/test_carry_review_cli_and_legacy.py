@@ -101,6 +101,15 @@ def test_carry_replay_and_review_routes(tmp_path: Path) -> None:
                 "side": "buy",
                 "quantity": 5,
                 "limit_price": 98.0,
+                "position_instance_ref": "odi-cont-carry-001",
+                "setup_variant_id": "opening_drive_continuation",
+                "execution_expression_id": "continuation_ladder_exec",
+                "tradable_expression_family": "single_leg_call_debit",
+                "lifecycle_state": "carry_nomination_ready",
+                "lifecycle_action": "hold_small_overnight",
+                "current_position_size_pct": 12.5,
+                "carry_state_eligible": True,
+                "hard_flat_required": False,
                 "payload": {"source": "test"},
             },
         )
@@ -129,6 +138,7 @@ def test_carry_replay_and_review_routes(tmp_path: Path) -> None:
                 "baseline_hold_exposure_pct": 10.0,
             },
         )
+        position_instances = client.get("/broker/position-instances", params={"symbol": "NVDA"})
         health = client.get("/review/module-health/slv-v2-market")
         daily = client.get(
             "/review/daily-packet",
@@ -145,6 +155,8 @@ def test_carry_replay_and_review_routes(tmp_path: Path) -> None:
         "follow_recommendation",
     }
     assert carry_payload["event_window_open"] is True
+    assert position_instances.status_code == 200
+    assert position_instances.json()["position_instances"][0]["position_instance_ref"] == "odi-cont-carry-001"
     assert health.status_code == 200
     health_payload = health.json()
     assert health_payload["evaluation_count"] >= 0
