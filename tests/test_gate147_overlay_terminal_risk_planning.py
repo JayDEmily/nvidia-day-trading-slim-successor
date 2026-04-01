@@ -23,4 +23,4 @@ def test_gate147_receipt_domain_model_and_vocabulary_are_present() -> None:
     assert "terminal_risk_application" in receipt
     assert "#### Gate 147 note: overlay evaluation versus terminal-risk application" in domain_model
     assert {"overlay_risk_decision", "terminal_risk_application"}.issubset(slugs)
-    assert leaves["active_gate"] in {"Gate 147", "Gate 148", "Gate 149"}
+    assert leaves["active_gate"] in {"Gate 147", "Gate 148", "Gate 149", "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on main"}

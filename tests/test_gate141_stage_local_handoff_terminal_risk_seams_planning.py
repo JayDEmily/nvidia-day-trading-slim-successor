@@ -48,6 +48,7 @@ def test_gate141_pack_remains_active_after_later_gate_progression() -> None:
         or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-145 complete on `main`, Gate 146 active, Gates 147-149 planned" in gates
         or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-146 complete on `main`, Gate 147 active, Gates 148-149 planned" in gates
         or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-148 complete on `main`, Gate 149 active" in gates
+        or "Status: closed stage-local handoff and terminal-risk seams pack on `main`; Gates 141-149 complete, no active gate" in gates
     )
     assert leaves["execution_status"] in {
         "gate_141_complete_gate_142_active_on_main",
