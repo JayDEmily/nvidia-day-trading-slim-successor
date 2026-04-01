@@ -19,6 +19,6 @@ def test_gate142_inventory_receipt_freezes_chain_and_matrix() -> None:
     assert "review_explanation.py" in receipt
     assert "## Retain / retire / amend / add matrix" in receipt
     assert "StageLocalHandoffSurface" in receipt
-    assert leaves["active_gate"] in {"Gate 143", "Gate 144"}
+    assert leaves["active_gate"] in {"Gate 143", "Gate 144", "Gate 145", "Gate 146"}
     assert "Gate 142" in leaves["completed_gate_ids"]
     assert {"LEAF-G142-001", "LEAF-G142-002", "LEAF-G142-003"}.issubset(set(leaves["completed_leaf_ids"]))

@@ -61,6 +61,39 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["posture_risk", "permission_layer"],
         ),
         VocabularyEntry(
+            canonical_slug="posture_hard_invariants",
+            canonical_label="Posture Hard Invariants",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="posture_risk_permission",
+            maps_to_contract="nvda_desk.schemas.cognition.PostureHardInvariantsSurface",
+            allowed_aliases=["hard_invariant_surface"],
+            notes=[
+                "Additive posture-owned hard-stop surface preserved before selector citations or later modifier consequences."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="posture_local_envelope",
+            canonical_label="Posture Local Envelope",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="posture_risk_permission",
+            maps_to_contract="nvda_desk.schemas.cognition.PostureLocalEnvelopeSurface",
+            allowed_aliases=["local_envelope_surface"],
+            notes=[
+                "Additive posture-owned envelope surface preserving base permission, deployable capital, and derisk reasons before downstream annotations."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="posture_downstream_annotations",
+            canonical_label="Posture Downstream Annotations",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="posture_risk_permission",
+            maps_to_contract="nvda_desk.schemas.cognition.PostureRiskOutput.downstream_annotations",
+            allowed_aliases=["posture_annotation_lineage"],
+            notes=[
+                "Selector citations and later modifier notes carried separately from posture-owned hard invariants and local envelope."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="playbook_eligibility",
             canonical_label="Playbook Eligibility",
             category=VocabularyCategory.STAGE,
