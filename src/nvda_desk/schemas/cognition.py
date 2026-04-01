@@ -615,6 +615,31 @@ class FinalRiskJoinSurface(BaseModel):
     execution_effect: str
 
 
+class TerminalRiskOverlapClass(StrEnum):
+    """Observed overlap classes between overlay evaluation and terminal application."""
+
+    OVERLAY_ALLOW_NO_TERMINAL_OVERRIDE = "overlay_allow_no_terminal_override"
+    OVERLAY_DERISK_NO_TERMINAL_OVERRIDE = "overlay_derisk_no_terminal_override"
+    OVERLAY_BLOCK_NO_TERMINAL_OVERRIDE = "overlay_block_no_terminal_override"
+    POSTURE_DERISK_SUPERSEDES_OVERLAY_ALLOW = "posture_derisk_supersedes_overlay_allow"
+    POSTURE_BLOCK_SUPERSEDES_OVERLAY_ALLOW = "posture_block_supersedes_overlay_allow"
+    POSTURE_BLOCK_SUPERSEDES_OVERLAY_DERISK = "posture_block_supersedes_overlay_derisk"
+    POSTURE_BLOCK_ALIGNS_WITH_OVERLAY_BLOCK = "posture_block_aligns_with_overlay_block"
+
+
+class TerminalRiskApplicationSurface(BaseModel):
+    """Bounded additive seam between overlay evaluation and final-risk application."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    application_version: str = "terminal_risk_application.v1"
+    posture_permission_state: PermissionState
+    overlay_decision: RiskDecision
+    final_decision: RiskDecision
+    overlap_classes: list[TerminalRiskOverlapClass] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
 class LifecyclePlanOutput(BaseModel):
     """Bounded second-half lifecycle plan emitted by the execution stage."""
 
@@ -712,6 +737,8 @@ class StageLocalHandoffSurface(BaseModel):
     cited_eligibility: PlaybookEligibilityOutput | None = None
     execution_pre_modifier: ExecutionExpressionOutput | None = None
     execution_post_modifier_pre_final_risk: ExecutionExpressionOutput | None = None
+    overlay_risk_decision: RiskDecision | None = None
+    terminal_risk_application: TerminalRiskApplicationSurface | None = None
     terminal_risk_decision: RiskDecision | None = None
     notes: list[str] = Field(default_factory=list)
 

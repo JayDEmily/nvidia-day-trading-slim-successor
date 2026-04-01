@@ -20,6 +20,8 @@ from nvda_desk.schemas.cognition import (
     OptionsFlowContextInput,
     PermissionState,
     PostureRiskOutput,
+    TerminalRiskApplicationSurface,
+    TerminalRiskOverlapClass,
     TemporalContextInput,
     TemporalContextOutput,
 )
@@ -115,51 +117,145 @@ class RiskGatewayService:
         risk_budget_remaining_pct: float,
         symbol: str = "NVDA",
     ) -> RiskDecision:
-        market_decision = self.evaluate(
-            RiskPolicyInput(
-                symbol=symbol,
-                module_id=execution.lead_playbook_id or execution.lead_family_id or "desk_cognition_runtime",
+        overlay_decision = self.evaluate_overlay(
+            requested_at=requested_at,
+            temporal_input=temporal_input,
+            temporal=temporal,
+            regime_input=regime_input,
+            options_flow_input=options_flow_input,
+            posture=posture,
+            execution=execution,
+            inventory_state=inventory_state,
+            risk_budget_remaining_pct=risk_budget_remaining_pct,
+            symbol=symbol,
+        )
+        terminal_application = self.build_terminal_risk_application(
+            overlay_decision=overlay_decision,
+            posture=posture,
+        )
+        return terminal_application.final_decision
+
+    def evaluate_overlay(
+        self,
+        *,
+        requested_at: datetime,
+        temporal_input: TemporalContextInput,
+        temporal: TemporalContextOutput,
+        regime_input: MarketRegimeContextInput,
+        options_flow_input: OptionsFlowContextInput,
+        posture: PostureRiskOutput,
+        execution: ExecutionExpressionOutput,
+        inventory_state: InventoryState,
+        risk_budget_remaining_pct: float,
+        symbol: str = "NVDA",
+    ) -> RiskDecision:
+        return self.evaluate(
+            self._runtime_policy_input(
                 requested_at=requested_at,
-                session_phase=temporal.session_phase,
-                vix_level=regime_input.vix_level,
-                vvix_level=regime_input.vvix_level,
-                vix_change_pct_15m=self._vix_change_proxy(temporal_input, options_flow_input),
-                vvix_change_pct_15m=self._vvix_change_proxy(
-                    temporal, regime_input, options_flow_input
-                ),
-                data_age_seconds=0,
-                gross_exposure_pct=inventory_state.existing_inventory_pct,
+                temporal_input=temporal_input,
+                temporal=temporal,
+                regime_input=regime_input,
+                options_flow_input=options_flow_input,
+                posture=posture,
+                execution=execution,
+                inventory_state=inventory_state,
                 risk_budget_remaining_pct=risk_budget_remaining_pct,
-                open_orders_count=inventory_state.open_orders_count,
-                conflict_tags=self._runtime_conflict_tags(posture, execution),
-                vix_caution_threshold=execution.risk_vix_caution_threshold,
-                vix_hot_threshold=execution.risk_vix_hot_threshold,
+                symbol=symbol,
             )
         )
-        action = market_decision.action
-        reasons = list(market_decision.reasons)
-        confidence_scalar = market_decision.confidence_scalar
+
+    def build_terminal_risk_application(
+        self,
+        *,
+        overlay_decision: RiskDecision,
+        posture: PostureRiskOutput,
+    ) -> TerminalRiskApplicationSurface:
+        action = overlay_decision.action
+        reasons = list(overlay_decision.reasons)
+        confidence_scalar = overlay_decision.confidence_scalar
+        overlap_classes: list[TerminalRiskOverlapClass] = []
+        notes = ["overlay_evaluation_preserved_before_terminal_application"]
 
         if posture.permission_state is PermissionState.BLOCK:
             action = RiskAction.BLOCK
             confidence_scalar = 0.0
             reasons = ["posture_block_join", *reasons]
+            if overlay_decision.action is RiskAction.ALLOW:
+                overlap_classes.append(
+                    TerminalRiskOverlapClass.POSTURE_BLOCK_SUPERSEDES_OVERLAY_ALLOW
+                )
+            elif overlay_decision.action is RiskAction.DERISK:
+                overlap_classes.append(
+                    TerminalRiskOverlapClass.POSTURE_BLOCK_SUPERSEDES_OVERLAY_DERISK
+                )
+            else:
+                overlap_classes.append(
+                    TerminalRiskOverlapClass.POSTURE_BLOCK_ALIGNS_WITH_OVERLAY_BLOCK
+                )
         elif posture.permission_state is PermissionState.DERISK and action is RiskAction.ALLOW:
             action = RiskAction.DERISK
             confidence_scalar = min(confidence_scalar, 0.65)
             reasons = ["posture_derisk_join", *reasons]
+            overlap_classes.append(
+                TerminalRiskOverlapClass.POSTURE_DERISK_SUPERSEDES_OVERLAY_ALLOW
+            )
+        elif action is RiskAction.DERISK:
+            overlap_classes.append(TerminalRiskOverlapClass.OVERLAY_DERISK_NO_TERMINAL_OVERRIDE)
+        elif action is RiskAction.BLOCK:
+            overlap_classes.append(TerminalRiskOverlapClass.OVERLAY_BLOCK_NO_TERMINAL_OVERRIDE)
+        else:
+            overlap_classes.append(TerminalRiskOverlapClass.OVERLAY_ALLOW_NO_TERMINAL_OVERRIDE)
 
         if not reasons:
             reasons = ["risk_gateway_clear"]
 
-        return RiskDecision(
+        final_decision = RiskDecision(
             action=action,
             reasons=reasons,
             confidence_scalar=confidence_scalar,
-            vix_level=market_decision.vix_level,
-            vvix_level=market_decision.vvix_level,
-            vix_change_pct_15m=market_decision.vix_change_pct_15m,
-            vvix_change_pct_15m=market_decision.vvix_change_pct_15m,
+            vix_level=overlay_decision.vix_level,
+            vvix_level=overlay_decision.vvix_level,
+            vix_change_pct_15m=overlay_decision.vix_change_pct_15m,
+            vvix_change_pct_15m=overlay_decision.vvix_change_pct_15m,
+        )
+        return TerminalRiskApplicationSurface(
+            posture_permission_state=posture.permission_state,
+            overlay_decision=overlay_decision,
+            final_decision=final_decision,
+            overlap_classes=overlap_classes,
+            notes=notes,
+        )
+
+    def _runtime_policy_input(
+        self,
+        *,
+        requested_at: datetime,
+        temporal_input: TemporalContextInput,
+        temporal: TemporalContextOutput,
+        regime_input: MarketRegimeContextInput,
+        options_flow_input: OptionsFlowContextInput,
+        posture: PostureRiskOutput,
+        execution: ExecutionExpressionOutput,
+        inventory_state: InventoryState,
+        risk_budget_remaining_pct: float,
+        symbol: str,
+    ) -> RiskPolicyInput:
+        return RiskPolicyInput(
+            symbol=symbol,
+            module_id=execution.lead_playbook_id or execution.lead_family_id or "desk_cognition_runtime",
+            requested_at=requested_at,
+            session_phase=temporal.session_phase,
+            vix_level=regime_input.vix_level,
+            vvix_level=regime_input.vvix_level,
+            vix_change_pct_15m=self._vix_change_proxy(temporal_input, options_flow_input),
+            vvix_change_pct_15m=self._vvix_change_proxy(temporal, regime_input, options_flow_input),
+            data_age_seconds=0,
+            gross_exposure_pct=inventory_state.existing_inventory_pct,
+            risk_budget_remaining_pct=risk_budget_remaining_pct,
+            open_orders_count=inventory_state.open_orders_count,
+            conflict_tags=self._runtime_conflict_tags(posture, execution),
+            vix_caution_threshold=execution.risk_vix_caution_threshold,
+            vix_hot_threshold=execution.risk_vix_hot_threshold,
         )
 
     def apply_final_join(

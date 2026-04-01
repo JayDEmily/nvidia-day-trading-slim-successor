@@ -2640,6 +2640,12 @@ Gate 145 does **not** retire `ModifierRuntimePacket`, `EffectivePolicySnapshot`,
 
 `ExecutionCandidateOwnershipSurface` freezes the bounded Stage 6 truth that starts only after Stage 5 has admitted the candidate pool. It carries the admitted playbook ids seen by execution, the adjudicated playbook ids, the selected lead playbook id, and the contradiction-resolution note so later consumers can distinguish admissibility from candidate ranking without changing stage order.
 
+#### Gate 147 note: overlay evaluation versus terminal-risk application
+
+`TerminalRiskApplicationSurface` freezes one additive seam between the overlay-evaluation decision and the later terminal-risk application step. It preserves the raw overlay decision, the final terminal decision, the posture permission state used during the final application, and one bounded overlap-class ledger so later review and replay consumers can inspect why the terminal action stayed aligned with the overlay, derisked further, or escalated to a posture block.
+
+Gate 147 keeps `ExecutionExpressionOutput.final_risk_join` and the existing final-risk stage packet intact for compatibility. The new seam is carried additively inside `StageLocalHandoffSurface` through `overlay_risk_decision` and `terminal_risk_application`; downstream review/trace consumers are migrated in Gate 148 rather than here.
+
 #### Gate 136 note: additive lifecycle carriage for the continuation specimen
 
 `PositionContextInput` and `LifecyclePlanOutput` freeze the first lawful second-half lifecycle carriage for the `opening_drive_continuation` / `continuation_ladder_exec` specimen without replacing the existing execution-stage packet boundary. The bounded tradable expression family for this specimen is `single_leg_call_debit`, and the admitted lifecycle action set is limited to `add`, `trim`, `flatten`, `hold_small_overnight`, and `block_carry` until later gates broaden behaviour. `ExecutionExpressionInput.position_context` is the additive ingress slot for that bounded managed-position context, while `ExecutionExpressionOutput.lifecycle_plan` is the additive egress slot for the governed second-half plan. These fields are execution-stage payload enrichments only; they do not create a second packet, bypass DMP v2 lineage, or override the existing carry-handoff packet.
