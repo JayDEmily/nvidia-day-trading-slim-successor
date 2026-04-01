@@ -319,7 +319,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-149-reopen-full-suite-closeout-20260402`
 - Start commit: `67fb002`
-- End commit or merged main commit: in progress
+- End commit or merged main commit: `1d60099` (branch closeout commit); merged to `main` at `74919d2`
 - Exact files touched:
   - `PLANS.md`
   - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
@@ -330,20 +330,20 @@ For every completed leaf record:
   - `docs/planning/2026-04-01_GATE149_ABSOLUTE_ANTI_DRIFT_AUDIT_AND_PACK_CLOSEOUT.md`
   - planning tests touched to admit the reopened Gate 149 state while the full-suite fix pass is active
 - Exact validation commands:
-  - pending full-suite baseline from repo-local `.venv`
+  - repo-local `.venv` full-suite baseline and full closed-state rerun completed in ordered batches
 - Observed results:
   - Gate 149 reopened because the earlier closeout proved only a selected proof slice, not the full repo suite.
   - Gate 149 may not close again until the full repo suite is green or any retired tests are justified explicitly.
 - Full suite required: yes
 - Stop conditions hit: none
-- Merge status: not merged
+- Merge status: merged to `main` at `74919d2`
 
 
 ### LEAF-G149-REOPEN-002 through LEAF-G149-REOPEN-003
 
 - Branch: `work/gate-149-reopen-full-suite-closeout-20260402`
 - Start commit: `67fb002`
-- End commit or merged main commit: pending closeout correction on `main`
+- End commit or merged main commit: `1d60099` (branch closeout commit); merged to `main` at `74919d2`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
@@ -386,4 +386,4 @@ For every completed leaf record:
   - No tests were retired in this reopen pass.
 - Full suite required: yes
 - Stop conditions hit: none
-- Merge status: pending merge to `main`
+- Merge status: merged to `main` at `74919d2`
