@@ -61,3 +61,5 @@ Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 1
 - Gate 141 is planning-only; runtime behavior remains the clean Gate 140 baseline.
 - Planning-language seam terms in this pack are not governed runtime vocabulary until a later gate admits them formally through the vocabulary workflow.
 - Gate 149 is the first gate that may package the repo as the new clean full-history handover artifact.
+
+- Gate 142 closes with inventory-only evidence before any additive contract work begins.
