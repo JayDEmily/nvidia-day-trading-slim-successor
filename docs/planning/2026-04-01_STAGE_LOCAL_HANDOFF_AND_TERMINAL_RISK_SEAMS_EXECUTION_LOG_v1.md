@@ -291,7 +291,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-149-anti-drift-audit-closeout-20260401`
 - Start commit: `a7e3071`
-- End commit or merged main commit: `TO_BE_CORRECTED_ON_MAIN_AFTER_MERGE`
+- End commit or merged main commit: `6040a43`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
