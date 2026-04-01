@@ -11,7 +11,14 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from nvda_desk.schemas.cognition import InventoryState, MarketRegimeContextInput
+from nvda_desk.schemas.cognition import (
+    EligibilityAdmissibilitySurface,
+    ExecutionCandidateOwnershipSurface,
+    InventoryState,
+    MarketRegimeContextInput,
+    TerminalRiskApplicationSurface,
+)
+from nvda_desk.schemas.risk import RiskDecision
 from nvda_desk.schemas.dataset import PreparedRuntimeSnapshot
 
 
@@ -72,6 +79,10 @@ class BoundedTraceRunResult(BaseModel):
     final_risk_action: str | None = None
     target_fresh_deployable_pct: float
     effective_surfaces: dict[str, float | bool | None] = Field(default_factory=dict)
+    admissibility_surface: EligibilityAdmissibilitySurface | None = None
+    candidate_ownership: ExecutionCandidateOwnershipSurface | None = None
+    overlay_risk_decision: RiskDecision | None = None
+    terminal_risk_application: TerminalRiskApplicationSurface | None = None
     summary: str
     expected_human_read: str
 

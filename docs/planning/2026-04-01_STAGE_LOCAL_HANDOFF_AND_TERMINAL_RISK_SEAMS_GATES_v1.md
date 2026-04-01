@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gates 141-147 complete on `main`, Gate 148 active, Gate 149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-148 complete on `main`, Gate 149 active
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -227,7 +227,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 148: Reconcile review, trace, replay, and legacy expectation surfaces to the new seams
 
 **Status**
-- active on `main`
+- complete on `main`
 
 **Objective**
 - migrate downstream consumers, reporting, and expectation tests to the preserved-seam model once the new contracts exist.
@@ -235,7 +235,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 149: Run the absolute anti-drift audit and package the exact green repo state
 
 **Status**
-- planned
+- active on `main`
 
 **Objective**
 - prove the active pack, leaves ledger, execution log, vocabulary/data authority references, tests, and packaged repo all agree on the final green state.
