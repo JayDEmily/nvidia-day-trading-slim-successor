@@ -83,7 +83,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-143-additive-stage-local-handoff-20260401`
 - Start commit: `0e92f79`
-- End commit or merged main commit: `TO_BE_CORRECTED_AFTER_MERGE`
+- End commit or merged main commit: `37bab85`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
@@ -107,4 +107,4 @@ For every completed leaf record:
   - Router, gate map, leaves ledger, and execution log advanced to Gate 144 on the same branch.
 - Full suite required: no
 - Stop conditions hit: none
-- Merge status: pending at receipt write time
+- Merge status: merged to `main`
