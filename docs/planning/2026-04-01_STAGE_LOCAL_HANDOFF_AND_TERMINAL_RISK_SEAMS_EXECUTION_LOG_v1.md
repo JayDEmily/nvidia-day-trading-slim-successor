@@ -27,7 +27,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-141-stage-local-handoff-seams-20260401`
 - Start commit: `260b1a2`
-- End commit or merged main commit: `978fe6f`
+- End commit or merged main commit: `c376c1c`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
