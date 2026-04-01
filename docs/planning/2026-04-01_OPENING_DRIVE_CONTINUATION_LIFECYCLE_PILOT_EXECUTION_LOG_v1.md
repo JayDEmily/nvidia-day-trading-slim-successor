@@ -1,6 +1,6 @@
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1
 
-Status: active execution log for the opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned
+Status: active execution log for the opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active
 
 ## Purpose
 
@@ -254,7 +254,71 @@ For every completed leaf record:
 
 ## Gate 138 receipts
 
-_Planned only; no receipts yet._
+### LEAF-G138-001
+- gate id: Gate 138
+- leaf id: `LEAF-G138-001`
+- branch name: `work/gate-138-carry-lifecycle-integration-20260401`
+- start commit: `d542e1b`
+- end commit or merged main commit: `53883a5`
+- exact files touched:
+  - `docs/03_DOMAIN_MODEL.md`
+  - `src/nvda_desk/schemas/overnight.py`
+  - `src/nvda_desk/services/carry_handoff.py`
+  - `tests/test_gate48_carry_handoff.py`
+  - `tests/test_gate53_carry_handoff.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py`
+- observed results:
+  - carry handoff now carries lifecycle nomination, ceilings, and rationale from the same execution-stage lifecycle plan
+  - review-visible handoff truth now names the specimen lifecycle state instead of forcing carry to infer it from coarse active-playbook lists
+- full suite required: no
+- stop condition hit: none
+- receipt recorded: recorded live
+
+### LEAF-G138-002
+- gate id: Gate 138
+- leaf id: `LEAF-G138-002`
+- branch name: `work/gate-138-carry-lifecycle-integration-20260401`
+- start commit: `d542e1b`
+- end commit or merged main commit: `53883a5`
+- exact files touched:
+  - `src/nvda_desk/services/carry_market.py`
+  - `tests/test_gate53_carry_handoff.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py`
+- observed results:
+  - market carry downgrades now report lifecycle ceilings explicitly when the handoff blocks or caps carry
+  - the existing carry evaluator remains the single downstream engine and consumes the richer handoff additively
+- full suite required: no
+- stop condition hit: none
+- receipt recorded: recorded live
+
+### LEAF-G138-003
+- gate id: Gate 138
+- leaf id: `LEAF-G138-003`
+- branch name: `work/gate-138-carry-lifecycle-integration-20260401`
+- start commit: `d542e1b`
+- end commit or merged main commit: `53883a5`
+- exact files touched:
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `tests/test_execution_review_runtime.py`
+  - `tests/test_gate48_carry_handoff.py`
+  - `tests/test_gate53_carry_handoff.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py tests/test_dmp_review_trace.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_execution_review_runtime.py tests/test_carry_review_cli_and_legacy.py tests/test_dmp_review_trace.py`
+- observed results:
+  - Gate 138 proof slices remained green after lifecycle-aware carry integration landed
+  - active pack advanced to Gate 139 with Gate 138 closed in the planning surfaces
+- full suite required: yes, gate-close slice
+- stop condition hit: none
+- receipt recorded: recorded live
 
 ## Gate 139 receipts
 

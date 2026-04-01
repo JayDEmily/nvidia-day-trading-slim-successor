@@ -1,4 +1,4 @@
-Status: active opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned
+Status: active opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Gates v1
 
 ## Purpose
@@ -252,7 +252,7 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 ### Gate 138: Integrate lifecycle output with the carry branch
 
 **Status**
-- active next gate on `main`
+- complete on `main`
 
 **Objective**
 - Feed lifecycle state into the existing carry path so late-session continuation management becomes an explicit continuation of the same chain rather than a detached parallel decision.
@@ -270,6 +270,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 - the specimen’s carry truth is review-visible and packet-lineage-safe.
 
 ### Gate 139: Add a bounded position-instance ledger and close the pack honestly
+
+**Status**
+- active next gate on `main`
 
 **Objective**
 - Upgrade the execution ledger just enough to persist and reconstruct one managed continuation position instance, then close the lifecycle pilot pack honestly.

@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_137_complete_gate_138_active_on_main",
-  "active_gate": "Gate 138",
+  "execution_status": "gate_138_complete_gate_139_active_on_main",
+  "active_gate": "Gate 139",
   "supersedes": [
     "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md"
   ],
@@ -20,9 +20,6 @@
     "LEAF-G136-004"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G138-001",
-    "LEAF-G138-002",
-    "LEAF-G138-003",
     "LEAF-G139-001",
     "LEAF-G139-002",
     "LEAF-G139-003",
@@ -792,7 +789,7 @@
       "gate": "Gate 138",
       "title": "Extend carry handoff with lifecycle nomination and ceilings",
       "objective": "Add the bounded lifecycle nomination, carry ceiling, and flatten constraints the carry handoff needs to consume the specimen cleanly.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G137-004"
       ],
@@ -855,7 +852,7 @@
       "gate": "Gate 138",
       "title": "Align carry evaluator downgrade logic with lifecycle-aware handoff",
       "objective": "Make the carry evaluator consume the richer handoff and preserve deterministic downgrade/flatten behaviour for the specimen.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G138-001"
       ],
@@ -913,7 +910,7 @@
       "gate": "Gate 138",
       "title": "Freeze carry-branch integration proofs and close Gate 138",
       "objective": "Prove the carry branch now consumes lifecycle-aware specimen output and close the integration gate honestly before ledger work begins.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G138-002"
       ],
@@ -980,7 +977,7 @@
       "gate": "Gate 139",
       "title": "Freeze the bounded position-instance ledger contract",
       "objective": "Define the smallest lawful execution-record contract that can persist and reconstruct one managed specimen position instance without pretending to solve all broker semantics.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G138-003"
       ],
@@ -1042,7 +1039,7 @@
       "gate": "Gate 139",
       "title": "Add additive execution-record, DB, and service surfaces",
       "objective": "Implement the new bounded persistence surfaces needed to record and rebuild specimen position instances.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G139-001"
       ],
@@ -1100,7 +1097,7 @@
       "gate": "Gate 139",
       "title": "Persist and reconstruct lifecycle-aware specimen state end to end",
       "objective": "Prove the specimen lifecycle state can be persisted and reconstructed through the live execution-record services without a second hidden path.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G139-002"
       ],
@@ -1157,7 +1154,7 @@
       "gate": "Gate 139",
       "title": "Close the lifecycle pilot pack honestly and package the exact repo state",
       "objective": "Close the pilot pack through Gate 139 with the planning quartet, receipts, tests, and packaging all aligned.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G139-003"
       ],
