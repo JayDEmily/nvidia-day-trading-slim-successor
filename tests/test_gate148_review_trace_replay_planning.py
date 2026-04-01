@@ -24,5 +24,5 @@ def test_gate148_closeout_advances_router_truth() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
-    assert "active gate: Gate 149 on `main`" in plans or "closed through Gate 149 on `main`" in plans
-    assert "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "closed through Gate 149 on `main`" in gate_map
+    assert ("active gate: Gate 149 on `main`" in plans or "closed through Gate 149 on `main`" in plans or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans)
+    assert ("Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "closed through Gate 149 on `main`" in gate_map)

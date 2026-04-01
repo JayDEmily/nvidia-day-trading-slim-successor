@@ -25,7 +25,7 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 129 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
-    "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
+    "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
 
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
@@ -58,16 +58,22 @@ def test_signal_coefficient_authority_pack_is_active() -> None:
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+        or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
         or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+        or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
         or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+        or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
         or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md" in plans
     )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
@@ -96,7 +102,7 @@ def test_signal_coefficient_authority_pack_is_active() -> None:
         "Gate 125",
         "Gate 126",
         "Gate 127",
-        "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main",
+        "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main", "Gate 149", "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on main",
     }
     assert len(leaves["remaining_leaf_ids"]) in {17, 14, 11, 8, 5, 2, 0}
     assert execution_log.startswith("# 2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1")

@@ -34,6 +34,8 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
     assert "2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md" in plans
     assert (
         "no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+        or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
         or "bounded trace scenario review pack active at Gate 134 on `main`" in plans
         or "opening-drive continuation lifecycle pilot pack active at Gate 135" in plans
         or "opening-drive continuation lifecycle pilot pack active at Gate 137 after Gates 135-136 closed on `main`" in plans
@@ -43,6 +45,8 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
     )
     assert (
         "Current active gate: **none — bounded trace scenario review pack closed through Gate 134 on `main`**." in gate_map
+        or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
         or "Current active gate: **Gate 134 in the bounded trace scenario review pack**." in gate_map
         or "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**." in gate_map
         or "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**." in gate_map

@@ -949,7 +949,7 @@
       "expected_evidence": [],
       "definition_of_done": [],
       "closeout_updates_required": [],
-      "full_suite_required": false,
+      "full_suite_required": true,
       "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
       "document_touch_surfaces": []
     },
@@ -976,7 +976,7 @@
       "expected_evidence": [],
       "definition_of_done": [],
       "closeout_updates_required": [],
-      "full_suite_required": false,
+      "full_suite_required": true,
       "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
       "document_touch_surfaces": []
     },
@@ -1003,7 +1003,7 @@
       "expected_evidence": [],
       "definition_of_done": [],
       "closeout_updates_required": [],
-      "full_suite_required": false,
+      "full_suite_required": true,
       "packaging_requirement": "Fresh full-history zip required only when a gate definition says so.",
       "document_touch_surfaces": []
     }

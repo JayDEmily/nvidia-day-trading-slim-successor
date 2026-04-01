@@ -27,7 +27,7 @@ def test_gate122_is_closed_honestly_and_gate123_is_active() -> None:
         or "Gates 122-124 complete and Gate 125 now active" in plans
         or "Gates 122-125 complete and Gate 126 now active" in plans
         or "Gates 122-126 complete and Gate 127 now active" in plans
-        or "signal-coefficient authority pack closed through Gate 127" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
+        or "signal-coefficient authority pack closed through Gate 127" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "stage-local handoff and terminal-risk seams pack" in plans
     )
     assert (
         "Current active gate: **Gate 123 in the signal-coefficient authority pack**." in gate_map
@@ -35,7 +35,7 @@ def test_gate122_is_closed_honestly_and_gate123_is_active() -> None:
         or "Current active gate: **Gate 125 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 127 in the signal-coefficient authority pack**." in gate_map
-        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
     )
     assert (
         "Status: active signal-coefficient authority pack; Gate 122 complete on `main`, Gate 123 active, Gates 124-127 planned" in gates
@@ -46,7 +46,7 @@ def test_gate122_is_closed_honestly_and_gate123_is_active() -> None:
         or "Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate" in gates
     )
     assert leaves["execution_status"] in {"gate_122_complete_gate_123_active_on_main", "gate_123_complete_gate_124_active_on_main", "gate_124_complete_gate_125_active_on_main", "gate_125_complete_gate_126_active_on_main", "gate_126_complete_gate_127_active_on_main", "signal_coefficient_authority_pack_closed_through_gate_127_on_main"}
-    assert leaves["active_gate"] in {"Gate 123", "Gate 124", "Gate 125", "Gate 126", "Gate 127", "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main"}
+    assert leaves["active_gate"] in {"Gate 123", "Gate 124", "Gate 125", "Gate 126", "Gate 127", "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main", "Gate 149", "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on main"}
     assert leaves["completed_gate_ids"][:1] == ["Gate 122"]
     assert leaves["completed_leaf_ids"][:3] == ["LEAF-G122-001", "LEAF-G122-002", "LEAF-G122-003"]
     assert len(leaves["remaining_leaf_ids"]) in {14, 11, 8, 5, 2, 0}
