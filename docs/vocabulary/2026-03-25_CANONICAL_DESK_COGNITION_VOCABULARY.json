@@ -701,6 +701,25 @@
       ]
     },
     {
+      "canonical_slug": "modifier_compatibility_bridge",
+      "canonical_label": "Modifier Compatibility Bridge",
+      "category": "compatibility_surface",
+      "stage_owner": "state_conditioned_modifier",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ModifierCompatibilityBridgeSurface",
+      "allowed_aliases": [
+        "compatibility_bridge_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Explicit additive bridge showing which posture or execution fields were changed from the modifier runtime packet while the packet remains the authority."
+      ]
+    },
+    {
       "canonical_slug": "prohibited_runtime_variation",
       "canonical_label": "Prohibited Runtime Variation",
       "category": "workflow",

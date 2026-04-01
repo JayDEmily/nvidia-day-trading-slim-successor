@@ -405,6 +405,23 @@ class PostureLocalEnvelopeSurface(BaseModel):
     derisk_reasons: list[str] = Field(default_factory=list)
 
 
+class ModifierCompatibilityBridgeSurface(BaseModel):
+    """Explicit compatibility bridge showing packet-authoritative field consequences."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    authority_source: str = "modifier_runtime_packet"
+    compatibility_bridge_active: bool = False
+    applied_policy_ids: list[str] = Field(default_factory=list)
+    overridden_fields: list[str] = Field(default_factory=list)
+    target_fresh_deployable_capital_pct: float | None = None
+    entry_gate_score_floor: float | None = None
+    zone_score_threshold: float | None = None
+    max_risk_per_trade: float | None = None
+    hedge_required: bool | None = None
+    notes: list[str] = Field(default_factory=list)
+
+
 class PostureRiskOutput(BaseModel):
     """Binding posture, permission, and deployable-capital output."""
 
@@ -427,6 +444,7 @@ class PostureRiskOutput(BaseModel):
     hard_invariants: PostureHardInvariantsSurface | None = None
     local_envelope: PostureLocalEnvelopeSurface | None = None
     downstream_annotations: list[str] = Field(default_factory=list)
+    modifier_compatibility_bridge: ModifierCompatibilityBridgeSurface | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
     stand_down_class: NonActionClass | None = None
     conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
@@ -646,6 +664,7 @@ class ExecutionExpressionOutput(BaseModel):
     exit_plan: list[str] = Field(default_factory=list)
     lifecycle_plan: LifecyclePlanOutput | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    modifier_compatibility_bridge: ModifierCompatibilityBridgeSurface | None = None
     final_risk_join: FinalRiskJoinSurface | None = None
     reasons: list[str] = Field(default_factory=list)
 

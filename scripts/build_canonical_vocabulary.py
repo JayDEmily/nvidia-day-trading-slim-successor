@@ -391,6 +391,17 @@ def build_document() -> VocabularyDocument:
             ],
         ),
         VocabularyEntry(
+            canonical_slug="modifier_compatibility_bridge",
+            canonical_label="Modifier Compatibility Bridge",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="state_conditioned_modifier",
+            maps_to_contract="nvda_desk.schemas.cognition.ModifierCompatibilityBridgeSurface",
+            allowed_aliases=["compatibility_bridge_surface"],
+            notes=[
+                "Explicit additive bridge showing which posture or execution fields were changed from the modifier runtime packet while the packet remains the authority."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="prohibited_runtime_variation",
             canonical_label="Prohibited Runtime Variation",
             category=VocabularyCategory.WORKFLOW,

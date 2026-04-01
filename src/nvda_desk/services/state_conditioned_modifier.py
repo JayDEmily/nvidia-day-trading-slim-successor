@@ -15,6 +15,7 @@ from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     GammaState,
     MarketRegimeContextOutput,
+    ModifierCompatibilityBridgeSurface,
     OptionsFlowContextOutput,
     PermissionState,
     PostureRiskOutput,
@@ -587,6 +588,88 @@ class StateConditionedModifierService:
             notes=notes,
         )
 
+    def _posture_bridge_surface(
+        self,
+        *,
+        posture: PostureRiskOutput,
+        packet: ModifierRuntimePacket,
+        update: dict[str, object],
+        target_fresh: float | None,
+    ) -> ModifierCompatibilityBridgeSurface:
+        overridden_fields: list[str] = []
+        compared_fields = (
+            "permission_state",
+            "posture_label",
+            "fresh_deployable_capital_pct",
+            "overnight_deployable_capital_pct",
+            "inventory_action_bias",
+        )
+        for field_name in compared_fields:
+            if field_name in update and update[field_name] != getattr(posture, field_name):
+                overridden_fields.append(field_name)
+        notes = ["modifier_runtime_packet_authority"]
+        if overridden_fields:
+            notes.append("posture_fields_overridden_by_compatibility_bridge")
+        else:
+            notes.append("no_posture_field_override_required")
+        return ModifierCompatibilityBridgeSurface(
+            compatibility_bridge_active=bool(packet.active_policy_ids or overridden_fields or packet.triggered_kill_switch is not None),
+            applied_policy_ids=list(packet.active_policy_ids),
+            overridden_fields=overridden_fields,
+            target_fresh_deployable_capital_pct=(
+                round(float(target_fresh), 4) if target_fresh is not None else None
+            ),
+            notes=notes,
+        )
+
+    def _execution_bridge_surface(
+        self,
+        *,
+        execution: ExecutionExpressionOutput,
+        packet: ModifierRuntimePacket,
+        update: dict[str, object],
+        target_fresh: float | None,
+        hedge_required: bool | None,
+    ) -> ModifierCompatibilityBridgeSurface:
+        overridden_fields: list[str] = []
+        compared_fields = (
+            "entry_gate_score_floor",
+            "zone_score_threshold",
+            "distance_to_vwap_soft_limit_pct",
+            "risk_vix_caution_threshold",
+            "risk_vix_hot_threshold",
+            "max_risk_per_trade",
+            "target_fresh_deployable_pct",
+            "hedge_required",
+        )
+        for field_name in compared_fields:
+            if field_name in update and update[field_name] != getattr(execution, field_name):
+                overridden_fields.append(field_name)
+        notes = ["modifier_runtime_packet_authority"]
+        if overridden_fields:
+            notes.append("execution_fields_overridden_by_compatibility_bridge")
+        else:
+            notes.append("execution_operative_surfaces_already_reflect_modifier_runtime_packet")
+        return ModifierCompatibilityBridgeSurface(
+            compatibility_bridge_active=bool(packet.active_policy_ids or overridden_fields or packet.triggered_kill_switch is not None),
+            applied_policy_ids=list(packet.active_policy_ids),
+            overridden_fields=overridden_fields,
+            target_fresh_deployable_capital_pct=(
+                round(float(target_fresh), 4) if target_fresh is not None else None
+            ),
+            entry_gate_score_floor=self._resolved_numeric(
+                packet, MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR
+            ),
+            zone_score_threshold=self._resolved_numeric(
+                packet, MutableRuntimeSurface.ZONE_SCORE_THRESHOLD
+            ),
+            max_risk_per_trade=self._resolved_numeric(
+                packet, MutableRuntimeSurface.MAX_RISK_PER_TRADE
+            ),
+            hedge_required=hedge_required,
+            notes=notes,
+        )
+
     def apply_to_posture(
         self, posture: PostureRiskOutput, packet: ModifierRuntimePacket
     ) -> PostureRiskOutput:
@@ -613,6 +696,7 @@ class StateConditionedModifierService:
             conflict_note = f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}"
             reasons.append(conflict_note)
             downstream_annotations.append(conflict_note)
+        downstream_annotations.append("modifier_runtime_packet_authority")
         if target_fresh is None:
             target_fresh = posture.fresh_deployable_capital_pct
 
@@ -653,6 +737,12 @@ class StateConditionedModifierService:
                 update["posture_label"] = "state_conditioned_derisk"
                 if posture.inventory_action_bias == "add":
                     update["inventory_action_bias"] = "hold"
+        update["modifier_compatibility_bridge"] = self._posture_bridge_surface(
+            posture=posture,
+            packet=packet,
+            update=update,
+            target_fresh=target_fresh,
+        )
         return posture.model_copy(update=update)
 
     def apply_to_execution(
@@ -678,7 +768,7 @@ class StateConditionedModifierService:
         }
         for surface, field_name in numeric_surface_field_map.items():
             effective = self._resolved_numeric(packet, surface)
-            if effective is not None:
+            if effective is not None and round(float(getattr(execution, field_name)), 4) != round(float(effective), 4):
                 update[field_name] = round(effective, 4)
         if hedge_required and not execution.hedge_required:
             update["hedge_required"] = True
@@ -687,14 +777,25 @@ class StateConditionedModifierService:
             if "modifier_runtime_required_hedge" not in exit_reasons:
                 exit_reasons.append("modifier_runtime_required_hedge")
             update["exit_reasons"] = exit_reasons
-        elif hedge_required is not None:
+        elif hedge_required is not None and execution.hedge_required != hedge_required:
             update["hedge_required"] = hedge_required
-        if target_fresh is not None:
+        if (
+            target_fresh is not None
+            and round(float(min(execution.target_fresh_deployable_pct, target_fresh)), 4)
+            != round(float(execution.target_fresh_deployable_pct), 4)
+        ):
             update["target_fresh_deployable_pct"] = round(
                 min(execution.target_fresh_deployable_pct, target_fresh), 4
             )
         if any(policy_id.startswith("precursor:") for policy_id in packet.active_policy_ids):
             reasons.append("modifier_runtime_surfaces_extended_to_execution_output")
+        update["modifier_compatibility_bridge"] = self._execution_bridge_surface(
+            execution=execution,
+            packet=packet,
+            update=update,
+            target_fresh=target_fresh,
+            hedge_required=hedge_required,
+        )
         update["reasons"] = reasons
         return execution.model_copy(update=update)
 

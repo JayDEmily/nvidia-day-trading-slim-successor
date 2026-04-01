@@ -2628,6 +2628,12 @@ Gate 143 does **not** retire `final_risk_join` or the existing `pre_final_risk_*
 
 `PostureRiskOutput.downstream_annotations` is the bounded compatibility ledger for non-posture-owned additions such as selector-contract citations and later modifier notes. Gate 144 keeps the flat posture fields and `reasons` list intact for compatibility, but downstream consumers can now distinguish posture-owned truth from later annotations without reading prose heuristically.
 
+#### Gate 145 note: modifier compatibility bridge
+
+`ModifierCompatibilityBridgeSurface` freezes one additive bridge that states exactly which posture or execution fields were changed from `ModifierRuntimePacket` authority while the packet remains the governing source of truth. The bridge is carried on both `PostureRiskOutput.modifier_compatibility_bridge` and `ExecutionExpressionOutput.modifier_compatibility_bridge`.
+
+Gate 145 does **not** retire `ModifierRuntimePacket`, `EffectivePolicySnapshot`, or the existing flat compatibility fields. Instead it makes the bridge explicit: posture mutation remains a bounded compatibility consequence of packet authority, and execution mutation becomes a no-op bridge unless the post-evaluate packet correction still needs to change a field after `ExecutionExpressionService` has already read the packet through `_operative_surfaces(...)`.
+
 #### Gate 136 note: additive lifecycle carriage for the continuation specimen
 
 `PositionContextInput` and `LifecyclePlanOutput` freeze the first lawful second-half lifecycle carriage for the `opening_drive_continuation` / `continuation_ladder_exec` specimen without replacing the existing execution-stage packet boundary. The bounded tradable expression family for this specimen is `single_leg_call_debit`, and the admitted lifecycle action set is limited to `add`, `trim`, `flatten`, `hold_small_overnight`, and `block_carry` until later gates broaden behaviour. `ExecutionExpressionInput.position_context` is the additive ingress slot for that bounded managed-position context, while `ExecutionExpressionOutput.lifecycle_plan` is the additive egress slot for the governed second-half plan. These fields are execution-stage payload enrichments only; they do not create a second packet, bypass DMP v2 lineage, or override the existing carry-handoff packet.

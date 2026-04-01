@@ -146,3 +146,36 @@ For every completed leaf record:
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`
+
+
+## Gate 145 receipts
+
+### LEAF-G145-001 through LEAF-G145-002
+
+- Branch: `work/gate-145-modifier-emitted-policy-compatibility-bridge-20260401`
+- Start commit: `b24e5bb`
+- End commit or merged main commit: `PENDING_GATE145_CLOSEOUT_CORRECTION`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_GATE145_MODIFIER_EMITTED_POLICY_COMPATIBILITY_BRIDGE.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/state_conditioned_modifier.py`
+  - `tests/test_gate145_modifier_policy_bridge_runtime.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate78_modifier_runtime_integration.py tests/test_gate50_vocabulary_governance.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate144_posture_split_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate142_overwrite_and_ownership_inventory.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_gate50_vocabulary_governance.py tests/test_document_hygiene.py`
+- Observed results:
+  - Gate 145 admits one additive modifier compatibility bridge surface and keeps `ModifierRuntimePacket` as the authority.
+  - Posture bridge now makes packet-driven flat-field overrides explicit; execution bridge reports when evaluate-time operative surfaces already reflect the packet and no extra mutation is required.
+  - Router, gate map, leaves ledger, and execution log advance to Gate 146 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`
