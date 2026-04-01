@@ -55,7 +55,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-142-overwrite-inventory-and-preserved-artifacts-20260401`
 - Start commit: `1140919`
-- End commit or merged main commit: `TO_BE_CORRECTED_AFTER_MERGE`
+- End commit or merged main commit: `0d5ce0c`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
@@ -74,4 +74,4 @@ For every completed leaf record:
   - Router, gate map, leaves ledger, and execution log advanced to Gate 143 on the same branch.
 - Full suite required: no
 - Stop conditions hit: none
-- Merge status: pending at receipt write time
+- Merge status: merged to `main`
