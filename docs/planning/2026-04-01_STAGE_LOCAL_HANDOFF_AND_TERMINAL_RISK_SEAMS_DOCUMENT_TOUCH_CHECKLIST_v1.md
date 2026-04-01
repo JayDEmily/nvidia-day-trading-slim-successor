@@ -66,3 +66,4 @@ Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 1
 - Gate 143 admits additive handoff carriage only; final-risk behaviour remains boundedly unchanged.
 
 - Gate 144 closes with additive posture-owned split surfaces only; modifier packet authority remains the next gate.
+- Gate 145 closes with explicit modifier compatibility-bridge surfaces while ModifierRuntimePacket remains the authority.

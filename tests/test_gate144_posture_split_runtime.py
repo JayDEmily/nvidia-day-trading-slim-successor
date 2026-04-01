@@ -29,11 +29,12 @@ def test_gate144_posture_split_preserves_base_surface_and_annotations() -> None:
     assert result.posture.local_envelope is not None
     assert result.posture.local_envelope.base_permission_state.value == "allow"
     assert result.posture.local_envelope.base_posture_label == "probe"
-    assert result.posture.downstream_annotations == [
+    assert result.posture.downstream_annotations[:3] == [
         "contract:signal_conflict_detector:aligned",
         "contract:model_confidence_scorer:high",
         "contract:conviction_tier_allocator:tier_2",
     ]
+    assert "modifier_runtime_packet_authority" in result.posture.downstream_annotations
     assert result.review.review_packet["posture"]["local_envelope"]["base_permission_state"] == "allow"
     assert result.review.review_packet["stage_local_handoff"]["cited_posture_pre_modifier"]["downstream_annotations"] == [
         "contract:signal_conflict_detector:aligned",

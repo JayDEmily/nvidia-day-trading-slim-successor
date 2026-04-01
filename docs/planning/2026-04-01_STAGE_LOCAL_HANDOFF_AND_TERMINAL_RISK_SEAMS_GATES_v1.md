@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gates 141-144 complete on `main`, Gate 145 active, Gates 146-149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-145 complete on `main`, Gate 146 active, Gates 147-149 planned
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -203,7 +203,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 145: Realign modifier authority from mutation-first to emitted-policy-first
 
 **Status**
-- active on `main`
+- complete on `main`
 
 **Objective**
 - move modifier authority toward emitted policy, resolved surfaces, and review-visible lineage while keeping a bounded compatibility bridge until consumers migrate.
