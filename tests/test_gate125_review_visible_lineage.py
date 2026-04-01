@@ -69,7 +69,7 @@ def test_gate125_closeout_advances_pack_to_gate126() -> None:
         or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map
-        or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
     )
     assert (
         "Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in gates

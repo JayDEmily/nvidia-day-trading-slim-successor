@@ -20,7 +20,11 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- no active pack currently routed; stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
+- gates: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+- leaves: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- active gate: none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 
 ## Latest closed pack retained as evidence
 
@@ -65,7 +69,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack is the no active pack currently routed; stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
+- no active pack currently routed; stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective evidence remains the execution-ledger Alembic parity corrective pack through Gate 140 on `main`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`

@@ -17,7 +17,18 @@ def test_gate_46_to_50_are_complete_and_gate_45_stays_retired() -> None:
     gate_map = GATE_MAP.read_text()
     plans = PLANS.read_text()
 
-    assert ("post-flight repo consistency pack active at Gate 128" in plans or "post-flight repo consistency pack active at Gate 129" in plans or "post-flight repo consistency pack active at Gate 130" in plans or "post-flight repo consistency pack active at Gate 131" in plans or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans)
+    assert any(
+        marker in plans
+        for marker in {
+            "post-flight repo consistency pack active at Gate 128",
+            "post-flight repo consistency pack active at Gate 129",
+            "post-flight repo consistency pack active at Gate 130",
+            "post-flight repo consistency pack active at Gate 131",
+            "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`",
+            "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`",
+            "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`",
+        }
+    )
     assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "Gate 45 is retired as a placeholder" in gate_map
     assert "| Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` |" in gate_map

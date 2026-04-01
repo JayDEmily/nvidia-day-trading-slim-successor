@@ -29,6 +29,8 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
         or "post-flight repo consistency pack active at Gate 130" in plans
         or "post-flight repo consistency pack active at Gate 131" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+        or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
     )
     assert "signal-coefficient authority pack closed through Gate 127" in plans
     assert "| Gate 95 | complete on `main` |" in gate_map
@@ -48,6 +50,8 @@ def test_phase0_closeout_moves_active_gate_to_gate96() -> None:
         or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
     )
     assert leaves["execution_status"] in {
         "gate_95_testing_module_pack_active_from_gate_96",

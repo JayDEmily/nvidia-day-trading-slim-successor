@@ -28,6 +28,8 @@ def test_gate132_router_and_gate_map_allow_the_new_pack() -> None:
         or "Gate 133 in the bounded trace scenario review pack" in gate_map
         or "Gate 134 in the bounded trace scenario review pack" in gate_map
         or "none — bounded trace scenario review pack closed through Gate 134 on `main`" in gate_map
+        or "Gate 149 in the stage-local handoff and terminal-risk seams pack" in gate_map
+        or "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in gate_map
     )
     assert "Gate 132" in leaves
 

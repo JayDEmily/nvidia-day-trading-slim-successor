@@ -1,4 +1,4 @@
-Status: closed stage-local handoff and terminal-risk seams pack on `main`; Gates 141-149 complete, no active gate
+Status: closed stage-local handoff and terminal-risk seams pack through Gate 149 on `main`
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -238,4 +238,4 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 - complete on `main`
 
 **Objective**
-- prove the active pack, leaves ledger, execution log, vocabulary/data authority references, tests, and packaged repo all agree on the final green state.
+- prove the active pack, leaves ledger, execution log, vocabulary/data authority references, tests, and packaged repo all agree on the final green state, with the full repo suite green before Gate 149 may close again.

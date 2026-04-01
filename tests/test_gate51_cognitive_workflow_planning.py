@@ -73,4 +73,4 @@ def test_gate51_outputs_pin_step0_and_candidate_boundaries() -> None:
     assert "family -> setup_variant -> execution_expression" in gate52
     assert "weekend, ordinary overnight, and event carry" in gate53
     assert "Gates 51–55 are complete on `main`" in gate_map
-    assert ("Gate 128 is complete on `main`" in gate_map) or ("Gate 129 is active on `main`" in gate_map) or ("Gate 130 is active on `main`" in gate_map) or ("Gates 128-130 are complete on `main`; Gate 131 is active on `main`." in gate_map) or ("Gates 128-131 are complete on `main`." in gate_map)
+    assert ("Gate 128 is complete on `main`" in gate_map) or ("Gate 129 is active on `main`" in gate_map) or ("Gate 130 is active on `main`" in gate_map) or ("Gates 128-130 are complete on `main`; Gate 131 is active on `main`." in gate_map) or ("Gates 128-131 are complete on `main`." in gate_map) or ("Gate 149 in the stage-local handoff and terminal-risk seams pack" in gate_map) or ("Gates 141-149 are complete on `main`" in gate_map)

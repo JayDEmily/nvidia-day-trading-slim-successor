@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the stage-local handoff and terminal-risk seams pack.
 
-Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 145 -> Gate 146 -> Gate 147 -> Gate 148 -> Gate 149.
+Current planned sequence: none — the stage-local handoff and terminal-risk seams pack is closed through Gate 149 on `main`.
 
 ## Frozen law surfaces checked
 
@@ -71,4 +71,4 @@ Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 1
 - Gate 147 closes with an additive overlay-versus-terminal-risk seam only; final-risk execution effects remain boundedly unchanged until Gate 148 migrates downstream consumers.
 
 - Gate 148 closes by reconciling downstream review and bounded-trace consumers to the preserved seam surfaces while keeping `stage_local_handoff` and `final_risk_join` intact for compatibility.
-- Gate 149 closes the pack by auditing router truth, proof commands, receipts, and packaging from the exact green `main` state.
+- Gate 149 reclosed after the full repo suite was proven green on the final closed state; router truth, proof commands, receipts, and packaging now reflect that exact green `main` state.

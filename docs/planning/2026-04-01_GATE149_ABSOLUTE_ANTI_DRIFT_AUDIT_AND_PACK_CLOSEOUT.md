@@ -1,10 +1,10 @@
 # 2026-04-01 Gate 149 Absolute Anti-Drift Audit and Pack Closeout
 
-Status: complete on `main`
+Status: complete on `main` after reopen-for-full-suite closeout
 
 ## Purpose
 
-Run the absolute anti-drift audit across the active pack, leaves ledger, execution log, router, gate map, runtime receipts, vocabulary references, and proof commands, then package the exact green repo state as the new recoverable handover artifact.
+Run the absolute anti-drift audit across the active pack, leaves ledger, execution log, router, gate map, runtime receipts, vocabulary references, and proof commands, then make the full repo suite green and package the exact green repo state as the new recoverable handover artifact.
 
 ## Admitted governed vocabulary
 
@@ -22,15 +22,22 @@ The audit must prove that all of the following agree on the final green state:
 - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
 - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - Gate 141-149 receipts
-- the declared proof slice recorded in the execution log
+- the full repo suite recorded in the execution log
 
 ## Closure truth
 
-After Gate 149 closes:
+After Gate 149 closes again:
 - there is no active pack currently routed;
 - the stage-local handoff and terminal-risk seams pack is closed through Gate 149 on `main`;
 - the latest closed corrective evidence remains the Gate 140 execution-ledger Alembic parity corrective pack;
 - the repo is packaged as one fresh full-history zip from the exact green state.
+
+## Reopen closeout evidence
+
+- The earlier Gate 149 closeout is superseded because it proved only a selected slice, not the full repo suite.
+- The reopen closeout proved the full suite in ordered batches on the exact Gate 149 branch state that is about to reclose.
+- Observed ordered full-suite result: **484 passed**.
+- No tests were retired in the reopen pass.
 
 ## Packaging boundary
 
@@ -38,7 +45,9 @@ The packaged artifact must preserve `.git` history and exclude `.venv` plus cach
 
 ## Behaviour boundary
 
-Gate 149 must not change runtime semantics. It may only:
+Gate 149 must not change runtime semantics unless a failing test proves prior closeout drift or a redundant test is retired with explicit receipt-level justification. It may:
 - correct drift in planning/router/test truth;
-- record the declared proof commands and observed results;
+- repair non-semantic defects required to make the full suite green;
+- retire redundant tests only with explicit reason recorded in the execution log and receipt;
+- record the full-suite commands and observed results;
 - package the exact green state.

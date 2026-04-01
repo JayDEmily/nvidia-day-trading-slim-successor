@@ -66,13 +66,13 @@ def test_gate124_closeout_advances_pack_but_allows_later_statuses() -> None:
         "Gates 122-124 complete and Gate 125 now active" in plans
         or "Gates 122-125 complete and Gate 126 now active" in plans
         or "Gates 122-126 complete and Gate 127 now active" in plans
-        or "signal-coefficient authority pack closed through Gate 127" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
+        or "signal-coefficient authority pack closed through Gate 127" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "stage-local handoff and terminal-risk seams pack" in plans
     )
     assert (
         "Current active gate: **Gate 125 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
         or "Current active gate: **Gate 127 in the signal-coefficient authority pack**." in gate_map
-        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        or "Current active gate: **none — signal-coefficient authority pack closed through Gate 127 on `main`**." in gate_map or "Current active gate: **Gate 128 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
     )
     assert (
         "Status: active signal-coefficient authority pack; Gates 122-124 complete on `main`, Gate 125 active, Gates 126-127 planned" in gates
@@ -90,7 +90,7 @@ def test_gate124_closeout_advances_pack_but_allows_later_statuses() -> None:
         "Gate 125",
         "Gate 126",
         "Gate 127",
-        "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main",
+        "none — signal-coefficient authority pack closed through Gate 127 on main", "Gate 128", "Gate 129", "Gate 130", "Gate 131", "none — post-flight repo consistency pack closed through Gate 131 on main", "Gate 149", "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on main",
     }
     assert leaves["completed_gate_ids"][:3] == ["Gate 122", "Gate 123", "Gate 124"]
     assert (
