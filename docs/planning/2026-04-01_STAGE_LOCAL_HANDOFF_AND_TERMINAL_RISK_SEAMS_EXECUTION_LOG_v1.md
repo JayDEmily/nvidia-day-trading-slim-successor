@@ -116,7 +116,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-144-posture-hard-invariants-and-local-envelope-20260401`
 - Start commit: `adcefc4`
-- End commit or merged main commit: `PENDING_GATE144_CLOSEOUT_CORRECTION`
+- End commit or merged main commit: `ae6880e`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
