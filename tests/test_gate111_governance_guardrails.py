@@ -48,6 +48,8 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
+    "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**.",
+    "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**.",
 }
 
 

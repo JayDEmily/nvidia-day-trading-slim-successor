@@ -44,6 +44,8 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 138 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 139 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
+    "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**.",
+    "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**.",
 }
 
 
@@ -54,7 +56,7 @@ def test_governance_pack_is_closed_honestly_across_the_quartet() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
-    assert ("## Active pack\n\n- none" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+    assert ("## Active pack\n\n- none" in plans or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
     assert ("repo-process governance pack closed through Gate 112 on `main`" in plans) or ("2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md" in plans)
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "| Gate 112 | complete on `main` |" in gate_map

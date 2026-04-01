@@ -20,14 +20,14 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`
+- none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 
 ## Latest closed pack retained as evidence
 
-- gates: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`
-- leaves: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- gates: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md`
+- leaves: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed semantic-review evidence
 
@@ -58,7 +58,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main` and retained as the latest closed lifecycle-execution evidence
+- no active pack — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main` and retained as the latest closed corrective evidence
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`

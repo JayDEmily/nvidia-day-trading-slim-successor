@@ -1,12 +1,12 @@
 # 2026-03-24 Canonical Vision Gate Map
 
-Status: Active canonical gate authority  
-Version: v1.12  
-Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.  
+Status: Active canonical gate authority
+Version: v1.13
+Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
-- `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md` — active gate authority for Gates 135-139
-- `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` — active leaf ledger for the lifecycle pilot
-- `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md` — active execution log for the lifecycle pilot
+- `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
+- `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json` — latest closed corrective leaf ledger for Gate 140
+- `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md` — latest closed corrective execution log for Gate 140
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` — frozen process-law authority for planning versus execution
 - `AGENTS.md` — stable behavioural authority
 
@@ -44,7 +44,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**. Bounded trace scenario review is closed evidence on `main`; Gates 132-134 are complete on `main`; Gates 135-139 are now complete on `main`; no active planning pack is routed.
+Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**. Bounded trace scenario review is closed evidence on `main`; Gates 132-134 are complete on `main`; Gates 135-139 are complete on `main`; Gate 140 restored Alembic parity on `main`; no active planning pack is routed.
 
 ## 2. Selected completed-tranche evidence
 
@@ -60,7 +60,7 @@ One leaf at a time. One gate at a time. Gates 46–50 are now complete on `main`
 
 ## 3. Active governance tranche and downstream gate map
 
-Earlier planning tranches remain closed evidence through Gate 134. The opening-drive continuation lifecycle pilot pack is now active:
+Earlier planning tranches remain closed evidence through Gate 140. The latest closed corrective pack is retained as evidence:
 
 | Gate | Status | Meaning now | Control surface |
 |---|---|---|---|
@@ -152,6 +152,7 @@ Earlier planning tranches remain closed evidence through Gate 134. The opening-d
 | Gate 137 | complete on `main` | compile the continuation specimen lifecycle inside expression execution so Stage 6 stops reducing the second half to thin exit labels | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
 | Gate 138 | complete on `main` | integrate lifecycle output with the existing carry branch so late-session continuation management remains one chain | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
 | Gate 139 | complete on `main` | add a bounded position-instance execution ledger for the specimen and close the lifecycle pilot pack honestly | `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`, `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json` |
+| Gate 140 | complete on `main` | restore Alembic parity for the bounded execution-ledger specimen so clean migrated databases match Gate 139 runtime truth | `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md`, `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json`, `alembic/versions/20260401_0006_execution_ledger_position_instance_parity.py`, `tests/test_gate140_execution_ledger_alembic_parity.py` |
 
 ## 4. Global execution rules
 
@@ -162,4 +163,4 @@ Earlier planning tranches remain closed evidence through Gate 134. The opening-d
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; Gates 128-131 are complete on `main`; Gates 132-134 are complete on `main`.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; Gates 128-131 are complete on `main`; Gates 132-134 are complete on `main`; Gates 135-140 are complete on `main`.
