@@ -35,6 +35,15 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
     "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**.",
     "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**.",
+    "Current active gate: **Gate 142 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 143 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 144 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 145 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 146 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 147 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
 }
 
 
@@ -49,17 +58,17 @@ def test_signal_coefficient_authority_pack_is_active() -> None:
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
-        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
-        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json" in plans
     )
     assert (
         "2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md" in plans
         or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
-        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans
+        or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md" in plans
     )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (

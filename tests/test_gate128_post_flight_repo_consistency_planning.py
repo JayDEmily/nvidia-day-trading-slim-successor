@@ -28,6 +28,15 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**.",
     "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**.",
     "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**.",
+    "Current active gate: **Gate 142 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 143 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 144 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 145 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 146 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 147 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
+    "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
 }
 
 
@@ -39,10 +48,10 @@ def test_post_flight_repo_consistency_pack_is_active() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans)
-    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans)
-    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans)
-    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_LEAVES_v1.json" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md" in plans)
+    assert ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans)
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
         "Status: active post-flight repo consistency pack; Gate 128 active, Gates 129-131 planned" in gates

@@ -39,6 +39,7 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
         or "opening-drive continuation lifecycle pilot pack active at Gate 137 after Gates 135-136 closed on `main`" in plans
         or "no active pack — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`" in plans
         or "no active pack — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`" in plans
+        or "stage-local handoff and terminal-risk seams pack" in plans
     )
     assert (
         "Current active gate: **none — bounded trace scenario review pack closed through Gate 134 on `main`**." in gate_map
@@ -48,6 +49,15 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
         or "Current active gate: **none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`**." in gate_map
         or "Current active gate: **Gate 140 in the execution-ledger Alembic parity corrective pack**." in gate_map
         or "Current active gate: **none — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`**." in gate_map
+        or "Current active gate: **Gate 142 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 143 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 144 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 145 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 146 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 147 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
     )
     assert leaves["active_gate"] in {
         "Gate 134",
