@@ -1,6 +1,6 @@
 # 2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gate 141 complete on `main`, Gate 142 next
+Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-146 complete on `main`, Gate 147 next
 
 ## Purpose
 
@@ -187,7 +187,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-146-admissibility-boundary-and-candidate-ownership-20260401`
 - Start commit: `07a1bee`
-- End commit or merged main commit: `TBD_BRANCH_END_COMMIT`
+- End commit or merged main commit: `a9ca90d`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
