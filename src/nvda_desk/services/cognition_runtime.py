@@ -453,7 +453,12 @@ class DeskCognitionRuntime:
             f"contract:model_confidence_scorer:{confidence.confidence_band}",
             f"contract:conviction_tier_allocator:{conviction.conviction_tier}",
         ]
-        return posture.model_copy(update={"reasons": [*posture.reasons, *extra_reasons]})
+        return posture.model_copy(
+            update={
+                "reasons": [*posture.reasons, *extra_reasons],
+                "downstream_annotations": [*posture.downstream_annotations, *extra_reasons],
+            }
+        )
 
     def _eligibility_with_contract_citations(
         self,

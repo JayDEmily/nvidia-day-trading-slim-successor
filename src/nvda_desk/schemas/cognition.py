@@ -373,6 +373,38 @@ class PostureRiskInput(BaseModel):
     risk_budget_remaining_pct: float = Field(ge=0.0, le=100.0)
 
 
+class PostureHardInvariantsSurface(BaseModel):
+    """Posture-owned hard-stop surface preserved apart from later annotations."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    block_active: bool
+    hard_block_reasons: list[str] = Field(default_factory=list)
+    zero_deployable_required: bool
+
+
+class PostureLocalEnvelopeSurface(BaseModel):
+    """Posture-owned local envelope preserved before later modifier consequences."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    base_permission_state: PermissionState
+    base_posture_label: str
+    inventory_posture_state: str
+    fresh_vs_inventory_state: str
+    thesis_state: str
+    capital_lockup_state: str
+    adverse_excursion_state: str
+    time_stop_state: str
+    signal_conflict_state: str
+    base_fresh_deployable_capital_pct: float
+    base_overnight_deployable_capital_pct: float
+    base_inventory_action_bias: str
+    time_stop_minutes_remaining: int | None = None
+    thesis_pressure_score: float
+    derisk_reasons: list[str] = Field(default_factory=list)
+
+
 class PostureRiskOutput(BaseModel):
     """Binding posture, permission, and deployable-capital output."""
 
@@ -392,6 +424,9 @@ class PostureRiskOutput(BaseModel):
     signal_conflict_state: str
     time_stop_minutes_remaining: int | None = None
     thesis_pressure_score: float
+    hard_invariants: PostureHardInvariantsSurface | None = None
+    local_envelope: PostureLocalEnvelopeSurface | None = None
+    downstream_annotations: list[str] = Field(default_factory=list)
     modifier_runtime_packet: ModifierRuntimePacket | None = None
     stand_down_class: NonActionClass | None = None
     conflict_classes: list[SignalConflictClass] = Field(default_factory=list)

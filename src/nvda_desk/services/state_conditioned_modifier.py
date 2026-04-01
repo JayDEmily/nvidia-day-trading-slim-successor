@@ -596,14 +596,23 @@ class StateConditionedModifierService:
             packet, MutableRuntimeSurface.TARGET_FRESH_DEPLOYABLE_PCT
         )
         reasons = list(posture.reasons)
+        downstream_annotations = list(posture.downstream_annotations)
         if packet.active_policy_ids:
-            reasons.append(f"modifier_runtime_policies:{packet.active_policy_ids}")
+            policy_note = f"modifier_runtime_policies:{packet.active_policy_ids}"
+            reasons.append(policy_note)
+            downstream_annotations.append(policy_note)
         if packet.triggered_kill_switch is not None:
-            reasons.append(f"modifier_kill_switch:{packet.triggered_kill_switch.value}")
+            kill_switch_note = f"modifier_kill_switch:{packet.triggered_kill_switch.value}"
+            reasons.append(kill_switch_note)
+            downstream_annotations.append(kill_switch_note)
         if packet.stand_down_class is not None:
-            reasons.append(f"stand_down_class:{packet.stand_down_class.value}")
+            stand_down_note = f"stand_down_class:{packet.stand_down_class.value}"
+            reasons.append(stand_down_note)
+            downstream_annotations.append(stand_down_note)
         if packet.conflict_classes:
-            reasons.append(f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}")
+            conflict_note = f"modifier_conflicts:{[item.value for item in packet.conflict_classes]}"
+            reasons.append(conflict_note)
+            downstream_annotations.append(conflict_note)
         if target_fresh is None:
             target_fresh = posture.fresh_deployable_capital_pct
 
@@ -613,6 +622,7 @@ class StateConditionedModifierService:
             "conflict_classes": list(packet.conflict_classes),
             "degradation_step": packet.degradation_step,
             "override_disposition": packet.override_disposition,
+            "downstream_annotations": downstream_annotations,
             "reasons": reasons,
         }
         if packet.triggered_kill_switch is not None or packet.degradation_step in {

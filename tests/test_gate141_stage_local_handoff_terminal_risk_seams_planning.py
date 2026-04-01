@@ -44,13 +44,17 @@ def test_gate141_pack_remains_active_after_later_gate_progression() -> None:
         "Status: active stage-local handoff and terminal-risk seams pack; Gate 141 complete on `main`, Gate 142 active, Gates 143-149 planned" in gates
         or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-142 complete on `main`, Gate 143 active, Gates 144-149 planned" in gates
         or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-143 complete on `main`, Gate 144 active, Gates 145-149 planned" in gates
+        or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-144 complete on `main`, Gate 145 active, Gates 146-149 planned" in gates
+        or "Status: active stage-local handoff and terminal-risk seams pack; Gates 141-145 complete on `main`, Gate 146 active, Gates 147-149 planned" in gates
     )
     assert leaves["execution_status"] in {
         "gate_141_complete_gate_142_active_on_main",
         "gate_142_complete_gate_143_active_on_main",
         "gate_143_complete_gate_144_active_on_main",
+        "gate_144_complete_gate_145_active_on_main",
+        "gate_145_complete_gate_146_active_on_main",
     }
-    assert leaves["active_gate"] in {"Gate 142", "Gate 143", "Gate 144"}
+    assert leaves["active_gate"] in {"Gate 142", "Gate 143", "Gate 144", "Gate 145", "Gate 146"}
     assert leaves["completed_gate_ids"][:1] == ["Gate 141"]
     assert len(leaves["completed_leaf_ids"]) >= 4
     assert execution_log.startswith("# 2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1")

@@ -108,3 +108,41 @@ For every completed leaf record:
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`
+
+
+## Gate 144 receipts
+
+### LEAF-G144-001 through LEAF-G144-002
+
+- Branch: `work/gate-144-posture-hard-invariants-and-local-envelope-20260401`
+- Start commit: `adcefc4`
+- End commit or merged main commit: `PENDING_GATE144_CLOSEOUT_CORRECTION`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_GATE144_POSTURE_HARD_INVARIANTS_AND_LOCAL_ENVELOPE.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/posture_risk.py`
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/state_conditioned_modifier.py`
+  - `tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py`
+  - `tests/test_gate142_overwrite_and_ownership_inventory.py`
+  - `tests/test_gate144_posture_split_runtime.py`
+  - `tests/test_gate144_posture_split_planning.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate144_posture_split_runtime.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate78_modifier_runtime_integration.py tests/test_gate50_vocabulary_governance.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate144_posture_split_runtime.py tests/test_gate144_posture_split_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate142_overwrite_and_ownership_inventory.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_gate50_vocabulary_governance.py tests/test_document_hygiene.py`
+- Observed results:
+  - Gate 144 admits additive posture-owned hard-invariants and local-envelope surfaces without changing stage order.
+  - Selector citations and later modifier notes now land in `PostureRiskOutput.downstream_annotations` rather than remaining implicit in prose-only reasons.
+  - Router, gate map, leaves ledger, and execution log advance to Gate 145 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`

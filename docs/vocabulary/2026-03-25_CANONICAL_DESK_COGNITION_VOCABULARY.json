@@ -81,6 +81,63 @@
       "notes": []
     },
     {
+      "canonical_slug": "posture_hard_invariants",
+      "canonical_label": "Posture Hard Invariants",
+      "category": "compatibility_surface",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PostureHardInvariantsSurface",
+      "allowed_aliases": [
+        "hard_invariant_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive posture-owned hard-stop surface preserved before selector citations or later modifier consequences."
+      ]
+    },
+    {
+      "canonical_slug": "posture_local_envelope",
+      "canonical_label": "Posture Local Envelope",
+      "category": "compatibility_surface",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PostureLocalEnvelopeSurface",
+      "allowed_aliases": [
+        "local_envelope_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive posture-owned envelope surface preserving base permission, deployable capital, and derisk reasons before downstream annotations."
+      ]
+    },
+    {
+      "canonical_slug": "posture_downstream_annotations",
+      "canonical_label": "Posture Downstream Annotations",
+      "category": "compatibility_surface",
+      "stage_owner": "posture_risk_permission",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.PostureRiskOutput.downstream_annotations",
+      "allowed_aliases": [
+        "posture_annotation_lineage"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Selector citations and later modifier notes carried separately from posture-owned hard invariants and local envelope."
+      ]
+    },
+    {
       "canonical_slug": "playbook_eligibility",
       "canonical_label": "Playbook Eligibility",
       "category": "stage",

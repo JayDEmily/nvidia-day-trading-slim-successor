@@ -2622,6 +2622,12 @@ Ownership:
 
 Gate 143 does **not** retire `final_risk_join` or the existing `pre_final_risk_*` compatibility fields. Those remain the bounded compatibility bridge while later gates decide whether downstream consumers can move fully to the preserved handoff surface.
 
+#### Gate 144 note: posture-owned hard invariants and local envelope
+
+`PostureHardInvariantsSurface` and `PostureLocalEnvelopeSurface` freeze the posture-owned truth that previously sat flattened inside `PostureRiskOutput`. The hard-invariants surface carries explicit hard-block reasons and whether zero deployable capital is required. The local-envelope surface carries the base permission/posture label, deployable-capital envelope, inventory/time/thesis states, and any posture-owned derisk reasons before later selector citations or modifier consequences are appended.
+
+`PostureRiskOutput.downstream_annotations` is the bounded compatibility ledger for non-posture-owned additions such as selector-contract citations and later modifier notes. Gate 144 keeps the flat posture fields and `reasons` list intact for compatibility, but downstream consumers can now distinguish posture-owned truth from later annotations without reading prose heuristically.
+
 #### Gate 136 note: additive lifecycle carriage for the continuation specimen
 
 `PositionContextInput` and `LifecyclePlanOutput` freeze the first lawful second-half lifecycle carriage for the `opening_drive_continuation` / `continuation_ladder_exec` specimen without replacing the existing execution-stage packet boundary. The bounded tradable expression family for this specimen is `single_leg_call_debit`, and the admitted lifecycle action set is limited to `add`, `trim`, `flatten`, `hold_small_overnight`, and `block_carry` until later gates broaden behaviour. `ExecutionExpressionInput.position_context` is the additive ingress slot for that bounded managed-position context, while `ExecutionExpressionOutput.lifecycle_plan` is the additive egress slot for the governed second-half plan. These fields are execution-stage payload enrichments only; they do not create a second packet, bypass DMP v2 lineage, or override the existing carry-handoff packet.

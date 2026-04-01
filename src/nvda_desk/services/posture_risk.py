@@ -10,6 +10,8 @@ from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.cognition import (
     BreadthState,
     PermissionState,
+    PostureHardInvariantsSurface,
+    PostureLocalEnvelopeSurface,
     PostureRiskInput,
     PostureRiskOutput,
     VolatilityRegime,
@@ -52,6 +54,8 @@ class PostureRiskService:
             f"adverse_excursion_state:{adverse_excursion_state}",
             f"time_stop_state:{time_stop_state}",
         ]
+        hard_block_reasons: list[str] = []
+        derisk_reasons: list[str] = []
         permission_state = PermissionState.ALLOW
         posture_label = inventory_posture_state
         inventory_action_bias = "hold"
@@ -66,32 +70,39 @@ class PostureRiskService:
         }:
             permission_state = PermissionState.BLOCK
             posture_label = "closed_window"
+            hard_block_reasons.append("temporal_no_trade_window")
             reasons.append("temporal_no_trade_window")
         if thesis_state == "broken":
             permission_state = PermissionState.BLOCK
             posture_label = "thesis_invalidated"
+            hard_block_reasons.append("thesis_invalidated")
             reasons.append("thesis_invalidated")
         if adverse_excursion_state == "excursion_breached":
             permission_state = PermissionState.BLOCK
             posture_label = "adverse_excursion_stop"
+            hard_block_reasons.append("adverse_excursion_breached")
             reasons.append("adverse_excursion_breached")
         if time_stop_state == "time_stop_elapsed":
             permission_state = PermissionState.BLOCK
             posture_label = "time_stop_elapsed"
+            hard_block_reasons.append("time_stop_elapsed")
             reasons.append("time_stop_elapsed")
         if inventory_posture_state == "capital_locked":
             permission_state = PermissionState.BLOCK
             posture_label = "capital_locked"
+            hard_block_reasons.append("capital_locked")
             reasons.append("capital_locked")
 
         if permission_state is not PermissionState.BLOCK:
             if payload.regime.volatility_regime is VolatilityRegime.STRESSED:
                 permission_state = PermissionState.DERISK
                 posture_label = "stress_derisk"
+                derisk_reasons.append("stressed_volatility_regime")
                 reasons.append("stressed_volatility_regime")
             if payload.regime.breadth_state is BreadthState.WEAK:
                 permission_state = PermissionState.DERISK
                 posture_label = "weak_breadth_derisk"
+                derisk_reasons.append("weak_breadth")
                 reasons.append("weak_breadth")
             if (
                 payload.options_flow.options_behavior_cluster == "negative_gamma_flush"
@@ -99,22 +110,27 @@ class PostureRiskService:
             ):
                 permission_state = PermissionState.DERISK
                 posture_label = "negative_gamma_flush"
+                derisk_reasons.append("negative_gamma_flush")
                 reasons.append("negative_gamma_flush")
             if signal_conflict_state != "aligned_signals":
                 permission_state = PermissionState.DERISK
                 posture_label = "signal_conflict_derisk"
+                derisk_reasons.append("signal_conflict_detected")
                 reasons.append("signal_conflict_detected")
             if inventory_posture_state in {"trapped", "full"}:
                 permission_state = PermissionState.DERISK
                 posture_label = inventory_posture_state
+                derisk_reasons.append(f"inventory_posture:{inventory_posture_state}")
                 reasons.append(f"inventory_posture:{inventory_posture_state}")
             if fresh_vs_inventory_state in {"inventory_locked", "inventory_only"}:
                 permission_state = PermissionState.DERISK
                 posture_label = fresh_vs_inventory_state
+                derisk_reasons.append(f"fresh_vs_inventory:{fresh_vs_inventory_state}")
                 reasons.append(f"fresh_vs_inventory:{fresh_vs_inventory_state}")
             if time_stop_state == "time_stop_near":
                 permission_state = PermissionState.DERISK
                 posture_label = "time_stop_near"
+                derisk_reasons.append("time_stop_near")
                 reasons.append("time_stop_near")
 
         if permission_state is PermissionState.BLOCK:
@@ -178,6 +194,29 @@ class PostureRiskService:
             signal_conflict_state=signal_conflict_state,
             time_stop_minutes_remaining=payload.inventory.time_stop_minutes_remaining,
             thesis_pressure_score=thesis_pressure_score,
+            hard_invariants=PostureHardInvariantsSurface(
+                block_active=permission_state is PermissionState.BLOCK,
+                hard_block_reasons=hard_block_reasons,
+                zero_deployable_required=permission_state is PermissionState.BLOCK,
+            ),
+            local_envelope=PostureLocalEnvelopeSurface(
+                base_permission_state=permission_state,
+                base_posture_label=posture_label,
+                inventory_posture_state=inventory_posture_state,
+                fresh_vs_inventory_state=fresh_vs_inventory_state,
+                thesis_state=thesis_state,
+                capital_lockup_state=capital_lockup_state,
+                adverse_excursion_state=adverse_excursion_state,
+                time_stop_state=time_stop_state,
+                signal_conflict_state=signal_conflict_state,
+                base_fresh_deployable_capital_pct=fresh_deployable,
+                base_overnight_deployable_capital_pct=overnight_deployable,
+                base_inventory_action_bias=inventory_action_bias,
+                time_stop_minutes_remaining=payload.inventory.time_stop_minutes_remaining,
+                thesis_pressure_score=thesis_pressure_score,
+                derisk_reasons=derisk_reasons,
+            ),
+            downstream_annotations=[],
             reasons=reasons,
         )
 

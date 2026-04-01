@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gates 141-143 complete on `main`, Gate 144 active, Gates 145-149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-144 complete on `main`, Gate 145 active, Gates 146-149 planned
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -195,7 +195,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 144: Separate posture hard invariants from posture-local envelope truth if the current output conflates them
 
 **Status**
-- active on `main`
+- complete on `main`
 
 **Objective**
 - make posture-owned hard blocks, local envelope state, and downstream annotations explicit where Gate 142 shows they are currently collapsed.
@@ -203,7 +203,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 145: Realign modifier authority from mutation-first to emitted-policy-first
 
 **Status**
-- planned
+- active on `main`
 
 **Objective**
 - move modifier authority toward emitted policy, resolved surfaces, and review-visible lineage while keeping a bounded compatibility bridge until consumers migrate.
