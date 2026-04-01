@@ -6,6 +6,7 @@ from enum import StrEnum
 from pydantic import BaseModel, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
+from nvda_desk.schemas.cognition import LifecycleAction
 from nvda_desk.schemas.module import ModuleClass, ModuleDescriptor
 
 
@@ -58,6 +59,15 @@ class CloseStateCarryHandoff(BaseModel):
     active_family_ids: list[str] = Field(default_factory=list)
     active_setup_variant_ids: list[str] = Field(default_factory=list)
     active_playbook_ids: list[str] = Field(default_factory=list)
+    lifecycle_setup_variant_id: str | None = None
+    lifecycle_execution_expression_id: str | None = None
+    lifecycle_state: str | None = None
+    lifecycle_next_action: LifecycleAction | None = None
+    lifecycle_carry_candidate: bool = False
+    lifecycle_action_ceiling: CarryAction | None = None
+    lifecycle_fired_rules: list[str] = Field(default_factory=list)
+    lifecycle_blocked_rules: list[str] = Field(default_factory=list)
+    lifecycle_rationale_codes: list[str] = Field(default_factory=list)
     recommended_action_ceiling: CarryAction
     allowed_actions: list[CarryAction] = Field(default_factory=list)
     rationale_codes: list[str] = Field(default_factory=list)

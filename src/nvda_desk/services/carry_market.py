@@ -121,7 +121,10 @@ class OvernightCarryMarketService:
         if action in handoff.allowed_actions:
             return action, exposure, []
         if handoff.recommended_action_ceiling is CarryAction.BLOCK_CARRY:
-            return CarryAction.BLOCK_CARRY, 0.0, ["handoff:block_carry"]
+            reasons = ["handoff:block_carry"]
+            if handoff.lifecycle_action_ceiling is not None:
+                reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
+            return CarryAction.BLOCK_CARRY, 0.0, reasons
         for fallback in (
             CarryAction.HOLD_SMALL,
             CarryAction.HOLD_BASELINE,
@@ -129,22 +132,37 @@ class OvernightCarryMarketService:
         ):
             if fallback in handoff.allowed_actions:
                 if fallback is CarryAction.HOLD_SMALL:
+                    reasons = [f"handoff:downgraded_from:{action.value}"]
+                    if handoff.lifecycle_action_ceiling is not None:
+                        reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
                     return (
                         fallback,
                         min(exposure, handoff.overnight_deployable_capital_pct, 10.0),
-                        [f"handoff:downgraded_from:{action.value}"],
+                        reasons,
                     )
                 if fallback is CarryAction.HOLD_BASELINE:
+                    reasons = [f"handoff:downgraded_from:{action.value}"]
+                    if handoff.lifecycle_action_ceiling is not None:
+                        reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
                     return (
                         fallback,
                         min(exposure, handoff.overnight_deployable_capital_pct),
-                        [f"handoff:downgraded_from:{action.value}"],
+                        reasons,
                     )
-                return fallback, 0.0, [f"handoff:downgraded_from:{action.value}"]
+                reasons = [f"handoff:downgraded_from:{action.value}"]
+                if handoff.lifecycle_action_ceiling is not None:
+                    reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
+                return fallback, 0.0, reasons
         # defensive fallback
         if recommendation is CarryRecommendation.BLOCK:
-            return CarryAction.BLOCK_CARRY, 0.0, ["handoff:block_carry"]
-        return CarryAction.FLATTEN, 0.0, [f"handoff:downgraded_from:{action.value}"]
+            reasons = ["handoff:block_carry"]
+            if handoff.lifecycle_action_ceiling is not None:
+                reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
+            return CarryAction.BLOCK_CARRY, 0.0, reasons
+        reasons = [f"handoff:downgraded_from:{action.value}"]
+        if handoff.lifecycle_action_ceiling is not None:
+            reasons.append(f"handoff:lifecycle_ceiling:{handoff.lifecycle_action_ceiling.value}")
+        return CarryAction.FLATTEN, 0.0, reasons
 
     def _recommendation_for_action(self, action: CarryAction) -> CarryRecommendation:
         return {

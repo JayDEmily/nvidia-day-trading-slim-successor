@@ -9,6 +9,7 @@ from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     InventoryState,
+    LifecycleAction,
     OptionsFlowContextOutput,
     PostureRiskOutput,
     TemporalContextOutput,
@@ -84,8 +85,19 @@ class CarryHandoffBuilder:
             overnight_inventory_pct=inventory.overnight_inventory_pct,
             active_playbook_ids=execution.active_playbook_ids,
         )
+        (
+            allowed_actions,
+            lifecycle_action_ceiling,
+            lifecycle_rationale_codes,
+        ) = self._apply_lifecycle_envelope(
+            execution=execution,
+            allowed_actions=allowed_actions,
+            existing_inventory_pct=inventory.existing_inventory_pct,
+            overnight_inventory_pct=inventory.overnight_inventory_pct,
+        )
         recommended_action_ceiling = (
-            allowed_actions[-1] if allowed_actions else CarryAction.BLOCK_CARRY
+            lifecycle_action_ceiling
+            or (allowed_actions[-1] if allowed_actions else CarryAction.BLOCK_CARRY)
         )
         rationale_codes: list[str] = [f"horizon:{horizon.value}"]
         if weekend_window:
@@ -105,6 +117,8 @@ class CarryHandoffBuilder:
             rationale_codes.append("active_intraday_playbook_present")
         if posture.thesis_state != "valid":
             rationale_codes.append(f"thesis_state:{posture.thesis_state}")
+        rationale_codes.extend(lifecycle_rationale_codes)
+        lifecycle_plan = execution.lifecycle_plan
         return CloseStateCarryHandoff(
             symbol=symbol,
             evaluation_ts=aware_ts,
@@ -130,10 +144,85 @@ class CarryHandoffBuilder:
             active_family_ids=list(execution.active_family_ids),
             active_setup_variant_ids=list(execution.active_setup_variant_ids),
             active_playbook_ids=list(execution.active_playbook_ids),
+            lifecycle_setup_variant_id=(lifecycle_plan.setup_variant_id if lifecycle_plan is not None else None),
+            lifecycle_execution_expression_id=(
+                lifecycle_plan.execution_expression_id if lifecycle_plan is not None else None
+            ),
+            lifecycle_state=(lifecycle_plan.lifecycle_state if lifecycle_plan is not None else None),
+            lifecycle_next_action=(lifecycle_plan.next_action if lifecycle_plan is not None else None),
+            lifecycle_carry_candidate=(
+                lifecycle_plan.carry_candidate if lifecycle_plan is not None else False
+            ),
+            lifecycle_action_ceiling=lifecycle_action_ceiling,
+            lifecycle_fired_rules=(list(lifecycle_plan.fired_rules) if lifecycle_plan is not None else []),
+            lifecycle_blocked_rules=(list(lifecycle_plan.blocked_rules) if lifecycle_plan is not None else []),
+            lifecycle_rationale_codes=(list(lifecycle_plan.rationale_codes) if lifecycle_plan is not None else []),
             recommended_action_ceiling=recommended_action_ceiling,
             allowed_actions=allowed_actions,
             rationale_codes=rationale_codes,
         )
+
+    def _apply_lifecycle_envelope(
+        self,
+        *,
+        execution: ExecutionExpressionOutput,
+        allowed_actions: list[CarryAction],
+        existing_inventory_pct: float,
+        overnight_inventory_pct: float,
+    ) -> tuple[list[CarryAction], CarryAction | None, list[str]]:
+        lifecycle = execution.lifecycle_plan
+        if lifecycle is None:
+            return allowed_actions, None, []
+
+        action_ceiling: CarryAction | None = None
+        lifecycle_rationale_codes = [
+            f"lifecycle_state:{lifecycle.lifecycle_state}",
+            f"lifecycle_carry_candidate:{str(lifecycle.carry_candidate).lower()}",
+        ]
+        has_position = existing_inventory_pct > 0 or overnight_inventory_pct > 0
+
+        if lifecycle.next_action is not None:
+            lifecycle_rationale_codes.append(
+                f"lifecycle_next_action:{lifecycle.next_action.value}"
+            )
+
+        if lifecycle.next_action is LifecycleAction.FLATTEN or lifecycle.must_flatten_by_close:
+            return [CarryAction.FLATTEN], CarryAction.FLATTEN, [
+                *lifecycle_rationale_codes,
+                "lifecycle_ceiling:flatten",
+            ]
+        if lifecycle.next_action is LifecycleAction.BLOCK_CARRY:
+            return [CarryAction.BLOCK_CARRY], CarryAction.BLOCK_CARRY, [
+                *lifecycle_rationale_codes,
+                "lifecycle_ceiling:block_carry",
+            ]
+        if lifecycle.carry_candidate and lifecycle.next_action is LifecycleAction.HOLD_SMALL_OVERNIGHT:
+            bounded = [
+                action
+                for action in allowed_actions
+                if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}
+            ]
+            return bounded or [CarryAction.FLATTEN], CarryAction.HOLD_SMALL, [
+                *lifecycle_rationale_codes,
+                "lifecycle_ceiling:hold_small",
+            ]
+
+        bounded = [
+            action
+            for action in allowed_actions
+            if action in {CarryAction.FLATTEN, CarryAction.HOLD_SMALL}
+        ]
+        if not has_position:
+            bounded = [action for action in bounded if action is CarryAction.FLATTEN]
+            action_ceiling = CarryAction.FLATTEN
+        elif CarryAction.HOLD_SMALL in bounded:
+            action_ceiling = CarryAction.HOLD_SMALL
+        elif CarryAction.FLATTEN in bounded:
+            action_ceiling = CarryAction.FLATTEN
+        return bounded or [CarryAction.FLATTEN], action_ceiling, [
+            *lifecycle_rationale_codes,
+            f"lifecycle_ceiling:{(action_ceiling or CarryAction.FLATTEN).value}",
+        ]
 
     def _allowed_actions(
         self,

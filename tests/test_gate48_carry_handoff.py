@@ -7,6 +7,8 @@ from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     GammaState,
     InventoryState,
+    LifecycleAction,
+    LifecyclePlanOutput,
     OptionsFlowContextOutput,
     PermissionState,
     PostureRiskOutput,
@@ -97,7 +99,11 @@ def _inventory_state(
     )
 
 
-def _execution_output(active: list[str]) -> ExecutionExpressionOutput:
+def _execution_output(
+    active: list[str],
+    *,
+    lifecycle_plan: LifecyclePlanOutput | None = None,
+) -> ExecutionExpressionOutput:
     active_setup_variant_ids = ["late_session_pin_reversion"] if active else []
     active_family_ids = ["pin_behaviour"] if active else []
     return ExecutionExpressionOutput(
@@ -121,6 +127,7 @@ def _execution_output(active: list[str]) -> ExecutionExpressionOutput:
         invalidation_reasons=[],
         exit_reasons=[],
         exit_plan=[],
+        lifecycle_plan=lifecycle_plan,
         reasons=["ok"],
     )
 
@@ -181,3 +188,62 @@ def test_carry_handoff_builder_treats_saturday_morning_as_weekend_branch() -> No
     assert handoff.next_session_open_ts is not None
     assert handoff.next_session_open_ts.weekday() == 0
     assert handoff.allowed_actions.count(CarryAction.HOLD_BASELINE) == 1
+
+
+def test_carry_handoff_builder_consumes_lifecycle_small_overnight_nomination() -> None:
+    handoff = CarryHandoffBuilder().build(
+        symbol="NVDA",
+        evaluation_ts=datetime.fromisoformat("2026-03-24T15:45:00-04:00"),
+        temporal=_temporal_output(ts="2026-03-24T15:45:00-04:00"),
+        options_flow=_options_output(),
+        posture=_posture_output(),
+        inventory=_inventory_state(existing=55.0, overnight=0.0),
+        execution=_execution_output(
+            ["continuation_ladder"],
+            lifecycle_plan=LifecyclePlanOutput(
+                setup_variant_id="opening_drive_continuation",
+                execution_expression_id="continuation_ladder_exec",
+                lifecycle_state="carry_nomination_ready",
+                next_action=LifecycleAction.HOLD_SMALL_OVERNIGHT,
+                carry_candidate=True,
+                fired_rules=["late_session_carry_nomination"],
+                rationale_codes=["gate_138_test"],
+            ),
+        ),
+    )
+
+    assert handoff.lifecycle_state == "carry_nomination_ready"
+    assert handoff.lifecycle_next_action is LifecycleAction.HOLD_SMALL_OVERNIGHT
+    assert handoff.lifecycle_action_ceiling is CarryAction.HOLD_SMALL
+    assert handoff.allowed_actions == [CarryAction.FLATTEN, CarryAction.HOLD_SMALL]
+    assert handoff.lifecycle_carry_candidate is True
+    assert "lifecycle_ceiling:hold_small" in handoff.rationale_codes
+
+
+def test_carry_handoff_builder_respects_lifecycle_flatten_ceiling() -> None:
+    handoff = CarryHandoffBuilder().build(
+        symbol="NVDA",
+        evaluation_ts=datetime.fromisoformat("2026-03-24T15:58:00-04:00"),
+        temporal=_temporal_output(ts="2026-03-24T15:58:00-04:00"),
+        options_flow=_options_output(),
+        posture=_posture_output(),
+        inventory=_inventory_state(existing=22.0, overnight=0.0),
+        execution=_execution_output(
+            ["continuation_ladder"],
+            lifecycle_plan=LifecyclePlanOutput(
+                setup_variant_id="opening_drive_continuation",
+                execution_expression_id="continuation_ladder_exec",
+                lifecycle_state="stale_thesis_flatten",
+                next_action=LifecycleAction.FLATTEN,
+                carry_candidate=False,
+                fired_rules=["close_window_stale_thesis"],
+                blocked_rules=["carry_blocked_by_incomplete_ladder"],
+                rationale_codes=["gate_138_test"],
+            ),
+        ),
+    )
+
+    assert handoff.lifecycle_action_ceiling is CarryAction.FLATTEN
+    assert handoff.recommended_action_ceiling is CarryAction.FLATTEN
+    assert handoff.allowed_actions == [CarryAction.FLATTEN]
+    assert "lifecycle_ceiling:flatten" in handoff.rationale_codes

@@ -6,6 +6,7 @@ from typing import Any, cast
 from sqlalchemy.orm import Session, sessionmaker
 
 from nvda_desk.domain.session_clock import SessionClockPhase
+from nvda_desk.schemas.cognition import LifecycleAction
 from nvda_desk.schemas.overnight import (
     CarryAction,
     CarryHorizon,
@@ -118,6 +119,15 @@ def test_market_service_downgrades_add_carry_when_handoff_blocks_it() -> None:
         active_family_ids=["pin_behaviour"],
         active_setup_variant_ids=["late_session_pin_reversion"],
         active_playbook_ids=["pin_reversion"],
+        lifecycle_setup_variant_id="opening_drive_continuation",
+        lifecycle_execution_expression_id="continuation_ladder_exec",
+        lifecycle_state="carry_nomination_ready",
+        lifecycle_next_action=LifecycleAction.HOLD_SMALL_OVERNIGHT,
+        lifecycle_carry_candidate=True,
+        lifecycle_action_ceiling=CarryAction.HOLD_SMALL,
+        lifecycle_fired_rules=["late_session_carry_nomination"],
+        lifecycle_blocked_rules=[],
+        lifecycle_rationale_codes=["gate_138_test"],
         recommended_action_ceiling=CarryAction.HOLD_SMALL,
         allowed_actions=[CarryAction.FLATTEN, CarryAction.HOLD_SMALL],
         rationale_codes=["test"],
@@ -137,3 +147,4 @@ def test_market_service_downgrades_add_carry_when_handoff_blocks_it() -> None:
     assert result.carry_recommendation is CarryRecommendation.HOLD_SMALL
     assert result.carry_action is CarryAction.HOLD_SMALL
     assert "handoff:downgraded_from:add_carry" in result.rationale_codes
+    assert "handoff:lifecycle_ceiling:hold_small" in result.rationale_codes

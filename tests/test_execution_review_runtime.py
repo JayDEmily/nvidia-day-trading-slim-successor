@@ -21,6 +21,8 @@ from nvda_desk.schemas.cognition import (
     TradableExpressionFamily,
 )
 from nvda_desk.schemas.dmp_v2 import DmpV2ObjectBlock
+from nvda_desk.schemas.overnight import CarryAction
+from nvda_desk.services.carry_handoff import CarryHandoffBuilder
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
@@ -541,3 +543,37 @@ def test_continuation_lifecycle_hard_flats_when_explicitly_required() -> None:
     assert execution.lifecycle_plan.next_action is LifecycleAction.FLATTEN
     assert execution.inventory_action == "reduce"
     assert "hard_flat_before_close" in execution.lifecycle_plan.fired_rules
+
+
+def test_continuation_lifecycle_carry_handoff_stays_on_the_same_chain() -> None:
+    payload = _supportive_execution_input_with_position_context(
+        current_position_size_pct=55.0,
+        desk_window="late_session",
+        carry_state_eligible=True,
+    )
+    execution = ExecutionExpressionService().evaluate(payload)
+    handoff = CarryHandoffBuilder().build(
+        symbol="NVDA",
+        evaluation_ts=datetime.fromisoformat("2026-03-23T15:45:00-04:00"),
+        temporal=payload.temporal,
+        options_flow=payload.options_flow,
+        posture=payload.posture,
+        inventory=InventoryState(
+            existing_inventory_pct=55.0,
+            fresh_cash_pct=15.0,
+            overnight_inventory_pct=0.0,
+            open_orders_count=0,
+            capital_lockup_pct=12.0,
+            cost_basis_gap_pct=0.5,
+            thesis_state_input="valid",
+            adverse_excursion_pct=-1.0,
+            time_stop_minutes_remaining=120,
+        ),
+        execution=execution,
+    )
+
+    assert handoff.lifecycle_state == "carry_nomination_ready"
+    assert handoff.lifecycle_next_action is LifecycleAction.HOLD_SMALL_OVERNIGHT
+    assert handoff.lifecycle_action_ceiling is CarryAction.HOLD_SMALL
+    assert handoff.allowed_actions == [CarryAction.FLATTEN, CarryAction.HOLD_SMALL]
+    assert handoff.lifecycle_carry_candidate is True
