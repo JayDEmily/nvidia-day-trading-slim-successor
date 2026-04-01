@@ -1,6 +1,6 @@
 # 2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-146 complete on `main`, Gate 147 next
+Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-147 complete on `main`, Gate 148 next
 
 ## Purpose
 
@@ -223,7 +223,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-147-overlay-versus-terminal-risk-application-20260401`
 - Start commit: `674a224`
-- End commit or merged main commit: `TBD_BRANCH_END_COMMIT`
+- End commit or merged main commit: `6c8d73e`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
