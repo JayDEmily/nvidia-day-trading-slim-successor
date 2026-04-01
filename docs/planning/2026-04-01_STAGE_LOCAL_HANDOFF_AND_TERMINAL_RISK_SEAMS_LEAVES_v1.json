@@ -1,7 +1,7 @@
 {
   "governing_plan": "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
-  "execution_status": "gate_147_complete_gate_148_active_on_main",
-  "active_gate": "Gate 148",
+  "execution_status": "gate_148_complete_gate_149_active_on_main",
+  "active_gate": "Gate 149",
   "completed_gate_ids": [
     "Gate 141",
     "Gate 142",
@@ -9,7 +9,8 @@
     "Gate 144",
     "Gate 145",
     "Gate 146",
-    "Gate 147"
+    "Gate 147",
+    "Gate 148"
   ],
   "completed_leaf_ids": [
     "LEAF-G141-001",
@@ -30,17 +31,12 @@
     "LEAF-G146-002",
     "LEAF-G147-001",
     "LEAF-G147-002",
-    "LEAF-G147-003"
-  ],
-  "remaining_leaf_ids": [
-    "LEAF-G146-001",
-    "LEAF-G146-002",
-    "LEAF-G147-001",
-    "LEAF-G147-002",
     "LEAF-G147-003",
     "LEAF-G148-001",
     "LEAF-G148-002",
-    "LEAF-G148-003",
+    "LEAF-G148-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G149-001",
     "LEAF-G149-002",
     "LEAF-G149-003"
@@ -854,7 +850,7 @@
       "gate": "Gate 148",
       "title": "Migrate review consumers to the preserved-seam model",
       "objective": "Migrate review consumers to the preserved-seam model.",
-      "status": "active",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -881,7 +877,7 @@
       "gate": "Gate 148",
       "title": "Refresh trace, replay, and legacy expectation tests",
       "objective": "Refresh trace, replay, and legacy expectation tests.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -908,7 +904,7 @@
       "gate": "Gate 148",
       "title": "Close Gate 148 with synchronized planning and test evidence",
       "objective": "Close Gate 148 with synchronized planning and test evidence.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -935,7 +931,7 @@
       "gate": "Gate 149",
       "title": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router",
       "objective": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",

@@ -260,6 +260,14 @@ class ReviewExplanationService:
             review_packet["effective_policy"] = effective_policy.model_dump(mode="json")
         if payload.stage_local_handoff is not None:
             review_packet["stage_local_handoff"] = payload.stage_local_handoff.model_dump(mode="json")
+            if payload.stage_local_handoff.overlay_risk_decision is not None:
+                review_packet["overlay_risk_decision"] = payload.stage_local_handoff.overlay_risk_decision.model_dump(mode="json")
+            if payload.stage_local_handoff.terminal_risk_application is not None:
+                review_packet["terminal_risk_application"] = payload.stage_local_handoff.terminal_risk_application.model_dump(mode="json")
+        if payload.eligibility.admissibility_surface is not None:
+            review_packet["admissibility_surface"] = payload.eligibility.admissibility_surface.model_dump(mode="json")
+        if payload.execution.candidate_ownership is not None:
+            review_packet["candidate_ownership"] = payload.execution.candidate_ownership.model_dump(mode="json")
         if review_eligibility is not None:
             review_packet["review_eligibility"] = review_eligibility.model_dump(mode="json")
         if stability_scorecards:

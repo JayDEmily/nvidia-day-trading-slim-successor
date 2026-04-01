@@ -36,7 +36,7 @@ class BoundedTraceReviewService:
         pack = self.load_fixture_pack(path)
         runs = [self._run_one(pack, scenario) for scenario in pack.scenarios]
         narrative = [
-            f"{run.scenario_id}: permission={run.permission_state}; playbooks={run.active_playbook_ids or ['none']}; final_risk={run.final_risk_action or 'none'}; deploy={run.target_fresh_deployable_pct:.4f}"
+            f"{run.scenario_id}: permission={run.permission_state}; playbooks={run.active_playbook_ids or ['none']}; final_risk={run.final_risk_action or 'none'}; deploy={run.target_fresh_deployable_pct:.4f}; overlay={(run.overlay_risk_decision.action.value if run.overlay_risk_decision is not None else 'none')}; terminal={(run.terminal_risk_application.final_decision.action.value if run.terminal_risk_application is not None else 'none')}"
             for run in runs
         ]
         return BoundedTraceReviewReport(
@@ -70,6 +70,29 @@ class BoundedTraceReviewService:
         lines.append("")
         for line in report.narrative_summary:
             lines.append(f"- {line}")
+        lines.append("")
+        lines.append("## Preserved seam snapshot")
+        lines.append("")
+        for run in report.runs:
+            admitted = (
+                ", ".join(run.admissibility_surface.admissible_playbook_ids)
+                if run.admissibility_surface is not None and run.admissibility_surface.admissible_playbook_ids
+                else "none"
+            )
+            lead_owner = (
+                run.candidate_ownership.lead_playbook_id
+                if run.candidate_ownership is not None and run.candidate_ownership.lead_playbook_id is not None
+                else "none"
+            )
+            overlay = run.overlay_risk_decision.action.value if run.overlay_risk_decision is not None else "none"
+            terminal = (
+                run.terminal_risk_application.final_decision.action.value
+                if run.terminal_risk_application is not None
+                else "none"
+            )
+            lines.append(
+                f"- {run.scenario_id}: admitted={admitted}; lead_owner={lead_owner}; overlay={overlay}; terminal={terminal}"
+            )
         lines.append("")
         return "\n".join(lines)
 
@@ -112,6 +135,18 @@ class BoundedTraceReviewService:
             final_risk_action=(result.execution.final_risk_join.action.value if result.execution.final_risk_join is not None else None),
             target_fresh_deployable_pct=result.execution.target_fresh_deployable_pct,
             effective_surfaces=effective_surfaces,
+            admissibility_surface=result.eligibility.admissibility_surface,
+            candidate_ownership=result.execution.candidate_ownership,
+            overlay_risk_decision=(
+                result.stage_local_handoff.overlay_risk_decision
+                if result.stage_local_handoff is not None
+                else None
+            ),
+            terminal_risk_application=(
+                result.stage_local_handoff.terminal_risk_application
+                if result.stage_local_handoff is not None
+                else None
+            ),
             summary=result.review.summary,
             expected_human_read=scenario.expected_human_read,
         )

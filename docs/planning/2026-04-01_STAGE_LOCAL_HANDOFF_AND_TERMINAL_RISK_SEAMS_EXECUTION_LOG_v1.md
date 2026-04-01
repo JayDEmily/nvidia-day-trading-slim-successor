@@ -1,6 +1,6 @@
 # 2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-147 complete on `main`, Gate 148 next
+Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-148 complete on `main`, Gate 149 next
 
 ## Purpose
 
@@ -247,6 +247,39 @@ For every completed leaf record:
   - Gate 147 preserves the raw overlay-evaluation decision and the additive terminal-risk application seam without changing final outcomes.
   - The overlap classes between overlay evaluation and posture-aware terminal application are now explicit and review-visible through the preserved handoff surface.
   - Existing `final_risk_join` and `pre_final_risk_*` compatibility fields remain intact while router truth advances to Gate 148 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`
+
+
+## Gate 148 receipts
+
+### LEAF-G148-001 through LEAF-G148-003
+
+- Branch: `work/gate-148-review-trace-replay-legacy-seams-20260401`
+- Start commit: `4c352ea`
+- End commit or merged main commit: `TO_BE_CORRECTED_ON_MAIN_AFTER_MERGE`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+  - `docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md`
+  - `src/nvda_desk/schemas/trace_review.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `src/nvda_desk/testing/bounded_trace_review.py`
+  - `tests/test_gate148_review_trace_replay_runtime.py`
+  - `tests/test_gate148_review_trace_replay_planning.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate148_review_trace_replay_runtime.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_gate146_admissibility_candidate_ownership.py tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate133_bounded_trace_review_regime.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate50_vocabulary_governance.py`
+- Observed results:
+  - Gate 148 migrates review-packet convenience consumers and bounded-trace reports to the preserved seam surfaces without removing `stage_local_handoff` or `final_risk_join`.
+  - Bounded trace markdown now renders a preserved seam snapshot showing admissibility, candidate ownership, overlay, and terminal outcomes.
+  - Router, gate map, leaves ledger, and execution log advance to Gate 149 on the same branch.
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`

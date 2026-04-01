@@ -23,4 +23,4 @@ def test_gate146_receipt_domain_model_and_vocabulary_are_present() -> None:
     assert "execution_candidate_ownership" in receipt
     assert "#### Gate 146 note: eligibility admissibility versus execution candidate ownership" in domain_model
     assert {"eligibility_admissibility", "execution_candidate_ownership"}.issubset(slugs)
-    assert leaves["active_gate"] in {"Gate 146", "Gate 147", "Gate 148"}
+    assert leaves["active_gate"] in {"Gate 146", "Gate 147", "Gate 148", "Gate 149", "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on main"}
