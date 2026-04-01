@@ -1,6 +1,6 @@
 # 2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-148 complete on `main`, Gate 149 next
+Status: closed execution log for the stage-local handoff and terminal-risk seams pack; Gates 141-149 complete on `main`, no active gate
 
 ## Purpose
 
@@ -280,6 +280,34 @@ For every completed leaf record:
   - Gate 148 migrates review-packet convenience consumers and bounded-trace reports to the preserved seam surfaces without removing `stage_local_handoff` or `final_risk_join`.
   - Bounded trace markdown now renders a preserved seam snapshot showing admissibility, candidate ownership, overlay, and terminal outcomes.
   - Router, gate map, leaves ledger, and execution log advance to Gate 149 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`
+
+
+## Gate 149 receipts
+
+### LEAF-G149-001 through LEAF-G149-003
+
+- Branch: `work/gate-149-anti-drift-audit-closeout-20260401`
+- Start commit: `a7e3071`
+- End commit or merged main commit: `TO_BE_CORRECTED_ON_MAIN_AFTER_MERGE`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+  - `docs/planning/2026-04-01_GATE149_ABSOLUTE_ANTI_DRIFT_AUDIT_AND_PACK_CLOSEOUT.md`
+  - `tests/test_gate149_stage_local_handoff_pack_closeout.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_runtime.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_gate147_overlay_terminal_risk_planning.py tests/test_gate146_admissibility_candidate_ownership.py tests/test_gate146_admissibility_candidate_ownership_planning.py tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate144_posture_split_planning.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate142_overwrite_and_ownership_inventory.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate133_bounded_trace_review_regime.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate127_replay_coefficient_visibility.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_gate78_modifier_runtime_integration.py tests/test_gate50_vocabulary_governance.py tests/test_document_hygiene.py`
+- Observed results:
+  - Gate 149 closes the stage-local handoff and terminal-risk seams pack honestly and returns the repo to a no-active-pack router state.
+  - The declared proof slice is rerun from the repo-local installed environment against the exact green `main` state.
+  - The fresh full-history packaging artifact is created from that exact green state.
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`

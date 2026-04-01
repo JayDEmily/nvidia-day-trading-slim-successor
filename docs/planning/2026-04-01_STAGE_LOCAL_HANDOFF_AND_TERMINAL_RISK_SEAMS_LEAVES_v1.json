@@ -1,7 +1,7 @@
 {
   "governing_plan": "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
-  "execution_status": "gate_148_complete_gate_149_active_on_main",
-  "active_gate": "Gate 149",
+  "execution_status": "stage_local_handoff_and_terminal_risk_seams_pack_closed_through_gate_149_on_main",
+  "active_gate": "none \u2014 stage-local handoff and terminal-risk seams pack closed through Gate 149 on main",
   "completed_gate_ids": [
     "Gate 141",
     "Gate 142",
@@ -10,7 +10,8 @@
     "Gate 145",
     "Gate 146",
     "Gate 147",
-    "Gate 148"
+    "Gate 148",
+    "Gate 149"
   ],
   "completed_leaf_ids": [
     "LEAF-G141-001",
@@ -34,13 +35,12 @@
     "LEAF-G147-003",
     "LEAF-G148-001",
     "LEAF-G148-002",
-    "LEAF-G148-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G148-003",
     "LEAF-G149-001",
     "LEAF-G149-002",
     "LEAF-G149-003"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -931,7 +931,7 @@
       "gate": "Gate 149",
       "title": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router",
       "objective": "Run the absolute anti-drift audit across pack, leaves, execution log, gate map, and router.",
-      "status": "active",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -958,7 +958,7 @@
       "gate": "Gate 149",
       "title": "Run the declared full proof slice from a repo-local installed environment",
       "objective": "Run the declared full proof slice from a repo-local installed environment.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -985,7 +985,7 @@
       "gate": "Gate 149",
       "title": "Create the fresh full-history zip and close the pack honestly",
       "objective": "Create the fresh full-history zip and close the pack honestly.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
