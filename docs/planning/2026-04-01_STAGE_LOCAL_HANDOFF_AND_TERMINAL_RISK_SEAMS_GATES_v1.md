@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gates 141-142 complete on `main`, Gate 143 active, Gates 144-149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-143 complete on `main`, Gate 144 active, Gates 145-149 planned
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -187,7 +187,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 143: Admit additive stage-local handoff artefacts only where Gate 142 proves they are necessary
 
 **Status**
-- active on `main`
+- complete on `main`
 
 **Objective**
 - add any preserved stage-local handoff contracts and immediate carriage surfaces that Gate 142 proves necessary without changing terminal behaviour yet.
@@ -195,7 +195,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 144: Separate posture hard invariants from posture-local envelope truth if the current output conflates them
 
 **Status**
-- planned
+- active on `main`
 
 **Objective**
 - make posture-owned hard blocks, local envelope state, and downstream annotations explicit where Gate 142 shows they are currently collapsed.

@@ -32,7 +32,7 @@ from nvda_desk.schemas.review import (
     ReviewLineagePacket,
     TemporalEventWindowSurface,
 )
-from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState, RiskAction
+from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState, RiskAction, RiskDecision
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
 from nvda_desk.schemas.state_policy import (
     DegradationStep,
@@ -615,6 +615,20 @@ class ExecutionExpressionOutput(BaseModel):
     reasons: list[str] = Field(default_factory=list)
 
 
+class StageLocalHandoffSurface(BaseModel):
+    """Additive preserved handoff surface carried without changing stage order."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    handoff_version: str = "stage_local_handoff.v1"
+    cited_posture_pre_modifier: PostureRiskOutput | None = None
+    cited_eligibility: PlaybookEligibilityOutput | None = None
+    execution_pre_modifier: ExecutionExpressionOutput | None = None
+    execution_post_modifier_pre_final_risk: ExecutionExpressionOutput | None = None
+    terminal_risk_decision: RiskDecision | None = None
+    notes: list[str] = Field(default_factory=list)
+
+
 class RuntimeStateVector(BaseModel):
     """Approved state-vector slice readable by Gate 60 modifier policy."""
 
@@ -668,6 +682,7 @@ class ReviewExplanationInput(BaseModel):
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    stage_local_handoff: StageLocalHandoffSurface | None = None
     temporal_input: TemporalContextInput | None = None
 
 
@@ -744,6 +759,7 @@ class ReviewExplanationOutput(BaseModel):
     economic_accountability: EconomicContributionPacket | None = None
     promotion_evidence: PromotionEvidencePacket | None = None
     packet_lineage: PacketLineageSurface | None = None
+    stage_local_handoff: StageLocalHandoffSurface | None = None
     review_packet: dict[str, object]
 
 

@@ -2615,6 +2615,13 @@ Ownership:
 
 `ExecutionExpressionOutput` now also carries `pre_final_risk_active_playbook_ids`, `pre_final_risk_lead_playbook_id`, `pre_final_risk_entry_style`, and `final_risk_join` so the runtime can show exactly what execution looked like before the final risk join and how the join allowed, derisked, or veto-blocked the output. `FinalRiskJoinSurface` freezes the final disposition, reasons, lineage tags, and execution effect so review packets stop hiding the last authority step.
 
+
+#### Gate 143 note: additive stage-local handoff carriage
+
+`StageLocalHandoffSurface` freezes one additive preserved handoff surface so review and runtime callers can inspect stage-local ownership boundaries without changing the seven-stage runtime order or terminal behaviour. The surface carries the cited posture before modifier mutation, the cited eligibility packet, the execution packet before modifier mutation, the execution packet after modifier mutation but before terminal-risk application, and the terminal risk decision before `apply_final_join(...)` mutates execution. It is carried additively on `ReviewExplanationInput.stage_local_handoff`, `ReviewExplanationOutput.stage_local_handoff`, and `DeskCognitionRuntimeResult.stage_local_handoff`.
+
+Gate 143 does **not** retire `final_risk_join` or the existing `pre_final_risk_*` compatibility fields. Those remain the bounded compatibility bridge while later gates decide whether downstream consumers can move fully to the preserved handoff surface.
+
 #### Gate 136 note: additive lifecycle carriage for the continuation specimen
 
 `PositionContextInput` and `LifecyclePlanOutput` freeze the first lawful second-half lifecycle carriage for the `opening_drive_continuation` / `continuation_ladder_exec` specimen without replacing the existing execution-stage packet boundary. The bounded tradable expression family for this specimen is `single_leg_call_debit`, and the admitted lifecycle action set is limited to `add`, `trim`, `flatten`, `hold_small_overnight`, and `block_carry` until later gates broaden behaviour. `ExecutionExpressionInput.position_context` is the additive ingress slot for that bounded managed-position context, while `ExecutionExpressionOutput.lifecycle_plan` is the additive egress slot for the governed second-half plan. These fields are execution-stage payload enrichments only; they do not create a second packet, bypass DMP v2 lineage, or override the existing carry-handoff packet.

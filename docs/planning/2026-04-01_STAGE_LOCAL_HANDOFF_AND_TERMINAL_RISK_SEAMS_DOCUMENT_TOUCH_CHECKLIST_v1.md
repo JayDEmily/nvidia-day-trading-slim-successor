@@ -63,3 +63,4 @@ Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 1
 - Gate 149 is the first gate that may package the repo as the new clean full-history handover artifact.
 
 - Gate 142 closes with inventory-only evidence before any additive contract work begins.
+- Gate 143 admits additive handoff carriage only; final-risk behaviour remains boundedly unchanged.

@@ -258,6 +258,8 @@ class ReviewExplanationService:
             review_packet["modifier_control_law"] = modifier_control_law.model_dump(mode="json")
         if effective_policy is not None:
             review_packet["effective_policy"] = effective_policy.model_dump(mode="json")
+        if payload.stage_local_handoff is not None:
+            review_packet["stage_local_handoff"] = payload.stage_local_handoff.model_dump(mode="json")
         if review_eligibility is not None:
             review_packet["review_eligibility"] = review_eligibility.model_dump(mode="json")
         if stability_scorecards:
@@ -290,6 +292,7 @@ class ReviewExplanationService:
             failure_taxonomy=failure_taxonomy,
             economic_accountability=economic_accountability,
             promotion_evidence=promotion_evidence,
+            stage_local_handoff=payload.stage_local_handoff,
             review_packet=review_packet,
         )
 

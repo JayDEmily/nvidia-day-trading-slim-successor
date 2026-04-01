@@ -75,3 +75,36 @@ For every completed leaf record:
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`
+
+
+## Gate 143 receipts
+
+### LEAF-G143-001 through LEAF-G143-003
+
+- Branch: `work/gate-143-additive-stage-local-handoff-20260401`
+- Start commit: `0e92f79`
+- End commit or merged main commit: `TO_BE_CORRECTED_AFTER_MERGE`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_GATE143_ADDITIVE_STAGE_LOCAL_HANDOFF.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/review_explanation.py`
+  - `tests/test_gate143_stage_local_handoff_runtime.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate50_vocabulary_governance.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate142_overwrite_and_ownership_inventory.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate134_bounded_trace_reporting.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py`
+- Observed results:
+  - Gate 143 admitted only the additive `StageLocalHandoffSurface` and carried it through runtime and review entry surfaces.
+  - Existing terminal behaviour and compatibility fields remained intact.
+  - Router, gate map, leaves ledger, and execution log advanced to Gate 144 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: pending at receipt write time
