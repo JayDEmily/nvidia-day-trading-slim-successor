@@ -154,7 +154,7 @@ For every completed leaf record:
 
 - Branch: `work/gate-145-modifier-emitted-policy-compatibility-bridge-20260401`
 - Start commit: `b24e5bb`
-- End commit or merged main commit: `PENDING_GATE145_CLOSEOUT_CORRECTION`
+- End commit or merged main commit: `41e53c5`
 - Exact files touched:
   - `PLANS.md`
   - `CHANGELOG.jsonl`
