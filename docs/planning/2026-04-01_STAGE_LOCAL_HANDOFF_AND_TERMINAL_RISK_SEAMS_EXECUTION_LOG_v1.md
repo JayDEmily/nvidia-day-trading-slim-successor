@@ -179,3 +179,39 @@ For every completed leaf record:
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`
+
+
+## Gate 146 receipts
+
+### LEAF-G146-001 through LEAF-G146-002
+
+- Branch: `work/gate-146-admissibility-boundary-and-candidate-ownership-20260401`
+- Start commit: `07a1bee`
+- End commit or merged main commit: `TBD_BRANCH_END_COMMIT`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+  - `docs/planning/2026-04-01_GATE146_ELIGIBILITY_ADMISSIBILITY_AND_EXECUTION_CANDIDATE_OWNERSHIP.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/playbook_eligibility.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `tests/test_gate146_admissibility_candidate_ownership.py`
+  - `tests/test_gate146_admissibility_candidate_ownership_planning.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate146_admissibility_candidate_ownership.py tests/test_gate146_admissibility_candidate_ownership_planning.py tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate50_vocabulary_governance.py`
+- Observed results:
+  - Gate 146 admits one additive Stage 5 admissibility surface and one additive Stage 6 candidate-ownership surface.
+  - Stage 5 continues to own admissibility/watch truth only; Stage 6 continues to own candidate ranking and lead selection.
+  - Existing compatibility lists, execution geometry, and final-risk behaviour remain unchanged.
+  - Router, gate map, leaves ledger, and execution log advance to Gate 147 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`

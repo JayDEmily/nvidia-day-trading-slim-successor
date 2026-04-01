@@ -1,13 +1,14 @@
 {
   "governing_plan": "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
-  "execution_status": "gate_145_complete_gate_146_active_on_main",
-  "active_gate": "Gate 146",
+  "execution_status": "gate_146_complete_gate_147_active_on_main",
+  "active_gate": "Gate 147",
   "completed_gate_ids": [
     "Gate 141",
     "Gate 142",
     "Gate 143",
     "Gate 144",
-    "Gate 145"
+    "Gate 145",
+    "Gate 146"
   ],
   "completed_leaf_ids": [
     "LEAF-G141-001",
@@ -23,7 +24,9 @@
     "LEAF-G144-001",
     "LEAF-G144-002",
     "LEAF-G145-001",
-    "LEAF-G145-002"
+    "LEAF-G145-002",
+    "LEAF-G146-001",
+    "LEAF-G146-002"
   ],
   "remaining_leaf_ids": [
     "LEAF-G146-001",
@@ -712,7 +715,7 @@
       "gate": "Gate 146",
       "title": "Constrain Stage 5 to admissibility and isolate Stage 6 candidate ownership",
       "objective": "Constrain Stage 5 to admissibility and isolate Stage 6 candidate ownership.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -739,7 +742,7 @@
       "gate": "Gate 146",
       "title": "Refresh candidate/execution proof slices and close Gate 146 honestly",
       "objective": "Refresh candidate/execution proof slices and close Gate 146 honestly.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -766,7 +769,7 @@
       "gate": "Gate 147",
       "title": "Freeze overlap classes between overlay evaluation and terminal-risk application",
       "objective": "Freeze overlap classes between overlay evaluation and terminal-risk application.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",

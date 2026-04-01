@@ -155,6 +155,25 @@
       "notes": []
     },
     {
+      "canonical_slug": "eligibility_admissibility",
+      "canonical_label": "Eligibility Admissibility",
+      "category": "compatibility_surface",
+      "stage_owner": "playbook_eligibility",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.EligibilityAdmissibilitySurface",
+      "allowed_aliases": [
+        "stage5_admissibility_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive Stage 5 surface preserving admissible and watch-only family, setup-variant, and playbook ids apart from Stage 6 ranking."
+      ]
+    },
+    {
       "canonical_slug": "expression_execution",
       "canonical_label": "Expression and Execution",
       "category": "stage",
@@ -170,6 +189,25 @@
       ],
       "disallowed_phrases": [],
       "notes": []
+    },
+    {
+      "canonical_slug": "execution_candidate_ownership",
+      "canonical_label": "Execution Candidate Ownership",
+      "category": "compatibility_surface",
+      "stage_owner": "expression_execution",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.ExecutionCandidateOwnershipSurface",
+      "allowed_aliases": [
+        "stage6_candidate_ownership_surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Additive Stage 6 surface preserving the admitted candidate pool seen by execution, adjudicated playbook ids, and the selected lead playbook."
+      ]
     },
     {
       "canonical_slug": "review_explanation",

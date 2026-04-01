@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from nvda_desk.schemas.cognition import (
     CandidateAdjudicationRecord,
+    ExecutionCandidateOwnershipSurface,
     ExecutionExpressionInput,
     ExecutionExpressionOutput,
     LifecycleAction,
@@ -128,6 +129,14 @@ class ExecutionExpressionService:
 
         if payload.posture.permission_state.value == "block":
             reasons.append("execution_blocked_by_permission")
+            candidate_ownership = self._candidate_ownership_surface(
+                payload=payload,
+                adjudication=[],
+                watch_playbook_ids=watch_playbook_ids,
+                lead_playbook_id=None,
+                contradiction_resolution=None,
+                note="execution_skipped_after_posture_block",
+            )
             position_context = self._normalise_position_context(
                 payload=payload,
                 lead_setup_variant_id=None,
@@ -183,6 +192,7 @@ class ExecutionExpressionService:
                 exit_reasons=["stand_aside_until_permission_clears"],
                 exit_plan=["stand_aside_until_permission_clears"],
                 lifecycle_plan=lifecycle_plan,
+                candidate_ownership=candidate_ownership,
                 reasons=reasons,
             )
 
@@ -324,6 +334,23 @@ class ExecutionExpressionService:
             exit_reasons = self._merge_exit_reasons(exit_reasons, lifecycle_plan)
             exit_plan = self._merge_exit_plan(exit_plan, lifecycle_plan)
 
+        candidate_ownership = self._candidate_ownership_surface(
+            payload=payload,
+            adjudication=adjudication,
+            watch_playbook_ids=watch_playbook_ids,
+            lead_playbook_id=lead_playbook_id,
+            contradiction_resolution=contradiction_resolution,
+            note=(
+                "lead_selected_from_admitted_candidate_pool"
+                if lead_playbook_id is not None
+                else (
+                    "watch_only_candidates_not_promoted_to_execution"
+                    if watch_playbook_ids
+                    else "no_admitted_candidate_promoted"
+                )
+            ),
+        )
+
         return ExecutionExpressionOutput(
             active_playbook_ids=active_playbook_ids,
             active_setup_variant_ids=active_setup_variant_ids,
@@ -363,7 +390,46 @@ class ExecutionExpressionService:
             exit_reasons=exit_reasons,
             exit_plan=exit_plan,
             lifecycle_plan=lifecycle_plan,
+            candidate_ownership=candidate_ownership,
             reasons=reasons,
+        )
+
+    def _candidate_ownership_surface(
+        self,
+        *,
+        payload: ExecutionExpressionInput,
+        adjudication: list[CandidateAdjudicationRecord],
+        watch_playbook_ids: list[str],
+        lead_playbook_id: str | None,
+        contradiction_resolution: str | None,
+        note: str,
+    ) -> ExecutionCandidateOwnershipSurface:
+        admissibility_surface = payload.eligibility.admissibility_surface
+        admitted_playbook_ids = (
+            list(admissibility_surface.admissible_playbook_ids)
+            if admissibility_surface is not None
+            else [
+                candidate.playbook_id
+                for candidate in payload.eligibility.candidates
+                if candidate.decision is PlaybookDecision.ELIGIBLE
+            ]
+        )
+        watch_only_ids = (
+            list(admissibility_surface.watch_only_playbook_ids)
+            if admissibility_surface is not None
+            else list(watch_playbook_ids)
+        )
+        return ExecutionCandidateOwnershipSurface(
+            admitted_playbook_ids=admitted_playbook_ids,
+            watch_only_playbook_ids=watch_only_ids,
+            adjudicated_playbook_ids=[entry.playbook_id for entry in adjudication],
+            lead_playbook_id=lead_playbook_id,
+            contradiction_resolution=contradiction_resolution,
+            notes=[
+                "stage5_limited_to_admissibility_and_watch_status",
+                "stage6_owns_candidate_ranking_and_lead_selection",
+                note,
+            ],
         )
 
     def _normalise_position_context(
