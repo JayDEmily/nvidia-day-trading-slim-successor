@@ -24,8 +24,6 @@ from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     InventoryState,
     LifecycleAction,
-    PositionContextInput,
-    TradableExpressionFamily,
     MarketRegimeContextInput,
     MarketRegimeContextOutput,
     OptionsFlowContextInput,
@@ -33,12 +31,15 @@ from nvda_desk.schemas.cognition import (
     PacketLineageSurface,
     PlaybookEligibilityInput,
     PlaybookEligibilityOutput,
+    PositionContextInput,
     PostureRiskInput,
     PostureRiskOutput,
     ReviewExplanationInput,
     ReviewExplanationOutput,
+    StageLocalHandoffSurface,
     TemporalContextInput,
     TemporalContextOutput,
+    TradableExpressionFamily,
 )
 from nvda_desk.schemas.dmp import (
     CognitionStagePayload,
@@ -96,6 +97,7 @@ class DeskCognitionRuntimeResult:
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
     review: ReviewExplanationOutput
+    stage_local_handoff: StageLocalHandoffSurface | None = None
     stage_packets: tuple[DmpV2Packet, ...] = ()
     packet_lineage: tuple[str, ...] = ()
     stage_packet_ids: dict[str, str] = field(default_factory=dict)
@@ -256,6 +258,7 @@ class DeskCognitionRuntime:
             )
         )
         posture = self._posture_with_contract_citations(posture, selector_contract_emissions)
+        cited_posture_pre_modifier = posture
         modifier_runtime_packet = self._modifiers.evaluate(
             temporal_input=temporal_input,
             temporal=temporal,
@@ -275,6 +278,7 @@ class DeskCognitionRuntime:
         eligibility = self._eligibility_with_contract_citations(
             eligibility, selector_contract_emissions
         )
+        cited_eligibility = eligibility
         execution = self._execution.evaluate(
             ExecutionExpressionInput(
                 temporal=temporal,
@@ -291,7 +295,9 @@ class DeskCognitionRuntime:
                 ),
             )
         )
+        execution_pre_modifier = execution
         execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
+        execution_post_modifier_pre_final_risk = execution
         final_risk_decision = self._risk_gateway.evaluate_runtime_join(
             requested_at=temporal_input.ts,
             temporal_input=temporal_input,
@@ -303,6 +309,17 @@ class DeskCognitionRuntime:
             inventory_state=inventory_state,
             risk_budget_remaining_pct=risk_budget_remaining_pct,
         )
+        stage_local_handoff = StageLocalHandoffSurface(
+            cited_posture_pre_modifier=cited_posture_pre_modifier,
+            cited_eligibility=cited_eligibility,
+            execution_pre_modifier=execution_pre_modifier,
+            execution_post_modifier_pre_final_risk=execution_post_modifier_pre_final_risk,
+            terminal_risk_decision=final_risk_decision,
+            notes=[
+                "additive_preserved_handoff_only",
+                "terminal_behavior_unchanged_in_gate_143",
+            ],
+        )
         execution = self._risk_gateway.apply_final_join(execution, final_risk_decision)
         review = self._review.evaluate(
             ReviewExplanationInput(
@@ -313,6 +330,7 @@ class DeskCognitionRuntime:
                 eligibility=eligibility,
                 execution=execution,
                 modifier_runtime_packet=modifier_runtime_packet,
+                stage_local_handoff=stage_local_handoff,
                 temporal_input=temporal_input,
             )
         )
@@ -391,6 +409,7 @@ class DeskCognitionRuntime:
             eligibility=eligibility,
             execution=execution,
             review=review,
+            stage_local_handoff=stage_local_handoff,
             stage_packets=ordered_packets,
             packet_lineage=tuple(packet.packet_id for packet in ordered_packets),
             stage_packet_ids=stage_packet_ids,

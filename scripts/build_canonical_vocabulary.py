@@ -216,6 +216,28 @@ def build_document() -> VocabularyDocument:
             ],
         ),
         VocabularyEntry(
+            canonical_slug="stage_local_handoff",
+            canonical_label="Stage-Local Handoff",
+            category=VocabularyCategory.WORKFLOW,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.cognition.StageLocalHandoffSurface",
+            allowed_aliases=["handoff_surface"],
+            notes=[
+                "Additive review-visible handoff surface preserving cited posture, cited eligibility, pre-final execution, and terminal risk decision without changing stage order."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="terminal_risk_decision",
+            canonical_label="Terminal Risk Decision",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="review_explanation",
+            maps_to_contract="nvda_desk.schemas.risk.RiskDecision",
+            allowed_aliases=["final_risk_decision"],
+            notes=[
+                "Preserved terminal risk decision carried inside the stage-local handoff surface before final join mutates execution."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="state_vector",
             canonical_label="State Vector",
             category=VocabularyCategory.WORKFLOW,
