@@ -102,12 +102,34 @@ def build_document() -> VocabularyDocument:
             allowed_aliases=["selector_layer"],
         ),
         VocabularyEntry(
+            canonical_slug="eligibility_admissibility",
+            canonical_label="Eligibility Admissibility",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="playbook_eligibility",
+            maps_to_contract="nvda_desk.schemas.cognition.EligibilityAdmissibilitySurface",
+            allowed_aliases=["stage5_admissibility_surface"],
+            notes=[
+                "Additive Stage 5 surface preserving admissible and watch-only family, setup-variant, and playbook ids apart from Stage 6 ranking."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="expression_execution",
             canonical_label="Expression and Execution",
             category=VocabularyCategory.STAGE,
             stage_owner="expression_execution",
             maps_to_contract="nvda_desk.schemas.cognition.ExecutionExpressionOutput",
             allowed_aliases=["execution_expression"],
+        ),
+        VocabularyEntry(
+            canonical_slug="execution_candidate_ownership",
+            canonical_label="Execution Candidate Ownership",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="expression_execution",
+            maps_to_contract="nvda_desk.schemas.cognition.ExecutionCandidateOwnershipSurface",
+            allowed_aliases=["stage6_candidate_ownership_surface"],
+            notes=[
+                "Additive Stage 6 surface preserving the admitted candidate pool seen by execution, adjudicated playbook ids, and the selected lead playbook."
+            ],
         ),
         VocabularyEntry(
             canonical_slug="review_explanation",

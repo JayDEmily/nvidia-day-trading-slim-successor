@@ -74,4 +74,4 @@ def test_gate145_receipt_domain_model_and_vocabulary_are_present() -> None:
     assert "modifier_compatibility_bridge" in receipt
     assert "#### Gate 145 note: modifier compatibility bridge" in domain_model
     assert "modifier_compatibility_bridge" in slugs
-    assert leaves["active_gate"] in {"Gate 145", "Gate 146"}
+    assert leaves["active_gate"] in {"Gate 145", "Gate 146", "Gate 147", "Gate 148"}

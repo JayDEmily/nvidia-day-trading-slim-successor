@@ -1,4 +1,4 @@
-Status: active stage-local handoff and terminal-risk seams pack; Gates 141-145 complete on `main`, Gate 146 active, Gates 147-149 planned
+Status: active stage-local handoff and terminal-risk seams pack; Gates 141-146 complete on `main`, Gate 147 active, Gates 148-149 planned
 # 2026-04-01 Stage-Local Handoff and Terminal-Risk Seams Gates v1
 
 ## Purpose
@@ -211,7 +211,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 146: Clarify eligibility boundary versus execution candidate ownership
 
 **Status**
-- planned
+- complete on `main`
 
 **Objective**
 - keep Stage 5 limited to admissibility/selection truth and isolate Stage 6 candidate/expression ownership where current surfaces overlap.
@@ -219,7 +219,7 @@ Checklist file: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_
 ### Gate 147: Split overlay evaluation from terminal-risk application where the current final step combines them
 
 **Status**
-- planned
+- active on `main`
 
 **Objective**
 - separate observed overlay-evaluation truth from the terminal application step and freeze overlap classes before review consumers are changed.

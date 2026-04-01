@@ -25,6 +25,6 @@ def test_gate144_receipt_domain_model_and_vocabulary_are_present() -> None:
     assert "posture_downstream_annotations" in receipt
     assert "#### Gate 144 note: posture-owned hard invariants and local envelope" in domain_model
     assert {"posture_hard_invariants", "posture_local_envelope", "posture_downstream_annotations"}.issubset(slugs)
-    assert leaves["active_gate"] in {"Gate 145", "Gate 146"}
+    assert leaves["active_gate"] in {"Gate 145", "Gate 146", "Gate 147", "Gate 148"}
     assert "Gate 144" in leaves["completed_gate_ids"]
     assert {"LEAF-G144-001", "LEAF-G144-002"}.issubset(set(leaves["completed_leaf_ids"]))

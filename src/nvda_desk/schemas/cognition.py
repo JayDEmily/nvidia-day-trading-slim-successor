@@ -549,7 +549,25 @@ class PlaybookEligibilityOutput(BaseModel):
     watch_only_candidates: list[str] = Field(default_factory=list)
     no_trade_reasons: list[str] = Field(default_factory=list)
     rejected_playbook_reasons: dict[str, list[str]] = Field(default_factory=dict)
+    admissibility_surface: EligibilityAdmissibilitySurface | None = None
     reasons: list[str] = Field(default_factory=list)
+
+
+class EligibilityAdmissibilitySurface(BaseModel):
+    """Bounded Stage 5 admissibility surface preserved apart from Stage 6 ranking."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    admissibility_version: str = "eligibility_admissibility.v1"
+    permission_state: PermissionState
+    no_trade_reasons: list[str] = Field(default_factory=list)
+    admissible_family_ids: list[str] = Field(default_factory=list)
+    watch_family_ids: list[str] = Field(default_factory=list)
+    admissible_setup_variant_ids: list[str] = Field(default_factory=list)
+    watch_setup_variant_ids: list[str] = Field(default_factory=list)
+    admissible_playbook_ids: list[str] = Field(default_factory=list)
+    watch_only_playbook_ids: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
 
 
 class PositionContextInput(BaseModel):
@@ -663,10 +681,25 @@ class ExecutionExpressionOutput(BaseModel):
     exit_reasons: list[str] = Field(default_factory=list)
     exit_plan: list[str] = Field(default_factory=list)
     lifecycle_plan: LifecyclePlanOutput | None = None
+    candidate_ownership: ExecutionCandidateOwnershipSurface | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
     modifier_compatibility_bridge: ModifierCompatibilityBridgeSurface | None = None
     final_risk_join: FinalRiskJoinSurface | None = None
     reasons: list[str] = Field(default_factory=list)
+
+
+class ExecutionCandidateOwnershipSurface(BaseModel):
+    """Bounded Stage 6 candidate-ownership surface preserved apart from later risk joins."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    ownership_version: str = "execution_candidate_ownership.v1"
+    admitted_playbook_ids: list[str] = Field(default_factory=list)
+    watch_only_playbook_ids: list[str] = Field(default_factory=list)
+    adjudicated_playbook_ids: list[str] = Field(default_factory=list)
+    lead_playbook_id: str | None = None
+    contradiction_resolution: str | None = None
+    notes: list[str] = Field(default_factory=list)
 
 
 class StageLocalHandoffSurface(BaseModel):

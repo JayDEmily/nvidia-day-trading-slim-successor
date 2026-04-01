@@ -12,6 +12,7 @@ from collections.abc import Callable
 from typing import Literal
 
 from nvda_desk.schemas.cognition import (
+    EligibilityAdmissibilitySurface,
     PlaybookAction,
     PlaybookCandidate,
     PlaybookDecision,
@@ -132,12 +133,31 @@ class PlaybookEligibilityService:
             for candidate in setup_variant_candidates
             if candidate.decision is PlaybookDecision.WATCH_ONLY
         ]
+        admissible_playbook_ids = [
+            candidate.playbook_id
+            for candidate in candidates
+            if candidate.decision is PlaybookDecision.ELIGIBLE
+        ]
         reasons = [f"permission_state:{payload.posture.permission_state.value}"]
         reasons.extend(f"no_trade:{reason}" for reason in no_trade_reasons)
         reasons.extend(f"active_family:{family_id}" for family_id in active_family_ids)
         reasons.extend(
             f"active_setup_variant:{setup_variant_id}"
             for setup_variant_id in active_setup_variant_ids
+        )
+        admissibility_surface = EligibilityAdmissibilitySurface(
+            permission_state=payload.posture.permission_state,
+            no_trade_reasons=list(no_trade_reasons),
+            admissible_family_ids=active_family_ids,
+            watch_family_ids=watch_family_ids,
+            admissible_setup_variant_ids=active_setup_variant_ids,
+            watch_setup_variant_ids=watch_setup_variant_ids,
+            admissible_playbook_ids=admissible_playbook_ids,
+            watch_only_playbook_ids=watch_only_candidates,
+            notes=[
+                "stage5_limited_to_admissibility_and_watch_status",
+                "stage6_owns_candidate_ranking_and_lead_selection",
+            ],
         )
         return PlaybookEligibilityOutput(
             family_candidates=family_candidates,
@@ -156,6 +176,7 @@ class PlaybookEligibilityService:
             watch_only_candidates=watch_only_candidates,
             no_trade_reasons=no_trade_reasons,
             rejected_playbook_reasons=rejected_playbook_reasons,
+            admissibility_surface=admissibility_surface,
             reasons=reasons,
         )
 
