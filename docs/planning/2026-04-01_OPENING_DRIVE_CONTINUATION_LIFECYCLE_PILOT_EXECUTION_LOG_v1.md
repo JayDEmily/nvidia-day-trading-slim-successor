@@ -1,6 +1,6 @@
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1
 
-Status: active execution log for the opening-drive continuation lifecycle pilot pack; Gates 135-136 complete on `main`, Gate 137 active, Gates 138-139 planned
+Status: active execution log for the opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned
 
 ## Purpose
 
@@ -172,7 +172,85 @@ For every completed leaf record:
 
 ## Gate 137 receipts
 
-_Planned only; no receipts yet._
+### LEAF-G137-001
+- gate id: Gate 137
+- leaf id: `LEAF-G137-001`
+- branch name: `work/gate-137-continuation-lifecycle-compiler-20260401`
+- start commit: `cc521cc`
+- end commit or merged main commit: `fbb45b5`
+- exact files touched:
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `tests/test_execution_review_runtime.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py`
+- observed results:
+  - specimen position context now carries bounded live state into execution rather than an empty scaffold
+  - continuation lifecycle normalises ladder progress from current managed position size before any close decision
+- full suite required: no
+- stop condition hit: none
+- receipt recorded: recorded live
+
+### LEAF-G137-002
+- gate id: Gate 137
+- leaf id: `LEAF-G137-002`
+- branch name: `work/gate-137-continuation-lifecycle-compiler-20260401`
+- start commit: `cc521cc`
+- end commit or merged main commit: `fbb45b5`
+- exact files touched:
+  - `src/nvda_desk/services/execution_expression.py`
+  - `tests/test_execution_review_runtime.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate120_execution_geometry.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py`
+- observed results:
+  - continuation lifecycle now emits explicit invalidation and trim decisions from bounded specimen state
+  - execution output now promotes lifecycle-driven `inventory_action`, `exit_reasons`, and `exit_plan` for the specimen instead of only copying template labels
+- full suite required: no
+- stop condition hit: none
+- receipt recorded: recorded live
+
+### LEAF-G137-003
+- gate id: Gate 137
+- leaf id: `LEAF-G137-003`
+- branch name: `work/gate-137-continuation-lifecycle-compiler-20260401`
+- start commit: `cc521cc`
+- end commit or merged main commit: `fbb45b5`
+- exact files touched:
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/execution_expression.py`
+  - `tests/test_execution_review_runtime.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate48_carry_handoff.py tests/test_gate53_carry_handoff.py tests/test_carry_review_cli_and_legacy.py`
+- observed results:
+  - continuation lifecycle now hard-flats stale incomplete ladders into the close window and nominates hold-small overnight only when the ladder is complete and carry-eligible
+  - specimen lifecycle rationale is now explicit and review-visible through the execution-stage payload
+- full suite required: no
+- stop condition hit: none
+- receipt recorded: recorded live
+
+### LEAF-G137-004
+- gate id: Gate 137
+- leaf id: `LEAF-G137-004`
+- branch name: `work/gate-137-continuation-lifecycle-compiler-20260401`
+- start commit: `cc521cc`
+- end commit or merged main commit: `fbb45b5`
+- exact files touched:
+  - `PLANS.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md`
+  - `CHANGELOG.jsonl`
+  - `tests/test_execution_review_runtime.py`
+- exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_dmp_review_trace.py`
+  - `.venv/bin/python -m pytest -q tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_execution_review_runtime.py tests/test_runtime_parity_registry_playbooks.py tests/test_dmp_review_trace.py`
+- observed results:
+  - Gate 137 proof slices remained green after lifecycle compilation landed
+  - active pack advanced to Gate 138 with Gate 137 closed in the planning surfaces
+- full suite required: yes, gate-close slice
+- stop condition hit: none
+- receipt recorded: recorded live
 
 ## Gate 138 receipts
 

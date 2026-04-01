@@ -1,4 +1,4 @@
-Status: active opening-drive continuation lifecycle pilot pack; Gates 135-136 complete on `main`, Gate 137 active, Gates 138-139 planned
+Status: active opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned
 # 2026-04-01 Opening Drive Continuation Lifecycle Pilot Gates v1
 
 ## Purpose
@@ -232,7 +232,7 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 ### Gate 137: Compile the continuation specimen lifecycle inside expression execution
 
 **Status**
-- active next gate on `main`
+- complete on `main`
 
 **Objective**
 - Turn the already-frozen tradable specimen family’s second half into a real lifecycle compiler: normalisation, invalidation, trim, stale-thesis, close-window, carry nomination, and hard-flat handling.
@@ -250,6 +250,9 @@ Checklist file: `docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_P
 - review/runtime proofs show the execution stage now emits lifecycle-aware rationale rather than only entry geometry.
 
 ### Gate 138: Integrate lifecycle output with the carry branch
+
+**Status**
+- active next gate on `main`
 
 **Objective**
 - Feed lifecycle state into the existing carry path so late-session continuation management becomes an explicit continuation of the same chain rather than a detached parallel decision.

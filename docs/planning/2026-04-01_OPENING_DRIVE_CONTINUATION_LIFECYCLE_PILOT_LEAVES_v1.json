@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md",
   "version": 1,
-  "execution_status": "gate_136_complete_gate_137_active_on_main",
-  "active_gate": "Gate 137",
+  "execution_status": "gate_137_complete_gate_138_active_on_main",
+  "active_gate": "Gate 138",
   "supersedes": [
     "docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md"
   ],
@@ -20,10 +20,6 @@
     "LEAF-G136-004"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G137-001",
-    "LEAF-G137-002",
-    "LEAF-G137-003",
-    "LEAF-G137-004",
     "LEAF-G138-001",
     "LEAF-G138-002",
     "LEAF-G138-003",
@@ -561,7 +557,7 @@
       "gate": "Gate 137",
       "title": "Normalise specimen position state before any close decision",
       "objective": "Turn the specimen\u2019s entry template plus the new position context into one normalised managed-state object for later lifecycle passes.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G136-004"
       ],
@@ -619,7 +615,7 @@
       "gate": "Gate 137",
       "title": "Implement invalidation and trim logic for the specimen",
       "objective": "Convert the specimen\u2019s invalidation and trim labels into deterministic lifecycle decisions grounded in the new managed state.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G137-001"
       ],
@@ -674,7 +670,7 @@
       "gate": "Gate 137",
       "title": "Implement stale-thesis, close-window, carry-nomination, and hard-flat logic",
       "objective": "Complete the specimen\u2019s second half by adding time-stop, late-session, carry nomination, and hard-flat behaviour on top of the managed state.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G137-002"
       ],
@@ -732,7 +728,7 @@
       "gate": "Gate 137",
       "title": "Freeze review-visible lifecycle proofs and close Gate 137",
       "objective": "Prove the specimen lifecycle behaves through the live runtime and review surfaces before downstream carry integration changes the handoff semantics.",
-      "status": "active_next_gate",
+      "status": "complete_on_main",
       "depends_on": [
         "LEAF-G137-003"
       ],
@@ -796,7 +792,7 @@
       "gate": "Gate 138",
       "title": "Extend carry handoff with lifecycle nomination and ceilings",
       "objective": "Add the bounded lifecycle nomination, carry ceiling, and flatten constraints the carry handoff needs to consume the specimen cleanly.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G137-004"
       ],
@@ -859,7 +855,7 @@
       "gate": "Gate 138",
       "title": "Align carry evaluator downgrade logic with lifecycle-aware handoff",
       "objective": "Make the carry evaluator consume the richer handoff and preserve deterministic downgrade/flatten behaviour for the specimen.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G138-001"
       ],
@@ -917,7 +913,7 @@
       "gate": "Gate 138",
       "title": "Freeze carry-branch integration proofs and close Gate 138",
       "objective": "Prove the carry branch now consumes lifecycle-aware specimen output and close the integration gate honestly before ledger work begins.",
-      "status": "planned",
+      "status": "active_next_gate",
       "depends_on": [
         "LEAF-G138-002"
       ],
