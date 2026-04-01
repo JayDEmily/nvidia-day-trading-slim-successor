@@ -68,3 +68,4 @@ Current planned sequence: Gate 141 -> Gate 142 -> Gate 143 -> Gate 144 -> Gate 1
 - Gate 144 closes with additive posture-owned split surfaces only; modifier packet authority remains the next gate.
 - Gate 145 closes with explicit modifier compatibility-bridge surfaces while ModifierRuntimePacket remains the authority.
 - Gate 146 closes with additive Stage 5 admissibility and Stage 6 candidate-ownership surfaces only; existing compatibility lists remain boundedly unchanged.
+- Gate 147 closes with an additive overlay-versus-terminal-risk seam only; final-risk execution effects remain boundedly unchanged until Gate 148 migrates downstream consumers.

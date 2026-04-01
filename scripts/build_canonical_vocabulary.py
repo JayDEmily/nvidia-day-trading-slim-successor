@@ -132,6 +132,28 @@ def build_document() -> VocabularyDocument:
             ],
         ),
         VocabularyEntry(
+            canonical_slug="overlay_risk_decision",
+            canonical_label="Overlay Risk Decision",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="risk_gateway",
+            maps_to_contract="nvda_desk.schemas.risk.RiskDecision",
+            allowed_aliases=["market_overlay_decision"],
+            notes=[
+                "Preserved overlay-evaluation decision carried before posture-aware terminal application reshapes the final risk action."
+            ],
+        ),
+        VocabularyEntry(
+            canonical_slug="terminal_risk_application",
+            canonical_label="Terminal Risk Application",
+            category=VocabularyCategory.COMPATIBILITY_SURFACE,
+            stage_owner="risk_gateway",
+            maps_to_contract="nvda_desk.schemas.cognition.TerminalRiskApplicationSurface",
+            allowed_aliases=["final_risk_application_surface"],
+            notes=[
+                "Additive seam preserving overlay decision, final terminal decision, posture permission state, and bounded overlap classes before downstream review migration."
+            ],
+        ),
+        VocabularyEntry(
             canonical_slug="review_explanation",
             canonical_label="Review and Explanation",
             category=VocabularyCategory.STAGE,

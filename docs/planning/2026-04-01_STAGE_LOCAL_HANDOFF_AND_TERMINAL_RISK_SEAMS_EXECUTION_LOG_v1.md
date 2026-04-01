@@ -215,3 +215,38 @@ For every completed leaf record:
 - Full suite required: no
 - Stop conditions hit: none
 - Merge status: merged to `main`
+
+
+## Gate 147 receipts
+
+### LEAF-G147-001 through LEAF-G147-003
+
+- Branch: `work/gate-147-overlay-versus-terminal-risk-application-20260401`
+- Start commit: `674a224`
+- End commit or merged main commit: `TBD_BRANCH_END_COMMIT`
+- Exact files touched:
+  - `PLANS.md`
+  - `CHANGELOG.jsonl`
+  - `docs/03_DOMAIN_MODEL.md`
+  - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
+  - `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+  - `docs/planning/2026-04-01_GATE147_OVERLAY_EVALUATION_AND_TERMINAL_RISK_APPLICATION.md`
+  - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+  - `scripts/build_canonical_vocabulary.py`
+  - `src/nvda_desk/schemas/cognition.py`
+  - `src/nvda_desk/services/cognition_runtime.py`
+  - `src/nvda_desk/services/risk_gateway.py`
+  - `tests/test_gate147_overlay_terminal_risk_runtime.py`
+  - `tests/test_gate147_overlay_terminal_risk_planning.py`
+- Exact validation commands:
+  - `.venv/bin/python -m pytest -q tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_gate147_overlay_terminal_risk_planning.py tests/test_gate146_admissibility_candidate_ownership.py tests/test_gate145_modifier_policy_bridge_runtime.py tests/test_gate144_posture_split_runtime.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate50_vocabulary_governance.py`
+- Observed results:
+  - Gate 147 preserves the raw overlay-evaluation decision and the additive terminal-risk application seam without changing final outcomes.
+  - The overlap classes between overlay evaluation and posture-aware terminal application are now explicit and review-visible through the preserved handoff surface.
+  - Existing `final_risk_join` and `pre_final_risk_*` compatibility fields remain intact while router truth advances to Gate 148 on the same branch.
+- Full suite required: no
+- Stop conditions hit: none
+- Merge status: merged to `main`

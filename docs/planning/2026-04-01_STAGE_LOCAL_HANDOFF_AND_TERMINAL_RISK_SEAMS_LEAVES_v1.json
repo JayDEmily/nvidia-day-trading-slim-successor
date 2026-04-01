@@ -1,14 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
-  "execution_status": "gate_146_complete_gate_147_active_on_main",
-  "active_gate": "Gate 147",
+  "execution_status": "gate_147_complete_gate_148_active_on_main",
+  "active_gate": "Gate 148",
   "completed_gate_ids": [
     "Gate 141",
     "Gate 142",
     "Gate 143",
     "Gate 144",
     "Gate 145",
-    "Gate 146"
+    "Gate 146",
+    "Gate 147"
   ],
   "completed_leaf_ids": [
     "LEAF-G141-001",
@@ -26,7 +27,10 @@
     "LEAF-G145-001",
     "LEAF-G145-002",
     "LEAF-G146-001",
-    "LEAF-G146-002"
+    "LEAF-G146-002",
+    "LEAF-G147-001",
+    "LEAF-G147-002",
+    "LEAF-G147-003"
   ],
   "remaining_leaf_ids": [
     "LEAF-G146-001",
@@ -769,7 +773,7 @@
       "gate": "Gate 147",
       "title": "Freeze overlap classes between overlay evaluation and terminal-risk application",
       "objective": "Freeze overlap classes between overlay evaluation and terminal-risk application.",
-      "status": "active",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -796,7 +800,7 @@
       "gate": "Gate 147",
       "title": "Implement the terminal-risk seam with additive compatibility carriage",
       "objective": "Implement the terminal-risk seam with additive compatibility carriage.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -823,7 +827,7 @@
       "gate": "Gate 147",
       "title": "Close Gate 147 with updated review/replay lineage and router truth",
       "objective": "Close Gate 147 with updated review/replay lineage and router truth.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -850,7 +854,7 @@
       "gate": "Gate 148",
       "title": "Migrate review consumers to the preserved-seam model",
       "objective": "Migrate review consumers to the preserved-seam model.",
-      "status": "planned",
+      "status": "active",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",

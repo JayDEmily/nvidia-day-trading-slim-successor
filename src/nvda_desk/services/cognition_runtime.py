@@ -298,7 +298,7 @@ class DeskCognitionRuntime:
         execution_pre_modifier = execution
         execution = self._modifiers.apply_to_execution(execution, modifier_runtime_packet)
         execution_post_modifier_pre_final_risk = execution
-        final_risk_decision = self._risk_gateway.evaluate_runtime_join(
+        overlay_risk_decision = self._risk_gateway.evaluate_overlay(
             requested_at=temporal_input.ts,
             temporal_input=temporal_input,
             temporal=temporal,
@@ -309,11 +309,18 @@ class DeskCognitionRuntime:
             inventory_state=inventory_state,
             risk_budget_remaining_pct=risk_budget_remaining_pct,
         )
+        terminal_risk_application = self._risk_gateway.build_terminal_risk_application(
+            overlay_decision=overlay_risk_decision,
+            posture=posture,
+        )
+        final_risk_decision = terminal_risk_application.final_decision
         stage_local_handoff = StageLocalHandoffSurface(
             cited_posture_pre_modifier=cited_posture_pre_modifier,
             cited_eligibility=cited_eligibility,
             execution_pre_modifier=execution_pre_modifier,
             execution_post_modifier_pre_final_risk=execution_post_modifier_pre_final_risk,
+            overlay_risk_decision=overlay_risk_decision,
+            terminal_risk_application=terminal_risk_application,
             terminal_risk_decision=final_risk_decision,
             notes=[
                 "additive_preserved_handoff_only",
