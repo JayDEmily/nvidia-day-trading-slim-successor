@@ -1,4 +1,4 @@
-Status: active policy/temporal/observability successor pack; Gates 164-167 complete on `work/gate-164-policy-temporal-observability-pack-20260402`, Gate 168 active, Gates 169-170 planned
+Status: closed policy/temporal/observability successor pack through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 # 2026-04-02 Policy Temporal Observability Successor Gates v1
 
 ## Purpose
@@ -141,7 +141,7 @@ Out of scope:
 ### Gate 168: Review/observability chain strengthening and operator view law
 
 **Status**
-- active on `work/gate-164-policy-temporal-observability-pack-20260402`
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Specify the minimum review/observability improvements needed so a single decision can be reconstructed from baseline through policy and clamp to the consuming stage and any downstream compatibility/risk read.
@@ -163,7 +163,7 @@ Out of scope:
 ### Gate 169: Calibration metadata and evaluation-receipt architecture
 
 **Status**
-- planned
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Prepare the repo for later evaluation by defining metadata for live surfaces and policies plus receipt questions that later tests can answer.
@@ -183,7 +183,7 @@ Out of scope:
 ### Gate 170: Audit and closeout
 
 **Status**
-- planned
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Audit the successor pack against thread gold, prove the declared proof slice, synchronize the planning quartet, and package the exact green repo state.

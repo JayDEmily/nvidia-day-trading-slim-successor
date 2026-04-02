@@ -1,6 +1,6 @@
 # 2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_SCOPE_NOTE_v1
 
-Status: active bounded-scope note for the policy/temporal/observability successor pack on `work/gate-164-policy-temporal-observability-pack-20260402`
+Status: closed bounded-scope note for the policy/temporal/observability successor pack through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 ## Purpose
 

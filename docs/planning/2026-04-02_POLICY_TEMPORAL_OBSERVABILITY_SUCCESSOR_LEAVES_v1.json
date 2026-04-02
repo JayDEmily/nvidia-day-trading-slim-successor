@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_167_complete_gate_168_active_on_work_branch",
-  "active_gate": "Gate 168",
+  "execution_status": "policy_temporal_observability_successor_pack_closed_through_gate_170_on_work_branch",
+  "active_gate": "none",
   "supersedes": [
     "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
     "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
@@ -12,7 +12,10 @@
     "Gate 164",
     "Gate 165",
     "Gate 166",
-    "Gate 167"
+    "Gate 167",
+    "Gate 168",
+    "Gate 169",
+    "Gate 170"
   ],
   "completed_leaf_ids": [
     "LEAF-G164-001",
@@ -30,9 +33,7 @@
     "LEAF-G167-001",
     "LEAF-G167-002",
     "LEAF-G167-003",
-    "LEAF-G167-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G167-004",
     "LEAF-G168-001",
     "LEAF-G168-002",
     "LEAF-G168-003",
@@ -46,11 +47,8 @@
     "LEAF-G170-003",
     "LEAF-G170-004"
   ],
-  "pending_gate_ids": [
-    "Gate 168",
-    "Gate 169",
-    "Gate 170"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -532,7 +530,7 @@
     "LEAF-G168-001": {
       "gate": "Gate 168",
       "title": "Freeze the minimum decision-chain review fields",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Specify the baseline, active policy ID(s), effective value, clamp, consuming stage, and downstream compatibility/risk read-path fields needed for one decision chain.",
         "Anchor the field set in the current review/cognition packet surfaces.",
@@ -559,7 +557,7 @@
     "LEAF-G168-002": {
       "gate": "Gate 168",
       "title": "Define one operator-facing decision-chain view",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Describe one operator-facing view that lets future-you trace environment, policy fire, surface change, clamp, consuming stage, and downstream read/override.",
         "Keep the framing anchored to trader trust rather than pretty UI.",
@@ -586,7 +584,7 @@
     "LEAF-G168-003": {
       "gate": "Gate 168",
       "title": "Freeze the DMP v2 boundary and payload-semantics note",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Carry forward the Gate 165 rule that DMP v2 schema-core stays unchanged in this pack.",
         "State exactly what would be affected instead: review output and payload semantics carried through existing packet blocks.",
@@ -613,7 +611,7 @@
     "LEAF-G168-004": {
       "gate": "Gate 168",
       "title": "Route observability materialisation and proof burden",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Define the later coding order for review output, payload linkages, and any operator-facing rendering.",
         "Set proof requirements around end-to-end visibility of a sample decision chain.",
@@ -640,7 +638,7 @@
     "LEAF-G169-001": {
       "gate": "Gate 169",
       "title": "Define live-surface calibration metadata",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "For each currently live surface, define metadata fields for purpose, expected directionality, anti-goal, owner stage, family, and review cadence.",
         "Anchor the metadata to the governed runtime surface set only.",
@@ -667,7 +665,7 @@
     "LEAF-G169-002": {
       "gate": "Gate 169",
       "title": "Define declared-policy evaluation metadata",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "For each declared policy from Gate 165, define evaluation metadata such as intended behavioural effect, likely failure mode, and review cadence.",
         "Make the metadata depend on stable policy IDs.",
@@ -694,7 +692,7 @@
     "LEAF-G169-003": {
       "gate": "Gate 169",
       "title": "Define architecture-aware evaluation receipts",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Specify later evaluation-receipt questions around help, over-tightening, redundancy, danger, stacked caution, and absent opportunity shaping.",
         "Tie the receipts to the future decision-chain and conservatism-budget surfaces.",
@@ -721,7 +719,7 @@
     "LEAF-G169-004": {
       "gate": "Gate 169",
       "title": "Route successor implementation for metadata and receipts",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Define the later coding/doc path that would materialise the metadata and receipts.",
         "Set the stop condition that wider data testing waits until policy law, temporal status, and observability are materially in place.",
@@ -748,7 +746,7 @@
     "LEAF-G170-001": {
       "gate": "Gate 170",
       "title": "Audit thread-gold capture and workbook preservation",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Audit whether the new pack preserved the lean-docs rule, workbook gold, DMP v2 boundary, no-new-live-surfaces rule, and risk-lane reservation.",
         "Check each approved workstream slice against the actual pack outputs.",
@@ -775,7 +773,7 @@
     "LEAF-G170-002": {
       "gate": "Gate 170",
       "title": "Audit scope boundary against the risk thread and documentation bloat",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Prove that the pack did not silently absorb the independent risk lane or create documentation that fails the value test.",
         "Check that every new artefact either reduces ambiguity, improves review/debuggability, or creates a calibration bridge.",
@@ -802,7 +800,7 @@
     "LEAF-G170-003": {
       "gate": "Gate 170",
       "title": "Run the declared anti-drift proof slice and record exact results",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Run the closeout proof slice across the new pack planning guard, selected historical pack guards, and document hygiene.",
         "Record the exact command and observed result in the execution log and closeout receipt.",
@@ -829,7 +827,7 @@
     "LEAF-G170-004": {
       "gate": "Gate 170",
       "title": "Synchronise closeout surfaces and package the exact green repo state",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Move PLANS.md, canonical gate map, the active leaves ledger, the active execution log, the checklist, and CHANGELOG.jsonl together to the closed-pack state.",
         "Record the exact packaging artefact name in the receipt and execution log.",

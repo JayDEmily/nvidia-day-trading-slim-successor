@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Declare the frozen and live control surfaces checked while activating the policy/temporal/observability successor pack.
+Declare the frozen and live control surfaces checked while activating and closing the policy/temporal/observability successor pack.
 
-Current planned sequence: active gate Gate 168 in the policy/temporal/observability successor pack on `work/gate-164-policy-temporal-observability-pack-20260402`.
+Current planned sequence: policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`.
 
 ## Frozen law surfaces checked
 
@@ -48,9 +48,9 @@ Current planned sequence: active gate Gate 168 in the policy/temporal/observabil
 - [x] `docs/planning/2026-04-02_GATE165_LEAN_POLICY_LAW_EXTERNALISATION.md`
 - [x] `docs/planning/2026-04-02_GATE166_TEMPORAL_GOVERNANCE_STATUS_LEDGER.md`
 - [x] `docs/planning/2026-04-02_GATE167_SERIAL_CONSERVATISM_BINDING_POINT_LAW.md`
-- [x] future Gate 168 receipt file named by the active pack when that gate executes
-- [x] future Gate 169 receipt file named by the active pack when that gate executes
-- [x] future Gate 170 receipt file named by the active pack when that gate executes
+- [x] `docs/planning/2026-04-02_GATE168_REVIEW_OBSERVABILITY_CHAIN_STRENGTHENING.md`
+- [x] `docs/planning/2026-04-02_GATE169_CALIBRATION_METADATA_AND_RECEIPTS.md`
+- [x] `docs/planning/2026-04-02_GATE170_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_AUDIT_AND_CLOSEOUT.md`
 - [x] `src/nvda_desk/services/state_conditioned_modifier.py`
 - [x] `src/nvda_desk/domain/temporal_state.py`
 - [x] `src/nvda_desk/services/review_explanation.py`
@@ -64,7 +64,9 @@ Current planned sequence: active gate Gate 168 in the policy/temporal/observabil
 - [x] `tests/test_gate165_lean_policy_law_externalisation.py`
 - [x] `tests/test_gate166_temporal_governance_status_ledger.py`
 - [x] `tests/test_gate167_serial_conservatism_binding_point_law.py`
-- [x] future gate-specific planning tests for Gates 168-170
+- [x] `tests/test_gate168_review_observability_chain_strengthening.py`
+- [x] `tests/test_gate169_calibration_metadata_and_receipts.py`
+- [x] `tests/test_gate170_policy_temporal_observability_successor_closeout.py`
 - [x] `CHANGELOG.jsonl`
 
 ## Notes
@@ -72,3 +74,5 @@ Current planned sequence: active gate Gate 168 in the policy/temporal/observabil
 - Gate 164 is planning-only. Runtime behaviour remains the Gate 163 closed baseline.
 - The pack must earn every new artefact under the lean-policy rule.
 - The pack may strengthen review/debuggability and calibration readiness, but it may not widen the live surface set or absorb the independent risk lane.
+
+- Gate 170 closed the pack as planning capture only; runtime materialisation remains deferred to later execution work.

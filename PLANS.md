@@ -25,7 +25,7 @@ This file is the canonical repo-root execution router.
 - execution log: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_SCOPE_NOTE_v1.md`
-- active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 ## Latest closed pack retained as evidence
 
@@ -86,8 +86,8 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack is the policy/temporal/observability successor pack; Gates 164-167 are complete and Gate 168 is active on `work/gate-164-policy-temporal-observability-pack-20260402`
-- latest closed pack retained as evidence is the coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- latest closed pack retained as evidence is the policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 - latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`

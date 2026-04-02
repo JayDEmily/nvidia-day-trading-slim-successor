@@ -20,11 +20,32 @@ def test_gate165_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`" in plans
-    assert "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**." in gate_map
-    assert "Status: active policy/temporal/observability successor pack; Gates 164-167 complete on `work/gate-164-policy-temporal-observability-pack-20260402`, Gate 168 active, Gates 169-170 planned" in gates
-    assert leaves["execution_status"] == "gate_167_complete_gate_168_active_on_work_branch"
-    assert leaves["active_gate"] == "Gate 168"
+    assert any(
+        marker in plans
+        for marker in {
+            "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+            "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+        }
+    )
+    assert any(
+        marker in gate_map
+        for marker in {
+            "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",
+            "Current active gate: **none — policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`**.",
+        }
+    )
+    assert any(
+        marker in gates
+        for marker in {
+            "Status: active policy/temporal/observability successor pack; Gates 164-167 complete on `work/gate-164-policy-temporal-observability-pack-20260402`, Gate 168 active, Gates 169-170 planned",
+            "Status: closed policy/temporal/observability successor pack through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+        }
+    )
+    assert leaves["execution_status"] in {
+        "gate_167_complete_gate_168_active_on_work_branch",
+        "policy_temporal_observability_successor_pack_closed_through_gate_170_on_work_branch",
+    }
+    assert leaves["active_gate"] in {"Gate 168", "none"}
     for leaf_id in ["LEAF-G165-001", "LEAF-G165-002", "LEAF-G165-003", "LEAF-G165-004"]:
         assert leaves["leaves"][leaf_id]["status"] == "complete"
 
