@@ -281,3 +281,45 @@ For every completed leaf record:
 - Stop conditions hit: none
 - Merge status: not merged at receipt time
 - Receipt mode: recorded live
+
+
+## Gate 155 receipts
+
+### LEAF-G155-001 — Freeze the downstream consequence ledger
+
+- Branch: `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Start commit: `7a82bec`
+- End commit: working tree on `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 155 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: follow-on review, bounded-trace, stage-summary, and legacy expectation work now have explicit routing verdicts instead of implication from prior gates
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G155-002 — Freeze the successor-boundary statement for larger architecture questions
+
+- Branch: `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Start commit: `7a82bec`
+- End commit: working tree on `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 155 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: the receipt now states explicitly that independent-risk-lane, final-arbiter, portfolio-aware replacement, and coefficient redesign work remain outside this corrective pack
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G155-003 — Advance the corrective pack from Gate 155 to Gate 156 honestly
+
+- Branch: `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Start commit: `7a82bec`
+- End commit: working tree on `work/gate-155-downstream-consequence-routing-and-successor-boundary-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py`, `CHANGELOG.jsonl`
+- Validations run: Gate 155 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 155 is complete and Gate 156 is active
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live

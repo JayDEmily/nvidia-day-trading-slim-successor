@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_154_complete_gate_155_active_on_main",
-  "active_gate": "Gate 155",
+  "execution_status": "gate_155_complete_gate_156_active_on_main",
+  "active_gate": "Gate 156",
   "supersedes": [
     "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
   ],
@@ -11,7 +11,8 @@
     "Gate 151",
     "Gate 152",
     "Gate 153",
-    "Gate 154"
+    "Gate 154",
+    "Gate 155"
   ],
   "completed_leaf_ids": [
     "LEAF-G150-001",
@@ -32,19 +33,18 @@
     "LEAF-G154-001",
     "LEAF-G154-002",
     "LEAF-G154-003",
-    "LEAF-G154-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G154-004",
     "LEAF-G155-001",
     "LEAF-G155-002",
-    "LEAF-G155-003",
+    "LEAF-G155-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G156-001",
     "LEAF-G156-002",
     "LEAF-G156-003",
     "LEAF-G156-004"
   ],
   "pending_gate_ids": [
-    "Gate 155",
     "Gate 156"
   ],
   "global_rules": {
@@ -1308,7 +1308,7 @@
       "gate": "Gate 155",
       "title": "Freeze the implied downstream work created by Gates 151-154",
       "objective": "Identify the later packs, docs, or runtime areas that must now change once the corrective hardening gates are complete.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -1369,7 +1369,7 @@
       "gate": "Gate 155",
       "title": "Freeze the successor-boundary statement for larger architecture questions",
       "objective": "Write the explicit boundary between this corrective pack and still-deferred larger architecture work.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G155-001"
       ],
@@ -1430,7 +1430,7 @@
       "gate": "Gate 155",
       "title": "Advance the corrective pack from Gate 155 to Gate 156 honestly",
       "objective": "Close Gate 155 and move the active gate to Gate 156 only after the declared proof slice is green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G155-002"
       ],
