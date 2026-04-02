@@ -24,7 +24,7 @@ SCOPE_NOTE = (
 )
 RECEIPT = REPO_ROOT / "docs/planning/2026-04-02_GATE157_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_PACK_BOOTSTRAP.md"
 
-ALLOWED_CURRENT_GATE_MARKERS = {'Current active gate: **Gate 158 in the coefficient architecture consolidation pack**.', 'Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `main`**.', 'Current active gate: **Gate 161 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 162 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 160 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 163 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 159 in the coefficient architecture consolidation pack**.'}
+ALLOWED_CURRENT_GATE_MARKERS = {'Current active gate: **Gate 158 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 159 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 160 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 161 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 162 in the coefficient architecture consolidation pack**.', 'Current active gate: **Gate 163 in the coefficient architecture consolidation pack**.', 'Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `main`**.'}
 
 
 def test_gate157_pack_is_active_and_non_placeholder() -> None:
@@ -41,15 +41,29 @@ def test_gate157_pack_is_active_and_non_placeholder() -> None:
     assert "2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md" in plans
     assert "2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans
     assert "2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md" in plans
-    assert "active gate: Gate 158 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`" in plans
+    assert (
+        "active gate: Gate 158 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`" in plans
+        or "active gate: Gate 159 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`" in plans
+        or "active gate: Gate 160 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`" in plans
+        or "active gate: Gate 161 on `main`" in plans
+        or "active gate: Gate 162 on `main`" in plans
+        or "active gate: Gate 163 on `main`" in plans
+        or "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `main`" in plans
+    )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
-        "Status: active coefficient architecture consolidation pack; Gate 157 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 158 active, Gates 159-163 planned"
-        in gates
+        "Status: active coefficient architecture consolidation pack; Gate 157 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 158 active, Gates 159-163 planned" in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-158 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 159 active, Gates 160-163 planned" in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 160 active, Gates 161-163 planned" in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-160 complete on `main`, Gate 161 active, Gates 162-163 planned" in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-161 complete on `main`, Gate 162 active, Gate 163 planned" in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `main`, Gate 163 active" in gates
+        or "Status: closed coefficient architecture consolidation pack through Gate 163 on `main`" in gates
     )
     assert leaves["execution_status"] in {
         "gate_157_complete_gate_158_active_on_work_branch",
         "gate_158_complete_gate_159_active_on_main",
+        "gate_159_complete_gate_160_active_on_work_branch",
         "gate_159_complete_gate_160_active_on_main",
         "gate_160_complete_gate_161_active_on_main",
         "gate_161_complete_gate_162_active_on_main",

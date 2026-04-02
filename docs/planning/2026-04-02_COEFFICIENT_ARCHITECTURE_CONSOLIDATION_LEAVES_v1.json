@@ -1,23 +1,23 @@
 {
   "governing_plan": "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_157_complete_gate_158_active_on_work_branch",
-  "active_gate": "Gate 158",
+  "execution_status": "gate_159_complete_gate_160_active_on_work_branch",
+  "active_gate": "Gate 160",
   "supersedes": [
     "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
     "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
     "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 157"
+    "Gate 157",
+    "Gate 158",
+    "Gate 159"
   ],
   "completed_leaf_ids": [
     "LEAF-G157-001",
     "LEAF-G157-002",
     "LEAF-G157-003",
-    "LEAF-G157-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G157-004",
     "LEAF-G158-001",
     "LEAF-G158-002",
     "LEAF-G158-003",
@@ -25,7 +25,9 @@
     "LEAF-G159-001",
     "LEAF-G159-002",
     "LEAF-G159-003",
-    "LEAF-G159-004",
+    "LEAF-G159-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G160-001",
     "LEAF-G160-002",
     "LEAF-G160-003",
@@ -44,8 +46,6 @@
     "LEAF-G163-004"
   ],
   "pending_gate_ids": [
-    "Gate 158",
-    "Gate 159",
     "Gate 160",
     "Gate 161",
     "Gate 162",
@@ -295,7 +295,7 @@
         "Do not omit the bounded-scope note from the active router if the pack relies on it."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
+        "python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
         "router, gate map, leaves ledger, execution log, and scope note all point to Gate 158 as the next active gate",
@@ -373,7 +373,7 @@
       "gate": "Gate 158",
       "title": "Consolidate repo-native coefficient architecture vocabulary and family law",
       "objective": "Write one repo-native architecture receipt for Workstream 1 using existing terms first.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G157-004"
       ],
@@ -416,7 +416,7 @@
         "Do not flatten distinct concepts merely because they sound adjacent."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "one explicit repo-native coefficient architecture statement exists",
@@ -440,7 +440,7 @@
       "gate": "Gate 158",
       "title": "Freeze workbook raw-versus-derived and Step 1 stage-purity law as pack constraints",
       "objective": "Promote the workbook's raw-first and stage-purity rules into explicit later-gate constraints.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G158-001"
       ],
@@ -475,7 +475,7 @@
         "Do not weaken stage purity into vague advice."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
+        "python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
       ],
       "expected_evidence": [
         "receipt carries explicit raw-first / derived-second and Step 1 stage-purity constraints"
@@ -495,7 +495,7 @@
       "gate": "Gate 158",
       "title": "Decide whether any new governed vocabulary is actually required",
       "objective": "Force a yes-or-no decision on vocabulary admission instead of letting descriptive phrases drift.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G158-002"
       ],
@@ -533,7 +533,7 @@
         "Do not change vocabulary without updating the builder."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
+        "python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
       ],
       "expected_evidence": [
         "receipt contains an explicit vocabulary sufficiency decision",
@@ -555,7 +555,7 @@
       "gate": "Gate 158",
       "title": "Advance the pack from Gate 158 to Gate 159 honestly",
       "objective": "Move the router only after the Workstream 1 planning receipt is green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G158-003"
       ],
@@ -593,7 +593,7 @@
         "Do not forget to record whether vocabulary changed or not."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "router, gate map, leaves ledger, and execution log all agree that Gate 159 is active"
@@ -622,7 +622,7 @@
       "gate": "Gate 159",
       "title": "Classify live, reference, provenance, and deferred coefficient worlds explicitly",
       "objective": "Write the classification law for one live coefficient world.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G158-004"
       ],
@@ -663,7 +663,7 @@
         "Do not treat workbook tabs as runtime config."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+        "python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
       ],
       "expected_evidence": [
         "receipt carries an explicit coefficient-world class system",
@@ -684,7 +684,7 @@
       "gate": "Gate 159",
       "title": "Define the repo-native coefficient-status inventory",
       "objective": "Specify the inventory surface later coding must populate or maintain.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G159-001"
       ],
@@ -719,7 +719,7 @@
         "Do not leave the workbook-to-repo relationship implicit."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+        "python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
       ],
       "expected_evidence": [
         "receipt defines the coefficient-status inventory fields and purpose"
@@ -739,7 +739,7 @@
       "gate": "Gate 159",
       "title": "Freeze migration law for workbook and salvage surfaces",
       "objective": "Record how workbook and salvage surfaces may influence repo evolution without becoming live by accident.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G159-002"
       ],
@@ -777,7 +777,7 @@
         "Do not conflate historical provenance with approved live admission."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+        "python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
       ],
       "expected_evidence": [
         "receipt defines how non-live coefficient surfaces may and may not be promoted"
@@ -797,7 +797,7 @@
       "gate": "Gate 159",
       "title": "Advance the pack from Gate 159 to Gate 160 honestly",
       "objective": "Close the coefficient-world planning gate without drift.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G159-003"
       ],
@@ -835,7 +835,7 @@
         "Do not forget to carry forward the explicit promotion law."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "router and execution log agree that Gate 160 is active"
@@ -907,7 +907,7 @@
         "Do not blur direct consumers and compatibility wrappers."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+        "python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
       ],
       "expected_evidence": [
         "ledger exists for all admitted mutable surfaces",
@@ -964,7 +964,7 @@
         "Do not hide deferred cases by leaving them ambiguous."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+        "python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
       ],
       "expected_evidence": [
         "receipt defines mismatch classes and allowed closure modes"
@@ -1022,7 +1022,7 @@
         "Do not leave compatibility-only carriage unlabeled."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+        "python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
       ],
       "expected_evidence": [
         "receipt distinguishes direct consumers from compatibility or review carriage"
@@ -1080,7 +1080,7 @@
         "Do not forget to record any deferred or compatibility-only cases explicitly."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "router and execution log agree that Gate 161 is active"
@@ -1148,7 +1148,7 @@
         "Do not infer upstream dynamic opportunity shaping where no such consumer path exists."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+        "python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
       ],
       "expected_evidence": [
         "receipt records the current caution-heavy reality honestly"
@@ -1203,7 +1203,7 @@
         "Do not let Step 1 consume downstream outputs just to create the appearance of opportunity shaping."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+        "python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
       ],
       "expected_evidence": [
         "receipt names the upstream opportunity path through inputs, features, and playbook routing"
@@ -1260,7 +1260,7 @@
         "Do not let bounded-surface discipline collapse into vague 'be careful' wording."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+        "python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
       ],
       "expected_evidence": [
         "receipt preserves narrow live-surface discipline and records non-duplication law"
@@ -1318,7 +1318,7 @@
         "Do not forget to record the bounded-surface decision and upstream path law."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "router and execution log agree that Gate 162 is active"
@@ -1384,7 +1384,7 @@
         "Do not mix independent risk lane work into the coding order for Workstreams 1-4."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+        "python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
       ],
       "expected_evidence": [
         "one explicit execution-ready coding order exists for Workstreams 1-4"
@@ -1441,7 +1441,7 @@
         "Do not omit vocabulary or contract updates if a later coding gate forces them."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+        "python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
       ],
       "expected_evidence": [
         "receipt names explicit move-together rules for later coding"
@@ -1496,7 +1496,7 @@
         "Do not leave the successor boundary to chat memory."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+        "python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
       ],
       "expected_evidence": [
         "receipt defines the successor boundary against the independent risk lane thread"
@@ -1555,7 +1555,7 @@
         "Do not forget to carry forward the explicit risk-lane boundary."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "router and execution log agree that Gate 163 is active"
@@ -1622,7 +1622,7 @@
         "Do not treat partial coverage as success."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py"
+        "python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py"
       ],
       "expected_evidence": [
         "audit receipt measures the pack against the approved four-workstream brief"
@@ -1680,7 +1680,7 @@
         "Do not call the pack coherent if move-together rules contradict each other."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "audit receipt covers router truth, vocabulary discipline, and move-together integrity"
@@ -1737,7 +1737,7 @@
         "Do not let the receipt overclaim what was actually run."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_document_hygiene.py"
+        "python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
         "exact closeout proof slice and observed results are recorded"
@@ -1796,7 +1796,7 @@
         "Do not claim the pack is closed until the zip artefact exists."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+        "python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
       ],
       "expected_evidence": [
         "planning quartet is synchronized and final zip artefact is recorded"

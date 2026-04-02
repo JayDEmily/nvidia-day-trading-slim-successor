@@ -1,4 +1,4 @@
-Status: active coefficient architecture consolidation pack; Gate 157 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 158 active, Gates 159-163 planned
+Status: active coefficient architecture consolidation pack; Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 160 active, Gates 161-163 planned
 # 2026-04-02 Coefficient Architecture Consolidation Gates v1
 
 ## Purpose
@@ -219,7 +219,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 158: Consolidate the target architecture and freeze vocabulary / raw-derived boundary law
 
 **Status**
-- planned
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Turn the existing doctrine plus workbook structure into one explicit repo-native coefficient architecture statement for Workstream 1, using existing vocabulary first and freezing the raw-versus-derived and stage-purity boundaries that later coefficient work must obey.
@@ -246,7 +246,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 159: Collapse to one live coefficient world and freeze coefficient-status inventory law
 
 **Status**
-- planned
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Turn the governed YAML, salvage/example registry, workbook bounds, and provenance sources into one explicit live/reference/provenance/deferred classification and define the repo-native coefficient-status inventory for Workstream 2.
@@ -271,7 +271,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 160: Make owner-stage and activation-state truth explicit
 
 **Status**
-- planned
+- active on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Build the owner-stage and activation-state planning ledger for all admitted mutable runtime surfaces, reconcile declared owner labels with actual consumers, and define the allowed closure modes for mismatches.
