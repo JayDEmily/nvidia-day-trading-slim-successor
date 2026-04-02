@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the coefficient architecture consolidation pack.
 
-Current planned sequence: Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gate 160 active; Gates 161-163 planned.
+Current planned sequence: Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gate 163 active.
 
 ## Frozen law surfaces checked
 
@@ -47,7 +47,10 @@ Current planned sequence: Gates 157-159 complete on `work/gate-157-coefficient-a
 - [x] `docs/planning/2026-04-02_GATE157_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_PACK_BOOTSTRAP.md`
 - [x] `docs/planning/2026-04-02_GATE158_TARGET_ARCHITECTURE_AND_STAGE_PURITY_CONSOLIDATION.md`
 - [x] `docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md`
-- [x] future Gate 160-163 receipt files named by the active pack when those gates execute
+- [x] `docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md`
+- [x] `docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md`
+- [x] `docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md`
+- [x] future Gate 163 receipt file named by the active pack when that gate executes
 - [x] `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json` if later gates admit new governed terms
 - [x] `scripts/build_canonical_vocabulary.py` if later gates admit new governed terms
 - [x] `docs/03_DOMAIN_MODEL.md` if later gates clarify packet/data contract meaning
@@ -68,7 +71,10 @@ Current planned sequence: Gates 157-159 complete on `work/gate-157-coefficient-a
 - [x] `tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
 - [x] `tests/test_gate158_target_architecture_and_stage_purity_consolidation.py`
 - [x] `tests/test_gate159_coefficient_world_status_and_inventory_law.py`
-- [x] future gate-specific planning tests for Gates 160-163
+- [x] `tests/test_gate160_owner_stage_and_activation_state_ledger.py`
+- [x] `tests/test_gate161_opportunity_vs_caution_shaping_law.py`
+- [x] `tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- [x] future gate-specific planning tests for Gate 163
 - [x] `CHANGELOG.jsonl`
 
 ## Notes
@@ -76,7 +82,7 @@ Current planned sequence: Gates 157-159 complete on `work/gate-157-coefficient-a
 - Gate 157 is planning-only. Runtime behaviour remains the Gate 156 closed baseline.
 - Gate 158 is complete and freezes the target architecture, raw-versus-derived law, Step 1 stage-purity law, and the explicit no-new-vocabulary verdict for Workstream 1.
 - Gate 159 is complete and freezes one live coefficient world, the coefficient-status inventory law, and workbook/salvage migration rules for Workstream 2.
-- Gate 160 is now active and will freeze owner-stage plus activation-state truth for admitted mutable surfaces and record the allowed closure modes for mismatch cases.
-- Gate 161 will freeze opportunity-versus-caution planning law and preserve the workbook-derived upstream input / feature / playbook path.
-- Gate 162 will route the implementation sequence for Workstreams 1-4 while keeping the independent risk lane thread explicitly separate.
-- Gate 163 will audit the pack itself, prove the planning quartet is synchronized, and close the pack with a fresh full-history zip artefact.
+- Gate 160 is complete and freezes the owner-stage / direct-consumer / compatibility-carriage / activation-state ledger plus the allowed closure modes for mismatch cases.
+- Gate 161 is complete and freezes the caution-heavy current reality, the workbook-derived upstream opportunity path, and the non-duplication rule against silent risk-lane overlap.
+- Gate 162 is complete and routes the successor implementation sequence for Workstreams 1-4, including move-together rules and the explicit independent risk-lane boundary.
+- Gate 163 is now active and must audit the pack itself, prove the planning quartet is synchronized, and close the pack with a fresh full-history zip artefact.

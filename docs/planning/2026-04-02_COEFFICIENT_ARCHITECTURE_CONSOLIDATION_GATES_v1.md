@@ -1,4 +1,4 @@
-Status: active coefficient architecture consolidation pack; Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 160 active, Gates 161-163 planned
+Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 163 active
 # 2026-04-02 Coefficient Architecture Consolidation Gates v1
 
 ## Purpose
@@ -271,7 +271,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 160: Make owner-stage and activation-state truth explicit
 
 **Status**
-- active on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Build the owner-stage and activation-state planning ledger for all admitted mutable runtime surfaces, reconcile declared owner labels with actual consumers, and define the allowed closure modes for mismatches.
@@ -299,7 +299,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 161: Split opportunity shaping from caution shaping and freeze upstream path law
 
 **Status**
-- planned
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Define the planning law that separates upstream opportunity shaping from downstream caution shaping, preserving narrow live surfaces while routing richer opportunity architecture through better primitives, derived features, and playbook-family logic first.
@@ -324,7 +324,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 162: Route the successor implementation tranche for Workstreams 1-4
 
 **Status**
-- planned
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Turn the outputs of Gates 158-161 into one execution-ready successor sequencing note that tells later coding work what order to follow, what documents/contracts must move together, and where the independent risk lane thread stays separate.
@@ -346,7 +346,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 163: Audit the coefficient-architecture consolidation pack and close it honestly
 
 **Status**
-- planned
+- active on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Audit the pack's own coverage, routing truth, vocabulary discipline, workbook integration, and anti-drift integrity before the pack can be treated as complete.

@@ -20,8 +20,11 @@ RECEIPT = (
 ALLOWED_PLAN_MARKERS = {
     "active gate: Gate 159 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 160 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
+    "active gate: Gate 161 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 161 on `main`",
+    "active gate: Gate 162 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 162 on `main`",
+    "active gate: Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 163 on `main`",
     "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `main`",
 }
@@ -50,9 +53,15 @@ def test_gate158_control_surfaces_advance_honestly() -> None:
         in gates
         or "Status: active coefficient architecture consolidation pack; Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 160 active, Gates 161-163 planned"
         in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-160 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 161 active, Gates 162-163 planned"
+        in gates
         or "Status: active coefficient architecture consolidation pack; Gates 157-160 complete on `main`, Gate 161 active, Gates 162-163 planned"
         in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-161 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 162 active, Gate 163 planned"
+        in gates
         or "Status: active coefficient architecture consolidation pack; Gates 157-161 complete on `main`, Gate 162 active, Gate 163 planned"
+        in gates
+        or "Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 163 active"
         in gates
         or "Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `main`, Gate 163 active"
         in gates
@@ -62,8 +71,11 @@ def test_gate158_control_surfaces_advance_honestly() -> None:
     assert leaves["execution_status"] in {
         "gate_158_complete_gate_159_active_on_work_branch",
         "gate_159_complete_gate_160_active_on_work_branch",
+        "gate_160_complete_gate_161_active_on_work_branch",
         "gate_160_complete_gate_161_active_on_main",
+        "gate_161_complete_gate_162_active_on_work_branch",
         "gate_161_complete_gate_162_active_on_main",
+        "gate_162_complete_gate_163_active_on_work_branch",
         "gate_162_complete_gate_163_active_on_main",
         "coefficient_architecture_consolidation_pack_closed_through_gate_163_on_main",
     }

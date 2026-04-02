@@ -98,3 +98,12 @@ The pack is good only if a later coding thread can answer, from repo artefacts a
 - where opportunity shaping belongs;
 - where caution shaping belongs;
 - and which bigger architecture questions remain reserved for the independent risk lane thread.
+
+
+## Implementation routing sharpened by Gate 162
+
+Gate 162 freezes the successor implementation routing for Workstreams 1-4 inside this pack.
+
+The note now also preserves two explicit boundaries:
+- **implementation routing** inside this pack may materialise the coefficient-status inventory, owner-stage closure, activation-state truth, and opportunity-versus-caution boundary inside the existing deterministic spine;
+- the **independent risk-lane successor boundary** stays outside this pack except for explicit coordination seams, preserved interfaces, and truthful downstream ownership notes.

@@ -25,7 +25,7 @@ This file is the canonical repo-root execution router.
 - execution log: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md`
-- active gate: Gate 160 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- active gate: Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 ## Latest closed pack retained as evidence
 
@@ -84,7 +84,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active coefficient architecture consolidation pack on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gates 157-159 complete and Gate 160 active on the work branch
+- active coefficient architecture consolidation pack on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gates 157-162 complete and Gate 163 active on the work branch
 - latest closed pack retained as evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`

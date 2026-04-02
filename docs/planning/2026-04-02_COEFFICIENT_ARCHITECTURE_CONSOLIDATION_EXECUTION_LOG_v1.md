@@ -191,3 +191,184 @@ For every completed leaf record:
 - Stop conditions hit: none
 - Merge status: not merged
 - Receipt mode: recorded live
+
+
+## Gate 160 receipts
+
+### LEAF-G160-001 — Build the owner-stage and activation-state ledger for admitted mutable surfaces
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md`
+- Validations run: `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the Gate 160 proof slice recorded below
+- Full suite required: no
+- Exact evidence: all admitted mutable runtime surfaces now have a declared owner, direct consumer, compatibility-carriage note, activation-state verdict, mismatch class, and allowed closure mode in one receipt
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G160-002 — Freeze mismatch classes and allowed closure modes
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md`
+- Validations run: `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py`
+- Observed results: covered by the Gate 160 proof slice recorded below
+- Full suite required: no
+- Exact evidence: Gate 160 now freezes mismatch classes such as downstream-consumer drift, later-risk drift, multi-consumer overlap, owner-aligned baseline-only, and owner-aligned dynamic, plus the only allowed closure modes for later coding
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G160-003 — Freeze direct-consumer versus compatibility-carriage interpretation
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md`
+- Validations run: `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py`
+- Observed results: covered by the Gate 160 proof slice recorded below
+- Full suite required: no
+- Exact evidence: Gate 160 now states explicitly that packet carriage, compatibility-bridge echoes, review surfaces, and handoff snapshots do not by themselves prove true live ownership or activation
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G160-004 — Advance the pack from Gate 160 to Gate 161 honestly
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`, `tests/test_gate160_owner_stage_and_activation_state_ledger.py`
+- Validations run: `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the combined Gate 160-162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: control surfaces now permit the truthful forward state in which Gate 160 is complete and later gates can build on the new owner-stage / activation-state law without reopening Workstream 2
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+## Gate 161 receipts
+
+### LEAF-G161-001 — Freeze the current caution-heavy reality honestly
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md`
+- Validations run: `python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the Gate 161 proof slice recorded below
+- Full suite required: no
+- Exact evidence: Gate 161 now states plainly that the live modifier plane is currently caution-heavy and names the deformed versus baseline-only admitted surfaces explicitly
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G161-002 — Freeze the upstream opportunity path through primitives, derived features, and playbook routing
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md`
+- Validations run: `python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py`
+- Observed results: covered by the Gate 161 proof slice recorded below
+- Full suite required: no
+- Exact evidence: workbook sheets for raw primitives, options-chain capture, volume baselines, derived features, and playbook-module audit are now frozen as the preferred upstream opportunity path before any new surface promotion
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G161-003 — Freeze bounded-surface discipline and non-duplication law
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md`
+- Validations run: `python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py`
+- Observed results: covered by the Gate 161 proof slice recorded below
+- Full suite required: no
+- Exact evidence: Gate 161 now forbids knob inflation as a substitute for better inputs/features and freezes the non-duplication law against the separate independent risk-lane thread
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G161-004 — Advance the pack from Gate 161 to Gate 162 honestly
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`, `tests/test_gate161_opportunity_vs_caution_shaping_law.py`
+- Validations run: `python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the combined Gate 160-162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: control surfaces now permit the truthful forward state in which Gate 161 is complete and Gate 162 owns successor-routing law rather than more exploratory prose
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+## Gate 162 receipts
+
+### LEAF-G162-001 — Translate Gates 158-161 into one execution-ready coding sequence
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md`
+- Validations run: `python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the Gate 162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: Gate 162 now translates the first four workstreams into an explicit implementation order rather than a loose idea list
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G162-002 — Freeze document, config, contract, and vocabulary move-together rules
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md`
+- Validations run: `python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- Observed results: covered by the Gate 162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: the receipt now freezes the mandatory move-together set for future coding gates touching coefficient truth, config, packet meaning, or review exposure
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G162-003 — Freeze the successor boundary against the independent risk lane thread
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md`
+- Validations run: `python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- Observed results: covered by the Gate 162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: the pack now states explicitly which later coding problems stay inside Workstreams 1-4 and which remain reserved for the separate independent risk-lane thread
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G162-004 — Advance the pack from Gate 162 to Gate 163 honestly
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `0e3a300`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md`, `tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`, `tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- Validations run: `python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the combined Gate 160-162 proof slice recorded below
+- Full suite required: no
+- Exact evidence: control surfaces now agree that Gates 157-162 are complete on the active work branch and Gate 163 is the next active audit gate
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+## Combined Gate 160-162 proof slice
+
+- Command: `python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- Observed results: `13 passed in 0.56s`
+- Scope: planning-guard proof for Gates 157-162 plus the active routing state to Gate 163 on the work branch
