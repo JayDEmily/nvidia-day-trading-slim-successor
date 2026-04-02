@@ -1,4 +1,4 @@
-Status: active stage-local handoff corrective successor pack; Gates 150-155 complete on `main`, Gate 156 active
+Status: closed stage-local handoff corrective successor pack through Gate 156 on `main`
 # 2026-04-02 Stage-Local Handoff Corrective Successor Gates v1
 
 ## Purpose
@@ -316,7 +316,7 @@ Checklist file: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESS
 ### Gate 156: Run corrective-pack anti-drift closeout and package the exact green state
 
 **Status**
-- active
+- complete on `main`
 
 **Objective**
 - close the corrective successor pack honestly by proving the planning control surfaces, execution receipts, guardrails, validations, and packaging rules all agree on the final green state.

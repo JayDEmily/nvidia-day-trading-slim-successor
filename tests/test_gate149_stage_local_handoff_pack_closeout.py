@@ -45,6 +45,11 @@ def test_gate149_pack_closeout_control_surfaces_agree() -> None:
         or "active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`" in plans
         or "active gate: Gate 152 on `main`" in plans
         or "active gate: Gate 153 on `main`" in plans
+        or "active gate: Gate 154 on `main`" in plans
+        or "active gate: Gate 155 on `main`" in plans
+        or "active gate: Gate 156 on `main`" in plans
+        or "no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`"
+        in plans
     )
     assert (
         "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**."
@@ -56,6 +61,14 @@ def test_gate149_pack_closeout_control_surfaces_agree() -> None:
         or "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**."
         in gate_map
         or "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**."
+        in gate_map
+        or "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**."
+        in gate_map
+        or "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**."
+        in gate_map
+        or "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**."
+        in gate_map
+        or "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**."
         in gate_map
     )
     assert (

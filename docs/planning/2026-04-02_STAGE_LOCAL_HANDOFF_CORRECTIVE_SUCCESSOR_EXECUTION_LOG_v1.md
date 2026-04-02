@@ -1,6 +1,6 @@
 # 2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned
+Status: closed execution log for the stage-local handoff corrective successor pack through Gate 156 on `main`
 
 ## Purpose
 
@@ -320,6 +320,61 @@ For every completed leaf record:
 - Validations run: Gate 155 planning proof slice after file edits
 - Full suite required: no
 - Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 155 is complete and Gate 156 is active
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+
+## Gate 156 receipts
+
+### LEAF-G156-001 — Run the full corrective-pack anti-drift audit
+
+- Branch: `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Start commit: `215a676`
+- End commit: working tree on `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- Validations run: Gate 156 closeout proof slice after file edits
+- Full suite required: no
+- Exact evidence: drift ledger recorded stale planning guards, stale repo-wide validation commands, and stale closeout strings that had to be brought into final-state agreement
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G156-002 — Run the declared proof slice and record exact evidence
+
+- Branch: `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Start commit: `215a676`
+- End commit: working tree on `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `tests/test_gate156_corrective_pack_anti_drift_closeout.py`
+- Validations run: `.venv/bin/python -m pytest -q tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate154_downstream_consumer_reconciliation_replan.py tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py`; `.venv/bin/python -m black --check tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate154_downstream_consumer_reconciliation_replan.py tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py`; `.venv/bin/ruff check tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate154_downstream_consumer_reconciliation_replan.py tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py`
+- Full suite required: no
+- Exact evidence: pytest proof slice passed; Black `--check` passed; Ruff passed; repo-wide `make format-check`/`make lint` remained outside scope because of pre-existing baseline drift already acknowledged in Gate 150-era planning truth
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G156-003 — Close the pack honestly across the planning quartet
+
+- Branch: `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Start commit: `215a676`
+- End commit: working tree on `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`
+- Validations run: Gate 156 closeout proof slice after file edits
+- Full suite required: no
+- Exact evidence: router, gate map, leaves ledger, and execution log now agree on no active pack currently routed and corrective successor pack closed through Gate 156 on `main`
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G156-004 — Package the exact green repo state and record the artefact name
+
+- Branch: `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Start commit: `215a676`
+- End commit: working tree on `work/gate-156-corrective-pack-anti-drift-closeout-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`
+- Validations run: Gate 156 closeout proof slice after file edits
+- Full suite required: no
+- Exact evidence: packaging artefact name frozen as `repo_gate156_corrective_successor_pack_closed_main_2026-04-02.zip`
 - Stop conditions hit: none
 - Merge status: not merged at receipt time
 - Receipt mode: recorded live

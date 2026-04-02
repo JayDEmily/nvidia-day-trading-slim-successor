@@ -67,18 +67,38 @@ def test_gate150_pack_is_active_and_non_placeholder() -> None:
             "Status: active stage-local handoff corrective successor pack; Gate 150 complete on `work/gate-150-corrective-successor-pack-20260402`, Gate 151 active, Gates 152-156 planned",
             "Status: active stage-local handoff corrective successor pack; Gates 150-151 complete on `main`, Gate 152 active, Gates 153-156 planned",
             "Status: active stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned",
+            "Status: active stage-local handoff corrective successor pack; Gates 150-153 complete on `main`, Gate 154 active, Gates 155-156 planned",
+            "Status: active stage-local handoff corrective successor pack; Gates 150-154 complete on `main`, Gate 155 active, Gate 156 planned",
+            "Status: active stage-local handoff corrective successor pack; Gates 150-155 complete on `main`, Gate 156 active",
+            "Status: closed stage-local handoff corrective successor pack through Gate 156 on `main`",
         }
     )
     assert leaves["execution_status"] in {
         "gate_150_complete_gate_151_active_on_work_branch",
         "gate_151_complete_gate_152_active_on_main",
         "gate_152_complete_gate_153_active_on_main",
+        "gate_153_complete_gate_154_active_on_main",
+        "gate_154_complete_gate_155_active_on_main",
+        "gate_155_complete_gate_156_active_on_main",
+        "stage_local_handoff_corrective_successor_pack_closed_through_gate_156_on_main",
     }
-    assert leaves["active_gate"] in {"Gate 151", "Gate 152", "Gate 153"}
+    assert leaves["active_gate"] in {
+        "Gate 151",
+        "Gate 152",
+        "Gate 153",
+        "Gate 154",
+        "Gate 155",
+        "Gate 156",
+        "none",
+    }
     assert leaves["completed_gate_ids"] in (
         ["Gate 150"],
         ["Gate 150", "Gate 151"],
         ["Gate 150", "Gate 151", "Gate 152"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155", "Gate 156"],
     )
     assert leaves["completed_leaf_ids"][:3] == ["LEAF-G150-001", "LEAF-G150-002", "LEAF-G150-003"]
     assert execution_log.startswith(
@@ -91,11 +111,7 @@ def test_gate150_future_leaves_are_materially_detailed() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))["leaves"]
 
     future_gate_ids = {"Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155", "Gate 156"}
-    future_leaves = [
-        leaf
-        for leaf in leaves.values()
-        if leaf["gate"] in future_gate_ids and leaf["status"] == "planned"
-    ]
+    future_leaves = [leaf for leaf in leaves.values() if leaf["gate"] in future_gate_ids]
 
     assert future_leaves
     for leaf in future_leaves:

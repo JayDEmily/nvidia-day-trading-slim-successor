@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the stage-local handoff corrective successor pack.
 
-Current planned sequence: Gates 150-155 complete on `main`; Gate 156 active.
+Current planned sequence: corrective successor pack closed through Gate 156 on `main`.
 
 ## Frozen law surfaces checked
 
@@ -66,4 +66,6 @@ Current planned sequence: Gates 150-155 complete on `main`; Gate 156 active.
 - Gate 153 is complete and now freezes the full seven overlap classes, the overlay-versus-terminal-versus-final-join non-equivalence matrix, and the boundary that keeps this pack out of independent-risk-lane or final-arbiter territory.
 - Gate 154 is complete and now freezes the exact direct consumer set, separates daily-review infrastructure from real seam readers, and records residual compatibility dependencies with retirement conditions.
 - Gate 155 is complete and now routes the required follow-on work, the explicitly deferred work, and the larger architecture boundary that this corrective pack will not cross.
-- Gate 156 is now the active gate and must close the corrective pack honestly with an anti-drift ledger, exact proof commands/results, synchronized router surfaces, and a real full-history zip artefact.
+- Gate 156 is complete and closes the corrective successor pack with an anti-drift ledger, exact proof commands/results, synchronized router surfaces, and a real full-history zip artefact.
+
+- Corrective successor pack is now closed through Gate 156 on `main` and retained as latest closed corrective successor evidence.
