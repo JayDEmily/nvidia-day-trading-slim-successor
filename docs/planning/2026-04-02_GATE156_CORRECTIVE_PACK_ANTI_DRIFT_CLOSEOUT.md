@@ -33,7 +33,7 @@ The declared proof slice for closeout is the repo-local installed environment, n
 
 ### Observed results
 
-- Pytest proof slice: `48 passed in 0.92s`
+- Pytest proof slice: `48 passed in 1.02s`
 - Black `--check`: `9 files would be left unchanged.`
 - Ruff: `All checks passed!`
 

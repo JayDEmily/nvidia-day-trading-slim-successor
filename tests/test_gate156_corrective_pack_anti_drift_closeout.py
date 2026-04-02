@@ -84,7 +84,7 @@ def test_gate156_receipt_records_drift_ledger_exact_proof_and_packaging() -> Non
         in receipt
     )
     assert "## Final proof slice run" in receipt
-    assert "48 passed in 0.92s" in receipt
+    assert "48 passed in 1.02s" in receipt
     assert "9 files would be left unchanged." in receipt
     assert "All checks passed!" in receipt
     assert "repo_gate156_corrective_successor_pack_closed_main_2026-04-02.zip" in receipt
