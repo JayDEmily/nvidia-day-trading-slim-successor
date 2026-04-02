@@ -232,6 +232,11 @@ class DeskCognitionRuntime:
             temporal_input=temporal_input,
             temporal=temporal,
         )
+        parallel_risk_lane = self._parallel_risk_lane.enrich_market_translation(
+            packet=parallel_risk_lane,
+            regime=regime,
+            options_flow=options_flow,
+        )
         upstream_contract_emissions = self._tranche_a_upstream.evaluate(
             TrancheAUpstreamContext(
                 emitted_at=temporal_input.ts,
@@ -323,6 +328,14 @@ class DeskCognitionRuntime:
             posture=posture,
         )
         final_risk_decision = terminal_risk_application.final_decision
+        parallel_risk_lane = self._parallel_risk_lane.enrich_candidate_semantics(
+            packet=parallel_risk_lane,
+            posture=posture,
+            eligibility=eligibility,
+            execution=execution,
+        )
+        posture = posture.model_copy(update={"parallel_risk_lane_packet": parallel_risk_lane})
+        execution = execution.model_copy(update={"parallel_risk_lane_packet": parallel_risk_lane})
         stage_local_handoff = StageLocalHandoffSurface(
             cited_posture_pre_modifier=cited_posture_pre_modifier,
             cited_eligibility=cited_eligibility,

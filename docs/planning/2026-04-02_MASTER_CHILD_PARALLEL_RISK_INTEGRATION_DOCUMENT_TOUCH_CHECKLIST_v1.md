@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the master/child integration and parallel-risk execution pack.
 
-Current planned sequence: active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`.
+Current planned sequence: active gate: Gate 178 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`.
 
 ## Frozen law surfaces checked
 
@@ -57,6 +57,8 @@ Current planned sequence: active gate: Gate 176 on `work/gate-171-master-child-p
 - [x] `tests/test_gate163_coefficient_architecture_consolidation_closeout.py`
 - [x] `tests/test_gate164_policy_temporal_observability_successor_pack_planning.py`
 - [x] `tests/test_gate170_policy_temporal_observability_successor_closeout.py`
+- [x] `tests/test_gate176_market_options_dependency_dislocation_runtime.py`
+- [x] `tests/test_gate177_parallel_risk_anti_duplication_and_review_integration.py`
 - [x] `CHANGELOG.jsonl`
 
 ## Notes

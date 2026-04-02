@@ -61,6 +61,51 @@ class ParallelRiskInvariantSurface(StrEnum):
     RELEASED_COEFFICIENT_AUTHORITY = "released_coefficient_authority"
 
 
+class ParallelRiskDependencyActivationState(StrEnum):
+    """Bounded dependency activation states for the lane."""
+
+    BACKGROUND_ONLY = "background_only"
+    ACTIVE_ENOUGH_TO_MATTER_NOW = "active_enough_to_matter_now"
+
+
+class ParallelRiskDislocationState(StrEnum):
+    """Translation/dislocation classifications preserved by the lane."""
+
+    NEUTRAL = "neutral"
+    DISLOCATION_RISK = "dislocation_risk"
+    JUSTIFIED_REPRICING = "justified_repricing"
+    IMPAIRMENT_RISK = "impairment_risk"
+
+
+class ParallelRiskEnvironmentalWeatherState(StrEnum):
+    """High-level environmental weather labels for the lane."""
+
+    SUPPORTIVE_BACKGROUND = "supportive_background"
+    MIXED_TRANSLATION_PRESSURE = "mixed_translation_pressure"
+    ELEVATED_TRANSLATION_PRESSURE = "elevated_translation_pressure"
+    IMPAIRED_BACKGROUND = "impaired_background"
+
+
+class ParallelRiskCandidateAuditState(StrEnum):
+    """Bounded candidate-audit activation states."""
+
+    INACTIVE_NO_CANDIDATE = "inactive_no_candidate"
+    ACTIVE_CANDIDATE = "active_candidate"
+
+
+class ParallelRiskConsequenceClass(StrEnum):
+    """Bounded expression-posture consequence classes."""
+
+    NOT_AT_ALL = "not_at_all"
+    WAIT_OR_DEFER = "wait_or_defer"
+    SMALLER = "smaller"
+    NORMAL = "normal"
+    MORE_ASSERTIVE = "more_assertive"
+    RESHAPE = "reshape"
+    HEDGE_REQUIRED = "hedge_required"
+    NO_CARRY = "no_carry"
+
+
 class ParallelRiskInvariantReadRecord(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -109,6 +154,60 @@ class ParallelRiskTemporalSurface(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
+class ParallelRiskMarketTranslationSurface(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    volatility_regime: str
+    breadth_state: str
+    sector_leadership_state: str
+    signal_conflict_state: str
+    cross_asset_pressure_score: float
+    beta_leadership_score: float
+    term_structure_state: str
+    gamma_state: str
+    dealer_pressure_state: str
+    pin_risk_state: str
+    options_behavior_cluster: str
+    flow_tension_score: float
+    strike_cluster_state: str
+    repeated_snapshot_state: str
+    skew_evolution_state: str
+    pin_progression_state: str
+    dependency_activation_state: ParallelRiskDependencyActivationState
+    active_enough_to_matter_now: bool
+    dislocation_state: ParallelRiskDislocationState
+    environmental_weather_state: ParallelRiskEnvironmentalWeatherState
+    slower_background_context: list[str] = Field(default_factory=list)
+    fast_translation_context: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskFragilityDimension(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    dimension: str
+    state: str
+    reasons: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskCandidateAuditSurface(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    candidate_state: ParallelRiskCandidateAuditState
+    active_family_ids: list[str] = Field(default_factory=list)
+    active_setup_variant_ids: list[str] = Field(default_factory=list)
+    lead_family_id: str | None = None
+    lead_setup_variant_id: str | None = None
+    lead_playbook_id: str | None = None
+    environmental_weather_state: ParallelRiskEnvironmentalWeatherState
+    fragility_dimensions: list[ParallelRiskFragilityDimension] = Field(default_factory=list)
+    consequence_class: ParallelRiskConsequenceClass | None = None
+    anti_duplication_primary_binding_point: str
+    descriptive_secondary_reads: list[str] = Field(default_factory=list)
+    duplicate_caution_suppressed: bool = True
+    notes: list[str] = Field(default_factory=list)
+
+
 class ParallelRiskLanePacket(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -120,4 +219,6 @@ class ParallelRiskLanePacket(BaseModel):
     invariant_reads: list[ParallelRiskInvariantReadRecord] = Field(default_factory=list)
     stage_output_reads: list[ParallelRiskStageReadRecord] = Field(default_factory=list)
     temporal_surface: ParallelRiskTemporalSurface
+    market_translation_surface: ParallelRiskMarketTranslationSurface | None = None
+    candidate_audit_surface: ParallelRiskCandidateAuditSurface | None = None
     notes: list[str] = Field(default_factory=list)

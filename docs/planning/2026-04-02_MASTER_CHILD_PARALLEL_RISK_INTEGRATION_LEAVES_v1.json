@@ -1,8 +1,8 @@
 {
   "governing_plan": "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_175_complete_gate_176_active_on_work_branch",
-  "active_gate": "Gate 176",
+  "execution_status": "gate_177_complete_gate_178_active_on_work_branch",
+  "active_gate": "Gate 178",
   "supersedes": [
     "2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md"
   ],
@@ -11,7 +11,9 @@
     "Gate 172",
     "Gate 173",
     "Gate 174",
-    "Gate 175"
+    "Gate 175",
+    "Gate 176",
+    "Gate 177"
   ],
   "completed_leaf_ids": [
     "LEAF-G171-001",
@@ -33,9 +35,7 @@
     "LEAF-G175-001",
     "LEAF-G175-002",
     "LEAF-G175-003",
-    "LEAF-G175-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G175-004",
     "LEAF-G176-001",
     "LEAF-G176-002",
     "LEAF-G176-003",
@@ -43,7 +43,9 @@
     "LEAF-G177-001",
     "LEAF-G177-002",
     "LEAF-G177-003",
-    "LEAF-G177-004",
+    "LEAF-G177-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G178-001",
     "LEAF-G178-002",
     "LEAF-G178-003",
@@ -58,8 +60,6 @@
     "LEAF-G180-004"
   ],
   "pending_gate_ids": [
-    "Gate 176",
-    "Gate 177",
     "Gate 178",
     "Gate 179",
     "Gate 180"
@@ -656,7 +656,7 @@
     "LEAF-G176-001": {
       "gate": "Gate 176",
       "title": "Implement market/options dependency and dislocation logic \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
         "Use the options table as a translation surface where the merged planning law says it belongs.",
@@ -683,7 +683,7 @@
     "LEAF-G176-002": {
       "gate": "Gate 176",
       "title": "Implement market/options dependency and dislocation logic \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
         "Use the options table as a translation surface where the merged planning law says it belongs.",
@@ -710,7 +710,7 @@
     "LEAF-G176-003": {
       "gate": "Gate 176",
       "title": "Implement market/options dependency and dislocation logic \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
         "Use the options table as a translation surface where the merged planning law says it belongs.",
@@ -737,7 +737,7 @@
     "LEAF-G176-004": {
       "gate": "Gate 176",
       "title": "Implement market/options dependency and dislocation logic \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
         "Use the options table as a translation surface where the merged planning law says it belongs.",
@@ -764,7 +764,7 @@
     "LEAF-G177-001": {
       "gate": "Gate 177",
       "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
         "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
@@ -791,7 +791,7 @@
     "LEAF-G177-002": {
       "gate": "Gate 177",
       "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
         "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
@@ -818,7 +818,7 @@
     "LEAF-G177-003": {
       "gate": "Gate 177",
       "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
         "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
@@ -845,7 +845,7 @@
     "LEAF-G177-004": {
       "gate": "Gate 177",
       "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
         "Integrate the lane into existing review/observability surfaces in the leanest possible way.",

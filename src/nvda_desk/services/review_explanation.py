@@ -276,6 +276,20 @@ class ReviewExplanationService:
             ]
         if candidate_governance is not None:
             review_packet["candidate_governance"] = candidate_governance.model_dump(mode="json")
+        if payload.parallel_risk_lane_packet is not None:
+            review_packet["parallel_risk_lane"] = payload.parallel_risk_lane_packet.model_dump(mode="json")
+            summary_bits = [
+                f"weather={payload.parallel_risk_lane_packet.market_translation_surface.environmental_weather_state.value}" if payload.parallel_risk_lane_packet.market_translation_surface is not None else "weather=temporal_only",
+                (
+                    f"candidate_state={payload.parallel_risk_lane_packet.candidate_audit_surface.candidate_state.value}"
+                    if payload.parallel_risk_lane_packet.candidate_audit_surface is not None
+                    else "candidate_state=not_built"
+                ),
+            ]
+            review_packet["parallel_risk_lane_summary"] = {
+                "lane_id": payload.parallel_risk_lane_packet.lane_id,
+                "summary": " / ".join(summary_bits),
+            }
 
         return ReviewExplanationOutput(
             summary=summary,

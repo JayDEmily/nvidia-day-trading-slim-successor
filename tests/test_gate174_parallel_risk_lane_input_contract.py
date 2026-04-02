@@ -52,18 +52,24 @@ def test_gate174_runtime_emits_co_resident_parallel_lane_packet() -> None:
     assert "not_eighth_stage" in packet.notes
 
 
-def test_gate174_marks_temporal_as_only_lawful_stage_output_used_so_far() -> None:
+def test_gate174_marks_temporal_as_the_first_lawful_stage_output_and_preserves_review_as_downstream() -> None:
     _, result = _runtime_result()
     packet = result.parallel_risk_lane
     assert packet is not None
     statuses = {record.stage: record.status for record in packet.stage_output_reads}
     assert statuses[ParallelRiskReadableStage.TEMPORAL] is ParallelRiskStageReadStatus.USED
+    # Gate 174 created the temporal-only bootstrap packet. Later gates may lawfully
+    # upgrade additional stage reads, but temporal must remain the first lawful read
+    # and review must remain downstream of lane construction.
     for stage in (
         ParallelRiskReadableStage.REGIME,
         ParallelRiskReadableStage.OPTIONS_FLOW,
         ParallelRiskReadableStage.POSTURE,
         ParallelRiskReadableStage.ELIGIBILITY,
         ParallelRiskReadableStage.EXECUTION,
-        ParallelRiskReadableStage.REVIEW,
     ):
-        assert statuses[stage] is ParallelRiskStageReadStatus.NOT_YET_AVAILABLE
+        assert statuses[stage] in {
+            ParallelRiskStageReadStatus.NOT_YET_AVAILABLE,
+            ParallelRiskStageReadStatus.USED,
+        }
+    assert statuses[ParallelRiskReadableStage.REVIEW] is ParallelRiskStageReadStatus.NOT_YET_AVAILABLE
