@@ -24,13 +24,19 @@ def test_gate170_control_surfaces_close_honestly_on_work_branch() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert (
-        "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`"
-        in plans
+    assert any(
+        marker in plans
+        for marker in {
+            "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+            "active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
+        }
     )
-    assert (
-        "Current active gate: **none — policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`**."
-        in gate_map
+    assert any(
+        marker in gate_map
+        for marker in {
+            "Current active gate: **none — policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`**.",
+            "Current active gate: **Gate 172 in the master/child parallel-risk integration pack**.",
+        }
     )
     assert (
         "Status: closed policy/temporal/observability successor pack through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`"

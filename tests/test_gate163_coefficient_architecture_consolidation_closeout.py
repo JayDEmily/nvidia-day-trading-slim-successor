@@ -45,6 +45,7 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
     "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
     "active gate: Gate 169 on `work/gate-164-policy-temporal-observability-pack-20260402`",
     "active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+            "active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
         }
     )
     assert any(
@@ -57,6 +58,7 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
     "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",
     "Current active gate: **Gate 169 in the policy/temporal/observability successor pack**.",
     "Current active gate: **Gate 170 in the policy/temporal/observability successor pack**.",
+            "Current active gate: **Gate 172 in the master/child parallel-risk integration pack**.",
             "Current active gate: **none — policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`**.",
         }
     )

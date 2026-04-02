@@ -20,14 +20,23 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- gates: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_SCOPE_NOTE_v1.md`
+- active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md`
 - leaves: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_SCOPE_NOTE_v1.md`
-- no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- closeout receipt: `docs/planning/2026-04-02_GATE170_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_AUDIT_AND_CLOSEOUT.md`
 
-## Latest closed pack retained as evidence
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`
 - leaves: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`
@@ -86,15 +95,14 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- active pack currently routed is the master/child parallel-risk integration pack with Gate 172 active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
 - latest closed pack retained as evidence is the policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 - latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
-- historical prior router state before Gate 157 activation: no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`
-- historical immediate predecessor active-pack state retained for planning-guard continuity: active gate: Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
-- historical closed predecessor pack state retained for planning-guard continuity: no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
-- historical predecessor router state retained for planning-guard continuity: stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
+- historical prior router state before Gate 171 activation: no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- historical immediate predecessor active-pack state retained for planning-guard continuity: active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- historical predecessor router state retained for planning-guard continuity: no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`

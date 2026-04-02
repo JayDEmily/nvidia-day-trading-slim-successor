@@ -1,0 +1,1197 @@
+{
+  "governing_plan": "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md",
+  "version": "v1",
+  "execution_status": "gate_171_complete_gate_172_active_on_work_branch",
+  "active_gate": "Gate 172",
+  "supersedes": [
+    "2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 171"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G171-001",
+    "LEAF-G171-002",
+    "LEAF-G171-003",
+    "LEAF-G171-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G172-001",
+    "LEAF-G172-002",
+    "LEAF-G172-003",
+    "LEAF-G172-004",
+    "LEAF-G173-001",
+    "LEAF-G173-002",
+    "LEAF-G173-003",
+    "LEAF-G173-004",
+    "LEAF-G174-001",
+    "LEAF-G174-002",
+    "LEAF-G174-003",
+    "LEAF-G174-004",
+    "LEAF-G175-001",
+    "LEAF-G175-002",
+    "LEAF-G175-003",
+    "LEAF-G175-004",
+    "LEAF-G176-001",
+    "LEAF-G176-002",
+    "LEAF-G176-003",
+    "LEAF-G176-004",
+    "LEAF-G177-001",
+    "LEAF-G177-002",
+    "LEAF-G177-003",
+    "LEAF-G177-004",
+    "LEAF-G178-001",
+    "LEAF-G178-002",
+    "LEAF-G178-003",
+    "LEAF-G178-004",
+    "LEAF-G179-001",
+    "LEAF-G179-002",
+    "LEAF-G179-003",
+    "LEAF-G179-004",
+    "LEAF-G180-001",
+    "LEAF-G180-002",
+    "LEAF-G180-003",
+    "LEAF-G180-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 172",
+    "Gate 173",
+    "Gate 174",
+    "Gate 175",
+    "Gate 176",
+    "Gate 177",
+    "Gate 178",
+    "Gate 179",
+    "Gate 180"
+  ],
+  "global_rules": [
+    "Complete Gate 173 before any src/ runtime edits in Gates 174-178.",
+    "Read every materially changed file end to end before claiming semantic alignment.",
+    "Do not let the new lane become an arbiter, eighth stage, or silent second caution engine.",
+    "Run selective proof slices at each gate; reserve wider suite execution for late-pack integrity.",
+    "Gate 179 whole-repo vocabulary/workbook-path hygiene is mandatory, not optional polish."
+  ],
+  "leaf_order": [
+    "LEAF-G171-001",
+    "LEAF-G171-002",
+    "LEAF-G171-003",
+    "LEAF-G171-004",
+    "LEAF-G172-001",
+    "LEAF-G172-002",
+    "LEAF-G172-003",
+    "LEAF-G172-004",
+    "LEAF-G173-001",
+    "LEAF-G173-002",
+    "LEAF-G173-003",
+    "LEAF-G173-004",
+    "LEAF-G174-001",
+    "LEAF-G174-002",
+    "LEAF-G174-003",
+    "LEAF-G174-004",
+    "LEAF-G175-001",
+    "LEAF-G175-002",
+    "LEAF-G175-003",
+    "LEAF-G175-004",
+    "LEAF-G176-001",
+    "LEAF-G176-002",
+    "LEAF-G176-003",
+    "LEAF-G176-004",
+    "LEAF-G177-001",
+    "LEAF-G177-002",
+    "LEAF-G177-003",
+    "LEAF-G177-004",
+    "LEAF-G178-001",
+    "LEAF-G178-002",
+    "LEAF-G178-003",
+    "LEAF-G178-004",
+    "LEAF-G179-001",
+    "LEAF-G179-002",
+    "LEAF-G179-003",
+    "LEAF-G179-004",
+    "LEAF-G180-001",
+    "LEAF-G180-002",
+    "LEAF-G180-003",
+    "LEAF-G180-004"
+  ],
+  "leaves": {
+    "LEAF-G171-001": {
+      "gate": "Gate 171",
+      "title": "Install the integration planning quartet and scope note",
+      "status": "complete",
+      "ordered_actions": [
+        "Create the active gates/leaves/execution-log/checklist files for Gates 171-180.",
+        "Write the bounded-scope note with the verified master-versus-child framing, the no-blind-patch rule, and the two-tranche merge-then-code order.",
+        "Keep Gate 171 planning-only; runtime behaviour remains the Gate 170 closed baseline until a later gate explicitly changes code."
+      ],
+      "forbidden_actions": [
+        "Do not start importing child files or editing src/ code in Gate 171.",
+        "Do not compress the merge, implementation, proof, and hygiene work into vague placeholder gates.",
+        "Do not lose the child handover-note claims or workbook-governance facts from the scope note."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Active planning quartet and scope note exist with Gates 171-180 and non-placeholder leaves.",
+        "Scope note preserves the master/child framing, no-src-delta child finding, and the merge-before-code law.",
+        "Bootstrap receipt records the new pack intent, branch state, and exact source artefacts."
+      ],
+      "definition_of_done": [
+        "Active quartet exists and the scope note is explicit about tranche order, scope boundaries, and evidence sources.",
+        "Bootstrap receipt is written and referenced from the execution log."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G171-002": {
+      "gate": "Gate 171",
+      "title": "Route the repo truthfully to Gate 172",
+      "status": "complete",
+      "ordered_actions": [
+        "Update PLANS.md so the new integration pack is the active pack and the Gate 170 pack is retained as latest closed evidence.",
+        "Update the canonical gate map to point paired files and the current active gate marker at Gate 172 in the new pack.",
+        "Leave prior closed packs intact as evidence; do not rewrite their internal receipts."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md saying no active pack exists.",
+        "Do not erase the closed Gate 170 pack from the router surfaces.",
+        "Do not claim the child pack is already merged into master."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate164_policy_temporal_observability_successor_pack_planning.py tests/test_gate170_policy_temporal_observability_successor_closeout.py tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md, gate map, and the new leaves ledger all agree that Gate 172 is active on the new branch.",
+        "Historical closeout tests for Gates 163, 164, and 170 still pass under the new active-pack state."
+      ],
+      "definition_of_done": [
+        "Router/control surfaces are synchronized to the new pack and historical continuity tests accept the successor routing."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G171-003": {
+      "gate": "Gate 171",
+      "title": "Freeze the integration gate sequence with enough granularity",
+      "status": "complete",
+      "ordered_actions": [
+        "Translate the approved integration-and-implementation plan into gate-level sequencing for merge law, planning/reference-data reconciliation, runtime implementation, proofs, hygiene, and final audit.",
+        "Keep the child-planning merge tranche separate from the runtime-code tranche so later proof claims stay honest.",
+        "Make Gate 179 a mandatory whole-repo vocabulary/workbook-path hygiene gate rather than an optional note."
+      ],
+      "forbidden_actions": [
+        "Do not create one giant \u201cmerge everything\u201d gate.",
+        "Do not omit a final repo-wide hygiene gate.",
+        "Do not bury calibration/receipt integration or selective proof order inside prose without gate ownership."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gates 172-180 are all materially different and map to the approved plan.",
+        "Future leaves contain real ordered actions, validation commands, and definitions of done."
+      ],
+      "definition_of_done": [
+        "The new pack can drive later execution one gate at a time without re-planning the whole tranche."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G171-004": {
+      "gate": "Gate 171",
+      "title": "Write the bootstrap receipt and seed the execution log",
+      "status": "complete",
+      "ordered_actions": [
+        "Write a Gate 171 receipt that records the verified master-versus-child facts, the new branch name, and the next active gate.",
+        "Seed the execution log with the bootstrap actions and proof slice.",
+        "Append a changelog entry for activation of the new integration pack."
+      ],
+      "forbidden_actions": [
+        "Do not claim any merge or runtime implementation happened in Gate 171.",
+        "Do not omit the child zip and handover note from the bootstrap evidence list.",
+        "Do not leave the execution log or changelog stale."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Bootstrap receipt exists and cites the master and child artefacts plus the no-src-delta finding.",
+        "Execution log starts with Gate 171 entries and the proof command/result.",
+        "Changelog contains a new gate171 planning entry."
+      ],
+      "definition_of_done": [
+        "Receipt, execution log, and changelog all describe the same bootstrap state truthfully."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G172-001": {
+      "gate": "Gate 172",
+      "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
+        "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
+        "Write the manual merge law that decides where master wins, where child wins, and which files must be rewritten by hand."
+      ],
+      "forbidden_actions": [
+        "Do not merge or edit runtime code yet.",
+        "Do not treat gate numbering as the primary merge surface.",
+        "Do not under-specify workbook path and normative-doc overlaps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 172 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G172-002": {
+      "gate": "Gate 172",
+      "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
+        "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
+        "Write the manual merge law that decides where master wins, where child wins, and which files must be rewritten by hand."
+      ],
+      "forbidden_actions": [
+        "Do not merge or edit runtime code yet.",
+        "Do not treat gate numbering as the primary merge surface.",
+        "Do not under-specify workbook path and normative-doc overlaps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 172 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G172-003": {
+      "gate": "Gate 172",
+      "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
+        "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
+        "Write the manual merge law that decides where master wins, where child wins, and which files must be rewritten by hand."
+      ],
+      "forbidden_actions": [
+        "Do not merge or edit runtime code yet.",
+        "Do not treat gate numbering as the primary merge surface.",
+        "Do not under-specify workbook path and normative-doc overlaps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 172 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G172-004": {
+      "gate": "Gate 172",
+      "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
+        "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
+        "Write the manual merge law that decides where master wins, where child wins, and which files must be rewritten by hand."
+      ],
+      "forbidden_actions": [
+        "Do not merge or edit runtime code yet.",
+        "Do not treat gate numbering as the primary merge surface.",
+        "Do not under-specify workbook path and normative-doc overlaps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 172 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G173-001": {
+      "gate": "Gate 173",
+      "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
+        "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
+        "Rebuild or regenerate vocabulary surfaces and rewrite router/control files manually so the merged repo tells the truth."
+      ],
+      "forbidden_actions": [
+        "Do not touch src/ runtime code in Gate 173.",
+        "Do not leave dual active workbook authority paths unresolved.",
+        "Do not let router surfaces pretend the child pack was merged by magic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 173 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G173-002": {
+      "gate": "Gate 173",
+      "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
+        "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
+        "Rebuild or regenerate vocabulary surfaces and rewrite router/control files manually so the merged repo tells the truth."
+      ],
+      "forbidden_actions": [
+        "Do not touch src/ runtime code in Gate 173.",
+        "Do not leave dual active workbook authority paths unresolved.",
+        "Do not let router surfaces pretend the child pack was merged by magic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 173 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G173-003": {
+      "gate": "Gate 173",
+      "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
+        "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
+        "Rebuild or regenerate vocabulary surfaces and rewrite router/control files manually so the merged repo tells the truth."
+      ],
+      "forbidden_actions": [
+        "Do not touch src/ runtime code in Gate 173.",
+        "Do not leave dual active workbook authority paths unresolved.",
+        "Do not let router surfaces pretend the child pack was merged by magic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 173 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G173-004": {
+      "gate": "Gate 173",
+      "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
+        "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
+        "Rebuild or regenerate vocabulary surfaces and rewrite router/control files manually so the merged repo tells the truth."
+      ],
+      "forbidden_actions": [
+        "Do not touch src/ runtime code in Gate 173.",
+        "Do not leave dual active workbook authority paths unresolved.",
+        "Do not let router surfaces pretend the child pack was merged by magic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 173 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G174-001": {
+      "gate": "Gate 174",
+      "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
+        "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
+        "Thread the contract into runtime seams without inventing arbiter behaviour or changing the serial stage grammar."
+      ],
+      "forbidden_actions": [
+        "Do not implement an eighth stage or step_1_1.",
+        "Do not mutate baseline coefficients, raw facts, calendar truth, or playbook membership from the lane.",
+        "Do not bypass the serial deterministic spine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 174 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G174-002": {
+      "gate": "Gate 174",
+      "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
+        "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
+        "Thread the contract into runtime seams without inventing arbiter behaviour or changing the serial stage grammar."
+      ],
+      "forbidden_actions": [
+        "Do not implement an eighth stage or step_1_1.",
+        "Do not mutate baseline coefficients, raw facts, calendar truth, or playbook membership from the lane.",
+        "Do not bypass the serial deterministic spine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 174 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G174-003": {
+      "gate": "Gate 174",
+      "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
+        "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
+        "Thread the contract into runtime seams without inventing arbiter behaviour or changing the serial stage grammar."
+      ],
+      "forbidden_actions": [
+        "Do not implement an eighth stage or step_1_1.",
+        "Do not mutate baseline coefficients, raw facts, calendar truth, or playbook membership from the lane.",
+        "Do not bypass the serial deterministic spine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 174 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G174-004": {
+      "gate": "Gate 174",
+      "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
+        "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
+        "Thread the contract into runtime seams without inventing arbiter behaviour or changing the serial stage grammar."
+      ],
+      "forbidden_actions": [
+        "Do not implement an eighth stage or step_1_1.",
+        "Do not mutate baseline coefficients, raw facts, calendar truth, or playbook membership from the lane.",
+        "Do not bypass the serial deterministic spine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 174 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G175-001": {
+      "gate": "Gate 175",
+      "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Materialise the merged child temporal/calendar/event mapping in code.",
+        "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
+        "Make the runtime distinguish lawful source classes for session clock, event horizon, and calendar/event facts."
+      ],
+      "forbidden_actions": [
+        "Do not re-open the whole temporal classifier architecture casually.",
+        "Do not create hidden time/event heuristics without status labelling.",
+        "Do not let time/event surfaces drift from the merged planning law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 175 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G175-002": {
+      "gate": "Gate 175",
+      "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Materialise the merged child temporal/calendar/event mapping in code.",
+        "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
+        "Make the runtime distinguish lawful source classes for session clock, event horizon, and calendar/event facts."
+      ],
+      "forbidden_actions": [
+        "Do not re-open the whole temporal classifier architecture casually.",
+        "Do not create hidden time/event heuristics without status labelling.",
+        "Do not let time/event surfaces drift from the merged planning law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 175 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G175-003": {
+      "gate": "Gate 175",
+      "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Materialise the merged child temporal/calendar/event mapping in code.",
+        "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
+        "Make the runtime distinguish lawful source classes for session clock, event horizon, and calendar/event facts."
+      ],
+      "forbidden_actions": [
+        "Do not re-open the whole temporal classifier architecture casually.",
+        "Do not create hidden time/event heuristics without status labelling.",
+        "Do not let time/event surfaces drift from the merged planning law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 175 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G175-004": {
+      "gate": "Gate 175",
+      "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Materialise the merged child temporal/calendar/event mapping in code.",
+        "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
+        "Make the runtime distinguish lawful source classes for session clock, event horizon, and calendar/event facts."
+      ],
+      "forbidden_actions": [
+        "Do not re-open the whole temporal classifier architecture casually.",
+        "Do not create hidden time/event heuristics without status labelling.",
+        "Do not let time/event surfaces drift from the merged planning law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 175 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G176-001": {
+      "gate": "Gate 176",
+      "title": "Implement market/options dependency and dislocation logic \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
+        "Use the options table as a translation surface where the merged planning law says it belongs.",
+        "Keep the implementation candidate-aware and bounded rather than turning it into a second full playbook engine."
+      ],
+      "forbidden_actions": [
+        "Do not duplicate existing deterministic playbook logic wholesale.",
+        "Do not let options/dependency logic become an unbounded coefficient universe.",
+        "Do not skip direct tests for the new distinctions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 176 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G176-002": {
+      "gate": "Gate 176",
+      "title": "Implement market/options dependency and dislocation logic \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
+        "Use the options table as a translation surface where the merged planning law says it belongs.",
+        "Keep the implementation candidate-aware and bounded rather than turning it into a second full playbook engine."
+      ],
+      "forbidden_actions": [
+        "Do not duplicate existing deterministic playbook logic wholesale.",
+        "Do not let options/dependency logic become an unbounded coefficient universe.",
+        "Do not skip direct tests for the new distinctions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 176 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G176-003": {
+      "gate": "Gate 176",
+      "title": "Implement market/options dependency and dislocation logic \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
+        "Use the options table as a translation surface where the merged planning law says it belongs.",
+        "Keep the implementation candidate-aware and bounded rather than turning it into a second full playbook engine."
+      ],
+      "forbidden_actions": [
+        "Do not duplicate existing deterministic playbook logic wholesale.",
+        "Do not let options/dependency logic become an unbounded coefficient universe.",
+        "Do not skip direct tests for the new distinctions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 176 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G176-004": {
+      "gate": "Gate 176",
+      "title": "Implement market/options dependency and dislocation logic \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the dependency, active-enough-to-matter-now, and dislocation-versus-justified-repricing logic planned in the child pack.",
+        "Use the options table as a translation surface where the merged planning law says it belongs.",
+        "Keep the implementation candidate-aware and bounded rather than turning it into a second full playbook engine."
+      ],
+      "forbidden_actions": [
+        "Do not duplicate existing deterministic playbook logic wholesale.",
+        "Do not let options/dependency logic become an unbounded coefficient universe.",
+        "Do not skip direct tests for the new distinctions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 176 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G177-001": {
+      "gate": "Gate 177",
+      "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
+        "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
+        "Keep the lane descriptive/diagnostic and non-foggy rather than a hidden second caution stack."
+      ],
+      "forbidden_actions": [
+        "Do not implement arbiter/final-veto logic in this gate.",
+        "Do not duplicate Gate 167 non-risk-lane caution ownership instead of integrating with it.",
+        "Do not redesign DMP v2 schema-core."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 177 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G177-002": {
+      "gate": "Gate 177",
+      "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
+        "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
+        "Keep the lane descriptive/diagnostic and non-foggy rather than a hidden second caution stack."
+      ],
+      "forbidden_actions": [
+        "Do not implement arbiter/final-veto logic in this gate.",
+        "Do not duplicate Gate 167 non-risk-lane caution ownership instead of integrating with it.",
+        "Do not redesign DMP v2 schema-core."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 177 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G177-003": {
+      "gate": "Gate 177",
+      "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
+        "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
+        "Keep the lane descriptive/diagnostic and non-foggy rather than a hidden second caution stack."
+      ],
+      "forbidden_actions": [
+        "Do not implement arbiter/final-veto logic in this gate.",
+        "Do not duplicate Gate 167 non-risk-lane caution ownership instead of integrating with it.",
+        "Do not redesign DMP v2 schema-core."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 177 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G177-004": {
+      "gate": "Gate 177",
+      "title": "Implement anti-duplication semantics and lean review integration \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Code the environmental-weather versus candidate-specific split, fragility dimensions, and anti-duplication law from the merged child planning receipts.",
+        "Integrate the lane into existing review/observability surfaces in the leanest possible way.",
+        "Keep the lane descriptive/diagnostic and non-foggy rather than a hidden second caution stack."
+      ],
+      "forbidden_actions": [
+        "Do not implement arbiter/final-veto logic in this gate.",
+        "Do not duplicate Gate 167 non-risk-lane caution ownership instead of integrating with it.",
+        "Do not redesign DMP v2 schema-core."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 177 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G178-001": {
+      "gate": "Gate 178",
+      "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Add or update targeted tests for the implemented lane contracts and behaviours.",
+        "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
+        "Define the selective proof order so touched runtime, planning continuity, and calibration surfaces are proved without jumping straight to an omnibus suite."
+      ],
+      "forbidden_actions": [
+        "Do not claim evaluation readiness without metadata and receipt coverage.",
+        "Do not skip planning-pack continuity tests after runtime changes.",
+        "Do not run a giant unscoped suite before targeted proofs are green."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 178 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G178-002": {
+      "gate": "Gate 178",
+      "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Add or update targeted tests for the implemented lane contracts and behaviours.",
+        "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
+        "Define the selective proof order so touched runtime, planning continuity, and calibration surfaces are proved without jumping straight to an omnibus suite."
+      ],
+      "forbidden_actions": [
+        "Do not claim evaluation readiness without metadata and receipt coverage.",
+        "Do not skip planning-pack continuity tests after runtime changes.",
+        "Do not run a giant unscoped suite before targeted proofs are green."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 178 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G178-003": {
+      "gate": "Gate 178",
+      "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Add or update targeted tests for the implemented lane contracts and behaviours.",
+        "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
+        "Define the selective proof order so touched runtime, planning continuity, and calibration surfaces are proved without jumping straight to an omnibus suite."
+      ],
+      "forbidden_actions": [
+        "Do not claim evaluation readiness without metadata and receipt coverage.",
+        "Do not skip planning-pack continuity tests after runtime changes.",
+        "Do not run a giant unscoped suite before targeted proofs are green."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 178 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G178-004": {
+      "gate": "Gate 178",
+      "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Add or update targeted tests for the implemented lane contracts and behaviours.",
+        "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
+        "Define the selective proof order so touched runtime, planning continuity, and calibration surfaces are proved without jumping straight to an omnibus suite."
+      ],
+      "forbidden_actions": [
+        "Do not claim evaluation readiness without metadata and receipt coverage.",
+        "Do not skip planning-pack continuity tests after runtime changes.",
+        "Do not run a giant unscoped suite before targeted proofs are green."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 178 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G179-001": {
+      "gate": "Gate 179",
+      "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
+        "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
+        "Run the vocabulary build/check so the repo ends in one coherent language state."
+      ],
+      "forbidden_actions": [
+        "Do not treat hygiene as optional polish.",
+        "Do not silently preserve stale workbook-path references in active lineage surfaces.",
+        "Do not erase legitimate historical/archive references that the merge law explicitly keeps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 179 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G179-002": {
+      "gate": "Gate 179",
+      "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
+        "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
+        "Run the vocabulary build/check so the repo ends in one coherent language state."
+      ],
+      "forbidden_actions": [
+        "Do not treat hygiene as optional polish.",
+        "Do not silently preserve stale workbook-path references in active lineage surfaces.",
+        "Do not erase legitimate historical/archive references that the merge law explicitly keeps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 179 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G179-003": {
+      "gate": "Gate 179",
+      "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
+        "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
+        "Run the vocabulary build/check so the repo ends in one coherent language state."
+      ],
+      "forbidden_actions": [
+        "Do not treat hygiene as optional polish.",
+        "Do not silently preserve stale workbook-path references in active lineage surfaces.",
+        "Do not erase legitimate historical/archive references that the merge law explicitly keeps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 179 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G179-004": {
+      "gate": "Gate 179",
+      "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
+        "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
+        "Run the vocabulary build/check so the repo ends in one coherent language state."
+      ],
+      "forbidden_actions": [
+        "Do not treat hygiene as optional polish.",
+        "Do not silently preserve stale workbook-path references in active lineage surfaces.",
+        "Do not erase legitimate historical/archive references that the merge law explicitly keeps."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 179 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G180-001": {
+      "gate": "Gate 180",
+      "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 1",
+      "status": "pending",
+      "ordered_actions": [
+        "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
+        "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
+        "Close the pack honestly and package the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not confuse planning capture with runtime implementation.",
+        "Do not hide unresolved drift or deferrals at closeout.",
+        "Do not close the pack without a final repo zip artefact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 180 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G180-002": {
+      "gate": "Gate 180",
+      "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 2",
+      "status": "pending",
+      "ordered_actions": [
+        "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
+        "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
+        "Close the pack honestly and package the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not confuse planning capture with runtime implementation.",
+        "Do not hide unresolved drift or deferrals at closeout.",
+        "Do not close the pack without a final repo zip artefact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 180 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G180-003": {
+      "gate": "Gate 180",
+      "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 3",
+      "status": "pending",
+      "ordered_actions": [
+        "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
+        "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
+        "Close the pack honestly and package the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not confuse planning capture with runtime implementation.",
+        "Do not hide unresolved drift or deferrals at closeout.",
+        "Do not close the pack without a final repo zip artefact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 180 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    },
+    "LEAF-G180-004": {
+      "gate": "Gate 180",
+      "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 4",
+      "status": "pending",
+      "ordered_actions": [
+        "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
+        "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
+        "Close the pack honestly and package the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not confuse planning capture with runtime implementation.",
+        "Do not hide unresolved drift or deferrals at closeout.",
+        "Do not close the pack without a final repo zip artefact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 180 planning artefacts and touched repo surfaces agree on the intended tranche behaviour.",
+        "Execution log records the receipt and proof slice for the gate.",
+        "Changed files are read end to end and semantic claims are evidence-backed."
+      ],
+      "definition_of_done": [
+        "Gate receipt exists, execution log is updated, and touched tests/checks defined by the gate are green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout"
+    }
+  }
+}
