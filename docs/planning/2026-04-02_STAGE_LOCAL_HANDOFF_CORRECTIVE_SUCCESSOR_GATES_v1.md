@@ -1,4 +1,4 @@
-Status: active stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned
+Status: active stage-local handoff corrective successor pack; Gates 150-153 complete on `main`, Gate 154 active, Gates 155-156 planned
 # 2026-04-02 Stage-Local Handoff Corrective Successor Gates v1
 
 ## Purpose
@@ -247,7 +247,7 @@ Checklist file: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESS
 ### Gate 153: Replan overlay, terminal-risk application, and final-join authority
 
 **Status**
-- active
+- complete on `main`
 
 **Objective**
 - Replace the thin Gate 147 leafing with a deterministic successor plan that freezes overlap classes, proves overlay-versus-terminal non-equivalence, and states honestly whether final join remains a compatibility wrapper or becomes something stronger later.
@@ -270,7 +270,7 @@ Checklist file: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESS
 ### Gate 154: Replan downstream review, trace, replay, and legacy expectation reconciliation
 
 **Status**
-- planned
+- active
 
 **Objective**
 - Replace the over-broad Gate 148 planning with a deterministic downstream-consumer reconciliation gate that names the remaining consumers, residual compatibility dependencies, and honest migration end-state.

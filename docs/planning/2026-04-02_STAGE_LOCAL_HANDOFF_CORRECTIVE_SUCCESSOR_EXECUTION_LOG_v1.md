@@ -171,3 +171,58 @@ For every completed leaf record:
 - Stop conditions hit: none
 - Merge status: not merged at receipt time
 - Receipt mode: recorded live
+
+
+## Gate 153 receipts
+
+### LEAF-G153-001 — Freeze overlay-versus-terminal overlap classes exhaustively
+
+- Branch: `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Start commit: `4b88028`
+- End commit: working tree on `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 153 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: all seven declared overlap classes from `TerminalRiskOverlapClass` are now frozen in one receipt with required proof outcomes and downstream interpretation rules
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G153-002 — Freeze overlay, terminal, and final-join non-equivalence law
+
+- Branch: `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Start commit: `4b88028`
+- End commit: working tree on `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 153 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: overlay decision, terminal-risk application, and final join now have explicit authoritative-versus-compatibility law instead of action-equality shorthand
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G153-003 — Freeze larger architecture boundaries honestly
+
+- Branch: `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Start commit: `4b88028`
+- End commit: working tree on `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 153 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: the receipt now states explicitly that this pack still is not the independent parallel risk lane, final arbiter, portfolio-aware replacement logic, or dynamic-coefficient redesign
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G153-004 — Advance the corrective pack from Gate 153 to Gate 154 honestly
+
+- Branch: `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Start commit: `4b88028`
+- End commit: working tree on `work/gate-153-overlay-terminal-final-join-authority-replan-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate152_stage5_stage6_authority_replan.py`, `tests/test_gate153_overlay_terminal_final_join_authority_replan.py`, `CHANGELOG.jsonl`
+- Validations run: Gate 153 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 153 is complete and Gate 154 is active
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live

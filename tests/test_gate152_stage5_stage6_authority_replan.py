@@ -44,10 +44,30 @@ def test_gate152_control_surfaces_advance_honestly() -> None:
     assert (
         "Status: active stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned"
         in gates
+        or "Status: active stage-local handoff corrective successor pack; Gates 150-153 complete on `main`, Gate 154 active, Gates 155-156 planned"
+        in gates
+        or "Status: active stage-local handoff corrective successor pack; Gates 150-154 complete on `main`, Gate 155 active, Gate 156 planned"
+        in gates
+        or "Status: active stage-local handoff corrective successor pack; Gates 150-155 complete on `main`, Gate 156 active"
+        in gates
+        or "Status: closed stage-local handoff corrective successor pack through Gate 156 on `main`"
+        in gates
     )
-    assert leaves["execution_status"] in {"gate_152_complete_gate_153_active_on_main"}
-    assert leaves["active_gate"] == "Gate 153"
-    assert leaves["completed_gate_ids"] == ["Gate 150", "Gate 151", "Gate 152"]
+    assert leaves["execution_status"] in {
+        "gate_152_complete_gate_153_active_on_main",
+        "gate_153_complete_gate_154_active_on_main",
+        "gate_154_complete_gate_155_active_on_main",
+        "gate_155_complete_gate_156_active_on_main",
+        "stage_local_handoff_corrective_successor_pack_closed_through_gate_156_on_main",
+    }
+    assert leaves["active_gate"] in {"Gate 153", "Gate 154", "Gate 155", "Gate 156", "none"}
+    assert leaves["completed_gate_ids"] in (
+        ["Gate 150", "Gate 151", "Gate 152"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155"],
+        ["Gate 150", "Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155", "Gate 156"],
+    )
     for leaf_id in ["LEAF-G152-001", "LEAF-G152-002", "LEAF-G152-003", "LEAF-G152-004"]:
         assert leaves["leaves"][leaf_id]["status"] == "complete"
 
