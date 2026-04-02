@@ -24,7 +24,7 @@ This file is the canonical repo-root execution router.
 - leaves: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- active gate: Gate 152 on `main`
+- active gate: Gate 153 on `main`
 
 ## Latest closed pack retained as evidence
 
@@ -69,7 +69,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active stage-local handoff corrective successor pack routed on `main`; Gates 150-151 are complete and Gate 152 is active
+- active stage-local handoff corrective successor pack routed on `main`; Gates 150-152 are complete and Gate 153 is active
 - latest closed pack retained as evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective evidence remains the execution-ledger Alembic parity corrective pack through Gate 140 on `main`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence

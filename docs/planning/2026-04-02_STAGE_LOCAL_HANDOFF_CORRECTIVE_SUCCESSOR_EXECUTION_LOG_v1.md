@@ -1,6 +1,6 @@
 # 2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1
 
-Status: active execution log for the stage-local handoff corrective successor pack; Gates 150-151 complete on `main`, Gate 152 active, Gates 153-156 planned
+Status: active execution log for the stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned
 
 ## Purpose
 
@@ -113,6 +113,61 @@ For every completed leaf record:
 - Validations run: Gate 151 planning proof slice after file edits
 - Full suite required: no
 - Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 151 is complete and Gate 152 is active
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+
+## Gate 152 receipts
+
+### LEAF-G152-001 — Freeze Stage 5 admissibility cases and non-cases
+
+- Branch: `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Start commit: `ea0495c`
+- End commit: working tree on `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 152 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: Stage 5 case law now distinguishes blocked, event-veto, watch-only, admitted, multi-candidate, and no-lead cases instead of a single happy-path statement
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G152-002 — Freeze Stage 6 candidate-ownership contradictions and selection proof
+
+- Branch: `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Start commit: `ea0495c`
+- End commit: working tree on `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 152 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: Stage 6 proof law now names blocked, watch-only, single-candidate, mixed-context score resolution, registry-priority tiebreak, score-ranked candidate pool, and no-admitted-candidate paths explicitly
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G152-003 — Freeze Stage 5 and Stage 6 non-equivalence law
+
+- Branch: `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Start commit: `ea0495c`
+- End commit: working tree on `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 152 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: agreement-versus-non-equivalence rules now tell later review and trace work when Stage 5 and Stage 6 must agree and when a difference is lawful and meaningful
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G152-004 — Advance the corrective pack from Gate 152 to Gate 153 honestly
+
+- Branch: `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Start commit: `ea0495c`
+- End commit: working tree on `work/gate-152-stage5-stage6-authority-replan-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `tests/test_gate152_stage5_stage6_authority_replan.py`, `CHANGELOG.jsonl`
+- Validations run: Gate 152 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 152 is complete and Gate 153 is active
 - Stop conditions hit: none
 - Merge status: not merged at receipt time
 - Receipt mode: recorded live

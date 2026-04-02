@@ -1,4 +1,4 @@
-Status: active stage-local handoff corrective successor pack; Gates 150-151 complete on `main`, Gate 152 active, Gates 153-156 planned
+Status: active stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned
 # 2026-04-02 Stage-Local Handoff Corrective Successor Gates v1
 
 ## Purpose
@@ -224,7 +224,7 @@ Checklist file: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESS
 ### Gate 152: Replan Stage 5 admissibility versus Stage 6 candidate ownership proof law
 
 **Status**
-- active
+- complete on `main`
 
 **Objective**
 - Replace the thin Gate 146 leafing with a deterministic successor plan that proves Stage 5 admissibility and Stage 6 candidate/execution ownership boundaries across no-lead, contradiction, watch-only, and multi-candidate paths.
@@ -247,7 +247,7 @@ Checklist file: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESS
 ### Gate 153: Replan overlay, terminal-risk application, and final-join authority
 
 **Status**
-- planned
+- active
 
 **Objective**
 - Replace the thin Gate 147 leafing with a deterministic successor plan that freezes overlap classes, proves overlay-versus-terminal non-equivalence, and states honestly whether final join remains a compatibility wrapper or becomes something stronger later.

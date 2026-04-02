@@ -1,14 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_151_complete_gate_152_active_on_main",
-  "active_gate": "Gate 152",
+  "execution_status": "gate_152_complete_gate_153_active_on_main",
+  "active_gate": "Gate 153",
   "supersedes": [
     "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
   ],
   "completed_gate_ids": [
     "Gate 150",
-    "Gate 151"
+    "Gate 151",
+    "Gate 152"
   ],
   "completed_leaf_ids": [
     "LEAF-G150-001",
@@ -17,13 +18,13 @@
     "LEAF-G151-001",
     "LEAF-G151-002",
     "LEAF-G151-003",
-    "LEAF-G151-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G151-004",
     "LEAF-G152-001",
     "LEAF-G152-002",
     "LEAF-G152-003",
-    "LEAF-G152-004",
+    "LEAF-G152-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G153-001",
     "LEAF-G153-002",
     "LEAF-G153-003",
@@ -559,7 +560,7 @@
       "gate": "Gate 152",
       "title": "Freeze Stage 5 admissibility cases and non-cases",
       "objective": "Define the exact admissibility cases, no-lead cases, watch-only cases, and blocked cases that later execution must prove.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -620,7 +621,7 @@
       "gate": "Gate 152",
       "title": "Freeze Stage 6 candidate-ownership contradictions and selection proof",
       "objective": "Define the Stage 6 ownership and contradiction cases that must be proven distinctly from Stage 5.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G152-001"
       ],
@@ -682,7 +683,7 @@
       "gate": "Gate 152",
       "title": "Freeze Stage 5 and Stage 6 non-equivalence law",
       "objective": "State exactly where Stage 5 and Stage 6 must agree, where they may differ, and how downstream consumers must read that difference.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G152-002"
       ],
@@ -742,7 +743,7 @@
       "gate": "Gate 152",
       "title": "Advance the corrective pack from Gate 152 to Gate 153 honestly",
       "objective": "Close Gate 152 and move the active gate to Gate 153 only after the declared proof slice is green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G152-003"
       ],
@@ -843,9 +844,9 @@
         "Do not change the declared overlap set without explicit receipt-level reason."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/python -m black --check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py",
+        ".venv/bin/ruff check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py"
       ],
       "expected_evidence": [
         "Gate 153 receipt contains an exhaustive overlap-class table.",
@@ -904,7 +905,9 @@
         "Do not omit downstream review consequences."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py"
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/python -m black --check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py",
+        ".venv/bin/ruff check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py"
       ],
       "expected_evidence": [
         "Gate 153 receipt contains a three-surface non-equivalence matrix.",
@@ -963,7 +966,9 @@
         "Do not leave future routing to chat memory."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py"
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/python -m black --check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py",
+        ".venv/bin/ruff check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py"
       ],
       "expected_evidence": [
         "Gate 153 receipt contains an explicit architecture-boundary statement.",
@@ -1021,9 +1026,9 @@
         "Do not skip observed validation results."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/python -m black --check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py",
+        ".venv/bin/ruff check tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate152_stage5_stage6_authority_replan.py"
       ],
       "expected_evidence": [
         "PLANS, gate map, leaves, and execution log all point to Gate 154 active.",
