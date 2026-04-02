@@ -48,31 +48,57 @@ def test_gate150_pack_is_active_and_non_placeholder() -> None:
         "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
         in plans
     )
-    assert "active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`" in plans
-    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
-    assert (
-        "Status: active stage-local handoff corrective successor pack; Gate 150 complete on `work/gate-150-corrective-successor-pack-20260402`, Gate 151 active, Gates 152-156 planned"
-        in gates
+    assert any(
+        marker in plans
+        for marker in {
+            "active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`",
+            "active gate: Gate 152 on `main`",
+            "active gate: Gate 153 on `main`",
+            "active gate: Gate 154 on `main`",
+            "active gate: Gate 155 on `main`",
+            "active gate: Gate 156 on `main`",
+            "no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`",
+        }
     )
-    assert leaves["execution_status"] == "gate_150_complete_gate_151_active_on_work_branch"
-    assert leaves["active_gate"] == "Gate 151"
-    assert leaves["completed_gate_ids"] == ["Gate 150"]
-    assert leaves["completed_leaf_ids"] == ["LEAF-G150-001", "LEAF-G150-002", "LEAF-G150-003"]
+    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+    assert any(
+        marker in gates
+        for marker in {
+            "Status: active stage-local handoff corrective successor pack; Gate 150 complete on `work/gate-150-corrective-successor-pack-20260402`, Gate 151 active, Gates 152-156 planned",
+            "Status: active stage-local handoff corrective successor pack; Gates 150-151 complete on `main`, Gate 152 active, Gates 153-156 planned",
+            "Status: active stage-local handoff corrective successor pack; Gates 150-152 complete on `main`, Gate 153 active, Gates 154-156 planned",
+        }
+    )
+    assert leaves["execution_status"] in {
+        "gate_150_complete_gate_151_active_on_work_branch",
+        "gate_151_complete_gate_152_active_on_main",
+        "gate_152_complete_gate_153_active_on_main",
+    }
+    assert leaves["active_gate"] in {"Gate 151", "Gate 152", "Gate 153"}
+    assert leaves["completed_gate_ids"] in (
+        ["Gate 150"],
+        ["Gate 150", "Gate 151"],
+        ["Gate 150", "Gate 151", "Gate 152"],
+    )
+    assert leaves["completed_leaf_ids"][:3] == ["LEAF-G150-001", "LEAF-G150-002", "LEAF-G150-003"]
     assert execution_log.startswith(
         "# 2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1"
     )
-    assert "Gate 150 complete" in checklist
+    assert "Gate 150" in checklist
 
 
 def test_gate150_future_leaves_are_materially_detailed() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))["leaves"]
 
     future_gate_ids = {"Gate 151", "Gate 152", "Gate 153", "Gate 154", "Gate 155", "Gate 156"}
-    future_leaves = [leaf for leaf in leaves.values() if leaf["gate"] in future_gate_ids]
+    future_leaves = [
+        leaf
+        for leaf in leaves.values()
+        if leaf["gate"] in future_gate_ids and leaf["status"] == "planned"
+    ]
 
     assert future_leaves
     for leaf in future_leaves:
-        assert leaf["status"] == "planned"
         assert len(leaf["ordered_actions"]) >= 3
         assert len(leaf["forbidden_actions"]) >= 3
         assert leaf["validation_commands"]

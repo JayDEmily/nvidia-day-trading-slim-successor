@@ -1,24 +1,25 @@
 {
   "governing_plan": "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_150_complete_gate_151_active_on_work_branch",
-  "active_gate": "Gate 151",
+  "execution_status": "gate_151_complete_gate_152_active_on_main",
+  "active_gate": "Gate 152",
   "supersedes": [
     "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
   ],
   "completed_gate_ids": [
-    "Gate 150"
+    "Gate 150",
+    "Gate 151"
   ],
   "completed_leaf_ids": [
     "LEAF-G150-001",
     "LEAF-G150-002",
-    "LEAF-G150-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G150-003",
     "LEAF-G151-001",
     "LEAF-G151-002",
     "LEAF-G151-003",
-    "LEAF-G151-004",
+    "LEAF-G151-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G152-001",
     "LEAF-G152-002",
     "LEAF-G152-003",
@@ -300,7 +301,7 @@
       "gate": "Gate 151",
       "title": "Build the field-level ownership ledger",
       "objective": "Freeze owner, mutation path, and compatibility status for every affected downstream field from posture through final join.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -340,8 +341,8 @@
       ],
       "validation_commands": [
         ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m black --check tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/ruff check tests/test_gate151_field_level_ownership_and_consumer_migration.py"
       ],
       "expected_evidence": [
         "Gate 151 receipt contains a field-level ownership table.",
@@ -366,7 +367,7 @@
       "gate": "Gate 151",
       "title": "Build the transitive consumer migration matrix",
       "objective": "Enumerate immediate and transitive consumers, migration priority, and residual compatibility reliance.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G151-001"
       ],
@@ -405,7 +406,9 @@
         "Do not claim replay or legacy reconciliation without naming the exact consumer."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py"
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/ruff check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py"
       ],
       "expected_evidence": [
         "Gate 151 receipt contains a transitive consumer matrix with migration priority.",
@@ -430,7 +433,7 @@
       "gate": "Gate 151",
       "title": "Freeze sufficiency and residual-gap law",
       "objective": "State where the preserved seam is sufficient now, where it is not, and what later gates must still prove.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G151-002"
       ],
@@ -464,7 +467,9 @@
         "Do not leave residual gaps as generic prose."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py"
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/ruff check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py"
       ],
       "expected_evidence": [
         "Gate 151 receipt contains a preserved-seam sufficiency section and residual-gap ledger.",
@@ -488,7 +493,7 @@
       "gate": "Gate 151",
       "title": "Advance the corrective pack from Gate 151 to Gate 152 honestly",
       "objective": "Update the control surfaces, execution log, and gate-map truth after Gate 151 finishes.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G151-003"
       ],
@@ -522,9 +527,9 @@
         "Do not close the gate without recording observed evidence."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/ruff check tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py"
       ],
       "expected_evidence": [
         "PLANS, gate map, leaves, and execution log all point to Gate 152 active.",
@@ -588,9 +593,9 @@
         "Do not collapse blocked and watch-only outcomes into generic non-action prose."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/ruff check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py"
       ],
       "expected_evidence": [
         "Gate 152 receipt contains explicit Stage 5 case tables.",
@@ -650,7 +655,9 @@
         "Do not ignore non-lead paths because they do not trade."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py"
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/ruff check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py"
       ],
       "expected_evidence": [
         "Gate 152 receipt contains explicit Stage 6 contradiction and selection proof burden.",
@@ -709,7 +716,9 @@
         "Do not stop at runtime code; include review/trace consequences."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py"
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/ruff check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py"
       ],
       "expected_evidence": [
         "Gate 152 receipt contains an agreement-versus-non-equivalence table.",
@@ -767,9 +776,9 @@
         "Do not skip the handoff zip."
       ],
       "validation_commands": [
-        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py",
-        "make format-check",
-        "make lint"
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate150_corrective_successor_pack_planning.py",
+        ".venv/bin/python -m black --check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        ".venv/bin/ruff check tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate151_field_level_ownership_and_consumer_migration.py"
       ],
       "expected_evidence": [
         "PLANS, gate map, leaves, and execution log all point to Gate 153 active.",

@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the stage-local handoff corrective successor pack.
 
-Current planned sequence: Gate 150 complete on `work/gate-150-corrective-successor-pack-20260402`; Gate 151 active; Gates 152-156 planned.
+Current planned sequence: Gates 150-151 complete on `main`; Gate 152 active; Gates 153-156 planned.
 
 ## Frozen law surfaces checked
 
@@ -61,8 +61,8 @@ Current planned sequence: Gate 150 complete on `work/gate-150-corrective-success
 ## Notes
 
 - Gate 150 is planning-only. Runtime behaviour remains the Gate 149 reclosed baseline.
-- Gate 151 must deepen Gate 142 into a field-level ownership and transitive-consumer migration ledger before any code claims to have reconciled ownership fully.
-- Gate 152 must replace Gate 146's thin leaves with explicit multi-candidate, watch-only, contradiction, and no-lead proof obligations.
+- Gate 151 is complete and now freezes field-level ownership, direct-versus-indirect consumer scope, and the residual-gap inputs for later gates.
+- Gate 152 is now the active gate and must replace Gate 146's thin leaves with explicit multi-candidate, watch-only, contradiction, event-veto, and no-lead proof obligations.
 - Gate 153 must state honestly whether overlay, terminal-risk application, and final-join work in this corrective pack remains compatibility hardening only or begins a larger architecture move.
 - Gate 154 must distinguish actual downstream consumer migration from merely exposing additional preserved-seam fields in review or bounded trace.
 - Gate 155 exists because strengthening this seam tranche now creates follow-on routing obligations; those must be written down explicitly instead of left implicit.
