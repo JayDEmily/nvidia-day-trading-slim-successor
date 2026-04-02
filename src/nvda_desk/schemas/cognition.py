@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.events import LiveEventSnapshot
 from nvda_desk.schemas.market import PrecursorRuntimePacket
+from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,
     EconomicContributionPacket,
@@ -446,6 +447,7 @@ class PostureRiskOutput(BaseModel):
     downstream_annotations: list[str] = Field(default_factory=list)
     modifier_compatibility_bridge: ModifierCompatibilityBridgeSurface | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
     stand_down_class: NonActionClass | None = None
     conflict_classes: list[SignalConflictClass] = Field(default_factory=list)
     degradation_step: DegradationStep = DegradationStep.NORMAL
@@ -598,6 +600,7 @@ class ExecutionExpressionInput(BaseModel):
     posture: PostureRiskOutput
     eligibility: PlaybookEligibilityOutput
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
     position_context: PositionContextInput | None = None
 
 
@@ -708,6 +711,7 @@ class ExecutionExpressionOutput(BaseModel):
     lifecycle_plan: LifecyclePlanOutput | None = None
     candidate_ownership: ExecutionCandidateOwnershipSurface | None = None
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
     modifier_compatibility_bridge: ModifierCompatibilityBridgeSurface | None = None
     final_risk_join: FinalRiskJoinSurface | None = None
     reasons: list[str] = Field(default_factory=list)
@@ -796,6 +800,7 @@ class ReviewExplanationInput(BaseModel):
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
     modifier_runtime_packet: ModifierRuntimePacket | None = None
+    parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
     temporal_input: TemporalContextInput | None = None
 

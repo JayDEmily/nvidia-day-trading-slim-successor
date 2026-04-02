@@ -51,6 +51,7 @@ from nvda_desk.schemas.dmp_v2 import (
     DmpV2Packet,
     build_dmp_v2_packet_from_payload,
 )
+from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ArchetypeMatcherContractOutput,
     ContractComputationMode,
@@ -76,6 +77,7 @@ from nvda_desk.services.imported_modules.tranche_a import (
 )
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
+from nvda_desk.services.parallel_risk_lane import ParallelRiskLaneService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.review_explanation import ReviewExplanationService
@@ -97,6 +99,7 @@ class DeskCognitionRuntimeResult:
     eligibility: PlaybookEligibilityOutput
     execution: ExecutionExpressionOutput
     review: ReviewExplanationOutput
+    parallel_risk_lane: ParallelRiskLanePacket | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
     stage_packets: tuple[DmpV2Packet, ...] = ()
     packet_lineage: tuple[str, ...] = ()
@@ -157,6 +160,7 @@ class DeskCognitionRuntime:
         self._temporal = TemporalContextService(settings)
         self._regime = MarketRegimeContextService()
         self._options_flow = OptionsFlowContextService()
+        self._parallel_risk_lane = ParallelRiskLaneService()
         self._posture = PostureRiskService()
         self._eligibility = PlaybookEligibilityService()
         self._execution = ExecutionExpressionService()
@@ -224,6 +228,10 @@ class DeskCognitionRuntime:
         temporal = self._temporal.evaluate(temporal_input)
         regime = self._regime.evaluate(regime_input)
         options_flow = self._options_flow.evaluate(options_flow_input)
+        parallel_risk_lane = self._parallel_risk_lane.evaluate(
+            temporal_input=temporal_input,
+            temporal=temporal,
+        )
         upstream_contract_emissions = self._tranche_a_upstream.evaluate(
             TrancheAUpstreamContext(
                 emitted_at=temporal_input.ts,
@@ -287,6 +295,7 @@ class DeskCognitionRuntime:
                 posture=posture,
                 eligibility=eligibility,
                 modifier_runtime_packet=modifier_runtime_packet,
+                parallel_risk_lane_packet=parallel_risk_lane,
                 position_context=self._build_execution_position_context(
                     temporal=temporal,
                     posture=posture,
@@ -337,6 +346,7 @@ class DeskCognitionRuntime:
                 eligibility=eligibility,
                 execution=execution,
                 modifier_runtime_packet=modifier_runtime_packet,
+                parallel_risk_lane_packet=parallel_risk_lane,
                 stage_local_handoff=stage_local_handoff,
                 temporal_input=temporal_input,
             )
@@ -416,6 +426,7 @@ class DeskCognitionRuntime:
             eligibility=eligibility,
             execution=execution,
             review=review,
+            parallel_risk_lane=parallel_risk_lane,
             stage_local_handoff=stage_local_handoff,
             stage_packets=ordered_packets,
             packet_lineage=tuple(packet.packet_id for packet in ordered_packets),

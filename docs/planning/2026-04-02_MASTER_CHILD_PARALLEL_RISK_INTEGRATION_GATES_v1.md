@@ -1,6 +1,6 @@
 # 2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1
 
-Status: active master/child parallel-risk integration pack; Gate 171 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 172 active, Gates 173-180 planned
+Status: active master/child parallel-risk integration pack; Gates 171-175 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 176 active, Gates 177-180 planned
 
 ## Purpose
 
@@ -17,11 +17,11 @@ Route the next bounded tranche that first merges the child planning/reference-da
 | Gate | Status | Meaning now |
 |---|---|---|
 | Gate 171 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | activate the master/child integration pack, preserve Gate 164-170 as the latest closed predecessor evidence, and route the repo truthfully to Gate 172 |
-| Gate 172 | active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | freeze the shared base, unique commit ranges, overlap ledger, child-only import surfaces, and the manual merge law before any code changes occur |
-| Gate 173 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | merge the child planning/reference-data/vocabulary surfaces into master lawfully, including normative additions, workbook promotion/demotion, generator/vocabulary rewires, and router-surface reconciliation |
-| Gate 174 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement the parallel-risk lane input contract and lawful-read boundary from the merged normative/operating-model law without introducing arbiter behaviour or a new eighth stage |
-| Gate 175 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement temporal/calendar/event/multi-clock runtime surfaces from the merged child planning law and align them with the governed temporal-status ledger already frozen in master |
-| Gate 176 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement market/options dependency, dislocation, and translation surfaces from the merged planning law without duplicating the existing deterministic spine |
+| Gate 172 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | freeze the shared base, unique commit ranges, overlap ledger, child-only import surfaces, and the manual merge law before any code changes occur |
+| Gate 173 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | merge the child planning/reference-data/vocabulary surfaces into master lawfully, including normative additions, workbook promotion/demotion, generator/vocabulary rewires, and router-surface reconciliation |
+| Gate 174 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement the parallel-risk lane input contract and lawful-read boundary from the merged normative/operating-model law without introducing arbiter behaviour or a new eighth stage |
+| Gate 175 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement temporal/calendar/event/multi-clock runtime surfaces from the merged child planning law and align them with the governed temporal-status ledger already frozen in master |
+| Gate 176 | active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement market/options dependency, dislocation, and translation surfaces from the merged planning law without duplicating the existing deterministic spine |
 | Gate 177 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement anti-duplication, fragility/output semantics, and lean review integration so the lane is descriptive, candidate-aware, and non-foggy rather than a second caution engine |
 | Gate 178 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | integrate selective proofs, calibration/receipt metadata, and pack continuity so the new lane is evaluable without widening runtime authority casually |
 | Gate 179 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | run whole-repo vocabulary/workbook-path hygiene, rebuild/check the canonical vocabulary surfaces, and close any terminology drift introduced by the merge |

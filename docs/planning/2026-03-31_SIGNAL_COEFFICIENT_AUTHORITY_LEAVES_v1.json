@@ -67,7 +67,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
       ],
       "workflow_intent_assertion": "This leaf sits at the workflow-authority boundary before any runtime change. It decides what later runtime and review leaves are even allowed to touch.",
       "vocabulary_terms_checked": [
@@ -78,7 +78,7 @@
       "repo_surfaces": [
         "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
         "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
-        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
         "src/nvda_desk/services/state_conditioned_modifier.py",
         "src/nvda_desk/domain/temporal_state.py"
       ],
@@ -821,7 +821,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
         "src/nvda_desk/domain/temporal_state.py"
       ],
       "workflow_intent_assertion": "This leaf sits at the temporal-authority boundary between research workbook and live classifier.",
@@ -831,7 +831,7 @@
       "repo_surfaces": [
         "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_GATES_v1.md",
         "docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_LEAVES_v1.json",
-        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
         "src/nvda_desk/domain/temporal_state.py"
       ],
       "inputs": [

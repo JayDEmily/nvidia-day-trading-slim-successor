@@ -186,7 +186,7 @@ def build_document() -> VocabularyDocument:
             category=VocabularyCategory.DATA_CLASSIFICATION,
             stage_owner="research_doctrine",
             raw_or_derived=RawDerivedTag.RAW,
-            maps_to_contract="docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+            maps_to_contract="data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
             allowed_aliases=["raw_signal"],
         ),
         VocabularyEntry(
@@ -195,7 +195,7 @@ def build_document() -> VocabularyDocument:
             category=VocabularyCategory.DATA_CLASSIFICATION,
             stage_owner="research_doctrine",
             raw_or_derived=RawDerivedTag.DERIVED,
-            maps_to_contract="docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+            maps_to_contract="data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
             allowed_aliases=["derived_state"],
         ),
         VocabularyEntry(
@@ -763,14 +763,47 @@ def build_document() -> VocabularyDocument:
                 maps_to_contract="nvda_desk.schemas.calibration.HorizonDiscoveryOutcome",
                 notes=["Gate 79 outcome meaning offsets disagree materially."],
             ),
+            VocabularyEntry(
+                canonical_slug="independent_parallel_risk_lane",
+                canonical_label="Independent Parallel Risk Lane",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="temporal_context",
+                maps_to_contract="docs/planning/2026-04-02_GATE158_CO_RESIDENT_PARALLEL_RISK_LANE_LAW.md",
+                allowed_aliases=[
+                    "parallel risk pipeline",
+                    "co-resident risk lane",
+                    "parallel_risk_pipeline",
+                ],
+                disallowed_phrases=["step_1_1", "step_8", "eighth_stage"],
+                notes=[
+                    "First-class co-resident lane planned from session start; not a numbered stage and not a bypass of the seven-step desk cognition grammar."
+                ],
+            ),
+            VocabularyEntry(
+                canonical_slug="signal_coefficient_reference_workbook",
+                canonical_label="Signal-Coefficient Reference Workbook",
+                category=VocabularyCategory.DATA_CLASSIFICATION,
+                stage_owner="planning_governance",
+                maps_to_contract="data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+                allowed_aliases=[
+                    "signal workbook",
+                    "coefficient register workbook",
+                    "live reference workbook",
+                ],
+                disallowed_phrases=["runtime authority workbook", "normative workbook"],
+                notes=[
+                    "Governed live reference ledger for signal/coefficient provenance, bounds research, and workbook_ref lineage; never direct runtime authority without typed promotion."
+                ],
+            ),
         ]
     )
     return VocabularyDocument(
         schema_version="desk_vocabulary.v1",
-        registry_version="gate79-review-horizon-alignment-2026-03-27",
+        registry_version="gate157-parallel-risk-lane-foundation-2026-04-02",
         notes=[
             "Generated from current live playbook registry and pinned architecture surfaces.",
             "Gates 60-79 extend the workflow vocabulary with state-policy, event, precursor, modifier, and review-horizon terms.",
+            "Gate 157 adds first-class lane/workbook discoverability terms without claiming runtime packet implementation.",
             "Vocabulary workflow is feeder-process only and must not be treated as blind runtime truth.",
         ],
         entries=entries,

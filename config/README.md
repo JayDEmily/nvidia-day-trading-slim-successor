@@ -21,3 +21,7 @@ Files:
 - `strategy_variants.example.yaml`
 
 Use the example files as compatibility/reference inputs when promoting more of the archive into typed runtime configuration. Do not treat `coefficients_registry.example.yaml` as interchangeable with `coefficient_authority.v1.yaml`. Gate 124 runtime mutable-surface baselines, floors, and caps now load from `coefficient_authority.v1.yaml`; Gate 126 now reads the admitted temporal threshold and timing subset from the same governed file inside `TemporalStateClassifier`; the salvage registry remains reference-only.
+
+## Governed signal workbook lineage
+
+The canonical workbook reference ledger is `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`. It is discoverable law and provenance only, not direct runtime authority. When typed config or contracts are promoted from workbook material, they must preserve workbook lineage through `workbook_ref` or successor lineage fields. See `docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md`.

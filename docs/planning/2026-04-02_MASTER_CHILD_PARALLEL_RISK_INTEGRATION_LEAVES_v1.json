@@ -1,21 +1,23 @@
 {
   "governing_plan": "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_171_complete_gate_172_active_on_work_branch",
-  "active_gate": "Gate 172",
+  "execution_status": "gate_175_complete_gate_176_active_on_work_branch",
+  "active_gate": "Gate 176",
   "supersedes": [
     "2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 171"
+    "Gate 171",
+    "Gate 172",
+    "Gate 173",
+    "Gate 174",
+    "Gate 175"
   ],
   "completed_leaf_ids": [
     "LEAF-G171-001",
     "LEAF-G171-002",
     "LEAF-G171-003",
-    "LEAF-G171-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G171-004",
     "LEAF-G172-001",
     "LEAF-G172-002",
     "LEAF-G172-003",
@@ -31,7 +33,9 @@
     "LEAF-G175-001",
     "LEAF-G175-002",
     "LEAF-G175-003",
-    "LEAF-G175-004",
+    "LEAF-G175-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G176-001",
     "LEAF-G176-002",
     "LEAF-G176-003",
@@ -54,10 +58,6 @@
     "LEAF-G180-004"
   ],
   "pending_gate_ids": [
-    "Gate 172",
-    "Gate 173",
-    "Gate 174",
-    "Gate 175",
     "Gate 176",
     "Gate 177",
     "Gate 178",
@@ -224,7 +224,7 @@
     "LEAF-G172-001": {
       "gate": "Gate 172",
       "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
         "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
@@ -251,7 +251,7 @@
     "LEAF-G172-002": {
       "gate": "Gate 172",
       "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
         "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
@@ -278,7 +278,7 @@
     "LEAF-G172-003": {
       "gate": "Gate 172",
       "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
         "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
@@ -305,7 +305,7 @@
     "LEAF-G172-004": {
       "gate": "Gate 172",
       "title": "Freeze lineage, overlap, and manual-merge law \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Confirm the shared base and unique commit ranges for master and child, using commit hashes and final tree state rather than gate-number matching.",
         "Build a file-by-file overlap ledger that classifies router surfaces, normative/process surfaces, workbook/workbook-governance surfaces, vocabulary/generator surfaces, child-pack surfaces, and any semantically sensitive references.",
@@ -332,7 +332,7 @@
     "LEAF-G173-001": {
       "gate": "Gate 173",
       "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
         "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
@@ -359,7 +359,7 @@
     "LEAF-G173-002": {
       "gate": "Gate 173",
       "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
         "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
@@ -386,7 +386,7 @@
     "LEAF-G173-003": {
       "gate": "Gate 173",
       "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
         "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
@@ -413,7 +413,7 @@
     "LEAF-G173-004": {
       "gate": "Gate 173",
       "title": "Merge child planning, reference data, and vocabulary into master \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Import the child planning pack, promoted workbook, workbook authority doc, and the child normative/operating-model additions into the master repo on this branch.",
         "Reconcile workbook promotion/demotion so active lineage points to the canonical governed workbook while predecessor references remain archive/test-only where justified.",
@@ -440,7 +440,7 @@
     "LEAF-G174-001": {
       "gate": "Gate 174",
       "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
         "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
@@ -467,7 +467,7 @@
     "LEAF-G174-002": {
       "gate": "Gate 174",
       "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
         "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
@@ -494,7 +494,7 @@
     "LEAF-G174-003": {
       "gate": "Gate 174",
       "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
         "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
@@ -521,7 +521,7 @@
     "LEAF-G174-004": {
       "gate": "Gate 174",
       "title": "Implement lane input contract and lawful-read boundary \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add the typed runtime contract for the co-resident parallel lane using the merged normative/operating-model law as authority.",
         "Allow only lawful direct reads from session start and lawful stage-output reads thereafter.",
@@ -548,7 +548,7 @@
     "LEAF-G175-001": {
       "gate": "Gate 175",
       "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Materialise the merged child temporal/calendar/event mapping in code.",
         "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
@@ -575,7 +575,7 @@
     "LEAF-G175-002": {
       "gate": "Gate 175",
       "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Materialise the merged child temporal/calendar/event mapping in code.",
         "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
@@ -602,7 +602,7 @@
     "LEAF-G175-003": {
       "gate": "Gate 175",
       "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Materialise the merged child temporal/calendar/event mapping in code.",
         "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",
@@ -629,7 +629,7 @@
     "LEAF-G175-004": {
       "gate": "Gate 175",
       "title": "Implement temporal, calendar, event, and multi-clock surfaces \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Materialise the merged child temporal/calendar/event mapping in code.",
         "Align the new lane timing surfaces with the governed temporal-status ledger already frozen in master.",

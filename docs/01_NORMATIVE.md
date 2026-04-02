@@ -54,6 +54,17 @@ The deterministic runtime follows this order:
 
 No module bypasses this order.
 
+## First-class co-resident independent parallel risk lane (planning law)
+
+The repo may plan and later implement an **independent parallel risk lane** as a first-class co-resident lane that begins with session start. It is **not** a numbered stage, **not** `1.1`, **not** `step_8`, and **not** a bypass of the serial seven-step desk cognition grammar.
+
+- the seven-step grammar remains the only binding serial spine;
+- the lane may read approved invariant surfaces directly from session start, limited to: desk cognition grammar order, stage ownership, desk calendar contract, calendar horizon routing outcome, financial-calendar scheduled-fact authority, event identity, raw market facts, and released coefficient authority;
+- the lane may read approved stage outputs only after those stages have produced them; later implementation must prove those reads come from lawful stage outputs rather than a hidden bypass;
+- the lane may not mutate grammar order, stage ownership, calendar truth, event identity, raw market facts, baseline coefficient values, playbook membership, or review lineage;
+- the lane is not the arbiter, not a second playbook engine, and not runtime permission to invent looping semantics;
+- future review surfaces must be able to reconstruct the lane's reasoning and state progression across the day without claiming that a runtime packet already exists today.
+
 ## Adaptation law
 
 The repo preserves a stable cognition grammar and only allows bounded, approved change in operating posture. That means:
@@ -75,6 +86,7 @@ The repo preserves a stable cognition grammar and only allows bounded, approved 
 - approved modifier transform family is limited to: `multiplicative_scale`, `additive_offset`, `clamp`, `rank_weight_adjustment`, and `suppression_veto`.
 - approved mutable runtime surfaces are limited to: `entry_gate_score_floor`, `zone_score_threshold`, `distance_to_vwap_soft_limit_pct`, `risk_vix_caution_threshold`, `risk_vix_hot_threshold`, `max_risk_per_trade`, `target_fresh_deployable_pct`, and `hedge_required`.
 - prohibited runtime variation includes: cognition grammar order, stage ownership, baseline coefficient values, calendar truth, event identity, raw market facts, playbook registry membership, and review-packet lineage.
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx` is a governed live reference ledger for signal/coefficient provenance and planning handoff; see `docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md` for update and promotion discipline. It is mandatory reference for workbook-derived promotions but never direct runtime authority unless promoted into typed config/contracts.
 
 ## Non-action, conflict, and discretion law
 

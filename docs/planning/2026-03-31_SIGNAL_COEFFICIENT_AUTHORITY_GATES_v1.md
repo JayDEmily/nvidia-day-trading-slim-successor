@@ -37,7 +37,7 @@ Out of scope:
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 - `docs/TESTING_AND_PROMOTION.md`
-- `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx`
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
 - `config/README.md`
 - `config/coefficients_registry.example.yaml`
 - `src/nvda_desk/config_models.py`
@@ -93,7 +93,7 @@ Exclude now:
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 - `AGENTS.md`
-- `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx` as research and starter-bounds evidence only
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx` as research and starter-bounds evidence only
 
 ### Retire from authority (compatibility-only unless later removed)
 - `config/coefficients_registry.example.yaml` as a candidate runtime authority surface; it remains example/salvage reference only unless a later gate says otherwise
@@ -147,7 +147,7 @@ Checklist file: `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_DOCUMENT_
 - Freeze the tranche-one coefficient universe, sane starter bounds, exclusion rules, and coefficient-proof preflight so later schema work does not invent scope mid-execution.
 
 **In-scope surfaces**
-- `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx`
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
 - `docs/01_NORMATIVE.md`
 - `src/nvda_desk/services/state_conditioned_modifier.py`
 - `src/nvda_desk/domain/temporal_state.py`
@@ -299,7 +299,7 @@ Coefficient-adjacent inherited drift was frozen before Gate 123 schema work:
 
 **In-scope surfaces**
 - `src/nvda_desk/domain/temporal_state.py`
-- `docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx`
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
 - `src/nvda_desk/schemas/cognition.py`
 - `tests/test_gate98_threshold_edges.py`
 - `tests/test_gate96_canonical_runtime_harness.py`

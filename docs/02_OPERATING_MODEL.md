@@ -71,6 +71,15 @@ The runtime processes decisions in this order:
 
 This order is binding.
 
+## Co-resident independent parallel risk lane (planning placement)
+
+The future independent parallel risk lane is planned as a first-class co-resident lane that starts with session start and evolves as the seven-step grammar yields new lawful outputs across the day.
+
+- at session start the lane is limited to approved invariant truth such as desk calendar truth, calendar-horizon routing, scheduled-event authority, stage ownership, raw market facts, and released coefficient authority;
+- as the day progresses, the lane may consume approved outputs from temporal context, market regime context, options and flow context, and later owned downstream surfaces only after those stages have produced them;
+- this placement preserves the serial desk cognition grammar while allowing the lane to remain first-class and real-time from the beginning of the session;
+- review and explanation remain responsible for preserving future reconstruction of the lane once runtime implementation exists.
+
 ## Gate 60 state-policy authority
 
 The approved modifier read-set is an explicit state vector, not hidden ambient state. The current canonical readable fields are:

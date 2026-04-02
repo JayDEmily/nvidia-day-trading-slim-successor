@@ -25,7 +25,7 @@ This file is the canonical repo-root execution router.
 - execution log: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_SCOPE_NOTE_v1.md`
-- active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
+- active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
 
 ## Latest closed pack retained as evidence
 
@@ -35,6 +35,14 @@ This file is the canonical repo-root execution router.
 - document-touch checklist: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_SCOPE_NOTE_v1.md`
 - closeout receipt: `docs/planning/2026-04-02_GATE170_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_AUDIT_AND_CLOSEOUT.md`
+
+## Imported closed child pack retained as evidence
+
+- gates: `docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- closeout receipt: `docs/planning/2026-04-02_GATE164_PARALLEL_RISK_LANE_FOUNDATION_ANTI_DRIFT_CLOSEOUT.md`
 
 ## Latest closed predecessor evidence
 
@@ -95,12 +103,13 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack currently routed is the master/child parallel-risk integration pack with Gate 172 active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
+- active pack currently routed is the master/child parallel-risk integration pack with Gate 176 active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
 - latest closed pack retained as evidence is the policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 - latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
 - historical prior router state before Gate 171 activation: no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- imported child pack historical closeout retained for continuity: none currently routed; parallel risk lane foundation pack closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`
 - historical immediate predecessor active-pack state retained for planning-guard continuity: active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
 - historical predecessor router state retained for planning-guard continuity: no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence

@@ -1,0 +1,2164 @@
+{
+  "governing_plan": "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+  "version": "v1",
+  "execution_status": "parallel_risk_lane_foundation_pack_closed_through_gate_164_on_work_branch",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+  ],
+  "completed_gate_ids": [
+    "Gate 157",
+    "Gate 158",
+    "Gate 159",
+    "Gate 160",
+    "Gate 161",
+    "Gate 162",
+    "Gate 163",
+    "Gate 164"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G157-001",
+    "LEAF-G157-002",
+    "LEAF-G157-003",
+    "LEAF-G158-001",
+    "LEAF-G158-002",
+    "LEAF-G158-003",
+    "LEAF-G158-004",
+    "LEAF-G159-001",
+    "LEAF-G159-002",
+    "LEAF-G159-003",
+    "LEAF-G159-004",
+    "LEAF-G160-001",
+    "LEAF-G160-002",
+    "LEAF-G160-003",
+    "LEAF-G160-004",
+    "LEAF-G161-001",
+    "LEAF-G161-002",
+    "LEAF-G161-003",
+    "LEAF-G161-004",
+    "LEAF-G162-001",
+    "LEAF-G162-002",
+    "LEAF-G162-003",
+    "LEAF-G162-004",
+    "LEAF-G162-005",
+    "LEAF-G163-001",
+    "LEAF-G163-002",
+    "LEAF-G163-003",
+    "LEAF-G163-004",
+    "LEAF-G163-005",
+    "LEAF-G164-001",
+    "LEAF-G164-002",
+    "LEAF-G164-003",
+    "LEAF-G164-004"
+  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
+  "global_rules": [
+    "One leaf at a time.",
+    "One gate at a time.",
+    "Every executed gate must update PLANS.md, the canonical gate map, the active leaves ledger, and the active execution log together.",
+    "No later gate may treat the rich workbook as direct runtime authority unless typed config/contracts are promoted in that gate or a later one.",
+    "The co-resident lane must not be renamed as `1.1`, `step_8`, or an eighth stage.",
+    "Gate 159 must resolve workbook lineage before later gates rely on a single workbook authority path.",
+    "Gate 164 is complete and the pack is now closed through Gate 164 on the work branch; no later gate may start until a new planning pack is explicitly routed.",
+    "Every operator handoff requires a fresh full-history zip from the exact green branch state."
+  ],
+  "leaf_order": [
+    "LEAF-G157-001",
+    "LEAF-G157-002",
+    "LEAF-G157-003",
+    "LEAF-G158-001",
+    "LEAF-G158-002",
+    "LEAF-G158-003",
+    "LEAF-G158-004",
+    "LEAF-G159-001",
+    "LEAF-G159-002",
+    "LEAF-G159-003",
+    "LEAF-G159-004",
+    "LEAF-G160-001",
+    "LEAF-G160-002",
+    "LEAF-G160-003",
+    "LEAF-G160-004",
+    "LEAF-G161-001",
+    "LEAF-G161-002",
+    "LEAF-G161-003",
+    "LEAF-G161-004",
+    "LEAF-G162-001",
+    "LEAF-G162-002",
+    "LEAF-G162-003",
+    "LEAF-G162-004",
+    "LEAF-G162-005",
+    "LEAF-G163-001",
+    "LEAF-G163-002",
+    "LEAF-G163-003",
+    "LEAF-G163-004",
+    "LEAF-G163-005",
+    "LEAF-G164-001",
+    "LEAF-G164-002",
+    "LEAF-G164-003",
+    "LEAF-G164-004"
+  ],
+  "leaves": {
+    "LEAF-G157-001": {
+      "id": "LEAF-G157-001",
+      "gate": "Gate 157",
+      "title": "Re-read frozen law and adjacent evidence",
+      "objective": "Ground the pack in repo-native law before admitting lane/workbook discoverability surfaces.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "calendar_horizon_gate",
+        "desk_calendar_contract",
+        "event_window_state",
+        "precursor_runtime_packet",
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md",
+        "docs/planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md",
+        "docs/planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md",
+        "docs/planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md",
+        "config/coefficient_authority.v1.yaml",
+        "data/reference/financial_calendar/financial_calendar_master_2026.json"
+      ],
+      "inputs": [
+        "closed Gate 156 baseline",
+        "exploratory risk-lane findings",
+        "rich workbook file"
+      ],
+      "ordered_actions": [
+        "Read the frozen law surfaces in repo-native order.",
+        "Re-read the calendar, temporal, market-regime, options-flow, and coefficient-authority surfaces relevant to the future lane.",
+        "Confirm that no active pack is currently routed after Gate 156 closeout.",
+        "Record the bootstrap reasons before altering any router or vocabulary surface."
+      ],
+      "forbidden_actions": [
+        "Do not start authoring lane law from chat vocabulary alone.",
+        "Do not treat the workbook as runtime authority.",
+        "Do not assume the seven-step grammar can be renumbered casually."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "Gate 157 receipt cites the frozen law and live reference surfaces checked.",
+        "The new pack rationale is grounded in repo artefacts only."
+      ],
+      "definition_of_done": [
+        "bootstrap rationale is tied to repo truth",
+        "the pack starts from the closed Gate 156 baseline rather than hand-wavy history"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE157_PARALLEL_RISK_LANE_FOUNDATION_BOOTSTRAP.md"
+      ]
+    },
+    "LEAF-G157-002": {
+      "id": "LEAF-G157-002",
+      "gate": "Gate 157",
+      "title": "Admit the minimum workbook and lane discoverability surfaces",
+      "objective": "Make the workbook and the future lane discoverable in first-class repo surfaces without pretending runtime behaviour already exists.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "config/README.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane",
+        "signal_coefficient_reference_workbook",
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "rich workbook from exploratory pass",
+        "minimum discoverability requirement"
+      ],
+      "ordered_actions": [
+        "Copy the rich workbook into a governed reference location inside the repo.",
+        "Add a minimal first-class normative line that names the workbook and states it is not direct runtime authority.",
+        "Admit the minimum canonical vocabulary entries for the co-resident lane and the workbook.",
+        "Record those decisions in the Gate 157 receipt."
+      ],
+      "forbidden_actions": [
+        "Do not write a large new normative section for the workbook.",
+        "Do not classify the workbook as a normative document.",
+        "Do not admit extra vocabulary beyond the minimum required discoverability set."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "The workbook exists under data/reference/signal_workbooks.",
+        "01_NORMATIVE names the workbook and says it is not direct runtime authority.",
+        "Canonical vocabulary contains the new lane/workbook entries."
+      ],
+      "definition_of_done": [
+        "workbook discoverability exists in first-class law",
+        "lane/workbook vocabulary admission is minimal and explicit"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "docs/planning/2026-04-02_GATE157_PARALLEL_RISK_LANE_FOUNDATION_BOOTSTRAP.md"
+      ]
+    },
+    "LEAF-G157-003": {
+      "id": "LEAF-G157-003",
+      "gate": "Gate 157",
+      "title": "Activate the planning quartet and leave Gate 158 active",
+      "objective": "Route the repo truthfully to the new pack with Gate 157 complete and Gate 158 active.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-001",
+        "LEAF-G157-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane",
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "CHANGELOG.jsonl",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "inputs": [
+        "new planning quartet",
+        "Gate 157 receipt"
+      ],
+      "ordered_actions": [
+        "Write the new active pack quartet.",
+        "Update PLANS, gate map, execution log, checklist, and changelog together.",
+        "Add a planning guard test for Gate 157 and widen older closeout/planning tests to admit the new active-pack state.",
+        "Leave Gate 158 as the only active gate in all control surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS or the gate map in no-active-pack state.",
+        "Do not update only one control surface.",
+        "Do not claim later gates are complete."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate149_stage_local_handoff_pack_closeout.py"
+      ],
+      "expected_evidence": [
+        "PLANS routes the new pack.",
+        "Gate map shows Gate 158 active.",
+        "Execution log and checklist match the same state."
+      ],
+      "definition_of_done": [
+        "the planning quartet is active and truthful",
+        "Gate 158 is the only active gate named anywhere"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "CHANGELOG.jsonl",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ]
+    },
+    "LEAF-G158-001": {
+      "id": "LEAF-G158-001",
+      "gate": "Gate 158",
+      "title": "Freeze the grammar-adjacent co-resident lane law.",
+      "objective": "Write the exact law that admits a first-class co-resident lane without renumbering the seven-step grammar.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/planning/2026-04-02_GATE157_PARALLEL_RISK_LANE_FOUNDATION_BOOTSTRAP.md"
+      ],
+      "inputs": [
+        "current seven-step grammar",
+        "Gate 157 bootstrap receipt"
+      ],
+      "ordered_actions": [
+        "Write the exact normative-amendment strategy adjacent to the desk cognition grammar rather than inventing a fake `1.1` notation.",
+        "State whether the lane is co-resident, when it begins, and how it remains first-class without becoming a numbered stage.",
+        "Record the precise phrases that are allowed, the phrases that are disallowed, and the conceptual reason for that choice.",
+        "Name the exact receipt and control surfaces that must carry this law when the gate executes."
+      ],
+      "forbidden_actions": [
+        "Do not renumber the grammar.",
+        "Do not smuggle in a stealth eighth stage.",
+        "Do not rely on chat-only wording instead of repo-native law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 158 receipt contains exact co-resident-lane wording and the non-`1.1` decision.",
+        "The pack law names the amendment location and the allowed/disallowed phrasing."
+      ],
+      "definition_of_done": [
+        "co-resident lane law is explicit and reproducible",
+        "future execution thread can apply the law without inventing semantics"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_CO_RESIDENT_PARALLEL_RISK_LANE_LAW.md"
+      ]
+    },
+    "LEAF-G158-002": {
+      "id": "LEAF-G158-002",
+      "gate": "Gate 158",
+      "title": "Map approved reads and forbidden bypasses.",
+      "objective": "Freeze what the lane may read from invariant inputs and stage outputs as they become available, and what it may not bypass.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G158-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane",
+        "desk_calendar_contract",
+        "event_window_state",
+        "precursor_runtime_packet"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/temporal_surface.py",
+        "src/nvda_desk/schemas/financial_calendar.py"
+      ],
+      "inputs": [
+        "grammar-adjacent co-resident lane law"
+      ],
+      "ordered_actions": [
+        "List the invariant truths the lane may consume directly from session start.",
+        "List the approved stage outputs the lane may consume only after those stages have produced them.",
+        "Write the forbidden-bypass matrix showing what the lane may not do to stage ownership, calendar truth, event identity, or review lineage.",
+        "State how later implementation must prove it is reading approved surfaces rather than bypassing the serial spine."
+      ],
+      "forbidden_actions": [
+        "Do not claim the lane can read any future packet that does not yet exist.",
+        "Do not let the lane mutate stage ownership.",
+        "Do not let the lane bypass the no-bypass law by informal wording."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 158 receipt contains an approved-read / forbidden-bypass matrix.",
+        "Later implementation obligations are explicit about reads versus mutations."
+      ],
+      "definition_of_done": [
+        "approved reads are bounded",
+        "forbidden bypasses are named rather than implied"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_CO_RESIDENT_PARALLEL_RISK_LANE_LAW.md"
+      ]
+    },
+    "LEAF-G158-003": {
+      "id": "LEAF-G158-003",
+      "gate": "Gate 158",
+      "title": "Freeze session-start concurrency and review visibility assumptions.",
+      "objective": "Preserve the idea that the lane starts with the trading day while avoiding fake looping or premature runtime packets.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G158-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/02_OPERATING_MODEL.md",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "approved reads versus forbidden bypasses matrix"
+      ],
+      "ordered_actions": [
+        "State how session-start concurrency works at planning level before all stage outputs exist.",
+        "Name what the lane can know at session start, what becomes available later, and how that changes the lane across the day.",
+        "State how future review/explanation work must remain able to reconstruct the lane without claiming a packet already exists.",
+        "Write the stop conditions that prevent this leaf from smuggling runtime implementation into the planning pack."
+      ],
+      "forbidden_actions": [
+        "Do not introduce looping semantics.",
+        "Do not claim a live review packet already exists for the lane.",
+        "Do not pretend later-available stage outputs exist at session start."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 158 receipt names session-start knowledge, later-available inputs, and review visibility expectations.",
+        "The pack preserves co-residency without runtime fiction."
+      ],
+      "definition_of_done": [
+        "session-start concurrency is explicit",
+        "review visibility is preserved as a future obligation without schema fiction"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_CO_RESIDENT_PARALLEL_RISK_LANE_LAW.md"
+      ]
+    },
+    "LEAF-G158-004": {
+      "id": "LEAF-G158-004",
+      "gate": "Gate 158",
+      "title": "Freeze out-of-scope boundaries for arbiter and runtime behaviour.",
+      "objective": "Prevent the pack from quietly widening into arbiter, portfolio, or runtime implementation work.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G158-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "co-resident lane law"
+      ],
+      "ordered_actions": [
+        "List the architecture pieces that remain explicitly out of scope: arbiter, runtime packet implementation, playbook edits, portfolio replacement, and OMS work.",
+        "Distinguish what this pack may plan from what later coding or later packs must own.",
+        "Write the exact rule for how later gates may refer to exploratory phrases without pretending they are already canonical runtime constructs.",
+        "Update the leaves and execution log when Gate 158 closes."
+      ],
+      "forbidden_actions": [
+        "Do not let the pack solve the arbiter by implication.",
+        "Do not let out-of-scope ideas backdoor themselves through leaf wording.",
+        "Do not claim implementation readiness this gate does not prove."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 158 receipt contains an explicit out-of-scope ledger.",
+        "Later gates inherit a clean boundary rather than an expanding blob."
+      ],
+      "definition_of_done": [
+        "scope boundary is crisp",
+        "later implementation pack cannot mistake this gate for runtime readiness"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_CO_RESIDENT_PARALLEL_RISK_LANE_LAW.md"
+      ]
+    },
+    "LEAF-G159-001": {
+      "id": "LEAF-G159-001",
+      "gate": "Gate 159",
+      "title": "Inventory both workbook paths and every known workbook reference.",
+      "objective": "Create the explicit workbook-lineage baseline before deciding whether one workbook supersedes the other.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G158-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "config/coefficient_authority.v1.yaml",
+        "scripts/build_canonical_vocabulary.py"
+      ],
+      "inputs": [
+        "old workbook path",
+        "new workbook path",
+        "existing workbook_ref links"
+      ],
+      "ordered_actions": [
+        "Inventory the old workbook file, the new workbook file, and every repo surface that points at either path.",
+        "Split references into authority/config refs, planning refs, test refs, script refs, and discoverability refs.",
+        "Record which refs are active truth, which are historical evidence, and which look stale already.",
+        "Write the inventory receipt before any consolidation decision is taken."
+      ],
+      "forbidden_actions": [
+        "Do not assume the new workbook automatically supersedes the old one.",
+        "Do not retire the old path before the inventory exists.",
+        "Do not ignore workbook_ref lineage already present in config surfaces."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate159_workbook_lineage_and_consolidation_audit.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 159 receipt contains a file-and-reference inventory covering both workbook paths.",
+        "All known workbook references are classified by type and status."
+      ],
+      "definition_of_done": [
+        "old/new workbook inventory exists",
+        "stale-reference hunting begins from evidence rather than assumption"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md"
+      ]
+    },
+    "LEAF-G159-002": {
+      "id": "LEAF-G159-002",
+      "gate": "Gate 159",
+      "title": "Compare workbook structure, overlap, and missing-data risk.",
+      "objective": "Determine whether the new workbook is actually an updated successor and what data would be lost if the old path vanished.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G159-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "old/new workbook inventory"
+      ],
+      "ordered_actions": [
+        "Compare the workbook sheet structure, obvious field families, and role of each workbook rather than trusting filename similarity.",
+        "Classify overlap, additions, removals, and ambiguous differences between the two workbooks.",
+        "Record any information present in the old workbook but not obviously preserved in the new workbook.",
+        "State whether the new workbook is a clean successor, a partial successor, or a divergent workbook with non-trivial loss risk."
+      ],
+      "forbidden_actions": [
+        "Do not treat a filename or date as proof of supersession.",
+        "Do not throw away old-workbook-only content without recording it.",
+        "Do not claim equality where only rough similarity was checked."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate159_workbook_lineage_and_consolidation_audit.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 159 receipt contains an overlap/delta table for the two workbooks.",
+        "The pack explicitly states whether there is loss risk if the old workbook is retired."
+      ],
+      "definition_of_done": [
+        "supersession question is answered by evidence",
+        "missing-data risk is explicit rather than hand-waved"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md"
+      ]
+    },
+    "LEAF-G159-003": {
+      "id": "LEAF-G159-003",
+      "gate": "Gate 159",
+      "title": "Freeze the canonical survivor and migration/retirement treatment.",
+      "objective": "Turn the comparison result into one governed workbook lineage path for the repo.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G159-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "config/coefficient_authority.v1.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "overlap/delta table"
+      ],
+      "ordered_actions": [
+        "Choose the canonical survivor path or the explicit compatibility arrangement if immediate retirement is unsafe.",
+        "If the new workbook wins, state exactly what old-workbook data must be migrated or formally preserved first.",
+        "If the old workbook must temporarily survive, state the sunset condition and why dual-workbook authority is still forbidden.",
+        "Freeze the retirement, compatibility, or migration rule in the gate receipt."
+      ],
+      "forbidden_actions": [
+        "Do not leave the repo with two ambiguous primary workbook paths.",
+        "Do not retire the old workbook without a preservation rule if it still carries unique signal data.",
+        "Do not let compatibility become permanent drift by default."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate159_workbook_lineage_and_consolidation_audit.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 159 receipt names one canonical survivor path and the treatment of the non-survivor path.",
+        "Migration or compatibility obligations are explicit before any link rewrite happens."
+      ],
+      "definition_of_done": [
+        "one governed workbook lineage exists",
+        "retirement or compatibility treatment is frozen"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md"
+      ]
+    },
+    "LEAF-G159-004": {
+      "id": "LEAF-G159-004",
+      "gate": "Gate 159",
+      "title": "Rewrite stale refs and prove workbook lineage is no longer ambiguous.",
+      "objective": "Force the pack to clean up link drift rather than just describing it.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G159-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "scripts/build_canonical_vocabulary.py",
+        "config/coefficient_authority.v1.yaml",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "tests/test_gate95_phase0_closeout.py"
+      ],
+      "inputs": [
+        "canonical survivor decision"
+      ],
+      "ordered_actions": [
+        "List every stale reference that must be rewritten to the canonical workbook path or deliberately preserved as historical evidence.",
+        "Separate rewrites required in config/runtime lineage from rewrites required only in historical planning surfaces.",
+        "State how workbook_ref paths, tests, and scripts will prove they now point at the canonical survivor or a deliberate historical archive path.",
+        "Require the gate receipt to include proof that the repo no longer has duelling workbook authority paths."
+      ],
+      "forbidden_actions": [
+        "Do not leave stale workbook_ref values unreviewed.",
+        "Do not rewrite historical evidence without recording why.",
+        "Do not claim workbook-lineage closure without naming remaining deliberate legacy refs, if any."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate159_workbook_lineage_and_consolidation_audit.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 159 receipt contains a rewrite list and a residual-legacy list.",
+        "The repo can prove workbook lineage is no longer ambiguous."
+      ],
+      "definition_of_done": [
+        "stale workbook refs are a first-order execution obligation",
+        "future gates inherit one workbook authority path, not two"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md"
+      ]
+    },
+    "LEAF-G160-001": {
+      "id": "LEAF-G160-001",
+      "gate": "Gate 160",
+      "title": "Freeze the workbook class, home, and discoverability contract.",
+      "objective": "Classify the workbook as a governed live reference ledger with a stable home and explicit discoverability rule.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G159-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "docs/01_NORMATIVE.md",
+        "config/README.md"
+      ],
+      "inputs": [
+        "canonical survivor workbook path"
+      ],
+      "ordered_actions": [
+        "State exactly what the workbook is, what it is not, and where it lives physically in the repo.",
+        "Write the discoverability rule that makes the workbook impossible to miss in future planning or coefficient/risk-lane work.",
+        "Differentiate the workbook from normative prose, direct runtime authority, historical evidence, and disposable scratch files.",
+        "Name the companion surfaces that must always point readers to the workbook."
+      ],
+      "forbidden_actions": [
+        "Do not classify the workbook as normative.",
+        "Do not demote it to an undocumented attachment.",
+        "Do not let physical location and governance role drift apart."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 160 receipt defines the workbook class, home, and discoverability contract.",
+        "Companion surfaces that must point at the workbook are named."
+      ],
+      "definition_of_done": [
+        "workbook role is unambiguous",
+        "future operators cannot lawfully miss the workbook"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md"
+      ]
+    },
+    "LEAF-G160-002": {
+      "id": "LEAF-G160-002",
+      "gate": "Gate 160",
+      "title": "Freeze workbook-to-authority promotion lineage.",
+      "objective": "Preserve how workbook ideas become typed config/contracts without pretending the workbook is already runtime truth.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G160-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md",
+        "docs/planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook",
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "config/coefficient_authority.v1.yaml",
+        "config/README.md"
+      ],
+      "inputs": [
+        "canonical survivor workbook path",
+        "existing workbook_ref lineage"
+      ],
+      "ordered_actions": [
+        "Describe the path from workbook cell or workbook concept to promoted typed authority in config/contracts.",
+        "List the proof surfaces that must preserve workbook lineage when promotion happens, including workbook_ref or successor lineage fields.",
+        "Differentiate research provenance, staged promotion, and live authority so later execution cannot blur them.",
+        "Write the stop conditions that forbid direct runtime reads from the workbook."
+      ],
+      "forbidden_actions": [
+        "Do not let workbook research become live authority by implication.",
+        "Do not drop workbook lineage when promoting into typed authority.",
+        "Do not confuse workbook update discipline with runtime configuration management."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 160 receipt contains a workbook-to-authority promotion path with preserved lineage.",
+        "The pack explicitly forbids direct runtime authority from the workbook alone."
+      ],
+      "definition_of_done": [
+        "promotion lineage is explicit",
+        "runtime truth remains in typed config/contracts"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md"
+      ]
+    },
+    "LEAF-G160-003": {
+      "id": "LEAF-G160-003",
+      "gate": "Gate 160",
+      "title": "Freeze workbook update classes and paired-update obligations.",
+      "objective": "Define what kinds of workbook changes demand paired updates elsewhere in the repo.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G160-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "config/coefficient_authority.v1.yaml",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "inputs": [
+        "workbook class and promotion lineage"
+      ],
+      "ordered_actions": [
+        "Define change classes such as structural workbook reorganisation, coefficient-bound changes, new signal-family additions, vocabulary-affecting changes, and pure note clean-up.",
+        "For each class, state which paired docs, config files, receipts, or tests must update in the same branch.",
+        "State when a workbook-only change is lawful and when a gate/doc/config update is mandatory.",
+        "Write the audit burden that later gates must meet when workbook changes touch risk-lane-relevant surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not let workbook edits silently outrun docs/config.",
+        "Do not pretend a meaningful workbook change is bookkeeping only.",
+        "Do not leave paired-update obligations implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 160 receipt contains workbook change classes and paired-update rules.",
+        "Future gates can tell when a workbook change is workbook-only versus authority-affecting."
+      ],
+      "definition_of_done": [
+        "update discipline is explicit",
+        "workbook maintenance cannot drift away from repo law"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md"
+      ]
+    },
+    "LEAF-G160-004": {
+      "id": "LEAF-G160-004",
+      "gate": "Gate 160",
+      "title": "Bound the risk-lane-relevant workbook subset.",
+      "objective": "Name the workbook tabs and row families that are relevant to the future risk lane so later gates do not sprawl into the entire workbook universe.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G160-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "workbook class and update rules",
+        "current workbook tab structure"
+      ],
+      "ordered_actions": [
+        "List the workbook families most relevant to the future risk lane, including temporal thresholds, market/options/macrostress signals, posture/permission surfaces, and bounded coefficient families.",
+        "Separate immediately relevant workbook material from broader playbook/execution material that remains out of scope for this pack.",
+        "Name any workbook areas that are informative background only and should not drive gate scope in the next tranche.",
+        "Record the bounded subset in the receipt so later gates cannot pretend the whole workbook is in-scope by default."
+      ],
+      "forbidden_actions": [
+        "Do not let workbook breadth become pack scope creep.",
+        "Do not confuse playbook-module knobs with risk-lane planning necessities.",
+        "Do not leave the workbook subset implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 160 receipt names the bounded workbook subset relevant to the future lane.",
+        "The pack can distinguish workbook relevance from general workbook richness."
+      ],
+      "definition_of_done": [
+        "risk-lane workbook subset is explicit",
+        "later gates can stay bounded and honest"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md"
+      ]
+    },
+    "LEAF-G161-001": {
+      "id": "LEAF-G161-001",
+      "gate": "Gate 161",
+      "title": "Map temporal-state and desk-window authority to intraday risk-weather clocks.",
+      "objective": "Translate repo-native temporal surfaces into the part of the future lane that understands what kind of day and what kind of session window is in progress.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G160-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "calendar_horizon_gate"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/domain/temporal_state.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/schemas/temporal_surface.py"
+      ],
+      "inputs": [
+        "bounded workbook subset",
+        "temporal context surfaces"
+      ],
+      "ordered_actions": [
+        "Map `temporal_context`, `temporal_state`, `desk_window`, `clock_envelope`, `session_phase`, and `behavioural_phase` into the future lane's intraday risk-weather inputs.",
+        "State which of those surfaces are direct repo-native truths and which are already derived desk interpretations.",
+        "Write the timing questions this leaf preserves: disorder, anchoring, compression, trend persistence, power-hour, unwind, and session-start uncertainty.",
+        "Record what remains out of scope for runtime implementation even after the mapping is written."
+      ],
+      "forbidden_actions": [
+        "Do not reduce the clock to simple wall time.",
+        "Do not ignore already-governed derived temporal surfaces.",
+        "Do not claim runtime logic from a planning map."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate161_temporal_calendar_event_and_multi_clock_authority_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 161 receipt maps exact temporal surfaces to intraday risk-weather clocks.",
+        "The pack preserves more than just `what time is it?` semantics."
+      ],
+      "definition_of_done": [
+        "intraday timing inputs are explicit",
+        "temporal weather concepts are anchored to repo-native surfaces"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_TEMPORAL_CALENDAR_EVENT_AND_MULTI_CLOCK_AUTHORITY_MAPPING.md"
+      ]
+    },
+    "LEAF-G161-002": {
+      "id": "LEAF-G161-002",
+      "gate": "Gate 161",
+      "title": "Map calendar-horizon, event-window, and financial-calendar truth to event clocks.",
+      "objective": "Preserve how the lane sees scheduled fact, event timing, event overlap, and carry sensitivity without flattening the calendar.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G161-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-03-28_FINANCIAL_CALENDAR_CROSSWALK_SPEC_v1.md",
+        "docs/planning/2026-03-29_FINANCIAL_CALENDAR_RUNTIME_INTEGRATION_README_v2.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "calendar_horizon_gate",
+        "event_window_state"
+      ],
+      "repo_surfaces": [
+        "data/reference/financial_calendar/financial_calendar_master_2026.json",
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "src/nvda_desk/schemas/temporal_surface.py"
+      ],
+      "inputs": [
+        "temporal weather mapping"
+      ],
+      "ordered_actions": [
+        "Map `calendar_horizon_gate`, `desk_calendar_contract`, `financial_calendar_reference_bundle`, `financial_calendar_crosswalk`, `event_proximity_state`, `event_window_state`, `event_overlap_class`, and `event_carry_sensitivity` into the lane's event clocks.",
+        "Distinguish raw scheduled fact from approved derived runtime consumption and say how the lane is allowed to consume each.",
+        "Preserve the idea that event identity is not yet the trading answer; translation comes later.",
+        "Name the exact event-timing semantics the future lane must keep visible across pre-event, live-event, cooling-off, and memory windows."
+      ],
+      "forbidden_actions": [
+        "Do not collapse the calendar to a one-bit event flag.",
+        "Do not let derived event state masquerade as raw event truth.",
+        "Do not use the event clock as a stand-in for the later translation layer."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate161_temporal_calendar_event_and_multi_clock_authority_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 161 receipt maps calendar and event-window surfaces to explicit event clocks.",
+        "The receipt preserves event timing richness without overclaiming trade answers."
+      ],
+      "definition_of_done": [
+        "event clocks are explicit",
+        "raw scheduled fact and derived event state are cleanly separated"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_TEMPORAL_CALENDAR_EVENT_AND_MULTI_CLOCK_AUTHORITY_MAPPING.md"
+      ]
+    },
+    "LEAF-G161-003": {
+      "id": "LEAF-G161-003",
+      "gate": "Gate 161",
+      "title": "Map precursor-market inputs and overnight handoff to bounded precursor clocks.",
+      "objective": "Preserve the way Asia and other approved precursor venues inform the lane without allowing global-vibe sprawl.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G161-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "precursor_runtime_packet",
+        "precursor_universe"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "event clocks"
+      ],
+      "ordered_actions": [
+        "Map the approved precursor venues and precursor runtime packet into the lane's bounded precursor/overnight clocks.",
+        "State what precursor context is lawful, what is merely background, and what is forbidden global-vibe sprawl.",
+        "Preserve how precursor information can matter before the U.S. session starts without pretending the lane is a global macro engine.",
+        "Write how precursor state interacts with calendar/event clocks and later translation clocks without collapsing them."
+      ],
+      "forbidden_actions": [
+        "Do not admit new precursor universes by vibe.",
+        "Do not turn overnight context into an unbounded global-market feed.",
+        "Do not confuse precursor facts with candidate-specific trade conclusions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate161_temporal_calendar_event_and_multi_clock_authority_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 161 receipt maps precursor inputs to bounded clocks and states what they are not.",
+        "The pack preserves Asia/precursor relevance without open-ended sprawl."
+      ],
+      "definition_of_done": [
+        "precursor inputs are bounded",
+        "overnight handoff remains a governed lane input rather than a vague intuition"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_TEMPORAL_CALENDAR_EVENT_AND_MULTI_CLOCK_AUTHORITY_MAPPING.md"
+      ]
+    },
+    "LEAF-G161-004": {
+      "id": "LEAF-G161-004",
+      "gate": "Gate 161",
+      "title": "Freeze the multi-clock crosswalk for the future lane.",
+      "objective": "Preserve the strongest exploratory finding that the desk does not think on one flat time horizon.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G161-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "intraday, event, and precursor clocks"
+      ],
+      "ordered_actions": [
+        "Write the multi-clock model explicitly: slower structural truth, medium read-through truth, event/calendar truth, tape/translation truth, and expression/carry truth.",
+        "Map which parts of that model already have repo-native surfaces and which remain bounded planning concepts for later implementation.",
+        "State why preserving multiple clocks matters for the future lane and what would be lost if it were collapsed to one generic risk score.",
+        "Make the multi-clock model a writing obligation for later gates rather than a chat-only insight."
+      ],
+      "forbidden_actions": [
+        "Do not leave the multi-clock model implicit.",
+        "Do not pretend every clock is already a runtime field.",
+        "Do not reduce the lane to one flat time horizon."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate161_temporal_calendar_event_and_multi_clock_authority_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 161 receipt contains a named multi-clock crosswalk.",
+        "Later gates inherit a preserved horizon model rather than generic timing prose."
+      ],
+      "definition_of_done": [
+        "multi-clock model is explicit",
+        "later execution thread cannot accidentally flatten horizons"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_TEMPORAL_CALENDAR_EVENT_AND_MULTI_CLOCK_AUTHORITY_MAPPING.md"
+      ]
+    },
+    "LEAF-G162-001": {
+      "id": "LEAF-G162-001",
+      "gate": "Gate 162",
+      "title": "Map market-regime context to market and sector weather.",
+      "objective": "Translate the approved broader-market surfaces into the lane's market-weather inputs.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G161-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "market_regime_context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/market_regime_context.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "multi-clock crosswalk",
+        "bounded workbook subset"
+      ],
+      "ordered_actions": [
+        "Map `market_regime_context` outputs such as beta leadership, breadth, sector leadership, rates, FX, and cross-asset pressure into market and sector weather inputs for the lane.",
+        "State which of those surfaces operate as slower background context versus fast-changing pressure signals.",
+        "Preserve the idea that NVDA sits inside broader market and sector weather rather than as an isolated ticker.",
+        "Write the stop conditions that keep this leaf from turning into a general macro research gate."
+      ],
+      "forbidden_actions": [
+        "Do not let market weather become an infinite macro wish list.",
+        "Do not confuse slower background state with fast translation state.",
+        "Do not claim runtime synthesis beyond the mapped surfaces."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate162_market_options_dependency_and_dislocation_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 162 receipt maps exact market-regime outputs to market/sector weather roles.",
+        "The pack preserves the market-weather layer without global sprawl."
+      ],
+      "definition_of_done": [
+        "market and sector weather inputs are explicit",
+        "NVDA context is bounded by approved broader-market surfaces"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_MARKET_OPTIONS_DEPENDENCY_AND_DISLOCATION_MAPPING.md"
+      ]
+    },
+    "LEAF-G162-002": {
+      "id": "LEAF-G162-002",
+      "gate": "Gate 162",
+      "title": "Map options-flow context as the translation layer.",
+      "objective": "Preserve the idea that headlines are not the trade; the options table and related flow surfaces are the fast translation layer.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G162-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "options_and_flow_context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "market and sector weather map"
+      ],
+      "ordered_actions": [
+        "Map `options and flow context` outputs such as term structure, skew, gamma, dealer pressure, pin risk, flow tension, and implied move envelope into translation-layer responsibilities for the lane.",
+        "Write how the future lane should distinguish event identity from market translation, and why options/flow belongs in the latter category.",
+        "Preserve the idea that the lane uses the options table to understand probability shape and path pressure rather than merely repeat the headline.",
+        "Name any translation concepts that remain bounded planning concepts rather than repo-native vocabulary."
+      ],
+      "forbidden_actions": [
+        "Do not treat the event headline itself as the full trading answer.",
+        "Do not collapse options translation into one scalar fear score.",
+        "Do not invent runtime packet fields this gate does not prove."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate162_market_options_dependency_and_dislocation_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 162 receipt maps options-flow surfaces to translation-layer responsibilities.",
+        "The pack explicitly distinguishes event identity from translation."
+      ],
+      "definition_of_done": [
+        "options/flow translation role is explicit",
+        "the lane preserves fast translation rather than headline-chasing"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_MARKET_OPTIONS_DEPENDENCY_AND_DISLOCATION_MAPPING.md"
+      ]
+    },
+    "LEAF-G162-003": {
+      "id": "LEAF-G162-003",
+      "gate": "Gate 162",
+      "title": "Freeze the direct read-through dependency subset.",
+      "objective": "Bound which peer and sector read-through entities matter enough to be first-order inputs to the lane.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G162-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-03-28_FINANCIAL_CALENDAR_CROSSWALK_SPEC_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "data/reference/financial_calendar/financial_calendar_master_2026.json"
+      ],
+      "inputs": [
+        "translation-layer mapping"
+      ],
+      "ordered_actions": [
+        "List the direct read-through mega-cap and sector catalyst classes the repo already names for NVDA-relevant interpretation.",
+        "State how those read-through classes differ from NVDA-native events and from generic macro background.",
+        "Preserve the idea that a bounded dependency subset is necessary and that not everything in tech becomes a first-order lane input.",
+        "Write the evidence standard for adding or excluding a dependency class later."
+      ],
+      "forbidden_actions": [
+        "Do not turn every peer, supplier, or customer into a permanent first-order input.",
+        "Do not ignore existing repo-native direct read-through classes.",
+        "Do not let dependency scope expand by anecdote."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate162_market_options_dependency_and_dislocation_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 162 receipt contains a bounded direct read-through dependency subset and the rule for why it is bounded.",
+        "The pack distinguishes direct read-through classes from background context."
+      ],
+      "definition_of_done": [
+        "bounded direct dependency subset is explicit",
+        "later work cannot claim every tech signal is first-order by default"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_MARKET_OPTIONS_DEPENDENCY_AND_DISLOCATION_MAPPING.md"
+      ]
+    },
+    "LEAF-G162-004": {
+      "id": "LEAF-G162-004",
+      "gate": "Gate 162",
+      "title": "Freeze slower dependency classes and the \u201cactive enough now\u201d filter.",
+      "objective": "Preserve the insight that slower supply-chain or demand-side truths matter, but not on every clock or every day.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G162-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "data/reference/financial_calendar/financial_calendar_master_2026.json"
+      ],
+      "inputs": [
+        "bounded direct read-through subset"
+      ],
+      "ordered_actions": [
+        "Describe slower dependency classes such as supply-chain/foundry, demand-side hyperscaler, and structural franchise truths as planning concepts that may matter to the lane.",
+        "State that those dependencies live on slower clocks and therefore need an `active enough to matter now` filter before they become first-order lane inputs.",
+        "Write how that filter prevents the lane from drowning in every real-but-irrelevant dependency on every pass.",
+        "Record what remains out of scope until later packs can justify more concrete dependency logic."
+      ],
+      "forbidden_actions": [
+        "Do not flatten slow dependencies and fast dependencies into one blob.",
+        "Do not make every true franchise fact a live lane input all day.",
+        "Do not let the dependency filter become vague hand-waving."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate162_market_options_dependency_and_dislocation_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 162 receipt names slower dependency classes and the active-enough-now filter.",
+        "The pack preserves the hierarchy of relevance rather than a million equal signals."
+      ],
+      "definition_of_done": [
+        "slower dependencies are preserved without sprawl",
+        "dependency activation becomes a first-class planning obligation"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_MARKET_OPTIONS_DEPENDENCY_AND_DISLOCATION_MAPPING.md"
+      ]
+    },
+    "LEAF-G162-005": {
+      "id": "LEAF-G162-005",
+      "gate": "Gate 162",
+      "title": "Freeze dislocation-versus-impairment and translation-state obligations.",
+      "objective": "Preserve the central trading question of whether a move is a tradable dislocation, justified repricing, or genuine impairment.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G162-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "market weather map",
+        "translation-layer mapping",
+        "dependency activation filter"
+      ],
+      "ordered_actions": [
+        "Write the planning distinction between dislocation, justified repricing, and impairment as concepts the future lane must preserve.",
+        "State why price alone cannot answer that question and how translation surfaces, slower truths, and dependency clocks contribute.",
+        "Name the translation-state obligations that later implementation must make inspectable rather than collapsing them into one generic risk score.",
+        "Make the receipt honest about what is still concept-only versus what already has repo-native surface support."
+      ],
+      "forbidden_actions": [
+        "Do not pretend the repo already has a typed dislocation schema.",
+        "Do not reduce dislocation-versus-impairment to a narrative vibe.",
+        "Do not let this concept disappear between brainstorming and later writing."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate162_market_options_dependency_and_dislocation_mapping.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 162 receipt contains a dislocation/justified-repricing/impairment distinction.",
+        "The pack preserves translation-state obligations for later implementation."
+      ],
+      "definition_of_done": [
+        "dislocation-versus-impairment logic is preserved",
+        "later execution thread must keep translation-state richness"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_MARKET_OPTIONS_DEPENDENCY_AND_DISLOCATION_MAPPING.md"
+      ]
+    },
+    "LEAF-G163-001": {
+      "id": "LEAF-G163-001",
+      "gate": "Gate 163",
+      "title": "Freeze the lane ownership boundary against existing repo surfaces.",
+      "objective": "State exactly what the future lane owns versus what remains owned by the seven-step serial spine.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G162-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "inputs": [
+        "all prior mapping receipts"
+      ],
+      "ordered_actions": [
+        "List the existing stage-owned surfaces the lane may read from but may not redefine.",
+        "State what remains owned by temporal context, market regime context, options and flow context, posture and risk permission, playbook eligibility, expression and execution, and review and explanation.",
+        "State what the future lane may own conceptually without colliding with those surfaces.",
+        "Write the anti-drift rule that later runtime work must prove before adding any new packet or output."
+      ],
+      "forbidden_actions": [
+        "Do not let the lane become a second playbook engine.",
+        "Do not let the lane silently subsume posture/risk permission.",
+        "Do not leave ownership boundaries implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 163 receipt contains an ownership matrix against existing surfaces.",
+        "The lane has a bounded conceptual ownership area instead of a vague mandate."
+      ],
+      "definition_of_done": [
+        "ownership boundary is explicit",
+        "later runtime work cannot claim unbounded authority"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_OWNERSHIP_OUTPUT_COEFFICIENT_AND_ANTI_DUPLICATION_LAW.md"
+      ]
+    },
+    "LEAF-G163-002": {
+      "id": "LEAF-G163-002",
+      "gate": "Gate 163",
+      "title": "Freeze environmental risk weather versus candidate-specific risk audit.",
+      "objective": "Preserve the idea that the lane does not do only one thing; it maintains environmental weather and also evaluates an actual candidate when one exists.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G163-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "ownership matrix",
+        "multi-clock crosswalk"
+      ],
+      "ordered_actions": [
+        "Write the conceptual split between environmental risk weather and candidate-specific risk audit.",
+        "State which parts of the lane are meaningful before any candidate exists and which parts activate only when an opportunity-expression candidate is on the table.",
+        "Preserve this split as a planning obligation without claiming a canonical runtime packet or new vocabulary unless later proof demands it.",
+        "Name the review burden for later implementation so this split remains inspectable."
+      ],
+      "forbidden_actions": [
+        "Do not collapse weather and candidate audit into one undifferentiated score.",
+        "Do not claim a final packet schema already exists.",
+        "Do not lose the candidate-specific audit concept in generic prose."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 163 receipt contains an environmental-versus-candidate split.",
+        "The pack preserves pre-candidate and candidate-specific responsibilities distinctly."
+      ],
+      "definition_of_done": [
+        "environmental weather and candidate audit are both preserved",
+        "the lane is not flattened into one generic judgement"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_OWNERSHIP_OUTPUT_COEFFICIENT_AND_ANTI_DUPLICATION_LAW.md"
+      ]
+    },
+    "LEAF-G163-003": {
+      "id": "LEAF-G163-003",
+      "gate": "Gate 163",
+      "title": "Freeze fragility classes and probability-shape dimensions.",
+      "objective": "Preserve risk as multi-dimensional fragility rather than a single scary number.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G163-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "environmental-versus-candidate split",
+        "translation-state obligations"
+      ],
+      "ordered_actions": [
+        "List the fragility classes the pack must preserve, such as structural fragility, dependency fragility, event fragility, translation fragility, timing fragility, carry fragility, and execution fragility.",
+        "State why these are probability-shape or fragility-shape dimensions rather than a one-dimensional risk score.",
+        "Tie each class to the mapped upstream surfaces or explicitly label it a future planning concept if a repo-native surface is not yet available.",
+        "Write the rule that later implementation must keep these classes inspectable and not hide them behind one scalar."
+      ],
+      "forbidden_actions": [
+        "Do not collapse fragility classes into one fear score.",
+        "Do not invent runtime fields where only planning concepts exist.",
+        "Do not leave carry or timing fragility behind because they are harder to formalise."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 163 receipt contains a named fragility-class set and why it matters.",
+        "The pack preserves probability-shape richness for later implementation."
+      ],
+      "definition_of_done": [
+        "fragility classes are explicit",
+        "risk richness survives into planning law"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_OWNERSHIP_OUTPUT_COEFFICIENT_AND_ANTI_DUPLICATION_LAW.md"
+      ]
+    },
+    "LEAF-G163-004": {
+      "id": "LEAF-G163-004",
+      "gate": "Gate 163",
+      "title": "Freeze expression-posture consequence classes.",
+      "objective": "Preserve how the lane can influence action shape without pretending it is the arbiter.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G163-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/01_NORMATIVE.md",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "fragility-class set",
+        "ownership matrix"
+      ],
+      "ordered_actions": [
+        "Write the candidate-expression consequence classes the lane must preserve at planning level: not at all, wait/defer, smaller, normal, more assertive, reshape, hedge-required, and no-carry.",
+        "State which of those concepts already have nearby repo-native posture/risk permission surfaces and which remain planning concepts requiring later translation.",
+        "Preserve the rule that these consequences are not emotional labels; they are bounded action-shape consequences.",
+        "Write the boundary that keeps the lane influential without turning it into the final arbiter."
+      ],
+      "forbidden_actions": [
+        "Do not let posture consequences masquerade as final arbitration.",
+        "Do not leave `wait`, `defer`, `smaller`, or `no-carry` behind because the repo does not yet canonicalise them.",
+        "Do not reduce output richness to yes/no."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 163 receipt contains explicit posture consequence classes and their nearby repo-native translations or future obligations.",
+        "The lane output remains richer than yes/no."
+      ],
+      "definition_of_done": [
+        "expression-posture richness is explicit",
+        "the lane can shape action without becoming the arbiter"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_OWNERSHIP_OUTPUT_COEFFICIENT_AND_ANTI_DUPLICATION_LAW.md"
+      ]
+    },
+    "LEAF-G163-005": {
+      "id": "LEAF-G163-005",
+      "gate": "Gate 163",
+      "title": "Freeze the risk-lane coefficient subset and anti-duplication law.",
+      "objective": "Bound the coefficient surfaces most relevant to the lane and stop the same hazard being taxed repeatedly across the stack.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G163-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md",
+        "docs/planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md",
+        "docs/planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "config/coefficient_authority.v1.yaml",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      ],
+      "inputs": [
+        "bounded workbook subset",
+        "fragility and posture classes"
+      ],
+      "ordered_actions": [
+        "List the bounded coefficient families and runtime surfaces most relevant to the lane, including temporal thresholds, translation/fragility thresholds, posture/permission surfaces, capital/hedge surfaces, and any explicitly deferred families.",
+        "State which coefficient ideas belong to the lane and which remain owned elsewhere or out of scope for this pack.",
+        "Write the anti-duplication law: the lane must not re-penalise hazards already lawfully internalised upstream unless it adds genuinely independent information.",
+        "Preserve the explicit no-distributed-caution-fog rule so later implementation cannot build a conservative sludge machine."
+      ],
+      "forbidden_actions": [
+        "Do not let every useful signal become a lane coefficient.",
+        "Do not let the lane tax the same hazard repeatedly across multiple layers.",
+        "Do not let workbook richness override coefficient authority law."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 163 receipt contains a bounded coefficient subset and anti-duplication law.",
+        "The pack explicitly names distributed caution fog as forbidden later behaviour."
+      ],
+      "definition_of_done": [
+        "coefficient subset is bounded",
+        "anti-duplication law is explicit enough to prevent caution fog"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_OWNERSHIP_OUTPUT_COEFFICIENT_AND_ANTI_DUPLICATION_LAW.md"
+      ]
+    },
+    "LEAF-G164-001": {
+      "id": "LEAF-G164-001",
+      "gate": "Gate 164",
+      "title": "Audit all touched law and router surfaces for agreement.",
+      "objective": "Run the pure closeout audit over every surface touched by the pack before any coding tranche begins.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G163-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane",
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "inputs": [
+        "all prior receipts"
+      ],
+      "ordered_actions": [
+        "Audit router state, gate map, gates master, leaves ledger, execution log, checklist, normative discoverability line, and vocabulary entries for exact agreement.",
+        "Record every discrepancy or latent drift defect found, even if small.",
+        "State the rule for when the pack is allowed to close versus when it must remain active for another corrective pass.",
+        "Update the quartet only after the audit has been run and discrepancies resolved."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack on string agreement alone.",
+        "Do not ignore small wording drift if it changes meaning.",
+        "Do not package the branch before auditing the full quartet."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 164 receipt contains a law/router agreement audit.",
+        "The pack has an explicit close-versus-stay-open rule."
+      ],
+      "definition_of_done": [
+        "agreement audit is explicit",
+        "closeout cannot occur by optimism alone"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE164_PARALLEL_RISK_LANE_FOUNDATION_ANTI_DRIFT_CLOSEOUT.md"
+      ]
+    },
+    "LEAF-G164-002": {
+      "id": "LEAF-G164-002",
+      "gate": "Gate 164",
+      "title": "Audit workbook lineage closure and stale-reference resolution.",
+      "objective": "Prove that the workbook consolidation work actually left the repo with one governed lineage path.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G164-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx",
+        "config/coefficient_authority.v1.yaml"
+      ],
+      "inputs": [
+        "workbook consolidation receipt",
+        "workbook law receipt"
+      ],
+      "ordered_actions": [
+        "Check that workbook refs, scripts, tests, and discoverability surfaces now point at the canonical workbook survivor or a deliberate historical archive path.",
+        "Record any deliberate remaining legacy references and why they are lawful.",
+        "Prove that no active authority surface still depends on an ambiguous or stale workbook path.",
+        "Write the stop condition that keeps the pack open if workbook lineage is still ambiguous."
+      ],
+      "forbidden_actions": [
+        "Do not treat workbook-lineage ambiguity as a minor issue.",
+        "Do not confuse historical mention with active authority dependency.",
+        "Do not let stale workbook_ref values slip through the final audit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 164 receipt contains a workbook-lineage closure audit and any deliberate residual legacy list.",
+        "The pack can prove one governed workbook authority path."
+      ],
+      "definition_of_done": [
+        "workbook lineage closure is audited",
+        "future work cannot inherit silent stale refs"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE164_PARALLEL_RISK_LANE_FOUNDATION_ANTI_DRIFT_CLOSEOUT.md"
+      ]
+    },
+    "LEAF-G164-003": {
+      "id": "LEAF-G164-003",
+      "gate": "Gate 164",
+      "title": "Audit semantic coverage so no gold was left behind.",
+      "objective": "Prove that the core ideas from exploration survived into the pack rather than being flattened away.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G164-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "all prior receipts"
+      ],
+      "ordered_actions": [
+        "Audit whether the pack explicitly preserved the multi-clock model, dependency activation, dislocation-versus-impairment distinction, environmental-versus-candidate split, fragility classes, and expression-posture consequences.",
+        "Record any concept that was still left under-specified and either fix it or hold the pack open.",
+        "Prove that leaf-level work is genuinely distinct rather than three copies of one gate-level action list.",
+        "Write the semantic-coverage receipt that a future thread can use as a no-gold-left-behind checklist."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack if major concepts are still only implied.",
+        "Do not confuse gate titles with preserved leaf granularity.",
+        "Do not let the audit become a vague thumbs-up."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 164 receipt contains a semantic-coverage checklist for the strongest exploratory ideas.",
+        "The pack can prove leaf-level granularity, not just gate-level intent."
+      ],
+      "definition_of_done": [
+        "semantic gold is explicitly audited",
+        "leaf-level distinctness is part of closeout proof"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE164_PARALLEL_RISK_LANE_FOUNDATION_ANTI_DRIFT_CLOSEOUT.md"
+      ]
+    },
+    "LEAF-G164-004": {
+      "id": "LEAF-G164-004",
+      "gate": "Gate 164",
+      "title": "Record exact proof commands and package the recoverable closeout state.",
+      "objective": "End the pack honestly, with reproducible proof and a recoverable repo artefact.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G164-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-first only; freeze bounded authority, semantic coverage, and proof burden so later implementation does not invent architecture during coding.",
+      "vocabulary_terms_checked": [
+        "independent_parallel_risk_lane",
+        "signal_coefficient_reference_workbook"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "all audit receipts"
+      ],
+      "ordered_actions": [
+        "Record the exact proof slice, lint/format slice, and any other closeout commands run from the final green state.",
+        "Write every drift defect found during closeout and how it was resolved.",
+        "Package a fresh full-history zip from the exact audited branch state and record the artefact name in the receipt and execution log.",
+        "Return router state honestly only if the pack is truly closed and all audit leaves have passed."
+      ],
+      "forbidden_actions": [
+        "Do not report green without proof commands.",
+        "Do not hand off a pack without a recoverable zip.",
+        "Do not claim closure if any audit leaf still has unresolved defects."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py",
+        "python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py"
+      ],
+      "expected_evidence": [
+        "Gate 164 receipt contains exact proof commands, defect ledger, and zip artefact name.",
+        "The final handoff is recoverable from the audited branch state."
+      ],
+      "definition_of_done": [
+        "closeout proof is reproducible",
+        "the final state is packaged honestly"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after every executed gate; the final audit gate must emit the pack closeout zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE164_PARALLEL_RISK_LANE_FOUNDATION_ANTI_DRIFT_CLOSEOUT.md"
+      ]
+    }
+  }
+}
