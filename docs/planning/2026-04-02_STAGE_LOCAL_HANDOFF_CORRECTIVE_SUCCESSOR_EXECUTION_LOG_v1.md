@@ -226,3 +226,58 @@ For every completed leaf record:
 - Stop conditions hit: none
 - Merge status: not merged at receipt time
 - Receipt mode: recorded live
+
+
+## Gate 154 receipts
+
+### LEAF-G154-001 — Freeze the exact downstream consumer set
+
+- Branch: `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Start commit: `bb049e2`
+- End commit: working tree on `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 154 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: direct seam readers, indirect daily-review infrastructure, and legacy expectation tests are now separated explicitly instead of being bundled under Gate 148 title language
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G154-002 — Freeze residual compatibility dependency law
+
+- Branch: `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Start commit: `bb049e2`
+- End commit: working tree on `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 154 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: `final_risk_join`, stage-summary order, and bounded-trace `final_risk_action` now have explicit compatibility-only retirement conditions
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G154-003 — Freeze the honest migration end-state
+
+- Branch: `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Start commit: `bb049e2`
+- End commit: working tree on `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- Validations run: Gate 154 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: the receipt now states plainly that replay, API, and all legacy expectations are not already migrated merely because extra seam fields exist in review or bounded trace
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live
+
+### LEAF-G154-004 — Advance the corrective pack from Gate 154 to Gate 155 honestly
+
+- Branch: `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Start commit: `bb049e2`
+- End commit: working tree on `work/gate-154-downstream-consumer-reconciliation-replan-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate154_downstream_consumer_reconciliation_replan.py`, `CHANGELOG.jsonl`
+- Validations run: Gate 154 planning proof slice after file edits
+- Full suite required: no
+- Exact evidence: router, gate map, leaves ledger, and execution log all agree that Gate 154 is complete and Gate 155 is active
+- Stop conditions hit: none
+- Merge status: not merged at receipt time
+- Receipt mode: recorded live

@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the stage-local handoff corrective successor pack.
 
-Current planned sequence: Gates 150-153 complete on `main`; Gate 154 active; Gates 155-156 planned.
+Current planned sequence: Gates 150-154 complete on `main`; Gate 155 active; Gate 156 planned.
 
 ## Frozen law surfaces checked
 
@@ -64,6 +64,6 @@ Current planned sequence: Gates 150-153 complete on `main`; Gate 154 active; Gat
 - Gate 151 is complete and now freezes field-level ownership, direct-versus-indirect consumer scope, and the residual-gap inputs for later gates.
 - Gate 152 is complete and now freezes explicit Stage 5 case law, Stage 6 contradiction law, and downstream non-equivalence rules.
 - Gate 153 is complete and now freezes the full seven overlap classes, the overlay-versus-terminal-versus-final-join non-equivalence matrix, and the boundary that keeps this pack out of independent-risk-lane or final-arbiter territory.
-- Gate 154 is now the active gate and must distinguish actual downstream consumer migration from merely exposing additional preserved-seam fields in review or bounded trace.
-- Gate 155 exists because strengthening this seam tranche now creates follow-on routing obligations; those must be written down explicitly instead of left implicit.
+- Gate 154 is complete and now freezes the exact direct consumer set, separates daily-review infrastructure from real seam readers, and records residual compatibility dependencies with retirement conditions.
+- Gate 155 is now the active gate because the repo now has an explicit consumer/dependency ledger and must route its downstream consequences honestly instead of leaving them implicit.
 - Gate 156 is the first gate in this pack that may call the corrective successor pack closed, and it must record the exact proof slice and packaging artefact from the exact reported repo state.

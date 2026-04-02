@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_153_complete_gate_154_active_on_main",
-  "active_gate": "Gate 154",
+  "execution_status": "gate_154_complete_gate_155_active_on_main",
+  "active_gate": "Gate 155",
   "supersedes": [
     "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
   ],
@@ -10,7 +10,8 @@
     "Gate 150",
     "Gate 151",
     "Gate 152",
-    "Gate 153"
+    "Gate 153",
+    "Gate 154"
   ],
   "completed_leaf_ids": [
     "LEAF-G150-001",
@@ -27,13 +28,13 @@
     "LEAF-G153-001",
     "LEAF-G153-002",
     "LEAF-G153-003",
-    "LEAF-G153-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G153-004",
     "LEAF-G154-001",
     "LEAF-G154-002",
     "LEAF-G154-003",
-    "LEAF-G154-004",
+    "LEAF-G154-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G155-001",
     "LEAF-G155-002",
     "LEAF-G155-003",
@@ -43,7 +44,6 @@
     "LEAF-G156-004"
   ],
   "pending_gate_ids": [
-    "Gate 154",
     "Gate 155",
     "Gate 156"
   ],
@@ -1056,7 +1056,7 @@
       "gate": "Gate 154",
       "title": "Freeze the exact downstream consumer set",
       "objective": "Name every review, trace, replay, API, and legacy expectation consumer that this corrective pack must either migrate or explicitly defer.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -1120,7 +1120,7 @@
       "gate": "Gate 154",
       "title": "Freeze residual compatibility dependency law",
       "objective": "State which downstream consumers still rely on compatibility surfaces and what must be true before those dependencies can be retired.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G154-001"
       ],
@@ -1182,7 +1182,7 @@
       "gate": "Gate 154",
       "title": "Freeze honest replay and legacy expectation end-state",
       "objective": "Define what counts as replay and legacy expectation reconciliation in this pack and what remains future work.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G154-002"
       ],
@@ -1242,7 +1242,7 @@
       "gate": "Gate 154",
       "title": "Advance the corrective pack from Gate 154 to Gate 155 honestly",
       "objective": "Close Gate 154 and move the active gate to Gate 155 only after the declared proof slice is green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G154-003"
       ],
