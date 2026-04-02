@@ -21,6 +21,7 @@ RECEIPT = (
 )
 
 ALLOWED_PLAN_MARKERS = {
+    "active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`",
     "active gate: Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 163 on `main`",
     "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",

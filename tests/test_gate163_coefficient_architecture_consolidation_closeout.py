@@ -35,13 +35,19 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert (
-        "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`"
-        in plans
+    assert any(
+        marker in plans
+        for marker in {
+            "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
+            "active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+        }
     )
-    assert (
-        "Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`**."
-        in gate_map
+    assert any(
+        marker in gate_map
+        for marker in {
+            "Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`**.",
+            "Current active gate: **Gate 165 in the policy/temporal/observability successor pack**.",
+        }
     )
     assert (
         "Status: closed coefficient architecture consolidation pack through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`"

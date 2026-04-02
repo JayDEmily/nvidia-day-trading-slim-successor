@@ -1,0 +1,857 @@
+{
+  "governing_plan": "docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md",
+  "version": "v1",
+  "execution_status": "gate_164_complete_gate_165_active_on_work_branch",
+  "active_gate": "Gate 165",
+  "supersedes": [
+    "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+    "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+    "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 164"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G164-001",
+    "LEAF-G164-002",
+    "LEAF-G164-003",
+    "LEAF-G164-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G165-001",
+    "LEAF-G165-002",
+    "LEAF-G165-003",
+    "LEAF-G165-004",
+    "LEAF-G166-001",
+    "LEAF-G166-002",
+    "LEAF-G166-003",
+    "LEAF-G166-004",
+    "LEAF-G167-001",
+    "LEAF-G167-002",
+    "LEAF-G167-003",
+    "LEAF-G167-004",
+    "LEAF-G168-001",
+    "LEAF-G168-002",
+    "LEAF-G168-003",
+    "LEAF-G168-004",
+    "LEAF-G169-001",
+    "LEAF-G169-002",
+    "LEAF-G169-003",
+    "LEAF-G169-004",
+    "LEAF-G170-001",
+    "LEAF-G170-002",
+    "LEAF-G170-003",
+    "LEAF-G170-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 165",
+    "Gate 166",
+    "Gate 167",
+    "Gate 168",
+    "Gate 169",
+    "Gate 170"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "one_branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "document_touch_checklist_required": true,
+    "repo_local_installed_env_required": true,
+    "zip_required_for_each_operator_handoff": true,
+    "lean_docs_only": true,
+    "policy_matrix_must_reduce_code_archaeology": true,
+    "dmp_v2_schema_core_unchanged_in_this_pack": true,
+    "independent_risk_lane_reserved_for_separate_successor_work": true,
+    "no_new_live_coefficient_surfaces": true
+  },
+  "leaf_order": [
+    "LEAF-G164-001",
+    "LEAF-G164-002",
+    "LEAF-G164-003",
+    "LEAF-G164-004",
+    "LEAF-G165-001",
+    "LEAF-G165-002",
+    "LEAF-G165-003",
+    "LEAF-G165-004",
+    "LEAF-G166-001",
+    "LEAF-G166-002",
+    "LEAF-G166-003",
+    "LEAF-G166-004",
+    "LEAF-G167-001",
+    "LEAF-G167-002",
+    "LEAF-G167-003",
+    "LEAF-G167-004",
+    "LEAF-G168-001",
+    "LEAF-G168-002",
+    "LEAF-G168-003",
+    "LEAF-G168-004",
+    "LEAF-G169-001",
+    "LEAF-G169-002",
+    "LEAF-G169-003",
+    "LEAF-G169-004",
+    "LEAF-G170-001",
+    "LEAF-G170-002",
+    "LEAF-G170-003",
+    "LEAF-G170-004"
+  ],
+  "leaves": {
+    "LEAF-G164-001": {
+      "gate": "Gate 164",
+      "title": "Install the successor planning quartet and bounded-scope note",
+      "status": "complete",
+      "ordered_actions": [
+        "Create the active gates/leaves/execution-log/checklist files for Gates 164-170.",
+        "Write the bounded-scope note with the lean-docs rule, workbook gold, DMP v2 boundary, and explicit reservation of the independent risk lane.",
+        "Keep the pack planning-only; runtime semantics remain the Gate 163 closed baseline until a later execution gate says otherwise."
+      ],
+      "forbidden_actions": [
+        "Do not claim Workstreams 6-10 are implemented in runtime code.",
+        "Do not reopen Workstreams 1-4 or the independent risk lane inside this bootstrap gate.",
+        "Do not create placeholder-only leaves without ordered actions, validations, and definition of done."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_policy_temporal_observability_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Active planning quartet and scope note exist with Gates 164-170 and non-placeholder leaves.",
+        "Scope note preserves the lean policy-matrix rule and the workbook-derived constraints.",
+        "Bootstrap receipt records the new pack intent and exact branch state."
+      ],
+      "definition_of_done": [
+        "Active quartet exists and the scope note is explicit about in-scope versus out-of-scope work.",
+        "Bootstrap receipt is written and referenced from the execution log."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G164-002": {
+      "gate": "Gate 164",
+      "title": "Route the repo truthfully to Gate 165",
+      "status": "complete",
+      "ordered_actions": [
+        "Update PLANS.md so the new pack becomes the only active pack routed at repo root.",
+        "Update the canonical gate map to make Gate 164 complete and Gate 165 active while preserving Gate 157-163 as closed historical evidence.",
+        "Record the new active gate and pack state in the leaves ledger and execution log."
+      ],
+      "forbidden_actions": [
+        "Do not leave the old pack marked as active.",
+        "Do not move the canonical gate map without updating PLANS.md, the leaves ledger, and the execution log in the same pass.",
+        "Do not imply any merge to main."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_policy_temporal_observability_successor_pack_planning.py tests/test_gate163_coefficient_architecture_consolidation_closeout.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md, canonical gate map, leaves ledger, and execution log agree that Gate 164 is complete and Gate 165 is active on the work branch.",
+        "Closed Gate 163 evidence remains intact and truthful.",
+        "Historical pack tests still allow the successor-pack active state."
+      ],
+      "definition_of_done": [
+        "Move-together control surfaces are synchronized and historical pack evidence is preserved."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G164-003": {
+      "gate": "Gate 164",
+      "title": "Amend the successor-pack-specific checklist and changelog",
+      "status": "complete",
+      "ordered_actions": [
+        "Create the document-touch checklist for the new pack and mark the frozen/living control surfaces inspected before activation.",
+        "Append one truthful CHANGELOG entry for Gate 164 pack activation.",
+        "Note the exact next active gate and the intended bounded workstreams in the checklist notes section."
+      ],
+      "forbidden_actions": [
+        "Do not create checklist rows for unrelated runtime modules not touched by this planning pass.",
+        "Do not omit the prior closed pack from retained evidence in PLANS.md.",
+        "Do not invent proof results before running them."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_policy_temporal_observability_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Checklist names the new pack artefacts, touched frozen law surfaces, and future gate-specific planning tests.",
+        "CHANGELOG records Gate 164 activation on the new work branch.",
+        "Checklist notes point to Gate 165 as the next active gate."
+      ],
+      "definition_of_done": [
+        "Checklist and changelog are truthful and synchronized to the same branch state as PLANS.md and the gate map."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G164-004": {
+      "gate": "Gate 164",
+      "title": "Run the bootstrap planning-guard slice and record live receipts",
+      "status": "complete",
+      "ordered_actions": [
+        "Add the Gate 164 planning guard test and update historical pack tests only as much as needed for successor-pack routing truth.",
+        "Run the declared bootstrap proof slice.",
+        "Record the exact command and observed result in the execution log and bootstrap receipt."
+      ],
+      "forbidden_actions": [
+        "Do not broaden the proof slice to unrelated runtime suites.",
+        "Do not leave historical pack tests stale if the new active-pack routing changes their assumptions.",
+        "Do not reconstruct proof output from memory."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate164_policy_temporal_observability_successor_pack_planning.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Exact proof command/result is recorded in the execution log.",
+        "Bootstrap receipt references the same proof slice.",
+        "Historical and new planning guards pass together on the active work-branch state."
+      ],
+      "definition_of_done": [
+        "The declared proof slice passes and is recorded exactly in the live execution log."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G165-001": {
+      "gate": "Gate 165",
+      "title": "Inventory current live modifier policies and stable policy IDs",
+      "status": "planned",
+      "ordered_actions": [
+        "Read `state_conditioned_modifier.py` end to end and enumerate the currently live policy families, policy IDs, target surfaces, and precedence semantics already embedded in code.",
+        "Distinguish what is already declared in types or doctrine from what is still hidden in service logic.",
+        "Freeze the minimal inventory needed for a compact external policy matrix."
+      ],
+      "forbidden_actions": [
+        "Do not invent policies that are not in the current modifier service.",
+        "Do not widen the live coefficient universe while inventorying policies.",
+        "Do not confuse review-packet fields with DMP v2 schema-core fields."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate165_lean_policy_law_externalisation.py"
+      ],
+      "expected_evidence": [
+        "Gate 165 receipt names the currently live modifier policy families and stable policy-ID expectations.",
+        "Receipt distinguishes engine logic from declared-law gaps.",
+        "No new runtime surfaces are admitted."
+      ],
+      "definition_of_done": [
+        "Existing policy families and stable identifiers are inventoried precisely enough for a lean matrix."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G165-002": {
+      "gate": "Gate 165",
+      "title": "Define the lean declared policy-matrix schema",
+      "status": "planned",
+      "ordered_actions": [
+        "Specify a compact checked-in matrix shape with policy id, trigger/state, target surface, operation type, precedence band, clamp source, and explanation text.",
+        "Keep code as the execution engine and the matrix as declared law only.",
+        "State explicitly which fields are deferred because they would create documentation without enough runtime value."
+      ],
+      "forbidden_actions": [
+        "Do not write a broad essay that paraphrases the code.",
+        "Do not externalise every nuance on day one.",
+        "Do not turn the matrix into a second execution engine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate165_lean_policy_law_externalisation.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes the compact matrix fields and rejects non-earning documentation.",
+        "Matrix scope is limited to the existing modifier plane.",
+        "Receipt records explicit non-goals."
+      ],
+      "definition_of_done": [
+        "Lean matrix schema is defined and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G165-003": {
+      "gate": "Gate 165",
+      "title": "Freeze the DMP v2 / review boundary for policy-law externalisation",
+      "status": "planned",
+      "ordered_actions": [
+        "Trace where policy IDs already surface in cognition/review payloads and where DMP v2 currently serialises payload blocks.",
+        "Freeze the rule that this pack does not redesign DMP v2 schema-core.",
+        "State that any later wiring would occur via existing payload/review semantics unless a later pack proves otherwise."
+      ],
+      "forbidden_actions": [
+        "Do not claim repo-native DV/PV terms unless verified.",
+        "Do not redesign DMP v2 blocks in a planning receipt.",
+        "Do not blur review payload semantics with packet-envelope changes."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate165_lean_policy_law_externalisation.py"
+      ],
+      "expected_evidence": [
+        "Receipt names the DMP v2 boundary and the current review-packet linkage.",
+        "Unknown/not-verified DV/PV status is recorded honestly.",
+        "No schema-core change is implied."
+      ],
+      "definition_of_done": [
+        "Boundary between lean policy law and DMP v2 schema-core is explicit and honest."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G165-004": {
+      "gate": "Gate 165",
+      "title": "Freeze successor implementation/proof burden for policy-law materialisation",
+      "status": "planned",
+      "ordered_actions": [
+        "Define the minimum future coding steps required to materialise the matrix.",
+        "Define the proof burden for later runtime wiring and review visibility.",
+        "Record how later calibration metadata will reference stable policy IDs."
+      ],
+      "forbidden_actions": [
+        "Do not claim coding work is done.",
+        "Do not allocate independent-risk-lane ownership here.",
+        "Do not skip proof expectations for later runtime wiring."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate165_lean_policy_law_externalisation.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains successor implementation sequence and proof burden.",
+        "Stable policy IDs are preserved as future calibration anchors.",
+        "Boundary to risk-lane thread remains intact."
+      ],
+      "definition_of_done": [
+        "Later coding work is routed clearly enough that future-you does not need chat memory."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G166-001": {
+      "gate": "Gate 166",
+      "title": "Inventory authority-backed temporal values currently consumed by the classifier",
+      "status": "planned",
+      "ordered_actions": [
+        "Read `temporal_state.py` and enumerate which classifier values already load from `coefficient_authority.v1.yaml`.",
+        "Cross-check workbook provenance references and Gate 126 evidence.",
+        "Freeze the current governed temporal subset explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not infer authority-backed status without code or config evidence.",
+        "Do not treat workbook values as live authority unless the repo currently loads them from governed config.",
+        "Do not skip provenance notes."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate166_temporal_governance_status_ledger.py"
+      ],
+      "expected_evidence": [
+        "Receipt names the current governed temporal subset and its authority source.",
+        "Gate 126 and workbook provenance remain aligned.",
+        "No blanket externalisation claim is made."
+      ],
+      "definition_of_done": [
+        "Authority-backed temporal values are enumerated precisely."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G166-002": {
+      "gate": "Gate 166",
+      "title": "Classify remaining hard-coded temporal heuristics",
+      "status": "planned",
+      "ordered_actions": [
+        "Enumerate each remaining hard-coded temporal threshold or heuristic in the classifier.",
+        "For each item, decide whether the planning law says admit later, keep fixed intentionally, defer, or remove as redundant.",
+        "Record the reason for each status so later coding does not guess."
+      ],
+      "forbidden_actions": [
+        "Do not externalise every remaining value by default.",
+        "Do not leave any remaining hard-coded threshold unclassified.",
+        "Do not hide uncertainty behind vague prose."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate166_temporal_governance_status_ledger.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains an explicit status decision for each remaining hard-coded temporal item.",
+        "Reasons for fixed/deferred/remove decisions are recorded.",
+        "The no-total-externalisation rule is preserved."
+      ],
+      "definition_of_done": [
+        "Every remaining temporal heuristic has explicit status."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G166-003": {
+      "gate": "Gate 166",
+      "title": "Define the temporal-status ledger and operator/review wording",
+      "status": "planned",
+      "ordered_actions": [
+        "Freeze the exact status classes and the wording future review/output surfaces should use.",
+        "Make it possible for later runtime/review code to say whether a temporal value is governed, fixed, or deferred.",
+        "Keep the ledger machine-adjacent rather than essay-like."
+      ],
+      "forbidden_actions": [
+        "Do not create a second temporal doctrine doc that duplicates the normative file.",
+        "Do not use status labels that conflict with the existing coefficient-status worldview without explaining the relationship.",
+        "Do not promise runtime review features that are not yet routed."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate166_temporal_governance_status_ledger.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes the temporal-status classes and their intended user-facing wording.",
+        "Later runtime/review work has a clear target ledger.",
+        "Status language is explicit enough to remove mist."
+      ],
+      "definition_of_done": [
+        "Temporal status ledger is frozen in a directly usable form."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G166-004": {
+      "gate": "Gate 166",
+      "title": "Route successor implementation for temporal status materialisation",
+      "status": "planned",
+      "ordered_actions": [
+        "Define the coding order for classifier comments/constants, authority updates if any, and later review visibility.",
+        "Tie the future proof burden to exact status classes.",
+        "Record explicit stop conditions if later work discovers authority drift."
+      ],
+      "forbidden_actions": [
+        "Do not claim the classifier is already fully governed.",
+        "Do not intermingle temporal status work with risk-lane implementation.",
+        "Do not leave stop conditions implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate166_temporal_governance_status_ledger.py"
+      ],
+      "expected_evidence": [
+        "Receipt states the coding order and proof burden for later materialisation.",
+        "Stop conditions are explicit.",
+        "Temporal-governance completion remains bounded and honest."
+      ],
+      "definition_of_done": [
+        "Later temporal-governance work is executable without inventing new status theory."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G167-001": {
+      "gate": "Gate 167",
+      "title": "Freeze current caution outcome families inside the deterministic spine",
+      "status": "planned",
+      "ordered_actions": [
+        "Inventory the cautionary outcomes currently produced or read by posture, modifier, execution, and risk-gateway seams.",
+        "Group them into outcome families such as deployable-cap reduction, hedge requirement, stand-down/kill-switch, and threshold tightening.",
+        "Keep the inventory descriptive of the current deterministic spine rather than aspirational."
+      ],
+      "forbidden_actions": [
+        "Do not treat independent risk-lane future states as current outcome families.",
+        "Do not invent families not evidenced by the repo.",
+        "Do not merge descriptive inventory with ownership reallocation."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate167_serial_conservatism_binding_point_law.py"
+      ],
+      "expected_evidence": [
+        "Receipt names the current caution outcome families with repo-backed grounding.",
+        "Outcome families are bounded to the current spine.",
+        "Risk-lane future scope remains outside the gate."
+      ],
+      "definition_of_done": [
+        "Current caution outcomes are inventoried cleanly."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G167-002": {
+      "gate": "Gate 167",
+      "title": "Assign primary binding points and allowed descriptive secondary reads",
+      "status": "planned",
+      "ordered_actions": [
+        "For each current outcome family, specify the primary binding point inside the deterministic spine.",
+        "Specify which later stages may only describe, carry, or read the consequence rather than bind it again.",
+        "Reserve any independent-risk-lane cap/veto reallocation to the separate thread."
+      ],
+      "forbidden_actions": [
+        "Do not finalise cross-thread ownership of independent risk caps or final vetoes.",
+        "Do not allow three primary binders for the same outcome family.",
+        "Do not conflate compatibility carriage with primary binding."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate167_serial_conservatism_binding_point_law.py"
+      ],
+      "expected_evidence": [
+        "Receipt gives one primary binding point per current outcome family inside the deterministic spine.",
+        "Allowed descriptive secondary reads are named.",
+        "Independent-risk-lane authority is explicitly reserved out of scope."
+      ],
+      "definition_of_done": [
+        "Primary binding-point law is explicit without overreaching into the risk thread."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G167-003": {
+      "gate": "Gate 167",
+      "title": "Define the conservatism-budget review surface",
+      "status": "planned",
+      "ordered_actions": [
+        "Specify a simple review surface that counts which caution mechanisms fired, which one actually bound, and where multiple layers compressed the same dimension.",
+        "Keep the design diagnostic, not mathematical theatre.",
+        "Tie the surface to existing review packet concepts where possible."
+      ],
+      "forbidden_actions": [
+        "Do not build a new engine or scoring system.",
+        "Do not require perfect maths before the surface can exist.",
+        "Do not hide the binding stack behind summary-only prose."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate167_serial_conservatism_binding_point_law.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes a simple binding-stack style conservatism-budget surface.",
+        "Diagnostic purpose is explicit.",
+        "Review linkage is named."
+      ],
+      "definition_of_done": [
+        "Conservatism budget is defined in a lightweight, inspectable form."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G167-004": {
+      "gate": "Gate 167",
+      "title": "Route successor implementation and cross-thread coordination rules",
+      "status": "planned",
+      "ordered_actions": [
+        "Define what the current pack may later implement versus what must wait for the risk-lane merge.",
+        "Freeze explicit coordination notes for later merge conflict resolution.",
+        "Set proof requirements for any future runtime review additions."
+      ],
+      "forbidden_actions": [
+        "Do not silently absorb risk-lane work into this pack.",
+        "Do not leave merge-coordination notes to chat memory.",
+        "Do not omit proof rules for later review-surface additions."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate167_serial_conservatism_binding_point_law.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains explicit coordination and stop-boundary notes.",
+        "Future runtime additions have proof requirements.",
+        "Cross-thread ambiguity is reduced rather than increased."
+      ],
+      "definition_of_done": [
+        "Successor routing is explicit and scope-safe."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G168-001": {
+      "gate": "Gate 168",
+      "title": "Freeze the minimum decision-chain review fields",
+      "status": "planned",
+      "ordered_actions": [
+        "Specify the baseline, active policy ID(s), effective value, clamp, consuming stage, and downstream compatibility/risk read-path fields needed for one decision chain.",
+        "Anchor the field set in the current review/cognition packet surfaces.",
+        "Keep the field set minimal and evidence-backed."
+      ],
+      "forbidden_actions": [
+        "Do not invent decorative UI fields with no runtime consumer.",
+        "Do not require new live coefficient surfaces.",
+        "Do not detach the decision-chain view from existing packet structures."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate168_review_observability_chain_strengthening.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes the minimum decision-chain field set.",
+        "Current packet anchors are cited.",
+        "The field set remains intentionally narrow."
+      ],
+      "definition_of_done": [
+        "Minimum review field set is explicit and usable."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G168-002": {
+      "gate": "Gate 168",
+      "title": "Define one operator-facing decision-chain view",
+      "status": "planned",
+      "ordered_actions": [
+        "Describe one operator-facing view that lets future-you trace environment, policy fire, surface change, clamp, consuming stage, and downstream read/override.",
+        "Keep the framing anchored to trader trust rather than pretty UI.",
+        "Reuse the conservatism-budget surface where appropriate."
+      ],
+      "forbidden_actions": [
+        "Do not design a full front-end.",
+        "Do not multiply views when one traceable view will do.",
+        "Do not ignore the existing review packet surfaces."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate168_review_observability_chain_strengthening.py"
+      ],
+      "expected_evidence": [
+        "Receipt defines one operator-facing decision-chain view and why it exists.",
+        "View is diagnostic and trader-trust focused.",
+        "Conservatism-budget linkage is explicit if relevant."
+      ],
+      "definition_of_done": [
+        "Decision-chain view is defined without UI bloat."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G168-003": {
+      "gate": "Gate 168",
+      "title": "Freeze the DMP v2 boundary and payload-semantics note",
+      "status": "planned",
+      "ordered_actions": [
+        "Carry forward the Gate 165 rule that DMP v2 schema-core stays unchanged in this pack.",
+        "State exactly what would be affected instead: review output and payload semantics carried through existing packet blocks.",
+        "Record the honest unknown/not-verified DV/PV note so later work does not pretend certainty."
+      ],
+      "forbidden_actions": [
+        "Do not redesign the DMP v2 envelope here.",
+        "Do not claim DV/PV as current repo-native DMP v2 terms without evidence.",
+        "Do not imply that review-surface improvements require packet-schema churn."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate168_review_observability_chain_strengthening.py"
+      ],
+      "expected_evidence": [
+        "Receipt preserves the DMP v2 boundary and names payload/review semantics as the likely affected layer.",
+        "DV/PV uncertainty is recorded honestly.",
+        "Schema-core remains unchanged."
+      ],
+      "definition_of_done": [
+        "Review improvements are bounded away from packet-schema churn."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G168-004": {
+      "gate": "Gate 168",
+      "title": "Route observability materialisation and proof burden",
+      "status": "planned",
+      "ordered_actions": [
+        "Define the later coding order for review output, payload linkages, and any operator-facing rendering.",
+        "Set proof requirements around end-to-end visibility of a sample decision chain.",
+        "Keep later implementation tied to existing packet and review surfaces rather than new abstractions."
+      ],
+      "forbidden_actions": [
+        "Do not claim observability code exists yet.",
+        "Do not let later UI work outrun packet/review truth.",
+        "Do not omit a proof burden for end-to-end visibility."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate168_review_observability_chain_strengthening.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains successor routing and proof burden for observability work.",
+        "End-to-end visibility is tied to exact field expectations.",
+        "Implementation remains bounded to current architecture."
+      ],
+      "definition_of_done": [
+        "Later review/observability work is routed clearly and narrowly."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G169-001": {
+      "gate": "Gate 169",
+      "title": "Define live-surface calibration metadata",
+      "status": "planned",
+      "ordered_actions": [
+        "For each currently live surface, define metadata fields for purpose, expected directionality, anti-goal, owner stage, family, and review cadence.",
+        "Anchor the metadata to the governed runtime surface set only.",
+        "Keep the metadata descriptive and evaluation-oriented rather than predictive."
+      ],
+      "forbidden_actions": [
+        "Do not add metadata for non-live salvage/reference surfaces unless explicitly marked reference-only.",
+        "Do not start calibration itself.",
+        "Do not widen the live surface set."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate169_calibration_metadata_and_receipts.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes live-surface metadata fields and scope.",
+        "Metadata is tied to the governed runtime surface set only.",
+        "No calibration-in-progress claim is made."
+      ],
+      "definition_of_done": [
+        "Live-surface metadata is explicit and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G169-002": {
+      "gate": "Gate 169",
+      "title": "Define declared-policy evaluation metadata",
+      "status": "planned",
+      "ordered_actions": [
+        "For each declared policy from Gate 165, define evaluation metadata such as intended behavioural effect, likely failure mode, and review cadence.",
+        "Make the metadata depend on stable policy IDs.",
+        "Keep it useful for later ablation and drift analysis."
+      ],
+      "forbidden_actions": [
+        "Do not create metadata for policies that are not yet declared.",
+        "Do not overfit the metadata to one hypothetical backtest regime.",
+        "Do not turn metadata into another policy engine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate169_calibration_metadata_and_receipts.py"
+      ],
+      "expected_evidence": [
+        "Receipt freezes policy-level evaluation metadata fields.",
+        "Stable policy IDs are used as anchors.",
+        "Metadata is clearly for later evaluation, not runtime execution."
+      ],
+      "definition_of_done": [
+        "Declared-policy metadata is defined in a calibration-ready form."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G169-003": {
+      "gate": "Gate 169",
+      "title": "Define architecture-aware evaluation receipts",
+      "status": "planned",
+      "ordered_actions": [
+        "Specify later evaluation-receipt questions around help, over-tightening, redundancy, danger, stacked caution, and absent opportunity shaping.",
+        "Tie the receipts to the future decision-chain and conservatism-budget surfaces.",
+        "Keep later paper-data testing architecture-aware rather than just PnL-aware."
+      ],
+      "forbidden_actions": [
+        "Do not design a full test harness here.",
+        "Do not reduce evaluation to PnL-only questions.",
+        "Do not ignore stacked-caution or absent-opportunity failure modes."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate169_calibration_metadata_and_receipts.py"
+      ],
+      "expected_evidence": [
+        "Receipt defines architecture-aware evaluation questions and intended receipt structure.",
+        "Questions reference later decision-chain and conservatism-budget surfaces.",
+        "The preparatory nature of the gate is explicit."
+      ],
+      "definition_of_done": [
+        "Evaluation receipt architecture is ready for later testing packs."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G169-004": {
+      "gate": "Gate 169",
+      "title": "Route successor implementation for metadata and receipts",
+      "status": "planned",
+      "ordered_actions": [
+        "Define the later coding/doc path that would materialise the metadata and receipts.",
+        "Set the stop condition that wider data testing waits until policy law, temporal status, and observability are materially in place.",
+        "Keep the sequence aligned to the earlier migration-order doctrine."
+      ],
+      "forbidden_actions": [
+        "Do not begin wider data testing from this planning gate.",
+        "Do not skip the stop condition before later calibration work.",
+        "Do not leave the migration order implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate169_calibration_metadata_and_receipts.py"
+      ],
+      "expected_evidence": [
+        "Receipt states the coding/doc path and the stop condition before wider testing.",
+        "Migration order is preserved.",
+        "Future-you can see why evaluation cannot safely jump ahead."
+      ],
+      "definition_of_done": [
+        "Later calibration-prep work is routed clearly and conservatively."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G170-001": {
+      "gate": "Gate 170",
+      "title": "Audit thread-gold capture and workbook preservation",
+      "status": "planned",
+      "ordered_actions": [
+        "Audit whether the new pack preserved the lean-docs rule, workbook gold, DMP v2 boundary, no-new-live-surfaces rule, and risk-lane reservation.",
+        "Check each approved workstream slice against the actual pack outputs.",
+        "Record any drift defects and their resolution before closeout."
+      ],
+      "forbidden_actions": [
+        "Do not treat closeout as a formality.",
+        "Do not omit workbook gold that influenced the pack.",
+        "Do not hide dropped ideas behind vague prose."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate170_policy_temporal_observability_successor_closeout.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains a real thread-to-pack audit and drift-defect ledger.",
+        "Workbook gold and thread constraints are explicitly checked.",
+        "Any omissions are either fixed or named honestly."
+      ],
+      "definition_of_done": [
+        "Thread-to-pack audit is substantive and explicit."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G170-002": {
+      "gate": "Gate 170",
+      "title": "Audit scope boundary against the risk thread and documentation bloat",
+      "status": "planned",
+      "ordered_actions": [
+        "Prove that the pack did not silently absorb the independent risk lane or create documentation that fails the value test.",
+        "Check that every new artefact either reduces ambiguity, improves review/debuggability, or creates a calibration bridge.",
+        "Record any non-earning artefacts and remove them before closeout if found."
+      ],
+      "forbidden_actions": [
+        "Do not excuse scope creep because it is only planning.",
+        "Do not keep documents that do not earn their keep.",
+        "Do not blur descriptive non-risk-lane law with future risk-lane ownership."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate170_policy_temporal_observability_successor_closeout.py"
+      ],
+      "expected_evidence": [
+        "Receipt contains a scope-boundary audit and documentation-value audit.",
+        "Independent-risk-lane boundary remains intact.",
+        "Non-earning documentation is either absent or called out honestly."
+      ],
+      "definition_of_done": [
+        "Closeout proves the pack stayed useful and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G170-003": {
+      "gate": "Gate 170",
+      "title": "Run the declared anti-drift proof slice and record exact results",
+      "status": "planned",
+      "ordered_actions": [
+        "Run the closeout proof slice across the new pack planning guard, selected historical pack guards, and document hygiene.",
+        "Record the exact command and observed result in the execution log and closeout receipt.",
+        "If stale guard assumptions appear, fix only those required for truthful closeout."
+      ],
+      "forbidden_actions": [
+        "Do not reconstruct proof results from memory.",
+        "Do not run broad unrelated suites in place of the declared slice.",
+        "Do not leave stale planning guards unresolved."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate170_policy_temporal_observability_successor_closeout.py tests/test_gate164_policy_temporal_observability_successor_pack_planning.py tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Exact closeout proof command/result is recorded.",
+        "Historical and new planning guards pass on the candidate closeout state.",
+        "Any required guard updates are minimal and truthful."
+      ],
+      "definition_of_done": [
+        "Declared anti-drift closeout slice passes and is recorded exactly."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    },
+    "LEAF-G170-004": {
+      "gate": "Gate 170",
+      "title": "Synchronise closeout surfaces and package the exact green repo state",
+      "status": "planned",
+      "ordered_actions": [
+        "Move PLANS.md, canonical gate map, the active leaves ledger, the active execution log, the checklist, and CHANGELOG.jsonl together to the closed-pack state.",
+        "Record the exact packaging artefact name in the receipt and execution log.",
+        "Package the exact green repo state as a full-history zip."
+      ],
+      "forbidden_actions": [
+        "Do not leave any of the move-together control surfaces behind.",
+        "Do not claim merge-to-main unless it actually happened.",
+        "Do not package from a dirty repo state."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate170_policy_temporal_observability_successor_closeout.py tests/test_gate164_policy_temporal_observability_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Control surfaces agree that the pack is closed on the work branch or main, whichever is actually true.",
+        "Zip artefact name is frozen in the receipt and execution log.",
+        "Branch state is clean before packaging."
+      ],
+      "definition_of_done": [
+        "Closeout surfaces are synchronized and the exact green repo state is packaged."
+      ],
+      "packaging_requirement": "record in the active execution log and include the fresh full-history zip at the end of the pack or earlier if operator handoff occurs"
+    }
+  }
+}
