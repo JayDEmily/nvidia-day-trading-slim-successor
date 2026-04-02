@@ -1,0 +1,1725 @@
+{
+  "governing_plan": "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_150_complete_gate_151_active_on_work_branch",
+  "active_gate": "Gate 151",
+  "supersedes": [
+    "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json"
+  ],
+  "completed_gate_ids": [
+    "Gate 150"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G150-001",
+    "LEAF-G150-002",
+    "LEAF-G150-003"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G151-001",
+    "LEAF-G151-002",
+    "LEAF-G151-003",
+    "LEAF-G151-004",
+    "LEAF-G152-001",
+    "LEAF-G152-002",
+    "LEAF-G152-003",
+    "LEAF-G152-004",
+    "LEAF-G153-001",
+    "LEAF-G153-002",
+    "LEAF-G153-003",
+    "LEAF-G153-004",
+    "LEAF-G154-001",
+    "LEAF-G154-002",
+    "LEAF-G154-003",
+    "LEAF-G154-004",
+    "LEAF-G155-001",
+    "LEAF-G155-002",
+    "LEAF-G155-003",
+    "LEAF-G156-001",
+    "LEAF-G156-002",
+    "LEAF-G156-003",
+    "LEAF-G156-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 151",
+    "Gate 152",
+    "Gate 153",
+    "Gate 154",
+    "Gate 155",
+    "Gate 156"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "one_branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "document_touch_checklist_required": true,
+    "repo_local_installed_env_required": true,
+    "no_runtime_semantic_change_in_gate_150": true,
+    "field_level_ownership_required_before_later_code_changes": true,
+    "selected_slice_closeout_forbidden_unless_explicitly_declared": true,
+    "zip_required_for_each_operator_handoff": true,
+    "historical_gate_141_149_pack_retained_as_evidence": true
+  },
+  "leaf_order": [
+    "LEAF-G150-001",
+    "LEAF-G150-002",
+    "LEAF-G150-003",
+    "LEAF-G151-001",
+    "LEAF-G151-002",
+    "LEAF-G151-003",
+    "LEAF-G151-004",
+    "LEAF-G152-001",
+    "LEAF-G152-002",
+    "LEAF-G152-003",
+    "LEAF-G152-004",
+    "LEAF-G153-001",
+    "LEAF-G153-002",
+    "LEAF-G153-003",
+    "LEAF-G153-004",
+    "LEAF-G154-001",
+    "LEAF-G154-002",
+    "LEAF-G154-003",
+    "LEAF-G154-004",
+    "LEAF-G155-001",
+    "LEAF-G155-002",
+    "LEAF-G155-003",
+    "LEAF-G156-001",
+    "LEAF-G156-002",
+    "LEAF-G156-003",
+    "LEAF-G156-004"
+  ],
+  "leaves": {
+    "LEAF-G150-001": {
+      "id": "LEAF-G150-001",
+      "gate": "Gate 150",
+      "title": "Re-read the frozen authorities and adjacent seam evidence",
+      "objective": "Ground the successor pack in observed repo truth rather than chat-memory critiques.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-mode only; re-audits the closed seam tranche so the new pack can correct thin planning without rewriting historical execution.",
+      "vocabulary_terms_checked": [
+        "stage_local_handoff",
+        "eligibility_admissibility",
+        "execution_candidate_ownership",
+        "overlay_risk_decision",
+        "terminal_risk_application",
+        "final_risk_join"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-01_GATE142_OVERWRITE_AND_OWNERSHIP_INVENTORY.md",
+        "docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md",
+        "docs/planning/2026-04-01_GATE149_ABSOLUTE_ANTI_DRIFT_AUDIT_AND_PACK_CLOSEOUT.md",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/review_explanation.py"
+      ],
+      "inputs": [
+        "closed Gate 149 baseline on main",
+        "forensic defect ledger from the successor audit"
+      ],
+      "ordered_actions": [
+        "Read the frozen authorities in repo-native order.",
+        "Re-read the closed Gate 141-149 planning artefacts and adjacent receipts that proved the thinness pattern.",
+        "Trace the current downstream workflow surfaces again so the new pack is tied to observed code paths.",
+        "Record the corrective-scope reasons in the Gate 150 receipt before any router state changes."
+      ],
+      "forbidden_actions": [
+        "Do not relabel the historical Gate 141-149 pack as failed history.",
+        "Do not invent runtime architecture that is not present in the repo.",
+        "Do not create new governed vocabulary in Gate 150."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "Gate 150 receipt explains why a successor pack is required now.",
+        "adjacent seam evidence and workflow surfaces are named explicitly."
+      ],
+      "definition_of_done": [
+        "the new pack rationale is grounded in observed repo artefacts only",
+        "the retained-versus-corrected boundary is written down before the quartet is authored"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the Gate 150 planning slice is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md"
+      ]
+    },
+    "LEAF-G150-002": {
+      "id": "LEAF-G150-002",
+      "gate": "Gate 150",
+      "title": "Write the corrective successor planning quartet and bounded gates",
+      "objective": "Populate the active gates master, leaves ledger, execution log, and checklist from repo truth only.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G150-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
+      ],
+      "workflow_intent_assertion": "Creates the new active planning scaffolding that later execution must obey literally.",
+      "vocabulary_terms_checked": [
+        "workflow_trace",
+        "document_touch_checklist_required"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md"
+      ],
+      "inputs": [
+        "template pack under docs/planning/tranche_briefing_template_pack/",
+        "closed Gate 141-149 seam tranche as evidence"
+      ],
+      "ordered_actions": [
+        "Write the new active pack with all mandatory sections from the template law.",
+        "Bound the successor work into Gates 150-156 rather than collapsing thin work into a single vague bundle.",
+        "Ensure every future gate has a deterministic objective, exact surface list, and definition of done.",
+        "Ensure the leaves ledger carries explicit ordered actions, forbidden actions, validation commands, expected evidence, and definitions of done for every future leaf."
+      ],
+      "forbidden_actions": [
+        "Do not leave placeholder fields or empty leaf bodies.",
+        "Do not compress distinct corrective subjects into one gate merely for convenience.",
+        "Do not omit the future anti-drift closeout gate."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "new active planning quartet exists",
+        "future Gates 151-156 are bounded and non-placeholder",
+        "Gate 150 receipt records the bootstrap decisions"
+      ],
+      "definition_of_done": [
+        "the new active pack is internally coherent",
+        "future leaves are materially more detailed than the thin Gate 146-149 leaves they replace as future authority"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after Gate 150 router truth is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_*",
+        "docs/planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md"
+      ]
+    },
+    "LEAF-G150-003": {
+      "id": "LEAF-G150-003",
+      "gate": "Gate 150",
+      "title": "Route the repo truthfully to Gate 151 and harden planning guards",
+      "objective": "Update the active router surfaces and planning tests so the new pack is the truthful active authority.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G150-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "Router-only and planning-guard work; no runtime behaviour changes are allowed.",
+      "vocabulary_terms_checked": [
+        "active pack",
+        "latest closed pack retained as evidence"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate150_corrective_successor_pack_planning.py",
+        "planning-governance tests that admit the new active pack state"
+      ],
+      "inputs": [
+        "branch work/gate-150-corrective-successor-pack-20260402",
+        "new active planning quartet"
+      ],
+      "ordered_actions": [
+        "Move PLANS.md from no-active-pack state to the new active corrective successor pack.",
+        "Update the canonical gate map so Gate 150 is complete and Gate 151 is the current active gate.",
+        "Append a changelog entry for the planning activation.",
+        "Add or amend planning tests only where router truth or active-pack truth has changed."
+      ],
+      "forbidden_actions": [
+        "Do not weaken historical tests merely to silence failures.",
+        "Do not leave the gate map, leaves ledger, and execution log out of sync.",
+        "Do not claim the new pack is closed."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate148_review_trace_replay_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate135_opening_drive_continuation_lifecycle_planning.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "router, gate map, leaves ledger, and execution log all agree on Gate 151 active",
+        "new Gate 150 planning test passes",
+        "planning-governance tests touched for router truth remain green"
+      ],
+      "definition_of_done": [
+        "Gate 150 is complete and Gate 151 is active on the branch",
+        "the planning proof slice is green in the repo-local installed environment"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Create a fresh full-history zip from the exact reported branch state before handing work back to the operator.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate150_corrective_successor_pack_planning.py"
+      ]
+    },
+    "LEAF-G151-001": {
+      "id": "LEAF-G151-001",
+      "gate": "Gate 151",
+      "title": "Build the field-level ownership ledger",
+      "objective": "Freeze owner, mutation path, and compatibility status for every affected downstream field from posture through final join.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_GATE142_OVERWRITE_AND_OWNERSHIP_INVENTORY.md"
+      ],
+      "workflow_intent_assertion": "Planning-only ownership hardening across Stages 4-7 and downstream review consumers.",
+      "vocabulary_terms_checked": [
+        "stage_local_handoff",
+        "final_risk_join"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/risk_gateway.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Trace every downstream field and compatibility surface named by Gate 142 and the closed seam tranche.",
+        "Record the authoritative owner, mutation point, and downstream readers for each field.",
+        "Separate authoritative surfaces from compatibility-only surfaces and mark each with retain, migrate, or defer status."
+      ],
+      "forbidden_actions": [
+        "Do not stop at stage labels alone; record field-level truth.",
+        "Do not classify a compatibility surface as authoritative merely because many tests read it.",
+        "Do not invent consumers that are not present in the repo."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 151 receipt contains a field-level ownership table.",
+        "authoritative versus compatibility-only surfaces are distinguished explicitly."
+      ],
+      "definition_of_done": [
+        "every affected downstream field has an ownership verdict",
+        "the receipt is detailed enough that a coding gate can follow it without inventing ownership semantics"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ]
+    },
+    "LEAF-G151-002": {
+      "id": "LEAF-G151-002",
+      "gate": "Gate 151",
+      "title": "Build the transitive consumer migration matrix",
+      "objective": "Enumerate immediate and transitive consumers, migration priority, and residual compatibility reliance.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G151-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md"
+      ],
+      "workflow_intent_assertion": "Downstream consumer mapping only; no runtime behaviour change.",
+      "vocabulary_terms_checked": [
+        "review_packet",
+        "bounded_trace"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "src/nvda_desk/schemas/trace_review.py",
+        "src/nvda_desk/services/review_packets.py",
+        "src/nvda_desk/api/app.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Walk each consumer named by Gate 142 and any newly-discovered transitive reader.",
+        "Classify each consumer as already reconciled, compatibility-dependent, migrate in this pack, or defer to later packs.",
+        "Assign migration priority so later gates know which consumers must move first."
+      ],
+      "forbidden_actions": [
+        "Do not treat review-only surfaces as harmless if they encode runtime truth.",
+        "Do not omit transitive readers once discovered.",
+        "Do not claim replay or legacy reconciliation without naming the exact consumer."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py"
+      ],
+      "expected_evidence": [
+        "Gate 151 receipt contains a transitive consumer matrix with migration priority.",
+        "residual compatibility dependencies are listed explicitly."
+      ],
+      "definition_of_done": [
+        "immediate and transitive consumers are both accounted for",
+        "the receipt tells later gates exactly which consumers remain to migrate or defer"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "src/nvda_desk/schemas/trace_review.py"
+      ]
+    },
+    "LEAF-G151-003": {
+      "id": "LEAF-G151-003",
+      "gate": "Gate 151",
+      "title": "Freeze sufficiency and residual-gap law",
+      "objective": "State where the preserved seam is sufficient now, where it is not, and what later gates must still prove.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G151-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf converts the inventory into executable planning law for later corrective gates.",
+      "vocabulary_terms_checked": [
+        "residual gap ledger"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Write a sufficiency section that explains why the preserved seam is enough in some areas and insufficient in others.",
+        "Write a residual-gap ledger that points Gates 152-155 at the remaining unresolved authority questions.",
+        "Reflect any scope clarifications back into the active gate master and leaves ledger."
+      ],
+      "forbidden_actions": [
+        "Do not let future gates infer sufficiency from silence.",
+        "Do not smuggle in arbiter or coefficient redesign work here.",
+        "Do not leave residual gaps as generic prose."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py"
+      ],
+      "expected_evidence": [
+        "Gate 151 receipt contains a preserved-seam sufficiency section and residual-gap ledger.",
+        "Gate 152-155 leaf scopes are tightened if Gate 151 discovers needed clarifications."
+      ],
+      "definition_of_done": [
+        "later gates have an explicit residual-gap input",
+        "the pack scope stays truthful after Gate 151 discoveries"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE151_FIELD_LEVEL_OWNERSHIP_AND_CONSUMER_MIGRATION.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ]
+    },
+    "LEAF-G151-004": {
+      "id": "LEAF-G151-004",
+      "gate": "Gate 151",
+      "title": "Advance the corrective pack from Gate 151 to Gate 152 honestly",
+      "objective": "Update the control surfaces, execution log, and gate-map truth after Gate 151 finishes.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G151-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Gate-closeout control-surface update only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate151_field_level_ownership_and_consumer_migration.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the active-gate router state from Gate 151 to Gate 152.",
+        "Record exact validation commands and observed results in the execution log.",
+        "Create the required handoff zip from the exact reported repo state."
+      ],
+      "forbidden_actions": [
+        "Do not advance the active gate if any control surface still points at Gate 151.",
+        "Do not omit the zip artefact name from the receipt.",
+        "Do not close the gate without recording observed evidence."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all point to Gate 152 active.",
+        "Gate 151 execution receipt records exact evidence and zip artefact name."
+      ],
+      "definition_of_done": [
+        "Gate 151 is honestly closed and Gate 152 is active",
+        "the exact reported repo state is recoverable from the handoff artefact"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G152-001": {
+      "id": "LEAF-G152-001",
+      "gate": "Gate 152",
+      "title": "Freeze Stage 5 admissibility cases and non-cases",
+      "objective": "Define the exact admissibility cases, no-lead cases, watch-only cases, and blocked cases that later execution must prove.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_GATE146_ELIGIBILITY_ADMISSIBILITY_AND_EXECUTION_CANDIDATE_OWNERSHIP.md"
+      ],
+      "workflow_intent_assertion": "Corrective planning for Stage 5 only; upstream setup-generation work remains historical evidence.",
+      "vocabulary_terms_checked": [
+        "eligibility_admissibility"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Trace how Stage 5 outputs are produced and consumed on the current closed seam baseline.",
+        "Write explicit case tables for admitted, blocked, watch-only, and no-lead paths.",
+        "State which Stage 5 outputs are authoritative versus compatibility or presentation surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not let Stage 6 redefine Stage 5 semantics by implication.",
+        "Do not write only a happy-path proof burden.",
+        "Do not collapse blocked and watch-only outcomes into generic non-action prose."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 152 receipt contains explicit Stage 5 case tables.",
+        "authoritative Stage 5 outputs are named explicitly."
+      ],
+      "definition_of_done": [
+        "Stage 5 admissibility proof law is explicit and case-complete",
+        "later coding leaves know exactly which Stage 5 cases must be exercised"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    "LEAF-G152-002": {
+      "id": "LEAF-G152-002",
+      "gate": "Gate 152",
+      "title": "Freeze Stage 6 candidate-ownership contradictions and selection proof",
+      "objective": "Define the Stage 6 ownership and contradiction cases that must be proven distinctly from Stage 5.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G152-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Corrective planning for Stage 6 ownership only.",
+      "vocabulary_terms_checked": [
+        "execution_candidate_ownership"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Trace how Stage 6 picks or declines a lead candidate after Stage 5 admissibility.",
+        "Write explicit proof obligations for multi-candidate, contradiction, no-lead, and watch-only continuations.",
+        "State which Stage 6 surfaces are authoritative and which remain compatibility-only."
+      ],
+      "forbidden_actions": [
+        "Do not use a single-candidate path as a substitute for contradiction proof.",
+        "Do not treat candidate ownership as just a renamed admissibility list.",
+        "Do not ignore non-lead paths because they do not trade."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 152 receipt contains explicit Stage 6 contradiction and selection proof burden.",
+        "candidate-ownership surfaces are distinguished from admissibility surfaces."
+      ],
+      "definition_of_done": [
+        "Stage 6 ownership law is explicit and not merely descriptive",
+        "the receipt forces later execution to prove contradiction handling and no-lead paths"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ]
+    },
+    "LEAF-G152-003": {
+      "id": "LEAF-G152-003",
+      "gate": "Gate 152",
+      "title": "Freeze Stage 5 and Stage 6 non-equivalence law",
+      "objective": "State exactly where Stage 5 and Stage 6 must agree, where they may differ, and how downstream consumers must read that difference.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G152-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Bridges corrective planning from runtime authority to downstream consumer interpretation.",
+      "vocabulary_terms_checked": [
+        "review_packet"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Compare the authoritative Stage 5 and Stage 6 surfaces field by field.",
+        "Write an explicit agreement-versus-non-equivalence table for downstream consumers.",
+        "Name the review or bounded-trace consequences of each non-equivalence."
+      ],
+      "forbidden_actions": [
+        "Do not imply equality because both surfaces are visible in review.",
+        "Do not leave downstream readers to infer how disagreements should be interpreted.",
+        "Do not stop at runtime code; include review/trace consequences."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 152 receipt contains an agreement-versus-non-equivalence table.",
+        "downstream interpretation rules are written explicitly."
+      ],
+      "definition_of_done": [
+        "Stage 5 and Stage 6 comparison law is explicit",
+        "later consumer work cannot pretend the two surfaces are interchangeable"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE152_STAGE5_STAGE6_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py"
+      ]
+    },
+    "LEAF-G152-004": {
+      "id": "LEAF-G152-004",
+      "gate": "Gate 152",
+      "title": "Advance the corrective pack from Gate 152 to Gate 153 honestly",
+      "objective": "Close Gate 152 and move the active gate to Gate 153 only after the declared proof slice is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G152-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Gate-closeout only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate152_stage5_stage6_authority_replan.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the router quartet to Gate 153 active.",
+        "Record exact validation commands and observed results.",
+        "Create the required handoff zip from the exact reported repo state."
+      ],
+      "forbidden_actions": [
+        "Do not advance the pack if any control surface still points at Gate 152.",
+        "Do not omit observed results from the execution log.",
+        "Do not skip the handoff zip."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate152_stage5_stage6_authority_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all point to Gate 153 active.",
+        "Gate 152 receipt and zip artefact name are recorded."
+      ],
+      "definition_of_done": [
+        "Gate 152 is honestly closed and Gate 153 is active",
+        "the reported repo state is recoverable"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G153-001": {
+      "id": "LEAF-G153-001",
+      "gate": "Gate 153",
+      "title": "Freeze overlay-versus-terminal overlap classes exhaustively",
+      "objective": "Enumerate every overlap class and required proof outcome before code changes can claim reconciliation.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_GATE147_OVERLAY_EVALUATION_AND_TERMINAL_RISK_APPLICATION.md"
+      ],
+      "workflow_intent_assertion": "Corrective planning for overlay and terminal application authority.",
+      "vocabulary_terms_checked": [
+        "overlay_risk_decision",
+        "terminal_risk_application"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Trace the current overlay and terminal-risk application flow on the closed seam baseline.",
+        "Enumerate every declared overlap class, including currently untested classes.",
+        "Write the required proof outcome for each overlap class."
+      ],
+      "forbidden_actions": [
+        "Do not let untested overlap classes hide behind representative examples.",
+        "Do not treat terminal application as synonymous with final join.",
+        "Do not change the declared overlap set without explicit receipt-level reason."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 153 receipt contains an exhaustive overlap-class table.",
+        "all declared overlap classes have a required proof outcome."
+      ],
+      "definition_of_done": [
+        "later coding leaves cannot skip overlap classes silently",
+        "the receipt closes the coverage hole left by Gate 147 planning"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ]
+    },
+    "LEAF-G153-002": {
+      "id": "LEAF-G153-002",
+      "gate": "Gate 153",
+      "title": "Freeze overlay, terminal, and final-join non-equivalence law",
+      "objective": "State exactly where overlay, terminal application, and final join agree, diverge, and remain compatibility-only.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G153-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Bridges runtime authority to downstream interpretation.",
+      "vocabulary_terms_checked": [
+        "final_risk_join"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/review_explanation.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Write an agreement-versus-non-equivalence matrix for overlay, terminal application, and final join.",
+        "Mark which surface is authoritative for permission, which for applied execution effect, and which remains compatibility-only.",
+        "Name the downstream consumer consequences of each distinction."
+      ],
+      "forbidden_actions": [
+        "Do not imply final join is an independent arbiter if the repo still implements it as a compatibility wrapper.",
+        "Do not leave overlay-versus-terminal meaning to prose intuition.",
+        "Do not omit downstream review consequences."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 153 receipt contains a three-surface non-equivalence matrix.",
+        "authoritative versus compatibility-only use is explicit."
+      ],
+      "definition_of_done": [
+        "overlay, terminal application, and final join are not left semantically blurred",
+        "later coding leaves have explicit downstream interpretation law"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/review_explanation.py"
+      ]
+    },
+    "LEAF-G153-003": {
+      "id": "LEAF-G153-003",
+      "gate": "Gate 153",
+      "title": "Freeze larger architecture boundaries honestly",
+      "objective": "State explicitly whether the corrective pack remains seam hardening only or begins the larger arbiter / parallel-lane redesign, and defer any still-larger work explicitly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G153-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Scope-law corrective planning only.",
+      "vocabulary_terms_checked": [
+        "parallel risk lane",
+        "final arbiter"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Write the explicit architecture boundary statement for Gate 153.",
+        "Name the larger architecture questions that remain out of scope for this corrective pack.",
+        "Propagate any scope clarifications back into the active gate master and leaves if needed."
+      ],
+      "forbidden_actions": [
+        "Do not let the pack imply it solved the final arbiter or independent risk lane question unless it truly will.",
+        "Do not defer work without naming it.",
+        "Do not leave future routing to chat memory."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 153 receipt contains an explicit architecture-boundary statement.",
+        "any out-of-scope larger architecture work is named explicitly."
+      ],
+      "definition_of_done": [
+        "future threads can see what this pack will not solve",
+        "scope drift is reduced before downstream consequence routing begins"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE153_OVERLAY_TERMINAL_FINAL_JOIN_AUTHORITY_REPLAN.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ]
+    },
+    "LEAF-G153-004": {
+      "id": "LEAF-G153-004",
+      "gate": "Gate 153",
+      "title": "Advance the corrective pack from Gate 153 to Gate 154 honestly",
+      "objective": "Close Gate 153 and move the active gate to Gate 154 only after the declared proof slice is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G153-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Gate-closeout only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate153_overlay_terminal_final_join_authority_replan.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the router quartet to Gate 154 active.",
+        "Record exact validation commands and observed results.",
+        "Create the required handoff zip from the exact reported repo state."
+      ],
+      "forbidden_actions": [
+        "Do not advance the active gate with stale router surfaces.",
+        "Do not omit the zip artefact name.",
+        "Do not skip observed validation results."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate153_overlay_terminal_final_join_authority_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all point to Gate 154 active.",
+        "Gate 153 closeout receipt is explicit."
+      ],
+      "definition_of_done": [
+        "Gate 153 is honestly closed and Gate 154 is active",
+        "the reported repo state is recoverable"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G154-001": {
+      "id": "LEAF-G154-001",
+      "gate": "Gate 154",
+      "title": "Freeze the exact downstream consumer set",
+      "objective": "Name every review, trace, replay, API, and legacy expectation consumer that this corrective pack must either migrate or explicitly defer.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md"
+      ],
+      "workflow_intent_assertion": "Corrective downstream planning only.",
+      "vocabulary_terms_checked": [
+        "review_packet",
+        "bounded_trace"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "src/nvda_desk/schemas/trace_review.py",
+        "src/nvda_desk/services/review_packets.py",
+        "src/nvda_desk/api/app.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Start from Gate 142 and Gate 148 consumer inventories.",
+        "Trace each named downstream consumer and any transitive reader discovered from it.",
+        "Write the exact consumer set that Gate 154 must reconcile or defer explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not rely on Gate 148 title language as proof that a consumer was actually migrated.",
+        "Do not omit replay or legacy expectation consumers because they are awkward.",
+        "Do not collapse multiple consumers into one vague category."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate154_downstream_consumer_reconciliation_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 154 receipt contains an exact downstream consumer set.",
+        "each consumer has a migrate-or-defer verdict."
+      ],
+      "definition_of_done": [
+        "the downstream consumer scope is exact rather than aspirational",
+        "later coding leaves know which consumers must move and which are deferred"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "src/nvda_desk/schemas/trace_review.py"
+      ]
+    },
+    "LEAF-G154-002": {
+      "id": "LEAF-G154-002",
+      "gate": "Gate 154",
+      "title": "Freeze residual compatibility dependency law",
+      "objective": "State which downstream consumers still rely on compatibility surfaces and what must be true before those dependencies can be retired.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G154-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning bridge from preserved seam to downstream retirement conditions.",
+      "vocabulary_terms_checked": [
+        "compatibility surface"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate154_downstream_consumer_reconciliation_replan.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Map each downstream consumer to its authoritative inputs and any residual compatibility dependencies.",
+        "Write explicit retirement conditions for every residual compatibility dependency.",
+        "State which dependencies this corrective pack intends to keep deliberately."
+      ],
+      "forbidden_actions": [
+        "Do not call a compatibility dependency retired while a consumer still reads it.",
+        "Do not leave retirement conditions implicit.",
+        "Do not treat review-visible lineage as optional if downstream users depend on it."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate154_downstream_consumer_reconciliation_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 154 receipt contains a compatibility dependency ledger and retirement conditions.",
+        "residual compatibility use is explicit rather than hidden."
+      ],
+      "definition_of_done": [
+        "the repo knows exactly which compatibility surfaces remain downstream-critical",
+        "later execution can retire surfaces only against an explicit condition set"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate154_downstream_consumer_reconciliation_replan.py"
+      ]
+    },
+    "LEAF-G154-003": {
+      "id": "LEAF-G154-003",
+      "gate": "Gate 154",
+      "title": "Freeze honest replay and legacy expectation end-state",
+      "objective": "Define what counts as replay and legacy expectation reconciliation in this pack and what remains future work.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G154-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Scope-law corrective planning for downstream reconciliation.",
+      "vocabulary_terms_checked": [
+        "legacy expectation"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Write the honest end-state for replay and legacy expectation work in this corrective pack.",
+        "Name any replay or legacy expectation work that must move to later packs.",
+        "Reflect any needed scope clarification back into the active gate master and leaves."
+      ],
+      "forbidden_actions": [
+        "Do not let the pack title overstate what the leafing actually requires.",
+        "Do not leave replay or legacy expectations as undefined catch-all words.",
+        "Do not defer work without routing it explicitly."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate154_downstream_consumer_reconciliation_replan.py"
+      ],
+      "expected_evidence": [
+        "Gate 154 receipt contains an explicit replay and legacy expectation end-state statement.",
+        "future deferred work is routed explicitly if needed."
+      ],
+      "definition_of_done": [
+        "replay and legacy expectation scope is honest",
+        "later threads do not need to guess what Gate 154 was meant to reconcile"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE154_DOWNSTREAM_CONSUMER_RECONCILIATION_REPLAN.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ]
+    },
+    "LEAF-G154-004": {
+      "id": "LEAF-G154-004",
+      "gate": "Gate 154",
+      "title": "Advance the corrective pack from Gate 154 to Gate 155 honestly",
+      "objective": "Close Gate 154 and move the active gate to Gate 155 only after the declared proof slice is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G154-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Gate-closeout only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate154_downstream_consumer_reconciliation_replan.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the router quartet to Gate 155 active.",
+        "Record exact validation commands and observed results.",
+        "Create the required handoff zip from the exact reported repo state."
+      ],
+      "forbidden_actions": [
+        "Do not advance the active gate with stale router surfaces.",
+        "Do not omit the zip artefact name.",
+        "Do not skip observed validation results."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate154_downstream_consumer_reconciliation_replan.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all point to Gate 155 active.",
+        "Gate 154 closeout receipt is explicit."
+      ],
+      "definition_of_done": [
+        "Gate 154 is honestly closed and Gate 155 is active",
+        "the reported repo state is recoverable"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G155-001": {
+      "id": "LEAF-G155-001",
+      "gate": "Gate 155",
+      "title": "Freeze the implied downstream work created by Gates 151-154",
+      "objective": "Identify the later packs, docs, or runtime areas that must now change once the corrective hardening gates are complete.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-only routing of downstream implications and successor work.",
+      "vocabulary_terms_checked": [
+        "successor boundary"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/05_GUARDRAILS.md"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Read the closed results of Gates 151-154.",
+        "Write the explicit list of later packs, docs, or runtime areas that now require follow-on work.",
+        "Classify each implication as inside this pack, successor-pack follow-on, or broader architecture deferment."
+      ],
+      "forbidden_actions": [
+        "Do not leave later work as chat-memory implication.",
+        "Do not silently widen this corrective pack to absorb unrelated architecture.",
+        "Do not route obligations without naming the affected surface."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 155 receipt contains an explicit downstream consequence ledger.",
+        "each implied later work item has a routing verdict."
+      ],
+      "definition_of_done": [
+        "the consequences of strengthening the seam tranche are written explicitly",
+        "future work is routed lawfully instead of by implication"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    "LEAF-G155-002": {
+      "id": "LEAF-G155-002",
+      "gate": "Gate 155",
+      "title": "Freeze the successor-boundary statement for larger architecture questions",
+      "objective": "Write the explicit boundary between this corrective pack and still-deferred larger architecture work.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G155-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Scope-law only.",
+      "vocabulary_terms_checked": [
+        "parallel risk lane",
+        "dynamic coefficient redesign"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Write the successor-boundary statement for parallel risk lane, final arbiter, coefficient redesign, and any other larger deferred question.",
+        "Ensure the active gate master and leaves ledger reflect that same boundary.",
+        "Name any future pack or no-pack-yet state honestly."
+      ],
+      "forbidden_actions": [
+        "Do not imply the larger architecture is solved.",
+        "Do not defer larger questions without naming them.",
+        "Do not let the active pack scope drift after Gates 151-154."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py"
+      ],
+      "expected_evidence": [
+        "Gate 155 receipt contains an explicit successor-boundary statement.",
+        "the active pack scope and future-routing language agree."
+      ],
+      "definition_of_done": [
+        "future threads know exactly where this corrective pack stops",
+        "larger architecture questions are deferred honestly and explicitly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE155_DOWNSTREAM_CONSEQUENCE_ROUTING_AND_SUCCESSOR_BOUNDARY.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json"
+      ]
+    },
+    "LEAF-G155-003": {
+      "id": "LEAF-G155-003",
+      "gate": "Gate 155",
+      "title": "Advance the corrective pack from Gate 155 to Gate 156 honestly",
+      "objective": "Close Gate 155 and move the active gate to Gate 156 only after the declared proof slice is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G155-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Gate-closeout only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the router quartet to Gate 156 active.",
+        "Record exact validation commands and observed results.",
+        "Create the required handoff zip from the exact reported repo state."
+      ],
+      "forbidden_actions": [
+        "Do not advance the active gate with stale router surfaces.",
+        "Do not omit the zip artefact name.",
+        "Do not skip observed validation results."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "PLANS, gate map, leaves, and execution log all point to Gate 156 active.",
+        "Gate 155 closeout receipt is explicit."
+      ],
+      "definition_of_done": [
+        "Gate 155 is honestly closed and Gate 156 is active",
+        "the reported repo state is recoverable"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G156-001": {
+      "id": "LEAF-G156-001",
+      "gate": "Gate 156",
+      "title": "Run the full corrective-pack anti-drift audit",
+      "objective": "Audit the active pack, leaves, execution log, router, gate map, guard tests, and receipt chain for any internal contradiction before closeout.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Corrective pack closeout planning only.",
+      "vocabulary_terms_checked": [
+        "anti-drift closeout"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Audit the active pack against the repo-law quartet requirements.",
+        "Check guardrails, scope boundaries, validation commands, and receipt claims for internal contradiction.",
+        "Record every drift defect found and its resolution or stop condition."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack on control-surface string agreement alone.",
+        "Do not ignore stale tests or stale receipt language.",
+        "Do not omit any drift defect that forced a change."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate156_corrective_pack_anti_drift_closeout.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 156 receipt contains a drift-defect ledger and resolution list.",
+        "control-surface agreement is proved explicitly."
+      ],
+      "definition_of_done": [
+        "the corrective pack has an explicit anti-drift audit record",
+        "control-surface agreement is not assumed from vague closeout language"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G156-002": {
+      "id": "LEAF-G156-002",
+      "gate": "Gate 156",
+      "title": "Run the declared proof slice and record exact evidence",
+      "objective": "Run the exact declared validation commands for the corrective pack and record observed results without compressing them into vague summaries.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G156-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Closeout evidence recording only.",
+      "vocabulary_terms_checked": [
+        "proof slice"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate156_corrective_pack_anti_drift_closeout.py"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Run the exact proof slice declared by Gate 156.",
+        "Record every validation command and observed result verbatim enough to audit later.",
+        "If the proof burden is narrowed, record the reason in the receipt and leaves truthfully."
+      ],
+      "forbidden_actions": [
+        "Do not compress many validations into a vague green summary.",
+        "Do not call a selected slice the full proof burden unless it truly is.",
+        "Do not omit failed or repaired validations."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate156_corrective_pack_anti_drift_closeout.py",
+        "make format-check",
+        "make lint"
+      ],
+      "expected_evidence": [
+        "Gate 156 receipt contains the exact validation commands and observed results.",
+        "any narrowed proof burden is justified explicitly if it occurs."
+      ],
+      "definition_of_done": [
+        "the proof burden is evidence-backed rather than summary-only",
+        "later audits can reconstruct exactly what was run and observed"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "tests/test_gate156_corrective_pack_anti_drift_closeout.py"
+      ]
+    },
+    "LEAF-G156-003": {
+      "id": "LEAF-G156-003",
+      "gate": "Gate 156",
+      "title": "Close the pack honestly across the planning quartet",
+      "objective": "Update PLANS, gate map, leaves, and execution log together so the active pack state is honest after closeout.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G156-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-quartet closeout only.",
+      "vocabulary_terms_checked": [],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Update the planning quartet together on the same branch.",
+        "Return the router either to no-active-pack truth or the next truthfully named active pack.",
+        "Record the final state in the receipt and changelog."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack while any control surface still points at an older active gate.",
+        "Do not leave PLANS in an active state if the pack is actually closed.",
+        "Do not omit the changelog entry."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate156_corrective_pack_anti_drift_closeout.py"
+      ],
+      "expected_evidence": [
+        "router quartet agrees on the final closeout state.",
+        "final state is recorded in receipt and changelog."
+      ],
+      "definition_of_done": [
+        "the pack is honestly closed across the required control surfaces",
+        "the final state is reconstructable from repo artefacts"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G156-004": {
+      "id": "LEAF-G156-004",
+      "gate": "Gate 156",
+      "title": "Package the exact green repo state and record the artefact name",
+      "objective": "Create the final full-history handover zip from the exact green repo state and record the artefact name in the receipt and execution log.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G156-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "Packaging closeout only.",
+      "vocabulary_terms_checked": [
+        "full-history zip"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [],
+      "ordered_actions": [
+        "Create the final full-history zip from the exact green repo state.",
+        "Exclude only .venv and cache clutter.",
+        "Record the artefact name in the receipt and execution log."
+      ],
+      "forbidden_actions": [
+        "Do not exclude .git.",
+        "Do not record a zip artefact name that was not actually created.",
+        "Do not package from a dirty or unvalidated state."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate156_corrective_pack_anti_drift_closeout.py"
+      ],
+      "expected_evidence": [
+        "Gate 156 receipt records the exact packaging artefact name.",
+        "execution log records the same artefact name."
+      ],
+      "definition_of_done": [
+        "the final handover artefact is real and named explicitly",
+        "future threads can rehydrate the exact closed state"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "Fresh full-history zip required whenever this gate is reported back to the operator; Gate 156 additionally requires the final corrective pack handover zip.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE156_CORRECTIVE_PACK_ANTI_DRIFT_CLOSEOUT.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    }
+  }
+}

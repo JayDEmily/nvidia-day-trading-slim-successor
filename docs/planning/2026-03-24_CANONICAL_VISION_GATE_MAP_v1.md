@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.13
+Version: v1.14
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
@@ -9,6 +9,9 @@ Paired files:
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md` — latest closed corrective execution log for Gate 140
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` — frozen process-law authority for planning versus execution
 - `AGENTS.md` — stable behavioural authority
+- `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md` — active corrective successor gate authority for Gates 150-156
+- `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` — active corrective successor leaf ledger
+- `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md` — active corrective successor execution log
 
 ## 0. Purpose
 
@@ -44,7 +47,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**. Gates 141-149 are complete on `main`.
+Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**. Gate 150 is complete on `work/gate-150-corrective-successor-pack-20260402`; Gates 151-156 are now routed in the active corrective successor pack.
 
 ## 2. Selected completed-tranche evidence
 
@@ -162,6 +165,13 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 147 | complete on `main` | split overlay evaluation from terminal-risk application once Gate 142 freezes the overlap classes and current dependencies | `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`, `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json` |
 | Gate 148 | complete on `main` | reconcile review, trace, replay, and legacy expectation surfaces to the preserved-seam model | `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`, `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`, `docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md`, `tests/test_gate148_review_trace_replay_runtime.py` |
 | Gate 149 | complete on `main` | run the absolute anti-drift audit, full proof slice, and fresh full-history packaging from the exact green repo state | `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`, `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`, `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-01_GATE149_ABSOLUTE_ANTI_DRIFT_AUDIT_AND_PACK_CLOSEOUT.md`, `tests/test_gate149_stage_local_handoff_pack_closeout.py` |
+| Gate 150 | complete on `work/gate-150-corrective-successor-pack-20260402` | activate the corrective successor pack, preserve Gate 141-149 as historical evidence, and route the repo truthfully to Gate 151 | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md`, `tests/test_gate150_corrective_successor_pack_planning.py` |
+| Gate 151 | active on `work/gate-150-corrective-successor-pack-20260402` | convert Gate 142 into field-level ownership and transitive consumer migration law before any later corrective code or receipts claim boundary closure | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` |
+| Gate 152 | planned | replace the thin Gate 146 planning with explicit Stage 5 versus Stage 6 authority proof burden across contradiction, watch-only, no-lead, and multi-candidate paths | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` |
+| Gate 153 | planned | replace the thin Gate 147 planning with exhaustive overlay / terminal-risk-application / final-join authority law and an explicit larger-architecture boundary statement | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` |
+| Gate 154 | planned | replace the over-broad Gate 148 planning with an exact downstream consumer reconciliation plan that names residual compatibility dependencies and honest replay / legacy end-state | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` |
+| Gate 155 | planned | route the downstream consequences of the hardening tranche explicitly so later work is not left to implication or chat memory | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json` |
+| Gate 156 | planned | run the corrective-pack anti-drift closeout, prove the declared proof slice, synchronize the planning quartet, and package the exact green repo state | `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`, `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md` |
 
 ## 4. Global execution rules
 
@@ -172,4 +182,4 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 5. The gate map governs gate structure only. It does not replace the leaf ledger or execution receipts.
 6. The bounded-scope note may explain scope boundaries, but it must not silently override this gate map.
 7. Gate 45 is retired as a placeholder and must not be revived as a vague catch-all row.
-8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; Gates 128-131 are complete on `main`; Gates 132-134 are complete on `main`; Gates 135-140 are complete on `main`; Gates 141-147 are complete on `main`; The stage-local handoff and terminal-risk seams pack is now closed through Gate 149 on `main`.
+8. Gates 46–50 are complete on `main`; Gates 51–55 are complete on `main`; Gates 56–58 are complete on `main`; Gates 59–79 are complete on `main`; Gates 80–87 are complete on `main`; Gates 88–90 are complete on `main`; Gates 91–93 are complete on `main`; Gates 94–100 are complete on `main`; Gate 101 is complete on `main`; Gate 102 is complete on `main`; Gate 103 is complete on `main`; Gate 104 is complete on `main`; Gate 105 is complete on `main`; Gate 106 is complete on `main`; Gate 107 is complete on `main`; Gate 108 is complete on `main`; Gate 109 is complete on `main`; Gate 110 is complete on `main`; Gate 111 is complete on `main`; Gate 112 is complete on `main`; Gate 113 is complete on `main`; Gate 114 is complete on `main`; Gates 115-121 are complete on `main`; Gates 122-127 are complete on `main`; Gates 128-131 are complete on `main`; Gates 132-134 are complete on `main`; Gates 135-140 are complete on `main`; Gates 141-149 are complete on `main`; Gate 150 is complete on `work/gate-150-corrective-successor-pack-20260402`; Gates 151-156 are routed in the active stage-local handoff corrective successor pack.

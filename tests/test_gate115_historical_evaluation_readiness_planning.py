@@ -10,8 +10,13 @@ PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 GATES = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md"
 LEAVES = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_LEAVES_v1.json"
-EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
-CHECKLIST = REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+EXECUTION_LOG = (
+    REPO_ROOT / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_EXECUTION_LOG_v1.md"
+)
+CHECKLIST = (
+    REPO_ROOT
+    / "docs/planning/2026-03-30_HISTORICAL_EVALUATION_READINESS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+)
 
 
 ALLOWED_CURRENT_GATE_MARKERS = {
@@ -35,7 +40,6 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
-
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
@@ -53,6 +57,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
+    "Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
 }
 
 
@@ -67,18 +78,31 @@ def test_historical_evaluation_readiness_pack_is_active() -> None:
     assert GATES.exists()
     assert LEAVES.exists()
     assert EXECUTION_LOG.exists()
-    assert ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("latest recoverable runtime pack evidence" in plans)
-    assert any(f"Gate {gate}" in plans for gate in range(115, 122)) or "closed through Gate 121" in plans
+    assert ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or (
+        "latest recoverable runtime pack evidence" in plans
+    )
+    assert (
+        any(f"Gate {gate}" in plans for gate in range(115, 122))
+        or "closed through Gate 121" in plans
+    )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
-        "Status: active historical-evaluation readiness pack; Gate 115 active, Gates 116-121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gate 115 complete on `main`, Gate 116 active, Gates 117-121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gates 115-116 complete on `main`, Gate 117 active, Gates 118-121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gates 115-117 complete on `main`, Gate 118 active, Gates 119-121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gates 115-118 complete on `main`, Gate 119 active, Gates 120-121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gates 115-119 complete on `main`, Gate 120 active, Gate 121 planned" in gates
-        or "Status: active historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 active" in gates
-        or "Status: closed historical-evaluation readiness pack on `main`; Gates 115-121 complete, no active gate" in gates
+        "Status: active historical-evaluation readiness pack; Gate 115 active, Gates 116-121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gate 115 complete on `main`, Gate 116 active, Gates 117-121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-116 complete on `main`, Gate 117 active, Gates 118-121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-117 complete on `main`, Gate 118 active, Gates 119-121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-118 complete on `main`, Gate 119 active, Gates 120-121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-119 complete on `main`, Gate 120 active, Gate 121 planned"
+        in gates
+        or "Status: active historical-evaluation readiness pack; Gates 115-120 complete on `main`, Gate 121 active"
+        in gates
+        or "Status: closed historical-evaluation readiness pack on `main`; Gates 115-121 complete, no active gate"
+        in gates
     )
     assert leaves["execution_status"] in {
         "gate_114_closed_historical_evaluation_readiness_pack_active_from_gate_115",

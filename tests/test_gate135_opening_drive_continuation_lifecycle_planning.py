@@ -8,10 +8,20 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
-GATES = REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md"
-LEAVES = REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
-EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
-CHECKLIST = REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+GATES = (
+    REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md"
+)
+LEAVES = (
+    REPO_ROOT / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json"
+)
+EXECUTION_LOG = (
+    REPO_ROOT
+    / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md"
+)
+CHECKLIST = (
+    REPO_ROOT
+    / "docs/planning/2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+)
 
 ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
@@ -31,6 +41,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
+    "Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
 }
 
 
@@ -42,18 +59,52 @@ def test_opening_drive_continuation_lifecycle_pack_is_active() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans)
-    assert ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json" in plans)
-    assert ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md" in plans)
-    assert ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans) or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans)
+    assert (
+        ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans)
+        or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans)
+        or (
+            "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
+            or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
+        )
+    )
+    assert (
+        ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_LEAVES_v1.json" in plans)
+        or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json" in plans)
+        or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json" in plans)
+    )
+    assert (
+        ("2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_EXECUTION_LOG_v1.md" in plans)
+        or ("2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md" in plans)
+        or ("2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md" in plans)
+    )
+    assert (
+        (
+            "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+            in plans
+        )
+        or (
+            "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+            in plans
+        )
+        or (
+            "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+            in plans
+        )
+    )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
-        "Status: active opening-drive continuation lifecycle pilot pack; Gate 135 active, Gates 136-139 planned" in gates
-        or "Status: active opening-drive continuation lifecycle pilot pack; Gate 135 complete on `main`, Gate 136 active, Gates 137-139 planned" in gates
-        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-136 complete on `main`, Gate 137 active, Gates 138-139 planned" in gates
-        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned" in gates
-        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active" in gates
-        or "Status: closed opening-drive continuation lifecycle pilot pack on `main`; Gates 135-139 complete, no active gate" in gates
+        "Status: active opening-drive continuation lifecycle pilot pack; Gate 135 active, Gates 136-139 planned"
+        in gates
+        or "Status: active opening-drive continuation lifecycle pilot pack; Gate 135 complete on `main`, Gate 136 active, Gates 137-139 planned"
+        in gates
+        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-136 complete on `main`, Gate 137 active, Gates 138-139 planned"
+        in gates
+        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-137 complete on `main`, Gate 138 active, Gate 139 planned"
+        in gates
+        or "Status: active opening-drive continuation lifecycle pilot pack; Gates 135-138 complete on `main`, Gate 139 active"
+        in gates
+        or "Status: closed opening-drive continuation lifecycle pilot pack on `main`; Gates 135-139 complete, no active gate"
+        in gates
     )
     assert leaves["execution_status"] in {
         "gate_134_closed_opening_drive_continuation_lifecycle_pilot_active_from_gate_135",
@@ -72,7 +123,9 @@ def test_opening_drive_continuation_lifecycle_pack_is_active() -> None:
         "none — opening-drive continuation lifecycle pilot pack closed through Gate 139 on main",
     }
     assert len(leaves["remaining_leaf_ids"]) in {18, 15, 11, 7, 4, 0}
-    assert execution_log.startswith("# 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1")
+    assert execution_log.startswith(
+        "# 2026-04-01 Opening Drive Continuation Lifecycle Pilot Execution Log v1"
+    )
     assert "Gate 135" in checklist
     for leaf in leaves["leaves"]:
         for command in leaf["validation_commands"]:
@@ -91,7 +144,21 @@ def test_pack_freezes_specimen_scope_and_packet_discipline() -> None:
     assert "## Active packet / data contract authority for execution threads" in gates
     assert "bounded tradable expression family" in gates
     assert leaves["global_rules"]["dmp_v2_execution_stage_envelope_must_remain_stable"] is True
-    assert leaves["global_rules"]["continuation_lifecycle_pilot_is_single_setup_variant_only"] is True
-    assert leaves["global_rules"]["carry_branch_must_consume_lifecycle_output_not_parallel_hidden_logic"] is True
-    assert leaves["global_rules"]["bounded_tradable_expression_family_must_be_frozen_before_lifecycle_behaviour_broadens"] is True
-    assert leaves["global_rules"]["leaf_validation_commands_require_repo_local_installed_env"] is True
+    assert (
+        leaves["global_rules"]["continuation_lifecycle_pilot_is_single_setup_variant_only"] is True
+    )
+    assert (
+        leaves["global_rules"][
+            "carry_branch_must_consume_lifecycle_output_not_parallel_hidden_logic"
+        ]
+        is True
+    )
+    assert (
+        leaves["global_rules"][
+            "bounded_tradable_expression_family_must_be_frozen_before_lifecycle_behaviour_broadens"
+        ]
+        is True
+    )
+    assert (
+        leaves["global_rules"]["leaf_validation_commands_require_repo_local_installed_env"] is True
+    )

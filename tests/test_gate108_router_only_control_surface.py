@@ -39,7 +39,6 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
-
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
@@ -57,6 +56,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
+    "Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
 }
 
 
@@ -64,7 +70,16 @@ def test_plans_md_is_router_only_and_points_at_gate109_or_later() -> None:
     plans = PLANS.read_text(encoding="utf-8")
 
     assert "## Active pack" in plans
-    assert ("- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans)
+    assert (
+        ("- none" in plans)
+        or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+        or (
+            "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
+            or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans
+            or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans
+            or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
+        )
+    )
     assert "The persisted `main` baseline is now closed through Gate 105" not in plans
     assert "Gate 102 is the next active gate" not in plans
 
@@ -83,11 +98,22 @@ def test_gate_map_and_governance_trio_agree_on_gate109_or_later() -> None:
         "gate_111_governance_pack_active_from_gate_112",
         "repo_process_governance_pack_closed_through_gate_112_on_main",
     }
-    assert leaves["active_gate"] in {"Gate 109", "Gate 110", "Gate 111", "Gate 112", "none — repo-process governance pack closed through Gate 112 on main"}
+    assert leaves["active_gate"] in {
+        "Gate 109",
+        "Gate 110",
+        "Gate 111",
+        "Gate 112",
+        "none — repo-process governance pack closed through Gate 112 on main",
+    }
     assert (
-        "Status: active execution log for the repo-process governance pack; Gates 107-108 complete on `main`, Gate 109 next" in execution_log
-        or "Status: active execution log for the repo-process governance pack; Gates 107-109 complete on `main`, Gate 110 next" in execution_log
-        or "Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next" in execution_log
-        or "Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next" in execution_log
-        or "Status: closed execution log for the repo-process governance pack; Gates 107-112 complete on `main`, no active gate" in execution_log
+        "Status: active execution log for the repo-process governance pack; Gates 107-108 complete on `main`, Gate 109 next"
+        in execution_log
+        or "Status: active execution log for the repo-process governance pack; Gates 107-109 complete on `main`, Gate 110 next"
+        in execution_log
+        or "Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next"
+        in execution_log
+        or "Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next"
+        in execution_log
+        or "Status: closed execution log for the repo-process governance pack; Gates 107-112 complete on `main`, no active gate"
+        in execution_log
     )

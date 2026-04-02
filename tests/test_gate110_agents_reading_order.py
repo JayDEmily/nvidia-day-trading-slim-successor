@@ -35,7 +35,6 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
-
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
@@ -53,6 +52,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
+    "Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
 }
 
 
@@ -62,7 +68,9 @@ def test_agents_includes_process_law_and_router_hierarchy() -> None:
     assert "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md" in agents
     assert "repo-root `PLANS.md`" in agents
     assert "governs **how planning packs are created, amended, routed, and closed**" in agents
-    assert "active gate master under `docs/planning/` only if repo-root `PLANS.md` names one" in agents
+    assert (
+        "active gate master under `docs/planning/` only if repo-root `PLANS.md` names one" in agents
+    )
     assert "Do not add tranche history to AGENTS" not in agents
 
 
@@ -70,6 +78,17 @@ def test_governance_pack_advances_to_gate111_or_later() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
-    assert ("- none" in plans) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans) or ("2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans) or ("closed through Gate 112" in plans)
+    assert (
+        ("- none" in plans)
+        or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+        or (
+            "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
+            or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans
+            or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans
+            or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
+            or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
+        )
+        or ("closed through Gate 112" in plans)
+    )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "| Gate 110 | complete on `main` |" in gate_map

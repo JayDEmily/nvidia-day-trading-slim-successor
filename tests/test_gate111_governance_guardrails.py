@@ -41,7 +41,6 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 130 in the post-flight repo consistency pack**.",
     "Current active gate: **Gate 131 in the post-flight repo consistency pack**.",
     "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**.",
-
     "Current active gate: **Gate 135 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 136 in the opening-drive continuation lifecycle pilot pack**.",
     "Current active gate: **Gate 137 in the opening-drive continuation lifecycle pilot pack**.",
@@ -59,6 +58,13 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 148 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**.",
     "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**.",
+    "Current active gate: **Gate 151 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 152 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 153 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
+    "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
 }
 
 
@@ -86,10 +92,17 @@ def test_governance_trio_agrees_on_gate111_or_later() -> None:
         "gate_111_governance_pack_active_from_gate_112",
         "repo_process_governance_pack_closed_through_gate_112_on_main",
     }
-    assert leaves["active_gate"] in {"Gate 111", "Gate 112", "none — repo-process governance pack closed through Gate 112 on main"}
+    assert leaves["active_gate"] in {
+        "Gate 111",
+        "Gate 112",
+        "none — repo-process governance pack closed through Gate 112 on main",
+    }
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert (
-        "Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next" in execution_log
-        or "Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next" in execution_log
-        or "Status: closed execution log for the repo-process governance pack; Gates 107-112 complete on `main`, no active gate" in execution_log
+        "Status: active execution log for the repo-process governance pack; Gates 107-110 complete on `main`, Gate 111 next"
+        in execution_log
+        or "Status: active execution log for the repo-process governance pack; Gates 107-111 complete on `main`, Gate 112 next"
+        in execution_log
+        or "Status: closed execution log for the repo-process governance pack; Gates 107-112 complete on `main`, no active gate"
+        in execution_log
     )
