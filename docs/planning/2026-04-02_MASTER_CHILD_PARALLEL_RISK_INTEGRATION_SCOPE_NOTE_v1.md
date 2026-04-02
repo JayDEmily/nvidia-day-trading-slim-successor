@@ -32,6 +32,7 @@ No gate may skip directly to Tranche B.
 - Do not blind-apply patches from child into master.
 - Do not use child gate numbering as the primary merge surface; commit ancestry and semantic file reads govern the merge.
 - Do not create an arbiter, `step_1_1`, `step_8`, or `eighth_stage` under the guise of the lane.
+- Do not let the new lane become an arbiter by slow scope drift or duplicate caution ownership.
 - Do not redesign DMP v2 schema-core in this pack.
 - Do not add new live coefficient surfaces casually.
 - Do not leave whole-repo vocabulary/workbook-path hygiene for “later”.

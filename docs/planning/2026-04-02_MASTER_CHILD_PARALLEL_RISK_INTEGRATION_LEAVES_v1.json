@@ -1,8 +1,8 @@
 {
   "governing_plan": "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_177_complete_gate_178_active_on_work_branch",
-  "active_gate": "Gate 178",
+  "execution_status": "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_work_branch",
+  "active_gate": "none",
   "supersedes": [
     "2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md"
   ],
@@ -13,7 +13,10 @@
     "Gate 174",
     "Gate 175",
     "Gate 176",
-    "Gate 177"
+    "Gate 177",
+    "Gate 178",
+    "Gate 179",
+    "Gate 180"
   ],
   "completed_leaf_ids": [
     "LEAF-G171-001",
@@ -43,9 +46,7 @@
     "LEAF-G177-001",
     "LEAF-G177-002",
     "LEAF-G177-003",
-    "LEAF-G177-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G177-004",
     "LEAF-G178-001",
     "LEAF-G178-002",
     "LEAF-G178-003",
@@ -59,11 +60,8 @@
     "LEAF-G180-003",
     "LEAF-G180-004"
   ],
-  "pending_gate_ids": [
-    "Gate 178",
-    "Gate 179",
-    "Gate 180"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": [
     "Complete Gate 173 before any src/ runtime edits in Gates 174-178.",
     "Read every materially changed file end to end before claiming semantic alignment.",
@@ -872,7 +870,7 @@
     "LEAF-G178-001": {
       "gate": "Gate 178",
       "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add or update targeted tests for the implemented lane contracts and behaviours.",
         "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
@@ -899,7 +897,7 @@
     "LEAF-G178-002": {
       "gate": "Gate 178",
       "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add or update targeted tests for the implemented lane contracts and behaviours.",
         "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
@@ -926,7 +924,7 @@
     "LEAF-G178-003": {
       "gate": "Gate 178",
       "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add or update targeted tests for the implemented lane contracts and behaviours.",
         "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
@@ -953,7 +951,7 @@
     "LEAF-G178-004": {
       "gate": "Gate 178",
       "title": "Integrate selective proofs and calibration/receipt metadata \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Add or update targeted tests for the implemented lane contracts and behaviours.",
         "Thread the new lane into the calibration/evaluation receipt architecture already frozen in master.",
@@ -980,7 +978,7 @@
     "LEAF-G179-001": {
       "gate": "Gate 179",
       "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
         "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
@@ -1007,7 +1005,7 @@
     "LEAF-G179-002": {
       "gate": "Gate 179",
       "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
         "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
@@ -1034,7 +1032,7 @@
     "LEAF-G179-003": {
       "gate": "Gate 179",
       "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
         "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
@@ -1061,7 +1059,7 @@
     "LEAF-G179-004": {
       "gate": "Gate 179",
       "title": "Run whole-repo vocabulary and workbook-path hygiene \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Scan docs, planning packs, config docs, vocabulary surfaces, tests, and touched code for terminology drift after the merge.",
         "Normalize workbook naming/path references and canonical terminology while preserving explicitly allowed aliases and historical evidence where needed.",
@@ -1088,7 +1086,7 @@
     "LEAF-G180-001": {
       "gate": "Gate 180",
       "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 1",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
         "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
@@ -1115,7 +1113,7 @@
     "LEAF-G180-002": {
       "gate": "Gate 180",
       "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 2",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
         "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
@@ -1142,7 +1140,7 @@
     "LEAF-G180-003": {
       "gate": "Gate 180",
       "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 3",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
         "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",
@@ -1169,7 +1167,7 @@
     "LEAF-G180-004": {
       "gate": "Gate 180",
       "title": "Audit merge fidelity, implementation truth, proofs, and package the green state \u2014 tranche 4",
-      "status": "pending",
+      "status": "complete",
       "ordered_actions": [
         "Audit whether the child planning law was merged faithfully and whether the implemented lane matches the merged law.",
         "Audit proofs, vocabulary/build integrity, workbook governance truth, and any remaining deferred items.",

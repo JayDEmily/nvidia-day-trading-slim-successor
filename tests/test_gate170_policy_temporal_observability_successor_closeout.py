@@ -29,6 +29,7 @@ def test_gate170_control_surfaces_close_honestly_on_work_branch() -> None:
         for marker in {
             "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
             "active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
+            "no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
         }
     )
     assert any(
@@ -36,6 +37,7 @@ def test_gate170_control_surfaces_close_honestly_on_work_branch() -> None:
         for marker in {
             "Current active gate: **none — policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`**.",
             "Current active gate: **Gate 172 in the master/child parallel-risk integration pack**.",
+            "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`**.",
         }
     )
     assert (

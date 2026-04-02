@@ -1,6 +1,6 @@
 # 2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1
 
-Status: active master/child parallel-risk integration pack; Gates 171-177 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 178 active, Gates 179-180 planned
+Status: closed master/child parallel-risk integration pack through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
 
 ## Purpose
 
@@ -23,9 +23,9 @@ Route the next bounded tranche that first merges the child planning/reference-da
 | Gate 175 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement temporal/calendar/event/multi-clock runtime surfaces from the merged child planning law and align them with the governed temporal-status ledger already frozen in master |
 | Gate 176 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement market/options dependency, dislocation, and translation surfaces from the merged planning law without duplicating the existing deterministic spine |
 | Gate 177 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | implement anti-duplication, fragility/output semantics, and lean review integration so the lane is descriptive, candidate-aware, and non-foggy rather than a second caution engine |
-| Gate 178 | active on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | integrate selective proofs, calibration/receipt metadata, and pack continuity so the new lane is evaluable without widening runtime authority casually |
-| Gate 179 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | run whole-repo vocabulary/workbook-path hygiene, rebuild/check the canonical vocabulary surfaces, and close any terminology drift introduced by the merge |
-| Gate 180 | planned on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | audit master/child merge fidelity, runtime implementation truth, proof coverage, vocabulary hygiene, and package the exact green repo state honestly |
+| Gate 178 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | integrate selective proofs, calibration/evaluation-prep metadata, and pack continuity so the new lane is evaluable without widening runtime authority casually |
+| Gate 179 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | run whole-repo vocabulary/workbook-path hygiene against the existing canonical dictionary and classify any residual historical workbook references honestly |
+| Gate 180 | complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402` | audit master/child merge fidelity, runtime implementation truth, proof/build coverage, vocabulary hygiene, and package the exact green repo state honestly |
 
 ## Merge and implementation law
 

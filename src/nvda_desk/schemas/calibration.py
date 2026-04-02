@@ -143,6 +143,72 @@ class WalkForwardSliceDefinition(BaseModel):
 
 
 
+class ParallelRiskLaneSurfaceCalibrationMetadata(BaseModel):
+    """Evaluation-prep metadata for one implemented parallel-risk lane surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    surface_id: str
+    behavioural_purpose: str
+    expected_directionality: str
+    anti_goal: str
+    owner_stage: str
+    surface_family: str
+    review_cadence: str
+    activation_state: str
+    evidence_sources: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskLanePolicyCalibrationMetadata(BaseModel):
+    """Evaluation-prep metadata for one stable parallel-risk lane policy slice."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    policy_id: str
+    policy_family: str
+    primary_target_surface: str
+    behavioural_purpose: str
+    expected_effect: str
+    anti_goal: str
+    over_tightening_signs: list[str] = Field(default_factory=list)
+    redundancy_signs: list[str] = Field(default_factory=list)
+    danger_signs: list[str] = Field(default_factory=list)
+    review_cadence: str
+    evidence_sources: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskLaneEvaluationPreparationPacket(BaseModel):
+    """Lean calibration/evaluation-prep packet for the implemented lane slices."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    lane_id: str
+    implemented_surfaces: list[str] = Field(default_factory=list)
+    surface_metadata: list[ParallelRiskLaneSurfaceCalibrationMetadata] = Field(default_factory=list)
+    policy_metadata: list[ParallelRiskLanePolicyCalibrationMetadata] = Field(default_factory=list)
+    required_receipt_sections: list[str] = Field(
+        default_factory=lambda: [
+            "surface_changes_observed",
+            "policy_firing_summary",
+            "help_vs_harm_assessment",
+            "over_tightening_and_stack_pressure",
+            "redundancy_or_dead_weight_findings",
+            "danger_or_unstable_behaviour_findings",
+            "opportunity_shaping_absence_or_presence",
+            "recommended_next_action",
+        ]
+    )
+    selective_proof_order: list[str] = Field(
+        default_factory=lambda: [
+            "parallel_risk_runtime_targeted",
+            "parallel_risk_review_targeted",
+            "imported_child_pack_continuity",
+            "vocabulary_build_then_hygiene",
+        ]
+    )
+    notes: list[str] = Field(default_factory=list)
+
+
 class GovernedCoefficientSnapshot(BaseModel):
     """Stable governed-coefficient evidence bound to replay and horizon outputs."""
 

@@ -18,6 +18,7 @@ from datetime import datetime
 from typing import cast
 
 from nvda_desk.config import Settings
+from nvda_desk.schemas.calibration import ParallelRiskLaneEvaluationPreparationPacket
 from nvda_desk.schemas.cognition import (
     BindingStageName,
     ExecutionExpressionInput,
@@ -100,6 +101,7 @@ class DeskCognitionRuntimeResult:
     execution: ExecutionExpressionOutput
     review: ReviewExplanationOutput
     parallel_risk_lane: ParallelRiskLanePacket | None = None
+    parallel_risk_calibration: ParallelRiskLaneEvaluationPreparationPacket | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
     stage_packets: tuple[DmpV2Packet, ...] = ()
     packet_lineage: tuple[str, ...] = ()
@@ -334,6 +336,9 @@ class DeskCognitionRuntime:
             eligibility=eligibility,
             execution=execution,
         )
+        parallel_risk_calibration = self._parallel_risk_lane.build_evaluation_preparation_packet(
+            packet=parallel_risk_lane,
+        )
         posture = posture.model_copy(update={"parallel_risk_lane_packet": parallel_risk_lane})
         execution = execution.model_copy(update={"parallel_risk_lane_packet": parallel_risk_lane})
         stage_local_handoff = StageLocalHandoffSurface(
@@ -440,6 +445,7 @@ class DeskCognitionRuntime:
             execution=execution,
             review=review,
             parallel_risk_lane=parallel_risk_lane,
+            parallel_risk_calibration=parallel_risk_calibration,
             stage_local_handoff=stage_local_handoff,
             stage_packets=ordered_packets,
             packet_lineage=tuple(packet.packet_id for packet in ordered_packets),

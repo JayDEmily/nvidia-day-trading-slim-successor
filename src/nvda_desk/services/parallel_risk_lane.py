@@ -12,6 +12,11 @@ caution engine.
 
 from __future__ import annotations
 
+from nvda_desk.schemas.calibration import (
+    ParallelRiskLaneEvaluationPreparationPacket,
+    ParallelRiskLanePolicyCalibrationMetadata,
+    ParallelRiskLaneSurfaceCalibrationMetadata,
+)
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionOutput,
     MarketRegimeContextOutput,
@@ -286,6 +291,126 @@ class ParallelRiskLaneService:
                 ),
                 "notes": [*packet.notes, "candidate_semantics_added_in_gate_177", "no_distributed_caution_fog"],
             }
+        )
+
+    def build_evaluation_preparation_packet(
+        self,
+        *,
+        packet: ParallelRiskLanePacket,
+    ) -> ParallelRiskLaneEvaluationPreparationPacket:
+        """Build the lean Gate 178 evaluation-prep packet for implemented lane slices."""
+
+        implemented_surfaces = ["temporal_surface"]
+        surface_metadata = [
+            ParallelRiskLaneSurfaceCalibrationMetadata(
+                surface_id="temporal_surface",
+                behavioural_purpose="Preserve session-phase, calendar, event, and expiry timing semantics for the co-resident lane without mutating serial-stage truth.",
+                expected_directionality="Richer timing/event detail should improve risk-read timing sensitivity rather than widen authority.",
+                anti_goal="Do not let timing metadata become a hidden arbiter or duplicate the temporal stage.",
+                owner_stage="temporal_context",
+                surface_family="timing_governance",
+                review_cadence="per implementation tranche and before later paper-testing",
+                activation_state="active_runtime",
+                evidence_sources=[
+                    "parallel_risk_lane.temporal_surface",
+                    "temporal_context_output",
+                    "desk_calendar_authority",
+                ],
+            )
+        ]
+        policy_metadata = [
+            ParallelRiskLanePolicyCalibrationMetadata(
+                policy_id="parallel_risk:temporal_calendar_multi_clock",
+                policy_family="timing_governance",
+                primary_target_surface="temporal_surface",
+                behavioural_purpose="Keep the lane anchored to lawful session/event/expiry clocks and calendar-source governance.",
+                expected_effect="The lane should become more timing-aware without changing coefficient authority or serial grammar order.",
+                anti_goal="Do not let timing reads manufacture new runtime permission states.",
+                over_tightening_signs=["event timing labels appear to suppress candidates without candidate-specific evidence"],
+                redundancy_signs=["the lane restates temporal stage facts without adding any distinct timing interpretation"],
+                danger_signs=["compatibility timestamps override live scheduled-fact authority"],
+                review_cadence="per implementation tranche and before later paper-testing",
+                evidence_sources=["parallel_risk_lane.temporal_surface", "review.parallel_risk_lane"],
+            )
+        ]
+        if packet.market_translation_surface is not None:
+            implemented_surfaces.append("market_translation_surface")
+            surface_metadata.append(
+                ParallelRiskLaneSurfaceCalibrationMetadata(
+                    surface_id="market_translation_surface",
+                    behavioural_purpose="Translate regime and options-flow context into dependency activation, dislocation, and environmental-weather semantics.",
+                    expected_directionality="When translation pressure rises, the lane should describe more impairment or dislocation risk without becoming a second caution engine.",
+                    anti_goal="Do not convert options-table interpretation into automatic veto or duplicate serial-stage market logic.",
+                    owner_stage="independent_parallel_risk_lane",
+                    surface_family="translation_semantics",
+                    review_cadence="per implementation tranche and before later paper-testing",
+                    activation_state="active_runtime",
+                    evidence_sources=[
+                        "parallel_risk_lane.market_translation_surface",
+                        "market_regime_context_output",
+                        "options_flow_context_output",
+                    ],
+                )
+            )
+            policy_metadata.append(
+                ParallelRiskLanePolicyCalibrationMetadata(
+                    policy_id="parallel_risk:market_options_dependency_translation",
+                    policy_family="translation_semantics",
+                    primary_target_surface="market_translation_surface",
+                    behavioural_purpose="Classify whether options and cross-asset conditions are active enough to matter now and whether the resulting pressure is dislocation, justified repricing, or impairment.",
+                    expected_effect="The lane should become more descriptive about translation pressure and environmental weather without taking arbiter authority.",
+                    anti_goal="Do not treat every stressed options state as the same thing or smuggle extra risk caps into the serial spine.",
+                    over_tightening_signs=["translation labels always collapse to impairment regardless of breadth or volatility context"],
+                    redundancy_signs=["the lane repeats regime/options summaries without changing the descriptive classification"],
+                    danger_signs=["dislocation and impairment classifications stop staying distinct"],
+                    review_cadence="per implementation tranche and before later paper-testing",
+                    evidence_sources=["parallel_risk_lane.market_translation_surface", "review.parallel_risk_lane_summary"],
+                )
+            )
+        if packet.candidate_audit_surface is not None:
+            implemented_surfaces.append("candidate_audit_surface")
+            surface_metadata.append(
+                ParallelRiskLaneSurfaceCalibrationMetadata(
+                    surface_id="candidate_audit_surface",
+                    behavioural_purpose="Separate environmental weather from candidate-specific fragility and preserve one descriptive primary binding point per active candidate shape.",
+                    expected_directionality="As fragility rises, the lane should describe reshaping, waiting, or hedge-required consequences without duplicating serial-stage caution ownership.",
+                    anti_goal="Do not create distributed caution fog or a silent second owner for vetoes and deployable-capital clamps.",
+                    owner_stage="independent_parallel_risk_lane",
+                    surface_family="candidate_audit",
+                    review_cadence="per implementation tranche and before later paper-testing",
+                    activation_state="active_runtime",
+                    evidence_sources=[
+                        "parallel_risk_lane.candidate_audit_surface",
+                        "execution_expression_output",
+                        "review.parallel_risk_lane_summary",
+                    ],
+                )
+            )
+            policy_metadata.append(
+                ParallelRiskLanePolicyCalibrationMetadata(
+                    policy_id="parallel_risk:candidate_fragility_anti_duplication",
+                    policy_family="candidate_audit",
+                    primary_target_surface="candidate_audit_surface",
+                    behavioural_purpose="Keep candidate-aware fragility, consequence, and anti-duplication semantics inspectable while preserving the serial spine as the only primary caution owner.",
+                    expected_effect="Candidate-specific audits should explain shape changes and suppressed duplicate caution rather than widen runtime authority.",
+                    anti_goal="Do not let candidate fragility labels become a hidden arbiter or second caution stack.",
+                    over_tightening_signs=["candidate audits always imply smaller or no-carry regardless of execution shape"],
+                    redundancy_signs=["candidate audit mirrors execution output with no distinct fragility information"],
+                    danger_signs=["anti_duplication_primary_binding_point drifts away from the serial owner actually binding the decision"],
+                    review_cadence="per implementation tranche and before later paper-testing",
+                    evidence_sources=["parallel_risk_lane.candidate_audit_surface", "review.parallel_risk_lane"],
+                )
+            )
+        return ParallelRiskLaneEvaluationPreparationPacket(
+            lane_id=packet.lane_id,
+            implemented_surfaces=implemented_surfaces,
+            surface_metadata=surface_metadata,
+            policy_metadata=policy_metadata,
+            notes=[
+                "gate_178_preparatory_only",
+                "selective_proof_order_is_bounded",
+                "calibration_has_not_started",
+            ],
         )
 
     def _updated_stage_reads(
