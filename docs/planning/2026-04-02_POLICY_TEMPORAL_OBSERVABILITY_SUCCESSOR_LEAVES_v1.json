@@ -1,23 +1,24 @@
 {
   "governing_plan": "docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_164_complete_gate_165_active_on_work_branch",
-  "active_gate": "Gate 165",
+  "execution_status": "gate_167_complete_gate_168_active_on_work_branch",
+  "active_gate": "Gate 168",
   "supersedes": [
     "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
     "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
     "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 164"
+    "Gate 164",
+    "Gate 165",
+    "Gate 166",
+    "Gate 167"
   ],
   "completed_leaf_ids": [
     "LEAF-G164-001",
     "LEAF-G164-002",
     "LEAF-G164-003",
-    "LEAF-G164-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G164-004",
     "LEAF-G165-001",
     "LEAF-G165-002",
     "LEAF-G165-003",
@@ -29,7 +30,9 @@
     "LEAF-G167-001",
     "LEAF-G167-002",
     "LEAF-G167-003",
-    "LEAF-G167-004",
+    "LEAF-G167-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G168-001",
     "LEAF-G168-002",
     "LEAF-G168-003",
@@ -44,9 +47,6 @@
     "LEAF-G170-004"
   ],
   "pending_gate_ids": [
-    "Gate 165",
-    "Gate 166",
-    "Gate 167",
     "Gate 168",
     "Gate 169",
     "Gate 170"
@@ -208,7 +208,7 @@
     "LEAF-G165-001": {
       "gate": "Gate 165",
       "title": "Inventory current live modifier policies and stable policy IDs",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Read `state_conditioned_modifier.py` end to end and enumerate the currently live policy families, policy IDs, target surfaces, and precedence semantics already embedded in code.",
         "Distinguish what is already declared in types or doctrine from what is still hidden in service logic.",
@@ -235,7 +235,7 @@
     "LEAF-G165-002": {
       "gate": "Gate 165",
       "title": "Define the lean declared policy-matrix schema",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Specify a compact checked-in matrix shape with policy id, trigger/state, target surface, operation type, precedence band, clamp source, and explanation text.",
         "Keep code as the execution engine and the matrix as declared law only.",
@@ -262,7 +262,7 @@
     "LEAF-G165-003": {
       "gate": "Gate 165",
       "title": "Freeze the DMP v2 / review boundary for policy-law externalisation",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Trace where policy IDs already surface in cognition/review payloads and where DMP v2 currently serialises payload blocks.",
         "Freeze the rule that this pack does not redesign DMP v2 schema-core.",
@@ -289,7 +289,7 @@
     "LEAF-G165-004": {
       "gate": "Gate 165",
       "title": "Freeze successor implementation/proof burden for policy-law materialisation",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Define the minimum future coding steps required to materialise the matrix.",
         "Define the proof burden for later runtime wiring and review visibility.",
@@ -316,7 +316,7 @@
     "LEAF-G166-001": {
       "gate": "Gate 166",
       "title": "Inventory authority-backed temporal values currently consumed by the classifier",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Read `temporal_state.py` and enumerate which classifier values already load from `coefficient_authority.v1.yaml`.",
         "Cross-check workbook provenance references and Gate 126 evidence.",
@@ -343,7 +343,7 @@
     "LEAF-G166-002": {
       "gate": "Gate 166",
       "title": "Classify remaining hard-coded temporal heuristics",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Enumerate each remaining hard-coded temporal threshold or heuristic in the classifier.",
         "For each item, decide whether the planning law says admit later, keep fixed intentionally, defer, or remove as redundant.",
@@ -370,7 +370,7 @@
     "LEAF-G166-003": {
       "gate": "Gate 166",
       "title": "Define the temporal-status ledger and operator/review wording",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Freeze the exact status classes and the wording future review/output surfaces should use.",
         "Make it possible for later runtime/review code to say whether a temporal value is governed, fixed, or deferred.",
@@ -397,7 +397,7 @@
     "LEAF-G166-004": {
       "gate": "Gate 166",
       "title": "Route successor implementation for temporal status materialisation",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Define the coding order for classifier comments/constants, authority updates if any, and later review visibility.",
         "Tie the future proof burden to exact status classes.",
@@ -424,7 +424,7 @@
     "LEAF-G167-001": {
       "gate": "Gate 167",
       "title": "Freeze current caution outcome families inside the deterministic spine",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Inventory the cautionary outcomes currently produced or read by posture, modifier, execution, and risk-gateway seams.",
         "Group them into outcome families such as deployable-cap reduction, hedge requirement, stand-down/kill-switch, and threshold tightening.",
@@ -451,7 +451,7 @@
     "LEAF-G167-002": {
       "gate": "Gate 167",
       "title": "Assign primary binding points and allowed descriptive secondary reads",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "For each current outcome family, specify the primary binding point inside the deterministic spine.",
         "Specify which later stages may only describe, carry, or read the consequence rather than bind it again.",
@@ -478,7 +478,7 @@
     "LEAF-G167-003": {
       "gate": "Gate 167",
       "title": "Define the conservatism-budget review surface",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Specify a simple review surface that counts which caution mechanisms fired, which one actually bound, and where multiple layers compressed the same dimension.",
         "Keep the design diagnostic, not mathematical theatre.",
@@ -505,7 +505,7 @@
     "LEAF-G167-004": {
       "gate": "Gate 167",
       "title": "Route successor implementation and cross-thread coordination rules",
-      "status": "planned",
+      "status": "complete",
       "ordered_actions": [
         "Define what the current pack may later implement versus what must wait for the risk-lane merge.",
         "Freeze explicit coordination notes for later merge conflict resolution.",

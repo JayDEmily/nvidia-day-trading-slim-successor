@@ -26,6 +26,11 @@ RECEIPT = REPO_ROOT / "docs/planning/2026-04-02_GATE157_COEFFICIENT_ARCHITECTURE
 
 ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 165 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 166 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 167 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 169 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 170 in the policy/temporal/observability successor pack**.",
     'Current active gate: **Gate 158 in the coefficient architecture consolidation pack**.',
     'Current active gate: **Gate 159 in the coefficient architecture consolidation pack**.',
     'Current active gate: **Gate 160 in the coefficient architecture consolidation pack**.',
@@ -38,6 +43,11 @@ ALLOWED_CURRENT_GATE_MARKERS = {
 
 ALLOWED_PLAN_MARKERS = {
     "active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 166 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 167 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 169 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
     "active gate: Gate 158 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 159 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 160 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",

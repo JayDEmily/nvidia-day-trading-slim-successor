@@ -54,7 +54,7 @@ This note exists so later gates do not silently widen from the approved tranche 
 
 ## Lean-policy rule for this pack
 
-This pack may define a compact declared policy matrix only if it is machine-adjacent and materially reduces code archaeology.
+This pack may define a compact declared policy matrix only if it is machine-adjacent and materially reduces code archaeology. In plain language: do not write more policy prose than the repo can actually use.
 
 This pack may **not** create:
 - a long doctrine essay that paraphrases the code;

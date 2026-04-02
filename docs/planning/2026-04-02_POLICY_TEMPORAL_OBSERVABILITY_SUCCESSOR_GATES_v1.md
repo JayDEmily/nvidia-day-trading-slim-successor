@@ -1,4 +1,4 @@
-Status: active policy/temporal/observability successor pack; Gate 164 complete on `work/gate-164-policy-temporal-observability-pack-20260402`, Gate 165 active, Gates 166-170 planned
+Status: active policy/temporal/observability successor pack; Gates 164-167 complete on `work/gate-164-policy-temporal-observability-pack-20260402`, Gate 168 active, Gates 169-170 planned
 # 2026-04-02 Policy Temporal Observability Successor Gates v1
 
 ## Purpose
@@ -70,7 +70,7 @@ Out of scope:
 ### Gate 165: Lean policy-law externalisation for the existing modifier plane
 
 **Status**
-- planned
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Define the smallest checked-in policy matrix that truthfully externalises the currently live modifier policies without rewriting the engine or widening runtime scope.
@@ -95,7 +95,7 @@ Out of scope:
 ### Gate 166: Temporal-governance status ledger and admission law
 
 **Status**
-- planned
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Finish the temporal-governance planning pass by classifying every current temporal value used by the classifier into governed live threshold, fixed heuristic, deferred candidate, or removal candidate.
@@ -117,7 +117,7 @@ Out of scope:
 ### Gate 167: Non-risk-lane serial-conservatism binding-point and diagnostic budget law
 
 **Status**
-- planned
+- complete on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Define how cautionary outcomes are allowed to bind inside the existing deterministic spine, without reallocating independent-risk-lane authority, and specify a diagnostic conservatism-budget review surface.
@@ -141,7 +141,7 @@ Out of scope:
 ### Gate 168: Review/observability chain strengthening and operator view law
 
 **Status**
-- planned
+- active on `work/gate-164-policy-temporal-observability-pack-20260402`
 
 **Objective**
 - Specify the minimum review/observability improvements needed so a single decision can be reconstructed from baseline through policy and clamp to the consuming stage and any downstream compatibility/risk read.

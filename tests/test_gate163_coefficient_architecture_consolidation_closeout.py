@@ -40,6 +40,11 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
         for marker in {
             "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
             "active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 166 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 167 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 169 on `work/gate-164-policy-temporal-observability-pack-20260402`",
+    "active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
         }
     )
     assert any(
@@ -47,6 +52,11 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
         for marker in {
             "Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`**.",
             "Current active gate: **Gate 165 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 166 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 167 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 169 in the policy/temporal/observability successor pack**.",
+    "Current active gate: **Gate 170 in the policy/temporal/observability successor pack**.",
         }
     )
     assert (

@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the policy/temporal/observability successor pack.
 
-Current planned sequence: active gate Gate 165 in the policy/temporal/observability successor pack on `work/gate-164-policy-temporal-observability-pack-20260402`.
+Current planned sequence: active gate Gate 168 in the policy/temporal/observability successor pack on `work/gate-164-policy-temporal-observability-pack-20260402`.
 
 ## Frozen law surfaces checked
 
@@ -45,9 +45,9 @@ Current planned sequence: active gate Gate 165 in the policy/temporal/observabil
 - [x] `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_EXECUTION_LOG_v1.md`
 - [x] `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - [x] `docs/planning/2026-04-02_GATE164_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_PACK_BOOTSTRAP.md`
-- [x] future Gate 165 receipt file named by the active pack when that gate executes
-- [x] future Gate 166 receipt file named by the active pack when that gate executes
-- [x] future Gate 167 receipt file named by the active pack when that gate executes
+- [x] `docs/planning/2026-04-02_GATE165_LEAN_POLICY_LAW_EXTERNALISATION.md`
+- [x] `docs/planning/2026-04-02_GATE166_TEMPORAL_GOVERNANCE_STATUS_LEDGER.md`
+- [x] `docs/planning/2026-04-02_GATE167_SERIAL_CONSERVATISM_BINDING_POINT_LAW.md`
 - [x] future Gate 168 receipt file named by the active pack when that gate executes
 - [x] future Gate 169 receipt file named by the active pack when that gate executes
 - [x] future Gate 170 receipt file named by the active pack when that gate executes
@@ -61,7 +61,10 @@ Current planned sequence: active gate Gate 165 in the policy/temporal/observabil
 - [x] `src/nvda_desk/schemas/state_policy.py`
 - [x] `src/nvda_desk/schemas/dmp_v2.py`
 - [x] `tests/test_gate164_policy_temporal_observability_successor_pack_planning.py`
-- [x] future gate-specific planning tests for Gates 165-170
+- [x] `tests/test_gate165_lean_policy_law_externalisation.py`
+- [x] `tests/test_gate166_temporal_governance_status_ledger.py`
+- [x] `tests/test_gate167_serial_conservatism_binding_point_law.py`
+- [x] future gate-specific planning tests for Gates 168-170
 - [x] `CHANGELOG.jsonl`
 
 ## Notes
