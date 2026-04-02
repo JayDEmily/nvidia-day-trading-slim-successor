@@ -1,6 +1,6 @@
 # 2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1
 
-Status: active execution log for the coefficient architecture consolidation pack; Gates 157-159 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 160 active
+Status: closed execution log for the coefficient architecture consolidation pack through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 ## Purpose
 
@@ -372,3 +372,78 @@ For every completed leaf record:
 - Command: `python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
 - Observed results: `13 passed in 0.56s`
 - Scope: planning-guard proof for Gates 157-162 plus the active routing state to Gate 163 on the work branch
+
+
+## Gate 163 receipts
+
+### LEAF-G163-001 — Audit workstream coverage against the approved scope note
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `fc4ea50`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md`
+- Validations run: `python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py`
+- Observed results: covered by the Gate 163 proof slice recorded below
+- Full suite required: no
+- Exact evidence: the receipt now audits Workstreams 1-4 against the approved brief, checks that workbook-derived gold was preserved, and records the distinction between planning capture and runtime implementation
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G163-002 — Audit router truth, vocabulary discipline, and move-together integrity
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `fc4ea50`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`, `tests/test_gate158_target_architecture_and_stage_purity_consolidation.py`, `tests/test_gate159_coefficient_world_status_and_inventory_law.py`, `tests/test_gate160_owner_stage_and_activation_state_ledger.py`, `tests/test_gate161_opportunity_vs_caution_shaping_law.py`, `tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py`
+- Validations run: `python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the Gate 163 proof slice recorded below
+- Full suite required: no
+- Exact evidence: router surfaces, vocabulary verdict, and move-together integrity are now synchronized to the closed-through-Gate-163-on-work-branch state
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G163-003 — Run the declared anti-drift proof slice and record exact results
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `fc4ea50`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`, `tests/test_gate163_coefficient_architecture_consolidation_closeout.py`
+- Validations run: `python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_document_hygiene.py`
+- Observed results: recorded below in the Gate 163 proof slice
+- Full suite required: no
+- Exact evidence: the exact closeout proof slice is recorded in the receipt and execution log rather than reconstructed from memory
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+### LEAF-G163-004 — Synchronize closeout surfaces and package the exact green repo state
+
+- Branch: `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Start commit: `fc4ea50`
+- End commit: working tree on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- Files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`, `docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md`, `CHANGELOG.jsonl`, `tests/test_gate163_coefficient_architecture_consolidation_closeout.py`
+- Validations run: `python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py`
+- Observed results: covered by the Gate 163 proof slice recorded below
+- Full suite required: no
+- Exact evidence: the pack is now closed honestly on the work branch and the final zip artefact name is frozen here and in the receipt
+- Stop conditions hit: none
+- Merge status: not merged
+- Receipt mode: recorded live
+
+## Gate 163 proof slice
+
+- Command: `python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_document_hygiene.py`
+- Observed results: `9 passed in 0.23s`
+- Scope: closeout proof for Gate 163 plus historical pack-planning and document-hygiene guards on the exact candidate closeout state
+
+## Packaging artefact
+
+- `repo_gate163_coefficient_architecture_consolidation_pack_closed_workbranch_2026-04-02.zip`
+
+## Additional post-closeout integrity pass
+
+- Command: `python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_document_hygiene.py`
+- Observed results: `19 passed in 0.37s`
+- Scope: non-required integrity check across the full coefficient-architecture planning-guard chain after Gate 163 closeout

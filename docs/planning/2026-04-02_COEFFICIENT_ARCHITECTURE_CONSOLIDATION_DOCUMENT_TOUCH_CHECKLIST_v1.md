@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the coefficient architecture consolidation pack.
 
-Current planned sequence: Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gate 163 active.
+Current planned sequence: coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`.
 
 ## Frozen law surfaces checked
 
@@ -85,4 +85,4 @@ Current planned sequence: Gates 157-162 complete on `work/gate-157-coefficient-a
 - Gate 160 is complete and freezes the owner-stage / direct-consumer / compatibility-carriage / activation-state ledger plus the allowed closure modes for mismatch cases.
 - Gate 161 is complete and freezes the caution-heavy current reality, the workbook-derived upstream opportunity path, and the non-duplication rule against silent risk-lane overlap.
 - Gate 162 is complete and routes the successor implementation sequence for Workstreams 1-4, including move-together rules and the explicit independent risk-lane boundary.
-- Gate 163 is now active and must audit the pack itself, prove the planning quartet is synchronized, and close the pack with a fresh full-history zip artefact.
+- Gate 163 is complete and closes the pack by auditing thread-to-pack coverage, proving the declared closeout slice, synchronizing the planning quartet, and recording the fresh full-history zip artefact.

@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_162_complete_gate_163_active_on_work_branch",
-  "active_gate": "Gate 163",
+  "execution_status": "coefficient_architecture_consolidation_pack_closed_through_gate_163_on_work_branch",
+  "active_gate": "none",
   "supersedes": [
     "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
     "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
@@ -14,7 +14,8 @@
     "Gate 159",
     "Gate 160",
     "Gate 161",
-    "Gate 162"
+    "Gate 162",
+    "Gate 163"
   ],
   "completed_leaf_ids": [
     "LEAF-G157-001",
@@ -40,17 +41,14 @@
     "LEAF-G162-001",
     "LEAF-G162-002",
     "LEAF-G162-003",
-    "LEAF-G162-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G162-004",
     "LEAF-G163-001",
     "LEAF-G163-002",
     "LEAF-G163-003",
     "LEAF-G163-004"
   ],
-  "pending_gate_ids": [
-    "Gate 163"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -1584,7 +1582,7 @@
       "gate": "Gate 163",
       "title": "Audit workstream coverage against the approved scope note",
       "objective": "Check that the pack actually covers all four approved workstreams and no more.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G162-004"
       ],
@@ -1642,7 +1640,7 @@
       "gate": "Gate 163",
       "title": "Audit router truth, vocabulary discipline, and move-together integrity",
       "objective": "Check that the planning control surfaces and vocabulary decisions stayed synchronized.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G163-001"
       ],
@@ -1702,7 +1700,7 @@
       "gate": "Gate 163",
       "title": "Run the declared anti-drift proof slice and record exact results",
       "objective": "Prove the planning guards and closeout surfaces on the exact green repo state.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G163-002"
       ],
@@ -1758,7 +1756,7 @@
       "gate": "Gate 163",
       "title": "Synchronize closeout surfaces and package the exact green repo state",
       "objective": "Close the pack without drift and hand off a durable artefact.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G163-003"
       ],

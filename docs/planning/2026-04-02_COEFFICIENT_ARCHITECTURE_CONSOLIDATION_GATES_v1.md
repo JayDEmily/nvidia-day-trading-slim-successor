@@ -1,4 +1,4 @@
-Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 163 active
+Status: closed coefficient architecture consolidation pack through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 # 2026-04-02 Coefficient Architecture Consolidation Gates v1
 
 ## Purpose
@@ -346,7 +346,7 @@ Bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDA
 ### Gate 163: Audit the coefficient-architecture consolidation pack and close it honestly
 
 **Status**
-- active on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
 
 **Objective**
 - Audit the pack's own coverage, routing truth, vocabulary discipline, workbook integration, and anti-drift integrity before the pack can be treated as complete.

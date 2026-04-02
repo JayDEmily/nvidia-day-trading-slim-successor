@@ -31,6 +31,7 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     'Current active gate: **Gate 161 in the coefficient architecture consolidation pack**.',
     'Current active gate: **Gate 162 in the coefficient architecture consolidation pack**.',
     'Current active gate: **Gate 163 in the coefficient architecture consolidation pack**.',
+    'Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`**.',
     'Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `main`**.',
 }
 
@@ -44,6 +45,7 @@ ALLOWED_PLAN_MARKERS = {
     "active gate: Gate 162 on `main`",
     "active gate: Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "active gate: Gate 163 on `main`",
+    "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `main`",
 }
 
@@ -57,6 +59,7 @@ ALLOWED_GATE_STATUS = {
     "Status: active coefficient architecture consolidation pack; Gates 157-161 complete on `main`, Gate 162 active, Gate 163 planned",
     "Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 163 active",
     "Status: active coefficient architecture consolidation pack; Gates 157-162 complete on `main`, Gate 163 active",
+    "Status: closed coefficient architecture consolidation pack through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
     "Status: closed coefficient architecture consolidation pack through Gate 163 on `main`",
 }
 
@@ -89,6 +92,7 @@ def test_gate157_pack_is_active_and_non_placeholder() -> None:
         "gate_161_complete_gate_162_active_on_main",
         "gate_162_complete_gate_163_active_on_work_branch",
         "gate_162_complete_gate_163_active_on_main",
+        "coefficient_architecture_consolidation_pack_closed_through_gate_163_on_work_branch",
         "coefficient_architecture_consolidation_pack_closed_through_gate_163_on_main",
     }
     assert leaves["active_gate"] in {"Gate 158", "Gate 159", "Gate 160", "Gate 161", "Gate 162", "Gate 163", "none"}
