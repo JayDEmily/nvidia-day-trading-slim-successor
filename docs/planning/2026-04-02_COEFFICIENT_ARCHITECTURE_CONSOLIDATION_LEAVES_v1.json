@@ -1,0 +1,1824 @@
+{
+  "governing_plan": "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+  "version": "v1",
+  "execution_status": "gate_157_complete_gate_158_active_on_work_branch",
+  "active_gate": "Gate 158",
+  "supersedes": [
+    "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+    "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json",
+    "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 157"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G157-001",
+    "LEAF-G157-002",
+    "LEAF-G157-003",
+    "LEAF-G157-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G158-001",
+    "LEAF-G158-002",
+    "LEAF-G158-003",
+    "LEAF-G158-004",
+    "LEAF-G159-001",
+    "LEAF-G159-002",
+    "LEAF-G159-003",
+    "LEAF-G159-004",
+    "LEAF-G160-001",
+    "LEAF-G160-002",
+    "LEAF-G160-003",
+    "LEAF-G160-004",
+    "LEAF-G161-001",
+    "LEAF-G161-002",
+    "LEAF-G161-003",
+    "LEAF-G161-004",
+    "LEAF-G162-001",
+    "LEAF-G162-002",
+    "LEAF-G162-003",
+    "LEAF-G162-004",
+    "LEAF-G163-001",
+    "LEAF-G163-002",
+    "LEAF-G163-003",
+    "LEAF-G163-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 158",
+    "Gate 159",
+    "Gate 160",
+    "Gate 161",
+    "Gate 162",
+    "Gate 163"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "one_branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "document_touch_checklist_required": true,
+    "repo_local_installed_env_required": true,
+    "no_runtime_semantic_change_in_gate_157": true,
+    "existing_vocabulary_first": true,
+    "workbook_not_runtime_authority": true,
+    "owner_stage_and_activation_truth_required_before_later_code_changes": true,
+    "zip_required_for_each_operator_handoff": true,
+    "independent_risk_lane_reserved_for_separate_successor_work": true
+  },
+  "leaf_order": [
+    "LEAF-G157-001",
+    "LEAF-G157-002",
+    "LEAF-G157-003",
+    "LEAF-G157-004",
+    "LEAF-G158-001",
+    "LEAF-G158-002",
+    "LEAF-G158-003",
+    "LEAF-G158-004",
+    "LEAF-G159-001",
+    "LEAF-G159-002",
+    "LEAF-G159-003",
+    "LEAF-G159-004",
+    "LEAF-G160-001",
+    "LEAF-G160-002",
+    "LEAF-G160-003",
+    "LEAF-G160-004",
+    "LEAF-G161-001",
+    "LEAF-G161-002",
+    "LEAF-G161-003",
+    "LEAF-G161-004",
+    "LEAF-G162-001",
+    "LEAF-G162-002",
+    "LEAF-G162-003",
+    "LEAF-G162-004",
+    "LEAF-G163-001",
+    "LEAF-G163-002",
+    "LEAF-G163-003",
+    "LEAF-G163-004"
+  ],
+  "leaves": {
+    "LEAF-G157-001": {
+      "id": "LEAF-G157-001",
+      "gate": "Gate 157",
+      "title": "Re-read frozen authorities, corrective successor evidence, and coefficient-control surfaces",
+      "objective": "Start from repo truth only before activating a new pack.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "config/README.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Planning bootstrap only; no runtime semantic change is allowed.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient",
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "config/README.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/risk_gateway.py"
+      ],
+      "inputs": [
+        "closed Gate 156 repo state on `main`"
+      ],
+      "ordered_actions": [
+        "Reread the frozen law surfaces and the current router before creating a new pack.",
+        "Trace the current governed coefficient authority, salvage/example registry, workbook evidence, and runtime consumer files so the new pack starts from observed repo truth.",
+        "Confirm that the new work category is coefficient architecture consolidation for Workstreams 1-4 rather than a continuation of the Gate 150-156 seam-hardening category.",
+        "Confirm that the independent risk lane remains separate successor work rather than an in-scope bootstrap subject."
+      ],
+      "forbidden_actions": [
+        "Do not create a new pack merely because the old one is nearby.",
+        "Do not start writing gates before re-reading the active vocabulary and packet authorities.",
+        "Do not assume workbook tabs are runtime authority because they are rich.",
+        "Do not silently absorb Workstream 5 risk-lane scope into this pack."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "bootstrap rationale is grounded in repo files and workbook evidence already present in the repo",
+        "pack category change is explicit before any new gate text is written"
+      ],
+      "definition_of_done": [
+        "the bootstrap rationale can point to observed repo artefacts only",
+        "the new pack boundary against the independent risk lane is explicit"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md",
+        "config/README.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/risk_gateway.py"
+      ]
+    },
+    "LEAF-G157-002": {
+      "id": "LEAF-G157-002",
+      "gate": "Gate 157",
+      "title": "Write the active planning quartet, scope note, and Gate 157 receipt",
+      "objective": "Populate the new pack from repo truth only.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Creates the new active planning scaffolding and bounded-scope note that later execution must obey literally.",
+      "vocabulary_terms_checked": [
+        "execution_expression",
+        "baseline_coefficient",
+        "state_conditioned_modifier"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-02_GATE157_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_PACK_BOOTSTRAP.md"
+      ],
+      "inputs": [
+        "template pack",
+        "Workstream 1-4 crosswalk",
+        "workbook-derived gold"
+      ],
+      "ordered_actions": [
+        "Write one active gates master for Gates 157-163 with a final audit gate and no placeholder rows.",
+        "Write one leaves ledger with detailed ordered actions, forbidden actions, validations, expected evidence, and definitions of done for every future leaf.",
+        "Write one execution log and one document-touch checklist that match the new pack exactly.",
+        "Write one bounded-scope note that freezes the approved Workstreams 1-4 brief, workbook gold, and out-of-scope boundary.",
+        "Write a Gate 157 receipt that records why this pack now exists and why Gate 156 remains historical evidence."
+      ],
+      "forbidden_actions": [
+        "Do not leave placeholder sections or empty future leaves.",
+        "Do not omit the final audit / closeout gate.",
+        "Do not treat descriptive phrases as governed vocabulary by stealth.",
+        "Do not rely on chat memory instead of repo-native scope documentation."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "new active pack exists with bounded Gates 157-163",
+        "scope note captures workbook gold and Workstream 1-4 boundary",
+        "future gate leaves are materially detailed"
+      ],
+      "definition_of_done": [
+        "the new active pack is internally coherent",
+        "the scope note is enough for a later coding thread to understand what this pack is and is not"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-02_GATE157_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_PACK_BOOTSTRAP.md"
+      ]
+    },
+    "LEAF-G157-003": {
+      "id": "LEAF-G157-003",
+      "gate": "Gate 157",
+      "title": "Route the repo truthfully to Gate 158 and harden planning guards",
+      "objective": "Update router surfaces and planning tests so the new pack is the truthful active authority.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only and planning-guard work; runtime behaviour must remain at the Gate 156 baseline.",
+      "vocabulary_terms_checked": [
+        "execution_expression",
+        "eligibility_admissibility",
+        "execution_candidate_ownership"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "inputs": [
+        "work/gate-157-coefficient-architecture-consolidation-pack-20260402",
+        "new active planning quartet"
+      ],
+      "ordered_actions": [
+        "Move `PLANS.md` from the no-active-pack state to the new coefficient architecture consolidation pack.",
+        "Update the canonical gate map so Gate 157 is complete and Gate 158 is the active gate on the work branch.",
+        "Append a changelog entry for the planning activation.",
+        "Add or amend planning tests only where router truth or active-pack truth has changed."
+      ],
+      "forbidden_actions": [
+        "Do not leave `PLANS.md`, the gate map, the leaves ledger, and the execution log disagreeing about the active gate.",
+        "Do not claim a merged-`main` state that has not happened.",
+        "Do not change runtime code while updating router truth.",
+        "Do not omit the bounded-scope note from the active router if the pack relies on it."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py tests/test_gate128_post_flight_repo_consistency_planning.py tests/test_gate122_signal_coefficient_authority_planning.py tests/test_gate115_historical_evaluation_readiness_planning.py tests/test_gate114_research_mode_clarity_microtranche.py tests/test_gate113_execution_authority_microtranche.py tests/test_gate112_governance_closeout.py tests/test_gate111_governance_guardrails.py tests/test_gate110_agents_reading_order.py tests/test_gate109_template_pack_governance.py tests/test_gate108_router_only_control_surface.py tests/test_gate107_repo_process_governance.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "router, gate map, leaves ledger, execution log, and scope note all point to Gate 158 as the next active gate",
+        "planning guard test covers the new active pack state"
+      ],
+      "definition_of_done": [
+        "repo control surfaces agree on the new active pack",
+        "the planning guard test passes on the declared proof slice"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ]
+    },
+    "LEAF-G157-004": {
+      "id": "LEAF-G157-004",
+      "gate": "Gate 157",
+      "title": "Package the exact work-branch state for operator handoff",
+      "objective": "Create the durable artefact that protects the planning work from sandbox loss.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G157-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Packaging-only leaf; no semantic repo change is allowed beyond the artefact itself.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [],
+      "inputs": [
+        "work/gate-157-coefficient-architecture-consolidation-pack-20260402"
+      ],
+      "ordered_actions": [
+        "Package the exact repo state from the work branch as a fresh full-history zip.",
+        "Exclude only `.venv` and cache clutter.",
+        "Record the packaging artefact in the operator reply so the state can be rehydrated later."
+      ],
+      "forbidden_actions": [
+        "Do not omit `.git/` from the handoff artefact.",
+        "Do not package a stale repo state different from the one just validated.",
+        "Do not claim a merged-`main` state that does not exist."
+      ],
+      "validation_commands": [],
+      "expected_evidence": [
+        "fresh full-history zip for the exact work-branch state exists"
+      ],
+      "definition_of_done": [
+        "the branch state can be rehydrated without losing the planning work"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": []
+    },
+    "LEAF-G158-001": {
+      "id": "LEAF-G158-001",
+      "gate": "Gate 158",
+      "title": "Consolidate repo-native coefficient architecture vocabulary and family law",
+      "objective": "Write one repo-native architecture receipt for Workstream 1 using existing terms first.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G157-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-only; architecture consolidation without runtime code edits.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient",
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE158_TARGET_ARCHITECTURE_AND_STAGE_PURITY_CONSOLIDATION.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "repo doctrine",
+        "workbook crosswalk verdict"
+      ],
+      "ordered_actions": [
+        "Map the repo's existing architecture terms to the coefficient-family architecture without inventing new vocabulary unless required.",
+        "State exactly which coefficient-family concepts already exist in doctrine, workbook, and runtime surfaces.",
+        "Freeze which descriptive phrases remain descriptive only until later vocabulary admission.",
+        "Record the retain / descriptive-only / candidate-new-term split explicitly in the receipt."
+      ],
+      "forbidden_actions": [
+        "Do not rewrite repo history as if the architecture were absent.",
+        "Do not admit new governed vocabulary without updating the vocabulary authority and builder together.",
+        "Do not flatten distinct concepts merely because they sound adjacent."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "one explicit repo-native coefficient architecture statement exists",
+        "vocabulary sufficiency or insufficiency is recorded with proof"
+      ],
+      "definition_of_done": [
+        "later coding threads no longer need chat memory to understand the target architecture",
+        "any vocabulary additions are either admitted properly or explicitly rejected"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_TARGET_ARCHITECTURE_AND_STAGE_PURITY_CONSOLIDATION.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json"
+      ]
+    },
+    "LEAF-G158-002": {
+      "id": "LEAF-G158-002",
+      "gate": "Gate 158",
+      "title": "Freeze workbook raw-versus-derived and Step 1 stage-purity law as pack constraints",
+      "objective": "Promote the workbook's raw-first and stage-purity rules into explicit later-gate constraints.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G158-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Planning-only; this leaf constrains future work rather than changing runtime behaviour.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE158_TARGET_ARCHITECTURE_AND_STAGE_PURITY_CONSOLIDATION.md"
+      ],
+      "inputs": [
+        "workbook sheets README, Raw_Primitives_Catalog, Derived_Features_Catalog, Temporal_Step1_Framework"
+      ],
+      "ordered_actions": [
+        "Extract the raw-versus-derived ordering law from the workbook and state it in repo planning form.",
+        "Extract the Step 1 stage-purity prohibitions and state what later gates must not violate.",
+        "Tie those workbook rules to the repo's current stage grammar so future coefficient work cannot use downstream derived outputs as Step 1 crutches."
+      ],
+      "forbidden_actions": [
+        "Do not treat workbook heuristics as runtime truth just because they are useful.",
+        "Do not allow later coefficient work to blur missing raw-data design into fake dynamic cleverness.",
+        "Do not weaken stage purity into vague advice."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
+      ],
+      "expected_evidence": [
+        "receipt carries explicit raw-first / derived-second and Step 1 stage-purity constraints"
+      ],
+      "definition_of_done": [
+        "later gates are bound by explicit workbook-derived constraints, not vague reminders"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE158_TARGET_ARCHITECTURE_AND_STAGE_PURITY_CONSOLIDATION.md"
+      ]
+    },
+    "LEAF-G158-003": {
+      "id": "LEAF-G158-003",
+      "gate": "Gate 158",
+      "title": "Decide whether any new governed vocabulary is actually required",
+      "objective": "Force a yes-or-no decision on vocabulary admission instead of letting descriptive phrases drift.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G158-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "scripts/build_canonical_vocabulary.py"
+      ],
+      "workflow_intent_assertion": "Vocabulary-governance leaf only; runtime behaviour must not change here.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "scripts/build_canonical_vocabulary.py"
+      ],
+      "inputs": [
+        "candidate descriptive phrases from the scope note"
+      ],
+      "ordered_actions": [
+        "Check whether existing canonical terms can already express coefficient-world status, activation-state truth, and opportunity-versus-caution boundaries.",
+        "If existing terms suffice, record a no-new-terms verdict explicitly.",
+        "If existing terms do not suffice, admit the minimum new governed vocabulary and update the builder in the same gate."
+      ],
+      "forbidden_actions": [
+        "Do not add vocabulary for convenience or aesthetics.",
+        "Do not leave ambiguous descriptive phrases ungoverned if the receipt proves they are required repeatedly.",
+        "Do not change vocabulary without updating the builder."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py"
+      ],
+      "expected_evidence": [
+        "receipt contains an explicit vocabulary sufficiency decision",
+        "vocabulary authority and builder stay synchronized if touched"
+      ],
+      "definition_of_done": [
+        "the pack either stays on existing terms cleanly or admits the minimum required additions honestly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "scripts/build_canonical_vocabulary.py"
+      ]
+    },
+    "LEAF-G158-004": {
+      "id": "LEAF-G158-004",
+      "gate": "Gate 158",
+      "title": "Advance the pack from Gate 158 to Gate 159 honestly",
+      "objective": "Move the router only after the Workstream 1 planning receipt is green.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G158-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only closeout leaf.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "completed Gate 158 receipt"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so Gate 158 is complete and Gate 159 is active.",
+        "Append a changelog entry for the Gate 158 closeout.",
+        "Keep the scope note synchronized if the gate changed any pack boundary or vocabulary decision."
+      ],
+      "forbidden_actions": [
+        "Do not leave router surfaces disagreeing about the active gate.",
+        "Do not call Gate 158 complete until its proof slice is green.",
+        "Do not forget to record whether vocabulary changed or not."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate158_target_architecture_and_stage_purity_consolidation.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "router, gate map, leaves ledger, and execution log all agree that Gate 159 is active"
+      ],
+      "definition_of_done": [
+        "Gate 158 closes honestly and the pack moves forward without drift"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    "LEAF-G159-001": {
+      "id": "LEAF-G159-001",
+      "gate": "Gate 159",
+      "title": "Classify live, reference, provenance, and deferred coefficient worlds explicitly",
+      "objective": "Write the classification law for one live coefficient world.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G158-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/README.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Planning-only; classification law before any config/runtime edit.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ],
+      "inputs": [
+        "governed YAML",
+        "salvage registry",
+        "workbook ledger"
+      ],
+      "ordered_actions": [
+        "Define the allowed coefficient-world classes for this repo: live runtime authority, reference-only, provenance-only, deferred, and any narrowly justified sub-class.",
+        "Map existing config and workbook surfaces into those classes without pretending they are all equivalent.",
+        "Record the human-facing question this classification must answer on bad days: what is live and what is not."
+      ],
+      "forbidden_actions": [
+        "Do not collapse live and provenance into one vague 'source of truth'.",
+        "Do not invent extra status classes without evidence.",
+        "Do not treat workbook tabs as runtime config."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+      ],
+      "expected_evidence": [
+        "receipt carries an explicit coefficient-world class system",
+        "current repo surfaces are mapped into that system"
+      ],
+      "definition_of_done": [
+        "the repo has an explicit answer to the two-coefficient-world problem"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ]
+    },
+    "LEAF-G159-002": {
+      "id": "LEAF-G159-002",
+      "gate": "Gate 159",
+      "title": "Define the repo-native coefficient-status inventory",
+      "objective": "Specify the inventory surface later coding must populate or maintain.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G159-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/README.md"
+      ],
+      "workflow_intent_assertion": "Planning-only; defines the inventory law without claiming it already exists in code.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ],
+      "inputs": [
+        "classification law from LEAF-G159-001"
+      ],
+      "ordered_actions": [
+        "Define the minimum fields the coefficient-status inventory must carry, including source class, owner stage, current source of truth, and migration priority.",
+        "Tie the inventory law back to the workbook's `Coeff_Universe_Index` and `Runtime_Surface_Drivers` without promoting Excel into runtime truth.",
+        "State which inventory answers belong in repo-native artefacts rather than in chat or spreadsheet memory."
+      ],
+      "forbidden_actions": [
+        "Do not define an inventory so broad it becomes a second registry without purpose.",
+        "Do not skip migration priority or current source-of-truth fields.",
+        "Do not leave the workbook-to-repo relationship implicit."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+      ],
+      "expected_evidence": [
+        "receipt defines the coefficient-status inventory fields and purpose"
+      ],
+      "definition_of_done": [
+        "later coding threads know what inventory they are expected to build or maintain"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ]
+    },
+    "LEAF-G159-003": {
+      "id": "LEAF-G159-003",
+      "gate": "Gate 159",
+      "title": "Freeze migration law for workbook and salvage surfaces",
+      "objective": "Record how workbook and salvage surfaces may influence repo evolution without becoming live by accident.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G159-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/coefficients_registry.example.yaml",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Planning-only; provenance-routing law.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ],
+      "inputs": [
+        "workbook coefficient universe",
+        "salvage example config"
+      ],
+      "ordered_actions": [
+        "State the allowed migration path from workbook or salvage/reference surface into governed runtime authority.",
+        "State the proof burden required before a workbook or salvage surface can be promoted.",
+        "State what must remain reference-only or provenance-only even if it is useful context."
+      ],
+      "forbidden_actions": [
+        "Do not let later work promote a surface just because it already has min/max columns.",
+        "Do not treat salvage/example config as a silent fallback runtime source.",
+        "Do not conflate historical provenance with approved live admission."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py"
+      ],
+      "expected_evidence": [
+        "receipt defines how non-live coefficient surfaces may and may not be promoted"
+      ],
+      "definition_of_done": [
+        "promotion path from workbook or salvage material is explicit and bounded"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE159_COEFFICIENT_WORLD_STATUS_AND_INVENTORY_LAW.md"
+      ]
+    },
+    "LEAF-G159-004": {
+      "id": "LEAF-G159-004",
+      "gate": "Gate 159",
+      "title": "Advance the pack from Gate 159 to Gate 160 honestly",
+      "objective": "Close the coefficient-world planning gate without drift.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G159-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only closeout leaf.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "completed Gate 159 receipt"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so Gate 159 is complete and Gate 160 is active.",
+        "Append a changelog entry for the Gate 159 closeout.",
+        "Keep the scope note synchronized if the gate changed any classification or migration boundary."
+      ],
+      "forbidden_actions": [
+        "Do not leave the router in a half-updated state.",
+        "Do not call Gate 159 complete until the declared proof slice is green.",
+        "Do not forget to carry forward the explicit promotion law."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "router and execution log agree that Gate 160 is active"
+      ],
+      "definition_of_done": [
+        "Gate 159 closes honestly and preserves the coefficient-world classification law"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    "LEAF-G160-001": {
+      "id": "LEAF-G160-001",
+      "gate": "Gate 160",
+      "title": "Build the owner-stage and activation-state ledger for admitted mutable surfaces",
+      "objective": "Create the planning ledger that joins owner labels, actual consumers, and dynamic activation state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G159-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/coefficient_authority.v1.yaml",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/state_conditioned_modifier.py"
+      ],
+      "workflow_intent_assertion": "Planning-only; owner/consumer/activation law before runtime edits.",
+      "vocabulary_terms_checked": [
+        "eligibility_admissibility",
+        "execution_candidate_ownership",
+        "state_conditioned_modifier"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ],
+      "inputs": [
+        "admitted mutable runtime surfaces"
+      ],
+      "ordered_actions": [
+        "List every admitted mutable surface from the governed authority file.",
+        "For each surface, record the declared owner stage, the actual runtime consumer path, and whether the surface is dynamically active or baseline-only today.",
+        "Use existing seam-hardening receipts where relevant instead of re-inventing owner-stage analysis from scratch."
+      ],
+      "forbidden_actions": [
+        "Do not talk only at broad stage level when field-level consumer truth is visible.",
+        "Do not assume every governed surface is dynamically active.",
+        "Do not blur direct consumers and compatibility wrappers."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+      ],
+      "expected_evidence": [
+        "ledger exists for all admitted mutable surfaces",
+        "activation-state truth is explicit per surface"
+      ],
+      "definition_of_done": [
+        "owner-stage and activation-state truth are visible in one planning receipt"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ]
+    },
+    "LEAF-G160-002": {
+      "id": "LEAF-G160-002",
+      "gate": "Gate 160",
+      "title": "Freeze mismatch classes and allowed closure modes",
+      "objective": "Define how later coding may resolve owner-stage mismatches.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G160-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/coefficient_authority.v1.yaml"
+      ],
+      "workflow_intent_assertion": "Planning-only; mismatch law before code work.",
+      "vocabulary_terms_checked": [
+        "eligibility_admissibility",
+        "execution_candidate_ownership"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ],
+      "inputs": [
+        "ledger from LEAF-G160-001"
+      ],
+      "ordered_actions": [
+        "Define the allowed closure modes for mismatch cases: rewire consumer, relabel owner stage, defer dynamic use, or preserve bounded compatibility with explicit rationale.",
+        "Apply those modes explicitly to the known pressure points such as Stage 5 / Stage 6 and posture / later-risk threshold cases.",
+        "State what later coding must prove before any mismatch can be called resolved."
+      ],
+      "forbidden_actions": [
+        "Do not hand-wave mismatches as harmless because the system is alpha.",
+        "Do not treat comments or prose-only caveats as closure.",
+        "Do not hide deferred cases by leaving them ambiguous."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+      ],
+      "expected_evidence": [
+        "receipt defines mismatch classes and allowed closure modes"
+      ],
+      "definition_of_done": [
+        "later coding threads know exactly how a mismatch may be resolved and what counts as proof"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ]
+    },
+    "LEAF-G160-003": {
+      "id": "LEAF-G160-003",
+      "gate": "Gate 160",
+      "title": "Freeze direct-consumer versus compatibility-carriage interpretation",
+      "objective": "Separate true live consumers from compatibility-only carriage in the coefficient context.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G160-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/services/review_explanation.py"
+      ],
+      "workflow_intent_assertion": "Planning-only; downstream interpretation law.",
+      "vocabulary_terms_checked": [
+        "execution_expression",
+        "state_conditioned_modifier"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ],
+      "inputs": [
+        "runtime carriage and review surfaces"
+      ],
+      "ordered_actions": [
+        "Record which surfaces are directly consumed for live decision behaviour versus merely carried for review, compatibility, or later migration.",
+        "Tie that distinction back to the activation-state ledger so future work does not overstate current live dynamic behaviour.",
+        "State how later coding should document direct-consumer promotion or retirement of compatibility carriage."
+      ],
+      "forbidden_actions": [
+        "Do not call a carried field an active behavioural consumer without proof.",
+        "Do not let review visibility masquerade as live control authority.",
+        "Do not leave compatibility-only carriage unlabeled."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py"
+      ],
+      "expected_evidence": [
+        "receipt distinguishes direct consumers from compatibility or review carriage"
+      ],
+      "definition_of_done": [
+        "activation-state truth is not inflated by simple packet carriage"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE160_OWNER_STAGE_AND_ACTIVATION_STATE_LEDGER.md"
+      ]
+    },
+    "LEAF-G160-004": {
+      "id": "LEAF-G160-004",
+      "gate": "Gate 160",
+      "title": "Advance the pack from Gate 160 to Gate 161 honestly",
+      "objective": "Close the owner-stage and activation-state planning gate without drift.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G160-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only closeout leaf.",
+      "vocabulary_terms_checked": [
+        "state_conditioned_modifier"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "completed Gate 160 receipt"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so Gate 160 is complete and Gate 161 is active.",
+        "Append a changelog entry for the Gate 160 closeout.",
+        "Keep the scope note synchronized if the gate sharpened any out-of-scope or deferred boundary."
+      ],
+      "forbidden_actions": [
+        "Do not leave the router in disagreement with the execution log.",
+        "Do not close Gate 160 before its declared proof slice is green.",
+        "Do not forget to record any deferred or compatibility-only cases explicitly."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "router and execution log agree that Gate 161 is active"
+      ],
+      "definition_of_done": [
+        "Gate 160 closes honestly and preserves the owner-stage / activation-state law"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    "LEAF-G161-001": {
+      "id": "LEAF-G161-001",
+      "gate": "Gate 161",
+      "title": "Freeze the current caution-heavy reality honestly",
+      "objective": "State exactly what the current live modifier plane does today before proposing a cleaner split.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G160-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/coefficient_authority.v1.yaml",
+        "src/nvda_desk/services/state_conditioned_modifier.py",
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "workflow_intent_assertion": "Planning-only; truth-reporting on current live behaviour.",
+      "vocabulary_terms_checked": [
+        "state_conditioned_modifier",
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ],
+      "inputs": [
+        "current live mutable surfaces and modifier policies"
+      ],
+      "ordered_actions": [
+        "Describe the current live modifier plane as it actually behaves today, including the caution-heavy surface set and downstream expression effects.",
+        "Record what is currently active in posture, execution, or later risk-sensitive surfaces.",
+        "State explicitly what is not yet a true upstream opportunity branch."
+      ],
+      "forbidden_actions": [
+        "Do not pretend the current live dynamic scheme is already a balanced opportunity-and-risk architecture.",
+        "Do not use flattering language to blur caution-heavy reality.",
+        "Do not infer upstream dynamic opportunity shaping where no such consumer path exists."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+      ],
+      "expected_evidence": [
+        "receipt records the current caution-heavy reality honestly"
+      ],
+      "definition_of_done": [
+        "later design choices are anchored in current repo truth, not aspiration"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ]
+    },
+    "LEAF-G161-002": {
+      "id": "LEAF-G161-002",
+      "gate": "Gate 161",
+      "title": "Freeze the upstream opportunity path through primitives, derived features, and playbook routing",
+      "objective": "Use the workbook to define where richer opportunity architecture should come from first.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G161-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3.xlsx"
+      ],
+      "workflow_intent_assertion": "Planning-only; upstream path law.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ],
+      "inputs": [
+        "workbook sheets Raw_Primitives_Catalog, Derived_Features_Catalog, Options_Chain_Raw_Spec, Volume_Baseline_Raw_Spec, Playbook_Module_Audit"
+      ],
+      "ordered_actions": [
+        "State explicitly that richer upstream opportunity shaping should come first from better raw primitives, better derived features, and better playbook-family routing.",
+        "Use the workbook evidence to name the relevant input and feature families.",
+        "Tie that path back to the repo's existing stage grammar so future work does not solve missing input design by coefficient inflation."
+      ],
+      "forbidden_actions": [
+        "Do not reduce upstream opportunity architecture to 'add more coefficients'.",
+        "Do not ignore workbook evidence that better inputs and playbook routing already exist as the stronger path.",
+        "Do not let Step 1 consume downstream outputs just to create the appearance of opportunity shaping."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+      ],
+      "expected_evidence": [
+        "receipt names the upstream opportunity path through inputs, features, and playbook routing"
+      ],
+      "definition_of_done": [
+        "future coding threads know where to pursue opportunity richness before coefficient proliferation"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ]
+    },
+    "LEAF-G161-003": {
+      "id": "LEAF-G161-003",
+      "gate": "Gate 161",
+      "title": "Freeze bounded-surface discipline and non-duplication law",
+      "objective": "Keep live coefficient surfaces narrow while separating opportunity and caution responsibilities.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G161-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/coefficient_authority.v1.yaml"
+      ],
+      "workflow_intent_assertion": "Planning-only; bounded-surface and separation law.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ],
+      "inputs": [
+        "current admitted mutable runtime surfaces"
+      ],
+      "ordered_actions": [
+        "State that the admitted live mutable surface set remains intentionally narrow until owner-stage truth and the opportunity-versus-caution split are closed.",
+        "State that caution shaping and later independent risk work must not silently duplicate one another.",
+        "Record what this pack can say now without claiming to solve the independent risk lane itself."
+      ],
+      "forbidden_actions": [
+        "Do not widen the live mutable surface list during this planning gate.",
+        "Do not claim serial conservatism is solved here if the risk lane remains separate future work.",
+        "Do not let bounded-surface discipline collapse into vague 'be careful' wording."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py"
+      ],
+      "expected_evidence": [
+        "receipt preserves narrow live-surface discipline and records non-duplication law"
+      ],
+      "definition_of_done": [
+        "the pack can separate opportunity and caution planning without accidentally widening runtime knobs"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE161_OPPORTUNITY_VS_CAUTION_SHAPING_LAW.md"
+      ]
+    },
+    "LEAF-G161-004": {
+      "id": "LEAF-G161-004",
+      "gate": "Gate 161",
+      "title": "Advance the pack from Gate 161 to Gate 162 honestly",
+      "objective": "Close the opportunity-versus-caution planning gate without drift.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G161-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only closeout leaf.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "completed Gate 161 receipt"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so Gate 161 is complete and Gate 162 is active.",
+        "Append a changelog entry for the Gate 161 closeout.",
+        "Keep the scope note synchronized if the gate sharpened any future-lane boundary."
+      ],
+      "forbidden_actions": [
+        "Do not leave router truth stale.",
+        "Do not close Gate 161 before the declared proof slice is green.",
+        "Do not forget to record the bounded-surface decision and upstream path law."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "router and execution log agree that Gate 162 is active"
+      ],
+      "definition_of_done": [
+        "Gate 161 closes honestly and preserves the split between opportunity and caution planning law"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    "LEAF-G162-001": {
+      "id": "LEAF-G162-001",
+      "gate": "Gate 162",
+      "title": "Translate Gates 158-161 into one execution-ready coding sequence",
+      "objective": "Turn the first four workstreams into an explicit implementation order.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G161-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md"
+      ],
+      "workflow_intent_assertion": "Planning-only; successor sequencing law.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md"
+      ],
+      "inputs": [
+        "completed Gate 158-161 receipts"
+      ],
+      "ordered_actions": [
+        "Convert the outputs of Gates 158-161 into one exact coding order rather than a loose list of ideas.",
+        "State what must move together at implementation time: documents, contracts, config, and tests.",
+        "State which problems must be solved before widening live behaviour and which can remain deferred."
+      ],
+      "forbidden_actions": [
+        "Do not hand a coding thread another abstract essay.",
+        "Do not bury move-together rules across multiple receipts.",
+        "Do not mix independent risk lane work into the coding order for Workstreams 1-4."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+      ],
+      "expected_evidence": [
+        "one explicit execution-ready coding order exists for Workstreams 1-4"
+      ],
+      "definition_of_done": [
+        "later coding work can proceed gate by gate without re-inventing the sequence"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md"
+      ]
+    },
+    "LEAF-G162-002": {
+      "id": "LEAF-G162-002",
+      "gate": "Gate 162",
+      "title": "Freeze document, config, contract, and vocabulary move-together rules",
+      "objective": "Record exactly which surfaces must be updated together in the later coding tranche.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G162-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "config/README.md",
+        "config/coefficient_authority.v1.yaml"
+      ],
+      "workflow_intent_assertion": "Planning-only; move-together law.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md"
+      ],
+      "inputs": [
+        "outputs of Gates 158-161"
+      ],
+      "ordered_actions": [
+        "List the surfaces that later coding must move together when implementing one live coefficient world, owner-stage truth, and opportunity-versus-caution separation.",
+        "Separate mandatory move-together surfaces from optional supporting evidence surfaces.",
+        "State what must be reread before each later coding gate begins."
+      ],
+      "forbidden_actions": [
+        "Do not leave move-together rules implicit.",
+        "Do not let runtime, config, and docs drift apart during later coding.",
+        "Do not omit vocabulary or contract updates if a later coding gate forces them."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+      ],
+      "expected_evidence": [
+        "receipt names explicit move-together rules for later coding"
+      ],
+      "definition_of_done": [
+        "future implementation has a deterministic document/config/contract update law"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md"
+      ]
+    },
+    "LEAF-G162-003": {
+      "id": "LEAF-G162-003",
+      "gate": "Gate 162",
+      "title": "Freeze the successor boundary against the independent risk lane thread",
+      "objective": "Keep coordination explicit without letting scope bleed across threads.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G162-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Planning-only; successor-boundary law.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md"
+      ],
+      "inputs": [
+        "completed Gates 158-161"
+      ],
+      "ordered_actions": [
+        "State exactly which surfaces and questions remain inside this pack's coding tranche and which stay with the independent risk lane thread.",
+        "Record the allowed coordination seam between the two threads without claiming they are one pack.",
+        "State what this pack may reserve space for without implementing it."
+      ],
+      "forbidden_actions": [
+        "Do not let 'reserve space' become hidden scope capture.",
+        "Do not pretend this pack has closed Workstream 5.",
+        "Do not leave the successor boundary to chat memory."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py"
+      ],
+      "expected_evidence": [
+        "receipt defines the successor boundary against the independent risk lane thread"
+      ],
+      "definition_of_done": [
+        "future implementation can coordinate cleanly without scope confusion"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE162_SUCCESSOR_IMPLEMENTATION_ROUTING_FOR_WORKSTREAMS_1_4.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md"
+      ]
+    },
+    "LEAF-G162-004": {
+      "id": "LEAF-G162-004",
+      "gate": "Gate 162",
+      "title": "Advance the pack from Gate 162 to Gate 163 honestly",
+      "objective": "Close the successor-routing gate without drift.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G162-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Router-only closeout leaf.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "completed Gate 162 receipt"
+      ],
+      "ordered_actions": [
+        "Update the planning quartet together so Gate 162 is complete and Gate 163 is active.",
+        "Append a changelog entry for the Gate 162 closeout.",
+        "Keep the scope note synchronized if the gate sharpened any successor boundary."
+      ],
+      "forbidden_actions": [
+        "Do not leave router truth stale.",
+        "Do not close Gate 162 before the declared proof slice is green.",
+        "Do not forget to carry forward the explicit risk-lane boundary."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate162_successor_implementation_routing_for_workstreams_1_4.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "router and execution log agree that Gate 163 is active"
+      ],
+      "definition_of_done": [
+        "Gate 162 closes honestly and the audit gate becomes active"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    },
+    "LEAF-G163-001": {
+      "id": "LEAF-G163-001",
+      "gate": "Gate 163",
+      "title": "Audit workstream coverage against the approved scope note",
+      "objective": "Check that the pack actually covers all four approved workstreams and no more.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G162-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md"
+      ],
+      "workflow_intent_assertion": "Audit-only leaf.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "state_conditioned_modifier",
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md"
+      ],
+      "inputs": [
+        "completed Gates 158-162",
+        "scope note"
+      ],
+      "ordered_actions": [
+        "Audit whether Gates 158-162 cover Workstreams 1-4 exactly as approved.",
+        "Audit whether workbook gold was preserved rather than dropped.",
+        "Audit whether the pack crossed into the independent risk lane or other out-of-scope redesign work."
+      ],
+      "forbidden_actions": [
+        "Do not mark the pack closed if any approved workstream is missing.",
+        "Do not ignore workbook-derived commitments made in the scope note.",
+        "Do not treat partial coverage as success."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py"
+      ],
+      "expected_evidence": [
+        "audit receipt measures the pack against the approved four-workstream brief"
+      ],
+      "definition_of_done": [
+        "pack coverage is proven rather than assumed"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md"
+      ]
+    },
+    "LEAF-G163-002": {
+      "id": "LEAF-G163-002",
+      "gate": "Gate 163",
+      "title": "Audit router truth, vocabulary discipline, and move-together integrity",
+      "objective": "Check that the planning control surfaces and vocabulary decisions stayed synchronized.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G163-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "workflow_intent_assertion": "Audit-only leaf.",
+      "vocabulary_terms_checked": [
+        "baseline_coefficient",
+        "effective_coefficient"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "inputs": [
+        "completed planning quartet and any vocabulary changes"
+      ],
+      "ordered_actions": [
+        "Audit whether the planning quartet, scope note, and execution log all agree about active and completed state.",
+        "Audit whether any vocabulary additions were admitted properly or whether the no-new-terms decision stayed honest.",
+        "Audit whether move-together rules for config/docs/contracts were preserved consistently across the pack."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack with stale router surfaces.",
+        "Do not ignore vocabulary drift because the work was 'only planning'.",
+        "Do not call the pack coherent if move-together rules contradict each other."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "audit receipt covers router truth, vocabulary discipline, and move-together integrity"
+      ],
+      "definition_of_done": [
+        "the pack can be trusted as active successor authority for later coding"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    "LEAF-G163-003": {
+      "id": "LEAF-G163-003",
+      "gate": "Gate 163",
+      "title": "Run the declared anti-drift proof slice and record exact results",
+      "objective": "Prove the planning guards and closeout surfaces on the exact green repo state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G163-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Audit-only leaf with explicit proof burden.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "green closeout candidate repo state"
+      ],
+      "ordered_actions": [
+        "Run the exact closeout proof slice declared by Gate 163 on the final candidate repo state.",
+        "Record exact commands and observed results in the receipt and execution log.",
+        "If the proof burden needs narrowing, update the gate text first rather than silently narrowing in the receipt."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack on a hand-waved proof slice.",
+        "Do not reconstruct results from memory.",
+        "Do not let the receipt overclaim what was actually run."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "exact closeout proof slice and observed results are recorded"
+      ],
+      "definition_of_done": [
+        "the pack's closeout proof burden is satisfied honestly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-02_GATE163_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_AUDIT_AND_CLOSEOUT.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G163-004": {
+      "id": "LEAF-G163-004",
+      "gate": "Gate 163",
+      "title": "Synchronize closeout surfaces and package the exact green repo state",
+      "objective": "Close the pack without drift and hand off a durable artefact.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G163-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "Audit-closeout leaf.",
+      "vocabulary_terms_checked": [
+        "execution_expression"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "green closeout candidate repo state"
+      ],
+      "ordered_actions": [
+        "Move the closeout control surfaces together so the pack becomes honestly closed.",
+        "Record the final closeout changelog entry.",
+        "Produce a fresh full-history zip from the exact green repo state and record its name in the receipt."
+      ],
+      "forbidden_actions": [
+        "Do not leave any one of the four closeout control surfaces pointing at an older active gate.",
+        "Do not package a stale repo state different from the one just audited.",
+        "Do not claim the pack is closed until the zip artefact exists."
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m pytest -q tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "planning quartet is synchronized and final zip artefact is recorded"
+      ],
+      "definition_of_done": [
+        "pack closes honestly with durable handoff artefact"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Fresh full-history zip required at operator handoff after the gate is green.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ]
+    }
+  }
+}

@@ -20,25 +20,40 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- gates: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_SCOPE_NOTE_v1.md`
+- active gate: Gate 158 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`
 - leaves: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`
 
-## Latest closed pack retained as evidence
+## Latest closed seam-hardening evidence
 
 - gates: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md`
 - leaves: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
-## Latest closed corrective evidence
+## Latest closed corrective predecessor evidence
 
 - gates: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md`
 - leaves: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+
+## Latest closed corrective evidence
+
+- gates: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md`
+- leaves: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 
 ## Latest closed semantic-review evidence
 
@@ -69,9 +84,13 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`; latest closed corrective successor evidence is retained below
-- latest closed pack retained as evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
-- latest closed corrective evidence remains the execution-ledger Alembic parity corrective pack through Gate 140 on `main`
+- active coefficient architecture consolidation pack created on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; Gate 157 complete and Gate 158 active on the work branch
+- latest closed pack retained as evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
+- latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
+- latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
+- latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
+- historical prior router state before Gate 157 activation: no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`
+- historical predecessor router state retained for planning-guard continuity: stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`
