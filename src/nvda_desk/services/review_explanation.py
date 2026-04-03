@@ -290,6 +290,8 @@ class ReviewExplanationService:
                 "lane_id": payload.parallel_risk_lane_packet.lane_id,
                 "summary": " / ".join(summary_bits),
             }
+        if payload.capital_deployment_authority is not None:
+            review_packet["capital_deployment_authority"] = payload.capital_deployment_authority.model_dump(mode="json")
 
         return ReviewExplanationOutput(
             summary=summary,
@@ -315,6 +317,7 @@ class ReviewExplanationService:
             economic_accountability=economic_accountability,
             promotion_evidence=promotion_evidence,
             stage_local_handoff=payload.stage_local_handoff,
+            capital_deployment_authority=payload.capital_deployment_authority,
             review_packet=review_packet,
         )
 

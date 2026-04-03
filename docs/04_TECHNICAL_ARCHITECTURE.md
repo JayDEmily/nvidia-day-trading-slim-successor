@@ -285,7 +285,9 @@ The current mutation path is:
 - modifier consequences are then applied to execution;
 - overlay risk is evaluated on the execution state;
 - a terminal-risk application surface is built;
-- the final risk join is applied to execution before review.
+- the final risk join is applied to execution;
+- capital-deployment authority may be evaluated from the already-formed opening candidate plus current capital snapshot;
+- review consumes the bounded capital-deployment authority decision additively when that decision is present.
 
 ### 5.5 Review and explanation outputs
 

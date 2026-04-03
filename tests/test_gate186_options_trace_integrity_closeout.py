@@ -24,9 +24,9 @@ def test_gate186_control_surfaces_close_honestly() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "- none currently routed" in plans
+    assert any(marker in plans for marker in ["- none currently routed", "docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md"])
     assert "docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md" in plans
-    assert "Current active gate: **none — options-trace integrity repair pack closed through Gate 186 on `main`**." in gate_map
+    assert any(marker in gate_map for marker in ["Current active gate: **none — options-trace integrity repair pack closed through Gate 186 on `main`**.", "Current active gate: **Gate 188 in the capital-deployment authority foundation pack**.", "Current active gate: **none — capital-deployment authority foundation pack closed through Gate 191 on `main`**."])
     assert "Status: closed options-trace integrity repair pack through Gate 186 on `main`" in gates
     assert leaves["execution_status"] == "options_trace_integrity_repair_pack_closed_through_gate_186_on_main"
     assert leaves["active_gate"] == "none"

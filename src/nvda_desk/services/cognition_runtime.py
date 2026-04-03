@@ -19,8 +19,11 @@ from typing import cast
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.calibration import ParallelRiskLaneEvaluationPreparationPacket
+from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
 from nvda_desk.schemas.cognition import (
     BindingStageName,
+    CapitalDeploymentAuthorityDecision,
+    CapitalDeploymentAuthorityInput,
     ExecutionExpressionInput,
     ExecutionExpressionOutput,
     InventoryState,
@@ -71,6 +74,7 @@ from nvda_desk.schemas.review import (
     ImportedModuleReviewCitation,
 )
 from nvda_desk.services.execution_expression import ExecutionExpressionService
+from nvda_desk.services.capital_deployment_authority import CapitalDeploymentAuthorityService
 from nvda_desk.services.imported_modules.tranche_a import (
     TrancheAContractEmission,
     TrancheASelectorContractService,
@@ -103,6 +107,7 @@ class DeskCognitionRuntimeResult:
     parallel_risk_lane: ParallelRiskLanePacket | None = None
     parallel_risk_calibration: ParallelRiskLaneEvaluationPreparationPacket | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
+    capital_deployment_authority: CapitalDeploymentAuthorityDecision | None = None
     stage_packets: tuple[DmpV2Packet, ...] = ()
     packet_lineage: tuple[str, ...] = ()
     stage_packet_ids: dict[str, str] = field(default_factory=dict)
@@ -166,6 +171,7 @@ class DeskCognitionRuntime:
         self._posture = PostureRiskService()
         self._eligibility = PlaybookEligibilityService()
         self._execution = ExecutionExpressionService()
+        self._capital_deployment_authority = CapitalDeploymentAuthorityService()
         self._review = ReviewExplanationService()
         self._risk_gateway = RiskGatewayService()
         self._modifiers = StateConditionedModifierService()
@@ -222,6 +228,7 @@ class DeskCognitionRuntime:
         options_flow_input: OptionsFlowContextInput,
         inventory_state: InventoryState,
         risk_budget_remaining_pct: float,
+        capital_state_snapshot: CapitalStateSnapshotPayload | None = None,
         stack_id: str | None = None,
         coefficient_set_id: str | None = None,
     ) -> DeskCognitionRuntimeResult:
@@ -355,6 +362,18 @@ class DeskCognitionRuntime:
             ],
         )
         execution = self._risk_gateway.apply_final_join(execution, final_risk_decision)
+        capital_deployment_authority = None
+        if capital_state_snapshot is not None:
+            capital_deployment_authority = self._capital_deployment_authority.evaluate(
+                CapitalDeploymentAuthorityInput(
+                    posture=posture,
+                    eligibility=eligibility,
+                    execution=execution,
+                    stage_local_handoff=stage_local_handoff,
+                    parallel_risk_lane_packet=parallel_risk_lane,
+                    capital_state=capital_state_snapshot,
+                )
+            )
         review = self._review.evaluate(
             ReviewExplanationInput(
                 temporal=temporal,
@@ -366,6 +385,7 @@ class DeskCognitionRuntime:
                 modifier_runtime_packet=modifier_runtime_packet,
                 parallel_risk_lane_packet=parallel_risk_lane,
                 stage_local_handoff=stage_local_handoff,
+                capital_deployment_authority=capital_deployment_authority,
                 temporal_input=temporal_input,
             )
         )
@@ -445,6 +465,7 @@ class DeskCognitionRuntime:
             execution=execution,
             review=review,
             parallel_risk_lane=parallel_risk_lane,
+            capital_deployment_authority=capital_deployment_authority,
             parallel_risk_calibration=parallel_risk_calibration,
             stage_local_handoff=stage_local_handoff,
             stage_packets=ordered_packets,
