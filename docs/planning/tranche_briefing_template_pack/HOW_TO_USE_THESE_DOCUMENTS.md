@@ -18,10 +18,12 @@ Its normal use case is:
 5. Read the active vocabulary authority.
 6. Read the active packet or contract authority.
 7. Trace the live workflow surfaces that the new tranche will affect.
-8. Populate the generic gate template, leaves template, execution-log template, and document-touch checklist using repo-specific truth only.
-9. Create or update one active gate master, one active leaves ledger, and one active execution log.
-10. Hand that pack to the coding thread.
-11. The coding thread executes one gate at a time on one work branch at a time.
+8. Run a contradiction scan across the active control surfaces and emit a contradiction report before planning continues if the surfaces disagree materially.
+9. Populate the generic gate template, leaves template, execution-log template, and document-touch checklist using repo-specific truth only.
+10. Choose variable gate and leaf counts that preserve granularity for the actual tranche rather than copying a fixed cardinality from another pack.
+11. Create or update one active gate master, one active leaves ledger, and one active execution log.
+12. Hand that pack to the coding thread.
+13. The coding thread executes one gate at a time on one work branch at a time.
 
 In brainstorming mode, optimise the planning brief for candidate edge and asymmetry before writing implementation-readiness commentary unless the operator explicitly asks for readiness.
 
@@ -66,8 +68,9 @@ For each gate:
    - active gate master
    - active leaves ledger
    - active execution log
-6. Merge to `main` only after the gate is green.
-7. Create a fresh full-history zip from that exact green repo state.
+6. If the user asked for multiple gates, still close this gate fully before starting the next one.
+7. Merge to `main` only after the gate is green.
+8. Create a fresh full-history zip from that exact green repo state.
 
 ## Evidence rule
 
@@ -109,7 +112,7 @@ The brief is good when a coding thread can execute it without inventing:
 ## Document-touch checklist
 
 Every new planning pack must include an explicit document-touch checklist.
-It is the written answer to: which frozen law surfaces were checked, which live router surfaces were checked, and which surfaces must be updated if execution proceeds.
+It is the written answer to: which frozen law surfaces were checked, which live router surfaces were checked, which template-source surfaces were checked, and which surfaces must be updated if execution proceeds.
 
 
 ## Execution-thread re-read requirement

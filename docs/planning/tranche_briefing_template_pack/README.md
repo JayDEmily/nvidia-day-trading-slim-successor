@@ -10,6 +10,7 @@ The usual pattern is:
 
 Use this pack when creating a new tranche.
 Do not improvise a new planning structure unless the repo doctrine has explicitly changed.
+Use the latest closed pack as evidence input only; do not clone its structure forward when the durable template pack already defines the planning grammar.
 
 ## What this pack contains
 
@@ -27,7 +28,8 @@ Do not improvise a new planning structure unless the repo doctrine has explicitl
 2. Read the repo's normative stack, the permanent process-law doc, active control surfaces, vocabulary authority, and packet/contract authority.
 3. Populate the generic gate template, leaves template, execution-log template, and document-touch checklist with repo-specific truth.
 4. Write only one active gate master, one active leaves ledger, and one active execution log for the tranche.
-5. Ensure the leaves are granular enough that a coding thread can execute them without filling in blanks.
+5. Choose variable gate and leaf counts that preserve granularity for the actual tranche; do not force a fixed number copied from another pack.
+6. Ensure the leaves are granular enough that a coding thread can execute them without filling in blanks.
 
 ## Non-negotiable briefing rules
 
@@ -37,6 +39,9 @@ Do not improvise a new planning structure unless the repo doctrine has explicitl
 - Do **not** plan workflow changes in the abstract; trace the live workflow surfaces first.
 - Do **not** let a rich upstream source be collapsed back into legacy thin compatibility surfaces unless that collapse is an explicit, bounded runtime derivation.
 - Do **not** skip the document-touch checklist.
+- Do **not** ignore material control-surface contradictions; emit a contradiction report before continuing.
+- Do **not** let `completed_leaf_ids` and `remaining_leaf_ids` overlap.
+- Do **not** treat a multi-gate user request as permission to skip per-gate closeout.
 - Do **not** treat a gate as done without green tests, synchronized control-surface updates, and a fresh full-history zip from the exact green repo state.
 
 ## Why this exists

@@ -1,5 +1,7 @@
 # 2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_SCOPE_NOTE_v1
 
+Current routed state: master/child parallel-risk integration pack closed through Gate 180 on `main`.
+
 ## Why this pack exists
 
 The repo now has two relevant lines of work:

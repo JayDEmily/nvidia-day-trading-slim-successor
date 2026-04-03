@@ -52,3 +52,8 @@
 
 - Command: `PYTHONPATH=src python scripts/build_canonical_vocabulary.py && python -m pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate159_workbook_lineage_and_consolidation_audit.py tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py tests/test_gate161_temporal_calendar_event_and_multi_clock_authority_mapping.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py tests/test_gate172_master_child_lineage_and_overlap_ledger.py tests/test_gate173_child_planning_reference_data_merge.py tests/test_gate174_parallel_risk_lane_input_contract.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate176_market_options_dependency_dislocation_runtime.py tests/test_gate177_parallel_risk_anti_duplication_and_review_integration.py tests/test_gate178_proofs_and_calibration_integration.py tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_gate180_master_child_integration_closeout.py`
 - Result: `52 passed in 5.21s`.
+
+## Post-closeout promotion to `main`
+
+- Fast-forward promoted `main` to commit `e7f8a59` after the Gate 180 closeout branch was verified clean.
+- Router/control surfaces now record the pack as closed through Gate 180 on `main` while preserving the original work-branch execution receipts above as evidence.

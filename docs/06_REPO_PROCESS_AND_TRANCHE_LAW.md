@@ -74,7 +74,8 @@ Planning mode must produce:
 1. one gates master, or an explicit amendment to the currently active gates master;
 2. one supporting leaves JSON ledger, or an explicit amendment to the currently active leaves ledger;
 3. one execution log surface, even if it starts receipt-empty;
-4. one document-touch list stating which live docs must change if execution proceeds.
+4. one document-touch list stating which live docs must change if execution proceeds;
+5. one explicit contradiction report when material control surfaces disagree before planning can continue.
 
 Planning mode must answer, explicitly:
 - why the tranche exists;
@@ -83,7 +84,8 @@ Planning mode must answer, explicitly:
 - what is retained, retired from authority, amended, or added;
 - which vocabulary authority execution must read for this tranche;
 - which packet/data contract authority execution must read for this tranche;
-- what tests or proof slices are required before a gate may be called complete.
+- what tests or proof slices are required before a gate may be called complete;
+- why the chosen gate count and leaf count preserve granularity for this tranche rather than copying a fixed cardinality from another pack.
 
 ## Execution mode
 
@@ -104,7 +106,8 @@ Execution mode must obey:
 - one leaf at a time;
 - one gate at a time;
 - one branch per gate;
-- no next gate until the current gate is actually closed.
+- no next gate until the current gate is actually closed;
+- a request to complete multiple gates does not waive per-gate sequencing, validation, routing updates, or closeout.
 
 ## Tranche creation versus tranche amendment
 
@@ -131,6 +134,7 @@ If a change affects proof order or test expectations, update the test doctrine o
 If a change affects none of those, do not spray edits across the repo.
 
 Every planning pack must include an explicit document-touch checklist.
+Tests added for planning governance should prefer state-integrity invariants over brittle lists of historically allowed transient strings.
 
 ## Control-surface routing law
 
@@ -159,13 +163,23 @@ If any one of those still points at the older active gate, the gate is not close
 Planning threads must start from the repo-native template pack under `docs/planning/tranche_briefing_template_pack/`.
 
 Templates are mandatory scaffolding, not decorative examples.
+The latest closed pack is evidence input, not the structural template for the next pack.
 Any new planning pack must either:
 - be created from those templates; or
 - preserve all mandatory sections and fields frozen by those templates.
 
+## State-integrity law
+
+The planning/control surfaces must satisfy all of the following:
+- `completed_leaf_ids` and `remaining_leaf_ids` are disjoint;
+- every id named in `completed_leaf_ids` or `remaining_leaf_ids` exists in the leaves map;
+- `active_gate = none` is lawful only when `remaining_leaf_ids` and `pending_gate_ids` are empty;
+- a closed pack must not leave incomplete leaf statuses behind;
+- later-proof tests must either permit later valid states or be retired/replaced during closeout.
+
 ## Stop conditions
 
-Stop and ask for clarification when:
+Stop and emit a contradiction report before continuing when:
 - the active control surfaces contradict each other materially;
 - the active pack does not say what gate is active;
 - the active pack does not name its vocabulary authority or packet/data contract authority cleanly;

@@ -23,6 +23,14 @@ Declare the live and frozen control surfaces that must be checked before the tra
 - [ ] current active execution log
 - [ ] bounded-scope note if one is named by `PLANS.md`
 
+## Template-source surfaces checked
+
+- [ ] `docs/planning/tranche_briefing_template_pack/README.md`
+- [ ] `docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md`
+- [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`
+- [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`
+- [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`
+
 ## If execution proceeds, these surfaces must be amended
 
 ### Mandatory planning quartet
@@ -37,7 +45,15 @@ Declare the live and frozen control surfaces that must be checked before the tra
 - [ ] <vocabulary authority if naming changes>
 - [ ] <packet/contract authority if interface or schema changes>
 
+## State-integrity invariants checked
+
+- [ ] `completed_leaf_ids` and `remaining_leaf_ids` are disjoint
+- [ ] every referenced leaf id exists in the leaves map
+- [ ] `active_gate = none` only when `remaining_leaf_ids` and `pending_gate_ids` are empty
+- [ ] tests were updated to permit later valid states or retired/replaced
+
 ## Notes
 
 - Add or strike items explicitly; do not leave implied control surfaces in chat memory.
 - If a surface is intentionally unchanged, say so rather than omitting it.
+- If a latest closed pack was inspected, record it as evidence input rather than the structural template for the new pack.

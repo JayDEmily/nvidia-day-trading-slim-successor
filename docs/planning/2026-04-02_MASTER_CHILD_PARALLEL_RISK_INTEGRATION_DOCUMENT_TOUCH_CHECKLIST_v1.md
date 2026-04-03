@@ -4,7 +4,7 @@
 
 Declare the frozen and live control surfaces checked while activating the master/child integration and parallel-risk execution pack.
 
-Current planned sequence: master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`.
+Current planned sequence: master/child parallel-risk integration pack closed through Gate 180 on `main`.
 
 ## Frozen law surfaces checked
 

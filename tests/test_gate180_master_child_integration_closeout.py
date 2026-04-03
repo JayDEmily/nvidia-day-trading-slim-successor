@@ -16,7 +16,7 @@ SCOPE_NOTE = REPO_ROOT / "docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_IN
 RECEIPT = REPO_ROOT / "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md"
 
 
-def test_gate180_control_surfaces_close_honestly_on_work_branch() -> None:
+def test_gate180_control_surfaces_close_honestly_on_main() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     gates = GATES.read_text(encoding="utf-8")
@@ -24,13 +24,14 @@ def test_gate180_control_surfaces_close_honestly_on_work_branch() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans
-    assert "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`**." in gate_map
-    assert "Status: closed master/child parallel-risk integration pack through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in gates
-    assert leaves["execution_status"] == "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_work_branch"
+    assert "no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`" in plans
+    assert "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `main`**." in gate_map
+    assert "Status: closed master/child parallel-risk integration pack through Gate 180 on `main`" in gates
+    assert leaves["execution_status"] == "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_main"
     assert leaves["active_gate"] == "none"
     assert leaves["remaining_leaf_ids"] == []
     assert leaves["pending_gate_ids"] == []
+    assert set(leaves["completed_leaf_ids"]).isdisjoint(leaves["remaining_leaf_ids"])
     assert leaves["completed_gate_ids"] == [
         "Gate 171",
         "Gate 172",
@@ -45,7 +46,8 @@ def test_gate180_control_surfaces_close_honestly_on_work_branch() -> None:
     ]
     assert all(leaf["status"] == "complete" for leaf in leaves["leaves"].values())
     assert "repo_gate180_master_child_parallel_risk_integration_pack_closed_workbranch_2026-04-02.zip" in execution_log
-    assert "Current planned sequence: master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`." in checklist
+    assert "Fast-forward promoted `main` to commit `e7f8a59`" in execution_log
+    assert "Current planned sequence: master/child parallel-risk integration pack closed through Gate 180 on `main`." in checklist
 
 
 def test_gate180_receipt_audits_merge_runtime_hygiene_and_packaging() -> None:
@@ -61,5 +63,6 @@ def test_gate180_receipt_audits_merge_runtime_hygiene_and_packaging() -> None:
     assert "## Vocabulary and hygiene audit" in receipt
     assert "## Proof and build audit" in receipt
     assert "## Remaining deferred items" in receipt
+    assert "complete on `main`" in receipt
     assert "repo_gate180_master_child_parallel_risk_integration_pack_closed_workbranch_2026-04-02.zip" in receipt
     assert "Do not let the new lane become an arbiter" in scope_note

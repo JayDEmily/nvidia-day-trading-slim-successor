@@ -20,7 +20,7 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
+- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`
 
 ## Latest closed pack retained as evidence
 
@@ -107,16 +107,16 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
-- latest closed pack retained as evidence is the master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
-- latest closed predecessor evidence is the policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`
+- latest closed pack retained as evidence is the master/child parallel-risk integration pack closed through Gate 180 on `main`
+- latest closed predecessor evidence is the policy/temporal/observability successor pack closed through Gate 170 on `main`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 - latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`
-- historical prior router state before Gate 171 activation: no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
+- historical prior router state before Gate 171 activation: no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `main`
 - imported child pack historical closeout retained for continuity: none currently routed; parallel risk lane foundation pack closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`
 - historical immediate predecessor active-pack state retained for planning-guard continuity: active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`
-- historical predecessor router state retained for planning-guard continuity: no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`
+- historical predecessor router state retained for planning-guard continuity: no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `main`
 - bounded trace scenario review pack closed through Gate 134 on `main` and retained as latest closed semantic-review evidence
 - signal-coefficient authority pack closed through Gate 127 on `main`
 - historical-evaluation readiness pack closed through Gate 121 on `main`

@@ -19,6 +19,7 @@ Out of scope:
 - This document becomes the active gate authority for <Gate X> onward.
 - It supersedes:
   - <older active pack if any>
+- The latest closed pack remains evidence input only; it is not the structural template for this tranche.
 
 ## Governing inputs
 
@@ -38,6 +39,7 @@ Out of scope:
 ## Workflow placement
 
 State exactly where this tranche sits in the repo workflow.
+State why the chosen gate count preserves granularity for this tranche rather than copying a fixed number from another pack.
 
 Answer explicitly:
 - Is this upstream information authority, bounded derivation, downstream consumer logic, or review/audit infrastructure?
@@ -77,6 +79,16 @@ If the repo has a workflow/cognition model, say how this tranche fits into that 
 - `<packet/data contract>` is mandatory reading for any leaf that changes envelope shape, carriage, import/export, lineage, validation, or compatibility.
 - External examples must not be copied verbatim unless they are already repo-native and compatibility-safe.
 
+## Contradiction scan and state-integrity rules
+
+- Record whether the active control surfaces agreed cleanly before planning began.
+- If they did not, link the contradiction report and state what was resolved before this pack became active.
+- Freeze the invariants this tranche will require at closeout:
+  - `completed_leaf_ids` and `remaining_leaf_ids` are disjoint;
+  - every referenced leaf id exists in the leaves ledger;
+  - `active_gate = none` is lawful only when `remaining_leaf_ids` and `pending_gate_ids` are empty;
+  - later-proof tests must permit later valid states or be retired/replaced during closeout.
+
 ## Document-touch checklist
 
 Name the checklist file for this tranche and state which frozen and live control surfaces must move if execution proceeds.
@@ -93,6 +105,8 @@ Name the checklist file for this tranche and state which frozen and live control
   - a new full-history zip was created from the exact green repo state.
 
 ## Gates
+
+Repeat the gate block as many times as needed. Gate count is variable; preserve granularity instead of forcing a fixed count.
 
 ### Gate <N>: <title>
 

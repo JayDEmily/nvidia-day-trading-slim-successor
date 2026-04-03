@@ -1,6 +1,6 @@
 # 2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT
 
-Status: complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`
+Status: complete on `main` (execution receipts recorded on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`)
 
 ## Purpose
 

@@ -33,6 +33,8 @@ def test_readme_and_howto_define_planning_thread_to_coding_thread_flow() -> None
     assert "vocabulary authority" in readme
     assert "packet/contract authority" in readme
     assert "document-touch checklist" in readme
+    assert "latest closed pack as evidence input only" in readme
+    assert "variable gate and leaf counts" in readme
 
     assert "planning thread" in howto
     assert "coding thread" in howto
@@ -43,9 +45,10 @@ def test_readme_and_howto_define_planning_thread_to_coding_thread_flow() -> None
     assert "fresh full-history zip" in howto
     assert "vocabulary authority named in the active gates master" in howto
     assert "packet/data contract authority named in the active gates master" in howto
+    assert "contradiction report" in howto
 
 
-def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_and_contract_checks() -> None:
+def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_contract_and_state_rules() -> None:
     doctrine = DOCTRINE.read_text(encoding="utf-8")
     gate_template = GATE_TEMPLATE.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES_TEMPLATE.read_text(encoding="utf-8"))
@@ -58,18 +61,28 @@ def test_doctrine_gate_and_leaves_templates_freeze_workflow_vocabulary_and_contr
     assert "Document-touch checklist requirement" in doctrine
     assert "Execution-thread reread requirement" in doctrine
     assert "Do not fill blanks with guesses." in doctrine
+    assert "state-integrity invariants" in doctrine
+    assert "variable" in doctrine
 
     assert "## Intent and workflow anchor" in gate_template
     assert "## Retain / retire-from-authority / amend / add matrix" in gate_template
     assert "## Packet / contract discipline" in gate_template
     assert "## Document-touch checklist" in gate_template
+    assert "## Contradiction scan and state-integrity rules" in gate_template
+    assert "Repeat the gate block as many times as needed" in gate_template
 
     assert leaves["global_rules"]["vocabulary_authority_mandatory_before_new_naming"] is True
     assert leaves["global_rules"]["packet_contract_authority_mandatory_when_contracts_change"] is True
     assert leaves["global_rules"]["workflow_trace_mandatory_before_planning_new_behavior"] is True
     assert leaves["global_rules"]["document_touch_checklist_required"] is True
     assert leaves["global_rules"]["do_not_fill_unknowns_with_guesswork"] is True
+    assert leaves["global_rules"]["completed_and_remaining_leaf_sets_must_be_disjoint"] is True
+    assert leaves["global_rules"]["multi_gate_requests_do_not_waive_per_gate_closeout"] is True
+    assert leaves["global_rules"]["gate_and_leaf_counts_are_variable_but_must_preserve_granularity"] is True
+    assert leaves["contradiction_scan"]["required_before_new_pack"] is True
+    assert leaves["state_invariants"]["active_gate_none_requires_no_remaining_or_pending_ids"] is True
     first_leaf = leaves["leaves"][0]
     assert "workflow_intent_assertion" in first_leaf
     assert "vocabulary_terms_checked" in first_leaf
     assert "document_touch_surfaces" in first_leaf
+    assert any("Preserve granularity" in step for step in first_leaf["ordered_actions"])

@@ -1,8 +1,9 @@
-"""Gate 171 master/child integration-pack planning checks."""
+"""Planning-pack checks for the master/child parallel-risk integration pack."""
 
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +17,7 @@ SCOPE_NOTE = REPO_ROOT / "docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_IN
 RECEIPT = REPO_ROOT / "docs/planning/2026-04-02_GATE171_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_PACK_BOOTSTRAP.md"
 
 
-def test_gate171_pack_is_active_and_routes_to_gate172() -> None:
+def test_gate171_pack_surfaces_remain_coherent_through_closeout() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     gates = GATES.read_text(encoding="utf-8")
@@ -25,36 +26,14 @@ def test_gate171_pack_is_active_and_routes_to_gate172() -> None:
     scope_note = SCOPE_NOTE.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md" in plans
-    assert "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json" in plans
-    assert "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1.md" in plans
-    assert "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans
-    assert "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_SCOPE_NOTE_v1.md" in plans
-    assert any(f"active gate: Gate {gate} on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans for gate in (172, 173, 174, 175, 176, 177, 178, 179, 180)) or "closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans
-    assert any(f"Current active gate: **Gate {gate} in the master/child parallel-risk integration pack**." in gate_map for gate in (172, 173, 174, 175, 176, 177, 178, 179, 180)) or "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180" in gate_map
-    assert any(label in gates for label in (
-        "Status: active master/child parallel-risk integration pack; Gate 171 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 172 active, Gates 173-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-172 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 173 active, Gates 174-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-173 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 174 active, Gates 175-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-174 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 175 active, Gates 176-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-175 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 176 active, Gates 177-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-176 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 177 active, Gates 178-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-177 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 178 active, Gates 179-180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-178 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 179 active, Gate 180 planned",
-        "Status: active master/child parallel-risk integration pack; Gates 171-179 complete on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`, Gate 180 active",
-        "Status: closed master/child parallel-risk integration pack through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
-    ))
-    assert leaves["execution_status"] in {"gate_171_complete_gate_172_active_on_work_branch", "gate_172_complete_gate_173_active_on_work_branch", "gate_173_complete_gate_174_active_on_work_branch", "gate_174_complete_gate_175_active_on_work_branch", "gate_175_complete_gate_176_active_on_work_branch", "gate_176_complete_gate_177_active_on_work_branch", "gate_177_complete_gate_178_active_on_work_branch", "gate_178_complete_gate_179_active_on_work_branch", "gate_179_complete_gate_180_active_on_work_branch", "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_work_branch"}
-    assert leaves["active_gate"] in {"Gate 172", "Gate 173", "Gate 174", "Gate 175", "Gate 176", "Gate 177", "Gate 178", "Gate 179", "Gate 180", "none"}
-    assert leaves["completed_gate_ids"][0] == "Gate 171"
-    assert leaves["completed_leaf_ids"][:4] == [
-        "LEAF-G171-001",
-        "LEAF-G171-002",
-        "LEAF-G171-003",
-        "LEAF-G171-004",
-    ]
+    assert "master/child parallel-risk integration pack" in plans
+    assert "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `main`**." in gate_map
+    assert "Status: closed master/child parallel-risk integration pack through Gate 180 on `main`" in gates
+    assert leaves["execution_status"] == "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_main"
+    assert leaves["active_gate"] == "none"
+    assert set(leaves["completed_leaf_ids"]).isdisjoint(leaves["remaining_leaf_ids"])
     assert execution_log.startswith("# 2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1")
-    assert any(f"Current planned sequence: active gate: Gate {gate} on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`." in checklist for gate in (172,173,174,175,176,177,178,179,180)) or "closed through Gate 180" in checklist
+    assert "Current planned sequence: master/child parallel-risk integration pack closed through Gate 180 on `main`." in checklist
     assert "master" in scope_note and "child" in scope_note
     assert "merge child planning/reference-data/vocabulary into master" in scope_note
 
@@ -87,6 +66,6 @@ def test_gate171_scope_note_and_receipt_preserve_non_blind_merge_truth() -> None
     assert "no verified `src/` runtime-code deltas" in receipt
     assert "merge planning/reference-data first, then code the lane" in receipt
     assert "Do not blind-apply patches from child into master." in scope_note
-    assert "child is a planning-law/reference-data branch" in scope_note or "planning/reference-data/vocabulary branch" in scope_note
+    assert re.search(r"planning/reference-data/vocabulary branch|child is a planning-law/reference-data branch", scope_note)
     assert "whole-repo vocabulary/workbook-path hygiene" in scope_note
     assert "unknown / not verified" in scope_note

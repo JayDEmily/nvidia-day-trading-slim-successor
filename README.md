@@ -28,14 +28,14 @@ Read these in order:
 3. `docs/03_DOMAIN_MODEL.md`
 4. `docs/04_TECHNICAL_ARCHITECTURE.md`
 5. `docs/05_GUARDRAILS.md`
-6. `docs/TESTING_AND_PROMOTION.md`
-7. repo-root `PLANS.md`
-8. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-9. the active corrective/successor pair named by `PLANS.md` (currently `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_GATES_v1.md` and `docs/planning/2026-03-27_REVIEW_RECONSTRUCTION_CORRECTIVE_LEAVES_v1.json`)
-10. `docs/planning/2026-03-24_CANONICAL_VISION_EXTENSION_EXECUTION_LOG_v3.md` when gate status or closeout truth matters
-11. `AGENTS.md`
+6. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
+7. `docs/TESTING_AND_PROMOTION.md`
+8. repo-root `PLANS.md`
+9. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+10. the active planning artefacts named by `PLANS.md`, if an active pack exists
+11. `AGENTS.md` for stable repo-behaviour rules only
 
-Completed predecessor packs may remain under `docs/planning/` as implementation evidence, but repo-root `PLANS.md` decides which planning artefacts are active. Historical design drafts and archived milestone artefacts live in `docs/legacy/`. Build-status notes live in `docs/status/`. Machine-readable repo history lives in `CHANGELOG.jsonl`.
+`README.md` is onboarding context, not the live planning router. Completed predecessor packs may remain under `docs/planning/` as implementation evidence, but repo-root `PLANS.md` decides which planning artefacts are active. Historical design drafts and archived milestone artefacts live in `docs/legacy/`. Build-status notes live in `docs/status/`. Machine-readable repo history lives in `CHANGELOG.jsonl`.
 
 ## Quickstart
 

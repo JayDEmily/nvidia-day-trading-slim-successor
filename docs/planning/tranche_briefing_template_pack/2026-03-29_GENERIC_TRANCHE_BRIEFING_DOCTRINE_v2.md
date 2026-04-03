@@ -12,6 +12,7 @@ This document is the reusable reference doctrine for planning work in a repo tha
 
 It is intentionally generic.
 It is designed to be copied into any repo that needs deterministic, low-drift planning for long-horizon work.
+Gate counts and leaf counts remain variable; the invariant is preserved granularity, not a fixed cardinality.
 
 ## Core model
 
@@ -25,6 +26,7 @@ The control stack is:
 6. **Leaves JSON** defines the executable atoms and the proof required for each atom.
 7. **Execution log** records receipts only.
 8. **CHANGELOG** records what changed, not what should happen next.
+9. **The template pack** is the durable structural source of truth; the latest closed pack is evidence input only.
 
 A gate is not complete until:
 - the code/docs for that gate are complete;
@@ -139,7 +141,7 @@ Read:
 - current active leaves JSON
 - current active execution log
 
-This step is mandatory every time.
+This step is mandatory every time. If these surfaces disagree materially, emit a contradiction report before writing the new tranche.
 
 ### C. Vocabulary authority
 Read the canonical vocabulary or equivalent naming authority every time you:
@@ -181,6 +183,7 @@ Read the active testing doctrine and the specific existing tests around the affe
 ### Gate instructions
 Use the gate master to define:
 - the stage objective;
+- why the chosen gate count preserves granularity for this tranche;
 - the code/document surfaces in scope;
 - the workflow position of the change;
 - the retain/retire/amend/add matrix;
@@ -197,6 +200,7 @@ The gate should answer:
 ### Leaf instructions
 Use the leaves ledger to define:
 - bounded units of work;
+- why the chosen leaf count preserves granularity for this tranche;
 - exact ordered actions;
 - exact file/surface list;
 - exact tests;
@@ -215,6 +219,8 @@ The leaf should answer:
 
 Every new tranche must make these explicit early, not buried later:
 - the repo intent or workflow lens that governs the change;
+- the contradiction report outcome when control surfaces initially disagree;
+- the state-integrity invariants that the leaves ledger and tests must enforce;
 - the vocabulary authority used for naming;
 - the packet or contract authority used for data/interface work;
 - the live workflow trace showing where the change sits;
@@ -224,6 +230,9 @@ Every new tranche must make these explicit early, not buried later:
 ## Anti-drift rules
 
 - Do not fill blanks with guesses.
+- Do not copy the structure of the latest closed pack forward when the template pack already covers that need.
+- Do not leave `completed_leaf_ids` and `remaining_leaf_ids` overlapping.
+- Do not let a request for multiple gates waive per-gate closeout.
 - Do not invent architecture in the leaves.
 - Do not let a rich upstream source be collapsed back into thin compatibility surfaces without an explicit bounded derivation step.
 - Do not let a coding thread discover the packet contract during execution.

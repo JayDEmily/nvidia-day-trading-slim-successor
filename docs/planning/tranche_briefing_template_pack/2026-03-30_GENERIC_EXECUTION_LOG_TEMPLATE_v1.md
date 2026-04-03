@@ -18,7 +18,8 @@ For every completed leaf record:
 - exact validation commands;
 - observed results;
 - whether the full suite was required;
-- any stop condition that was hit;
+- any stop condition or contradiction report that was hit;
+- whether the state-integrity checks passed;
 - whether the receipt was recorded live or reconstructed after the fact.
 
 ## Gate <N> receipts
@@ -33,4 +34,5 @@ For every completed leaf record:
 - Full suite required: <yes/no>
 - Exact evidence: <what became true>
 - Stop conditions hit: <none or explicit blocker>
+- State-integrity checks: <passed / explicit defect>
 - Merge status: <merged to main / not merged>
