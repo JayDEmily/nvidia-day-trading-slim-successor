@@ -252,6 +252,7 @@ class RealDataLoaderService:
         spot_to_pin_distance_pct = self._spot_to_pin_distance_pct(
             aligned_bar.close, dominant_strike
         )
+        surface_anchor_to_spot_pct = self._surface_anchor_to_spot_pct(front_quotes, aligned_bar.close)
         repeated_sequence = self._build_repeated_snapshot_sequence(
             current_chain=chain,
             ordered_chains=ordered_chains,
@@ -372,6 +373,7 @@ class RealDataLoaderService:
             ),
             dominant_strike=dominant_strike,
             spot_to_pin_distance_pct=spot_to_pin_distance_pct,
+            surface_anchor_to_spot_pct=surface_anchor_to_spot_pct,
             pin_progression_bias=pin_progression_bias,
             next_event_at=next_event.event_at if next_event is not None else None,
             live_event_snapshot=live_event_snapshot,
@@ -503,15 +505,18 @@ class RealDataLoaderService:
             if abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) <= 0.02
         )
 
+    def _lawful_weight(self, quote: OptionQuote) -> float:
+        """Return the lawful weight available for strike ranking."""
+
+        return float(quote.oi or 0.0) + float(quote.volume or 0.0)
+
     def _dominant_strike(self, quotes: Sequence[OptionQuote]) -> float | None:
         """Return the dominant near-expiry strike by open interest and volume."""
 
-        if not quotes:
+        weighted_quotes = [quote for quote in quotes if self._lawful_weight(quote) > 0.0]
+        if not weighted_quotes:
             return None
-        dominant_quote = max(
-            quotes,
-            key=lambda quote: float(quote.oi or 0.0) + float(quote.volume or 0.0),
-        )
+        dominant_quote = max(weighted_quotes, key=self._lawful_weight)
         return float(dominant_quote.strike)
 
     def _spot_to_pin_distance_pct(self, spot_price: float, dominant_strike: float | None) -> float:
@@ -645,6 +650,34 @@ class RealDataLoaderService:
             )
         return tenor_points
 
+    def _surface_anchor_to_spot_pct(
+        self, quotes: Sequence[OptionQuote], spot_price: float
+    ) -> float | None:
+        """Return the bounded near-spot premium anchor distance from live spot."""
+
+        strike_totals: dict[float, dict[str, float]] = {}
+        for quote in quotes:
+            if abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) > 0.03:
+                continue
+            mid = self._mid(quote)
+            if mid <= 0.0:
+                continue
+            bucket = strike_totals.setdefault(float(quote.strike), {"call": 0.0, "put": 0.0})
+            if quote.side in bucket:
+                bucket[quote.side] += mid
+        weighted_pairs = [
+            (strike, values["call"] + values["put"])
+            for strike, values in strike_totals.items()
+            if (values["call"] + values["put"]) > 0.0
+        ]
+        if not weighted_pairs:
+            return None
+        total_weight = sum(weight for _, weight in weighted_pairs)
+        if total_weight <= 0.0:
+            return None
+        anchor_strike = sum(strike * weight for strike, weight in weighted_pairs) / total_weight
+        return round(abs((spot_price - anchor_strike) / max(spot_price, 1.0)) * 100.0, 4)
+
     def _nearby_strike_clusters(
         self, quotes: Sequence[OptionQuote], spot_price: float
     ) -> list[PreparedStrikeCluster]:
@@ -655,11 +688,8 @@ class RealDataLoaderService:
             for quote in quotes
             if abs((float(quote.strike) - spot_price) / max(spot_price, 1.0)) <= 0.03
         ]
-        ordered_quotes = sorted(
-            nearby_quotes,
-            key=lambda quote: float(quote.oi or 0.0) + float(quote.volume or 0.0),
-            reverse=True,
-        )
+        weighted_quotes = [quote for quote in nearby_quotes if self._lawful_weight(quote) > 0.0]
+        ordered_quotes = sorted(weighted_quotes, key=self._lawful_weight, reverse=True)
         clusters: list[PreparedStrikeCluster] = []
         for quote in ordered_quotes[:4]:
             clusters.append(

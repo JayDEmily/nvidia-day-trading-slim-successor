@@ -54,11 +54,11 @@ Declare the live and frozen control surfaces checked before the options-trace re
 - [x] `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`
 - [x] `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_SCOPE_NOTE_v1.md`
 - [ ] vocabulary authority if Gate 185 freezes a new canonical term
-- [ ] packet/contract authority if Gate 182-185 change canonical field contracts
+- [x] packet/contract authority if Gate 182-185 change canonical field contracts
 
 ## Current planned sequence
 
-options-trace integrity repair pack active from Gate 182 on `main`.
+options-trace integrity repair pack closed through Gate 186 on `main`.
 
 ## State-integrity invariants checked
 
@@ -71,3 +71,6 @@ options-trace integrity repair pack active from Gate 182 on `main`.
 
 - The latest closed Gate 171-180 pack was inspected as evidence input only, not as the structural template for this pack.
 - F5 is intentionally excluded from execution scope.
+
+- Gate 185 did not amend the canonical vocabulary file; `surface_anchor_to_spot_pct` was frozen as a schema-field contract rather than a new stage/playbook taxonomy term.
+- Gate 183 required persistence/API parity surfaces plus a migration to keep raw-row claims lawful.

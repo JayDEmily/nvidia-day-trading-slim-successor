@@ -1,6 +1,6 @@
 # 2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1
 
-Status: active options-trace integrity repair pack from Gate 182 on `main`
+Status: closed options-trace integrity repair pack through Gate 186 on `main`
 Purpose: repair the confirmed options-trace integrity defects, add the bounded surface-anchor divergence feature, and close the pack with truthful proofs and router updates.
 Authority: subordinate to `docs/01_NORMATIVE.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, and repo-root `PLANS.md`.
 Vocabulary authority for this pack: `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`

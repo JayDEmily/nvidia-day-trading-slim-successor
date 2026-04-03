@@ -149,8 +149,5 @@ def test_gate_e_runtime_path_validation() -> None:
     )
     assert options_outputs[0].pin_progression_state == "pinning_in"
     assert options_outputs[0].dominant_strike == 118.0
-    assert options_outputs[0].options_behavior_cluster in {
-        "compression_breakout_ready",
-        "pin_reversion_ready",
-        "balanced_options_state",
-    }
+    assert options_outputs[0].surface_anchor_state == "anchored_away"
+    assert options_outputs[0].options_behavior_cluster == "anchored_translation_tension"

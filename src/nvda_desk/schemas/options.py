@@ -22,6 +22,9 @@ class OptionSnapshotPayload(BaseModel):
     last: Decimal | None = None
     volume: int | None = None
     open_interest: int | None = None
+    iv: Decimal | None = None
+    delta: Decimal | None = None
+    gamma: Decimal | None = None
     delta_change: Decimal | None = None
     provenance: str
     confidence: str

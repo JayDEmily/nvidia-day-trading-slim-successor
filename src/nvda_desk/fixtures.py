@@ -21,6 +21,9 @@ class LegacyOptionFixtureRow:
     last: Decimal | None
     volume: int | None
     open_interest: int | None
+    iv: Decimal | None
+    delta: Decimal | None
+    gamma: Decimal | None
     delta_change: Decimal | None
     provenance: str
     confidence: str
@@ -71,6 +74,9 @@ def load_legacy_option_fixture_rows(
                 last=_parse_decimal_optional(row.get("last")),
                 volume=_parse_int_optional(row.get("volume")),
                 open_interest=_parse_int_optional(row.get("open_interest")),
+                iv=_parse_decimal_optional(row.get("iv")),
+                delta=_parse_decimal_optional(row.get("delta")),
+                gamma=_parse_decimal_optional(row.get("gamma")),
                 delta_change=_parse_decimal_optional(row.get("delta_change")),
                 provenance=(row.get("provenance") or "unknown").strip() or "unknown",
                 confidence=(row.get("confidence") or "unknown").strip() or "unknown",

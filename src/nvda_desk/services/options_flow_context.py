@@ -67,6 +67,7 @@ class OptionsFlowContextService:
         pin_progression_state, pin_progression_velocity = self._pin_progression_state(
             payload.pin_progression_sequence
         )
+        surface_anchor_state = self._surface_anchor_state(payload.surface_anchor_to_spot_pct)
         options_behavior_cluster = self._options_behavior_cluster(
             gamma_state=gamma_state,
             skew_state=skew_state,
@@ -78,6 +79,7 @@ class OptionsFlowContextService:
             vix_spread_state=vix_spread_state,
             iv_rv_front_state=iv_rv_front_state,
             pin_progression_state=pin_progression_state,
+            surface_anchor_state=surface_anchor_state,
         )
         flow_tension_score = round(
             min(
@@ -111,6 +113,7 @@ class OptionsFlowContextService:
             f"skew_evolution_state:{skew_evolution_state}",
             f"tenor_curve_state:{tenor_curve_state}",
             f"pin_progression_state:{pin_progression_state}",
+            f"surface_anchor_state:{surface_anchor_state}",
             f"options_behavior_cluster:{options_behavior_cluster}",
             f"implied_move_envelope_pct:{implied_move_envelope_pct}",
         ]
@@ -134,13 +137,14 @@ class OptionsFlowContextService:
             tenor_curve_state=tenor_curve_state,
             pin_progression_state=pin_progression_state,
             pin_progression_velocity=pin_progression_velocity,
+            surface_anchor_state=surface_anchor_state,
             reasons=reasons,
         )
 
     def _term_structure_state(self, spread: float) -> TermStructureState:
-        if spread >= 1.0:
+        if spread >= 0.01:
             return TermStructureState.FRONT_PREMIUM
-        if spread <= -1.0:
+        if spread <= -0.01:
             return TermStructureState.BACK_PREMIUM
         return TermStructureState.FLAT
 
@@ -249,9 +253,9 @@ class OptionsFlowContextService:
         gamma_delta = last.gamma_pressure_score - first.gamma_pressure_score
         skew_delta = last.put_call_skew - first.put_call_skew
         iv_delta = last.front_atm_iv - first.front_atm_iv
-        if gamma_delta >= 0.08 and (skew_delta >= 0.05 or iv_delta >= 0.8):
+        if gamma_delta >= 0.08 and (skew_delta >= 0.05 or iv_delta >= 0.01):
             return "escalating_pressure"
-        if gamma_delta <= -0.08 and (skew_delta <= -0.05 or iv_delta <= -0.8):
+        if gamma_delta <= -0.08 and (skew_delta <= -0.05 or iv_delta <= -0.01):
             return "cooling_pressure"
         if last.spot_to_pin_distance_pct < first.spot_to_pin_distance_pct - 0.15:
             return "pinning_build"
@@ -282,9 +286,9 @@ class OptionsFlowContextService:
             if mid > max(front, back):
                 return "hump_curve"
             return "flat_curve"
-        if payload.front_atm_iv - payload.next_atm_iv >= 1.0:
+        if payload.front_atm_iv - payload.next_atm_iv >= 0.01:
             return "front_loaded_curve"
-        if payload.next_atm_iv - payload.front_atm_iv >= 1.0:
+        if payload.next_atm_iv - payload.front_atm_iv >= 0.01:
             return "back_loaded_curve"
         return "two_point_flat_curve"
 
@@ -305,6 +309,15 @@ class OptionsFlowContextService:
             return "releasing_from_pin", delta
         return "pin_noise", delta
 
+    def _surface_anchor_state(self, surface_anchor_to_spot_pct: float | None) -> str:
+        if surface_anchor_to_spot_pct is None:
+            return "surface_anchor_unset"
+        if abs(surface_anchor_to_spot_pct) >= 0.75:
+            return "anchored_away"
+        if abs(surface_anchor_to_spot_pct) <= 0.35:
+            return "anchored_to_spot"
+        return "anchor_transitional"
+
     def _options_behavior_cluster(
         self,
         *,
@@ -318,6 +331,7 @@ class OptionsFlowContextService:
         vix_spread_state: str,
         iv_rv_front_state: str,
         pin_progression_state: str,
+        surface_anchor_state: str,
     ) -> str:
         if (
             vix_spread_state in {"vvix_dislocation", "vvix_elevated"}
@@ -351,4 +365,6 @@ class OptionsFlowContextService:
             return "compression_breakout_ready"
         if dealer_pressure_state == "dealer_destabilising":
             return "dealer_flow_tension"
+        if surface_anchor_state == "anchored_away":
+            return "anchored_translation_tension"
         return "balanced_options_state"

@@ -14,6 +14,7 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
+from nvda_desk.schemas.options_units import VolFraction
 from nvda_desk.schemas.events import LiveEventSnapshot
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
@@ -261,8 +262,8 @@ class OptionsFlowMicroSnapshot(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     ts: datetime
-    front_atm_iv: float
-    next_atm_iv: float
+    front_atm_iv: VolFraction
+    next_atm_iv: VolFraction
     put_call_skew: float
     gamma_pressure_score: float
     spot_to_pin_distance_pct: float = 0.0
@@ -274,7 +275,7 @@ class TenorCurvePoint(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     tenor_dte: int = Field(ge=0)
-    atm_iv: float = Field(ge=0.0)
+    atm_iv: VolFraction = Field(ge=0.0)
 
 
 class PinProgressionPoint(BaseModel):
@@ -294,15 +295,15 @@ class OptionsFlowContextInput(BaseModel):
     spot_price: float
     front_dte: int
     next_dte: int
-    front_atm_iv: float
-    next_atm_iv: float
+    front_atm_iv: VolFraction
+    next_atm_iv: VolFraction
     put_call_skew: float
     gamma_pressure_score: float
     call_put_imbalance: float
     oi_concentration: float
     atm_straddle_value: float
-    front_realised_vol: float = 0.0
-    next_realised_vol: float = 0.0
+    front_realised_vol: VolFraction = 0.0
+    next_realised_vol: VolFraction = 0.0
     vix_level: float = 0.0
     vvix_level: float = 0.0
     spot_to_pin_distance_pct: float = 0.0
@@ -316,6 +317,7 @@ class OptionsFlowContextInput(BaseModel):
     repeated_snapshot_sequence: list[OptionsFlowMicroSnapshot] = Field(default_factory=list)
     tenor_iv_curve: list[TenorCurvePoint] = Field(default_factory=list)
     pin_progression_sequence: list[PinProgressionPoint] = Field(default_factory=list)
+    surface_anchor_to_spot_pct: float | None = None
 
 
 class OptionsFlowContextOutput(BaseModel):
@@ -337,6 +339,7 @@ class OptionsFlowContextOutput(BaseModel):
     flow_tension_score: float
     strike_cluster_state: str
     dominant_strike: float | None = None
+    surface_anchor_state: str
     repeated_snapshot_state: str
     skew_evolution_state: str
     tenor_curve_state: str

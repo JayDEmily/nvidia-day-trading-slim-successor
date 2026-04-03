@@ -43,6 +43,6 @@ Carry the bounded truth split for the uploaded options findings report and freez
 
 ## Unknown / not yet verified
 
-- whether DB migration work will be required for Gate 183 or whether the current persistence path can be aligned without schema migration
-- the exact final canonical name for the surface-anchor divergence feature; vocabulary authority must be checked before naming is frozen
-- whether prepared real-data fixtures need regeneration or only schema/service/test amendments
+- Gate 183 required a schema migration so raw option-surface persistence could lawfully carry `iv`, `delta`, and `gamma`.
+- Gate 185 froze `surface_anchor_to_spot_pct` as the bounded schema-field name for the derived divergence feature. No canonical vocabulary-file amendment was required because no new stage/family/playbook taxonomy term was introduced.
+- prepared real-data fixtures required regeneration so the lawful Gate 185 derived field could be carried in the checked-in prepared-runtime pack.

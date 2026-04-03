@@ -2634,6 +2634,10 @@ Gate 143 does **not** retire `final_risk_join` or the existing `pre_final_risk_*
 
 Gate 145 does **not** retire `ModifierRuntimePacket`, `EffectivePolicySnapshot`, or the existing flat compatibility fields. Instead it makes the bridge explicit: posture mutation remains a bounded compatibility consequence of packet authority, and execution mutation becomes a no-op bridge unless the post-evaluate packet correction still needs to change a field after `ExecutionExpressionService` has already read the packet through `_operative_surfaces(...)`.
 
+#### Gate 186 note: options-trace integrity contract repair
+
+`OptionQuote.iv`, prepared/runtime snapshot IV fields, and options-flow ingress now share one decimal-fraction IV contract, with non-canonical percent-style ingress normalised at schema boundary rather than tolerated as a second silent unit system. `OptionSnapshotPayload` and persisted `OptionSnapshot` rows can now lawfully carry raw-row `iv`, `delta`, and `gamma` fields when a surface claims raw option-row truth. `PreparedRuntimeSnapshot.surface_anchor_to_spot_pct` and the matching cognition field carry one bounded derived measure of surface-anchor divergence versus live spot so options-flow output can distinguish materially anchored-away surfaces without creating a second options engine.
+
 #### Gate 146 note: eligibility admissibility versus execution candidate ownership
 
 `EligibilityAdmissibilitySurface` freezes the bounded Stage 5 truth that later gates may consume without inferring candidate ownership from flat compatibility lists. The surface carries permission/no-trade state plus the admissible and watch-only family, setup-variant, and playbook ids that Stage 5 is allowed to own.

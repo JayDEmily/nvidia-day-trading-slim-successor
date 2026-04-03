@@ -20,14 +20,18 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- none currently routed
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`
 - leaves: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_SCOPE_NOTE_v1.md`
-- active gate: Gate 182 in the options-trace integrity repair pack on `main`
+- closeout receipt: `docs/planning/2026-04-03_GATE186_OPTIONS_TRACE_INTEGRITY_CLOSEOUT.md`
 
-## Latest closed pack retained as evidence
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md`
 - leaves: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json`
@@ -112,9 +116,11 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack is the options-trace integrity repair pack with Gate 182 on `main`
-- latest closed pack retained as evidence is the master/child parallel-risk integration pack closed through Gate 180 on `main`
-- latest closed predecessor evidence is the policy/temporal/observability successor pack closed through Gate 170 on `main`
+- no active pack is currently routed
+- latest closed pack retained as evidence is the options-trace integrity repair pack closed through Gate 186 on `main`
+- latest closed predecessor evidence is the master/child parallel-risk integration pack closed through Gate 180 on `main`
+- latest closed predecessor evidence before the options-trace repair pack is the master/child parallel-risk integration pack closed through Gate 180 on `main`
+- historical earlier predecessor evidence remains the policy/temporal/observability successor pack closed through Gate 170 on `main`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`
 - latest closed corrective evidence is the stage-local handoff corrective successor pack closed through Gate 156 on `main`

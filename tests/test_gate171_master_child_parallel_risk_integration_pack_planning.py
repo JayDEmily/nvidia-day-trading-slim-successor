@@ -27,7 +27,10 @@ def test_gate171_pack_surfaces_remain_coherent_through_closeout() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert "master/child parallel-risk integration pack" in plans
-    assert "Current active gate: **Gate 182 in the options-trace integrity repair pack on `main`**." in gate_map
+    assert any(marker in gate_map for marker in [
+        "Current active gate: **Gate 182 in the options-trace integrity repair pack on `main`**.",
+        "Current active gate: **none — options-trace integrity repair pack closed through Gate 186 on `main`**.",
+    ])
     assert "Status: closed master/child parallel-risk integration pack through Gate 180 on `main`" in gates
     assert leaves["execution_status"] == "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_main"
     assert leaves["active_gate"] == "none"

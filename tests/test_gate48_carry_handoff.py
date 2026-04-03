@@ -59,6 +59,7 @@ def _options_output(
         skew_evolution_state="stable",
         tenor_curve_state="normal",
         pin_progression_state="pin_stable",
+        surface_anchor_state="anchored_to_spot",
         reasons=["options_ready"],
     )
 

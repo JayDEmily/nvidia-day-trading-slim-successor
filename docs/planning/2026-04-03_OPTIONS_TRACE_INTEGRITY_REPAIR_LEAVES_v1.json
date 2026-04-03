@@ -1,21 +1,24 @@
 {
   "governing_plan": "2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md",
   "version": "v1",
-  "execution_status": "gate_181_options_trace_integrity_repair_pack_active_from_gate_182",
-  "active_gate": "Gate 182",
+  "execution_status": "options_trace_integrity_repair_pack_closed_through_gate_186_on_main",
+  "active_gate": "none",
   "supersedes": [
     "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 181"
+    "Gate 181",
+    "Gate 182",
+    "Gate 183",
+    "Gate 184",
+    "Gate 185",
+    "Gate 186"
   ],
   "completed_leaf_ids": [
     "LEAF-G181-001",
     "LEAF-G181-002",
     "LEAF-G181-003",
-    "LEAF-G181-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G181-004",
     "LEAF-G182-001",
     "LEAF-G182-002",
     "LEAF-G182-003",
@@ -39,13 +42,8 @@
     "LEAF-G186-003",
     "LEAF-G186-004"
   ],
-  "pending_gate_ids": [
-    "Gate 182",
-    "Gate 183",
-    "Gate 184",
-    "Gate 185",
-    "Gate 186"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": [
     "Read all materially changed option-path files end to end before claiming semantic repair.",
     "Use the latest closed Gate 171-180 pack as evidence input only; do not copy its structure as the new pack.",
@@ -227,7 +225,7 @@
     "LEAF-G182-001": {
       "gate": "Gate 182",
       "title": "Freeze the canonical IV unit contract",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G181-004"
       ],
@@ -261,7 +259,7 @@
     "LEAF-G182-002": {
       "gate": "Gate 182",
       "title": "Normalise or reject non-canonical IV ingress",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G182-001"
       ],
@@ -295,7 +293,7 @@
     "LEAF-G182-003": {
       "gate": "Gate 182",
       "title": "Align standalone classifier tests with real-data IV units",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G182-002"
       ],
@@ -329,7 +327,7 @@
     "LEAF-G182-004": {
       "gate": "Gate 182",
       "title": "Update packet or schema comments/docs for the IV contract",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G182-003"
       ],
@@ -363,7 +361,7 @@
     "LEAF-G182-005": {
       "gate": "Gate 182",
       "title": "Close Gate 182 honestly and route to Gate 183",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G182-004"
       ],
@@ -397,7 +395,7 @@
     "LEAF-G183-001": {
       "gate": "Gate 183",
       "title": "Map raw option-row contract differences across runtime, DB, and API surfaces",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G182-005"
       ],
@@ -431,7 +429,7 @@
     "LEAF-G183-002": {
       "gate": "Gate 183",
       "title": "Align persistence and API raw-row surfaces with runtime truth",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G183-001"
       ],
@@ -465,7 +463,7 @@
     "LEAF-G183-003": {
       "gate": "Gate 183",
       "title": "Add retrieval and contract proofs for raw option-row parity",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G183-002"
       ],
@@ -499,7 +497,7 @@
     "LEAF-G183-004": {
       "gate": "Gate 183",
       "title": "Close Gate 183 honestly and route to Gate 184",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G183-003"
       ],
@@ -533,7 +531,7 @@
     "LEAF-G184-001": {
       "gate": "Gate 184",
       "title": "Classify lawful weighting availability for pin and cluster inference",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G183-004"
       ],
@@ -567,7 +565,7 @@
     "LEAF-G184-002": {
       "gate": "Gate 184",
       "title": "Implement fail-closed dominant-strike semantics",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G184-001"
       ],
@@ -601,7 +599,7 @@
     "LEAF-G184-003": {
       "gate": "Gate 184",
       "title": "Implement fail-closed nearby-cluster ordering and edge-case proofs",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G184-002"
       ],
@@ -635,7 +633,7 @@
     "LEAF-G184-004": {
       "gate": "Gate 184",
       "title": "Close Gate 184 honestly and route to Gate 185",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G184-003"
       ],
@@ -669,7 +667,7 @@
     "LEAF-G185-001": {
       "gate": "Gate 185",
       "title": "Freeze the canonical name and packet ownership for the surface-anchor divergence feature",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G184-004"
       ],
@@ -703,7 +701,7 @@
     "LEAF-G185-002": {
       "gate": "Gate 185",
       "title": "Derive the bounded surface-anchor divergence metric from lawful option-row evidence",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G185-001"
       ],
@@ -737,7 +735,7 @@
     "LEAF-G185-003": {
       "gate": "Gate 185",
       "title": "Thread the metric through cognition input and options-flow classification",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G185-002"
       ],
@@ -771,7 +769,7 @@
     "LEAF-G185-004": {
       "gate": "Gate 185",
       "title": "Add fixture and regression proofs for surface-anchor divergence",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G185-003"
       ],
@@ -805,7 +803,7 @@
     "LEAF-G185-005": {
       "gate": "Gate 185",
       "title": "Close Gate 185 honestly and route to Gate 186",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G185-004"
       ],
@@ -839,7 +837,7 @@
     "LEAF-G186-001": {
       "gate": "Gate 186",
       "title": "Run the bounded end-to-end options trace proof slice",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G185-005"
       ],
@@ -873,7 +871,7 @@
     "LEAF-G186-002": {
       "gate": "Gate 186",
       "title": "Audit router and pack surfaces for truthful closeout",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G186-001"
       ],
@@ -907,7 +905,7 @@
     "LEAF-G186-003": {
       "gate": "Gate 186",
       "title": "Write the Gate 186 closeout receipt and package the exact repo state",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G186-002"
       ],
@@ -941,7 +939,7 @@
     "LEAF-G186-004": {
       "gate": "Gate 186",
       "title": "Mark the pack closed and preserve it as latest evidence",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G186-003"
       ],

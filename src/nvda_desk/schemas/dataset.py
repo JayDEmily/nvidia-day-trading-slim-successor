@@ -12,6 +12,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.schemas.cognition import OptionsFlowContextInput, TemporalContextInput
+from nvda_desk.schemas.options_units import OptionalVolFraction, VolFraction
 from nvda_desk.schemas.events import LiveEventSnapshot, NormalisedEventRecord
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
@@ -54,7 +55,7 @@ class OptionQuote(BaseModel):
     bid: float
     ask: float
     last: float | None = None
-    iv: float | None = None
+    iv: OptionalVolFraction = None
     delta: float | None = None
     gamma: float | None = None
     oi: float | None = None
@@ -116,8 +117,8 @@ class PreparedSequencePoint(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     ts: datetime
-    front_atm_iv: float
-    next_atm_iv: float
+    front_atm_iv: VolFraction
+    next_atm_iv: VolFraction
     put_call_skew: float
     gamma_pressure_score: float
     spot_to_pin_distance_pct: float
@@ -129,7 +130,7 @@ class PreparedTenorPoint(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     tenor_dte: int = Field(ge=0)
-    atm_iv: float = Field(ge=0.0)
+    atm_iv: VolFraction = Field(ge=0.0)
 
 
 class PreparedPinProgressionPoint(BaseModel):
@@ -207,20 +208,21 @@ class PreparedRuntimeSnapshot(BaseModel):
     next_expiry: datetime
     front_dte: int = Field(ge=0)
     next_dte: int = Field(ge=0)
-    front_atm_iv: float
-    next_atm_iv: float
+    front_atm_iv: VolFraction
+    next_atm_iv: VolFraction
     put_call_skew: float
     gamma_pressure_score: float = Field(ge=0.0, le=1.0)
     call_put_imbalance: float = Field(ge=-1.0, le=1.0)
     oi_concentration: float = Field(ge=0.0, le=1.0)
     atm_straddle_value: float = Field(ge=0.0)
-    front_realised_vol: float = Field(ge=0.0, default=0.0)
-    next_realised_vol: float = Field(ge=0.0, default=0.0)
+    front_realised_vol: VolFraction = Field(ge=0.0, default=0.0)
+    next_realised_vol: VolFraction = Field(ge=0.0, default=0.0)
     snapshot_sequence_id: str | None = None
     snapshot_index: int = Field(ge=0, default=0)
     snapshot_count: int = Field(ge=1, default=1)
     snapshot_window_minutes: int | None = Field(default=None, ge=0)
     dominant_strike: float | None = None
+    surface_anchor_to_spot_pct: float | None = None
     spot_to_pin_distance_pct: float = 0.0
     pin_progression_bias: str = "untracked"
     next_event_at: datetime | None = None

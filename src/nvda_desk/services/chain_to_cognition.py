@@ -112,6 +112,7 @@ class ChainToCognitionService:
                 PinProgressionPoint(ts=point.ts, distance_to_pin_pct=point.distance_to_pin_pct)
                 for point in snapshot.pin_progression_sequence
             ],
+            surface_anchor_to_spot_pct=snapshot.surface_anchor_to_spot_pct,
         )
         return RealDataCognitionInputs(
             snapshot_ts=snapshot.ts,

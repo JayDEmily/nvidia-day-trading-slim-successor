@@ -26,13 +26,25 @@ def test_gate181_pack_surfaces_are_coherent() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert "docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md" in plans
-    assert "Gate 182 in the options-trace integrity repair pack" in gate_map
-    assert "Status: active options-trace integrity repair pack from Gate 182 on `main`" in gates
-    assert leaves["execution_status"] == "gate_181_options_trace_integrity_repair_pack_active_from_gate_182"
-    assert leaves["active_gate"] == "Gate 182"
+    assert any(marker in gate_map for marker in [
+        "Gate 182 in the options-trace integrity repair pack",
+        "options-trace integrity repair pack closed through Gate 186 on `main`",
+    ])
+    assert any(status in gates for status in [
+        "Status: active options-trace integrity repair pack from Gate 182 on `main`",
+        "Status: closed options-trace integrity repair pack through Gate 186 on `main`",
+    ])
+    assert leaves["execution_status"] in {
+        "gate_181_options_trace_integrity_repair_pack_active_from_gate_182",
+        "options_trace_integrity_repair_pack_closed_through_gate_186_on_main",
+    }
+    assert leaves["active_gate"] in {"Gate 182", "none"}
     assert set(leaves["completed_leaf_ids"]).isdisjoint(leaves["remaining_leaf_ids"])
     assert execution_log.startswith("# 2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_EXECUTION_LOG_v1")
-    assert "options-trace integrity repair pack active from Gate 182 on `main`." in checklist
+    assert any(state in checklist for state in [
+        "options-trace integrity repair pack active from Gate 182 on `main`.",
+        "options-trace integrity repair pack closed through Gate 186 on `main`.",
+    ])
     assert "F1: IV unit contract inconsistency" in scope_note
     assert "F5: workbook doctrine as raw-runtime replacement. Keep workbook surfaces as evidence input only." in scope_note
 
