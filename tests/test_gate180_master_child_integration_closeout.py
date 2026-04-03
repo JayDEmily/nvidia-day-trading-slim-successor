@@ -24,8 +24,8 @@ def test_gate180_control_surfaces_close_honestly_on_main() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`" in plans
-    assert "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `main`**." in gate_map
+    assert "master/child parallel-risk integration pack closed through Gate 180 on `main`" in plans
+    assert "Current active gate: **Gate 182 in the options-trace integrity repair pack on `main`**." in gate_map
     assert "Status: closed master/child parallel-risk integration pack through Gate 180 on `main`" in gates
     assert leaves["execution_status"] == "master_child_parallel_risk_integration_pack_closed_through_gate_180_on_main"
     assert leaves["active_gate"] == "none"

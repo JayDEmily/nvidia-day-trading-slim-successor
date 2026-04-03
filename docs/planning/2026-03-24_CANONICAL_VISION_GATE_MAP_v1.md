@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.17
+Version: v1.18
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
@@ -12,6 +12,9 @@ Paired files:
 - `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md` — latest closed master/child integration gate authority retained as evidence for Gates 171-180
 - `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json` — latest closed master/child integration leaf ledger retained as evidence
 - `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1.md` — latest closed master/child integration execution log retained as evidence
+- `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md` — active options-trace integrity repair gate authority for Gates 181-186
+- `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` — active options-trace integrity repair leaf ledger
+- `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_EXECUTION_LOG_v1.md` — active options-trace integrity repair execution log
 
 ## 0. Purpose
 
@@ -47,7 +50,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180 on `main`**.
+Current active gate: **Gate 182 in the options-trace integrity repair pack on `main`**.
 
 Historical prior active-gate markers retained for planning-guard continuity: Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**. Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**. Current active gate: **Gate 163 in the coefficient architecture consolidation pack**. Current active gate: **none — parallel risk lane foundation pack closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`**.
 
@@ -209,6 +212,12 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 179 | complete on `main` | run whole-repo vocabulary/workbook-path hygiene against the canonical dictionary and classify residual predecessor-workbook references honestly | `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md`, `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json`, `docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md`, `tests/test_gate179_repo_wide_vocabulary_hygiene.py` |
 | Gate 180 | complete on `main` | audit merge fidelity, runtime implementation truth, proof/build coverage, hygiene, and package the exact green repo state honestly | `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md`, `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json`, `docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md`, `tests/test_gate180_master_child_integration_closeout.py` |
 
+| Gate 181 | complete on `main` | activate the options-trace integrity repair pack, classify the findings truthfully, and route the repo to Gate 182 without changing runtime behaviour yet | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json`, `docs/planning/2026-04-03_GATE181_OPTIONS_TRACE_PACK_BOOTSTRAP.md`, `tests/test_gate181_options_trace_integrity_pack_planning.py` |
+| Gate 182 | active on `main` | freeze the canonical IV unit contract, normalise non-canonical IV ingress, and align standalone options-context tests with the runtime path | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` |
+| Gate 183 | planned | align persisted/API raw option-row surfaces with the richer runtime option-quote contract | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` |
+| Gate 184 | planned | make dominant-strike and nearby-cluster inference fail closed when weighting truth is absent | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` |
+| Gate 185 | planned | add one bounded surface-anchor divergence feature through prepared snapshots, cognition, and options-flow classification | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` |
+| Gate 186 | planned | run end-to-end proofs, close the router surfaces honestly, and package the exact green repo state | `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`, `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json` |
 
 ## 4. Global execution rules
 

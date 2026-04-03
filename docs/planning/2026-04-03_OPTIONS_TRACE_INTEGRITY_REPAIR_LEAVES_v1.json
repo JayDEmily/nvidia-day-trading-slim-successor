@@ -1,0 +1,976 @@
+{
+  "governing_plan": "2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md",
+  "version": "v1",
+  "execution_status": "gate_181_options_trace_integrity_repair_pack_active_from_gate_182",
+  "active_gate": "Gate 182",
+  "supersedes": [
+    "2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 181"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G181-001",
+    "LEAF-G181-002",
+    "LEAF-G181-003",
+    "LEAF-G181-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G182-001",
+    "LEAF-G182-002",
+    "LEAF-G182-003",
+    "LEAF-G182-004",
+    "LEAF-G182-005",
+    "LEAF-G183-001",
+    "LEAF-G183-002",
+    "LEAF-G183-003",
+    "LEAF-G183-004",
+    "LEAF-G184-001",
+    "LEAF-G184-002",
+    "LEAF-G184-003",
+    "LEAF-G184-004",
+    "LEAF-G185-001",
+    "LEAF-G185-002",
+    "LEAF-G185-003",
+    "LEAF-G185-004",
+    "LEAF-G185-005",
+    "LEAF-G186-001",
+    "LEAF-G186-002",
+    "LEAF-G186-003",
+    "LEAF-G186-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 182",
+    "Gate 183",
+    "Gate 184",
+    "Gate 185",
+    "Gate 186"
+  ],
+  "global_rules": [
+    "Read all materially changed option-path files end to end before claiming semantic repair.",
+    "Use the latest closed Gate 171-180 pack as evidence input only; do not copy its structure as the new pack.",
+    "A request to complete multiple gates does not waive per-gate sequencing, validation, router updates, or closeout.",
+    "Gate 185 may add one bounded surface-anchor divergence feature, but must not create a second playbook engine or opaque options scalar.",
+    "Gate 186 closeout must prove the Gate 180 pack remains closed evidence while the new pack truthfully becomes the active or latest closed pack."
+  ],
+  "leaf_order": [
+    "LEAF-G181-001",
+    "LEAF-G181-002",
+    "LEAF-G181-003",
+    "LEAF-G181-004",
+    "LEAF-G182-001",
+    "LEAF-G182-002",
+    "LEAF-G182-003",
+    "LEAF-G182-004",
+    "LEAF-G182-005",
+    "LEAF-G183-001",
+    "LEAF-G183-002",
+    "LEAF-G183-003",
+    "LEAF-G183-004",
+    "LEAF-G184-001",
+    "LEAF-G184-002",
+    "LEAF-G184-003",
+    "LEAF-G184-004",
+    "LEAF-G185-001",
+    "LEAF-G185-002",
+    "LEAF-G185-003",
+    "LEAF-G185-004",
+    "LEAF-G185-005",
+    "LEAF-G186-001",
+    "LEAF-G186-002",
+    "LEAF-G186-003",
+    "LEAF-G186-004"
+  ],
+  "leaves": {
+    "LEAF-G181-001": {
+      "gate": "Gate 181",
+      "title": "Install the options-trace repair planning quartet and scope note",
+      "status": "complete",
+      "depends_on": [],
+      "ordered_actions": [
+        "Create the active gates/leaves/execution-log/checklist/scope-note files for Gates 181-186.",
+        "Freeze the findings truth split so F1/F2/F4 are scoped as repairs, F3 as a bounded feature gap, and F5 as out of scope.",
+        "Keep Gate 181 planning-only; do not edit runtime behaviour in this bootstrap gate."
+      ],
+      "forbidden_actions": [
+        "Do not start fixing option-path code in Gate 181.",
+        "Do not collapse all findings into one vague repair gate.",
+        "Do not treat the findings report as authoritative over current repo truth."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate181_options_trace_integrity_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Active planning quartet and scope note exist with Gates 181-186 and the findings truth split.",
+        "Pack remains planning-only at Gate 181."
+      ],
+      "definition_of_done": [
+        "Pack surfaces exist and the findings truth split is explicit.",
+        "No option-path runtime code is changed in Gate 181."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G181-002": {
+      "gate": "Gate 181",
+      "title": "Route the repo truthfully to Gate 182",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G181-001"
+      ],
+      "ordered_actions": [
+        "Update PLANS.md so the options-trace repair pack is the active pack.",
+        "Update the canonical gate map to record Gate 181 complete and Gate 182 active.",
+        "Preserve the closed Gate 171-180 pack as latest predecessor evidence."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md saying no active pack exists.",
+        "Do not erase Gate 180 evidence surfaces.",
+        "Do not pretend Gate 182 work is already complete."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py tests/test_gate180_master_child_integration_closeout.py tests/test_gate181_options_trace_integrity_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Router surfaces point to Gate 182 in the new pack.",
+        "Gate 180 pack remains closed evidence."
+      ],
+      "definition_of_done": [
+        "PLANS and gate map agree on Gate 182 as the active gate.",
+        "Earlier closeout/planning tests allow this later lawful state."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G181-003": {
+      "gate": "Gate 181",
+      "title": "Write the bounded execution sequence and document-touch law for F1/F2/F3/F4",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G181-002"
+      ],
+      "ordered_actions": [
+        "Freeze variable gate and leaf counts that preserve granularity for this repair tranche.",
+        "Name the primary code/schema/test surfaces that each later gate is allowed to touch.",
+        "Record explicit out-of-scope items and stop conditions for this pack."
+      ],
+      "forbidden_actions": [
+        "Do not force a fixed five-gate or four-leaf cardinality just because another pack used it.",
+        "Do not leave migration or vocabulary decisions implied if later gates may need them.",
+        "Do not omit the F3 feature treatment from the pack."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate181_options_trace_integrity_pack_planning.py tests/test_tranche_briefing_template_pack.py"
+      ],
+      "expected_evidence": [
+        "Gate structure differentiates F1, F2, F4, F3, and final closeout.",
+        "Checklist and scope note record the lawful sequence and boundaries."
+      ],
+      "definition_of_done": [
+        "Later gates are bounded, non-placeholder, and clearly scoped.",
+        "Template-pack doctrine is followed without copying fixed cardinality."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G181-004": {
+      "gate": "Gate 181",
+      "title": "Install planning-pack proofs and record the bootstrap receipt",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G181-003"
+      ],
+      "ordered_actions": [
+        "Add a planning-pack test for Gate 181 coherence.",
+        "Record the Gate 181 receipt and the execution-log receipt stub.",
+        "Run the bounded planning-governance proof slice."
+      ],
+      "forbidden_actions": [
+        "Do not call Gate 181 closed without a planning test.",
+        "Do not leave the execution log or receipt missing.",
+        "Do not skip the state-integrity checks."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py tests/test_gate180_master_child_integration_closeout.py tests/test_gate181_options_trace_integrity_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 181 proof file exists and passes.",
+        "Receipt and execution-log surfaces exist."
+      ],
+      "definition_of_done": [
+        "Gate 181 can be closed honestly and Gate 182 becomes active.",
+        "Bounded proof slice is green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G182-001": {
+      "gate": "Gate 182",
+      "title": "Freeze the canonical IV unit contract",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G181-004"
+      ],
+      "ordered_actions": [
+        "Read the current options-path schemas, services, fixtures, and tests end to end.",
+        "Name one canonical IV unit contract and the ingress boundary where non-canonical input is handled.",
+        "Record the retain/amend impacts in the active pack docs before code changes proceed."
+      ],
+      "forbidden_actions": [
+        "Do not keep decimal and percent-style semantics both alive for the same fields.",
+        "Do not change thresholds blindly without stating the unit contract.",
+        "Do not skip fixture/test impact analysis."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate181_options_trace_integrity_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Active pack docs explicitly freeze one IV unit contract and affected surfaces."
+      ],
+      "definition_of_done": [
+        "Canonical IV unit contract and ingress ownership are explicit."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G182-002": {
+      "gate": "Gate 182",
+      "title": "Normalise or reject non-canonical IV ingress",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G182-001"
+      ],
+      "ordered_actions": [
+        "Implement one lawful handling path for percent-style IV ingress at the chosen boundary.",
+        "Keep downstream packet semantics single-unit and inspectable.",
+        "Add targeted guards for malformed or mixed-unit payloads."
+      ],
+      "forbidden_actions": [
+        "Do not silently let mixed units pass downstream.",
+        "Do not scatter conversion logic across multiple services.",
+        "Do not hide conversion inside unrelated tests."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-182 targeted tests>"
+      ],
+      "expected_evidence": [
+        "Ingress path rejects or normalises percent-style IV once."
+      ],
+      "definition_of_done": [
+        "Downstream sees one consistent IV unit."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G182-003": {
+      "gate": "Gate 182",
+      "title": "Align standalone classifier tests with real-data IV units",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G182-002"
+      ],
+      "ordered_actions": [
+        "Rewrite standalone options-context fixtures/tests to use the canonical IV unit.",
+        "Add one regression proving mixed-unit inputs no longer flip classification truth.",
+        "Keep real-data fixture evidence and standalone tests semantically aligned."
+      ],
+      "forbidden_actions": [
+        "Do not preserve legacy percent-style literals just because they were already green.",
+        "Do not remove coverage for term-structure or IV/RV comparisons.",
+        "Do not claim the bug is fixed without a regression."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_options_flow_context.py <new gate-182 test>"
+      ],
+      "expected_evidence": [
+        "Standalone tests use the same IV contract as runtime preparation."
+      ],
+      "definition_of_done": [
+        "Regression proves the mixed-unit flip is removed."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G182-004": {
+      "gate": "Gate 182",
+      "title": "Update packet or schema comments/docs for the IV contract",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G182-003"
+      ],
+      "ordered_actions": [
+        "Amend the affected schema/doc surfaces so the canonical unit contract is explicit.",
+        "Ensure any field comments or packet docs match the chosen unit.",
+        "Keep wording truthful about what is enforced versus inferred."
+      ],
+      "forbidden_actions": [
+        "Do not leave canonical docs ambiguous on units.",
+        "Do not update docs to claim enforcement that code does not implement.",
+        "Do not spray edits across unrelated docs."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <planning and schema proof slice>"
+      ],
+      "expected_evidence": [
+        "Affected docs/schema comments state the same unit contract as code and tests."
+      ],
+      "definition_of_done": [
+        "Code/tests/docs agree on IV units."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G182-005": {
+      "gate": "Gate 182",
+      "title": "Close Gate 182 honestly and route to Gate 183",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G182-004"
+      ],
+      "ordered_actions": [
+        "Run the bounded Gate 182 proof slice.",
+        "Update the active leaves ledger and execution log with exact receipts.",
+        "Move the router surfaces to Gate 183 only after the proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not start Gate 183 while Gate 182 is still active.",
+        "Do not omit exact validation commands from the receipt.",
+        "Do not leave state-integrity checks implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-182 closeout slice>"
+      ],
+      "expected_evidence": [
+        "Gate 182 receipt exists and router surfaces point to Gate 183."
+      ],
+      "definition_of_done": [
+        "Gate 182 is complete and Gate 183 is the only active gate."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G183-001": {
+      "gate": "Gate 183",
+      "title": "Map raw option-row contract differences across runtime, DB, and API surfaces",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G182-005"
+      ],
+      "ordered_actions": [
+        "Trace the current runtime OptionQuote contract against DB and API raw-row surfaces.",
+        "Classify which fields must be preserved for a lawful raw-row contract.",
+        "Record whether migration or compatibility shims are required before code changes."
+      ],
+      "forbidden_actions": [
+        "Do not conflate reduced consumer views with raw-row contracts.",
+        "Do not add fields without tracing their ownership and storage path.",
+        "Do not guess migration impact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-183 planning/contract slice>"
+      ],
+      "expected_evidence": [
+        "Contract mapping names the exact fields and surfaces that diverge."
+      ],
+      "definition_of_done": [
+        "Gate 183 implementation path is explicit before schema/service edits."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G183-002": {
+      "gate": "Gate 183",
+      "title": "Align persistence and API raw-row surfaces with runtime truth",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G183-001"
+      ],
+      "ordered_actions": [
+        "Implement the required DB/schema/service changes so raw-row surfaces can carry the fields the runtime consumes.",
+        "Keep any reduced payloads explicit if they remain exposed.",
+        "Preserve adapter/service boundaries while adding fields."
+      ],
+      "forbidden_actions": [
+        "Do not silently overload reduced payloads and call them raw.",
+        "Do not bypass service boundaries with ad hoc SQL or view logic.",
+        "Do not widen unrelated surfaces."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-183 targeted tests>"
+      ],
+      "expected_evidence": [
+        "Raw-row persistence/API surfaces can lawfully carry the runtime-required fields."
+      ],
+      "definition_of_done": [
+        "Runtime and DB/API contracts are materially aligned."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G183-003": {
+      "gate": "Gate 183",
+      "title": "Add retrieval and contract proofs for raw option-row parity",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G183-002"
+      ],
+      "ordered_actions": [
+        "Add or amend tests covering persistence, retrieval, and payload shape for the aligned raw-row contract.",
+        "Prove reduced views remain explicit if retained.",
+        "Keep gate proofs bounded to the option-surface path."
+      ],
+      "forbidden_actions": [
+        "Do not claim parity from schema edits alone.",
+        "Do not drop tests for older reduced views without replacing them.",
+        "Do not leave field-ownership ambiguous."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-183 proof slice>"
+      ],
+      "expected_evidence": [
+        "Tests prove raw-row parity and explicit reduced-view semantics."
+      ],
+      "definition_of_done": [
+        "Field-carry truth is enforced by tests."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G183-004": {
+      "gate": "Gate 183",
+      "title": "Close Gate 183 honestly and route to Gate 184",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G183-003"
+      ],
+      "ordered_actions": [
+        "Run the Gate 183 closeout slice.",
+        "Record exact schema/service/test receipts in the execution log.",
+        "Update router surfaces to Gate 184 after proof passes."
+      ],
+      "forbidden_actions": [
+        "Do not start Gate 184 early.",
+        "Do not omit migration or compatibility receipts if they occurred.",
+        "Do not leave the active leaves ledger stale."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-183 closeout slice>"
+      ],
+      "expected_evidence": [
+        "Gate 183 receipt exists and router surfaces point to Gate 184."
+      ],
+      "definition_of_done": [
+        "Gate 183 is complete and Gate 184 is active."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G184-001": {
+      "gate": "Gate 184",
+      "title": "Classify lawful weighting availability for pin and cluster inference",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G183-004"
+      ],
+      "ordered_actions": [
+        "Trace where dominant-strike and nearby-cluster inference currently rely on OI plus volume.",
+        "Define the lawful no-weight / zero-weight behaviour explicitly.",
+        "Name the packet/output consequences when weighting truth is absent."
+      ],
+      "forbidden_actions": [
+        "Do not keep row-order tie-breaking as silent market truth.",
+        "Do not leave no-weight behaviour implicit.",
+        "Do not widen this gate into surface-anchor work."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-184 planning slice>"
+      ],
+      "expected_evidence": [
+        "Gate docs and code path name the fail-closed weighting rule."
+      ],
+      "definition_of_done": [
+        "Lawful absent-weight semantics are explicit before implementation."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G184-002": {
+      "gate": "Gate 184",
+      "title": "Implement fail-closed dominant-strike semantics",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G184-001"
+      ],
+      "ordered_actions": [
+        "Change dominant-strike derivation so absent/zero weighting does not produce a false winner.",
+        "Propagate the lawful absent dominant-strike consequence to dependent fields.",
+        "Keep behaviour deterministic and inspectable."
+      ],
+      "forbidden_actions": [
+        "Do not substitute source ordering for weight truth.",
+        "Do not emit a fake dominant strike when there is no weighting signal.",
+        "Do not hide absent-weight semantics behind magic constants."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-184 targeted tests>"
+      ],
+      "expected_evidence": [
+        "Dominant-strike output fails closed when weighting truth is absent."
+      ],
+      "definition_of_done": [
+        "No lawful-weight path no longer emits arbitrary pin anchors."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G184-003": {
+      "gate": "Gate 184",
+      "title": "Implement fail-closed nearby-cluster ordering and edge-case proofs",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G184-002"
+      ],
+      "ordered_actions": [
+        "Change cluster ranking so empty or zero weights do not collapse to input order.",
+        "Add direct regressions for zero-weight and missing-weight quote sets.",
+        "Keep weighted paths intact where lawful weights exist."
+      ],
+      "forbidden_actions": [
+        "Do not remove cluster outputs for valid weighted cases.",
+        "Do not rely on input order in tests.",
+        "Do not conflate missing data with zero data without stating the rule."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-184 proof slice>"
+      ],
+      "expected_evidence": [
+        "Cluster ranking is deterministic and lawful for zero/missing-weight cases."
+      ],
+      "definition_of_done": [
+        "Edge-case proofs cover the order-dependence bug directly."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G184-004": {
+      "gate": "Gate 184",
+      "title": "Close Gate 184 honestly and route to Gate 185",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G184-003"
+      ],
+      "ordered_actions": [
+        "Run the Gate 184 closeout slice.",
+        "Record exact dominant-strike and cluster receipts in the execution log.",
+        "Update router surfaces to Gate 185 after proof passes."
+      ],
+      "forbidden_actions": [
+        "Do not start Gate 185 before Gate 184 closes.",
+        "Do not call the bug fixed without direct edge-case tests.",
+        "Do not skip state-integrity updates."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-184 closeout slice>"
+      ],
+      "expected_evidence": [
+        "Gate 184 receipt exists and router surfaces point to Gate 185."
+      ],
+      "definition_of_done": [
+        "Gate 184 is complete and Gate 185 is active."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G185-001": {
+      "gate": "Gate 185",
+      "title": "Freeze the canonical name and packet ownership for the surface-anchor divergence feature",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G184-004"
+      ],
+      "ordered_actions": [
+        "Check vocabulary authority before freezing the new term.",
+        "Decide which prepared snapshot and cognition packet surfaces own the derived feature.",
+        "Record any vocabulary or contract amendments explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not invent final naming without checking vocabulary authority.",
+        "Do not add duplicate surface-anchor fields at multiple ownership layers.",
+        "Do not widen the feature beyond one bounded divergence metric."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-185 planning/vocabulary slice>"
+      ],
+      "expected_evidence": [
+        "Canonical feature name and ownership are explicit."
+      ],
+      "definition_of_done": [
+        "Vocabulary and packet ownership are frozen before implementation."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G185-002": {
+      "gate": "Gate 185",
+      "title": "Derive the bounded surface-anchor divergence metric from lawful option-row evidence",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G185-001"
+      ],
+      "ordered_actions": [
+        "Implement the metric in prepared/runtime snapshot generation from near-spot option-row evidence.",
+        "Keep the calculation bounded and inspectable.",
+        "Thread the metric into repeated snapshot history only where it is lawfully derived."
+      ],
+      "forbidden_actions": [
+        "Do not derive the feature from screenshots or prose description.",
+        "Do not create an opaque scalar with no explanatory basis.",
+        "Do not let this gate re-open workbook-as-runtime truth."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-185 targeted derivation tests>"
+      ],
+      "expected_evidence": [
+        "Prepared/runtime snapshots carry the derived surface-anchor divergence metric."
+      ],
+      "definition_of_done": [
+        "Feature derivation is lawful, bounded, and tested."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G185-003": {
+      "gate": "Gate 185",
+      "title": "Thread the metric through cognition input and options-flow classification",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G185-002"
+      ],
+      "ordered_actions": [
+        "Carry the new metric through ChainToCognitionService into OptionsFlowContextInput.",
+        "Add bounded classifier logic that distinguishes anchored-away surface conditions from ordinary balanced flow.",
+        "Keep the classifier additive rather than turning it into a new engine."
+      ],
+      "forbidden_actions": [
+        "Do not create a second options arbiter.",
+        "Do not let one new metric silently dominate the whole classifier.",
+        "Do not skip packet/schema updates while changing service logic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-185 classifier slice>"
+      ],
+      "expected_evidence": [
+        "Options-flow packet and output can represent anchored-away surface conditions explicitly."
+      ],
+      "definition_of_done": [
+        "New metric is wired end to end without stage inflation."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G185-004": {
+      "gate": "Gate 185",
+      "title": "Add fixture and regression proofs for surface-anchor divergence",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G185-003"
+      ],
+      "ordered_actions": [
+        "Amend or regenerate the minimum fixtures required to exercise the new metric.",
+        "Add direct regression tests for balanced versus anchored-away surface states.",
+        "Keep fixture changes truthful about what was actually recomputed."
+      ],
+      "forbidden_actions": [
+        "Do not invent fixture values without lawful derivation.",
+        "Do not hide fixture regeneration behind hand-edited numbers.",
+        "Do not claim live-market realism beyond the bounded test case."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-185 proof slice>"
+      ],
+      "expected_evidence": [
+        "Fixtures/tests prove the new feature and classifier path."
+      ],
+      "definition_of_done": [
+        "Regression coverage distinguishes balanced and anchored-away states."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G185-005": {
+      "gate": "Gate 185",
+      "title": "Close Gate 185 honestly and route to Gate 186",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G185-004"
+      ],
+      "ordered_actions": [
+        "Run the Gate 185 closeout slice.",
+        "Record vocabulary/contract/schema/service receipts exactly.",
+        "Update router surfaces to Gate 186 after proof passes."
+      ],
+      "forbidden_actions": [
+        "Do not start final closeout while Gate 185 is active.",
+        "Do not leave the vocabulary or packet authority implied if it changed.",
+        "Do not skip state-integrity updates."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-185 closeout slice>"
+      ],
+      "expected_evidence": [
+        "Gate 185 receipt exists and router surfaces point to Gate 186."
+      ],
+      "definition_of_done": [
+        "Gate 185 is complete and Gate 186 is active."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G186-001": {
+      "gate": "Gate 186",
+      "title": "Run the bounded end-to-end options trace proof slice",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G185-005"
+      ],
+      "ordered_actions": [
+        "Run the final targeted proof slice covering IV contract, raw-row parity, fail-closed weighting, and surface-anchor divergence.",
+        "Add any missing closeout proofs required by the leaves ledger.",
+        "Record exact observed results."
+      ],
+      "forbidden_actions": [
+        "Do not rely on earlier gate greens alone.",
+        "Do not omit failing or skipped proof surfaces from the receipt.",
+        "Do not substitute vague prose for exact results."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-186 proof slice>"
+      ],
+      "expected_evidence": [
+        "Final proof slice covers all repaired findings and the new feature."
+      ],
+      "definition_of_done": [
+        "Pack closeout has explicit green evidence."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G186-002": {
+      "gate": "Gate 186",
+      "title": "Audit router and pack surfaces for truthful closeout",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G186-001"
+      ],
+      "ordered_actions": [
+        "Move PLANS, gate map, active leaves ledger, and active execution log together to the closed-pack state.",
+        "Preserve Gate 180 as predecessor evidence rather than overwriting it.",
+        "Run the state-integrity checks after the router updates."
+      ],
+      "forbidden_actions": [
+        "Do not close the pack while any router surface still points at Gate 186.",
+        "Do not erase predecessor evidence.",
+        "Do not leave incomplete leaf statuses behind."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_planning_state_integrity.py <gate-186 planning tests>"
+      ],
+      "expected_evidence": [
+        "Router/control surfaces agree on closed-pack truth."
+      ],
+      "definition_of_done": [
+        "Pack closeout state is lawful and state-integrity checks pass."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G186-003": {
+      "gate": "Gate 186",
+      "title": "Write the Gate 186 closeout receipt and package the exact repo state",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G186-002"
+      ],
+      "ordered_actions": [
+        "Write the closeout receipt with exact files touched, commands run, and observed results.",
+        "Create a fresh full-history zip from the exact green repo state.",
+        "Record the packaging artefact path in the execution log."
+      ],
+      "forbidden_actions": [
+        "Do not package a dirty or half-updated tree.",
+        "Do not omit exact validation commands from the receipt.",
+        "Do not call the pack closed without the packaging artefact."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-186 closeout slice>"
+      ],
+      "expected_evidence": [
+        "Closeout receipt exists and the exact green repo zip is recorded."
+      ],
+      "definition_of_done": [
+        "Pack has an inspectable closeout receipt and packaging artefact."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G186-004": {
+      "gate": "Gate 186",
+      "title": "Mark the pack closed and preserve it as latest evidence",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G186-003"
+      ],
+      "ordered_actions": [
+        "Update the leaves ledger and execution log to the closed-pack state.",
+        "Route PLANS to no active pack unless a new pack is activated at the same time.",
+        "Preserve this pack as latest closed evidence."
+      ],
+      "forbidden_actions": [
+        "Do not leave Gate 186 active after closeout.",
+        "Do not leave remaining or pending ids in a closed pack.",
+        "Do not suppress the latest closed evidence pointers."
+      ],
+      "validation_commands": [
+        "python -m pytest -q <gate-186 final closeout slice>"
+      ],
+      "expected_evidence": [
+        "Closed-pack router state is truthful and preserved as latest evidence."
+      ],
+      "definition_of_done": [
+        "Pack is closed honestly and preserved for future evidence input."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    }
+  }
+}

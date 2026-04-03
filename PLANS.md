@@ -20,7 +20,12 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
-- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`
+- gates: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`
+- leaves: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_SCOPE_NOTE_v1.md`
+- active gate: Gate 182 in the options-trace integrity repair pack on `main`
 
 ## Latest closed pack retained as evidence
 
@@ -107,7 +112,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `main`
+- active pack is the options-trace integrity repair pack with Gate 182 on `main`
 - latest closed pack retained as evidence is the master/child parallel-risk integration pack closed through Gate 180 on `main`
 - latest closed predecessor evidence is the policy/temporal/observability successor pack closed through Gate 170 on `main`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
