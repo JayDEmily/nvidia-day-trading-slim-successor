@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.options_units import VolFraction
 from nvda_desk.schemas.events import LiveEventSnapshot
+from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.schemas.review import (
@@ -750,6 +751,48 @@ class StageLocalHandoffSurface(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
+class CapitalDeploymentAuthorityAction(StrEnum):
+    """Bounded actions for downstream fresh-capital authorisation."""
+
+    DEPLOY = "deploy"
+    STAND_DOWN = "stand_down"
+
+
+class CapitalDeploymentAuthorityInput(BaseModel):
+    """Minimum lawful inputs for capital-deployment authorisation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    posture: PostureRiskOutput
+    eligibility: PlaybookEligibilityOutput
+    execution: ExecutionExpressionOutput
+    stage_local_handoff: StageLocalHandoffSurface | None = None
+    parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
+    capital_state: CapitalStateSnapshotPayload
+
+
+class CapitalDeploymentAuthorityDecision(BaseModel):
+    """Bounded downstream decision stating whether fresh capital should be deployed now."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    decision_version: str = "capital_deployment_authority.v1"
+    service_id: str = "capital_deployment_authority_service"
+    deployment_action: CapitalDeploymentAuthorityAction
+    lead_playbook_id: str | None = None
+    opportunity_target_pct: float = Field(ge=0.0, le=100.0)
+    posture_cap_pct: float = Field(ge=0.0, le=100.0)
+    authorised_deployable_pct: float = Field(ge=0.0, le=100.0)
+    authorised_notional_usd: float = Field(ge=0.0)
+    available_buying_power_usd: float = Field(ge=0.0)
+    capital_source: str = Field(min_length=1)
+    terminal_risk_action: RiskAction | None = None
+    environmental_weather_state: str | None = None
+    consequence_class: str | None = None
+    rationale_codes: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
 class RuntimeStateVector(BaseModel):
     """Approved state-vector slice readable by Gate 60 modifier policy."""
 
@@ -805,6 +848,7 @@ class ReviewExplanationInput(BaseModel):
     modifier_runtime_packet: ModifierRuntimePacket | None = None
     parallel_risk_lane_packet: ParallelRiskLanePacket | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
+    capital_deployment_authority: CapitalDeploymentAuthorityDecision | None = None
     temporal_input: TemporalContextInput | None = None
 
 
@@ -882,6 +926,7 @@ class ReviewExplanationOutput(BaseModel):
     promotion_evidence: PromotionEvidencePacket | None = None
     packet_lineage: PacketLineageSurface | None = None
     stage_local_handoff: StageLocalHandoffSurface | None = None
+    capital_deployment_authority: CapitalDeploymentAuthorityDecision | None = None
     review_packet: dict[str, object]
 
 

@@ -1,0 +1,778 @@
+{
+  "governing_plan": "docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "capital_deployment_authority_foundation_pack_closed_through_gate_191_on_main",
+  "active_gate": "none",
+  "supersedes": [
+    "none \u2014 no active pack existed before Gate 187"
+  ],
+  "completed_gate_ids": [
+    "Gate 187",
+    "Gate 188",
+    "Gate 189",
+    "Gate 190",
+    "Gate 191"
+  ],
+  "pending_gate_ids": [],
+  "completed_leaf_ids": [
+    "LEAF-G187-001",
+    "LEAF-G187-002",
+    "LEAF-G187-003",
+    "LEAF-G187-004",
+    "LEAF-G188-001",
+    "LEAF-G188-002",
+    "LEAF-G188-003",
+    "LEAF-G188-004",
+    "LEAF-G189-001",
+    "LEAF-G189-002",
+    "LEAF-G189-003",
+    "LEAF-G189-004",
+    "LEAF-G190-001",
+    "LEAF-G190-002",
+    "LEAF-G190-003",
+    "LEAF-G190-004",
+    "LEAF-G191-001",
+    "LEAF-G191-002",
+    "LEAF-G191-003",
+    "LEAF-G191-004"
+  ],
+  "remaining_leaf_ids": [],
+  "global_rules": [
+    "Read all materially changed runtime/schema/test files end to end before claiming the capital-deployment authority slice is implemented.",
+    "Use the latest closed Gate 181-186 pack as evidence input only; do not copy its structure as authority over this new pack.",
+    "A request to complete multiple gates does not waive per-gate sequencing, validation, router updates, or closeout.",
+    "Gate 188 must admit new naming through the vocabulary workflow before merge if new canonical terms are required.",
+    "Gate 189 must use the repo-native capital snapshot path for the bounded v1 proof slice unless a later leaf proves that path insufficient.",
+    "Gate 190 must not create a second posture engine, a full arbiter, or close-position behaviour."
+  ],
+  "leaf_order": [
+    "LEAF-G187-001",
+    "LEAF-G187-002",
+    "LEAF-G187-003",
+    "LEAF-G187-004",
+    "LEAF-G188-001",
+    "LEAF-G188-002",
+    "LEAF-G188-003",
+    "LEAF-G188-004",
+    "LEAF-G189-001",
+    "LEAF-G189-002",
+    "LEAF-G189-003",
+    "LEAF-G189-004",
+    "LEAF-G190-001",
+    "LEAF-G190-002",
+    "LEAF-G190-003",
+    "LEAF-G190-004",
+    "LEAF-G191-001",
+    "LEAF-G191-002",
+    "LEAF-G191-003",
+    "LEAF-G191-004"
+  ],
+  "leaves": {
+    "LEAF-G187-001": {
+      "gate": "Gate 187",
+      "title": "Install the capital-deployment authority planning quartet and scope note",
+      "objective": "Create the active gates/leaves/execution-log/checklist/scope-note files for Gates 187-191 and freeze the first-slice truth split.",
+      "status": "complete",
+      "depends_on": [],
+      "ordered_actions": [
+        "Create the active gates/leaves/execution-log/checklist/scope-note files for Gates 187-191.",
+        "Freeze the first slice as new-opening capital authorisation only.",
+        "Keep Gate 187 planning-only; do not edit runtime behaviour in this bootstrap gate."
+      ],
+      "forbidden_actions": [
+        "Do not start editing runtime code in Gate 187.",
+        "Do not smuggle vocabulary admission in as if it were already done.",
+        "Do not collapse close-position, recommendation-memory, and portfolio-arbitration future scope into this first slice."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate187_capital_deployment_authority_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Active planning quartet and bounded scope note exist with Gates 187-191 and the first-slice truth split.",
+        "Pack remains planning-only at Gate 187."
+      ],
+      "definition_of_done": [
+        "Pack surfaces exist and the first-slice truth split is explicit.",
+        "No runtime behaviour under src/ changes in Gate 187."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G187-002": {
+      "gate": "Gate 187",
+      "title": "Route the repo truthfully to Gate 188",
+      "objective": "Update router/control surfaces so the new pack becomes active and Gate 188 is next.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G187-001"
+      ],
+      "ordered_actions": [
+        "Update PLANS.md so the capital-deployment authority foundation pack is the active pack.",
+        "Update the canonical gate map to record Gate 187 complete and Gate 188 active.",
+        "Preserve the closed Gate 186 pack as latest closed pack evidence."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md saying no active pack exists.",
+        "Do not erase Gate 186 evidence surfaces.",
+        "Do not pretend Gate 188 work is already complete."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate186_options_trace_integrity_closeout.py tests/test_gate187_capital_deployment_authority_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Router surfaces point to Gate 188 in the new pack.",
+        "Gate 186 pack remains closed evidence."
+      ],
+      "definition_of_done": [
+        "PLANS and gate map agree on Gate 188 as the active gate.",
+        "Earlier closeout/planning tests permit this later lawful state."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G187-003": {
+      "gate": "Gate 187",
+      "title": "Write the bounded execution sequence and document-touch law",
+      "objective": "Freeze the gate/leaf structure and document-touch checklist for the first implementation slice.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G187-002"
+      ],
+      "ordered_actions": [
+        "Freeze the gate structure for vocabulary/contract law, standalone service implementation, downstream integration, and closeout.",
+        "Name the primary code/schema/test surfaces that each later gate is allowed to touch.",
+        "Record explicit out-of-scope items and stop conditions for this pack."
+      ],
+      "forbidden_actions": [
+        "Do not force future close-position logic into this pack.",
+        "Do not leave vocabulary or contract impacts implied if later gates may need them.",
+        "Do not omit the repo-native capital-read expectation from the pack."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate187_capital_deployment_authority_pack_planning.py tests/test_tranche_briefing_template_pack.py"
+      ],
+      "expected_evidence": [
+        "Gate structure differentiates bootstrap, vocabulary/contract law, standalone service implementation, downstream integration, and closeout.",
+        "Checklist and scope note record the lawful sequence and exclusions."
+      ],
+      "definition_of_done": [
+        "Later gates are bounded, non-placeholder, and clearly scoped.",
+        "Template-pack doctrine is followed without pretending all later gates are equal."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G187-004": {
+      "gate": "Gate 187",
+      "title": "Install planning-pack proofs and record the bootstrap receipt",
+      "objective": "Add a planning-pack test and Gate 187 receipt, then run the bounded planning proof slice.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G187-003"
+      ],
+      "ordered_actions": [
+        "Add a planning-pack test for Gate 187 coherence.",
+        "Record the Gate 187 receipt and the execution-log receipt stub.",
+        "Run the bounded planning-governance proof slice."
+      ],
+      "forbidden_actions": [
+        "Do not call Gate 187 closed without a planning test.",
+        "Do not leave the execution log or receipt missing.",
+        "Do not skip the state-integrity checks."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate186_options_trace_integrity_closeout.py tests/test_gate187_capital_deployment_authority_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 187 proof file exists and passes.",
+        "Receipt and execution-log surfaces exist."
+      ],
+      "definition_of_done": [
+        "Gate 187 can be closed honestly and Gate 188 becomes active.",
+        "Bounded proof slice is green."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G188-001": {
+      "gate": "Gate 188",
+      "title": "Freeze the first-slice authority boundary",
+      "objective": "Make the new service boundary explicit before code changes proceed.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G187-004"
+      ],
+      "ordered_actions": [
+        "Read the current downstream/runtime/schema surfaces end to end.",
+        "Freeze the first-slice boundary as new-opening capital authorisation only.",
+        "Record explicit non-goals and forbidden expansions in the active pack docs."
+      ],
+      "forbidden_actions": [
+        "Do not let this gate drift into implementation-first behaviour.",
+        "Do not reopen close-position or recommendation-memory scope.",
+        "Do not describe the service as a full arbiter."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate187_capital_deployment_authority_pack_planning.py tests/test_gate188_capital_deployment_authority_contract.py"
+      ],
+      "expected_evidence": [
+        "Active pack docs explicitly freeze the first-slice service boundary and exclusions."
+      ],
+      "definition_of_done": [
+        "Boundary and non-goals are explicit."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G188-002": {
+      "gate": "Gate 188",
+      "title": "Admit required naming through the vocabulary workflow",
+      "objective": "Add canonical vocabulary entries required for the new service and directly bound decision surface names.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G188-001"
+      ],
+      "ordered_actions": [
+        "Inspect the canonical vocabulary JSON for existing admissible terms.",
+        "Add only the directly required new terms or aliases for the bounded slice.",
+        "Keep the vocabulary change narrow and tied to this service boundary."
+      ],
+      "forbidden_actions": [
+        "Do not add speculative future-portfolio or close-lifecycle terms.",
+        "Do not use unadmitted names in code before the vocabulary update lands.",
+        "Do not let aliases obscure the canonical term."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_gate188_capital_deployment_authority_contract.py"
+      ],
+      "expected_evidence": [
+        "Required naming for the bounded slice is now canonical or explicitly admitted."
+      ],
+      "definition_of_done": [
+        "Vocabulary admission is truthful and narrow."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G188-003": {
+      "gate": "Gate 188",
+      "title": "Freeze the typed decision contract",
+      "objective": "Define one typed contract for service input/output using existing runtime and capital-read surfaces.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G188-002"
+      ],
+      "ordered_actions": [
+        "Name the minimum lawful inputs from the runtime result and current capital surface.",
+        "Name the bounded outputs needed for deploy-versus-stand-down and authorised sizing.",
+        "Record packet/review carriage implications only if genuinely required."
+      ],
+      "forbidden_actions": [
+        "Do not re-describe the whole runtime result as a new mega-packet.",
+        "Do not add unnecessary fields for future portfolio logic.",
+        "Do not skip contract authority updates if carriage changes."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate188_capital_deployment_authority_contract.py"
+      ],
+      "expected_evidence": [
+        "One typed service contract exists and names the minimum lawful inputs/outputs."
+      ],
+      "definition_of_done": [
+        "Typed contract is explicit and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G188-004": {
+      "gate": "Gate 188",
+      "title": "Close the contract gate honestly",
+      "objective": "Advance router/control surfaces and record the Gate 188 receipt once the contract boundary is green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G188-003"
+      ],
+      "ordered_actions": [
+        "Update the leaves ledger and execution log for Gate 188 completion.",
+        "Record the Gate 188 receipt.",
+        "Route the pack to Gate 189 only after the bounded proof slice is green."
+      ],
+      "forbidden_actions": [
+        "Do not mark Gate 188 complete while contract proof is red.",
+        "Do not leave router surfaces stale.",
+        "Do not claim implementation exists yet."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate188_capital_deployment_authority_contract.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 188 receipt exists and the pack advances truthfully to Gate 189."
+      ],
+      "definition_of_done": [
+        "Gate 188 closes honestly."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G189-001": {
+      "gate": "Gate 189",
+      "title": "Read the repo-native current-capital path end to end",
+      "objective": "Verify the existing capital snapshot/current-capital retrieval path before adding the service.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G188-004"
+      ],
+      "ordered_actions": [
+        "Read the current-capital models/services/tests end to end.",
+        "Confirm the bounded proof path for current available capital.",
+        "Record any compatibility-safe helper needed for the service."
+      ],
+      "forbidden_actions": [
+        "Do not invent a second capital ledger architecture before proving the existing path insufficient.",
+        "Do not mix P&L accounting into the bounded read path.",
+        "Do not skip fixture impact analysis."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate189_capital_deployment_authority_service.py"
+      ],
+      "expected_evidence": [
+        "The repo-native capital-read path and any bounded helper impacts are explicit."
+      ],
+      "definition_of_done": [
+        "Current-capital read path is understood and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G189-002": {
+      "gate": "Gate 189",
+      "title": "Implement the standalone authority service",
+      "objective": "Add the service that consumes runtime plus current capital and emits a bounded deployment decision.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G189-001"
+      ],
+      "ordered_actions": [
+        "Implement the new service in a repo-native service path.",
+        "Consume the already-computed runtime result plus current capital only.",
+        "Return a bounded deploy/stand-down decision with authorised size."
+      ],
+      "forbidden_actions": [
+        "Do not recalculate upstream cognition.",
+        "Do not create broker placement behaviour.",
+        "Do not add recommendation-memory logic."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate189_capital_deployment_authority_service.py"
+      ],
+      "expected_evidence": [
+        "Standalone service exists and returns bounded deployment decisions from runtime plus current capital."
+      ],
+      "definition_of_done": [
+        "Service implementation is present and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G189-003": {
+      "gate": "Gate 189",
+      "title": "Add bounded proof fixtures",
+      "objective": "Add the minimum fixtures proving deploy, stand-down, and capped-sizing cases.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G189-002"
+      ],
+      "ordered_actions": [
+        "Add controlled capital and runtime fixtures for bounded cases.",
+        "Prove deploy, stand-down, and capped-sizing outcomes.",
+        "Keep the proof slice small and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not add speculative scenario sprawl.",
+        "Do not use a fake future portfolio engine in fixtures.",
+        "Do not rely on chat-described data instead of repo-native fixtures."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate189_capital_deployment_authority_service.py"
+      ],
+      "expected_evidence": [
+        "Bounded deploy, stand-down, and capped-sizing proofs are green."
+      ],
+      "definition_of_done": [
+        "Proof fixtures are adequate and deterministic."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G189-004": {
+      "gate": "Gate 189",
+      "title": "Close the standalone-service gate honestly",
+      "objective": "Advance router/control surfaces and record the Gate 189 receipt once the standalone slice is green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G189-003"
+      ],
+      "ordered_actions": [
+        "Update the leaves ledger and execution log for Gate 189 completion.",
+        "Record the Gate 189 receipt.",
+        "Route the pack to Gate 190 only after the bounded proof slice is green."
+      ],
+      "forbidden_actions": [
+        "Do not mark Gate 189 complete while standalone-service proof is red.",
+        "Do not leave stale active-gate state behind.",
+        "Do not claim runtime integration exists yet."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate189_capital_deployment_authority_service.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 189 receipt exists and the pack advances truthfully to Gate 190."
+      ],
+      "definition_of_done": [
+        "Gate 189 closes honestly."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G190-001": {
+      "gate": "Gate 190",
+      "title": "Freeze the runtime insertion point",
+      "objective": "Define exactly where the new service integrates in the downstream seam.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G189-004"
+      ],
+      "ordered_actions": [
+        "Read the downstream runtime seam end to end.",
+        "Freeze the runtime insertion point after the already-formed opening candidate exists.",
+        "Record any required schema/review carriage updates."
+      ],
+      "forbidden_actions": [
+        "Do not insert the service upstream of cognition formation.",
+        "Do not let the service mutate unrelated stage outputs silently.",
+        "Do not claim packet carriage changes if none are needed."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate190_capital_deployment_authority_integration.py"
+      ],
+      "expected_evidence": [
+        "The runtime insertion point and any bounded carriage impacts are explicit."
+      ],
+      "definition_of_done": [
+        "Insertion point is explicit and lawful."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G190-002": {
+      "gate": "Gate 190",
+      "title": "Integrate the service into runtime",
+      "objective": "Wire the bounded authority decision into the runtime/review chain.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G190-001"
+      ],
+      "ordered_actions": [
+        "Integrate the service into the runtime after the opening candidate exists.",
+        "Carry the bounded decision to the appropriate downstream consumer surface.",
+        "Keep the integration minimal and truthful."
+      ],
+      "forbidden_actions": [
+        "Do not create broker execution consequences.",
+        "Do not turn review carriage into authority ownership confusion.",
+        "Do not let the service become a second posture engine."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate190_capital_deployment_authority_integration.py"
+      ],
+      "expected_evidence": [
+        "Runtime integration exists and the bounded decision reaches the intended downstream surface."
+      ],
+      "definition_of_done": [
+        "Integration is present and bounded."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G190-003": {
+      "gate": "Gate 190",
+      "title": "Prove non-goals stayed out",
+      "objective": "Add explicit proofs that close logic, recommendation memory, and full arbitration are still absent.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G190-002"
+      ],
+      "ordered_actions": [
+        "Add targeted assertions covering the bounded service role.",
+        "Prove the runtime path remains new-opening-capital-only.",
+        "Keep the proof slice narrow and explicit."
+      ],
+      "forbidden_actions": [
+        "Do not rely on implied absence.",
+        "Do not add vague behavioural prose instead of executable proof.",
+        "Do not mix future-scope scenarios into this gate."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate190_capital_deployment_authority_integration.py"
+      ],
+      "expected_evidence": [
+        "Tests explicitly prove the non-goals stayed out."
+      ],
+      "definition_of_done": [
+        "Non-goals are executable proof, not just prose."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G190-004": {
+      "gate": "Gate 190",
+      "title": "Close the integration gate honestly",
+      "objective": "Advance router/control surfaces and record the Gate 190 receipt once the integration slice is green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G190-003"
+      ],
+      "ordered_actions": [
+        "Update the leaves ledger and execution log for Gate 190 completion.",
+        "Record the Gate 190 receipt.",
+        "Route the pack to Gate 191 only after the integration proof slice is green."
+      ],
+      "forbidden_actions": [
+        "Do not mark Gate 190 complete while integration proof is red.",
+        "Do not leave router surfaces stale.",
+        "Do not claim pack closeout yet."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate190_capital_deployment_authority_integration.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 190 receipt exists and the pack advances truthfully to Gate 191."
+      ],
+      "definition_of_done": [
+        "Gate 190 closes honestly."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G191-001": {
+      "gate": "Gate 191",
+      "title": "Run targeted and wider proofs",
+      "objective": "Execute the proof slices required by the leaves ledger for the bounded downstream feature.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G190-004"
+      ],
+      "ordered_actions": [
+        "Run the targeted and wider proof slices required by the pack.",
+        "Record exact commands and observed results in the execution log.",
+        "Stop if any required proof is red."
+      ],
+      "forbidden_actions": [
+        "Do not replace proof with prose.",
+        "Do not call the pack closed with pending validation.",
+        "Do not hide failures behind partial success."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate188_capital_deployment_authority_contract.py tests/test_gate189_capital_deployment_authority_service.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Required targeted and wider proofs are green and recorded."
+      ],
+      "definition_of_done": [
+        "Proof slice is complete and honest."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G191-002": {
+      "gate": "Gate 191",
+      "title": "Close the router surfaces honestly",
+      "objective": "Update PLANS, gate map, leaves, and execution log together for pack closeout.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G191-001"
+      ],
+      "ordered_actions": [
+        "Update PLANS.md, the gate map, the leaves ledger, and the execution log together.",
+        "Preserve the Gate 186 pack as closed evidence and this pack as latest closed pack evidence.",
+        "Record the Gate 191 closeout receipt."
+      ],
+      "forbidden_actions": [
+        "Do not leave a fake active pack behind.",
+        "Do not lose predecessor evidence.",
+        "Do not close the pack before proofs are green."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Router/control surfaces agree on honest pack closeout."
+      ],
+      "definition_of_done": [
+        "Router closeout is coherent."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G191-003": {
+      "gate": "Gate 191",
+      "title": "Package the exact green repo state",
+      "objective": "Produce the required full-history handoff artefact from the exact green state.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G191-002"
+      ],
+      "ordered_actions": [
+        "Create a fresh full-history repo zip from the exact green state.",
+        "Name the packaged artefact in the closeout receipt and execution log.",
+        "Keep the packaging path aligned with repo handoff doctrine."
+      ],
+      "forbidden_actions": [
+        "Do not package from a dirty or unverified state.",
+        "Do not omit the packaged artefact name from receipts.",
+        "Do not strip git history."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "A fresh full-history repo zip exists and is named in the closeout surfaces."
+      ],
+      "definition_of_done": [
+        "Packaging requirement is complete."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    },
+    "LEAF-G191-004": {
+      "gate": "Gate 191",
+      "title": "Freeze the closed pack truthfully",
+      "objective": "Mark the pack closed only when all remaining leaves are complete and state integrity is green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G191-003"
+      ],
+      "ordered_actions": [
+        "Move the pack to closed status in gates/leaves/execution log.",
+        "Set active gate to none and clear pending gates only when truthful.",
+        "Run final state-integrity proof."
+      ],
+      "forbidden_actions": [
+        "Do not mark the pack closed with incomplete leaves.",
+        "Do not leave pending gates behind in a closed pack.",
+        "Do not let planning state contradict execution state."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Closed-pack state is coherent and truthful."
+      ],
+      "definition_of_done": [
+        "Pack closes honestly."
+      ],
+      "packaging_requirement": "record in the active execution log and include a fresh full-history repo zip whenever the operator requests a handoff or the pack reaches a gate closeout",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "active leaves ledger",
+        "active execution log"
+      ]
+    }
+  }
+}

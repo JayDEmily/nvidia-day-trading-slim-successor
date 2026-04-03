@@ -1741,6 +1741,45 @@
       "notes": [
         "Governed live reference ledger for signal/coefficient provenance, bounds research, and workbook_ref lineage; never direct runtime authority without typed promotion."
       ]
+    },
+    {
+      "canonical_slug": "capital_deployment_authority_service",
+      "canonical_label": "Capital Deployment Authority Service",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.services.capital_deployment_authority.CapitalDeploymentAuthorityService",
+      "allowed_aliases": [
+        "capital deployment authority",
+        "capital_deployment_authority"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded downstream fresh-capital authoriser for already-formed opening candidates only; not a full arbiter and not close-position logic."
+      ]
+    },
+    {
+      "canonical_slug": "capital_deployment_authority_decision",
+      "canonical_label": "Capital Deployment Authority Decision",
+      "category": "workflow",
+      "stage_owner": "review_explanation",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.cognition.CapitalDeploymentAuthorityDecision",
+      "allowed_aliases": [
+        "deployment decision"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded downstream decision carrying deploy-versus-stand-down authority, authorised percentage, authorised notional, and rationale codes for fresh capital only."
+      ]
     }
   ]
 }

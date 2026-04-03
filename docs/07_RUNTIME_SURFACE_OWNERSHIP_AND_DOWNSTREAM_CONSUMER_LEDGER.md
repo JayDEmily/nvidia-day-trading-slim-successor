@@ -239,7 +239,7 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - **Point of production:** `ReviewExplanationService.evaluate(...)`
 - **Runtime carriage:** `nvda_desk.schemas.cognition.ReviewExplanationOutput.review_packet`
 - **Governing authoritative surfaces:** `ReviewExplanationOutput`, `StageLocalHandoffSurface`, `EligibilityAdmissibilitySurface`, `ExecutionCandidateOwnershipSurface`, `ParallelRiskLanePacket`, `FinalRiskJoinSurface`
-- **Allowed carried keys:** `final_risk_join`, `stage_local_handoff`, `overlay_risk_decision`, `terminal_risk_application`, `admissibility_surface`, `candidate_ownership`, `parallel_risk_lane`, `parallel_risk_lane_summary`, plus review-owned governance and lineage packets
+- **Allowed carried keys:** `final_risk_join`, `stage_local_handoff`, `overlay_risk_decision`, `terminal_risk_application`, `admissibility_surface`, `candidate_ownership`, `parallel_risk_lane`, `parallel_risk_lane_summary`, `capital_deployment_authority`, plus review-owned governance and lineage packets
 - **Allowed downstream readers:** API/rendering consumers, review display helpers, bounded-trace and regression tests, legacy-compatible review consumers
 - **Prohibited use:** nested or duplicated payloads inside `review_packet` must not outrank separately carried authoritative surfaces when both are present
 
@@ -307,7 +307,7 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 #### 5.2.1 Review reconstruction path
 
 - **Consumer:** `ReviewExplanationService.evaluate(...)`
-- **Reads:** `temporal`, `regime`, `options_flow`, `posture`, `eligibility`, `execution`, `modifier_runtime_packet`, `parallel_risk_lane_packet`, `stage_local_handoff`, `temporal_input`
+- **Reads:** `temporal`, `regime`, `options_flow`, `posture`, `eligibility`, `execution`, `modifier_runtime_packet`, `parallel_risk_lane_packet`, `stage_local_handoff`, `capital_deployment_authority`, `temporal_input`
 - **Read mode:** required
 - **Forbidden fallback:** nested `review_packet` carriage must not substitute for the direct input surfaces used to build `ReviewExplanationOutput`
 

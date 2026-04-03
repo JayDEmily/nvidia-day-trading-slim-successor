@@ -24,21 +24,21 @@ This file is the canonical repo-root execution router.
 
 ## Latest closed pack retained as evidence
 
+- gates: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_SCOPE_NOTE_v1.md`
+- closeout receipt: `docs/planning/2026-04-03_GATE191_CAPITAL_DEPLOYMENT_AUTHORITY_CLOSEOUT.md`
+
+## Latest closed predecessor evidence
+
 - gates: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_GATES_v1.md`
 - leaves: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_SCOPE_NOTE_v1.md`
 - closeout receipt: `docs/planning/2026-04-03_GATE186_OPTIONS_TRACE_INTEGRITY_CLOSEOUT.md`
-
-## Latest closed predecessor evidence
-
-- gates: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_GATES_v1.md`
-- leaves: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_SCOPE_NOTE_v1.md`
-- closeout receipt: `docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md`
 
 ## Latest closed predecessor evidence
 
@@ -116,10 +116,10 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- no active pack is currently routed
-- latest closed pack retained as evidence is the options-trace integrity repair pack closed through Gate 186 on `main`
-- latest closed predecessor evidence is the master/child parallel-risk integration pack closed through Gate 180 on `main`
-- latest closed predecessor evidence before the options-trace repair pack is the master/child parallel-risk integration pack closed through Gate 180 on `main`
+- no active pack currently routed; capital-deployment authority foundation pack closed through Gate 191 on `main`
+- latest closed pack retained as evidence is the capital-deployment authority foundation pack closed through Gate 191 on `main`
+- latest closed predecessor evidence is the options-trace integrity repair pack closed through Gate 186 on `main`
+- latest closed predecessor evidence before the capital-deployment authority pack is the master/child parallel-risk integration pack closed through Gate 180 on `main`
 - historical earlier predecessor evidence remains the policy/temporal/observability successor pack closed through Gate 170 on `main`
 - latest closed seam-hardening evidence remains the stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`
 - latest closed corrective predecessor evidence remains the execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`

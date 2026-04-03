@@ -401,6 +401,12 @@ Key examples:
 - `RiskDecisionPayload`
 - `CapitalStateSnapshotPayload`
 - `DailyPnlReportPayload`
+- `CapitalDeploymentAuthorityInput`
+- `CapitalDeploymentAuthorityDecision`
+
+#### Gate 188 note: capital-deployment authority contract
+
+`CapitalDeploymentAuthorityInput` and `CapitalDeploymentAuthorityDecision` freeze one bounded downstream fresh-capital authority contract for already-formed opening candidates. The input reads the existing posture, eligibility, execution, preserved handoff, parallel-risk carriage, and current capital snapshot; the decision carries only deploy-versus-stand-down authority, authorised percentage, authorised notional, and rationale codes. The contract does **not** add recommendation memory, close-position logic, or a full portfolio arbiter.
 
 ### 5a. Phase-and-carryover policy objects
 
