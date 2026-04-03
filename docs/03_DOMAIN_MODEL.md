@@ -9,6 +9,7 @@ For enum-like vocabularies that also exist in `src/nvda_desk/schemas/`, the sche
 ## Core object families
 
 ### 1. Market-state objects
+
 Persistent facts and near-facts used for retrieval.
 
 Key examples:
@@ -24,6 +25,7 @@ Ownership:
 - retrieval through `MarketStateService`, `EventsService`, and `ReplayService`
 
 ### 2. Research objects
+
 Human and GPT artefacts.
 
 Key examples:
@@ -36,6 +38,7 @@ Ownership:
 - orchestration through `ResearchService`
 
 ### 3. Module and promotion objects
+
 Formal playbook units and their promotion record.
 
 Key examples:
@@ -63,6 +66,7 @@ Canonical module statuses:
 - `retired`
 
 ### 4. Desk Cognition Grammar objects
+
 Typed contracts for the runtime stages.
 
 Key examples:
@@ -75,6 +79,7 @@ Key examples:
 - `ReviewExplanationInput` / `ReviewExplanationOutput`
 
 ### 4a. State-policy authority objects
+
 Typed contracts that freeze what may vary, what state may be read, and how effective policy is derived.
 
 Key examples:
@@ -90,6 +95,7 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4b. Non-action and conflict governance objects
+
 Typed contracts that freeze stand-down classes, conflict severity, degradation steps, and override boundaries before later policy matrices are written.
 
 Key examples:
@@ -105,8 +111,8 @@ Ownership:
 - binding schema authority in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/review.py`
 - review exposure through `ReviewExplanationOutput`
 
-
 ### 4c. Stability metric and corridor objects
+
 Typed contracts that freeze the multi-axis scorecard, corridor zones, persistence law, and slice coverage used before later review or candidate comparison gates.
 
 Key examples:
@@ -124,6 +130,7 @@ Ownership:
 - review hooks through `ReviewExplanationOutput`
 
 ### 4d. Review-eligibility governance objects
+
 Typed contracts that freeze evidence floors, trigger classes, downstream review outcomes, and bounded change budgets.
 
 Key examples:
@@ -141,6 +148,7 @@ Ownership:
 - review exposure through `ReviewExplanationOutput`
 
 ### 4e. Candidate governance and adjudication objects
+
 Typed contracts that freeze candidate-set size, role semantics, adjudication disposition, and governed comparison outcomes.
 
 Key examples:
@@ -157,6 +165,7 @@ Ownership:
 - review and ledger hooks through `ReviewExplanationOutput`
 
 ### 4f. Event taxonomy objects
+
 Typed contracts that freeze event class, subclass, materiality, and semantic-phase law before later event plumbing or policy matrices.
 
 Key examples:
@@ -173,6 +182,7 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4g. Desk-calendar and venue objects
+
 Typed contracts that freeze venue calendars, timezone authority, closure classes, and bridge rules before later routing and precursor binding.
 
 Key examples:
@@ -191,6 +201,7 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4h. Temporal event-window objects
+
 Typed contracts that freeze event proximity, window, overlap, risk-timing, and carry-sensitivity semantics before later posture matrices or runtime binding.
 
 Key examples:
@@ -210,6 +221,7 @@ Ownership:
 Gate 116 note: `TemporalContextOutput.event_timing_profile` and `TemporalEventWindowSurface.timing_profile` make event-class timing law explicit so macro, company, expiry, and venue-session windows stop sharing one hidden generic countdown rule.
 
 ### 4i. Precursor-universe objects
+
 Typed contracts that freeze which ex-US precursor venues, raw fields, derived fields, and session-alignment expectations are lawful before stitching or runtime binding begins.
 
 Key examples:
@@ -227,58 +239,8 @@ Ownership:
 - review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
-### 5a. Phase-and-carryover policy objects
-Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
-
-Key examples:
-- `DayPhaseState`
-- `CarryHorizonState`
-- `PhaseBehaviourClass`
-- `PhaseNoActionBias`
-- `PhaseCarryPolicyRecord`
-- `PhaseCarryoverPolicyAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/risk.py`
-- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
-- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
 ### 4j. Event-ingestion and provenance objects
+
 Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
 
 Key examples:
@@ -299,2271 +261,23 @@ Ownership:
 - prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4k. Shared event-store and query objects
+
+Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
+
+Key examples:
+- `ReplayEventConsumerMode`
+- `EventQueryWindow`
+- `EventStoreQueryResult`
+- `EventStoreAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/events.py`
+- shared consumer service in `src/nvda_desk/services/event_store.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 4l. Live event-richness objects
 
 `LiveEventReference` carries compact event identity, timing, materiality, provenance count, and lineage keys for one nearby event. `LiveEventSnapshot` carries the requested timestamp, query window, next-event reference, nearby/material event summaries, and deduplicated lineage keys. `PreparedRuntimeSnapshot.live_event_snapshot` and `TemporalContextInput.live_event_snapshot` preserve this packet into the live cognition path while `PreparedRuntimeLineage.event_lineage_keys` keeps the provenance keys auditable.
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5a. Phase-and-carryover policy objects
-Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
-
-Key examples:
-- `DayPhaseState`
-- `CarryHorizonState`
-- `PhaseBehaviourClass`
-- `PhaseNoActionBias`
-- `PhaseCarryPolicyRecord`
-- `PhaseCarryoverPolicyAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/risk.py`
-- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
-- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4i. Precursor-universe objects
-Typed contracts that freeze which ex-US precursor venues, raw fields, derived fields, and session-alignment expectations are lawful before stitching or runtime binding begins.
-
-Key examples:
-- `PrecursorVenueUniverse`
-- `PrecursorSourceClass`
-- `RawPrecursorField`
-- `DerivedPrecursorField`
-- `SessionAlignmentExpectation`
-- `ExcludedPrecursorSource`
-- `PrecursorVenueContract`
-- `PrecursorUniverseAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/market.py`
-- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5a. Phase-and-carryover policy objects
-Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
-
-Key examples:
-- `DayPhaseState`
-- `CarryHorizonState`
-- `PhaseBehaviourClass`
-- `PhaseNoActionBias`
-- `PhaseCarryPolicyRecord`
-- `PhaseCarryoverPolicyAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/risk.py`
-- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
-- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5a. Phase-and-carryover policy objects
-Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
-
-Key examples:
-- `DayPhaseState`
-- `CarryHorizonState`
-- `PhaseBehaviourClass`
-- `PhaseNoActionBias`
-- `PhaseCarryPolicyRecord`
-- `PhaseCarryoverPolicyAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/risk.py`
-- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
-- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5b. Event/options-stress policy objects
-Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
-
-Key examples:
-- `EventOptionsStressState`
-- `EventOptionsStressFamily`
-- `PolicyEffectType`
-- `EventOptionsBehaviourClass`
-- `EventOptionsStressPolicyRecord`
-- `EventOptionsStressAuthorityPacket`
-- `EventOptionsStressPolicySurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 5c. Modifier-control-law objects
-Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
-
-Key examples:
-- `ModifierPriorityBand`
-- `CombinationLaw`
-- `KillSwitchCondition`
-- `ModifierClampRule`
-- `ModifierVetoRule`
-- `ModifierControlLawAuthorityPacket`
-- `ModifierControlLawSurface`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
-- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4j. Event-ingestion and provenance objects
-Typed contracts that freeze supported event-source inventory, provenance fields, freshness/confidence semantics, and outage/conflict handling before shared event store/query surfaces land.
-
-Key examples:
-- `EventSourceClass`
-- `SupportedEventSource`
-- `EventFreshnessState`
-- `EventConfidenceTier`
-- `SourceConflictDisposition`
-- `SourceOutagePolicy`
-- `EventSourceProvenance`
-- `RawEventSourceObservation`
-- `NormalisedEventRecord`
-- `EventIngestionAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- normalisation service in `src/nvda_desk/services/event_ingestion.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-### 4k. Shared event-store and query objects
-
-
-Typed contracts that freeze shared event persistence and query semantics before live event-rich packets are wired into cognition.
-
-Key examples:
-- `ReplayEventConsumerMode`
-- `EventQueryWindow`
-- `EventStoreQueryResult`
-- `EventStoreAuthorityPacket`
-
-Ownership:
-- binding schema authority in `src/nvda_desk/schemas/events.py`
-- shared consumer service in `src/nvda_desk/services/event_store.py`
-- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
-
-### 5. Risk and capital objects
-### 5. Risk and capital objects
-Deterministic checks that sit in front of execution.
-
-Key examples:
-- `RiskPolicyInput`
-- `RiskDecision`
-- `RiskDecisionPayload`
-- `CapitalStateSnapshotPayload`
-- `DailyPnlReportPayload`
-
-### 6. Broker and execution-record objects
-Boundary objects for paper execution and recorded outcomes.
-
-Key examples:
-- `BrokerOrderPayload`
-- `BrokerOrderEventPayload`
-- `BrokerFillEventPayload`
-- `PositionSnapshotPayload`
-- `ModuleSignalEventPayload`
-- `ModuleVetoEventPayload`
-- `RiskBlockEventPayload`
-
-### 7. Evaluation and review objects
-Objects that describe whether a module advances, is compared, or is explained under governed review.
-
-Key examples:
-- `EvaluationRunPayload`
-- `ExperimentRunPayload`
-- `ComparisonReport`
-- `GovernedCoefficientSnapshot`
-- `StackDefinition`
-- `CoefficientSet`
-- `DailyReviewPacket`
-- `ModuleHealthPacket`
-
-## Interface boundaries
-
-### GPT boundary
-GPT receives compact summaries and returns structured research artefacts.
-GPT is not the execution boundary.
-
-### Service boundary
-Application logic lives in services. API handlers stay thin.
-
-### Broker boundary
-Only the broker adapter layer knows broker-specific details.
-
-### Persistence boundary
-Pydantic contracts define the shape crossing service and API layers. SQLAlchemy models define the persisted shape.
 
 ### 4m. Precursor-stitching objects
 
@@ -2614,7 +328,6 @@ Ownership:
 #### Gate 121 note: final-risk join carriage
 
 `ExecutionExpressionOutput` now also carries `pre_final_risk_active_playbook_ids`, `pre_final_risk_lead_playbook_id`, `pre_final_risk_entry_style`, and `final_risk_join` so the runtime can show exactly what execution looked like before the final risk join and how the join allowed, derisked, or veto-blocked the output. `FinalRiskJoinSurface` freezes the final disposition, reasons, lineage tags, and execution effect so review packets stop hiding the last authority step.
-
 
 #### Gate 143 note: additive stage-local handoff carriage
 
@@ -2678,6 +391,70 @@ Ownership:
 - review packet builder in `src/nvda_desk/services/review_explanation.py`
 - review packet rendering helpers in `src/nvda_desk/services/review_packets.py`
 
+### 5. Risk and capital objects
+
+Deterministic checks that sit in front of execution.
+
+Key examples:
+- `RiskPolicyInput`
+- `RiskDecision`
+- `RiskDecisionPayload`
+- `CapitalStateSnapshotPayload`
+- `DailyPnlReportPayload`
+
+### 5a. Phase-and-carryover policy objects
+
+Typed contracts that freeze ordinary day-phase and carryover posture law before later event-stress matrices or runtime integration.
+
+Key examples:
+- `DayPhaseState`
+- `CarryHorizonState`
+- `PhaseBehaviourClass`
+- `PhaseNoActionBias`
+- `PhaseCarryPolicyRecord`
+- `PhaseCarryoverPolicyAuthorityPacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/risk.py`
+- state-vector linkage in `src/nvda_desk/schemas/state_policy.py` and `src/nvda_desk/schemas/cognition.py`
+- review hook in `src/nvda_desk/schemas/review.py` and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5b. Event/options-stress policy objects
+
+Typed contracts that freeze imminent/live event risk and options-stress posture law before global precedence or runtime wiring begins.
+
+Key examples:
+- `EventOptionsStressState`
+- `EventOptionsStressFamily`
+- `PolicyEffectType`
+- `EventOptionsBehaviourClass`
+- `EventOptionsStressPolicyRecord`
+- `EventOptionsStressAuthorityPacket`
+- `EventOptionsStressPolicySurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
+
+### 5c. Modifier-control-law objects
+
+Typed contracts that freeze precedence, compatible combination algebra, caps/floors, vetoes, and kill-switches before runtime integration begins.
+
+Key examples:
+- `ModifierPriorityBand`
+- `CombinationLaw`
+- `KillSwitchCondition`
+- `ModifierClampRule`
+- `ModifierVetoRule`
+- `ModifierControlLawAuthorityPacket`
+- `ModifierControlLawSurface`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/state_policy.py`
+- config/review hooks in `src/nvda_desk/schemas/config.py`, `src/nvda_desk/schemas/review.py`, and `src/nvda_desk/schemas/cognition.py`
+- prose mirror in `docs/01_NORMATIVE.md` and `docs/02_OPERATING_MODEL.md`
 
 ### 5d. Runtime modifier integration objects
 
@@ -2713,6 +490,73 @@ Ownership:
 - runtime promotion for the eight admitted mutable surfaces now occurs through `StateConditionedModifierService`; the admitted temporal threshold and timing subset now flows through `TemporalStateClassifier` from the same governed authority file rather than private classifier literals
 
 The governed authority file is not the same surface as the legacy `coefficients_registry.example.yaml`. The former freezes the admitted tranche-one authority chain; the latter remains salvage/example structure only.
+
+### 5f. Parallel-risk lane objects
+
+Typed contracts for the co-resident independent parallel risk lane.
+
+The lane is co-resident with the serial seven-stage desk grammar without becoming an eighth stage. It may read approved invariants from session start and may add lawful reads of serial-stage outputs once those outputs exist.
+
+Key examples:
+- `ParallelRiskReadableStage`
+- `ParallelRiskStageReadStatus`
+- `ParallelRiskGovernanceStatus`
+- `ParallelRiskInvariantSurface`
+- `ParallelRiskTemporalSurface`
+- `ParallelRiskMarketTranslationSurface`
+- `ParallelRiskCandidateAuditSurface`
+- `ParallelRiskLanePacket`
+
+Ownership:
+- binding schema authority in `src/nvda_desk/schemas/parallel_risk.py`
+- runtime integration in `src/nvda_desk/services/parallel_risk_lane.py` and `src/nvda_desk/services/cognition_runtime.py`
+- runtime carriage in `src/nvda_desk/schemas/cognition.py`
+
+### 6. Broker and execution-record objects
+
+Boundary objects for paper execution and recorded outcomes.
+
+Key examples:
+- `BrokerOrderPayload`
+- `BrokerOrderEventPayload`
+- `BrokerFillEventPayload`
+- `PositionSnapshotPayload`
+- `ModuleSignalEventPayload`
+- `ModuleVetoEventPayload`
+- `RiskBlockEventPayload`
+
+### 7. Evaluation and review objects
+
+Objects that describe whether a module advances, is compared, or is explained under governed review.
+
+Key examples:
+- `EvaluationRunPayload`
+- `ExperimentRunPayload`
+- `ComparisonReport`
+- `GovernedCoefficientSnapshot`
+- `StackDefinition`
+- `CoefficientSet`
+- `DailyReviewPacket`
+- `ModuleHealthPacket`
+
+## Interface boundaries
+
+### GPT boundary
+
+GPT receives compact summaries and returns structured research artefacts.  
+GPT is not the execution boundary.
+
+### Service boundary
+
+Application logic lives in services. API handlers stay thin.
+
+### Broker boundary
+
+Only the broker adapter layer knows broker-specific details.
+
+### Persistence boundary
+
+Pydantic contracts define the shape crossing service and API layers. SQLAlchemy models define the persisted shape.
 
 ## Gate 79 domain additions
 
