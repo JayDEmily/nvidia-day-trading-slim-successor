@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 from nvda_desk.schemas.financial_calendar import (
@@ -12,6 +13,7 @@ from nvda_desk.schemas.financial_calendar import (
     FinancialCalendarReferenceArtifactKind,
     FinancialCalendarRepoManifest,
 )
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet
 from nvda_desk.services.financial_calendar_reference import (
     build_financial_calendar_reference_packet,
 )
@@ -170,7 +172,7 @@ class FinancialCalendarImportService:
             imported_records=imported_records,
         )
 
-    def build_reference_packet(self, *, emitted_at):
+    def build_reference_packet(self, *, emitted_at: datetime) -> DmpV2Packet:
         metadata = self.load_bundle_metadata()
         authoritative_artifacts = self.list_reference_artifacts(include_supporting=False)
         return build_financial_calendar_reference_packet(

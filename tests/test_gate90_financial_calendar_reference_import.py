@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from typing import cast
 from pathlib import Path
 
 from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
-from nvda_desk.schemas.financial_calendar import FinancialCalendarLayerId
+from nvda_desk.schemas.financial_calendar import FinancialCalendarBundleMetadata, FinancialCalendarLayerId
 from nvda_desk.services.financial_calendar_import import FinancialCalendarImportService
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -43,9 +44,10 @@ def test_gate90_reference_packet_uses_repo_controlled_authoritative_artifacts_on
     service = FinancialCalendarImportService(REPO_ROOT)
     packet = service.build_reference_packet(emitted_at=datetime(2026, 3, 28, 13, 0, tzinfo=UTC))
 
+    payload = cast(FinancialCalendarBundleMetadata, packet.payload)
     assert packet.grammar_role is DmpGrammarRole.TEMPORAL_CONTEXT
     assert packet.behaviour_class is DmpBehaviourClass.REPLAY_ARTEFACT
-    assert packet.payload.repo_fit.intended_root == "data/reference/financial_calendar/"
+    assert payload.repo_fit.intended_root == "data/reference/financial_calendar/"
     assert len(packet.lineage.source_artifact_ids) == 7
     assert {block.block_type for block in packet.blocks} == {"object_block", "artifact_ref_block"}
     artifact_uris = [block.artifact.uri for block in packet.blocks if block.block_type == "artifact_ref_block"]

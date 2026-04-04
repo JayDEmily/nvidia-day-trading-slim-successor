@@ -18,6 +18,7 @@ from nvda_desk.schemas.dmp_v2 import (
 )
 from nvda_desk.schemas.financial_calendar import (
     FinancialCalendarBundleMetadata,
+    FinancialCalendarCrosswalkRecord,
     FinancialCalendarReferenceArtifact,
     default_financial_calendar_crosswalk,
 )
@@ -30,7 +31,7 @@ FINANCIAL_CALENDAR_STAGE_NAME = "financial_calendar_reference_bundle"
 FINANCIAL_CALENDAR_MODULE_ID = "financial_calendar_reference_bundle"
 
 
-def financial_calendar_crosswalk():
+def financial_calendar_crosswalk() -> list[FinancialCalendarCrosswalkRecord]:
     """Return the frozen Gate 89 crosswalk records."""
 
     return default_financial_calendar_crosswalk()

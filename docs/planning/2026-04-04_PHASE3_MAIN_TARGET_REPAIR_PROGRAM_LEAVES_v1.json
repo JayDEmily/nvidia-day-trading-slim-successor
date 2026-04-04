@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_196_complete_gate_197_active_on_work_branch",
-  "active_gate": "Gate 197",
+  "execution_status": "gates_192_197_complete_gate_198_active_on_work_branch",
+  "active_gate": "Gate 198",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
@@ -11,10 +11,10 @@
     "Gate 193",
     "Gate 194",
     "Gate 195",
-    "Gate 196"
+    "Gate 196",
+    "Gate 197"
   ],
   "pending_gate_ids": [
-    "Gate 197",
     "Gate 198",
     "Gate 199"
   ],
@@ -41,13 +41,13 @@
     "LEAF-G196-003",
     "LEAF-G196-004",
     "LEAF-G196-005",
-    "LEAF-G196-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G196-006",
     "LEAF-G197-001",
     "LEAF-G197-002",
     "LEAF-G197-003",
-    "LEAF-G197-004",
+    "LEAF-G197-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G198-001",
     "LEAF-G198-002",
     "LEAF-G198-003",
@@ -1532,7 +1532,7 @@
       "gate": "Gate 197",
       "title": "Inspect the financial-calendar source seam before trusting mypy output",
       "objective": "Inspect the schema constructors and projection consumers that own the crosswalk typing seam before treating the mypy output as authority.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-006"
       ],
@@ -1592,7 +1592,7 @@
       "gate": "Gate 197",
       "title": "Write the schema-side typing decision and repair the constructor seam",
       "objective": "Repair the schema-side constructor typing seam only after the source constructor expectations are written down.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G197-001"
       ],
@@ -1646,7 +1646,7 @@
       "gate": "Gate 197",
       "title": "Repair adjacent projection and test fallout",
       "objective": "Clear the directly-coupled projection/test fallout only if it remains after the schema-side seam is repaired.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G197-002"
       ],
@@ -1706,7 +1706,7 @@
       "gate": "Gate 197",
       "title": "Close Gate 197 with targeted typing proof",
       "objective": "Run the bounded mypy/pytest slice for the repaired financial-calendar family and route to Gate 198 only if green or honestly narrowed.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G197-003"
       ],

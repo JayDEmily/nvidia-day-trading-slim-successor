@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from zoneinfo import ZoneInfo
+from typing import TypedDict
 
 from nvda_desk.config import Settings
 from nvda_desk.domain.session_clock import SessionClockPhase
@@ -33,6 +34,25 @@ class _EventTimingProfile:
     cooling_minutes: int
     memory_minutes: int
     overlap_buffer_minutes: int
+
+
+class _DerivedEventContext(TypedDict):
+    event_minutes_remaining: int | None
+    event_proximity_state: str
+    event_window_state: str
+    event_overlap_class: str
+    event_risk_timing_class: str
+    event_carry_sensitivity: str
+    event_timing_profile: str | None
+    active_event_family: str | None
+
+
+class _EventReferenceContext(TypedDict):
+    minutes_remaining: int | None
+    proximity_state: str
+    window_state: str
+    risk_timing_class: str
+
 
 
 class TemporalContextService:
@@ -174,8 +194,10 @@ class TemporalContextService:
         minutes_since_open: int | None,
         minutes_to_close: int | None,
     ) -> tuple[SessionClockPhase, str, int | None, int | None]:
-        closure_classes = set(payload.desk_calendar_authority.closure_classes)
-        bridge_rules = set(payload.desk_calendar_authority.bridge_rules)
+        authority = payload.desk_calendar_authority
+        assert authority is not None
+        closure_classes = set(authority.closure_classes)
+        bridge_rules = set(authority.bridge_rules)
         local_ts = payload.ts
         if local_ts.tzinfo is None:
             local_ts = payload.ts.replace(tzinfo=UTC)
@@ -239,7 +261,7 @@ class TemporalContextService:
             microsecond=0,
         )
 
-    def _derive_event_context(self, payload: TemporalContextInput) -> dict[str, str | int | None]:
+    def _derive_event_context(self, payload: TemporalContextInput) -> _DerivedEventContext:
         live_event_snapshot = payload.live_event_snapshot
         nearby_events = [] if live_event_snapshot is None else live_event_snapshot.material_events
         event_reference = self._primary_event_reference(
@@ -319,7 +341,7 @@ class TemporalContextService:
 
     def _event_reference_context(
         self, ts: datetime, reference: LiveEventReference
-    ) -> dict[str, str | int | None]:
+    ) -> _EventReferenceContext:
         ts_utc = ts.astimezone(UTC)
         anchor = reference.event_at.astimezone(UTC)
         profile = self._event_timing_profile(reference)

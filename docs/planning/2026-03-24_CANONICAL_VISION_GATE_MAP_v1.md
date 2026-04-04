@@ -56,7 +56,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **Gate 197 in the Phase 3 main-target repair programme on `work/gate-196-runtime-semantic-drift-reconciliation-20260404`**.
+Current active gate: **Gate 198 in the Phase 3 main-target repair programme on `work/gate-197-financial-calendar-typing-seam-reconciliation-20260404`**.
 
 Historical prior active-gate markers retained for planning-guard continuity: Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**. Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**. Current active gate: **Gate 163 in the coefficient architecture consolidation pack**. Current active gate: **none — parallel risk lane foundation pack closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`**.
 

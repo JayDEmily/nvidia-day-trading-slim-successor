@@ -244,3 +244,51 @@ Repair only the bounded runtime-semantic drift family by adjudicating options-fl
 
 Gate 196 closes only the bounded runtime-semantic repair family.
 The next active gate is Gate 197.
+
+
+## Gate 197 receipt
+
+Gate 197 complete on `work/gate-197-financial-calendar-typing-seam-reconciliation-20260404`; Gate 198 active.
+
+### Intent
+
+Repair only the concentrated financial-calendar typing seam by adjudicating constructor/projection truth first, then clearing the directly coupled type fallout without changing runtime semantics.
+
+### Source-truth decision
+
+- The controlling source surfaces were `src/nvda_desk/schemas/financial_calendar.py`, `src/nvda_desk/services/financial_calendar_reference.py`, `src/nvda_desk/services/financial_calendar_import.py`, `src/nvda_desk/services/financial_calendar_projection.py`, and the temporal-context consumer seam.
+- The calendar runtime/test behaviour was already lawful; the seam was the strict typing contract around repeated crosswalk constructors and generic payload compatibility boundaries.
+
+### Outputs changed
+
+- `src/nvda_desk/schemas/financial_calendar.py`
+- `src/nvda_desk/services/financial_calendar_reference.py`
+- `src/nvda_desk/services/financial_calendar_import.py`
+- `src/nvda_desk/services/financial_calendar_projection.py`
+- `src/nvda_desk/services/temporal_context.py`
+- `src/nvda_desk/config_models.py`
+- `tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- `tests/test_gate90_financial_calendar_reference_import.py`
+- `tests/test_gate92_financial_calendar_temporal_transition.py`
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-04_GATE197_FINANCIAL_CALENDAR_TYPING_SEAM_RECONCILIATION.md`
+
+### Validation commands
+
+- `PYTHONPATH=/opt/pyvenv/lib/python3.13/site-packages:/home/oai/.cache/uv/archive-v0/kjEjRQLxE1FauZkT7JNEW:/home/oai/.cache/uv/archive-v0/SH68GFG4S1Wlt5XlBXQbN:/home/oai/.cache/uv/archive-v0/O1rBpgTus1i3oF2SBPHDP uvx --offline mypy src/nvda_desk/schemas/financial_calendar.py src/nvda_desk/services/financial_calendar_projection.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate90_financial_calendar_reference_import.py tests/test_gate91_financial_calendar_canonical_projection.py tests/test_gate92_financial_calendar_temporal_transition.py`
+- `PYTHONPATH=src:/opt/pyvenv/lib/python3.13/site-packages:/home/oai/.cache/uv/archive-v0/kjEjRQLxE1FauZkT7JNEW:/home/oai/.cache/uv/archive-v0/SH68GFG4S1Wlt5XlBXQbN:/home/oai/.cache/uv/archive-v0/O1rBpgTus1i3oF2SBPHDP pytest -q tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate90_financial_calendar_reference_import.py tests/test_gate91_financial_calendar_canonical_projection.py tests/test_gate92_financial_calendar_temporal_transition.py tests/test_financial_calendar_planning_v3.py`
+
+### Validation result
+
+- targeted Gate 197 mypy slice passed: `Success: no issues found in 6 source files`
+- targeted Gate 197 calendar pytest slice passed: `22 passed in 1.92s`
+
+### Execution boundary
+
+Gate 197 closes only the concentrated financial-calendar typing seam.
+The next active gate is Gate 198.

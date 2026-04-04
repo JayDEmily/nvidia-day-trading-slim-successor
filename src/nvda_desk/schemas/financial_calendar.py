@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date
 from enum import StrEnum
+from typing import TypedDict
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -324,10 +325,15 @@ DEFAULT_RETAINED_FIELD_MATRIX = FinancialCalendarRetainedFieldMatrix(
 )
 
 
+class _FinancialCalendarCrosswalkCommon(TypedDict):
+    retained_fields: list[FinancialCalendarRetainedField]
+    semantic_phase: EventSemanticPhase
+
+
 def default_financial_calendar_crosswalk() -> list[FinancialCalendarCrosswalkRecord]:
     """Return the deterministic Gate 89 crosswalk for the 2026 bundle."""
 
-    common = {
+    common: _FinancialCalendarCrosswalkCommon = {
         "retained_fields": list(DEFAULT_RETAINED_FIELD_MATRIX.canonical_projection),
         "semantic_phase": EventSemanticPhase.KNOWN_RISK,
     }

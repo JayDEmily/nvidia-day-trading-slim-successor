@@ -12,6 +12,7 @@ from nvda_desk.schemas.events import (
     EventMaterialityTier,
     EventQueryWindow,
     EventSemanticPhase,
+    LiveEventSnapshot,
     NormalisedEventRecord,
     RawEventSourceObservation,
 )
@@ -215,7 +216,7 @@ class FinancialCalendarProjectionService:
         lookback_minutes: int = 240,
         lookahead_minutes: int = 1440,
         minimum_materiality: EventMaterialityTier = EventMaterialityTier.POSTURE_RELEVANT,
-    ):
+    ) -> LiveEventSnapshot:
         store = EventStoreService(self.project_canonical_event_records(symbol=symbol))
         return store.build_live_event_snapshot(
             requested_at=requested_at,

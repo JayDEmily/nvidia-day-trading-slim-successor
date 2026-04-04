@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
+from typing import cast
 from pathlib import Path
 
 from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
@@ -135,9 +136,10 @@ def test_gate89_repo_native_dmp_lane_stays_compatible_with_current_helper_layer(
     assert packet.behaviour_class is DmpBehaviourClass.REPLAY_ARTEFACT
     assert packet.contract.packet_schema_id == FINANCIAL_CALENDAR_PACKET_SCHEMA_ID
     assert packet.contract.payload_contract_id == FINANCIAL_CALENDAR_PAYLOAD_CONTRACT_ID
+    payload = cast(FinancialCalendarBundleMetadata, packet.payload)
     assert packet.schema_identifiers.payload_model_name == "FinancialCalendarBundleMetadata"
     assert packet.schema_identifiers.payload_module_path == "nvda_desk.schemas.financial_calendar"
-    assert packet.payload.bundle_id == "nvda_financial_calendar_bundle_v1_2026"
+    assert payload.bundle_id == "nvda_financial_calendar_bundle_v1_2026"
     assert [block.block_type for block in packet.blocks].count("object_block") == 1
     assert [block.block_type for block in packet.blocks].count("artifact_ref_block") == 2
 

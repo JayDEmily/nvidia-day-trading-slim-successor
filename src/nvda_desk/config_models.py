@@ -434,7 +434,7 @@ class CoefficientAuthorityDocument(BaseModel):
         return cls.from_yaml_text(path.read_text(encoding="utf-8"))
 
     def to_yaml_text(self) -> str:
-        return yaml.safe_dump(self.model_dump(mode="json"), sort_keys=False)
+        return str(yaml.safe_dump(self.model_dump(mode="json"), sort_keys=False))
 
 
 

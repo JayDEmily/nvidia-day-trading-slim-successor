@@ -188,6 +188,7 @@ def test_gate92_carry_handoff_prefers_temporal_next_session_open_hint() -> None:
         execution=_execution_output(["pin_reversion"]),
     )
 
+    assert handoff.next_session_open_ts is not None
     assert handoff.next_session_open_ts.date().isoformat() == "2026-09-08"
     assert handoff.event_carry_window is True
     assert any(code.startswith("calendar_closure:") for code in handoff.rationale_codes)
