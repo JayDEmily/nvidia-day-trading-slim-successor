@@ -1,0 +1,1838 @@
+{
+  "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_192_active",
+  "active_gate": "Gate 192",
+  "supersedes": [
+    "none; no active leaves ledger was routed at tranche start"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G192-001",
+    "LEAF-G192-002",
+    "LEAF-G192-003",
+    "LEAF-G192-004",
+    "LEAF-G193-001",
+    "LEAF-G193-002",
+    "LEAF-G193-003",
+    "LEAF-G194-001",
+    "LEAF-G194-002",
+    "LEAF-G194-003",
+    "LEAF-G195-001",
+    "LEAF-G195-002",
+    "LEAF-G195-003",
+    "LEAF-G196-001",
+    "LEAF-G196-002",
+    "LEAF-G196-003",
+    "LEAF-G196-004",
+    "LEAF-G196-005",
+    "LEAF-G197-001",
+    "LEAF-G197-002",
+    "LEAF-G197-003",
+    "LEAF-G198-001",
+    "LEAF-G198-002",
+    "LEAF-G198-003",
+    "LEAF-G199-001",
+    "LEAF-G199-002",
+    "LEAF-G199-003",
+    "LEAF-G199-004",
+    "LEAF-G199-005"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G192-001",
+      "gate": "Gate 192",
+      "title": "Freeze repair evidence baseline",
+      "objective": "Summarise the executed external defect harvest into a repo-native evidence baseline note.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "phase_3",
+        "repair",
+        "main_target"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md"
+      ],
+      "ordered_actions": [
+        "external Phase 2B handoff reports",
+        "H v2 repair-prep bridge"
+      ],
+      "forbidden_actions": [
+        "Read the repo process law and the external repair-family baseline.",
+        "Write the repo-native evidence baseline note without pretending the external reports are the active router.",
+        "Freeze the seven repair tranches and explicit exclusions in the scope note."
+      ],
+      "validation_commands": [
+        "Do not start code repair.",
+        "Do not relabel side-repo blockers as main-target failures."
+      ],
+      "expected_evidence": [
+        "python -m json.tool docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json >/dev/null  # run after leaves file exists",
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "definition_of_done": [
+        "evidence baseline note exists",
+        "scope note exists"
+      ],
+      "closeout_updates_required": [
+        "The evidence baseline and scope note exist and match the harvested defect families."
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "The evidence baseline and scope note exist and match the harvested defect families.",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G192-002",
+      "gate": "Gate 192",
+      "title": "Author the Phase 3 planning quartet",
+      "objective": "Create the active gates master, leaves ledger, execution log, and document-touch checklist for Gates 192-199.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G192-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "phase_3",
+        "repair_tranche",
+        "gate"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md"
+      ],
+      "ordered_actions": [
+        "Use the repo template pack rather than cloning an older pack blindly.",
+        "Write Gates 192-199 with variable but bounded granularity.",
+        "Write leaf atoms that let a coding thread execute one leaf at a time without filling in blanks."
+      ],
+      "forbidden_actions": [
+        "Do not merge runtime, governance, vocabulary, and static-quality families into one gate.",
+        "Do not invent vocabulary without checking the vocabulary authority."
+      ],
+      "validation_commands": [
+        "python -m json.tool docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json >/dev/null",
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "gates master exists",
+        "leaves ledger exists",
+        "execution log exists",
+        "document-touch checklist exists"
+      ],
+      "definition_of_done": [
+        "The planning quartet exists and the gate/leaf counts preserve granularity."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G192-003",
+      "gate": "Gate 192",
+      "title": "Route the repo to Gate 192",
+      "objective": "Update PLANS and the canonical gate map so the repo truthfully routes to the new active repair pack.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G192-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "active_gate",
+        "planning_quartet"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "ordered_actions": [
+        "Update PLANS to point to the active Phase 3 pack and next active gate.",
+        "Update the canonical gate map paired-file references and add planned rows for Gates 192-199.",
+        "Make the current-active-gate marker truthful."
+      ],
+      "forbidden_actions": [
+        "Do not relabel earlier packs as incomplete.",
+        "Do not rewrite older closed-pack evidence."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "PLANS routes to Gate 192",
+        "gate map routes to Gate 192"
+      ],
+      "definition_of_done": [
+        "PLANS and the canonical gate map agree on the active Phase 3 pack and Gate 192."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G192-004",
+      "gate": "Gate 192",
+      "title": "Close Gate 192 bootstrap honestly",
+      "objective": "Record the Gate 192 bootstrap receipt, run the planning integrity slice, and package the branch state if Gate 192 closes.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G192-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "bootstrap",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-04_GATE192_PHASE3_MAIN_TARGET_REPAIR_PACK_BOOTSTRAP.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json"
+      ],
+      "ordered_actions": [
+        "Write the Gate 192 bootstrap receipt after the pack is routed.",
+        "Run the planning integrity slice required for pack bootstrap.",
+        "If green, mark Gate 192 complete in the leaves ledger and package the exact branch state."
+      ],
+      "forbidden_actions": [
+        "Do not claim execution receipts for later gates."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 192 receipt exists",
+        "planning integrity slice result recorded"
+      ],
+      "definition_of_done": [
+        "Gate 192 routing and bootstrap evidence exist and the planning integrity slice is green."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G193-001",
+      "gate": "Gate 193",
+      "title": "Freeze generator-versus-artifact authority",
+      "objective": "Trace the vocabulary generator, committed artifact, and dependent governance tests to decide the lawful truth surface.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G192-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "vocabulary_generator",
+        "artifact_truth"
+      ],
+      "repo_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "scripts",
+        "tests"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md"
+      ],
+      "ordered_actions": [
+        "Read the vocabulary authority, generator path, committed artifact, and failing governance tests.",
+        "Write down whether code or committed artifact is the primary truth for this family before editing anything."
+      ],
+      "forbidden_actions": [
+        "Do not patch dependent tests before the truth surface is decided."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py -k vocabulary || true"
+      ],
+      "expected_evidence": [
+        "authority decision note in gate receipt",
+        "generator and artifact surfaces identified"
+      ],
+      "definition_of_done": [
+        "The gate has one explicit truth decision for generator versus artifact."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G193-002",
+      "gate": "Gate 193",
+      "title": "Repair the vocabulary generator truth seam",
+      "objective": "Implement the bounded generator/artifact reconciliation without touching unrelated runtime semantics.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G193-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "vocabulary",
+        "canonical_slug"
+      ],
+      "repo_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "generator surfaces",
+        "dependent vocabulary tests"
+      ],
+      "inputs": [
+        "authority decision from LEAF-G193-001"
+      ],
+      "ordered_actions": [
+        "Edit only the generator/artifact surfaces required to reconcile the truth seam.",
+        "Keep dependent failures bounded to the vocabulary family."
+      ],
+      "forbidden_actions": [
+        "Do not mix repo-wide hygiene cleanup into this leaf."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k vocabulary || true"
+      ],
+      "expected_evidence": [
+        "generator/artifact surfaces updated",
+        "targeted vocabulary proof output"
+      ],
+      "definition_of_done": [
+        "The vocabulary truth seam is repaired in code/artifact space without unrelated edits."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G193-003",
+      "gate": "Gate 193",
+      "title": "Re-anchor dependent vocabulary expectations",
+      "objective": "Update dependent vocabulary-governance expectations and re-run the targeted slice.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G193-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "vocabulary_governance"
+      ],
+      "repo_surfaces": [
+        "tests",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "inputs": [
+        "repaired generator/artifact surfaces"
+      ],
+      "ordered_actions": [
+        "Run the targeted vocabulary-governance slice.",
+        "Amend dependent expectations only where the repaired truth requires it."
+      ],
+      "forbidden_actions": [
+        "Do not reopen runtime semantic or control-surface families here."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "targeted recheck green",
+        "Gate 193 receipt"
+      ],
+      "definition_of_done": [
+        "The vocabulary family rechecks green and Gate 193 can close."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G194-001",
+      "gate": "Gate 194",
+      "title": "Localise residual vocabulary leakage",
+      "objective": "Trace the residual vocabulary leakage surfaces after Gate 193 to confirm what remains.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G193-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "eighth_stage",
+        "vocabulary_hygiene"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate190_capital_deployment_authority_integration.py",
+        "tests/test_gate179_repo_wide_vocabulary_hygiene.py"
+      ],
+      "inputs": [
+        "Gate 193 outputs"
+      ],
+      "ordered_actions": [
+        "Read the failing hygiene surfaces and decide whether the leak is legitimate terminology or stale text."
+      ],
+      "forbidden_actions": [
+        "Do not reopen the generator truth seam without new evidence."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py -k eighth_stage || true"
+      ],
+      "expected_evidence": [
+        "residual leakage surfaces identified"
+      ],
+      "definition_of_done": [
+        "Residual leakage is localised and classified."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G194-002",
+      "gate": "Gate 194",
+      "title": "Repair or explicitly admit the leakage surface",
+      "objective": "Amend the leaking surface or the allowlist/governance text so the repo carries one vocabulary truth.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G194-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "vocabulary_allowlist"
+      ],
+      "repo_surfaces": [
+        "tests",
+        "governance text",
+        "integration test text"
+      ],
+      "inputs": [
+        "LEAF-G194-001 classification"
+      ],
+      "ordered_actions": [
+        "Edit only the bounded leakage surfaces.",
+        "Keep the repair limited to the residual vocabulary family."
+      ],
+      "forbidden_actions": [
+        "Do not smuggle runtime-control or static cleanup here."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_gate190_capital_deployment_authority_integration.py || true"
+      ],
+      "expected_evidence": [
+        "bounded leakage repair applied"
+      ],
+      "definition_of_done": [
+        "The leakage family is resolved within one bounded scope."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G194-003",
+      "gate": "Gate 194",
+      "title": "Close Gate 194 with targeted hygiene proof",
+      "objective": "Re-run the targeted hygiene slice and record the Gate 194 receipt.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G194-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "hygiene",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate179_repo_wide_vocabulary_hygiene.py"
+      ],
+      "inputs": [
+        "Gate 194 edits"
+      ],
+      "ordered_actions": [
+        "Run the targeted hygiene slice.",
+        "Record the Gate 194 closeout receipt if green."
+      ],
+      "forbidden_actions": [
+        "Do not widen into unrelated gate families without evidence."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 194 receipt",
+        "targeted hygiene slice green"
+      ],
+      "definition_of_done": [
+        "Gate 194 closes with the residual vocabulary family green."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G195-001",
+      "gate": "Gate 195",
+      "title": "Freeze the current-state control truth",
+      "objective": "Read PLANS, gate map, and cited closeout surfaces to decide the single lawful current-state narrative.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G194-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "active_gate",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning"
+      ],
+      "inputs": [
+        "Phase 2B control-surface defect family"
+      ],
+      "ordered_actions": [
+        "Identify every late-planning/current-state surface implicated by the failures.",
+        "Write down the one coherent current-state truth before editing."
+      ],
+      "forbidden_actions": [
+        "Do not patch downstream tests before the current-state narrative is explicit."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_planning_state_integrity.py || true"
+      ],
+      "expected_evidence": [
+        "control truth decision recorded"
+      ],
+      "definition_of_done": [
+        "One coherent current-state narrative exists for the affected planning surfaces."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G195-002",
+      "gate": "Gate 195",
+      "title": "Repair router and gate-map drift",
+      "objective": "Apply the bounded current-state repair across PLANS, gate map, and directly-coupled closeout text.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G195-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "router",
+        "gate_map"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "affected closeout docs/tests"
+      ],
+      "inputs": [
+        "LEAF-G195-001 truth decision"
+      ],
+      "ordered_actions": [
+        "Edit only the planning/router surfaces required to converge on one truth.",
+        "Keep runtime-domain code untouched."
+      ],
+      "forbidden_actions": [
+        "Do not mix vocabulary or runtime-semantic repair into this gate."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py || true"
+      ],
+      "expected_evidence": [
+        "router surfaces updated"
+      ],
+      "definition_of_done": [
+        "Router and gate-map surfaces now tell one coherent truth."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G195-003",
+      "gate": "Gate 195",
+      "title": "Close Gate 195 with planning integrity proof",
+      "objective": "Run the planning integrity slice and record the Gate 195 receipt.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G195-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "planning_state"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "inputs": [
+        "Gate 195 edits"
+      ],
+      "ordered_actions": [
+        "Run the planning integrity slice required by the bounded repair.",
+        "Record the Gate 195 receipt if green."
+      ],
+      "forbidden_actions": [
+        "Do not claim closeout without green planning proof."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_planning_state_integrity.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Gate 195 receipt",
+        "planning integrity slice green"
+      ],
+      "definition_of_done": [
+        "Gate 195 closes with current-state planning truth green."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G196-001",
+      "gate": "Gate 196",
+      "title": "Freeze the options-flow harness truth",
+      "objective": "Read the canonical/raw harness expectation surfaces and decide the admitted options-flow truth before repair.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G195-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "options_flow_context",
+        "balanced_options_state",
+        "anchored_translation_tension"
+      ],
+      "repo_surfaces": [
+        "runtime harnesses",
+        "options-flow clustering surfaces",
+        "tests"
+      ],
+      "inputs": [
+        "Candidate 2 evidence family"
+      ],
+      "ordered_actions": [
+        "Trace the raw and canonical harnesses plus the tests that disagree.",
+        "Decide the admitted options-flow clustering truth before editing."
+      ],
+      "forbidden_actions": [
+        "Do not patch only the failing test strings without deciding semantic truth."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k options_flow || true"
+      ],
+      "expected_evidence": [
+        "options-flow authority decision recorded"
+      ],
+      "definition_of_done": [
+        "One explicit options-flow truth is frozen before repair."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G196-002",
+      "gate": "Gate 196",
+      "title": "Repair the options-flow semantic drift",
+      "objective": "Implement the bounded options-flow semantic repair across runtime and directly-coupled expectations.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G196-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "options_flow_context"
+      ],
+      "repo_surfaces": [
+        "runtime clustering code",
+        "harness expectation surfaces",
+        "direct fixtures/tests"
+      ],
+      "inputs": [
+        "LEAF-G196-001 authority decision"
+      ],
+      "ordered_actions": [
+        "Edit only the bounded options-flow semantic surfaces required to converge on one truth."
+      ],
+      "forbidden_actions": [
+        "Do not mix higher-order context or static typing work into this leaf unless coupling is proven."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k options_flow || true"
+      ],
+      "expected_evidence": [
+        "options-flow repair applied"
+      ],
+      "definition_of_done": [
+        "The options-flow family converges on one admitted truth."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G196-003",
+      "gate": "Gate 196",
+      "title": "Freeze the higher-order context stress law",
+      "objective": "Read the Gate 31 stress-behaviour contract and the detector semantics to decide the admitted compression-state law.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G196-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "higher_order_context",
+        "compression_mixed"
+      ],
+      "repo_surfaces": [
+        "gate 31 tests",
+        "higher-order context detector surfaces"
+      ],
+      "inputs": [
+        "Candidate 3 evidence family"
+      ],
+      "ordered_actions": [
+        "Trace the stress-behaviour contract and the detector semantics.",
+        "Decide whether the detector or the test expectation carries the lawful truth."
+      ],
+      "forbidden_actions": [
+        "Do not re-open the options-flow family without new evidence."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k gate31 || true"
+      ],
+      "expected_evidence": [
+        "higher-order context authority decision recorded"
+      ],
+      "definition_of_done": [
+        "One explicit compression-state law is frozen before repair."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G196-004",
+      "gate": "Gate 196",
+      "title": "Repair the higher-order context stress drift",
+      "objective": "Implement the bounded higher-order context semantic repair and recheck the targeted runtime slice.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G196-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "higher_order_context"
+      ],
+      "repo_surfaces": [
+        "detector surfaces",
+        "gate 31 tests",
+        "coupled fixtures if required"
+      ],
+      "inputs": [
+        "LEAF-G196-003 authority decision"
+      ],
+      "ordered_actions": [
+        "Edit only the bounded higher-order context surfaces required to converge on one truth.",
+        "Run targeted runtime proofs for the options-flow and higher-order context families together if coupling remains."
+      ],
+      "forbidden_actions": [
+        "Do not mix router/vocabulary/static cleanup into this leaf."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k \"options_flow or gate31 or runtime\" || true"
+      ],
+      "expected_evidence": [
+        "runtime semantic repair applied"
+      ],
+      "definition_of_done": [
+        "The higher-order context family converges on one admitted truth."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G196-005",
+      "gate": "Gate 196",
+      "title": "Close Gate 196 with widened runtime proof",
+      "objective": "Run the targeted runtime slice plus any necessary widened proof and record the Gate 196 receipt.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G196-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "runtime_semantics",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "runtime tests",
+        "downstream coupled tests"
+      ],
+      "inputs": [
+        "Gate 196 semantic repairs"
+      ],
+      "ordered_actions": [
+        "Run the targeted runtime slice and any required widened downstream proofs.",
+        "Record the Gate 196 receipt only after the widened proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not widen to full static cleanup here."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k \"options_flow or gate31 or review or runtime\""
+      ],
+      "expected_evidence": [
+        "Gate 196 receipt",
+        "targeted/widened runtime slice green"
+      ],
+      "definition_of_done": [
+        "Gate 196 closes with the bounded runtime-semantic families green."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G197-001",
+      "gate": "Gate 197",
+      "title": "Localise the financial-calendar typing seam",
+      "objective": "Trace the concentrated typing seam around financial calendar surfaces and freeze the bounded repair boundary.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G196-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "financial_calendar"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "adjacent services/tests"
+      ],
+      "inputs": [
+        "Candidate 7 evidence family"
+      ],
+      "ordered_actions": [
+        "Read the typing errors and identify the concentrated seam versus adjacent fallout."
+      ],
+      "forbidden_actions": [
+        "Do not mix helper typing debt into this seam unless proven inseparable."
+      ],
+      "validation_commands": [
+        "mypy src tests | head -200"
+      ],
+      "expected_evidence": [
+        "financial-calendar seam localised"
+      ],
+      "definition_of_done": [
+        "The concentrated typing seam boundary is explicit."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G197-002",
+      "gate": "Gate 197",
+      "title": "Repair the financial-calendar typing seam",
+      "objective": "Implement the bounded typing repair for the financial-calendar seam and directly-coupled surfaces.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G197-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "financial_calendar"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/financial_calendar.py",
+        "adjacent services/tests"
+      ],
+      "inputs": [
+        "LEAF-G197-001 seam boundary"
+      ],
+      "ordered_actions": [
+        "Apply only the typing and directly-coupled fixture/service edits required for the seam."
+      ],
+      "forbidden_actions": [
+        "Do not alter unrelated runtime semantics or helper-typing debt here."
+      ],
+      "validation_commands": [
+        "mypy src tests || true",
+        "pytest -q tests -k financial_calendar || true"
+      ],
+      "expected_evidence": [
+        "financial-calendar typing repair applied"
+      ],
+      "definition_of_done": [
+        "The financial-calendar seam is repaired as a coherent slice."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G197-003",
+      "gate": "Gate 197",
+      "title": "Close Gate 197 with targeted typing proof",
+      "objective": "Run targeted mypy and pytest proofs and record the Gate 197 receipt.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G197-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "typing",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "financial-calendar surfaces"
+      ],
+      "inputs": [
+        "Gate 197 edits"
+      ],
+      "ordered_actions": [
+        "Run targeted mypy and pytest slices for the repaired seam.",
+        "Record the Gate 197 receipt if the bounded seam is green or narrowed honestly."
+      ],
+      "forbidden_actions": [
+        "Do not claim whole-repo mypy closure here."
+      ],
+      "validation_commands": [
+        "mypy src tests",
+        "pytest -q tests -k financial_calendar"
+      ],
+      "expected_evidence": [
+        "Gate 197 receipt",
+        "targeted seam proof"
+      ],
+      "definition_of_done": [
+        "Gate 197 closes with the financial-calendar seam repaired or narrowed honestly."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G198-001",
+      "gate": "Gate 198",
+      "title": "Partition helper typing debt",
+      "objective": "Read the helper typing failures and group them into bounded helper families that can be repaired without runtime change.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G197-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "helper_typing"
+      ],
+      "repo_surfaces": [
+        "tests",
+        "helper modules",
+        "fixtures"
+      ],
+      "inputs": [
+        "Candidate 8 evidence family"
+      ],
+      "ordered_actions": [
+        "Identify the helper functions and return-shape patterns causing the strict typing failures."
+      ],
+      "forbidden_actions": [
+        "Do not reopen the financial-calendar seam unless new evidence proves coupling."
+      ],
+      "validation_commands": [
+        "mypy src tests | head -300"
+      ],
+      "expected_evidence": [
+        "helper typing families partitioned"
+      ],
+      "definition_of_done": [
+        "Helper typing debt is partitioned into bounded families."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G198-002",
+      "gate": "Gate 198",
+      "title": "Repair bounded helper typing families",
+      "objective": "Add type annotations or typed-safe helper return shapes for the bounded helper family in scope.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G198-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "helper_typing"
+      ],
+      "repo_surfaces": [
+        "helper modules",
+        "fixtures",
+        "strict tests"
+      ],
+      "inputs": [
+        "LEAF-G198-001 partitions"
+      ],
+      "ordered_actions": [
+        "Apply only the bounded helper typing repairs required for the chosen family set."
+      ],
+      "forbidden_actions": [
+        "Do not rewrite runtime-domain behaviour in this gate."
+      ],
+      "validation_commands": [
+        "mypy src tests || true",
+        "pytest -q tests -k helper || true"
+      ],
+      "expected_evidence": [
+        "helper typing repair applied"
+      ],
+      "definition_of_done": [
+        "The bounded helper typing family is repaired without runtime semantic drift."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G198-003",
+      "gate": "Gate 198",
+      "title": "Close Gate 198 with targeted mypy proof",
+      "objective": "Run the targeted strict-typing slice and record the Gate 198 receipt.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G198-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "mypy",
+        "closeout"
+      ],
+      "repo_surfaces": [
+        "helper modules",
+        "strict tests"
+      ],
+      "inputs": [
+        "Gate 198 edits"
+      ],
+      "ordered_actions": [
+        "Run the targeted mypy slice and any directly-coupled pytest proofs.",
+        "Record the Gate 198 receipt if the bounded helper family is green or narrowed honestly."
+      ],
+      "forbidden_actions": [
+        "Do not claim whole-repo static closure here."
+      ],
+      "validation_commands": [
+        "mypy src tests",
+        "pytest -q tests -k helper"
+      ],
+      "expected_evidence": [
+        "Gate 198 receipt",
+        "targeted mypy slice"
+      ],
+      "definition_of_done": [
+        "Gate 198 closes with the bounded helper typing family handled honestly."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G199-001",
+      "gate": "Gate 199",
+      "title": "Localise remaining static hygiene debt",
+      "objective": "Partition the remaining ruff debt and Alembic warning-only constraint after the earlier functional gates close.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G198-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "ruff",
+        "alembic"
+      ],
+      "repo_surfaces": [
+        "alembic files",
+        "migration files",
+        "test import surfaces"
+      ],
+      "inputs": [
+        "Candidate 6 and 9 evidence families"
+      ],
+      "ordered_actions": [
+        "Read the remaining static-quality findings and separate hard cleanup from warning-only constraint treatment."
+      ],
+      "forbidden_actions": [
+        "Do not reopen runtime semantic repairs here."
+      ],
+      "validation_commands": [
+        "ruff check . || true"
+      ],
+      "expected_evidence": [
+        "remaining static debt partitioned"
+      ],
+      "definition_of_done": [
+        "Remaining static hygiene debt and warning-only constraint are partitioned."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G199-002",
+      "gate": "Gate 199",
+      "title": "Repair bounded static hygiene debt",
+      "objective": "Apply the bounded import-structure and formatting cleanup that remains after the earlier gates.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G199-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "ruff"
+      ],
+      "repo_surfaces": [
+        "alembic files",
+        "migration files",
+        "test import surfaces"
+      ],
+      "inputs": [
+        "LEAF-G199-001 partitions"
+      ],
+      "ordered_actions": [
+        "Repair the bounded static hygiene surfaces only."
+      ],
+      "forbidden_actions": [
+        "Do not mix runtime semantic or vocabulary repair into this leaf."
+      ],
+      "validation_commands": [
+        "ruff check . || true",
+        "pytest -q tests/test_document_hygiene.py || true"
+      ],
+      "expected_evidence": [
+        "static hygiene repair applied"
+      ],
+      "definition_of_done": [
+        "The bounded static hygiene family is repaired without unrelated edits."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G199-003",
+      "gate": "Gate 199",
+      "title": "Address Alembic warning-only constraint honestly",
+      "objective": "Either repair the Alembic warning-only constraint or document its retained bounded status truthfully before closeout.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G199-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "alembic",
+        "warning_only"
+      ],
+      "repo_surfaces": [
+        "alembic configuration surfaces"
+      ],
+      "inputs": [
+        "Candidate 9 evidence family"
+      ],
+      "ordered_actions": [
+        "Apply the minimal bounded change needed to clear the warning or record the justified retained constraint."
+      ],
+      "forbidden_actions": [
+        "Do not relabel the warning-only surface as a hard runtime defect."
+      ],
+      "validation_commands": [
+        "pytest -q tests -k alembic || true"
+      ],
+      "expected_evidence": [
+        "Alembic warning treatment recorded"
+      ],
+      "definition_of_done": [
+        "The Alembic warning-only surface is handled honestly."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G199-004",
+      "gate": "Gate 199",
+      "title": "Run widened closeout proofs",
+      "objective": "Run the targeted and widened proof slices required to close the full Phase 3 programme honestly.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G199-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "closeout",
+        "full_suite"
+      ],
+      "repo_surfaces": [
+        "runtime tests",
+        "planning integrity tests",
+        "static tools"
+      ],
+      "inputs": [
+        "All prior gate outputs"
+      ],
+      "ordered_actions": [
+        "Run the widened proof slices required by the repaired families and the final closeout.",
+        "Record exact observed results in the execution log."
+      ],
+      "forbidden_actions": [
+        "Do not call the programme green without the declared widened proofs."
+      ],
+      "validation_commands": [
+        "pytest -q tests",
+        "ruff check .",
+        "mypy src tests"
+      ],
+      "expected_evidence": [
+        "widened closeout proof results recorded"
+      ],
+      "definition_of_done": [
+        "The final widened proof slice has run and the results are recorded honestly."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G199-005",
+      "gate": "Gate 199",
+      "title": "Close router surfaces and package exact green state",
+      "objective": "Update router/control surfaces to the closed state, write the Gate 199 closeout receipt, and package the exact green repo state.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G199-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside a repo-native corrective tranche and must preserve the distinction between evidence-harvest truth and bounded repair execution.",
+      "vocabulary_terms_checked": [
+        "closeout",
+        "packaging"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-04_GATE199_PHASE3_MAIN_TARGET_REPAIR_CLOSEOUT.md"
+      ],
+      "inputs": [
+        "All prior Phase 3 outputs"
+      ],
+      "ordered_actions": [
+        "Move the planning quartet together to the truthful closed state.",
+        "Write the Gate 199 closeout receipt.",
+        "Create the fresh full-history zip from the exact green repo state."
+      ],
+      "forbidden_actions": [
+        "Do not leave the repo claiming an active pack if no leaves remain."
+      ],
+      "validation_commands": [
+        "pytest -q tests",
+        "ruff check .",
+        "mypy src tests"
+      ],
+      "expected_evidence": [
+        "Gate 199 closeout receipt",
+        "fresh full-history zip"
+      ],
+      "definition_of_done": [
+        "Phase 3 closes with truthful router state and a fresh exact-state package."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": true,
+      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+      ]
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+      "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
+      "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
+    ],
+    "current_result": "no_material_conflict_detected_at_pack_bootstrap"
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  }
+}

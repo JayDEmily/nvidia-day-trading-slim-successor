@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.19
+Version: v1.20
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
@@ -18,6 +18,9 @@ Paired files:
 - `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md` — latest closed capital-deployment authority foundation gate authority retained as evidence for Gates 187-191
 - `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json` — latest closed capital-deployment authority foundation leaf ledger retained as evidence
 - `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_EXECUTION_LOG_v1.md` — latest closed capital-deployment authority foundation execution log retained as evidence
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md` — active Phase 3 main-target repair gate authority for Gates 192-199
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json` — active Phase 3 main-target repair leaf ledger
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md` — active Phase 3 main-target repair execution log
 
 ## 0. Purpose
 
@@ -53,7 +56,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — capital-deployment authority foundation pack closed through Gate 191 on `main`**.
+Current active gate: **Gate 192 in the Phase 3 main-target repair programme on `work/gate-192-phase3-main-target-repair-pack-20260404`**.
 
 Historical prior active-gate markers retained for planning-guard continuity: Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**. Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**. Current active gate: **Gate 163 in the coefficient architecture consolidation pack**. Current active gate: **none — parallel risk lane foundation pack closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`**.
 
@@ -227,6 +230,14 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 189 | complete on `main` | implement the standalone capital-deployment authority service against the repo-native current-capital snapshot path and bounded proof data | `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-03_GATE189_CAPITAL_DEPLOYMENT_AUTHORITY_SERVICE.md`, `tests/test_gate189_capital_deployment_authority_service.py` |
 | Gate 190 | complete on `main` | integrate the bounded capital-deployment authority decision into the downstream runtime/review seam without creating an eighth stage | `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-03_GATE190_CAPITAL_DEPLOYMENT_AUTHORITY_INTEGRATION.md`, `tests/test_gate190_capital_deployment_authority_integration.py` |
 | Gate 191 | complete on `main` | run end-to-end proofs, close router/control surfaces honestly, and package the exact green repo state | `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-03_GATE191_CAPITAL_DEPLOYMENT_AUTHORITY_CLOSEOUT.md`, `tests/test_gate191_capital_deployment_authority_closeout.py` |
+| Gate 192 | active on `work/gate-192-phase3-main-target-repair-pack-20260404` | activate the Phase 3 main-target repair pack, freeze the evidence baseline, and route the repo to Gate 193 without changing runtime behaviour yet | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, `docs/planning/2026-04-04_GATE192_PHASE3_MAIN_TARGET_REPAIR_PACK_BOOTSTRAP.md`, `tests/test_gate192_phase3_main_target_repair_pack_planning.py` |
+| Gate 193 | planned | reconcile vocabulary generator truth with the committed vocabulary artifact and re-anchor dependent vocabulary-governance expectations | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, `tests/test_gate179_repo_wide_vocabulary_hygiene.py` |
+| Gate 194 | planned | clear the residual repo-wide vocabulary hygiene leakage once generator truth is settled | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, `tests/test_gate179_repo_wide_vocabulary_hygiene.py`, `tests/test_gate190_capital_deployment_authority_integration.py` |
+| Gate 195 | planned | reconcile `PLANS.md`, gate-map current-state surfaces, and associated closeout control text into one truthful planning state | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, `tests/test_planning_state_integrity.py` |
+| Gate 196 | planned | reconcile options-flow harness semantics and higher-order context stress-behaviour law without mixing static cleanup | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, runtime/harness tests and related downstream proofs |
+| Gate 197 | planned | repair the concentrated financial-calendar typing seam as a bounded schema/service tranche | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, targeted `mypy` plus related pytest proofs |
+| Gate 198 | planned | reduce untyped helper pressure in strict test contexts without changing runtime-domain behaviour | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, targeted `mypy` plus helper-facing pytest proofs |
+| Gate 199 | planned | clear the remaining static hygiene tranche, handle the Alembic warning-only constraint honestly, close the router surfaces, and package the exact green repo state | `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`, `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`, final widened proofs and closeout receipt |
 
 ## 4. Global execution rules
 
