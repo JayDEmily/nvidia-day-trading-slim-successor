@@ -56,6 +56,9 @@ ALLOWED_OLD_WORKBOOK_FILES = {
 }
 ALLOWED_DISALLOWED_PHRASE_FILES = {
     "docs/01_NORMATIVE.md",
+    "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+    "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+    "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
     "scripts/build_canonical_vocabulary.py",
     "tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py",
     "tests/test_gate158_co_resident_parallel_risk_lane_law.py",
@@ -72,6 +75,7 @@ ALLOWED_DISALLOWED_PHRASE_FILES = {
     "docs/planning/2026-04-02_GATE174_PARALLEL_RISK_LANE_INPUT_CONTRACT.md",
     "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
     "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
+    "tests/test_gate190_capital_deployment_authority_integration.py",
     "docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md",
     "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md",
 }
@@ -88,6 +92,8 @@ def _text_occurrence_files(term: str) -> set[str]:
         if not path.is_file():
             continue
         if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".xlsx", ".zip", ".pyc"}:
+            continue
+        if ".pytest_cache" in path.parts or "__pycache__" in path.parts or ".git" in path.parts:
             continue
         try:
             text = path.read_text(encoding="utf-8")

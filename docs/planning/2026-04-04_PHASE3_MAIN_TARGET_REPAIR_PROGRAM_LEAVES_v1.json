@@ -1,17 +1,17 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_193_complete_gate_194_active_on_work_branch",
-  "active_gate": "Gate 194",
+  "execution_status": "gates_192_194_complete_gate_195_active_on_work_branch",
+  "active_gate": "Gate 195",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
   "completed_gate_ids": [
     "Gate 192",
-    "Gate 193"
+    "Gate 193",
+    "Gate 194"
   ],
   "pending_gate_ids": [
-    "Gate 194",
     "Gate 195",
     "Gate 196",
     "Gate 197",
@@ -26,13 +26,13 @@
     "LEAF-G193-001",
     "LEAF-G193-002",
     "LEAF-G193-003",
-    "LEAF-G193-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G193-004",
     "LEAF-G194-001",
     "LEAF-G194-002",
     "LEAF-G194-003",
-    "LEAF-G194-004",
+    "LEAF-G194-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G195-001",
     "LEAF-G195-002",
     "LEAF-G195-003",
@@ -603,7 +603,7 @@
       "gate": "Gate 194",
       "title": "Inspect runtime and vocabulary source truth for residual ambient leakage",
       "objective": "Inspect the raw runtime, review-packet, and vocabulary authority surfaces that make `eighth_stage` lawful or unlawful before classifying the residual leakage.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G193-004"
       ],
@@ -666,7 +666,7 @@
       "gate": "Gate 194",
       "title": "Write the lawful ambient phrase boundary from source truth",
       "objective": "Write one explicit boundary decision for the residual phrase family using runtime/vocabulary authority surfaces first.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G194-001"
       ],
@@ -726,7 +726,7 @@
       "gate": "Gate 194",
       "title": "Repair or explicitly admit the bounded leakage surface after source-truth adjudication",
       "objective": "Repair only the bounded leakage or governance surface required by the recorded source-truth decision.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G194-002"
       ],
@@ -787,7 +787,7 @@
       "gate": "Gate 194",
       "title": "Close Gate 194 with targeted hygiene proof",
       "objective": "Re-run the bounded hygiene slice, write the Gate 194 receipt, and route the pack to Gate 195 if green.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G194-003"
       ],

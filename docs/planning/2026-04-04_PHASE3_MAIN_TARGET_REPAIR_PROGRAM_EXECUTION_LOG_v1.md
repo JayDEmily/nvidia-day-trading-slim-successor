@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1
 
-Status: Gates 192-193 complete on `work/gate-193-vocabulary-generator-truth-20260404`; Gate 194 active on work branch
+Status: Gates 192-194 complete on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`; Gate 195 active on work branch
 
 ## Purpose
 
@@ -9,7 +9,7 @@ Gate 192 is a planning/bootstrap gate only. No runtime repair leaves have execut
 
 ## Active gate
 
-- `Gate 194`
+- `Gate 195`
 
 ## Gate roster
 
@@ -118,3 +118,47 @@ Repair the vocabulary generator/artifact truth seam using the runtime and schema
 
 Gate 193 closes only the vocabulary generator/artifact seam.
 Residual bounded vocabulary hygiene work is deferred to Gate 194.
+
+## Gate 194 receipt
+
+Gate 194 complete on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`; Gate 195 active.
+
+### Intent
+
+Classify the residual forbidden extra-stage phrase family from source truth first, then repair only the bounded repo-wide hygiene classifier and allowlist surfaces required by that decision.
+
+### Source-truth decision
+
+- The remaining phrase occurrences did not indicate a new runtime stage.
+- The controlling runtime and review surfaces keep the parallel lane explicitly non-stage and keep capital deployment as a bounded downstream review seam.
+- The residual hits were therefore lawful explicit prohibition/history surfaces, not ambient runtime leakage.
+
+### Outputs changed
+
+- `tests/test_gate179_repo_wide_vocabulary_hygiene.py`
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_GATE194_REPO_WIDE_VOCABULARY_HYGIENE_RECONCILIATION.md`
+
+### Validation commands
+
+- `PYTHONPATH=src python -m pytest -q tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_document_hygiene.py`
+
+### Validation result
+
+- bounded hygiene proof slice passed: `11 passed in 7.49s`
+
+### Execution boundary
+
+Gate 194 closes only the residual vocabulary-hygiene phrase family.
+The next active gate is Gate 195.
+
+### Post-closeout widened proof
+
+- `PYTHONPATH=src python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py tests/test_gate60_state_policy_ontology.py tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py tests/test_gate67_event_window_semantics.py tests/test_gate68_precursor_universe.py tests/test_gate69_phase_carry_policy.py tests/test_gate70_event_options_stress_policy.py tests/test_gate71_modifier_control_law.py tests/test_gate72_event_ingestion_provenance.py tests/test_gate73_event_store_query.py tests/test_gate74_live_event_richness.py tests/test_gate75_precursor_stitching.py tests/test_gate76_precursor_runtime_binding.py tests/test_gate77_review_failure_taxonomy.py tests/test_gate78_modifier_runtime_integration.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate179_repo_wide_vocabulary_hygiene.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_document_hygiene.py`
+  - result: `89 passed in 7.76s`
+- `python -m pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
+  - result: `11 passed in 0.48s`

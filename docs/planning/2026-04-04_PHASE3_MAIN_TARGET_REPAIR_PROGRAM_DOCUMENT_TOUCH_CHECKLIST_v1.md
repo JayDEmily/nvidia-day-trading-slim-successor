@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1
 
-Status: active document-touch checklist for the Phase 3 main-target repair programme; Gate 192 complete on `work/gate-192-phase3-main-target-repair-pack-20260404`, Gate 193 active
+Status: active document-touch checklist for the Phase 3 main-target repair programme; Gates 192-194 complete on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`, Gate 195 active
 
 ## Frozen/process surfaces that must move if this pack changes them
 
