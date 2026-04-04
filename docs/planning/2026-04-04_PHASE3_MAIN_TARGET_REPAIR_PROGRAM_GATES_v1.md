@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1
 
-Status: active Phase 3 main-target repair planning pack on `work/gate-192-phase3-main-target-repair-pack-20260404`
+Status: active Phase 3 main-target repair planning pack; Gate 192 complete on `work/gate-192-phase3-main-target-repair-pack-20260404`, Gate 193 active, Gates 194-199 planned
 Purpose: convert the executed Phase 2B defect harvest into one disciplined, evidence-backed repair programme for the main target repo without collapsing unrelated bug families into one vague repair blob.
 Authority: subordinate to `docs/01_NORMATIVE.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, and repo-root `PLANS.md`.
 Vocabulary authority for this pack: `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
@@ -23,7 +23,7 @@ This pack sits after the external Phase 2B audit/reconciliation programme and be
 
 The pack must:
 
-1. route the repo into an active repair programme beginning at Gate 192;
+1. route the repo into an active repair programme and complete the planning bootstrap at Gate 192 before any repair gate begins;
 2. carry forward the executed defect families without relabelling warnings or blockers as hard runtime failures;
 3. repair vocabulary truth surfaces before runtime-semantic drift so the runtime tranche does not chase text drift;
 4. keep control-surface truth separate from runtime-semantics truth;
@@ -80,17 +80,17 @@ The pack must:
 
 This tranche is downstream corrective work over an already-built deterministic stack. It is neither upstream import authority nor a new workflow-stage admission pack. It is a repair programme over existing authorities.
 
-The chosen gate count preserves granularity because it separates:
-- pack bootstrap and routing;
-- vocabulary generator truth;
-- vocabulary hygiene leakage;
-- governance/control-surface truth;
-- runtime-semantic drift;
-- concentrated typing-seam repair;
-- helper typing pressure; and
-- late static hygiene plus warning cleanup.
+The chosen gate count and leaf count preserve granularity because they separate:
+- pack bootstrap and proof-surface closure (Gate 192, 4 leaves);
+- generator/artifact truth versus dependent vocabulary fallout (Gate 193, 4 leaves);
+- residual ambient vocabulary leakage after generator truth is settled (Gate 194, 4 leaves);
+- router/gate-map top-level truth versus dependent late-pack control text (Gate 195, 5 leaves);
+- options-flow harness semantics versus higher-order context stress law (Gate 196, 6 leaves);
+- concentrated financial-calendar constructor typing versus adjacent projection fallout (Gate 197, 4 leaves);
+- shared helper-family partitioning versus bounded helper annotation repair (Gate 198, 4 leaves); and
+- static hygiene partitioning, Alembic warning treatment, widened proof, and closeout packaging (Gate 199, 6 leaves).
 
-This is more truthful than one giant repair gate and more practical than making every failing test its own gate.
+This is more truthful than one giant repair gate, and it is also more truthful than pretending the original 29 generic leaves were sufficient once the code and failing surfaces were inspected.
 
 ## Retain / retire-from-authority / amend / add matrix
 
@@ -110,7 +110,11 @@ This is more truthful than one giant repair gate and more practical than making 
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 - this pack's leaves ledger and execution log as execution proceeds
 - the vocabulary authority when vocabulary tranches lawfully close
-- the specific runtime/control/static surfaces named gate by gate below
+- `scripts/build_canonical_vocabulary.py` and the committed vocabulary artifact when Gate 193 executes
+- the exact late-pack control surfaces implicated by Gates 149-156, 163-165, 170-172, 180, and 181 when Gate 195 executes
+- the options-flow clustering and higher-order context surfaces when Gate 196 executes
+- the financial-calendar schema/service surfaces when Gate 197 executes
+- bounded helper families and remaining static-quality surfaces when Gates 198-199 execute
 
 ### Add
 - active Phase 3 gates/leaves/execution-log/checklist/scope/evidence-baseline surfaces
@@ -171,20 +175,21 @@ This pack also requires:
 ## Gate structure
 
 ### Gate 192 — Phase 3 repair pack bootstrap and evidence bridge
-Purpose: install the active Phase 3 planning quartet, freeze the evidence baseline and bounded scope truthfully, and route the repo to Gate 193 without changing runtime behaviour yet.
+Purpose: install the active Phase 3 planning quartet, tighten the leaves against the inspected defect/code surfaces, add the missing bootstrap proof artifacts, and route the repo to Gate 193 without changing runtime behaviour yet.
 
 Primary outputs:
 - active Phase 3 planning quartet plus scope/evidence notes
 - Gate 192 bootstrap receipt
 - planning-pack proof test
+- leaves ledger upgraded from a generic list to a keyed map with gate-local exact surfaces and validation slices
 
 ### Gate 193 — Vocabulary generator and artifact truth reconciliation
-Purpose: decide and repair the lawful truth between the vocabulary generator output and the committed vocabulary artifact, then re-anchor dependent vocabulary-governance expectations.
+Purpose: decide and repair the lawful truth between the vocabulary generator output and the committed vocabulary artifact, then re-anchor the exact dependent vocabulary-governance expectations harvested in Phase 2B.
 
 Primary repo surfaces:
-- vocabulary generator surfaces
+- `scripts/build_canonical_vocabulary.py`
 - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
-- dependent vocabulary-governance tests and any tightly coupled fixtures
+- vocabulary-governance tests harvested in Gate tranche `50-89`, especially `tests/test_gate50_vocabulary_governance.py`, `tests/test_gate55_vocabulary_governance.py`, `tests/test_gate60_state_policy_ontology.py`, `tests/test_gate67_event_window_semantics.py`, `tests/test_gate78_modifier_runtime_integration.py`, and `tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
 - Gate 193 receipt and targeted recheck proof
 
 Definition of done:
@@ -196,8 +201,9 @@ Definition of done:
 Purpose: remove or explicitly admit residual banned/stale vocabulary leakage after Gate 193 settles the generator/artifact truth seam.
 
 Primary repo surfaces:
-- hygiene tests and allowlist/governance text
-- integration tests or docs carrying the residual leaked phrase surfaces
+- `tests/test_gate179_repo_wide_vocabulary_hygiene.py`
+- `tests/test_gate190_capital_deployment_authority_integration.py`
+- the disallowed-phrase definition for the independent parallel risk lane in `scripts/build_canonical_vocabulary.py` and the committed vocabulary artifact
 - Gate 194 receipt and targeted recheck proof
 
 Definition of done:
@@ -206,12 +212,17 @@ Definition of done:
 - no generator-semantics work is reopened unless Gate 193 evidence proves coupling
 
 ### Gate 195 — Control-surface router and gate-map reconciliation
-Purpose: repair current-state truth drift across `PLANS.md`, the canonical gate map, and associated closeout/control text.
+Purpose: repair current-state truth drift across `PLANS.md`, the canonical gate map, and the exact late-pack closeout/control surfaces implicated by the executed failures.
 
 Primary repo surfaces:
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-- any affected closeout or control text named by the executed failures
+- `docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_*`
+- `docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_*`
+- `docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_*`
+- `docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_*`
+- `docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_*`
+- `docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_*`
 - Gate 195 receipt and targeted/widened planning integrity proof
 
 Definition of done:
@@ -223,8 +234,12 @@ Definition of done:
 Purpose: reconcile the admitted runtime semantics for options-flow harness expectations and stressed higher-order context compression-state law.
 
 Primary repo surfaces:
-- options-flow clustering semantics and harness expectation surfaces
-- higher-order context detector surfaces and Gate 31 stress-behaviour contract
+- `src/nvda_desk/services/options_flow_context.py`
+- `tests/test_gate96_canonical_runtime_harness.py`
+- `tests/test_gate102_raw_runtime_harness.py`
+- `tests/test_real_data_loader.py` and `tests/test_options_flow_context.py` as adjacent truth surfaces
+- `src/nvda_desk/services/imported_modules/posture_enrichers.py`
+- `tests/test_gate31_higher_order_context_composites.py`
 - any directly coupled runtime schema or fixture surfaces required to keep the repair lawful
 - Gate 196 receipt and targeted runtime plus widened downstream proof
 
@@ -238,7 +253,11 @@ Purpose: clear the concentrated typing seam around the financial-calendar schema
 
 Primary repo surfaces:
 - `src/nvda_desk/schemas/financial_calendar.py`
-- adjacent financial-calendar services and tests
+- `src/nvda_desk/services/financial_calendar_projection.py`
+- `tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- `tests/test_gate90_financial_calendar_reference_import.py`
+- `tests/test_gate91_financial_calendar_canonical_projection.py`
+- `tests/test_gate92_financial_calendar_temporal_transition.py`
 - Gate 197 receipt and targeted mypy/pytest proof
 
 Definition of done:
@@ -250,7 +269,10 @@ Definition of done:
 Purpose: reduce strict-typing failures caused by untyped helpers in tests without rewriting runtime-domain behaviour.
 
 Primary repo surfaces:
-- helper functions used across strict test contexts
+- `tests/test_gate97_runtime_invariants.py`
+- `tests/test_gate103_raw_prepared_parity.py`
+- `tests/test_gate104_property_stateful.py`
+- `tests/contract_chain_fixtures.py` and `tests/_successor_pack_helpers.py` where helper-family repair proves necessary
 - typed-safe helper return shapes and related fixtures
 - Gate 198 receipt and targeted mypy proof
 
@@ -263,8 +285,10 @@ Definition of done:
 Purpose: close the remaining static-quality tranche, clear or consciously retain the warning-only Alembic constraint, and package the exact green repo state.
 
 Primary repo surfaces:
-- `ruff` findings still retained after earlier gates
-- Alembic configuration surface for the `path_separator` warning
+- Alembic environment and migration files implicated by `ruff`
+- test files carrying repo-root path insertion and import-order debt
+- `src/nvda_desk/config_models.py` if modernization findings remain after earlier gates
+- `alembic.ini` for the `path_separator` warning-only surface
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 - this pack's leaves ledger and execution log

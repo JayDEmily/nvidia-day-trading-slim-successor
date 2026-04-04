@@ -31,6 +31,14 @@ Carry the truthful scope split for the Phase 3 main-target repair programme and 
 - re-checking only the proofs required to close each bounded family honestly
 - keeping vocabulary, governance, runtime, and static families separate unless new evidence proves they are tightly coupled
 - updating repo-native planning/router surfaces as each gate closes
+- using the inspected source surfaces as the repair boundary for each family:
+  - `scripts/build_canonical_vocabulary.py` plus the committed vocabulary artifact for Gate 193
+  - `tests/test_gate179_repo_wide_vocabulary_hygiene.py` and `tests/test_gate190_capital_deployment_authority_integration.py` for Gate 194
+  - repo-root `PLANS.md`, the canonical gate map, and the late-pack closeout/control docs named by tests `149-156`, `163-165`, `170-172`, `180`, and `181` for Gate 195
+  - `src/nvda_desk/services/options_flow_context.py`, `src/nvda_desk/services/imported_modules/posture_enrichers.py`, and the canonical/raw harness tests for Gate 196
+  - `src/nvda_desk/schemas/financial_calendar.py` plus `src/nvda_desk/services/financial_calendar_projection.py` for Gate 197
+  - strict helper families concentrated in tests `97`, `103`, and `104` for Gate 198
+  - Alembic/migration files, repo-root-path test imports, and `alembic.ini` for Gate 199
 
 ## Explicitly excluded from this tranche
 
