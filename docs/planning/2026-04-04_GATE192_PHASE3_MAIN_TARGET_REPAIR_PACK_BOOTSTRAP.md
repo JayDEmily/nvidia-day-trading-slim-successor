@@ -38,3 +38,10 @@ Gate 192 is the planning bootstrap for the Phase 3 main-target repair programme.
 ## Planned next active gate
 
 - Gate 193 — vocabulary generator and artifact truth reconciliation
+
+
+## Follow-on source-truth hardening pass
+
+- After the initial Gate 192 closeout, the planning pack was hardened again on the same work branch by re-reading the raw code surfaces for every future repair family.
+- The leaves were then rewritten so each future repair gate begins from source truth and uses failing tests as evidence rather than automatic authority.
+- No Phase 3 repair gate started during this hardening pass.

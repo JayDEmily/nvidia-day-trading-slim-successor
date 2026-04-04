@@ -14,6 +14,7 @@ EXECUTION_LOG = REPO_ROOT / "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_
 CHECKLIST = REPO_ROOT / "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md"
 SCOPE_NOTE = REPO_ROOT / "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md"
 EVIDENCE_BASELINE = REPO_ROOT / "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md"
+SOURCE_TRUTH = REPO_ROOT / "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
 RECEIPT = REPO_ROOT / "docs/planning/2026-04-04_GATE192_PHASE3_MAIN_TARGET_REPAIR_PACK_BOOTSTRAP.md"
 
 
@@ -25,6 +26,7 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     scope_note = SCOPE_NOTE.read_text(encoding="utf-8")
     baseline = EVIDENCE_BASELINE.read_text(encoding="utf-8")
+    source_truth = SOURCE_TRUTH.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md" in plans
@@ -33,6 +35,7 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
     assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans
     assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md" in plans
     assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md" in plans
+    assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md" in plans
     assert "- next active gate: `Gate 193`" in plans
 
     assert any(marker in gate_map for marker in [
@@ -54,6 +57,9 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
     assert "Gate 193" in checklist
     assert "scripts/build_canonical_vocabulary.py" in baseline
     assert "scripts/build_canonical_vocabulary.py" in scope_note
+    assert "tests treated as evidence rather than authority" in scope_note
+    assert "source-truth-first" in source_truth
+    assert "CapitalDeploymentAuthorityDecision" in source_truth
     assert "Do not mix runtime-semantic repair with broad static cleanup in the same gate." in scope_note
 
 
@@ -76,8 +82,10 @@ def test_gate192_future_gate_structure_is_granular_and_keyed() -> None:
     assert counts["Gate 198"] == 4
     assert counts["Gate 199"] == 6
     assert len(set(counts.values())) > 1
+    assert payload["global_rules"]["source_truth_precedes_test_truth"] is True
 
-    future_leaves = [item for item in leaves.values() if item["gate"] in {"Gate 193", "Gate 194", "Gate 195", "Gate 196", "Gate 197", "Gate 198", "Gate 199"}]
+    future_gates = {"Gate 193", "Gate 194", "Gate 195", "Gate 196", "Gate 197", "Gate 198", "Gate 199"}
+    future_leaves = [item for item in leaves.values() if item["gate"] in future_gates]
     for item in future_leaves:
         assert len(item["ordered_actions"]) >= 3
         assert len(item["forbidden_actions"]) >= 3
@@ -86,6 +94,23 @@ def test_gate192_future_gate_structure_is_granular_and_keyed() -> None:
         assert item["definition_of_done"]
         assert item["packaging_requirement"]
         assert item["document_touch_surfaces"]
+        assert "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md" in item["authority_docs"]
+
+    expected_first_leaves = {
+        "Gate 193": "Inspect the vocabulary source-truth seam before trusting downstream tests",
+        "Gate 194": "Inspect runtime and vocabulary source truth for residual ambient leakage",
+        "Gate 195": "Inspect router and gate-map source truth before trusting closeout tests",
+        "Gate 196": "Inspect options-flow source truth before trusting harness expectations",
+        "Gate 197": "Inspect the financial-calendar source seam before trusting mypy output",
+        "Gate 198": "Inspect helper source truth before trusting strict test failures",
+        "Gate 199": "Inspect raw static surfaces before trusting lint output",
+    }
+    for gate, title in expected_first_leaves.items():
+        leaf = next(item for item in leaves.values() if item["gate"] == gate and item["title"] == title)
+        assert leaf["repo_surfaces"][0].startswith(("src/", "scripts/", "docs/", "PLANS", "alembic/", "tests/contract_chain_fixtures.py", "tests/_successor_pack_helpers.py"))
+        assert not leaf["repo_surfaces"][0].startswith("tests/test_")
+        assert "authority" in leaf["objective"].lower() or "source" in leaf["title"].lower()
+
 
 
 def test_gate192_receipt_scope_and_execution_log_preserve_planning_truth() -> None:
@@ -94,9 +119,11 @@ def test_gate192_receipt_scope_and_execution_log_preserve_planning_truth() -> No
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
 
     assert "it did not edit runtime behaviour under `src/`" in receipt
+    assert "Follow-on source-truth hardening pass" in receipt
     assert "it did not start any Phase 3 repair gate" in receipt
     assert "Gate 193 — vocabulary generator and artifact truth reconciliation" in receipt
     assert "side-repo B/C blockers remain outside first-line main-target repair scope" in receipt
     assert "runtime semantics, router/control truth, vocabulary truth, typing seams, helper typing, and static hygiene remain separate" in receipt
     assert 'Do not let vocabulary or router truth drift be “fixed” implicitly by editing downstream tests only.' in scope_note
     assert "Gate 192 complete on `work/gate-192-phase3-main-target-repair-pack-20260404`; Gate 193 active" in execution_log
+    assert "Source-truth hardening pass" in execution_log

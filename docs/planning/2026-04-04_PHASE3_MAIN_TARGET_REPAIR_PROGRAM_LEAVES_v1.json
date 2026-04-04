@@ -76,13 +76,15 @@
     "material_control_surface_contradictions_require_contradiction_report": true,
     "latest_closed_pack_is_evidence_not_template": true,
     "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
-    "tests_must_prefer_invariants_over_brittle_historical_strings": true
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "source_truth_precedes_test_truth": true,
+    "downstream_tests_may_change_only_after_source_truth_decision": true
   },
   "leaves": {
     "LEAF-G192-001": {
       "gate": "Gate 192",
       "title": "Freeze the external repair evidence and inspected source surfaces",
-      "objective": "Pull the executed Phase 2B defect harvest into repo-native authority and record the exact source/code/test surfaces that will govern later gates.",
+      "objective": "Pull the executed Phase 2B defect harvest into repo-native authority and record the exact source/code/doc surfaces that will govern later gates before any downstream test expectation is trusted.",
       "status": "complete",
       "depends_on": [],
       "authority_docs": [
@@ -104,13 +106,24 @@
       ],
       "repo_surfaces": [
         "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "src/nvda_desk/services/playbook_registry.py",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
         "src/nvda_desk/services/imported_modules/posture_enrichers.py",
         "src/nvda_desk/schemas/financial_calendar.py",
         "src/nvda_desk/services/financial_calendar_projection.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/contract_chain_fixtures.py",
+        "tests/_successor_pack_helpers.py",
+        "alembic/env.py",
+        "src/nvda_desk/config_models.py",
         "tests/test_gate31_higher_order_context_composites.py",
         "tests/test_gate50_vocabulary_governance.py",
         "tests/test_gate96_canonical_runtime_harness.py",
@@ -125,8 +138,8 @@
       ],
       "ordered_actions": [
         "Read the final main-target defect ledger, repair-candidate ledger, and H v2 bridge before touching the pack again.",
-        "Inspect the concrete source/code/test files named by each harvested family and tighten the planning surfaces to those exact files.",
-        "Preserve granularity by separating vocabulary, router/control, runtime semantics, typing seam, helper typing, and static hygiene into distinct future gate work."
+        "Inspect the concrete source modules/contracts/docs named by each harvested family before reading the failing tests as evidence.",
+        "Tighten the planning surfaces so every later repair leaf starts from source truth rather than from downstream test wording."
       ],
       "forbidden_actions": [
         "Do not edit runtime behaviour under src/ during Gate 192.",
@@ -137,8 +150,9 @@
         "python -m json.tool docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md >/dev/null || true"
       ],
       "expected_evidence": [
-        "evidence baseline names the exact harvested families and inspected surfaces",
-        "scope note freezes the exact repair boundaries carried into later gates"
+        "evidence baseline names the exact harvested families and source/code/doc authority surfaces",
+        "scope note freezes the exact repair boundaries carried into later gates",
+        "source-truth matrix records the primary code/contracts/docs for every later repair family"
       ],
       "definition_of_done": [
         "The external evidence and exact target-repo surfaces are frozen as repo-native planning inputs."
@@ -333,8 +347,8 @@
     },
     "LEAF-G193-001": {
       "gate": "Gate 193",
-      "title": "Inventory the exact vocabulary generator drift surface",
-      "objective": "Trace the exact generator output delta and the full dependent failing test slice before deciding whether the generator or the committed artifact is stale.",
+      "title": "Inspect the vocabulary source-truth seam before trusting downstream tests",
+      "objective": "Read the generator, vocabulary schema, registry-driven entry expansion, and committed artifact to localise the exact drift surface before any test expectation is treated as authority.",
       "status": "planned",
       "depends_on": [
         "LEAF-G192-004"
@@ -344,7 +358,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating generator/artifact diff isolation from later repair and re-anchoring.",
       "vocabulary_terms_checked": [
@@ -354,6 +369,8 @@
       ],
       "repo_surfaces": [
         "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "src/nvda_desk/services/playbook_registry.py",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "tests/test_gate50_vocabulary_governance.py",
         "tests/test_gate55_vocabulary_governance.py",
@@ -379,9 +396,9 @@
         "Gate 193 evidence family from the Phase 2B defect ledger"
       ],
       "ordered_actions": [
-        "Run or inspect the exact vocabulary failing slice harvested by Phase 2B and record the repeated delta.",
-        "Inspect the generator code path and the committed artifact entry around the new capital-deployment vocabulary surfaces.",
-        "Write down the precise scope of the diff before any repair edit is made."
+        "Inspect `build_document()` and the vocabulary schema/registry inputs that expand entries into the committed artifact.",
+        "Compare the generated/runtime-facing source surfaces to the committed JSON before reading the harvested failing tests.",
+        "Record the exact drift seam and only then list the downstream tests that evidence it."
       ],
       "forbidden_actions": [
         "Do not update dependent tests before the generator/artifact truth decision is explicit.",
@@ -410,8 +427,8 @@
     },
     "LEAF-G193-002": {
       "gate": "Gate 193",
-      "title": "Freeze generator-versus-artifact authority",
-      "objective": "Decide whether the generator output or the committed artifact is the authoritative truth for the harvested vocabulary family before any repair edit is made.",
+      "title": "Write the source-truth decision for generator versus artifact",
+      "objective": "Decide whether the generator, the committed artifact, or both are stale by referencing the source modules and vocabulary schema first.",
       "status": "planned",
       "depends_on": [
         "LEAF-G193-001"
@@ -421,7 +438,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by making one explicit truth decision instead of letting downstream test edits imply the answer.",
       "vocabulary_terms_checked": [
@@ -429,15 +447,17 @@
       ],
       "repo_surfaces": [
         "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "src/nvda_desk/services/playbook_registry.py",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
       ],
       "inputs": [
         "exact delta captured in LEAF-G193-001"
       ],
       "ordered_actions": [
-        "Compare the generator intent and the committed artifact entry line by line at the defect seam.",
-        "Decide which side is stale and record that decision in the Gate 193 receipt as the repair authority.",
-        "Keep the decision bounded to this generator/artifact seam only."
+        "Compare generator intent, registry-fed entry expansion, and vocabulary-schema constraints line by line at the defect seam.",
+        "Write one explicit source-truth decision that states whether code, artifact, or both are stale.",
+        "Do not change any downstream test until that decision is recorded in the Gate 193 receipt."
       ],
       "forbidden_actions": [
         "Do not patch both sides blindly to make tests green.",
@@ -475,7 +495,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by fixing only the generator/artifact seam before any dependent expectation edits.",
       "vocabulary_terms_checked": [
@@ -489,8 +510,8 @@
         "LEAF-G193-002 authority decision"
       ],
       "ordered_actions": [
-        "Edit only the generator or the artifact surfaces required by the authority decision.",
-        "Regenerate or re-read the artifact immediately to verify the seam itself is coherent.",
+        "Edit only the generator and/or artifact surfaces required by the recorded source-truth decision.",
+        "Regenerate or re-read the artifact immediately to verify the seam itself is coherent against the vocabulary schema.",
         "Keep the repair bounded to the harvested vocabulary family and avoid ambient hygiene work."
       ],
       "forbidden_actions": [
@@ -528,7 +549,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing Gate 193 on the exact harvested vocabulary family only.",
       "vocabulary_terms_checked": [
@@ -543,7 +565,7 @@
       ],
       "ordered_actions": [
         "Run the full harvested vocabulary-governance slice again.",
-        "Edit dependent expectations only where the repaired generator/artifact truth requires it.",
+        "Change downstream expectations only where the recorded source-truth decision requires it.",
         "Write the Gate 193 receipt and route the pack to Gate 194 only if the bounded slice is green."
       ],
       "forbidden_actions": [
@@ -579,8 +601,8 @@
     },
     "LEAF-G194-001": {
       "gate": "Gate 194",
-      "title": "Inventory residual ambient vocabulary leakage",
-      "objective": "Localise the residual `eighth_stage` leakage after Gate 193 and decide whether the remaining occurrence is allowed classification text or ambient drift.",
+      "title": "Inspect runtime and vocabulary source truth for residual ambient leakage",
+      "objective": "Inspect the raw runtime, review-packet, and vocabulary authority surfaces that make `eighth_stage` lawful or unlawful before classifying the residual leakage.",
       "status": "planned",
       "depends_on": [
         "LEAF-G193-004"
@@ -590,7 +612,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by keeping ambient phrase leakage separate from the generator/artifact truth seam.",
       "vocabulary_terms_checked": [
@@ -599,18 +622,22 @@
         "independent_parallel_risk_lane"
       ],
       "repo_surfaces": [
-        "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
-        "tests/test_gate190_capital_deployment_authority_integration.py",
         "scripts/build_canonical_vocabulary.py",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
+        "tests/test_gate190_capital_deployment_authority_integration.py"
       ],
       "inputs": [
         "Gate 193 closed state"
       ],
       "ordered_actions": [
-        "Run the residual hygiene slice.",
-        "Trace every remaining occurrence of `eighth_stage` and classify it as allowed explicit prohibition, explanatory text, or ambient leak.",
-        "Record the exact remaining leakage surface before editing it."
+        "Inspect the generator/artifact entries and the capital-deployment runtime/review surfaces first.",
+        "Determine whether the phrase is present in lawful runtime or contract surfaces, or only in stale prose/test wording.",
+        "Only after the source inspection, classify each remaining `eighth_stage` occurrence as allowed explicit prohibition, explanatory text, or ambient leak."
       ],
       "forbidden_actions": [
         "Do not reopen Gate 193 generator truth work unless new evidence proves coupling.",
@@ -637,8 +664,8 @@
     },
     "LEAF-G194-002": {
       "gate": "Gate 194",
-      "title": "Freeze the lawful ambient phrase boundary",
-      "objective": "Decide whether the remaining phrase use is legitimate and the allowlist is stale, or whether the integration-test text drifted and must be repaired.",
+      "title": "Write the lawful ambient phrase boundary from source truth",
+      "objective": "Write one explicit boundary decision for the residual phrase family using runtime/vocabulary authority surfaces first.",
       "status": "planned",
       "depends_on": [
         "LEAF-G194-001"
@@ -648,7 +675,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by making one explicit phrase-boundary decision before editing tests or governance text.",
       "vocabulary_terms_checked": [
@@ -656,17 +684,19 @@
         "not_eighth_stage"
       ],
       "repo_surfaces": [
-        "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
-        "tests/test_gate190_capital_deployment_authority_integration.py",
         "scripts/build_canonical_vocabulary.py",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py"
       ],
       "inputs": [
         "LEAF-G194-001 residual classification"
       ],
       "ordered_actions": [
-        "Compare the disallowed-phrase policy with the concrete residual occurrence.",
-        "Write one explicit boundary decision for the phrase before repair.",
+        "Compare the disallowed-phrase policy with the runtime and review-packet code paths that actually carry capital-deployment authority.",
+        "Write one explicit boundary decision that states whether the residual occurrence is stale prose, allowed prohibition text, or a lawful runtime identifier.",
         "Keep the decision local to this residual phrase family."
       ],
       "forbidden_actions": [
@@ -694,8 +724,8 @@
     },
     "LEAF-G194-003": {
       "gate": "Gate 194",
-      "title": "Repair or explicitly admit the bounded leakage surface",
-      "objective": "Apply the minimal bounded repair required by the phrase-boundary decision.",
+      "title": "Repair or explicitly admit the bounded leakage surface after source-truth adjudication",
+      "objective": "Repair only the bounded leakage or governance surface required by the recorded source-truth decision.",
       "status": "planned",
       "depends_on": [
         "LEAF-G194-002"
@@ -704,7 +734,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by touching only the residual phrase surface and its direct policy/test counterparts.",
       "vocabulary_terms_checked": [
@@ -712,17 +743,21 @@
         "not_eighth_stage"
       ],
       "repo_surfaces": [
-        "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
-        "tests/test_gate190_capital_deployment_authority_integration.py",
         "scripts/build_canonical_vocabulary.py",
-        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
+        "tests/test_gate190_capital_deployment_authority_integration.py"
       ],
       "inputs": [
         "LEAF-G194-002 boundary decision"
       ],
       "ordered_actions": [
-        "Edit only the bounded leakage or allowlist/governance surface required by the decision.",
-        "Keep the repair isolated from Gate 193 generator truth and all runtime semantics.",
+        "Edit only the bounded leakage or allowlist/governance surface required by the recorded source-truth decision.",
+        "Keep the repair isolated from Gate 193 generator truth and all runtime semantics except the capital-deployment surfaces explicitly adjudicated here.",
         "Prepare the exact targeted recheck slice for closeout."
       ],
       "forbidden_actions": [
@@ -760,7 +795,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing only the bounded residual phrase family.",
       "vocabulary_terms_checked": [
@@ -776,8 +812,8 @@
       ],
       "ordered_actions": [
         "Run the targeted residual hygiene slice.",
-        "Write the Gate 194 receipt with the exact observed result.",
-        "Route the pack to Gate 195 only if the bounded slice is green."
+        "Confirm the result against the recorded source-truth boundary, not just the old failing assertion.",
+        "Write the Gate 194 receipt and route the pack to Gate 195 only if the bounded slice is green."
       ],
       "forbidden_actions": [
         "Do not close Gate 194 on an unexplained partial pass.",
@@ -811,8 +847,8 @@
     },
     "LEAF-G195-001": {
       "gate": "Gate 195",
-      "title": "Inventory the failing control-surface families and exact file clusters",
-      "objective": "Freeze the exact late-pack tests and the planning/control docs they point at before deciding the lawful current-state narrative.",
+      "title": "Inspect router and gate-map source truth before trusting closeout tests",
+      "objective": "Read the repo router, canonical gate map, process law, and implicated late-pack planning docs before using the failing tests as evidence of control drift.",
       "status": "planned",
       "depends_on": [
         "LEAF-G194-004"
@@ -821,7 +857,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating top-level router/gate-map truth from dependent pack-local control text.",
       "vocabulary_terms_checked": [
@@ -832,6 +869,13 @@
       "repo_surfaces": [
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_*",
+        "docs/planning/2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_*",
+        "docs/planning/2026-04-02_COEFFICIENT_ARCHITECTURE_CONSOLIDATION_*",
+        "docs/planning/2026-04-02_POLICY_TEMPORAL_OBSERVABILITY_SUCCESSOR_*",
+        "docs/planning/2026-04-02_MASTER_CHILD_PARALLEL_RISK_INTEGRATION_*",
+        "docs/planning/2026-04-03_OPTIONS_TRACE_INTEGRITY_REPAIR_*",
         "tests/test_gate149_stage_local_handoff_pack_closeout.py",
         "tests/test_gate150_corrective_successor_pack_planning.py",
         "tests/test_gate151_field_level_ownership_and_consumer_migration.py",
@@ -853,9 +897,9 @@
         "Gate 195 defect family from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Read the failing late-pack control tests and list the exact pack files they point at.",
-        "Separate top-level router/gate-map drift from pack-local status and receipt drift.",
-        "Freeze the exact doc families before any current-state repair begins."
+        "Read `PLANS.md`, the canonical gate map, the repo process law, and the implicated late-pack docs first.",
+        "Separate top-level router/gate-map truth from pack-local status/receipt drift using those raw control surfaces.",
+        "Only then use the failing tests as evidence of which exact files still disagree with the lawful current-state narrative."
       ],
       "forbidden_actions": [
         "Do not edit runtime-domain code.",
@@ -893,7 +937,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by deciding one router truth before touching the dependent pack-local docs.",
       "vocabulary_terms_checked": [
@@ -909,7 +954,7 @@
         "exact file clusters frozen in LEAF-G195-001"
       ],
       "ordered_actions": [
-        "Determine the single lawful current-state narrative for the repo on this work branch.",
+        "Determine the single lawful current-state narrative for the repo on this work branch from `PLANS.md`, the gate map, and the process law.",
         "Record which top-level markers and which pack-local statuses must move to align to that narrative.",
         "Keep the decision bounded to planning/control truth only."
       ],
@@ -948,7 +993,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by fixing top-level router truth separately from pack-local status text.",
       "vocabulary_terms_checked": [
@@ -964,7 +1010,7 @@
       "ordered_actions": [
         "Edit PLANS to the lawful current-state narrative.",
         "Edit the canonical gate map to the same narrative.",
-        "Stop before editing dependent pack-local docs so the top-level router truth is explicit first."
+        "Stop before editing dependent pack-local docs so the top-level control truth is explicit first."
       ],
       "forbidden_actions": [
         "Do not edit late-pack receipts or leaves in this leaf.",
@@ -1005,7 +1051,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by repairing only the pack-local status/control surfaces named by the executed failures.",
       "vocabulary_terms_checked": [
@@ -1027,9 +1074,9 @@
         "LEAF-G195-002 current-state narrative"
       ],
       "ordered_actions": [
-        "Edit the exact pack-local control surfaces implicated by the failing tests.",
+        "Edit only the exact pack-local control surfaces implicated by the lawful current-state narrative and the executed drift evidence.",
         "Keep the edits bounded to status, routing, receipt, leaves, and execution-log truth surfaces.",
-        "Do not reopen or redesign the historical packs beyond the minimum lawful control truth needed for consistency."
+        "Do not reopen or redesign historical packs beyond the minimum lawful control truth needed for consistency."
       ],
       "forbidden_actions": [
         "Do not rewrite historical implementation narrative beyond what the failing tests require.",
@@ -1067,7 +1114,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing only the planning/control truth family before runtime repair begins.",
       "vocabulary_terms_checked": [
@@ -1118,8 +1166,8 @@
     },
     "LEAF-G196-001": {
       "gate": "Gate 196",
-      "title": "Inventory the options-flow harness evidence surfaces",
-      "objective": "Freeze the exact canonical/raw harness tests and adjacent truth surfaces that expose the options-flow behaviour drift.",
+      "title": "Inspect options-flow source truth before trusting harness expectations",
+      "objective": "Read the options-flow service, typed output contract, and adjacent runtime consumer before using the canonical/raw harness assertions as authority.",
       "status": "planned",
       "depends_on": [
         "LEAF-G195-005"
@@ -1129,7 +1177,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating options-flow harness evidence from higher-order context law.",
       "vocabulary_terms_checked": [
@@ -1138,6 +1187,8 @@
       ],
       "repo_surfaces": [
         "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
         "tests/test_gate96_canonical_runtime_harness.py",
         "tests/test_gate102_raw_runtime_harness.py",
         "tests/test_real_data_loader.py",
@@ -1147,9 +1198,9 @@
         "Gate 196 defect family from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Run or inspect the canonical/raw harness failing slice.",
-        "Trace the adjacent truth surfaces that already admit `anchored_translation_tension` or `balanced_options_state`.",
-        "Freeze the exact evidence surfaces before deciding the runtime truth."
+        "Inspect `_surface_anchor_state()` and `_options_behavior_cluster()` in the options-flow service first.",
+        "Read the typed `OptionsFlowContextOutput` contract and the adjacent consumer logic in playbook eligibility.",
+        "Only after that, use the canonical/raw harness failures and adjacent tests as evidence of where expectations diverge from runtime behaviour."
       ],
       "forbidden_actions": [
         "Do not touch higher-order context surfaces yet.",
@@ -1176,8 +1227,8 @@
     },
     "LEAF-G196-002": {
       "gate": "Gate 196",
-      "title": "Freeze the lawful options-flow clustering truth",
-      "objective": "Decide whether the runtime cluster or the harness expectation is stale, using the exact evidence surfaces frozen in LEAF-G196-001.",
+      "title": "Write the lawful options-flow clustering decision from source truth",
+      "objective": "Decide whether the runtime cluster or the harness expectations are stale by referencing the runtime service and typed contract first.",
       "status": "planned",
       "depends_on": [
         "LEAF-G196-001"
@@ -1187,7 +1238,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by making one explicit options-flow truth decision before repair.",
       "vocabulary_terms_checked": [
@@ -1196,6 +1248,8 @@
       ],
       "repo_surfaces": [
         "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
         "tests/test_gate96_canonical_runtime_harness.py",
         "tests/test_gate102_raw_runtime_harness.py"
       ],
@@ -1204,7 +1258,7 @@
       ],
       "ordered_actions": [
         "Compare the runtime branch conditions that return `anchored_translation_tension` versus `balanced_options_state`.",
-        "Compare those conditions against the harness expectations and adjacent truth surfaces.",
+        "Compare those conditions to the typed output contract and the adjacent consumer assumptions before reading the harness assertions as authority.",
         "Write one explicit runtime truth decision before repair."
       ],
       "forbidden_actions": [
@@ -1243,7 +1297,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by repairing only the options-flow harness family before touching higher-order context law.",
       "vocabulary_terms_checked": [
@@ -1261,8 +1316,8 @@
         "LEAF-G196-002 options-flow truth decision"
       ],
       "ordered_actions": [
-        "Edit only the bounded runtime or harness expectation surfaces required by the options-flow truth decision.",
-        "Keep the repair bounded to the canonical/raw harness family and directly-coupled truth surfaces.",
+        "Edit only the bounded runtime or harness expectation surfaces required by the recorded options-flow source-truth decision.",
+        "Keep the repair bounded to the canonical/raw harness family and directly coupled truth surfaces.",
         "Prepare the targeted recheck slice before moving to higher-order context law."
       ],
       "forbidden_actions": [
@@ -1290,8 +1345,8 @@
     },
     "LEAF-G196-004": {
       "gate": "Gate 196",
-      "title": "Inventory the higher-order context stress-law evidence surfaces",
-      "objective": "Freeze the exact detector/test surfaces implicated by the `compression_mixed` drift before deciding the lawful stress-state vocabulary.",
+      "title": "Inspect higher-order context source truth before trusting Gate 31",
+      "objective": "Read the posture enricher detector and its contract output before using the Gate 31 expectation set as authority.",
       "status": "planned",
       "depends_on": [
         "LEAF-G196-003"
@@ -1301,7 +1356,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by freezing the higher-order context evidence separately from the options-flow seam.",
       "vocabulary_terms_checked": [
@@ -1318,9 +1374,9 @@
         "Gate 196 higher-order context defect family from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Run or inspect the Gate 31 failing slice.",
-        "Trace the detector states returned by the posture enricher.",
-        "Freeze the exact stress-law evidence surfaces before truth adjudication."
+        "Inspect `_compression_regime_detector()` and its emitted contract output first.",
+        "Determine which compression states the raw detector actually admits under the stressed fixture path.",
+        "Only then use the Gate 31 failure as evidence of where the contract and detector diverge."
       ],
       "forbidden_actions": [
         "Do not reopen options-flow semantics here.",
@@ -1358,7 +1414,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing the higher-order context family separately from the options-flow family.",
       "vocabulary_terms_checked": [
@@ -1375,7 +1432,7 @@
         "LEAF-G196-004 higher-order context evidence inventory"
       ],
       "ordered_actions": [
-        "Decide whether the detector or the Gate 31 contract is stale.",
+        "Write whether the detector or the Gate 31 contract is stale based on the inspected source truth.",
         "Edit only the bounded detector or expectation surfaces required by that decision.",
         "Keep the repair separate from options-flow and all static/vocabulary work."
       ],
@@ -1415,7 +1472,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by proving only the bounded runtime families and their directly-coupled downstream surfaces.",
       "vocabulary_terms_checked": [
@@ -1472,8 +1530,8 @@
     },
     "LEAF-G197-001": {
       "gate": "Gate 197",
-      "title": "Localise the financial-calendar constructor typing seam",
-      "objective": "Freeze the exact constructor/arg-type seam in `financial_calendar.py` and separate it from adjacent projection fallout before repair.",
+      "title": "Inspect the financial-calendar source seam before trusting mypy output",
+      "objective": "Inspect the schema constructors and projection consumers that own the crosswalk typing seam before treating the mypy output as authority.",
       "status": "planned",
       "depends_on": [
         "LEAF-G196-006"
@@ -1483,7 +1541,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating the dominant constructor seam from adjacent fallout and from test helper debt.",
       "vocabulary_terms_checked": [
@@ -1502,9 +1561,9 @@
         "Gate 197 defect family from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Inspect the concentrated `FinancialCalendarCrosswalkRecord` constructor errors in the schema file.",
-        "Separate schema-constructor typing from adjacent projection fallout.",
-        "Freeze the bounded seam before editing code."
+        "Inspect `FinancialCalendarCrosswalkRecord` and `default_financial_calendar_crosswalk()` in the schema file first.",
+        "Inspect `_match_crosswalk()` and `_event_window_datetimes()` in the projection service before reading test or mypy fallout.",
+        "Separate schema-constructor typing from adjacent projection fallout and freeze the bounded seam before editing code."
       ],
       "forbidden_actions": [
         "Do not mix helper typing repair into this gate.",
@@ -1531,8 +1590,8 @@
     },
     "LEAF-G197-002": {
       "gate": "Gate 197",
-      "title": "Repair the schema-side constructor typing seam",
-      "objective": "Apply the bounded typing repair inside `financial_calendar.py` so the crosswalk constructor surfaces are typed coherently.",
+      "title": "Write the schema-side typing decision and repair the constructor seam",
+      "objective": "Repair the schema-side constructor typing seam only after the source constructor expectations are written down.",
       "status": "planned",
       "depends_on": [
         "LEAF-G197-001"
@@ -1542,7 +1601,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by repairing the dominant schema-side seam before adjacent projection fallout.",
       "vocabulary_terms_checked": [
@@ -1555,9 +1615,9 @@
         "LEAF-G197-001 seam boundary"
       ],
       "ordered_actions": [
+        "Write the expected constructor and field types from the schema itself before editing.",
         "Repair the constructor typing seam in the schema file only.",
-        "Keep the edit bounded to the concentrated seam.",
-        "Prepare a targeted recheck before touching projection fallout."
+        "Keep the edit bounded to the concentrated seam."
       ],
       "forbidden_actions": [
         "Do not start adjacent helper or static cleanup.",
@@ -1595,7 +1655,8 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
-        "docs/03_DOMAIN_MODEL.md"
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by treating adjacent projection fallout separately from the concentrated schema seam.",
       "vocabulary_terms_checked": [
@@ -1614,7 +1675,7 @@
       ],
       "ordered_actions": [
         "Re-run the targeted seam slice after the schema-side repair.",
-        "Repair only the directly-coupled projection/test fallout that remains.",
+        "Repair only the directly coupled projection/test fallout that remains.",
         "Keep the repair bounded to the financial-calendar family."
       ],
       "forbidden_actions": [
@@ -1653,7 +1714,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing only the concentrated financial-calendar seam before helper typing work begins.",
       "vocabulary_terms_checked": [
@@ -1705,8 +1767,8 @@
     },
     "LEAF-G198-001": {
       "gate": "Gate 198",
-      "title": "Partition helper typing debt into bounded families",
-      "objective": "Trace the high-concentration helper typing failures and group them into bounded helper families before repair.",
+      "title": "Inspect helper source truth before trusting strict test failures",
+      "objective": "Inspect the shared helper definitions and return-shape surfaces that own the typing debt before using downstream strict tests as authority.",
       "status": "planned",
       "depends_on": [
         "LEAF-G197-004"
@@ -1715,7 +1777,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by partitioning helper families before annotating them.",
       "vocabulary_terms_checked": [
@@ -1723,18 +1786,18 @@
         "typed-safe return shape"
       ],
       "repo_surfaces": [
+        "tests/contract_chain_fixtures.py",
+        "tests/_successor_pack_helpers.py",
         "tests/test_gate97_runtime_invariants.py",
         "tests/test_gate103_raw_prepared_parity.py",
-        "tests/test_gate104_property_stateful.py",
-        "tests/contract_chain_fixtures.py",
-        "tests/_successor_pack_helpers.py"
+        "tests/test_gate104_property_stateful.py"
       ],
       "inputs": [
         "Gate 198 defect family from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Inspect the highest-concentration helper-typing failures.",
-        "Group the failures by helper family and return-shape pattern.",
+        "Inspect the highest-concentration shared helper definitions and return-shape surfaces first.",
+        "Group the mypy/test failures by helper family and return-shape pattern after reading those helper modules.",
         "Freeze the bounded helper families before repair."
       ],
       "forbidden_actions": [
@@ -1762,8 +1825,8 @@
     },
     "LEAF-G198-002": {
       "gate": "Gate 198",
-      "title": "Repair shared helper annotations and typed return shapes",
-      "objective": "Add the bounded shared helper annotations and typed-safe return shapes required by the chosen helper family set.",
+      "title": "Write the helper typing decision and repair shared helper annotations",
+      "objective": "Repair shared helper annotations and typed return shapes only after the helper-family source truth is written down.",
       "status": "planned",
       "depends_on": [
         "LEAF-G198-001"
@@ -1772,7 +1835,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by repairing shared helper seams before dependent test-local fallout.",
       "vocabulary_terms_checked": [
@@ -1786,9 +1850,9 @@
         "LEAF-G198-001 helper partitions"
       ],
       "ordered_actions": [
+        "Write the intended helper signatures and return-shape guarantees from the helper source files first.",
         "Annotate the bounded shared helper families or return shapes selected by the partitioning step.",
-        "Keep the edits bounded to helper infrastructure only.",
-        "Prepare a targeted mypy recheck before touching dependent tests."
+        "Keep the edits bounded to helper infrastructure only."
       ],
       "forbidden_actions": [
         "Do not rewrite runtime-domain code.",
@@ -1825,7 +1889,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating shared helper repair from dependent strict-test fallout.",
       "vocabulary_terms_checked": [
@@ -1879,7 +1944,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing only the bounded helper-typing family before static hygiene begins.",
       "vocabulary_terms_checked": [
@@ -1932,8 +1998,8 @@
     },
     "LEAF-G199-001": {
       "gate": "Gate 199",
-      "title": "Partition remaining static hygiene debt",
-      "objective": "Separate remaining static debt into Alembic/migration import structure, repo-root-path test imports, and residual modernization findings before repair.",
+      "title": "Inspect raw static surfaces before trusting lint output",
+      "objective": "Inspect the raw Alembic/config/test files named by lint output before treating the tool reports as authority for how to partition the remaining debt.",
       "status": "planned",
       "depends_on": [
         "LEAF-G198-004"
@@ -1942,13 +2008,15 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by partitioning static debt before editing it.",
       "vocabulary_terms_checked": [
         "warning-only suspicious pass"
       ],
       "repo_surfaces": [
+        "alembic/env.py",
         "alembic.ini",
         "alembic/*",
         "alembic/versions/*",
@@ -1959,9 +2027,9 @@
         "Gate 199 defect families from the Phase 2B ledgers"
       ],
       "ordered_actions": [
-        "Run the bounded static-quality slice and partition the remaining findings by file family.",
-        "Separate warning-only Alembic config treatment from hard ruff failures.",
-        "Freeze the static partitions before repair."
+        "Read the raw Alembic environment/config surfaces and the dominant static source files first.",
+        "Then use `ruff`/`mypy` output to partition the remaining findings by file family.",
+        "Separate warning-only Alembic config treatment from hard static failures."
       ],
       "forbidden_actions": [
         "Do not reopen runtime-semantic or helper-typing work.",
@@ -1999,7 +2067,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating Alembic/migration debt from test import debt and warning-only config treatment.",
       "vocabulary_terms_checked": [
@@ -2013,7 +2082,7 @@
         "LEAF-G199-001 partitions"
       ],
       "ordered_actions": [
-        "Repair the bounded Alembic/migration ruff findings.",
+        "Repair the bounded Alembic/migration ruff findings in the raw files themselves.",
         "Keep the edits limited to import structure and lint-safe cleanup.",
         "Prepare a targeted recheck before moving to other static families."
       ],
@@ -2052,7 +2121,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by keeping test import debt separate from Alembic files and warning-only config treatment.",
       "vocabulary_terms_checked": [
@@ -2066,7 +2136,7 @@
         "LEAF-G199-001 partitions"
       ],
       "ordered_actions": [
-        "Repair the bounded test/import modernization findings only.",
+        "Repair the bounded test/import modernization findings only in the raw files named by the static reports.",
         "Keep the edits lint-safe and static-only.",
         "Prepare the warning-only treatment as a separate leaf."
       ],
@@ -2105,7 +2175,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by treating the warning-only surface as a separate honesty leaf, not as a hard failure.",
       "vocabulary_terms_checked": [
@@ -2118,8 +2189,8 @@
         "Gate 199 warning-only evidence family"
       ],
       "ordered_actions": [
-        "Apply the minimal bounded Alembic config change if the warning is to be cleared.",
-        "Otherwise, record the retained warning-only status explicitly and bound its impact.",
+        "Inspect `alembic.ini` and `alembic/env.py` together before deciding whether the warning should be cleared or retained.",
+        "Apply the minimal bounded Alembic config change if the warning is to be cleared; otherwise record the retained warning-only status explicitly.",
         "Keep this leaf separate from the hard static-failure families."
       ],
       "forbidden_actions": [
@@ -2157,7 +2228,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by reserving the widened proof slice for final closeout only.",
       "vocabulary_terms_checked": [
@@ -2214,7 +2286,8 @@
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "docs/TESTING_AND_PROMOTION.md",
-        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
+        "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by separating final router/packaging closeout from static repair work and widened proof execution.",
       "vocabulary_terms_checked": [
@@ -2280,7 +2353,7 @@
       "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json",
       "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md"
     ],
-    "current_result": "no_material_conflict_detected_after_gate_192_bootstrap_closeout"
+    "current_result": "no_material_conflict_detected_after_gate_192_bootstrap_closeout_and_source_truth_hardening"
   },
   "state_invariants": {
     "completed_and_remaining_leaf_sets_must_be_disjoint": true,

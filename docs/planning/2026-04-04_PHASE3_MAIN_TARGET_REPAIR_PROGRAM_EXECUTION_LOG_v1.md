@@ -68,3 +68,13 @@ Runtime repair work begins at Gate 193.
 ## Future receipts
 
 - Gate 193 receipts begin when vocabulary generator reconciliation starts.
+
+
+## 2026-04-04 — Source-truth hardening pass on Gate 193 planning state
+
+- Re-read the raw code and governing control surfaces for every future repair family, including vocabulary generation/schema/registry surfaces, runtime options-flow and higher-order context services, financial-calendar schema/projection surfaces, helper modules, and Alembic/config static surfaces.
+- Added `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md` and rewrote the later-gate leaves so that each gate starts from source-truth adjudication.
+- Preserved the active routing state: Gate 192 remains complete; Gate 193 remains active; no repair leaves executed.
+- Planning proof after hardening: `python -m json.tool docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json > /dev/null` and `python -m pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
+
+Result: planning pack remains coherent after the source-truth rewrite.

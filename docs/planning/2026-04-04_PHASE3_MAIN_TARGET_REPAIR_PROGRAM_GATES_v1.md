@@ -74,6 +74,7 @@ The pack must:
 - `docs/TESTING_AND_PROMOTION.md`
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md`
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md`
 - the repo-native workflow surfaces implicated by the seven repair tranches, including vocabulary generation, planning/router control surfaces, runtime harnesses, higher-order context law, financial-calendar typing surfaces, helper typing surfaces, and static-quality surfaces
 
 ## Workflow placement
@@ -91,6 +92,8 @@ The chosen gate count and leaf count preserve granularity because they separate:
 - static hygiene partitioning, Alembic warning treatment, widened proof, and closeout packaging (Gate 199, 6 leaves).
 
 This is more truthful than one giant repair gate, and it is also more truthful than pretending the original 29 generic leaves were sufficient once the code and failing surfaces were inspected.
+
+Every future repair gate now starts with a **source-truth adjudication leaf**. That leaf must read the governing code/contracts/docs first and may only use failing tests as evidence of drift, not as automatic authority.
 
 ## Retain / retire-from-authority / amend / add matrix
 
@@ -117,7 +120,7 @@ This is more truthful than one giant repair gate, and it is also more truthful t
 - bounded helper families and remaining static-quality surfaces when Gates 198-199 execute
 
 ### Add
-- active Phase 3 gates/leaves/execution-log/checklist/scope/evidence-baseline surfaces
+- active Phase 3 gates/leaves/execution-log/checklist/scope/evidence-baseline/source-truth-matrix surfaces
 - Gate 192 pack-bootstrap receipt
 - later gate receipts for Gates 193-199
 - any contradiction report required if execution uncovers a control-surface disagreement this pack did not start with
@@ -164,9 +167,11 @@ This pack also requires:
 
 - Repo-local environment required: `.venv`
 - Minimum validation slice per repair gate:
-  - targeted pytest covering the repaired family
+  - targeted checks covering the repaired family
   - any leaf-specific integrity or hygiene tests named in the leaves ledger
+  - source-truth adjudication recorded before downstream expectations are changed
 - Wider validation required when blast radius reaches runtime semantics, router/control truth, or gate closeout.
+- Existing tests are evidence of drift; they must not outrank the source modules, typed contracts, or governing docs named in the source-truth matrix.
 - A gate is not complete until:
   - tests ran green in the exact repo-local environment;
   - `PLANS.md`, the gate map, the active leaves ledger, and the active execution log all moved together;
@@ -184,7 +189,7 @@ Primary outputs:
 - leaves ledger upgraded from a generic list to a keyed map with gate-local exact surfaces and validation slices
 
 ### Gate 193 — Vocabulary generator and artifact truth reconciliation
-Purpose: decide and repair the lawful truth between the vocabulary generator output and the committed vocabulary artifact, then re-anchor the exact dependent vocabulary-governance expectations harvested in Phase 2B.
+Purpose: adjudicate the lawful truth in the generator, vocabulary schema, registry-driven entry expansion, and committed vocabulary artifact first, then re-anchor the exact dependent vocabulary-governance expectations harvested in Phase 2B.
 
 Primary repo surfaces:
 - `scripts/build_canonical_vocabulary.py`
@@ -198,7 +203,7 @@ Definition of done:
 - no unrelated runtime-semantic or static-quality work is mixed into the gate
 
 ### Gate 194 — Repo-wide vocabulary hygiene leakage reconciliation
-Purpose: remove or explicitly admit residual banned/stale vocabulary leakage after Gate 193 settles the generator/artifact truth seam.
+Purpose: inspect the runtime and vocabulary authority surfaces that make `eighth_stage` lawful or unlawful, then remove or explicitly admit residual banned/stale vocabulary leakage after Gate 193 settles the generator/artifact truth seam.
 
 Primary repo surfaces:
 - `tests/test_gate179_repo_wide_vocabulary_hygiene.py`
@@ -212,7 +217,7 @@ Definition of done:
 - no generator-semantics work is reopened unless Gate 193 evidence proves coupling
 
 ### Gate 195 — Control-surface router and gate-map reconciliation
-Purpose: repair current-state truth drift across `PLANS.md`, the canonical gate map, and the exact late-pack closeout/control surfaces implicated by the executed failures.
+Purpose: repair current-state truth drift across `PLANS.md`, the canonical gate map, the repo process law, and the exact late-pack closeout/control surfaces implicated by the executed failures.
 
 Primary repo surfaces:
 - repo-root `PLANS.md`
@@ -231,7 +236,7 @@ Definition of done:
 - no runtime-semantic fixes are bundled into the gate
 
 ### Gate 196 — Runtime semantic drift reconciliation
-Purpose: reconcile the admitted runtime semantics for options-flow harness expectations and stressed higher-order context compression-state law.
+Purpose: reconcile the admitted runtime semantics for options-flow harness expectations and stressed higher-order context compression-state law by reading the runtime services and typed output contracts before changing harness expectations.
 
 Primary repo surfaces:
 - `src/nvda_desk/services/options_flow_context.py`
@@ -249,7 +254,7 @@ Definition of done:
 - static cleanup, vocabulary hygiene, and router repairs remain out of scope unless a contradiction report proves coupling
 
 ### Gate 197 — Financial-calendar typing seam reconciliation
-Purpose: clear the concentrated typing seam around the financial-calendar schema family without smuggling wider semantic change.
+Purpose: clear the concentrated typing seam around the financial-calendar schema family by reading the schema constructors and projection consumers first, without smuggling wider semantic change.
 
 Primary repo surfaces:
 - `src/nvda_desk/schemas/financial_calendar.py`
@@ -266,7 +271,7 @@ Definition of done:
 - runtime semantic change outside the typing seam does not enter the gate
 
 ### Gate 198 — Typed helper pressure reduction
-Purpose: reduce strict-typing failures caused by untyped helpers in tests without rewriting runtime-domain behaviour.
+Purpose: reduce strict-typing failures caused by untyped helpers in tests by repairing the shared helper definitions and typed return shapes first, without rewriting runtime-domain behaviour.
 
 Primary repo surfaces:
 - `tests/test_gate97_runtime_invariants.py`
@@ -282,7 +287,7 @@ Definition of done:
 - runtime-domain semantics remain untouched
 
 ### Gate 199 — Static hygiene, Alembic warning cleanup, and Phase 3 closeout
-Purpose: close the remaining static-quality tranche, clear or consciously retain the warning-only Alembic constraint, and package the exact green repo state.
+Purpose: close the remaining static-quality tranche from the raw static surfaces themselves, clear or consciously retain the warning-only Alembic constraint, and package the exact green repo state.
 
 Primary repo surfaces:
 - Alembic environment and migration files implicated by `ruff`

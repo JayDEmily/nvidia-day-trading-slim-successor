@@ -16,6 +16,7 @@ Status: active document-touch checklist for the Phase 3 main-target repair progr
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md`
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md`
 
 ## Authority surfaces likely to move in later gates
 
@@ -26,13 +27,13 @@ Status: active document-touch checklist for the Phase 3 main-target repair progr
 
 ## Runtime/schema/test surfaces likely to move in later gates
 
-- vocabulary generator surfaces and dependent vocabulary-governance tests
-- `PLANS.md` and gate-map-adjacent planning/control tests
-- options-flow clustering semantics and harness expectation surfaces
+- vocabulary generator surfaces, vocabulary schema/registry surfaces, and dependent vocabulary-governance tests
+- `PLANS.md`, the canonical gate map, repo process law, and gate-map-adjacent planning/control tests
+- options-flow clustering semantics, typed cognition output surfaces, adjacent runtime consumers, and harness evidence
 - higher-order context detector semantics and related tests
-- `src/nvda_desk/schemas/financial_calendar.py` and adjacent financial-calendar services/tests
-- helper typing surfaces used across strict test contexts
-- Alembic configuration and remaining static-quality surfaces
+- `src/nvda_desk/schemas/financial_calendar.py` plus adjacent financial-calendar services/tests
+- helper definitions and return-shape surfaces used across strict test contexts
+- Alembic configuration, Alembic env/migration files, and remaining static-quality surfaces
 
 ## Explicit exclusions preserved by this checklist
 
@@ -56,9 +57,9 @@ Status: active document-touch checklist for the Phase 3 main-target repair progr
 ## Exact inspected surfaces that informed leaf tightening
 
 - Gate 193: `scripts/build_canonical_vocabulary.py`; `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`; vocabulary-governance tests in the `50-89` range.
-- Gate 194: `tests/test_gate179_repo_wide_vocabulary_hygiene.py`; `tests/test_gate190_capital_deployment_authority_integration.py`.
-- Gate 195: repo-root `PLANS.md`; `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`; the late-pack planning/control docs for gates `149-156`, `163-165`, `170-172`, `180`, and `181`.
-- Gate 196: `src/nvda_desk/services/options_flow_context.py`; `src/nvda_desk/services/imported_modules/posture_enrichers.py`; `tests/test_gate31_higher_order_context_composites.py`; `tests/test_gate96_canonical_runtime_harness.py`; `tests/test_gate102_raw_runtime_harness.py`; `tests/test_real_data_loader.py`; `tests/test_options_flow_context.py`.
+- Gate 194: `scripts/build_canonical_vocabulary.py`; `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`; `src/nvda_desk/schemas/cognition.py`; `src/nvda_desk/services/capital_deployment_authority.py`; `src/nvda_desk/services/cognition_runtime.py`; `src/nvda_desk/services/review_explanation.py`; evidence tests `tests/test_gate179_repo_wide_vocabulary_hygiene.py` and `tests/test_gate190_capital_deployment_authority_integration.py`.
+- Gate 195: repo-root `PLANS.md`; `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`; `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`; the late-pack planning/control docs for gates `149-156`, `163-165`, `170-172`, `180`, and `181`.
+- Gate 196: `src/nvda_desk/services/options_flow_context.py`; `src/nvda_desk/schemas/cognition.py`; `src/nvda_desk/services/playbook_eligibility.py`; `src/nvda_desk/services/imported_modules/posture_enrichers.py`; evidence tests `tests/test_gate31_higher_order_context_composites.py`, `tests/test_gate96_canonical_runtime_harness.py`, `tests/test_gate102_raw_runtime_harness.py`, `tests/test_real_data_loader.py`, and `tests/test_options_flow_context.py`.
 - Gate 197: `src/nvda_desk/schemas/financial_calendar.py`; `src/nvda_desk/services/financial_calendar_projection.py`; tests `89-92` plus `tests/test_financial_calendar_planning_v3.py`.
-- Gate 198: `tests/test_gate97_runtime_invariants.py`; `tests/test_gate103_raw_prepared_parity.py`; `tests/test_gate104_property_stateful.py`; helper modules/fixtures proven necessary during execution.
-- Gate 199: Alembic environment/migration files; `alembic.ini`; repo-root path insertion test files; `src/nvda_desk/config_models.py`.
+- Gate 198: `tests/contract_chain_fixtures.py`; `tests/_successor_pack_helpers.py`; evidence tests `tests/test_gate97_runtime_invariants.py`, `tests/test_gate103_raw_prepared_parity.py`, and `tests/test_gate104_property_stateful.py`; helper modules/fixtures proven necessary during execution.
+- Gate 199: `alembic/env.py`; exact Alembic environment/migration files named by lint output; `alembic.ini`; repo-root path insertion test files; `src/nvda_desk/config_models.py`.
