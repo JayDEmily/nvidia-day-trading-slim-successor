@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    PHASE3_GATE_MAP_MARKERS,
+    PHASE3_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -25,7 +31,7 @@ def test_gate180_control_surfaces_close_honestly_on_main() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert "master/child parallel-risk integration pack closed through Gate 180 on `main`" in plans
-    assert any(marker in gate_map for marker in [
+    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS) or any(marker in gate_map for marker in [
         "Current active gate: **Gate 182 in the options-trace integrity repair pack on `main`**.",
         "Current active gate: **none — options-trace integrity repair pack closed through Gate 186 on `main`**.",
     ])

@@ -1,18 +1,18 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_194_complete_gate_195_active_on_work_branch",
-  "active_gate": "Gate 195",
+  "execution_status": "gates_192_195_complete_gate_196_active_on_work_branch",
+  "active_gate": "Gate 196",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
   "completed_gate_ids": [
     "Gate 192",
     "Gate 193",
-    "Gate 194"
+    "Gate 194",
+    "Gate 195"
   ],
   "pending_gate_ids": [
-    "Gate 195",
     "Gate 196",
     "Gate 197",
     "Gate 198",
@@ -30,14 +30,14 @@
     "LEAF-G194-001",
     "LEAF-G194-002",
     "LEAF-G194-003",
-    "LEAF-G194-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G194-004",
     "LEAF-G195-001",
     "LEAF-G195-002",
     "LEAF-G195-003",
     "LEAF-G195-004",
-    "LEAF-G195-005",
+    "LEAF-G195-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G196-001",
     "LEAF-G196-002",
     "LEAF-G196-003",
@@ -849,7 +849,7 @@
       "gate": "Gate 195",
       "title": "Inspect router and gate-map source truth before trusting closeout tests",
       "objective": "Read the repo router, canonical gate map, process law, and implicated late-pack planning docs before using the failing tests as evidence of control drift.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G194-004"
       ],
@@ -929,7 +929,7 @@
       "gate": "Gate 195",
       "title": "Freeze the single lawful current-state narrative",
       "objective": "Decide the one coherent current-state narrative that PLANS, the gate map, and the affected late-pack docs must all tell.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G195-001"
       ],
@@ -985,7 +985,7 @@
       "gate": "Gate 195",
       "title": "Repair top-level router and gate-map truth",
       "objective": "Bring PLANS and the canonical gate map into agreement with the lawful current-state narrative before editing dependent pack-local docs.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G195-002"
       ],
@@ -1043,7 +1043,7 @@
       "gate": "Gate 195",
       "title": "Repair dependent pack-local control surfaces",
       "objective": "Amend the specific late-pack gates/leaves/execution-log/receipt surfaces implicated by the failing tests so they match the current-state narrative.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G195-003"
       ],
@@ -1106,7 +1106,7 @@
       "gate": "Gate 195",
       "title": "Close Gate 195 with planning-integrity proof",
       "objective": "Run the full bounded planning/control slice, write the Gate 195 receipt, and route the pack to Gate 196 only if the planning truth is green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G195-004"
       ],

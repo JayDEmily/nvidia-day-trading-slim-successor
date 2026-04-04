@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    PHASE3_GATE_MAP_MARKERS,
+    PHASE3_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -48,7 +54,7 @@ def test_gate150_pack_is_active_and_non_placeholder() -> None:
         "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
         in plans
     )
-    assert any(
+    assert contains_any(plans, PHASE3_PLAN_MARKERS) or any(
         marker in plans
         for marker in {
             "active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`",
@@ -60,7 +66,7 @@ def test_gate150_pack_is_active_and_non_placeholder() -> None:
             "no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`",
         }
     )
-    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+    assert contains_any(gate_map, ALLOWED_CURRENT_GATE_MARKERS | PHASE3_GATE_MAP_MARKERS)
     assert any(
         marker in gates
         for marker in {

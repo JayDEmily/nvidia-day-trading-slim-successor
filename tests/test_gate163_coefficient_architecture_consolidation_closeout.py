@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    PHASE3_GATE_MAP_MARKERS,
+    PHASE3_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -35,7 +41,7 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert any(
+    assert contains_any(plans, PHASE3_PLAN_MARKERS) or any(
         marker in plans
         for marker in {
             "no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`",
@@ -49,7 +55,7 @@ def test_gate163_control_surfaces_close_honestly_on_work_branch() -> None:
             "no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`",
         }
     )
-    assert any(
+    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS) or any(
         marker in gate_map
         for marker in {
             "Current active gate: **none — coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`**.",

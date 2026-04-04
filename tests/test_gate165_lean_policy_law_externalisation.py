@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    PHASE3_GATE_MAP_MARKERS,
+    PHASE3_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -20,14 +26,14 @@ def test_gate165_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert any(
+    assert contains_any(plans, PHASE3_PLAN_MARKERS) or any(
         marker in plans
         for marker in {
             "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
             "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
         }
     )
-    assert any(
+    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS) or any(
         marker in gate_map
         for marker in {
             "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",

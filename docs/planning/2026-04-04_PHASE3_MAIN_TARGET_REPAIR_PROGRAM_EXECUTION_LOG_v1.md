@@ -162,3 +162,41 @@ The next active gate is Gate 195.
   - result: `89 passed in 7.76s`
 - `python -m pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
   - result: `11 passed in 0.48s`
+
+## Gate 195 receipt
+
+Gate 195 complete on `work/gate-195-control-surface-router-gate-map-reconciliation-20260404`; Gate 196 active.
+
+### Intent
+
+Repair only the bounded control-surface drift family by adjudicating router truth from the live planning surfaces first, then updating stale historical planning tests that refused later lawful states.
+
+### Source-truth decision
+
+- `PLANS.md`, the canonical gate map, and the repo process law were already coherent.
+- The stale surfaces were the historical gate tests for the late planning packs, which still rejected later lawful router states even though the process law requires later-proof tests to permit them.
+
+### Outputs changed
+
+- `tests/_planning_later_state_helpers.py`
+- historical planning tests for Gates 149-156, 163-165, 170-172, 180, and 181
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_GATE195_CONTROL_SURFACE_ROUTER_AND_GATE_MAP_RECONCILIATION.md`
+
+### Validation commands
+
+- `PYTHONPATH=src python -m pytest -q tests/test_gate149_stage_local_handoff_pack_closeout.py tests/test_gate150_corrective_successor_pack_planning.py tests/test_gate151_field_level_ownership_and_consumer_migration.py tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate154_downstream_consumer_reconciliation_replan.py tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py tests/test_gate156_corrective_pack_anti_drift_closeout.py tests/test_gate163_coefficient_architecture_consolidation_closeout.py tests/test_gate164_policy_temporal_observability_successor_pack_planning.py tests/test_gate165_lean_policy_law_externalisation.py tests/test_gate170_policy_temporal_observability_successor_closeout.py tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py tests/test_gate172_master_child_lineage_and_overlap_ledger.py tests/test_gate180_master_child_integration_closeout.py tests/test_gate181_options_trace_integrity_pack_planning.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
+
+### Validation result
+
+- bounded Gate 195 proof slice passed: `40 passed in 0.63s`
+
+### Execution boundary
+
+Gate 195 closes only the control-surface reconciliation tranche.
+Runtime semantic repair begins at Gate 196.
