@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_195_complete_gate_196_active_on_work_branch",
-  "active_gate": "Gate 196",
+  "execution_status": "gates_192_196_complete_gate_197_active_on_work_branch",
+  "active_gate": "Gate 197",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
@@ -10,10 +10,10 @@
     "Gate 192",
     "Gate 193",
     "Gate 194",
-    "Gate 195"
+    "Gate 195",
+    "Gate 196"
   ],
   "pending_gate_ids": [
-    "Gate 196",
     "Gate 197",
     "Gate 198",
     "Gate 199"
@@ -35,15 +35,15 @@
     "LEAF-G195-002",
     "LEAF-G195-003",
     "LEAF-G195-004",
-    "LEAF-G195-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G195-005",
     "LEAF-G196-001",
     "LEAF-G196-002",
     "LEAF-G196-003",
     "LEAF-G196-004",
     "LEAF-G196-005",
-    "LEAF-G196-006",
+    "LEAF-G196-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G197-001",
     "LEAF-G197-002",
     "LEAF-G197-003",
@@ -1168,7 +1168,7 @@
       "gate": "Gate 196",
       "title": "Inspect options-flow source truth before trusting harness expectations",
       "objective": "Read the options-flow service, typed output contract, and adjacent runtime consumer before using the canonical/raw harness assertions as authority.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G195-005"
       ],
@@ -1229,7 +1229,7 @@
       "gate": "Gate 196",
       "title": "Write the lawful options-flow clustering decision from source truth",
       "objective": "Decide whether the runtime cluster or the harness expectations are stale by referencing the runtime service and typed contract first.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-001"
       ],
@@ -1288,7 +1288,7 @@
       "gate": "Gate 196",
       "title": "Repair the options-flow harness truth seam",
       "objective": "Apply the bounded repair to the runtime semantics or harness expectations required by the options-flow truth decision.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-002"
       ],
@@ -1347,7 +1347,7 @@
       "gate": "Gate 196",
       "title": "Inspect higher-order context source truth before trusting Gate 31",
       "objective": "Read the posture enricher detector and its contract output before using the Gate 31 expectation set as authority.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-003"
       ],
@@ -1405,7 +1405,7 @@
       "gate": "Gate 196",
       "title": "Repair the higher-order context stress-law drift",
       "objective": "Decide and apply the bounded repair required for the higher-order context stress-state vocabulary.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-004"
       ],
@@ -1463,7 +1463,7 @@
       "gate": "Gate 196",
       "title": "Close Gate 196 with targeted and widened runtime proof",
       "objective": "Run the bounded runtime slice for the options-flow and higher-order context families plus the necessary adjacent proofs, then route to Gate 197 if green.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G196-005"
       ],

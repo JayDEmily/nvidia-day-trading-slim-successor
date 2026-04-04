@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1
 
-Status: active document-touch checklist for the Phase 3 main-target repair programme; Gates 192-195 complete on `work/gate-195-control-surface-router-gate-map-reconciliation-20260404`, Gate 196 active
+Status: active document-touch checklist for the Phase 3 main-target repair programme; Gates 192-196 complete on `work/gate-196-runtime-semantic-drift-reconciliation-20260404`, Gate 197 active
 
 ## Frozen/process surfaces that must move if this pack changes them
 

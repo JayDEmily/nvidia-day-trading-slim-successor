@@ -37,12 +37,12 @@ The canonical sanity report remains honest: aligned chain coverage is `100.0`, a
 
 Using the canonical raw-path harness with the bounded supportive regime/inventory companion fixture yields:
 
-- event window state: `same_session_event_window`
-- options behavior cluster: `balanced_options_state`
+- event window state: `event_imminent_window`
+- options behavior cluster: `anchored_translation_tension`
 - permission state: `allow`
-- target fresh deployable pct: `30.25`
-- add candidates: `['continuation_ladder']`
-- active playbooks: `['continuation_ladder']`
+- target fresh deployable pct: `0.0`
+- add candidates: `[]`
+- active playbooks: `[]`
 
 The stage packet ids, packet lineage, and review packet are stable across repeated runs of the same inputs.
 

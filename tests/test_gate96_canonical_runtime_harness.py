@@ -63,7 +63,7 @@ def test_canonical_runtime_harness_run_is_deterministic_and_freezes_outputs() ->
     assert first.review.review_packet == second.review.review_packet
 
     assert first.temporal.event_window_state == "event_imminent_window"
-    assert first.options_flow.options_behavior_cluster == "balanced_options_state"
+    assert first.options_flow.options_behavior_cluster == "anchored_translation_tension"
     assert first.posture.permission_state.value == "allow"
     assert round(first.execution.target_fresh_deployable_pct, 4) == 0.0
     assert first.eligibility.add_candidates == []

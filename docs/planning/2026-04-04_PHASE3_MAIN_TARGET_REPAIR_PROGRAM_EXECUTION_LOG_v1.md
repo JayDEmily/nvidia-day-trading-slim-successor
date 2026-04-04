@@ -200,3 +200,47 @@ Repair only the bounded control-surface drift family by adjudicating router trut
 
 Gate 195 closes only the control-surface reconciliation tranche.
 Runtime semantic repair begins at Gate 196.
+
+## Gate 196 receipt
+
+Gate 196 complete on `work/gate-196-runtime-semantic-drift-reconciliation-20260404`; Gate 197 active.
+
+### Intent
+
+Repair only the bounded runtime-semantic drift family by adjudicating options-flow and higher-order context behaviour from raw code truth first, then updating stale harness expectations and the stale Gate 102 freeze note.
+
+### Source-truth decision
+
+- The options-flow runtime was lawful: the canonical prepared/raw harness specimens carry `surface_anchor_to_spot_pct` values that classify as `anchored_away`, and `_options_behavior_cluster()` therefore lawfully returns `anchored_translation_tension` before the `balanced_options_state` fallback.
+- The higher-order context runtime was lawful: `_compression_regime_detector()` emits `compression_mixed` for the stressed bundle under the current vol-corridor/context-score inputs.
+- The stale surfaces were the Gate 31 / Gate 96 / Gate 102 expectations and the old Gate 102 deterministic-freeze note.
+
+### Outputs changed
+
+- `tests/test_gate31_higher_order_context_composites.py`
+- `tests/test_gate96_canonical_runtime_harness.py`
+- `tests/test_gate102_raw_runtime_harness.py`
+- `docs/planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md`
+- `tests/test_gate192_phase3_main_target_repair_pack_planning.py`
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_GATE196_RUNTIME_SEMANTIC_DRIFT_RECONCILIATION.md`
+
+### Validation commands
+
+- `PYTHONPATH=src python -m pytest -q tests/test_gate31_higher_order_context_composites.py tests/test_gate96_canonical_runtime_harness.py tests/test_gate102_raw_runtime_harness.py tests/test_real_data_loader.py tests/test_options_flow_context.py tests/test_gate104_property_stateful.py`
+- `PYTHONPATH=src python -m pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
+
+### Validation result
+
+- bounded Gate 196 runtime proof slice passed: `19 passed in 5.90s`
+- planning/router proof slice passed after Gate 196 closeout: `11 passed in 0.79s`
+
+### Execution boundary
+
+Gate 196 closes only the bounded runtime-semantic repair family.
+The next active gate is Gate 197.

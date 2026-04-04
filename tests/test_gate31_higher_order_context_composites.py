@@ -88,6 +88,7 @@ def test_gate31_stressed_context_keeps_composites_descriptive_rather_than_promot
 
     assert execution_context.context_score < 0.6
     assert compression.compression_state in {
+        "compression_mixed",
         "compression_blocked",
         "compression_watch",
         "compression_absent",
