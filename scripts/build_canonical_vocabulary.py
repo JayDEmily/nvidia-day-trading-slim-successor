@@ -795,6 +795,31 @@ def build_document() -> VocabularyDocument:
                     "Governed live reference ledger for signal/coefficient provenance, bounds research, and workbook_ref lineage; never direct runtime authority without typed promotion."
                 ],
             ),
+            VocabularyEntry(
+                canonical_slug="capital_deployment_authority_service",
+                canonical_label="Capital Deployment Authority Service",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="review_explanation",
+                maps_to_contract="nvda_desk.services.capital_deployment_authority.CapitalDeploymentAuthorityService",
+                allowed_aliases=[
+                    "capital deployment authority",
+                    "capital_deployment_authority",
+                ],
+                notes=[
+                    "Bounded downstream fresh-capital authoriser for already-formed opening candidates only; not a full arbiter and not close-position logic."
+                ],
+            ),
+            VocabularyEntry(
+                canonical_slug="capital_deployment_authority_decision",
+                canonical_label="Capital Deployment Authority Decision",
+                category=VocabularyCategory.WORKFLOW,
+                stage_owner="review_explanation",
+                maps_to_contract="nvda_desk.schemas.cognition.CapitalDeploymentAuthorityDecision",
+                allowed_aliases=["deployment decision"],
+                notes=[
+                    "Bounded downstream decision carrying deploy-versus-stand-down authority, authorised percentage, authorised notional, and rationale codes for fresh capital only."
+                ],
+            ),
         ]
     )
     return VocabularyDocument(

@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1
 
-Status: Gate 192 bootstrap planning complete on `work/gate-192-phase3-main-target-repair-pack-20260404`; Gate 193 active on work branch
+Status: Gates 192-193 complete on `work/gate-193-vocabulary-generator-truth-20260404`; Gate 194 active on work branch
 
 ## Purpose
 
@@ -9,7 +9,7 @@ Gate 192 is a planning/bootstrap gate only. No runtime repair leaves have execut
 
 ## Active gate
 
-- `Gate 193`
+- `Gate 194`
 
 ## Gate roster
 
@@ -78,3 +78,43 @@ Runtime repair work begins at Gate 193.
 - Planning proof after hardening: `python -m json.tool docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json > /dev/null` and `python -m pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_tranche_briefing_template_pack.py tests/test_planning_state_integrity.py tests/test_document_hygiene.py`
 
 Result: planning pack remains coherent after the source-truth rewrite.
+
+## Gate 193 receipt
+
+Gate 193 complete on `work/gate-193-vocabulary-generator-truth-20260404`; Gate 194 active.
+
+### Intent
+
+Repair the vocabulary generator/artifact truth seam using the runtime and schema source surfaces first, then re-anchor the harvested dependent vocabulary-governance slice.
+
+### Source-truth decision
+
+- `scripts/build_canonical_vocabulary.py` was stale.
+- The committed canonical vocabulary artifact already matched the lawful downstream capital-deployment source surfaces.
+- The controlling source surfaces were `src/nvda_desk/services/capital_deployment_authority.py`, `src/nvda_desk/schemas/cognition.py`, `src/nvda_desk/services/cognition_runtime.py`, and `src/nvda_desk/services/review_explanation.py`.
+
+### Outputs changed
+
+- `scripts/build_canonical_vocabulary.py`
+- `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_GATE193_VOCABULARY_GENERATOR_AND_ARTIFACT_RECONCILIATION.md`
+
+### Validation commands
+
+- `PYTHONPATH=src python -m pytest -q tests/test_gate50_vocabulary_governance.py tests/test_gate55_vocabulary_governance.py tests/test_gate60_state_policy_ontology.py tests/test_gate62_stability_metric_corridors.py tests/test_gate63_review_eligibility_governance.py tests/test_gate64_candidate_adjudication_governance.py tests/test_gate67_event_window_semantics.py tests/test_gate68_precursor_universe.py tests/test_gate69_phase_carry_policy.py tests/test_gate70_event_options_stress_policy.py`
+- `PYTHONPATH=src python -m pytest -q tests/test_gate71_modifier_control_law.py tests/test_gate72_event_ingestion_provenance.py tests/test_gate73_event_store_query.py tests/test_gate74_live_event_richness.py tests/test_gate75_precursor_stitching.py tests/test_gate76_precursor_runtime_binding.py tests/test_gate77_review_failure_taxonomy.py tests/test_gate78_modifier_runtime_integration.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+
+### Validation result
+
+- first Gate 193 proof slice passed: `39 passed in 3.10s`
+- second Gate 193 proof slice passed after satisfying the missing sandbox dependency for `sqlalchemy`: `39 passed in 4.20s`
+
+### Execution boundary
+
+Gate 193 closes only the vocabulary generator/artifact seam.
+Residual bounded vocabulary hygiene work is deferred to Gate 194.

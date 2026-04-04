@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1
 
-Status: active Phase 3 main-target repair planning pack; Gate 192 complete on `work/gate-192-phase3-main-target-repair-pack-20260404`, Gate 193 active, Gates 194-199 planned
+Status: active Phase 3 main-target repair planning pack; Gates 192-193 complete on `work/gate-193-vocabulary-generator-truth-20260404`, Gate 194 active, Gates 195-199 planned
 Purpose: convert the executed Phase 2B defect harvest into one disciplined, evidence-backed repair programme for the main target repo without collapsing unrelated bug families into one vague repair blob.
 Authority: subordinate to `docs/01_NORMATIVE.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, and repo-root `PLANS.md`.
 Vocabulary authority for this pack: `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`

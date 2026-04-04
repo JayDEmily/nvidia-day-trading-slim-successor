@@ -1,16 +1,16 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gate_192_complete_gate_193_active_on_work_branch",
-  "active_gate": "Gate 193",
+  "execution_status": "gates_192_193_complete_gate_194_active_on_work_branch",
+  "active_gate": "Gate 194",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
   "completed_gate_ids": [
-    "Gate 192"
+    "Gate 192",
+    "Gate 193"
   ],
   "pending_gate_ids": [
-    "Gate 193",
     "Gate 194",
     "Gate 195",
     "Gate 196",
@@ -22,13 +22,13 @@
     "LEAF-G192-001",
     "LEAF-G192-002",
     "LEAF-G192-003",
-    "LEAF-G192-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G192-004",
     "LEAF-G193-001",
     "LEAF-G193-002",
     "LEAF-G193-003",
-    "LEAF-G193-004",
+    "LEAF-G193-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G194-001",
     "LEAF-G194-002",
     "LEAF-G194-003",
@@ -349,7 +349,7 @@
       "gate": "Gate 193",
       "title": "Inspect the vocabulary source-truth seam before trusting downstream tests",
       "objective": "Read the generator, vocabulary schema, registry-driven entry expansion, and committed artifact to localise the exact drift surface before any test expectation is treated as authority.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G192-004"
       ],
@@ -429,7 +429,7 @@
       "gate": "Gate 193",
       "title": "Write the source-truth decision for generator versus artifact",
       "objective": "Decide whether the generator, the committed artifact, or both are stale by referencing the source modules and vocabulary schema first.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G193-001"
       ],
@@ -486,7 +486,7 @@
       "gate": "Gate 193",
       "title": "Repair the generator/artifact truth seam",
       "objective": "Apply the bounded fix to the generator or committed artifact exactly where the authority decision requires it.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G193-002"
       ],
@@ -541,7 +541,7 @@
       "gate": "Gate 193",
       "title": "Re-anchor dependent vocabulary expectations and close Gate 193",
       "objective": "Re-run the exact dependent vocabulary slice, adjust dependent expectations only where the repaired truth requires it, and close the gate honestly.",
-      "status": "planned",
+      "status": "closed",
       "depends_on": [
         "LEAF-G193-003"
       ],
