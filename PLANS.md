@@ -27,7 +27,7 @@ This file is the canonical repo-root execution router.
 - bounded-scope note: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md`
 - evidence baseline: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md`
 - source-truth matrix: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md`
-- next active gate: `Gate 198`
+- next active gate: `Gate 199`
 
 ## Latest closed pack retained as evidence
 

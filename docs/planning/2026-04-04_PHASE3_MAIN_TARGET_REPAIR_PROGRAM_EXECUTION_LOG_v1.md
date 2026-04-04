@@ -292,3 +292,48 @@ Repair only the concentrated financial-calendar typing seam by adjudicating cons
 
 Gate 197 closes only the concentrated financial-calendar typing seam.
 The next active gate is Gate 198.
+
+
+## Gate 198 receipt
+
+Gate 198 complete on `work/gate-198-typed-helper-pressure-reduction-20260404`; Gate 199 active.
+
+### Intent
+
+Reduce the bounded strict-helper typing debt by reading the helper/test scaffolding first, then repairing only the helper and annotation seams without touching runtime-domain behaviour.
+
+### Source-truth decision
+
+- The controlling helper surfaces were the Gate 97 / Gate 103 / Gate 104 helper builders and the helper-facing strict mypy slice.
+- The runtime-domain surfaces under `src/` were already lawful; the stale surfaces were the untyped helper/result scaffolding and the absence of a mypy-visible Hypothesis contract for the property/stateful tests.
+
+### Outputs changed
+
+- `tests/test_gate97_runtime_invariants.py`
+- `tests/test_gate103_raw_prepared_parity.py`
+- `tests/test_gate104_property_stateful.py`
+- `hypothesis/__init__.pyi`
+- `hypothesis/strategies.pyi`
+- `hypothesis/stateful.pyi`
+- `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-04_GATE198_TYPED_HELPER_PRESSURE_REDUCTION.md`
+
+### Validation commands
+
+- `PYTHONPATH=/opt/pyvenv/lib/python3.13/site-packages:/home/oai/.cache/uv/archive-v0/kjEjRQLxE1FauZkT7JNEW:/home/oai/.cache/uv/archive-v0/SH68GFG4S1Wlt5XlBXQbN:/home/oai/.cache/uv/archive-v0/O1rBpgTus1i3oF2SBPHDP MYPYPATH=src uvx --offline mypy tests/test_gate97_runtime_invariants.py tests/test_gate103_raw_prepared_parity.py tests/test_gate104_property_stateful.py tests/contract_chain_fixtures.py tests/_successor_pack_helpers.py`
+- `PYTHONPATH=src:/opt/pyvenv/lib/python3.13/site-packages:/home/oai/.cache/uv/archive-v0/kjEjRQLxE1FauZkT7JNEW:/home/oai/.cache/uv/archive-v0/SH68GFG4S1Wlt5XlBXQbN:/home/oai/.cache/uv/archive-v0/O1rBpgTus1i3oF2SBPHDP pytest -q tests/test_gate97_runtime_invariants.py tests/test_gate103_raw_prepared_parity.py`
+
+### Validation result
+
+- targeted Gate 198 mypy slice passed: `Success: no issues found in 5 source files`
+- bounded Gate 198 runtime sanity slice passed: `8 passed in 1.87s`
+
+### Execution boundary
+
+Gate 198 closes only the bounded helper typing family.
+The next active gate is Gate 199.

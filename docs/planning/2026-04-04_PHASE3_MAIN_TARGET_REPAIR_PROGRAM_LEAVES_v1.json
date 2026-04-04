@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_197_complete_gate_198_active_on_work_branch",
-  "active_gate": "Gate 198",
+  "execution_status": "gates_192_198_complete_gate_199_active_on_work_branch",
+  "active_gate": "Gate 199",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
@@ -12,10 +12,10 @@
     "Gate 194",
     "Gate 195",
     "Gate 196",
-    "Gate 197"
+    "Gate 197",
+    "Gate 198"
   ],
   "pending_gate_ids": [
-    "Gate 198",
     "Gate 199"
   ],
   "completed_leaf_ids": [
@@ -45,13 +45,13 @@
     "LEAF-G197-001",
     "LEAF-G197-002",
     "LEAF-G197-003",
-    "LEAF-G197-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G197-004",
     "LEAF-G198-001",
     "LEAF-G198-002",
     "LEAF-G198-003",
-    "LEAF-G198-004",
+    "LEAF-G198-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G199-001",
     "LEAF-G199-002",
     "LEAF-G199-003",
@@ -1769,7 +1769,7 @@
       "gate": "Gate 198",
       "title": "Inspect helper source truth before trusting strict test failures",
       "objective": "Inspect the shared helper definitions and return-shape surfaces that own the typing debt before using downstream strict tests as authority.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G197-004"
       ],
@@ -1827,7 +1827,7 @@
       "gate": "Gate 198",
       "title": "Write the helper typing decision and repair shared helper annotations",
       "objective": "Repair shared helper annotations and typed return shapes only after the helper-family source truth is written down.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G198-001"
       ],
@@ -1881,7 +1881,7 @@
       "gate": "Gate 198",
       "title": "Repair dependent strict-test helper fallout",
       "objective": "Clear the bounded dependent test-local helper fallout that remains after the shared helper families are repaired.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G198-002"
       ],
@@ -1936,7 +1936,7 @@
       "gate": "Gate 198",
       "title": "Close Gate 198 with targeted mypy proof",
       "objective": "Run the bounded helper-typing proof slice, write the Gate 198 receipt, and route the repo to Gate 199 only if green or honestly narrowed.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G198-003"
       ],

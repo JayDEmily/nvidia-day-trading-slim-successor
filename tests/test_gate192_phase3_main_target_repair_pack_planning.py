@@ -44,6 +44,8 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
         "Current active gate: **Gate 195 in the Phase 3 main-target repair programme on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`**.",
         "Current active gate: **Gate 196 in the Phase 3 main-target repair programme on `work/gate-195-control-surface-router-gate-map-reconciliation-20260404`**.",
         "Current active gate: **Gate 197 in the Phase 3 main-target repair programme on `work/gate-196-runtime-semantic-drift-reconciliation-20260404`**.",
+        "Current active gate: **Gate 198 in the Phase 3 main-target repair programme on `work/gate-197-financial-calendar-typing-seam-reconciliation-20260404`**.",
+        "Current active gate: **Gate 199 in the Phase 3 main-target repair programme on `work/gate-198-typed-helper-pressure-reduction-20260404`**.",
         "Current active gate: **none — Phase 3 main-target repair programme closed through Gate 199 on `main`**.",
     ])
     assert any(status in gates for status in [
@@ -52,6 +54,8 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
         "Status: active Phase 3 main-target repair planning pack; Gates 192-194 complete on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`, Gate 195 active, Gates 196-199 planned",
         "Status: active Phase 3 main-target repair planning pack; Gates 192-195 complete on `work/gate-195-control-surface-router-gate-map-reconciliation-20260404`, Gate 196 active, Gates 197-199 planned",
         "Status: active Phase 3 main-target repair planning pack; Gates 192-196 complete on `work/gate-196-runtime-semantic-drift-reconciliation-20260404`, Gate 197 active, Gates 198-199 planned",
+        "Status: active Phase 3 main-target repair planning pack; Gates 192-197 complete on `work/gate-197-financial-calendar-typing-seam-reconciliation-20260404`, Gate 198 active, Gate 199 planned",
+        "Status: active Phase 3 main-target repair planning pack; Gates 192-198 complete on `work/gate-198-typed-helper-pressure-reduction-20260404`, Gate 199 active",
         "Status: closed Phase 3 main-target repair programme through Gate 199 on `main`",
     ])
     assert leaves["execution_status"] in {
@@ -60,6 +64,8 @@ def test_gate192_pack_surfaces_are_coherent() -> None:
         "gates_192_194_complete_gate_195_active_on_work_branch",
         "gates_192_195_complete_gate_196_active_on_work_branch",
         "gates_192_196_complete_gate_197_active_on_work_branch",
+        "gates_192_197_complete_gate_198_active_on_work_branch",
+        "gates_192_198_complete_gate_199_active_on_work_branch",
         "phase3_main_target_repair_programme_closed_through_gate_199_on_main",
     }
     assert leaves["active_gate"] in {"Gate 193", "Gate 194", "Gate 195", "Gate 196", "Gate 197", "Gate 198", "Gate 199", "none"}

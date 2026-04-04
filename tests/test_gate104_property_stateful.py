@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from hypothesis import given, settings
@@ -10,10 +10,18 @@ from hypothesis import strategies as st
 from hypothesis.stateful import RuleBasedStateMachine, initialize, rule
 
 from nvda_desk.config import Settings
-from nvda_desk.schemas.cognition import GammaState, PermissionState
+from nvda_desk.schemas.cognition import (
+    GammaState,
+    MarketRegimeContextOutput,
+    OptionsFlowContextOutput,
+    PermissionState,
+    PostureRiskOutput,
+    TemporalContextOutput,
+)
 from nvda_desk.schemas.state_policy import (
     DegradationStep,
     KillSwitchCondition,
+    ModifierRuntimePacket,
     MutableRuntimeSurface,
 )
 from nvda_desk.services.event_store import EventStoreService
@@ -25,13 +33,13 @@ from nvda_desk.services.real_data_loader import RealDataLoaderService
 from nvda_desk.services.state_conditioned_modifier import StateConditionedModifierService
 from nvda_desk.services.temporal_context import TemporalContextService
 from nvda_desk.schemas.cognition import PlaybookEligibilityInput, PostureRiskInput
-from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
+from nvda_desk.testing.cognition_fixtures import CognitionRuntimeFixture, supportive_runtime_fixture
 
 RAW_BUNDLE_PATH = Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json")
 GATE104_DOC = Path("docs/planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md")
 
 
-def _base_runtime_outputs():
+def _base_runtime_outputs() -> tuple[CognitionRuntimeFixture, TemporalContextOutput, MarketRegimeContextOutput, OptionsFlowContextOutput, PostureRiskOutput]:
     fixture = supportive_runtime_fixture()
     temporal = TemporalContextService(Settings()).evaluate(fixture.temporal_input)
     regime = MarketRegimeContextService().evaluate(fixture.regime_input)
@@ -48,14 +56,14 @@ def _base_runtime_outputs():
     return fixture, temporal, regime, options, posture
 
 
-def _resolved_numeric(packet, surface: MutableRuntimeSurface) -> float | None:
+def _resolved_numeric(packet: ModifierRuntimePacket, surface: MutableRuntimeSurface) -> float | None:
     for item in packet.resolved_surfaces:
         if item.target_surface is surface:
             return item.effective_numeric_value
     return None
 
 
-def _resolved_boolean(packet, surface: MutableRuntimeSurface) -> bool | None:
+def _resolved_boolean(packet: ModifierRuntimePacket, surface: MutableRuntimeSurface) -> bool | None:
     for item in packet.resolved_surfaces:
         if item.target_surface is surface:
             return item.effective_boolean_value
@@ -165,6 +173,8 @@ def test_gate104_property_playbook_eligibility_freezes_no_trade_law(
 class EventStoreSequenceStateMachine(RuleBasedStateMachine):
     """Generated sequence checks for ordered event-store queries."""
 
+    last_next_event_at: datetime | None
+
     def __init__(self) -> None:
         super().__init__()
         raw_bundle = RealDataLoaderService().load_json_bundle(RAW_BUNDLE_PATH)
@@ -194,7 +204,8 @@ class EventStoreSequenceStateMachine(RuleBasedStateMachine):
         else:
             assert snapshot.next_event.event_at >= self.last_next_event_at
             assert snapshot.next_event.event_at >= self.current_requested_at
-        self.last_next_event_at = None if snapshot.next_event is None else snapshot.next_event.event_at
+        next_event_at: datetime | None = None if snapshot.next_event is None else snapshot.next_event.event_at
+        self.last_next_event_at = next_event_at
         assert set(snapshot.lineage_keys).issubset(self.expected_lineage_keys)
         assert len(snapshot.material_events) <= len(snapshot.nearby_events)
 

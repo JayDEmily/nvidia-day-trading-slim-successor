@@ -7,10 +7,10 @@ from pathlib import Path
 import pytest
 
 from nvda_desk.config import Settings
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessInput, CanonicalRawRuntimeHarnessService
+from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessInput, CanonicalRuntimeHarnessService
 from nvda_desk.testing.cognition_fixtures import (
     stressed_runtime_fixture,
     supportive_runtime_fixture,
@@ -21,7 +21,7 @@ EXPECTED_REVIEW_STAGE_ORDER = ["temporal", "regime", "options_flow", "posture", 
 EXPECTED_PACKET_STAGE_ORDER = ["temporal", "regime", "options_flow", "posture", "eligibility", "execution"]
 
 
-def _canonical_prepared_result():
+def _canonical_prepared_result() -> DeskCognitionRuntimeResult:
     pack = RealDataLoaderService().load_fixture_pack(FIXTURE_PACK_PATH)
     supportive = supportive_runtime_fixture()
     harness = CanonicalRuntimeHarnessService().build(
@@ -40,7 +40,7 @@ def _canonical_prepared_result():
     )
 
 
-def _canonical_raw_result():
+def _canonical_raw_result() -> DeskCognitionRuntimeResult:
     supportive = supportive_runtime_fixture()
     harness = CanonicalRawRuntimeHarnessService().build_from_path(
         raw_bundle_path=Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json"),
@@ -58,7 +58,7 @@ def _canonical_raw_result():
     )
 
 
-def _supportive_result():
+def _supportive_result() -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input,
@@ -69,7 +69,7 @@ def _supportive_result():
     )
 
 
-def _stressed_result():
+def _stressed_result() -> DeskCognitionRuntimeResult:
     fixture = stressed_runtime_fixture()
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input,
@@ -90,7 +90,7 @@ def _stressed_result():
     ],
     ids=["supportive", "stressed", "canonical_prepared", "canonical_raw"],
 )
-def test_lawful_output_invariants_hold_across_canonical_scenarios(scenario_name: str, result) -> None:
+def test_lawful_output_invariants_hold_across_canonical_scenarios(scenario_name: str, result: DeskCognitionRuntimeResult) -> None:
     assert result.packet_lineage[0] == result.stage_packet_ids["temporal"]
     assert result.packet_lineage[-1] == result.stage_packet_ids["review"]
 

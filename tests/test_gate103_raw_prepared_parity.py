@@ -5,10 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 from nvda_desk.config import Settings
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessInput, CanonicalRawRuntimeHarnessService
+from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessInput, CanonicalRuntimeHarnessService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 FIXTURE_PACK_PATH = Path("fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json")
@@ -16,7 +16,7 @@ RAW_BUNDLE_PATH = Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle
 GATE103_DOC = Path("docs/planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md")
 
 
-def _prepared_harness():
+def _prepared_harness() -> CanonicalRuntimeHarnessInput:
     pack = RealDataLoaderService().load_fixture_pack(FIXTURE_PACK_PATH)
     supportive = supportive_runtime_fixture()
     return CanonicalRuntimeHarnessService().build(
@@ -28,7 +28,7 @@ def _prepared_harness():
     )
 
 
-def _raw_harness():
+def _raw_harness() -> CanonicalRawRuntimeHarnessInput:
     pack = RealDataLoaderService().load_fixture_pack(FIXTURE_PACK_PATH)
     supportive = supportive_runtime_fixture()
     return CanonicalRawRuntimeHarnessService().build_from_path(
@@ -40,7 +40,7 @@ def _raw_harness():
     )
 
 
-def _run(harness):
+def _run(harness: CanonicalRuntimeHarnessInput | CanonicalRawRuntimeHarnessInput) -> DeskCognitionRuntimeResult:
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=harness.temporal_input,
         regime_input=harness.regime_input,
