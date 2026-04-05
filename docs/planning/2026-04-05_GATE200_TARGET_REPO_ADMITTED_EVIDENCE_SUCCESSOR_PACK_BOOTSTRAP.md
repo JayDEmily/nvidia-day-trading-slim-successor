@@ -1,6 +1,6 @@
 # Gate 200 — Target-repo admitted-evidence successor pack bootstrap
 
-Status: complete on `work/gate-200-target-repo-admitted-evidence-successor-pack-20260405`; Gate 201 next in the same successor pack.
+Status: complete on `main`; Gate 201 followed in the same successor pack and Gate 202 is now the next active gate.
 
 ## What Gate 200 did
 

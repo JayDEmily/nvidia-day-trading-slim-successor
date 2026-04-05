@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1
 
-Status: active target-repo admitted-evidence successor planning pack; Gate 200 complete on `work/gate-200-target-repo-admitted-evidence-successor-pack-20260405`, Gate 201 active, Gates 202-205 planned.
+Status: active target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active, Gates 203-205 planned.
 
 ## Purpose
 
@@ -93,8 +93,9 @@ This tranche exists to decide how evidence growth should proceed from that basel
 
 ### Mandatory amendments
 - `PLANS.md` because the repo must route to one truthful active pack again
-- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md` because Gate 199 is closed on `main` and Gate 200 is the new active planning gate
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md` because Gates 200-201 are now complete on `main` and Gate 202 is the new active planning gate
 - `tests/test_gate191_capital_deployment_authority_closeout.py` because later valid routing states must not be rejected by a brittle no-active-pack-only assertion
+- `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py` because later valid successor-pack states must not be rejected once Gate 201 closes
 
 ### New additions
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md`
@@ -105,7 +106,13 @@ This tranche exists to decide how evidence growth should proceed from that basel
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md`
 - `docs/planning/2026-04-05_GATE200_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PACK_BOOTSTRAP.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_INVENTORY_BASELINE_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_PROVENANCE_AND_IMMUTABILITY_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_CHANGE_MEMORY_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_GOVERNANCE_PROOF_SLICE_v1.md`
+- `docs/planning/2026-04-05_GATE201_TARGET_REPO_EVIDENCE_INVENTORY_AND_PROVENANCE_PLANNING.md`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
+- `tests/test_gate201_target_repo_evidence_governance_planning.py`
 
 ## Vocabulary discipline
 
@@ -138,7 +145,7 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 
 - Repo-local environment required for later execution: `.venv`
 - Minimum validation slice for this planning activation:
-  - `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
+  - `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py`
   - `pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py`
 - A gate is not complete until:
   - tests ran green;
@@ -158,12 +165,13 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_*.md`
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
+- `tests/test_gate201_target_repo_evidence_governance_planning.py`
 - later-proof planning tests that need tolerant routing assertions
 
 **Definition of done**
 - the repo routes cleanly to this pack as the only active pack;
 - the contradiction report and salvage matrix are explicit;
-- the new pack identifies Gate 201 as the next execution target without reviving Gate 212.
+- the new pack identifies Gate 202 as the next execution target without reviving Gate 212.
 
 ### Gate 201 — Evidence inventory, provenance, and change-memory planning
 

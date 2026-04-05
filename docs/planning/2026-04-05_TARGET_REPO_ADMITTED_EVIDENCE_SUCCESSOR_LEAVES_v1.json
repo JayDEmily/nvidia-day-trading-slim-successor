@@ -1,14 +1,14 @@
 {
   "governing_plan": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_200_complete_gate_201_active_on_work_branch",
-  "active_gate": "Gate 201",
+  "execution_status": "gates_200_201_complete_gate_202_active_on_main",
+  "active_gate": "Gate 202",
   "supersedes": [],
   "completed_gate_ids": [
-    "Gate 200"
+    "Gate 200",
+    "Gate 201"
   ],
   "pending_gate_ids": [
-    "Gate 201",
     "Gate 202",
     "Gate 203",
     "Gate 204",
@@ -18,13 +18,13 @@
     "LEAF-G200-001",
     "LEAF-G200-002",
     "LEAF-G200-003",
-    "LEAF-G200-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G200-004",
     "LEAF-G201-001",
     "LEAF-G201-002",
     "LEAF-G201-003",
-    "LEAF-G201-004",
+    "LEAF-G201-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G202-001",
     "LEAF-G202-002",
     "LEAF-G202-003",
@@ -267,7 +267,7 @@
     },
     "LEAF-G201-001": {
       "gate": "Gate 201",
-      "status": "pending",
+      "status": "complete",
       "title": "Inventory canonical evidence classes already present in the target repo",
       "objective": "Define the current evidence baseline by class, location, authority source, and downstream use without collecting any new data.",
       "repo_surfaces": [
@@ -300,23 +300,24 @@
         "Do not omit persisted market-state surfaces already present in the repo."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future inventory document plan with exact evidence classes and anchors."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_INVENTORY_BASELINE_v1.md` names each current evidence class and exact anchor."
       ],
       "definition_of_done": [
-        "The inventory plan can account for each currently-admitted evidence family without ambiguity."
+        "The inventory baseline accounts for the raw, derived, sibling, replay, review-report, and market-persisted evidence families without ambiguity."
       ],
       "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_INVENTORY_BASELINE_v1.md"
       ]
     },
     "LEAF-G201-002": {
       "gate": "Gate 201",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan provenance, derivation, and immutability rules",
       "objective": "Define how future evidence packs will record lineage from raw anchor to derived sibling/replay/packet artefacts.",
       "repo_surfaces": [
@@ -347,22 +348,23 @@
         "Do not invent provenance fields unrelated to repo-native evidence classes."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py"
       ],
       "expected_evidence": [
-        "A planned provenance-rule set tied to existing admissions and packet law."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_PROVENANCE_AND_IMMUTABILITY_RULES_v1.md` freezes provenance and immutability fields tied to repo-native evidence classes."
       ],
       "definition_of_done": [
-        "Future provenance work has explicit rule hooks for raw, derived, sibling, replay, and packet artefacts."
+        "Future provenance work has explicit rule hooks for raw, derived, sibling, replay, review-report, packet, and market-persisted artefacts."
       ],
       "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_PROVENANCE_AND_IMMUTABILITY_RULES_v1.md"
       ]
     },
     "LEAF-G201-003": {
       "gate": "Gate 201",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan change-control, supersession, and authority-downgrade memory",
       "objective": "Define how future docs will record evidence supersession, retired authority, and downgrade-to-compatibility state.",
       "repo_surfaces": [
@@ -392,22 +394,23 @@
         "Do not let standalone evidence-only docs regain authority implicitly."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future change-memory plan that can track supersession and authority downgrades explicitly."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_CHANGE_MEMORY_RULES_v1.md` freezes supersession and authority-downgrade memory fields."
       ],
       "definition_of_done": [
-        "Later governance docs can record supersession and compatibility-only status without ambiguity."
+        "Later governance docs can record supersession, compatibility-only state, and retired-from-authority state without ambiguity."
       ],
       "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_CHANGE_MEMORY_RULES_v1.md"
       ]
     },
     "LEAF-G201-004": {
       "gate": "Gate 201",
-      "status": "pending",
+      "status": "complete",
       "title": "Define future proof slice for evidence-governance docs and tests",
       "objective": "Freeze the proof order for the later evidence-inventory/governance tranche.",
       "repo_surfaces": [
@@ -436,18 +439,19 @@
         "Do not omit stop conditions for provenance-law conflicts."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future-proof slice with ordered validation and stop conditions for Gate 201 work."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_GOVERNANCE_PROOF_SLICE_v1.md` freezes ordered proof commands and replanning stop conditions."
       ],
       "definition_of_done": [
-        "The evidence-governance gate can be executed later without inventing its proof order on the fly."
+        "The evidence-governance tranche can be executed later without inventing its proof order or stop conditions on the fly."
       ],
       "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_GOVERNANCE_PROOF_SLICE_v1.md"
       ]
     },
     "LEAF-G202-001": {

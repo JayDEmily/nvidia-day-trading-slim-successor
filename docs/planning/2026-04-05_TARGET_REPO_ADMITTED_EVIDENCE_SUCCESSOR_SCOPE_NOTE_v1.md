@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1
 
-Status: active bounded-scope note for the target-repo admitted-evidence successor planning pack; Gate 200 active on `work/gate-200-target-repo-admitted-evidence-successor-pack-20260405`.
+Status: active bounded-scope note for the target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active.
 
 ## Why this pack is narrow
 
