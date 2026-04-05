@@ -40,18 +40,21 @@ def test_adjacent_prepared_runtime_snapshots_transition_without_illegal_sideways
         )
 
     event_minutes = [result.temporal.event_minutes_remaining for result in results]
+    assert all(minutes is not None for minutes in event_minutes)
     flow_tension = [result.options_flow.flow_tension_score for result in results]
     fresh_targets = [result.execution.target_fresh_deployable_pct for result in results]
     active_playbooks = [result.execution.active_playbook_ids for result in results]
 
-    assert event_minutes == sorted(event_minutes, reverse=True)
+    ordered_event_minutes = [minutes for minutes in event_minutes if minutes is not None]
+    assert ordered_event_minutes == sorted(ordered_event_minutes, reverse=True)
     assert flow_tension[0] < flow_tension[1] <= flow_tension[2]
     assert [result.temporal.event_window_state for result in results] == [
         "event_imminent_window",
         "event_imminent_window",
         "event_imminent_window",
     ]
-    assert [result.execution.final_risk_join.action.value for result in results] == [
+    assert all(result.execution.final_risk_join is not None for result in results)
+    assert [result.execution.final_risk_join.action.value for result in results if result.execution.final_risk_join is not None] == [
         "derisk",
         "derisk",
         "derisk",

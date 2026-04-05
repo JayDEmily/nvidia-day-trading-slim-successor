@@ -20,7 +20,6 @@ from nvda_desk.schemas.market import (
     PrecursorFreshnessState,
     PrecursorPostureState,
     PrecursorRuntimePacket,
-    RawPrecursorField,
     PrecursorStitchingAuthorityPacket,
     PrecursorStitchingResult,
     PrecursorTimestampDiscipline,

@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 from nvda_desk.config import Settings
 from nvda_desk.schemas.risk import RiskAction
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
@@ -13,7 +15,7 @@ def _run_supportive_runtime(
     vix_level: float = 18.4,
     vvix_level: float = 84.0,
     inventory_update: dict[str, float] | None = None,
-):
+) -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     inventory_state = fixture.inventory_state
     if inventory_update:
@@ -52,7 +54,10 @@ def test_gate147_allow_path_preserves_overlay_and_terminal_allow_without_overlap
     ]
     assert result.execution.final_risk_join is not None
     assert result.execution.final_risk_join.action is RiskAction.ALLOW
-    assert result.review.review_packet["stage_local_handoff"]["terminal_risk_application"]["final_decision"]["action"] == "allow"
+    review_handoff = cast(dict[str, Any], result.review.review_packet["stage_local_handoff"])
+    terminal_application = cast(dict[str, Any], review_handoff["terminal_risk_application"])
+    final_decision = cast(dict[str, Any], terminal_application["final_decision"])
+    assert final_decision["action"] == "allow"
 
 
 

@@ -34,7 +34,8 @@ def test_gate124_runtime_reads_governed_authority_for_mutable_surfaces() -> None
     )
 
     assert result.execution.modifier_runtime_packet is not None
-    surface_index = authority.mutable_surface_index()
+    numeric_surface_index = authority.mutable_numeric_surface_index()
+    boolean_surface_index = authority.mutable_boolean_surface_index()
     resolved_by_surface = {
         item.target_surface: item for item in result.execution.modifier_runtime_packet.resolved_surfaces
     }
@@ -44,14 +45,16 @@ def test_gate124_runtime_reads_governed_authority_for_mutable_surfaces() -> None
 
     assert not hasattr(StateConditionedModifierService, "_BASELINE_NUMERIC")
     assert entry.authority_version == authority.authority_version
-    assert entry.owner_stage is surface_index[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR].owner_stage
-    assert entry.baseline_numeric_value == surface_index[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR].baseline
-    assert entry.minimum_numeric_value == surface_index[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR].minimum
-    assert entry.maximum_numeric_value == surface_index[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR].maximum
+    entry_spec = numeric_surface_index[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR]
+    assert entry.owner_stage is entry_spec.owner_stage
+    assert entry.baseline_numeric_value == entry_spec.baseline
+    assert entry.minimum_numeric_value == entry_spec.minimum
+    assert entry.maximum_numeric_value == entry_spec.maximum
     assert target.baseline_reference == (
         f"coefficient_authority:{authority.authority_version}:target_fresh_deployable_pct"
     )
-    assert hedge.baseline_boolean_value is surface_index[MutableRuntimeSurface.HEDGE_REQUIRED].baseline
+    hedge_spec = boolean_surface_index[MutableRuntimeSurface.HEDGE_REQUIRED]
+    assert hedge.baseline_boolean_value is hedge_spec.baseline
 
 
 def test_gate124_closeout_advances_pack_but_allows_later_statuses() -> None:

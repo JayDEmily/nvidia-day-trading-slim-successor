@@ -16,6 +16,7 @@ from nvda_desk.schemas.trace_review import (
     BoundedTraceFixturePack,
     BoundedTraceReviewReport,
     BoundedTraceRunResult,
+    BoundedTraceScenario,
 )
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
@@ -96,7 +97,7 @@ class BoundedTraceReviewService:
         lines.append("")
         return "\n".join(lines)
 
-    def _run_one(self, pack: BoundedTraceFixturePack, scenario) -> BoundedTraceRunResult:
+    def _run_one(self, pack: BoundedTraceFixturePack, scenario: BoundedTraceScenario) -> BoundedTraceRunResult:
         harness = self._harness.build(
             dataset_id=pack.pack_id,
             snapshot=scenario.prepared_snapshot,

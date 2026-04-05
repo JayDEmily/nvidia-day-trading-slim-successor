@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from datetime import UTC, datetime
 from decimal import Decimal
+from typing import Any, cast
 
 from sqlalchemy import desc, select
 from sqlalchemy.orm import Session, sessionmaker
@@ -624,9 +625,9 @@ class ExecutionRecordsService:
             snapshot_ts=row.snapshot_ts,
             setup_variant_id=row.setup_variant_id,
             execution_expression_id=row.execution_expression_id,
-            tradable_expression_family=row.tradable_expression_family,
+            tradable_expression_family=cast(Any, row.tradable_expression_family),
             lifecycle_state=row.lifecycle_state,
-            lifecycle_action=row.lifecycle_action,
+            lifecycle_action=cast(Any, row.lifecycle_action),
             current_position_size_pct=float(row.current_position_size_pct),
             quantity=float(row.quantity),
             average_price=float(row.average_price),

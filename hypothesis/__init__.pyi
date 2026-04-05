@@ -1,5 +1,5 @@
-from typing import Any, Callable, ParamSpec, TypeVar
-from . import strategies
+from collections.abc import Callable
+from typing import Any, ParamSpec, TypeVar
 
 P = ParamSpec("P")
 R = TypeVar("R")

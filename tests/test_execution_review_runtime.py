@@ -123,6 +123,7 @@ def test_desk_cognition_runtime_emits_family_specific_execution_plan() -> None:
     assert result.execution.lifecycle_plan is not None
     assert result.execution.lifecycle_plan.setup_variant_id == "opening_drive_continuation"
     assert result.execution.lifecycle_plan.execution_expression_id == "continuation_ladder_exec"
+    assert result.execution.lifecycle_plan.tradable_expression_family is not None
     assert result.execution.lifecycle_plan.tradable_expression_family.value == "single_leg_call_debit"
     assert result.execution.lifecycle_plan.next_action is LifecycleAction.ADD
     assert [action.value for action in result.execution.lifecycle_plan.allowed_actions] == [
@@ -391,7 +392,8 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     assert isinstance(result.stage_packets[6].blocks[0], DmpV2ObjectBlock)
     assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(mode="json")
     assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
-    execution_payload = cast(dict[str, Any], result.stage_packets[5].blocks[0].data)
+    execution_payload = result.stage_packets[5].blocks[0].data
+    assert isinstance(execution_payload, dict)
     assert execution_payload["lifecycle_plan"]["execution_expression_id"] == "continuation_ladder_exec"
     assert execution_payload["lifecycle_plan"]["tradable_expression_family"] == "single_leg_call_debit"
     assert result.stage_packet_ids["execution"] == result.stage_packets[5].packet_id
@@ -439,7 +441,7 @@ def test_review_packets_render_governed_resolved_surface_lineage() -> None:
 
 
 
-def _supportive_execution_input_with_position_context(*, current_position_size_pct: float, desk_window: str = "trend_window", event_window_state: str = "clear_window", carry_state_eligible: bool = False, hard_flat_required: bool = False):
+def _supportive_execution_input_with_position_context(*, current_position_size_pct: float, desk_window: str = "trend_window", event_window_state: str = "clear_window", carry_state_eligible: bool = False, hard_flat_required: bool = False) -> ExecutionExpressionInput:
     fixture = supportive_runtime_fixture()
     runtime_result = DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input,

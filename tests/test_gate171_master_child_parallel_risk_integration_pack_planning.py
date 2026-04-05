@@ -8,7 +8,6 @@ from pathlib import Path
 
 from ._planning_later_state_helpers import (
     PHASE3_GATE_MAP_MARKERS,
-    PHASE3_PLAN_MARKERS,
     contains_any,
 )
 

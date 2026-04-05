@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from logging.config import fileConfig
 
-from alembic import context
 from sqlalchemy import engine_from_config, pool
 
+from alembic import context
 from nvda_desk.config import get_settings
-from nvda_desk.db.base import Base
 from nvda_desk.db import models  # noqa: F401
+from nvda_desk.db.base import Base
 
 config = context.config
 

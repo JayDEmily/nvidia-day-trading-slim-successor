@@ -8,13 +8,14 @@ from pathlib import Path
 from hypothesis import given, settings
 from hypothesis import strategies as st
 from hypothesis.stateful import RuleBasedStateMachine, initialize, rule
-
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
     GammaState,
     MarketRegimeContextOutput,
     OptionsFlowContextOutput,
     PermissionState,
+    PlaybookEligibilityInput,
+    PostureRiskInput,
     PostureRiskOutput,
     TemporalContextOutput,
 )
@@ -32,7 +33,6 @@ from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.real_data_loader import RealDataLoaderService
 from nvda_desk.services.state_conditioned_modifier import StateConditionedModifierService
 from nvda_desk.services.temporal_context import TemporalContextService
-from nvda_desk.schemas.cognition import PlaybookEligibilityInput, PostureRiskInput
 from nvda_desk.testing.cognition_fixtures import CognitionRuntimeFixture, supportive_runtime_fixture
 
 RAW_BUNDLE_PATH = Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json")

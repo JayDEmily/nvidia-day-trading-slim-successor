@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from nvda_desk.schemas.dmp_v2 import DmpV2Packet
 from nvda_desk.schemas.financial_calendar import (
     FinancialCalendarBundleMetadata,
     FinancialCalendarImportedBundle,
@@ -13,7 +14,6 @@ from nvda_desk.schemas.financial_calendar import (
     FinancialCalendarReferenceArtifactKind,
     FinancialCalendarRepoManifest,
 )
-from nvda_desk.schemas.dmp_v2 import DmpV2Packet
 from nvda_desk.services.financial_calendar_reference import (
     build_financial_calendar_reference_packet,
 )

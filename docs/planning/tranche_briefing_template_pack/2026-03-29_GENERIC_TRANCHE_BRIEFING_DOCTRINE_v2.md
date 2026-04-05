@@ -66,6 +66,7 @@ It should name only:
 - the active gate master MD;
 - the active leaves JSON;
 - the active execution log;
+- the active bounded-scope note;
 - the next active gate;
 - predecessor evidence only if still needed.
 

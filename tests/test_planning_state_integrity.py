@@ -17,13 +17,27 @@ def iter_real_leaves_ledgers() -> list[Path]:
     ]
 
 
-def normalise_leaves(payload: dict) -> tuple[set[str], dict[str, str | None]]:
+def normalise_leaves(payload: dict[str, object]) -> tuple[set[str], dict[str, str | None]]:
     leaves = payload.get("leaves", {})
     if isinstance(leaves, dict):
-        return set(leaves.keys()), {leaf_id: leaf.get("status") for leaf_id, leaf in leaves.items()}
+        leaf_statuses: dict[str, str | None] = {}
+        for leaf_id, leaf in leaves.items():
+            if isinstance(leaf_id, str) and isinstance(leaf, dict):
+                status = leaf.get("status")
+                leaf_statuses[leaf_id] = status if isinstance(status, str) else None
+        return set(leaf_statuses), leaf_statuses
     if isinstance(leaves, list):
-        ids = {leaf.get("id") for leaf in leaves if isinstance(leaf, dict) and leaf.get("id")}
-        statuses = {leaf.get("id"): leaf.get("status") for leaf in leaves if isinstance(leaf, dict) and leaf.get("id")}
+        ids: set[str] = set()
+        statuses: dict[str, str | None] = {}
+        for leaf in leaves:
+            if not isinstance(leaf, dict):
+                continue
+            leaf_id = leaf.get("id")
+            if not isinstance(leaf_id, str) or not leaf_id:
+                continue
+            status = leaf.get("status")
+            ids.add(leaf_id)
+            statuses[leaf_id] = status if isinstance(status, str) else None
         return ids, statuses
     return set(), {}
 

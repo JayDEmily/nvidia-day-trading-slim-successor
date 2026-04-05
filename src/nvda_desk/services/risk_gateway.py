@@ -20,10 +20,10 @@ from nvda_desk.schemas.cognition import (
     OptionsFlowContextInput,
     PermissionState,
     PostureRiskOutput,
-    TerminalRiskApplicationSurface,
-    TerminalRiskOverlapClass,
     TemporalContextInput,
     TemporalContextOutput,
+    TerminalRiskApplicationSurface,
+    TerminalRiskOverlapClass,
 )
 from nvda_desk.schemas.risk import (
     RiskAction,
@@ -431,6 +431,7 @@ class RiskGatewayService:
         if self._session_factory is None:
             raise RuntimeError("RiskGatewayService.list_decisions requires a session factory")
         from sqlalchemy import desc, select
+
         from nvda_desk.db.models import RiskDecisionLog
 
         with self._session_factory() as session:

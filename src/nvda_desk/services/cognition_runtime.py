@@ -19,7 +19,6 @@ from typing import cast
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.calibration import ParallelRiskLaneEvaluationPreparationPacket
-from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
 from nvda_desk.schemas.cognition import (
     BindingStageName,
     CapitalDeploymentAuthorityDecision,
@@ -55,7 +54,7 @@ from nvda_desk.schemas.dmp_v2 import (
     DmpV2Packet,
     build_dmp_v2_packet_from_payload,
 )
-from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
+from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
 from nvda_desk.schemas.imported_modules.tranche_a import (
     ArchetypeMatcherContractOutput,
     ContractComputationMode,
@@ -68,13 +67,14 @@ from nvda_desk.schemas.imported_modules.tranche_a import (
     TrancheASelectorContext,
     TrancheAUpstreamContext,
 )
+from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.schemas.review import (
     ImportedModuleDependencySurface,
     ImportedModuleMaturityState,
     ImportedModuleReviewCitation,
 )
-from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.services.capital_deployment_authority import CapitalDeploymentAuthorityService
+from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.services.imported_modules.tranche_a import (
     TrancheAContractEmission,
     TrancheASelectorContractService,
@@ -572,7 +572,7 @@ class DeskCognitionRuntime:
         hard_flat_required = bool(
             posture.time_stop_state == "time_stop_near"
             or posture.permission_state.value == "derisk"
-            or temporal.minutes_to_close <= 5
+            or (temporal.minutes_to_close is not None and temporal.minutes_to_close <= 5)
         )
         return PositionContextInput(
             setup_variant_id="opening_drive_continuation",

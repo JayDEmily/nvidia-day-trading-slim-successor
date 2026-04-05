@@ -4,14 +4,20 @@ from pathlib import Path
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import ExecutionExpressionInput
-from nvda_desk.schemas.state_policy import ModifierPriorityBand, ModifierRuntimePacket, MutableRuntimeSurface, ResolvedRuntimeSurfaceValue
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.schemas.state_policy import (
+    ModifierPriorityBand,
+    ModifierRuntimePacket,
+    MutableRuntimeSurface,
+    PolicyStageOwner,
+    ResolvedRuntimeSurfaceValue,
+)
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
-def _supportive_result():
+def _supportive_result() -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input,
@@ -22,7 +28,7 @@ def _supportive_result():
     )
 
 
-def _canonical_raw_result():
+def _canonical_raw_result() -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     harness = CanonicalRawRuntimeHarnessService().build_from_path(
         raw_bundle_path=Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json"),
@@ -80,7 +86,7 @@ def test_gate120_max_risk_per_trade_caps_per_slice_risk() -> None:
         resolved_surfaces=[
             ResolvedRuntimeSurfaceValue(
                 target_surface=MutableRuntimeSurface.MAX_RISK_PER_TRADE,
-                owner_stage="execution",
+                owner_stage=PolicyStageOwner.EXECUTION,
                 authority_version="2026-03-31.tranche1",
                 baseline_reference="coefficient_authority:2026-03-31.tranche1:max_risk_per_trade",
                 baseline_numeric_value=0.35,

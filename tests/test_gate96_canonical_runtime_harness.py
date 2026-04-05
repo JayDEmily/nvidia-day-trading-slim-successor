@@ -5,15 +5,19 @@ from __future__ import annotations
 from pathlib import Path
 
 from nvda_desk.config import Settings
+from nvda_desk.schemas.dataset import PreparedRuntimeFixturePack
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_runtime_harness import (
+    CanonicalRuntimeHarnessInput,
+    CanonicalRuntimeHarnessService,
+)
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 FIXTURE_PACK_PATH = Path("fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json")
 
 
-def _canonical_harness():
+def _canonical_harness() -> tuple[PreparedRuntimeFixturePack, CanonicalRuntimeHarnessInput]:
     pack = RealDataLoaderService().load_fixture_pack(FIXTURE_PACK_PATH)
     supportive = supportive_runtime_fixture()
     harness = CanonicalRuntimeHarnessService().build(

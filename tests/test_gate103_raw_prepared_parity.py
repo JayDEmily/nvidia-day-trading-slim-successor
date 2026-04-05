@@ -7,8 +7,14 @@ from pathlib import Path
 from nvda_desk.config import Settings
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessInput, CanonicalRawRuntimeHarnessService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessInput, CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_raw_runtime_harness import (
+    CanonicalRawRuntimeHarnessInput,
+    CanonicalRawRuntimeHarnessService,
+)
+from nvda_desk.testing.canonical_runtime_harness import (
+    CanonicalRuntimeHarnessInput,
+    CanonicalRuntimeHarnessService,
+)
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 FIXTURE_PACK_PATH = Path("fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json")

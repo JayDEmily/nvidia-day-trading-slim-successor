@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1
 
-Status: Gates 192-194 complete on `work/gate-194-vocabulary-hygiene-reconciliation-20260404`; Gate 195 active on work branch
+Status: closed execution log for the Phase 3 main-target repair programme through Gate 199 on `main`
 
 ## Purpose
 
@@ -9,7 +9,7 @@ Gate 192 is a planning/bootstrap gate only. No runtime repair leaves have execut
 
 ## Active gate
 
-- `Gate 195`
+- `none`
 
 ## Gate roster
 
@@ -337,3 +337,72 @@ Reduce the bounded strict-helper typing debt by reading the helper/test scaffold
 
 Gate 198 closes only the bounded helper typing family.
 The next active gate is Gate 199.
+
+
+## Gate 199 receipt
+
+Gate 199 complete on `work/gate-199-phase3-closeout-20260405`; Phase 3 closed through Gate 199 and prepared for merge back to `main`.
+
+### Intent
+
+Close the remaining static-quality tranche from the raw static surfaces themselves, treat the Alembic `path_separator` warning honestly, run widened proof from the repo-local source tree, and move the router/control surfaces to the truthful closed state together.
+
+### Outputs changed
+
+- `tests/conftest.py`
+- `alembic.ini`
+- `alembic/env.py`
+- `alembic/versions/20260318_0001_initial.py`
+- `alembic/versions/20260319_0002_option_snapshot.py`
+- `alembic/versions/20260319_0003_risk_decision_log.py`
+- `alembic/versions/20260320_0004_experiment_run.py`
+- `alembic/versions/20260320_0005_second_wave_records.py`
+- `alembic/versions/20260401_0006_execution_ledger_position_instance_parity.py`
+- `alembic/versions/20260403_0007_option_snapshot_raw_row_contract.py`
+- `scripts/phase0_signal_workbook_audit.py`
+- `src/nvda_desk/config_models.py`
+- `src/nvda_desk/schemas/calibration.py`
+- `src/nvda_desk/schemas/cognition.py`
+- `src/nvda_desk/schemas/dataset.py`
+- `src/nvda_desk/schemas/review.py`
+- `src/nvda_desk/schemas/trace_review.py`
+- `src/nvda_desk/services/cognition_runtime.py`
+- `src/nvda_desk/services/execution_expression.py`
+- `src/nvda_desk/services/execution_records.py`
+- `src/nvda_desk/services/financial_calendar_import.py`
+- `src/nvda_desk/services/financial_calendar_projection.py`
+- `src/nvda_desk/services/market_state.py`
+- `src/nvda_desk/services/real_data_loader.py`
+- `src/nvda_desk/services/replay_compare.py`
+- `src/nvda_desk/services/risk_gateway.py`
+- `src/nvda_desk/services/temporal_context.py`
+- `src/nvda_desk/testing/bounded_trace_review.py`
+- `hypothesis/__init__.pyi`
+- `hypothesis/stateful.pyi`
+- `hypothesis/strategies.pyi`
+- repo-root `PLANS.md`
+- `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-04_GATE199_PHASE3_MAIN_TARGET_REPAIR_CLOSEOUT.md`
+
+### Validation commands
+
+- `PYTHONPATH=src python -m pytest -q tests`
+- `python -m ruff check .`
+- `MYPYPATH=src python -m mypy src tests`
+
+### Validation result
+
+- widened repo proof passed: `613 passed in 25.89s`
+- full Ruff proof passed: `All checks passed!`
+- full mypy proof passed: `Success: no issues found in 329 source files`
+- Alembic `path_separator` warning cleared by setting `path_separator = os` in `alembic.ini`
+
+### Closeout state
+
+- router/control surfaces now agree that Phase 3 is closed through Gate 199
+- the latest closed pack retained as evidence is now the Phase 3 main-target repair programme
+- the capital-deployment authority foundation pack and options-trace integrity repair pack remain closed predecessor evidence

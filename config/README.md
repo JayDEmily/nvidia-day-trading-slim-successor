@@ -24,4 +24,5 @@ Use the example files as compatibility/reference inputs when promoting more of t
 
 ## Governed signal workbook lineage
 
+The canonical vocabulary slug for this lineage surface is `signal_coefficient_reference_workbook`.
 The canonical workbook reference ledger is `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`. It is discoverable law and provenance only, not direct runtime authority. When typed config or contracts are promoted from workbook material, they must preserve workbook lineage through `workbook_ref` or successor lineage fields. See `docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md`.

@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.schemas.cognition import (
+    MarketRegimeContextOutput,
+    OptionsFlowContextOutput,
     PlaybookEligibilityInput,
     PostureRiskInput,
+    PostureRiskOutput,
     ReviewExplanationInput,
     TemporalContextOutput,
 )
@@ -13,7 +16,7 @@ from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
 from nvda_desk.services.review_explanation import ReviewExplanationService
 from nvda_desk.services.state_conditioned_modifier import StateConditionedModifierService
-from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
+from nvda_desk.testing.cognition_fixtures import CognitionRuntimeFixture, supportive_runtime_fixture
 from tests.test_gate48_carry_handoff import _execution_output
 
 
@@ -56,7 +59,9 @@ def _temporal_output(
 
 
 
-def _upstream_outputs(temporal: TemporalContextOutput):
+def _upstream_outputs(
+    temporal: TemporalContextOutput,
+) -> tuple[CognitionRuntimeFixture, MarketRegimeContextOutput, OptionsFlowContextOutput, PostureRiskOutput]:
     fixture = supportive_runtime_fixture()
     regime = MarketRegimeContextService().evaluate(fixture.regime_input)
     options = OptionsFlowContextService().evaluate(fixture.options_flow_input)

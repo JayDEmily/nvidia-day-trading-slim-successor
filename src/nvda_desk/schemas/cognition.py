@@ -14,10 +14,10 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field
 
 from nvda_desk.domain.session_clock import SessionClockPhase
-from nvda_desk.schemas.options_units import VolFraction
 from nvda_desk.schemas.events import LiveEventSnapshot
 from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
 from nvda_desk.schemas.market import PrecursorRuntimePacket
+from nvda_desk.schemas.options_units import VolFraction
 from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.schemas.review import (
     CandidateGovernanceSurface,

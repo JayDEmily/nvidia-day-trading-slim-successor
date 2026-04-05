@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 from nvda_desk.config import Settings
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
-def _run_runtime(*, inventory_update: dict[str, float] | None = None):
+def _run_runtime(*, inventory_update: dict[str, float] | None = None) -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     inventory_state = fixture.inventory_state
     if inventory_update:
@@ -36,10 +38,14 @@ def test_gate146_admissibility_surface_stays_on_stage5_while_execution_owns_lead
     assert result.execution.candidate_ownership.adjudicated_playbook_ids == ["continuation_ladder"]
     assert result.execution.candidate_ownership.lead_playbook_id == "continuation_ladder"
     assert result.execution.candidate_ownership.contradiction_resolution == "single_candidate_clear"
-    assert result.review.review_packet["eligibility"]["admissibility_surface"]["admissible_playbook_ids"] == [
+    review_eligibility = cast(dict[str, Any], result.review.review_packet["eligibility"])
+    admissibility_surface = cast(dict[str, Any], review_eligibility["admissibility_surface"])
+    review_execution = cast(dict[str, Any], result.review.review_packet["execution"])
+    candidate_ownership = cast(dict[str, Any], review_execution["candidate_ownership"])
+    assert admissibility_surface["admissible_playbook_ids"] == [
         "continuation_ladder"
     ]
-    assert result.review.review_packet["execution"]["candidate_ownership"]["lead_playbook_id"] == "continuation_ladder"
+    assert candidate_ownership["lead_playbook_id"] == "continuation_ladder"
 
 
 

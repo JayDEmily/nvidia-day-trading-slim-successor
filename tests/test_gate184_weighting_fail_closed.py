@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from nvda_desk.schemas.dataset import OptionQuote
 from nvda_desk.services.real_data_loader import RealDataLoaderService
 
 
 def _quote(*, strike: float, side: str = "call", oi: float | None = 0.0, volume: float | None = 0.0) -> OptionQuote:
-    ts = datetime(2026, 3, 23, 14, 0, tzinfo=timezone.utc)
+    ts = datetime(2026, 3, 23, 14, 0, tzinfo=UTC)
     return OptionQuote(
         ts=ts,
         expiry=ts,

@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 
 from sqlalchemy.orm import Session
 
+from nvda_desk.config import Settings
 from nvda_desk.db import create_engine_from_url, create_schema, seed_dev_data
 from nvda_desk.db.models import OptionSnapshot
 from nvda_desk.db.session import create_session_factory
-from nvda_desk.services.market_state import MarketStateService
 from nvda_desk.domain.session_clock import SessionClockClassifier
-from nvda_desk.config import Settings
 from nvda_desk.schemas.options import OptionType
+from nvda_desk.services.market_state import MarketStateService
 
 
 def test_gate183_option_snapshot_model_carries_runtime_raw_row_fields() -> None:
@@ -34,7 +34,7 @@ def test_gate183_market_surface_payload_exposes_raw_row_fields_even_when_null(tm
     response = service.get_option_surface(
         symbol="NVDA",
         as_of_date=date(2025, 4, 11),
-        requested_at=datetime(2025, 4, 11, 15, 0, tzinfo=timezone.utc),
+        requested_at=datetime(2025, 4, 11, 15, 0, tzinfo=UTC),
         expiry=date(2025, 4, 11),
         option_type=OptionType.PUT,
     )

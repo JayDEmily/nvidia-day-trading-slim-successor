@@ -106,8 +106,11 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **Gate 131 in the post-flight repo consistency pack**."
             in gate_map
         ) or (
-            "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**."
-            in gate_map
+            "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        ) or (
+            "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        ) or (
+            "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
         ) or (
             "Current active gate: **Gate 133 in the bounded trace scenario review pack**."
             in gate_map
@@ -115,8 +118,11 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **Gate 134 in the bounded trace scenario review pack**."
             in gate_map
         ) or (
-            "Current active gate: **none — bounded trace scenario review pack closed through Gate 134 on `main`**." or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**."
-            in gate_map
+            "Current active gate: **none — bounded trace scenario review pack closed through Gate 134 on `main`**." in gate_map
+        ) or (
+            "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        ) or (
+            "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
         )
     )
 

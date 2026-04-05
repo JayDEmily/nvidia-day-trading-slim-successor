@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 from nvda_desk.config import Settings
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
-def _run_runtime(*, inventory_update: dict[str, float] | None = None):
+def _run_runtime(*, inventory_update: dict[str, float] | None = None) -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     inventory_state = fixture.inventory_state
     if inventory_update:
@@ -35,8 +37,12 @@ def test_gate144_posture_split_preserves_base_surface_and_annotations() -> None:
         "contract:conviction_tier_allocator:tier_2",
     ]
     assert "modifier_runtime_packet_authority" in result.posture.downstream_annotations
-    assert result.review.review_packet["posture"]["local_envelope"]["base_permission_state"] == "allow"
-    assert result.review.review_packet["stage_local_handoff"]["cited_posture_pre_modifier"]["downstream_annotations"] == [
+    review_posture = cast(dict[str, Any], result.review.review_packet["posture"])
+    local_envelope = cast(dict[str, Any], review_posture["local_envelope"])
+    review_handoff = cast(dict[str, Any], result.review.review_packet["stage_local_handoff"])
+    cited_posture = cast(dict[str, Any], review_handoff["cited_posture_pre_modifier"])
+    assert local_envelope["base_permission_state"] == "allow"
+    assert cited_posture["downstream_annotations"] == [
         "contract:signal_conflict_detector:aligned",
         "contract:model_confidence_scorer:high",
         "contract:conviction_tier_allocator:tier_2",

@@ -1,6 +1,6 @@
 # 2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1
 
-Status: active document-touch checklist for the Phase 3 main-target repair programme; Gates 192-198 complete on `work/gate-198-typed-helper-pressure-reduction-20260404`, Gate 199 active
+Status: closed document-touch checklist for the Phase 3 main-target repair programme through Gate 199 on `main`
 
 ## Frozen/process surfaces that must move if this pack changes them
 
@@ -44,14 +44,7 @@ Status: active document-touch checklist for the Phase 3 main-target repair progr
 
 ## Current planned sequence
 
-- Gate 192 — Phase 3 repair pack bootstrap and evidence bridge
-- Gate 193 — Vocabulary generator and artifact truth reconciliation
-- Gate 194 — Repo-wide vocabulary hygiene leakage reconciliation
-- Gate 195 — Control-surface router and gate-map reconciliation
-- Gate 196 — Runtime semantic drift reconciliation
-- Gate 197 — Financial-calendar typing seam reconciliation
-- Gate 198 — Typed helper pressure reduction
-- Gate 199 — Static hygiene, Alembic warning cleanup, and Phase 3 closeout
+Phase 3 main-target repair programme closed through Gate 199 on `main`.
 
 
 ## Exact inspected surfaces that informed leaf tightening

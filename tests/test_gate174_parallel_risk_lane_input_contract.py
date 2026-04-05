@@ -3,22 +3,22 @@
 from __future__ import annotations
 
 from pathlib import Path
-import sys
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from nvda_desk.config import Settings
 from nvda_desk.schemas.parallel_risk import ParallelRiskReadableStage, ParallelRiskStageReadStatus
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_runtime_harness import (
+    CanonicalRuntimeHarnessInput,
+    CanonicalRuntimeHarnessService,
+)
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 FIXTURE_PACK_PATH = Path("fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json")
 
-
-def _runtime_result():
+def _runtime_result() -> tuple[CanonicalRuntimeHarnessInput, DeskCognitionRuntimeResult]:
     pack = RealDataLoaderService().load_fixture_pack(FIXTURE_PACK_PATH)
     supportive = supportive_runtime_fixture()
     harness = CanonicalRuntimeHarnessService().build(
@@ -37,7 +37,6 @@ def _runtime_result():
     )
     return harness, result
 
-
 def test_gate174_runtime_emits_co_resident_parallel_lane_packet() -> None:
     _, result = _runtime_result()
     packet = result.parallel_risk_lane
@@ -50,7 +49,6 @@ def test_gate174_runtime_emits_co_resident_parallel_lane_packet() -> None:
     assert "not_step_1_1" in packet.notes
     assert "not_step_8" in packet.notes
     assert "not_eighth_stage" in packet.notes
-
 
 def test_gate174_marks_temporal_as_the_first_lawful_stage_output_and_preserves_review_as_downstream() -> None:
     _, result = _runtime_result()

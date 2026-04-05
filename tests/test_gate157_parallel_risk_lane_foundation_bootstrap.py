@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import cast
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
@@ -177,16 +178,18 @@ def test_gate157_future_leaves_are_materially_granular_not_templated() -> None:
     for gate, expected in expected_counts.items():
         gate_leaves = grouped[gate]
         assert len(gate_leaves) == expected
-        action_sets = {tuple(leaf["ordered_actions"]) for leaf in gate_leaves}
+        action_sets: set[tuple[object, ...]] = {
+            tuple(cast(list[object], leaf["ordered_actions"])) for leaf in gate_leaves
+        }
         assert len(action_sets) == expected
         title_set = {leaf["title"] for leaf in gate_leaves}
         assert len(title_set) == expected
         for leaf in gate_leaves:
-            assert len(leaf["ordered_actions"]) >= 4
-            assert len(leaf["forbidden_actions"]) >= 3
+            assert len(cast(list[object], leaf["ordered_actions"])) >= 4
+            assert len(cast(list[object], leaf["forbidden_actions"])) >= 3
             assert leaf["validation_commands"]
             assert leaf["expected_evidence"]
-            assert len(leaf["definition_of_done"]) >= 2
+            assert len(cast(list[object], leaf["definition_of_done"])) >= 2
             assert leaf["packaging_requirement"]
 
 

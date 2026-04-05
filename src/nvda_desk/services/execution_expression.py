@@ -18,8 +18,8 @@ from nvda_desk.schemas.cognition import (
     PositionContextInput,
     TradableExpressionFamily,
 )
-from nvda_desk.schemas.state_policy import MutableRuntimeSurface
 from nvda_desk.schemas.playbook_registry import ExecutionTemplateSpec
+from nvda_desk.schemas.state_policy import ModifierRuntimePacket, MutableRuntimeSurface
 from nvda_desk.services.playbook_registry import PlaybookRegistryService
 
 
@@ -467,9 +467,7 @@ class ExecutionExpressionService:
             return True
         if self._SPECIMEN_SETUP_VARIANT_ID in payload.eligibility.active_setup_variant_ids:
             return True
-        if self._SPECIMEN_SETUP_VARIANT_ID in payload.eligibility.watch_setup_variant_ids:
-            return True
-        return False
+        return self._SPECIMEN_SETUP_VARIANT_ID in payload.eligibility.watch_setup_variant_ids
 
     def _inventory_action_to_lifecycle_action(self, inventory_action: str) -> LifecycleAction:
         mapping = {
@@ -950,7 +948,7 @@ class ExecutionExpressionService:
             notes,
         )
 
-    def _operative_surfaces(self, packet) -> dict[str, float | bool]:
+    def _operative_surfaces(self, packet: ModifierRuntimePacket | None) -> dict[str, float | bool]:
         if packet is None:
             return {
                 "entry_gate_score_floor": float(self._SURFACE_DEFAULTS[MutableRuntimeSurface.ENTRY_GATE_SCORE_FLOOR]),

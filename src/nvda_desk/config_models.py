@@ -264,7 +264,7 @@ class MutableNumericSurfaceAuthoritySpec(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
-    def validate_semantics(self) -> "MutableNumericSurfaceAuthoritySpec":
+    def validate_semantics(self) -> MutableNumericSurfaceAuthoritySpec:
         if self.units is CoefficientAuthorityUnit.BOOLEAN_FLAG:
             raise ValueError("mutable numeric surfaces cannot use boolean units")
         if self.bound_class not in {
@@ -318,7 +318,7 @@ class TemporalThresholdAuthoritySpec(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
-    def validate_semantics(self) -> "TemporalThresholdAuthoritySpec":
+    def validate_semantics(self) -> TemporalThresholdAuthoritySpec:
         if self.units is CoefficientAuthorityUnit.BOOLEAN_FLAG:
             raise ValueError("temporal thresholds cannot use boolean units")
         _validate_numeric_range(
@@ -348,7 +348,7 @@ class TimingParameterAuthoritySpec(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
-    def validate_semantics(self) -> "TimingParameterAuthoritySpec":
+    def validate_semantics(self) -> TimingParameterAuthoritySpec:
         _validate_numeric_range(
             minimum=float(self.minimum),
             baseline=float(self.baseline),
@@ -370,7 +370,7 @@ class CoefficientAuthorityDocument(BaseModel):
     timing_parameters: list[TimingParameterAuthoritySpec] = Field(default_factory=list)
 
     @model_validator(mode="after")
-    def validate_document(self) -> "CoefficientAuthorityDocument":
+    def validate_document(self) -> CoefficientAuthorityDocument:
         numeric_ids = [item.surface_id for item in self.mutable_numeric_surfaces]
         boolean_ids = [item.surface_id for item in self.mutable_boolean_surfaces]
         if len(set(numeric_ids)) != len(numeric_ids):
@@ -386,21 +386,25 @@ class CoefficientAuthorityDocument(BaseModel):
         timing_by_id = {item.parameter_id: item for item in self.timing_parameters}
         power_hour = timing_by_id.get(TimingParameterId.POWER_HOUR_WINDOW_MIN)
         unwind = timing_by_id.get(TimingParameterId.UNWIND_WINDOW_MIN)
-        if power_hour is not None and unwind is not None:
-            if not (
-                float(power_hour.minimum) > float(unwind.minimum)
-                and float(power_hour.baseline) > float(unwind.baseline)
-                and float(power_hour.maximum) > float(unwind.maximum)
-            ):
-                raise ValueError(
-                    "power_hour_window_min must stay above unwind_window_min across the full envelope"
-                )
+        if power_hour is not None and unwind is not None and not (
+            float(power_hour.minimum) > float(unwind.minimum)
+            and float(power_hour.baseline) > float(unwind.baseline)
+            and float(power_hour.maximum) > float(unwind.maximum)
+        ):
+            raise ValueError(
+                "power_hour_window_min must stay above unwind_window_min across the full envelope"
+            )
         numeric_by_surface = {item.surface_id: item for item in self.mutable_numeric_surfaces}
         caution = numeric_by_surface.get(MutableRuntimeSurface.RISK_VIX_CAUTION_THRESHOLD)
         hot = numeric_by_surface.get(MutableRuntimeSurface.RISK_VIX_HOT_THRESHOLD)
-        if caution is not None and hot is not None:
-            if not (caution.baseline < hot.baseline and caution.minimum < hot.minimum and caution.maximum < hot.maximum):
-                raise ValueError("risk_vix_hot_threshold must stay above risk_vix_caution_threshold across the full envelope")
+        if caution is not None and hot is not None and not (
+            caution.baseline < hot.baseline
+            and caution.minimum < hot.minimum
+            and caution.maximum < hot.maximum
+        ):
+            raise ValueError(
+                "risk_vix_hot_threshold must stay above risk_vix_caution_threshold across the full envelope"
+            )
         return self
 
     def mutable_numeric_surface_index(self) -> dict[MutableRuntimeSurface, MutableNumericSurfaceAuthoritySpec]:
@@ -423,14 +427,14 @@ class CoefficientAuthorityDocument(BaseModel):
         return {item.parameter_id: item for item in self.timing_parameters}
 
     @classmethod
-    def from_yaml_text(cls, text: str) -> "CoefficientAuthorityDocument":
+    def from_yaml_text(cls, text: str) -> CoefficientAuthorityDocument:
         loaded = yaml.safe_load(text)
         if not isinstance(loaded, dict):
             raise TypeError("expected mapping at coefficient authority root")
         return cls.model_validate(loaded)
 
     @classmethod
-    def from_yaml_path(cls, path: Path) -> "CoefficientAuthorityDocument":
+    def from_yaml_path(cls, path: Path) -> CoefficientAuthorityDocument:
         return cls.from_yaml_text(path.read_text(encoding="utf-8"))
 
     def to_yaml_text(self) -> str:

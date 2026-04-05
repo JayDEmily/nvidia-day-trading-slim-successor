@@ -12,8 +12,6 @@ from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
-from nvda_desk.schemas.state_policy import ResolvedRuntimeSurfaceValue
-
 from nvda_desk.schemas.events import MarketEventPayload
 from nvda_desk.schemas.execution_records import (
     CapitalStateSnapshotPayload,
@@ -48,6 +46,7 @@ from nvda_desk.schemas.state_policy import (
     NonActionClass,
     OverrideDisposition,
     PolicyEffectType,
+    ResolvedRuntimeSurfaceValue,
     ReviewChangeBudget,
     ReviewEvidenceBlock,
     ReviewOutcome,

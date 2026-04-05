@@ -12,6 +12,7 @@ from sqlalchemy import text
 
 from nvda_desk.api.app import app
 from nvda_desk.api.deps import get_config_surface_service
+from nvda_desk.config_models import RuntimeSettingsDocument
 from nvda_desk.db.session import create_session_factory
 from nvda_desk.schemas.dataset import RealDataBundle
 from nvda_desk.services.config_surface import ConfigSurfaceLookupError, ConfigSurfaceService
@@ -21,15 +22,15 @@ GATE105_DOC = Path("docs/planning/2026-03-30_GATE105_INGRESS_DB_API.md")
 
 
 class _ConfigSurfaceRuntimeStub:
-    def __init__(self, payload):
+    def __init__(self, payload: RuntimeSettingsDocument) -> None:
         self._payload = payload
 
-    def runtime_settings(self):
+    def runtime_settings(self) -> RuntimeSettingsDocument:
         return self._payload
 
 
 class _ConfigSurfaceMissingGroupStub:
-    def get_coefficient_group(self, group_key: str):
+    def get_coefficient_group(self, group_key: str) -> object:
         raise ConfigSurfaceLookupError(f"missing group: {group_key}")
 
 
@@ -67,10 +68,9 @@ def test_gate105_sqlalchemy_session_factory_commits_and_rolls_back_cleanly(tmp_p
         count = session.execute(text("select count(*) from receipts")).scalar_one()
         assert count == 1
 
-    with pytest.raises(RuntimeError):
-        with session_factory.begin() as session:
-            session.execute(text("insert into receipts (note) values ('rolled_back')"))
-            raise RuntimeError("force rollback")
+    with pytest.raises(RuntimeError), session_factory.begin() as session:
+        session.execute(text("insert into receipts (note) values ('rolled_back')"))
+        raise RuntimeError("force rollback")
 
     with session_factory() as session:
         notes = session.execute(text("select note from receipts order by id")).scalars().all()

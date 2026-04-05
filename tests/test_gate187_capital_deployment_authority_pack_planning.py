@@ -40,7 +40,7 @@ def test_gate187_pack_surfaces_are_coherent() -> None:
 def test_gate187_future_gate_structure_is_bounded() -> None:
     payload = json.loads(LEAVES.read_text(encoding="utf-8"))
     leaves = payload["leaves"]
-    counts = {}
+    counts: dict[str, int] = {}
     for item in leaves.values():
         counts.setdefault(item["gate"], 0)
         counts[item["gate"]] += 1

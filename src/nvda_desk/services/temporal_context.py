@@ -8,8 +8,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
-from zoneinfo import ZoneInfo
 from typing import TypedDict
+from zoneinfo import ZoneInfo
 
 from nvda_desk.config import Settings
 from nvda_desk.domain.session_clock import SessionClockPhase

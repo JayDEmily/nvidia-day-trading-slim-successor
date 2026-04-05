@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
-from typing import cast
 from pathlib import Path
+from typing import cast
 
 from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
 from nvda_desk.schemas.events import (

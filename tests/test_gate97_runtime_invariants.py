@@ -9,8 +9,12 @@ import pytest
 from nvda_desk.config import Settings
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.real_data_loader import RealDataLoaderService
-from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessInput, CanonicalRawRuntimeHarnessService
-from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessInput, CanonicalRuntimeHarnessService
+from nvda_desk.testing.canonical_raw_runtime_harness import (
+    CanonicalRawRuntimeHarnessService,
+)
+from nvda_desk.testing.canonical_runtime_harness import (
+    CanonicalRuntimeHarnessService,
+)
 from nvda_desk.testing.cognition_fixtures import (
     stressed_runtime_fixture,
     supportive_runtime_fixture,

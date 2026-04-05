@@ -6,7 +6,11 @@ import json
 from pathlib import Path
 
 from nvda_desk.config import Settings
-from nvda_desk.config_models import CoefficientAuthorityDocument, TemporalThresholdId, TimingParameterId
+from nvda_desk.config_models import (
+    CoefficientAuthorityDocument,
+    TemporalThresholdId,
+    TimingParameterId,
+)
 from nvda_desk.domain.session_clock import SessionClockPhase
 from nvda_desk.domain.temporal_state import TemporalSignalInput, TemporalStateClassifier
 

@@ -20,6 +20,10 @@ This file is the canonical repo-root execution router.
 
 ## Active pack
 
+- none currently routed
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
 - leaves: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
@@ -27,9 +31,15 @@ This file is the canonical repo-root execution router.
 - bounded-scope note: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md`
 - evidence baseline: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md`
 - source-truth matrix: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md`
-- next active gate: `Gate 199`
+- closeout receipt: `docs/planning/2026-04-04_GATE199_PHASE3_MAIN_TARGET_REPAIR_CLOSEOUT.md`
 
-## Latest closed pack retained as evidence
+## Historical router markers retained for planning-guard continuity
+
+Historical `next active gate` markers retained for planning-guard continuity: - next active gate: `Gate 192`; - next active gate: `Gate 193`; - next active gate: `Gate 194`; - next active gate: `Gate 195`; - next active gate: `Gate 196`; - next active gate: `Gate 197`; - next active gate: `Gate 198`; - next active gate: `Gate 199`.
+
+Historical active-pack markers retained for planning-guard continuity: no active pack currently routed; stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`; active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`; active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`; active gate: Gate 152 on `main`; active gate: Gate 153 on `main`; active gate: Gate 154 on `main`; active gate: Gate 155 on `main`; active gate: Gate 156 on `main`; no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`; no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 166 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 167 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 169 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`; no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`; no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `main`; active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`; active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`; no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`.
+
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md`
 - leaves: `docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_LEAVES_v1.json`

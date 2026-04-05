@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from datetime import datetime
 import json
+from datetime import datetime
 from pathlib import Path
+from typing import Any, cast
 
 from nvda_desk.config import Settings
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 from tests.test_gate78_modifier_runtime_integration import _tightened_precursor_packet
 
@@ -18,7 +19,7 @@ DOMAIN_MODEL = REPO_ROOT / "docs/03_DOMAIN_MODEL.md"
 VOCAB_PATH = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 
 
-def _tightened_runtime():
+def _tightened_runtime() -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input.model_copy(
@@ -61,7 +62,9 @@ def test_gate145_execution_bridge_is_explicit_even_when_operatives_are_already_a
     assert result.stage_local_handoff is not None
     assert result.stage_local_handoff.execution_post_modifier_pre_final_risk is not None
     assert result.stage_local_handoff.execution_post_modifier_pre_final_risk.modifier_compatibility_bridge is not None
-    assert result.review.review_packet["execution"]["modifier_compatibility_bridge"]["authority_source"] == "modifier_runtime_packet"
+    review_execution = cast(dict[str, Any], result.review.review_packet["execution"])
+    modifier_bridge = cast(dict[str, Any], review_execution["modifier_compatibility_bridge"])
+    assert modifier_bridge["authority_source"] == "modifier_runtime_packet"
 
 
 def test_gate145_receipt_domain_model_and_vocabulary_are_present() -> None:

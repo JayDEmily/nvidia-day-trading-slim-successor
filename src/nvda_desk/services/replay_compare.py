@@ -333,7 +333,7 @@ class ReplayComparisonService:
 
     def _governed_coefficient_snapshot(
         self,
-        review_output,
+        review_output: ReviewExplanationOutput,
     ) -> GovernedCoefficientSnapshot | None:
         effective_policy = review_output.effective_policy
         if effective_policy is None or not effective_policy.resolved_surfaces:

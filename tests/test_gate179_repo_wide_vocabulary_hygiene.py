@@ -4,12 +4,11 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import sys
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO_ROOT / "src"))
+from typing import Any, cast
 
 from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 VOCAB = REPO_ROOT / "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
 RECEIPT = REPO_ROOT / "docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md"
@@ -80,11 +79,9 @@ ALLOWED_DISALLOWED_PHRASE_FILES = {
     "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md",
 }
 
-
 def _entries_by_slug() -> dict[str, dict[str, object]]:
-    entries = json.loads(VOCAB.read_text(encoding="utf-8"))["entries"]
-    return {entry["canonical_slug"]: entry for entry in entries}
-
+    entries = cast(list[dict[str, object]], json.loads(VOCAB.read_text(encoding="utf-8"))["entries"])
+    return {cast(str, entry["canonical_slug"]): entry for entry in entries}
 
 def _text_occurrence_files(term: str) -> set[str]:
     matches: set[str] = set()
@@ -93,7 +90,7 @@ def _text_occurrence_files(term: str) -> set[str]:
             continue
         if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".xlsx", ".zip", ".pyc"}:
             continue
-        if ".pytest_cache" in path.parts or "__pycache__" in path.parts or ".git" in path.parts:
+        if any(part in {".pytest_cache", "__pycache__", ".git", ".venv", ".hypothesis", ".mypy_cache", ".ruff_cache"} for part in path.parts):
             continue
         try:
             text = path.read_text(encoding="utf-8")
@@ -103,11 +100,10 @@ def _text_occurrence_files(term: str) -> set[str]:
             matches.add(path.relative_to(REPO_ROOT).as_posix())
     return matches
 
-
 def test_gate179_uses_canonical_dictionary_entries_for_lane_and_workbook() -> None:
     entries = _entries_by_slug()
-    lane = entries["independent_parallel_risk_lane"]
-    workbook = entries["signal_coefficient_reference_workbook"]
+    lane = cast(dict[str, Any], entries["independent_parallel_risk_lane"])
+    workbook = cast(dict[str, Any], entries["signal_coefficient_reference_workbook"])
 
     assert lane["canonical_label"] == "Independent Parallel Risk Lane"
     assert "parallel risk pipeline" in lane["allowed_aliases"]
@@ -117,7 +113,6 @@ def test_gate179_uses_canonical_dictionary_entries_for_lane_and_workbook() -> No
     assert "eighth_stage" in lane["disallowed_phrases"]
     assert workbook["maps_to_contract"] == CANONICAL_WORKBOOK
     assert ParallelRiskLanePacket.model_fields["lane_id"].default == "independent_parallel_risk_lane"
-
 
 def test_gate179_active_authority_surfaces_point_to_canonical_workbook() -> None:
     files = [
@@ -132,7 +127,6 @@ def test_gate179_active_authority_surfaces_point_to_canonical_workbook() -> None
     for path in files:
         assert CANONICAL_WORKBOOK in path.read_text(encoding="utf-8")
 
-
 def test_gate179_alias_and_legacy_workbook_occurrences_are_classified_not_ambient() -> None:
     assert _text_occurrence_files("parallel risk pipeline") <= ALLOWED_ALIAS_FILES
     assert _text_occurrence_files("co-resident risk lane") <= ALLOWED_ALIAS_FILES
@@ -140,7 +134,6 @@ def test_gate179_alias_and_legacy_workbook_occurrences_are_classified_not_ambien
     assert _text_occurrence_files("step_1_1") <= ALLOWED_DISALLOWED_PHRASE_FILES
     assert _text_occurrence_files("step_8") <= ALLOWED_DISALLOWED_PHRASE_FILES
     assert _text_occurrence_files("eighth_stage") <= ALLOWED_DISALLOWED_PHRASE_FILES
-
 
 def test_gate179_receipt_records_repo_wide_scan_and_vocabulary_boundaries() -> None:
     receipt = RECEIPT.read_text(encoding="utf-8")

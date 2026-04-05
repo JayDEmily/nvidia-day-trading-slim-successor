@@ -18,8 +18,8 @@ from nvda_desk.schemas.cognition import (
     MarketRegimeContextInput,
     TerminalRiskApplicationSurface,
 )
-from nvda_desk.schemas.risk import RiskDecision
 from nvda_desk.schemas.dataset import PreparedRuntimeSnapshot
+from nvda_desk.schemas.risk import RiskDecision
 
 
 class TraceScenarioPerturbation(BaseModel):

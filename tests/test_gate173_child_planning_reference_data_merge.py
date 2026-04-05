@@ -37,6 +37,7 @@ def test_gate173_merges_workbook_authority_and_vocab_surfaces() -> None:
 
     assert WORKBOOK.exists()
     assert OLD_WORKBOOK.exists()
+    assert "signal_coefficient_reference_workbook" in config
     assert "governed live reference ledger" in normative
     assert "docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md" in normative
     assert "starts with session start" in operating

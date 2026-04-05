@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any, cast
+
 from nvda_desk.config import Settings
 from nvda_desk.schemas.cognition import (
     ExecutionExpressionInput,
@@ -9,13 +11,13 @@ from nvda_desk.schemas.cognition import (
     PlaybookEligibilityOutput,
     ReviewExplanationInput,
 )
-from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+from nvda_desk.services.cognition_runtime import DeskCognitionRuntime, DeskCognitionRuntimeResult
 from nvda_desk.services.execution_expression import ExecutionExpressionService
 from nvda_desk.services.review_explanation import ReviewExplanationService
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 
-def _supportive_runtime_result():
+def _supportive_runtime_result() -> DeskCognitionRuntimeResult:
     fixture = supportive_runtime_fixture()
     return DeskCognitionRuntime(Settings()).run(
         temporal_input=fixture.temporal_input,
@@ -109,7 +111,7 @@ def test_gate119_review_packet_exposes_adjudication_and_contradiction_resolution
         )
     )
 
-    packet = review.review_packet["execution"]
+    packet = cast(dict[str, Any], review.review_packet["execution"])
     assert packet["lead_playbook_id"] == "compression_breakout"
     assert packet["contradiction_resolution"] == "mixed_context_resolved_by_score"
     assert packet["candidate_adjudication"][0]["playbook_id"] == "compression_breakout"

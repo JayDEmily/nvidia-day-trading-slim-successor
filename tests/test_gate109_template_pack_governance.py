@@ -35,6 +35,7 @@ def test_template_pack_includes_process_law_and_state_integrity_templates() -> N
     assert "latest closed pack as evidence input only" in readme
     assert "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md" in howto
     assert "contradiction report" in howto
+    assert "bounded-scope note" in doctrine
     assert "State-integrity law" in (REPO_ROOT / "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md").read_text(encoding="utf-8")
     assert leaves["global_rules"]["completed_and_remaining_leaf_sets_must_be_disjoint"] is True
 

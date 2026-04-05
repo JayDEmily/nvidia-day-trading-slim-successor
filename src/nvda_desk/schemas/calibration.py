@@ -13,8 +13,8 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from nvda_desk.schemas.cognition import ReviewExplanationOutput
-from nvda_desk.schemas.state_policy import ResolvedRuntimeSurfaceValue
 from nvda_desk.schemas.review import ImportedModuleReviewCitation
+from nvda_desk.schemas.state_policy import ResolvedRuntimeSurfaceValue
 
 EXPECTED_REVIEW_STAGES = [
     "temporal",

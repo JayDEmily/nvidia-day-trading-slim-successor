@@ -7,7 +7,6 @@ from pathlib import Path
 
 from ._planning_later_state_helpers import (
     PHASE3_GATE_MAP_MARKERS,
-    PHASE3_PLAN_MARKERS,
     contains_any,
 )
 
@@ -58,7 +57,7 @@ def test_gate181_pack_surfaces_are_coherent() -> None:
 def test_gate181_future_gate_structure_preserves_granularity_without_fixed_cardinality() -> None:
     payload = json.loads(LEAVES.read_text(encoding="utf-8"))
     leaves = payload["leaves"]
-    counts = {}
+    counts: dict[str, int] = {}
     for item in leaves.values():
         counts.setdefault(item["gate"], 0)
         counts[item["gate"]] += 1

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any, cast
+
 from nvda_desk.config import Settings
 from nvda_desk.schemas.state_policy import MutableRuntimeSurface
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
@@ -53,7 +55,7 @@ def test_gate118_review_packet_exposes_operative_surfaces_for_downstream_consume
         risk_budget_remaining_pct=fixture.risk_budget_remaining_pct,
     )
 
-    execution = result.review.review_packet["execution"]
+    execution = cast(dict[str, Any], result.review.review_packet["execution"])
     assert execution["entry_gate_score_floor"] == result.execution.entry_gate_score_floor
     assert execution["zone_score_threshold"] == result.execution.zone_score_threshold
     assert execution["distance_to_vwap_soft_limit_pct"] == result.execution.distance_to_vwap_soft_limit_pct

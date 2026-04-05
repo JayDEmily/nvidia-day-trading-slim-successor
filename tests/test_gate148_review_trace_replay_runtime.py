@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any, cast
 
 from nvda_desk.config import Settings
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
@@ -23,16 +24,23 @@ def test_gate148_review_packet_exposes_preserved_seam_surfaces_additively() -> N
         risk_budget_remaining_pct=fixture.risk_budget_remaining_pct,
     )
 
-    assert result.review.review_packet["admissibility_surface"]["admissible_playbook_ids"] == [
+    review_packet = cast(dict[str, Any], result.review.review_packet)
+    admissibility_surface = cast(dict[str, Any], review_packet["admissibility_surface"])
+    candidate_ownership = cast(dict[str, Any], review_packet["candidate_ownership"])
+    overlay_risk_decision = cast(dict[str, Any], review_packet["overlay_risk_decision"])
+    terminal_risk_application = cast(dict[str, Any], review_packet["terminal_risk_application"])
+    final_risk_join = cast(dict[str, Any], review_packet["final_risk_join"])
+    stage_local_handoff = cast(dict[str, Any], review_packet["stage_local_handoff"])
+    assert admissibility_surface["admissible_playbook_ids"] == [
         "continuation_ladder"
     ]
-    assert result.review.review_packet["candidate_ownership"]["lead_playbook_id"] == "continuation_ladder"
-    assert result.review.review_packet["overlay_risk_decision"]["action"] == "allow"
+    assert candidate_ownership["lead_playbook_id"] == "continuation_ladder"
+    assert overlay_risk_decision["action"] == "allow"
     assert (
-        result.review.review_packet["terminal_risk_application"]["final_decision"]["action"]
-        == result.review.review_packet["final_risk_join"]["action"]
+        cast(dict[str, Any], terminal_risk_application["final_decision"])["action"]
+        == final_risk_join["action"]
     )
-    assert result.review.review_packet["stage_local_handoff"]["terminal_risk_application"]["final_decision"]["action"] == "allow"
+    assert cast(dict[str, Any], cast(dict[str, Any], stage_local_handoff["terminal_risk_application"])["final_decision"])["action"] == "allow"
 
 
 def test_gate148_bounded_trace_report_carries_preserved_seam_models_and_markdown_snapshot() -> None:

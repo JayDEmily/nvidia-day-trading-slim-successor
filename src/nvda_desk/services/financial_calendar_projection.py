@@ -5,6 +5,8 @@ from datetime import UTC, date, datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from nvda_desk.config import Settings
+from nvda_desk.domain.session_clock import SessionClockClassifier
 from nvda_desk.schemas.events import (
     DeskEventClass,
     EventConfidenceTier,
@@ -44,8 +46,6 @@ from nvda_desk.schemas.session_clock import (
     VenueSessionContract,
     VenueTimezone,
 )
-from nvda_desk.config import Settings
-from nvda_desk.domain.session_clock import SessionClockClassifier
 from nvda_desk.services.event_ingestion import EventIngestionService
 from nvda_desk.services.event_store import EventStoreService
 from nvda_desk.services.financial_calendar_import import FinancialCalendarImportService

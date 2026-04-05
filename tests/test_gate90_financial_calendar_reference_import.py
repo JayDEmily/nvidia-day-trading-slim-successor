@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from typing import cast
 from pathlib import Path
+from typing import cast
 
 from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole
-from nvda_desk.schemas.financial_calendar import FinancialCalendarBundleMetadata, FinancialCalendarLayerId
+from nvda_desk.schemas.financial_calendar import (
+    FinancialCalendarBundleMetadata,
+    FinancialCalendarLayerId,
+)
 from nvda_desk.services.financial_calendar_import import FinancialCalendarImportService
 
 REPO_ROOT = Path(__file__).resolve().parents[1]

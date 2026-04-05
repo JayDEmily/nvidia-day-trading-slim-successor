@@ -6,14 +6,17 @@ from pathlib import Path
 
 from nvda_desk.config import Settings
 from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
-from nvda_desk.testing.canonical_raw_runtime_harness import CanonicalRawRuntimeHarnessService
+from nvda_desk.testing.canonical_raw_runtime_harness import (
+    CanonicalRawRuntimeHarnessInput,
+    CanonicalRawRuntimeHarnessService,
+)
 from nvda_desk.testing.cognition_fixtures import supportive_runtime_fixture
 
 RAW_BUNDLE_PATH = Path("fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json")
 GATE102_DOC = Path("docs/planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md")
 
 
-def _canonical_raw_harness():
+def _canonical_raw_harness() -> CanonicalRawRuntimeHarnessInput:
     supportive = supportive_runtime_fixture()
     return CanonicalRawRuntimeHarnessService().build_from_path(
         raw_bundle_path=RAW_BUNDLE_PATH,

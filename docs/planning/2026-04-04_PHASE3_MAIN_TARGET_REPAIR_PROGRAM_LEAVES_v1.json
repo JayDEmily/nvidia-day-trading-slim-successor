@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gates_192_198_complete_gate_199_active_on_work_branch",
-  "active_gate": "Gate 199",
+  "execution_status": "phase3_main_target_repair_programme_closed_through_gate_199_on_main",
+  "active_gate": "none",
   "supersedes": [
     "none; no active leaves ledger was routed at tranche start"
   ],
@@ -13,11 +13,10 @@
     "Gate 195",
     "Gate 196",
     "Gate 197",
-    "Gate 198"
-  ],
-  "pending_gate_ids": [
+    "Gate 198",
     "Gate 199"
   ],
+  "pending_gate_ids": [],
   "completed_leaf_ids": [
     "LEAF-G192-001",
     "LEAF-G192-002",
@@ -49,9 +48,7 @@
     "LEAF-G198-001",
     "LEAF-G198-002",
     "LEAF-G198-003",
-    "LEAF-G198-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G198-004",
     "LEAF-G199-001",
     "LEAF-G199-002",
     "LEAF-G199-003",
@@ -59,6 +56,7 @@
     "LEAF-G199-005",
     "LEAF-G199-006"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -349,7 +347,7 @@
       "gate": "Gate 193",
       "title": "Inspect the vocabulary source-truth seam before trusting downstream tests",
       "objective": "Read the generator, vocabulary schema, registry-driven entry expansion, and committed artifact to localise the exact drift surface before any test expectation is treated as authority.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G192-004"
       ],
@@ -429,7 +427,7 @@
       "gate": "Gate 193",
       "title": "Write the source-truth decision for generator versus artifact",
       "objective": "Decide whether the generator, the committed artifact, or both are stale by referencing the source modules and vocabulary schema first.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G193-001"
       ],
@@ -486,7 +484,7 @@
       "gate": "Gate 193",
       "title": "Repair the generator/artifact truth seam",
       "objective": "Apply the bounded fix to the generator or committed artifact exactly where the authority decision requires it.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G193-002"
       ],
@@ -541,7 +539,7 @@
       "gate": "Gate 193",
       "title": "Re-anchor dependent vocabulary expectations and close Gate 193",
       "objective": "Re-run the exact dependent vocabulary slice, adjust dependent expectations only where the repaired truth requires it, and close the gate honestly.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G193-003"
       ],
@@ -603,7 +601,7 @@
       "gate": "Gate 194",
       "title": "Inspect runtime and vocabulary source truth for residual ambient leakage",
       "objective": "Inspect the raw runtime, review-packet, and vocabulary authority surfaces that make `eighth_stage` lawful or unlawful before classifying the residual leakage.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G193-004"
       ],
@@ -666,7 +664,7 @@
       "gate": "Gate 194",
       "title": "Write the lawful ambient phrase boundary from source truth",
       "objective": "Write one explicit boundary decision for the residual phrase family using runtime/vocabulary authority surfaces first.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G194-001"
       ],
@@ -726,7 +724,7 @@
       "gate": "Gate 194",
       "title": "Repair or explicitly admit the bounded leakage surface after source-truth adjudication",
       "objective": "Repair only the bounded leakage or governance surface required by the recorded source-truth decision.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G194-002"
       ],
@@ -787,7 +785,7 @@
       "gate": "Gate 194",
       "title": "Close Gate 194 with targeted hygiene proof",
       "objective": "Re-run the bounded hygiene slice, write the Gate 194 receipt, and route the pack to Gate 195 if green.",
-      "status": "closed",
+      "status": "complete",
       "depends_on": [
         "LEAF-G194-003"
       ],
@@ -2000,7 +1998,7 @@
       "gate": "Gate 199",
       "title": "Inspect raw static surfaces before trusting lint output",
       "objective": "Inspect the raw Alembic/config/test files named by lint output before treating the tool reports as authority for how to partition the remaining debt.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G198-004"
       ],
@@ -2059,7 +2057,7 @@
       "gate": "Gate 199",
       "title": "Repair Alembic and migration import-structure debt",
       "objective": "Clear the bounded Alembic environment and migration import-structure debt first, without touching runtime-domain semantics.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G199-001"
       ],
@@ -2113,7 +2111,7 @@
       "gate": "Gate 199",
       "title": "Repair bounded test import-order and modernization debt",
       "objective": "Clear the remaining bounded test import-order and modernization debt after the Alembic family is repaired.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G199-002"
       ],
@@ -2167,7 +2165,7 @@
       "gate": "Gate 199",
       "title": "Address the Alembic warning-only constraint honestly",
       "objective": "Clear or explicitly retain the `path_separator` warning-only surface before final closeout.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G199-003"
       ],
@@ -2220,7 +2218,7 @@
       "gate": "Gate 199",
       "title": "Run widened closeout proofs",
       "objective": "Run the full widened closeout proof slice once all bounded repairs are complete.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G199-004"
       ],
@@ -2278,7 +2276,7 @@
       "gate": "Gate 199",
       "title": "Close router surfaces and package the exact green state",
       "objective": "Write the Gate 199 closeout receipt, move router/control surfaces to the closed state, and package the exact green repo state.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G199-005"
       ],
