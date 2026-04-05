@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1
 
-Status: active target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active, Gates 203-205 planned.
+Status: active target-repo admitted-evidence successor planning pack; Gates 200-202 complete on `main`, Gate 203 active, Gates 204-205 planned.
 
 ## Purpose
 
@@ -111,8 +111,14 @@ This tranche exists to decide how evidence growth should proceed from that basel
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_CHANGE_MEMORY_RULES_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_GOVERNANCE_PROOF_SLICE_v1.md`
 - `docs/planning/2026-04-05_GATE201_TARGET_REPO_EVIDENCE_INVENTORY_AND_PROVENANCE_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_COVERAGE_SCORECARD_AND_GAP_REGISTER_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REVIEW_GOVERNANCE_PROOF_SLICE_v1.md`
+- `docs/planning/2026-04-05_GATE202_TARGET_REPO_COVERAGE_REVIEW_AND_DISAGREEMENT_PLANNING.md`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
 - `tests/test_gate201_target_repo_evidence_governance_planning.py`
+- `tests/test_gate202_target_repo_review_governance_planning.py`
 
 ## Vocabulary discipline
 
@@ -145,12 +151,13 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 
 - Repo-local environment required for later execution: `.venv`
 - Minimum validation slice for this planning activation:
-  - `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py`
+  - `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py`
   - `pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py`
 - A gate is not complete until:
   - tests ran green;
   - `PLANS.md`, gate map, active leaves ledger, and active execution log all moved together;
-  - a new full-history zip was created from the exact green repo state.
+  - GitHub branch and commit history preserve the closeout lineage; and
+  - a zip artefact exists only when the operator explicitly requests one or backup/transfer requires it.
 
 ## Gates
 
@@ -166,12 +173,13 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 - `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
 - `tests/test_gate201_target_repo_evidence_governance_planning.py`
+- `tests/test_gate202_target_repo_review_governance_planning.py`
 - later-proof planning tests that need tolerant routing assertions
 
 **Definition of done**
 - the repo routes cleanly to this pack as the only active pack;
 - the contradiction report and salvage matrix are explicit;
-- the new pack identifies Gate 202 as the next execution target without reviving Gate 212.
+- the new pack identifies Gate 203 as the next execution target without reviving Gate 212.
 
 ### Gate 201 — Evidence inventory, provenance, and change-memory planning
 

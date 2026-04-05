@@ -27,7 +27,7 @@ This file is the canonical repo-root execution router.
 - bounded-scope note: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md`
 - salvage matrix: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md`
-- next active gate: `Gate 202`
+- next active gate: `Gate 203`
 
 ## Latest closed pack retained as evidence
 
@@ -42,7 +42,7 @@ This file is the canonical repo-root execution router.
 
 ## Historical router markers retained for planning-guard continuity
 
-Historical `next active gate` markers retained for planning-guard continuity: - next active gate: `Gate 192`; - next active gate: `Gate 193`; - next active gate: `Gate 194`; - next active gate: `Gate 195`; - next active gate: `Gate 196`; - next active gate: `Gate 197`; - next active gate: `Gate 198`; - next active gate: `Gate 199`; - next active gate: `Gate 200`; - next active gate: `Gate 201`; - next active gate: `Gate 202`.
+Historical `next active gate` markers retained for planning-guard continuity: - next active gate: `Gate 192`; - next active gate: `Gate 193`; - next active gate: `Gate 194`; - next active gate: `Gate 195`; - next active gate: `Gate 196`; - next active gate: `Gate 197`; - next active gate: `Gate 198`; - next active gate: `Gate 199`; - next active gate: `Gate 200`; - next active gate: `Gate 201`; - next active gate: `Gate 202`; - next active gate: `Gate 203`.
 
 Historical active-pack markers retained for planning-guard continuity: no active pack currently routed; stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`; active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`; active gate: Gate 151 on `work/gate-150-corrective-successor-pack-20260402`; active gate: Gate 152 on `main`; active gate: Gate 153 on `main`; active gate: Gate 154 on `main`; active gate: Gate 155 on `main`; active gate: Gate 156 on `main`; no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`; no active pack currently routed; coefficient architecture consolidation pack closed through Gate 163 on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`; active gate: Gate 165 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 166 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 167 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 169 on `work/gate-164-policy-temporal-observability-pack-20260402`; active gate: Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`; no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`; no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `main`; active gate: Gate 172 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`; active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`; no active pack currently routed; master/child parallel-risk integration pack closed through Gate 180 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`.
 
@@ -140,7 +140,7 @@ Historical active-pack markers retained for planning-guard continuity: no active
 
 ## Current state
 
-- no active pack currently routed; capital-deployment authority foundation pack closed through Gate 191 on `main`
+- active pack: target-repo admitted-evidence successor planning pack with Gate 203 active on `main`
 - latest closed pack retained as evidence is the capital-deployment authority foundation pack closed through Gate 191 on `main`
 - latest closed predecessor evidence is the options-trace integrity repair pack closed through Gate 186 on `main`
 - latest closed predecessor evidence before the capital-deployment authority pack is the master/child parallel-risk integration pack closed through Gate 180 on `main`

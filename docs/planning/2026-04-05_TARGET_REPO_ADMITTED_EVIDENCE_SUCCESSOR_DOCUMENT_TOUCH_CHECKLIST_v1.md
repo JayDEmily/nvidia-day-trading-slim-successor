@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1
 
-Status: active document-touch checklist for the target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active.
+Status: active document-touch checklist for the target-repo admitted-evidence successor planning pack; Gates 200-202 complete on `main`, Gate 203 active.
 
 ## Frozen/process surfaces checked for this planning activation
 
@@ -28,6 +28,11 @@ Status: active document-touch checklist for the target-repo admitted-evidence su
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_CHANGE_MEMORY_RULES_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_GOVERNANCE_PROOF_SLICE_v1.md`
 - `docs/planning/2026-04-05_GATE201_TARGET_REPO_EVIDENCE_INVENTORY_AND_PROVENANCE_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_COVERAGE_SCORECARD_AND_GAP_REGISTER_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REVIEW_GOVERNANCE_PROOF_SLICE_v1.md`
+- `docs/planning/2026-04-05_GATE202_TARGET_REPO_COVERAGE_REVIEW_AND_DISAGREEMENT_PLANNING.md`
 
 ## Evidence inputs read for this planning activation
 
@@ -44,10 +49,10 @@ Status: active document-touch checklist for the target-repo admitted-evidence su
 - `tests/test_gate191_capital_deployment_authority_closeout.py`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
 - `tests/test_gate201_target_repo_evidence_governance_planning.py`
+- `tests/test_gate202_target_repo_review_governance_planning.py`
 
-## Later authority surfaces likely to move in Gates 201-205
+## Later authority surfaces likely to move in Gates 203-205
 
-- semantic-review / coverage-governance docs and tests
 - target snapshot handoff / collection-planning docs and tests
 - DMP packet failure-pack planning docs and tests
 - closeout receipt and pack index surfaces for this successor pack

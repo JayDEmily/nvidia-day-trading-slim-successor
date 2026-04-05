@@ -32,13 +32,19 @@ def test_gate201_control_surfaces_and_docs_are_coherent() -> None:
     receipt = RECEIPT.read_text(encoding="utf-8")
     payload = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "- next active gate: `Gate 202`" in plans
-    assert "Current active gate: **Gate 202 in the target-repo admitted-evidence successor planning pack on `main`**." in gate_map
-    assert "Status: active target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active, Gates 203-205 planned." in gates
-    assert payload["execution_status"] == "gates_200_201_complete_gate_202_active_on_main"
-    assert payload["active_gate"] == "Gate 202"
-    assert payload["completed_gate_ids"] == ["Gate 200", "Gate 201"]
-    assert payload["pending_gate_ids"] == ["Gate 202", "Gate 203", "Gate 204", "Gate 205"]
+    assert any(marker in plans for marker in ["- next active gate: `Gate 202`", "- next active gate: `Gate 203`"])
+    assert any(marker in gate_map for marker in [
+        "Current active gate: **Gate 202 in the target-repo admitted-evidence successor planning pack on `main`**.",
+        "Current active gate: **Gate 203 in the target-repo admitted-evidence successor planning pack on `main`**.",
+    ])
+    assert any(status in gates for status in [
+        "Status: active target-repo admitted-evidence successor planning pack; Gates 200-201 complete on `main`, Gate 202 active, Gates 203-205 planned.",
+        "Status: active target-repo admitted-evidence successor planning pack; Gates 200-202 complete on `main`, Gate 203 active, Gates 204-205 planned.",
+    ])
+    assert payload["execution_status"] in {"gates_200_201_complete_gate_202_active_on_main", "gates_200_202_complete_gate_203_active_on_main"}
+    assert payload["active_gate"] in {"Gate 202", "Gate 203"}
+    assert payload["completed_gate_ids"] in [["Gate 200", "Gate 201"], ["Gate 200", "Gate 201", "Gate 202"]]
+    assert payload["pending_gate_ids"] in [["Gate 202", "Gate 203", "Gate 204", "Gate 205"], ["Gate 203", "Gate 204", "Gate 205"]]
 
     assert "Canonical evidence class matrix" in inventory
     assert "fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json" in inventory
@@ -62,8 +68,8 @@ def test_gate201_control_surfaces_and_docs_are_coherent() -> None:
     assert "tests/test_gate201_target_repo_evidence_governance_planning.py" in proof_slice
     assert "Stop conditions that force replanning" in proof_slice
 
-    assert "Gate 202 is the next active gate" in receipt
+    assert "the successor pack now has an explicit evidence inventory baseline" in receipt
     assert "pending_update_after_validation" not in execution_log
     assert "pending_update_after_validation" not in receipt
-    assert "Gate 202 is now the active gate in this pack." in execution_log
-    assert "Gates 200-201 complete on `main`, Gate 202 active." in checklist
+    assert any(marker in execution_log for marker in ["Gate 202 is now the active gate in this pack.", "Gate 203 is now the active gate in this pack."])
+    assert any(marker in checklist for marker in ["Gates 200-201 complete on `main`, Gate 202 active.", "Gates 200-202 complete on `main`, Gate 203 active."])

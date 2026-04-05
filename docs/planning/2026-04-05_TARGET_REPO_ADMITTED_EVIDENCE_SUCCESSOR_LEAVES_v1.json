@@ -1,15 +1,15 @@
 {
   "governing_plan": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gates_200_201_complete_gate_202_active_on_main",
-  "active_gate": "Gate 202",
+  "execution_status": "gates_200_202_complete_gate_203_active_on_main",
+  "active_gate": "Gate 203",
   "supersedes": [],
   "completed_gate_ids": [
     "Gate 200",
-    "Gate 201"
+    "Gate 201",
+    "Gate 202"
   ],
   "pending_gate_ids": [
-    "Gate 202",
     "Gate 203",
     "Gate 204",
     "Gate 205"
@@ -22,13 +22,13 @@
     "LEAF-G201-001",
     "LEAF-G201-002",
     "LEAF-G201-003",
-    "LEAF-G201-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G201-004",
     "LEAF-G202-001",
     "LEAF-G202-002",
     "LEAF-G202-003",
-    "LEAF-G202-004",
+    "LEAF-G202-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G203-001",
     "LEAF-G203-002",
     "LEAF-G203-003",
@@ -456,7 +456,7 @@
     },
     "LEAF-G202-001": {
       "gate": "Gate 202",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan coverage scorecard and gap-register surfaces against current evidence baseline",
       "objective": "Define how the repo will score evidence coverage and record intentional gaps relative to the admitted baseline.",
       "repo_surfaces": [
@@ -487,22 +487,23 @@
         "Do not detach scorecard categories from concrete repo surfaces."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future scorecard/gap-register plan tied to concrete current evidence surfaces."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_COVERAGE_SCORECARD_AND_GAP_REGISTER_v1.md` freezes the coverage axes, current baseline states, and gap-register fields tied to the admitted evidence portfolio."
       ],
       "definition_of_done": [
-        "Coverage review can later be executed against a named baseline rather than vague intuition."
+        "Coverage review can now execute later against a frozen scorecard and explicit gap register rather than vague intuition."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_COVERAGE_SCORECARD_AND_GAP_REGISTER_v1.md"
       ]
     },
     "LEAF-G202-002": {
       "gate": "Gate 202",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan redundancy rejection and coverage-strengthening rules",
       "objective": "Define rules for when new evidence is redundant, when it strengthens coverage, and when it should be rejected.",
       "repo_surfaces": [
@@ -532,22 +533,23 @@
         "Do not accept new evidence without a comparison against the baseline."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future redundancy/strengthening rule set with explicit rejection memory."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md` freezes repo-native rejection, strengthening, and novelty outcomes for later evidence proposals."
       ],
       "definition_of_done": [
-        "Later evidence proposals can be accepted or rejected against repo-native criteria."
+        "Later evidence proposals can be accepted, rejected, or deferred against frozen repo-native redundancy criteria."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md"
       ]
     },
     "LEAF-G202-003": {
       "gate": "Gate 202",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan semantic-review worksheet, rejection memory, and disagreement capture",
       "objective": "Define how future review work will record judgement calls, disagreements, and rejected interpretations without mutating canonical evidence.",
       "repo_surfaces": [
@@ -577,22 +579,23 @@
         "Do not merge disagreement memory into live runtime outputs."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future semantic-review memory plan with explicit disagreement capture."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md` freezes worksheet, disagreement, and rejected-interpretation memory rules for later review work."
       ],
       "definition_of_done": [
-        "Future review packs can record human judgement without corrupting canonical evidence surfaces."
+        "Future review packs can preserve disagreement and rejected readings without corrupting canonical evidence or runtime outputs."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md"
       ]
     },
     "LEAF-G202-004": {
       "gate": "Gate 202",
-      "status": "pending",
+      "status": "complete",
       "title": "Freeze future proof order for review-governance planning",
       "objective": "Define the bounded proof slice for the later coverage/review governance tranche.",
       "repo_surfaces": [
@@ -621,17 +624,18 @@
         "Do not omit closeout evidence expectations."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py"
       ],
       "expected_evidence": [
-        "A future review-governance proof order with exact expected closeout evidence."
+        "`docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REVIEW_GOVERNANCE_PROOF_SLICE_v1.md` freezes ordered proof commands, stop conditions, and GitHub-native closeout expectations for later review-governance execution."
       ],
       "definition_of_done": [
-        "The later Gate 202 work has a bounded proof envelope before execution begins."
+        "The later review-governance tranche can execute without inventing proof order, runtime scope, or closeout evidence on the fly."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REVIEW_GOVERNANCE_PROOF_SLICE_v1.md"
       ]
     },
     "LEAF-G203-001": {
@@ -675,7 +679,7 @@
       "definition_of_done": [
         "A later execution thread can receive an exact snapshot bundle contract without inventing it."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
       ]
@@ -721,7 +725,7 @@
       "definition_of_done": [
         "Later collection work can be executed with an exact admission checklist and authority chain."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
       ]
@@ -766,7 +770,7 @@
       "definition_of_done": [
         "The later execution tranche has a bounded validation envelope before work starts."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
       ]
@@ -812,7 +816,7 @@
       "definition_of_done": [
         "Later packet-pack planning can begin from exact repo-native stage/packet seams."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
       ]
@@ -857,7 +861,7 @@
       "definition_of_done": [
         "Later DMP/evidence contract work has an explicit schema/example/validator decision rule."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
       ]
@@ -901,7 +905,7 @@
       "definition_of_done": [
         "The later DMP planning gate has a defined validation envelope before execution begins."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
       ]
@@ -946,7 +950,7 @@
       "definition_of_done": [
         "Future readers can navigate the pack and the retired standalone evidence without confusion."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
       ]
@@ -990,7 +994,7 @@
       "definition_of_done": [
         "The eventual successor-pack closeout can be executed without inventing its receipt or proof order."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
       ]
@@ -1035,7 +1039,7 @@
       "definition_of_done": [
         "The later coding thread can begin from one authoritative handoff bundle without reopening repo-recovery debates."
       ],
-      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md",
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
