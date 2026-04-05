@@ -1,0 +1,1041 @@
+{
+  "governing_plan": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_200_complete_gate_201_active_on_work_branch",
+  "active_gate": "Gate 201",
+  "supersedes": [],
+  "completed_gate_ids": [
+    "Gate 200"
+  ],
+  "pending_gate_ids": [
+    "Gate 201",
+    "Gate 202",
+    "Gate 203",
+    "Gate 204",
+    "Gate 205"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G200-001",
+    "LEAF-G200-002",
+    "LEAF-G200-003",
+    "LEAF-G200-004"
+  ],
+  "remaining_leaf_ids": [
+    "LEAF-G201-001",
+    "LEAF-G201-002",
+    "LEAF-G201-003",
+    "LEAF-G201-004",
+    "LEAF-G202-001",
+    "LEAF-G202-002",
+    "LEAF-G202-003",
+    "LEAF-G202-004",
+    "LEAF-G203-001",
+    "LEAF-G203-002",
+    "LEAF-G203-003",
+    "LEAF-G204-001",
+    "LEAF-G204-002",
+    "LEAF-G204-003",
+    "LEAF-G205-001",
+    "LEAF-G205-002",
+    "LEAF-G205-003"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "zip_required_before_gate_can_be_called_done": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "source_truth_precedes_test_truth": true,
+    "downstream_tests_may_change_only_after_source_truth_decision": true
+  },
+  "contradiction_scan": {
+    "current_result": "material_conflicts_resolved_into_target_repo_successor_pack",
+    "report": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md"
+  },
+  "state_invariants": [
+    "completed_leaf_ids and remaining_leaf_ids must be disjoint",
+    "every referenced leaf id must exist in leaves",
+    "active_gate may be none only when remaining_leaf_ids and pending_gate_ids are empty",
+    "later-proof tests must permit later valid states or be retired/replaced during closeout"
+  ],
+  "leaves": {
+    "LEAF-G200-001": {
+      "gate": "Gate 200",
+      "status": "complete",
+      "title": "Inspect canonical evidence and old standalone planning before routing the new pack",
+      "objective": "Read the admitted raw/prepared/trace/replay/DMP baseline and the evidence-only standalone Gates 200-212 before treating any successor workstream as canonical.",
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md",
+        "docs/planning/2026-03-31_GATE132_BOUNDED_TRACE_SCENARIO_PACK.md",
+        "docs/planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md",
+        "docs/planning/2026-03-31_GATE134_BOUNDED_TRACE_REPORTING_CLOSEOUT.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Read the canonical target-repo evidence surfaces in full.",
+        "Read the standalone Gates 200-212 evidence-only surfaces in full.",
+        "Record only the work families that map cleanly into the target repo."
+      ],
+      "forbidden_actions": [
+        "Do not author a new pack before reading the canonical evidence surfaces.",
+        "Do not treat standalone numbering as authoritative.",
+        "Do not infer runtime obligations that are not evidenced in the target repo."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A salvageable work-family set tied to canonical target-repo evidence.",
+        "No imported standalone gate order treated as authoritative."
+      ],
+      "definition_of_done": [
+        "The salvage basis is explicit in the contradiction report, salvage matrix, and successor gates document."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G200-002": {
+      "gate": "Gate 200",
+      "status": "complete",
+      "title": "Emit contradiction report and salvage matrix",
+      "objective": "Record the exact control-surface contradictions left after Gate 199 and map old standalone work into canonical target-repo successor gates.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Write the contradiction report with exact pre- and post-Gate-199 conflicts.",
+        "Write the salvage matrix mapping old standalone items to new canonical gates.",
+        "Retire Gate 212 from authority explicitly rather than leaving it ambiguous."
+      ],
+      "forbidden_actions": [
+        "Do not leave contradictions implied only in chat.",
+        "Do not preserve Gate 212 as an active endpoint.",
+        "Do not mix retired items with canonical next gates."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A contradiction report that names the stale gate-map and standalone-sequencing conflicts.",
+        "A salvage matrix that demotes standalone 200-212 to evidence-only status."
+      ],
+      "definition_of_done": [
+        "The contradiction report and salvage matrix are present, coherent, and referenced by active control surfaces."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ]
+    },
+    "LEAF-G200-003": {
+      "gate": "Gate 200",
+      "status": "complete",
+      "title": "Route PLANS and the gate map to the new active pack",
+      "objective": "Make the canonical repo router and gate map truthful again after Gate 199 closeout by activating the new successor pack.",
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Route PLANS.md to the successor gates, leaves, execution log, checklist, scope note, contradiction report, and salvage matrix.",
+        "Update the gate map active-gate line to Gate 200 on the work branch.",
+        "Rewrite stale Gate 192-199 row states so they reflect completion on main and add Gates 200-205."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md with no active pack if a successor pack exists.",
+        "Do not keep stale Gate 195-199 states as active/planned after Gate 199 closeout.",
+        "Do not create a second active pack."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md and the gate map agree on Gate 200 as the active gate.",
+        "Gate 192-199 rows are truthful historical completion rows and Gates 200-205 are present."
+      ],
+      "definition_of_done": [
+        "PLANS.md and the gate map point to the same successor pack and no competing active pack remains."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    "LEAF-G200-004": {
+      "gate": "Gate 200",
+      "status": "complete",
+      "title": "Add planning proof tests and tolerant later-state assertions",
+      "objective": "Add successor-pack planning proofs and relax older closeout tests so later lawful routing states do not fail.",
+      "repo_surfaces": [
+        "tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py",
+        "tests/test_gate191_capital_deployment_authority_closeout.py",
+        "tests/test_gate186_options_trace_integrity_closeout.py"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Add a dedicated Gate 200 planning-pack test.",
+        "Relax older closeout assertions so they allow a later valid active pack.",
+        "Run the bounded planning-proof slice."
+      ],
+      "forbidden_actions": [
+        "Do not keep brittle tests that require the repo to stay frozen forever after a closeout.",
+        "Do not weaken tests by removing truth assertions unrelated to routing state.",
+        "Do not skip the later-state tolerance update if a historical test fails on valid new routing."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py"
+      ],
+      "expected_evidence": [
+        "Historical closeout tests tolerate the lawful Gate 200 successor state.",
+        "New planning-pack tests enforce the successor pack structure."
+      ],
+      "definition_of_done": [
+        "The new planning test passes and the adjusted historical closeout tests still assert their own pack truth without rejecting later valid states."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py",
+        "tests/test_gate191_capital_deployment_authority_closeout.py",
+        "tests/test_gate186_options_trace_integrity_closeout.py"
+      ]
+    },
+    "LEAF-G201-001": {
+      "gate": "Gate 201",
+      "status": "pending",
+      "title": "Inventory canonical evidence classes already present in the target repo",
+      "objective": "Define the current evidence baseline by class, location, authority source, and downstream use without collecting any new data.",
+      "repo_surfaces": [
+        "fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json",
+        "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json",
+        "fixtures/trace_review/gate_132_bounded_trace_fixture_pack.json",
+        "fixtures/replay/gate_f_replay_regression_fixture_pack.json",
+        "src/nvda_desk/db/models.py"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "List the current admitted evidence classes and exact file/table anchors.",
+        "Record which surfaces are raw, derived, sibling, replay, or market-persisted.",
+        "Tie each class to the canonical authority doc that admitted or governs it."
+      ],
+      "forbidden_actions": [
+        "Do not admit new evidence in the inventory gate.",
+        "Do not blur raw versus derived status.",
+        "Do not omit persisted market-state surfaces already present in the repo."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future inventory document plan with exact evidence classes and anchors."
+      ],
+      "definition_of_done": [
+        "The inventory plan can account for each currently-admitted evidence family without ambiguity."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G201-002": {
+      "gate": "Gate 201",
+      "status": "pending",
+      "title": "Plan provenance, derivation, and immutability rules",
+      "objective": "Define how future evidence packs will record lineage from raw anchor to derived sibling/replay/packet artefacts.",
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md",
+        "docs/planning/2026-03-31_GATE132_BOUNDED_TRACE_SCENARIO_PACK.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Write the provenance fields a future evidence-governance doc must capture.",
+        "Differentiate immutable admitted anchors from re-derivable artefacts.",
+        "Define what may supersede metadata versus what may not rewrite historical evidence."
+      ],
+      "forbidden_actions": [
+        "Do not conflate provenance with current routing state.",
+        "Do not permit silent mutation of admitted anchors.",
+        "Do not invent provenance fields unrelated to repo-native evidence classes."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A planned provenance-rule set tied to existing admissions and packet law."
+      ],
+      "definition_of_done": [
+        "Future provenance work has explicit rule hooks for raw, derived, sibling, replay, and packet artefacts."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G201-003": {
+      "gate": "Gate 201",
+      "status": "pending",
+      "title": "Plan change-control, supersession, and authority-downgrade memory",
+      "objective": "Define how future docs will record evidence supersession, retired authority, and downgrade-to-compatibility state.",
+      "repo_surfaces": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define the future change-memory fields and downgrade states.",
+        "Separate retire-from-authority from delete-from-repo.",
+        "Require exact references when an evidence surface is superseded."
+      ],
+      "forbidden_actions": [
+        "Do not delete historical evidence to hide drift.",
+        "Do not mark an old surface retired without naming its successor or reason.",
+        "Do not let standalone evidence-only docs regain authority implicitly."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future change-memory plan that can track supersession and authority downgrades explicitly."
+      ],
+      "definition_of_done": [
+        "Later governance docs can record supersession and compatibility-only status without ambiguity."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ]
+    },
+    "LEAF-G201-004": {
+      "gate": "Gate 201",
+      "status": "pending",
+      "title": "Define future proof slice for evidence-governance docs and tests",
+      "objective": "Freeze the proof order for the later evidence-inventory/governance tranche.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "List the future governance docs and tests that must move together.",
+        "Specify the bounded proof commands for that future tranche.",
+        "Record the stop conditions that would force replanning."
+      ],
+      "forbidden_actions": [
+        "Do not leave later evidence-governance work unbounded.",
+        "Do not require full unrelated runtime proof for a documentation-only governance tranche.",
+        "Do not omit stop conditions for provenance-law conflicts."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future-proof slice with ordered validation and stop conditions for Gate 201 work."
+      ],
+      "definition_of_done": [
+        "The evidence-governance gate can be executed later without inventing its proof order on the fly."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G202-001": {
+      "gate": "Gate 202",
+      "status": "pending",
+      "title": "Plan coverage scorecard and gap-register surfaces against current evidence baseline",
+      "objective": "Define how the repo will score evidence coverage and record intentional gaps relative to the admitted baseline.",
+      "repo_surfaces": [
+        "fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json",
+        "fixtures/trace_review/gate_132_bounded_trace_fixture_pack.json",
+        "fixtures/replay/gate_f_replay_regression_fixture_pack.json"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define scorecard dimensions for raw, derived, sibling, replay, and packet evidence.",
+        "Define a gap-register field set tied to missing anchors or review depth.",
+        "Tie the scorecard to current repo-native evidence families only."
+      ],
+      "forbidden_actions": [
+        "Do not score imagined future evidence.",
+        "Do not hide evidence gaps in prose without a register.",
+        "Do not detach scorecard categories from concrete repo surfaces."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future scorecard/gap-register plan tied to concrete current evidence surfaces."
+      ],
+      "definition_of_done": [
+        "Coverage review can later be executed against a named baseline rather than vague intuition."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G202-002": {
+      "gate": "Gate 202",
+      "status": "pending",
+      "title": "Plan redundancy rejection and coverage-strengthening rules",
+      "objective": "Define rules for when new evidence is redundant, when it strengthens coverage, and when it should be rejected.",
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md",
+        "docs/planning/2026-03-31_GATE134_BOUNDED_TRACE_REPORTING_CLOSEOUT.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define redundancy tests against existing raw/prepared/trace/replay families.",
+        "Define what counts as meaningful strengthening rather than duplicated evidence.",
+        "Require explicit rejection reasons for redundant proposals."
+      ],
+      "forbidden_actions": [
+        "Do not treat any additional artefact as automatically valuable.",
+        "Do not strengthen coverage by duplicating an unchanged derivation path.",
+        "Do not accept new evidence without a comparison against the baseline."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future redundancy/strengthening rule set with explicit rejection memory."
+      ],
+      "definition_of_done": [
+        "Later evidence proposals can be accepted or rejected against repo-native criteria."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G202-003": {
+      "gate": "Gate 202",
+      "status": "pending",
+      "title": "Plan semantic-review worksheet, rejection memory, and disagreement capture",
+      "objective": "Define how future review work will record judgement calls, disagreements, and rejected interpretations without mutating canonical evidence.",
+      "repo_surfaces": [
+        "docs/planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md",
+        "docs/planning/2026-03-31_GATE134_BOUNDED_TRACE_REPORTING_CLOSEOUT.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define worksheet fields for semantic-review observations.",
+        "Define disagreement/rejection memory fields for later reviewers.",
+        "Keep review memory separate from raw evidence and derived packet content."
+      ],
+      "forbidden_actions": [
+        "Do not encode reviewer judgement as if it were raw evidence.",
+        "Do not lose rejected interpretations when later summaries are written.",
+        "Do not merge disagreement memory into live runtime outputs."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future semantic-review memory plan with explicit disagreement capture."
+      ],
+      "definition_of_done": [
+        "Future review packs can record human judgement without corrupting canonical evidence surfaces."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G202-004": {
+      "gate": "Gate 202",
+      "status": "pending",
+      "title": "Freeze future proof order for review-governance planning",
+      "objective": "Define the bounded proof slice for the later coverage/review governance tranche.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "List the future docs and tests that must move together in the review-governance gate.",
+        "Specify the ordered validation commands.",
+        "Record exact closeout evidence expected from that later gate."
+      ],
+      "forbidden_actions": [
+        "Do not leave review-governance proof open-ended.",
+        "Do not demand unrelated runtime proofs for a planning-only tranche.",
+        "Do not omit closeout evidence expectations."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future review-governance proof order with exact expected closeout evidence."
+      ],
+      "definition_of_done": [
+        "The later Gate 202 work has a bounded proof envelope before execution begins."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G203-001": {
+      "gate": "Gate 203",
+      "status": "pending",
+      "title": "Plan target-snapshot handoff brief and input-bundle contract",
+      "objective": "Define the exact contract for a future target-repo snapshot execution bundle and handoff brief.",
+      "repo_surfaces": [
+        "fixtures/real_data/gate_101_canonical_raw_runtime_bundle.json",
+        "fixtures/replay/gate_f_replay_regression_fixture_pack.json",
+        "src/nvda_desk/services/real_data_loader.py"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define the future input-bundle fields for snapshot execution.",
+        "Specify what exact target-repo state and evidence pack versions must be named.",
+        "Tie the handoff brief to canonical repo-native snapshot surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not hand off an underspecified snapshot bundle.",
+        "Do not rely on standalone-repo wording as if it were authoritative.",
+        "Do not omit target-repo commit and fixture identity fields."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future snapshot-handoff plan with exact input-bundle contract fields."
+      ],
+      "definition_of_done": [
+        "A later execution thread can receive an exact snapshot bundle contract without inventing it."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G203-002": {
+      "gate": "Gate 203",
+      "status": "pending",
+      "title": "Plan real-anchor collection requirements and admission dossier fields",
+      "objective": "Define what future real-anchor collection must record before any new anchor becomes admitted evidence.",
+      "repo_surfaces": [
+        "docs/planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/slv_market.py"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define the dossier fields for candidate real-anchor collections.",
+        "Specify the authority and provenance checks required before admission.",
+        "Bind future anchor collection to repo-native storage and loader surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not admit a new real anchor without an admission dossier.",
+        "Do not leave storage/loader implications implicit.",
+        "Do not treat collected anchors as canonical before review and admission."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future real-anchor admission dossier plan tied to storage and loader surfaces."
+      ],
+      "definition_of_done": [
+        "Later collection work can be executed with an exact admission checklist and authority chain."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G203-003": {
+      "gate": "Gate 203",
+      "status": "pending",
+      "title": "Plan proof matrix for snapshot execution and collection tranche",
+      "objective": "Freeze the proof matrix for the later snapshot-execution and collection gate.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define the later proof matrix covering snapshot identity, admission dossier presence, and bounded regression checks.",
+        "List required docs/tests/receipts.",
+        "Record stop conditions that force replanning if snapshot contracts drift."
+      ],
+      "forbidden_actions": [
+        "Do not launch collection execution without a proof matrix.",
+        "Do not require unrelated pack proofs that are outside snapshot/collection scope.",
+        "Do not omit drift-trigger stop conditions."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future proof matrix for snapshot execution and real-anchor collection."
+      ],
+      "definition_of_done": [
+        "The later execution tranche has a bounded validation envelope before work starts."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G204-001": {
+      "gate": "Gate 204",
+      "status": "pending",
+      "title": "Identify first DMP packet failure-pack families against repo-native stage links",
+      "objective": "Determine which packet failure-pack families should be authored first based on current repo-native stage and packet seams.",
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Map repo-native packet/stage links that can fail materially.",
+        "Define the first bounded failure-pack families worth planning.",
+        "Tie each family to an existing packet or stage seam, not abstract standalone language."
+      ],
+      "forbidden_actions": [
+        "Do not import packet families wholesale from the standalone repo.",
+        "Do not plan failure-packs without mapping them to repo-native seams.",
+        "Do not blur stage-link failures with unrelated review disagreements."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A repo-native first-family plan for DMP failure-pack authoring."
+      ],
+      "definition_of_done": [
+        "Later packet-pack planning can begin from exact repo-native stage/packet seams."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G204-002": {
+      "gate": "Gate 204",
+      "status": "pending",
+      "title": "Decide schema/example/validator boundary for future artefact contracts",
+      "objective": "Decide the machine-readable contract boundary for future packet or evidence artefact families.",
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define when a future artefact needs schema only, schema plus examples, or schema plus validator.",
+        "Record the decision criteria against repo-native contract surfaces.",
+        "Keep the decision at planning level only in this gate."
+      ],
+      "forbidden_actions": [
+        "Do not add new schema code in the planning gate.",
+        "Do not promise validators where the boundary has not been justified.",
+        "Do not leave contract-boundary decisions implicit."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future contract-boundary decision framework for machine-readable artefacts."
+      ],
+      "definition_of_done": [
+        "Later DMP/evidence contract work has an explicit schema/example/validator decision rule."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G204-003": {
+      "gate": "Gate 204",
+      "status": "pending",
+      "title": "Plan proof slice for DMP failure-pack planning",
+      "objective": "Freeze the proof slice for the later DMP packet failure-pack planning tranche.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "List the later docs/tests/receipts that must move together.",
+        "Specify ordered validation commands for the planning-only packet tranche.",
+        "Record the closeout evidence expected from that gate."
+      ],
+      "forbidden_actions": [
+        "Do not launch packet planning without a bounded proof slice.",
+        "Do not require unrelated replay or anchor proofs in the planning-only packet gate.",
+        "Do not omit closeout receipt requirements."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future proof slice for DMP failure-pack planning with exact closeout evidence."
+      ],
+      "definition_of_done": [
+        "The later DMP planning gate has a defined validation envelope before execution begins."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G205-001": {
+      "gate": "Gate 205",
+      "status": "pending",
+      "title": "Add successor-pack index and cross-reference answer for later readers",
+      "objective": "Create a later-reader index so future threads can navigate the successor pack and its salvaged origins without reopening the retired standalone sequence.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define the future index contents and required cross-references.",
+        "Include canonical target-repo docs and retired evidence-only origins.",
+        "Make the answer deterministic for future threads."
+      ],
+      "forbidden_actions": [
+        "Do not require future readers to reverse-engineer the old standalone sequence.",
+        "Do not point future readers to retired authority without context.",
+        "Do not omit cross-references between canonical and evidence-only surfaces."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future pack index plan for later readers."
+      ],
+      "definition_of_done": [
+        "Future readers can navigate the pack and the retired standalone evidence without confusion."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ]
+    },
+    "LEAF-G205-002": {
+      "gate": "Gate 205",
+      "status": "pending",
+      "title": "Freeze proof order and closeout receipt requirements",
+      "objective": "Define the final proof order and receipt fields for the eventual successor-pack closeout gate.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "List the exact proof sequence for successor-pack closeout.",
+        "Define the receipt fields, including archive naming and branch/commit capture.",
+        "Require the pack index and all sub-plans to be present before closeout."
+      ],
+      "forbidden_actions": [
+        "Do not leave closeout sequencing to memory.",
+        "Do not permit successor-pack closeout without receipt fields.",
+        "Do not omit packaging requirements."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future closeout-proof and receipt specification for the successor pack."
+      ],
+      "definition_of_done": [
+        "The eventual successor-pack closeout can be executed without inventing its receipt or proof order."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+      ]
+    },
+    "LEAF-G205-003": {
+      "gate": "Gate 205",
+      "status": "pending",
+      "title": "Prepare final handoff from planning thread to coding thread",
+      "objective": "Define the future handoff boundary from successor planning into actual evidence/coding execution work.",
+      "repo_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/02_OPERATING_MODEL.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/05_GUARDRAILS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+      ],
+      "ordered_actions": [
+        "Define what the future coding/execution thread must receive.",
+        "List which planning outputs are authoritative inputs and which retired materials are evidence-only.",
+        "Specify the stop rule that no coding begins until the relevant planning sub-gate is closed."
+      ],
+      "forbidden_actions": [
+        "Do not let future coding begin from evidence-only standalone docs.",
+        "Do not blur planning outputs with completed runtime work.",
+        "Do not omit the stop rule between planning and coding execution."
+      ],
+      "validation_commands": [
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "A future thread-handoff boundary from planning to coding execution."
+      ],
+      "definition_of_done": [
+        "The later coding thread can begin from one authoritative handoff bundle without reopening repo-recovery debates."
+      ],
+      "packaging_requirement": "A fresh full-history zip from the exact green repo state is required before this gate can be called done.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ]
+    }
+  }
+}

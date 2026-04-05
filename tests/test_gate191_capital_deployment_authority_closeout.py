@@ -24,7 +24,7 @@ def test_gate191_control_surfaces_close_honestly() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "- none currently routed" in plans
+    assert any(marker in plans for marker in ["- none currently routed", "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"])
     assert "docs/planning/2026-04-03_CAPITAL_DEPLOYMENT_AUTHORITY_FOUNDATION_GATES_v1.md" in plans
     assert "Current active gate: **none — capital-deployment authority foundation pack closed through Gate 191 on `main`**." in gate_map
     assert "Status: closed capital-deployment authority foundation pack through Gate 191 on `main`" in gates
