@@ -148,6 +148,17 @@ It may name:
 
 If no active pack exists, `PLANS.md` must say so explicitly.
 
+## GitHub-native execution ledger law
+
+GitHub branch, commit, and merge history is the primary execution ledger for normal gate work.
+GitHub history does not replace repo-root `PLANS.md`, the canonical gate map, the active leaves ledger, the active execution log, or closeout receipts retained under `docs/planning/`.
+
+Routine zip handoff is deprecated for ordinary execution.
+Zip handoff remains allowed for backup, offline handoff, sandbox transfer, or explicit operator request.
+
+A gate is still not closed until the planning quartet and control surfaces move together on the same branch.
+The repo must not create duplicate exchange-log notes, git-log notes, or similar governance artefacts that merely restate GitHub-visible branch or commit history.
+
 ## Anti-drift closeout law
 
 A gate is not closed until the following move together on the same branch:

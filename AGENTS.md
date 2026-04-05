@@ -57,6 +57,16 @@ It does **not** build an autonomous LLM trader.
 - repo-root `PLANS.md` plus the active planning control surfaces govern **what work is active now**.
 - Completed predecessor packs may remain under `docs/planning/` as evidentiary receipts, but they are not active authority unless repo-root `PLANS.md` says so.
 
+## GitHub-native execution workflow
+
+- GitHub branch, commit, and merge history must be treated as the primary execution ledger for routine gate work.
+- Routine zip packaging is retired for normal execution and must not be treated as required closeout evidence unless the operator explicitly asks for it.
+- Zip handoff remains allowed only for backup, offline transfer, sandbox transfer, or explicit operator request.
+- Execution must still follow one gate per branch; agents must not blend multiple active gates into one execution branch.
+- repo-root `PLANS.md`, the canonical gate map, the active leaves ledger, and the active execution log must still move together on the same branch.
+- GitHub history must not be treated as a substitute for repo-native authority docs, closeout receipts, or planning control surfaces.
+- When official OpenAI product behaviour matters, agents must prefer official OpenAI docs or MCP-backed OpenAI docs rather than memory.
+
 ## Required checks before closing a change
 
 At minimum, run the relevant targets from:
