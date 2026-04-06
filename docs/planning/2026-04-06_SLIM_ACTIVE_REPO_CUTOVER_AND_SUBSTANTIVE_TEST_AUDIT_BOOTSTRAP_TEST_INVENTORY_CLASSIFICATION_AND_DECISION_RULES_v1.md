@@ -40,6 +40,8 @@ Every retained-test row must record:
 
 ## Allowed decision outcomes
 
+Gate 219 may use the pre-decision placeholder `pending_gate_220_decision` while the inventory and ownership mapping are being frozen. Gate 220 must replace that placeholder with one of the governed outcomes below before any keep / retire / rewrite / move action is treated as decided.
+
 - `keep_as_is`
 - `keep_but_retarget_authority`
 - `rewrite_for_successor_truth`
@@ -410,6 +412,396 @@ Gate 219 satisfies the required inventory fields in two coupled passes:
       "tests/test_temporal_context_runtime.py",
       "tests/test_temporal_context_signal_state.py"
     ]
+  }
+]
+```
+
+## Gate 219 family doctrine and ownership mapping
+
+```json
+[
+  {
+    "test_id": "compatibility_wrapper",
+    "bug_surface_class": "compatibility carriage and preserved read-shape wrapper drift",
+    "testing_phase_alignment": "compatibility wrapper and downstream reader guard coverage",
+    "authoritative_inputs": [
+      "docs/TESTING_AND_PROMOTION.md",
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "compatibility-wrapper surfaces that preserve older read shapes over newer canonical runtime truth"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "legacy-compatible API or reader paths",
+      "session-clock compatibility consumers",
+      "review and replay readers that still exercise preserved wrapper shapes"
+    ],
+    "current_truth_dependency": "The family remains truthful only while preserved compatibility wrappers remain subordinate to the canonical runtime owners named in docs/03 and docs/07.",
+    "status_candidate": [
+      "successor_required"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_gate49_temporal_compatibility.py",
+      "tests/test_session_clock.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "No family-level orphan or duplicate signal is frozen yet; Gate 220 may still narrow coverage if wrapper guards overlap broader runtime-contract families."
+  },
+  {
+    "test_id": "control_surface_integrity",
+    "bug_surface_class": "router, gate-map, leaves-ledger, and execution-log coherence drift",
+    "testing_phase_alignment": "planning control-surface integrity and anti-drift closeout coverage",
+    "authoritative_inputs": [
+      "docs/01_NORMATIVE.md",
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+      "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "successor planning quartet and anti-drift control surfaces"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "gate sequencing",
+      "closeout integrity proofs",
+      "Codex and operator routing behaviour"
+    ],
+    "current_truth_dependency": "These tests remain truthful only while the active successor planning quartet is the live routing authority for the slim repo.",
+    "status_candidate": [
+      "successor_required"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "tests/test_planning_state_integrity.py",
+      "tests/test_successor_pack_anti_drift.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "This family is the current slim-successor anti-drift spine and is therefore frozen as successor-required unless a later pack proves equivalent coverage elsewhere."
+  },
+  {
+    "test_id": "data_path_or_fixture",
+    "bug_surface_class": "fixture, import, reference-data, and ingress data-path drift",
+    "testing_phase_alignment": "data-path and fixture integrity coverage",
+    "authoritative_inputs": [
+      "docs/TESTING_AND_PROMOTION.md",
+      "fixtures/",
+      "config/",
+      "data/",
+      "docs/reference/",
+      "src/ import and loader services"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "ingress and import services",
+      "reference-data loaders",
+      "fixture-bearing support surfaces"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "runtime snapshots and import adapters",
+      "fixture-backed runtime and planning tests",
+      "reference-data refresh flows"
+    ],
+    "current_truth_dependency": "The family depends on the retained fixture tree and the successor repo's current import and loader seams remaining present and truthful.",
+    "status_candidate": [
+      "successor_required"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md",
+      "tests/test_api.py",
+      "tests/test_gate90_financial_calendar_reference_import.py",
+      "tests/test_real_data_loader.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "No family-level orphan is frozen; Gate 220 may still split API/db ingress checks away from reference-data fixture guards if decision law needs narrower rows."
+  },
+  {
+    "test_id": "invariant_or_lawful_output",
+    "bug_surface_class": "lawful output, ownership, doctrine, and invariant drift",
+    "testing_phase_alignment": "invariant or lawful-output coverage",
+    "authoritative_inputs": [
+      "docs/01_NORMATIVE.md",
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/05_GUARDRAILS.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "live runtime service and schema surfaces under src/"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "stage and workflow owners named by current doctrine",
+      "lawful output and ownership surfaces that downstream consumers rely on"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "downstream stage evaluators",
+      "review packets",
+      "ownership and consequence readers"
+    ],
+    "current_truth_dependency": "This family depends on current repo-native lawful output and ownership doctrine rather than historical pack prose alone.",
+    "status_candidate": [
+      "successor_required",
+      "duplicate_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/05_GUARDRAILS.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_gate151_field_level_ownership_and_consumer_migration.py",
+      "tests/test_gate155_downstream_consequence_routing_and_successor_boundary.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "Family-level duplicate pressure is explicit because several law and ownership tests overlap adjacent runtime-contract and review families and may need row-splitting before a final keep or retire decision."
+  },
+  {
+    "test_id": "migration_or_closeout_guard",
+    "bug_surface_class": "historical closeout, migration, and cutover truth drift",
+    "testing_phase_alignment": "migration or closeout guard coverage",
+    "authoritative_inputs": [
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "retained execution logs and closeout surfaces"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "historical pack closeout surfaces",
+      "migration and cutover router surfaces"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "closeout truth checks",
+      "archive versus successor boundary checks",
+      "later planning-pack reconciliation work"
+    ],
+    "current_truth_dependency": "These tests remain truthful only while the successor repo intentionally retains historical closeout evidence that later packs still consult.",
+    "status_candidate": [
+      "stale_planning_candidate",
+      "orphan_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md",
+      "tests/test_gate210_operator_surface_alignment_and_cutover.py",
+      "tests/test_gate191_capital_deployment_authority_closeout.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "This family is the strongest archive-sensitive candidate set. Gate 220 must decide which rows remain successor-required and which should move back to archive evidence or be retired as stale planning guards."
+  },
+  {
+    "test_id": "planning_governance",
+    "bug_surface_class": "planning doctrine, pack governance, and active-pack authorship drift",
+    "testing_phase_alignment": "planning-governance coverage",
+    "authoritative_inputs": [
+      "docs/01_NORMATIVE.md",
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "PLANS.md",
+      "active planning pack surfaces under docs/planning/"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "planning pack authorship surfaces",
+      "repo governance doctrine"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "planning authors",
+      "routing and approval workflow",
+      "active pack integrity checks"
+    ],
+    "current_truth_dependency": "The family depends on the successor repo's live planning router and active pack, not on source-repo pack state remembered from chat history.",
+    "status_candidate": [
+      "successor_required",
+      "stale_planning_candidate",
+      "orphan_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "docs/planning/tranche_briefing_template_pack/",
+      "tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py",
+      "tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "This family intentionally freezes both still-needed successor governance guards and likely stale source-era planning proofs. Gate 220 must split rows where successor-required and archive-only signals diverge."
+  },
+  {
+    "test_id": "replay_regression",
+    "bug_surface_class": "replay, historical comparison, and regression-detection drift",
+    "testing_phase_alignment": "replay regression coverage",
+    "authoritative_inputs": [
+      "docs/TESTING_AND_PROMOTION.md",
+      "replay and compare services under src/",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when replay reads preserved ownership seams"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "replay and regression-comparison services"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "replay operators",
+      "regression audits",
+      "historical comparison workflows"
+    ],
+    "current_truth_dependency": "Replay coverage remains truthful only while preserved seam ownership and replay compare contracts still match the successor runtime surfaces.",
+    "status_candidate": [
+      "successor_required",
+      "duplicate_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/TESTING_AND_PROMOTION.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_replay_compare_runtime.py",
+      "tests/test_research_replay.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "Duplicate pressure is explicit because some replay guards may overlap review-or-trace coverage once Gate 220 inspects exact bug surfaces row by row."
+  },
+  {
+    "test_id": "repo_hygiene",
+    "bug_surface_class": "repo hygiene, config boundary, and documentation surface drift",
+    "testing_phase_alignment": "repo hygiene coverage",
+    "authoritative_inputs": [
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "README.md",
+      "AGENTS.md",
+      "config/",
+      "fixtures/"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "repo hygiene and configuration boundary surfaces"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "maintainers",
+      "tooling and environment discipline",
+      "documentation and config boundary checks"
+    ],
+    "current_truth_dependency": "The family depends on the successor repo continuing to retain its current configuration and documentation boundary surfaces.",
+    "status_candidate": [
+      "successor_required"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "AGENTS.md",
+      "tests/test_document_hygiene.py",
+      "tests/test_boundaries_and_config_surface.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "No family-level orphan or stale-planning signal is frozen at Gate 219."
+  },
+  {
+    "test_id": "review_or_trace",
+    "bug_surface_class": "review packet, trace, attribution, and bounded-trace reader drift",
+    "testing_phase_alignment": "review or trace coverage",
+    "authoritative_inputs": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "review and trace schemas and services under src/",
+      "docs/TESTING_AND_PROMOTION.md"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "review explanation and trace surfaces",
+      "bounded-trace and attribution surfaces"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "review packets",
+      "trace readers",
+      "bounded-trace and explanation consumers"
+    ],
+    "current_truth_dependency": "This family depends on the successor repo still carrying the preserved review and trace seams named by docs/03 and docs/07.",
+    "status_candidate": [
+      "successor_required",
+      "duplicate_candidate",
+      "stale_planning_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_execution_review_runtime.py",
+      "tests/test_gate148_review_trace_replay_runtime.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "Family-level duplicate pressure is explicit, and a small stale-planning signal is also visible because some retained review-governance tests still anchor to older planning-control assumptions."
+  },
+  {
+    "test_id": "runtime_contract",
+    "bug_surface_class": "runtime schema, packet, and service contract drift",
+    "testing_phase_alignment": "runtime contract coverage",
+    "authoritative_inputs": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when ownership or compatibility carriage is involved",
+      "live schemas and services under src/"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "runtime schema owners",
+      "stage and workflow packet owners"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "runtime producers and readers",
+      "review and replay consumers of preserved contracts"
+    ],
+    "current_truth_dependency": "This family is governed by the current runtime contracts actually shipped in the slim successor repo, not by historical pack intent alone.",
+    "status_candidate": [
+      "successor_required",
+      "duplicate_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_gate28_ingress_substrate_contracts.py",
+      "tests/test_runtime_contract_registry.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "Duplicate pressure is explicit because several narrow gate-local contract guards overlap broader registry and contract-registry coverage."
+  },
+  {
+    "test_id": "runtime_scenario",
+    "bug_surface_class": "runtime semantic, integration, and scenario-path drift",
+    "testing_phase_alignment": "runtime scenario coverage",
+    "authoritative_inputs": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/TESTING_AND_PROMOTION.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when scenario assertions depend on ownership or seam law",
+      "live service implementations under src/"
+    ],
+    "runtime_owner_or_planning_owner": [
+      "runtime service implementations",
+      "scenario-level stage integrations"
+    ],
+    "downstream_consumer_or_control_surface": [
+      "end-to-end runtime flows",
+      "downstream stage consumers",
+      "integration review paths"
+    ],
+    "current_truth_dependency": "Scenario coverage is truthful only while the current runtime implementations and their preserved downstream seams match the retained doctrine surfaces.",
+    "status_candidate": [
+      "successor_required",
+      "duplicate_candidate"
+    ],
+    "decision_outcome": "pending_gate_220_decision",
+    "evidence_anchor": [
+      "docs/03_DOMAIN_MODEL.md",
+      "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+      "tests/test_gate96_canonical_runtime_harness.py",
+      "tests/test_posture_risk_and_playbook.py"
+    ],
+    "disagreement_state": "none_recorded_at_gate_219",
+    "next_action_pack": "Gate 220",
+    "notes": "Family-level duplicate pressure is explicit because some gate-local scenario tests may later collapse into broader runtime harness or integration rows."
   }
 ]
 ```
