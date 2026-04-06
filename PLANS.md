@@ -29,6 +29,10 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Active pack
 
+- none
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`
 - leaves: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`
@@ -36,7 +40,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 - bounded-scope note: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_CONTRADICTION_REPORT_v1.md`
 
-## Latest closed pack retained as evidence
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`
 - leaves: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`
@@ -50,25 +54,15 @@ It names the live planning authority and the nearest retained evidence classes; 
 - proof-order, successor execution-queue, and handoff surface: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`
 - 07 source diff and AGENTS read-trigger note: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md`
 
-## Latest closed predecessor evidence
-
-- gates: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`
-- leaves: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_SCOPE_NOTE_v1.md`
-- contradiction report: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_CONTRADICTION_REPORT_v1.md`
-- cutover brief: `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md`
-
 ## Older historical planning material
 
-- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including the 2026-04-05 target-repo admitted-evidence successor pack and its closeout/handoff surfaces.
+- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including the workflow hardening and active-repo reset foundation pack plus the 2026-04-05 target-repo admitted-evidence successor pack and their closeout/handoff surfaces.
 
 ## Current state
 
-- active pack is the successor retained-test cleanup execution pack; Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406` and Gate 225 is not yet activated
-- latest closed pack retained as evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
-- latest closed predecessor evidence is the workflow hardening and active-repo reset foundation pack closed through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
+- no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
+- latest closed pack retained as evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
+- latest closed predecessor evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
 
 ## Sequential execution rule
 

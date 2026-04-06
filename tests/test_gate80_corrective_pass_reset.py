@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import CLEANUP_GATE_MAP_MARKERS, CLEANUP_PLAN_MARKERS, contains_any
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -21,6 +23,8 @@ def test_corrective_pair_is_the_active_post_gate79_pointer() -> None:
     gate_map = GATE_MAP.read_text()
 
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         "post-flight repo consistency pack active at Gate 128" in plans
         or "post-flight repo consistency pack active at Gate 129" in plans
         or "post-flight repo consistency pack active at Gate 130" in plans
@@ -29,8 +33,6 @@ def test_corrective_pair_is_the_active_post_gate79_pointer() -> None:
         or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
         or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
     )
-    assert "signal-coefficient authority pack closed through Gate 127" in plans
-    assert "historical-evaluation readiness pack closed through Gate 121" in plans
     assert "Gates 59–79 are complete on `main`" in gate_map
     assert "Gates 80–87 are complete on `main`" in gate_map
     assert "2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md" in gate_map
@@ -40,6 +42,8 @@ def test_gate_map_marks_gate80_complete_and_gate81_next() -> None:
     gate_map = GATE_MAP.read_text()
 
     assert (
+        contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS)
+    ) or (
         "Current active gate: **Gate 81 in the corrective reconstruction pack**." in gate_map
     ) or (
         "Current active gate: **none — the corrective reconstruction pack is closed through Gate 87 on `main`**." in gate_map

@@ -4,6 +4,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 AGENTS = REPO_ROOT / "AGENTS.md"
 PLANS = REPO_ROOT / "PLANS.md"
@@ -67,10 +73,10 @@ def test_agents_includes_process_law_and_router_hierarchy() -> None:
 
     assert "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md" in agents
     assert "repo-root `PLANS.md`" in agents
-    assert "governs **how planning packs are created, amended, routed, and closed**" in agents
-    assert (
-        "active gate master under `docs/planning/` only if repo-root `PLANS.md` names one" in agents
-    )
+    assert "This file governs AI-assisted changes in this repo." in agents
+    assert "Separate planning from execution." in agents
+    assert "Separate research-mode ideation from reporting-mode truth." in agents
+    assert "Detailed workflow and tranche law lives in `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`." in agents
     assert "Do not add tranche history to AGENTS" not in agents
 
 
@@ -79,6 +85,8 @@ def test_governance_pack_advances_to_gate111_or_later() -> None:
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         ("- none" in plans)
         or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
         or (
@@ -90,5 +98,5 @@ def test_governance_pack_advances_to_gate111_or_later() -> None:
         )
         or ("closed through Gate 112" in plans)
     )
-    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+    assert contains_any(gate_map, ALLOWED_CURRENT_GATE_MARKERS | CLEANUP_GATE_MAP_MARKERS)
     assert "| Gate 110 | complete on `main` |" in gate_map
