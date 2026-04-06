@@ -87,10 +87,10 @@ Gate 206 merged to `main` via a non-fast-forward merge commit: `2f556ed24a609795
 - leaf id: `LEAF-G207-001`
 - branch name: `work/gate-207-router-and-doctrine-consolidation-20260406`
 - start commit: `ecb8c272c4ee80d409c0655e6f2721369b5ff010`
-- end commit: `__GATE207_END_COMMIT__`
+- end commit: `48d1ba7263cf9c9fcc1de6e16fa2e08f32d8fcee`
 - exact files touched: `PLANS.md`, `AGENTS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate207_router_and_doctrine_consolidation.py`
 - exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py`
-- observed result: `1 passed in 0.19s`
+- observed result: `1 passed in 0.14s`
 - full suite required: `false`
 - stop condition or contradiction report hit: `none`
 - state-integrity checks passed: `true`
@@ -102,10 +102,10 @@ Gate 206 merged to `main` via a non-fast-forward merge commit: `2f556ed24a609795
 - leaf id: `LEAF-G207-002`
 - branch name: `work/gate-207-router-and-doctrine-consolidation-20260406`
 - start commit: `ecb8c272c4ee80d409c0655e6f2721369b5ff010`
-- end commit: `__GATE207_END_COMMIT__`
+- end commit: `48d1ba7263cf9c9fcc1de6e16fa2e08f32d8fcee`
 - exact files touched: `PLANS.md`, `AGENTS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate207_router_and_doctrine_consolidation.py`
 - exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py`
-- observed result: `1 passed in 0.19s`
+- observed result: `1 passed in 0.14s`
 - full suite required: `false`
 - stop condition or contradiction report hit: `none`
 - state-integrity checks passed: `true`
