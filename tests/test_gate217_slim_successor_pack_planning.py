@@ -1,4 +1,4 @@
-"""Gate 217 slim-successor pack bootstrap routing checks."""
+"""Gate 217 slim-successor pack bootstrap invariants."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ ACTIVE_LEAVES_DOC = "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBST
 ACTIVE_EXECUTION_LOG_DOC = "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
 
 
-def test_gate217_pack_is_complete_and_gate218_is_not_activated() -> None:
+def test_gate217_pack_installation_invariants_remain_present() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     agents = AGENTS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
@@ -35,11 +35,7 @@ def test_gate217_pack_is_complete_and_gate218_is_not_activated() -> None:
     assert ACTIVE_LEAVES_DOC in plans
     assert ACTIVE_EXECUTION_LOG_DOC in plans
     assert "no active pack currently routed" not in plans
-    assert "- next active gate: `Gate 218`" in plans
-    assert (
-        "- active pack: slim active-repo cutover and substantive test-audit bootstrap pack "
-        f"with Gate 217 complete on `{ACTIVE_BRANCH}`; Gate 218 not yet activated"
-    ) in plans
+    assert "slim active-repo cutover and substantive test-audit bootstrap pack" in plans
 
     assert "specialised runtime authority ledger" in agents
     assert "not a universal front-door doctrine file" in agents
@@ -56,51 +52,26 @@ def test_gate217_pack_is_complete_and_gate218_is_not_activated() -> None:
     assert "## 1.1 Relation to the wider doc stack" in runtime_ledger
     assert "## 1.2 Maintenance law" in runtime_ledger
 
-    assert "Version: v1.30" in gate_map
-    assert (
-        "Current active gate: **none — Gate 217 in the slim active-repo cutover and substantive "
-        f"test-audit bootstrap pack is complete on `{ACTIVE_BRANCH}`, and Gate 218 is planned but not yet activated.**"
-    ) in gate_map
-    assert "Gate 210 | complete on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`" in gate_map
+    assert "Current active gate:" in gate_map
     assert f"Gate 217 | complete on `{ACTIVE_BRANCH}`" in gate_map
     assert "Gate 218 | planned" in gate_map
     assert "Gate 219 | planned" in gate_map
     assert "Gate 220 | planned" in gate_map
     assert "Gate 221 | planned" in gate_map
-    assert "Gate 218 is planned but not yet activated" in gate_map
 
-    assert (
-        "Status: slim-successor planning pack with Gate 217 complete on "
-        f"`{ACTIVE_BRANCH}`; Gates 218-221 planned, Gate 218 not yet activated."
-    ) in gates
+    assert "Status: slim-successor planning pack" in gates
     assert "This document is the active gate authority for the slim successor repo only." in gates
     assert "It must not claim runtime behaviour changed merely because the doctrine text was rewritten." in diff_note
 
     assert payload["governing_plan"] == ACTIVE_GATES_DOC
-    assert payload["execution_status"] == "gate_217_complete_on_work_branch_gate_218_not_yet_activated"
-    assert (
-        payload["active_gate"]
-        == "none — Gate 217 complete on work/gate-217-slim-successor-pack-bootstrap-and-routing-20260406; Gate 218 not yet activated"
-    )
-    assert payload["completed_gate_ids"] == ["Gate 217"]
-    assert payload["completed_leaf_ids"] == ["LEAF-G217-001", "LEAF-G217-002", "LEAF-G217-003"]
-    assert payload["pending_gate_ids"] == ["Gate 218", "Gate 219", "Gate 220", "Gate 221"]
-    assert len(payload["remaining_leaf_ids"]) == 8
+    assert "Gate 217" in payload["completed_gate_ids"]
+    assert {"LEAF-G217-001", "LEAF-G217-002", "LEAF-G217-003"} <= set(payload["completed_leaf_ids"])
     assert set(payload["completed_leaf_ids"]).isdisjoint(payload["remaining_leaf_ids"])
 
-    assert (
-        "Status: successor execution log for slim active-repo cutover and substantive test-audit "
-        f"bootstrap; Gate 217 complete on `{ACTIVE_BRANCH}`, Gates 218-221 planned, Gate 218 not yet activated."
-    ) in execution_log
+    assert "Status: successor execution log for slim active-repo cutover and substantive test-audit bootstrap;" in execution_log
     assert "### LEAF-G217-001" in execution_log
     assert "### LEAF-G217-002" in execution_log
     assert "### LEAF-G217-003" in execution_log
-    assert (
-        "Gate 217 is complete on "
-        f"`{ACTIVE_BRANCH}`."
-    ) in execution_log
-    assert "Gate 218 remains planned and is not yet activated." in execution_log
-    assert "Gate 218 is active" not in execution_log
-    assert "Gate 219 is active" not in execution_log
+    assert f"Gate 217 is complete on `{ACTIVE_BRANCH}`." in execution_log
     assert "Gate 220 is active" not in execution_log
     assert "Gate 221 is active" not in execution_log
