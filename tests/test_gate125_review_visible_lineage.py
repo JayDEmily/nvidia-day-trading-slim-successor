@@ -60,6 +60,10 @@ def test_gate125_closeout_advances_pack_to_gate126() -> None:
         "Gates 122-125 complete and Gate 126 now active" in plans
         or "Gates 122-126 complete and Gate 127 now active" in plans
         or "signal-coefficient authority pack closed through Gate 127" in plans
+        or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
+        or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
+        or "no active pack currently routed" in plans
     )
     assert (
         "Current active gate: **Gate 126 in the signal-coefficient authority pack**." in gate_map
@@ -69,7 +73,13 @@ def test_gate125_closeout_advances_pack_to_gate126() -> None:
         or "Current active gate: **Gate 129 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 130 in the post-flight repo consistency pack**." in gate_map
         or "Current active gate: **Gate 131 in the post-flight repo consistency pack**." in gate_map
-        or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
+        or "Current active gate: **none — post-flight repo consistency pack closed through Gate 131 on `main`**." in gate_map
+        or "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
+        or "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
+        or "Current active gate: **Gate 224 active on `work/gate-224-runtime-review-and-contract-retarget-20260406` under the successor retained-test cleanup execution pack.**" in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map
+        or "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**" in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**" in gate_map
     )
     assert (
         "Status: active signal-coefficient authority pack; Gates 122-125 complete on `main`, Gate 126 active, Gate 127 planned" in gates

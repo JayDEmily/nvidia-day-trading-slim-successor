@@ -68,6 +68,10 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
+    "Current active gate: **Gate 224 active on `work/gate-224-runtime-review-and-contract-retarget-20260406` under the successor retained-test cleanup execution pack.**",
+    "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**",
+    "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**",
+    "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**",
 }
 
 
@@ -107,8 +111,14 @@ def test_routed_pack_or_latest_closed_pack_names_authorities_cleanly() -> None:
         or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans
         or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
         or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
+        or "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md" in plans
+        or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
     ) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
-    assert "2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md" in plans
+    assert (
+        "2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md" in plans
+        or "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md" in plans
+        or "## Active pack" in plans
+    )
     assert VOCAB in gates
     assert PACKET in gates
     assert leaves["global_rules"]["execution_thread_must_reread_named_vocabulary_authority"] is True

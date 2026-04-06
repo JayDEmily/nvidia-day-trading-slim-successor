@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_223_complete_on_work_branch_gate_224_not_yet_activated",
-  "active_gate": "none — Gate 223 complete on work/gate-223-successor-boundary-and-light-retarget-20260406; Gate 224 not yet activated",
+  "execution_status": "gate_224_complete_on_work_branch_gate_225_not_yet_activated",
+  "active_gate": "none — Gate 224 complete on work/gate-224-runtime-review-and-contract-retarget-20260406; Gate 225 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
@@ -15,7 +15,8 @@
   ],
   "completed_gate_ids": [
     "Gate 222",
-    "Gate 223"
+    "Gate 223",
+    "Gate 224"
   ],
   "completed_leaf_ids": [
     "LEAF-G222-001",
@@ -25,20 +26,19 @@
     "LEAF-G223-001",
     "LEAF-G223-002",
     "LEAF-G223-003",
-    "LEAF-G223-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G223-004",
     "LEAF-G224-001",
     "LEAF-G224-002",
     "LEAF-G224-003",
-    "LEAF-G224-004",
+    "LEAF-G224-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G225-001",
     "LEAF-G225-002",
     "LEAF-G225-003",
     "LEAF-G225-004"
   ],
   "pending_gate_ids": [
-    "Gate 224",
     "Gate 225"
   ],
   "global_rules": {
@@ -226,7 +226,7 @@
       "gate": "Gate 224",
       "title": "Retarget runtime review-and-trace family to successor-native authority",
       "objective": "Retarget the live `review_or_trace__runtime_review_and_trace_surfaces` family so assertions point at successor-native review, trace, docs/03, and docs/07 authority rather than archived planning-control language.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "proof_slice": [
         "pytest -q tests/test_gate224_runtime_review_and_contract_retarget.py tests/test_planning_state_integrity.py"
@@ -246,7 +246,7 @@
       "gate": "Gate 224",
       "title": "Retarget runtime-contract family to successor-native authority",
       "objective": "Retarget the live `runtime_contract__current_packet_and_service_contracts` family so contract assertions point at current successor schemas, services, docs/03, and docs/07 authority.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G224-001"
       ],
@@ -267,7 +267,7 @@
       "gate": "Gate 224",
       "title": "Repair fallout only for declared keep-as-is families",
       "objective": "Repair only the fallout caused by Gate 222-224 cleanup in `control_surface_integrity`, `data_path_or_fixture`, `planning_governance__live_successor_process_controls`, and `repo_hygiene`, without turning those keep-as-is families into rewrite families.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G224-002"
       ],
@@ -287,7 +287,7 @@
       "gate": "Gate 224",
       "title": "Close Gate 224 with bounded family proof",
       "objective": "Run the declared review-and-contract family slice, close Gate 224 truthfully, and route Gate 225 next.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G224-003"
       ],

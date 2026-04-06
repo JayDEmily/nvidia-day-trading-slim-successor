@@ -22,7 +22,13 @@ def test_gate132_router_and_gate_map_allow_the_new_pack() -> None:
     gate_map = GATE_MAP.read_text(encoding="utf-8")
     leaves = LEAVES.read_text(encoding="utf-8")
 
-    assert "2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md" in plans
+    assert (
+        "2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md" in plans
+        or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
+        or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
+        or "no active pack currently routed" in plans
+    )
     assert (
         "Gate 132 in the bounded trace scenario review pack" in gate_map
         or "Gate 133 in the bounded trace scenario review pack" in gate_map
@@ -30,6 +36,10 @@ def test_gate132_router_and_gate_map_allow_the_new_pack() -> None:
         or "none — bounded trace scenario review pack closed through Gate 134 on `main`" in gate_map
         or "Gate 149 in the stage-local handoff and terminal-risk seams pack" in gate_map
         or "none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in gate_map
+        or "Gate 224 active on `work/gate-224-runtime-review-and-contract-retarget-20260406` under the successor retained-test cleanup execution pack" in gate_map
+        or "No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated." in gate_map
+        or "Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack" in gate_map
+        or "No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed." in gate_map
     )
     assert "Gate 132" in leaves
 
