@@ -51,6 +51,21 @@ If continuity breaks, execution stops and later gate sections remain receipt-emp
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 222 leaf execution`
 
+### LEAF-G222-002
+
+- gate id: `Gate 222`
+- leaf id: `LEAF-G222-002`
+- branch name: `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`
+- start commit: `cb3c89c8b95b027119fecc1c80f8b7a157306889`
+- exact files touched: `32 archived planning and historical-review receipt tests moved under docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 222 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `2 passed in 0.18s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 222 leaf execution`
+
 ## Gate 223 receipts
 
 No receipts yet.
