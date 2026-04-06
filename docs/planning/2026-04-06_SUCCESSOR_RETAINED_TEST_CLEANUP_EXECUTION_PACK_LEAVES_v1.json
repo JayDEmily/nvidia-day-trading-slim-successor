@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_224_complete_on_work_branch_gate_225_not_yet_activated",
-  "active_gate": "none — Gate 224 complete on work/gate-224-runtime-review-and-contract-retarget-20260406; Gate 225 not yet activated",
+  "execution_status": "cleanup_pack_closed_no_active_pack_routed",
+  "active_gate": "none",
   "supersedes": [
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
@@ -16,7 +16,8 @@
   "completed_gate_ids": [
     "Gate 222",
     "Gate 223",
-    "Gate 224"
+    "Gate 224",
+    "Gate 225"
   ],
   "completed_leaf_ids": [
     "LEAF-G222-001",
@@ -30,17 +31,14 @@
     "LEAF-G224-001",
     "LEAF-G224-002",
     "LEAF-G224-003",
-    "LEAF-G224-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G224-004",
     "LEAF-G225-001",
     "LEAF-G225-002",
     "LEAF-G225-003",
     "LEAF-G225-004"
   ],
-  "pending_gate_ids": [
-    "Gate 225"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -309,7 +307,7 @@
       "gate": "Gate 225",
       "title": "Retarget invariant/lawful-output family to successor-native ownership law",
       "objective": "Retarget the retained `invariant_or_lawful_output__repo_native_law_and_ownership` family so surviving assertions anchor to successor-native lawful output and ownership doctrine rather than source-era pack prose.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "proof_slice": [
         "pytest -q tests/test_gate225_retained_test_cleanup_closeout.py tests/test_planning_state_integrity.py"
@@ -329,7 +327,7 @@
       "gate": "Gate 225",
       "title": "Confirm runtime-scenario and keep-as-is families remain green after cleanup fallout",
       "objective": "Prove `runtime_scenario__retained_runtime_paths` and the remaining keep-as-is families still hold after cleanup, fixing only direct fallout if needed.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G225-001"
       ],
@@ -350,7 +348,7 @@
       "gate": "Gate 225",
       "title": "Freeze executed-row state and terminal retained-test surface",
       "objective": "Update the cleanup-pack execution state so executed move / retire / rewrite / retarget rows are explicit, untouched keep-as-is rows remain explicit, and no second cleanup pack is implied silently.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G225-002"
       ],
@@ -370,7 +368,7 @@
       "gate": "Gate 225",
       "title": "Close the cleanup pack and leave the repo architecture-ready",
       "objective": "Close the cleanup pack truthfully with either no active pack routed or an explicit architecture-planning-ready hold state, but do not open a fresh cleanup pack.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G225-003"
       ],

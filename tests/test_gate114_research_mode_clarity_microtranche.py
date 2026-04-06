@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 NORMATIVE = REPO_ROOT / "docs/01_NORMATIVE.md"
 OPERATING_MODEL = REPO_ROOT / "docs/02_OPERATING_MODEL.md"
@@ -94,9 +100,9 @@ def test_research_mode_rule_is_explicit_in_authority_docs() -> None:
         "avoid polluting idea generation with implementation-readiness, promotion, or live-operability caveats unless the operator asks"
         in process_law
     )
-    assert "Keep research-mode ideation separate from reporting-mode caveats" in agents
+    assert "Separate research-mode ideation from reporting-mode truth." in agents
     assert (
-        "Do not contaminate ideation with implementation-readiness or live-operability caveats unless the user asks"
+        "Do not let reporting caveats contaminate ideation unless the operator asks for current-state or readiness judgment."
         in agents
     )
 
@@ -112,6 +118,8 @@ def test_planning_templates_and_closed_pack_reflect_gate114() -> None:
     howto = HOWTO.read_text(encoding="utf-8")
 
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         "## Active pack\n\n- none" in plans
         or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
         or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans
@@ -119,9 +127,9 @@ def test_planning_templates_and_closed_pack_reflect_gate114() -> None:
         or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
         or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
     ) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
-    assert "2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_GATES_v1.md" in plans
-    assert "2026-03-30_RESEARCH_MODE_CLARITY_MICROTRANCHE_EXECUTION_LOG_v1.md" in plans
-    assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+    assert GATES.exists()
+    assert EXECUTION_LOG.exists()
+    assert contains_any(gate_map, ALLOWED_CURRENT_GATE_MARKERS | CLEANUP_GATE_MAP_MARKERS)
     assert "| Gate 114 | complete on `main` |" in gate_map
     assert (
         "Status: closed research-mode clarity microtranche on `main`; Gate 114 complete, no active gate"

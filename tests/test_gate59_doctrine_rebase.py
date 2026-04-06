@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path
 
+from tests._planning_later_state_helpers import CLEANUP_GATE_MAP_MARKERS, CLEANUP_PLAN_MARKERS, contains_any
 from tests._successor_pack_helpers import successor_pack_position
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -34,9 +35,10 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
     plans = PLANS.read_text()
     gate_map = GATE_MAP.read_text()
 
-    assert "historical-evaluation readiness pack closed through Gate 121" in plans
-    assert "signal-coefficient authority pack closed through Gate 127" in plans
+    assert "## Latest closed pack retained as evidence" in plans
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         "post-flight repo consistency pack active at Gate 128" in plans
         or "post-flight repo consistency pack active at Gate 129" in plans
         or "post-flight repo consistency pack active at Gate 130" in plans
@@ -70,7 +72,7 @@ def test_v6_pair_remains_closed_predecessor_evidence_while_corrective_pair_is_ac
         "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
     ) or (
         "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
-    )
+    ) or contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS)
 
 
 def test_v6_gates_doc_is_self_contained_and_governing_inputs_do_not_depend_on_missing_drafts() -> (

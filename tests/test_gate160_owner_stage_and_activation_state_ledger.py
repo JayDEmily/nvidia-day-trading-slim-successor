@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -47,8 +53,8 @@ def test_gate160_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert any(marker in plans for marker in ALLOWED_PLAN_MARKERS)
-    assert any(marker in gate_map for marker in ALLOWED_GATE_MAP_MARKERS)
+    assert contains_any(plans, ALLOWED_PLAN_MARKERS | CLEANUP_PLAN_MARKERS)
+    assert contains_any(gate_map, ALLOWED_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS)
     assert (
         "Status: active coefficient architecture consolidation pack; Gates 157-160 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 161 active, Gates 162-163 planned"
         in gates

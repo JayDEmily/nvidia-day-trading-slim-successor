@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 
 from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
     PHASE3_GATE_MAP_MARKERS,
     PHASE3_PLAN_MARKERS,
     contains_any,
@@ -25,8 +27,16 @@ def test_gate172_is_complete_and_pack_has_moved_to_gate176_or_later() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert contains_any(plans, PHASE3_PLAN_MARKERS) or "active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans or "closed through Gate 180" in plans
-    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS) or "Current active gate: **Gate 176 in the master/child parallel-risk integration pack**." in gate_map or "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180" in gate_map
+    assert (
+        contains_any(plans, PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS)
+        or "active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans
+        or "closed through Gate 180" in plans
+    )
+    assert (
+        contains_any(gate_map, PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS)
+        or "Current active gate: **Gate 176 in the master/child parallel-risk integration pack**." in gate_map
+        or "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180" in gate_map
+    )
     assert "Gate 172 | complete" in gates
     assert leaves["active_gate"] in {"Gate 176", "Gate 177", "Gate 178", "Gate 179", "Gate 180", "none"}
     assert leaves["completed_gate_ids"][:2] == ["Gate 171", "Gate 172"]

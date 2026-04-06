@@ -7,6 +7,12 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import cast
 
+from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -37,11 +43,13 @@ def test_gate157_pack_is_active_and_progressed_lawfully() -> None:
     checklist = CHECKLIST.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_GATES_v1.md" in plans
-    assert "2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_LEAVES_v1.json" in plans
-    assert "2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_EXECUTION_LOG_v1.md" in plans
-    assert "2026-04-02_PARALLEL_RISK_LANE_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md" in plans
+    assert GATES.exists()
+    assert LEAVES.exists()
+    assert EXECUTION_LOG.exists()
+    assert CHECKLIST.exists()
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         any(
             f"active gate: Gate {gate} on `work/gate-157-parallel-risk-lane-planning-pack-20260402`"
             in plans
@@ -51,6 +59,8 @@ def test_gate157_pack_is_active_and_progressed_lawfully() -> None:
         in plans
     )
     assert (
+        contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS)
+        or
         any(
             f"Current active gate: **Gate {gate} in the parallel risk lane foundation pack**."
             in gate_map

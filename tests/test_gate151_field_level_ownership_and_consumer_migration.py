@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 
 from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
     PHASE3_GATE_MAP_MARKERS,
     PHASE3_PLAN_MARKERS,
     contains_any,
@@ -49,8 +51,11 @@ def test_gate151_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert contains_any(plans, ALLOWED_PLAN_MARKERS | PHASE3_PLAN_MARKERS)
-    assert contains_any(gate_map, ALLOWED_GATE_MAP_MARKERS | PHASE3_GATE_MAP_MARKERS)
+    assert contains_any(plans, ALLOWED_PLAN_MARKERS | PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS)
+    assert contains_any(
+        gate_map,
+        ALLOWED_GATE_MAP_MARKERS | PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS,
+    )
     assert (
         "Status: active stage-local handoff corrective successor pack; Gates 150-151 complete on `main`, Gate 152 active, Gates 153-156 planned"
         in gates

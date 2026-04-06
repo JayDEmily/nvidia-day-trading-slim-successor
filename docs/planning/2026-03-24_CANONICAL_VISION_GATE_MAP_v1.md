@@ -1,12 +1,12 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.39
+Version: v1.41
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
-- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md` — active successor retained-test cleanup gate authority for Gates 222-225
-- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json` — active successor retained-test cleanup leaf ledger for Gates 222-225
-- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md` — active successor retained-test cleanup execution log for Gates 222-225
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md` — latest closed retained-test cleanup gate authority retained as evidence for Gates 222-225
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json` — latest closed retained-test cleanup leaf ledger retained as evidence
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md` — latest closed retained-test cleanup execution log retained as evidence
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json` — latest closed corrective leaf ledger for Gate 140
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md` — latest closed corrective execution log for Gate 140
@@ -66,7 +66,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**
+Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**
 
 ## 2. Selected completed-tranche evidence
 
@@ -265,7 +265,7 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 222 | complete on `work/gate-222-archive-evidence-and-duplicate-retirement-20260406` | execute the archive-evidence move tranche only, move historical planning/review and closeout receipt families out of active `tests/`, and close the gate without retiring duplicate replay-shadow tests | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate222_archive_and_duplicate_retirement.py` |
 | Gate 223 | complete on `work/gate-223-successor-boundary-and-light-retarget-20260406` | execute the successor-boundary rewrite, compatibility retarget, replay-authority retarget, and only then retire the duplicate replay-shadow tests on the same branch | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate223_successor_boundary_and_light_retarget.py` |
 | Gate 224 | complete on `work/gate-224-runtime-review-and-contract-retarget-20260406` | runtime review-and-trace plus runtime-contract authority retarget execution with bounded fallout repair only | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate224_runtime_review_and_contract_retarget.py` |
-| Gate 225 | planned | invariant-family retarget, retained runtime-scenario confirmation, and terminal cleanup-pack closeout | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate225_retained_test_cleanup_closeout.py` |
+| Gate 225 | complete on `work/gate-225-retained-test-cleanup-closeout-20260406` | invariant-family retarget, retained runtime-scenario confirmation, terminal cleanup-pack closeout, and architecture-ready no-active-pack hold | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate225_retained_test_cleanup_closeout.py` |
 
 ## 4. Global execution rules
 

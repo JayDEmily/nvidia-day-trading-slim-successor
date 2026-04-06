@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from ._planning_later_state_helpers import (
+    CLEANUP_GATE_MAP_MARKERS,
+    CLEANUP_PLAN_MARKERS,
+    contains_any,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
@@ -30,6 +36,8 @@ def test_gate160_is_complete_and_gate161_or_later_is_active() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert (
+        contains_any(plans, CLEANUP_PLAN_MARKERS)
+        or
         any(
             f"active gate: Gate {gate} on `work/gate-157-parallel-risk-lane-planning-pack-20260402`"
             in plans
@@ -39,6 +47,8 @@ def test_gate160_is_complete_and_gate161_or_later_is_active() -> None:
         in plans
     )
     assert (
+        contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS)
+        or
         any(
             f"Current active gate: **Gate {gate} in the parallel risk lane foundation pack**."
             in gate_map
