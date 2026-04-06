@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.27
+Version: v1.28
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
@@ -21,12 +21,13 @@ Paired files:
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md` — latest closed Phase 3 main-target repair gate authority retained as evidence for Gates 192-199
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json` — latest closed Phase 3 main-target repair leaf ledger retained as evidence
 - `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md` — latest closed Phase 3 main-target repair execution log retained as evidence
-- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md` — latest closed target-repo admitted-evidence successor gate authority retained as evidence for Gates 200-205
-- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json` — latest closed target-repo admitted-evidence successor leaf ledger retained as evidence
-- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md` — latest closed target-repo admitted-evidence successor execution log retained as evidence
-- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md` — active workflow-hardening and active-repo reset foundation gate authority for Gates 206-210
-- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json` — active workflow-hardening and active-repo reset foundation leaf ledger
-- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md` — active workflow-hardening and active-repo reset foundation execution log
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md` — latest closed predecessor gate authority retained as evidence for Gates 200-205
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json` — latest closed predecessor leaf ledger retained as evidence
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md` — latest closed predecessor execution log retained as evidence
+- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md` — latest closed workflow-hardening and active-repo reset foundation gate authority retained as evidence for Gates 206-210
+- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json` — latest closed workflow-hardening and active-repo reset foundation leaf ledger retained as evidence
+- `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md` — latest closed workflow-hardening and active-repo reset foundation execution log retained as evidence
+- `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md` — cutover brief for the later slim active-repo successor and substantive test-audit pack
 
 ## 0. Purpose
 
@@ -62,7 +63,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **Gate 210 in the workflow hardening and active-repo reset foundation pack on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`**.
+Current active gate: **none. The workflow hardening and active-repo reset foundation pack is closed through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`, and no later pack is active yet.**
 
 ## 2. Selected completed-tranche evidence
 
@@ -252,7 +253,7 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 207 | complete on `work/gate-207-router-and-doctrine-consolidation-20260406` | collapse repo-root routing back to a short live router, reduce `AGENTS.md` to behavioural authority, and leave `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` as the detailed workflow-law surface | `PLANS.md`, `AGENTS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate207_router_and_doctrine_consolidation.py` |
 | Gate 208 | complete on `main` | rewrite the tranche template pack so it encodes the live GitHub-native workflow law instead of zip-first defaults and prove the template grammar now matches repo-native execution law | `docs/planning/tranche_briefing_template_pack/README.md`, `docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md`, `tests/test_tranche_briefing_template_pack.py`, `PLANS.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md` |
 | Gate 209 | complete on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406` | harden the active-vs-evidence planning taxonomy so active authority, retained evidence, older historical planning material, and evidence-input-only companions are distinguishable without a physical planning-tree reshuffle | `PLANS.md`, `README.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate209_planning_tree_and_evidence_taxonomy.py` |
-| Gate 210 | active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406` | align README and Makefile with the hardened workflow and define the slim active-repo cutover criteria for the later substantive pack | `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json` |
+| Gate 210 | complete on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406` | align README and Makefile with the hardened workflow, define the slim active-repo cutover criteria, and close the workflow-hardening pack without starting the successor execution tranche | `README.md`, `Makefile`, `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate210_operator_surface_alignment_and_cutover.py` |
 
 ## 4. Global execution rules
 

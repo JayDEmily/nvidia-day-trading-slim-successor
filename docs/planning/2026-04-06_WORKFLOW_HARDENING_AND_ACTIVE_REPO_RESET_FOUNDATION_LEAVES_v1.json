@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_210_active",
-  "active_gate": "Gate 210",
+  "execution_status": "workflow_hardening_and_active_repo_reset_foundation_pack_closed_through_gate_210_on_work_branch",
+  "active_gate": "none",
   "supersedes": [],
   "evidence_inputs_only": [
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
@@ -13,7 +13,8 @@
     "Gate 206",
     "Gate 207",
     "Gate 208",
-    "Gate 209"
+    "Gate 209",
+    "Gate 210"
   ],
   "completed_leaf_ids": [
     "LEAF-G206-001",
@@ -24,12 +25,11 @@
     "LEAF-G208-001",
     "LEAF-G208-002",
     "LEAF-G209-001",
+    "LEAF-G210-001",
+    "LEAF-G210-002",
     "LEAF-G209-002"
   ],
-  "remaining_leaf_ids": [
-    "LEAF-G210-001",
-    "LEAF-G210-002"
-  ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -591,7 +591,7 @@
       "gate": "Gate 210",
       "title": "Align README and Makefile with hardened workflow",
       "objective": "Make the operator-facing onboarding and build surface reflect the hardened planning/coding split and bounded proof discipline.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G209-002"
       ],
@@ -610,7 +610,7 @@
       "repo_surfaces": [
         "README.md",
         "Makefile",
-        "tests/test_gate210_operator_surface_and_cutover_alignment.py"
+        "tests/test_gate210_operator_surface_alignment_and_cutover.py"
       ],
       "inputs": [
         "testing doctrine",
@@ -625,7 +625,7 @@
         "Do not remove make targets that still serve the live repo unless a replacement is proven."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_gate210_operator_surface_and_cutover_alignment.py"
+        "python -m pytest -q tests/test_gate210_operator_surface_alignment_and_cutover.py"
       ],
       "expected_evidence": [
         "README and Makefile align with hardened workflow truth"
@@ -645,7 +645,7 @@
       "gate": "Gate 210",
       "title": "Write the slim active-repo cutover brief and next-pack boundary",
       "objective": "Define the exact entry criteria and handoff boundary for the later slim active-repo creation and substantive test-audit tranche.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G210-001"
       ],
@@ -662,7 +662,7 @@
         "successor pack"
       ],
       "repo_surfaces": [
-        "new cutover brief under docs/planning/",
+        "docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md",
         "PLANS.md",
         "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
       ],
@@ -679,7 +679,7 @@
         "Do not leave the next-pack entry criteria implicit."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_gate210_operator_surface_and_cutover_alignment.py"
+        "python -m pytest -q tests/test_gate210_operator_surface_alignment_and_cutover.py"
       ],
       "expected_evidence": [
         "cutover brief exists",
@@ -697,7 +697,7 @@
       ],
       "full_suite_required": false,
       "document_touch_surfaces": [
-        "new cutover brief under docs/planning/",
+        "docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md",
         "PLANS.md",
         "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
       ]

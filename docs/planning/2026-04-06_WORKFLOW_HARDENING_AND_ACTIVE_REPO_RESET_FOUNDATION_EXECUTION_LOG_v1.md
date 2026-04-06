@@ -1,6 +1,6 @@
 # 2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1
 
-Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 complete on main, Gate 209 complete on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406, Gate 210 active on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406
+Status: closed execution log for workflow hardening and active-repo reset foundation through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`.
 
 ## Purpose
 
@@ -179,4 +179,38 @@ Gate 208 merged to main via a non-fast-forward merge commit: `6f0093c3dda5d1c82e
 - state-integrity checks passed: `true`
 - receipt recorded: `live closeout receipt on the Gate 209 work branch after the authored implementation commit`
 
-Gate 210 is now the current active gate on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`.
+## Gate 210 receipts
+
+### LEAF-G210-001
+
+- gate id: `Gate 210`
+- leaf id: `LEAF-G210-001`
+- branch name: `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
+- start commit: `9c1f08b5488a7c4657e759652a0318dc0566f9d7`
+- authored implementation commit: `bbe4acebd03f5c77a0d9a74f44410a3ccfea5b1d`
+- exact files touched: `README.md`, `Makefile`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md`, `tests/test_gate210_operator_surface_alignment_and_cutover.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate210_operator_surface_alignment_and_cutover.py`
+- observed result: `1 passed in 0.17s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none; the cutover boundary was made explicit without starting the slim-repo successor execution`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 210 work branch after the authored implementation commit`
+
+### LEAF-G210-002
+
+- gate id: `Gate 210`
+- leaf id: `LEAF-G210-002`
+- branch name: `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
+- start commit: `9c1f08b5488a7c4657e759652a0318dc0566f9d7`
+- authored implementation commit: `bbe4acebd03f5c77a0d9a74f44410a3ccfea5b1d`
+- exact files touched: `README.md`, `Makefile`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md`, `tests/test_gate210_operator_surface_alignment_and_cutover.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate210_operator_surface_alignment_and_cutover.py`
+- observed result: `1 passed in 0.17s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none; the pack closed to no-active-pack state and no later pack was activated`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 210 work branch after the authored implementation commit`
+
+Gate 210 is complete on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`.
+The workflow hardening and active-repo reset foundation pack is now closed through Gate 210.
+No later pack is active, and no slim-repo execution work has started in this branch.
