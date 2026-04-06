@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1
 
-Status: active document-touch checklist for the target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active.
+Status: closed document-touch checklist for the target-repo admitted-evidence successor planning pack through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`.
 
 ## Frozen/process surfaces checked for this planning activation
 
@@ -41,6 +41,10 @@ Status: active document-touch checklist for the target-repo admitted-evidence su
 - `docs/planning/2026-04-05_TARGET_REPO_DMP_MACHINE_READABLE_CONTRACT_BOUNDARY_RULES_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_PLANNING_PROOF_SLICE_v1.md`
 - `docs/planning/2026-04-05_GATE204_TARGET_REPO_DMP_PACKET_FAILURE_PACK_AND_CONTRACT_BOUNDARY_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md`
+- `docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md`
 
 ## Evidence inputs read for this planning activation
 
@@ -61,15 +65,16 @@ Status: active document-touch checklist for the target-repo admitted-evidence su
 - `tests/test_gate203_target_repo_snapshot_and_collection_planning.py`
 - `tests/test_gate204_target_repo_dmp_failure_pack_planning.py`
 
-## Later authority surfaces likely to move in Gate 205
+## Closeout result
 
-- successor-pack index / cross-reference surfaces
-- closeout proof-order and receipt surfaces for this successor pack
-- planning-to-coding handoff surfaces for this successor pack
+- successor-pack index / cross-reference surface is now explicit
+- closeout proof-order and receipt requirements are now explicit
+- planning-to-coding handoff boundary is now explicit
+- no active pack is routed after this Gate 205 closeout; a new planning pack must be created before later execution starts
 
 ## Explicit exclusions preserved by this checklist
 
-- no runtime behaviour under `src/` is changed in Gate 200 bootstrap
+- no runtime behaviour under `src/` is changed in Gate 205 closeout
 - no new real anchor is admitted
 - no new DMP packet pack is authored
 - no standalone repo files are imported wholesale

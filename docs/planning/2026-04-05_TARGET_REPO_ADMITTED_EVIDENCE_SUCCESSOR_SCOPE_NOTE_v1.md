@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1
 
-Status: active bounded-scope note for the target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active.
+Status: retained bounded-scope note for the target-repo admitted-evidence successor planning pack closed through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`.
 
 ## Why this pack is narrow
 
@@ -13,7 +13,8 @@ The lawful next move is to re-author that useful intent into a target-repo-nativ
 - plan future real-anchor collection and admission work;
 - plan coverage review, redundancy rejection, semantic review, and disagreement memory;
 - plan DMP packet failure-pack work against the repo's canonical DMP v2 contract;
-- update routing/control surfaces so the repo has one truthful active pack again.
+- update routing/control surfaces so the repo has one truthful active-pack or closed-pack state again;
+- close the planning pack with an explicit index, closeout proof order, and planning-to-coding handoff boundary.
 
 ## What this pack may not do
 
@@ -21,7 +22,8 @@ The lawful next move is to re-author that useful intent into a target-repo-nativ
 - claim that any new sibling pack, replay upgrade, or DMP failure pack has already been authored;
 - copy the standalone repo's schemas/examples/validators into this repo as if they were automatically canonical;
 - reintroduce Gate 212 or any dual-repo convergence mechanism as the project endpoint;
-- change runtime semantics under `src/` as part of Gate 200 bootstrap.
+- change runtime semantics under `src/` as part of Gate 205 closeout;
+- invent Gate 206 or any later tranche inside this closeout gate.
 
 ## Workflow truth preserved by this scope note
 
@@ -43,3 +45,4 @@ The lawful next move is to re-author that useful intent into a target-repo-nativ
 Do not let the old standalone planning artefacts masquerade as current target-repo truth.
 Do not let the closed Gate 199 state be diluted by re-opening Phase 3 under a new name.
 Do not let machine-readable examples or validators outrun the repo-native contract decisions they would have to obey.
+Do not let later coding begin until a new planning pack is created and routed explicitly from the closed successor-pack handoff boundary.
