@@ -31,7 +31,7 @@ No completed leaf receipts yet. Gate 217 is active on `work/gate-217-slim-succes
 
 Opening proof slice for the pack-install routing state:
 - exact validation command: `/home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/python -m pytest -q tests/test_gate217_slim_successor_pack_planning.py tests/test_planning_state_integrity.py`
-- observed result: `2 passed in 0.17s`
+- observed result: `2 passed in 0.27s`
 - state-integrity checks passed: `true`
 - completed leaf receipts recorded: `false`
 
