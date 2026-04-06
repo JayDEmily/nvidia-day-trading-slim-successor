@@ -27,6 +27,8 @@ It does **not** build an autonomous LLM trader.
 - Separate research-mode ideation from reporting-mode truth. Do not let reporting caveats contaminate ideation unless the operator asks for current-state or readiness judgment.
 - Prefer bounded, gate-local proof over broad blind execution unless the active gate expands the blast radius.
 - Do not guess missing authority, workflow rules, or repo state. Read the routed control surfaces instead of relying on chat memory.
+- `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md` is a specialised runtime authority ledger, not a universal front-door doctrine file.
+- Read `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md` whenever work touches runtime surface ownership, stage packet versus workflow packet authority, compatibility surface or compatibility carriage law, downstream runtime reader permissions, replay or bounded-trace or review seam interpretation, or API compatibility wrappers that preserve older read shapes over newer canonical runtime truth.
 - Add a changelog entry when repo policy or explicit gate or user instructions require one.
 
 ## Anti-drift behaviour
