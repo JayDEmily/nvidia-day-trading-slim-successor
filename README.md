@@ -37,6 +37,14 @@ Read these in order:
 
 `README.md` is onboarding context, not the live planning router. Completed predecessor packs may remain under `docs/planning/` as implementation evidence, but repo-root `PLANS.md` decides which planning artefacts are active. Historical design drafts and archived milestone artefacts live in `docs/legacy/`. Build-status notes live in `docs/status/`. Machine-readable repo history lives in `CHANGELOG.jsonl`.
 
+Planning taxonomy stays narrow:
+- the active pack named by `PLANS.md` is the only live planning authority under `docs/planning/`
+- the latest closed pack retained as evidence and the latest closed predecessor evidence are comparison material, not active authority
+- older closed planning material under `docs/planning/` remains historical unless `PLANS.md` routes it explicitly
+- closeout notes, contradiction reports, scope notes, salvage matrices, indexes, and similar companion artefacts are evidence-input-only unless `PLANS.md` names one as an active surface
+
+This taxonomy is the current fix. No physical planning-tree reshuffle is required unless a later tranche proves the routing surfaces can no longer keep those classes distinct.
+
 ## Quickstart
 
 ```bash

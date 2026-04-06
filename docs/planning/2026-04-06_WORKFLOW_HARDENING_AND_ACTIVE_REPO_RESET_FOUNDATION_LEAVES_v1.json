@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_209_active",
-  "active_gate": "Gate 209",
+  "execution_status": "gate_210_active",
+  "active_gate": "Gate 210",
   "supersedes": [],
   "evidence_inputs_only": [
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
@@ -12,7 +12,8 @@
   "completed_gate_ids": [
     "Gate 206",
     "Gate 207",
-    "Gate 208"
+    "Gate 208",
+    "Gate 209"
   ],
   "completed_leaf_ids": [
     "LEAF-G206-001",
@@ -21,11 +22,11 @@
     "LEAF-G207-001",
     "LEAF-G207-002",
     "LEAF-G208-001",
-    "LEAF-G208-002"
+    "LEAF-G208-002",
+    "LEAF-G209-001",
+    "LEAF-G209-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G209-001",
-    "LEAF-G209-002",
     "LEAF-G210-001",
     "LEAF-G210-002"
   ],
@@ -480,7 +481,7 @@
       "gate": "Gate 209",
       "title": "Define active-vs-evidence planning taxonomy explicitly",
       "objective": "Document and route the distinction between active authority, latest closed evidence, and older historical planning material.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G208-002"
       ],
@@ -513,7 +514,7 @@
         "Do not leave later readers inferring the taxonomy from examples alone."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_gate209_planning_evidence_taxonomy.py"
+        "python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py"
       ],
       "expected_evidence": [
         "repo surfaces now describe active-vs-evidence taxonomy explicitly"
@@ -534,7 +535,7 @@
       "gate": "Gate 209",
       "title": "Decide whether physical archive restructuring is deferred",
       "objective": "Record a bounded yes/no decision on whether docs/planning physical archive refactoring happens now or is deferred behind the new taxonomy.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G209-001"
       ],
@@ -565,7 +566,7 @@
         "Do not leave structural archive changes as implied future work with no entry criteria."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_gate209_planning_evidence_taxonomy.py"
+        "python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py"
       ],
       "expected_evidence": [
         "explicit defer/do-now decision captured in repo docs"

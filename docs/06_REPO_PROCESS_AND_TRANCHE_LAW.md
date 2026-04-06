@@ -65,6 +65,19 @@ Repo execution and closeout command choices are gate-specific and should be defi
 
 Historical evidence may remain in-repo, but it is never active authority unless repo-root `PLANS.md` names it explicitly.
 
+## Planning and evidence taxonomy
+
+Use one taxonomy across the repo:
+- active pack authority: the gates master, leaves ledger, execution log, and any bounded-scope note or contradiction report named by repo-root `PLANS.md`; this is the only live planning authority under `docs/planning/`
+- latest closed pack retained as evidence: the most recent fully closed planning pack kept near the router for closeout evidence, operator comparison, and successor-pack context; not active authority
+- latest closed predecessor evidence: the closed pack immediately before the latest retained pack; predecessor context only, not active authority
+- older historical planning material: earlier closed planning artefacts that remain under `docs/planning/`; historical context only unless repo-root `PLANS.md` routes them as active
+- evidence-input-only material: companion artefacts such as closeout receipts, indexes, cross-references, salvage matrices, and other pack-local evidence notes; informative only unless repo-root `PLANS.md` explicitly names one as an active surface
+
+This taxonomy is semantic before it is physical.
+Do not perform a mass archive move merely to make the tree feel cleaner.
+Physical planning-tree restructuring is deferred unless a later tranche proves the routed taxonomy can no longer keep authority, retained evidence, and older history distinct.
+
 ## Planning mode
 
 Planning mode is used when the repo needs one of the following:
@@ -146,10 +159,12 @@ It must not become a running diary of tranche history.
 It may name:
 - the active pack, if one exists;
 - the latest closed pack retained as evidence, if that helps onboarding;
+- the latest closed predecessor evidence, if that helps immediate predecessor traceability;
 - the active bounded-scope note, if one exists;
 - the canonical gate map.
 
 If no active pack exists, `PLANS.md` must say so explicitly.
+It must also keep active authority, retained evidence, and older historical material distinguishable without forcing readers to reconstruct the tree from chat or commit archaeology.
 
 ## GitHub-native execution ledger law
 
