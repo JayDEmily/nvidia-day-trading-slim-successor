@@ -68,12 +68,15 @@
         "tests/test_gate86_event_ingestion_precedence_and_closeout.py",
         "tests/test_gate95_phase0_closeout.py"
       ]
-    },
+    }
+  ],
+  "deferred_non_archive_actions": [
     {
       "decision_id": "replay_regression__research_shadow_replays",
-      "leaf": "LEAF-G222-004",
-      "action": "retire_duplicate",
+      "deferred_to_leaf": "LEAF-G223-004",
+      "planned_action": "retire_duplicate",
       "disagreement_state": "resolved_with_memory",
+      "notes": "Gate 222 remained archive-only after pack amendment; duplicate replay-shadow retirement may execute only in Gate 223 after replay-authority retarget proof lands on the same branch.",
       "files": [
         "tests/test_research_eval_replay.py",
         "tests/test_research_replay.py"
