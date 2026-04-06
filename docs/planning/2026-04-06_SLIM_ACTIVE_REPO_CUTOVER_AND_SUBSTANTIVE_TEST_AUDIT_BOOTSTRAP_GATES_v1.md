@@ -1,6 +1,6 @@
 # 2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1
 
-Status: slim-successor planning pack with Gate 217 complete on `work/gate-217-slim-successor-pack-bootstrap-and-routing-20260406`; Gates 218-221 planned, Gate 218 not yet activated. This pack is **not** active in the source repo.
+Status: slim-successor planning pack with Gate 218 complete on `work/gate-218-retained-surface-inventory-and-runtime-authority-20260406`; Gates 219-221 planned, Gate 219 not yet activated. This pack is **not** active in the source repo.
 
 ## Purpose
 

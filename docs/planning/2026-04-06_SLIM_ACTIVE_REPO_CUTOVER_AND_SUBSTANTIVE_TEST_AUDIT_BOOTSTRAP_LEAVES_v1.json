@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
-  "version": "v1.1",
-  "execution_status": "gate_217_complete_on_work_branch_gate_218_not_yet_activated",
-  "active_gate": "none — Gate 217 complete on work/gate-217-slim-successor-pack-bootstrap-and-routing-20260406; Gate 218 not yet activated",
+  "version": "v1.2",
+  "execution_status": "gate_218_complete_on_work_branch_gate_219_not_yet_activated",
+  "active_gate": "none — Gate 218 complete on work/gate-218-retained-surface-inventory-and-runtime-authority-20260406; Gate 219 not yet activated",
   "supersedes": [],
   "evidence_inputs_only": [
     "source repo PLANS.md",
@@ -16,16 +16,17 @@
     "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 217"
+    "Gate 217",
+    "Gate 218"
   ],
   "completed_leaf_ids": [
     "LEAF-G217-001",
     "LEAF-G217-002",
-    "LEAF-G217-003"
+    "LEAF-G217-003",
+    "LEAF-G218-001",
+    "LEAF-G218-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G218-001",
-    "LEAF-G218-002",
     "LEAF-G219-001",
     "LEAF-G219-002",
     "LEAF-G220-001",
@@ -34,7 +35,6 @@
     "LEAF-G221-002"
   ],
   "pending_gate_ids": [
-    "Gate 218",
     "Gate 219",
     "Gate 220",
     "Gate 221"
@@ -296,7 +296,7 @@
       "gate": "Gate 218",
       "title": "Freeze the retained-surface inventory",
       "objective": "Inventory which doctrine, operator, runtime, fixture, planning, and test surfaces actually move into the slim repo so the later audit does not classify against missing material or against the wrong installed doctrine set.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G217-003"
       ],
@@ -355,7 +355,7 @@
       "gate": "Gate 218",
       "title": "Verify the rewritten 07 ledger and AGENTS read-trigger constrain the audit",
       "objective": "Verify that the slim successor repo now carries the rewritten docs/07 ledger and matching AGENTS read-trigger, and bind those two surfaces to the substantive audit classification rules.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G218-001"
       ],

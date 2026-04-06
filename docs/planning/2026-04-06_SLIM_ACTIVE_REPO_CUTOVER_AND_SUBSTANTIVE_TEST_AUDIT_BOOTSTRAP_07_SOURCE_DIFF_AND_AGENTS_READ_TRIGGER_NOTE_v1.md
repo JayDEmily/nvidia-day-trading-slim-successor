@@ -40,3 +40,11 @@ Gate 217 pack installation must do all of the following in the slim successor re
 - It must not claim runtime behaviour changed merely because the doctrine text was rewritten.
 - It must not move `docs/07...` into the top-level frozen reading order for unrelated planning-only tasks.
 - It must not reopen the source repo or pretend the source repo's closed Gate 210 pack already executed this rewrite.
+
+## Gate 218 successor verification result
+
+Gate 218 verified that the installed successor-repo `docs/07...` file matches the rescoped rewrite rather than the older source-repo text by checking for the new Section 0 classification/read-trigger and the added Sections 1.1 and 1.2.
+
+Gate 218 also verified that the installed successor-repo `AGENTS.md` carries the matching specialised-authority posture and the required runtime-domain read-trigger.
+
+This verification freezes how the later test audit must read `docs/07...` and `AGENTS.md` together. It does not claim that runtime semantics changed during Gate 218.
