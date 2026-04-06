@@ -30,6 +30,10 @@ def test_gate161_is_complete_and_gate162_or_later_is_active() -> None:
         )
         or "closed through Gate 164 on `work/gate-157-parallel-risk-lane-planning-pack-20260402`"
         in plans
+        or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
+        or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
+        or "no active pack currently routed" in plans
     )
     assert (
         any(
@@ -38,6 +42,14 @@ def test_gate161_is_complete_and_gate162_or_later_is_active() -> None:
             for gate in (162, 163, 164)
         )
         or "Current active gate: **none — parallel risk lane foundation pack closed through Gate 164"
+        in gate_map
+        or "Current active gate: **Gate 224 active on `work/gate-224-runtime-review-and-contract-retarget-20260406` under the successor retained-test cleanup execution pack.**"
+        in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**"
+        in gate_map
+        or "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**"
+        in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**"
         in gate_map
     )
     assert "Status: closed parallel risk lane foundation pack through Gate 164" in gates or any(

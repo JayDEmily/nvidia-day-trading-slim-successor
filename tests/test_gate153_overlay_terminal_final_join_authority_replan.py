@@ -35,6 +35,10 @@ def test_gate153_control_surfaces_advance_honestly() -> None:
         or "active gate: Gate 156 on `main`" in plans
         or "no active pack currently routed; stage-local handoff corrective successor pack closed through Gate 156 on `main`"
         in plans
+        or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
+        or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
+        or "no active pack currently routed" in plans
     )
     assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS) or (
         "Current active gate: **Gate 154 in the stage-local handoff corrective successor pack**."
@@ -44,6 +48,14 @@ def test_gate153_control_surfaces_advance_honestly() -> None:
         or "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**."
         in gate_map
         or "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**."
+        in gate_map
+        or "Current active gate: **Gate 224 active on `work/gate-224-runtime-review-and-contract-retarget-20260406` under the successor retained-test cleanup execution pack.**"
+        in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**"
+        in gate_map
+        or "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**"
+        in gate_map
+        or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**"
         in gate_map
     )
     assert (

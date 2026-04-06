@@ -66,7 +66,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Current state
 
-- active pack is the successor retained-test cleanup execution pack; Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406` and Gate 224 is not yet activated
+- active pack is the successor retained-test cleanup execution pack; Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406` and Gate 225 is not yet activated
 - latest closed pack retained as evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
 - latest closed predecessor evidence is the workflow hardening and active-repo reset foundation pack closed through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
 
