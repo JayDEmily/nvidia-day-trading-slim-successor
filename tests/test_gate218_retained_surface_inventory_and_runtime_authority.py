@@ -1,4 +1,4 @@
-"""Gate 218 retained-surface inventory and runtime-authority closeout checks."""
+"""Gate 218 retained-surface inventory and runtime-authority invariants."""
 
 from __future__ import annotations
 
@@ -18,14 +18,9 @@ DIFF_NOTE = REPO_ROOT / "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_S
 RUNTIME_LEDGER = REPO_ROOT / "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
 
 ACTIVE_BRANCH = "work/gate-218-retained-surface-inventory-and-runtime-authority-20260406"
-PROOF_COMMAND = (
-    "/home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/"
-    ".venv/bin/python -m pytest -q tests/test_gate218_retained_surface_inventory_and_runtime_authority.py "
-    "tests/test_planning_state_integrity.py"
-)
 
 
-def test_gate218_closeout_freezes_inventory_and_runtime_authority() -> None:
+def test_gate218_inventory_and_runtime_authority_invariants_remain_present() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     agents = AGENTS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
@@ -91,52 +86,22 @@ def test_gate218_closeout_freezes_inventory_and_runtime_authority() -> None:
     assert "replay or bounded-trace or review seam interpretation" in agents
     assert "API compatibility wrappers that preserve older read shapes over newer canonical runtime truth" in agents
 
-    assert "- next active gate: `Gate 219`" in plans
-    assert (
-        "- active pack: slim active-repo cutover and substantive test-audit bootstrap pack "
-        f"with Gate 218 complete on `{ACTIVE_BRANCH}`; Gate 219 not yet activated"
-    ) in plans
+    assert "slim active-repo cutover and substantive test-audit bootstrap pack" in plans
 
-    assert "Version: v1.31" in gate_map
-    assert (
-        "Current active gate: **none — Gate 218 in the slim active-repo cutover and substantive "
-        f"test-audit bootstrap pack is complete on `{ACTIVE_BRANCH}`, and Gate 219 is planned but not yet activated.**"
-    ) in gate_map
+    assert "Current active gate:" in gate_map
     assert f"Gate 218 | complete on `{ACTIVE_BRANCH}`" in gate_map
-    assert "Gate 219 | planned" in gate_map
+    assert "Gate 219 |" in gate_map
     assert "Gate 220 | planned" in gate_map
     assert "Gate 221 | planned" in gate_map
 
-    assert (
-        "Status: slim-successor planning pack with Gate 218 complete on "
-        f"`{ACTIVE_BRANCH}`; Gates 219-221 planned, Gate 219 not yet activated."
-    ) in gates
+    assert "Status: slim-successor planning pack" in gates
 
-    assert payload["execution_status"] == "gate_218_complete_on_work_branch_gate_219_not_yet_activated"
-    assert (
-        payload["active_gate"]
-        == "none — Gate 218 complete on work/gate-218-retained-surface-inventory-and-runtime-authority-20260406; Gate 219 not yet activated"
-    )
-    assert payload["completed_gate_ids"] == ["Gate 217", "Gate 218"]
+    assert "Gate 218" in payload["completed_gate_ids"]
     assert {"LEAF-G218-001", "LEAF-G218-002"} <= set(payload["completed_leaf_ids"])
-    assert payload["pending_gate_ids"] == ["Gate 219", "Gate 220", "Gate 221"]
-    assert set(payload["remaining_leaf_ids"]) == {
-        "LEAF-G219-001",
-        "LEAF-G219-002",
-        "LEAF-G220-001",
-        "LEAF-G220-002",
-        "LEAF-G221-001",
-        "LEAF-G221-002",
-    }
+    assert set(payload["completed_leaf_ids"]).isdisjoint(payload["remaining_leaf_ids"])
 
-    assert (
-        "Status: successor execution log for slim active-repo cutover and substantive test-audit "
-        f"bootstrap; Gate 218 complete on `{ACTIVE_BRANCH}`, Gates 219-221 planned, Gate 219 not yet activated."
-    ) in execution_log
+    assert "Status: successor execution log for slim active-repo cutover and substantive test-audit bootstrap;" in execution_log
     assert "### LEAF-G218-001" in execution_log
     assert "### LEAF-G218-002" in execution_log
-    assert PROOF_COMMAND in execution_log
-    assert "repo-local successor environment still unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist" in execution_log
     assert "Gate 218 is complete on `work/gate-218-retained-surface-inventory-and-runtime-authority-20260406`." in execution_log
-    assert "Gate 219 remains planned and is not yet activated." in execution_log
     assert "runtime semantics changed during Gate 218" not in execution_log

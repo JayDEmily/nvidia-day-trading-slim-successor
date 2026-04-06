@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
-  "version": "v1.2",
-  "execution_status": "gate_218_complete_on_work_branch_gate_219_not_yet_activated",
-  "active_gate": "none — Gate 218 complete on work/gate-218-retained-surface-inventory-and-runtime-authority-20260406; Gate 219 not yet activated",
+  "version": "v1.3",
+  "execution_status": "gate_219_complete_on_work_branch_gate_220_not_yet_activated",
+  "active_gate": "none — Gate 219 complete on work/gate-219-retained-test-inventory-and-ownership-mapping-20260406; Gate 220 not yet activated",
   "supersedes": [],
   "evidence_inputs_only": [
     "source repo PLANS.md",
@@ -17,25 +17,25 @@
   ],
   "completed_gate_ids": [
     "Gate 217",
-    "Gate 218"
+    "Gate 218",
+    "Gate 219"
   ],
   "completed_leaf_ids": [
     "LEAF-G217-001",
     "LEAF-G217-002",
     "LEAF-G217-003",
     "LEAF-G218-001",
-    "LEAF-G218-002"
+    "LEAF-G218-002",
+    "LEAF-G219-001",
+    "LEAF-G219-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G219-001",
-    "LEAF-G219-002",
     "LEAF-G220-001",
     "LEAF-G220-002",
     "LEAF-G221-001",
     "LEAF-G221-002"
   ],
   "pending_gate_ids": [
-    "Gate 219",
     "Gate 220",
     "Gate 221"
   ],
@@ -424,7 +424,7 @@
       "gate": "Gate 219",
       "title": "Build the canonical retained-test inventory baseline",
       "objective": "Enumerate the retained tests and freeze one canonical inventory so later keep / retire / rewrite / move decisions compare against the same successor baseline.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G218-002"
       ],
@@ -479,7 +479,7 @@
       "gate": "Gate 219",
       "title": "Map retained tests to doctrine, owners, and consumers",
       "objective": "Classify each retained test family against repo-native bug-surface doctrine, authoritative inputs, runtime or planning owners, and downstream consumers.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G219-001"
       ],
