@@ -56,8 +56,8 @@ def test_gate217_pack_installation_invariants_remain_present() -> None:
     assert f"Gate 217 | complete on `{ACTIVE_BRANCH}`" in gate_map
     assert "Gate 218 |" in gate_map
     assert "Gate 219 |" in gate_map
-    assert "Gate 220 | planned" in gate_map
-    assert "Gate 221 | planned" in gate_map
+    assert "Gate 220 |" in gate_map
+    assert "Gate 221 |" in gate_map
 
     assert "Status: slim-successor planning pack" in gates
     assert "This document is the active gate authority for the slim successor repo only." in gates

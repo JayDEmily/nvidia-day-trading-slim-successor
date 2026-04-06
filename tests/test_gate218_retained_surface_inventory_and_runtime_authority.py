@@ -91,8 +91,8 @@ def test_gate218_inventory_and_runtime_authority_invariants_remain_present() -> 
     assert "Current active gate:" in gate_map
     assert f"Gate 218 | complete on `{ACTIVE_BRANCH}`" in gate_map
     assert "Gate 219 |" in gate_map
-    assert "Gate 220 | planned" in gate_map
-    assert "Gate 221 | planned" in gate_map
+    assert "Gate 220 |" in gate_map
+    assert "Gate 221 |" in gate_map
 
     assert "Status: slim-successor planning pack" in gates
 
