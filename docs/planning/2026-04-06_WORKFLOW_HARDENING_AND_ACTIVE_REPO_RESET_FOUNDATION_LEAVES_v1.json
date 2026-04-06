@@ -1,0 +1,720 @@
+{
+  "governing_plan": "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_206_active",
+  "active_gate": "Gate 206",
+  "supersedes": [],
+  "evidence_inputs_only": [
+    "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+    "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json",
+    "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G206-001",
+    "LEAF-G206-002",
+    "LEAF-G206-003",
+    "LEAF-G207-001",
+    "LEAF-G207-002",
+    "LEAF-G208-001",
+    "LEAF-G208-002",
+    "LEAF-G209-001",
+    "LEAF-G209-002",
+    "LEAF-G210-001",
+    "LEAF-G210-002"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "runtime_or_contract_changes_forbidden_without_explicit_rescope": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G206-001",
+      "gate": "Gate 206",
+      "title": "Freeze live contradictions and bootstrap artefact set",
+      "objective": "Inspect the frozen law, live router surfaces, template pack, and latest closed evidence so the new post-Gate-205 pack starts from repo truth rather than from chat memory.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "This leaf is pure planning bootstrap. It exists before any doctrinal rewrite so the repo can lawfully move from no-active-pack state into one active governance-hardening pack.",
+      "vocabulary_terms_checked": [
+        "active pack",
+        "closed pack",
+        "router",
+        "contradiction report",
+        "document-touch checklist",
+        "evidence input only"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/tranche_briefing_template_pack/*",
+        "README.md",
+        "Makefile"
+      ],
+      "inputs": [
+        "live main-branch control surfaces",
+        "latest closed Gate 205 closeout note",
+        "repo-native tranche template pack"
+      ],
+      "ordered_actions": [
+        "Read the frozen law stack, current router surfaces, active vocabulary authority, baseline packet/data contract authority, template pack, README, and Makefile.",
+        "Preserve granularity when choosing gate and leaf counts; keep bootstrap, doctrine consolidation, template rewrite, taxonomy hardening, and operator-surface alignment separate.",
+        "Write the contradiction report naming every material conflict that blocks truthful future execution if left unresolved.",
+        "Seed the new gates master, leaves ledger, execution log, scope note, and document-touch checklist from repo-specific truth only."
+      ],
+      "forbidden_actions": [
+        "Do not claim that a later coding or evidence-execution tranche already exists.",
+        "Do not reopen the closed Gate 200-205 pack.",
+        "Do not change runtime code or packet contracts.",
+        "Do not copy the old zip-first template language forward."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate206_workflow_hardening_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "new Gate 206 pack quartet plus contradiction report and scope note",
+        "targeted planning proof for Gate 206",
+        "no runtime files under src/ changed"
+      ],
+      "definition_of_done": [
+        "The new pack artefacts exist and describe the repo state truthfully.",
+        "The contradiction report is explicit and actionable rather than implied."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit receipts are the default closeout evidence. Create a fresh full-history zip only if the operator explicitly requests backup or offline handoff packaging.",
+      "document_touch_surfaces": [
+        "new Gate 206 pack artefacts only at first bootstrap stage"
+      ]
+    },
+    {
+      "id": "LEAF-G206-002",
+      "gate": "Gate 206",
+      "title": "Route the repo to the new active pack",
+      "objective": "Move the live router surfaces from no-active-pack state to the new Gate 206 governance-hardening pack.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G206-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf changes only the live routing truth. It does not yet clean every stale doctrine surface; it only activates the new pack lawfully.",
+      "vocabulary_terms_checked": [
+        "active gate",
+        "latest closed pack retained as evidence",
+        "next active gate"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "Gate 206 pack artefacts",
+        "contradiction report findings"
+      ],
+      "ordered_actions": [
+        "Update repo-root PLANS.md so it names the new active pack, its leaves ledger, execution log, scope note, and contradiction report.",
+        "Update the canonical gate map so Gate 206 is the current active gate and the closed 2026-04-05 pack is retained as evidence only.",
+        "Ensure the leaves ledger state is coherent with the routed active gate."
+      ],
+      "forbidden_actions": [
+        "Do not leave PLANS.md saying no active pack exists once the new pack is created.",
+        "Do not leave the canonical gate map calling the closed 2026-04-05 pack active."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate206_workflow_hardening_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md routes the new Gate 206 pack",
+        "canonical gate map names Gate 206 as active",
+        "execution log seed status matches leaves-ledger active gate"
+      ],
+      "definition_of_done": [
+        "The repo has one active pack again.",
+        "The routed active pack and the leaves/execution state agree."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G206-003",
+      "gate": "Gate 206",
+      "title": "Prove Gate 206 planning integrity",
+      "objective": "Add or update the targeted planning proof so the new pack’s router state, contradiction handling, and state invariants are machine-checked.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G206-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "This leaf closes the bootstrap gate by proving the new pack exists and is routed coherently before any later governance edits begin.",
+      "vocabulary_terms_checked": [
+        "state-integrity invariants",
+        "planning quartet"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate206_workflow_hardening_pack_planning.py",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_*"
+      ],
+      "inputs": [
+        "routed Gate 206 pack",
+        "current router state"
+      ],
+      "ordered_actions": [
+        "Write targeted tests that prove the new pack is routed and the leaves state is coherent.",
+        "Prove the contradiction report is present when material conflicts were identified.",
+        "Record Gate 206 bootstrap receipts in the execution log once the gate closes."
+      ],
+      "forbidden_actions": [
+        "Do not rely on brittle historical-string tests that cannot tolerate later valid states.",
+        "Do not claim Gate 206 complete without targeted proof."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate206_workflow_hardening_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 206 planning test passes",
+        "execution log receipt for the Gate 206 leaves",
+        "active leaves state remains internally coherent"
+      ],
+      "definition_of_done": [
+        "Gate 206 has a green targeted planning proof.",
+        "The execution log can record Gate 206 as complete and Gate 207 as next."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "tests/test_gate206_workflow_hardening_pack_planning.py",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G207-001",
+      "gate": "Gate 207",
+      "title": "Collapse PLANS.md back to router-only",
+      "objective": "Remove diary-style and duplicated historical routing clutter from PLANS.md so it becomes a short live router again.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G206-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "This leaf repairs the repo-root router itself before touching the wider doctrine stack.",
+      "vocabulary_terms_checked": [
+        "active pack",
+        "latest closed pack retained as evidence"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "tests/test_gate207_router_and_doctrine_consolidation.py"
+      ],
+      "inputs": [
+        "current routed Gate 206 pack"
+      ],
+      "ordered_actions": [
+        "Strip diary-style historical marker piles out of PLANS.md while preserving the minimum live routing truth and latest closed evidence references needed for onboarding.",
+        "Prove PLANS.md remains a router and not a running diary."
+      ],
+      "forbidden_actions": [
+        "Do not delete needed latest-closed-evidence references if later readers still need them.",
+        "Do not reintroduce a no-active-pack claim while Gate 207 is still being executed inside an active pack."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py"
+      ],
+      "expected_evidence": [
+        "short router-only PLANS.md",
+        "targeted Gate 207 router proof"
+      ],
+      "definition_of_done": [
+        "PLANS.md reads as a router, not as a tranche history diary."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md"
+      ]
+    },
+    {
+      "id": "LEAF-G207-002",
+      "gate": "Gate 207",
+      "title": "Separate behaviour authority from process authority cleanly",
+      "objective": "Reduce AGENTS.md to the stable behavioural contract and let docs/06 hold the detailed workflow law.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G207-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md"
+      ],
+      "workflow_intent_assertion": "This leaf stops AGENTS.md and docs/06 from competing as overlapping process-law surfaces.",
+      "vocabulary_terms_checked": [
+        "behaviour authority",
+        "work authority",
+        "GitHub-native execution workflow"
+      ],
+      "repo_surfaces": [
+        "AGENTS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "tests/test_gate207_router_and_doctrine_consolidation.py"
+      ],
+      "inputs": [
+        "current docs/06",
+        "current AGENTS",
+        "Gate 206 contradiction report"
+      ],
+      "ordered_actions": [
+        "Keep AGENTS.md short and behavioural.",
+        "Keep docs/06 as the canonical workflow-law surface.",
+        "Remove or rewrite stale gate-map prose that still labels closed packs active."
+      ],
+      "forbidden_actions": [
+        "Do not make AGENTS.md the active router again.",
+        "Do not let the gate map keep stale active-pack labels after the router has been cleaned."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py"
+      ],
+      "expected_evidence": [
+        "AGENTS.md shortened to behavioural role",
+        "docs/06 remains the workflow-law authority",
+        "gate map header/paired-files truth aligned"
+      ],
+      "definition_of_done": [
+        "Behaviour authority and process authority are cleanly separated."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "AGENTS.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G208-001",
+      "gate": "Gate 208",
+      "title": "Rewrite the template pack to match live repo law",
+      "objective": "Update the template-pack documents so future planning packs inherit the current GitHub-native workflow model and no-active-pack/new-pack-required law.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G207-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "docs/planning/tranche_briefing_template_pack/*"
+      ],
+      "workflow_intent_assertion": "This leaf repairs the durable source of future planning structure rather than just fixing the current pack locally.",
+      "vocabulary_terms_checked": [
+        "template pack",
+        "evidence input only",
+        "GitHub-native execution ledger"
+      ],
+      "repo_surfaces": [
+        "docs/planning/tranche_briefing_template_pack/README.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json",
+        "docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md"
+      ],
+      "inputs": [
+        "current live workflow law",
+        "Gate 206 contradiction report"
+      ],
+      "ordered_actions": [
+        "Replace zip-first default language with GitHub-native execution-ledger language.",
+        "Keep zip creation available only for explicit backup/offline handoff cases.",
+        "Update the leaves template so its global rules match live repo law."
+      ],
+      "forbidden_actions": [
+        "Do not leave any template surface requiring routine zip packaging as the default closeout path.",
+        "Do not loosen the one-gate-at-a-time or quartet-moves-together rules."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate208_template_pack_github_native_alignment.py"
+      ],
+      "expected_evidence": [
+        "updated template-pack docs",
+        "updated template-pack leaves JSON",
+        "green template-pack tests"
+      ],
+      "definition_of_done": [
+        "The template pack no longer conflicts with AGENTS.md and docs/06 on routine execution workflow."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "docs/planning/tranche_briefing_template_pack/*",
+        "tests/test_tranche_briefing_template_pack.py"
+      ]
+    },
+    {
+      "id": "LEAF-G208-002",
+      "gate": "Gate 208",
+      "title": "Prove the template pack encodes the hardened workflow",
+      "objective": "Update or add tests so the template pack mechanically enforces the hardened workflow instead of relying on prose memory.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G208-001"
+      ],
+      "authority_docs": [
+        "docs/planning/tranche_briefing_template_pack/*",
+        "tests/test_tranche_briefing_template_pack.py"
+      ],
+      "workflow_intent_assertion": "This leaf closes the template rewrite gate by preventing the old zip-first assumptions from drifting back in later packs.",
+      "vocabulary_terms_checked": [
+        "bounded proof",
+        "GitHub-native workflow"
+      ],
+      "repo_surfaces": [
+        "tests/test_tranche_briefing_template_pack.py",
+        "tests/test_gate208_template_pack_github_native_alignment.py"
+      ],
+      "inputs": [
+        "updated template pack"
+      ],
+      "ordered_actions": [
+        "Write assertions that the template pack encodes GitHub-native routine execution, evidence-only latest-closed-pack handling, and current router law.",
+        "Keep the tests tolerant of later valid states while still rejecting the stale zip-first grammar."
+      ],
+      "forbidden_actions": [
+        "Do not hard-code brittle string assertions that would fail on harmless later wording shifts.",
+        "Do not weaken the template tests into smoke-only existence checks."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate208_template_pack_github_native_alignment.py"
+      ],
+      "expected_evidence": [
+        "green template-pack tests proving workflow alignment"
+      ],
+      "definition_of_done": [
+        "The template pack rewrite is mechanically defended."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "tests/test_tranche_briefing_template_pack.py",
+        "tests/test_gate208_template_pack_github_native_alignment.py"
+      ]
+    },
+    {
+      "id": "LEAF-G209-001",
+      "gate": "Gate 209",
+      "title": "Define active-vs-evidence planning taxonomy explicitly",
+      "objective": "Document and route the distinction between active authority, latest closed evidence, and older historical planning material.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G208-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "README.md"
+      ],
+      "workflow_intent_assertion": "This leaf clarifies how later readers navigate the planning tree without relying on chat memory or stale pack status prose.",
+      "vocabulary_terms_checked": [
+        "active authority",
+        "latest closed evidence",
+        "historical evidence"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "README.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
+      ],
+      "inputs": [
+        "current planning tree",
+        "latest closed evidence references"
+      ],
+      "ordered_actions": [
+        "State explicitly what counts as active authority, latest closed evidence, and older historical planning material.",
+        "Keep the taxonomy compact and operator-readable."
+      ],
+      "forbidden_actions": [
+        "Do not perform mass file moves unless the taxonomy itself proves a structural move is necessary.",
+        "Do not leave later readers inferring the taxonomy from examples alone."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate209_planning_evidence_taxonomy.py"
+      ],
+      "expected_evidence": [
+        "repo surfaces now describe active-vs-evidence taxonomy explicitly"
+      ],
+      "definition_of_done": [
+        "The planning/evidence taxonomy is explicit and truthful."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "README.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
+      ]
+    },
+    {
+      "id": "LEAF-G209-002",
+      "gate": "Gate 209",
+      "title": "Decide whether physical archive restructuring is deferred",
+      "objective": "Record a bounded yes/no decision on whether docs/planning physical archive refactoring happens now or is deferred behind the new taxonomy.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G209-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "README.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents silent future drift by forcing an explicit decision instead of leaving archive restructuring as a vague later maybe.",
+      "vocabulary_terms_checked": [
+        "archive",
+        "evidence taxonomy",
+        "deferred structural move"
+      ],
+      "repo_surfaces": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "README.md",
+        "scope note or companion taxonomy note if needed"
+      ],
+      "inputs": [
+        "taxonomy decision from LEAF-G209-001"
+      ],
+      "ordered_actions": [
+        "State explicitly whether docs/planning physical archive restructuring is in-scope now or deferred.",
+        "If deferred, state the trigger that would justify doing it later."
+      ],
+      "forbidden_actions": [
+        "Do not leave structural archive changes as implied future work with no entry criteria."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate209_planning_evidence_taxonomy.py"
+      ],
+      "expected_evidence": [
+        "explicit defer/do-now decision captured in repo docs"
+      ],
+      "definition_of_done": [
+        "There is no ambiguity about whether physical archive restructuring belongs to this tranche."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "LEAF-G210-001",
+      "gate": "Gate 210",
+      "title": "Align README and Makefile with hardened workflow",
+      "objective": "Make the operator-facing onboarding and build surface reflect the hardened planning/coding split and bounded proof discipline.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G209-002"
+      ],
+      "authority_docs": [
+        "README.md",
+        "Makefile",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
+      ],
+      "workflow_intent_assertion": "This leaf addresses the human/operator front door after the router, doctrine, and taxonomy have already been cleaned.",
+      "vocabulary_terms_checked": [
+        "quickstart",
+        "make check",
+        "bounded proof"
+      ],
+      "repo_surfaces": [
+        "README.md",
+        "Makefile",
+        "tests/test_gate210_operator_surface_and_cutover_alignment.py"
+      ],
+      "inputs": [
+        "testing doctrine",
+        "workflow-law surfaces"
+      ],
+      "ordered_actions": [
+        "Update README onboarding text so it reflects the planning/coding split and the role of the router.",
+        "Update Makefile guidance or targets only as far as needed to support bounded proof discipline without destabilising runtime build behaviour."
+      ],
+      "forbidden_actions": [
+        "Do not make speculative runtime or toolchain changes under the banner of workflow cleanup.",
+        "Do not remove make targets that still serve the live repo unless a replacement is proven."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate210_operator_surface_and_cutover_alignment.py"
+      ],
+      "expected_evidence": [
+        "README and Makefile align with hardened workflow truth"
+      ],
+      "definition_of_done": [
+        "The operator-facing entry surfaces no longer conflict with the live governance model."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "README.md",
+        "Makefile"
+      ]
+    },
+    {
+      "id": "LEAF-G210-002",
+      "gate": "Gate 210",
+      "title": "Write the slim active-repo cutover brief and next-pack boundary",
+      "objective": "Define the exact entry criteria and handoff boundary for the later slim active-repo creation and substantive test-audit tranche.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G210-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "README.md",
+        "PLANS.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the workflow-hardening pack by handing later work a precise cutover brief instead of another loose brainstorming boundary.",
+      "vocabulary_terms_checked": [
+        "cutover brief",
+        "entry criteria",
+        "successor pack"
+      ],
+      "repo_surfaces": [
+        "new cutover brief under docs/planning/",
+        "PLANS.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "cleaned router/doctrine/template/taxonomy/operator surfaces"
+      ],
+      "ordered_actions": [
+        "Write the slim active-repo cutover brief.",
+        "Name the exact successor work boundary: slim active-repo creation first, then substantive test-audit execution.",
+        "Close the pack honestly and route the repo to no-active-pack or to the exact next pack only if it is created in the same branch."
+      ],
+      "forbidden_actions": [
+        "Do not silently start the slim active-repo work inside this pack.",
+        "Do not leave the next-pack entry criteria implicit."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate210_operator_surface_and_cutover_alignment.py"
+      ],
+      "expected_evidence": [
+        "cutover brief exists",
+        "Gate 210 closeout receipts exist",
+        "next-pack boundary is explicit"
+      ],
+      "definition_of_done": [
+        "The repo can hand off cleanly into the slim active-repo successor work without relying on chat memory."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "new cutover brief under docs/planning/",
+        "PLANS.md",
+        "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md"
+      ]
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "AGENTS.md",
+      "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+      "docs/planning/tranche_briefing_template_pack/*",
+      "README.md",
+      "Makefile"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  }
+}
