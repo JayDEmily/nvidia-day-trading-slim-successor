@@ -1,12 +1,12 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.34
+Version: v1.35
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
-- `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md` — active slim-successor gate authority for Gates 217-221
-- `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json` — active slim-successor leaf ledger for Gates 217-221
-- `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md` — active slim-successor execution log for Gates 217-221
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md` — active successor retained-test cleanup gate authority for Gates 222-225
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json` — active successor retained-test cleanup leaf ledger for Gates 222-225
+- `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md` — active successor retained-test cleanup execution log for Gates 222-225
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md` — latest closed corrective gate authority for Gate 140
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_LEAVES_v1.json` — latest closed corrective leaf ledger for Gate 140
 - `docs/planning/2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_EXECUTION_LOG_v1.md` — latest closed corrective execution log for Gate 140
@@ -66,7 +66,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — the slim active-repo cutover and substantive test-audit bootstrap pack is closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`, and no active pack is currently routed.**
+Current active gate: **Gate 222 active on `main` under the successor retained-test cleanup execution pack.**
 
 ## 2. Selected completed-tranche evidence
 
@@ -262,6 +262,10 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 219 | complete on `work/gate-219-retained-test-inventory-and-ownership-mapping-20260406` | freeze the canonical retained-test inventory baseline, map each retained test family to doctrine, owners, consumers, and explicit state signals, and close the gate without starting decision law | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md`, `tests/test_gate219_test_inventory_classification.py` |
 | Gate 220 | complete on `work/gate-220-test-decision-law-and-first-pass-register-20260406` | freeze keep versus retire versus rewrite versus move decision law and the first-pass successor test decision register without executing those decisions | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `tests/test_gate220_test_audit_decision_register.py` |
 | Gate 221 | complete on `work/gate-221-successor-proof-slice-and-handoff-20260406` | freeze the bounded proof slice, grouped successor execution-pack queue, and explicit non-source-repo handoff boundary for the later retained-test execution pack without activating that pack yet | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`, `tests/test_gate221_successor_test_audit_handoff.py` |
+| Gate 222 | active on `main` | install the successor retained-test cleanup execution pack, keep the cleanup quartet coherent, and open the archive-evidence and duplicate-retirement tranche without touching the source/archive repo | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_successor_retained_test_cleanup_pack_routing.py` |
+| Gate 223 | planned | successor-boundary rewrite and light retarget execution for the retained cutover, compatibility-wrapper, and replay-compare families | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate223_successor_boundary_and_light_retarget.py` |
+| Gate 224 | planned | runtime review-and-trace plus runtime-contract authority retarget execution with bounded fallout repair only | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate224_runtime_review_and_contract_retarget.py` |
+| Gate 225 | planned | invariant-family retarget, retained runtime-scenario confirmation, and terminal cleanup-pack closeout | `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate225_retained_test_cleanup_closeout.py` |
 
 ## 4. Global execution rules
 

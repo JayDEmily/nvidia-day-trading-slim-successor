@@ -1,0 +1,389 @@
+{
+  "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_222_active_after_pack_install",
+  "active_gate": "Gate 222",
+  "supersedes": [
+    "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
+    "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+    "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+  ],
+  "evidence_inputs_only": [
+    "repo-root PLANS.md current no-active-pack state",
+    "Gate 220 decision register",
+    "Gate 221 proof-order and successor handoff surface"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G222-001",
+    "LEAF-G222-002",
+    "LEAF-G222-003",
+    "LEAF-G222-004",
+    "LEAF-G223-001",
+    "LEAF-G223-002",
+    "LEAF-G223-003",
+    "LEAF-G223-004",
+    "LEAF-G224-001",
+    "LEAF-G224-002",
+    "LEAF-G224-003",
+    "LEAF-G224-004",
+    "LEAF-G225-001",
+    "LEAF-G225-002",
+    "LEAF-G225-003",
+    "LEAF-G225-004"
+  ],
+  "pending_gate_ids": [
+    "Gate 222",
+    "Gate 223",
+    "Gate 224",
+    "Gate 225"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "one_branch_per_gate": true,
+    "must_merge_before_next_gate": true,
+    "controlled_multi_gate_continuity_allowed": true,
+    "controlled_multi_gate_condition": "Codex may continue gate-to-gate without operator relay only if each gate closes, merges, and no stop condition fires.",
+    "source_repo_mutation_forbidden": true,
+    "broad_blind_execution_forbidden_by_default": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G222-001",
+      "gate": "Gate 222",
+      "title": "Create successor-local archive-evidence destination and move manifest",
+      "objective": "Create the successor-local archive-evidence destination, write a manifest that preserves decision ids, evidence anchors, and disagreement memory, and wire the destination into the active cleanup pack without touching the source repo.",
+      "status": "planned",
+      "depends_on": [],
+      "proof_slice": [
+        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "archive-evidence destination under successor repo",
+        "cleanup-pack docs",
+        "Gate 222 proof file"
+      ],
+      "stop_conditions": [
+        "archive destination would need to be the source repo",
+        "archive destination cannot preserve evidence-anchor lineage cleanly"
+      ]
+    },
+    {
+      "id": "LEAF-G222-002",
+      "gate": "Gate 222",
+      "title": "Move historical planning-governance and review-planning receipt tests out of active tests",
+      "objective": "Execute the move for `planning_governance__closed_source_or_historical_pack_receipts` and `review_or_trace__historical_planning_review_receipts`, preserving evidence memory in the archive destination and removing those files from active runtime proof slices.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G222-001"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "active tests tree",
+        "successor-local archive-evidence destination",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "a moved file is still needed by a live successor runtime family and no replacement anchor exists"
+      ]
+    },
+    {
+      "id": "LEAF-G222-003",
+      "gate": "Gate 222",
+      "title": "Move historical closeout-receipt tests out of active tests",
+      "objective": "Execute the move for `migration_or_closeout_guard__historical_closeout_receipts` into the successor-local archive-evidence destination, preserving the execution-memory trail and removing those files from the active test surface.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G222-002"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "active tests tree",
+        "successor-local archive-evidence destination",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "a closeout-receipt test turns out to police a still-live successor seam not covered elsewhere"
+      ]
+    },
+    {
+      "id": "LEAF-G222-004",
+      "gate": "Gate 222",
+      "title": "Retire duplicate replay-shadow tests and close Gate 222",
+      "objective": "Remove `tests/test_research_eval_replay.py` and `tests/test_research_replay.py` as duplicate research-shadow replay guards, prove the canonical replay compare guards remain green, and close Gate 222 truthfully.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G222-003"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py",
+        "pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py"
+      ],
+      "allowed_changed_files": [
+        "active tests tree",
+        "cleanup-pack quartet",
+        "Gate 222 proof file"
+      ],
+      "stop_conditions": [
+        "canonical replay compare guards fail after duplicate retirement",
+        "duplicate retirement needs new runtime code rather than test-surface cleanup"
+      ]
+    },
+    {
+      "id": "LEAF-G223-001",
+      "gate": "Gate 223",
+      "title": "Rewrite retained cutover-boundary test for successor-local truth",
+      "objective": "Rewrite the retained `migration_or_closeout_guard__successor_cutover_boundary_rule` test so it asserts successor-local routing and archive-boundary truth instead of source-era cutover wording.",
+      "status": "planned",
+      "depends_on": [],
+      "proof_slice": [
+        "pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "tests/test_gate210_operator_surface_alignment_and_cutover.py",
+        "cleanup-pack quartet",
+        "Gate 223 proof file"
+      ],
+      "stop_conditions": [
+        "replacement successor-local authority inputs cannot be named exactly"
+      ]
+    },
+    {
+      "id": "LEAF-G223-002",
+      "gate": "Gate 223",
+      "title": "Retarget compatibility-wrapper family to successor doctrine",
+      "objective": "Retarget `tests/test_gate49_temporal_compatibility.py` and `tests/test_session_clock.py` to the adopted successor docs/03 plus docs/07 authority without changing runtime behaviour.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G223-001"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py",
+        "pytest -q tests/test_gate49_temporal_compatibility.py tests/test_session_clock.py"
+      ],
+      "allowed_changed_files": [
+        "compatibility-wrapper family tests",
+        "shared test helpers if directly required",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "retarget would require src-level wrapper redesign rather than assertion-surface rewrite"
+      ]
+    },
+    {
+      "id": "LEAF-G223-003",
+      "gate": "Gate 223",
+      "title": "Retarget canonical replay compare guards to successor doctrine",
+      "objective": "Retarget `tests/test_gate127_replay_coefficient_visibility.py` and `tests/test_replay_compare_runtime.py` to successor-native replay authority and preserved ownership law.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G223-002"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py",
+        "pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py"
+      ],
+      "allowed_changed_files": [
+        "canonical replay compare family tests",
+        "shared test helpers if directly required",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "retarget would collapse into a second untouched family outside Gate 223 scope"
+      ]
+    },
+    {
+      "id": "LEAF-G223-004",
+      "gate": "Gate 223",
+      "title": "Close Gate 223 and record executed rewrite/retarget rows",
+      "objective": "Update the quartet, execution log, and executed-row state so Gate 223 closes with Gate 224 next and the completed decision ids are explicit.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G223-003"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py",
+        "pytest -q tests/test_gate49_temporal_compatibility.py tests/test_session_clock.py tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py"
+      ],
+      "allowed_changed_files": [
+        "cleanup-pack quartet",
+        "Gate 223 proof file"
+      ],
+      "stop_conditions": [
+        "quartet closeout cannot represent Gate 223 state truthfully"
+      ]
+    },
+    {
+      "id": "LEAF-G224-001",
+      "gate": "Gate 224",
+      "title": "Retarget runtime review-and-trace family to successor-native authority",
+      "objective": "Retarget the live `review_or_trace__runtime_review_and_trace_surfaces` family so assertions point at successor-native review, trace, docs/03, and docs/07 authority rather than archived planning-control language.",
+      "status": "planned",
+      "depends_on": [],
+      "proof_slice": [
+        "pytest -q tests/test_gate224_runtime_review_and_contract_retarget.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "review/trace runtime family tests",
+        "shared review/trace test helpers if directly required",
+        "cleanup-pack quartet",
+        "Gate 224 proof file"
+      ],
+      "stop_conditions": [
+        "review/trace family retarget requires changing runtime implementation instead of assertion surfaces"
+      ]
+    },
+    {
+      "id": "LEAF-G224-002",
+      "gate": "Gate 224",
+      "title": "Retarget runtime-contract family to successor-native authority",
+      "objective": "Retarget the live `runtime_contract__current_packet_and_service_contracts` family so contract assertions point at current successor schemas, services, docs/03, and docs/07 authority.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G224-001"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate224_runtime_review_and_contract_retarget.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "runtime-contract family tests",
+        "shared contract test helpers if directly required",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "retarget requires schema or src contract mutation not already governed"
+      ]
+    },
+    {
+      "id": "LEAF-G224-003",
+      "gate": "Gate 224",
+      "title": "Repair fallout only for declared keep-as-is families",
+      "objective": "Repair only the fallout caused by Gate 222-224 cleanup in `control_surface_integrity`, `data_path_or_fixture`, `planning_governance__live_successor_process_controls`, and `repo_hygiene`, without turning those keep-as-is families into rewrite families.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G224-002"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate224_runtime_review_and_contract_retarget.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "guarded no-change family tests only if fallout requires",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "a keep-as-is family needs broader redesign rather than fallout repair"
+      ]
+    },
+    {
+      "id": "LEAF-G224-004",
+      "gate": "Gate 224",
+      "title": "Close Gate 224 with bounded family proof",
+      "objective": "Run the declared review-and-contract family slice, close Gate 224 truthfully, and route Gate 225 next.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G224-003"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate224_runtime_review_and_contract_retarget.py tests/test_planning_state_integrity.py",
+        "family review/trace slice",
+        "family runtime-contract slice"
+      ],
+      "allowed_changed_files": [
+        "cleanup-pack quartet",
+        "Gate 224 proof file"
+      ],
+      "stop_conditions": [
+        "declared family proof escapes into broad blind execution without concrete blast-radius reason"
+      ]
+    },
+    {
+      "id": "LEAF-G225-001",
+      "gate": "Gate 225",
+      "title": "Retarget invariant/lawful-output family to successor-native ownership law",
+      "objective": "Retarget the retained `invariant_or_lawful_output__repo_native_law_and_ownership` family so surviving assertions anchor to successor-native lawful output and ownership doctrine rather than source-era pack prose.",
+      "status": "planned",
+      "depends_on": [],
+      "proof_slice": [
+        "pytest -q tests/test_gate225_retained_test_cleanup_closeout.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "invariant/lawful-output family tests",
+        "shared assertion helpers if directly required",
+        "cleanup-pack quartet",
+        "Gate 225 proof file"
+      ],
+      "stop_conditions": [
+        "retarget needs runtime architecture change rather than test-surface cleanup"
+      ]
+    },
+    {
+      "id": "LEAF-G225-002",
+      "gate": "Gate 225",
+      "title": "Confirm runtime-scenario and keep-as-is families remain green after cleanup fallout",
+      "objective": "Prove `runtime_scenario__retained_runtime_paths` and the remaining keep-as-is families still hold after cleanup, fixing only direct fallout if needed.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G225-001"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate225_retained_test_cleanup_closeout.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "runtime-scenario family tests only if fallout requires",
+        "keep-as-is family tests only if fallout requires",
+        "cleanup-pack quartet"
+      ],
+      "stop_conditions": [
+        "runtime-scenario proof failure implies a hidden architecture change rather than cleanup fallout"
+      ]
+    },
+    {
+      "id": "LEAF-G225-003",
+      "gate": "Gate 225",
+      "title": "Freeze executed-row state and terminal retained-test surface",
+      "objective": "Update the cleanup-pack execution state so executed move / retire / rewrite / retarget rows are explicit, untouched keep-as-is rows remain explicit, and no second cleanup pack is implied silently.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G225-002"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate225_retained_test_cleanup_closeout.py tests/test_planning_state_integrity.py"
+      ],
+      "allowed_changed_files": [
+        "cleanup-pack quartet",
+        "terminal cleanup notes"
+      ],
+      "stop_conditions": [
+        "decision-register execution state cannot be represented truthfully"
+      ]
+    },
+    {
+      "id": "LEAF-G225-004",
+      "gate": "Gate 225",
+      "title": "Close the cleanup pack and leave the repo architecture-ready",
+      "objective": "Close the cleanup pack truthfully with either no active pack routed or an explicit architecture-planning-ready hold state, but do not open a fresh cleanup pack.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G225-003"
+      ],
+      "proof_slice": [
+        "pytest -q tests/test_gate225_retained_test_cleanup_closeout.py tests/test_planning_state_integrity.py",
+        "family invariant slice",
+        "family runtime-scenario slice if touched"
+      ],
+      "allowed_changed_files": [
+        "cleanup-pack quartet",
+        "Gate 225 proof file"
+      ],
+      "stop_conditions": [
+        "closeout would require inventing a new active cleanup gate"
+      ]
+    }
+  ]
+}
