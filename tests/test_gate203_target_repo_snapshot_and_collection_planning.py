@@ -30,13 +30,13 @@ def test_gate203_control_surfaces_and_docs_are_coherent() -> None:
     receipt = RECEIPT.read_text(encoding="utf-8")
     payload = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert any(marker in plans for marker in ["- next active gate: `Gate 204`", "- next active gate: `Gate 205`"])
-    assert any(marker in gate_map for marker in ["Current active gate: **Gate 204 in the target-repo admitted-evidence successor planning pack on `main`**.", "Current active gate: **Gate 205 in the target-repo admitted-evidence successor planning pack on `main`**."])
-    assert any(status in gates for status in ["Status: active target-repo admitted-evidence successor planning pack; Gates 200-203 complete on `main`, Gate 204 active, Gate 205 planned.", "Status: active target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active."])
-    assert payload["execution_status"] in {"gates_200_203_complete_gate_204_active_on_main", "gates_200_204_complete_gate_205_active_on_main"}
-    assert payload["active_gate"] in {"Gate 204", "Gate 205"}
-    assert payload["completed_gate_ids"] in [["Gate 200", "Gate 201", "Gate 202", "Gate 203"], ["Gate 200", "Gate 201", "Gate 202", "Gate 203", "Gate 204"]]
-    assert payload["pending_gate_ids"] in [["Gate 204", "Gate 205"], ["Gate 205"]]
+    assert any(marker in plans for marker in ["- next active gate: `Gate 204`", "- next active gate: `Gate 205`", "- no active pack currently routed"])
+    assert any(marker in gate_map for marker in ["Current active gate: **Gate 204 in the target-repo admitted-evidence successor planning pack on `main`**.", "Current active gate: **Gate 205 in the target-repo admitted-evidence successor planning pack on `main`**.", "Current active gate: **none — target-repo admitted-evidence successor planning pack closed through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`**.", "Current active gate: **none — target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`**."])
+    assert any(status in gates for status in ["Status: active target-repo admitted-evidence successor planning pack; Gates 200-203 complete on `main`, Gate 204 active, Gate 205 planned.", "Status: active target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active.", "Status: closed target-repo admitted-evidence successor planning pack through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`.", "Status: closed target-repo admitted-evidence successor planning pack through Gate 205 on `main`."])
+    assert payload["execution_status"] in {"gates_200_203_complete_gate_204_active_on_main", "gates_200_204_complete_gate_205_active_on_main", "target_repo_admitted_evidence_successor_pack_closed_through_gate_205_on_work_branch", "target_repo_admitted_evidence_successor_pack_closed_through_gate_205_on_main"}
+    assert payload["active_gate"] in {"Gate 204", "Gate 205", "none"}
+    assert payload["completed_gate_ids"] in [["Gate 200", "Gate 201", "Gate 202", "Gate 203"], ["Gate 200", "Gate 201", "Gate 202", "Gate 203", "Gate 204"], ["Gate 200", "Gate 201", "Gate 202", "Gate 203", "Gate 204", "Gate 205"]]
+    assert payload["pending_gate_ids"] in [["Gate 204", "Gate 205"], ["Gate 205"], []]
 
     assert "Snapshot identity block" in snapshot
     assert "`RealDataLoaderService.prepare_runtime_dataset(...)`" in snapshot
@@ -53,5 +53,5 @@ def test_gate203_control_surfaces_and_docs_are_coherent() -> None:
     assert any(marker in receipt for marker in ["Gate 204 is the next active gate", "Gate 205 is the next active gate"])
     assert "pending_update_after_validation" not in execution_log
     assert "pending_update_after_validation" not in receipt
-    assert any(marker in execution_log for marker in ["Gate 204 is now the active gate in this pack.", "Gate 205 is now the active gate in this pack."])
-    assert any(marker in checklist for marker in ["DMP packet failure-pack planning docs and tests", "Gates 200-204 complete on `main`, Gate 205 active."])
+    assert any(marker in execution_log for marker in ["Gate 204 is now the active gate in this pack.", "Gate 205 is now the active gate in this pack.", "no active pack is currently routed"])
+    assert any(marker in checklist for marker in ["DMP packet failure-pack planning docs and tests", "Gates 200-204 complete on `main`, Gate 205 active.", "through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`", "through Gate 205 on `main`"])

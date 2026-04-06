@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1
 
-Status: active target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active.
+Status: closed target-repo admitted-evidence successor planning pack through Gate 205 on `work/gate-205-successor-pack-closeout-handoff-20260406`.
 
 ## Purpose
 
@@ -22,7 +22,7 @@ Out of scope:
 
 ## Supersession and active authority
 
-- This document becomes the active gate authority for Gate 200 onward.
+- This document remains the authoritative retained gate record for Gates 200-205.
 - It supersedes the absence of an active pack after Gate 199 closeout.
 - It does **not** treat the standalone Gates 200-212 as active authority inside this repo.
 - The latest closed pack remains evidence input only; it is not the structural template for this tranche.
@@ -124,6 +124,10 @@ This tranche exists to decide how evidence growth should proceed from that basel
 - `docs/planning/2026-04-05_TARGET_REPO_DMP_MACHINE_READABLE_CONTRACT_BOUNDARY_RULES_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_PLANNING_PROOF_SLICE_v1.md`
 - `docs/planning/2026-04-05_GATE204_TARGET_REPO_DMP_PACKET_FAILURE_PACK_AND_CONTRACT_BOUNDARY_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md`
+- `docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
 - `tests/test_gate201_target_repo_evidence_governance_planning.py`
 - `tests/test_gate202_target_repo_review_governance_planning.py`
@@ -263,12 +267,20 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 - Close the successor planning pack honestly by indexing the authored surfaces, freezing the proof order for later execution, and handing the pack to a coding thread without inventing missing steps.
 
 **In-scope surfaces**
-- the active successor pack docs
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md`
+- `docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md`
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-- future closeout receipt and execution-log receipts for this pack
 
 **Definition of done**
 - the pack contains a coherent index / cross-reference answer for later readers;
 - proof order for later execution is explicit;
-- the pack can hand off to coding without relying on chat-memory reconstruction.
+- the pack can hand off to coding without relying on chat-memory reconstruction; and
+- the successor pack closes through Gate 205 without activating a speculative Gate 206 or later tranche.

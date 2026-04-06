@@ -1,19 +1,18 @@
 {
   "governing_plan": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gates_200_204_complete_gate_205_active_on_main",
-  "active_gate": "Gate 205",
+  "execution_status": "target_repo_admitted_evidence_successor_pack_closed_through_gate_205_on_work_branch",
+  "active_gate": "none",
   "supersedes": [],
   "completed_gate_ids": [
     "Gate 200",
     "Gate 201",
     "Gate 202",
     "Gate 203",
-    "Gate 204"
-  ],
-  "pending_gate_ids": [
+    "Gate 204",
     "Gate 205"
   ],
+  "pending_gate_ids": [],
   "completed_leaf_ids": [
     "LEAF-G200-001",
     "LEAF-G200-002",
@@ -32,13 +31,12 @@
     "LEAF-G203-003",
     "LEAF-G204-001",
     "LEAF-G204-002",
-    "LEAF-G204-003"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G204-003",
     "LEAF-G205-001",
     "LEAF-G205-002",
     "LEAF-G205-003"
   ],
+  "remaining_leaf_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -918,12 +916,13 @@
     },
     "LEAF-G205-001": {
       "gate": "Gate 205",
-      "status": "pending",
+      "status": "complete",
       "title": "Add successor-pack index and cross-reference answer for later readers",
       "objective": "Create a later-reader index so future threads can navigate the successor pack and its salvaged origins without reopening the retired standalone sequence.",
       "repo_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SALVAGE_MATRIX_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md"
       ],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -948,26 +947,29 @@
         "Do not omit cross-references between canonical and evidence-only surfaces."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
-        "A future pack index plan for later readers."
+        "`docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md` gives later readers one deterministic index covering canonical authority, gate outputs, evidence-only origins, and the lawful starting points for later work."
       ],
       "definition_of_done": [
         "Future readers can navigate the pack and the retired standalone evidence without confusion."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_INDEX_AND_CROSS_REFERENCE_v1.md"
       ]
     },
     "LEAF-G205-002": {
       "gate": "Gate 205",
-      "status": "pending",
+      "status": "complete",
       "title": "Freeze proof order and closeout receipt requirements",
       "objective": "Define the final proof order and receipt fields for the eventual successor-pack closeout gate.",
       "repo_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md",
+        "docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md"
       ],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -992,27 +994,30 @@
         "Do not omit packaging requirements."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
-        "A future closeout-proof and receipt specification for the successor pack."
+        "`docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md` freezes the exact closeout proof order, receipt fields, and zip-optional packaging law for this pack."
       ],
       "definition_of_done": [
-        "The eventual successor-pack closeout can be executed without inventing its receipt or proof order."
+        "The successor-pack closeout can be executed without inventing its receipt or proof order."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_CLOSEOUT_PROOF_ORDER_AND_RECEIPT_REQUIREMENTS_v1.md",
+        "docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md"
       ]
     },
     "LEAF-G205-003": {
       "gate": "Gate 205",
-      "status": "pending",
+      "status": "complete",
       "title": "Prepare final handoff from planning thread to coding thread",
       "objective": "Define the future handoff boundary from successor planning into actual evidence/coding execution work.",
       "repo_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md",
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md"
       ],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -1037,18 +1042,19 @@
         "Do not omit the stop rule between planning and coding execution."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
-        "A future thread-handoff boundary from planning to coding execution."
+        "`docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md` defines the authoritative inputs, evidence-only exclusions, and stop rule for any later coding or evidence-execution thread."
       ],
       "definition_of_done": [
-        "The later coding thread can begin from one authoritative handoff bundle without reopening repo-recovery debates."
+        "A later coding thread can begin from one authoritative handoff bundle without reopening repo-recovery debates."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
         "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_SCOPE_NOTE_v1.md",
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md"
       ]
     }
   }
