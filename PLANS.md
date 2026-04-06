@@ -26,7 +26,7 @@ This file is the canonical repo-root execution router.
 - document-touch checklist: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_CONTRADICTION_REPORT_v1.md`
-- next active gate: `Gate 208`
+- next active gate: `Gate 209`
 
 ## Latest closed pack retained as evidence
 
@@ -55,7 +55,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack: workflow hardening and active-repo reset foundation pack with Gate 208 active on `work/gate-207-router-and-doctrine-consolidation-20260406`
+- active pack: workflow hardening and active-repo reset foundation pack with Gate 209 active on `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`
 - latest closed pack retained as evidence is the target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`
 - latest closed predecessor evidence is the Phase 3 main-target repair programme closed through Gate 199 on `main`
 

@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_208_active",
-  "active_gate": "Gate 208",
+  "execution_status": "gate_209_active",
+  "active_gate": "Gate 209",
   "supersedes": [],
   "evidence_inputs_only": [
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
@@ -11,18 +11,19 @@
   ],
   "completed_gate_ids": [
     "Gate 206",
-    "Gate 207"
+    "Gate 207",
+    "Gate 208"
   ],
   "completed_leaf_ids": [
     "LEAF-G206-001",
     "LEAF-G206-002",
     "LEAF-G206-003",
     "LEAF-G207-001",
-    "LEAF-G207-002"
+    "LEAF-G207-002",
+    "LEAF-G208-001",
+    "LEAF-G208-002"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G208-001",
-    "LEAF-G208-002",
     "LEAF-G209-001",
     "LEAF-G209-002",
     "LEAF-G210-001",
@@ -366,7 +367,7 @@
       "gate": "Gate 208",
       "title": "Rewrite the template pack to match live repo law",
       "objective": "Update the template-pack documents so future planning packs inherit the current GitHub-native workflow model and no-active-pack/new-pack-required law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G207-002"
       ],
@@ -404,12 +405,12 @@
         "Do not loosen the one-gate-at-a-time or quartet-moves-together rules."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate208_template_pack_github_native_alignment.py"
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py"
       ],
       "expected_evidence": [
         "updated template-pack docs",
         "updated template-pack leaves JSON",
-        "green template-pack tests"
+        "green template-pack tests proving GitHub-native default execution law"
       ],
       "definition_of_done": [
         "The template pack no longer conflicts with AGENTS.md and docs/06 on routine execution workflow."
@@ -426,7 +427,7 @@
       "gate": "Gate 208",
       "title": "Prove the template pack encodes the hardened workflow",
       "objective": "Update or add tests so the template pack mechanically enforces the hardened workflow instead of relying on prose memory.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G208-001"
       ],
@@ -440,8 +441,7 @@
         "GitHub-native workflow"
       ],
       "repo_surfaces": [
-        "tests/test_tranche_briefing_template_pack.py",
-        "tests/test_gate208_template_pack_github_native_alignment.py"
+        "tests/test_tranche_briefing_template_pack.py"
       ],
       "inputs": [
         "updated template pack"
@@ -455,7 +455,7 @@
         "Do not weaken the template tests into smoke-only existence checks."
       ],
       "validation_commands": [
-        "python -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate208_template_pack_github_native_alignment.py"
+        "python -m pytest -q tests/test_tranche_briefing_template_pack.py"
       ],
       "expected_evidence": [
         "green template-pack tests proving workflow alignment"

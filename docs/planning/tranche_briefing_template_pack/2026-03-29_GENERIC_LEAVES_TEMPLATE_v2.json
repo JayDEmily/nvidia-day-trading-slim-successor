@@ -22,7 +22,8 @@
     "packet_contract_authority_mandatory_when_contracts_change": true,
     "workflow_trace_mandatory_before_planning_new_behavior": true,
     "retire_from_authority_not_delete": true,
-    "zip_required_before_gate_can_be_called_done": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
     "do_not_fill_unknowns_with_guesswork": true,
     "document_touch_checklist_required": true,
     "completed_and_remaining_leaf_sets_must_be_disjoint": true,
@@ -92,7 +93,7 @@
         "<active execution log>"
       ],
       "full_suite_required": false,
-      "packaging_requirement": "If this leaf closes the gate, create a fresh full-history zip from the exact green repo state.",
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
         "PLANS.md",
         "<gate map if this leaf closes a gate>",

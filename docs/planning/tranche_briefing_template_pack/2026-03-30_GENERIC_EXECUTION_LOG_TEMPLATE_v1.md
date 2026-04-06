@@ -1,6 +1,6 @@
 # YYYY-MM-DD_<TRANCHE_NAME>_EXECUTION_LOG_v1
 
-Status: active execution log for <tranche>; Gate <N> complete on `main`, Gate <N+1> next
+Status: active execution log for <tranche>; Gate <N> active on `work/<gate-branch-name>`, Gate <N+1> planned until Gate <N> closes
 
 ## Purpose
 
@@ -22,17 +22,22 @@ For every completed leaf record:
 - whether the state-integrity checks passed;
 - whether the receipt was recorded live or reconstructed after the fact.
 
+GitHub branch, commit, and merge history is the default routine execution ledger.
+A full-history zip is only required when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.
+
 ## Gate <N> receipts
 
 ### LEAF-G<N>-001 — <imperative title>
 
-- Branch: `work/<gate-branch-name>`
-- Start commit: `<sha>`
-- End commit: `<sha or merged label>`
-- Files touched: `<file>`, `<file>`
-- Validations run: `<command>`
-- Full suite required: <yes/no>
-- Exact evidence: <what became true>
-- Stop conditions hit: <none or explicit blocker>
-- State-integrity checks: <passed / explicit defect>
-- Merge status: <merged to main / not merged>
+- gate id: `Gate <N>`
+- leaf id: `LEAF-G<N>-001`
+- branch name: `work/<gate-branch-name>`
+- start commit: `<sha>`
+- end commit or merged main commit: `<sha or merged label>`
+- exact files touched: `<file>`, `<file>`
+- exact validation commands: `<command>`
+- observed results: `<exact result text>`
+- full suite required: `<true|false>`
+- stop condition or contradiction report hit: `<none or explicit blocker>`
+- state-integrity checks passed: `<true|false or explicit defect>`
+- receipt recorded: `<live closeout receipt on work branch | reconstructed after the fact>`

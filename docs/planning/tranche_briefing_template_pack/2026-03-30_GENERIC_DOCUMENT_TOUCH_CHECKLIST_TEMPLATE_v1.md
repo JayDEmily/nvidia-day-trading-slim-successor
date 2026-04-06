@@ -30,6 +30,7 @@ Declare the live and frozen control surfaces that must be checked before the tra
 - [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`
 - [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`
 - [ ] `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`
+- [ ] `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`
 
 ## If execution proceeds, these surfaces must be amended
 
@@ -57,3 +58,4 @@ Declare the live and frozen control surfaces that must be checked before the tra
 - Add or strike items explicitly; do not leave implied control surfaces in chat memory.
 - If a surface is intentionally unchanged, say so rather than omitting it.
 - If a latest closed pack was inspected, record it as evidence input rather than the structural template for the new pack.
+- GitHub branch/commit/merge history is the default routine execution ledger; full-history zip packaging is conditional only for backup, offline handoff, or sandbox transfer packaging.
