@@ -45,6 +45,15 @@ Planning taxonomy stays narrow:
 
 This taxonomy is the current fix. No physical planning-tree reshuffle is required unless a later tranche proves the routing surfaces can no longer keep those classes distinct.
 
+## Workflow truth
+
+- GitHub branch, commit, and merge history is the default execution ledger for routine gate work.
+- The planning thread authors packs, reviews scope, and names the leaf-specific proof slice.
+- Codex plus local git executes repo mutations, targeted proofs, commits, and pushes.
+- Repo-root `PLANS.md` is the live planning router; `README.md` is onboarding context only.
+- Full-history zip packaging is conditional only: backup, offline transfer, sandbox transfer, or explicit operator request.
+- This repo is still the pre-cutover repository. The slim active-repo successor and the later substantive test-audit pack have not started yet.
+
 ## Quickstart
 
 ```bash
@@ -56,19 +65,17 @@ make check
 make run-api
 ```
 
+`make check` remains the broad repo validation path for runtime-impacting work. Governance and operator-surface gates should default to the targeted proof command named by the active leaf ledger instead of treating `make check` as mandatory for every change.
+
 ## Make targets
 
-```bash
-make install
-make init-db
-make seed-dev
-make lint
-make typecheck
-make test
-make test-unit
-make check
-make run-api
-```
+- `make install` syncs the repo-local development environment.
+- `make init-db` and `make seed-dev` prepare the local deterministic dev path.
+- `make test` runs the repo-wide pytest suite.
+- `make test-unit` is currently a compatibility alias for `make test`; the repo does not maintain a separate unit-only subset yet.
+- `make gate-proof PYTEST_ARGS='tests/test_gate210_operator_surface_alignment_and_cutover.py'` runs a bounded proof slice when the active gate calls for targeted validation.
+- `make check` runs format, lint, typecheck, and the repo-wide pytest suite, and is the right default only when the blast radius warrants broad proof.
+- `make run-api` starts the local FastAPI surface.
 
 ## Repo shape
 

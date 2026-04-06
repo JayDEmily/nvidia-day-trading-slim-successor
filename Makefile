@@ -6,8 +6,18 @@ PYTEST ?= $(PYTHON) -m pytest
 UVICORN ?= $(PYTHON) -m uvicorn
 ALEMBIC ?= $(PYTHON) -m alembic
 UV ?= uv
+PYTEST_ARGS ?=
 
-.PHONY: install refresh-registry-artifacts gate-e-check gate-f-check format format-check test test-unit lint typecheck check run-api init-db seed-dev db-up db-down migrate alembic-sql
+.PHONY: help install refresh-registry-artifacts gate-e-check gate-f-check gate-proof format format-check test test-unit lint typecheck check run-api init-db seed-dev db-up db-down migrate alembic-sql
+
+help:
+	@printf '%s\n' \
+		"install      sync the repo-local dev environment" \
+		"test         repo-wide pytest run" \
+		"test-unit    compatibility alias for the repo-wide pytest run" \
+		"gate-proof   targeted pytest slice; pass PYTEST_ARGS='tests/test_...'" \
+		"check        broad proof path: format, lint, typecheck, and repo-wide pytest" \
+		"run-api      start the local FastAPI app"
 
 install:
 	$(UV) sync --extra dev
@@ -24,7 +34,12 @@ gate-f-check:
 test:
 	$(PYTEST) -q
 
+# Compatibility alias until the repo maintains a true unit-only selection.
 test-unit: test
+
+gate-proof:
+	@test -n "$(PYTEST_ARGS)" || (echo "Set PYTEST_ARGS to a targeted pytest path or expression." && exit 2)
+	$(PYTEST) -q $(PYTEST_ARGS)
 
 format:
 	$(BLACK) src tests scripts alembic

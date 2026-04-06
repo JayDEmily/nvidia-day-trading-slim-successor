@@ -29,15 +29,19 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Active pack
 
+- no active pack currently routed
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`
 - leaves: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_CONTRADICTION_REPORT_v1.md`
-- next active gate: `Gate 210`
+- cutover brief: `docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md`
 
-## Latest closed pack retained as evidence
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md`
 - leaves: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json`
@@ -51,22 +55,11 @@ It names the live planning authority and the nearest retained evidence classes; 
 - planning-to-coding handoff boundary: `docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_PLANNING_TO_CODING_HANDOFF_BOUNDARY_v1.md`
 - closeout receipt: `docs/planning/2026-04-05_GATE205_TARGET_REPO_SUCCESSOR_PACK_CLOSEOUT_AND_HANDOFF.md`
 
-## Latest closed predecessor evidence
-
-- gates: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md`
-- leaves: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md`
-- evidence baseline: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md`
-- source-truth matrix: `docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md`
-- closeout receipt: `docs/planning/2026-04-04_GATE199_PHASE3_MAIN_TARGET_REPAIR_CLOSEOUT.md`
-
 ## Current state
 
-- active pack: workflow hardening and active-repo reset foundation pack with Gate 210 active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`
-- latest closed pack retained as evidence is the target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`
-- latest closed predecessor evidence is the Phase 3 main-target repair programme closed through Gate 199 on `main`
+- active pack: no active pack currently routed
+- latest closed pack retained as evidence is the workflow hardening and active-repo reset foundation pack closed through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
+- latest closed predecessor evidence is the target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`
 
 ## Sequential execution rule
 
