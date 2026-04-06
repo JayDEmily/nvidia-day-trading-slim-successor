@@ -42,7 +42,7 @@ def test_gate223_control_surfaces_and_manifest_are_truthful() -> None:
         )
         assert payload["completed_gate_ids"] == ["Gate 222", "Gate 223"]
         assert payload["pending_gate_ids"] == ["Gate 224", "Gate 225"]
-        assert "Gate 223 complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in plans
+        assert "Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in plans
         assert "Gate 223 complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in execution_log
         assert "Gate 224 remains planned and is not yet activated." in execution_log
         assert "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`; Gate 224 is not yet activated.**" in gate_map

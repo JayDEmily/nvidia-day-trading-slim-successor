@@ -55,7 +55,7 @@ def test_gate127_closeout_closes_the_pack_honestly() -> None:
         "Gate 223 active on `work/gate-223-successor-boundary-and-light-retarget-20260406`"
         in plans
     ) or (
-        "Gate 223 complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`"
+        "Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`"
         in plans
     )
     assert (
