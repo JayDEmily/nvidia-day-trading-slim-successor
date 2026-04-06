@@ -1,0 +1,83 @@
+{
+  "archive_destination": "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/",
+  "source_repo_destination_forbidden": true,
+  "decision_families": [
+    {
+      "decision_id": "planning_governance__closed_source_or_historical_pack_receipts",
+      "leaf": "LEAF-G222-002",
+      "disagreement_state": "resolved_with_memory",
+      "files": [
+        "tests/test_financial_calendar_planning_v3.py",
+        "tests/test_gate101_successor_planning.py",
+        "tests/test_gate115_historical_evaluation_readiness_planning.py",
+        "tests/test_gate122_signal_coefficient_authority_planning.py",
+        "tests/test_gate128_post_flight_repo_consistency_planning.py",
+        "tests/test_gate135_opening_drive_continuation_lifecycle_planning.py",
+        "tests/test_gate141_stage_local_handoff_terminal_risk_seams_planning.py",
+        "tests/test_gate144_posture_split_planning.py",
+        "tests/test_gate146_admissibility_candidate_ownership_planning.py",
+        "tests/test_gate147_overlay_terminal_risk_planning.py",
+        "tests/test_gate150_corrective_successor_pack_planning.py",
+        "tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py",
+        "tests/test_gate164_policy_temporal_observability_successor_pack_planning.py",
+        "tests/test_gate166_temporal_governance_status_ledger.py",
+        "tests/test_gate171_master_child_parallel_risk_integration_pack_planning.py",
+        "tests/test_gate173_child_planning_reference_data_merge.py",
+        "tests/test_gate187_capital_deployment_authority_pack_planning.py",
+        "tests/test_gate192_phase3_main_target_repair_pack_planning.py",
+        "tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py",
+        "tests/test_gate201_target_repo_evidence_governance_planning.py",
+        "tests/test_gate203_target_repo_snapshot_and_collection_planning.py",
+        "tests/test_gate204_target_repo_dmp_failure_pack_planning.py",
+        "tests/test_gate46_50_planning_pack.py",
+        "tests/test_gate50_vocabulary_governance.py",
+        "tests/test_gate51_cognitive_workflow_planning.py",
+        "tests/test_gate55_vocabulary_governance.py",
+        "tests/test_gate64_candidate_adjudication_governance.py",
+        "tests/test_gate94_testing_module_planning.py",
+        "tests/test_planning_ready_import_backlog_partition.py"
+      ]
+    },
+    {
+      "decision_id": "review_or_trace__historical_planning_review_receipts",
+      "leaf": "LEAF-G222-002",
+      "disagreement_state": "resolved_with_memory",
+      "files": [
+        "tests/test_gate148_review_trace_replay_planning.py",
+        "tests/test_gate181_options_trace_integrity_pack_planning.py",
+        "tests/test_gate202_target_repo_review_governance_planning.py"
+      ]
+    },
+    {
+      "decision_id": "migration_or_closeout_guard__historical_closeout_receipts",
+      "leaf": "LEAF-G222-003",
+      "disagreement_state": "resolved_with_memory",
+      "files": [
+        "tests/test_gate106_successor_closeout.py",
+        "tests/test_gate112_governance_closeout.py",
+        "tests/test_gate121_historical_evaluation_readiness_closeout.py",
+        "tests/test_gate122_signal_coefficient_authority_closeout.py",
+        "tests/test_gate149_stage_local_handoff_pack_closeout.py",
+        "tests/test_gate156_corrective_pack_anti_drift_closeout.py",
+        "tests/test_gate163_coefficient_architecture_consolidation_closeout.py",
+        "tests/test_gate164_parallel_risk_lane_foundation_anti_drift_closeout.py",
+        "tests/test_gate170_policy_temporal_observability_successor_closeout.py",
+        "tests/test_gate180_master_child_integration_closeout.py",
+        "tests/test_gate186_options_trace_integrity_closeout.py",
+        "tests/test_gate191_capital_deployment_authority_closeout.py",
+        "tests/test_gate86_event_ingestion_precedence_and_closeout.py",
+        "tests/test_gate95_phase0_closeout.py"
+      ]
+    },
+    {
+      "decision_id": "replay_regression__research_shadow_replays",
+      "leaf": "LEAF-G222-004",
+      "action": "retire_duplicate",
+      "disagreement_state": "resolved_with_memory",
+      "files": [
+        "tests/test_research_eval_replay.py",
+        "tests/test_research_replay.py"
+      ]
+    }
+  ]
+}
