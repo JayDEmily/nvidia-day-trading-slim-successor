@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
-  "version": "v1.4",
-  "execution_status": "gate_220_complete_on_work_branch_gate_221_not_yet_activated",
-  "active_gate": "none — Gate 220 complete on work/gate-220-test-decision-law-and-first-pass-register-20260406; Gate 221 not yet activated",
+  "version": "v1.5",
+  "execution_status": "bootstrap_pack_closed_through_gate_221_no_active_pack_routed",
+  "active_gate": "none",
   "supersedes": [],
   "evidence_inputs_only": [
     "source repo PLANS.md",
@@ -19,7 +19,8 @@
     "Gate 217",
     "Gate 218",
     "Gate 219",
-    "Gate 220"
+    "Gate 220",
+    "Gate 221"
   ],
   "completed_leaf_ids": [
     "LEAF-G217-001",
@@ -30,15 +31,12 @@
     "LEAF-G219-001",
     "LEAF-G219-002",
     "LEAF-G220-001",
-    "LEAF-G220-002"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G220-002",
     "LEAF-G221-001",
     "LEAF-G221-002"
   ],
-  "pending_gate_ids": [
-    "Gate 221"
-  ],
+  "remaining_leaf_ids": [],
+  "pending_gate_ids": [],
   "global_rules": {
     "one_leaf_at_a_time": true,
     "one_gate_at_a_time": true,
@@ -663,7 +661,7 @@
       "gate": "Gate 221",
       "title": "Freeze the bounded proof slice for successor execution",
       "objective": "Define the exact proof order that the first post-audit execution pack must use when it starts changing retained tests.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G220-002"
       ],
@@ -719,7 +717,7 @@
       "gate": "Gate 221",
       "title": "Write the successor execution-pack queue and close the bootstrap pack truthfully",
       "objective": "Define the next successor execution pack boundary for actual test moves/rewrites, then close this bootstrap pack without reopening the source repo or claiming execution already ran.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G221-001"
       ],

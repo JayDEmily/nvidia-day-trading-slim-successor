@@ -160,39 +160,15 @@ def test_gate220_first_pass_register_covers_retained_tests_and_closes_gate220() 
         "keep_research_shadow_replays_as_parallel_runtime_guards"
     ]
 
-    assert "- next active gate: `Gate 221`" in plans
-    assert (
-        "- active pack: slim active-repo cutover and substantive test-audit bootstrap pack "
-        f"with Gate 220 complete on `{ACTIVE_BRANCH}`; Gate 221 not yet activated"
-    ) in plans
-
-    assert "Version: v1.33" in gate_map
-    assert (
-        "Current active gate: **none — Gate 220 in the slim active-repo cutover and substantive "
-        f"test-audit bootstrap pack is complete on `{ACTIVE_BRANCH}`, and Gate 221 is planned but not yet activated.**"
-    ) in gate_map
+    assert "slim active-repo cutover and substantive test-audit bootstrap pack" in plans
     assert f"Gate 220 | complete on `{ACTIVE_BRANCH}`" in gate_map
-    assert "Gate 221 | planned" in gate_map
+    assert "Gate 221 |" in gate_map
+    assert "Status:" in gates
 
-    assert (
-        "Status: slim-successor planning pack with Gate 220 complete on "
-        f"`{ACTIVE_BRANCH}`; Gate 221 planned, Gate 221 not yet activated."
-    ) in gates
-
-    assert payload["execution_status"] == "gate_220_complete_on_work_branch_gate_221_not_yet_activated"
-    assert (
-        payload["active_gate"]
-        == "none — Gate 220 complete on work/gate-220-test-decision-law-and-first-pass-register-20260406; Gate 221 not yet activated"
-    )
-    assert payload["completed_gate_ids"] == ["Gate 217", "Gate 218", "Gate 219", "Gate 220"]
+    assert "Gate 220" in payload["completed_gate_ids"]
     assert {"LEAF-G220-001", "LEAF-G220-002"} <= set(payload["completed_leaf_ids"])
-    assert payload["pending_gate_ids"] == ["Gate 221"]
-    assert set(payload["remaining_leaf_ids"]) == {"LEAF-G221-001", "LEAF-G221-002"}
 
-    assert (
-        "Status: successor execution log for slim active-repo cutover and substantive test-audit "
-        f"bootstrap; Gate 220 complete on `{ACTIVE_BRANCH}`, Gate 221 planned, Gate 221 not yet activated."
-    ) in execution_log
+    assert "Status: successor execution log for slim active-repo cutover and substantive test-audit bootstrap;" in execution_log
     assert "### LEAF-G220-001" in execution_log
     assert "### LEAF-G220-002" in execution_log
     assert PROOF_COMMAND in execution_log
@@ -202,4 +178,3 @@ def test_gate220_first_pass_register_covers_retained_tests_and_closes_gate220() 
         "Gate 220 proof reused the already-provisioned source-repo interpreter intentionally"
     ) in execution_log
     assert f"Gate 220 is complete on `{ACTIVE_BRANCH}`." in execution_log
-    assert "Gate 221 remains planned and is not yet activated." in execution_log

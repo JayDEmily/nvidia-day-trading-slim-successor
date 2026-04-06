@@ -1,7 +1,7 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.33
+Version: v1.34
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
 - `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md` — active slim-successor gate authority for Gates 217-221
@@ -66,7 +66,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **none — Gate 220 in the slim active-repo cutover and substantive test-audit bootstrap pack is complete on `work/gate-220-test-decision-law-and-first-pass-register-20260406`, and Gate 221 is planned but not yet activated.**
+Current active gate: **none — the slim active-repo cutover and substantive test-audit bootstrap pack is closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`, and no active pack is currently routed.**
 
 ## 2. Selected completed-tranche evidence
 
@@ -261,7 +261,7 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 218 | complete on `work/gate-218-retained-surface-inventory-and-runtime-authority-20260406` | freeze the retained successor-repo inventory against the actual tracked tree, verify the adopted `docs/07...` authority posture plus matching `AGENTS.md` read-trigger, and close the gate without claiming runtime semantics changed | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md`, `tests/test_gate218_retained_surface_inventory_and_runtime_authority.py` |
 | Gate 219 | complete on `work/gate-219-retained-test-inventory-and-ownership-mapping-20260406` | freeze the canonical retained-test inventory baseline, map each retained test family to doctrine, owners, consumers, and explicit state signals, and close the gate without starting decision law | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md`, `tests/test_gate219_test_inventory_classification.py` |
 | Gate 220 | complete on `work/gate-220-test-decision-law-and-first-pass-register-20260406` | freeze keep versus retire versus rewrite versus move decision law and the first-pass successor test decision register without executing those decisions | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `tests/test_gate220_test_audit_decision_register.py` |
-| Gate 221 | planned | freeze the bounded proof slice and successor handoff queue for the later execution pack that will apply the classified test decisions | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json` |
+| Gate 221 | complete on `work/gate-221-successor-proof-slice-and-handoff-20260406` | freeze the bounded proof slice, grouped successor execution-pack queue, and explicit non-source-repo handoff boundary for the later retained-test execution pack without activating that pack yet | `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`, `tests/test_gate221_successor_test_audit_handoff.py` |
 
 ## 4. Global execution rules
 
