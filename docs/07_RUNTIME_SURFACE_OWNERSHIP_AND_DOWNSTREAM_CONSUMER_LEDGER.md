@@ -1,8 +1,34 @@
 # 07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER
 
+## 0. Classification and read-trigger
+
+This document is a **specialised runtime authority ledger**.
+
+It is **not** a universal front-door doctrine file and it is **not** part of the baseline frozen reading order for every task. It must be read when the work touches any of the following:
+
+- runtime surface ownership;
+- stage packet versus workflow packet authority;
+- compatibility surface or compatibility carriage law;
+- downstream runtime reader permissions;
+- replay, bounded-trace, or review seam interpretation;
+- API compatibility wrappers that preserve older read shapes over newer canonical runtime truth.
+
+It does **not** replace the repo-wide authority stack for planning, routing, or gate execution. Those remain governed by:
+
+- `docs/01_NORMATIVE.md` for overall precedence;
+- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` for process law;
+- repo-root `PLANS.md` plus the active planning pack surfaces for what work is active now.
+
 ## 1. Purpose and authority
 
 This document freezes the current latest-state ownership, compatibility, and downstream read-path law for runtime surfaces on `main`.
+
+Its purpose is narrow and explicit:
+
+- state which runtime surfaces are authoritative;
+- state which downstream consumers are allowed to read them;
+- state which compatibility surfaces may preserve or carry truth without outranking the owning packet;
+- state which inferences are prohibited when preserved seams or separately carried authoritative surfaces are present.
 
 This document uses three authority layers only:
 
@@ -11,6 +37,43 @@ This document uses three authority layers only:
 - the current first-class docs for explanatory architecture and domain-model alignment.
 
 Historical planning receipts may explain why a surface exists. They do not replace latest-code truth as the runtime authority source.
+
+### 1.1 Relation to the wider doc stack
+
+This file does **not** redefine:
+
+- repo process law;
+- gate routing;
+- branch sequencing;
+- tranche closeout rules;
+- broad architecture doctrine already frozen elsewhere.
+
+Instead, it supplies the specialised latest-state runtime ledger that those broader docs deliberately do not attempt to carry in full detail.
+
+In authority terms:
+
+- `docs/01_NORMATIVE.md` still governs overall repo precedence;
+- `docs/03_DOMAIN_MODEL.md` and live schemas remain the baseline runtime contract authorities;
+- `docs/04_TECHNICAL_ARCHITECTURE.md` and `docs/05_GUARDRAILS.md` remain explanatory and guardrail authorities;
+- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` remains the process-law authority;
+- this document governs **runtime surface ownership, compatibility-carriage law, downstream reader law, and prohibited inference law** for the surfaces recorded below.
+
+### 1.2 Maintenance law
+
+This document should be updated only when runtime latest-state truth changes materially in one or more of these ways:
+
+- a stage or workflow surface changes owner, contract, or point of production;
+- a compatibility surface or compatibility carriage gains, loses, or changes authority boundaries;
+- a downstream consumer gains, loses, or changes a lawful read path;
+- a preserved seam changes precedence relative to older compatibility fields;
+- an API compatibility wrapper changes its governing authoritative surface.
+
+This document should **not** be edited merely because:
+
+- a planning pack mentions these surfaces;
+- a historical receipt explains older design intent;
+- a gate renumbers planning work;
+- a process-law or router-only doc changes without affecting runtime ownership truth.
 
 ## 2. Vocabulary authority and naming rules
 

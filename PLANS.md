@@ -29,7 +29,18 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Active pack
 
-- no active pack currently routed
+- gates: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`
+- leaves: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_SCOPE_NOTE_v1.md`
+- contradiction report: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md`
+- retained-surface manifest and cutover rules: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md`
+- runtime-surface audit read-trigger and authority adoption: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RUNTIME_SURFACE_AUDIT_READ_TRIGGER_AND_AUTHORITY_ADOPTION_v1.md`
+- test-inventory classification and decision rules: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md`
+- test-audit proof slice and successor handoff: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`
+- 07 source diff and AGENTS read-trigger note: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md`
+- next active gate: `Gate 217`
 
 ## Latest closed pack retained as evidence
 
@@ -57,7 +68,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Current state
 
-- active pack: no active pack currently routed
+- active pack: slim active-repo cutover and substantive test-audit bootstrap pack with Gate 217 active on `work/gate-217-slim-successor-pack-bootstrap-and-routing-20260406`
 - latest closed pack retained as evidence is the workflow hardening and active-repo reset foundation pack closed through Gate 210 on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`
 - latest closed predecessor evidence is the target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`
 

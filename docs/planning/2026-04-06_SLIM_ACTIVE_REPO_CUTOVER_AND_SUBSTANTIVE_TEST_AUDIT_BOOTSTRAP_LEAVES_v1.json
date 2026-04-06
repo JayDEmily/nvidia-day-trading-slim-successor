@@ -1,0 +1,774 @@
+{
+  "governing_plan": "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
+  "version": "v1.1",
+  "execution_status": "gate_217_active_on_work_branch",
+  "active_gate": "Gate 217",
+  "supersedes": [],
+  "evidence_inputs_only": [
+    "source repo PLANS.md",
+    "source repo docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+    "source repo docs/planning/2026-04-06_GATE210_SLIM_ACTIVE_REPO_CUTOVER_ENTRY_CRITERIA.md",
+    "source repo docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
+    "source repo docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json",
+    "source repo docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md",
+    "source repo Gate 202 governance artefacts",
+    "07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER_RESCOPED_v2.md",
+    "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G217-001",
+    "LEAF-G217-002",
+    "LEAF-G217-003",
+    "LEAF-G218-001",
+    "LEAF-G218-002",
+    "LEAF-G219-001",
+    "LEAF-G219-002",
+    "LEAF-G220-001",
+    "LEAF-G220-002",
+    "LEAF-G221-001",
+    "LEAF-G221-002"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "source_repo_must_remain_archive_evidence_host": true,
+    "successor_pack_must_not_be_routed_in_source_repo": true
+  },
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "source repo PLANS.md",
+      "source repo canonical gate map",
+      "source Gate 210 cutover brief",
+      "rescoped 07 ledger attachment",
+      "successor retained-surface manifest",
+      "successor test decision rules"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true,
+    "source_repo_controls_must_not_claim_successor_pack_is_active": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G217-001",
+      "gate": "Gate 217",
+      "title": "Freeze successor contradictions and cutover source truth",
+      "objective": "Inspect the source-repo control surfaces, Gate 210 cutover brief, Gate 202 governance surfaces, current source-repo `docs/07...`, and rescoped 07 rewrite so the successor pack starts from repo truth rather than chat memory.",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "workflow_intent_assertion": "This leaf is pure successor-pack bootstrap. It exists to make the successor pack lawful without mutating the source repo.",
+      "vocabulary_terms_checked": [
+        "active pack",
+        "closed pack",
+        "archive/evidence host",
+        "retained surface",
+        "specialised runtime authority"
+      ],
+      "repo_surfaces": [
+        "source repo PLANS.md",
+        "source canonical gate map",
+        "source Gate 210 cutover brief",
+        "Gate 202 governance artefacts",
+        "source repo current docs/07 ledger",
+        "07 rescoped ledger"
+      ],
+      "inputs": [
+        "source repo latest closed state",
+        "frozen source-cut commit 8f9c706093045a8bb333cc19e93d4021c326f761",
+        "template pack"
+      ],
+      "ordered_actions": [
+        "Read the frozen law stack, source router surfaces, latest closed pack surfaces, Gate 202 governance surfaces, the source repo current docs/07 ledger, and the rescoped 07 ledger in full.",
+        "Name every material contradiction that prevents truthful slim-successor bootstrap if left unresolved, including any source-versus-rewrite 07 doctrine delta.",
+        "Freeze the source-cut commit and the no-new-pack-in-source-repo boundary explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not open an active pack in the source repo.",
+        "Do not guess which surfaces the slim repo should retain.",
+        "Do not treat the older in-repo 07 text as automatically adopted in the successor repo."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate217_slim_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "explicit contradiction report",
+        "frozen source-cut commit",
+        "successor-pack bootstrap rationale",
+        "07 source-versus-rewrite diff"
+      ],
+      "definition_of_done": [
+        "The contradiction set is explicit and actionable.",
+        "The source-cut commit is named exactly once and treated as binding."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G217-002",
+      "gate": "Gate 217",
+      "title": "Write the successor pack quartet and manifest rules",
+      "objective": "Author the successor pack quartet, retained-surface rules, and the source-diff/AGENTS read-trigger note so Gate 217 can install the rewritten docs/07 ledger and update AGENTS truthfully during pack opening.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G217-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json"
+      ],
+      "workflow_intent_assertion": "This leaf creates the successor-pack scaffold that later execution will import into the slim repo.",
+      "vocabulary_terms_checked": [
+        "document-touch checklist",
+        "contradiction report",
+        "retained surface",
+        "proof slice",
+        "read-trigger"
+      ],
+      "repo_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_SCOPE_NOTE_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+      ],
+      "inputs": [
+        "template pack",
+        "source contradiction set",
+        "cutover brief",
+        "source-repo current docs/07 vs rewrite diff"
+      ],
+      "ordered_actions": [
+        "Write the successor pack from the repo-native templates instead of copying the old closed pack structure blindly.",
+        "Encode Gate 217 so pack installation replaces docs/07 with the rescoped rewrite and amends AGENTS with the specialised-authority read-trigger, while keeping that work doc/governance-only.",
+        "Keep retained-surface law, runtime-authority verification, test classification, decision law, and successor handoff as separate bounded gates."
+      ],
+      "forbidden_actions": [
+        "Do not encode the source repo as if it still has an active pack.",
+        "Do not reuse historical gate numbers 211-216.",
+        "Do not write execution receipts before the successor repo exists."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate217_slim_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "successor pack quartet",
+        "retained-surface manifest rules",
+        "07 source-diff and AGENTS read-trigger note",
+        "draft execution log with no receipts yet"
+      ],
+      "definition_of_done": [
+        "The successor pack surfaces exist and are internally coherent.",
+        "The bundle is explicit that it is not active in the source repo."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_SCOPE_NOTE_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G217-003",
+      "gate": "Gate 217",
+      "title": "Prove Gate 217 bootstrap integrity",
+      "objective": "Machine-check that the successor bootstrap pack freezes the source-cut boundary, installs the rewritten docs/07 doctrine plus AGENTS read-trigger during pack opening, preserves state invariants, and does not pretend to be active in the source repo.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G217-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes Gate 217 by turning the bootstrap pack into a machine-checkable successor starting point.",
+      "vocabulary_terms_checked": [
+        "state integrity",
+        "source-cut parity",
+        "successor repo"
+      ],
+      "repo_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md",
+        "successor docs/07 ledger",
+        "successor AGENTS.md"
+      ],
+      "inputs": [
+        "successor pack quartet"
+      ],
+      "ordered_actions": [
+        "Add or update the Gate 217 planning proof.",
+        "Assert that completed and remaining leaf sets are disjoint, that Gate 217 is the intended first active gate on import, and that pack-open work includes the docs/07 replacement plus AGENTS read-trigger update.",
+        "Assert that the pack text does not claim source-repo activation or runtime-behaviour change from the doctrine carryover."
+      ],
+      "forbidden_actions": [
+        "Do not rely on brittle historical source-repo strings beyond the cutover truth that forced this pack.",
+        "Do not mark Gate 217 complete until the proof exists."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate217_slim_successor_pack_planning.py"
+      ],
+      "expected_evidence": [
+        "Gate 217 planning proof",
+        "state-integrity assertions",
+        "07 replacement and AGENTS read-trigger assertions",
+        "explicit non-source-routing guard"
+      ],
+      "definition_of_done": [
+        "The successor bootstrap proof exists.",
+        "Gate 217 can be called the intended first active gate on import."
+      ],
+      "closeout_updates_required": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "successor planning quartet",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G218-001",
+      "gate": "Gate 218",
+      "title": "Freeze the retained-surface inventory",
+      "objective": "Inventory which doctrine, operator, runtime, fixture, planning, and test surfaces actually move into the slim repo so the later audit does not classify against missing material or against the wrong installed doctrine set.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G217-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns the abstract cutover brief into a concrete successor-repo baseline.",
+      "vocabulary_terms_checked": [
+        "retained surface",
+        "archive/evidence host",
+        "operator surface"
+      ],
+      "repo_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md",
+        "src/",
+        "tests/",
+        "fixtures/",
+        "docs/"
+      ],
+      "inputs": [
+        "source-cut commit snapshot",
+        "top-level repo tree"
+      ],
+      "ordered_actions": [
+        "Compare the retained-surface rules to the actual imported slim-repo tree.",
+        "Record any retained surface that is still missing, unexpectedly present, or misclassified.",
+        "Freeze the retained inventory as the baseline input for the test audit."
+      ],
+      "forbidden_actions": [
+        "Do not call the slim repo valid without naming what moved.",
+        "Do not substitute source-repo archive material for a missing retained surface."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate218_retained_surface_inventory_and_runtime_authority.py"
+      ],
+      "expected_evidence": [
+        "retained-surface inventory baseline",
+        "unexpected-surface exceptions if any"
+      ],
+      "definition_of_done": [
+        "The retained-surface inventory exists.",
+        "The test audit can name its inputs without guessing."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G218-002",
+      "gate": "Gate 218",
+      "title": "Verify the rewritten 07 ledger and AGENTS read-trigger constrain the audit",
+      "objective": "Verify that the slim successor repo now carries the rewritten docs/07 ledger and matching AGENTS read-trigger, and bind those two surfaces to the substantive audit classification rules.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G218-001"
+      ],
+      "authority_docs": [
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER_RESCOPED_v2.md"
+      ],
+      "workflow_intent_assertion": "This leaf makes the parked 07 work a lawful successor-repo authority input before the test audit starts.",
+      "vocabulary_terms_checked": [
+        "compatibility surface",
+        "workflow packet",
+        "downstream reader",
+        "specialised runtime authority"
+      ],
+      "repo_surfaces": [
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "AGENTS.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RUNTIME_SURFACE_AUDIT_READ_TRIGGER_AND_AUTHORITY_ADOPTION_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+      ],
+      "inputs": [
+        "rescoped 07 ledger",
+        "retained test inventory baseline"
+      ],
+      "ordered_actions": [
+        "Verify the installed docs/07 text matches the rescoped rewrite rather than the older source-repo file.",
+        "Verify AGENTS.md carries the specialised-authority read-trigger that points Codex to docs/07 for the runtime-surface audit domains.",
+        "Record how the audit must use docs/07 and AGENTS together without claiming runtime semantics changed."
+      ],
+      "forbidden_actions": [
+        "Do not claim runtime semantics changed merely because 07 was updated.",
+        "Do not turn 07 into a universal front-door doctrine file."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate218_retained_surface_inventory_and_runtime_authority.py"
+      ],
+      "expected_evidence": [
+        "installed rewritten 07 ledger",
+        "AGENTS specialised-authority read-trigger",
+        "read-trigger/adoption note",
+        "07-specific planning proof"
+      ],
+      "definition_of_done": [
+        "The successor repo has one current rewritten 07 ledger.",
+        "AGENTS points Codex to that ledger for the relevant audit domains.",
+        "Audit tasks that touch runtime surface ownership have an explicit read-trigger."
+      ],
+      "closeout_updates_required": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "AGENTS.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RUNTIME_SURFACE_AUDIT_READ_TRIGGER_AND_AUTHORITY_ADOPTION_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G219-001",
+      "gate": "Gate 219",
+      "title": "Build the canonical retained-test inventory baseline",
+      "objective": "Enumerate the retained tests and freeze one canonical inventory so later keep / retire / rewrite / move decisions compare against the same successor baseline.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G218-002"
+      ],
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf creates the canonical slim-repo test baseline that Gate 220 will judge.",
+      "vocabulary_terms_checked": [
+        "testing phase",
+        "bug surface",
+        "retained test"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
+      ],
+      "inputs": [
+        "retained test tree",
+        "testing doctrine"
+      ],
+      "ordered_actions": [
+        "Enumerate retained tests in the slim repo.",
+        "Record required inventory fields for each retained test row.",
+        "Freeze the inventory as the only baseline for later decision work in this pack."
+      ],
+      "forbidden_actions": [
+        "Do not classify from memory without an inventory row.",
+        "Do not collapse multiple distinct test families into one vague bucket."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate219_test_inventory_classification.py"
+      ],
+      "expected_evidence": [
+        "retained-test inventory baseline",
+        "explicit inventory fields"
+      ],
+      "definition_of_done": [
+        "The retained tests are enumerated once.",
+        "Later decision leaves can compare against one shared baseline."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G219-002",
+      "gate": "Gate 219",
+      "title": "Map retained tests to doctrine, owners, and consumers",
+      "objective": "Classify each retained test family against repo-native bug-surface doctrine, authoritative inputs, runtime or planning owners, and downstream consumers.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G219-001"
+      ],
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns a flat test list into a governed audit surface.",
+      "vocabulary_terms_checked": [
+        "runtime owner",
+        "planning owner",
+        "downstream consumer",
+        "compatibility wrapper"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "retained-test inventory baseline",
+        "adopted 07 ledger"
+      ],
+      "ordered_actions": [
+        "Map each retained test family to one or more authoritative inputs.",
+        "Record whether the test is planning-governance, runtime-contract, invariant, review/trace, replay, data-path, or compatibility work.",
+        "Flag orphan, duplicate, stale-planning, or successor-required states explicitly."
+      ],
+      "forbidden_actions": [
+        "Do not infer runtime ownership from compatibility carriage alone.",
+        "Do not treat source-repo planning guards as automatic successor runtime guards."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate219_test_inventory_classification.py"
+      ],
+      "expected_evidence": [
+        "ownership mapping",
+        "consumer mapping",
+        "orphan/duplicate visibility"
+      ],
+      "definition_of_done": [
+        "Retained tests are classified against doctrine and owners.",
+        "Orphan or stale tests are visible before decision work begins."
+      ],
+      "closeout_updates_required": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G220-001",
+      "gate": "Gate 220",
+      "title": "Freeze test decision law and disagreement memory",
+      "objective": "Define the keep / retire / rewrite / move outcomes, rejection memory, and disagreement-preservation rules that later test decisions must obey.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G219-002"
+      ],
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "source repo docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md",
+        "source repo docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf creates the lawful vocabulary for test-audit decisions before any first-pass register is frozen.",
+      "vocabulary_terms_checked": [
+        "decision outcome",
+        "rejected interpretation retained",
+        "resolved with memory"
+      ],
+      "repo_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
+      ],
+      "inputs": [
+        "Gate 202 governance rules",
+        "retained-test ownership mapping"
+      ],
+      "ordered_actions": [
+        "Adapt the Gate 202 evidence-governance principles to test-native decision law.",
+        "Freeze the allowed decision outcomes and required memory fields.",
+        "Require rejected readings to remain visible in the decision register."
+      ],
+      "forbidden_actions": [
+        "Do not hide disagreement in prose only.",
+        "Do not let a decision outcome imply that execution already ran."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate220_test_audit_decision_register.py"
+      ],
+      "expected_evidence": [
+        "test-native decision law",
+        "disagreement-memory rules"
+      ],
+      "definition_of_done": [
+        "Decision outcomes are explicit and bounded.",
+        "Rejected or deferred decisions preserve explicit memory."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G220-002",
+      "gate": "Gate 220",
+      "title": "Freeze the first-pass keep / retire / rewrite / move register",
+      "objective": "Apply the decision law to the retained test inventory and record one first-pass decision register with evidence anchors, disagreement states, and next-action packs.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G220-001"
+      ],
+      "authority_docs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf finishes the substantive classification work that Gate 210 deferred, while keeping actual execution for the next pack.",
+      "vocabulary_terms_checked": [
+        "keep as is",
+        "rewrite for successor truth",
+        "move to archive evidence repo"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
+      ],
+      "inputs": [
+        "retained-test inventory",
+        "ownership mapping",
+        "decision law"
+      ],
+      "ordered_actions": [
+        "Evaluate each retained test family against the allowed decision outcomes.",
+        "Record evidence anchors, disagreement state, and next action for every rejected, deferred, moved, or rewritten item.",
+        "Keep the register purely classificatory; do not execute the moves or rewrites yet."
+      ],
+      "forbidden_actions": [
+        "Do not conflate classification with code mutation.",
+        "Do not drop archive-move candidates without naming the archive destination and why."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate220_test_audit_decision_register.py"
+      ],
+      "expected_evidence": [
+        "first-pass decision register",
+        "explicit evidence anchors",
+        "next-action pack ids"
+      ],
+      "definition_of_done": [
+        "The first-pass register exists.",
+        "Every non-keep decision is explainable and preserved."
+      ],
+      "closeout_updates_required": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G221-001",
+      "gate": "Gate 221",
+      "title": "Freeze the bounded proof slice for successor execution",
+      "objective": "Define the exact proof order that the first post-audit execution pack must use when it starts changing retained tests.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G220-002"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf makes the next pack executable without re-planning the audit logic from scratch.",
+      "vocabulary_terms_checked": [
+        "proof slice",
+        "successor execution pack",
+        "targeted validation"
+      ],
+      "repo_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md"
+      ],
+      "inputs": [
+        "first-pass decision register",
+        "successor planning quartet"
+      ],
+      "ordered_actions": [
+        "Freeze the ordered proof slice for executing the classified test decisions.",
+        "State what broad proofs are explicitly excluded at this stage.",
+        "Tie the proof slice to the next execution pack boundary."
+      ],
+      "forbidden_actions": [
+        "Do not require broad blind execution by default.",
+        "Do not leave the next execution pack to invent its own validation order."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate221_successor_test_audit_handoff.py"
+      ],
+      "expected_evidence": [
+        "proof-slice doc",
+        "explicit stop conditions",
+        "next-pack linkage"
+      ],
+      "definition_of_done": [
+        "The next execution pack has a deterministic proof order.",
+        "The bootstrap pack no longer carries execution ambiguity."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G221-002",
+      "gate": "Gate 221",
+      "title": "Write the successor execution-pack queue and close the bootstrap pack truthfully",
+      "objective": "Define the next successor execution pack boundary for actual test moves/rewrites, then close this bootstrap pack without reopening the source repo or claiming execution already ran.",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G221-001"
+      ],
+      "authority_docs": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json"
+      ],
+      "workflow_intent_assertion": "This leaf closes the first slim-successor bootstrap pack by handing the repo a truthful next execution queue.",
+      "vocabulary_terms_checked": [
+        "next active pack",
+        "closeout",
+        "archive evidence repo"
+      ],
+      "repo_surfaces": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "first-pass decision register",
+        "proof-slice doc"
+      ],
+      "ordered_actions": [
+        "Write the next successor execution-pack boundary from the first-pass decision register.",
+        "Update the successor planning quartet together so this bootstrap pack can close truthfully when executed.",
+        "Leave the source repo untouched and archive-only."
+      ],
+      "forbidden_actions": [
+        "Do not reroute the source repo.",
+        "Do not claim the successor execution pack has already executed.",
+        "Do not collapse multiple execution families into one vague downstream gate."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate221_successor_test_audit_handoff.py"
+      ],
+      "expected_evidence": [
+        "next execution-pack queue",
+        "successor closeout/routing update",
+        "explicit non-source-repo boundary"
+      ],
+      "definition_of_done": [
+        "The next successor execution pack is explicit.",
+        "This bootstrap pack can close without ambiguity once routed and executed in the slim repo."
+      ],
+      "closeout_updates_required": [
+        "successor PLANS.md",
+        "successor canonical gate map",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts are the default closeout evidence once the successor repo exists. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "successor planning quartet",
+        "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md"
+      ]
+    }
+  ]
+}
