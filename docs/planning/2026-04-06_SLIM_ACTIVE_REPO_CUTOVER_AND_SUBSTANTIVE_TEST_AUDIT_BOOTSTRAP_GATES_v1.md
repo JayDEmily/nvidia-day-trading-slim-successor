@@ -1,6 +1,6 @@
 # 2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1
 
-Status: slim-successor planning pack with Gate 219 complete on `work/gate-219-retained-test-inventory-and-ownership-mapping-20260406`; Gates 220-221 planned, Gate 220 not yet activated. This pack is **not** active in the source repo.
+Status: slim-successor planning pack with Gate 220 complete on `work/gate-220-test-decision-law-and-first-pass-register-20260406`; Gate 221 planned, Gate 221 not yet activated. This pack is **not** active in the source repo.
 
 ## Purpose
 
