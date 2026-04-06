@@ -1,6 +1,6 @@
 # 2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1
 
-Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 active on work/gate-207-router-and-doctrine-consolidation-20260406
+Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 active on work/gate-207-router-and-doctrine-consolidation-20260406
 
 ## Purpose
 
@@ -78,4 +78,37 @@ Gate 206 closeout receipt was reconstructed after merge from the authored branch
 - receipt recorded: `reconstructed after the fact from GitHub branch/commit/merge receipts`
 
 Gate 206 merged to `main` via a non-fast-forward merge commit: `2f556ed24a6097955a44f5c4b5b4bd7ddb497e97`.
-Gate 207 is now the current active gate on `work/gate-207-router-and-doctrine-consolidation-20260406`.
+
+## Gate 207 receipts
+
+### LEAF-G207-001
+
+- gate id: `Gate 207`
+- leaf id: `LEAF-G207-001`
+- branch name: `work/gate-207-router-and-doctrine-consolidation-20260406`
+- start commit: `ecb8c272c4ee80d409c0655e6f2721369b5ff010`
+- end commit: `__GATE207_END_COMMIT__`
+- exact files touched: `PLANS.md`, `AGENTS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate207_router_and_doctrine_consolidation.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py`
+- observed result: `1 passed in 0.19s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 207 work branch`
+
+### LEAF-G207-002
+
+- gate id: `Gate 207`
+- leaf id: `LEAF-G207-002`
+- branch name: `work/gate-207-router-and-doctrine-consolidation-20260406`
+- start commit: `ecb8c272c4ee80d409c0655e6f2721369b5ff010`
+- end commit: `__GATE207_END_COMMIT__`
+- exact files touched: `PLANS.md`, `AGENTS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate207_router_and_doctrine_consolidation.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate207_router_and_doctrine_consolidation.py`
+- observed result: `1 passed in 0.19s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 207 work branch`
+
+Gate 208 is now the current active gate on `work/gate-207-router-and-doctrine-consolidation-20260406`.
