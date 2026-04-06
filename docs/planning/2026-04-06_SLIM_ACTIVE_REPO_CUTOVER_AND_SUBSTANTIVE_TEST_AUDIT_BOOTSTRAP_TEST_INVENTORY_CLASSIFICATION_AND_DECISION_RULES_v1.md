@@ -416,6 +416,70 @@ Gate 219 satisfies the required inventory fields in two coupled passes:
 ]
 ```
 
+## Gate 220 governed decision law
+
+Gate 220 converts the Gate 219 family mapping from pre-decision inventory into a governed classification law. The law below freezes how later packs must record test decisions without silently executing those decisions during classification.
+
+### Allowed outcomes are bounded
+
+Gate 220 may only freeze the following decision outcomes in the first-pass register:
+- `keep_as_is`
+- `keep_but_retarget_authority`
+- `rewrite_for_successor_truth`
+- `move_to_archive_evidence_repo`
+- `retire_duplicate`
+- `retire_unproven_or_orphaned`
+- `defer_requires_new_anchor_or_runtime_change`
+
+No synonym, shortened label, or prose-only substitute is allowed in place of those outcome values.
+
+### Allowed disagreement states are bounded
+
+Every Gate 220 decision row must record exactly one of:
+- `no_disagreement_recorded`
+- `resolved_with_memory`
+- `deferred_pending_new_anchor_or_runtime_change`
+
+### Required decision-register memory fields
+
+Every Gate 220 decision row must preserve:
+- `decision_id`
+- `source_test_family`
+- `member_test_count`
+- `member_tests`
+- `treatment_tags`
+- `decision_outcome`
+- `authoritative_inputs`
+- `runtime_owner_or_planning_owner`
+- `downstream_consumer_or_control_surface`
+- `evidence_anchor`
+- `disagreement_state`
+- `rejected_interpretation_ids`
+- `rejection_or_deferral_reason`
+- `missing_requirement`
+- `would_become_valid_if`
+- `next_action_pack`
+- `archive_destination`
+- `classification_not_execution_note`
+- `notes`
+
+### Rejected and deferred readings must remain visible
+
+If a row is moved, retired, rewritten, or deferred, the register must retain the rejected interpretation ids and the reason the rejected reading lost. Disagreement memory must remain in the register itself rather than being hidden in surrounding prose.
+
+Rejected or deferred decisions must also preserve:
+- the evidence anchors that support the chosen classification;
+- the missing requirement or future condition, when the row is deferred or requires rewrite before it can remain canonical; and
+- the next action pack that is allowed to execute the later move, rewrite, or retirement.
+
+### Rejection and deferred-decision preservation
+
+`move_to_archive_evidence_repo`, `retire_duplicate`, `retire_unproven_or_orphaned`, `rewrite_for_successor_truth`, and `defer_requires_new_anchor_or_runtime_change` are classificatory outcomes only at Gate 220. They preserve the decision, its disagreement memory, and its future execution boundary. They do not silently delete a test, move a file, or rewrite a runtime or planning surface during this gate.
+
+### Classification is not execution
+
+Gate 220 freezes classification and next action only. A decision row may name archive-only, stale-planning, duplicate, or successor-required treatment, but that classification does not itself execute keep / retire / rewrite / move actions.
+
 ## Gate 219 family doctrine and ownership mapping
 
 ```json
