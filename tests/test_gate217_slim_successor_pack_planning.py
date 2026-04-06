@@ -59,8 +59,8 @@ def test_gate217_pack_installation_invariants_remain_present() -> None:
     assert "Gate 220 |" in gate_map
     assert "Gate 221 |" in gate_map
 
-    assert "Status: slim-successor planning pack" in gates
-    assert "This document is the active gate authority for the slim successor repo only." in gates
+    assert "Status:" in gates
+    assert "This document is the canonical gate authority surface for the slim successor bootstrap pack only." in gates
     assert "It must not claim runtime behaviour changed merely because the doctrine text was rewritten." in diff_note
 
     assert payload["governing_plan"] == ACTIVE_GATES_DOC

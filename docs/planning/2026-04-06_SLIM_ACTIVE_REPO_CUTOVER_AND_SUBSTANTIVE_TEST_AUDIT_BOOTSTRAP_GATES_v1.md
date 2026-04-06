@@ -1,6 +1,6 @@
 # 2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1
 
-Status: slim-successor planning pack with Gate 220 complete on `work/gate-220-test-decision-law-and-first-pass-register-20260406`; Gate 221 planned, Gate 221 not yet activated. This pack is **not** active in the source repo.
+Status: closed slim-successor planning pack through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`; no active pack is currently routed. This pack is **not** active in the source repo.
 
 ## Purpose
 
@@ -30,7 +30,7 @@ Out of scope:
 
 ## Supersession and active authority
 
-- This document is the active gate authority for the slim successor repo only.
+- This document is the canonical gate authority surface for the slim successor bootstrap pack only.
 - It does not reopen the source repo's closed workflow-hardening and active-repo reset foundation pack.
 - It does not supersede any active pack in the source repo because repo-root `PLANS.md` there truthfully routes no active pack.
 - The source repo remains the archive/evidence host for closed planning packs, receipts, contradiction reports, scope notes, salvage matrices, and older historical planning artefacts.
