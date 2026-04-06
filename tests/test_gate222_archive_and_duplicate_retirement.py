@@ -1,4 +1,4 @@
-"""Gate 222 archive-evidence and duplicate-retirement invariants."""
+"""Gate 222 archive-only move invariants."""
 
 from __future__ import annotations
 
@@ -31,8 +31,19 @@ def test_gate222_archive_destination_and_manifest_remain_coherent() -> None:
 
     assert ARCHIVE_ROOT.is_dir()
     assert MANIFEST.is_file()
-    assert payload["active_gate"] == "Gate 222"
+    assert payload["execution_status"] == (
+        "gate_222_complete_on_work_branch_gate_223_not_yet_activated"
+    )
+    assert payload["active_gate"] == (
+        "none — Gate 222 complete on "
+        "work/gate-222-archive-evidence-and-duplicate-retirement-20260406; "
+        "Gate 223 not yet activated"
+    )
+    assert payload["completed_gate_ids"] == ["Gate 222"]
+    assert payload["pending_gate_ids"] == ["Gate 223", "Gate 224", "Gate 225"]
     assert "Gate 222 receipts" in execution_log
+    assert "Gate 222 complete on `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`" in execution_log
+    assert "Gate 223 remains planned and is not yet activated." in execution_log
     assert manifest["archive_destination"] == (
         "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/"
     )
@@ -41,7 +52,6 @@ def test_gate222_archive_destination_and_manifest_remain_coherent() -> None:
     planning_files = _files_for("planning_governance__closed_source_or_historical_pack_receipts")
     review_files = _files_for("review_or_trace__historical_planning_review_receipts")
     closeout_files = _files_for("migration_or_closeout_guard__historical_closeout_receipts")
-    duplicate_files = _files_for("replay_regression__research_shadow_replays")
 
     if "LEAF-G222-002" in completed:
         for path in planning_files + review_files:
@@ -59,11 +69,4 @@ def test_gate222_archive_destination_and_manifest_remain_coherent() -> None:
             assert not path.exists()
     else:
         for path in closeout_files:
-            assert path.exists()
-
-    if "LEAF-G222-004" in completed:
-        for path in duplicate_files:
-            assert not path.exists()
-    else:
-        for path in duplicate_files:
             assert path.exists()
