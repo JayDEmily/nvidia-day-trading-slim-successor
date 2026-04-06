@@ -115,24 +115,21 @@
     {
       "id": "LEAF-G222-004",
       "gate": "Gate 222",
-      "title": "Retire duplicate replay-shadow tests and close Gate 222",
-      "objective": "Remove `tests/test_research_eval_replay.py` and `tests/test_research_replay.py` as duplicate research-shadow replay guards, prove the canonical replay compare guards remain green, and close Gate 222 truthfully.",
+      "title": "Close Gate 222 as archive-only move gate",
+      "objective": "Update the quartet, execution log, and gate state so Gate 222 closes truthfully as the archive-evidence move gate with Gate 223 next.",
       "status": "planned",
       "depends_on": [
         "LEAF-G222-003"
       ],
       "proof_slice": [
-        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py",
-        "pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py"
+        "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py"
       ],
       "allowed_changed_files": [
-        "active tests tree",
         "cleanup-pack quartet",
         "Gate 222 proof file"
       ],
       "stop_conditions": [
-        "canonical replay compare guards fail after duplicate retirement",
-        "duplicate retirement needs new runtime code rather than test-surface cleanup"
+        "quartet closeout cannot represent Gate 222 state truthfully"
       ]
     },
     {
@@ -201,8 +198,8 @@
     {
       "id": "LEAF-G223-004",
       "gate": "Gate 223",
-      "title": "Close Gate 223 and record executed rewrite/retarget rows",
-      "objective": "Update the quartet, execution log, and executed-row state so Gate 223 closes with Gate 224 next and the completed decision ids are explicit.",
+      "title": "Retire duplicate replay-shadow tests and close Gate 223",
+      "objective": "Remove `tests/test_research_eval_replay.py` and `tests/test_research_replay.py` only after the replay-authority retarget has landed on the same Gate 223 branch, prove the canonical replay compare guards remain green, and close Gate 223 truthfully.",
       "status": "planned",
       "depends_on": [
         "LEAF-G223-003"
@@ -212,10 +209,13 @@
         "pytest -q tests/test_gate49_temporal_compatibility.py tests/test_session_clock.py tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py"
       ],
       "allowed_changed_files": [
+        "active tests tree",
         "cleanup-pack quartet",
         "Gate 223 proof file"
       ],
       "stop_conditions": [
+        "canonical replay compare guards fail after duplicate retirement",
+        "duplicate retirement needs new runtime code rather than test-surface cleanup",
         "quartet closeout cannot represent Gate 223 state truthfully"
       ]
     },

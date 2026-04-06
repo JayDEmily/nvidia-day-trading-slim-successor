@@ -1,12 +1,12 @@
 # 2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1
 
-Status: authored successor execution pack proposal for the slim successor repo; not yet installed or routed in-repo. Intended successor gate range: Gates 222-225. This pack is successor-repo-only and does not reopen the source/archive repo.
+Status: active successor execution pack for the slim successor repo; installed and routed on successor `main` with Gate 222 active. Intended successor gate range: Gates 222-225. This pack is successor-repo-only and does not reopen the source/archive repo.
 
 ## Purpose
 
 Execute the already-classified retained-test cleanup work frozen by the closed bootstrap pack, then leave the slim successor repo ready for architecture and real-data runtime progress rather than another audit loop.
 
-This pack exists because repo-root `PLANS.md` on successor `main` currently says no active pack is routed, while the latest closed evidence pack already froze:
+This pack was created because repo-root `PLANS.md` on successor `main` had no active pack routed, while the latest closed evidence pack had already frozen:
 1. the retained-test inventory;
 2. the governed keep / retarget / rewrite / move / retire decision register; and
 3. the bounded proof and handoff boundary for the first successor retained-test execution pack.
@@ -31,7 +31,7 @@ Out of scope:
 
 ## Supersession and active authority
 
-- This document is the proposed canonical gate authority surface for the next successor execution pack only.
+- This document is the canonical gate authority surface for the current successor retained-test cleanup execution pack.
 - It is a new pack because the prior bootstrap pack is already honestly closed through Gate 221 and repo-root `PLANS.md` now says no active pack is routed.
 - It does not amend or reopen the closed bootstrap pack.
 - It uses the closed bootstrap pack's decision register and handoff surface as evidence-input authority for execution sequencing.
@@ -86,13 +86,13 @@ This does **not** waive `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`. It is a contr
 
 The closed bootstrap pack already grouped the future work into four execution families:
 1. archive-evidence moves;
-2. successor-boundary rewrite;
-3. duplicate retirement; and
+2. successor-boundary rewrite plus replay-authority retarget;
+3. duplicate retirement after replay-authority retarget; and
 4. retained keep / retarget families.
 
 The chosen gate count preserves those real differences while still making the pack fat enough to avoid operator tennis:
-- Gate 222 removes archive-only and duplicate clutter first;
-- Gate 223 performs the smallest, highest-certainty successor-local rewrites and retargets;
+- Gate 222 removes archive-only clutter first;
+- Gate 223 performs the smallest, highest-certainty successor-local rewrites and retargets, then retires the duplicate replay-shadow tests on the same branch only after replay-authority retarget proof lands;
 - Gate 224 performs medium-blast retarget work on runtime review and contract families;
 - Gate 225 finishes remaining invariant-family retarget and closes the cleanup tranche.
 
@@ -118,7 +118,7 @@ This pack therefore exists to finish the test cleanup, not to become another lon
 - `planning_governance__closed_source_or_historical_pack_receipts`
 - `review_or_trace__historical_planning_review_receipts`
 - `migration_or_closeout_guard__historical_closeout_receipts`
-- `replay_regression__research_shadow_replays`
+- `replay_regression__research_shadow_replays` after Gate 223 replay-authority retarget lands and the canonical replay guards remain green
 
 ### Rewrite in-place for successor truth
 - `migration_or_closeout_guard__successor_cutover_boundary_rule`
@@ -158,42 +158,40 @@ Stop immediately and do not open the next gate if any of the following happens:
 
 ## Gates
 
-### Gate 222: Archive-only and duplicate-retirement execution
+### Gate 222: Archive-only move execution
 
 **Objective**
-- Execute the archive-evidence move family and duplicate-retirement family so the active successor test surface no longer carries historical planning receipts, historical closeout receipts, or redundant replay-shadow tests.
+- Execute the archive-evidence move families so the active successor test surface no longer carries historical planning receipts or historical closeout receipts.
 
 **Families executed**
 - `planning_governance__closed_source_or_historical_pack_receipts`
 - `review_or_trace__historical_planning_review_receipts`
 - `migration_or_closeout_guard__historical_closeout_receipts`
-- `replay_regression__research_shadow_replays`
 
 **Definition of done**
 - archive-only families are no longer in the active `tests/` surface;
 - a successor-local archive-evidence destination exists and carries preserved evidence anchors plus disagreement memory;
-- redundant research-shadow replay tests are retired;
-- canonical replay compare guards remain green;
 - successor quartet routes Gate 222 complete and Gate 223 next.
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py`
 
 ### Gate 223: Successor-boundary rewrite and light retarget execution
 
 **Objective**
-- Perform the smallest, highest-certainty successor-native rewrites and authority retargets so no retained test still asserts source-era cutover truth or stale compatibility/replay authority.
+- Perform the smallest, highest-certainty successor-native rewrites and authority retargets so no retained test still asserts source-era cutover truth or stale compatibility/replay authority, then retire the duplicate replay-shadow tests on the same branch once the replay-authority retarget is proven.
 
 **Families executed**
 - `migration_or_closeout_guard__successor_cutover_boundary_rule`
 - `compatibility_wrapper__preserved_reader_shapes`
 - `replay_regression__canonical_replay_compare_guards`
+- `replay_regression__research_shadow_replays`
 
 **Definition of done**
 - the retained cutover-boundary test is rewritten against successor-local authority surfaces;
 - compatibility wrapper tests now anchor to adopted successor doctrine and runtime ownership;
 - canonical replay compare guards now anchor to successor-local replay/runtime authority rather than source-era wording;
+- duplicate research-shadow replay tests are retired only after the canonical replay compare guards remain green on the same Gate 223 branch;
 - successor quartet routes Gate 223 complete and Gate 224 next.
 
 **Minimum proof slice**
