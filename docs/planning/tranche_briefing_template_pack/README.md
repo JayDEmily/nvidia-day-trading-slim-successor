@@ -6,7 +6,7 @@ This folder is the repo-local reference pack for writing future tranche briefs.
 
 The usual pattern is:
 - a **planning thread** reads the repo and writes the brief;
-- a **coding thread** executes that brief gate by gate.
+- a **coding thread** executes that brief gate by gate on repo-local Git branches.
 
 Use this pack when creating a new tranche.
 Do not improvise a new planning structure unless the repo doctrine has explicitly changed.
@@ -42,7 +42,8 @@ Use the latest closed pack as evidence input only; do not clone its structure fo
 - Do **not** ignore material control-surface contradictions; emit a contradiction report before continuing.
 - Do **not** let `completed_leaf_ids` and `remaining_leaf_ids` overlap.
 - Do **not** treat a multi-gate user request as permission to skip per-gate closeout.
-- Do **not** treat a gate as done without green tests, synchronized control-surface updates, and a fresh full-history zip from the exact green repo state.
+- Do **not** treat a gate as done without green tests, synchronized control-surface updates, and GitHub branch/commit receipts recorded in the execution log.
+- Do **not** treat routine zip packaging as the default execution ledger; create a full-history zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.
 
 ## Why this exists
 
@@ -52,7 +53,7 @@ This pack exists to reduce drift between:
 - the leaves ledger;
 - the code that eventually gets written.
 
-Git history preserves older brief packs, so the active repo tree should prefer the latest usable template rather than a clutter pile of superseded planning notes.
+Git history preserves older brief packs, so the active repo tree should prefer the latest usable template rather than a clutter pile of superseded planning notes. GitHub branch, commit, and merge history is the default routine execution ledger for ordinary gate work.
 
 
 ## Execution-thread reminder

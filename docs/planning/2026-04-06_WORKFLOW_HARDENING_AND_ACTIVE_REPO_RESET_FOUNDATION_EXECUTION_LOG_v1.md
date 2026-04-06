@@ -1,6 +1,6 @@
 # 2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1
 
-Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 active on work/gate-207-router-and-doctrine-consolidation-20260406
+Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 complete on work/gate-208-template-pack-rewrite-to-github-native-execution-20260406, Gate 209 active on work/gate-208-template-pack-rewrite-to-github-native-execution-20260406
 
 ## Purpose
 
@@ -111,4 +111,38 @@ Gate 206 merged to `main` via a non-fast-forward merge commit: `2f556ed24a609795
 - state-integrity checks passed: `true`
 - receipt recorded: `live closeout receipt on the Gate 207 work branch`
 
-Gate 208 is now the current active gate on `work/gate-207-router-and-doctrine-consolidation-20260406`.
+## Gate 208 receipts
+
+### LEAF-G208-001
+
+- gate id: `Gate 208`
+- leaf id: `LEAF-G208-001`
+- branch name: `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`
+- start commit: `d622e46067ff1c19550bd770498b62ad018b0489`
+- end commit: `d5f1ef26fba175de8ca5b4c2471bd62647431e2f`
+- exact files touched: `CHANGELOG.jsonl`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/tranche_briefing_template_pack/README.md`, `docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md`, `tests/test_tranche_briefing_template_pack.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_tranche_briefing_template_pack.py`
+- observed result: `3 passed in 0.14s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt finalized on the Gate 208 work branch`
+
+### LEAF-G208-002
+
+- gate id: `Gate 208`
+- leaf id: `LEAF-G208-002`
+- branch name: `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`
+- start commit: `d622e46067ff1c19550bd770498b62ad018b0489`
+- end commit: `d5f1ef26fba175de8ca5b4c2471bd62647431e2f`
+- exact files touched: `CHANGELOG.jsonl`, `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/tranche_briefing_template_pack/README.md`, `docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md`, `docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_EXECUTION_LOG_TEMPLATE_v1.md`, `docs/planning/tranche_briefing_template_pack/2026-03-30_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v1.md`, `tests/test_tranche_briefing_template_pack.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_tranche_briefing_template_pack.py`
+- observed result: `3 passed in 0.14s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt finalized on the Gate 208 work branch`
+
+Gate 208 has not been merged in this execution log; merge receipts will be recorded only if and when the verified branch is merged.
+
+Gate 209 is now the current active gate on `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`.

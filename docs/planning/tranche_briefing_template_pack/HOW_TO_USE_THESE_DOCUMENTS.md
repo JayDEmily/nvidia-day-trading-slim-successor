@@ -7,7 +7,8 @@ This pack is a reusable planning kit.
 Its normal use case is:
 - a **planning thread** reads the repo and writes a tranche brief;
 - a **coding thread** executes that brief gate by gate;
-- the repo is then packaged as a full-history zip so the next thread starts from durable evidence instead of chat memory.
+- GitHub branch, commit, and merge history carries the routine execution ledger for that gate;
+- a full-history zip is created only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.
 
 ## Ordered workflow
 
@@ -44,7 +45,6 @@ Do not leave a coding thread to invent architecture during execution.
 ## Minimum coding-thread bootstrap
 
 ```bash
-git init
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install -U pip
@@ -69,18 +69,21 @@ For each gate:
    - active leaves ledger
    - active execution log
 6. If the user asked for multiple gates, still close this gate fully before starting the next one.
-7. Merge to `main` only after the gate is green.
-8. Create a fresh full-history zip from that exact green repo state.
+7. Record the exact work-branch commit, validation commands, and observed results in the execution log.
+8. Merge to `main` only after the gate is green when the operator requests merge.
+9. Record the merged `main` commit when a merge occurs.
+10. Create a fresh full-history zip only if the operator explicitly requested backup, offline handoff, or sandbox transfer packaging.
 
 ## Evidence rule
 
 A gate is not done until all of the following exist in the same reply or handover artefact:
 - branch name;
 - commit hash on the work branch;
-- commit hash on `main` after merge;
 - exact validation commands;
 - observed test results;
-- a fresh full-history zip with `.git` included.
+- synchronized routing/control-surface updates;
+- commit hash on `main` after merge when merge has already occurred;
+- a fresh full-history zip with `.git` included only when the operator explicitly requested backup, offline handoff, or sandbox transfer packaging.
 
 ## Packaging rule
 
@@ -93,7 +96,7 @@ Exclude only repo-local runtime junk such as:
 
 Do not exclude `.git/`.
 
-## Example final zip command
+## Optional final zip command
 
 ```bash
 zip -r repo_full_handover.zip . -x '.venv/*' '__pycache__/*' '.pytest_cache/*' '.ruff_cache/*' '.mypy_cache/*'

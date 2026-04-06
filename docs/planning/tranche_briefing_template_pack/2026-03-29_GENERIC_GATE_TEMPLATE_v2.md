@@ -20,6 +20,7 @@ Out of scope:
 - It supersedes:
   - <older active pack if any>
 - The latest closed pack remains evidence input only; it is not the structural template for this tranche.
+- If no active pack exists yet, this tranche must be routed explicitly through repo-root `PLANS.md`, the canonical gate map, the leaves ledger, and the execution log before later gate work starts.
 
 ## Governing inputs
 
@@ -102,7 +103,8 @@ Name the checklist file for this tranche and state which frozen and live control
 - A gate is not complete until:
   - tests ran green;
   - `PLANS.md`, gate map, active leaves ledger, and active execution log all moved together;
-  - a new full-history zip was created from the exact green repo state.
+  - exact GitHub branch/commit receipts were recorded for the gate closeout;
+  - a full-history zip was created only if the operator explicitly requested backup, offline handoff, or sandbox transfer packaging.
 
 ## Gates
 

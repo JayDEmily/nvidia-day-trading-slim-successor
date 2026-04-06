@@ -27,12 +27,14 @@ The control stack is:
 7. **Execution log** records receipts only.
 8. **CHANGELOG** records what changed, not what should happen next.
 9. **The template pack** is the durable structural source of truth; the latest closed pack is evidence input only.
+10. **GitHub branch, commit, and merge history** is the default routine execution ledger for ordinary gate work.
 
 A gate is not complete until:
 - the code/docs for that gate are complete;
 - the required tests ran green in a real repo-local environment;
 - the planning control surfaces were updated together;
-- a new full-history zip was created from that exact green repo state.
+- the exact GitHub branch/commit receipts were recorded in the execution log;
+- a full-history zip was created only if the operator explicitly requested backup, offline handoff, or sandbox transfer packaging.
 
 ## Document roles
 
@@ -51,11 +53,10 @@ Purpose:
 - stable behavioural layer;
 - reading order;
 - anti-drift rules;
-- packaging/testing discipline;
 - generic operator rules.
 
 It should change rarely.
-It should not become the active plan.
+It should not become the active plan or a second detailed process-law file.
 
 ### 3. PLANS.md
 Purpose:
@@ -69,6 +70,8 @@ It should name only:
 - the active bounded-scope note;
 - the next active gate;
 - predecessor evidence only if still needed.
+
+If no active pack exists, a new pack must be created and routed explicitly before later gate execution begins.
 
 It should stay short.
 
@@ -226,7 +229,7 @@ Every new tranche must make these explicit early, not buried later:
 - the packet or contract authority used for data/interface work;
 - the live workflow trace showing where the change sits;
 - the retain/retire/amend/add matrix;
-- the test and packaging evidence needed to close each gate.
+- the test and closeout evidence needed to close each gate.
 
 ## Anti-drift rules
 
@@ -238,7 +241,8 @@ Every new tranche must make these explicit early, not buried later:
 - Do not let a rich upstream source be collapsed back into thin compatibility surfaces without an explicit bounded derivation step.
 - Do not let a coding thread discover the packet contract during execution.
 - Do not let vocabulary admission happen informally.
-- Do not call a gate done without a fresh full-history zip.
+- Do not call a gate done without synchronized control-surface closeout and exact GitHub branch/commit receipts.
+- Do not treat routine zip packaging as mandatory default closeout evidence.
 
 
 ## Document-touch checklist requirement
