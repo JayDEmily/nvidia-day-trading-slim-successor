@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_222_active_after_pack_install",
-  "active_gate": "Gate 222",
+  "execution_status": "gate_222_complete_on_work_branch_gate_223_not_yet_activated",
+  "active_gate": "none — Gate 222 complete on work/gate-222-archive-evidence-and-duplicate-retirement-20260406; Gate 223 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
@@ -13,13 +13,16 @@
     "Gate 220 decision register",
     "Gate 221 proof-order and successor handoff surface"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 222"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G222-001",
     "LEAF-G222-002",
     "LEAF-G222-003",
-    "LEAF-G222-004",
+    "LEAF-G222-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G223-001",
     "LEAF-G223-002",
     "LEAF-G223-003",
@@ -34,7 +37,6 @@
     "LEAF-G225-004"
   ],
   "pending_gate_ids": [
-    "Gate 222",
     "Gate 223",
     "Gate 224",
     "Gate 225"
@@ -55,7 +57,7 @@
       "gate": "Gate 222",
       "title": "Create successor-local archive-evidence destination and move manifest",
       "objective": "Create the successor-local archive-evidence destination, write a manifest that preserves decision ids, evidence anchors, and disagreement memory, and wire the destination into the active cleanup pack without touching the source repo.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "proof_slice": [
         "pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py"
@@ -75,7 +77,7 @@
       "gate": "Gate 222",
       "title": "Move historical planning-governance and review-planning receipt tests out of active tests",
       "objective": "Execute the move for `planning_governance__closed_source_or_historical_pack_receipts` and `review_or_trace__historical_planning_review_receipts`, preserving evidence memory in the archive destination and removing those files from active runtime proof slices.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G222-001"
       ],
@@ -96,7 +98,7 @@
       "gate": "Gate 222",
       "title": "Move historical closeout-receipt tests out of active tests",
       "objective": "Execute the move for `migration_or_closeout_guard__historical_closeout_receipts` into the successor-local archive-evidence destination, preserving the execution-memory trail and removing those files from the active test surface.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G222-002"
       ],
@@ -117,7 +119,7 @@
       "gate": "Gate 222",
       "title": "Close Gate 222 as archive-only move gate",
       "objective": "Update the quartet, execution log, and gate state so Gate 222 closes truthfully as the archive-evidence move gate with Gate 223 next.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G222-003"
       ],

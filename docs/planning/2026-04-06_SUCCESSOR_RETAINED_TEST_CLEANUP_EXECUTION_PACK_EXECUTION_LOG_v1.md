@@ -1,6 +1,6 @@
 # 2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1
 
-Status: receipt-empty successor retained-test cleanup execution log; Gate 222 active after pack install as the archive-only move gate; Gates 223-225 planned.
+Status: successor retained-test cleanup execution log with Gate 222 complete on `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`; Gate 223 planned and not yet activated; Gates 224-225 still planned.
 
 ## Purpose
 
@@ -36,7 +36,71 @@ If continuity breaks, execution stops and later gate sections remain receipt-emp
 
 ## Gate 222 receipts
 
-No receipts yet.
+### LEAF-G222-001
+
+- gate id: `Gate 222`
+- leaf id: `LEAF-G222-001`
+- branch name: `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`
+- start commit: `e687c26e463365be7f231598c96805cf387f7dd1`
+- exact files touched: `docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/MOVE_MANIFEST_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate222_archive_and_duplicate_retirement.py`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 222 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `2 passed in 0.20s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 222 leaf execution`
+
+### LEAF-G222-002
+
+- gate id: `Gate 222`
+- leaf id: `LEAF-G222-002`
+- branch name: `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`
+- start commit: `cb3c89c8b95b027119fecc1c80f8b7a157306889`
+- exact files touched: `32 archived planning and historical-review receipt tests moved under docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 222 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `2 passed in 0.18s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 222 leaf execution`
+
+### LEAF-G222-003
+
+- gate id: `Gate 222`
+- leaf id: `LEAF-G222-003`
+- branch name: `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`
+- start commit: `cdd12b334e00279daec17ee5917b9366670f78b7`
+- exact files touched: `14 archived historical closeout-receipt tests moved under docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 222 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `2 passed in 0.16s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 222 leaf execution`
+
+### LEAF-G222-004
+
+- gate id: `Gate 222`
+- leaf id: `LEAF-G222-004`
+- branch name: `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`
+- start commit: `b22aacec213ce54d193ff54f9f1793ac9504da72`
+- exact files touched: `PLANS.md`, `CHANGELOG.jsonl`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_gate222_archive_and_duplicate_retirement.py`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate222_archive_and_duplicate_retirement.py tests/test_planning_state_integrity.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 222 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `2 passed in 0.22s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 222 leaf execution`
+
+## Gate 222 closeout state
+
+- Gate 222 complete on `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`.
+- Gate 223 remains planned and is not yet activated.
+- Duplicate replay-shadow retirement did not execute in Gate 222 and remains deferred to Gate 223 after replay-authority retarget proof lands on the same Gate 223 branch.
 
 ## Gate 223 receipts
 
