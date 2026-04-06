@@ -109,5 +109,8 @@ def test_gate210_closeout_is_coherent() -> None:
     assert "## Gate 210 receipts" in execution_log
     assert "LEAF-G210-001" in execution_log
     assert "LEAF-G210-002" in execution_log
+    assert "authored implementation commit:" in execution_log
     assert "source .venv/bin/activate && python -m pytest -q tests/test_gate210_operator_surface_alignment_and_cutover.py" in execution_log
+    assert "1 passed in " in execution_log
+    assert "TBD" not in execution_log
     assert "No later pack is active, and no slim-repo execution work has started in this branch." in execution_log
