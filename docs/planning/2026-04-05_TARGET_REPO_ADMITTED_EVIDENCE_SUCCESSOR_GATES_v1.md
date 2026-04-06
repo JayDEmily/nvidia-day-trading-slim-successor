@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1
 
-Status: active target-repo admitted-evidence successor planning pack; Gates 200-202 complete on `main`, Gate 203 active, Gates 204-205 planned.
+Status: active target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main`, Gate 205 active.
 
 ## Purpose
 
@@ -116,9 +116,19 @@ This tranche exists to decide how evidence growth should proceed from that basel
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md`
 - `docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REVIEW_GOVERNANCE_PROOF_SLICE_v1.md`
 - `docs/planning/2026-04-05_GATE202_TARGET_REPO_COVERAGE_REVIEW_AND_DISAGREEMENT_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_HANDOFF_BRIEF_AND_INPUT_BUNDLE_CONTRACT_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_REAL_ANCHOR_COLLECTION_AND_ADMISSION_DOSSIER_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_AND_COLLECTION_PROOF_MATRIX_v1.md`
+- `docs/planning/2026-04-05_GATE203_TARGET_REPO_SNAPSHOT_EXECUTION_AND_REAL_ANCHOR_COLLECTION_PLANNING.md`
+- `docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_FAMILY_SELECTION_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_DMP_MACHINE_READABLE_CONTRACT_BOUNDARY_RULES_v1.md`
+- `docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_PLANNING_PROOF_SLICE_v1.md`
+- `docs/planning/2026-04-05_GATE204_TARGET_REPO_DMP_PACKET_FAILURE_PACK_AND_CONTRACT_BOUNDARY_PLANNING.md`
 - `tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py`
 - `tests/test_gate201_target_repo_evidence_governance_planning.py`
 - `tests/test_gate202_target_repo_review_governance_planning.py`
+- `tests/test_gate203_target_repo_snapshot_and_collection_planning.py`
+- `tests/test_gate204_target_repo_dmp_failure_pack_planning.py`
 
 ## Vocabulary discipline
 
@@ -151,8 +161,7 @@ The checklist for this tranche is `docs/planning/2026-04-05_TARGET_REPO_ADMITTED
 
 - Repo-local environment required for later execution: `.venv`
 - Minimum validation slice for this planning activation:
-  - `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py`
-  - `pytest -q tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py`
+  - `python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py tests/test_dmp_v2_protocol.py tests/test_dmp_review_trace.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
 - A gate is not complete until:
   - tests ran green;
   - `PLANS.md`, gate map, active leaves ledger, and active execution log all moved together;

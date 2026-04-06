@@ -1,17 +1,17 @@
 {
   "governing_plan": "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gates_200_202_complete_gate_203_active_on_main",
-  "active_gate": "Gate 203",
+  "execution_status": "gates_200_204_complete_gate_205_active_on_main",
+  "active_gate": "Gate 205",
   "supersedes": [],
   "completed_gate_ids": [
     "Gate 200",
     "Gate 201",
-    "Gate 202"
+    "Gate 202",
+    "Gate 203",
+    "Gate 204"
   ],
   "pending_gate_ids": [
-    "Gate 203",
-    "Gate 204",
     "Gate 205"
   ],
   "completed_leaf_ids": [
@@ -26,15 +26,15 @@
     "LEAF-G202-001",
     "LEAF-G202-002",
     "LEAF-G202-003",
-    "LEAF-G202-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G202-004",
     "LEAF-G203-001",
     "LEAF-G203-002",
     "LEAF-G203-003",
     "LEAF-G204-001",
     "LEAF-G204-002",
-    "LEAF-G204-003",
+    "LEAF-G204-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G205-001",
     "LEAF-G205-002",
     "LEAF-G205-003"
@@ -48,7 +48,7 @@
     "packet_contract_authority_mandatory_when_contracts_change": true,
     "workflow_trace_mandatory_before_planning_new_behavior": true,
     "retire_from_authority_not_delete": true,
-    "zip_required_before_gate_can_be_called_done": true,
+    "zip_required_before_gate_can_be_called_done": false,
     "do_not_fill_unknowns_with_guesswork": true,
     "document_touch_checklist_required": true,
     "completed_and_remaining_leaf_sets_must_be_disjoint": true,
@@ -640,7 +640,7 @@
     },
     "LEAF-G203-001": {
       "gate": "Gate 203",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan target-snapshot handoff brief and input-bundle contract",
       "objective": "Define the exact contract for a future target-repo snapshot execution bundle and handoff brief.",
       "repo_surfaces": [
@@ -671,22 +671,23 @@
         "Do not omit target-repo commit and fixture identity fields."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
-        "A future snapshot-handoff plan with exact input-bundle contract fields."
+        "`docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_HANDOFF_BRIEF_AND_INPUT_BUNDLE_CONTRACT_v1.md` freezes the later snapshot identity block, handoff brief, and input-bundle contract fields."
       ],
       "definition_of_done": [
         "A later execution thread can receive an exact snapshot bundle contract without inventing it."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_HANDOFF_BRIEF_AND_INPUT_BUNDLE_CONTRACT_v1.md"
       ]
     },
     "LEAF-G203-002": {
       "gate": "Gate 203",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan real-anchor collection requirements and admission dossier fields",
       "objective": "Define what future real-anchor collection must record before any new anchor becomes admitted evidence.",
       "repo_surfaces": [
@@ -717,22 +718,23 @@
         "Do not treat collected anchors as canonical before review and admission."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
-        "A future real-anchor admission dossier plan tied to storage and loader surfaces."
+        "`docs/planning/2026-04-05_TARGET_REPO_REAL_ANCHOR_COLLECTION_AND_ADMISSION_DOSSIER_RULES_v1.md` freezes the authority, provenance, and storage-binding rules for later real-anchor admission dossiers."
       ],
       "definition_of_done": [
         "Later collection work can be executed with an exact admission checklist and authority chain."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_REAL_ANCHOR_COLLECTION_AND_ADMISSION_DOSSIER_RULES_v1.md"
       ]
     },
     "LEAF-G203-003": {
       "gate": "Gate 203",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan proof matrix for snapshot execution and collection tranche",
       "objective": "Freeze the proof matrix for the later snapshot-execution and collection gate.",
       "repo_surfaces": [
@@ -762,22 +764,23 @@
         "Do not omit drift-trigger stop conditions."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py"
       ],
       "expected_evidence": [
-        "A future proof matrix for snapshot execution and real-anchor collection."
+        "`docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_AND_COLLECTION_PROOF_MATRIX_v1.md` freezes ordered proof commands, stop conditions, and closeout evidence for later snapshot and collection execution."
       ],
       "definition_of_done": [
         "The later execution tranche has a bounded validation envelope before work starts."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_SNAPSHOT_AND_COLLECTION_PROOF_MATRIX_v1.md"
       ]
     },
     "LEAF-G204-001": {
       "gate": "Gate 204",
-      "status": "pending",
+      "status": "complete",
       "title": "Identify first DMP packet failure-pack families against repo-native stage links",
       "objective": "Determine which packet failure-pack families should be authored first based on current repo-native stage and packet seams.",
       "repo_surfaces": [
@@ -808,22 +811,23 @@
         "Do not blur stage-link failures with unrelated review disagreements."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py tests/test_dmp_v2_protocol.py tests/test_dmp_review_trace.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py"
       ],
       "expected_evidence": [
-        "A repo-native first-family plan for DMP failure-pack authoring."
+        "`docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_FAMILY_SELECTION_v1.md` freezes the first repo-native DMP failure-pack families, target links, and execution order."
       ],
       "definition_of_done": [
         "Later packet-pack planning can begin from exact repo-native stage/packet seams."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_FAMILY_SELECTION_v1.md"
       ]
     },
     "LEAF-G204-002": {
       "gate": "Gate 204",
-      "status": "pending",
+      "status": "complete",
       "title": "Decide schema/example/validator boundary for future artefact contracts",
       "objective": "Decide the machine-readable contract boundary for future packet or evidence artefact families.",
       "repo_surfaces": [
@@ -853,22 +857,23 @@
         "Do not leave contract-boundary decisions implicit."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py tests/test_dmp_v2_protocol.py tests/test_dmp_review_trace.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py"
       ],
       "expected_evidence": [
-        "A future contract-boundary decision framework for machine-readable artefacts."
+        "`docs/planning/2026-04-05_TARGET_REPO_DMP_MACHINE_READABLE_CONTRACT_BOUNDARY_RULES_v1.md` freezes the schema/example/validator decision rules for later DMP artefacts."
       ],
       "definition_of_done": [
         "Later DMP/evidence contract work has an explicit schema/example/validator decision rule."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_DMP_MACHINE_READABLE_CONTRACT_BOUNDARY_RULES_v1.md"
       ]
     },
     "LEAF-G204-003": {
       "gate": "Gate 204",
-      "status": "pending",
+      "status": "complete",
       "title": "Plan proof slice for DMP failure-pack planning",
       "objective": "Freeze the proof slice for the later DMP packet failure-pack planning tranche.",
       "repo_surfaces": [
@@ -897,17 +902,18 @@
         "Do not omit closeout receipt requirements."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py tests/test_dmp_v2_protocol.py tests/test_dmp_review_trace.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py"
       ],
       "expected_evidence": [
-        "A future proof slice for DMP failure-pack planning with exact closeout evidence."
+        "`docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_PLANNING_PROOF_SLICE_v1.md` freezes ordered proof commands, stop conditions, and GitHub-native closeout expectations for later DMP planning execution."
       ],
       "definition_of_done": [
         "The later DMP planning gate has a defined validation envelope before execution begins."
       ],
       "packaging_requirement": "GitHub branch and commit history are the primary closeout lineage; a zip artefact is required only when the operator explicitly requests one or backup/transfer requires it.",
       "document_touch_surfaces": [
-        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
+        "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-05_TARGET_REPO_DMP_FAILURE_PACK_PLANNING_PROOF_SLICE_v1.md"
       ]
     },
     "LEAF-G205-001": {
@@ -942,7 +948,7 @@
         "Do not omit cross-references between canonical and evidence-only surfaces."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
         "A future pack index plan for later readers."
@@ -986,7 +992,7 @@
         "Do not omit packaging requirements."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
         "A future closeout-proof and receipt specification for the successor pack."
@@ -1031,7 +1037,7 @@
         "Do not omit the stop rule between planning and coding execution."
       ],
       "validation_commands": [
-        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py"
+        "pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py"
       ],
       "expected_evidence": [
         "A future thread-handoff boundary from planning to coding execution."

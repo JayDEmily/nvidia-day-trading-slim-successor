@@ -1,6 +1,6 @@
 # 2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1
 
-Status: active execution log for the target-repo admitted-evidence successor planning pack; Gates 200-202 complete on `main` and Gate 203 active.
+Status: active execution log for the target-repo admitted-evidence successor planning pack; Gates 200-204 complete on `main` and Gate 205 active.
 
 ## Planned gate sequence
 
@@ -52,3 +52,23 @@ Status: active execution log for the target-repo admitted-evidence successor pla
 - Validation command: `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py`
 - Observed result: `19 passed in 0.50s`
 - Truth result: the target repo now has a frozen coverage scorecard/gap-register baseline, redundancy-strengthening law, semantic-review disagreement memory law, and a bounded review-governance proof slice; Gate 203 is now the active gate in this pack.
+
+
+## Gate 203 receipt
+
+- Status: complete on `main`
+- Receipt surface: `docs/planning/2026-04-05_GATE203_TARGET_REPO_SNAPSHOT_EXECUTION_AND_REAL_ANCHOR_COLLECTION_PLANNING.md`
+- Files touched: `PLANS.md`, `CHANGELOG.jsonl`, gate map, successor pack docs, the three new snapshot/collection planning docs, and the new Gate 203 planning test
+- Validation command: `pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate192_phase3_main_target_repair_pack_planning.py tests/test_gate191_capital_deployment_authority_closeout.py tests/test_gate186_options_trace_integrity_closeout.py tests/test_planning_state_integrity.py tests/test_tranche_briefing_template_pack.py tests/test_document_hygiene.py`
+- Observed result: `20 passed in 0.49s`
+- Truth result: the target repo now has a frozen snapshot handoff contract, explicit real-anchor admission-dossier rules, and a bounded proof matrix for later collection work; Gate 204 is now the active gate in this pack.
+
+
+## Gate 204 receipt
+
+- Status: complete on `main`
+- Receipt surface: `docs/planning/2026-04-05_GATE204_TARGET_REPO_DMP_PACKET_FAILURE_PACK_AND_CONTRACT_BOUNDARY_PLANNING.md`
+- Files touched: `PLANS.md`, `CHANGELOG.jsonl`, gate map, successor pack docs, the reconciled Gate 203 planning surfaces absent from the live Gate 203 base, the three new DMP planning docs, and the new Gate 204 planning test
+- Validation command: `python -m pytest -q tests/test_gate200_target_repo_admitted_evidence_successor_pack_planning.py tests/test_gate201_target_repo_evidence_governance_planning.py tests/test_gate202_target_repo_review_governance_planning.py tests/test_gate203_target_repo_snapshot_and_collection_planning.py tests/test_gate204_target_repo_dmp_failure_pack_planning.py tests/test_dmp_v2_protocol.py tests/test_dmp_review_trace.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- Observed result: `20 passed in 1.71s`
+- Truth result: the target repo now has a frozen first-wave DMP failure-pack family selection, contract-boundary law, and bounded DMP planning proof slice; Gate 205 is now the active gate in this pack.
