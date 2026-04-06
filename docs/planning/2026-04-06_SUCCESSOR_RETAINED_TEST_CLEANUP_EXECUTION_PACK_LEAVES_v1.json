@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_222_complete_on_work_branch_gate_223_not_yet_activated",
-  "active_gate": "none — Gate 222 complete on work/gate-222-archive-evidence-and-duplicate-retirement-20260406; Gate 223 not yet activated",
+  "execution_status": "gate_223_complete_on_work_branch_gate_224_not_yet_activated",
+  "active_gate": "none — Gate 223 complete on work/gate-223-successor-boundary-and-light-retarget-20260406; Gate 224 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json",
@@ -14,19 +14,20 @@
     "Gate 221 proof-order and successor handoff surface"
   ],
   "completed_gate_ids": [
-    "Gate 222"
+    "Gate 222",
+    "Gate 223"
   ],
   "completed_leaf_ids": [
     "LEAF-G222-001",
     "LEAF-G222-002",
     "LEAF-G222-003",
-    "LEAF-G222-004"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G222-004",
     "LEAF-G223-001",
     "LEAF-G223-002",
     "LEAF-G223-003",
-    "LEAF-G223-004",
+    "LEAF-G223-004"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G224-001",
     "LEAF-G224-002",
     "LEAF-G224-003",
@@ -37,7 +38,6 @@
     "LEAF-G225-004"
   ],
   "pending_gate_ids": [
-    "Gate 223",
     "Gate 224",
     "Gate 225"
   ],
@@ -139,7 +139,7 @@
       "gate": "Gate 223",
       "title": "Rewrite retained cutover-boundary test for successor-local truth",
       "objective": "Rewrite the retained `migration_or_closeout_guard__successor_cutover_boundary_rule` test so it asserts successor-local routing and archive-boundary truth instead of source-era cutover wording.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "proof_slice": [
         "pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py"
@@ -158,7 +158,7 @@
       "gate": "Gate 223",
       "title": "Retarget compatibility-wrapper family to successor doctrine",
       "objective": "Retarget `tests/test_gate49_temporal_compatibility.py` and `tests/test_session_clock.py` to the adopted successor docs/03 plus docs/07 authority without changing runtime behaviour.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G223-001"
       ],
@@ -180,7 +180,7 @@
       "gate": "Gate 223",
       "title": "Retarget canonical replay compare guards to successor doctrine",
       "objective": "Retarget `tests/test_gate127_replay_coefficient_visibility.py` and `tests/test_replay_compare_runtime.py` to successor-native replay authority and preserved ownership law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G223-002"
       ],
@@ -202,7 +202,7 @@
       "gate": "Gate 223",
       "title": "Retire duplicate replay-shadow tests and close Gate 223",
       "objective": "Remove `tests/test_research_eval_replay.py` and `tests/test_research_replay.py` only after the replay-authority retarget has landed on the same Gate 223 branch, prove the canonical replay compare guards remain green, and close Gate 223 truthfully.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G223-003"
       ],

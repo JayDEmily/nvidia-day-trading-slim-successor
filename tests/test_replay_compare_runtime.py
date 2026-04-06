@@ -10,6 +10,10 @@ from nvda_desk.services.replay_compare import ReplayComparisonService
 
 FIXTURE_PACK = Path("fixtures/replay/gate_f_replay_regression_fixture_pack.json")
 EXPECTED_REPORT = Path("fixtures/replay/gate_f_expected_report.json")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+RUNTIME_LEDGER = (
+    REPO_ROOT / "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+)
 
 
 def test_stack_definition_loader_and_fixture_pack_are_explicit_runtime_artefacts() -> None:
@@ -99,9 +103,10 @@ def test_serialized_report_matches_checked_in_regression_baseline(
 
 
 def test_replay_runs_surface_packet_lineage_deterministically() -> None:
-    """Gate 10 should expose ordered replay lineage without changing replay decisions."""
+    """Replay lineage stays subordinate to successor-native preserved seam authority."""
 
     service = ReplayComparisonService(Settings())
+    runtime_ledger = RUNTIME_LEDGER.read_text(encoding="utf-8")
     runs, _ = service.compare_from_fixture_pack(FIXTURE_PACK)
     run = next(
         run
@@ -109,6 +114,10 @@ def test_replay_runs_surface_packet_lineage_deterministically() -> None:
         if run.coefficient_set_id == "full_stack_base" and run.scenario_id == "trend"
     )
 
+    assert "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md" in str(RUNTIME_LEDGER)
+    assert "### 3.10 Stage-Local Handoff" in runtime_ledger
+    assert "### 3.11 Review and Explanation" in runtime_ledger
+    assert "`overlay_risk_decision`, `terminal_risk_application`, and `terminal_risk_decision` outrank `final_risk_join` for seam interpretation." in runtime_ledger
     assert run.packet_lineage is not None
     assert run.governed_coefficient_snapshot is not None
     assert run.coefficient_audit.governed_coefficient_snapshot_id == run.governed_coefficient_snapshot.snapshot_id
