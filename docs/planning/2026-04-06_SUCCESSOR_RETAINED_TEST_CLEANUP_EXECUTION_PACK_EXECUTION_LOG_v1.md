@@ -140,6 +140,21 @@ If continuity breaks, execution stops and later gate sections remain receipt-emp
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 223 leaf execution`
 
+### LEAF-G223-003
+
+- gate id: `Gate 223`
+- leaf id: `LEAF-G223-003`
+- branch name: `work/gate-223-successor-boundary-and-light-retarget-20260406`
+- start commit: `344fdaf880cb1d29352878b18195e183c7ab4af7`
+- exact files touched: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`, `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`, `tests/test_replay_compare_runtime.py`, `tests/test_gate127_replay_coefficient_visibility.py`
+- exact validation command: `source /home/jds/dev/nvidia-day-trading/target_repo_gate201_evidence_inventory_and_provenance_planning_main_fullgit_2026-04-05/.venv/bin/activate && python -m pytest -q tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py && python -m pytest -q tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py`
+- environment note: `repo-local successor environment remains unavailable because /home/jds/dev/nvidia-day-trading-slim-successor/.venv/bin/python does not exist; Gate 223 proof reuses the already-provisioned source-repo interpreter intentionally`
+- observed result: `tests/test_gate223_successor_boundary_and_light_retarget.py tests/test_planning_state_integrity.py -> 3 passed in 0.16s; tests/test_replay_compare_runtime.py tests/test_gate127_replay_coefficient_visibility.py -> 7 passed in 1.74s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 223 leaf execution`
+
 ## Gate 224 receipts
 
 No receipts yet.

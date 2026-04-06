@@ -1,7 +1,7 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_223_active_leaf_g223_002_complete",
+  "execution_status": "gate_223_active_leaf_g223_003_complete",
   "active_gate": "Gate 223",
   "supersedes": [
     "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
@@ -22,10 +22,10 @@
     "LEAF-G222-003",
     "LEAF-G222-004",
     "LEAF-G223-001",
-    "LEAF-G223-002"
+    "LEAF-G223-002",
+    "LEAF-G223-003"
   ],
   "remaining_leaf_ids": [
-    "LEAF-G223-003",
     "LEAF-G223-004",
     "LEAF-G224-001",
     "LEAF-G224-002",
@@ -180,7 +180,7 @@
       "gate": "Gate 223",
       "title": "Retarget canonical replay compare guards to successor doctrine",
       "objective": "Retarget `tests/test_gate127_replay_coefficient_visibility.py` and `tests/test_replay_compare_runtime.py` to successor-native replay authority and preserved ownership law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G223-002"
       ],
