@@ -1,8 +1,8 @@
 {
   "governing_plan": "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md",
   "version": "v1.1",
-  "execution_status": "gate_217_active_on_work_branch",
-  "active_gate": "Gate 217",
+  "execution_status": "gate_217_complete_on_work_branch_gate_218_not_yet_activated",
+  "active_gate": "none — Gate 217 complete on work/gate-217-slim-successor-pack-bootstrap-and-routing-20260406; Gate 218 not yet activated",
   "supersedes": [],
   "evidence_inputs_only": [
     "source repo PLANS.md",
@@ -15,12 +15,15 @@
     "07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER_RESCOPED_v2.md",
     "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 217"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G217-001",
     "LEAF-G217-002",
-    "LEAF-G217-003",
+    "LEAF-G217-003"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G218-001",
     "LEAF-G218-002",
     "LEAF-G219-001",
@@ -29,6 +32,12 @@
     "LEAF-G220-002",
     "LEAF-G221-001",
     "LEAF-G221-002"
+  ],
+  "pending_gate_ids": [
+    "Gate 218",
+    "Gate 219",
+    "Gate 220",
+    "Gate 221"
   ],
   "global_rules": {
     "one_leaf_at_a_time": true,
@@ -77,7 +86,7 @@
       "gate": "Gate 217",
       "title": "Freeze successor contradictions and cutover source truth",
       "objective": "Inspect the source-repo control surfaces, Gate 210 cutover brief, Gate 202 governance surfaces, current source-repo `docs/07...`, and rescoped 07 rewrite so the successor pack starts from repo truth rather than chat memory.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -147,7 +156,7 @@
       "gate": "Gate 217",
       "title": "Write the successor pack quartet and manifest rules",
       "objective": "Author the successor pack quartet, retained-surface rules, and the source-diff/AGENTS read-trigger note so Gate 217 can install the rewritten docs/07 ledger and update AGENTS truthfully during pack opening.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G217-001"
       ],
@@ -222,7 +231,7 @@
       "gate": "Gate 217",
       "title": "Prove Gate 217 bootstrap integrity",
       "objective": "Machine-check that the successor bootstrap pack freezes the source-cut boundary, installs the rewritten docs/07 doctrine plus AGENTS read-trigger during pack opening, preserves state invariants, and does not pretend to be active in the source repo.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G217-002"
       ],
