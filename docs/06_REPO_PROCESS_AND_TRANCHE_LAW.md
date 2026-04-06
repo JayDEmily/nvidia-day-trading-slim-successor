@@ -44,7 +44,10 @@ Reporting must:
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `AGENTS.md` except when operator behaviour or required reading order genuinely changes
+- `AGENTS.md` for behavioural authority and required reading order only
+
+`AGENTS.md` must point here for detailed workflow law.
+Repo execution and closeout command choices are gate-specific and should be defined in the active pack or test doctrine rather than restated in `AGENTS.md`.
 
 ### Live routing surface
 - repo-root `PLANS.md`

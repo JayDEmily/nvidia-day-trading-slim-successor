@@ -1,22 +1,26 @@
 {
   "governing_plan": "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md",
   "version": "v1.0",
-  "execution_status": "gate_206_active",
-  "active_gate": "Gate 206",
+  "execution_status": "gate_208_active",
+  "active_gate": "Gate 208",
   "supersedes": [],
   "evidence_inputs_only": [
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_GATES_v1.md",
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_LEAVES_v1.json",
     "docs/planning/2026-04-05_TARGET_REPO_ADMITTED_EVIDENCE_SUCCESSOR_EXECUTION_LOG_v1.md"
   ],
-  "completed_gate_ids": [],
-  "completed_leaf_ids": [],
-  "remaining_leaf_ids": [
+  "completed_gate_ids": [
+    "Gate 206",
+    "Gate 207"
+  ],
+  "completed_leaf_ids": [
     "LEAF-G206-001",
     "LEAF-G206-002",
     "LEAF-G206-003",
     "LEAF-G207-001",
-    "LEAF-G207-002",
+    "LEAF-G207-002"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G208-001",
     "LEAF-G208-002",
     "LEAF-G209-001",
@@ -51,7 +55,7 @@
       "gate": "Gate 206",
       "title": "Freeze live contradictions and bootstrap artefact set",
       "objective": "Inspect the frozen law, live router surfaces, template pack, and latest closed evidence so the new post-Gate-205 pack starts from repo truth rather than from chat memory.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -120,7 +124,7 @@
       "gate": "Gate 206",
       "title": "Route the repo to the new active pack",
       "objective": "Move the live router surfaces from no-active-pack state to the new Gate 206 governance-hardening pack.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G206-001"
       ],
@@ -186,7 +190,7 @@
       "gate": "Gate 206",
       "title": "Prove Gate 206 planning integrity",
       "objective": "Add or update the targeted planning proof so the new pack’s router state, contradiction handling, and state invariants are machine-checked.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G206-002"
       ],
@@ -248,7 +252,7 @@
       "gate": "Gate 207",
       "title": "Collapse PLANS.md back to router-only",
       "objective": "Remove diary-style and duplicated historical routing clutter from PLANS.md so it becomes a short live router again.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G206-003"
       ],
@@ -299,7 +303,7 @@
       "gate": "Gate 207",
       "title": "Separate behaviour authority from process authority cleanly",
       "objective": "Reduce AGENTS.md to the stable behavioural contract and let docs/06 hold the detailed workflow law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G207-001"
       ],
