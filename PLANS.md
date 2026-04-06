@@ -3,6 +3,7 @@
 ## Purpose
 
 This file is the canonical repo-root execution router.
+It names the live planning authority and the nearest retained evidence classes; detailed taxonomy law lives in `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`.
 
 ## Frozen process-law surfaces
 
@@ -18,6 +19,14 @@ This file is the canonical repo-root execution router.
 
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
 
+## Planning taxonomy
+
+- active pack authority: the pack named under `## Active pack`; these are the only live planning surfaces under `docs/planning/`
+- latest closed pack retained as evidence: the most recent closed pack kept for closeout context and comparison; not active authority
+- latest closed predecessor evidence: the closed pack immediately before the latest retained pack; predecessor context only, not active authority
+- older historical planning material: earlier closed planning artefacts under `docs/planning/`; historical only unless this router names them as active
+- evidence-input-only material: companion notes such as closeout receipts, scope notes, contradiction reports, salvage matrices, and indexes; informative only unless this router names one as an active surface
+
 ## Active pack
 
 - gates: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`
@@ -26,7 +35,7 @@ This file is the canonical repo-root execution router.
 - document-touch checklist: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - bounded-scope note: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_CONTRADICTION_REPORT_v1.md`
-- next active gate: `Gate 209`
+- next active gate: `Gate 210`
 
 ## Latest closed pack retained as evidence
 
@@ -55,7 +64,7 @@ This file is the canonical repo-root execution router.
 
 ## Current state
 
-- active pack: workflow hardening and active-repo reset foundation pack with Gate 209 active on `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`
+- active pack: workflow hardening and active-repo reset foundation pack with Gate 210 active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`
 - latest closed pack retained as evidence is the target-repo admitted-evidence successor planning pack closed through Gate 205 on `main`
 - latest closed predecessor evidence is the Phase 3 main-target repair programme closed through Gate 199 on `main`
 
