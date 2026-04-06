@@ -1,6 +1,6 @@
 # 2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1
 
-Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 complete on work/gate-208-template-pack-rewrite-to-github-native-execution-20260406, Gate 209 active on work/gate-208-template-pack-rewrite-to-github-native-execution-20260406
+Status: active execution log for workflow hardening and active-repo reset foundation; Gate 206 complete on main, Gate 207 complete on work/gate-207-router-and-doctrine-consolidation-20260406, Gate 208 complete on main, Gate 209 complete on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406, Gate 210 active on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406
 
 ## Purpose
 
@@ -143,6 +143,40 @@ Gate 206 merged to `main` via a non-fast-forward merge commit: `2f556ed24a609795
 - state-integrity checks passed: `true`
 - receipt recorded: `live closeout receipt finalized on the Gate 208 work branch`
 
-Gate 208 has not been merged in this execution log; merge receipts will be recorded only if and when the verified branch is merged.
+Gate 208 merged to main via a non-fast-forward merge commit: `6f0093c3dda5d1c82ea7a92c16dc7a2ab9e3ffc0`.
 
-Gate 209 is now the current active gate on `work/gate-208-template-pack-rewrite-to-github-native-execution-20260406`.
+## Gate 209 receipts
+
+### LEAF-G209-001
+
+- gate id: `Gate 209`
+- leaf id: `LEAF-G209-001`
+- branch name: `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`
+- start commit: `6f0093c3dda5d1c82ea7a92c16dc7a2ab9e3ffc0`
+- authored implementation commit: `8b6821fcc8c1a1ec0b6725603d9ad0f41517af08`
+- end commit: `8b6821fcc8c1a1ec0b6725603d9ad0f41517af08`
+- exact files touched: `PLANS.md`, `README.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate209_planning_tree_and_evidence_taxonomy.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py`
+- observed result: `1 passed in 0.12s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none; physical planning-tree restructuring deferred because the routed taxonomy was sufficient`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 209 work branch after the authored implementation commit`
+
+### LEAF-G209-002
+
+- gate id: `Gate 209`
+- leaf id: `LEAF-G209-002`
+- branch name: `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`
+- start commit: `6f0093c3dda5d1c82ea7a92c16dc7a2ab9e3ffc0`
+- authored implementation commit: `8b6821fcc8c1a1ec0b6725603d9ad0f41517af08`
+- end commit: `8b6821fcc8c1a1ec0b6725603d9ad0f41517af08`
+- exact files touched: `PLANS.md`, `README.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json`, `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md`, `tests/test_gate209_planning_tree_and_evidence_taxonomy.py`
+- exact validation command: `source .venv/bin/activate && python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py`
+- observed result: `1 passed in 0.12s`
+- full suite required: `false`
+- stop condition or contradiction report hit: `none; physical planning-tree restructuring deferred because the routed taxonomy was sufficient`
+- state-integrity checks passed: `true`
+- receipt recorded: `live closeout receipt on the Gate 209 work branch after the authored implementation commit`
+
+Gate 210 is now the current active gate on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`.
