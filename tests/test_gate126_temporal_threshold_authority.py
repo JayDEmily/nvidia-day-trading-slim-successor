@@ -91,6 +91,7 @@ def test_gate126_closeout_advances_pack_to_gate127() -> None:
         or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map
         or "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**" in gate_map
         or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**" in gate_map
+        or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
     )
     assert "Status: active signal-coefficient authority pack; Gates 122-126 complete on `main`, Gate 127 active" in gates or "Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate" in gates
     assert leaves["execution_status"] in {"gate_126_complete_gate_127_active_on_main", "signal_coefficient_authority_pack_closed_through_gate_127_on_main"}

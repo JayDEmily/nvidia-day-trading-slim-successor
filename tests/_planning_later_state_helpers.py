@@ -8,6 +8,10 @@ PHASE3_GATE_MAP_MARKERS = {
     for n in range(192, 200)
 }
 
+
+CLEANUP_PLAN_CLOSED_MARKER = "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`"
+CLEANUP_GATE_MAP_CLOSED_MARKER = "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**"
+
 CLEANUP_PLAN_MARKERS = {
     "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "active pack is the successor retained-test cleanup execution pack; Gate 222 is active",

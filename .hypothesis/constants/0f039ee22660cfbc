@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/overnight.py
+# hypothesis_version: 6.151.10
+
+[10.0, -100, 100, 200, 500, 1000, 'NVDA', 'add_carry', 'block', 'block_carry', 'carry_handoff.v2', 'event_carry', 'flatten', 'hold_baseline', 'hold_small', 'increase', 'overnight', 'overnight-carry-v1', 'weekend']

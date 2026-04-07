@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/temporal_surface.py
+# hypothesis_version: 6.151.10
+
+[0.0, 1.0, 'carry_sensitive', 'clear_window', 'cooling_off', 'event_imminent', 'event_live_or_passed', 'event_live_window', 'event_memory', 'event_memory_window', 'event_same_day', 'event_same_session', 'event_scheduled', 'forbid', 'intraday_only', 'live_release', 'next_session_memory', 'no_event_context', 'overlapping_windows', 'priced_risk', 'realised_reaction', 'single_event']

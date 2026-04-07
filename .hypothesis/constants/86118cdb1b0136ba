@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/imported_modules/market_context_synthesis.py
+# hypothesis_version: 6.151.10
+
+[0.6, 'allow', 'archive-module-052', 'balanced', 'clear_window', 'engine_conviction', 'engine_score', 'event_clear', 'event_window_guard', 'macro_bias', 'macro_bias_override', 'macro_signal_score', 'options_behaviour', 'research', 'run_signal_scan', 'runtime_config', 'scan_ready', 'scan_suppressed', 'scan_watch_only']

@@ -51,6 +51,8 @@ def test_gate161_is_complete_and_gate162_or_later_is_active() -> None:
         in gate_map
         or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**"
         in gate_map
+        or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**"
+        in gate_map
     )
     assert "Status: closed parallel risk lane foundation pack through Gate 164" in gates or any(
         label in gates

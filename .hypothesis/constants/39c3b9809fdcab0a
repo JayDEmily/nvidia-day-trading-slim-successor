@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/review.py
+# hypothesis_version: 6.151.10
+
+['action_taken', 'bad_luck', 'blocked_trade', 'capital_preservation', 'diagnosis_failure', 'eligibility_failure', 'neutral', 'non_action', 'not_approved', 'ontology_failure', 'sizing_failure', 'unknown', 'unresolved', 'value_add', 'value_leak']

@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/cognition_runtime.py
+# hypothesis_version: 6.151.10
+
+[0.0, '+00:00', '-', ':', '::', 'PostureRiskInput', 'PostureRiskOutput', 'TemporalContextInput', 'Z', 'allow', 'archetype_matcher', 'blocks', 'candidates', 'clear', 'clear_window', 'derisk', 'dmp.v2', 'dmp::', 'dmp_lineage', 'dmp_v2_live', 'entry_gate', 'json', 'ladder_constructor', 'late_session', 'lineage', 'packet_lineage', 'payload', 'reasons', 'research', 'review_packet', 'review_trace_id', 'temporal_state_v1', 'time_stop_near', 'valid']

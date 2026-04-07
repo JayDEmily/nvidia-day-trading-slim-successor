@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/vocabulary.py
+# hypothesis_version: 6.151.10
+
+['after', 'data_classification', 'derived', 'execution_expression', 'forbid', 'horizon', 'json', 'not_applicable', 'playbook_family', 'raw', 'setup_variant', 'stage', 'utf-8', 'workflow']

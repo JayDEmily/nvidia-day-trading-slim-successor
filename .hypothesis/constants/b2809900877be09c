@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/execution_records.py
+# hypothesis_version: 6.151.10
+
+['0', '0.000000', '100000.000000', 'add', 'broker_offline', 'buy', 'client_order_ref', 'fill_price', 'filled', 'flatten', 'offline_paper_fill', 'offline_paper_submit', 'position_open', 'submitted', 'trim']

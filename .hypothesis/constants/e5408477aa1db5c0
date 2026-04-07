@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/cognition.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.35, 0.5, 0.65, 1.0, 1.5, 24.0, 32.0, 100.0, 'add', 'allow', 'back_premium', 'balanced', 'block', 'block_carry', 'calm', 'candidate_score_v1', 'caution', 'closed', 'deploy', 'derisk', 'destabilising', 'dmp.v2', 'downside_heavy', 'eligibility', 'eligible', 'execution', 'execution_synthesis', 'flat', 'flatten', 'forbid', 'front_premium', 'hedge', 'hold', 'hold_small_overnight', 'ineligible', 'intraday_only', 'lifecycle_plan.v1', 'mixed', 'neutral', 'not_applicable', 'options_flow', 'position_context.v1', 'posture', 'priced_risk', 'reduce', 'regime', 'review', 'risk_gateway', 'single_event', 'stand_down', 'stressed', 'supportive', 'temporal', 'trim', 'upside_chase', 'valid', 'watch_only', 'weak']

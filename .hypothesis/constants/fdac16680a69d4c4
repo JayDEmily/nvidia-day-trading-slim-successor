@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/real_data_loader.py
+# hypothesis_version: 6.151.10
+
+[0.0, 1e-09, 0.02, 0.03, 0.1, 0.35, 1.0, 2.0, 3.0, 10.0, 100.0, '%Y%m%dT%H%M%SZ', 'atm_straddle_value', 'call', 'distance_to_vwap_pct', 'front_atm_iv', 'front_realised_vol', 'intraday_move_pct', 'next_atm_iv', 'next_realised_vol', 'pin_noise', 'pin_stable', 'pinning_in', 'put', 'releasing_from_pin', 'rolling_range_5m_pct', 'spot_price', 'untracked', 'utf-8']

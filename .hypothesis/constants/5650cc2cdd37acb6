@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/dmp_v2.py
+# hypothesis_version: 6.151.10
+
+['.', '1.0.0', '2', 'after', 'artifact_ref_block', 'block_type', 'dmp.packet@2.0.0', 'dmp.v2', 'forbid', 'input_model_name', 'json', 'metrics_block', 'object_block', 'output_model_name', 'payload', 'payload_model_name', 'payload_module_path', 'schema_identifiers', 'summary_block', 'table_block', 'timeseries_block']

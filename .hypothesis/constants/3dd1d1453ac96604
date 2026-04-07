@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/carry_replay.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.01, 0.2, 0.25, 0.35, 0.4, 0.55, 100.0, 'capital_preservation', 'flatten', 'hold_baseline', 'macro_volatility_hot', 'market_bar', 'rationale_codes']

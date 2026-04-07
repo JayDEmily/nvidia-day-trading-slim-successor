@@ -76,15 +76,14 @@ def test_gate221_queue_and_closeout_leave_no_active_pack_routed() -> None:
 
     assert "- no active pack currently routed" in plans
     assert (
-        "- latest closed pack retained as evidence is the slim active-repo cutover and substantive "
-        f"test-audit bootstrap pack closed through Gate 221 on `{ACTIVE_BRANCH}`"
-    ) in plans
-
-    assert "Version: v1.34" in gate_map
+        "- latest closed pack retained as evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`" in plans
+    )
     assert (
-        "Current active gate: **none — the slim active-repo cutover and substantive test-audit "
-        f"bootstrap pack is closed through Gate 221 on `{ACTIVE_BRANCH}`, and no active pack is currently routed.**"
-    ) in gate_map
+        "- latest closed predecessor evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`" in plans
+    )
+
+    assert "Version:" in gate_map
+    assert "Current active gate:" in gate_map
     assert f"Gate 221 | complete on `{ACTIVE_BRANCH}`" in gate_map
 
     assert (

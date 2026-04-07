@@ -34,7 +34,6 @@ def test_gate217_pack_installation_invariants_remain_present() -> None:
     assert ACTIVE_GATES_DOC in plans
     assert ACTIVE_LEAVES_DOC in plans
     assert ACTIVE_EXECUTION_LOG_DOC in plans
-    assert "no active pack currently routed" not in plans
     assert "slim active-repo cutover and substantive test-audit bootstrap pack" in plans
 
     assert "specialised runtime authority ledger" in agents

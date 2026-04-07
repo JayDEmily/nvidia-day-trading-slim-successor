@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/cli.py
+# hypothesis_version: 6.151.10
+
+[0.25, 10.0, 35.0, '+00:00', '2026-03-18', '2026-03-18T17:29:00Z', 'NVDA', 'Z', '__main__', 'carry-replay', 'init-db', 'review-daily-packet', 'seed-dev', 'sqlite+pysqlite:///']

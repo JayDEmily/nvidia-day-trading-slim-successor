@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/execution_records.py
+# hypothesis_version: 6.151.10
+
+[100, 'NVDA', 'add', 'block_carry', 'broker-offline', 'buy', 'flatten', 'hold_small_overnight', 'limit', 'long', 'sell', 'trim']

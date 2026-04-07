@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/risk.py
+# hypothesis_version: 6.151.10
+
+[0.0, 24.0, 32.0, -1000, 100, 200, 500, 1000, 'NVDA', 'allow', 'block', 'carry_preparation', 'close_auction', 'derisk', 'event_carry_setup', 'forbid', 'intraday_only', 'late_session', 'midday_compression', 'neutral', 'no_action_preferred', 'normal_operation', 'opening_disorder', 'opening_resolution', 'overnight_setup', 'post_close', 'preferred', 'required', 'tightened_thresholds', 'trend_window', 'weekend_setup']

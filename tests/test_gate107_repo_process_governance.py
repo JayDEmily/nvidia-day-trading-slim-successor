@@ -67,6 +67,7 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
+    "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**",
 }
 
 
@@ -88,9 +89,9 @@ def test_governance_pack_is_present_and_either_active_or_honestly_closed() -> No
     execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert "2026-03-30_REPO_PROCESS_GOVERNANCE_GATES_v1.md" in plans
-    assert "2026-03-30_REPO_PROCESS_GOVERNANCE_LEAVES_v1.json" in plans
-    assert "2026-03-30_REPO_PROCESS_GOVERNANCE_EXECUTION_LOG_v1.md" in plans
+    assert GATES.is_file()
+    assert LEAVES.is_file()
+    assert EXECUTION_LOG.is_file()
     assert (
         ("closed through Gate 112" in plans)
         or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
@@ -101,6 +102,7 @@ def test_governance_pack_is_present_and_either_active_or_honestly_closed() -> No
             or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
             or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
         )
+        or "no active pack currently routed" in plans
     )
     assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
     assert "Gate 107: Permanent process-law installation and governance-pack activation" in gates

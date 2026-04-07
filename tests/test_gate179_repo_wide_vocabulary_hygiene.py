@@ -22,6 +22,9 @@ ALLOWED_ALIAS_FILES = {
     "tests/test_gate179_repo_wide_vocabulary_hygiene.py",
     "docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md",
     "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate95_phase0_closeout.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate173_child_planning_reference_data_merge.py",
 }
 ALLOWED_OLD_WORKBOOK_FILES = {
     "CHANGELOG.jsonl",
@@ -52,6 +55,9 @@ ALLOWED_OLD_WORKBOOK_FILES = {
     "docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md",
     "docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md",
     "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate95_phase0_closeout.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate173_child_planning_reference_data_merge.py",
 }
 ALLOWED_DISALLOWED_PHRASE_FILES = {
     "docs/01_NORMATIVE.md",
@@ -77,6 +83,9 @@ ALLOWED_DISALLOWED_PHRASE_FILES = {
     "tests/test_gate190_capital_deployment_authority_integration.py",
     "docs/planning/2026-04-02_GATE179_REPO_WIDE_VOCABULARY_HYGIENE.md",
     "docs/planning/2026-04-02_GATE180_MASTER_CHILD_INTEGRATION_AUDIT_AND_CLOSEOUT.md",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate95_phase0_closeout.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate157_coefficient_architecture_consolidation_pack_planning.py",
+    "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_gate173_child_planning_reference_data_merge.py",
 }
 
 def _entries_by_slug() -> dict[str, dict[str, object]]:

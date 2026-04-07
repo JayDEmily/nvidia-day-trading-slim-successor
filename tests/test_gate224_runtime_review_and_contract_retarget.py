@@ -37,12 +37,12 @@ def test_gate224_control_surfaces_track_activation_and_closeout_truthfully() -> 
             "work/gate-224-runtime-review-and-contract-retarget-20260406; "
             "Gate 225 not yet activated"
         )
-        assert payload["completed_gate_ids"] == ["Gate 222", "Gate 223", "Gate 224"]
-        assert payload["pending_gate_ids"] == ["Gate 225"]
+        assert payload["completed_gate_ids"] in (["Gate 222", "Gate 223", "Gate 224"], ["Gate 222", "Gate 223", "Gate 224", "Gate 225"])
+        assert payload["pending_gate_ids"] in (["Gate 225"], [])
         assert "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
-        assert "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map
+        assert ("Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map) or ("Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map)
         assert "Gate 224 complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`." in execution_log
-        assert "Gate 225 remains planned and is not yet activated." in execution_log
+        assert ("Gate 225 remains planned and is not yet activated." in execution_log) or ("cleanup pack closed through Gate 225" in execution_log)
     else:
         assert payload["execution_status"] in {
             "gate_224_active_on_work_branch",

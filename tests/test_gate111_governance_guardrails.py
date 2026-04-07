@@ -65,6 +65,7 @@ ALLOWED_CURRENT_GATE_MARKERS = {
     "Current active gate: **Gate 155 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **Gate 156 in the stage-local handoff corrective successor pack**.",
     "Current active gate: **none — stage-local handoff corrective successor pack closed through Gate 156 on `main`**.",
+    "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**",
 }
 
 

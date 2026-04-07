@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/import_registry.py
+# hypothesis_version: 6.151.10
+
+['backlog_entry', 'classifier', 'concept_contract', 'conceptual_preserved', 'derived_state', 'evidence_component', 'evidence_only', 'execution_component', 'expression_execution', 'forbid', 'gatsby_artifact', 'implemented', 'implemented_code', 'implemented_runtime', 'json_spec', 'markdown_fragment', 'options_flow_context', 'partially_promoted', 'phase_a_registry', 'playbook_eligibility', 'playbook_qualifier', 'posture_gate', 'python_script', 'raw_input', 'review_component', 'review_explanation', 'temporal_context', 'yaml_spec']

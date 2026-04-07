@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/slv_experiments.py
+# hypothesis_version: 6.151.10
+
+[-0.5, 0.0, 0.1, 0.15, 0.2, 0.25, 0.45, 0.5, 0.55, 0.75, 1.0, 3.0, 10.0, 18.0, 25.0, 100.0, 'VIX', 'batch_ranking', 'block', 'bounce', 'distance_to_vwap_pct', 'drawdown', 'drawdown_dominant', 'entry_ts', 'experiment_id', 'fragility', 'fragility_no_fills', 'high', 'iv_hv_divergence_pct', 'iv_hv_plus_10pct', 'lookahead_minutes', 'low', 'medium', 'no_fills', 'overlay_blocked', 'rejection_prone', 'rung_shift_up_0_5pct', 'rungs', 'session_phase', 'spot_price', 'time_delay_5m', 'timing_sensitive', 'walk_forward']

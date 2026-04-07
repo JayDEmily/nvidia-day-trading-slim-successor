@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/temporal_context.py
+# hypothesis_version: 6.151.10
+
+[-2.0, -1.5, -1.0, -0.75, -0.5, 0.5, 0.75, 1.0, 1.5, 2.0, 120, 180, 240, 480, 720, 1440, 2880, '-', 'active_event_family', 'after_hours', 'balanced_carryover', 'balanced_recent_path', 'clear_window', 'close', 'closed', 'early_anchor', 'event_imminent', 'event_live_or_passed', 'event_live_window', 'event_overlap_class', 'event_same_day', 'event_same_session', 'event_scheduled', 'event_timing_profile', 'event_window_state', 'expiry_day', 'far_cycle', 'front_week', 'intraday_flush', 'intraday_squeeze', 'late_session', 'lunch', 'mid_morning', 'minutes_remaining', 'nasdaq_us', 'next_cycle', 'no_event_context', 'no_expiry_context', 'open_disorder', 'post_expiry_reset', 'pre_market', 'prior_session_damage', 'proximity_state', 'risk_timing_class', 'trend_window', 'window_state']

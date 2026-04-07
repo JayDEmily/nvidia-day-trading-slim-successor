@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/carry_handoff.py
+# hypothesis_version: 6.151.10
+
+['allow', 'block', 'carry_sensitive', 'derisk', 'event_carry_window', 'event_live_window', 'full_holiday', 'next_session_memory', 'valid', 'weekend_window']

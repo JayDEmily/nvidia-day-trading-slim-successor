@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/external_boundaries.py
+# hypothesis_version: 6.151.10
+
+[0.0, 100000.0, 'buy', 'buying_power', 'cancelled', 'cash', 'equity', 'filled', 'limit', 'offline_stub_cancel', 'offline_stub_fill', 'prompt_length', 'tool_count', 'unverified_stub']

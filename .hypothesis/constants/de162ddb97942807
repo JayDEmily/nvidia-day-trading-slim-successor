@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/calibration.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.25, 0.35, 0.9, 1.0, 1.5, 20.0, 'adjacent_slices_only', 'after', 'anchored', 'calibration', 'consistent', 'default', 'dmp.v2', 'eligibility', 'execution', 'flapping', 'forbid', 'forward', 'no_future_leakage', 'offset_0', 'offset_sensitive', 'options_flow', 'posture', 'regime', 'review_context_only', 'rolling', 'stable_horizon_found', 'strict_forward_only', 'temporal', 'validation']

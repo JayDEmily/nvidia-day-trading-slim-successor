@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/db/__init__.py
+# hypothesis_version: 6.151.10
+
+['Bar1m', 'Base', 'CapitalStateSnapshot', 'DailyPnlReport', 'DevSeedSummary', 'EvaluationRun', 'ExperimentRun', 'FillEventRecord', 'Instrument', 'MarketEvent', 'ModuleSignalEvent', 'ModuleSpec', 'ModuleVetoEvent', 'OptionSnapshot', 'OrderEventRecord', 'OrderIntentRecord', 'PositionSnapshot', 'PromotionDecision', 'ResearchNote', 'RiskBlockEvent', 'RiskDecisionLog', 'SessionCalendar', 'create_schema', 'seed_dev_data']

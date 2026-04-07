@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/cognition_runtime_registry.py
+# hypothesis_version: 6.151.10
+
+['.', 'Determinism:', 'Inputs:', 'Outputs:', 'Purpose:', 'add_candidates', 'contradictions', 'expression_execution', 'hedge_candidates', 'hold_candidates', 'options_flow_context', 'playbook_eligibility', 'reduce_candidates', 'rejected_playbooks', 'review_explanation', 'review_packet', 'stage_reason_packets', 'temporal_context', 'trim_candidates']

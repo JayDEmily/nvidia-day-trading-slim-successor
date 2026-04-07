@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/carry_market.py
+# hypothesis_version: 6.151.10
+
+[0.0, 3.0, 10.0, 100.0, 100, 390, 'VIX', 'VVIX', 'handoff:block_carry']

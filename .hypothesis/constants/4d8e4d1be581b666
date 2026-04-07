@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/config_models.py
+# hypothesis_version: 6.151.10
+
+[0.0, 1.0, 5.0, 100.0, 390.0, 500.0, 'Gate 124', 'Gate 126', 'after', 'anchor_relvol_max', 'anchor_relvol_min', 'anchor_rv5_bps_max', 'basis_points', 'boolean_flag', 'boolean_only', 'boolean_override', 'boolean_requirement', 'capital_lockup_state', 'clock_envelope', 'clock_window', 'config', 'distance_to_vwap_bps', 'downward_friendly', 'downward_only', 'event_window_state', 'forbid', 'gamma_state', 'ignore', 'impulse_age_minutes', 'json', 'minutes', 'minutes_to_close', 'narrow_bidirectional', 'one_sided_clamp', 'percent', 'permission_state', 'range5_bps', 'ratio', 'rv5_bps', 'score_threshold', 'semantic_threshold', 'threshold_compare', 'timing_parameter', 'trend_relvol_min', 'unwind_window_min', 'utf-8', 'volatility_regime', 'vwap_slope_5m_bps']

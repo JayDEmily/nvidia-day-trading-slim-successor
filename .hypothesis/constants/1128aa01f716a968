@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/config_surface.py
+# hypothesis_version: 6.151.10
+
+[5.0, 8.0, 18.0, 25.0, 100.0, 500.0, 'L3_01', 'L3_03', 'L4_02', 'S06', 'S08', 'layer1_signals', 'layer2_scoring', 'layer3_decision', 'layer4_execution', 'max_risk_per_trade', 'score_floor', 'vix_risk_threshold', 'vwap_proximity_pct', 'zone_score_threshold']

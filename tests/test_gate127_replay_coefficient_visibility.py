@@ -57,6 +57,8 @@ def test_gate127_closeout_closes_the_pack_honestly() -> None:
     ) or (
         "Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`"
         in plans
+    ) or (
+        "no active pack currently routed" in plans
     )
     assert (
         "Current active gate: **Gate 223 active on `work/gate-223-successor-boundary-and-light-retarget-20260406` under the successor retained-test cleanup execution pack.**"
@@ -64,6 +66,8 @@ def test_gate127_closeout_closes_the_pack_honestly() -> None:
     ) or (
         "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`; Gate 224 is not yet activated.**"
         in gate_map
+    ) or (
+        "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
     )
     assert "Status: closed signal-coefficient authority pack on `main`; Gates 122-127 complete, no active gate" in gates
     assert leaves["execution_status"] == "signal_coefficient_authority_pack_closed_through_gate_127_on_main"
@@ -84,6 +88,7 @@ def test_gate127_closeout_closes_the_pack_honestly() -> None:
     assert active_leaves["active_gate"] in {
         "Gate 223",
         "none — Gate 223 complete on work/gate-223-successor-boundary-and-light-retarget-20260406; Gate 224 not yet activated",
+        "none",
     }
     assert "duplicate replay-shadow retirement moves to Gate 223" in active_execution_log
     assert "### 3.10 Stage-Local Handoff" in runtime_ledger

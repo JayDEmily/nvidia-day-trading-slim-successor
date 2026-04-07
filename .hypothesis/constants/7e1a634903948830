@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/posture_risk.py
+# hypothesis_version: 6.151.10
+
+[-10.0, -8.0, -6.0, -5.0, 0.0, 0.15, 0.2, 0.25, 0.35, 1.0, 10.0, 15.0, 20.0, 25.0, 30.0, 40.0, 50.0, 55.0, 70.0, 75.0, 100.0, 'add', 'aligned_regime', 'aligned_signals', 'balanced_capital_mix', 'broken', 'capital_locked', 'closed_window', 'conflicted_signals', 'destabilising', 'event_suppressed', 'excursion_breached', 'excursion_elevated', 'excursion_tolerable', 'flat', 'fragile', 'full', 'hedge', 'hold', 'invalid', 'inventory_locked', 'inventory_only', 'lockup_high', 'lockup_low', 'lockup_moderate', 'negative_gamma_flush', 'normal', 'probe', 'reduce', 'semis_leading', 'stress_derisk', 'stress_tested', 'thesis_invalidated', 'time_stop_buffered', 'time_stop_elapsed', 'time_stop_near', 'time_stop_unset', 'trapped', 'trim', 'valid', 'weak_breadth', 'weak_breadth_derisk']

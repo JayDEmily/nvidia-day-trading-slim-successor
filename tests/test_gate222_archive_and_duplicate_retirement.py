@@ -31,19 +31,19 @@ def test_gate222_archive_destination_and_manifest_remain_coherent() -> None:
 
     assert ARCHIVE_ROOT.is_dir()
     assert MANIFEST.is_file()
-    assert payload["execution_status"] == (
-        "gate_222_complete_on_work_branch_gate_223_not_yet_activated"
-    )
-    assert payload["active_gate"] == (
-        "none — Gate 222 complete on "
-        "work/gate-222-archive-evidence-and-duplicate-retirement-20260406; "
-        "Gate 223 not yet activated"
-    )
-    assert payload["completed_gate_ids"] == ["Gate 222"]
-    assert payload["pending_gate_ids"] == ["Gate 223", "Gate 224", "Gate 225"]
+    assert payload["execution_status"] in {
+        "gate_222_complete_on_work_branch_gate_223_not_yet_activated",
+        "cleanup_pack_closed_no_active_pack_routed",
+    }
+    assert payload["active_gate"] in {
+        "none — Gate 222 complete on work/gate-222-archive-evidence-and-duplicate-retirement-20260406; Gate 223 not yet activated",
+        "none",
+    }
+    assert payload["completed_gate_ids"] in (["Gate 222"], ["Gate 222", "Gate 223", "Gate 224", "Gate 225"])
+    assert payload["pending_gate_ids"] in (["Gate 223", "Gate 224", "Gate 225"], [])
     assert "Gate 222 receipts" in execution_log
     assert "Gate 222 complete on `work/gate-222-archive-evidence-and-duplicate-retirement-20260406`" in execution_log
-    assert "Gate 223 remains planned and is not yet activated." in execution_log
+    assert ("Gate 223 remains planned and is not yet activated." in execution_log) or ("cleanup pack closed through Gate 225" in execution_log)
     assert manifest["archive_destination"] == (
         "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/"
     )

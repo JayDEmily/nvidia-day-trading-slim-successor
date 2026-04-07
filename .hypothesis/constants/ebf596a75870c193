@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/api/app.py
+# hypothesis_version: 6.151.10
+
+[0.1, 0.4, 0.6, 0.8, 100, 390, 404, 2025, 2026, '/broker/fill-events', '/broker/order-events', '/broker/orders/paper', '/broker/positions', '/config/coefficients', '/evals/experiments', '/evals/runs', '/events/calendar', '/events/market', '/events/proximity', '/execution/daily-pnl', '/execution/signals', '/execution/vetoes', '/health', '/market/intraday', '/market/snapshot', '/modules/promotions', '/modules/specs', '/research/notes', '/review/daily-packet', '/risk/decisions', '/risk/evaluate', '0.1.0', 'NVDA', 'NVDA Desk API', 'Requested symbol', 'fail', 'ok', 'pass', 'review', 'status']

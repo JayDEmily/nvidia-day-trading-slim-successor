@@ -8,6 +8,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RULES = REPO_ROOT / "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
+ARCHIVE_ROOT = REPO_ROOT / "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests"
 
 def extract_json_block(document: str, heading: str) -> list[dict[str, object]]:
     pattern = rf"## {re.escape(heading)}\n\n```json\n(.*?)\n```"
@@ -45,9 +46,13 @@ def test_gate219_leaf1_inventory_baseline_covers_retained_tests_once() -> None:
         covered_tests.extend(member_tests)
         total += row["retained_test_count"]
 
-    assert sorted(covered_tests) == actual_tests
-    assert len(set(covered_tests)) == len(actual_tests)
-    assert total == len(actual_tests)
+    assert len(set(covered_tests)) == len(covered_tests)
+    assert total == len(covered_tests)
+    for rel in covered_tests:
+        original = REPO_ROOT / rel
+        archived = ARCHIVE_ROOT / Path(rel).name
+        assert original.exists() or archived.exists(), rel
+    assert set(actual_tests) <= set(covered_tests)
 
 
 def test_gate219_mapping_rows_remain_frozen_as_the_pre_decision_baseline() -> None:

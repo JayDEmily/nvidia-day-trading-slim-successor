@@ -94,7 +94,7 @@ def test_gate218_inventory_and_runtime_authority_invariants_remain_present() -> 
     assert "Gate 220 |" in gate_map
     assert "Gate 221 |" in gate_map
 
-    assert "Status: slim-successor planning pack" in gates
+    assert "Status: closed slim-successor planning pack" in gates
 
     assert "Gate 218" in payload["completed_gate_ids"]
     assert {"LEAF-G218-001", "LEAF-G218-002"} <= set(payload["completed_leaf_ids"])

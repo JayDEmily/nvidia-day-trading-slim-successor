@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/imported_modules/execution_planning.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.05, 0.08, 0.4, 0.45, 0.75, 1.0, 2.0, 8.0, 100.0, 10000.0, 'advisory_plan_ready', 'archive-module-027', 'archive-module-028', 'archive-module-029', 'archive-module-053', 'archive-module-054', 'block', 'broker_adapter', 'broker_requests', 'cancel_preview', 'dry_run_only', 'dry_run_preview_only', 'engine_score', 'entry_gate', 'entry_planner', 'fill_bias_adjuster', 'flatten_preview', 'high_conviction', 'ladder_constructor', 'medium_conviction', 'order_simulator', 'passive_improve', 'position_allocator', 'preview_order', 'research', 'run_trading_bot', 'runtime_config', 'runtime_translation', 'slv_validator', 'spot_prices', 'spot_vwap_10s', 'stand_down', 'suppressed_by_gate']

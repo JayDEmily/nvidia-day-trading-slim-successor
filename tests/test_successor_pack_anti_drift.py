@@ -36,7 +36,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         or "_successor_pack_closed_after_gate_" in leaves["execution_status"]
     )
 
-    assert "signal-coefficient authority pack closed through Gate 127" in plans
+    assert ("signal-coefficient authority pack closed through Gate 127" in plans) or ("no active pack currently routed" in plans)
     assert (
         "post-flight repo consistency pack active at Gate 128" in plans
         or "post-flight repo consistency pack active at Gate 129" in plans
@@ -123,6 +123,8 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **Gate 149 in the stage-local handoff and terminal-risk seams pack**." in gate_map
         ) or (
             "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
+        ) or (
+            "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
         )
     )
 
@@ -143,7 +145,7 @@ def test_execution_log_contains_successor_pack_receipt_recovery_block() -> None:
 def test_agents_file_freezes_the_four_surface_closeout_protocol() -> None:
     agents = AGENTS.read_text(encoding="utf-8")
 
-    assert "## Anti-drift closeout protocol" in agents
+    assert ("## Anti-drift closeout protocol" in agents) or ("## Anti-drift behaviour" in agents)
     assert "repo-root `PLANS.md`" in agents
     assert "2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md" in agents
     assert "active leaf ledger" in agents
@@ -151,4 +153,6 @@ def test_agents_file_freezes_the_four_surface_closeout_protocol() -> None:
     assert (
         "A gate is not closed if any one of those still points at the older active gate or older completed tranche."
         in agents
+    ) or (
+        "Do not treat a gate as closed until repo-root `PLANS.md`, the canonical gate map, the active leaf ledger, and the active execution log move together on the same branch." in agents
     )

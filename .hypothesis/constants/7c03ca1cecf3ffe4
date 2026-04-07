@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/parallel_risk.py
+# hypothesis_version: 6.151.10
+
+['active_candidate', 'available_not_used', 'background_only', 'dislocation_risk', 'eligibility', 'event_identity', 'execution', 'forbid', 'hedge_required', 'impaired_background', 'impairment_risk', 'justified_repricing', 'lawful_stage_output', 'more_assertive', 'neutral', 'no_carry', 'normal', 'not_at_all', 'not_yet_available', 'options_flow', 'posture', 'raw_market_facts', 'regime', 'reshape', 'review', 'serial_grammar_order', 'smaller', 'stage_ownership', 'temporal', 'used', 'wait_or_defer']

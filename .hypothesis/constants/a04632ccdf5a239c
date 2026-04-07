@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/config.py
+# hypothesis_version: 6.151.10
+
+['America/New_York', 'NVDA_DESK_', 'ignore']

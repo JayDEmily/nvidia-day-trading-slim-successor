@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/domain/temporal_state.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.04, 0.08, 0.1, 0.375, 0.72, 0.82, 0.88, 0.95, 0.98, 1.0, 1.1, 45.0, 80.0, 100.0, 120, 150, 180, 240, 999, 'Gate 126', 'after_hours', 'closed', 'distance_to_vwap_pct', 'early_anchor_hits:', 'impulse_age_bars', 'open_disorder_hits:', 'pre_market', 'regular_hours', 'rolling_range_5m_pct', 'trend_hits:', 'vwap_slope_5m_pct']

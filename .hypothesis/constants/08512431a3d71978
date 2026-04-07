@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/dmp.py
+# hypothesis_version: 6.151.10
+
+['coefficient_audit', 'coefficient_set', 'comparison_report', 'dmp.v1', 'expression_execution', 'forbid', 'module_output', 'options_flow_context', 'playbook_eligibility', 'replay_artefact', 'replay_run_result', 'review_explanation', 'review_packet', 'stack_definition', 'stage_output', 'temporal_context']

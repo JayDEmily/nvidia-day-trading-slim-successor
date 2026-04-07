@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/fixtures.py
+# hypothesis_version: 6.151.10
+
+['admitted_cases.jsonl', 'admitted_use', 'ask', 'bid', 'canonical_truth', 'case_date', 'confidence', 'date', 'delta', 'delta_change', 'expiry', 'fixture_id', 'fixtures', 'gamma', 'iv', 'last', 'legacy', 'open_interest', 'option_type', 'options_snapshots', 'provenance', 'source_document', 'source_pages', 'strike', 'summary', 'symbol', 'unknown', 'utf-8', 'vix_level', 'volume', 'vvix_level', 'vwap_cases']

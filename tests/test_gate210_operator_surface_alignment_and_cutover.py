@@ -29,22 +29,26 @@ def test_successor_local_cleanup_pack_boundary_and_archive_truth() -> None:
     assert "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json" in plans
     assert "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md" in plans
 
-    assert payload["completed_gate_ids"] == ["Gate 222"]
-    assert payload["pending_gate_ids"] == ["Gate 223", "Gate 224", "Gate 225"]
+    assert payload["completed_gate_ids"] in (["Gate 222"], ["Gate 222", "Gate 223", "Gate 224", "Gate 225"])
+    assert payload["pending_gate_ids"] in (["Gate 223", "Gate 224", "Gate 225"], [])
 
     if payload["active_gate"] == "Gate 223":
         assert "Gate 223 active on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in plans
         assert "Current active gate: **Gate 223 active on `work/gate-223-successor-boundary-and-light-retarget-20260406` under the successor retained-test cleanup execution pack.**" in gate_map
         assert "Gate 223 is active on `work/gate-223-successor-boundary-and-light-retarget-20260406`." in execution_log
-    else:
-        assert payload["active_gate"] == (
-            "none — Gate 223 complete on "
-            "work/gate-223-successor-boundary-and-light-retarget-20260406; "
-            "Gate 224 not yet activated"
-        )
+    elif payload["active_gate"] == (
+        "none — Gate 223 complete on "
+        "work/gate-223-successor-boundary-and-light-retarget-20260406; "
+        "Gate 224 not yet activated"
+    ):
         assert "Gate 223 complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in plans
         assert "Gate 224 is not yet activated" in gate_map
         assert "Gate 224 remains planned and is not yet activated." in execution_log
+    else:
+        assert payload["active_gate"] == "none"
+        assert "no active pack currently routed" in plans
+        assert "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+        assert "cleanup pack closed through Gate 225" in execution_log
 
     assert "source_repo_mutation_forbidden" in json.dumps(payload["global_rules"])
     assert "### Gate 223: Successor-boundary rewrite and light retarget execution" in gates

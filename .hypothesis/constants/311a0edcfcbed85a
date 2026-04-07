@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/domain/session_clock.py
+# hypothesis_version: 6.151.10
+
+['after_hours', 'closed', 'dealer_unwind_close', 'early_anchor', 'midday_compression', 'open_disorder', 'post_lunch_drift', 'power_hour', 'pre_market']

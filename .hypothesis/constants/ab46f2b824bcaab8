@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/session_clock.py
+# hypothesis_version: 6.151.10
+
+[0.0, 1.0, 'America/New_York', 'Asia/Hong_Kong', 'Asia/Shanghai', 'Asia/Tokyo', 'bridge_holiday', 'cffex_index_futures', 'forbid', 'full_holiday', 'half_day', 'hkex_cash', 'holiday_eve_half_day', 'jpx_cash', 'jpx_split_session', 'makeup_working_day', 'nasdaq_us', 'no_special_bridge', 'observed_holiday', 'sse_cash', 'szse_cash', 'us_early_close', 'us_equity_continuous', 'weekend']

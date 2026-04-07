@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/imported_modules/market_substrate.py
+# hypothesis_version: 6.151.10
+
+['ES', 'NQ', 'SOX', 'archive-module-001', 'archive-module-002', 'archive-module-003', 'archive-module-004', 'archive-module-005', 'archive-module-007', 'archive-module-008', 'broker_spot_ticks', 'macro_data_capture', 'macro_market_feeds', 'market_substrate_v1', 'options_data_capture', 'peer_equity_capture', 'peer_spot_ticks', 'research', 'runtime_macro_proxy', 'runtime_peer_proxy', 'runtime_spot_proxy', 'spot_data_capture', 'spot_trade_ticks', 'spot_vwap_10s', 'vwap_accumulator', 'vwap_roc']

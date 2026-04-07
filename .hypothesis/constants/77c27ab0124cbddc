@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/financial_calendar.py
+# hypothesis_version: 6.151.10
+
+[2000, 'any', 'binding_plan', 'bundle_readme', 'checksum_manifest', 'cpi_release', 'earnings_release', 'end_date', 'end_time_local', 'entities', 'evaluation_tags', 'event_id', 'event_store', 'event_type', 'fomc_window', 'forbid', 'gdp_release', 'hkex_cash_holiday', 'hkex_half_day', 'impact_level', 'import_lineage_key', 'jpx_cash_holiday', 'jurisdiction', 'layer_id', 'layer_json', 'market_half_day', 'market_holiday', 'master_manifest', 'month_end_marker', 'notes_md', 'nvda_earnings', 'nvda_only', 'options_half_day', 'pce_release', 'ppi_release', 'raw_event_ingestion', 'repo_artifact_id', 'repo_artifact_path', 'retained_fields', 'runtime_tags', 'semantic_phase', 'source_document', 'source_manifest', 'source_status', 'start_date', 'start_time_local', 'stock_connect_closed', 'temporal_context', 'timezone', 'title', 'venues']

@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/eval.py
+# hypothesis_version: 6.151.10
+
+[-50.0, -5.0, 0.0, 1.0, 3.0, 5.0, 50.0, 240, 'batch_ranking', 'default', 'default-batch', 'fail', 'fragility', 'high', 'low', 'medium', 'pass', 'review', 'walk_forward']

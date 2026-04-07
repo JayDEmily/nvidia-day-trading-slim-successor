@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/db/models.py
+# hypothesis_version: 6.151.10
+
+[128, 255, '0', 'CASCADE', 'NASDAQ', 'SET NULL', '[]', 'all, delete-orphan', 'as_of_date', 'bar_1m', 'bars', 'broker_offline', 'created_at', 'daily_pnl_report', 'evaluation_run', 'event_ts', 'experiment_run', 'experiment_type', 'expiry', 'fill_event', 'fill_ts', 'instrument', 'instrument.id', 'instrument_id', 'ix_market_event_ts', 'limit', 'long', 'manual', 'market_event', 'medium', 'module_id', 'module_signal_event', 'module_spec', 'module_veto_event', 'operator', 'option_snapshot', 'option_type', 'order_event', 'order_intent', 'order_intent.id', 'order_intent_id', 'position_snapshot', 'promotion_decision', 'regular', 'report_date', 'research_note', 'risk_block_event', 'risk_decision_log', 'risk_decision_log.id', 'session_calendar', 'session_date', 'snapshot_ts', 'strike', 'symbol', 'ts_utc', 'unknown', 'venue', '{}']

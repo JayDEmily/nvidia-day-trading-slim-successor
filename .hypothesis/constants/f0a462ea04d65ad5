@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/market.py
+# hypothesis_version: 6.151.10
+
+['cash_equity_index', 'close_timestamp', 'commodities_complex', 'continue_normally', 'crypto_24x7', 'current', 'degraded', 'degraded_confidence', 'directional_split', 'forbid', 'futures_basis_pct', 'index_futures', 'missing', 'none', 'normal_confidence', 'opening_gap_pct', 'realised_vol_pct', 'session_range_pct', 'session_return_pct', 'single_stock_chatter', 'stale', 'stand_down_pressure', 'tightened_posture', 'unresolved_context']

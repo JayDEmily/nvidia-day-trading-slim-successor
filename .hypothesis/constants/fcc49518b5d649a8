@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/db/seed.py
+# hypothesis_version: 6.151.10
+
+[150, 240, 2026, 4000, 8000, 10000, 35000, 125000, 250000, 1100000, '-0.01', '-0.02', '-0.03', '0.00', '0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.08', '0.10', '0.12', '0.15', '118.00', '18.50', '88.00', 'NASDAQ', 'NVDA', 'QQQ', 'SOXX', 'VIX', 'VVIX', 'dev_seed', 'earnings_window', 'equity', 'etf', 'high', 'index', 'macro_release', 'medium', 'nvda', 'regular', 'vix', 'vvix']

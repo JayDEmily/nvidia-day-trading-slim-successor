@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/imported_modules/tranche_a.py
+# hypothesis_version: 6.151.10
+
+['derived_from_runtime', 'fenced_contract_only', 'forbid', 'proxied_from_runtime', 'satisfied']

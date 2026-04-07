@@ -19,7 +19,7 @@ GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md
 
 
 CURRENT_GATE_PATTERN = re.compile(
-    r"Current active gate: \*\*(Gate \d+ in the .+ pack|none — .+ closed through Gate \d+ on `(?:main|work/[^`]+)`)\*\*\."
+    r"Current active gate: \*\*((Gate \d+ in the .+ pack)|(none — .+ closed through Gate \d+ on `(?:main|work/[^`]+)`)|(No active pack currently routed\. .+ closed through Gate \d+ on `(?:main|work/[^`]+)`))\*\*\."
 )
 
 

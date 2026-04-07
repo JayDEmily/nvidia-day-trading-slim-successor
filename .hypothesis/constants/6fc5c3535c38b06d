@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/schemas/playbook_registry.py
+# hypothesis_version: 6.151.10
+
+[0.0, 0.1, 1.0, 20.0, 35.0, 55.0, 85.0, 'after', 'balanced', 'event_carry', 'forbid', 'full', 'hedge', 'intraday', 'json', 'overnight', 'reduce', 'trapped', 'trim', 'utf-8', 'watchlist', 'weekend']

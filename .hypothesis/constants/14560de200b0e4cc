@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/imported_modules/ladder_readiness_overlays.py
+# hypothesis_version: 6.151.10
+
+[0.9, 1.0, 1.15, 1.35, 20.0, 'archive-module-044', 'ladder_constructor', 'ladder_unchanged', 'macro_data_capture', 'macro_metrics', 'modestly_widened', 'no_ladder_available', 'research', 'spread_calm', 'vvix_calm', 'vvix_dislocation', 'vvix_elevated', 'vvix_ladder_shaper', 'vvix_neutral', 'vvix_spike', 'widen_for_vol_of_vol']

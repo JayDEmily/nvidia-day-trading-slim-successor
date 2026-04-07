@@ -1,6 +1,6 @@
 # 2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1
 
-Status: active successor execution pack for the slim successor repo; installed and routed on successor `main` with Gate 222 active. Intended successor gate range: Gates 222-225. This pack is successor-repo-only and does not reopen the source/archive repo.
+Status: closed successor execution pack through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`; no active pack is currently routed. Intended successor gate range: Gates 222-225. This pack is successor-repo-only and does not reopen the source/archive repo.
 
 ## Purpose
 

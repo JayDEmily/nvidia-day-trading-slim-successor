@@ -1,0 +1,4 @@
+# file: /home/jds/dev/nvidia-day-trading-slim-successor/src/nvda_desk/services/parallel_risk_lane.py
+# hypothesis_version: 6.151.10
+
+[0.3, 0.5, 50.0, 100.0, 'active_runtime', 'aligned_regime', 'background', 'block', 'calm', 'candidate_audit', 'carry_fragility', 'carry_neutral', 'contained', 'dependency_fragility', 'derisk', 'destabilising', 'elevated', 'event_fragility', 'execution_fragility', 'no_event_window', 'not_eighth_stage', 'not_step_1_1', 'not_step_8', 'note', 'notes', 'posture_risk_output', 'probe', 'reduce', 'restricted', 'stage_output_reads', 'stand_aside', 'status', 'stressed', 'structural_fragility', 'supportive', 'temporal_context', 'temporal_surface', 'timing_fragility', 'timing_governance', 'trim', 'weak']
