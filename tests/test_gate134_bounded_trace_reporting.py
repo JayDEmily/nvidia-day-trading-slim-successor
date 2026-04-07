@@ -51,6 +51,7 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
         or "successor retained-test cleanup execution pack; Gate 224 is active on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
         or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
         or "successor retained-test cleanup execution pack; Gate 225 is active on `work/gate-225-retained-test-cleanup-closeout-20260406`" in plans
+        or "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225" in plans
     )
     assert (
         "Current active gate: **none — bounded trace scenario review pack closed through Gate 134 on `main`**." in gate_map
@@ -75,6 +76,7 @@ def test_gate134_pack_closes_honestly_when_finished() -> None:
         or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map
         or "Current active gate: **Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack.**" in gate_map
         or "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed.**" in gate_map
+        or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
     )
     assert leaves["active_gate"] in {
         "Gate 134",

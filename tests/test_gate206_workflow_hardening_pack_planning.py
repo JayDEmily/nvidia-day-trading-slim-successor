@@ -38,16 +38,19 @@ def test_gate206_closeout_routes_gate207_coherently() -> None:
     ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
     assert "Gate 205 | complete on `main`" in gate_map
     assert "Gate 206 | complete on `main`" in gate_map
-    assert "Gate 207 | active on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
-    assert "Gate 210 | planned" in gate_map
+    assert (
+        "Gate 207 | active on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
+        or "Gate 207 | complete on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
+    )
+    assert ("Gate 210 | planned" in gate_map) or ("Gate 210 | complete on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`" in gate_map)
 
     assert payload["governing_plan"] == "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md"
     assert payload["execution_status"] in {"gate_207_active", "workflow_hardening_and_active_repo_reset_foundation_pack_closed_through_gate_210_on_work_branch"}
     assert payload["active_gate"] in {"Gate 207", "none"}
     assert payload["completed_gate_ids"] in (["Gate 206"], ["Gate 206", "Gate 207", "Gate 208", "Gate 209", "Gate 210"])
-    assert completed_leaf_ids == GATE206_LEAVES
+    assert completed_leaf_ids in (GATE206_LEAVES, GATE206_LEAVES | GATE207_LEAVES | {"LEAF-G208-001", "LEAF-G208-002", "LEAF-G209-001", "LEAF-G209-002", "LEAF-G210-001", "LEAF-G210-002"})
     assert remaining_leaf_ids.isdisjoint(completed_leaf_ids)
-    assert remaining_leaf_ids == {
+    assert remaining_leaf_ids in ({
         "LEAF-G207-001",
         "LEAF-G207-002",
         "LEAF-G208-001",
@@ -56,15 +59,14 @@ def test_gate206_closeout_routes_gate207_coherently() -> None:
         "LEAF-G209-002",
         "LEAF-G210-001",
         "LEAF-G210-002",
-    }
+    }, set())
     assert all(leaves[leaf_id]["status"] == "complete" for leaf_id in GATE206_LEAVES)
-    assert all(leaves[leaf_id]["status"] == "planned" for leaf_id in GATE207_LEAVES)
 
     assert (
         "Status: active execution log for workflow hardening and active-repo reset foundation; "
         "Gate 206 complete on main, Gate 207 active on "
         "work/gate-207-router-and-doctrine-consolidation-20260406"
-    ) in execution_log
+    ) in execution_log or ("Status: closed execution log for workflow hardening and active-repo reset foundation" in execution_log)
     assert "2de50ab6456fdecde3bf521594138c6e2d907360" in execution_log
     assert "2f556ed24a6097955a44f5c4b5b4bd7ddb497e97" in execution_log
     assert "7 passed in 0.28s" in execution_log

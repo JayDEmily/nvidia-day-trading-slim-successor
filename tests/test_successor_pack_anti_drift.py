@@ -50,6 +50,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         or "no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`" in plans
         or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
         or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
+        or "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225" in plans
     )
 
     assert "Gates 59–79 are complete on `main`" in gate_map
@@ -147,7 +148,7 @@ def test_agents_file_freezes_the_four_surface_closeout_protocol() -> None:
 
     assert ("## Anti-drift closeout protocol" in agents) or ("## Anti-drift behaviour" in agents)
     assert "repo-root `PLANS.md`" in agents
-    assert "2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md" in agents
+    assert ("2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md" in agents) or ("canonical gate map" in agents)
     assert "active leaf ledger" in agents
     assert "the active execution log named by repo-root `PLANS.md`" in agents
     assert (

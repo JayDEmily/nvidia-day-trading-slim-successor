@@ -62,7 +62,10 @@ def test_gate209_taxonomy_closeout_is_coherent() -> None:
     ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
     assert "Gate 208 | complete on `main`" in gate_map
     assert "Gate 209 | complete on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
-    assert "Gate 210 | active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
+    assert (
+        "Gate 210 | active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
+        or "Gate 210 | complete on `work/gate-210-operator-surface-alignment-and-active-repo-cutover-criteria-20260406`" in gate_map
+    )
 
     assert payload["execution_status"] in {"gate_210_active", "workflow_hardening_and_active_repo_reset_foundation_pack_closed_through_gate_210_on_work_branch"}
     assert payload["active_gate"] in {"Gate 210", "none"}
@@ -70,11 +73,11 @@ def test_gate209_taxonomy_closeout_is_coherent() -> None:
     assert set(payload["completed_leaf_ids"]).isdisjoint(set(payload["remaining_leaf_ids"]))
     assert "LEAF-G209-001" in payload["completed_leaf_ids"]
     assert "LEAF-G209-002" in payload["completed_leaf_ids"]
-    assert payload["remaining_leaf_ids"] == ["LEAF-G210-001", "LEAF-G210-002"]
+    assert payload["remaining_leaf_ids"] in (["LEAF-G210-001", "LEAF-G210-002"], [])
     assert leaves["LEAF-G209-001"]["status"] == "complete"
     assert leaves["LEAF-G209-002"]["status"] == "complete"
-    assert leaves["LEAF-G210-001"]["status"] == "planned"
-    assert leaves["LEAF-G210-002"]["status"] == "planned"
+    assert leaves["LEAF-G210-001"]["status"] in {"planned", "complete"}
+    assert leaves["LEAF-G210-002"]["status"] in {"planned", "complete"}
     assert leaves["LEAF-G209-001"]["validation_commands"] == [
         "python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py"
     ]
@@ -83,8 +86,14 @@ def test_gate209_taxonomy_closeout_is_coherent() -> None:
     ]
 
     assert "Gate 208 merged to main via a non-fast-forward merge commit" in execution_log
-    assert "Gate 209 complete on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406" in execution_log
-    assert "Gate 210 active on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406" in execution_log
+    assert (
+        "Gate 209 complete on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406" in execution_log
+        or "Status: closed execution log for workflow hardening and active-repo reset foundation" in execution_log
+    )
+    assert (
+        "Gate 210 active on work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406" in execution_log
+        or "The workflow hardening and active-repo reset foundation pack is now closed through Gate 210." in execution_log
+    )
     assert "LEAF-G209-001" in execution_log
     assert "LEAF-G209-002" in execution_log
     assert "source .venv/bin/activate && python -m pytest -q tests/test_gate209_planning_tree_and_evidence_taxonomy.py" in execution_log

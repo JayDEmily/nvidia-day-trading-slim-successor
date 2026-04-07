@@ -29,17 +29,20 @@ def test_gate224_control_surfaces_track_activation_and_closeout_truthfully() -> 
     completed = set(payload["completed_leaf_ids"])
 
     if "LEAF-G224-004" in completed:
-        assert payload["execution_status"] == (
-            "gate_224_complete_on_work_branch_gate_225_not_yet_activated"
-        )
-        assert payload["active_gate"] == (
-            "none — Gate 224 complete on "
-            "work/gate-224-runtime-review-and-contract-retarget-20260406; "
-            "Gate 225 not yet activated"
-        )
+        assert payload["execution_status"] in {
+            "gate_224_complete_on_work_branch_gate_225_not_yet_activated",
+            "cleanup_pack_closed_no_active_pack_routed",
+        }
+        assert payload["active_gate"] in {
+            "none — Gate 224 complete on work/gate-224-runtime-review-and-contract-retarget-20260406; Gate 225 not yet activated",
+            "none",
+        }
         assert payload["completed_gate_ids"] in (["Gate 222", "Gate 223", "Gate 224"], ["Gate 222", "Gate 223", "Gate 224", "Gate 225"])
         assert payload["pending_gate_ids"] in (["Gate 225"], [])
-        assert "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        assert (
+            "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+            or "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225" in plans
+        )
         assert ("Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`; Gate 225 is not yet activated.**" in gate_map) or ("Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map)
         assert "Gate 224 complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`." in execution_log
         assert ("Gate 225 remains planned and is not yet activated." in execution_log) or ("cleanup pack closed through Gate 225" in execution_log)

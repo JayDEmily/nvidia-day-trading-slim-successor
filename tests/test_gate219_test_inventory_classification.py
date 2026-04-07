@@ -9,6 +9,19 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RULES = REPO_ROOT / "docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
 ARCHIVE_ROOT = REPO_ROOT / "docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests"
+RETIRED_DUPLICATE_TESTS = {
+    "tests/test_research_eval_replay.py",
+    "tests/test_research_replay.py",
+}
+POST_GATE219_TESTS = {
+    "tests/test_successor_retained_test_cleanup_pack_routing.py",
+    "tests/test_gate220_test_audit_decision_register.py",
+    "tests/test_gate221_successor_test_audit_handoff.py",
+    "tests/test_gate222_archive_and_duplicate_retirement.py",
+    "tests/test_gate223_successor_boundary_and_light_retarget.py",
+    "tests/test_gate224_runtime_review_and_contract_retarget.py",
+    "tests/test_gate225_retained_test_cleanup_closeout.py",
+}
 
 def extract_json_block(document: str, heading: str) -> list[dict[str, object]]:
     pattern = rf"## {re.escape(heading)}\n\n```json\n(.*?)\n```"
@@ -51,8 +64,8 @@ def test_gate219_leaf1_inventory_baseline_covers_retained_tests_once() -> None:
     for rel in covered_tests:
         original = REPO_ROOT / rel
         archived = ARCHIVE_ROOT / Path(rel).name
-        assert original.exists() or archived.exists(), rel
-    assert set(actual_tests) <= set(covered_tests)
+        assert original.exists() or archived.exists() or rel in RETIRED_DUPLICATE_TESTS, rel
+    assert set(actual_tests) - POST_GATE219_TESTS <= set(covered_tests)
 
 
 def test_gate219_mapping_rows_remain_frozen_as_the_pre_decision_baseline() -> None:

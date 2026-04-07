@@ -1,0 +1,326 @@
+.venv/bin/python -m pytest -q
+........................................................................ [ 13%]
+....F.....F.........................................F................... [ 27%]
+........................................................................ [ 41%]
+...............F.F...F......F.F......................................... [ 54%]
+........................................................................ [ 68%]
+........................................................................ [ 82%]
+......................................................................F. [ 96%]
+F....................                                                    [100%]
+=================================== FAILURES ===================================
+_ test_gate109_governance_row_persists_and_gate_map_uses_generic_current_gate_marker _
+
+    def test_gate109_governance_row_persists_and_gate_map_uses_generic_current_gate_marker() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+    
+        assert "Current active gate: **" in gate_map
+>       assert CURRENT_GATE_PATTERN.search(gate_map)
+E       AssertionError: assert None
+E        +  where None = <built-in method search of re.Pattern object at 0x2748afe0>('# 2026-03-24 Canonical Vision Gate Map\n\nStatus: Active canonical gate authority\nVersion: v1.41\nAuthority: Subordi... `main`; Gate 181 is complete on `main`; Gates 182-186 are complete on `main`; Gates 187-191 are complete on `main`.\n')
+E        +    where <built-in method search of re.Pattern object at 0x2748afe0> = re.compile('Current active gate: \\*\\*((Gate \\d+ in the .+ pack)|(none — .+ closed through Gate \\d+ on `(?:main|work/[^`]+)`)|(No active pack currently routed\\. .+ closed through Gate \\d+ on `(?:main|work/[).search
+
+tests/test_gate109_template_pack_governance.py:48: AssertionError
+_______ test_routed_pack_or_latest_closed_pack_names_authorities_cleanly _______
+
+    def test_routed_pack_or_latest_closed_pack_names_authorities_cleanly() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gates = GATES.read_text(encoding="utf-8")
+        leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+        execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        closeout = CLOSEOUT.read_text(encoding="utf-8")
+    
+        assert (
+            "## Active pack\n\n- none" in plans
+            or "2026-03-31_POST_FLIGHT_REPO_CONSISTENCY_GATES_v1.md" in plans
+            or "2026-04-01_OPENING_DRIVE_CONTINUATION_LIFECYCLE_PILOT_GATES_v1.md" in plans
+            or "2026-04-01_EXECUTION_LEDGER_ALEMBIC_PARITY_CORRECTIVE_GATES_v1.md" in plans
+            or "2026-04-01_STAGE_LOCAL_HANDOFF_AND_TERMINAL_RISK_SEAMS_GATES_v1.md" in plans
+            or "2026-04-02_STAGE_LOCAL_HANDOFF_CORRECTIVE_SUCCESSOR_GATES_v1.md" in plans
+            or "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md" in plans
+            or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+        ) or ("2026-03-30_HISTORICAL_EVALUATION_READINESS_GATES_v1.md" in plans)
+        assert (
+            "2026-03-30_EXECUTION_AUTHORITY_MICROTRANCHE_GATES_v1.md" in plans
+            or "2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md" in plans
+            or "## Active pack" in plans
+        )
+        assert VOCAB in gates
+        assert PACKET in gates
+        assert leaves["global_rules"]["execution_thread_must_reread_named_vocabulary_authority"] is True
+        assert (
+            leaves["global_rules"]["execution_thread_must_reread_named_packet_contract_authority"]
+            is True
+        )
+        assert (
+            leaves["execution_status"]
+            == "execution_authority_microtranche_closed_through_gate_113_on_main"
+        )
+        assert (
+            leaves["active_gate"]
+            == "none — execution-authority microtranche closed through Gate 113 on main"
+        )
+>       assert any(marker in gate_map for marker in ALLOWED_CURRENT_GATE_MARKERS)
+E       assert False
+E        +  where False = any(<generator object test_routed_pack_or_latest_closed_pack_names_authorities_cleanly.<locals>.<genexpr> at 0x7fe1e7fdf5e0>)
+
+tests/test_gate113_execution_authority_microtranche.py:137: AssertionError
+_______________ test_gate134_pack_closes_honestly_when_finished ________________
+
+    def test_gate134_pack_closes_honestly_when_finished() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+    
+        assert (
+            "2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_GATES_v1.md" in plans
+            or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
+            or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+            or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
+            or "no active pack currently routed" in plans
+        )
+>       assert (
+            "no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`" in plans
+            or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+            or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
+            or "bounded trace scenario review pack active at Gate 134 on `main`" in plans
+            or "opening-drive continuation lifecycle pilot pack active at Gate 135" in plans
+            or "opening-drive continuation lifecycle pilot pack active at Gate 137 after Gates 135-136 closed on `main`" in plans
+            or "no active pack — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`" in plans
+            or "no active pack — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`" in plans
+            or "stage-local handoff and terminal-risk seams pack" in plans
+            or "successor retained-test cleanup execution pack; Gate 224 is active on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+            or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
+            or "successor retained-test cleanup execution pack; Gate 225 is active on `work/gate-225-retained-test-cleanup-closeout-20260406`" in plans
+        )
+E       AssertionError: assert ('no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'bounded trace scenario review pack active at Gate 134 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'opening-drive continuation lifecycle pilot pack active at Gate 135' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'opening-drive continuation lifecycle pilot pack active at Gate 137 after Gates 135-136 closed on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'no active pack — opening-drive continuation lifecycle pilot pack closed through Gate 139 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'no active pack — execution-ledger Alembic parity corrective pack closed through Gate 140 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'stage-local handoff and terminal-risk seams pack' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'successor retained-test cleanup execution pack; Gate 224 is active on `work/gate-224-runtime-review-and-contract-retarget-20260406`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'successor retained-test cleanup execution pack; Gate 225 is active on `work/gate-225-retained-test-cleanup-closeout-20260406`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n')
+
+tests/test_gate134_bounded_trace_reporting.py:41: AssertionError
+_______________ test_gate206_closeout_routes_gate207_coherently ________________
+
+    def test_gate206_closeout_routes_gate207_coherently() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+        payload = json.loads(LEAVES.read_text(encoding="utf-8"))
+        leaves = {leaf["id"]: leaf for leaf in payload["leaves"]}
+        completed_leaf_ids = set(payload["completed_leaf_ids"])
+        remaining_leaf_ids = set(payload["remaining_leaf_ids"])
+    
+        assert (REPO_ROOT / "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md").is_file()
+        assert (REPO_ROOT / "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_LEAVES_v1.json").is_file()
+        assert (REPO_ROOT / "docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_EXECUTION_LOG_v1.md").is_file()
+        assert (
+            "- next active gate: `Gate 207`" in plans
+            or "no active pack currently routed" in plans
+        )
+    
+        assert (
+            "Current active gate: **Gate 207 in the workflow hardening and active-repo reset "
+            "foundation pack on `work/gate-207-router-and-doctrine-consolidation-20260406`**."
+        ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+        assert "Gate 205 | complete on `main`" in gate_map
+        assert "Gate 206 | complete on `main`" in gate_map
+>       assert "Gate 207 | active on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
+E       AssertionError: assert 'Gate 207 | active on `work/gate-207-router-and-doctrine-consolidation-20260406`' in '# 2026-03-24 Canonical Vision Gate Map\n\nStatus: Active canonical gate authority\nVersion: v1.41\nAuthority: Subordi... `main`; Gate 181 is complete on `main`; Gates 182-186 are complete on `main`; Gates 187-191 are complete on `main`.\n'
+
+tests/test_gate206_workflow_hardening_pack_planning.py:41: AssertionError
+__________________ test_gate209_taxonomy_closeout_is_coherent __________________
+
+    def test_gate209_taxonomy_closeout_is_coherent() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        readme = README.read_text(encoding="utf-8")
+        agents = AGENTS.read_text(encoding="utf-8")
+        process_law = PROCESS_LAW.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+        payload = json.loads(LEAVES.read_text(encoding="utf-8"))
+        leaves = {leaf["id"]: leaf for leaf in payload["leaves"]}
+    
+        assert "## Planning taxonomy" in plans
+        assert "active pack authority" in plans
+        assert "latest closed pack retained as evidence" in plans
+        assert "latest closed predecessor evidence" in plans
+        assert "older historical planning material" in plans
+        assert "evidence-input-only material" in plans
+        assert ("- next active gate: `Gate 210`" in plans) or ("no active pack currently routed" in plans)
+        assert "Historical `next active gate` markers retained for planning-guard continuity" not in plans
+    
+        assert "Planning taxonomy stays narrow:" in readme
+        assert "the active pack named by `PLANS.md` is the only live planning authority" in readme
+        assert "the latest closed pack retained as evidence and the latest closed predecessor evidence are comparison material" in readme
+        assert "older closed planning material under `docs/planning/` remains historical" in readme
+        assert "closeout notes, contradiction reports, scope notes, salvage matrices, indexes" in readme
+        assert "No physical planning-tree reshuffle is required" in readme
+    
+        assert "## Planning and evidence taxonomy" in process_law
+        assert "active pack authority" in process_law
+        assert "latest closed pack retained as evidence" in process_law
+        assert "latest closed predecessor evidence" in process_law
+        assert "older historical planning material" in process_law
+        assert "evidence-input-only material" in process_law
+        assert "This taxonomy is semantic before it is physical." in process_law
+        assert "Physical planning-tree restructuring is deferred" in process_law
+        assert "latest closed predecessor evidence, if that helps immediate predecessor traceability" in process_law
+        assert "`AGENTS.md` must point here for detailed workflow law." in process_law
+    
+        assert "## Authority order" in agents
+        assert "`AGENTS.md` is behavioural authority only." in agents
+        assert "`README.md` for human onboarding context only" in agents
+    
+        assert (
+            "Current active gate: **Gate 210 in the workflow hardening and active-repo reset "
+            "foundation pack on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`**."
+        ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+        assert "Gate 208 | complete on `main`" in gate_map
+        assert "Gate 209 | complete on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
+>       assert "Gate 210 | active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
+E       AssertionError: assert 'Gate 210 | active on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`' in '# 2026-03-24 Canonical Vision Gate Map\n\nStatus: Active canonical gate authority\nVersion: v1.41\nAuthority: Subordi... `main`; Gate 181 is complete on `main`; Gates 182-186 are complete on `main`; Gates 187-191 are complete on `main`.\n'
+
+tests/test_gate209_planning_tree_and_evidence_taxonomy.py:65: AssertionError
+_______ test_gate219_leaf1_inventory_baseline_covers_retained_tests_once _______
+
+    def test_gate219_leaf1_inventory_baseline_covers_retained_tests_once() -> None:
+        document = RULES.read_text(encoding="utf-8")
+        rows = extract_json_block(document, "Gate 219 canonical retained-test inventory baseline")
+        actual_tests = sorted(
+            path.relative_to(REPO_ROOT).as_posix() for path in (REPO_ROOT / "tests").glob("test_*.py")
+        )
+    
+        assert "Gate 219 freezes the retained-test baseline as one row per retained **test family**" in document
+        assert "member_tests" in document
+        assert len(rows) == 11
+    
+        seen_ids: set[str] = set()
+        covered_tests: list[str] = []
+        total = 0
+        for row in rows:
+            assert row["test_id"] == row["test_family"]
+            assert row["path"] == "tests/"
+            assert isinstance(row["historical_gate_lineage"], str) and row["historical_gate_lineage"]
+            assert isinstance(row["retained_test_count"], int) and row["retained_test_count"] > 0
+            member_tests = row["member_tests"]
+            assert isinstance(member_tests, list) and member_tests
+            assert len(member_tests) == row["retained_test_count"]
+            assert row["test_id"] not in seen_ids
+            seen_ids.add(row["test_id"])
+            covered_tests.extend(member_tests)
+            total += row["retained_test_count"]
+    
+        assert len(set(covered_tests)) == len(covered_tests)
+        assert total == len(covered_tests)
+        for rel in covered_tests:
+            original = REPO_ROOT / rel
+            archived = ARCHIVE_ROOT / Path(rel).name
+>           assert original.exists() or archived.exists(), rel
+E           AssertionError: tests/test_research_eval_replay.py
+E           assert (False or False)
+E            +  where False = exists()
+E            +    where exists = PosixPath('/home/jds/dev/nvidia-day-trading-slim-successor/tests/test_research_eval_replay.py').exists
+E            +  and   False = exists()
+E            +    where exists = PosixPath('/home/jds/dev/nvidia-day-trading-slim-successor/docs/planning/archive_evidence/retained_tests/2026-04-06_successor_retained_test_cleanup/tests/test_research_eval_replay.py').exists
+
+tests/test_gate219_test_inventory_classification.py:54: AssertionError
+___________ test_gate223_control_surfaces_and_manifest_are_truthful ____________
+
+    def test_gate223_control_surfaces_and_manifest_are_truthful() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+        payload = json.loads(LEAVES.read_text(encoding="utf-8"))
+        manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        completed = set(payload["completed_leaf_ids"])
+    
+        if "LEAF-G223-004" in completed:
+>           assert payload["execution_status"] == (
+                "gate_223_complete_on_work_branch_gate_224_not_yet_activated"
+            )
+E           AssertionError: assert 'cleanup_pack...e_pack_routed' == 'gate_223_com...yet_activated'
+E             
+E             - gate_223_complete_on_work_branch_gate_224_not_yet_activated
+E             + cleanup_pack_closed_no_active_pack_routed
+
+tests/test_gate223_successor_boundary_and_light_retarget.py:35: AssertionError
+____ test_gate224_control_surfaces_track_activation_and_closeout_truthfully ____
+
+    def test_gate224_control_surfaces_track_activation_and_closeout_truthfully() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        execution_log = EXECUTION_LOG.read_text(encoding="utf-8")
+        payload = json.loads(LEAVES.read_text(encoding="utf-8"))
+        completed = set(payload["completed_leaf_ids"])
+    
+        if "LEAF-G224-004" in completed:
+>           assert payload["execution_status"] == (
+                "gate_224_complete_on_work_branch_gate_225_not_yet_activated"
+            )
+E           AssertionError: assert 'cleanup_pack...e_pack_routed' == 'gate_224_com...yet_activated'
+E             
+E             - gate_224_complete_on_work_branch_gate_225_not_yet_activated
+E             + cleanup_pack_closed_no_active_pack_routed
+
+tests/test_gate224_runtime_review_and_contract_retarget.py:32: AssertionError
+_ test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate _
+
+    def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate() -> None:
+        plans = PLANS.read_text(encoding="utf-8")
+        gate_map = GATE_MAP.read_text(encoding="utf-8")
+        leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
+    
+        assert leaves["completed_gate_ids"][:6] == [
+            "Gate 59",
+            "Gate 60",
+            "Gate 61",
+            "Gate 62",
+            "Gate 63",
+            "Gate 64",
+        ]
+        assert successor_pack_position(leaves["active_gate"]) >= 65
+        assert leaves["execution_status"].startswith("gate_") and (
+            "_successor_pack_active_from_gate_" in leaves["execution_status"]
+            or "_successor_pack_closed_after_gate_" in leaves["execution_status"]
+        )
+    
+        assert ("signal-coefficient authority pack closed through Gate 127" in plans) or ("no active pack currently routed" in plans)
+>       assert (
+            "post-flight repo consistency pack active at Gate 128" in plans
+            or "post-flight repo consistency pack active at Gate 129" in plans
+            or "post-flight repo consistency pack active at Gate 130" in plans
+            or "post-flight repo consistency pack active at Gate 131" in plans
+            or "no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`" in plans
+            or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+            or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
+            or "bounded trace scenario review pack active at Gate 133 on `main`" in plans
+            or "bounded trace scenario review pack active at Gate 134 on `main`" in plans
+            or "no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`" in plans
+            or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
+            or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
+        )
+E       AssertionError: assert ('post-flight repo consistency pack active at Gate 128' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'post-flight repo consistency pack active at Gate 129' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'post-flight repo consistency pack active at Gate 130' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'post-flight repo consistency pack active at Gate 131' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'no active pack currently routed; post-flight repo consistency pack closed through Gate 131 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'bounded trace scenario review pack active at Gate 133 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'bounded trace scenario review pack active at Gate 134 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'no active pack currently routed; bounded trace scenario review pack closed through Gate 134 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n' or 'active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`' in '# PLANS.md\n\n## Purpose\n\nThis file is the canonical repo-root execution router.\nIt names the live planning author...nIf no active pack exists, a new gate may not start until a new planning pack is created and routed here explicitly.\n')
+
+tests/test_successor_pack_anti_drift.py:40: AssertionError
+_________ test_agents_file_freezes_the_four_surface_closeout_protocol __________
+
+    def test_agents_file_freezes_the_four_surface_closeout_protocol() -> None:
+        agents = AGENTS.read_text(encoding="utf-8")
+    
+        assert ("## Anti-drift closeout protocol" in agents) or ("## Anti-drift behaviour" in agents)
+        assert "repo-root `PLANS.md`" in agents
+>       assert "2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md" in agents
+E       AssertionError: assert '2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md' in '# AGENTS.md\n\nThis file governs AI-assisted changes in this repo.\n\n## Role of the repo\n\nThis repo builds a marke...is behavioural authority only. Detailed workflow and tranche law lives in `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`.\n'
+
+tests/test_successor_pack_anti_drift.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gate109_template_pack_governance.py::test_gate109_governance_row_persists_and_gate_map_uses_generic_current_gate_marker
+FAILED tests/test_gate113_execution_authority_microtranche.py::test_routed_pack_or_latest_closed_pack_names_authorities_cleanly
+FAILED tests/test_gate134_bounded_trace_reporting.py::test_gate134_pack_closes_honestly_when_finished
+FAILED tests/test_gate206_workflow_hardening_pack_planning.py::test_gate206_closeout_routes_gate207_coherently
+FAILED tests/test_gate209_planning_tree_and_evidence_taxonomy.py::test_gate209_taxonomy_closeout_is_coherent
+FAILED tests/test_gate219_test_inventory_classification.py::test_gate219_leaf1_inventory_baseline_covers_retained_tests_once
+FAILED tests/test_gate223_successor_boundary_and_light_retarget.py::test_gate223_control_surfaces_and_manifest_are_truthful
+FAILED tests/test_gate224_runtime_review_and_contract_retarget.py::test_gate224_control_surfaces_track_activation_and_closeout_truthfully
+FAILED tests/test_successor_pack_anti_drift.py::test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
+FAILED tests/test_successor_pack_anti_drift.py::test_agents_file_freezes_the_four_surface_closeout_protocol
+10 failed, 515 passed in 37.66s
+make: *** [Makefile:35: test] Error 1
