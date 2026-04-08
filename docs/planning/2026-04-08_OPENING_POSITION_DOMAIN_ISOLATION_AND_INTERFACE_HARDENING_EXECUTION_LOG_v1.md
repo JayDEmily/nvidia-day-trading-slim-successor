@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 227 is complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`; Gate 228 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 228 is complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 is not yet activated.
 
 ## Purpose
 
@@ -41,7 +41,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 - Gate 226 — pack bootstrap, contradiction scan, and active-pack routing closeout
 - Gate 227 — opening-position ingress substrate and Step 0 / Step 1 boundary isolation (complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`)
-- Gate 228 — Temporal Context and Financial Calendar domain isolation
+- Gate 228 — Temporal Context and Financial Calendar domain isolation (complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`)
 - Gate 229 — serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law
 - Gate 230 — Expression and Execution opening-position seam and bounded downstream consumer handoff
 - Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening
@@ -213,7 +213,78 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 228 receipts
 
-No receipts yet.
+### LEAF-G228-001
+
+- gate id: `Gate 228`
+- leaf id: `LEAF-G228-001`
+- branch name: `work/gate-228-temporal-calendar-domain-isolation-20260408`
+- start commit: `8a08154`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate226_opening_position_pack_bootstrap_and_routing.py`, `tests/test_gate227_opening_position_ingress_boundary_isolation.py`, `tests/test_gate228_temporal_calendar_domain_isolation.py`
+- exact validation commands: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed results: `3 passed in 0.48s`; `9 passed in 2.68s`
+- note: `Gate 228 froze the current temporal/calendar reader graph around TemporalContextService, ChainToCognitionService, ParallelRiskLane temporal mirroring, and the financial-calendar DMP reference lane.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 228 execution`
+
+### LEAF-G228-002
+
+- gate id: `Gate 228`
+- leaf id: `LEAF-G228-002`
+- branch name: `work/gate-228-temporal-calendar-domain-isolation-20260408`
+- start commit: `8a08154`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed results: `3 passed in 0.48s`; `9 passed in 2.68s`
+- note: `The gate now states the temporal/calendar governing question and names TemporalContextOutput as the authoritative day-state output surface.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 228 execution`
+
+### LEAF-G228-003
+
+- gate id: `Gate 228`
+- leaf id: `LEAF-G228-003`
+- branch name: `work/gate-228-temporal-calendar-domain-isolation-20260408`
+- start commit: `8a08154`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed results: `3 passed in 0.48s`; `9 passed in 2.68s`
+- note: `Gate 228 froze downstream reinterpretation prohibitions: later domains may read temporal outputs and derivatives but may not recreate Step 1 truth by re-reading upstream raw/prepared signals.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 228 execution`
+
+### LEAF-G228-004
+
+- gate id: `Gate 228`
+- leaf id: `LEAF-G228-004`
+- branch name: `work/gate-228-temporal-calendar-domain-isolation-20260408`
+- start commit: `8a08154`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed results: `3 passed in 0.48s`; `9 passed in 2.68s`
+- note: `ChainToCognitionService, PreparedRuntimeSnapshot, parallel-risk temporal mirroring, and financial-calendar reference carriage were recorded as provisional overlap surfaces rather than final ownership proof.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 228 execution`
+
+### LEAF-G228-005
+
+- gate id: `Gate 228`
+- leaf id: `LEAF-G228-005`
+- branch name: `work/gate-228-temporal-calendar-domain-isolation-20260408`
+- start commit: `8a08154`
+- exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate226_opening_position_pack_bootstrap_and_routing.py`, `tests/test_gate227_opening_position_ingress_boundary_isolation.py`, `tests/test_gate228_temporal_calendar_domain_isolation.py`
+- exact validation commands: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed results: `3 passed in 0.48s`; `9 passed in 2.68s`
+- note: `Gate 228 closed as domain isolation only, updated the planning quartet together, and left Gate 229 unopened.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 228 execution`
+
+## Gate 228 closeout proof
+
+- validation command: `python -m pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`
+- observed result: `3 passed in 0.48s`
+- bounded anchor command: `python -m pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- observed result: `9 passed in 2.68s`
+- closeout state: `active pack remains routed; Gate 228 complete on work/gate-228-temporal-calendar-domain-isolation-20260408; Gate 229 not yet activated`
 
 ## Gate 229 receipts
 

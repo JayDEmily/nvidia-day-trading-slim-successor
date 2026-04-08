@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 227 is complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`; Gate 228 is not yet activated.
-Version: v1.1
+Status: active planning pack for Gates 226-235. Gate 228 is complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 is not yet activated.
+Version: v1.2
 
 ## Purpose
 
@@ -233,6 +233,15 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+
+**Gate 228 captured facts**
+- the checked-in day-state author remains `TemporalContextService.evaluate(...)`, which consumes `TemporalContextInput` and emits `TemporalContextOutput` as first analytical temporal/calendar truth.
+- the governing question frozen for this domain is: *what kind of desk window, event window, expiry state, and carry-sensitive calendar shadow is this snapshot currently trading under?*
+- the authoritative outputs currently authored here are `session_phase`, `behavioural_phase`, `desk_window`, `clock_envelope`, `minutes_since_open`, `minutes_to_close`, `expiry_cycle_state`, `event_proximity_state`, `event_window_state`, `event_overlap_class`, `event_risk_timing_class`, `event_carry_sensitivity`, `event_timing_profile`, `active_event_family`, `calendar_closure_classes`, `session_bridge_rules`, `next_session_open_hint`, `recent_path_tag`, `carryover_state`, and `reasons`.
+- this domain may read only `TemporalContextInput` evidence: timestamp and primitive temporal observables, `next_expiry`, `next_event_at`, `live_event_snapshot`, and `desk_calendar_authority`; it may not read downstream regime, options/flow, posture, eligibility, or execution verdicts.
+- when both compatibility `next_event_at` and `live_event_snapshot` are present, `live_event_snapshot` is the authoritative event source and `next_event_at` is subordinate compatibility carriage only.
+- `ChainToCognitionService`, `PreparedRuntimeSnapshot`, `ParallelRiskLanePacket.temporal_surface`, and the financial-calendar DMP reference lane remain provisional overlap surfaces around this domain rather than final exclusive ownership.
+- later domains may read temporal/calendar outputs and carried derivatives; they may not recreate the day-state box for themselves by re-reading raw or prepared runtime facts directly.
 
 
 ### Gate 229: Serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law

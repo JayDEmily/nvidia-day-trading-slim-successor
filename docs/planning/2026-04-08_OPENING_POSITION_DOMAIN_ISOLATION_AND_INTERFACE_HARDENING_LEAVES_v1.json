@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_227_complete_gate_228_not_yet_activated",
-  "execution_status": "gate_227_complete_on_work_branch_gate_228_not_yet_activated",
-  "active_gate": "none \u2014 Gate 227 complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`; Gate 228 not yet activated",
+  "routing_status": "active_pack_routed_gate_228_complete_gate_229_not_yet_activated",
+  "execution_status": "gate_228_complete_on_work_branch_gate_229_not_yet_activated",
+  "active_gate": "none \u2014 Gate 228 complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -11,7 +11,8 @@
   ],
   "completed_gate_ids": [
     "Gate 226",
-    "Gate 227"
+    "Gate 227",
+    "Gate 228"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -24,14 +25,14 @@
     "LEAF-G227-003",
     "LEAF-G227-004",
     "LEAF-G227-005",
-    "LEAF-G227-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G227-006",
     "LEAF-G228-001",
     "LEAF-G228-002",
     "LEAF-G228-003",
     "LEAF-G228-004",
-    "LEAF-G228-005",
+    "LEAF-G228-005"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G229-001",
     "LEAF-G229-002",
     "LEAF-G229-003",
@@ -76,7 +77,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 228",
     "Gate 229",
     "Gate 230",
     "Gate 231",
@@ -1005,7 +1005,7 @@
       "gate": "Gate 228",
       "title": "Map current temporal/calendar surfaces and reader graph",
       "objective": "Trace the current Temporal Context and Financial Calendar surfaces plus the downstream readers that consume them today.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -1077,7 +1077,7 @@
       "gate": "Gate 228",
       "title": "Freeze the temporal/calendar governing question and authoritative outputs",
       "objective": "State exactly what this domain is allowed to answer and which outputs become authoritative once it answers that question.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G228-001"
       ],
@@ -1151,7 +1151,7 @@
       "gate": "Gate 228",
       "title": "Freeze temporal/calendar input law and prohibited downstream reinterpretation",
       "objective": "Freeze what evidence this domain may read and what downstream domains are prohibited from reinterpreting for themselves.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G228-002"
       ],
@@ -1225,7 +1225,7 @@
       "gate": "Gate 228",
       "title": "Freeze carried derivatives and provisional overlap surfaces",
       "objective": "Capture which temporal/calendar derivatives may be carried downstream and where current scripts overlap other provisional buckets.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G228-003"
       ],
@@ -1300,7 +1300,7 @@
       "gate": "Gate 228",
       "title": "Freeze the Gate 228 harness and close the gate",
       "objective": "Name the bounded domain harness and proof slice for later execution, then close Gate 228 as temporal/calendar isolation rather than full redesign.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G228-004"
       ],
