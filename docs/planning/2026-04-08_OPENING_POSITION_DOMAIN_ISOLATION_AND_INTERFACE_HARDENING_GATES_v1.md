@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 229 is complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`; Gate 230 is not yet activated.
-Version: v1.3
+Status: active planning pack for Gates 226-235. Gate 230 is complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`; Gate 231 is not yet activated.
+Version: v1.4
 
 ## Purpose
 
@@ -288,6 +288,13 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate230_opening_position_seam_and_downstream_handoff.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_execution_review_runtime.py`
+
+**Gate 230 captured facts**
+- the checked-in runtime preserves the post-Stage-6 opening-position candidate before final-join mutation as `StageLocalHandoffSurface.execution_post_modifier_pre_final_risk`, authored in `DeskCognitionRuntime.run(...)` immediately after state-conditioned modifier application.
+- `RiskGatewayService.apply_final_join(...)` still mutates compatibility-facing execution output and writes `ExecutionExpressionOutput.final_risk_join`, but preserved seam truth outranks that compatibility carriage when the preserved handoff surface is separately present.
+- `review_packet` nested copies, workflow-packet convenience views, and `final_risk_join` remain descriptive compatibility layers beneath the primary seam and preserved `StageLocalHandoffSurface` ranking.
+- bounded downstream fresh-capital authority may read the opening-position execution surface, preserved terminal-risk application / decision from `StageLocalHandoffSurface`, the `Independent Parallel Risk Lane` packet/context, and capital state; it may not recompute the serial opportunity, rerank candidates, or reintroduce cumulative generic serial risk.
+- the mixed services currently implicated in both seam formation and downstream carriage are `cognition_runtime.py`, `risk_gateway.py`, `review_explanation.py`, and `capital_deployment_authority.py`; they are recorded as provisional overlap surfaces rather than final ownership proof.
 
 
 ### Gate 231: Coefficient control-plane isolation and owner-stage / activation-state hardening

@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_229_complete_gate_230_not_yet_activated",
-  "execution_status": "gate_229_complete_on_work_branch_gate_230_not_yet_activated",
-  "active_gate": "none \u2014 Gate 229 complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`; Gate 230 not yet activated",
+  "routing_status": "active_pack_routed_gate_230_complete_gate_231_not_yet_activated",
+  "execution_status": "gate_230_complete_on_work_branch_gate_231_not_yet_activated",
+  "active_gate": "none \u2014 Gate 230 complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`; Gate 231 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -13,7 +13,8 @@
     "Gate 226",
     "Gate 227",
     "Gate 228",
-    "Gate 229"
+    "Gate 229",
+    "Gate 230"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -37,15 +38,15 @@
     "LEAF-G229-003",
     "LEAF-G229-004",
     "LEAF-G229-005",
-    "LEAF-G229-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G229-006",
     "LEAF-G230-001",
     "LEAF-G230-002",
     "LEAF-G230-003",
     "LEAF-G230-004",
     "LEAF-G230-005",
-    "LEAF-G230-006",
+    "LEAF-G230-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G231-001",
     "LEAF-G231-002",
     "LEAF-G231-003",
@@ -78,7 +79,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 230",
     "Gate 231",
     "Gate 232",
     "Gate 233",
@@ -1849,7 +1849,7 @@
       "gate": "Gate 230",
       "title": "Map the current opening-position seam surfaces leaving Stage 6",
       "objective": "Trace the current surfaces that leave Expression and Execution toward later consumers, including preserved seams, compatibility carriage, review carriage, and mixed services.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/03_DOMAIN_MODEL.md",
@@ -1924,7 +1924,7 @@
       "gate": "Gate 230",
       "title": "Freeze the primary opening-position candidate output and preserved seam carriage",
       "objective": "State which output is the primary opening-position candidate and which carried surfaces preserve that candidate downstream without redefining it.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G230-001"
       ],
@@ -2001,7 +2001,7 @@
       "gate": "Gate 230",
       "title": "Freeze compatibility and review carriage ranking beneath preserved seam authority",
       "objective": "State where compatibility carriage and review carriage sit in the downstream ranking once the primary candidate and preserved seam are known.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G230-002"
       ],
@@ -2078,7 +2078,7 @@
       "gate": "Gate 230",
       "title": "Freeze bounded CDA-readable inputs and prohibited downstream recomputation",
       "objective": "State exactly what bounded fresh-capital authority may read and what downstream recomputation or cumulative-risk reintroduction is forbidden.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G230-003"
       ],
@@ -2156,7 +2156,7 @@
       "gate": "Gate 230",
       "title": "Freeze the provisional overlap map for mixed seam services",
       "objective": "Capture the current scripts or services that participate in both primary seam formation and downstream carriage without pretending that final ownership is already solved.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G230-004"
       ],
@@ -2234,7 +2234,7 @@
       "gate": "Gate 230",
       "title": "Freeze the Gate 230 proof slice and close the gate",
       "objective": "Name the later proof slice for seam ranking and bounded downstream handoff, then close Gate 230 without claiming the downstream consumers are fully redesigned.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G230-005"
       ],
