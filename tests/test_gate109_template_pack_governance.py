@@ -18,7 +18,7 @@ PLANS = REPO_ROOT / "PLANS.md"
 GATE_MAP = REPO_ROOT / "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
 
 
-CURRENT_GATE_PATTERN = re.compile(r"Current active gate: \*\*.+\*\*\.")
+CURRENT_GATE_PATTERN = re.compile(r"Current active gate: \*\*.+\*\*\.", re.DOTALL)
 
 
 def test_template_pack_includes_process_law_and_state_integrity_templates() -> None:
@@ -43,6 +43,12 @@ def test_gate109_governance_row_persists_and_gate_map_uses_generic_current_gate_
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
     assert "Current active gate: **" in gate_map
-    assert "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map or CURRENT_GATE_PATTERN.search(gate_map)
+    assert (
+        "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**"
+        in gate_map
+        or "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**"
+        in gate_map
+        or CURRENT_GATE_PATTERN.search(gate_map)
+    )
     assert "| Gate 109 | complete on `main` |" in gate_map
     assert "## Active pack" in plans

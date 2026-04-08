@@ -45,6 +45,7 @@ def test_gate223_control_surfaces_and_manifest_are_truthful() -> None:
         assert (
             "Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in plans
             or "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225" in plans
+            or "no active pack currently routed; the opening-position domain isolation and interface hardening pack is closed through Gate 235" in plans
         )
         assert "Gate 223 complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`" in execution_log
         assert (
@@ -54,6 +55,7 @@ def test_gate223_control_surfaces_and_manifest_are_truthful() -> None:
         assert (
             "Current active gate: **No active gate under the successor retained-test cleanup execution pack. Gate 223 is complete on `work/gate-223-successor-boundary-and-light-retarget-20260406`; Gate 224 is not yet activated.**" in gate_map
             or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+            or "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**" in gate_map
         )
     else:
         assert payload["execution_status"] in {

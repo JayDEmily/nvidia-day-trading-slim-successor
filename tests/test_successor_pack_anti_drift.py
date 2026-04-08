@@ -51,6 +51,7 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
         or "stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`" in plans
         or "active gate: Gate 149 reopened on `work/gate-149-reopen-full-suite-closeout-20260402`" in plans
         or "no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225" in plans
+        or "no active pack currently routed; the opening-position domain isolation and interface hardening pack is closed through Gate 235" in plans
     )
 
     assert "Gates 59–79 are complete on `main`" in gate_map
@@ -126,6 +127,8 @@ def test_successor_pack_status_surfaces_agree_on_completed_tranche_and_next_gate
             "Current active gate: **none — stage-local handoff and terminal-risk seams pack closed through Gate 149 on `main`**." in gate_map
         ) or (
             "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+        ) or (
+            "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**" in gate_map
         )
     )
 

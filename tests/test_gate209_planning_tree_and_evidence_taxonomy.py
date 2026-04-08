@@ -59,7 +59,7 @@ def test_gate209_taxonomy_closeout_is_coherent() -> None:
     assert (
         "Current active gate: **Gate 210 in the workflow hardening and active-repo reset "
         "foundation pack on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`**."
-    ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+    ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map or "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**" in gate_map
     assert "Gate 208 | complete on `main`" in gate_map
     assert "Gate 209 | complete on `work/gate-209-planning-tree-and-evidence-taxonomy-hardening-20260406`" in gate_map
     assert (

@@ -35,7 +35,7 @@ def test_gate206_closeout_routes_gate207_coherently() -> None:
     assert (
         "Current active gate: **Gate 207 in the workflow hardening and active-repo reset "
         "foundation pack on `work/gate-207-router-and-doctrine-consolidation-20260406`**."
-    ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+    ) in gate_map or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map or "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**" in gate_map
     assert "Gate 205 | complete on `main`" in gate_map
     assert "Gate 206 | complete on `main`" in gate_map
     assert (

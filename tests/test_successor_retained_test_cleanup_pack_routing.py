@@ -36,7 +36,7 @@ def test_cleanup_pack_is_active_and_gate_222_is_open() -> None:
 
     assert "Version:" in gate_map
     assert "Current active gate:" in gate_map
-    assert ("Gate 222 active on `main` under the successor retained-test cleanup execution pack." in gate_map) or ("Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map)
+    assert ("Gate 222 active on `main` under the successor retained-test cleanup execution pack." in gate_map) or ("Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map) or ("Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**" in gate_map)
     for gate_id in ("Gate 222", "Gate 223", "Gate 224", "Gate 225"):
         assert f"| {gate_id} |" in gate_map
 

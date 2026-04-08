@@ -21,6 +21,16 @@ POST_GATE219_TESTS = {
     "tests/test_gate223_successor_boundary_and_light_retarget.py",
     "tests/test_gate224_runtime_review_and_contract_retarget.py",
     "tests/test_gate225_retained_test_cleanup_closeout.py",
+    "tests/test_gate226_opening_position_pack_bootstrap_and_routing.py",
+    "tests/test_gate227_opening_position_ingress_boundary_isolation.py",
+    "tests/test_gate228_temporal_calendar_domain_isolation.py",
+    "tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py",
+    "tests/test_gate230_opening_position_seam_and_downstream_handoff.py",
+    "tests/test_gate231_coefficient_control_plane_isolation.py",
+    "tests/test_gate232_parallel_risk_lane_clean_room_restart.py",
+    "tests/test_gate233_dmp_v2_domain_carriage_hardening.py",
+    "tests/test_gate234_recommendation_ledger_and_receipt_history_foundation.py",
+    "tests/test_gate235_cross_flow_harness_and_pack_closeout.py",
 }
 
 def extract_json_block(document: str, heading: str) -> list[dict[str, object]]:
