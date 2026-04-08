@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 232 is complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 233 is complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`; Gate 234 is not yet activated.
 
 ## Purpose
 
@@ -46,7 +46,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 230 — Expression and Execution opening-position seam and bounded downstream consumer handoff (complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`)
 - Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening (complete on `work/gate-231-coefficient-control-plane-isolation-20260408`)
 - Gate 232 — Independent Parallel Risk Lane clean-room planning restart (complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`)
-- Gate 233 — DMP v2 packet-shell and domain-carriage hardening
+- Gate 233 — DMP v2 packet-shell and domain-carriage hardening (complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`)
 - Gate 234 — recommendation ledger and receipt-history foundation extension
 - Gate 235 — cross-flow opening-position harness, planning guards, and pack closeout
 
@@ -653,7 +653,91 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 233 receipts
 
-No receipts yet.
+### LEAF-G233-001
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-001`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `tests/test_gate233_dmp_v2_domain_carriage_hardening.py`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Gate 233 now records the fixed DMP v2 shell and the current packet-builder path from runtime outputs into stage packets.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+### LEAF-G233-002
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-002`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Shell-versus-payload law is now frozen around the object block and fixed envelope rather than convenience packet views.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+### LEAF-G233-003
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-003`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Packet identity, parent/dependency lineage, and trace references are now frozen as receipt-critical fields for later persistence work.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+### LEAF-G233-004
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-004`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Authoritative block kinds and consumer permissions are now frozen so undeclared shortcuts do not outrank the packet contract.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+### LEAF-G233-005
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-005`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Shared builder and compatibility-view utilities are now recorded as provisional overlap surfaces rather than forced into premature final ownership.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+### LEAF-G233-006
+
+- gate id: `Gate 233`
+- leaf id: `LEAF-G233-006`
+- branch name: `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`
+- start commit: `eddaa32`
+- exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate233_dmp_v2_domain_carriage_hardening.py`
+- exact validation commands: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed results: `3 passed in 0.19s`; `7 passed in 0.81s`
+- note: `Gate 233 closed as transport-law freezing only and left Gate 234 unopened.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 233 execution`
+
+## Gate 233 closeout proof
+
+- validation command: `python -m pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`
+- observed result: `3 passed in 0.19s`
+- bounded anchor command: `python -m pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+- observed result: `7 passed in 0.81s`
+- closeout state: `active pack remains routed; Gate 233 complete on work/gate-233-dmp-v2-domain-carriage-hardening-20260408; Gate 234 not yet activated`
 
 ## Gate 234 receipts
 

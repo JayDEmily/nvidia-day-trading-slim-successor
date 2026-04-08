@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 232 is complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 is not yet activated.
-Version: v1.6
+Status: active planning pack for Gates 226-235. Gate 233 is complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`; Gate 234 is not yet activated.
+Version: v1.7
 
 ## Purpose
 
@@ -369,6 +369,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+
+**Gate 233 captured facts**
+- the checked-in DMP v2 contract remains a fixed shell around typed payload blocks: `DmpV2Packet` carries producer, contract, lineage, execution context, blocks, summary, validation, and extensions as first-class envelope surfaces.
+- `build_dmp_v2_packet_from_payload(...)` is the canonical live builder: it always emits one `object_block` for the typed payload, declares `required_blocks=["object_block"]`, writes compatibility metadata for the payload model, and preserves parent/dependency lineage explicitly.
+- the runtime now freezes stage-domain carriage around that builder rather than ad hoc packet assembly: `DeskCognitionRuntime.run(...)` builds one packet per stage output with explicit grammar role, `stage_output` behaviour class, parent packet id, and full upstream dependency packet ids.
+- shell-versus-payload law is explicit here: the typed model dump inside the `object_block` is the canonical carried payload, while convenience compatibility accessors are derived views over the same block rather than rival authorities.
+- packet identity and lineage are part of the opening-position transport law now because later receipt persistence depends on `packet_id`, parent packet ids, dependency packet ids, and trace references remaining stable across the isolated domains.
+- current provisional overlap surfaces remain `dmp_v2.py`, `cognition_runtime.py`, and the execution/review runtime packet consumers because shared packet builders and compatibility views still serve multiple bounded domains at once; this gate records that overlap without forcing final exclusive code ownership.
 
 
 ### Gate 234: Recommendation ledger and receipt-history foundation extension

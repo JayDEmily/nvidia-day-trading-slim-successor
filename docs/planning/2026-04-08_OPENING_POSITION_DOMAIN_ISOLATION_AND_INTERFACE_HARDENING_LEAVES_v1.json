@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_232_complete_gate_233_not_yet_activated",
-  "execution_status": "gate_232_complete_on_work_branch_gate_233_not_yet_activated",
-  "active_gate": "none \u2014 Gate 232 complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 not yet activated",
+  "routing_status": "active_pack_routed_gate_233_complete_gate_234_not_yet_activated",
+  "execution_status": "gate_233_complete_on_work_branch_gate_234_not_yet_activated",
+  "active_gate": "none \u2014 Gate 233 complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`; Gate 234 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -16,7 +16,8 @@
     "Gate 229",
     "Gate 230",
     "Gate 231",
-    "Gate 232"
+    "Gate 232",
+    "Gate 233"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -59,15 +60,15 @@
     "LEAF-G232-004",
     "LEAF-G232-005",
     "LEAF-G232-006",
-    "LEAF-G232-007"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G232-007",
     "LEAF-G233-001",
     "LEAF-G233-002",
     "LEAF-G233-003",
     "LEAF-G233-004",
     "LEAF-G233-005",
-    "LEAF-G233-006",
+    "LEAF-G233-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G234-001",
     "LEAF-G234-002",
     "LEAF-G234-003",
@@ -81,7 +82,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 233",
     "Gate 234",
     "Gate 235"
   ],
@@ -3307,7 +3307,7 @@
       "gate": "Gate 233",
       "title": "Map current DMP shell/payload and stage/workflow packet surfaces",
       "objective": "Trace the current packet shell, payload block, stage-packet, and workflow-packet surfaces implicated in opening-position work.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
@@ -3378,7 +3378,7 @@
       "gate": "Gate 233",
       "title": "Freeze shell-versus-payload law for the isolated domains",
       "objective": "State what belongs to the fixed DMP shell and what remains the typed domain payload for the opening-position domains in scope.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G233-001"
       ],
@@ -3451,7 +3451,7 @@
       "gate": "Gate 233",
       "title": "Freeze packet identity, lineage, and receipt-linkage fields",
       "objective": "State which DMP identity and lineage fields later persistence work must preserve when recording opening-position receipts.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G233-002"
       ],
@@ -3523,7 +3523,7 @@
       "gate": "Gate 233",
       "title": "Freeze authoritative block kinds and consumer permissions",
       "objective": "State which DMP block kinds are authoritative for these domains and which downstream consumer shortcuts are prohibited.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G233-003"
       ],
@@ -3595,7 +3595,7 @@
       "gate": "Gate 233",
       "title": "Freeze the provisional overlap map for shared packet builders and utilities",
       "objective": "Capture the current shared packet builders or utilities that touch multiple domain buckets without treating that overlap as final ownership.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G233-004"
       ],
@@ -3668,7 +3668,7 @@
       "gate": "Gate 233",
       "title": "Freeze the Gate 233 proof slice and close the gate",
       "objective": "Name the later proof slice for DMP carriage hardening and close Gate 233 as transport-law freezing rather than implementation completion.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G233-005"
       ],
