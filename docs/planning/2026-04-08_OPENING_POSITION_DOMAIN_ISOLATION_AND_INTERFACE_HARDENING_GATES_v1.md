@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 226 is complete on `work/gate-226-pack-bootstrap-and-routing-20260408`; Gate 227 is not yet activated.
+Status: active planning pack for Gates 226-235. Gate 227 is complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`; Gate 228 is not yet activated.
 Version: v1.1
 
 ## Purpose
@@ -206,6 +206,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
+
+**Gate 227 captured facts**
+- the checked-in opening-position ingress path is `RealDataLoaderService.load_json_bundle(...) -> RealDataLoaderService.prepare_runtime_dataset(...) -> PreparedRuntimeDataset / PreparedRuntimeSnapshot -> ChainToCognitionService.convert_snapshot(...) -> RealDataCognitionInputs`, with the canonical raw harness preserving that sequence explicitly in `src/nvda_desk/testing/canonical_raw_runtime_harness.py`
+- Step 0 remains a runtime orchestration / routing-layer concern owned above raw-bundle admission, prepared-runtime construction, and `ChainToCognitionService`; the current raw/prepared code surfaces may carry routing-relevant facts, but they do not own the Step 0 route verdict itself
+- Step 1 begins when `ChainToCognitionService` maps `PreparedRuntimeSnapshot` into `TemporalContextInput` and `TemporalContextService.evaluate(...)` consumes that packet as first analytical temporal truth
+- the lawful Step 1 temporal-ingress carriers identified in the current code path are `ts`, `front_expiry -> next_expiry`, `next_event_at`, `live_event_snapshot`, `precursor_runtime_packet`, `desk_calendar_authority`, and the primitive price / volume observables mapped in `src/nvda_desk/services/chain_to_cognition.py`
+- provisional overlap remains explicit rather than denied: `PreparedRuntimeSnapshot` plus `ChainToCognitionService` straddle ingress-substrate and Step 1 temporal-ingress concerns, and `CanonicalRawRuntimeHarnessService` spans raw admission, prepared-runtime, and cognition-harness evidence surfaces
+- later domains may not bypass this substrate by re-reading `RealDataBundle` or `PreparedRuntimeDataset` directly to recreate Step 0 or Step 1 truth once routed typed ingress already exists
 
 
 ### Gate 228: Temporal Context and Financial Calendar domain isolation

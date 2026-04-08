@@ -1,31 +1,32 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_226_complete_gate_227_not_yet_activated",
-  "execution_status": "gate_226_complete_on_work_branch_gate_227_not_yet_activated",
-  "active_gate": "none \u2014 Gate 226 complete on `work/gate-226-pack-bootstrap-and-routing-20260408`; Gate 227 not yet activated",
+  "routing_status": "active_pack_routed_gate_227_complete_gate_228_not_yet_activated",
+  "execution_status": "gate_227_complete_on_work_branch_gate_228_not_yet_activated",
+  "active_gate": "none \u2014 Gate 227 complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`; Gate 228 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md"
   ],
   "completed_gate_ids": [
-    "Gate 226"
+    "Gate 226",
+    "Gate 227"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
     "LEAF-G226-002",
     "LEAF-G226-003",
     "LEAF-G226-004",
-    "LEAF-G226-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G226-005",
     "LEAF-G227-001",
     "LEAF-G227-002",
     "LEAF-G227-003",
     "LEAF-G227-004",
     "LEAF-G227-005",
-    "LEAF-G227-006",
+    "LEAF-G227-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G228-001",
     "LEAF-G228-002",
     "LEAF-G228-003",
@@ -75,7 +76,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 227",
     "Gate 228",
     "Gate 229",
     "Gate 230",
@@ -538,7 +538,7 @@
       "gate": "Gate 227",
       "title": "Map raw-primitives admission and prepared-runtime bridge",
       "objective": "Trace the current path from raw bundle admission through prepared runtime construction and identify the exact surfaces that later opening-position work must treat as upstream evidence inputs.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -604,9 +604,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Captured path: RealDataLoaderService.load_json_bundle(...) -> RealDataLoaderService.prepare_runtime_dataset(...) -> PreparedRuntimeDataset / PreparedRuntimeSnapshot -> ChainToCognitionService.convert_snapshot(...) -> RealDataCognitionInputs.",
+        "Primary anchor surfaces: src/nvda_desk/testing/canonical_raw_runtime_harness.py, src/nvda_desk/services/real_data_loader.py, src/nvda_desk/services/chain_to_cognition.py, and tests/test_gate102_raw_runtime_harness.py."
       ]
     },
     {
@@ -614,7 +613,7 @@
       "gate": "Gate 227",
       "title": "Freeze the Step 0 route-selection contract",
       "objective": "Freeze what Step 0 is allowed to read and emit when it classifies route and day-shape context before analytical Temporal Context begins.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G227-001"
       ],
@@ -682,9 +681,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Step 0 remains owned by the runtime orchestration / routing layer per docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md and is not owned by RealDataLoaderService, PreparedRuntimeDataset, or ChainToCognitionService.",
+        "Current raw/prepared ingress surfaces carry route-relevant facts only; they do not emit the Step 0 route verdict itself."
       ]
     },
     {
@@ -692,7 +690,7 @@
       "gate": "Gate 227",
       "title": "Freeze the Step 1 temporal-ingress contract",
       "objective": "Freeze what Step 1 Temporal Context is allowed to receive from upstream ingress and what it emits downstream as authoritative temporal truth.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G227-002"
       ],
@@ -760,9 +758,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Step 1 begins when ChainToCognitionService maps PreparedRuntimeSnapshot fields into TemporalContextInput and TemporalContextService.evaluate(...) consumes that typed packet.",
+        "Lawful Step 1 ingress carriers identified in the current code path: ts, front_expiry -> next_expiry, next_event_at, live_event_snapshot, precursor_runtime_packet, desk_calendar_authority, and primitive price / volume observables."
       ]
     },
     {
@@ -770,7 +767,7 @@
       "gate": "Gate 227",
       "title": "Freeze the provisional overlap map for ingress surfaces",
       "objective": "Record where current ingress-related scripts or functions are implicated in more than one provisional bucket so later refinement can sort them without pretending the overlap is already solved.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G227-003"
       ],
@@ -839,9 +836,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Provisional overlap remains explicit: PreparedRuntimeSnapshot and ChainToCognitionService both sit in the ingress-substrate bucket and the Step 1 temporal-ingress bucket while the codebase is still entangled.",
+        "CanonicalRawRuntimeHarnessService is an evidence surface spanning raw admission, prepared-runtime construction, and cognition-harness conversion; it is not treated as final exclusive ownership."
       ]
     },
     {
@@ -849,7 +845,7 @@
       "gate": "Gate 227",
       "title": "Freeze allowed crossings and prohibited bypasses out of the ingress substrate",
       "objective": "Freeze what later domains may lawfully read from the opening-position ingress substrate and what shortcuts are prohibited.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G227-004"
       ],
@@ -917,9 +913,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Later domains may lawfully consume routed typed ingress such as PreparedRuntimeSnapshot-derived cognition inputs and TemporalContextInput, but may not bypass the substrate by re-reading RealDataBundle or PreparedRuntimeDataset directly to recreate Step 0 or Step 1 truth.",
+        "No downstream domain may claim direct ownership of route selection, temporal ingress mapping, or raw-bundle admission simultaneously."
       ]
     },
     {
@@ -927,7 +922,7 @@
       "gate": "Gate 227",
       "title": "Freeze the Gate 227 proof slice and close the gate",
       "objective": "Freeze the later proof burden for the ingress substrate and update the planning surfaces so Gate 227 closes as bounded upstream isolation rather than accidental redesign.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G227-005"
       ],
@@ -979,7 +974,12 @@
         "later execution would not need to infer the architectural fact from chat memory",
         "the leaf keeps provisional overlap separate from final exclusive ownership"
       ],
-      "closeout_updates_required": [],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json",
+        "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md"
+      ],
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch, commit, and merge history remains the default routine execution ledger. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
@@ -996,9 +996,8 @@
         "tests/test_temporal_context_runtime.py"
       ],
       "notes": [
-        "This pack uses provisional analytical buckets. Current scripts may appear in more than one gate while authority ownership remains unsettled.",
-        "Script overlap during this tranche is acceptable; final exclusive ownership is deferred until later refinement.",
-        "Gate 227 is planning-only until later activation; this leaf isolates the domain contract rather than implementing final code ownership."
+        "Gate 227 proof burden is bounded to one gate-local planning/contract test, planning state integrity, and the existing raw-path / prepared-runtime / temporal anchor tests named in the gate master.",
+        "Gate 227 closes as bounded upstream isolation only and leaves Gate 228 unopened."
       ]
     },
     {
