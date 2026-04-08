@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 230 is complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`; Gate 231 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 231 is complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 is not yet activated.
 
 ## Purpose
 
@@ -44,7 +44,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 228 — Temporal Context and Financial Calendar domain isolation (complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`)
 - Gate 229 — serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law (complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`)
 - Gate 230 — Expression and Execution opening-position seam and bounded downstream consumer handoff (complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`)
-- Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening
+- Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening (complete on `work/gate-231-coefficient-control-plane-isolation-20260408`)
 - Gate 232 — Independent Parallel Risk Lane clean-room planning restart
 - Gate 233 — DMP v2 packet-shell and domain-carriage hardening
 - Gate 234 — recommendation ledger and receipt-history foundation extension
@@ -464,7 +464,91 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 231 receipts
 
-No receipts yet.
+### LEAF-G231-001
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-001`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `tests/test_gate231_coefficient_control_plane_isolation.py`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `Gate 231 now records the checked-in coefficient authority path, runtime packet materialisation point, and mutable-surface indexing as the live control-plane source of truth.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+### LEAF-G231-002
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-002`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `The one-live-coefficient-world contract is frozen as checked-in authority document plus runtime packet, not workbook narrative or review prose.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+### LEAF-G231-003
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-003`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `Owner-stage law is now written explicitly from the checked-in authority document rather than inferred from which service happens to read a field today.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+### LEAF-G231-004
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-004`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `Activation-state law is frozen around live admitted surfaces and runtime packet lineage rather than post-hoc narrative about which coefficients were probably active.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+### LEAF-G231-005
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-005`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `The shaping split is frozen so the control plane may deform, clamp, or veto mutable surfaces, but it may not author serial candidate selection itself.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+### LEAF-G231-006
+
+- gate id: `Gate 231`
+- leaf id: `LEAF-G231-006`
+- branch name: `work/gate-231-coefficient-control-plane-isolation-20260408`
+- start commit: `9c2355e`
+- exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate231_coefficient_control_plane_isolation.py`
+- exact validation commands: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed results: `3 passed in 0.18s`; `8 passed in 0.95s`
+- note: `Gate 231 closed as coefficient-control-plane freezing only and left Gate 232 unopened.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 231 execution`
+
+## Gate 231 closeout proof
+
+- validation command: `python -m pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`
+- observed result: `3 passed in 0.18s`
+- bounded anchor command: `python -m pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+- observed result: `8 passed in 0.95s`
+- closeout state: `active pack remains routed; Gate 231 complete on work/gate-231-coefficient-control-plane-isolation-20260408; Gate 232 not yet activated`
 
 ## Gate 232 receipts
 

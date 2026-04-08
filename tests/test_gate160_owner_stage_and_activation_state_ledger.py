@@ -8,6 +8,8 @@ from pathlib import Path
 from ._planning_later_state_helpers import (
     CLEANUP_GATE_MAP_MARKERS,
     CLEANUP_PLAN_MARKERS,
+    OPENING_POSITION_GATE_MAP_MARKERS,
+    OPENING_POSITION_PLAN_MARKERS,
     contains_any,
 )
 
@@ -53,8 +55,8 @@ def test_gate160_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert contains_any(plans, ALLOWED_PLAN_MARKERS | CLEANUP_PLAN_MARKERS)
-    assert contains_any(gate_map, ALLOWED_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS)
+    assert contains_any(plans, ALLOWED_PLAN_MARKERS | CLEANUP_PLAN_MARKERS | OPENING_POSITION_PLAN_MARKERS)
+    assert contains_any(gate_map, ALLOWED_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS | OPENING_POSITION_GATE_MAP_MARKERS)
     assert (
         "Status: active coefficient architecture consolidation pack; Gates 157-160 complete on `work/gate-157-coefficient-architecture-consolidation-pack-20260402`, Gate 161 active, Gates 162-163 planned"
         in gates

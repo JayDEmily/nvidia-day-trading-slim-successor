@@ -32,3 +32,28 @@ CLEANUP_GATE_MAP_MARKERS = {
 
 def contains_any(text: str, markers: set[str]) -> bool:
     return any(marker in text for marker in markers)
+
+
+OPENING_POSITION_PLAN_MARKERS = {
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 226 is active",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 227 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 228 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 229 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 230 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 231 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 232 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 233 is complete",
+    "active pack is the opening-position domain isolation and interface hardening pack; Gate 234 is complete",
+}
+
+OPENING_POSITION_GATE_MAP_MARKERS = {
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 226 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 227 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 228 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 229 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 230 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 231 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 232 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 233 is complete",
+    "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 234 is complete",
+}

@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_230_complete_gate_231_not_yet_activated",
-  "execution_status": "gate_230_complete_on_work_branch_gate_231_not_yet_activated",
-  "active_gate": "none \u2014 Gate 230 complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`; Gate 231 not yet activated",
+  "routing_status": "active_pack_routed_gate_231_complete_gate_232_not_yet_activated",
+  "execution_status": "gate_231_complete_on_work_branch_gate_232_not_yet_activated",
+  "active_gate": "none \u2014 Gate 231 complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -14,7 +14,8 @@
     "Gate 227",
     "Gate 228",
     "Gate 229",
-    "Gate 230"
+    "Gate 230",
+    "Gate 231"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -44,15 +45,15 @@
     "LEAF-G230-003",
     "LEAF-G230-004",
     "LEAF-G230-005",
-    "LEAF-G230-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G230-006",
     "LEAF-G231-001",
     "LEAF-G231-002",
     "LEAF-G231-003",
     "LEAF-G231-004",
     "LEAF-G231-005",
-    "LEAF-G231-006",
+    "LEAF-G231-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G232-001",
     "LEAF-G232-002",
     "LEAF-G232-003",
@@ -79,7 +80,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 231",
     "Gate 232",
     "Gate 233",
     "Gate 234",
@@ -2312,7 +2312,7 @@
       "gate": "Gate 231",
       "title": "Map coefficient sources, reference surfaces, and modifier application points",
       "objective": "Trace the current coefficient sources, workbook/reference surfaces, and the points where modifiers are applied into current runtime decisions.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md",
@@ -2386,7 +2386,7 @@
       "gate": "Gate 231",
       "title": "Freeze the one-live-coefficient-world contract",
       "objective": "State which coefficient world is live for runtime authority and which reference or workbook surfaces remain lineage or evidence only.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G231-001"
       ],
@@ -2462,7 +2462,7 @@
       "gate": "Gate 231",
       "title": "Freeze owner-stage law for coefficient-bearing mutable surfaces",
       "objective": "State which stage owns which mutable surface once coefficients or modifiers touch it.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G231-002"
       ],
@@ -2538,7 +2538,7 @@
       "gate": "Gate 231",
       "title": "Freeze activation-state law for coefficient-bearing mutable surfaces",
       "objective": "State when coefficient or modifier logic is active, inactive, or merely carried, and keep that separate from owner-stage law.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G231-003"
       ],
@@ -2614,7 +2614,7 @@
       "gate": "Gate 231",
       "title": "Freeze shaping split and lawful reader/writer permissions",
       "objective": "State how the control plane may shape opportunity versus caution, what it may mutate, and which domains may read or write those surfaces.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G231-004"
       ],
@@ -2690,7 +2690,7 @@
       "gate": "Gate 231",
       "title": "Freeze the Gate 231 proof slice and close the gate",
       "objective": "Name the later proof slice for coefficient control-plane isolation and close Gate 231 without claiming final formula design is complete.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G231-005"
       ],

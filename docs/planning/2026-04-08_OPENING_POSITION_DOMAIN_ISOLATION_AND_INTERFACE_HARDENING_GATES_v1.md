@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 230 is complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`; Gate 231 is not yet activated.
-Version: v1.4
+Status: active planning pack for Gates 226-235. Gate 231 is complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 is not yet activated.
+Version: v1.5
 
 ## Purpose
 
@@ -314,6 +314,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+
+**Gate 231 captured facts**
+- the checked-in runtime materialises one governed coefficient world by loading `config/coefficient_authority.v1.yaml` into `CoefficientAuthorityDocument`, indexing mutable surfaces once, and deriving runtime baselines, floors, and caps inside `StateConditionedModifierService`.
+- owner-stage law is already explicit in the checked-in authority document: mutable surfaces are assigned to `temporal`, `posture`, `eligibility`, or `execution`; the control plane may not silently invent a second owner outside those stage labels.
+- activation-state law is also explicit in the checked-in authority/config path: runtime baselines are admitted only for surfaces whose `activation_gate` is live in the current system of record, and the runtime packet preserves resolved surfaces plus effective lineage rather than implying active coefficients from prose.
+- the runtime order is now frozen here as: evaluate one `ModifierRuntimePacket`, apply bounded posture consequences, let `ExecutionExpressionService` read operative surfaces from that packet while still authoring the candidate itself, then apply only compatibility-bridge execution consequences after Stage 6 evaluation.
+- `ModifierRuntimePacket` outranks `ModifierCompatibilityBridgeSurface`; the bridge remains compatibility carriage only and must not become a hidden second coefficient authority.
+- opportunity shaping versus caution shaping remains a governed split in this pack: the coefficient plane may deform or clamp an already-authored candidate, but it may not author playbook families, lead-candidate ranking, or fresh serial opportunity on its own.
 
 
 ### Gate 232: Independent Parallel Risk Lane clean-room planning restart
