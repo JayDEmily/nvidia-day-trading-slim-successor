@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 228 is complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 229 is complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`; Gate 230 is not yet activated.
 
 ## Purpose
 
@@ -42,7 +42,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 226 — pack bootstrap, contradiction scan, and active-pack routing closeout
 - Gate 227 — opening-position ingress substrate and Step 0 / Step 1 boundary isolation (complete on `work/gate-227-opening-position-ingress-boundary-isolation-20260408`)
 - Gate 228 — Temporal Context and Financial Calendar domain isolation (complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`)
-- Gate 229 — serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law
+- Gate 229 — serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law (complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`)
 - Gate 230 — Expression and Execution opening-position seam and bounded downstream consumer handoff
 - Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening
 - Gate 232 — Independent Parallel Risk Lane clean-room planning restart
@@ -133,7 +133,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `tests/test_gate227_opening_position_ingress_boundary_isolation.py`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `The gate now writes the checked-in ingress path explicitly: load_json_bundle -> prepare_runtime_dataset -> PreparedRuntimeDataset / PreparedRuntimeSnapshot -> convert_snapshot -> RealDataCognitionInputs.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -146,7 +146,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `Step 0 is frozen as a routing-layer concern above raw/prepared ingress. The current ingress services may carry route-relevant facts but do not own the Step 0 route verdict.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -159,7 +159,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `Step 1 is frozen as typed temporal ingress beginning at TemporalContextInput and TemporalContextService.evaluate(...), with ChainToCognitionService explicitly named as the mapping bridge from PreparedRuntimeSnapshot.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -172,7 +172,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `PreparedRuntimeSnapshot, ChainToCognitionService, and CanonicalRawRuntimeHarnessService are now recorded as provisional overlap surfaces rather than denied or prematurely assigned as final exclusive ownership.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -185,7 +185,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `Later domains may consume routed typed ingress only; they may not bypass the substrate by re-reading RealDataBundle or PreparedRuntimeDataset directly to recreate Step 0 or Step 1 truth.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -198,7 +198,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - start commit: `e8cfeeb`
 - exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate227_opening_position_ingress_boundary_isolation.py`
 - exact validation commands: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
-- observed results: `3 passed in 0.21s`; `12 passed in 1.76s`
+- observed results: `3 passed in 0.40s`; `12 passed in 1.76s`
 - note: `Gate 227 closes as bounded upstream isolation only, updates the planning quartet together, and leaves Gate 228 unopened.`
 - state-integrity checks passed: `true`
 - receipt recorded: `live during Gate 227 execution`
@@ -206,7 +206,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 ## Gate 227 closeout proof
 
 - validation command: `python -m pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`
-- observed result: `3 passed in 0.21s`
+- observed result: `3 passed in 0.40s`
 - bounded anchor command: `python -m pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
 - observed result: `12 passed in 1.76s`
 - closeout state: `active pack remains routed; Gate 227 complete on work/gate-227-opening-position-ingress-boundary-isolation-20260408; Gate 228 not yet activated`
@@ -288,7 +288,91 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 229 receipts
 
-No receipts yet.
+### LEAF-G229-001
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-001`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Gate 229 traced the checked-in serial chain explicitly as PostureRiskService -> PlaybookEligibilityService -> ExecutionExpressionService inside DeskCognitionRuntime.run(...).`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+### LEAF-G229-002
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-002`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Stage 4 was frozen as permission and local risk envelope only: deployable caps, inventory bias, hedge requirement, and posture permission before candidate narrowing begins.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+### LEAF-G229-003
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-003`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Stage 5 was frozen as admissibility and family / setup narrowing only, with EligibilityAdmissibilitySurface preserved and watch-only paths explicitly kept out of lead selection.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+### LEAF-G229-004
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-004`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Stage 6 was frozen as candidate ranking, lead selection, setup choice, and expression output only, anchored by ExecutionCandidateOwnershipSurface and the stage6_owns_candidate_ranking_and_lead_selection marker.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+### LEAF-G229-005
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-005`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Gate 229 froze the serial non-cumulative risk law: Stage 4 local risk shaping may constrain the current serial decision but must reset after that decision rather than persist as a downstream generic veto.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+### LEAF-G229-006
+
+- gate id: `Gate 229`
+- leaf id: `LEAF-G229-006`
+- branch name: `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`
+- start commit: `9f4a8d0`
+- exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py`
+- exact validation commands: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed results: `3 passed in 0.40s`; `13 passed in 3.79s`
+- note: `Gate 229 closed as serial question-ownership freezing only and left Gate 230 unopened.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 229 execution`
+
+## Gate 229 closeout proof
+
+- validation command: `python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`
+- observed result: `3 passed in 0.40s`
+- bounded anchor command: `python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+- observed result: `13 passed in 3.79s`
+- closeout state: `active pack remains routed; Gate 229 complete on work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408; Gate 230 not yet activated`
 
 ## Gate 230 receipts
 

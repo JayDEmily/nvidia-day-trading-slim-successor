@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 228 is complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 is not yet activated.
-Version: v1.2
+Status: active planning pack for Gates 226-235. Gate 229 is complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`; Gate 230 is not yet activated.
+Version: v1.3
 
 ## Purpose
 
@@ -261,6 +261,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+
+**Gate 229 captured facts**
+- the checked-in runtime still traverses the serial chain in order: `PostureRiskService.evaluate(...) -> PlaybookEligibilityService.evaluate(...) -> ExecutionExpressionService.evaluate(...)`, wired in `DeskCognitionRuntime.run(...)`.
+- Stage 4 `Posture and Risk Permission` is frozen here as the question *what local permission envelope, deployable-capital cap, inventory bias, and hedge requirement applies before candidate narrowing begins?* It may not author playbook family or lead-candidate selection.
+- Stage 5 `Playbook Eligibility` is frozen as the question *which families / setup variants are admissible, watch-only, hedge-only, or no-trade under the current upstream truth?* It may narrow the candidate pool and emit `EligibilityAdmissibilitySurface`, but it may not pick the final lead expression.
+- Stage 6 `Expression and Execution` is frozen as the question *which admitted candidate leads, which setup variant is selected, and what opening-position expression surface leaves the serial ladder?* It adjudicates only `PlaybookDecision.ELIGIBLE` candidates and emits `ExecutionCandidateOwnershipSurface`; watch-only candidates are not promoted.
+- the serial non-cumulative-risk correction is now explicit: Stage 4 local risk shaping may constrain the current Stage 5 / Stage 6 decision through posture outputs, but those local surfaces must reset after the serial decision and must not keep travelling as a generic downstream veto.
+- `posture_risk.py`, `playbook_eligibility.py`, and `execution_expression.py` remain provisional overlap surfaces inside the serial ladder while current code is still entangled; overlap in code geography is accepted here, overlap in final question ownership is not.
 
 
 ### Gate 230: Expression and Execution opening-position seam and bounded downstream consumer handoff

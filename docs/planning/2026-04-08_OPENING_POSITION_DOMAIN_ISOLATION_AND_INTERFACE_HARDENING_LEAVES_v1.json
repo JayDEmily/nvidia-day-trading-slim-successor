@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_228_complete_gate_229_not_yet_activated",
-  "execution_status": "gate_228_complete_on_work_branch_gate_229_not_yet_activated",
-  "active_gate": "none \u2014 Gate 228 complete on `work/gate-228-temporal-calendar-domain-isolation-20260408`; Gate 229 not yet activated",
+  "routing_status": "active_pack_routed_gate_229_complete_gate_230_not_yet_activated",
+  "execution_status": "gate_229_complete_on_work_branch_gate_230_not_yet_activated",
+  "active_gate": "none \u2014 Gate 229 complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`; Gate 230 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -12,7 +12,8 @@
   "completed_gate_ids": [
     "Gate 226",
     "Gate 227",
-    "Gate 228"
+    "Gate 228",
+    "Gate 229"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -30,15 +31,15 @@
     "LEAF-G228-002",
     "LEAF-G228-003",
     "LEAF-G228-004",
-    "LEAF-G228-005"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G228-005",
     "LEAF-G229-001",
     "LEAF-G229-002",
     "LEAF-G229-003",
     "LEAF-G229-004",
     "LEAF-G229-005",
-    "LEAF-G229-006",
+    "LEAF-G229-006"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G230-001",
     "LEAF-G230-002",
     "LEAF-G230-003",
@@ -77,7 +78,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 229",
     "Gate 230",
     "Gate 231",
     "Gate 232",
@@ -1375,7 +1375,7 @@
       "gate": "Gate 229",
       "title": "Map the current Stage 4 / Stage 5 / Stage 6 serial chain",
       "objective": "Trace the current serial chain from Posture and Risk Permission through Playbook Eligibility into Expression and Execution, including the scripts and services implicated in more than one serial bucket.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -1452,7 +1452,7 @@
       "gate": "Gate 229",
       "title": "Freeze the Stage 4 Posture and Risk Permission question and outputs",
       "objective": "State what Stage 4 is allowed to answer and what outputs it may author before Stage 5 begins.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G229-001"
       ],
@@ -1531,7 +1531,7 @@
       "gate": "Gate 229",
       "title": "Freeze the Stage 5 admissibility and family-narrowing question and outputs",
       "objective": "State what Stage 5 is allowed to answer once Stage 4 finishes and what it may narrow without selecting the final execution candidate.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G229-002"
       ],
@@ -1610,7 +1610,7 @@
       "gate": "Gate 229",
       "title": "Freeze the Stage 6 candidate, setup, and expression question and outputs",
       "objective": "State what Stage 6 is allowed to answer when it forms the opening-position candidate, setup choice, and expression surface.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G229-003"
       ],
@@ -1689,7 +1689,7 @@
       "gate": "Gate 229",
       "title": "Freeze non-cumulative serial risk reset and prohibited carry-forward surfaces",
       "objective": "State exactly which current serial risk surfaces must reset after the local decision and may not continue as a generic cumulative veto downstream.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G229-004"
       ],
@@ -1769,7 +1769,7 @@
       "gate": "Gate 229",
       "title": "Freeze the Gate 229 proof slice and close the gate",
       "objective": "Name the later proof slice for serial-ladder isolation and close Gate 229 as bounded authority freezing rather than final code ownership cleanup.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G229-005"
       ],
