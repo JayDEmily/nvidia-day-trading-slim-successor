@@ -29,7 +29,12 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Active pack
 
-- none
+- gates: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`
+- leaves: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- bounded-scope note: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_SCOPE_NOTE_v1.md`
+- contradiction report: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_CONTRADICTION_REPORT_v1.md`
 
 ## Latest closed pack retained as evidence
 
@@ -60,7 +65,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Current state
 
-- no active pack currently routed; the successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
+- active pack is the opening-position domain isolation and interface hardening pack; Gate 226 is complete on `work/gate-226-pack-bootstrap-and-routing-20260408` and Gate 227 is not yet activated
 - latest closed pack retained as evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
 - latest closed predecessor evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
 
