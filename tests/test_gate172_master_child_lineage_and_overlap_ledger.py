@@ -8,6 +8,8 @@ from pathlib import Path
 from ._planning_later_state_helpers import (
     CLEANUP_GATE_MAP_MARKERS,
     CLEANUP_PLAN_MARKERS,
+    OPENING_POSITION_GATE_MAP_MARKERS,
+    OPENING_POSITION_PLAN_MARKERS,
     PHASE3_GATE_MAP_MARKERS,
     PHASE3_PLAN_MARKERS,
     contains_any,
@@ -28,12 +30,12 @@ def test_gate172_is_complete_and_pack_has_moved_to_gate176_or_later() -> None:
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
     assert (
-        contains_any(plans, PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS)
+        contains_any(plans, PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS | OPENING_POSITION_PLAN_MARKERS)
         or "active gate: Gate 176 on `work/gate-171-master-child-parallel-risk-integration-pack-20260402`" in plans
         or "closed through Gate 180" in plans
     )
     assert (
-        contains_any(gate_map, PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS)
+        contains_any(gate_map, PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS | OPENING_POSITION_GATE_MAP_MARKERS)
         or "Current active gate: **Gate 176 in the master/child parallel-risk integration pack**." in gate_map
         or "Current active gate: **none — master/child parallel-risk integration pack closed through Gate 180" in gate_map
     )

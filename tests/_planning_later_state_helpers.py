@@ -44,6 +44,7 @@ OPENING_POSITION_PLAN_MARKERS = {
     "active pack is the opening-position domain isolation and interface hardening pack; Gate 232 is complete",
     "active pack is the opening-position domain isolation and interface hardening pack; Gate 233 is complete",
     "active pack is the opening-position domain isolation and interface hardening pack; Gate 234 is complete",
+    "no active pack currently routed; the opening-position domain isolation and interface hardening pack is closed through Gate 235",
 }
 
 OPENING_POSITION_GATE_MAP_MARKERS = {
@@ -56,4 +57,5 @@ OPENING_POSITION_GATE_MAP_MARKERS = {
     "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 232 is complete",
     "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 233 is complete",
     "Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 234 is complete",
+    "Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235",
 }

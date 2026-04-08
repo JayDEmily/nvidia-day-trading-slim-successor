@@ -29,6 +29,10 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Active pack
 
+- none
+
+## Latest closed pack retained as evidence
+
 - gates: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`
 - leaves: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
@@ -36,7 +40,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 - bounded-scope note: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_CONTRADICTION_REPORT_v1.md`
 
-## Latest closed pack retained as evidence
+## Latest closed predecessor evidence
 
 - gates: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`
 - leaves: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`
@@ -45,29 +49,15 @@ It names the live planning authority and the nearest retained evidence classes; 
 - bounded-scope note: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_SCOPE_NOTE_v1.md`
 - contradiction report: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_CONTRADICTION_REPORT_v1.md`
 
-## Latest closed predecessor evidence
-
-- gates: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`
-- leaves: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_SCOPE_NOTE_v1.md`
-- contradiction report: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_CONTRADICTION_REPORT_v1.md`
-- retained-surface manifest and cutover rules: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md`
-- runtime-surface audit read-trigger and authority adoption: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RUNTIME_SURFACE_AUDIT_READ_TRIGGER_AND_AUTHORITY_ADOPTION_v1.md`
-- test-inventory classification and decision rules: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md`
-- proof-order, successor execution-queue, and handoff surface: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`
-- 07 source diff and AGENTS read-trigger note: `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_07_SOURCE_DIFF_AND_AGENTS_READ_TRIGGER_NOTE_v1.md`
-
 ## Older historical planning material
 
-- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including the workflow hardening and active-repo reset foundation pack plus the 2026-04-05 target-repo admitted-evidence successor pack and their closeout/handoff surfaces.
+- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, the workflow hardening and active-repo reset foundation pack, the slim active-repo cutover and substantive test-audit bootstrap pack, and the 2026-04-05 target-repo admitted-evidence successor pack with their closeout/handoff surfaces.
 
 ## Current state
 
-- active pack is the opening-position domain isolation and interface hardening pack; Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408` and Gate 235 is not yet activated
-- latest closed pack retained as evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
-- latest closed predecessor evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
+- no active pack currently routed; the opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- latest closed pack retained as evidence is the opening-position domain isolation and interface hardening pack closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- latest closed predecessor evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
 
 ## Sequential execution rule
 

@@ -24,7 +24,6 @@ def test_gate226_routes_new_pack_and_remains_completed_in_later_valid_states() -
     assert 'docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md' in plans
     assert 'docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json' in plans
     assert 'docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md' in plans
-    assert '## Active pack\n\n- none' not in plans
     assert 'opening-position domain isolation and interface hardening pack' in plans
     assert '| Gate 226 | complete on `work/gate-226-pack-bootstrap-and-routing-20260408` |' in gate_map
     assert payload['completed_gate_ids'][0] == 'Gate 226'
@@ -33,6 +32,6 @@ def test_gate226_routes_new_pack_and_remains_completed_in_later_valid_states() -
     assert all(leaf['status']=='complete' for leaf in payload['leaves'] if leaf['id'].startswith('LEAF-G226-'))
     assert '### Gate 226: Pack bootstrap, contradiction scan, and active-pack routing closeout' in gates
     assert 'Gate 226 closeout proof' in execution_log
-    assert 'This scope note is now part of the routed active pack for Gates 226-235.' in scope_note
+    assert 'Gates 226-235' in scope_note or 'closed Gates 226-235 pack' in scope_note
     assert 'Gate 226 completed the normal quartet update' in contradiction_report
     assert 'used in Gate 226 to route the active pack truthfully' in checklist

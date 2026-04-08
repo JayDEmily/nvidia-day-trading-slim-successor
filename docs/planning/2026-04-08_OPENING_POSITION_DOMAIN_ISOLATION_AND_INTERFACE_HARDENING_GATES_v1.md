@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`; Gate 235 is not yet activated.
+Status: closed planning pack for Gates 226-235 retained as evidence. The pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`; no active pack is currently routed.
 Version: v1.7
 
 ## Purpose
@@ -423,3 +423,12 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate235_cross_flow_harness_and_pack_closeout.py tests/test_planning_state_integrity.py`
+
+**Gate 235 captured facts**
+- one bounded top-to-bottom opening-position route is now frozen as: raw-bundle admission and preparation -> Step 0 route selection -> Step 1 temporal/calendar truth -> serial opportunity ladder through Stage 6 -> preserved opening-position seam -> bounded CDA decision -> DMP stage-packet carriage and packet lineage -> recommendation-receipt attachment seam.
+- the route remains bounded and Phase-1 honest because it freezes where the flow must stop: no close-position logic, no capital displacement authority, no carry-horizon expansion, and no full arbiter are admitted in this pack.
+- domain stop-lines are explicit in the closed pack: ingress may not recreate temporal truth, temporal/calendar may not author serial candidates, the coefficient plane may shape but not invent candidates, the parallel-risk lane may describe environmental and consequence context but may not become a second serial stack, and CDA remains the bounded fresh-capital decision only.
+- DMP v2 and packet lineage remain the transport and trace substrate for that route, while Gate 234 freezes the later receipt-attachment seam rather than claiming per-pass recommendation persistence is fully implemented already.
+- pack closeout law is now explicit: the opening-position domain isolation and interface hardening pack is retained as the latest closed pack, `PLANS.md` returns to `## Active pack
+
+- none`, and later architectural refinement must begin from a new routed pack rather than by silently extending this one.

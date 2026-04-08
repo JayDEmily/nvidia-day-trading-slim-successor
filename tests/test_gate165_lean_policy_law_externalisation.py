@@ -8,6 +8,8 @@ from pathlib import Path
 from ._planning_later_state_helpers import (
     CLEANUP_GATE_MAP_MARKERS,
     CLEANUP_PLAN_MARKERS,
+    OPENING_POSITION_GATE_MAP_MARKERS,
+    OPENING_POSITION_PLAN_MARKERS,
     PHASE3_GATE_MAP_MARKERS,
     PHASE3_PLAN_MARKERS,
     contains_any,
@@ -28,14 +30,14 @@ def test_gate165_control_surfaces_advance_honestly() -> None:
     gates = GATES.read_text(encoding="utf-8")
     leaves = json.loads(LEAVES.read_text(encoding="utf-8"))
 
-    assert contains_any(plans, PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS) or any(
+    assert contains_any(plans, PHASE3_PLAN_MARKERS | CLEANUP_PLAN_MARKERS | OPENING_POSITION_PLAN_MARKERS) or any(
         marker in plans
         for marker in {
             "active gate: Gate 168 on `work/gate-164-policy-temporal-observability-pack-20260402`",
             "no active pack currently routed; policy/temporal/observability successor pack closed through Gate 170 on `work/gate-164-policy-temporal-observability-pack-20260402`",
         }
     )
-    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS) or any(
+    assert contains_any(gate_map, PHASE3_GATE_MAP_MARKERS | CLEANUP_GATE_MAP_MARKERS | OPENING_POSITION_GATE_MAP_MARKERS) or any(
         marker in gate_map
         for marker in {
             "Current active gate: **Gate 168 in the policy/temporal/observability successor pack**.",

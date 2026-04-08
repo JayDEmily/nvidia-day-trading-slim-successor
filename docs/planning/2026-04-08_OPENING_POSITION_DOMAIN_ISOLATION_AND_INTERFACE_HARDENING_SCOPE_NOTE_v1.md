@@ -58,5 +58,5 @@ The following are intentionally deferred:
 
 ## Activation rule
 
-This scope note is now part of the routed active pack for Gates 226-235.
-Gate 226 completed the routing quartet on `work/gate-226-pack-bootstrap-and-routing-20260408`. Gate 227 and later domain work remain unopened until a later gate activation occurs truthfully.
+This scope note is retained as evidence for the closed Gates 226-235 pack.
+Gate 235 closes the pack on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`, leaves no active pack currently routed, and returns the repo to `## Active pack\n\n- none` until a later pack is routed truthfully.

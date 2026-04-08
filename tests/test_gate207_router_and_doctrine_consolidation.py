@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ._planning_later_state_helpers import CLEANUP_GATE_MAP_MARKERS, CLEANUP_PLAN_MARKERS, contains_any
+from ._planning_later_state_helpers import CLEANUP_GATE_MAP_MARKERS, CLEANUP_PLAN_MARKERS, OPENING_POSITION_GATE_MAP_MARKERS, OPENING_POSITION_PLAN_MARKERS, contains_any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLANS = REPO_ROOT / "PLANS.md"
@@ -35,7 +35,7 @@ def test_gate207_router_and_doctrine_closeout_is_coherent() -> None:
         "2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md" in plans
         or "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md" in plans
     )
-    assert contains_any(plans, CLEANUP_PLAN_MARKERS) or "## Active pack\n\n- none" in plans
+    assert contains_any(plans, CLEANUP_PLAN_MARKERS | OPENING_POSITION_PLAN_MARKERS) or "## Active pack\n\n- none" in plans
 
     assert "## Authority order" in agents
     assert "## Behaviour expectations" in agents
@@ -61,7 +61,7 @@ def test_gate207_router_and_doctrine_closeout_is_coherent() -> None:
     )
     assert (
         "Current active gate: **Gate 208 in the workflow hardening and active-repo reset foundation pack on `work/gate-207-router-and-doctrine-consolidation-20260406`**." in gate_map
-        or contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS)
+        or contains_any(gate_map, CLEANUP_GATE_MAP_MARKERS | OPENING_POSITION_GATE_MAP_MARKERS)
     )
     assert "Historical prior active-gate markers retained for planning-guard continuity" not in gate_map
     assert "Gate 207 | complete on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
@@ -69,6 +69,7 @@ def test_gate207_router_and_doctrine_closeout_is_coherent() -> None:
         "Gate 208 | active on `work/gate-207-router-and-doctrine-consolidation-20260406`" in gate_map
         or "| Gate 225 | active on `work/gate-225-retained-test-cleanup-closeout-20260406` |" in gate_map
         or "| Gate 225 | complete on `work/gate-225-retained-test-cleanup-closeout-20260406` |" in gate_map
+        or "| Gate 235 | complete on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408` |" in gate_map
     )
 
     assert payload["execution_status"] in {

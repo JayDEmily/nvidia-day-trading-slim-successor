@@ -1,12 +1,12 @@
 # 2026-03-24 Canonical Vision Gate Map
 
 Status: Active canonical gate authority
-Version: v1.46
+Version: v1.47
 Authority: Subordinate to `docs/01_NORMATIVE.md`; governing gate-level control surface for the active planning stack.
 Paired files:
-- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md` — active opening-position domain isolation and interface hardening gate authority for Gates 226-235
-- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json` — active opening-position domain isolation and interface hardening leaf ledger for Gates 226-235
-- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md` — active opening-position domain isolation and interface hardening execution log for Gates 226-235
+- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md` — latest closed opening-position domain isolation and interface hardening gate authority retained as evidence for Gates 226-235
+- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json` — latest closed opening-position domain isolation and interface hardening leaf ledger retained as evidence
+- `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md` — latest closed opening-position domain isolation and interface hardening execution log retained as evidence
 - `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md` — latest closed retained-test cleanup gate authority retained as evidence for Gates 222-225
 - `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json` — latest closed retained-test cleanup leaf ledger retained as evidence
 - `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md` — latest closed retained-test cleanup execution log retained as evidence
@@ -66,7 +66,7 @@ The repo is already past the rebuild baseline. The gate map begins from that tru
 | Gates 46–50 | `LEAF-G46-*` through `LEAF-G50-*` complete on `main` | freeze the audit, install registry-v2, formalise carry handoff, make temporal compatibility explicit, and rebase vocabulary governance | gate-specific docs `2026-03-25_GATE46_*` through `2026-03-25_GATE50_*`, registry/carry/vocabulary tests, and execution-log receipts |
 | Gate 51 | `LEAF-G51-001`, `LEAF-G51-002`, `LEAF-G51-003` complete on `main` | pin workflow-stage ownership, candidate-generation and carry boundaries, and explicit Step 0 calendar/horizon routing | `docs/planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`, `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_BOUNDARY_RULES.md`, `docs/planning/2026-03-26_CALENDAR_HORIZON_OWNERSHIP.md` |
 
-Current active gate: **No active gate under the opening-position domain isolation and interface hardening pack. Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`; Gate 235 is not yet activated.**
+Current active gate: **No active pack currently routed. The opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`.**
 
 ## 2. Selected completed-tranche evidence
 
@@ -275,7 +275,7 @@ Earlier planning tranches remain closed evidence through Gate 140. The latest cl
 | Gate 232 | complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408` | capture the Independent Parallel Risk Lane as a clean-room domain, freeze governing question, input/output law, anti-duplication boundaries, provisional overlap surfaces, and stop before Gate 233 activation | `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate232_parallel_risk_lane_clean_room_restart.py` |
 | Gate 233 | complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408` | capture DMP v2 shell-versus-payload law, packet identity and lineage, authoritative block kinds, shared packet-builder overlap surfaces, and stop before Gate 234 activation | `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate233_dmp_v2_domain_carriage_hardening.py` |
 | Gate 234 | complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408` | capture current persistence primitives, freeze a per-pass recommendation receipt schema and lineage-linkage law, keep receipt-history observational-only, and stop before Gate 235 activation | `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate234_recommendation_ledger_and_receipt_history_foundation.py` |
-| Gate 235 | planned | cross-flow opening-position harness, planning guards, and pack closeout | `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json` |
+| Gate 235 | complete on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408` | freeze one bounded top-to-bottom opening-position route, planning guards, later execution order, explicit deferred Phase 2 stop-lines, and close the pack with no active pack currently routed | `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `tests/test_gate235_cross_flow_harness_and_pack_closeout.py` |
 
 ## 4. Global execution rules
 

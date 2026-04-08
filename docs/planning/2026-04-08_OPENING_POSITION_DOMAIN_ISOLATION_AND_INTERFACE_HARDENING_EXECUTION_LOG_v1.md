@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`; Gate 235 is not yet activated.
+Status: closed execution log retained as evidence for the opening-position domain-isolation pack. The pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`; no active pack is currently routed.
 
 ## Purpose
 
@@ -48,7 +48,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 232 — Independent Parallel Risk Lane clean-room planning restart (complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`)
 - Gate 233 — DMP v2 packet-shell and domain-carriage hardening (complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`)
 - Gate 234 — recommendation ledger and receipt-history foundation extension (complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`)
-- Gate 235 — cross-flow opening-position harness, planning guards, and pack closeout
+- Gate 235 — cross-flow opening-position harness, planning guards, and pack closeout (complete on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`)
 
 ## Gate 226 receipts
 
@@ -791,7 +791,46 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 235 receipts
 
-No receipts yet.
+### LEAF-G235-001
+- gate id: `Gate 235`
+- leaf id: `LEAF-G235-001`
+- branch name: `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- note: `Gate 235 now freezes one bounded top-to-bottom opening-position route across the provisional buckets.`
+- receipt recorded: `live during Gate 235 execution`
+
+### LEAF-G235-002
+- gate id: `Gate 235`
+- leaf id: `LEAF-G235-002`
+- branch name: `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- note: `Domain stop-lines are now explicit and prevent the provisional boxes from silently recombining into one mixed authority surface.`
+- receipt recorded: `live during Gate 235 execution`
+
+### LEAF-G235-003
+- gate id: `Gate 235`
+- leaf id: `LEAF-G235-003`
+- branch name: `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- note: `Planning-guard tests and later execution-order expectations are frozen before pack closeout.`
+- receipt recorded: `live during Gate 235 execution`
+
+### LEAF-G235-004
+- gate id: `Gate 235`
+- leaf id: `LEAF-G235-004`
+- branch name: `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- note: `Deferred Phase 2 items remain explicit: no close-position logic, no capital displacement authority, no carry expansion, and no arbiter layer are admitted here.`
+- receipt recorded: `live during Gate 235 execution`
+
+### LEAF-G235-005
+- gate id: `Gate 235`
+- leaf id: `LEAF-G235-005`
+- branch name: `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
+- note: `The pack is now closed through Gate 235 and the repo returns to no-active-pack routed state.`
+- receipt recorded: `live during Gate 235 execution`
+
+## Gate 235 closeout proof
+
+- gate-local proof: `3 passed in 0.43s`
+- bounded pack sanity sweep: `40 passed in 1.31s`
+- closeout state: `no active pack currently routed; opening-position pack closed through Gate 235 on work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
 
 
 ## Post-Gate 226 planning-refinement note
