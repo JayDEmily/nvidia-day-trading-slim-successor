@@ -1,9 +1,9 @@
 {
   "governing_plan": "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
   "version": "v1.1",
-  "routing_status": "active_pack_routed_gate_231_complete_gate_232_not_yet_activated",
-  "execution_status": "gate_231_complete_on_work_branch_gate_232_not_yet_activated",
-  "active_gate": "none \u2014 Gate 231 complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 not yet activated",
+  "routing_status": "active_pack_routed_gate_232_complete_gate_233_not_yet_activated",
+  "execution_status": "gate_232_complete_on_work_branch_gate_233_not_yet_activated",
+  "active_gate": "none \u2014 Gate 232 complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 not yet activated",
   "supersedes": [
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md",
     "docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json",
@@ -15,7 +15,8 @@
     "Gate 228",
     "Gate 229",
     "Gate 230",
-    "Gate 231"
+    "Gate 231",
+    "Gate 232"
   ],
   "completed_leaf_ids": [
     "LEAF-G226-001",
@@ -51,16 +52,16 @@
     "LEAF-G231-003",
     "LEAF-G231-004",
     "LEAF-G231-005",
-    "LEAF-G231-006"
-  ],
-  "remaining_leaf_ids": [
+    "LEAF-G231-006",
     "LEAF-G232-001",
     "LEAF-G232-002",
     "LEAF-G232-003",
     "LEAF-G232-004",
     "LEAF-G232-005",
     "LEAF-G232-006",
-    "LEAF-G232-007",
+    "LEAF-G232-007"
+  ],
+  "remaining_leaf_ids": [
     "LEAF-G233-001",
     "LEAF-G233-002",
     "LEAF-G233-003",
@@ -80,7 +81,6 @@
     "LEAF-G235-005"
   ],
   "pending_gate_ids": [
-    "Gate 232",
     "Gate 233",
     "Gate 234",
     "Gate 235"
@@ -2767,7 +2767,7 @@
       "gate": "Gate 232",
       "title": "Map current parallel-risk evidence surfaces without treating them as target architecture",
       "objective": "Trace the current code, schemas, and docs that touch the Independent Parallel Risk Lane, but record them only as evidence inputs for the redesign.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [],
       "authority_docs": [
         "docs/01_NORMATIVE.md",
@@ -2842,7 +2842,7 @@
       "gate": "Gate 232",
       "title": "Freeze the lane governing question and non-goals",
       "objective": "State exactly what the Independent Parallel Risk Lane is allowed to answer and the non-goals it must not absorb.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-001"
       ],
@@ -2919,7 +2919,7 @@
       "gate": "Gate 232",
       "title": "Freeze the lane input contract",
       "objective": "State what evidence the lane may read to form its external, environmental, and consequence view.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-002"
       ],
@@ -2996,7 +2996,7 @@
       "gate": "Gate 232",
       "title": "Freeze the lane output contract",
       "objective": "State what the lane may emit once it has formed its environmental and consequence view.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-003"
       ],
@@ -3073,7 +3073,7 @@
       "gate": "Gate 232",
       "title": "Freeze anti-duplication law with the serial ladder and CDA",
       "objective": "State what the lane may not duplicate once the serial ladder and bounded downstream capital authority already exist.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-004"
       ],
@@ -3151,7 +3151,7 @@
       "gate": "Gate 232",
       "title": "Freeze the provisional overlap map for mixed lane services",
       "objective": "Capture the current scripts or services that overlap with other provisional buckets while keeping overlap distinct from final lane ownership.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-005"
       ],
@@ -3229,7 +3229,7 @@
       "gate": "Gate 232",
       "title": "Freeze the Gate 232 proof slice and close the gate",
       "objective": "Name the later proof slice for the lane restart and close Gate 232 as clean-room planning, not finished implementation.",
-      "status": "planned",
+      "status": "complete",
       "depends_on": [
         "LEAF-G232-006"
       ],

@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 231 is complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 232 is complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 is not yet activated.
 
 ## Purpose
 
@@ -45,7 +45,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 229 — serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law (complete on `work/gate-229-serial-opportunity-ladder-and-non-cumulative-risk-20260408`)
 - Gate 230 — Expression and Execution opening-position seam and bounded downstream consumer handoff (complete on `work/gate-230-opening-position-seam-and-downstream-handoff-20260408`)
 - Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening (complete on `work/gate-231-coefficient-control-plane-isolation-20260408`)
-- Gate 232 — Independent Parallel Risk Lane clean-room planning restart
+- Gate 232 — Independent Parallel Risk Lane clean-room planning restart (complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`)
 - Gate 233 — DMP v2 packet-shell and domain-carriage hardening
 - Gate 234 — recommendation ledger and receipt-history foundation extension
 - Gate 235 — cross-flow opening-position harness, planning guards, and pack closeout
@@ -552,7 +552,104 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 232 receipts
 
-No receipts yet.
+### LEAF-G232-001
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-001`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `tests/test_gate232_parallel_risk_lane_clean_room_restart.py`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `Gate 232 now records the live lane start points, enrich steps, and current evidence surfaces without treating the existing implementation as final target architecture.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-002
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-002`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `The lane governing question and explicit non-goals are now frozen from normative law rather than inherited from current service sprawl.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-003
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-003`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `The lane input contract is frozen around lawful invariant reads and stage-output reads rather than hidden ambient access to later consumers.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-004
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-004`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `The lane output contract is frozen around temporal surface, market translation, candidate audit, and descriptive notes as the authoritative carried packet surfaces.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-005
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-005`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `Anti-duplication law is now frozen so the lane may describe fragility and consequence context without becoming a serial veto owner or CDA replacement.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-006
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-006`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `Mixed runtime and review consumers are now recorded as provisional overlap surfaces instead of being mistaken for final ownership.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+### LEAF-G232-007
+
+- gate id: `Gate 232`
+- leaf id: `LEAF-G232-007`
+- branch name: `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`
+- start commit: `59c1048`
+- exact files touched: `PLANS.md`, `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`, `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`, `CHANGELOG.jsonl`, `tests/test_gate232_parallel_risk_lane_clean_room_restart.py`
+- exact validation commands: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`; `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed results: `3 passed in 0.17s`; `6 passed in 0.55s`
+- note: `Gate 232 closed as clean-room lane-law freezing only and left Gate 233 unopened.`
+- state-integrity checks passed: `true`
+- receipt recorded: `live during Gate 232 execution`
+
+## Gate 232 closeout proof
+
+- validation command: `python -m pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`
+- observed result: `3 passed in 0.17s`
+- bounded anchor command: `python -m pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+- observed result: `6 passed in 0.55s`
+- closeout state: `active pack remains routed; Gate 232 complete on work/gate-232-parallel-risk-lane-clean-room-restart-20260408; Gate 233 not yet activated`
 
 ## Gate 233 receipts
 

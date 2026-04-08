@@ -1,7 +1,7 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 231 is complete on `work/gate-231-coefficient-control-plane-isolation-20260408`; Gate 232 is not yet activated.
-Version: v1.5
+Status: active planning pack for Gates 226-235. Gate 232 is complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`; Gate 233 is not yet activated.
+Version: v1.6
 
 ## Purpose
 
@@ -342,6 +342,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+
+**Gate 232 captured facts**
+- the checked-in runtime starts the lane from session start by calling `ParallelRiskLaneService.evaluate(...)` immediately after Temporal / Regime / Options-Flow evaluation, then enriches market translation before posture, and enriches candidate semantics only after Stage 6 execution output exists.
+- repo doctrine remains explicit that the `Independent Parallel Risk Lane` is first-class and co-resident, but **not** a numbered serial stage, **not** `1.1`, **not** `step_8`, and **not** a bypass of the seven-step serial grammar.
+- the checked-in authoritative lane packet remains `ParallelRiskLanePacket`, whose carried truths include `lane_id`, preserved serial-spine/co-resident flags, invariant reads, stage-output reads, `temporal_surface`, `market_translation_surface`, `candidate_audit_surface`, and descriptive notes.
+- the lane service itself is already bounded against bad role drift: its module docstring rejects final arbitration, playbook-internal logic, and a second caution engine, while the candidate-audit anti-goal explicitly rejects distributed caution fog and hidden arbiter behaviour.
+- anti-duplication law is now frozen here as: the lane may describe environmental weather, fragility, reshape/wait/hedge-required style consequences, and candidate-aware audit semantics, but it may not silently become the serial caution owner, fresh-capital owner, or downstream arbiter.
+- current provisional overlap surfaces remain `parallel_risk_lane.py`, `cognition_runtime.py`, `posture_risk.py`, `execution_expression.py`, and `review_explanation.py` because present code still mixes lane carriage with serial/runtime consumers; this gate records that overlap without treating it as final ownership proof.
 
 
 ### Gate 233: DMP v2 packet-shell and domain-carriage hardening
