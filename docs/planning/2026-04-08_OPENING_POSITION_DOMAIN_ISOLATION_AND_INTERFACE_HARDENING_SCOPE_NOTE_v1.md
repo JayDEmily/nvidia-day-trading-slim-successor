@@ -35,6 +35,18 @@ The generic risk tax may not be silently re-applied downstream.
 Gate 229 freezes the bounded law.
 Gate 230 freezes the downstream seam burden that later execution must satisfy.
 
+
+
+## Provisional analytical bucket rule
+
+This pack does not force every current script or service into one permanent final bucket yet.
+
+During Gates 227-235:
+- current scripts may appear in more than one gate as evidence inputs;
+- overlap is recorded explicitly rather than hidden;
+- the pack freezes governing questions, outputs, crossings, and stop-lines first;
+- final exclusive code ownership is deferred until later per-domain refinement.
+
 ## Deferred Phase 2 items
 
 The following are intentionally deferred:

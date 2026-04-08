@@ -1,10 +1,11 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
 Status: active planning pack for Gates 226-235. Gate 226 is complete on `work/gate-226-pack-bootstrap-and-routing-20260408`; Gate 227 is not yet activated.
+Version: v1.1
 
 ## Purpose
 
-Create the next execution-grade planning tranche for the slim successor repo by isolating opening-position work into bounded domains with explicit inputs, outputs, lawful readers, prohibited readers, and later proof slices. This pack preserves the current deterministic seven-stage spine, keeps the repo in opening-position scope only, and freezes the work needed before any Phase 2 stay-in / stay-out or close-position logic begins.
+Create the next execution-grade planning tranche for the slim successor repo by isolating opening-position work into bounded provisional analytical domains with explicit inputs, outputs, lawful readers, prohibited readers, and later proof slices. This pack preserves the current deterministic seven-stage spine, keeps the repo in opening-position scope only, and freezes the work needed before any Phase 2 stay-in / stay-out or close-position logic begins.
 
 ## Scope
 
@@ -26,7 +27,7 @@ Out of scope:
 
 - This document is the active gate authority for Gates 226-235.
 - It is a new pack rather than an amendment because repo-root `PLANS.md` previously named no active pack.
-- Gate 226 has completed the routing quartet and activated this pack without activating Gate 227 yet.
+- Gate 226 completed the routing quartet and activated this pack without activating Gate 227 yet.
 - The latest closed retained pack remains evidence input only:
   - `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`
   - `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`
@@ -72,14 +73,14 @@ Evidence-input planning surfaces re-read before writing this pack:
 This tranche sits after the retained-test cleanup closeout and before any Phase 2 work on staying in, staying out, capital displacement, carry, or exits.
 
 It is not a generic refactor pack. It is an opening-position domain-isolation pack that prepares later execution to:
-1. separate the current architecture into bounded question-owning domains;
-2. freeze the lawful I/O contracts across those domains;
-3. preserve the serial trader-thinking ladder without allowing cumulative generic risk to sludge through later stages;
-4. restart the `Independent Parallel Risk Lane` from clean domain law rather than inherited malformed structure;
-5. preserve DMP v2 as the canonical packet shell around typed domain payloads; and
-6. extend the database so every 30-second opening-position recommendation pass has a first-class receipt.
+1. draw the provisional boxes properly;
+2. define the ports and lawful crossings between those boxes;
+3. define how each box is tested without contaminating the others; and only then
+4. begin deeper internal redesign of each bounded domain.
 
-Ten gates and fifty leaves preserve granularity here because the tranche is larger than one domain but smaller than a multi-pack rewrite. Five leaves per gate gives one bounded pass each for: authority read / trace, contract freeze, prohibited-reader or prohibited-leakage law, proof burden, and gate closeout.
+These are **provisional analytical buckets**, not final exclusive code-ownership buckets. Current scripts or services may appear in more than one gate while the codebase is still entangled. That is acceptable in this tranche. The pack is not allowed to let current file geography decide the architecture, but it is also not yet required to force every current script into one permanent final box.
+
+Ten gates remain the right grain. Leaf counts are deliberately variable by domain. The later gates now range from five to seven leaves because some domains require separate capture of provisional overlap surfaces, governing questions, outputs, and stop-lines before they can be frozen honestly.
 
 ## Intent and workflow anchor
 
@@ -158,7 +159,7 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 
 ## Testing and promotion discipline
 
-- This draft pack is planning-only and does not claim any repo execution occurred in the sandbox.
+- This pack remains planning-first. Gate 226 routing already occurred, but later gates are still unopened.
 - Later execution must use the repo's own environment bootstrap and active proof doctrine.
 - Minimum later proof style for each gate:
   - one new gate-local planning / contract test
@@ -186,164 +187,175 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate226_opening_position_pack_bootstrap_and_routing.py tests/test_planning_state_integrity.py`
 
+
 ### Gate 227: Opening-position ingress substrate and Step 0/Step 1 boundary isolation
 
 **Objective**
-- Freeze the opening-position ingress path from raw primitives through prepared runtime into Step 0 route selection and Step 1 temporal truth, without downstream leakage.
+- Capture the upstream opening-position substrate as provisional analytical buckets: raw primitives, prepared runtime surfaces, Step 0 route selection, and Step 1 temporal ingress, without pretending current script boundaries are already the architecture.
 
 **Families executed**
-- `ingress_substrate__opening_position_raw_to_prepared_path`
-- `temporal_route_boundary__step0_step1_input_separation`
+- `ingress_substrate__raw_to_prepared_surface_mapping`
+- `temporal_route_boundary__step0_step1_contract_isolation`
+- `provisional_bucket_map__overlapping_ingress_surfaces`
 
 **Definition of done**
-- the canonical opening-position ingress path is explicit
-- Step 0 route inputs and Step 1 temporal inputs are separated cleanly
-- raw-versus-derived signal ownership and later proof burden are frozen
+- the canonical opening-position ingress route is written from raw primitives through prepared runtime into Step 0 and Step 1
+- the pack states what Step 0 owns, what Step 1 owns, and where current scripts overlap provisionally
+- downstream domains cannot claim a direct bypass around this upstream boundary
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate227_opening_position_ingress_boundary_isolation.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate101_canonical_raw_bundle_admission.py tests/test_gate102_raw_runtime_harness.py tests/test_gate115_normalised_prepared_runtime_features.py tests/test_temporal_context_runtime.py`
 
+
 ### Gate 228: Temporal Context and Financial Calendar domain isolation
 
 **Objective**
-- Isolate Temporal Context and Financial Calendar authority as a bounded upstream domain with explicit inputs, outputs, lawful readers, prohibited readers, and harness expectations.
+- Capture the day-state box as its own provisional analytical domain, defined by the question it answers and the outputs it is allowed to author, without assuming today’s file layout is already clean.
 
 **Families executed**
-- `temporal_calendar_domain__input_output_isolation`
-- `temporal_calendar_domain__lawful_reader_and_harness_rules`
+- `temporal_calendar_domain__question_and_output_freeze`
+- `temporal_calendar_domain__reader_graph_and_overlap_capture`
 
 **Definition of done**
-- temporal/calendar inputs and outputs are frozen as one upstream authority domain
-- lawful readers and prohibited readers are explicit
-- a bounded domain harness and proof slice are defined
+- the pack states the governing question for the temporal/calendar domain and its authoritative outputs
+- lawful readers, prohibited readers, and carried derivatives are explicit
+- current overlap surfaces are captured provisionally rather than hidden
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate228_temporal_calendar_domain_isolation.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py tests/test_gate91_financial_calendar_canonical_projection.py`
+- `pytest -q tests/test_temporal_context_runtime.py tests/test_gate175_temporal_calendar_multi_clock_runtime.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+
 
 ### Gate 229: Serial opportunity ladder isolation and non-cumulative Posture and Risk Permission law
 
 **Objective**
-- Isolate the serial opportunity ladder from Posture and Risk Permission through Playbook Eligibility to Expression and Execution, and explicitly stop cumulative carried-forward generic risk from suppressing later decisions.
+- Capture the serial trader-thinking ladder as provisional analytical buckets across Stage 4, Stage 5, and Stage 6, while freezing the correction that local risk shaping does not accumulate generically downstream.
 
 **Families executed**
-- `serial_opportunity_ladder__stage5_stage6_question_owner_split`
-- `serial_opportunity_ladder__non_cumulative_decision_risk_reset`
+- `serial_opportunity_ladder__stage4_stage5_stage6_question_freeze`
+- `serial_opportunity_ladder__non_cumulative_risk_reset`
 
 **Definition of done**
-- Stage 5 admissibility and Stage 6 candidate ownership remain distinct
-- non-cumulative serial decision-risk law is explicit and bounded
-- playbook family, setup variant, and execution-expression interfaces are frozen with prohibited leakage rules
+- the pack states what Stage 4, Stage 5, and Stage 6 each answer
+- local risk shaping is allowed only for the current serial decision and then resets
+- current mixed scripts are captured as provisional overlap rather than treated as final ownership
 
 **Minimum proof slice**
-- `pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk_law.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_gate152_stage5_stage6_authority_replan.py tests/test_gate167_serial_conservatism_binding_point_law.py tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py`
+- `pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_planning_state_integrity.py`
+- `pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate119_candidate_adjudication.py tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py`
+
 
 ### Gate 230: Expression and Execution opening-position seam and bounded downstream consumer handoff
 
 **Objective**
-- Freeze the opening-position seam leaving Expression and Execution into Stage-Local Handoff, compatibility carriage, and bounded Capital Deployment Authority inputs, while preserving the non-cumulative risk reset downstream.
+- Capture the current opening-position seam leaving Stage 6, rank preserved seam carriage against compatibility layers, and freeze what bounded downstream fresh-capital authority may actually consume.
 
 **Families executed**
-- `expression_seam__opening_position_candidate_and_preserved_handoff`
-- `expression_seam__bounded_cda_input_and_non_cumulative_risk_protection`
+- `opening_position_seam__primary_candidate_and_preserved_carriage`
+- `downstream_consumer_handoff__bounded_cda_inputs_and_ranking`
 
 **Definition of done**
-- the opening-position candidate surface leaving Expression and Execution is explicit
-- Stage-Local Handoff and compatibility carriage are ranked against primary authority surfaces
-- bounded Capital Deployment Authority inputs are frozen without serial risk compounding again
+- the pack names the primary opening-position candidate surface leaving Stage 6
+- Stage-Local Handoff and preserved seam carriage are ranked against compatibility layers explicitly
+- CDA-readable inputs are bounded and protected from downstream recomputation
 
 **Minimum proof slice**
-- `pytest -q tests/test_gate230_expression_execution_seam_and_cda_input_boundary.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate153_overlay_terminal_final_join_authority_replan.py tests/test_gate188_capital_deployment_authority_contract.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_execution_review_runtime.py`
+- `pytest -q tests/test_gate230_opening_position_seam_and_downstream_handoff.py tests/test_planning_state_integrity.py`
+- `pytest -q tests/test_gate120_execution_geometry.py tests/test_gate121_final_risk_gateway_join.py tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_execution_review_runtime.py`
+
 
 ### Gate 231: Coefficient control-plane isolation and owner-stage / activation-state hardening
 
 **Objective**
-- Isolate the coefficient world as its own control plane, freeze owner-stage truth, activation-state truth, and the split between opportunity shaping and caution shaping.
+- Capture the coefficient and modifier system as a governed control plane, not as a hidden second decision stack, and freeze how it may shape an already-authored candidate without inventing one.
 
 **Families executed**
-- `coefficient_control_plane__one_live_world_and_reference_truth`
-- `coefficient_control_plane__owner_stage_activation_state_and_shaping_split`
+- `coefficient_control_plane__one_live_world_and_owner_stage_freeze`
+- `coefficient_control_plane__activation_state_and_shaping_split`
 
 **Definition of done**
-- one live coefficient world versus reference truth is explicit
-- owner-stage and activation-state truth are frozen for opening-position-relevant coefficient surfaces
-- opportunity shaping and caution shaping remain separated and bounded
+- one live coefficient world is explicit
+- owner-stage and activation-state law are written explicitly
+- opportunity shaping and caution shaping are separated without inventing a second decision author
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate231_coefficient_control_plane_isolation.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_gate159_coefficient_world_status_and_inventory_law.py tests/test_gate160_governed_signal_coefficient_reference_workbook_law.py tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate78_modifier_runtime_integration.py`
+- `pytest -q tests/test_gate160_owner_stage_and_activation_state_ledger.py tests/test_gate161_opportunity_vs_caution_shaping_law.py tests/test_gate159_coefficient_world_status_and_inventory_law.py`
+
 
 ### Gate 232: Independent Parallel Risk Lane clean-room planning restart
 
 **Objective**
-- Restart Independent Parallel Risk Lane planning from clean domain law, using current repo truth as evidence input without inheriting malformed architecture by default.
+- Use the current repo as evidence of what exists, but restart the Independent Parallel Risk Lane from clean domain law so it answers the right question and does not turn into distributed caution fog or a shadow serial stack.
 
 **Families executed**
-- `independent_parallel_risk_lane__clean_governing_question_and_input_contract`
-- `independent_parallel_risk_lane__output_contract_and_anti_duplication_law`
+- `parallel_risk_lane__clean_room_question_input_output_freeze`
+- `parallel_risk_lane__anti_duplication_and_overlap_capture`
 
 **Definition of done**
-- the lane's governing question, lawful inputs, lawful outputs, and anti-duplication law are frozen cleanly
-- the lane remains co-resident but not a stage, a second playbook engine, or a hidden arbiter
-- a bounded proof slice is frozen for later coding
+- the lane’s governing question and non-goals are explicit
+- its input and output contracts are explicit
+- anti-duplication law with the serial ladder and CDA is explicit
+- current overlap surfaces are captured provisionally
 
 **Minimum proof slice**
-- `pytest -q tests/test_gate232_independent_parallel_risk_lane_clean_restart.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_gate157_parallel_risk_lane_foundation_bootstrap.py tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate174_parallel_risk_lane_input_contract.py tests/test_gate176_market_options_dependency_dislocation_runtime.py`
+- `pytest -q tests/test_gate232_parallel_risk_lane_clean_room_restart.py tests/test_planning_state_integrity.py`
+- `pytest -q tests/test_gate158_co_resident_parallel_risk_lane_law.py tests/test_gate163_ownership_output_coefficient_and_anti_duplication_law.py tests/test_gate162_market_options_dependency_and_dislocation_mapping.py`
+
 
 ### Gate 233: DMP v2 packet-shell and domain-carriage hardening
 
 **Objective**
-- Freeze how the isolated opening-position domains travel through DMP v2 packets, preserving shell versus payload, lineage, and downstream reader ranking.
+- Capture how the isolated opening-position domains travel through DMP v2, freezing shell-versus-payload law, authoritative block kinds, and the lineage needed for later receipt persistence.
 
 **Families executed**
-- `dmp_v2_carriage__domain_packet_shell_and_object_payload_split`
-- `dmp_v2_carriage__lineage_identity_and_receipt_linkage`
+- `dmp_v2_domain_carriage__shell_payload_and_lineage_freeze`
+- `dmp_v2_domain_carriage__consumer_permissions_and_overlap_capture`
 
 **Definition of done**
-- a DMP v2 packet-ownership map is frozen for the isolated domains
-- shell-versus-payload rules are explicit
-- packet identity, lineage, and receipt linkage fields are frozen for later persistence
+- shell-versus-payload law is explicit for the isolated domains
+- packet identity and lineage fields needed for persistence are explicit
+- consumer permissions and prohibited shortcuts are explicit
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate233_dmp_v2_domain_carriage_hardening.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py tests/test_gate54_dmp_binding_surface.py tests/test_gate56_58_dmp_promotion.py tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py`
+- `pytest -q tests/test_dmp_v2_protocol.py tests/test_execution_review_runtime.py`
+
 
 ### Gate 234: Recommendation ledger and receipt-history foundation extension
 
 **Objective**
-- Extend database and execution-record planning so every opening-position recommendation pass is preserved as first-class receipt history without creating a same-pass loop.
+- Capture the persistence side of opening-position work so every 30-second pass can be recorded as a first-class receipt, linked back to the serial candidate, parallel-risk context, CDA outcome, and DMP lineage without creating a same-pass loop.
 
 **Families executed**
-- `recommendation_ledger__opening_position_receipt_extension`
-- `receipt_history_foundation__observational_meta_state_only`
+- `recommendation_ledger__per_pass_receipt_schema_and_linkage_freeze`
+- `receipt_history_foundation__observational_meta_state_non_loop_law`
 
 **Definition of done**
-- current execution-record surfaces are audited against recommendation receipt needs
-- the new recommendation-ledger schema and linkage fields are explicit
-- receipt-history derived meta-state is observational-only and not same-pass feedback
+- a per-pass receipt schema is explicit
+- linkage among serial candidate, parallel-risk context, CDA decision, and DMP lineage is explicit
+- receipt-history derivatives are observational-only at this phase
 
 **Minimum proof slice**
 - `pytest -q tests/test_gate234_recommendation_ledger_and_receipt_history_foundation.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_gate140_execution_ledger_alembic_parity.py tests/test_gate169_calibration_metadata_and_receipts.py tests/test_execution_review_runtime.py tests/test_gate190_capital_deployment_authority_integration.py`
+- `pytest -q tests/test_gate169_calibration_metadata_and_receipts.py tests/test_execution_review_runtime.py`
+
 
 ### Gate 235: Cross-flow opening-position harness, planning guards, and pack closeout
 
 **Objective**
-- Close the planning pack with one lawful top-to-bottom opening-position proof route, planning guard tests, deterministic execution order, and honest draft closeout.
+- Capture one lawful top-to-bottom opening-position route across the provisional buckets, freeze the later execution order and planning guards, and close the pack honestly with explicit deferred work still outside scope.
 
 **Families executed**
-- `opening_position_flow_harness__top_to_bottom_proof_route`
-- `planning_governance__pack_guard_and_closeout_truth`
+- `opening_position_cross_flow__bounded_route_and_stop_line_freeze`
+- `planning_guards__execution_order_and_pack_closeout`
 
 **Definition of done**
-- one top-to-bottom opening-position flow proof route is explicit
-- pack-local planning guard tests and later valid-state rules are named
-- the pack closes honestly as draft activation-ready planning material with Phase 2 holds still explicit
+- one bounded top-to-bottom opening-position route is explicit
+- the stop-lines between domains are explicit
+- later execution order and planning guards are explicit
+- deferred Phase 2 items remain explicit at closeout
 
 **Minimum proof slice**
-- `pytest -q tests/test_gate235_opening_position_flow_harness_and_pack_closeout.py tests/test_planning_state_integrity.py`
-- `pytest -q tests/test_execution_review_runtime.py tests/test_temporal_context_runtime.py tests/test_posture_risk_and_playbook.py tests/test_dmp_v2_protocol.py tests/test_gate190_capital_deployment_authority_integration.py`
+- `pytest -q tests/test_gate235_cross_flow_harness_and_pack_closeout.py tests/test_planning_state_integrity.py`

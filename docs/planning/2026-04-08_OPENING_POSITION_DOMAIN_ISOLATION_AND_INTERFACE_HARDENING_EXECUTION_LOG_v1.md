@@ -158,3 +158,11 @@ No receipts yet.
 ## Gate 235 receipts
 
 No receipts yet.
+
+
+## Post-Gate 226 planning-refinement note
+
+- Later-gate descriptions and leaves were rewritten after Gate 226 closeout so the pack now uses variable leaf counts and gate-specific leaf intent rather than a repeated five-leaf generic template.
+- This refinement does **not** activate Gate 227 or later gates.
+- The pack now treats later gates as provisional analytical buckets first: current scripts may appear in more than one gate while authority ownership remains unsettled.
+- Gate 226 receipts remain unchanged and truthful.
