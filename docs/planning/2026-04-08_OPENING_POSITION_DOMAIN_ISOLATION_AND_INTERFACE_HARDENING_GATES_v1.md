@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1
 
-Status: active planning pack for Gates 226-235. Gate 233 is complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`; Gate 234 is not yet activated.
+Status: active planning pack for Gates 226-235. Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`; Gate 235 is not yet activated.
 Version: v1.7
 
 ## Purpose
@@ -396,6 +396,14 @@ This pack does **not** replace the seven-stage serial spine. It isolates the dom
 **Minimum proof slice**
 - `pytest -q tests/test_gate234_recommendation_ledger_and_receipt_history_foundation.py tests/test_planning_state_integrity.py`
 - `pytest -q tests/test_gate169_calibration_metadata_and_receipts.py tests/test_execution_review_runtime.py`
+
+**Gate 234 captured facts**
+- the checked-in persistence primitives remain the execution-record tables and payloads already exposed in repo doctrine and source: `module_signal_event`, `module_veto_event`, `risk_block_event`, `order_intent`, `order_event`, `fill_event`, `position_snapshot`, `position_instance_snapshot`, `capital_state_snapshot`, and `daily_pnl_report`.
+- no first-class per-pass opening-position recommendation ledger table exists yet in the checked-in models or execution-record service, so this gate freezes the attachment seam and schema law rather than pretending the ledger is already implemented.
+- `ExecutionRecordsService` is the current persistence attachment seam because it already records signal, veto, risk-block, paper-order, position, and capital-state events without recalculating upstream cognition.
+- current lineage keys already exist upstream for later receipt binding: runtime emits `review_packet_id`, `decision_packet_id`, ordered packet lineage, and `stage_packet_ids`, while review surfaces already carry `parallel_risk_lane_summary` and `capital_deployment_authority` for one-pass reconstruction.
+- receipt-history derivatives are frozen here as observational-only Phase 1 surfaces: they may summarise persistence, veto repetition, and non-action patterns later, but they may not become same-pass feedback inputs.
+- current provisional overlap surfaces remain `db/models.py`, `schemas/execution_records.py`, `schemas/cognition.py`, `schemas/calibration.py`, `execution_records.py`, `cognition_runtime.py`, and `review_explanation.py` because later recommendation receipts will bind across those surfaces without proving final exclusive ownership yet.
 
 
 ### Gate 235: Cross-flow opening-position harness, planning guards, and pack closeout

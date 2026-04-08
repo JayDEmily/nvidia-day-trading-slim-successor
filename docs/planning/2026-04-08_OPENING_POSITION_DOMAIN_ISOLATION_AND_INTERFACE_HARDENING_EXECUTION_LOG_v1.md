@@ -1,6 +1,6 @@
 # 2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1
 
-Status: active execution log for the opening-position domain-isolation pack. Gate 233 is complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`; Gate 234 is not yet activated.
+Status: active execution log for the opening-position domain-isolation pack. Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`; Gate 235 is not yet activated.
 
 ## Purpose
 
@@ -47,7 +47,7 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 - Gate 231 — coefficient control-plane isolation and owner-stage / activation-state hardening (complete on `work/gate-231-coefficient-control-plane-isolation-20260408`)
 - Gate 232 — Independent Parallel Risk Lane clean-room planning restart (complete on `work/gate-232-parallel-risk-lane-clean-room-restart-20260408`)
 - Gate 233 — DMP v2 packet-shell and domain-carriage hardening (complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408`)
-- Gate 234 — recommendation ledger and receipt-history foundation extension
+- Gate 234 — recommendation ledger and receipt-history foundation extension (complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`)
 - Gate 235 — cross-flow opening-position harness, planning guards, and pack closeout
 
 ## Gate 226 receipts
@@ -741,7 +741,53 @@ Gate 226 satisfied the routing quartet on `work/gate-226-pack-bootstrap-and-rout
 
 ## Gate 234 receipts
 
-No receipts yet.
+### LEAF-G234-001
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-001`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `Gate 234 now records the current execution-record and packet-lineage surfaces that later recommendation receipts must bind to.`
+- receipt recorded: `live during Gate 234 execution`
+
+### LEAF-G234-002
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-002`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `The gate freezes a per-pass opening-position recommendation receipt schema as planned law only; it does not claim the table already exists in code.`
+- receipt recorded: `live during Gate 234 execution`
+
+### LEAF-G234-003
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-003`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `Linkage law is now explicit across serial candidate, parallel-risk context, CDA outcome, and packet lineage ids.`
+- receipt recorded: `live during Gate 234 execution`
+
+### LEAF-G234-004
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-004`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `Receipt-history derivatives remain observational-only and may not become same-pass feedback.`
+- receipt recorded: `live during Gate 234 execution`
+
+### LEAF-G234-005
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-005`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `Persistence overlap surfaces are recorded provisionally across db, schemas, runtime, review, and execution-record services.`
+- receipt recorded: `live during Gate 234 execution`
+
+### LEAF-G234-006
+- gate id: `Gate 234`
+- leaf id: `LEAF-G234-006`
+- branch name: `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408`
+- note: `Gate 234 closed as persistence-law freezing only and left Gate 235 unopened.`
+- receipt recorded: `live during Gate 234 execution`
+
+## Gate 234 closeout proof
+
+- gate-local proof: `3 passed in 0.46s`
+- bounded anchor slice: `12 passed in 3.47s`
+- closeout state: `active pack remains routed; Gate 234 complete on work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408; Gate 235 not yet activated`
 
 ## Gate 235 receipts
 

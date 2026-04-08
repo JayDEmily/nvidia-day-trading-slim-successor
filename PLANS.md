@@ -65,7 +65,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Current state
 
-- active pack is the opening-position domain isolation and interface hardening pack; Gate 233 is complete on `work/gate-233-dmp-v2-domain-carriage-hardening-20260408` and Gate 234 is not yet activated
+- active pack is the opening-position domain isolation and interface hardening pack; Gate 234 is complete on `work/gate-234-recommendation-ledger-and-receipt-history-foundation-20260408` and Gate 235 is not yet activated
 - latest closed pack retained as evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
 - latest closed predecessor evidence is the slim active-repo cutover and substantive test-audit bootstrap pack closed through Gate 221 on `work/gate-221-successor-proof-slice-and-handoff-20260406`
 
