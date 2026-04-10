@@ -17,7 +17,7 @@ If documents disagree, use this order:
 7. `docs/05_GUARDRAILS.md`
 8. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 9. `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
-10. `docs/TESTING_AND_PROMOTION.md`
+10. `docs/08_TESTING_AND_PROMOTION.md`
 11. repo-root `PLANS.md`
 12. dated execution plans under `docs/planning/`
 13. `AGENTS.md`

@@ -88,7 +88,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_EVIDENCE_BASELINE_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SCOPE_NOTE_v1.md"
@@ -175,7 +175,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
       ],
@@ -231,7 +231,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing the planning bootstrap honestly before any repair gate opens.",
@@ -297,7 +297,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md"
       ],
       "workflow_intent_assertion": "Preserve granularity by closing only the planning bootstrap gate, not the later repair gates.",
@@ -354,7 +354,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -434,7 +434,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -491,7 +491,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -546,7 +546,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -608,7 +608,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -671,7 +671,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -731,7 +731,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -792,7 +792,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -854,7 +854,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -934,7 +934,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -990,7 +990,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1048,7 +1048,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1111,7 +1111,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1173,7 +1173,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1234,7 +1234,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1293,7 +1293,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1352,7 +1352,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1410,7 +1410,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1468,7 +1468,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1537,7 +1537,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1597,7 +1597,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1651,7 +1651,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
@@ -1711,7 +1711,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1774,7 +1774,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1832,7 +1832,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1886,7 +1886,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -1941,7 +1941,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2005,7 +2005,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2064,7 +2064,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2118,7 +2118,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2172,7 +2172,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2225,7 +2225,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],
@@ -2283,7 +2283,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_GATES_v1.md",
         "docs/planning/2026-04-04_PHASE3_MAIN_TARGET_REPAIR_PROGRAM_SOURCE_TRUTH_MATRIX_v1.md"
       ],

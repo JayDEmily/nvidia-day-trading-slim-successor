@@ -12,7 +12,7 @@ Declare the frozen and live control surfaces checked while activating the bounde
 - [x] `docs/04_TECHNICAL_ARCHITECTURE.md`
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 
 ## Live routing surfaces checked

@@ -19,13 +19,13 @@ Status: closed execution log retained as evidence. Closed through Gate 254 in th
 
 - workflow-bundle `repo_updates/AGENTS.md` sha256: `505e49bc7e6eb5f03912e8a4d843a5ea671fcb669e1e50cafdce3aca922b0011`
 - preserved repo-root `AGENTS.md` sha256 after Gate 254: `2ea30b3ee36ba778d71262dafd4c5b14ce684099c860474891ae3e2754a514a3`
-- observed result: the workflow-bundle `AGENTS.md` was not applied because it would regress the later Gate 253 restoration of `docs/TESTING_AND_PROMOTION.md` into the live read stack
+- observed result: the workflow-bundle `AGENTS.md` was not applied because it would regress the later Gate 253 restoration of `docs/08_TESTING_AND_PROMOTION.md` into the live read stack
 - recorded note: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_CONTRADICTION_REPORT_v1.md`
 
 ### Workflow-law/template-pack refresh receipt
 
 - updated `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` sha256 after Gate 254: `024fea2202311045803e7d772f2304feb9bbae40763e30dd15c87c604c8e3505`
-- observed result: `docs/06` now carries the controlled-continuity additions while still naming `docs/TESTING_AND_PROMOTION.md` as live authority
+- observed result: `docs/06` now carries the controlled-continuity additions while still naming `docs/08_TESTING_AND_PROMOTION.md` as live authority
 - observed result: the tranche briefing template pack now includes the 2026-04-06 template generation and continuity worked example while retaining the older template generation as historical/reference material
 
 ### Targeted bounded proof

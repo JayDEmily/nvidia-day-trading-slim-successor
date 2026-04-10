@@ -36,7 +36,7 @@ Out of scope:
 - `docs/05_GUARDRAILS.md`
 - `AGENTS.md`
 - `PLANS.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md`
 - `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md`
 - `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json`

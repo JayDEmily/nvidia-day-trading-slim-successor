@@ -24,7 +24,7 @@ In scope:
 
 Out of scope:
 - reopening or rerouting the source/archive repo;
-- inventing new runtime architecture or packet law not already governed by `docs/01_NORMATIVE.md`, `docs/03_DOMAIN_MODEL.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, and `docs/TESTING_AND_PROMOTION.md`;
+- inventing new runtime architecture or packet law not already governed by `docs/01_NORMATIVE.md`, `docs/03_DOMAIN_MODEL.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, and `docs/08_TESTING_AND_PROMOTION.md`;
 - broad blind repo-wide test execution by default;
 - creating a second cleanup pack merely to finish work this pack already classifies;
 - pretending classification work still needs to happen before execution begins.
@@ -43,7 +43,7 @@ Frozen doctrine and process inputs:
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
 - `AGENTS.md`
 

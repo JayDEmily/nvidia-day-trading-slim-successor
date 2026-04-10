@@ -45,7 +45,7 @@ Frozen doctrine and process inputs:
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
 
@@ -94,7 +94,7 @@ This pack therefore establishes the successor repo as a truthful live execution 
 ## Retain / retire-from-authority / amend / add matrix
 
 ### Retain as canonical in the successor repo
-- the frozen doctrine stack (`docs/01` through `docs/06`, `docs/TESTING_AND_PROMOTION.md`)
+- the frozen doctrine stack (`docs/01` through `docs/06`, `docs/08_TESTING_AND_PROMOTION.md`)
 - `AGENTS.md`
 - `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
 - repo-root `PLANS.md`

@@ -31,7 +31,7 @@ This corrective pack starts at **Gate 80** and exists only because the code audi
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `PLANS.md`
 - `AGENTS.md`
 - `docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md`

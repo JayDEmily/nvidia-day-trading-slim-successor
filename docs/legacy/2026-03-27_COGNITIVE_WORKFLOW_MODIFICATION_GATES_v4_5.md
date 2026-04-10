@@ -35,7 +35,7 @@ This gate pack is the canonical successor to the completed cognitive-workflow tr
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_UPDATE.md`
 - `docs/planning/2026-03-26_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md`

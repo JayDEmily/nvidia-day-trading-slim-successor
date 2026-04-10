@@ -15,7 +15,7 @@ Name the frozen and live control surfaces that were checked before drafting the 
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 - [x] `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 - [x] repo-root `PLANS.md`
 - [x] `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`

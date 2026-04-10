@@ -668,7 +668,7 @@
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
         "docs/04_TECHNICAL_ARCHITECTURE.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf defines the Gate 243 proof boundary so schema/model completeness is separated from later runtime and persistence non-interference work.",
       "vocabulary_terms_checked": [
@@ -676,11 +676,11 @@
       ],
       "repo_surfaces": [
         "tests/",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md"
       ],
       "inputs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "tests/test_gate183_option_surface_raw_contract.py"
       ],
       "ordered_actions": [
@@ -707,7 +707,7 @@
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ]
     },
     {
@@ -984,7 +984,7 @@
         "docs/04_TECHNICAL_ARCHITECTURE.md",
         "src/nvda_desk/services/chain_to_cognition.py",
         "src/nvda_desk/services/market_state.py",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf defines the minimum runtime-proof slice needed before persistence and non-interference work can proceed.",
       "vocabulary_terms_checked": [
@@ -993,7 +993,7 @@
       ],
       "repo_surfaces": [
         "tests/",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "inputs": [
         "tests/test_options_flow_context.py",
@@ -1024,7 +1024,7 @@
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ]
     },
     {
@@ -1045,7 +1045,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the first stateful write boundary and keeps the observational lane separate from recommendation or allocator stores.",
       "vocabulary_terms_checked": [
@@ -1107,7 +1107,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf isolates observational-lane failures from desk-cognition authority, preventing silent behavioural drift under database faults.",
       "vocabulary_terms_checked": [
@@ -1166,7 +1166,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the core safety proof for the tranche: observational capture must not alter recommendation or fresh-capital authority.",
       "vocabulary_terms_checked": [
@@ -1206,7 +1206,7 @@
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ]
     },
     {
@@ -1227,7 +1227,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf proves the lane writes usable observational history rather than only transient in-memory objects.",
       "vocabulary_terms_checked": [
@@ -1286,7 +1286,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf protects the architecture brief's core promise that the lane remains adjacent to the stack rather than inside the stage grammar.",
       "vocabulary_terms_checked": [
@@ -1348,7 +1348,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
       ],
       "workflow_intent_assertion": "This leaf defines the bounded acceptance anchor for the new lane and prevents premature scenario-matrix expansion.",
@@ -1358,10 +1358,10 @@
       "repo_surfaces": [
         "tests/",
         "fixtures/",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "inputs": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "ordered_actions": [
         "Choose one admitted fixture/replay path that already exercises Options and Flow Context meaningfully.",
@@ -1387,7 +1387,7 @@
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ]
     },
     {
@@ -1408,7 +1408,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
       ],
       "workflow_intent_assertion": "This leaf turns the architecture brief's capture requirements into explicit acceptance checks.",
@@ -1467,7 +1467,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
       ],
       "workflow_intent_assertion": "This leaf keeps closeout truthful and prevents the new pack from lingering in an ambiguous partially closed state.",
@@ -1532,7 +1532,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
       ],
       "workflow_intent_assertion": "This leaf freezes the end-of-tranche proof so execution cannot substitute a broad but irrelevant test run for the required acceptance checks.",
@@ -1542,11 +1542,11 @@
       ],
       "repo_surfaces": [
         "tests/",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md"
       ],
       "inputs": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "ordered_actions": [
         "List the exact final bounded pytest slice covering schema/model, runtime tap, persistence, non-interference, and replay closeout.",
@@ -1572,7 +1572,7 @@
       "full_suite_required": false,
       "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
       "document_touch_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ]
     },
     {

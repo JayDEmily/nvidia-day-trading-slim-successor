@@ -45,7 +45,7 @@ Out of scope:
 - `AGENTS.md`
 - `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `alembic/versions/20260320_0005_second_wave_records.py`
 - `src/nvda_desk/db/models.py`
 - `src/nvda_desk/schemas/execution_records.py`

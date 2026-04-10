@@ -10,7 +10,7 @@ Integrate the available workflow docs refresh bundle into the prepared handoff w
 
 In scope:
 - reconcile the available workflow docs refresh bundle against the prepared Gate 253 workspace state;
-- preserve repo-root `AGENTS.md` from Gate 253 because it is later authority and includes the restored `docs/TESTING_AND_PROMOTION.md` read-stack requirement;
+- preserve repo-root `AGENTS.md` from Gate 253 because it is later authority and includes the restored `docs/08_TESTING_AND_PROMOTION.md` read-stack requirement;
 - merge the workflow-law continuity additions into `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` without removing the later checkpoint-integrity/testing-doctrine authority;
 - refresh `docs/planning/tranche_briefing_template_pack/` with the 2026-04-06 template generation and continuity worked example;
 - update the affected template-pack test coverage and add a bounded Gate 254 reconciliation test;
@@ -39,7 +39,7 @@ Frozen doctrine and process:
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
@@ -69,7 +69,7 @@ Prior in-repo authority that remains later than the workflow bundle:
 
 **Definition of done**
 - repo-root `AGENTS.md` remains the later Gate 253 version and is not overwritten by the older workflow bundle;
-- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` carries the controlled-continuity additions while still naming `docs/TESTING_AND_PROMOTION.md` as live authority;
+- `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md` carries the controlled-continuity additions while still naming `docs/08_TESTING_AND_PROMOTION.md` as live authority;
 - the tranche briefing template pack includes the 2026-04-06 template generation and continuity worked example;
 - bounded workflow-law/template-pack tests are green;
 - repo-root `PLANS.md`, the canonical gate map, the leaf ledger, and the execution log agree that the pack is closed through Gate 254 with no active pack routed;

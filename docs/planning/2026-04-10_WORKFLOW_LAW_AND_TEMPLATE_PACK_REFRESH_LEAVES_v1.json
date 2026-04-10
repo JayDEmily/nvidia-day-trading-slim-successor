@@ -41,7 +41,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "AGENTS.md",
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
@@ -79,14 +79,14 @@
       "ordered_actions": [
         "Inspect the available workflow docs refresh bundle and record the AGENTS contradiction against the later Gate 253 state before mutating repo surfaces.",
         "Preserve repo-root AGENTS.md from Gate 253 unchanged.",
-        "Merge the workflow-bundle continuity additions into docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md while preserving docs/TESTING_AND_PROMOTION.md authority.",
+        "Merge the workflow-bundle continuity additions into docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md while preserving docs/08_TESTING_AND_PROMOTION.md authority.",
         "Refresh the tranche briefing template pack to the 2026-04-06 template generation and continuity example.",
         "Update bounded workflow-law/template-pack tests and add a Gate 254 reconciliation test.",
         "Update PLANS.md, the canonical gate map, the leaves ledger, the execution log, the contradiction report, and CHANGELOG.jsonl together, then package the prepared repo handoff for Codex."
       ],
       "forbidden_actions": [
         "Do not overwrite repo-root AGENTS.md with the older workflow-bundle AGENTS file.",
-        "Do not remove docs/TESTING_AND_PROMOTION.md from live process-law or read-stack authority.",
+        "Do not remove docs/08_TESTING_AND_PROMOTION.md from live process-law or read-stack authority.",
         "Do not widen Gate 254 into runtime/schema/data mutation."
       ],
       "validation_commands": [
@@ -126,7 +126,7 @@
   "state_invariants": [
     "No active pack is routed after Gate 254 closeout.",
     "Repo-root AGENTS.md remains the later Gate 253 file.",
-    "docs/06 retains docs/TESTING_AND_PROMOTION.md authority while carrying the continuity additions.",
+    "docs/06 retains docs/08_TESTING_AND_PROMOTION.md authority while carrying the continuity additions.",
     "The 2026-04-06 template-pack generation is available for future planning threads."
   ]
 }

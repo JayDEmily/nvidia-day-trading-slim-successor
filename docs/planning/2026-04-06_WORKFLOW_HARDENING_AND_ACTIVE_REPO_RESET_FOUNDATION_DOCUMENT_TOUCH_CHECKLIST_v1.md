@@ -51,7 +51,7 @@ Declare the live and frozen control surfaces that were checked before the tranch
 - [x] active gates master for this tranche
 - [x] contradiction report for this tranche
 - [x] scope note for this tranche
-- [ ] `docs/TESTING_AND_PROMOTION.md` — amend only if proof-order doctrine genuinely changes
+- [ ] `docs/08_TESTING_AND_PROMOTION.md` — amend only if proof-order doctrine genuinely changes
 - [ ] `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json` — amend only if a new governed term is admitted
 - [ ] `docs/03_DOMAIN_MODEL.md` — amend only if later gates discover a packet/contract boundary defect
 - [x] `README.md`

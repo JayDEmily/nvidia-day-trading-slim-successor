@@ -91,7 +91,7 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "AGENTS.md",
         "PLANS.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md"
       ],
@@ -427,7 +427,7 @@
         "LEAF-G218-002"
       ],
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md"
       ],
       "workflow_intent_assertion": "This leaf creates the canonical slim-repo test baseline that Gate 220 will judge.",
@@ -482,7 +482,7 @@
         "LEAF-G219-001"
       ],
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md"
@@ -496,7 +496,7 @@
       ],
       "repo_surfaces": [
         "tests/",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
       ],
       "inputs": [
@@ -547,7 +547,7 @@
         "LEAF-G219-002"
       ],
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
         "source repo docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_REDUNDANCY_AND_COVERAGE_STRENGTHENING_RULES_v1.md",
         "source repo docs/planning/2026-04-05_TARGET_REPO_EVIDENCE_SEMANTIC_REVIEW_AND_DISAGREEMENT_MEMORY_RULES_v1.md"
@@ -603,7 +603,7 @@
         "LEAF-G220-001"
       ],
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
       ],
@@ -667,7 +667,7 @@
       ],
       "authority_docs": [
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md"
       ],
       "workflow_intent_assertion": "This leaf makes the next pack executable without re-planning the audit logic from scratch.",

@@ -29,11 +29,12 @@ Read these in order:
 4. `docs/04_TECHNICAL_ARCHITECTURE.md`
 5. `docs/05_GUARDRAILS.md`
 6. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-7. `docs/TESTING_AND_PROMOTION.md`
-8. repo-root `PLANS.md`
-9. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-10. the active planning artefacts named by `PLANS.md`, if an active pack exists
-11. `AGENTS.md` for stable repo-behaviour rules only
+7. `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md` when work touches runtime ownership, compatibility carriage, or downstream runtime readers
+8. `docs/08_TESTING_AND_PROMOTION.md`
+9. repo-root `PLANS.md`
+10. `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
+11. the active planning artefacts named by `PLANS.md`, if an active pack exists
+12. `AGENTS.md` for stable repo-behaviour rules only
 
 `README.md` is onboarding context, not the live planning router. Completed predecessor packs may remain under `docs/planning/` as implementation evidence, but repo-root `PLANS.md` decides which planning artefacts are active. Historical design drafts and archived milestone artefacts live in `docs/legacy/`. Build-status notes live in `docs/status/`. Machine-readable repo history lives in `CHANGELOG.jsonl`.
 

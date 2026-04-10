@@ -53,7 +53,7 @@ Gate 219 may use the pre-decision placeholder `pending_gate_220_decision` while 
 ## Classification rules
 
 ### 1. Testing doctrine first
-Classify against `docs/TESTING_AND_PROMOTION.md` bug-surface and phase law before using file-name heuristics.
+Classify against `docs/08_TESTING_AND_PROMOTION.md` bug-surface and phase law before using file-name heuristics.
 
 ### 2. Runtime authority first
 If a test touches runtime surface ownership or compatibility-carriage law, classify it against the adopted `07` ledger plus `docs/03_DOMAIN_MODEL.md`.
@@ -498,7 +498,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "decision_outcome": "keep_but_retarget_authority",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/03_DOMAIN_MODEL.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
     ],
@@ -598,7 +598,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "decision_outcome": "keep_as_is",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "fixtures/",
       "config/",
       "data/",
@@ -849,7 +849,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "decision_outcome": "keep_but_retarget_authority",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "replay and compare services under src/",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when replay reads preserved ownership seams"
     ],
@@ -862,7 +862,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
       "historical comparison workflows"
     ],
     "evidence_anchor": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
       "tests/test_gate127_replay_coefficient_visibility.py",
       "tests/test_replay_compare_runtime.py"
@@ -891,7 +891,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "decision_outcome": "retire_duplicate",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "replay and compare services under src/",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when replay reads preserved ownership seams"
     ],
@@ -906,7 +906,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "evidence_anchor": [
       "tests/test_research_eval_replay.py",
       "tests/test_research_replay.py",
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "tests/test_replay_compare_runtime.py"
     ],
     "disagreement_state": "resolved_with_memory",
@@ -954,7 +954,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
       "docs/03_DOMAIN_MODEL.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
       "review and trace schemas and services under src/",
-      "docs/TESTING_AND_PROMOTION.md"
+      "docs/08_TESTING_AND_PROMOTION.md"
     ],
     "runtime_owner_or_planning_owner": [
       "review explanation and trace surfaces",
@@ -999,7 +999,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
       "docs/03_DOMAIN_MODEL.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
       "review and trace schemas and services under src/",
-      "docs/TESTING_AND_PROMOTION.md"
+      "docs/08_TESTING_AND_PROMOTION.md"
     ],
     "runtime_owner_or_planning_owner": [
       "review explanation and trace surfaces",
@@ -1211,7 +1211,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "decision_outcome": "keep_as_is",
     "authoritative_inputs": [
       "docs/03_DOMAIN_MODEL.md",
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when scenario assertions depend on ownership or seam law",
       "live service implementations under src/"
     ],
@@ -1226,7 +1226,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "evidence_anchor": [
       "docs/03_DOMAIN_MODEL.md",
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "tests/test_gate96_canonical_runtime_harness.py",
       "tests/test_posture_risk_and_playbook.py"
     ],
@@ -1353,7 +1353,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "bug_surface_class": "compatibility carriage and preserved read-shape wrapper drift",
     "testing_phase_alignment": "compatibility wrapper and downstream reader guard coverage",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/03_DOMAIN_MODEL.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
     ],
@@ -1419,7 +1419,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "bug_surface_class": "fixture, import, reference-data, and ingress data-path drift",
     "testing_phase_alignment": "data-path and fixture integrity coverage",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "fixtures/",
       "config/",
       "data/",
@@ -1565,7 +1565,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "bug_surface_class": "replay, historical comparison, and regression-detection drift",
     "testing_phase_alignment": "replay regression coverage",
     "authoritative_inputs": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "replay and compare services under src/",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when replay reads preserved ownership seams"
     ],
@@ -1584,7 +1584,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     ],
     "decision_outcome": "pending_gate_220_decision",
     "evidence_anchor": [
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
       "tests/test_replay_compare_runtime.py",
       "tests/test_research_replay.py"
@@ -1635,7 +1635,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
       "docs/03_DOMAIN_MODEL.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
       "review and trace schemas and services under src/",
-      "docs/TESTING_AND_PROMOTION.md"
+      "docs/08_TESTING_AND_PROMOTION.md"
     ],
     "runtime_owner_or_planning_owner": [
       "review explanation and trace surfaces",
@@ -1702,7 +1702,7 @@ Gate 220 freezes classification and next action only. A decision row may name ar
     "testing_phase_alignment": "runtime scenario coverage",
     "authoritative_inputs": [
       "docs/03_DOMAIN_MODEL.md",
-      "docs/TESTING_AND_PROMOTION.md",
+      "docs/08_TESTING_AND_PROMOTION.md",
       "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md when scenario assertions depend on ownership or seam law",
       "live service implementations under src/"
     ],

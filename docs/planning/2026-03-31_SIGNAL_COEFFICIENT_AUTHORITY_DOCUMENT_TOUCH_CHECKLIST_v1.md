@@ -36,7 +36,7 @@ Declare the frozen and live control surfaces checked while activating the Gate 1
 - [x] `docs/planning/2026-03-31_SIGNAL_COEFFICIENT_AUTHORITY_EXECUTION_LOG_v1.md`
 - [x] `config/README.md` because Gate 123 may add a governed authority file and must distinguish it from legacy example config
 - [x] `docs/03_DOMAIN_MODEL.md` because Gates 123-127 are packet-sensitive by default
-- [x] `docs/TESTING_AND_PROMOTION.md` if proof order changes during execution
+- [x] `docs/08_TESTING_AND_PROMOTION.md` if proof order changes during execution
 - [ ] vocabulary authority unchanged at planning time
 
 ## Notes

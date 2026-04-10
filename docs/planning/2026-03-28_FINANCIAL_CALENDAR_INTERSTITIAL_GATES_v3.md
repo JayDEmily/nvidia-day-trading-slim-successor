@@ -39,7 +39,7 @@ This v3 pack fixes those defects.
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `PLANS.md`
 - `AGENTS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`

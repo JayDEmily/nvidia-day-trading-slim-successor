@@ -192,7 +192,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the proof-order boundary. It freezes what is already red before coefficient authority work lands so later gates can separate inherited drift from new regressions.",
       "vocabulary_terms_checked": [
@@ -386,7 +386,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the authority-validation boundary. It prevents invalid coefficient metadata from reaching runtime consumers.",
       "vocabulary_terms_checked": [
@@ -574,7 +574,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the runtime-regression boundary. It proves the source-of-truth move is clean before review or temporal threshold work starts.",
       "vocabulary_terms_checked": [
@@ -758,7 +758,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the parity boundary across the admitted canonical paths.",
       "vocabulary_terms_checked": [
@@ -940,7 +940,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the threshold-edge proof boundary for Step 1 temporal authority.",
       "vocabulary_terms_checked": [
@@ -1064,7 +1064,7 @@
         "PLANS.md",
         "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
         "docs/03_DOMAIN_MODEL.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf sits at the closeout boundary. It is the only leaf allowed to declare the pack closed.",
       "vocabulary_terms_checked": [

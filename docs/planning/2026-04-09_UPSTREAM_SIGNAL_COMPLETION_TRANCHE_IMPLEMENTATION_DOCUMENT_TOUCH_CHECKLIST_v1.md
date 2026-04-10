@@ -9,7 +9,7 @@ Status: closeout-reconciled checklist retained as evidence under the upstream tr
 - [x] `docs/04_TECHNICAL_ARCHITECTURE.md`
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 
 ## Live router and planning surfaces read before drafting

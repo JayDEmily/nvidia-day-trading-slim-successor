@@ -43,7 +43,7 @@ Status: Gates 132-134 complete; no active gate
 - gate id: Gate 133
 - leaf id: LEAF-G133-001
 - branch: `work/gate-133-bounded-trace-review-regime-20260331`
-- files touched: `docs/TESTING_AND_PROMOTION.md`
+- files touched: `docs/08_TESTING_AND_PROMOTION.md`
 - validation command: `PYTHONPATH=src pytest -q tests/test_gate133_bounded_trace_review_regime.py`
 - observed result: `2 passed`
 - full suite required: no

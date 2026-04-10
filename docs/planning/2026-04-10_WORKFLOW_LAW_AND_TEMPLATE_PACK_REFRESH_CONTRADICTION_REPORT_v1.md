@@ -11,7 +11,7 @@ Observed hashes:
 - workflow-bundle `repo_updates/AGENTS.md`: `505e49bc7e6eb5f03912e8a4d843a5ea671fcb669e1e50cafdce3aca922b0011`
 
 Material behavioural conflict:
-- the later Gate 253 `AGENTS.md` restores `docs/TESTING_AND_PROMOTION.md` into the live read stack and names it as governing testing/promotion doctrine;
+- the later Gate 253 `AGENTS.md` restores `docs/08_TESTING_AND_PROMOTION.md` into the live read stack and names it as governing testing/promotion doctrine;
 - the workflow-bundle `AGENTS.md` drops that restored read-stack item and would therefore regress the later checkpoint-integrity/testing-doctrine authority if applied verbatim.
 
 ## Resolution used in Gate 254
@@ -28,4 +28,4 @@ This is therefore a truthful partial adoption of the workflow docs refresh bundl
 - current Gate 254 merged `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`: `024fea2202311045803e7d772f2304feb9bbae40763e30dd15c87c604c8e3505`
 - raw workflow-bundle `repo_updates/docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`: `0513bedee68ae1b4d26645bfdefc2e3e18a60630ce1010ad508742bd8a7cd538`
 
-The `docs/06` file is intentionally a merged later state rather than a verbatim workflow-bundle replacement because it preserves the later `docs/TESTING_AND_PROMOTION.md` checkpoint-integrity authority while importing the continuity model.
+The `docs/06` file is intentionally a merged later state rather than a verbatim workflow-bundle replacement because it preserves the later `docs/08_TESTING_AND_PROMOTION.md` checkpoint-integrity authority while importing the continuity model.

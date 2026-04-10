@@ -4,7 +4,7 @@ Status: proposed on `testing`; not active on `main` until Gate 94 promotes the p
 
 ## Purpose
 
-Define the bounded testing-module tranche that follows Gate 93. This pack converts the repo's testing doctrine into executable sequential gates, starting with planning/control-surface promotion and Phase 0 closeout, then moving through the ordered testing phases frozen in `docs/TESTING_AND_PROMOTION.md`.
+Define the bounded testing-module tranche that follows Gate 93. This pack converts the repo's testing doctrine into executable sequential gates, starting with planning/control-surface promotion and Phase 0 closeout, then moving through the ordered testing phases frozen in `docs/08_TESTING_AND_PROMOTION.md`.
 
 ## Why this pack exists
 
@@ -37,7 +37,7 @@ Out of scope:
 - `docs/05_GUARDRAILS.md`
 - `AGENTS.md`
 - `PLANS.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md`
 - `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json`
 - `fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json`
@@ -53,7 +53,7 @@ Out of scope:
 
 ## Testing-module authority notes
 
-- `docs/TESTING_AND_PROMOTION.md` is the testing doctrine authority. This gate pack operationalises it; it does not override it.
+- `docs/08_TESTING_AND_PROMOTION.md` is the testing doctrine authority. This gate pack operationalises it; it does not override it.
 - Phase 0 already concluded that the workbook is a doctrine and signal-catalog artefact, not a lawful raw runtime bundle.
 - Later gates may use the checked-in prepared-runtime fixture pack as the canonical deterministic ingress surface where the doctrine explicitly allows prepared-runtime inputs.
 - No gate may claim true raw-ingress coverage until the missing raw truth identified in Phase 0 is supplied.
@@ -105,7 +105,7 @@ It is the first repo-native testing pack whose sole purpose is to tighten eviden
 - Promote the testing doctrine, the testing-module planning pair, and the active-control pointers so the repo has one explicit post-Gate-93 testing authority.
 
 **Definition of done**
-- `docs/TESTING_AND_PROMOTION.md` and the new testing-module planning pair are present on `main`;
+- `docs/08_TESTING_AND_PROMOTION.md` and the new testing-module planning pair are present on `main`;
 - `PLANS.md`, the gate map, the active leaf ledger, and the active execution log all point to the testing-module pack together;
 - anti-drift tests prove Gate 94 is complete and Gate 95 is next.
 

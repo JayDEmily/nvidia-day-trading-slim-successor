@@ -52,7 +52,7 @@ Out of scope:
 - `PLANS.md`
 - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `config/playbook_registry.example.yaml`
 - `src/nvda_desk/schemas/cognition.py`
 - `src/nvda_desk/services/playbook_eligibility.py`

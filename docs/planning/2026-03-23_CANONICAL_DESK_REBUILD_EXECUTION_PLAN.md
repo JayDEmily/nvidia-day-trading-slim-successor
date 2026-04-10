@@ -129,7 +129,7 @@ No recovered item will be silently dropped.
 This gate will reconcile the authority docs before broad build work.
 
 This gate will:
-- audit `docs/01_NORMATIVE.md`, `docs/02_OPERATING_MODEL.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/05_GUARDRAILS.md`, `docs/TESTING_AND_PROMOTION.md`, `README.md`, `AGENTS.md`, and `PLANS.md`;
+- audit `docs/01_NORMATIVE.md`, `docs/02_OPERATING_MODEL.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/05_GUARDRAILS.md`, `docs/08_TESTING_AND_PROMOTION.md`, `README.md`, `AGENTS.md`, and `PLANS.md`;
 - remove conflicts, stale language, and ambiguity;
 - align terminology around module, feature, classifier, overlay, gate, playbook, and review artefact;
 - define mandatory docstring requirements;

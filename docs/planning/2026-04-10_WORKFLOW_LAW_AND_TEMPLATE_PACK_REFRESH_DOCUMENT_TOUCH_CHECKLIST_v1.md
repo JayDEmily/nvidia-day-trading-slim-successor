@@ -12,7 +12,7 @@ Declare the live and frozen control surfaces checked before the workflow-law and
 - [x] `docs/04_TECHNICAL_ARCHITECTURE.md`
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 
 ## Live routing surfaces checked
@@ -42,7 +42,7 @@ Declare the live and frozen control surfaces checked before the workflow-law and
 
 - [x] `repo_updates/AGENTS.md` conflicts materially with the later Gate 253 `AGENTS.md`
 - [x] the contradiction is recorded in `2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_CONTRADICTION_REPORT_v1.md`
-- [x] Gate 254 preserves the later Gate 253 `AGENTS.md` rather than regressing the restored `docs/TESTING_AND_PROMOTION.md` authority
+- [x] Gate 254 preserves the later Gate 253 `AGENTS.md` rather than regressing the restored `docs/08_TESTING_AND_PROMOTION.md` authority
 
 ## If execution proceeds, these surfaces must be amended
 
@@ -71,5 +71,5 @@ Declare the live and frozen control surfaces checked before the workflow-law and
 - [x] `completed_leaf_ids` and `remaining_leaf_ids` are disjoint
 - [x] every referenced leaf id exists in the leaves map
 - [x] `active_gate = none` only when `remaining_leaf_ids` and `pending_gate_ids` are empty
-- [x] controlled continuity additions did not remove `docs/TESTING_AND_PROMOTION.md` from live process-law authority
+- [x] controlled continuity additions did not remove `docs/08_TESTING_AND_PROMOTION.md` from live process-law authority
 - [x] no active pack remains routed after Gate 254 closeout

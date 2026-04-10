@@ -4,7 +4,7 @@ Status: closed reconciliation pack retained as evidence. Closed through Gate 255
 
 ## Purpose
 
-Reconcile the live Git-authoritative repo against the prepared 2026-04-10 handoff tree without importing non-authoritative git history, without replaying fake Gates 236-254 commits, and without silently adopting the prepared `AGENTS.md` that references missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`.
+Reconcile the live Git-authoritative repo against the prepared 2026-04-10 handoff tree without importing non-authoritative git history, without replaying fake Gates 236-254 commits, and without silently adopting the prepared `AGENTS.md` that referenced a missing numbered-08 doctrine path.
 
 ## Scope
 
@@ -17,7 +17,7 @@ In scope:
 
 Out of scope:
 - importing any `.git` history from the prepared handoff;
-- fabricating `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`;
+- fabricating a new numbered doctrine file for GitHub or ChatGPT write-method guidance;
 - silently trimming or partially rewriting the prepared `AGENTS.md`;
 - broad whole-repo validation beyond the bounded blast radius unless a bounded failure forces widening.
 
@@ -31,7 +31,7 @@ Out of scope:
 
 - `docs/01_NORMATIVE.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
@@ -97,7 +97,7 @@ Gate 255 reconciles later prepared workspace truth into the live repo without tr
 
 ## Contradiction scan and state-integrity rules
 
-- Pre-apply scan found one explicit doctrine contradiction only: the prepared `AGENTS.md` references missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`.
+- Pre-apply scan found one explicit doctrine contradiction only: the prepared `AGENTS.md` referenced a missing numbered-08 doctrine path.
 - That contradiction is deferred explicitly rather than auto-resolved.
 - No additional same-file semantic conflict was discovered in the pre-apply overlap scan. The only overlap with the live post-Gate-235 corrective commit was `tests/test_gate134_bounded_trace_reporting.py`, and the prepared change was later-state tolerance rather than competing control-surface truth.
 - Closeout invariants:

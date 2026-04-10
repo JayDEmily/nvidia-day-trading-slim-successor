@@ -58,7 +58,7 @@ Out of scope:
 - `docs/planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md`
 - `docs/planning/2026-04-01_GATE149_ABSOLUTE_ANTI_DRIFT_AUDIT_AND_PACK_CLOSEOUT.md`
 - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `src/nvda_desk/schemas/cognition.py`
 - `src/nvda_desk/services/cognition_runtime.py`
 - `src/nvda_desk/services/posture_risk.py`

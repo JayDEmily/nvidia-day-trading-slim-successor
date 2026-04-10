@@ -29,7 +29,7 @@ If Gate 106 cannot close the successor testing pack honestly from a green repo s
 ## Reading rule
 
 When continuing successor testing work after Gate 105, read in this order:
-1. `docs/TESTING_AND_PROMOTION.md`
+1. `docs/08_TESTING_AND_PROMOTION.md`
 2. this scope note
 3. `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_GATES_v1.md`
 4. `docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_LEAVES_v1.json`
