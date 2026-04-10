@@ -639,6 +639,129 @@
             ]
           }
         },
+        "promoted_regime_packet": {
+          "source_family": "prepared_runtime_live_capture",
+          "source_symbols": [
+            "NVDA"
+          ],
+          "source_vendor": "runtime_capture_missing_external_sources",
+          "observed_at": "2026-03-23T14:02:00Z",
+          "aligned_to_runtime_ts": "2026-03-23T14:02:00Z",
+          "alignment_age_seconds": 0,
+          "alignment_state": "aligned_with_capture_fallbacks",
+          "calendar_owner": "session_clock_fallback",
+          "nvda_return_pct": 0.1727,
+          "nq_return_pct": null,
+          "nq_level": null,
+          "es_return_pct": null,
+          "es_level": null,
+          "sox_return_pct": null,
+          "sox_level": null,
+          "breadth_score": null,
+          "concentration_score": null,
+          "vix_level": null,
+          "vvix_level": null,
+          "us10y": null,
+          "us2y": null,
+          "usdjpy": null,
+          "completeness_state": "regime_core_only",
+          "fallback_notes": [
+            "capture_db_unavailable"
+          ],
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.regime_packet.capture_observed",
+              "timestamp": "2026-03-23T14:02:00Z",
+              "input_snapshot": {
+                "runtime_ts": "2026-03-23T14:02:00+00:00",
+                "bundle_symbol": "NVDA",
+                "calendar_owner_present": false
+              },
+              "output_snapshot": {
+                "source_symbols": [
+                  "NVDA"
+                ],
+                "completeness_state": "regime_core_only",
+                "fallback_notes": [
+                  "capture_db_unavailable"
+                ],
+                "nq_level_present": false,
+                "es_level_present": false,
+                "sox_level_present": false,
+                "vix_level_present": false,
+                "vvix_level_present": false,
+                "us10y_present": false,
+                "us2y_present": false,
+                "usdjpy_present": false
+              }
+            }
+          ]
+        },
+        "participation_baseline_packet": {
+          "observed_at": "2026-03-23T14:02:00Z",
+          "session_bucket_label": "open_drive",
+          "calendar_owner": "session_clock_fallback",
+          "observed_interval_volume_share": 1200000.0,
+          "baseline_interval_volume_share": 1200000.0,
+          "relative_volume_ratio": 1.0,
+          "observed_spread_bps": null,
+          "baseline_spread_bps": null,
+          "observed_trade_count": null,
+          "baseline_trade_count": null,
+          "baseline_available": true,
+          "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.relative_volume_ratio_positive_when_present",
+              "timestamp": "2026-03-23T14:02:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 1.0,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1200000.0,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.available_requires_baseline_volume",
+              "timestamp": "2026-03-23T14:02:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 1.0,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1200000.0,
+                "calendar_owner": "session_clock_fallback"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.proxy_baseline_observed",
+              "timestamp": "2026-03-23T14:02:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 1.0,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1200000.0,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+                "historical_same_bucket_claim": false
+              }
+            }
+          ]
+        },
         "prior_session_return_pct": 0.0,
         "front_expiry": "2026-03-27T20:00:00Z",
         "next_expiry": "2026-04-03T20:00:00Z",
@@ -917,6 +1040,129 @@
             ]
           }
         },
+        "promoted_regime_packet": {
+          "source_family": "prepared_runtime_live_capture",
+          "source_symbols": [
+            "NVDA"
+          ],
+          "source_vendor": "runtime_capture_missing_external_sources",
+          "observed_at": "2026-03-23T14:07:00Z",
+          "aligned_to_runtime_ts": "2026-03-23T14:07:00Z",
+          "alignment_age_seconds": 0,
+          "alignment_state": "aligned_with_capture_fallbacks",
+          "calendar_owner": "session_clock_fallback",
+          "nvda_return_pct": 1.3817,
+          "nq_return_pct": null,
+          "nq_level": null,
+          "es_return_pct": null,
+          "es_level": null,
+          "sox_return_pct": null,
+          "sox_level": null,
+          "breadth_score": null,
+          "concentration_score": null,
+          "vix_level": null,
+          "vvix_level": null,
+          "us10y": null,
+          "us2y": null,
+          "usdjpy": null,
+          "completeness_state": "regime_core_only",
+          "fallback_notes": [
+            "capture_db_unavailable"
+          ],
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.regime_packet.capture_observed",
+              "timestamp": "2026-03-23T14:07:00Z",
+              "input_snapshot": {
+                "runtime_ts": "2026-03-23T14:07:00+00:00",
+                "bundle_symbol": "NVDA",
+                "calendar_owner_present": false
+              },
+              "output_snapshot": {
+                "source_symbols": [
+                  "NVDA"
+                ],
+                "completeness_state": "regime_core_only",
+                "fallback_notes": [
+                  "capture_db_unavailable"
+                ],
+                "nq_level_present": false,
+                "es_level_present": false,
+                "sox_level_present": false,
+                "vix_level_present": false,
+                "vvix_level_present": false,
+                "us10y_present": false,
+                "us2y_present": false,
+                "usdjpy_present": false
+              }
+            }
+          ]
+        },
+        "participation_baseline_packet": {
+          "observed_at": "2026-03-23T14:07:00Z",
+          "session_bucket_label": "open_drive",
+          "calendar_owner": "session_clock_fallback",
+          "observed_interval_volume_share": 980000.0,
+          "baseline_interval_volume_share": 1199951.0224,
+          "relative_volume_ratio": 0.8167,
+          "observed_spread_bps": null,
+          "baseline_spread_bps": null,
+          "observed_trade_count": null,
+          "baseline_trade_count": null,
+          "baseline_available": true,
+          "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.relative_volume_ratio_positive_when_present",
+              "timestamp": "2026-03-23T14:07:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8167,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1199951.0224,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.available_requires_baseline_volume",
+              "timestamp": "2026-03-23T14:07:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8167,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1199951.0224,
+                "calendar_owner": "session_clock_fallback"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.proxy_baseline_observed",
+              "timestamp": "2026-03-23T14:07:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8167,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1199951.0224,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+                "historical_same_bucket_claim": false
+              }
+            }
+          ]
+        },
         "prior_session_return_pct": 0.0,
         "front_expiry": "2026-03-27T20:00:00Z",
         "next_expiry": "2026-04-03T20:00:00Z",
@@ -1194,6 +1440,129 @@
               "front_expiry_total_volume"
             ]
           }
+        },
+        "promoted_regime_packet": {
+          "source_family": "prepared_runtime_live_capture",
+          "source_symbols": [
+            "NVDA"
+          ],
+          "source_vendor": "runtime_capture_missing_external_sources",
+          "observed_at": "2026-03-23T14:12:00Z",
+          "aligned_to_runtime_ts": "2026-03-23T14:12:00Z",
+          "alignment_age_seconds": 0,
+          "alignment_state": "aligned_with_capture_fallbacks",
+          "calendar_owner": "session_clock_fallback",
+          "nvda_return_pct": 1.8135,
+          "nq_return_pct": null,
+          "nq_level": null,
+          "es_return_pct": null,
+          "es_level": null,
+          "sox_return_pct": null,
+          "sox_level": null,
+          "breadth_score": null,
+          "concentration_score": null,
+          "vix_level": null,
+          "vvix_level": null,
+          "us10y": null,
+          "us2y": null,
+          "usdjpy": null,
+          "completeness_state": "regime_core_only",
+          "fallback_notes": [
+            "capture_db_unavailable"
+          ],
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.regime_packet.capture_observed",
+              "timestamp": "2026-03-23T14:12:00Z",
+              "input_snapshot": {
+                "runtime_ts": "2026-03-23T14:12:00+00:00",
+                "bundle_symbol": "NVDA",
+                "calendar_owner_present": false
+              },
+              "output_snapshot": {
+                "source_symbols": [
+                  "NVDA"
+                ],
+                "completeness_state": "regime_core_only",
+                "fallback_notes": [
+                  "capture_db_unavailable"
+                ],
+                "nq_level_present": false,
+                "es_level_present": false,
+                "sox_level_present": false,
+                "vix_level_present": false,
+                "vvix_level_present": false,
+                "us10y_present": false,
+                "us2y_present": false,
+                "usdjpy_present": false
+              }
+            }
+          ]
+        },
+        "participation_baseline_packet": {
+          "observed_at": "2026-03-23T14:12:00Z",
+          "session_bucket_label": "open_drive",
+          "calendar_owner": "session_clock_fallback",
+          "observed_interval_volume_share": 910000.0,
+          "baseline_interval_volume_share": 1089950.8923,
+          "relative_volume_ratio": 0.8349,
+          "observed_spread_bps": null,
+          "baseline_spread_bps": null,
+          "observed_trade_count": null,
+          "baseline_trade_count": null,
+          "baseline_available": true,
+          "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+          "checkpoint_observations": [
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.relative_volume_ratio_positive_when_present",
+              "timestamp": "2026-03-23T14:12:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8349,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1089950.8923,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.available_requires_baseline_volume",
+              "timestamp": "2026-03-23T14:12:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8349,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1089950.8923,
+                "calendar_owner": "session_clock_fallback"
+              }
+            },
+            {
+              "checkpoint_name": "upstream_signal.participation_baseline.proxy_baseline_observed",
+              "timestamp": "2026-03-23T14:12:00Z",
+              "input_snapshot": {
+                "interval_volume_shares_present": true,
+                "relative_volume_ratio": 0.8349,
+                "calendar_owner_present": false,
+                "observed_spread_bps_present": false,
+                "observed_trade_count_present": false
+              },
+              "output_snapshot": {
+                "baseline_available": true,
+                "baseline_interval_volume_share": 1089950.8923,
+                "fallback_state": "proxy_reconstructed_from_relative_volume_ratio_not_historical_same_bucket",
+                "historical_same_bucket_claim": false
+              }
+            }
+          ]
         },
         "prior_session_return_pct": 0.0,
         "front_expiry": "2026-03-27T20:00:00Z",

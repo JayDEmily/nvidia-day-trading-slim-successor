@@ -116,7 +116,7 @@ def test_desk_cognition_runtime_emits_family_specific_execution_plan() -> None:
     assert (
         result.execution.playbook_execution_styles["continuation_ladder"] == "trend_ladder_3_step"
     )
-    assert result.execution.scaling_plan == [11.0, 16.5, 27.5]
+    assert result.execution.scaling_plan == [7.0, 10.5, 17.5]
     assert result.execution.thesis_invalidation_state == "trend_structure_broken"
     assert "leadership_lost" in result.execution.invalidation_reasons
     assert "trim_into_extension" in result.execution.exit_reasons
@@ -382,7 +382,10 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     )
 
     assert len(result.stage_packets) == 7
-    assert result.stage_packets[5].payload.model_dump(mode="json") == result.execution.model_dump(
+    assert result.stage_local_handoff is not None
+    recommendation = result.stage_local_handoff.execution_post_modifier_pre_final_risk
+    assert recommendation is not None
+    assert result.stage_packets[5].payload.model_dump(mode="json") == recommendation.model_dump(
         mode="json"
     )
     assert result.stage_packets[6].payload.model_dump(mode="json") == result.review.model_dump(
@@ -390,7 +393,7 @@ def test_runtime_stage_packets_preserve_execution_payloads_and_order() -> None:
     )
     assert isinstance(result.stage_packets[5].blocks[0], DmpV2ObjectBlock)
     assert isinstance(result.stage_packets[6].blocks[0], DmpV2ObjectBlock)
-    assert result.stage_packets[5].blocks[0].data == result.execution.model_dump(mode="json")
+    assert result.stage_packets[5].blocks[0].data == recommendation.model_dump(mode="json")
     assert result.stage_packets[6].blocks[0].data == result.review.model_dump(mode="json")
     execution_payload = result.stage_packets[5].blocks[0].data
     assert isinstance(execution_payload, dict)

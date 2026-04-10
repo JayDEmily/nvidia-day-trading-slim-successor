@@ -1,0 +1,152 @@
+{
+  "governing_plan": "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_255_closed",
+  "active_gate": "none",
+  "supersedes": [],
+  "completed_gate_ids": [
+    "Gate 255"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G255-001"
+  ],
+  "remaining_leaf_ids": [],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "git_history_primary_execution_ledger": true,
+    "document_touch_checklist_required": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true
+  },
+  "continuity_policy": {
+    "mode": "per_gate_reverification_default",
+    "authorised_gate_sequence": [],
+    "pack_install_receipt_required_before_first_gate": true,
+    "merge_to_main_required_before_next_gate": false,
+    "final_router_state_after_sequence": "no active pack currently routed; live prepared-handoff reconciliation pack closed through Gate 255",
+    "pack_stop_conditions": [
+      "prepared handoff source missing or corrupt",
+      "unexpected semantic control-surface conflict",
+      "bounded proof failure"
+    ]
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G255-001",
+      "gate": "Gate 255",
+      "title": "Reconcile the live repo against the prepared handoff tree",
+      "objective": "Import lawful prepared repo-tree state through Gates 236-254, defer the prepared AGENTS import explicitly, and close Gate 255 truthfully after bounded proof.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf is a live repo reconciliation leaf, not a historical replay leaf. It imports file-state truth from the prepared handoff and records one new truthful live reconciliation gate.",
+      "vocabulary_terms_checked": [
+        "active pack authority",
+        "latest closed pack retained as evidence",
+        "latest closed predecessor evidence",
+        "compatibility-only"
+      ],
+      "owned_scope_units": [
+        "prepared handoff unpack and manifest classification",
+        "bulk repo-tree import excluding deferred/non-authoritative surfaces",
+        "live router and gate-map rewrite",
+        "AGENTS deferral contradiction handling",
+        "bounded proof and Gate 255 closeout"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_GATES_v1.md",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_LEAVES_v1.json",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_IMPORT_MANIFEST_v1.md"
+      ],
+      "inputs": [
+        "/home/jds/dev/nvidia-day-trading-slim-successor/codex_reconciliation_handoff_prepared_repo_2026-04-10.zip",
+        "/tmp/gate255_handoff_source/codex_handoff_package_2026-04-10/nvidia-day-trading-slim-successor-main_prepared_2026-04-10"
+      ],
+      "ordered_actions": [
+        "Inspect the live repo and staged prepared tree before mutation.",
+        "Record added, modified, adapted, deferred, and conflict-classified surfaces in the import manifest.",
+        "Import prepared repo-tree content while excluding AGENTS.md, external sidecar material, router surfaces, and planned live-truth test adaptations.",
+        "Rewrite the live router quartet and Gate 255 pack surfaces truthfully.",
+        "Run only the bounded proof slice required by the imported blast radius and Gate 255 closeout."
+      ],
+      "allowed_fallout_repairs": [
+        "adapt imported governance tests that assume the deferred AGENTS state",
+        "accept later-state tolerance changes such as the prepared Gate 134 planning-test widening"
+      ],
+      "forbidden_actions": [
+        "Do not import the prepared .git history.",
+        "Do not fabricate docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md.",
+        "Do not silently edit the prepared AGENTS.md into a local compromise state.",
+        "Do not widen to unrelated repo cleanup."
+      ],
+      "stop_conditions": [
+        "prepared handoff source missing or corrupt",
+        "additional semantic conflict on doctrine/control surfaces",
+        "bounded proof failure"
+      ],
+      "validation_commands": [
+        ".venv/bin/python -m json.tool docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_LEAVES_v1.json",
+        ".venv/bin/python -m pytest -q tests/test_planning_state_integrity.py tests/test_gate255_live_prepared_handoff_reconciliation.py",
+        ".venv/bin/python -m pytest -q tests/test_tranche_briefing_template_pack.py",
+        ".venv/bin/python -m pytest -q tests/test_gate242_options_flow_history_lane_vocabulary_and_boundary.py tests/test_gate243_options_flow_history_record_contract.py tests/test_gate244_options_flow_history_runtime_tap.py tests/test_gate245_options_flow_history_persistence_and_non_interference.py tests/test_gate246_options_flow_history_replay_closeout.py",
+        ".venv/bin/python -m pytest -q tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py tests/test_gate248_upstream_prepared_runtime_contracts.py tests/test_gate249_cross_asset_regime_ingestion.py tests/test_gate250_same_bucket_participation_baseline.py tests/test_gate251_upstream_raw_to_cognition_wiring.py tests/test_gate252_upstream_non_interference_and_sanity_traces.py tests/test_real_data_loader.py"
+      ],
+      "expected_evidence": [
+        "import manifest written before repo-tree copy",
+        "contradiction report records AGENTS deferral explicitly",
+        "router quartet closes together on the Gate 255 branch",
+        "bounded pytest slices record green results"
+      ],
+      "definition_of_done": [
+        "prepared repo-tree content through Gate 254 is present in the live repo except for explicitly deferred surfaces",
+        "AGENTS.md remains unchanged and the deferment is recorded in repo truth",
+        "PLANS.md, the gate map, the leaves ledger, and the execution log agree on Gate 255 closeout"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_LEAVES_v1.json",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch and commit history are the default closeout evidence. Push the work branch after proof passes. Merge to main only if the reconciled governance rule explicitly permits it.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_EXECUTION_LOG_v1.md"
+      ],
+      "reporting_requirements": [
+        "branch name",
+        "main commit before work",
+        "reconciliation commit SHA(s)",
+        "merge decision and merge SHA if any",
+        "pushed refs",
+        "import manifest summary",
+        "deferred surfaces",
+        "exact proof commands",
+        "exact observed proof results"
+      ]
+    }
+  ]
+}

@@ -11,7 +11,12 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from nvda_desk.schemas.cognition import OptionsFlowContextInput, TemporalContextInput
+from nvda_desk.schemas.checkpoints import CheckpointObservation
+from nvda_desk.schemas.cognition import (
+    MarketRegimeContextInput,
+    OptionsFlowContextInput,
+    TemporalContextInput,
+)
 from nvda_desk.schemas.events import LiveEventSnapshot, NormalisedEventRecord
 from nvda_desk.schemas.market import PrecursorRuntimePacket
 from nvda_desk.schemas.options_units import OptionalVolFraction, VolFraction
@@ -144,6 +149,99 @@ class PreparedPinProgressionPoint(BaseModel):
 
 
 
+class PreparedRuntimeRegimePacket(BaseModel):
+    """Bounded promoted cross-asset regime truth carried on prepared runtime snapshots.
+
+    Purpose:
+        Carry only the promoted cross-asset regime truth admitted by the
+        upstream signal tranche, including partial live-capture states when some
+        regime sources are still missing.
+    Inputs:
+        Source identity, alignment metadata, promoted regime primitives, live
+        capture levels or returns when present, fallback notes, and checkpoint
+        observations.
+    Outputs:
+        One typed promoted-regime packet suitable for prepared-runtime carriage.
+    Side Effects:
+        None.
+    Failure Modes:
+        Validation fails when provided regime primitives or checkpoint
+        observations are malformed.
+    Checkpoints:
+        `upstream_signal.regime_packet.complete_requires_breadth_concentration`
+        and `upstream_signal.regime_packet.capture_observed` observations are
+        retained here when live regime ingress is built.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_family: str
+    source_symbols: list[str] = Field(default_factory=list)
+    source_vendor: str = "admitted_runtime_or_fixture"
+    observed_at: datetime
+    aligned_to_runtime_ts: datetime
+    alignment_age_seconds: int = Field(ge=0)
+    alignment_state: str = "aligned"
+    calendar_owner: str = "financial_calendar_reference_bundle"
+    nvda_return_pct: float
+    nq_return_pct: float | None = None
+    nq_level: float | None = None
+    es_return_pct: float | None = None
+    es_level: float | None = None
+    sox_return_pct: float | None = None
+    sox_level: float | None = None
+    breadth_score: float | None = Field(default=None, ge=0.0, le=1.0)
+    concentration_score: float | None = Field(default=None, ge=0.0, le=1.0)
+    vix_level: float | None = None
+    vvix_level: float | None = None
+    us10y: float | None = None
+    us2y: float | None = None
+    usdjpy: float | None = None
+    completeness_state: str = "regime_core_only"
+    fallback_notes: list[str] = Field(default_factory=list)
+    checkpoint_observations: list[CheckpointObservation] = Field(default_factory=list)
+
+
+class PreparedParticipationBaselinePacket(BaseModel):
+    """Bounded same-bucket participation truth for runtime ingress.
+
+    Purpose:
+        Carry bounded same-bucket participation truth without pretending the
+        current baseline proxy is a true historical same-bucket statistical
+        baseline.
+    Inputs:
+        Observed participation state, optional proxy baseline state, owner
+        metadata, fallback state, and checkpoint observations.
+    Outputs:
+        One typed participation packet for prepared-runtime carriage.
+    Side Effects:
+        None.
+    Failure Modes:
+        Validation fails when numeric participation fields or checkpoint
+        observations are malformed.
+    Checkpoints:
+        Participation-baseline checkpoints are retained here so tests can
+        inspect successful proxy reconstruction or deterministic failure
+        conditions.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    observed_at: datetime
+    session_bucket_label: str
+    calendar_owner: str = "financial_calendar_reference_bundle"
+    observed_interval_volume_share: float | None = Field(default=None, ge=0.0)
+    baseline_interval_volume_share: float | None = Field(default=None, ge=0.0)
+    relative_volume_ratio: float | None = None
+    observed_spread_bps: float | None = Field(default=None, ge=0.0)
+    baseline_spread_bps: float | None = Field(default=None, ge=0.0)
+    observed_trade_count: int | None = Field(default=None, ge=0)
+    baseline_trade_count: float | None = Field(default=None, ge=0.0)
+    baseline_available: bool = False
+    fallback_state: str = "baseline_absent"
+    checkpoint_observations: list[CheckpointObservation] = Field(default_factory=list)
+
+
 class PreparedNormalisedFeatureSet(BaseModel):
     """Deterministic normalised prepared-runtime feature carriage with provenance."""
 
@@ -203,6 +301,8 @@ class PreparedRuntimeSnapshot(BaseModel):
     impulse_age_bars: int | None = None
     intraday_move_pct: float
     normalised_features: PreparedNormalisedFeatureSet | None = None
+    promoted_regime_packet: PreparedRuntimeRegimePacket | None = None
+    participation_baseline_packet: PreparedParticipationBaselinePacket | None = None
     prior_session_return_pct: float = 0.0
     front_expiry: datetime
     next_expiry: datetime
@@ -290,12 +390,40 @@ class PreparedRuntimeFixturePack(BaseModel):
 
 
 class RealDataCognitionInputs(BaseModel):
-    """Cognition-ready inputs derived from one prepared runtime snapshot."""
+    """Cognition-ready inputs derived from one prepared runtime snapshot.
+
+    Purpose:
+        Preserve the typed inputs consumed by the desk-cognition runtime plus
+        checkpoint trace evidence for the upstream signal tranche.
+    Inputs:
+        One prepared-runtime snapshot translated into temporal, regime, and
+        options-flow inputs.
+    Outputs:
+        One typed cognition-ingress packet.
+    Side Effects:
+        None.
+    Failure Modes:
+        Validation fails when any ingress packet or checkpoint observation is
+        malformed.
+    Checkpoints:
+        Chain-to-cognition checkpoint observations are carried here so tests can
+        inspect regime and participation wiring directly.
+    """
 
     model_config = ConfigDict(extra="forbid")
 
     snapshot_ts: datetime
     lineage: PreparedRuntimeLineage
     temporal_input: TemporalContextInput
+    regime_input: MarketRegimeContextInput | None = None
     options_flow_input: OptionsFlowContextInput
     normalised_features: PreparedNormalisedFeatureSet | None = None
+    checkpoint_observations: list[CheckpointObservation] = Field(default_factory=list)
+
+
+PreparedRuntimeRegimePacket.model_rebuild()
+PreparedParticipationBaselinePacket.model_rebuild()
+PreparedRuntimeSnapshot.model_rebuild()
+PreparedRuntimeDataset.model_rebuild()
+PreparedRuntimeFixturePack.model_rebuild()
+RealDataCognitionInputs.model_rebuild()

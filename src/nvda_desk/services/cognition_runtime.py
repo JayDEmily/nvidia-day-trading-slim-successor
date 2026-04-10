@@ -18,6 +18,7 @@ from datetime import datetime
 from typing import cast
 
 from nvda_desk.config import Settings
+from nvda_desk.db.session import create_session_factory
 from nvda_desk.schemas.calibration import ParallelRiskLaneEvaluationPreparationPacket
 from nvda_desk.schemas.cognition import (
     BindingStageName,
@@ -82,6 +83,11 @@ from nvda_desk.services.imported_modules.tranche_a import (
 )
 from nvda_desk.services.market_regime_context import MarketRegimeContextService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
+from nvda_desk.services.options_flow_history import (
+    OptionsFlowHistoryBuilder,
+    OptionsFlowHistoryStore,
+    build_and_persist_options_flow_history,
+)
 from nvda_desk.services.parallel_risk_lane import ParallelRiskLaneService
 from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
 from nvda_desk.services.posture_risk import PostureRiskService
@@ -91,6 +97,10 @@ from nvda_desk.services.state_conditioned_modifier import (
     StateConditionedModifierService,
 )
 from nvda_desk.services.temporal_context import TemporalContextService
+from nvda_desk.schemas.options_flow_history import (
+    OptionsFlowHistoryObservationRecord,
+    OptionsFlowHistoryWriteResult,
+)
 
 
 @dataclass(frozen=True)
@@ -113,6 +123,8 @@ class DeskCognitionRuntimeResult:
     stage_packet_ids: dict[str, str] = field(default_factory=dict)
     contract_packets: tuple[DmpV2Packet, ...] = ()
     contract_packet_ids: dict[str, str] = field(default_factory=dict)
+    options_flow_history_observation: OptionsFlowHistoryObservationRecord | None = None
+    options_flow_history_write_result: OptionsFlowHistoryWriteResult | None = None
 
 
 class DeskCognitionRuntime:
@@ -177,6 +189,9 @@ class DeskCognitionRuntime:
         self._modifiers = StateConditionedModifierService()
         self._tranche_a_upstream = TrancheAUpstreamContractService()
         self._tranche_a_selector = TrancheASelectorContractService()
+        self._settings = settings
+        self._options_flow_history_builder = OptionsFlowHistoryBuilder(create_session_factory(settings.database_url))
+        self._options_flow_history_store = OptionsFlowHistoryStore(create_session_factory(settings.database_url))
 
     def _imported_module_maturity(
         self,
@@ -231,12 +246,31 @@ class DeskCognitionRuntime:
         capital_state_snapshot: CapitalStateSnapshotPayload | None = None,
         stack_id: str | None = None,
         coefficient_set_id: str | None = None,
+        symbol: str = "NVDA",
     ) -> DeskCognitionRuntimeResult:
         """Run the full deterministic desk-cognition runtime for one snapshot."""
 
         temporal = self._temporal.evaluate(temporal_input)
         regime = self._regime.evaluate(regime_input)
         options_flow = self._options_flow.evaluate(options_flow_input)
+        options_flow_history_observation = None
+        options_flow_history_write_result = None
+        if self._settings.options_flow_history_lane_enabled:
+            try:
+                options_flow_history_write_result = build_and_persist_options_flow_history(
+                    builder=self._options_flow_history_builder,
+                    store=self._options_flow_history_store,
+                    symbol=symbol,
+                    observed_at=temporal_input.ts,
+                    options_flow_input=options_flow_input,
+                    options_flow_output=options_flow,
+                )
+                if options_flow_history_write_result.persisted is not None:
+                    options_flow_history_observation = options_flow_history_write_result.persisted.record
+            except Exception as exc:
+                options_flow_history_write_result = OptionsFlowHistoryWriteResult(
+                    status="write_failed", note=str(exc)
+                )
         parallel_risk_lane = self._parallel_risk_lane.evaluate(
             temporal_input=temporal_input,
             temporal=temporal,
@@ -368,7 +402,7 @@ class DeskCognitionRuntime:
                 CapitalDeploymentAuthorityInput(
                     posture=posture,
                     eligibility=eligibility,
-                    execution=execution,
+                    execution=execution_post_modifier_pre_final_risk,
                     stage_local_handoff=stage_local_handoff,
                     parallel_risk_lane_packet=parallel_risk_lane,
                     capital_state=capital_state_snapshot,
@@ -395,7 +429,7 @@ class DeskCognitionRuntime:
             BindingStageName.OPTIONS_FLOW: options_flow,
             BindingStageName.POSTURE: posture,
             BindingStageName.ELIGIBILITY: eligibility,
-            BindingStageName.EXECUTION: execution,
+            BindingStageName.EXECUTION: execution_post_modifier_pre_final_risk,
             BindingStageName.REVIEW: review,
         }
         stage_packets = self._build_stage_packets(
@@ -485,6 +519,8 @@ class DeskCognitionRuntime:
                     *selector_contract_emissions,
                 )
             },
+            options_flow_history_observation=options_flow_history_observation,
+            options_flow_history_write_result=options_flow_history_write_result,
         )
 
     def _posture_with_contract_citations(

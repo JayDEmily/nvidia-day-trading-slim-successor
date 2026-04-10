@@ -11,10 +11,15 @@ import json
 from bisect import bisect_right
 from collections import Counter
 from collections.abc import Mapping, Sequence
-from datetime import datetime
+from datetime import UTC, datetime
 from math import sqrt
 from pathlib import Path
 
+from sqlalchemy import desc, select
+from sqlalchemy.exc import OperationalError
+from sqlalchemy.orm import Session, sessionmaker
+
+from nvda_desk.config import Settings
 from nvda_desk.schemas.dataset import (
     BarRecord,
     EventRecord,
@@ -23,6 +28,7 @@ from nvda_desk.schemas.dataset import (
     PreparedNormalisedFeatureSet,
     PreparedPinProgressionPoint,
     PreparedRuntimeDataset,
+    PreparedRuntimeRegimePacket,
     PreparedRuntimeFixturePack,
     PreparedRuntimeLineage,
     PreparedRuntimeSnapshot,
@@ -32,7 +38,10 @@ from nvda_desk.schemas.dataset import (
     RealDataBundle,
     RuntimeSnapshotSanityReport,
 )
+from nvda_desk.db.models import Bar1m, Instrument
+from nvda_desk.db.session import create_session_factory
 from nvda_desk.services.event_store import EventStoreService
+from nvda_desk.services.upstream_signal_ingress import build_participation_baseline_packet
 
 
 class RealDataLoaderService:
@@ -50,6 +59,13 @@ class RealDataLoaderService:
         Uses stable bar-to-chain alignment, fixed near-spot windows, and stable
         sorting for snapshots, clusters, and tenor points.
     """
+
+
+    def __init__(self, settings: Settings | None = None):
+        self._settings = Settings() if settings is None else settings
+        self._session_factory: sessionmaker[Session] | None = None
+        if self._settings.database_url:
+            self._session_factory = create_session_factory(self._settings.database_url)
 
     def load_json_bundle(self, path: Path) -> RealDataBundle:
         """Load one replay-ready dataset bundle from a JSON file."""
@@ -349,6 +365,20 @@ class RealDataLoaderService:
             impulse_age_bars=self._impulse_age_bars(bars_up_to_ts, threshold_pct=0.35),
             intraday_move_pct=intraday_move_pct,
             normalised_features=normalised_features,
+            promoted_regime_packet=self._build_promoted_regime_packet(
+                ts=chain.ts,
+                bundle_symbol=bundle.provenance.symbol,
+                nvda_level=float(aligned_bar.close),
+                nvda_return_pct=intraday_move_pct,
+                calendar_owner_present=False,
+            ),
+            participation_baseline_packet=build_participation_baseline_packet(
+                ts=chain.ts,
+                interval_volume_shares=float(aligned_bar.volume),
+                relative_volume_ratio=relative_volume_ratio,
+                settings=self._settings,
+                calendar_owner_present=False,
+            ),
             prior_session_return_pct=prior_session_return_pct,
             front_expiry=front_expiry,
             next_expiry=next_expiry,
@@ -401,6 +431,251 @@ class RealDataLoaderService:
                 sequence_id=(chain.sequence.sequence_id if chain.sequence is not None else None),
             ),
         )
+
+    def _build_promoted_regime_packet(
+        self,
+        *,
+        ts: datetime,
+        bundle_symbol: str,
+        nvda_level: float,
+        nvda_return_pct: float,
+        calendar_owner_present: bool,
+    ) -> PreparedRuntimeRegimePacket:
+        """Build one bounded promoted regime packet from admitted live capture surfaces.
+
+        Purpose:
+            Read the admitted live capture path for cross-asset regime symbols and
+            attach one non-synthetic promoted regime packet to each prepared
+            runtime snapshot.
+        Inputs:
+            The runtime timestamp, NVDA live values from the aligned snapshot,
+            and calendar-owner presence.
+        Outputs:
+            One `PreparedRuntimeRegimePacket`, including explicit fallback notes
+            when external capture symbols are missing.
+        Side Effects:
+            Reads the configured runtime database when it is available.
+        Failure Modes:
+            Database access failures are captured as fallback notes rather than
+            raising, so prepared-runtime generation remains deterministic.
+        Checkpoints:
+            `upstream_signal.regime_packet.capture_observed` exposes the live
+            source coverage and fallback state.
+        """
+
+        fallback_notes: list[str] = []
+        source_symbols: list[str] = [bundle_symbol]
+        source_vendor = 'runtime_capture_database'
+        observed_at = ts
+        max_alignment_age_seconds = 0
+
+        source_map = {
+            'nq': ('QQQ', ['NQ', 'QQQ']),
+            'es': ('SPY', ['ES', 'SPY']),
+            'sox': ('SOXX', ['SOX', 'SOXX', 'SMH']),
+            'vix': ('VIX', ['VIX']),
+            'vvix': ('VVIX', ['VVIX']),
+            'us10y': ('US10Y', ['US10Y']),
+            'us2y': ('US2Y', ['US2Y']),
+            'usdjpy': ('USDJPY', ['USDJPY']),
+        }
+        captured: dict[str, float | None] = {
+            'nq_return_pct': None,
+            'nq_level': None,
+            'es_return_pct': None,
+            'es_level': None,
+            'sox_return_pct': None,
+            'sox_level': None,
+            'vix_level': None,
+            'vvix_level': None,
+            'us10y': None,
+            'us2y': None,
+            'usdjpy': None,
+        }
+
+        if self._session_factory is None:
+            fallback_notes.append('capture_db_unconfigured')
+        else:
+            try:
+                with self._session_factory() as session:
+                    nq_bar, nq_symbol = self._latest_bar_for_any_symbol(session, source_map['nq'][1], ts)
+                    if nq_bar is None:
+                        fallback_notes.append('missing_source:nq_proxy')
+                    else:
+                        source_symbols.append(nq_symbol)
+                        max_alignment_age_seconds = max(
+                            max_alignment_age_seconds,
+                            self._bar_age_seconds(ts, nq_bar.ts_utc),
+                        )
+                        captured['nq_level'] = float(nq_bar.close)
+                        captured['nq_return_pct'] = self._session_return_pct(session, nq_bar.instrument_id, ts)
+
+                    es_bar, es_symbol = self._latest_bar_for_any_symbol(session, source_map['es'][1], ts)
+                    if es_bar is None:
+                        fallback_notes.append('missing_source:es_proxy')
+                    else:
+                        source_symbols.append(es_symbol)
+                        max_alignment_age_seconds = max(
+                            max_alignment_age_seconds,
+                            self._bar_age_seconds(ts, es_bar.ts_utc),
+                        )
+                        captured['es_level'] = float(es_bar.close)
+                        captured['es_return_pct'] = self._session_return_pct(session, es_bar.instrument_id, ts)
+
+                    sox_bar, sox_symbol = self._latest_bar_for_any_symbol(session, source_map['sox'][1], ts)
+                    if sox_bar is None:
+                        fallback_notes.append('missing_source:sox_proxy')
+                    else:
+                        source_symbols.append(sox_symbol)
+                        max_alignment_age_seconds = max(
+                            max_alignment_age_seconds,
+                            self._bar_age_seconds(ts, sox_bar.ts_utc),
+                        )
+                        captured['sox_level'] = float(sox_bar.close)
+                        captured['sox_return_pct'] = self._session_return_pct(session, sox_bar.instrument_id, ts)
+
+                    for key in ('vix', 'vvix', 'us10y', 'us2y', 'usdjpy'):
+                        bar, symbol = self._latest_bar_for_any_symbol(session, source_map[key][1], ts)
+                        if bar is None:
+                            fallback_notes.append(f'missing_source:{key}')
+                            continue
+                        source_symbols.append(symbol)
+                        max_alignment_age_seconds = max(
+                            max_alignment_age_seconds,
+                            self._bar_age_seconds(ts, bar.ts_utc),
+                        )
+                        captured_key = 'vix_level' if key == 'vix' else 'vvix_level' if key == 'vvix' else key
+                        captured[captured_key] = float(bar.close)
+            except OperationalError:
+                fallback_notes.append('capture_db_unavailable')
+            except Exception as exc:
+                fallback_notes.append(f'capture_db_error:{type(exc).__name__}')
+
+        source_symbols = sorted(set(source_symbols))
+        if len(source_symbols) == 1:
+            source_vendor = 'runtime_capture_missing_external_sources'
+        completeness_state = (
+            'complete_for_live_ingress'
+            if all(
+                value is not None
+                for value in (
+                    captured['nq_return_pct'],
+                    captured['es_return_pct'],
+                    captured['sox_return_pct'],
+                    captured['vix_level'],
+                    captured['vvix_level'],
+                    captured['us10y'],
+                    captured['us2y'],
+                    captured['usdjpy'],
+                )
+            )
+            else 'regime_core_only'
+        )
+        alignment_state = 'aligned_same_bucket' if not fallback_notes else 'aligned_with_capture_fallbacks'
+        from nvda_desk.services.upstream_signal_checkpointing import (  # local import avoids cycle noise
+            CHECKPOINT_REGIME_PACKET_CAPTURE_OBSERVED,
+            checkpoint_observation,
+        )
+        packet = PreparedRuntimeRegimePacket(
+            source_family='prepared_runtime_live_capture',
+            source_symbols=source_symbols,
+            source_vendor=source_vendor,
+            observed_at=observed_at,
+            aligned_to_runtime_ts=ts,
+            alignment_age_seconds=max_alignment_age_seconds,
+            alignment_state=alignment_state,
+            calendar_owner=(
+                'financial_calendar_reference_bundle'
+                if calendar_owner_present
+                else 'session_clock_fallback'
+            ),
+            nvda_return_pct=round(nvda_return_pct, 4),
+            nq_return_pct=self._round_or_none(captured['nq_return_pct']),
+            nq_level=self._round_or_none(captured['nq_level']),
+            es_return_pct=self._round_or_none(captured['es_return_pct']),
+            es_level=self._round_or_none(captured['es_level']),
+            sox_return_pct=self._round_or_none(captured['sox_return_pct']),
+            sox_level=self._round_or_none(captured['sox_level']),
+            vix_level=self._round_or_none(captured['vix_level']),
+            vvix_level=self._round_or_none(captured['vvix_level']),
+            us10y=self._round_or_none(captured['us10y']),
+            us2y=self._round_or_none(captured['us2y']),
+            usdjpy=self._round_or_none(captured['usdjpy']),
+            completeness_state=completeness_state,
+            fallback_notes=fallback_notes,
+        )
+        packet.checkpoint_observations.append(
+            checkpoint_observation(
+                checkpoint_name=CHECKPOINT_REGIME_PACKET_CAPTURE_OBSERVED,
+                input_snapshot={
+                    'runtime_ts': ts.isoformat(),
+                    'bundle_symbol': bundle_symbol,
+                    'calendar_owner_present': calendar_owner_present,
+                },
+                output_snapshot={
+                    'source_symbols': source_symbols,
+                    'completeness_state': packet.completeness_state,
+                    'fallback_notes': fallback_notes,
+                    'nq_level_present': packet.nq_level is not None,
+                    'es_level_present': packet.es_level is not None,
+                    'sox_level_present': packet.sox_level is not None,
+                    'vix_level_present': packet.vix_level is not None,
+                    'vvix_level_present': packet.vvix_level is not None,
+                    'us10y_present': packet.us10y is not None,
+                    'us2y_present': packet.us2y is not None,
+                    'usdjpy_present': packet.usdjpy is not None,
+                },
+                timestamp=ts,
+            )
+        )
+        return packet
+
+    def _latest_bar_for_any_symbol(
+        self,
+        session: Session,
+        candidates: list[str],
+        ts: datetime,
+    ) -> tuple[Bar1m | None, str | None]:
+        for symbol in candidates:
+            instrument = session.scalar(select(Instrument).where(Instrument.symbol == symbol))
+            if instrument is None:
+                continue
+            row = session.scalar(
+                select(Bar1m)
+                .where(Bar1m.instrument_id == instrument.id)
+                .where(Bar1m.ts_utc <= ts)
+                .order_by(desc(Bar1m.ts_utc))
+                .limit(1)
+            )
+            if row is not None:
+                return row, symbol
+        return None, None
+
+    def _session_return_pct(self, session: Session, instrument_id: int, ts: datetime) -> float | None:
+        first_bar = session.scalar(
+            select(Bar1m)
+            .where(Bar1m.instrument_id == instrument_id)
+            .where(Bar1m.ts_utc <= ts)
+            .order_by(Bar1m.ts_utc)
+            .limit(1)
+        )
+        latest_bar = session.scalar(
+            select(Bar1m)
+            .where(Bar1m.instrument_id == instrument_id)
+            .where(Bar1m.ts_utc <= ts)
+            .order_by(desc(Bar1m.ts_utc))
+            .limit(1)
+        )
+        if first_bar is None or latest_bar is None or float(first_bar.open) == 0.0:
+            return None
+        return round(self._pct_change(float(latest_bar.close), float(first_bar.open)), 4)
+
+    def _bar_age_seconds(self, requested_at: datetime, bar_ts: datetime) -> int:
+        resolved = bar_ts if bar_ts.tzinfo is not None else bar_ts.replace(tzinfo=UTC)
+        return max(0, int((requested_at - resolved).total_seconds()))
+
+    def _round_or_none(self, value: float | None) -> float | None:
+        return None if value is None else round(float(value), 4)
 
     def _find_aligned_bar(
         self,

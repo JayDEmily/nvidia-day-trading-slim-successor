@@ -170,6 +170,10 @@ class TemporalContextInput(BaseModel):
     price_realised_vol_5m_pct: float | None = None
     price_realised_vol_15m_pct: float | None = None
     relative_volume_ratio: float | None = None
+    session_bucket_label: str | None = None
+    same_bucket_interval_volume_share: float | None = None
+    same_bucket_interval_volume_share_baseline: float | None = None
+    same_bucket_baseline_available: bool = False
     rolling_range_5m_pct: float | None = None
     impulse_age_bars: int | None = None
 
@@ -312,6 +316,10 @@ class OptionsFlowContextInput(BaseModel):
     put_oi_near_spot: float = 0.0
     front_volume_near_spot: float = 0.0
     next_volume_near_spot: float = 0.0
+    same_bucket_spread_bps: float | None = None
+    same_bucket_spread_baseline_bps: float | None = None
+    same_bucket_trade_count: int | None = None
+    same_bucket_trade_count_baseline: float | None = None
     vanna_proxy: float = 0.0
     charm_proxy: float = 0.0
     nearby_strike_clusters: list[StrikeClusterObservation] = Field(default_factory=list)
@@ -389,7 +397,11 @@ class PostureHardInvariantsSurface(BaseModel):
 
 
 class PostureLocalEnvelopeSurface(BaseModel):
-    """Posture-owned local envelope preserved before later modifier consequences."""
+    """Posture-owned local envelope preserved before later modifier consequences.
+
+    Numeric deployable-capital and inventory-bias fields remain compatibility
+    echoes while downstream readers migrate to the bounded permission envelope.
+    """
 
     model_config = ConfigDict(extra="forbid")
 
@@ -428,7 +440,12 @@ class ModifierCompatibilityBridgeSurface(BaseModel):
 
 
 class PostureRiskOutput(BaseModel):
-    """Binding posture, permission, and deployable-capital output."""
+    """Binding posture and permission output.
+
+    Flat deployable-capital and inventory-bias fields remain compatibility
+    echoes. The bounded permission envelope is the active Step 4 serial
+    authority for downstream readers.
+    """
 
     model_config = ConfigDict(extra="forbid")
 
@@ -668,7 +685,11 @@ class LifecyclePlanOutput(BaseModel):
 
 
 class ExecutionExpressionOutput(BaseModel):
-    """Deterministic execution-expression output."""
+    """Deterministic execution-expression output.
+
+    `target_fresh_deployable_pct` remains a compatibility recommendation-
+    intensity field and not fresh-capital allocation authority.
+    """
 
     model_config = ConfigDict(extra="forbid")
 
@@ -772,7 +793,11 @@ class CapitalDeploymentAuthorityInput(BaseModel):
 
 
 class CapitalDeploymentAuthorityDecision(BaseModel):
-    """Bounded downstream decision stating whether fresh capital should be deployed now."""
+    """Bounded downstream decision stating whether fresh capital should be deployed now.
+
+    Upstream serial stages recommend and preserve seam context. This downstream
+    service alone authorises bounded fresh-capital deployment.
+    """
 
     model_config = ConfigDict(extra="forbid")
 

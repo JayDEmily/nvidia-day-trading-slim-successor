@@ -6,6 +6,7 @@ options-flow inputs that feed the desk cognition runtime.
 
 from __future__ import annotations
 
+from nvda_desk.schemas.checkpoints import CheckpointObservation
 from nvda_desk.schemas.cognition import (
     OptionsFlowContextInput,
     OptionsFlowMicroSnapshot,
@@ -14,6 +15,15 @@ from nvda_desk.schemas.cognition import (
     TemporalContextInput,
     TenorCurvePoint,
 )
+from nvda_desk.services.upstream_signal_checkpointing import (
+    CHECKPOINT_CHAIN_TO_COGNITION_PARTICIPATION_MAPPING,
+    CHECKPOINT_CHAIN_TO_COGNITION_REGIME_MAPPING,
+    CHECKPOINT_PARTICIPATION_AVAILABLE_REQUIRES_BASELINE_VOLUME,
+    append_unique_observation,
+    checkpoint_observation,
+    raise_checkpoint_failure,
+)
+from nvda_desk.services.upstream_signal_ingress import build_market_regime_input
 from nvda_desk.schemas.dataset import (
     PreparedRuntimeDataset,
     PreparedRuntimeSnapshot,
@@ -25,19 +35,66 @@ class ChainToCognitionService:
     """Convert prepared runtime snapshots into cognition-ready inputs.
 
     Purpose:
-        Bridge Gate E prepared-runtime outputs into Gate C/D cognition inputs.
+        Bridge prepared-runtime outputs into the typed cognition ingress packets
+        consumed by the desk runtime.
     Inputs:
         `PreparedRuntimeSnapshot` or `PreparedRuntimeDataset` objects.
     Outputs:
-        `RealDataCognitionInputs` packets containing typed temporal and
-        options-flow inputs.
-    Determinism:
-        Performs only structural conversion with stable field mapping; no hidden
-        inference or mutable runtime state is introduced.
+        `RealDataCognitionInputs` packets containing typed temporal, regime,
+        and options-flow inputs plus checkpoint observations.
+    Side Effects:
+        None.
+    Failure Modes:
+        Raises `UpstreamSignalCheckpointError` if mutated participation packets
+        claim baseline availability without a baseline value.
+    Checkpoints:
+        `upstream_signal.chain_to_cognition.regime_mapping_observed` and
+        `upstream_signal.chain_to_cognition.participation_mapping_observed`
+        expose the final wiring boundary.
     """
 
     def convert_snapshot(self, snapshot: PreparedRuntimeSnapshot) -> RealDataCognitionInputs:
-        """Convert one prepared runtime snapshot into cognition-ready inputs."""
+        """Convert one prepared runtime snapshot into cognition-ready inputs.
+
+        Purpose:
+            Translate one prepared-runtime snapshot into the typed cognition
+            inputs expected by the seven-stage desk runtime.
+        Inputs:
+            One `PreparedRuntimeSnapshot`.
+        Outputs:
+            One `RealDataCognitionInputs` packet with checkpoint observations.
+        Side Effects:
+            Appends bounded checkpoint observations to mutable upstream packets
+            when they are present.
+        Failure Modes:
+            Raises `UpstreamSignalCheckpointError` if a mutated participation
+            packet claims baseline availability without a baseline value.
+        Checkpoints:
+            `upstream_signal.chain_to_cognition.regime_mapping_observed` and
+            `upstream_signal.chain_to_cognition.participation_mapping_observed`
+            guard the final upstream wiring boundary.
+        """
+
+        checkpoint_observations: list[CheckpointObservation] = []
+        if (
+            snapshot.participation_baseline_packet is not None
+            and snapshot.participation_baseline_packet.baseline_available
+            and snapshot.participation_baseline_packet.baseline_interval_volume_share is None
+        ):
+            raise_checkpoint_failure(
+                checkpoint_name=CHECKPOINT_PARTICIPATION_AVAILABLE_REQUIRES_BASELINE_VOLUME,
+                detail=(
+                    'chain_to_cognition received a participation packet that claims baseline availability '
+                    'without baseline interval-volume truth'
+                ),
+                input_snapshot={
+                    'snapshot_ts': snapshot.ts.isoformat(),
+                    'baseline_available': snapshot.participation_baseline_packet.baseline_available,
+                    'baseline_interval_volume_share': snapshot.participation_baseline_packet.baseline_interval_volume_share,
+                },
+                output_snapshot={'real_data_cognition_inputs_created': False},
+                timestamp=snapshot.ts,
+            )
 
         temporal_input = TemporalContextInput(
             ts=snapshot.ts,
@@ -62,6 +119,26 @@ class ChainToCognitionService:
             price_realised_vol_5m_pct=snapshot.price_realised_vol_5m_pct,
             price_realised_vol_15m_pct=snapshot.price_realised_vol_15m_pct,
             relative_volume_ratio=snapshot.relative_volume_ratio,
+            session_bucket_label=(
+                snapshot.participation_baseline_packet.session_bucket_label
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_interval_volume_share=(
+                snapshot.participation_baseline_packet.observed_interval_volume_share
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_interval_volume_share_baseline=(
+                snapshot.participation_baseline_packet.baseline_interval_volume_share
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_baseline_available=(
+                snapshot.participation_baseline_packet.baseline_available
+                if snapshot.participation_baseline_packet is not None
+                else False
+            ),
             rolling_range_5m_pct=snapshot.rolling_range_5m_pct,
             impulse_age_bars=snapshot.impulse_age_bars,
         )
@@ -83,6 +160,26 @@ class ChainToCognitionService:
             put_oi_near_spot=snapshot.put_oi_near_spot,
             front_volume_near_spot=snapshot.front_volume_near_spot,
             next_volume_near_spot=snapshot.next_volume_near_spot,
+            same_bucket_spread_bps=(
+                snapshot.participation_baseline_packet.observed_spread_bps
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_spread_baseline_bps=(
+                snapshot.participation_baseline_packet.baseline_spread_bps
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_trade_count=(
+                snapshot.participation_baseline_packet.observed_trade_count
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
+            same_bucket_trade_count_baseline=(
+                snapshot.participation_baseline_packet.baseline_trade_count
+                if snapshot.participation_baseline_packet is not None
+                else None
+            ),
             nearby_strike_clusters=[
                 StrikeClusterObservation(
                     strike=cluster.strike,
@@ -114,12 +211,55 @@ class ChainToCognitionService:
             ],
             surface_anchor_to_spot_pct=snapshot.surface_anchor_to_spot_pct,
         )
+        regime_input = build_market_regime_input(snapshot.promoted_regime_packet)
+        if snapshot.promoted_regime_packet is not None:
+            for observation in snapshot.promoted_regime_packet.checkpoint_observations:
+                append_unique_observation(checkpoint_observations, observation)
+            append_unique_observation(
+                checkpoint_observations,
+                checkpoint_observation(
+                    checkpoint_name=CHECKPOINT_CHAIN_TO_COGNITION_REGIME_MAPPING,
+                    input_snapshot={
+                        'snapshot_ts': snapshot.ts.isoformat(),
+                        'promoted_regime_packet_present': True,
+                        'completeness_state': snapshot.promoted_regime_packet.completeness_state,
+                    },
+                    output_snapshot={
+                        'regime_input_present': regime_input is not None,
+                        'source_symbols': snapshot.promoted_regime_packet.source_symbols,
+                    },
+                    timestamp=snapshot.ts,
+                ),
+            )
+        if snapshot.participation_baseline_packet is not None:
+            for observation in snapshot.participation_baseline_packet.checkpoint_observations:
+                append_unique_observation(checkpoint_observations, observation)
+            append_unique_observation(
+                checkpoint_observations,
+                checkpoint_observation(
+                    checkpoint_name=CHECKPOINT_CHAIN_TO_COGNITION_PARTICIPATION_MAPPING,
+                    input_snapshot={
+                        'snapshot_ts': snapshot.ts.isoformat(),
+                        'participation_packet_present': True,
+                        'session_bucket_label': snapshot.participation_baseline_packet.session_bucket_label,
+                    },
+                    output_snapshot={
+                        'temporal_bucket': temporal_input.session_bucket_label,
+                        'same_bucket_interval_volume_share_baseline': temporal_input.same_bucket_interval_volume_share_baseline,
+                        'same_bucket_spread_bps': options_flow_input.same_bucket_spread_bps,
+                        'same_bucket_trade_count': options_flow_input.same_bucket_trade_count,
+                    },
+                    timestamp=snapshot.ts,
+                ),
+            )
         return RealDataCognitionInputs(
             snapshot_ts=snapshot.ts,
             lineage=snapshot.lineage,
             temporal_input=temporal_input,
+            regime_input=regime_input,
             options_flow_input=options_flow_input,
             normalised_features=snapshot.normalised_features,
+            checkpoint_observations=checkpoint_observations,
         )
 
     def convert_dataset(

@@ -323,7 +323,7 @@ Ownership:
 
 #### Gate 120 note: execution geometry carriage
 
-`ExecutionExpressionOutput` now also carries bounded execution-geometry fields so the runtime can express how a lead idea would actually be deployed rather than only which idea won. The governed geometry surface includes `passive_aggressive_bias`, `ladder_spacing_bps`, `max_chase_distance_bps`, `stop_distance_bps`, `take_profit_distance_bps`, `hedge_ratio`, `per_slice_risk_pct`, and `geometry_notes`.
+`ExecutionExpressionOutput` now also carries bounded execution-geometry fields so the runtime can express how a lead idea would actually be recommended and staged rather than only which idea won. The governed geometry surface includes `passive_aggressive_bias`, `ladder_spacing_bps`, `max_chase_distance_bps`, `stop_distance_bps`, `take_profit_distance_bps`, `hedge_ratio`, `per_slice_risk_pct`, and `geometry_notes`. `target_fresh_deployable_pct` remains a compatibility recommendation-intensity echo only; fresh-capital authority stays downstream.
 
 #### Gate 121 note: final-risk join carriage
 
@@ -337,7 +337,7 @@ Gate 143 does **not** retire `final_risk_join` or the existing `pre_final_risk_*
 
 #### Gate 144 note: posture-owned hard invariants and local envelope
 
-`PostureHardInvariantsSurface` and `PostureLocalEnvelopeSurface` freeze the posture-owned truth that previously sat flattened inside `PostureRiskOutput`. The hard-invariants surface carries explicit hard-block reasons and whether zero deployable capital is required. The local-envelope surface carries the base permission/posture label, deployable-capital envelope, inventory/time/thesis states, and any posture-owned derisk reasons before later selector citations or modifier consequences are appended.
+`PostureHardInvariantsSurface` and `PostureLocalEnvelopeSurface` freeze the posture-owned truth that previously sat flattened inside `PostureRiskOutput`. The hard-invariants surface carries explicit hard-block reasons and whether zero downstream fresh-capital authorisation is required. The local-envelope surface carries the base permission/posture label, inventory/time/thesis states, and any posture-owned derisk reasons before later selector citations or modifier consequences are appended. Legacy deployable-capital and inventory-bias fields remain compatibility carriage only and are no longer active Step 4 authority.
 
 `PostureRiskOutput.downstream_annotations` is the bounded compatibility ledger for non-posture-owned additions such as selector-contract citations and later modifier notes. Gate 144 keeps the flat posture fields and `reasons` list intact for compatibility, but downstream consumers can now distinguish posture-owned truth from later annotations without reading prose heuristically.
 
@@ -356,6 +356,8 @@ Gate 145 does **not** retire `ModifierRuntimePacket`, `EffectivePolicySnapshot`,
 `EligibilityAdmissibilitySurface` freezes the bounded Stage 5 truth that later gates may consume without inferring candidate ownership from flat compatibility lists. The surface carries permission/no-trade state plus the admissible and watch-only family, setup-variant, and playbook ids that Stage 5 is allowed to own.
 
 `ExecutionCandidateOwnershipSurface` freezes the bounded Stage 6 truth that starts only after Stage 5 has admitted the candidate pool. It carries the admitted playbook ids seen by execution, the adjudicated playbook ids, the selected lead playbook id, and the contradiction-resolution note so later consumers can distinguish admissibility from candidate ranking without changing stage order.
+
+`CapitalDeploymentAuthorityDecision` remains the bounded downstream fresh-capital authority. It reads the execution recommendation, preserved handoff context, and current capital snapshot after the serial stack has finished recommending rather than allocating.
 
 #### Gate 147 note: overlay evaluation versus terminal-risk application
 
@@ -567,3 +569,18 @@ Pydantic contracts define the shape crossing service and API layers. SQLAlchemy 
 ## Gate 79 domain additions
 
 The domain now includes explicit walk-forward window contracts, horizon-discovery outputs, fragility/ablation reports, and downstream consumer bindings so review-horizon evidence is typed rather than implied.
+
+## Options and Flow Context History Lane
+
+`OptionsFlowHistoryObservationRecord` freezes one bounded observational record captured at the fully formed `OptionsFlowContextOutput` boundary. The record carries one full derived-state block, one bounded raw front/next expiry subset drawn from one lawful raw-source authority, explicit partiality semantics, and aligned `observed_at` / `chain_ts` lineage fields. It is observational only. It does **not** add recommendation memory, allocator memory, or a new desk-cognition stage.
+
+`OptionsFlowHistoryObservation` freezes one append-only persistence surface for those records. The store is retrieval-oriented for later bounded replay and does **not** become a broad all-expiry options warehouse, a review packet, or a new DMP / DMP V2 stage.
+
+
+### Prepared Runtime Regime Packet and Prepared Participation Baseline Packet
+
+`PreparedRuntimeRegimePacket` carries one bounded promoted cross-asset regime packet on `PreparedRuntimeSnapshot.promoted_regime_packet`. It is built from admitted live capture surfaces when those surfaces are available, preserves source family, source symbols, observation/alignment timestamps, calendar-owner compatibility, the cross-asset return set, proxy levels for NQ/ES/SOX when those are the lawful current sources, volatility/rates/FX values, and optional breadth/concentration fields when lawful raw truth is already admitted. Explicit fallback notes record missing live sources. `ChainToCognitionService` may build `RealDataCognitionInputs.regime_input` from this packet only when the packet is complete enough for the canonical `MarketRegimeContextInput` contract.
+
+`PreparedParticipationBaselinePacket` carries one bounded same-bucket participation packet on `PreparedRuntimeSnapshot.participation_baseline_packet`. In the current live tranche it preserves a proxy baseline reconstructed from `relative_volume_ratio`, not a true historical same-bucket statistical baseline. It preserves session-bucket label, calendar-owner compatibility, observed interval-volume share, optional proxy baseline interval-volume share, optional spread/trade-count fields, and explicit fallback state when baseline history is absent. `TemporalContextInput` may read the session bucket and same-bucket volume fields from this packet, while `OptionsFlowContextInput` may read only lawful participation-supporting spread/trade-count fields from it.
+
+`relative_volume_ratio` remains an explicit compatibility scaffold. When `PreparedParticipationBaselinePacket` exists, the ratio is read as a bounded echo over the packet rather than as the sole participation truth, and it must not be represented as a historical same-bucket baseline on its own.

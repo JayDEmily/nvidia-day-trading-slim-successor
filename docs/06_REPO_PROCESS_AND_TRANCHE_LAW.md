@@ -101,29 +101,51 @@ Planning mode must answer, explicitly:
 - which vocabulary authority execution must read for this tranche;
 - which packet/data contract authority execution must read for this tranche;
 - what tests or proof slices are required before a gate may be called complete;
-- why the chosen gate count and leaf count preserve granularity for this tranche rather than copying a fixed cardinality from another pack.
+- why the chosen gate count and leaf count preserve granularity for this tranche rather than copying a fixed cardinality from another pack;
+- whether execution mode is default stop-after-each-gate or an explicitly authorised controlled continuity run;
+- if controlled continuity is authorised, the exact gate sequence, pack-install proof, per-gate merge rule, stop conditions, and final router state after the last authorised gate; and
+- why the leaves are closed-world enough that the execution thread does not need to invent missing file scope, missing decision rows, missing fallout scope, or missing proof commands.
 
 ## Execution mode
 
-Execution mode is used only for an approved active gate.
+Execution mode is used only for an approved active gate or for a controlled continuity sequence that an approved active pack has already authorised explicitly.
 
 Before execution starts, the thread must read:
 1. `docs/01_NORMATIVE.md`
 2. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-3. repo-root `PLANS.md`
-4. the active gates master named by `PLANS.md`, if one exists
-5. the active leaves ledger named by `PLANS.md`, if one exists
-6. the active execution log named by `PLANS.md`, if one exists
-7. the bounded-scope note named by `PLANS.md`, if one exists
-8. the active vocabulary authority named by the active gates master; the baseline authority is `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
-9. the active packet/data contract authority named by the active gates master; the baseline authority is `docs/03_DOMAIN_MODEL.md`
+3. `docs/TESTING_AND_PROMOTION.md`
+4. repo-root `PLANS.md`
+5. the active gates master named by `PLANS.md`, if one exists
+6. the active leaves ledger named by `PLANS.md`, if one exists
+7. the active execution log named by `PLANS.md`, if one exists
+8. the bounded-scope note named by `PLANS.md`, if one exists
+9. the active vocabulary authority named by the active gates master; the baseline authority is `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
+10. the active packet/data contract authority named by the active gates master; the baseline authority is `docs/03_DOMAIN_MODEL.md`
 
 Execution mode must obey:
 - one leaf at a time;
 - one gate at a time;
 - one branch per gate;
 - no next gate until the current gate is actually closed;
-- a request to complete multiple gates does not waive per-gate sequencing, validation, routing updates, or closeout.
+- default rule: stop after each gate and await reverification unless the active pack explicitly authorises controlled continuity;
+- a request to complete multiple gates does not waive per-gate sequencing, validation, routing updates, closeout, or proof.
+
+## Controlled continuity execution packs
+
+A pack may authorise a continuous run across several gates only when all of the following are explicit in the active pack:
+- the exact authorised gate sequence;
+- the exact pack-install and router-activation proof before the first gate opens;
+- the rule that each gate still works one leaf at a time;
+- the rule that each gate still closes truthfully on its own branch;
+- whether merge to `main` is mandatory before the next gate opens;
+- the exact stop conditions that end the run immediately;
+- the exact broad-proof exclusions and widening rules;
+- the final router state after the last authorised gate; and
+- the explicit boundary on what must not be touched, such as source/archive repo mutation, unrelated runtime surfaces, or a later unplanned pack.
+
+Controlled continuity is therefore a pack-level exception surface, not a general relaxation of repo law.
+It reduces operator relay burden, but it does not waive the per-gate integrity rules.
+If any proof slice fails or any declared stop condition fires, the run stops immediately and the next gate does not open.
 
 ## Tranche creation versus tranche amendment
 
@@ -147,10 +169,12 @@ Never amend an old closed pack merely because it is nearby.
 If a change affects repo law, update the normative/process surfaces.
 If a change affects the current active tranche state, update the active pack and router surfaces.
 If a change affects proof order or test expectations, update the test doctrine or active tranche docs that govern that proof.
+For new and modified boundary work, `docs/TESTING_AND_PROMOTION.md` checkpoint-integrity rules are live authority: runtime checkpoints, observable checkpoint truth, negative proof, and structured docstrings are mandatory forward-only.
 If a change affects none of those, do not spray edits across the repo.
 
 Every planning pack must include an explicit document-touch checklist.
 Tests added for planning governance should prefer state-integrity invariants over brittle lists of historically allowed transient strings.
+If a pack uses controlled continuity, the checklist must also show that the continuity rule, stop rule, and final router state were reviewed and authored explicitly.
 
 ## Control-surface routing law
 
@@ -186,6 +210,8 @@ A gate is not closed until the following move together on the same branch:
 4. the active execution log
 
 If any one of those still points at the older active gate, the gate is not closed.
+If a pack authorises controlled continuity, the quartet must still close each gate before the next gate opens.
+After the last authorised gate, the quartet must also show the final router result exactly: either a new active pack, or no active pack currently routed.
 
 ## Template law
 
@@ -196,6 +222,22 @@ The latest closed pack is evidence input, not the structural template for the ne
 Any new planning pack must either:
 - be created from those templates; or
 - preserve all mandatory sections and fields frozen by those templates.
+
+The template pack must support both:
+- default per-gate execution packs; and
+- controlled continuity execution packs where the operator wants one approved run to carry several gates without relay churn.
+
+## Closed-world leaf requirement
+
+A leaf is not sufficiently authored if the execution thread still has to invent:
+- which exact files it owns;
+- which exact decision rows, test families, or scope units it owns;
+- which fallout repairs are allowed;
+- which fallout repairs are forbidden;
+- which proof command is authoritative; or
+- which stop conditions require replanning.
+
+The burden sits on planning, not on execution, to make the leaf executable without improvising architecture or widening scope by vibe.
 
 ## State-integrity law
 
@@ -214,6 +256,7 @@ Stop and emit a contradiction report before continuing when:
 - the active pack does not name its vocabulary authority or packet/data contract authority cleanly;
 - the leaves ledger cannot be mapped to the active gates master;
 - required inputs for a gate are missing and cannot be derived lawfully;
-- the requested work would require pretending a closed gate is still active.
+- the requested work would require pretending a closed gate is still active; or
+- a controlled continuity pack tries to open a later gate even though the current gate failed proof or hit a declared stop condition.
 
 Do not stop for minor wording cleanup, small stale sentences in historical evidence, or routine closeout edits that the active pack already makes clear.

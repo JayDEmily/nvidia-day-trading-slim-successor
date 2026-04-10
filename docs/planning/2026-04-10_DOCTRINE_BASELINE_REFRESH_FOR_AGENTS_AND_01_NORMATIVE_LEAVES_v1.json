@@ -1,0 +1,117 @@
+{
+  "governing_plan": "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_GATES_v1.md",
+  "version": "v1",
+  "routing_status": "closed_no_active_pack",
+  "execution_status": "doctrine_baseline_refresh_micro_pack_closed_through_gate_253",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+    "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+    "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 253"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G253-001"
+  ],
+  "pending_gate_ids": [],
+  "remaining_leaf_ids": [],
+  "draft_activation_preconditions": [],
+  "existing_anchor_tests": [
+    "python3 -m pytest -q tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py tests/test_upstream_signal_followup_corrections.py"
+  ],
+  "notes": [
+    "The uploaded source zip did not contain .git metadata, so local git history for this workspace begins from a baseline-import commit created on 2026-04-10 before Gate 253 execution.",
+    "The locked doctrine files were applied verbatim; no content-level doctrine review or editing was performed inside Gate 253."
+  ],
+  "global_rules": {
+    "sequential_execution": "One leaf at a time. One gate at a time. One branch per gate.",
+    "anti_drift_closeout": "A gate is not closed until repo-root PLANS.md, the canonical gate map, the active leaf ledger, and the active execution log move together on the same branch.",
+    "bounded_proof": "Gate 253 uses bounded control-surface proof only; no broad suite."
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G253-001",
+      "gate": "Gate 253",
+      "title": "Apply locked doctrine replacements and close the governance micro-pack",
+      "objective": "Replace AGENTS.md and docs/01_NORMATIVE.md verbatim, update the minimum control surfaces and receipts, prove byte-for-byte replacement, and package the updated repo.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "workflow_intent_assertion": "This leaf is execution-only. The uploaded doctrine replacements are locked and are applied verbatim rather than reassessed.",
+      "repo_surfaces": [
+        "AGENTS.md",
+        "docs/01_NORMATIVE.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_GATES_v1.md",
+        "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_LEAVES_v1.json",
+        "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "/mnt/data/AGENTS.md",
+        "/mnt/data/01_NORMATIVE_final_draft.md"
+      ],
+      "ordered_actions": [
+        "Replace repo-root AGENTS.md from the locked uploaded file with no content edits.",
+        "Replace docs/01_NORMATIVE.md from the locked uploaded file with no content edits.",
+        "Create the one-gate / one-leaf governance micro-pack and route closeout truthfully in PLANS.md and the canonical gate map.",
+        "Prove byte-for-byte replacement by checksum and binary comparison.",
+        "Run bounded proof only, then record the execution-log and changelog receipts.",
+        "Close the pack with no active pack routed and package the updated repo."
+      ],
+      "forbidden_actions": [
+        "Do not rewrite the uploaded doctrine files.",
+        "Do not widen Gate 253 into general workflow repair or runtime change work."
+      ],
+      "validation_commands": [
+        "cmp -s /mnt/data/AGENTS.md AGENTS.md",
+        "cmp -s /mnt/data/01_NORMATIVE_final_draft.md docs/01_NORMATIVE.md",
+        "python3 -m pytest -q tests/test_document_hygiene.py tests/test_planning_gate_authority_consistency.py tests/test_upstream_signal_followup_corrections.py"
+      ],
+      "expected_evidence": [
+        "Byte-for-byte checksum match for both locked doctrine files",
+        "Router quartet closed through Gate 253 with no active pack",
+        "Updated repo zip created for download"
+      ],
+      "definition_of_done": [
+        "Both locked doctrine files are applied verbatim.",
+        "The router quartet and receipts agree on Gate 253 closeout.",
+        "The updated repo snapshot is packaged as a zip."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_LEAVES_v1.json",
+        "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Create a downloadable full-repo zip from the updated local workspace because GitHub push is unavailable in this environment.",
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": false,
+        "docstring_compliance_required": false
+      }
+    }
+  ],
+  "contradiction_scan": [
+    "The uploaded source zip lacked prior .git metadata. Gate 253 therefore records a fresh local git baseline rather than pretending to preserve unavailable upstream commit history."
+  ],
+  "state_invariants": [
+    "No active pack is routed after Gate 253 closeout.",
+    "Gate 253 remains a one-gate / one-leaf governance micro-pack only.",
+    "AGENTS.md and docs/01_NORMATIVE.md remain verbatim replacements of the locked uploaded files."
+  ]
+}

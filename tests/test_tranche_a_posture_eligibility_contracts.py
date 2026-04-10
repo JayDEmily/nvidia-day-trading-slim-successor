@@ -177,7 +177,7 @@ def test_runtime_cites_tranche_a_selector_contracts_without_playbook_drift() -> 
         "compression_breakout",
     ]
     assert result.execution.entry_style == "trend_ladder_3_step"
-    assert result.execution.scaling_plan == [11.0, 16.5, 27.5]
+    assert result.execution.scaling_plan == [7.0, 10.5, 17.5]
     assert len(result.contract_packets) == 13
     assert set(result.contract_packet_ids) >= {
         "signal_conflict_detector",

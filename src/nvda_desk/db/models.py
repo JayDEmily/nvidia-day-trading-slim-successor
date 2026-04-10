@@ -97,6 +97,31 @@ class OptionSnapshot(Base):
     instrument: Mapped[Instrument] = relationship()
 
 
+class OptionsFlowHistoryObservation(Base):
+    __tablename__ = "options_flow_history_observation"
+    __table_args__ = (
+        UniqueConstraint("symbol", "observed_at", name="uq_options_flow_history_observation_identity"),
+        Index("ix_options_flow_history_observation_symbol_observed", "symbol", "observed_at"),
+        Index("ix_options_flow_history_observation_symbol_chain", "symbol", "chain_ts"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    symbol: Mapped[str] = mapped_column(String(32), index=True)
+    observed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    chain_ts: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    front_expiry: Mapped[date] = mapped_column(Date())
+    next_expiry: Mapped[date] = mapped_column(Date())
+    partiality_state: Mapped[str] = mapped_column(String(32))
+    record_completeness_flag: Mapped[bool] = mapped_column(Boolean(), default=False)
+    raw_source_authority: Mapped[str] = mapped_column(String(64))
+    lineage_json: Mapped[str] = mapped_column(Text())
+    derived_state_json: Mapped[str] = mapped_column(Text())
+    front_expiry_rows_json: Mapped[str] = mapped_column(Text(), default="[]")
+    next_expiry_rows_json: Mapped[str] = mapped_column(Text(), default="[]")
+
+
+
 class ResearchNote(Base):
     __tablename__ = "research_note"
 

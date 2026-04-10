@@ -1,7 +1,7 @@
 """Expression and execution service for the Desk Cognition Grammar.
 
-This service converts posture and native playbook hierarchy outputs into
-execution shape, sizing, hedge requirements, and exit-plan scaffolding.
+This service turns the admitted candidate pool into a concrete execution
+recommendation, geometry packet, and invalidation scaffolding.
 """
 
 from __future__ import annotations
@@ -27,10 +27,11 @@ class ExecutionExpressionService:
     """Derive deterministic expression and execution outputs.
 
     Purpose:
-        Turn posture and hierarchy-native playbook eligibility into concrete
-        execution shape and sizing.
+        Turn the admitted candidate pool into a concrete execution recommendation
+        and geometry packet.
     Inputs:
         `ExecutionExpressionInput` with posture, playbook eligibility, and options context.
+        Posture is read for permission, lifecycle, and invalidation context only.
     Outputs:
         `ExecutionExpressionOutput` describing entry style, family/setup lineage,
         laddering, invalidation reasons, exits, and hedge need.
@@ -217,7 +218,7 @@ class ExecutionExpressionService:
                 ).entry_style
                 for setup_variant_id in active_setup_variant_ids
             }
-            target = payload.posture.fresh_deployable_capital_pct
+            target = round(float(lead_candidate.sizing_fraction * 100.0), 4) if lead_candidate is not None else 0.0
             scaling_plan = [round(target * factor, 4) for factor in template.scaling_step_factors]
             thesis_invalidation_state = template.thesis_invalidation_state
             invalidation_reasons = self._invalidation_reasons(template, payload)
@@ -287,7 +288,7 @@ class ExecutionExpressionService:
             invalidation_reasons = payload.eligibility.no_trade_reasons or ["no_playbook_qualified"]
             exit_reasons = ["stand_aside"]
             exit_plan = list(exit_reasons)
-            inventory_action = payload.posture.inventory_action_bias
+            inventory_action = "hold"
             fresh_capital_action = "hold"
             passive_aggressive_bias = "passive"
             geometry_notes = ["no_active_setup_variant"]
@@ -606,7 +607,7 @@ class ExecutionExpressionService:
             invalidation_hits.append("leadership_lost")
         if payload.regime.breadth_state.value != "supportive":
             invalidation_hits.append("breadth_rollover")
-        if payload.posture.thesis_state != "valid" or payload.posture.inventory_action_bias == "reduce":
+        if payload.posture.thesis_state != "valid" or payload.posture.permission_state.value == "block":
             invalidation_hits.append("state_break_below_ladder_anchor")
 
         if not clear_event_window:
@@ -778,10 +779,18 @@ class ExecutionExpressionService:
     def _inventory_action(
         self, payload: ExecutionExpressionInput, template: ExecutionTemplateSpec
     ) -> str:
-        if template.respect_posture_biases and payload.posture.inventory_action_bias in set(
-            template.posture_override_actions
-        ):
-            return payload.posture.inventory_action_bias
+        if not template.respect_posture_biases:
+            return template.default_inventory_action
+        if payload.posture.permission_state.value == "block":
+            return "reduce"
+        if payload.posture.permission_state.value == "derisk" and template.default_inventory_action == "add":
+            posture_overrides = set(template.posture_override_actions)
+            if "hold" in posture_overrides:
+                return "hold"
+            if "trim" in posture_overrides:
+                return "trim"
+            if "hedge" in posture_overrides:
+                return "hedge"
         return template.default_inventory_action
 
 
@@ -804,8 +813,8 @@ class ExecutionExpressionService:
             tags.append("destabilising_gamma_add_candidate")
         if payload.temporal.event_window_state != "clear" and candidate.action_bias.value == "add":
             tags.append("event_window_add_candidate")
-        if payload.posture.inventory_action_bias in {"reduce", "trim", "hedge"} and candidate.action_bias.value == "add":
-            tags.append("posture_bias_opposes_add")
+        if payload.posture.permission_state.value == "derisk" and candidate.action_bias.value == "add":
+            tags.append("permission_envelope_derisk_add_candidate")
         return tags
 
     def _candidate_score(

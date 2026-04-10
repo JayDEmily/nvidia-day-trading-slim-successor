@@ -105,8 +105,10 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - **Vocabulary authority source:** `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json:67-82`
 - **Point of production:** `PostureRiskService` output, carried as `PostureRiskOutput`
 - **Runtime contract:** `nvda_desk.schemas.cognition.PostureRiskOutput`
-- **Authoritative contents:** `permission_state`, `posture_label`, `inventory_posture_state`, `fresh_deployable_capital_pct`, `overnight_deployable_capital_pct`, `inventory_action_bias`, `fresh_vs_inventory_state`, `thesis_state`, `capital_lockup_state`, `adverse_excursion_state`, `time_stop_state`, `signal_conflict_state`, `time_stop_minutes_remaining`, `thesis_pressure_score`, `hard_invariants`, `local_envelope`, `downstream_annotations`, `modifier_compatibility_bridge`, `modifier_runtime_packet`, `parallel_risk_lane_packet`, `stand_down_class`, `conflict_classes`, `degradation_step`
+- **Authoritative contents:** `permission_state`, `posture_label`, `inventory_posture_state`, `fresh_vs_inventory_state`, `thesis_state`, `capital_lockup_state`, `adverse_excursion_state`, `time_stop_state`, `signal_conflict_state`, `time_stop_minutes_remaining`, `thesis_pressure_score`, `hard_invariants`, `local_envelope`, `downstream_annotations`, `modifier_compatibility_bridge`, `modifier_runtime_packet`, `parallel_risk_lane_packet`, `stand_down_class`, `conflict_classes`, `degradation_step`
+- **Compatibility-only echoes still carried on the stage packet:** `fresh_deployable_capital_pct`, `overnight_deployable_capital_pct`, `inventory_action_bias`
 - **Allowed downstream readers:** `StateConditionedModifierService.evaluate(...)`, `PlaybookEligibilityService.evaluate(...)`, `ExecutionExpressionService.evaluate(...)`, `RiskGatewayService.evaluate_overlay(...)`, `RiskGatewayService.build_terminal_risk_application(...)`, `ParallelRiskLaneService.enrich_candidate_semantics(...)`, `ReviewExplanationInput.posture`
+- **Step 4 read rule:** downstream serial readers must treat `permission_state` and the bounded envelope as Step 4 authority; flat deployable-capital echoes are compatibility-only
 - **Prohibited inference:** downstream consumers must not substitute additive sub-surfaces or compatibility carriage for the stage packet itself
 
 ### 3.2 Posture Hard Invariants
@@ -120,6 +122,7 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - **Runtime contract:** `nvda_desk.schemas.cognition.PostureHardInvariantsSurface`
 - **Authoritative contents:** `block_active`, `hard_block_reasons`, `zero_deployable_required`
 - **Allowed downstream readers:** execution through posture carriage, review and explanation through `ReviewExplanationInput.posture`, preserved cited-posture handoff
+- **Interpretive rule:** `zero_deployable_required` governs downstream fresh-capital authority only; it is not a Step 4 allocator field
 - **Prohibited inference:** selector citations, downstream annotations, and modifier consequences must not be inferred from this surface
 
 ### 3.3 Posture Local Envelope
@@ -131,7 +134,8 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - **Vocabulary authority source:** `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json:104-120`
 - **Point of production:** produced inside `PostureRiskOutput.local_envelope`
 - **Runtime contract:** `nvda_desk.schemas.cognition.PostureLocalEnvelopeSurface`
-- **Authoritative contents:** base permission state, deployable-capital envelope, inventory state, thesis state, time-stop state, posture-owned derisk reasons
+- **Authoritative contents:** base permission state, inventory state, thesis state, time-stop state, posture-owned derisk reasons
+- **Compatibility-only echoes still carried on the envelope surface:** `base_fresh_deployable_capital_pct`, `base_overnight_deployable_capital_pct`, `base_inventory_action_bias`
 - **Allowed downstream readers:** execution through posture carriage, review and explanation through `ReviewExplanationInput.posture`, preserved cited-posture handoff
 - **Prohibited inference:** downstream consumers must not treat `downstream_annotations` or modifier bridge fields as local-envelope truth
 
@@ -174,6 +178,7 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - **Authoritative contents:** admitted playbook ids seen by execution, watch-only ids seen by execution, adjudicated ids, lead playbook id, contradiction resolution
 - **Allowed downstream readers:** review and explanation, replay consumers, bounded-trace consumers
 - **Prohibited inference:** downstream consumers must not backfill this surface from Stage 5 admissibility or from flat `active_playbook_ids`
+- **Step 6 read rule:** execution may read posture permission and lifecycle/invalidation context, but it must not treat posture deployable-capital echoes as capital authority
 
 ### 3.7 Overlay Risk Decision
 
@@ -490,3 +495,31 @@ Section 3 records the current latest-state authority chain for **stage outputs**
 - The lane may read only lawful invariant truth at session start and only lawful stage outputs after those stages have emitted them.
 - The lane must not mutate stage order, registry membership, ownership law, or packet-lineage law.
 - Review and explanation remain responsible for preserved downstream reconstruction of the lane once runtime execution has completed.
+
+## Options and Flow Context History Lane
+
+- **Canonical owner slug:** `options_flow_context`
+- **Runtime builder:** `nvda_desk.services.options_flow_history.OptionsFlowHistoryBuilder`
+- **Persistence path:** `nvda_desk.services.options_flow_history.OptionsFlowHistoryStore`
+- **Primary contract:** `nvda_desk.schemas.options_flow_history.OptionsFlowHistoryObservationRecord`
+- **Permitted readers:** bounded replay / later observational retrieval only
+- **Prohibited inference:** recommendation memory, allocator precursor, review-stage authority, or new DMP / DMP V2 stage insertion
+- **Raw-source law:** one observation record may use one lawful raw-source authority only per cycle
+
+
+#### 5.1.0 Upstream ingress-promotion path
+
+- **Consumer:** `ChainToCognitionService.convert_snapshot(...)`
+- **Reads:** `PreparedRuntimeSnapshot.promoted_regime_packet`, `PreparedRuntimeSnapshot.participation_baseline_packet`, `PreparedRuntimeSnapshot.normalised_features`
+- **Read mode:** optional but explicit
+- **Forbidden fallback:** `PreparedNormalisedFeatureSet` must not substitute for a lawful `PreparedRuntimeRegimePacket`; `relative_volume_ratio` must not masquerade as a true historical same-bucket baseline once `PreparedParticipationBaselinePacket` exists
+
+- **Consumer:** `TemporalContextService.evaluate(...)`
+- **Reads:** `TemporalContextInput.relative_volume_ratio`, `TemporalContextInput.session_bucket_label`, `TemporalContextInput.same_bucket_interval_volume_share`, `TemporalContextInput.same_bucket_interval_volume_share_baseline`
+- **Read mode:** bounded support only
+- **Forbidden fallback:** Step 1 must not infer a second calendar/session owner outside the `Financial Calendar Reference Bundle` compatibility boundary when that packet is already present
+
+- **Consumer:** `OptionsFlowContextService.evaluate(...)`
+- **Reads:** `OptionsFlowContextInput.same_bucket_spread_bps`, `OptionsFlowContextInput.same_bucket_spread_baseline_bps`, `OptionsFlowContextInput.same_bucket_trade_count`, `OptionsFlowContextInput.same_bucket_trade_count_baseline`
+- **Read mode:** optional support only
+- **Forbidden fallback:** support-only participation fields must not redesign options-flow stage ownership or create a hidden top-of-book lane

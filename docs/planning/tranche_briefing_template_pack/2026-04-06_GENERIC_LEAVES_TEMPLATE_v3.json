@@ -1,0 +1,280 @@
+{
+  "governing_plan": "docs/planning/YYYY-MM-DD_<TRANCHE_NAME>_GATES_v3.md",
+  "version": "v3.0",
+  "execution_status": "<gate_X_active>",
+  "active_gate": "Gate <N>",
+  "supersedes": [
+    "<older active leaves ledger if any>"
+  ],
+  "completed_gate_ids": [],
+  "completed_leaf_ids": [],
+  "remaining_leaf_ids": [
+    "LEAF-G<N>-001",
+    "LEAF-G<N>-002",
+    "LEAF-G<N+1>-001"
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "controlled_continuity_requires_explicit_pack_authorisation": true,
+    "merge_before_next_gate_when_continuity_authorised": true,
+    "continuous_run_stops_on_any_failed_proof_or_declared_stop_condition": true,
+    "planner_must_define_closed_world_scope": true,
+    "planner_must_define_allowed_fallout_repair_scope": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true
+  },
+  "continuity_policy": {
+    "mode": "per_gate_reverification_default",
+    "authorised_gate_sequence": [],
+    "pack_install_receipt_required_before_first_gate": true,
+    "merge_to_main_required_before_next_gate": true,
+    "final_router_state_after_sequence": "<state after last authorised gate>",
+    "pack_stop_conditions": [
+      "<proof failure>",
+      "<declared stop condition>"
+    ]
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G<N>-001",
+      "gate": "Gate <N>",
+      "title": "<short imperative title>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "<vocabulary authority>",
+        "<packet/data contract authority>"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [
+        "<term 1>",
+        "<term 2>"
+      ],
+      "owned_scope_units": [
+        "<decision row or bounded scope unit>",
+        "<decision row or bounded scope unit>"
+      ],
+      "repo_surfaces": [
+        "<file path>",
+        "<file path>"
+      ],
+      "inputs": [
+        "<external input or internal file>",
+        "<external input or internal file>"
+      ],
+      "ordered_actions": [
+        "Read the authority docs and trace the current workflow through the affected surfaces.",
+        "Freeze the exact owned scope for this leaf before editing.",
+        "Edit only the declared repo surfaces needed for this leaf.",
+        "Repair only the declared fallout that this leaf explicitly owns.",
+        "Update the planning control surfaces required by this leaf if the leaf closes a gate."
+      ],
+      "allowed_fallout_repairs": [
+        "<bounded fallout repair>",
+        "<bounded fallout repair>"
+      ],
+      "forbidden_actions": [
+        "Do not invent terminology without checking the vocabulary authority first.",
+        "Do not widen to unrelated files or second execution families.",
+        "Do not call the leaf done without the declared validation evidence."
+      ],
+      "stop_conditions": [
+        "<condition>",
+        "<condition>"
+      ],
+      "validation_commands": [
+        "<pack-install or leaf-local command>",
+        "<targeted test command>"
+      ],
+      "expected_evidence": [
+        "<specific file changed>",
+        "<test result text>",
+        "<commit or execution log receipt if this leaf closes a gate>"
+      ],
+      "definition_of_done": [
+        "<observable condition 1>",
+        "<observable condition 2>"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "<gate map>",
+        "<active leaves ledger>",
+        "<active execution log>"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ],
+      "reporting_requirements": [
+        "branch name",
+        "exact files changed",
+        "concise diff summary",
+        "exact proof command(s)",
+        "exact observed proof result(s)",
+        "branch commit SHA before merge",
+        "merge commit SHA",
+        "merge type",
+        "final main head SHA after merge",
+        "whether the next gate was opened or stopped"
+      ]
+    },
+    {
+      "id": "LEAF-G<N>-002",
+      "gate": "Gate <N>",
+      "title": "<second bounded leaf>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G<N>-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "<vocabulary authority>",
+        "<workflow surface docs>"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [
+        "<term>"
+      ],
+      "owned_scope_units": [
+        "<bounded scope unit>"
+      ],
+      "repo_surfaces": [
+        "<file path>"
+      ],
+      "inputs": [
+        "<input>"
+      ],
+      "ordered_actions": [
+        "<step 1>",
+        "<step 2>"
+      ],
+      "allowed_fallout_repairs": [
+        "<bounded fallout repair>"
+      ],
+      "forbidden_actions": [
+        "<forbidden shortcut>"
+      ],
+      "stop_conditions": [
+        "<condition>"
+      ],
+      "validation_commands": [
+        "<command>"
+      ],
+      "expected_evidence": [
+        "<evidence>"
+      ],
+      "definition_of_done": [
+        "<observable condition>"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ],
+      "reporting_requirements": [
+        "<same gate receipt fields if this leaf closes the gate>"
+      ]
+    },
+    {
+      "id": "LEAF-G<N+1>-001",
+      "gate": "Gate <N+1>",
+      "title": "<next gate opening leaf>",
+      "objective": "<single-sentence purpose>",
+      "status": "planned",
+      "depends_on": [
+        "LEAF-G<N>-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md"
+      ],
+      "workflow_intent_assertion": "State where this leaf sits in the repo workflow and why.",
+      "vocabulary_terms_checked": [],
+      "owned_scope_units": [
+        "<bounded scope unit>"
+      ],
+      "repo_surfaces": [
+        "<file path>"
+      ],
+      "inputs": [
+        "<input>"
+      ],
+      "ordered_actions": [
+        "<step 1>",
+        "<step 2>"
+      ],
+      "allowed_fallout_repairs": [],
+      "forbidden_actions": [
+        "<forbidden shortcut>"
+      ],
+      "stop_conditions": [
+        "<condition>"
+      ],
+      "validation_commands": [
+        "<command>"
+      ],
+      "expected_evidence": [
+        "<evidence>"
+      ],
+      "definition_of_done": [
+        "<observable condition>"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "<gate map if this leaf closes a gate>",
+        "<active execution log if execution begins>"
+      ],
+      "reporting_requirements": [
+        "<same gate receipt fields if this leaf closes the gate>"
+      ]
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "<current active gate map>",
+      "<current active gates master>",
+      "<current active leaves ledger>",
+      "<current active execution log>"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  }
+}
