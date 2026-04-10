@@ -34,20 +34,19 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Latest closed pack retained as evidence
 
+- gates: `docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- contradiction report: `docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_CONTRADICTION_REPORT_v1.md`
+
+## Latest closed predecessor evidence
+
 - gates: `docs/planning/2026-04-10_TESTING_DOCTRINE_08_PATH_CLEANUP_GATES_v1.md`
 - leaves: `docs/planning/2026-04-10_TESTING_DOCTRINE_08_PATH_CLEANUP_LEAVES_v1.json`
 - execution log: `docs/planning/2026-04-10_TESTING_DOCTRINE_08_PATH_CLEANUP_EXECUTION_LOG_v1.md`
 - document-touch checklist: `docs/planning/2026-04-10_TESTING_DOCTRINE_08_PATH_CLEANUP_DOCUMENT_TOUCH_CHECKLIST_v1.md`
 - contradiction report: `docs/planning/2026-04-10_TESTING_DOCTRINE_08_PATH_CLEANUP_CONTRADICTION_REPORT_v1.md`
-
-## Latest closed predecessor evidence
-
-- gates: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_GATES_v1.md`
-- leaves: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- contradiction report: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_CONTRADICTION_REPORT_v1.md`
-- import manifest: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_IMPORT_MANIFEST_v1.md`
 
 ## Older historical planning material
 
@@ -55,10 +54,10 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Current state
 
-- no active pack currently routed; the testing-doctrine numbered-08 path cleanup pack is closed through Gate 256 on `work/gate-256-doctrine-08-testing-path-cleanup-20260410`
-- latest closed pack retained as evidence is the testing-doctrine numbered-08 path cleanup pack closed through Gate 256 on `work/gate-256-doctrine-08-testing-path-cleanup-20260410`
-- latest closed predecessor evidence is the live prepared-handoff reconciliation pack retained through Gate 255
-- the numbered doctrine slot `08` now resolves to `docs/08_TESTING_AND_PROMOTION.md`, and the retired GitHub/ChatGPT interactions path is no longer part of repo authority
+- no active pack currently routed; the operating-model runtime-authority clarification pack is closed through Gate 257 on `work/gate-257-operating-model-runtime-authority-clarification-20260410`
+- latest closed pack retained as evidence is the operating-model runtime-authority clarification pack closed through Gate 257 on `work/gate-257-operating-model-runtime-authority-clarification-20260410`
+- latest closed predecessor evidence is the testing-doctrine numbered-08 path cleanup pack retained through Gate 256
+- `docs/02_OPERATING_MODEL.md` now states that Independent Parallel Risk Lane is co-resident and descriptive, not an eighth serial stage or independent final arbiter, that `final_risk_join` remains compatibility-only, and that Capital Deployment Authority Service remains the sole downstream fresh-capital authority after Expression and Execution
 
 ## Sequential execution rule
 

@@ -1,0 +1,88 @@
+{
+  "governing_plan": "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_GATES_v1.md",
+  "version": "v1.0",
+  "execution_status": "gate_257_closed",
+  "active_gate": "none",
+  "supersedes": [],
+  "completed_gate_ids": [
+    "Gate 257"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G257-001"
+  ],
+  "remaining_leaf_ids": [],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "git_history_primary_execution_ledger": true,
+    "document_touch_checklist_required": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "material_control_surface_contradictions_require_contradiction_report": true
+  },
+  "continuity_policy": {
+    "mode": "per_gate_reverification_default",
+    "authorised_gate_sequence": [],
+    "pack_install_receipt_required_before_first_gate": true,
+    "merge_to_main_required_before_next_gate": false,
+    "final_router_state_after_sequence": "no active pack currently routed; operating-model runtime-authority clarification pack closed through Gate 257",
+    "pack_stop_conditions": [
+      "the clarification would require runtime code changes",
+      "the clarification would require material changes to docs/03 or docs/07",
+      "the clarification would require vocabulary admission changes",
+      "bounded doctrine proof failure"
+    ]
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G257-001",
+      "gate": "Gate 257",
+      "title": "Clarify operating-model runtime authority boundaries",
+      "objective": "Clarify the `docs/02_OPERATING_MODEL.md` authority wording for Independent Parallel Risk Lane, `final_risk_join`, and Capital Deployment Authority Service without widening into runtime code or adjacent doctrine files.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/02_OPERATING_MODEL.md"
+      ],
+      "owned_scope_units": [
+        "clarify that Independent Parallel Risk Lane is co-resident and descriptive",
+        "clarify that the lane is not an eighth serial stage",
+        "clarify that the lane is not an independent final arbiter over the seven-step grammar",
+        "clarify that final_risk_join is compatibility-only and does not outrank preserved downstream seam surfaces",
+        "clarify that Capital Deployment Authority Service is the sole downstream fresh-capital authority after Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "docs/02_OPERATING_MODEL.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_GATES_v1.md",
+        "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_LEAVES_v1.json",
+        "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-10_OPERATING_MODEL_RUNTIME_AUTHORITY_CLARIFICATION_CONTRADICTION_REPORT_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_gate257_operating_model_runtime_authority_clarification.py"
+      ],
+      "forbidden_actions": [
+        "Do not change runtime code, schemas, or services.",
+        "Do not widen into docs/03, docs/07, AGENTS.md, docs/01_NORMATIVE.md, or docs/08_TESTING_AND_PROMOTION.md unless a tiny cross-reference edit is strictly forced by proof.",
+        "Do not run a blind full-suite validation sweep."
+      ],
+      "validation_commands": [
+        "rg -n \"Independent Parallel Risk Lane is co-resident and descriptive|It is not an eighth serial stage|It is not an independent final arbiter over the seven-step grammar|final_risk_join remains a compatibility surface and does not silently outrank preserved downstream seam surfaces|After Expression and Execution forms the candidate, Capital Deployment Authority Service is the only downstream fresh-capital authority\" docs/02_OPERATING_MODEL.md",
+        ".venv/bin/python -m pytest -q tests/test_planning_state_integrity.py tests/test_gate257_operating_model_runtime_authority_clarification.py"
+      ],
+      "definition_of_done": [
+        "docs/02 contains the bounded runtime-authority clarification text",
+        "the router quartet records Gate 257 closed with no active pack routed",
+        "targeted grep/assert doctrine proof is green"
+      ]
+    }
+  ]
+}

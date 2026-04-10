@@ -71,7 +71,7 @@ The runtime processes decisions in this order:
 
 This order is binding.
 
-## Co-resident independent parallel risk lane (planning placement)
+## Co-resident independent parallel risk lane (planning placement and authority boundary)
 
 The future independent parallel risk lane is planned as a first-class co-resident lane that starts with session start and evolves as the seven-step grammar yields new lawful outputs across the day.
 
@@ -79,6 +79,12 @@ The future independent parallel risk lane is planned as a first-class co-residen
 - as the day progresses, the lane may consume approved outputs from temporal context, market regime context, options and flow context, and later owned downstream surfaces only after those stages have produced them;
 - this placement preserves the serial desk cognition grammar while allowing the lane to remain first-class and real-time from the beginning of the session;
 - review and explanation remain responsible for preserving future reconstruction of the lane once runtime implementation exists.
+
+Independent Parallel Risk Lane is co-resident and descriptive. It is not an eighth serial stage. It is not an independent final arbiter over the seven-step grammar.
+
+Where preserved downstream seam surfaces matter, the lane remains descriptive across Stage-Local Handoff, Overlay Risk Decision, Terminal Risk Application, and Terminal Risk Decision. `final_risk_join` remains a compatibility surface and does not silently outrank preserved downstream seam surfaces.
+
+After Expression and Execution forms the candidate, Capital Deployment Authority Service is the only downstream fresh-capital authority. Capital Deployment Authority Decision remains the sole downstream fresh-capital decision output, and Independent Parallel Risk Lane does not displace that authority.
 
 ## Gate 60 state-policy authority
 
