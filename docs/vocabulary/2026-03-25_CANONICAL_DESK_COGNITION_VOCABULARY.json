@@ -79,7 +79,9 @@
         "permission_layer"
       ],
       "disallowed_phrases": [],
-      "notes": []
+      "notes": [
+        "Stage 4 owns a bounded local permission envelope only; flat deployable-capital and inventory-bias fields remain compatibility echoes while downstream readers migrate."
+      ]
     },
     {
       "canonical_slug": "posture_hard_invariants",
@@ -116,7 +118,7 @@
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Additive posture-owned envelope surface preserving base permission, deployable capital, and derisk reasons before downstream annotations."
+        "Additive posture-owned envelope surface preserving base permission, inventory/time/thesis states, and derisk reasons before downstream annotations. Legacy deployable-capital echoes remain compatibility-only."
       ]
     },
     {
@@ -189,7 +191,9 @@
         "execution_expression"
       ],
       "disallowed_phrases": [],
-      "notes": []
+      "notes": [
+        "Stage 6 owns stateless recommendation and candidate-ownership output only. `target_fresh_deployable_pct` remains a compatibility recommendation-intensity field and not fresh-capital authority."
+      ]
     },
     {
       "canonical_slug": "execution_candidate_ownership",
@@ -1759,7 +1763,8 @@
       ],
       "disallowed_phrases": [],
       "notes": [
-        "Bounded downstream fresh-capital authoriser for already-formed opening candidates only; not a full arbiter and not close-position logic."
+        "Bounded downstream fresh-capital authoriser for already-formed opening candidates only; not a full arbiter and not close-position logic.",
+        "Reads execution recommendation and bounded permission state, then decides fresh-capital deployment explicitly downstream."
       ]
     },
     {
@@ -1779,6 +1784,111 @@
       "disallowed_phrases": [],
       "notes": [
         "Bounded downstream decision carrying deploy-versus-stand-down authority, authorised percentage, authorised notional, and rationale codes for fresh capital only."
+      ]
+    },
+    {
+      "canonical_slug": "options_flow_context_history_lane",
+      "canonical_label": "Options and Flow Context History Lane",
+      "category": "workflow",
+      "stage_owner": "options_flow_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.schemas.options_flow_history.OptionsFlowHistoryObservationRecord",
+      "allowed_aliases": [
+        "options_flow_history_lane"
+      ],
+      "disallowed_phrases": [
+        "eighth_stage",
+        "new_dmp_stage",
+        "allocator_memory"
+      ],
+      "notes": [
+        "Adjacent observational lane triggered at the fully formed Options and Flow Context boundary. It is not a desk-cognition stage and must not change recommendation or Capital Deployment Authority behaviour."
+      ]
+    },
+    {
+      "canonical_slug": "options_surface_observation_record",
+      "canonical_label": "Options Surface Observation Record",
+      "category": "compatibility_surface",
+      "stage_owner": "options_flow_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "mixed",
+      "maps_to_contract": "nvda_desk.schemas.options_flow_history.OptionsFlowHistoryObservationRecord",
+      "allowed_aliases": [
+        "options_flow_history_record"
+      ],
+      "disallowed_phrases": [
+        "recommendation_receipt",
+        "allocator_state"
+      ],
+      "notes": [
+        "Deterministic observational record carrying one full derived OptionsFlowContextOutput block, one bounded raw front/next expiry subset, and aligned lineage/timestamps. One record may use one lawful raw-source authority only per cycle."
+      ]
+    },
+    {
+      "canonical_slug": "options_surface_observation_store",
+      "canonical_label": "Options Surface Observation Store",
+      "category": "workflow",
+      "stage_owner": "options_flow_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "not_applicable",
+      "maps_to_contract": "nvda_desk.db.models.OptionsFlowHistoryObservation",
+      "allowed_aliases": [
+        "options_flow_history_store"
+      ],
+      "disallowed_phrases": [
+        "research_warehouse",
+        "broad_all_expiry_archive"
+      ],
+      "notes": [
+        "Append-only bounded persistence surface for the observational lane. It is distinct from recommendation history, inventory state, allocator state, and review packets."
+      ]
+    },
+    {
+      "canonical_slug": "prepared_runtime_regime_packet",
+      "canonical_label": "Prepared Runtime Regime Packet",
+      "category": "compatibility_surface",
+      "stage_owner": "market_regime_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.dataset.PreparedRuntimeRegimePacket",
+      "allowed_aliases": [
+        "promoted_regime_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded prepared-runtime carriage for promoted cross-asset regime truth. Breadth and concentration may remain absent until lawful raw-source admission is proven."
+      ]
+    },
+    {
+      "canonical_slug": "prepared_participation_baseline_packet",
+      "canonical_label": "Prepared Participation Baseline Packet",
+      "category": "compatibility_surface",
+      "stage_owner": "temporal_context",
+      "family": null,
+      "setup_variant": null,
+      "execution_expression": null,
+      "horizon": null,
+      "raw_or_derived": "derived",
+      "maps_to_contract": "nvda_desk.schemas.dataset.PreparedParticipationBaselinePacket",
+      "allowed_aliases": [
+        "participation_baseline_packet"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Bounded same-bucket participation and baseline carriage for runtime ingress. `relative_volume_ratio` becomes compatibility scaffolding over this packet where baseline history is absent."
       ]
     }
   ]

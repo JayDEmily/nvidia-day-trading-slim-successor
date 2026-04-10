@@ -3,9 +3,14 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime
+from decimal import Decimal
 from pathlib import Path
 
 from nvda_desk.config import Settings
+from nvda_desk.db.base import Base
+from nvda_desk.db.models import Bar1m, Instrument
+from nvda_desk.db.session import create_engine_from_url, create_session_factory
 from nvda_desk.schemas.dataset import PreparedRuntimeFixturePack
 from nvda_desk.services.chain_to_cognition import ChainToCognitionService
 from nvda_desk.services.options_flow_context import OptionsFlowContextService
@@ -96,6 +101,84 @@ def test_chain_to_cognition_service_converts_prepared_snapshot_to_typed_inputs()
         converted.options_flow_input.pin_progression_sequence[-1].distance_to_pin_pct
         < converted.options_flow_input.pin_progression_sequence[0].distance_to_pin_pct
     )
+
+
+
+
+def test_real_data_loader_populates_promoted_regime_packet_from_live_capture_db(tmp_path: Path) -> None:
+    """Loader should build one non-null promoted regime packet from actual captured bars."""
+
+    database_path = tmp_path / "regime_capture.sqlite"
+    database_url = f"sqlite+pysqlite:///{database_path}"
+    engine = create_engine_from_url(database_url)
+    Base.metadata.create_all(bind=engine)
+    session_factory = create_session_factory(database_url)
+    with session_factory() as session:
+        symbols = {
+            "NVDA": "equity",
+            "QQQ": "etf",
+            "SPY": "etf",
+            "SOXX": "etf",
+            "VIX": "index",
+            "VVIX": "index",
+            "US10Y": "macro",
+            "US2Y": "macro",
+            "USDJPY": "fx",
+        }
+        for symbol, asset_class in symbols.items():
+            session.add(Instrument(symbol=symbol, asset_class=asset_class))
+        session.flush()
+        instrument_map = {instrument.symbol: instrument for instrument in session.query(Instrument).all()}
+        rows = {
+            "QQQ": [(Decimal("500.0"), Decimal("501.5"), 200000), (Decimal("501.5"), Decimal("503.0"), 220000)],
+            "SPY": [(Decimal("600.0"), Decimal("601.0"), 180000), (Decimal("601.0"), Decimal("602.2"), 185000)],
+            "SOXX": [(Decimal("250.0"), Decimal("252.0"), 90000), (Decimal("252.0"), Decimal("254.5"), 95000)],
+            "VIX": [(Decimal("18.0"), Decimal("18.4"), 50000), (Decimal("18.4"), Decimal("18.8"), 52000)],
+            "VVIX": [(Decimal("84.0"), Decimal("85.0"), 25000), (Decimal("85.0"), Decimal("86.5"), 26000)],
+            "US10Y": [(Decimal("4.20"), Decimal("4.22"), 1000), (Decimal("4.22"), Decimal("4.24"), 1000)],
+            "US2Y": [(Decimal("4.00"), Decimal("4.03"), 1000), (Decimal("4.03"), Decimal("4.05"), 1000)],
+            "USDJPY": [(Decimal("148.0"), Decimal("148.6"), 1000), (Decimal("148.6"), Decimal("149.1"), 1000)],
+        }
+        for symbol, candles in rows.items():
+            instrument = instrument_map[symbol]
+            for idx, (open_px, close_px, volume) in enumerate(candles):
+                ts = datetime(2026, 3, 23, 14, idx * 2, tzinfo=UTC)
+                session.add(
+                    Bar1m(
+                        instrument_id=instrument.id,
+                        ts_utc=ts,
+                        open=open_px,
+                        high=max(open_px, close_px),
+                        low=min(open_px, close_px),
+                        close=close_px,
+                        volume=volume,
+                    )
+                )
+        session.commit()
+
+    pack = _load_fixture_pack()
+    loader = RealDataLoaderService(Settings(database_url=database_url))
+    rebuilt = loader.prepare_runtime_dataset(pack.bundle, dataset_id=pack.prepared_dataset.dataset_id)
+    packet = rebuilt.snapshots[0].promoted_regime_packet
+
+    assert packet is not None
+    assert packet.source_family == "prepared_runtime_live_capture"
+    assert packet.nq_level == 503.0
+    assert packet.es_level == 602.2
+    assert packet.sox_level == 254.5
+    assert packet.vix_level == 18.8
+    assert packet.vvix_level == 86.5
+    assert packet.us10y == 4.24
+    assert packet.us2y == 4.05
+    assert packet.usdjpy == 149.1
+    assert packet.nq_return_pct == 0.6
+    assert packet.es_return_pct == 0.3667
+    assert packet.sox_return_pct == 1.8
+    assert packet.completeness_state == "complete_for_live_ingress"
+    assert packet.fallback_notes == []
+    assert {obs.checkpoint_name for obs in packet.checkpoint_observations} == {
+        "upstream_signal.regime_packet.capture_observed"
+    }
 
 
 def test_runtime_snapshot_sanity_report_is_deterministic() -> None:

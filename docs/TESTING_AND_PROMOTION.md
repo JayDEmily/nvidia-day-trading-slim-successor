@@ -52,6 +52,65 @@ Rules:
 - no later testing phase is treated as complete because scaffolding exists;
 - if Phase 0 fails, later phases that depend on true real-data ingress are blocked until the missing raw capture is supplied.
 
+## Checkpoint Integrity Gate
+
+### Purpose
+
+For new and modified work only, checkpoint-integrity proof is mandatory on boundary code and the tests that close those boundaries.
+
+This rule is forward-only.
+It does not retroactively invalidate older tests or older closed gates.
+
+### Runtime checkpoint requirements
+
+A checkpoint is a stable, named, explicit runtime boundary implemented in code, not a Python `assert`.
+
+For new and modified boundary work:
+- at least one checkpoint must exist on the boundary being introduced or changed;
+- checkpoint failures must raise deterministic exceptions;
+- checkpoint names must be stable and reviewable;
+- checkpoint logic must protect input state, output state, ownership boundaries, or prohibited transitions.
+
+### Observability requirements
+
+Every checkpoint used to close new or modified work must expose bounded observable truth through at least one of:
+- a structured observation record;
+- a traceable state object;
+- a test-accessible output field.
+
+Minimum observable fields:
+- checkpoint name;
+- timestamp;
+- bounded input snapshot;
+- bounded output snapshot.
+
+### Negative proof requirement
+
+A checkpoint-bearing test is not valid unless it proves both:
+- the success path under lawful inputs; and
+- at least one failure or mutation path that turns red when the contract is broken, the state is stale, the output is misrouted, or the boundary is bypassed.
+
+Tests that only confirm current behaviour without a failure proof do not close a new or modified boundary on their own.
+
+### Docstring requirements
+
+For new and modified modules, functions, classes, and boundary services, docstrings must define:
+- Purpose
+- Inputs
+- Outputs
+- Side Effects
+- Failure Modes
+- Checkpoints, when applicable
+
+### Enforcement boundary
+
+This gate applies only to new and modified work from 2026-04-09 forward.
+Existing tests are not invalidated solely because they predate this rule.
+
+### One-line doctrine
+
+No test is trusted unless it can prove failure, and no boundary is trusted unless it exposes its truth.
+
 ## Ordered testing phases
 
 ### Phase 0 — one canonical real-data snapshot viability audit

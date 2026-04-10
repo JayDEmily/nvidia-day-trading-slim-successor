@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     after_hours_end_hour: int = Field(default=20, ge=0, le=23)
     playbook_registry_path: str = Field(default="config/playbook_registry.example.yaml")
     coefficient_authority_path: str = Field(default="config/coefficient_authority.v1.yaml")
+    options_flow_history_lane_enabled: bool = Field(default=False)
 
 
 def get_settings() -> Settings:

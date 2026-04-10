@@ -130,7 +130,7 @@ def test_registry_backed_runtime_preserves_supportive_playbook_outputs() -> None
         "continuation_ladder": "trend_ladder_3_step",
         "compression_breakout": "compression_release_ladder",
     }
-    assert result.execution.scaling_plan == [11.0, 16.5, 27.5]
+    assert result.execution.scaling_plan == [7.0, 10.5, 17.5]
 
 
 def test_registry_backed_runtime_preserves_pin_reversion_path() -> None:

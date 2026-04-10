@@ -1,0 +1,1972 @@
+{
+  "governing_plan": "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_GATES_v1.md",
+  "version": "v1.0",
+  "routing_status": "main_serial_stack_steps_3_to_6_pack_closed_no_active_pack_routed",
+  "execution_status": "main_serial_stack_steps_3_to_6_pack_closed_through_gate_241_no_active_pack_routed",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
+    "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json",
+    "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 236",
+    "Gate 237",
+    "Gate 238",
+    "Gate 239",
+    "Gate 240",
+    "Gate 241"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G236-001",
+    "LEAF-G236-002",
+    "LEAF-G236-003",
+    "LEAF-G236-004",
+    "LEAF-G236-005",
+    "LEAF-G237-001",
+    "LEAF-G237-002",
+    "LEAF-G237-003",
+    "LEAF-G237-004",
+    "LEAF-G237-005",
+    "LEAF-G238-001",
+    "LEAF-G238-002",
+    "LEAF-G238-003",
+    "LEAF-G238-004",
+    "LEAF-G238-005",
+    "LEAF-G239-001",
+    "LEAF-G239-002",
+    "LEAF-G239-003",
+    "LEAF-G239-004",
+    "LEAF-G239-005",
+    "LEAF-G240-001",
+    "LEAF-G240-002",
+    "LEAF-G240-003",
+    "LEAF-G240-004",
+    "LEAF-G240-005",
+    "LEAF-G241-001",
+    "LEAF-G241-002",
+    "LEAF-G241-003",
+    "LEAF-G241-004",
+    "LEAF-G241-005"
+  ],
+  "pending_gate_ids": [],
+  "remaining_leaf_ids": [],
+  "draft_activation_preconditions": [
+    "Route the pack truthfully through PLANS.md, the canonical gate map, this leaves ledger, and the execution log before Gate 236 work begins.",
+    "Reread the canonical vocabulary file before editing any durable field, class, or gate naming.",
+    "Bootstrap a repo-local environment via repo doctrine `make install` / `uv sync --extra dev` before running gate validation.",
+    "If sandbox dependency resolution fails later, use the operator-supplied dependency bundle and attached bootstrap instructions instead of changing repo dependency law."
+  ],
+  "existing_anchor_tests": [
+    "tests/test_planning_state_integrity.py",
+    "tests/test_options_flow_context.py",
+    "tests/test_posture_risk_and_playbook.py",
+    "tests/test_execution_review_runtime.py",
+    "tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py",
+    "tests/test_gate230_opening_position_seam_and_downstream_handoff.py",
+    "tests/test_dmp_review_trace.py",
+    "tests/test_gate132_bounded_trace_scenario_pack.py",
+    "tests/test_gate133_bounded_trace_review_regime.py",
+    "tests/test_gate134_bounded_trace_reporting.py",
+    "tests/test_gate143_stage_local_handoff_runtime.py",
+    "tests/test_gate146_admissibility_candidate_ownership.py",
+    "tests/test_gate147_overlay_terminal_risk_runtime.py",
+    "tests/test_gate189_capital_deployment_authority_service.py",
+    "tests/test_gate100_bounded_scenario_matrix.py"
+  ],
+  "notes": [
+    "This ledger was written as a draft pack only because the operator asked for gates/leaves first and the repo currently has no active pack routed.",
+    "The operator brief is behavioural authority for the correction, but canonical vocabulary remains naming authority until a later executed leaf changes it lawfully.",
+    "The six-gate sequence is fixed by the operator-supplied execution brief and was preserved exactly.",
+    "Git metadata is unavailable in the uploaded workspace copy; execution receipts record command and file evidence instead."
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "vernacular_step_labels_are_evidence_only_not_durable_authority": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G236-001",
+      "gate": "Gate 236",
+      "title": "Route the Step 3-6 corrective pack cleanly",
+      "objective": "Activate the new pack through the normal quartet update without opening Gate 237.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_GATES_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the router boundary before Step 3 execution and prevents unlawful work from starting under `Active pack - none`.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Posture and Risk Permission",
+        "Playbook Eligibility",
+        "Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "ordered_actions": [
+        "Read the contradiction report and confirm no blocking router contradiction remains.",
+        "Update `PLANS.md`, the canonical gate map, the leaves ledger, and the execution log together so this pack becomes active and only Gate 236 is open.",
+        "Preserve the canonical vocabulary mapping from the draft pack while routing the pack.",
+        "Record the exact branch and validation receipts for the routing closeout."
+      ],
+      "forbidden_actions": [
+        "Do not start Step 3 code edits before the router quartet is truthful.",
+        "Do not mark `active_gate = none` while pending gates still exist."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_planning_state_integrity.py tests/test_gate226_opening_position_pack_bootstrap_and_routing.py"
+      ],
+      "expected_evidence": [
+        "Router quartet updated together",
+        "Planning-state integrity proof recorded",
+        "Gate 236 active and later gates still planned"
+      ],
+      "definition_of_done": [
+        "repo-root router surfaces name this pack as active",
+        "The active leaves ledger opens Gate 236 only"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G236-002",
+      "gate": "Gate 236",
+      "title": "Inventory Step 3 outputs and readers",
+      "objective": "Freeze the current `Options and Flow Context` fields, their lawful readers, and any fields behaving like permission or capital semantics.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G236-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside Step 3 contract isolation and establishes the exact delta before contract edits begin.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "/mnt/data/steps_3_to_6_corrective_brief_main_serial_stack_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Trace every `OptionsFlowContextOutput` field and reader through the live runtime.",
+        "Mark each field as descriptive-only, ambiguous, or unlawful under the corrective brief.",
+        "Freeze the reader inventory before editing the contract."
+      ],
+      "forbidden_actions": [
+        "Do not rewrite Step 3 fields before the inventory is explicit.",
+        "Do not invent new field names without vocabulary and contract review."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_options_flow_context.py"
+      ],
+      "expected_evidence": [
+        "Field-and-reader inventory note embedded in gate work",
+        "Exact Step 3 contract delta identified"
+      ],
+      "definition_of_done": [
+        "Every live Step 3 field is classified before code edits start",
+        "Any unlawful reader path is explicitly named"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G236-003",
+      "gate": "Gate 236",
+      "title": "Rewrite the Step 3 contract to descriptive-only",
+      "objective": "Refactor the Step 3 schema and service so `Options and Flow Context` emits descriptive landscape state only.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G236-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf enforces the corrective brief at the Step 3 output contract boundary.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/options_flow_context.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Step 3 field inventory from LEAF-G236-002"
+      ],
+      "ordered_actions": [
+        "Remove or rename any Step 3 field that encodes permission, veto, or capital semantics.",
+        "Preserve lawful descriptive richness around options, flow, pressure, destabilisation, and pinning behaviour.",
+        "Keep the output contract typed and review-visible."
+      ],
+      "forbidden_actions": [
+        "Do not move Step 4 logic upstream into Step 3.",
+        "Do not delete lawful descriptive richness just to pass tests."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_options_flow_context.py tests/test_gate236_main_serial_step3_contract_isolation.py"
+      ],
+      "expected_evidence": [
+        "Updated `OptionsFlowContextOutput` contract",
+        "Targeted Step 3 contract test coverage"
+      ],
+      "definition_of_done": [
+        "The Step 3 output contract contains descriptive state only",
+        "Existing lawful descriptive behaviour remains covered"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G236-004",
+      "gate": "Gate 236",
+      "title": "Rewire the Step 3 to Step 4 handoff",
+      "objective": "Update the runtime and lawful readers so Step 4 consumes the descriptive Step 3 packet without ambient permission leakage.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G236-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits on the Step 3 -> Step 4 boundary and prevents hidden permission drift.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected `OptionsFlowContextOutput` contract"
+      ],
+      "ordered_actions": [
+        "Update the runtime handoff to use the corrected Step 3 output directly.",
+        "Remove any ambient assumptions that Step 3 already decided permission.",
+        "Keep downstream type assertions and packet carriage aligned with the corrected contract."
+      ],
+      "forbidden_actions": [
+        "Do not let Step 4 recover hidden permission from deprecated Step 3 fields.",
+        "Do not introduce compatibility-only fallback readers without explicit justification."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_options_flow_context.py tests/test_posture_risk_and_playbook.py tests/test_gate236_main_serial_step3_contract_isolation.py"
+      ],
+      "expected_evidence": [
+        "Runtime handoff updated",
+        "No Step 3 permission leakage remains in Step 4 inputs"
+      ],
+      "definition_of_done": [
+        "Step 4 reads descriptive Step 3 state only",
+        "Runtime and schema type assertions remain green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G236-005",
+      "gate": "Gate 236",
+      "title": "Close Gate 236 with targeted proof",
+      "objective": "Prove the Step 3 contract isolation is correct and record the Gate 236 execution receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G236-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the first correction gate and preserves a deterministic execution receipt before Step 4 work starts.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_options_flow_context.py",
+        "tests/test_gate236_main_serial_step3_contract_isolation.py"
+      ],
+      "inputs": [
+        "All Gate 236 code changes"
+      ],
+      "ordered_actions": [
+        "Run the targeted Step 3 validation slice.",
+        "Record the exact branch, files touched, commands, and observed results in the execution log.",
+        "Advance the leaves ledger from Gate 236 to Gate 237 only if the targeted proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not open Gate 237 while Gate 236 still has unresolved failures.",
+        "Do not skip receipt recording."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_options_flow_context.py tests/test_gate236_main_serial_step3_contract_isolation.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Green Gate 236 validation output",
+        "Gate 236 execution receipts logged",
+        "Leaves ledger advanced truthfully"
+      ],
+      "definition_of_done": [
+        "Gate 236 is fully complete with no remaining Gate 236 leaves",
+        "Gate 237 becomes the only active gate after closeout"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G237-001",
+      "gate": "Gate 237",
+      "title": "Inventory Step 4 capital semantics and readers",
+      "objective": "Freeze every Step 4 field and downstream reader that still treats `Posture and Risk Permission` as deployable-capital or inventory-allocation state.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G236-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the Step 4 contract boundary and defines the exact capital-semantics removal burden before refactoring begins.",
+      "vocabulary_terms_checked": [
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/capital_deployment_authority.py"
+      ],
+      "inputs": [
+        "/mnt/data/steps_3_to_6_corrective_brief_main_serial_stack_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Trace every `PostureRiskOutput` field and every reader of that output.",
+        "Classify each field as envelope semantics, descriptive rationale, or unlawful capital/inventory semantics.",
+        "Freeze the downstream reader inventory before changing the contract."
+      ],
+      "forbidden_actions": [
+        "Do not collapse envelope semantics together with capital semantics.",
+        "Do not guess lawful readers without tracing them."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py"
+      ],
+      "expected_evidence": [
+        "Step 4 field-and-reader inventory",
+        "Explicit list of fields to remove or relocate"
+      ],
+      "definition_of_done": [
+        "Every deployable-capital and inventory-style Step 4 surface is named before edits start",
+        "The lawful envelope subset is preserved explicitly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G237-002",
+      "gate": "Gate 237",
+      "title": "Rewrite Step 4 as a permission envelope only",
+      "objective": "Refactor the Step 4 schema so `Posture and Risk Permission` emits a bounded local permission envelope without deployable-capital or allocator semantics.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G237-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf restores the corrective brief's Step 4 contract: permission only, not capital allowance.",
+      "vocabulary_terms_checked": [
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/posture_risk.py"
+      ],
+      "inputs": [
+        "Step 4 field inventory from LEAF-G237-001"
+      ],
+      "ordered_actions": [
+        "Remove or relocate Step 4 fields that encode deployable-capital, target-capital, or allocator-style semantics.",
+        "Preserve the lawful permission-envelope meaning needed by Step 5.",
+        "Keep rationale lineage explicit so later review remains readable without reusing Step 4 as a global veto."
+      ],
+      "forbidden_actions": [
+        "Do not leave deprecated capital fields silently populated for compatibility.",
+        "Do not turn Step 4 into playbook selection."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate237_main_serial_step4_permission_envelope.py"
+      ],
+      "expected_evidence": [
+        "Corrected Step 4 output contract",
+        "Targeted envelope contract tests"
+      ],
+      "definition_of_done": [
+        "The Step 4 contract contains envelope semantics only",
+        "No Step 4 field still represents deployable-capital state"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G237-003",
+      "gate": "Gate 237",
+      "title": "Refactor the posture service to emit single-use envelope logic",
+      "objective": "Update the Step 4 service and runtime integration so the envelope is produced once and handed to Step 5 without generic downstream reuse.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G237-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside the Step 4 service/runtime boundary and prevents repeated posture contamination.",
+      "vocabulary_terms_checked": [
+        "Posture and Risk Permission",
+        "Playbook Eligibility"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/posture_risk.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected Step 4 contract"
+      ],
+      "ordered_actions": [
+        "Refactor the Step 4 service to compute envelope state only.",
+        "Update runtime carriage so later stages consume the envelope once rather than recovering posture as a generic suppressor.",
+        "Keep the handoff typed and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not smuggle old deployable fields through a helper or compatibility wrapper.",
+        "Do not let Step 5 infer new posture state beyond the emitted envelope."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate237_main_serial_step4_permission_envelope.py"
+      ],
+      "expected_evidence": [
+        "Runtime/Step 4 service updated",
+        "Single-use envelope carriage visible in code and tests"
+      ],
+      "definition_of_done": [
+        "Step 4 logic emits one bounded envelope",
+        "No runtime branch treats Step 4 as capital authority"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G237-004",
+      "gate": "Gate 237",
+      "title": "Update lawful downstream readers of Step 4",
+      "objective": "Refactor readers that still expect removed Step 4 capital semantics so the corrected contract remains coherent end to end.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G237-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits on the reader side of the Step 4 contract and prevents stale reader drift.",
+      "vocabulary_terms_checked": [
+        "Posture and Risk Permission",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected Step 4 contract and reader inventory"
+      ],
+      "ordered_actions": [
+        "Update each lawful reader to use the new Step 4 envelope fields only.",
+        "Remove stale assumptions that Step 4 still carries deployable-capital or inventory-allocation state.",
+        "Preserve deterministic runtime execution while narrowing the reader set."
+      ],
+      "forbidden_actions": [
+        "Do not keep dead reader branches alive with default zeros or inferred capital fields.",
+        "Do not widen this leaf into cross-step clean-up beyond the named readers."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_gate237_main_serial_step4_permission_envelope.py"
+      ],
+      "expected_evidence": [
+        "Reader updates landed",
+        "No remaining direct reader of removed Step 4 capital fields"
+      ],
+      "definition_of_done": [
+        "All named readers compile and pass targeted tests against the corrected Step 4 contract",
+        "Reader drift is removed before Step 5 changes begin"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G237-005",
+      "gate": "Gate 237",
+      "title": "Close Gate 237 with envelope proof",
+      "objective": "Prove the Step 4 rewrite is correct and record the Gate 237 execution receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G237-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the Step 4 gate before Step 5 decontamination begins.",
+      "vocabulary_terms_checked": [
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_posture_risk_and_playbook.py",
+        "tests/test_gate237_main_serial_step4_permission_envelope.py"
+      ],
+      "inputs": [
+        "All Gate 237 code changes"
+      ],
+      "ordered_actions": [
+        "Run the targeted Step 4 validation slice.",
+        "Record exact receipt data in the execution log.",
+        "Advance the active gate only if the Step 4 proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not open Gate 238 with unresolved Step 4 failures.",
+        "Do not skip state-ledger updates."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate237_main_serial_step4_permission_envelope.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Green Gate 237 validation output",
+        "Gate 237 receipts logged",
+        "Leaves ledger advanced truthfully"
+      ],
+      "definition_of_done": [
+        "Gate 237 is fully complete with no remaining Gate 237 leaves",
+        "Gate 238 becomes the only active gate after closeout"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G238-001",
+      "gate": "Gate 238",
+      "title": "Inventory posture reuse inside Step 5",
+      "objective": "Freeze every Step 5 branch, helper, and candidate filter that still re-runs posture or consumes posture-derived caution as a repeatable veto.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G237-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the Step 5 defect boundary and names the contamination paths before code edits begin.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility",
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected Step 4 envelope contract"
+      ],
+      "ordered_actions": [
+        "Trace every direct and indirect Step 5 read of posture-derived permission state.",
+        "Classify each read as lawful single-use envelope consumption or unlawful repeated posture reuse.",
+        "Freeze the candidate-filter inventory before refactoring."
+      ],
+      "forbidden_actions": [
+        "Do not remove lawful envelope filtering together with duplicate veto logic.",
+        "Do not guess at helper behaviour without tracing the reader path."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py"
+      ],
+      "expected_evidence": [
+        "Step 5 contamination inventory",
+        "Explicit list of repeated posture paths"
+      ],
+      "definition_of_done": [
+        "Every repeated posture path in Step 5 is named before code edits start",
+        "Lawful envelope consumption is separated from unlawful duplication"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G238-002",
+      "gate": "Gate 238",
+      "title": "Remove duplicate veto logic from Step 5",
+      "objective": "Refactor Step 5 evaluators so eligibility selects inside the envelope instead of re-running posture under another name.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G238-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf enforces selection-only behaviour inside `Playbook Eligibility`.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Step 5 contamination inventory"
+      ],
+      "ordered_actions": [
+        "Delete or rewrite branches that convert posture-derived caution into a repeated generic veto.",
+        "Preserve lawful candidate filtering that depends on the emitted Step 4 envelope.",
+        "Keep the output deterministic and stage-local."
+      ],
+      "forbidden_actions": [
+        "Do not turn Step 5 into Step 4-by-proxy.",
+        "Do not widen the change into Step 6 behaviour yet."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate238_main_serial_step5_playbook_decontamination.py"
+      ],
+      "expected_evidence": [
+        "Refactored Step 5 evaluators",
+        "Targeted Step 5 contract tests"
+      ],
+      "definition_of_done": [
+        "No Step 5 branch re-runs posture semantics beyond the lawful envelope",
+        "Candidate filtering remains deterministic"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G238-003",
+      "gate": "Gate 238",
+      "title": "Preserve lawful candidate selection outputs",
+      "objective": "Update Step 5 output surfaces so they express admissibility and candidate selection only.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G238-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf protects the useful Step 5 selection surfaces while removing posture contamination.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility",
+        "Execution Candidate Ownership"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/playbook_eligibility.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "Corrected Step 5 logic"
+      ],
+      "ordered_actions": [
+        "Review the Step 5 output shape and remove fields or rationale paths that still imply global posture reuse.",
+        "Preserve candidate lists, selected candidates, and lawful eligibility rationale needed by Step 6.",
+        "Keep Stage 6 candidate-ownership compatibility readable."
+      ],
+      "forbidden_actions": [
+        "Do not erase useful candidate lineage needed downstream.",
+        "Do not add new durable terms without vocabulary review."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate238_main_serial_step5_playbook_decontamination.py tests/test_gate146_admissibility_candidate_ownership.py"
+      ],
+      "expected_evidence": [
+        "Updated Step 5 output contract",
+        "Candidate-ownership anchor proof preserved"
+      ],
+      "definition_of_done": [
+        "Step 5 outputs express selection-only state",
+        "Downstream candidate-ownership anchors still pass or are updated truthfully"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G238-004",
+      "gate": "Gate 238",
+      "title": "Rewire Step 5 to Step 6 candidate handoff",
+      "objective": "Update the runtime so Step 6 receives lawful candidate-selection output rather than stale posture contamination.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G238-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the Step 5 -> Step 6 boundary and protects the recommendation layer from upstream contamination.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility",
+        "Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "inputs": [
+        "Corrected Step 5 output contract"
+      ],
+      "ordered_actions": [
+        "Update runtime handoff code so Step 6 reads candidate-selection output only.",
+        "Remove any ambient fallback to posture-derived veto logic across the Step 5 -> Step 6 boundary.",
+        "Keep the handoff typed and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not move Step 6 clean-up into helper branches hidden from this handoff.",
+        "Do not preserve stale fields just to avoid changing tests."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_execution_review_runtime.py tests/test_gate238_main_serial_step5_playbook_decontamination.py"
+      ],
+      "expected_evidence": [
+        "Runtime handoff updated",
+        "No repeated posture leakage remains at the Step 5 -> Step 6 boundary"
+      ],
+      "definition_of_done": [
+        "Step 6 reads candidate-selection output rather than repeated posture state",
+        "Targeted Step 5/6 boundary tests are green"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G238-005",
+      "gate": "Gate 238",
+      "title": "Close Gate 238 with decontamination proof",
+      "objective": "Prove the Step 5 decontamination is correct and record the Gate 238 execution receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G238-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the Step 5 gate and freezes the corrected selection boundary before Step 6 cleanup begins.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_posture_risk_and_playbook.py",
+        "tests/test_gate238_main_serial_step5_playbook_decontamination.py"
+      ],
+      "inputs": [
+        "All Gate 238 code changes"
+      ],
+      "ordered_actions": [
+        "Run the targeted Step 5 validation slice.",
+        "Record exact receipt data in the execution log.",
+        "Advance the active gate only if the Step 5 proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not open Gate 239 while Gate 238 is still red.",
+        "Do not skip execution-log updates."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_posture_risk_and_playbook.py tests/test_gate238_main_serial_step5_playbook_decontamination.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Green Gate 238 validation output",
+        "Gate 238 receipts logged",
+        "Leaves ledger advanced truthfully"
+      ],
+      "definition_of_done": [
+        "Gate 238 is fully complete with no remaining Gate 238 leaves",
+        "Gate 239 becomes the only active gate after closeout"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G239-001",
+      "gate": "Gate 239",
+      "title": "Inventory Step 6 capital and allocator semantics",
+      "objective": "Freeze every Step 6 field, branch, and downstream reader that still treats `Expression and Execution` as capital-deployment or allocator logic.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G238-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the Step 6 contract boundary and names the remaining capital-semantics burden before refactoring.",
+      "vocabulary_terms_checked": [
+        "Expression and Execution",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "/mnt/data/steps_3_to_6_corrective_brief_main_serial_stack_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Trace every Step 6 field and every reader of `ExecutionExpressionOutput`.",
+        "Classify each field as recommendation semantics, compatibility-only lineage, or unlawful capital/allocator semantics.",
+        "Freeze the reader inventory before changing the contract."
+      ],
+      "forbidden_actions": [
+        "Do not conflate lawful recommendation geometry with allocator semantics.",
+        "Do not hide target-capital behaviour inside rationale codes or helper names."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate189_capital_deployment_authority_service.py"
+      ],
+      "expected_evidence": [
+        "Step 6 field-and-reader inventory",
+        "Explicit list of fields to remove or relocate"
+      ],
+      "definition_of_done": [
+        "All Step 6 capital and allocator semantics are named before edits start",
+        "Lawful recommendation surfaces are preserved explicitly"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G239-002",
+      "gate": "Gate 239",
+      "title": "Rewrite the Step 6 output contract to recommendation-only",
+      "objective": "Refactor the Step 6 schema so `Expression and Execution` emits a stateless recommendation surface without target-deployment semantics.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G239-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf restores the corrective brief's Step 6 contract: recommendation only, not capital deployment.",
+      "vocabulary_terms_checked": [
+        "Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/execution_expression.py"
+      ],
+      "inputs": [
+        "Step 6 field inventory from LEAF-G239-001"
+      ],
+      "ordered_actions": [
+        "Remove or relocate Step 6 fields that encode target fresh-deployable sizing or allocator-style decisions.",
+        "Preserve lawful recommendation fields such as playbook/family/setup lineage, entry geometry, and recommendation rationale.",
+        "Keep the output stateless and typed."
+      ],
+      "forbidden_actions": [
+        "Do not leave removed target-capital fields silently defaulted to zero.",
+        "Do not degrade recommendation readability just to shrink the contract."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate239_main_serial_step6_recommendation_boundary.py"
+      ],
+      "expected_evidence": [
+        "Corrected Step 6 output contract",
+        "Targeted recommendation-boundary tests"
+      ],
+      "definition_of_done": [
+        "The Step 6 contract is recommendation-only",
+        "No Step 6 field still acts as capital-deployment authority"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G239-003",
+      "gate": "Gate 239",
+      "title": "Refactor the execution service to respect the corrected Step 6 boundary",
+      "objective": "Update the Step 6 service and runtime integration so Step 6 does not re-apply posture and does not emit allocator behaviour.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G239-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits inside the Step 6 service/runtime boundary and restores stateless recommendation behaviour.",
+      "vocabulary_terms_checked": [
+        "Expression and Execution",
+        "Posture and Risk Permission"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/execution_expression.py",
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected Step 6 contract",
+        "Corrected Step 5 handoff"
+      ],
+      "ordered_actions": [
+        "Refactor the Step 6 service to consume candidate-selection output and recommendation geometry only.",
+        "Remove repeated posture application and target-capital behaviour from Step 6 evaluation paths.",
+        "Keep runtime packet carriage and review-visible lineage aligned with the corrected contract."
+      ],
+      "forbidden_actions": [
+        "Do not let Step 6 recover allocator behaviour through hidden helper branches.",
+        "Do not pull downstream capital authority upstream into Step 6."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate239_main_serial_step6_recommendation_boundary.py"
+      ],
+      "expected_evidence": [
+        "Execution service updated",
+        "Step 6 recommendation-only runtime proof"
+      ],
+      "definition_of_done": [
+        "Step 6 no longer re-applies posture as allocator logic",
+        "Targeted Step 6 tests are green against the corrected contract"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G239-004",
+      "gate": "Gate 239",
+      "title": "Update bounded downstream handoff for recommendation-only Step 6 output",
+      "objective": "Refactor bounded downstream consumers so capital authority stays explicitly downstream of the corrected Step 6 recommendation surface.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G239-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits on the Step 6 -> downstream boundary and prevents allocator semantics from leaking back into the serial recommendation layer.",
+      "vocabulary_terms_checked": [
+        "Expression and Execution",
+        "Capital Deployment Authority Service",
+        "Capital Deployment Authority Decision"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/capital_deployment_authority.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Corrected Step 6 contract and reader inventory"
+      ],
+      "ordered_actions": [
+        "Update bounded downstream inputs so they no longer depend on removed Step 6 target-capital fields.",
+        "Keep any later capital decision explicit and downstream rather than hidden inside Step 6.",
+        "Preserve deterministic handoff and rationale readability."
+      ],
+      "forbidden_actions": [
+        "Do not leave downstream readers guessing values from deleted Step 6 fields.",
+        "Do not widen this leaf into full arbiter redesign."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate189_capital_deployment_authority_service.py tests/test_execution_review_runtime.py tests/test_gate239_main_serial_step6_recommendation_boundary.py"
+      ],
+      "expected_evidence": [
+        "Downstream handoff updated",
+        "No bounded downstream reader depends on deleted Step 6 capital fields"
+      ],
+      "definition_of_done": [
+        "The Step 6 -> downstream handoff is recommendation-only plus explicit downstream authority inputs",
+        "Targeted downstream tests remain green or are updated truthfully"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G239-005",
+      "gate": "Gate 239",
+      "title": "Close Gate 239 with recommendation-boundary proof",
+      "objective": "Prove the Step 6 clean-up is correct and record the Gate 239 execution receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G239-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the Step 6 gate before cross-step enforcement begins.",
+      "vocabulary_terms_checked": [
+        "Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate239_main_serial_step6_recommendation_boundary.py"
+      ],
+      "inputs": [
+        "All Gate 239 code changes"
+      ],
+      "ordered_actions": [
+        "Run the targeted Step 6 validation slice.",
+        "Record exact receipt data in the execution log.",
+        "Advance the active gate only if the Step 6 proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not open Gate 240 while Gate 239 is still red.",
+        "Do not skip receipt recording."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_execution_review_runtime.py tests/test_gate239_main_serial_step6_recommendation_boundary.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Green Gate 239 validation output",
+        "Gate 239 receipts logged",
+        "Leaves ledger advanced truthfully"
+      ],
+      "definition_of_done": [
+        "Gate 239 is fully complete with no remaining Gate 239 leaves",
+        "Gate 240 becomes the only active gate after closeout"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G240-001",
+      "gate": "Gate 240",
+      "title": "Audit cross-step payload carriage and leakage paths",
+      "objective": "Trace every cross-step payload, handoff surface, and review-visible carriage path that can still leak behaviour across the corrected Step 3-6 boundaries.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G239-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits above the individual stages and inventories the remaining leakage paths before cross-step fixes begin.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Posture and Risk Permission",
+        "Playbook Eligibility",
+        "Expression and Execution",
+        "Stage-Local Handoff",
+        "Modifier Runtime Packet"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/dmp_v2.py"
+      ],
+      "inputs": [
+        "Corrected Gate 236-239 contracts"
+      ],
+      "ordered_actions": [
+        "Trace every Step 3 -> Step 4 -> Step 5 -> Step 6 carriage path and every review-visible seam.",
+        "Classify each path as lawful stage-local meaning, compatibility-only carriage, or unlawful cross-step leakage.",
+        "Freeze the leakage inventory before editing runtime joins and handoff surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not treat review-visible duplication as automatically unlawful without tracing its role.",
+        "Do not skip compatibility surfaces such as `final_risk_join` and `Stage-Local Handoff`."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_gate230_opening_position_seam_and_downstream_handoff.py"
+      ],
+      "expected_evidence": [
+        "Cross-step leakage inventory",
+        "Named list of lawful versus unlawful carriage paths"
+      ],
+      "definition_of_done": [
+        "All remaining leakage paths are named before cross-step edits begin",
+        "Compatibility surfaces are classified rather than guessed"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G240-002",
+      "gate": "Gate 240",
+      "title": "Enforce descriptive and permission boundaries in runtime carriage",
+      "objective": "Update runtime payload carriage so Step 3 remains descriptive-only and Step 4 remains permission-only across the live execution path.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G240-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf hardens the first half of the corrected serial chain inside the runtime.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Posture and Risk Permission",
+        "Stage-Local Handoff"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/dmp_v2.py"
+      ],
+      "inputs": [
+        "Cross-step leakage inventory"
+      ],
+      "ordered_actions": [
+        "Remove any runtime or packet carriage that lets Step 3 behave like permission or lets Step 4 behave like capital allowance.",
+        "Preserve lawful stage-local visibility and typed packet carriage.",
+        "Keep review-visible lineage readable without widening stage authority."
+      ],
+      "forbidden_actions": [
+        "Do not break the canonical stage order.",
+        "Do not drop review-visible lineage that remains lawful under the corrected contracts."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "expected_evidence": [
+        "Updated runtime carriage for Step 3/4 boundaries",
+        "Boundary-enforcement tests covering descriptive and permission separation"
+      ],
+      "definition_of_done": [
+        "No runtime carriage path makes Step 3 or Step 4 outrank its corrected role",
+        "Typed packet carriage remains intact"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G240-003",
+      "gate": "Gate 240",
+      "title": "Enforce selection and recommendation boundaries in runtime carriage",
+      "objective": "Update runtime joins and handoff surfaces so Step 5 remains selection-only and Step 6 remains recommendation-only without same-pass cumulative risk reuse.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G240-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf hardens the second half of the corrected serial chain and addresses the preserved seam/final-join sensitivity.",
+      "vocabulary_terms_checked": [
+        "Playbook Eligibility",
+        "Expression and Execution",
+        "Terminal Risk Application",
+        "Terminal Risk Decision"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/risk_gateway.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "Cross-step leakage inventory",
+        "Corrected Gate 238-239 contracts"
+      ],
+      "ordered_actions": [
+        "Remove any runtime branch that turns Step 5 candidate selection into repeated posture or Step 6 recommendation into capital authority.",
+        "Preserve the seam law around terminal-risk and final-join surfaces without reintroducing cumulative contamination.",
+        "Keep downstream compatibility carriage explicit and bounded."
+      ],
+      "forbidden_actions": [
+        "Do not collapse lawful terminal-risk surfaces into the Step 6 recommendation contract.",
+        "Do not let `final_risk_join` silently become a generic serial veto again."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate230_opening_position_seam_and_downstream_handoff.py tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "expected_evidence": [
+        "Updated runtime joins and Step 5/6 handoff",
+        "Boundary-enforcement proof around the preserved seam"
+      ],
+      "definition_of_done": [
+        "No same-pass serial path silently reuses posture-derived caution as generic downstream suppression",
+        "The preserved seam remains readable and bounded"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G240-004",
+      "gate": "Gate 240",
+      "title": "Update review-visible and DMP carriage to match the corrected boundary",
+      "objective": "Refactor DMP/review/handoff surfaces so they preserve meaning without contradicting the corrected Step 3-6 contracts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G240-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents observability surfaces from dragging obsolete behaviour back into authority.",
+      "vocabulary_terms_checked": [
+        "Stage-Local Handoff",
+        "Modifier Runtime Packet",
+        "Execution Candidate Ownership",
+        "Overlay Risk Decision",
+        "Terminal Risk Application",
+        "Terminal Risk Decision"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/review_explanation.py",
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "Cross-step leakage inventory",
+        "Corrected step contracts"
+      ],
+      "ordered_actions": [
+        "Update review and DMP carriage to describe the corrected stage meanings explicitly.",
+        "Retire or mark compatibility-only any review-visible payload that would misstate the corrected boundary.",
+        "Preserve lawful downstream interpretability without ambient guesswork."
+      ],
+      "forbidden_actions": [
+        "Do not let review-only surfaces become de facto execution authority.",
+        "Do not invent new review taxonomy without vocabulary review."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_dmp_review_trace.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "expected_evidence": [
+        "Updated review/DMP/handoff surfaces",
+        "Review-trace and handoff anchor proof aligned with corrected contracts"
+      ],
+      "definition_of_done": [
+        "Review-visible surfaces match the corrected Step 3-6 contracts",
+        "DMP and handoff anchors remain truthful and deterministic"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G240-005",
+      "gate": "Gate 240",
+      "title": "Close Gate 240 with cross-step boundary proof",
+      "objective": "Prove the serial boundary is clean across Steps 3-6 and record the Gate 240 execution receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G240-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the cross-step gate before acceptance-corpus revalidation begins.",
+      "vocabulary_terms_checked": [
+        "Stage-Local Handoff",
+        "Modifier Runtime Packet"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py",
+        "tests/test_gate230_opening_position_seam_and_downstream_handoff.py",
+        "tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "inputs": [
+        "All Gate 240 code changes"
+      ],
+      "ordered_actions": [
+        "Run the targeted cross-step validation slice.",
+        "Record exact receipt data in the execution log.",
+        "Advance the active gate only if the cross-step proof is green."
+      ],
+      "forbidden_actions": [
+        "Do not open Gate 241 while Gate 240 is still red.",
+        "Do not skip gate-closeout receipts."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate229_serial_opportunity_ladder_and_non_cumulative_risk.py tests/test_gate230_opening_position_seam_and_downstream_handoff.py tests/test_gate240_main_serial_cross_step_boundary_enforcement.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Green Gate 240 validation output",
+        "Gate 240 receipts logged",
+        "Leaves ledger advanced truthfully"
+      ],
+      "definition_of_done": [
+        "Gate 240 is fully complete with no remaining Gate 240 leaves",
+        "Gate 241 becomes the only active gate after closeout"
+      ],
+      "closeout_updates_required": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G241-001",
+      "gate": "Gate 241",
+      "title": "Freeze the acceptance-corpus proof slice",
+      "objective": "Define the exact existing runtime, trace-ledger, perturbation, and fixture surfaces that will be used to prove the Step 3-6 defect is removed.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G240-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the proof boundary and prevents ad hoc test expansion.",
+      "vocabulary_terms_checked": [
+        "Modifier Runtime Packet",
+        "Stage-Local Handoff",
+        "Execution Candidate Ownership"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "src/nvda_desk/testing/cognition_fixtures.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_dmp_review_trace.py",
+        "tests/test_gate132_bounded_trace_scenario_pack.py",
+        "tests/test_gate133_bounded_trace_review_regime.py",
+        "tests/test_gate134_bounded_trace_reporting.py"
+      ],
+      "inputs": [
+        "Operator execution brief",
+        "Corrected Step 3-6 contracts"
+      ],
+      "ordered_actions": [
+        "Select the existing proof surfaces required by the execution brief.",
+        "Name the exact structural trace, behavioural trace, perturbation, and fixture slices that will be used.",
+        "Freeze the proof slice before running final revalidation."
+      ],
+      "forbidden_actions": [
+        "Do not invent a new proof framework.",
+        "Do not widen into a broad full-suite run unless blast radius forces it."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate132_bounded_trace_scenario_pack.py tests/test_gate133_bounded_trace_review_regime.py tests/test_gate134_bounded_trace_reporting.py"
+      ],
+      "expected_evidence": [
+        "Frozen acceptance-corpus slice",
+        "Explicit list of proof surfaces and commands"
+      ],
+      "definition_of_done": [
+        "The final proof scope is explicit and bounded before execution",
+        "The proof slice uses existing repo infrastructure"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G241-002",
+      "gate": "Gate 241",
+      "title": "Record a truthful pre-fix or equivalent regression witness",
+      "objective": "Capture the starting failure signature from the current acceptance corpus or record the nearest truthful regression witness if the exact pre-fix snapshot is no longer runnable.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G241-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf preserves honest before/after evidence for the corrected defect.",
+      "vocabulary_terms_checked": [
+        "Stage-Local Handoff",
+        "Terminal Risk Decision"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate241_main_serial_acceptance_corpus_revalidation.py"
+      ],
+      "inputs": [
+        "Frozen acceptance-corpus slice"
+      ],
+      "ordered_actions": [
+        "Run or reconstruct the current failure witness using the bounded proof slice.",
+        "Record the exact witness condition that shows cumulative risk contamination or repeated posture reuse before the final correction.",
+        "If exact reproduction is impossible from the corrected branch point, write the nearest truthful equivalent regression witness into the gate receipts."
+      ],
+      "forbidden_actions": [
+        "Do not fabricate a pre-fix failure that was not observed.",
+        "Do not skip the before/after evidence question."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate241_main_serial_acceptance_corpus_revalidation.py -k pre_fix_or_regression_witness"
+      ],
+      "expected_evidence": [
+        "Truthful pre-fix or equivalent regression witness recorded",
+        "Exact witness condition named in receipts"
+      ],
+      "definition_of_done": [
+        "A truthful before-state witness exists for the final proof narrative",
+        "The witness is tied to the bounded proof slice rather than general impressions"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G241-003",
+      "gate": "Gate 241",
+      "title": "Run structural and behavioural trace revalidation",
+      "objective": "Rerun the bounded structural and behavioural trace slices on the corrected runtime boundary.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G241-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf performs the first half of the final deterministic proof on the corrected serial boundary.",
+      "vocabulary_terms_checked": [
+        "Modifier Runtime Packet",
+        "Stage-Local Handoff",
+        "Execution Candidate Ownership"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "src/nvda_desk/testing/cognition_fixtures.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_dmp_review_trace.py",
+        "tests/test_gate143_stage_local_handoff_runtime.py",
+        "tests/test_gate146_admissibility_candidate_ownership.py",
+        "tests/test_gate147_overlay_terminal_risk_runtime.py",
+        "tests/test_gate241_main_serial_acceptance_corpus_revalidation.py"
+      ],
+      "inputs": [
+        "Frozen acceptance-corpus slice",
+        "Corrected runtime boundary"
+      ],
+      "ordered_actions": [
+        "Run the structural trace slice across the corrected runtime.",
+        "Run the behavioural trace slice and preserve exact observed outputs.",
+        "Compare the trace outputs against the corrected boundary doctrine."
+      ],
+      "forbidden_actions": [
+        "Do not treat green tests alone as sufficient if trace content still contradicts the corrected boundary.",
+        "Do not suppress trace diffs that matter materially."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_dmp_review_trace.py tests/test_gate143_stage_local_handoff_runtime.py tests/test_gate146_admissibility_candidate_ownership.py tests/test_gate147_overlay_terminal_risk_runtime.py tests/test_gate241_main_serial_acceptance_corpus_revalidation.py -k trace"
+      ],
+      "expected_evidence": [
+        "Structural and behavioural trace receipts",
+        "Observed trace outputs tied to corrected boundary"
+      ],
+      "definition_of_done": [
+        "Structural and behavioural traces support the corrected Step 3-6 separation",
+        "Any remaining contradiction is explicit before final closeout"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G241-004",
+      "gate": "Gate 241",
+      "title": "Run perturbation and deterministic stability revalidation",
+      "objective": "Rerun the bounded perturbation and deterministic-repeatability slices and compare them against the recorded witness and corrected doctrine.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G241-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf performs the second half of the final deterministic proof.",
+      "vocabulary_terms_checked": [
+        "Modifier Runtime Packet",
+        "Stage-Local Handoff"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "src/nvda_desk/testing/cognition_fixtures.py",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate100_bounded_scenario_matrix.py",
+        "tests/test_gate241_main_serial_acceptance_corpus_revalidation.py"
+      ],
+      "inputs": [
+        "Frozen acceptance-corpus slice",
+        "Recorded regression witness"
+      ],
+      "ordered_actions": [
+        "Run the bounded perturbation slice declared in LEAF-G241-001.",
+        "Confirm deterministic repeatability across repeated runs on the corrected boundary.",
+        "Compare the results against the recorded regression witness and the corrective doctrine."
+      ],
+      "forbidden_actions": [
+        "Do not widen into unrelated scenario packs.",
+        "Do not claim deterministic stability without repeated-run evidence."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate100_bounded_scenario_matrix.py tests/test_gate241_main_serial_acceptance_corpus_revalidation.py -k perturbation_or_repeatability"
+      ],
+      "expected_evidence": [
+        "Perturbation and repeatability receipts",
+        "Before/after comparison against recorded witness"
+      ],
+      "definition_of_done": [
+        "The defect no longer reproduces on the bounded perturbation slice",
+        "Corrected outputs remain deterministic across repeated runs"
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G241-005",
+      "gate": "Gate 241",
+      "title": "Close the pack truthfully",
+      "objective": "Synchronize the router surfaces, record final receipts, and return the repo to a truthful post-pack state.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G241-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the entire corrective tranche and prevents a ghost-active pack state.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Posture and Risk Permission",
+        "Playbook Eligibility",
+        "Expression and Execution"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "tests/test_planning_state_integrity.py",
+        "tests/test_gate241_main_serial_acceptance_corpus_revalidation.py"
+      ],
+      "inputs": [
+        "All Gate 241 proof receipts"
+      ],
+      "ordered_actions": [
+        "Record the final Gate 241 receipts.",
+        "Update the router quartet so the pack closes truthfully with no remaining leaves.",
+        "Run the planning-state integrity proof and leave the repo in a lawful no-active-pack or next-pack-routed state."
+      ],
+      "forbidden_actions": [
+        "Do not leave the pack half-closed with pending leaves.",
+        "Do not close the pack without final proof receipts."
+      ],
+      "validation_commands": [
+        "python -m pytest -q tests/test_gate241_main_serial_acceptance_corpus_revalidation.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Final acceptance-corpus receipts",
+        "Router quartet synchronized on pack closeout",
+        "No remaining leaves in the active ledger"
+      ],
+      "definition_of_done": [
+        "The pack is closed truthfully with final proof recorded",
+        "The repo router state is lawful after closeout"
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, Git branch/commit/merge receipts are the default closeout evidence. Create a fresh zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ]
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md",
+      "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json",
+      "docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md",
+      "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  }
+}

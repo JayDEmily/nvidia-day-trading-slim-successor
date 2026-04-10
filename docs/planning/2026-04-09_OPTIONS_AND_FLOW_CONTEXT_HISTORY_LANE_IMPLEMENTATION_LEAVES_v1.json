@@ -1,0 +1,1657 @@
+{
+  "governing_plan": "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+  "version": "v1.0",
+  "routing_status": "options_flow_context_history_lane_pack_closed_no_active_pack_routed",
+  "execution_status": "options_flow_context_history_lane_pack_closed_through_gate_246_no_active_pack_routed",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_GATES_v1.md",
+    "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_LEAVES_v1.json",
+    "docs/planning/2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 242",
+    "Gate 243",
+    "Gate 244",
+    "Gate 245",
+    "Gate 246"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G242-001",
+    "LEAF-G242-002",
+    "LEAF-G242-003",
+    "LEAF-G242-004",
+    "LEAF-G242-005",
+    "LEAF-G243-001",
+    "LEAF-G243-002",
+    "LEAF-G243-003",
+    "LEAF-G243-004",
+    "LEAF-G243-005",
+    "LEAF-G244-001",
+    "LEAF-G244-002",
+    "LEAF-G244-003",
+    "LEAF-G244-004",
+    "LEAF-G244-005",
+    "LEAF-G245-001",
+    "LEAF-G245-002",
+    "LEAF-G245-003",
+    "LEAF-G245-004",
+    "LEAF-G245-005",
+    "LEAF-G246-001",
+    "LEAF-G246-002",
+    "LEAF-G246-003",
+    "LEAF-G246-004",
+    "LEAF-G246-005"
+  ],
+  "pending_gate_ids": [],
+  "remaining_leaf_ids": [],
+  "draft_activation_preconditions": [
+    "Route the pack truthfully through PLANS.md, the canonical gate map, this leaves ledger, and the execution log before Gate 242 work begins.",
+    "Reread the canonical vocabulary file before editing any durable field, class, or gate naming.",
+    "Bootstrap the repo-local environment via make install / uv sync --extra dev while honouring pyproject.toml.",
+    "If sandbox dependency resolution fails later, use the operator-supplied dependency bundle and attached bootstrap instructions instead of changing repo dependency law."
+  ],
+  "existing_anchor_tests": [
+    "tests/test_planning_state_integrity.py",
+    "tests/test_options_flow_context.py",
+    "tests/test_gate183_option_surface_raw_contract.py",
+    "tests/test_execution_review_runtime.py",
+    "tests/test_gate189_capital_deployment_authority_service.py",
+    "tests/test_gate190_capital_deployment_authority_integration.py"
+  ],
+  "notes": [
+    "The pack is closed through Gate 246 in the uploaded workspace copy.",
+    "No active pack is currently routed.",
+    "Git branch metadata remains unavailable in the uploaded zip worktree; execution receipts are command/file based."
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "pyproject_environment_authority_mandatory_for_bootstrap": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G242-001",
+      "gate": "Gate 242",
+      "title": "Bootstrap the observational-lane draft pack",
+      "objective": "Create the new draft pack from live repo truth and template-law scaffolding before any routing edit is attempted.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/tranche_briefing_template_pack/README.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the planning boundary before any new active pack is routed and prevents the closed Gate 241 evidence pack from being amended in place.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Vocabulary Workflow"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "/mnt/data/options_and_flow_context_history_lane_architecture_brief_2026-04-09.md",
+        "/mnt/data/options_and_flow_context_history_lane_gate_leaf_execution_brief_2026-04-09.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md"
+      ],
+      "ordered_actions": [
+        "Read the external briefs and the live router/process-law surfaces line by line.",
+        "Start the pack from template-law sections rather than cloning the latest closed pack structure mechanically.",
+        "Freeze the tranche purpose, scope, governing inputs, and activation preconditions in repo-native planning files.",
+        "Keep the draft unrouted until a later execution leaf lawfully moves the planning quartet."
+      ],
+      "forbidden_actions": [
+        "Do not edit repo-root PLANS.md or the gate map yet.",
+        "Do not claim this pack is active before the quartet moves together."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "expected_evidence": [
+        "Draft pack files exist under docs/planning/ with no router change yet.",
+        "Draft activation preconditions recorded."
+      ],
+      "definition_of_done": [
+        "The new pack exists as a draft-only evidence surface.",
+        "No active-pack truth has been falsified."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G242-002",
+      "gate": "Gate 242",
+      "title": "Classify the proposed observational-lane labels",
+      "objective": "Run the Vocabulary Workflow against the three proposed labels and freeze whether each is add_new, alias_only, or quarantine.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G242-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits in workflow naming governance before implementation, because the lane must not acquire durable labels by drift.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context History Lane",
+        "Options Surface Observation Record",
+        "Options Surface Observation Store"
+      ],
+      "repo_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "inputs": [
+        "/mnt/data/options_and_flow_context_history_lane_architecture_brief_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Check the canonical vocabulary file for collisions, adjacent meanings, and prohibited stage drift.",
+        "Classify each candidate as add_new, alias_only, or quarantine.",
+        "Record the classification outcome in the gate master and contradiction report, including whether temporary exact code-symbol usage is required."
+      ],
+      "forbidden_actions": [
+        "Do not silently add labels to repo-governing docs.",
+        "Do not let a workflow label collapse into a stage label."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "expected_evidence": [
+        "Vocabulary classification is explicit in the planning pack.",
+        "Any temporary exact code-symbol fallback is recorded."
+      ],
+      "definition_of_done": [
+        "Every proposed label has an explicit workflow disposition.",
+        "No label is treated as canonical by implication."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G242-003",
+      "gate": "Gate 242",
+      "title": "Freeze the observational boundary and prohibitions",
+      "objective": "Translate the behavioural brief into repo-facing lane law that freezes the capture point, capture scope, and prohibited roles.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G242-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml"
+      ],
+      "workflow_intent_assertion": "This leaf defines what the lane is allowed to do before any contract or persistence work is planned in detail.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Independent Parallel Risk Lane",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "inputs": [
+        "/mnt/data/options_and_flow_context_history_lane_architecture_brief_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Freeze the capture trigger as the fully formed Options and Flow Context boundary.",
+        "Freeze the required record contents as derived output plus bounded front/next expiry raw subset plus lineage.",
+        "Record explicit prohibitions against stage drift, recommendation memory, allocator memory, and DMP-stage insertion."
+      ],
+      "forbidden_actions": [
+        "Do not let 'observational' become vague analysis authority.",
+        "Do not widen the lane into all-expiry warehousing."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "expected_evidence": [
+        "Scope note states the lane's positive role and forbidden roles clearly.",
+        "Gate 242 definition-of-done aligns with the behavioural brief."
+      ],
+      "definition_of_done": [
+        "The lane meaning is frozen in repo-facing language.",
+        "The pack records zero-interference intent explicitly."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G242-004",
+      "gate": "Gate 242",
+      "title": "Record the raw-source contradiction and router hygiene semantics",
+      "objective": "Make the boundary tension and minor closeout hygiene semantics explicit before routing is attempted.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G242-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml"
+      ],
+      "workflow_intent_assertion": "This leaf prevents execution from discovering that the chosen boundary does not itself carry the raw option rows needed by the brief.",
+      "vocabulary_terms_checked": [
+        "OptionSnapshotPayload",
+        "PreparedRuntimeSnapshot",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/options.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/options.py",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "ordered_actions": [
+        "Trace exactly where derived output exists and where raw option rows currently live.",
+        "Record the gap between capture trigger and raw-source location.",
+        "Note the non-blocking closed-state hygiene semantics that should be cleaned when the new pack routes."
+      ],
+      "forbidden_actions": [
+        "Do not hide the raw-source gap behind vague wording.",
+        "Do not escalate routine hygiene edits into a false blocker."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "expected_evidence": [
+        "Contradiction report names the raw-source gap and the two hygiene semantics.",
+        "Execution stop-lines are explicit."
+      ],
+      "definition_of_done": [
+        "The contradiction report is specific enough that Gate 244 does not invent architecture in execution.",
+        "Minor hygiene semantics are isolated as non-blocking."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ]
+    },
+    {
+      "id": "LEAF-G242-005",
+      "gate": "Gate 242",
+      "title": "Validate the routed planning surfaces",
+      "objective": "Validate the routed active-pack surfaces and record truthful Gate 242 receipts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G242-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml"
+      ],
+      "workflow_intent_assertion": "This leaf keeps the draft pack truthful and mechanically valid before any later routing or execution begins.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+        "tests/test_planning_state_integrity.py"
+      ],
+      "inputs": [
+        "tests/test_planning_state_integrity.py"
+      ],
+      "ordered_actions": [
+        "Run JSON validation on the active leaves ledger.",
+        "Run the generic planning-state integrity test to confirm the pack now looks active rather than draft-only.",
+        "Record exact observed results in the active execution log."
+      ],
+      "forbidden_actions": [
+        "Do not skip validation because the pack is only a draft.",
+        "Do not set active_gate to none while leaves remain planned."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Leaves ledger validates as JSON.",
+        "Planning-state integrity test remains green."
+      ],
+      "definition_of_done": [
+        "The active pack is mechanically valid.",
+        "The execution log records truthful Gate 242 validation receipts."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G243-001",
+      "gate": "Gate 243",
+      "title": "Freeze the observation-record identity and lineage contract",
+      "objective": "Define the identity keys, timestamp keys, expiry keys, and lineage semantics required for one observational record.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G242-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the new persistence-contract boundary and prevents later model work from smuggling in recommendation or allocator meaning.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Record",
+        "PreparedRuntimeLineage",
+        "OptionSnapshotPayload"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/options.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/options.py"
+      ],
+      "ordered_actions": [
+        "Freeze the minimum identity fields: symbol, observed_at, chain_ts, front_expiry, next_expiry.",
+        "Freeze the lineage keys or equivalent deterministic reference surfaces the record must preserve.",
+        "State whether partial or empty raw subsets are allowed and how that is represented."
+      ],
+      "forbidden_actions": [
+        "Do not add recommendation ids, inventory state, or allocator state to the record contract.",
+        "Do not leave partiality semantics implicit."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 243 leaf text names the required identity and lineage fields.",
+        "Domain-model amendment burden is explicit."
+      ],
+      "definition_of_done": [
+        "One record identity contract is planned explicitly.",
+        "Lineage and partiality semantics are bounded."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": "LEAF-G243-002",
+      "gate": "Gate 243",
+      "title": "Freeze the derived-state block shape",
+      "objective": "Require the observational record to preserve the full derived OptionsFlowContextOutput block rather than a hand-picked summary.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G243-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps the lane faithful to the chosen capture point instead of re-deriving or thinning the derived state downstream.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/options_flow_context.py"
+      ],
+      "ordered_actions": [
+        "Inventory the current OptionsFlowContextOutput fields and require the full derived block to be carried.",
+        "Prevent later leaves from silently replacing the full output with a reduced compatibility summary.",
+        "Name any record-completeness flags needed when the raw subset or lineage is degraded but the derived block exists."
+      ],
+      "forbidden_actions": [
+        "Do not downcast the derived block to a few headline metrics.",
+        "Do not mutate OptionsFlowContextOutput to suit the store."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_options_flow_context.py"
+      ],
+      "expected_evidence": [
+        "Derived-state block requirement is explicit in the gate pack.",
+        "No summary-only fallback is treated as sufficient."
+      ],
+      "definition_of_done": [
+        "The full derived output is required by plan.",
+        "Completeness semantics are explicit if degradation is allowed."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G243-003",
+      "gate": "Gate 243",
+      "title": "Freeze the bounded raw-subset contract",
+      "objective": "Define exactly which raw option-row fields and expiry scope belong in the observational record.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G243-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits between existing raw-row truth surfaces and the new record model so later persistence code does not widen into unrestricted archival.",
+      "vocabulary_terms_checked": [
+        "OptionSnapshotPayload",
+        "Options Surface Observation Record"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/options.py",
+        "src/nvda_desk/db/models.py",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/options.py",
+        "src/nvda_desk/db/models.py",
+        "tests/test_gate183_option_surface_raw_contract.py"
+      ],
+      "ordered_actions": [
+        "Freeze the raw-subset field list around the existing option-row truth surfaces.",
+        "Freeze the expiry scope to front and next expiries only.",
+        "Record explicitly that all-expiry archival is out of scope for this tranche."
+      ],
+      "forbidden_actions": [
+        "Do not introduce a 'capture everything and filter later' design.",
+        "Do not invent raw-row fields not present in the existing option surfaces without authority."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate183_option_surface_raw_contract.py"
+      ],
+      "expected_evidence": [
+        "Raw-subset field list is explicit and bounded.",
+        "All-expiry archival is prohibited explicitly."
+      ],
+      "definition_of_done": [
+        "The pack defines a front/next-only raw-subset contract.",
+        "Raw-row shape stays aligned to existing option surfaces unless a later gate lawfully amends it."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/03_DOMAIN_MODEL.md",
+        "src/nvda_desk/schemas/options.py"
+      ]
+    },
+    {
+      "id": "LEAF-G243-004",
+      "gate": "Gate 243",
+      "title": "Plan the persistence model and migration shape",
+      "objective": "Define the SQLAlchemy and Alembic shape needed to persist the observational record distinct from existing stores.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G243-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the persistence boundary and keeps the observation store separate in role from recommendation, inventory, and allocator state.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Store"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/db/models.py",
+        "alembic/versions/",
+        "src/nvda_desk/db/session.py",
+        "pyproject.toml"
+      ],
+      "inputs": [
+        "src/nvda_desk/db/models.py",
+        "alembic/versions/20260319_0002_option_snapshot.py",
+        "src/nvda_desk/db/session.py",
+        "pyproject.toml"
+      ],
+      "ordered_actions": [
+        "Choose whether the observation store is one table or a bounded small group of related tables.",
+        "Freeze uniqueness, indices, and retrieval keys needed for deterministic replay.",
+        "Keep the storage role distinct from recommendation history, inventory state, allocator state, and research-note surfaces."
+      ],
+      "forbidden_actions": [
+        "Do not overload an existing table to save planning effort.",
+        "Do not assume a database backend outside pyproject/settings authority."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Persistence-model and migration burden are explicit in the pack.",
+        "SQLite-first execution assumptions stay aligned to current repo authority."
+      ],
+      "definition_of_done": [
+        "A distinct persistence model is planned.",
+        "Database/backend assumptions remain tied to current repo law."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/db/models.py",
+        "alembic/versions/"
+      ]
+    },
+    {
+      "id": "LEAF-G243-005",
+      "gate": "Gate 243",
+      "title": "Plan the schema and model proof slice",
+      "objective": "Define the bounded tests that must prove the record contract and persistence model without claiming runtime behaviour yet.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G243-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf defines the Gate 243 proof boundary so schema/model completeness is separated from later runtime and persistence non-interference work.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Record"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "docs/TESTING_AND_PROMOTION.md",
+        "tests/test_gate183_option_surface_raw_contract.py"
+      ],
+      "ordered_actions": [
+        "Specify the new Gate 243 tests for required fields, forbidden semantics, and allowed partiality.",
+        "Keep the proof bounded to schema/model law rather than runtime behaviour.",
+        "Tie the expected validation commands to the pack so execution cannot improvise the proof surface."
+      ],
+      "forbidden_actions": [
+        "Do not treat scaffold tests as gate completion.",
+        "Do not broaden into runtime or allocator tests yet."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 243 test families are named in the leaves.",
+        "Proof remains bounded to contract/model law."
+      ],
+      "definition_of_done": [
+        "The Gate 243 proof surface is explicit and bounded.",
+        "Later gates are not allowed to claim Gate 243 by scaffold alone."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ]
+    },
+    {
+      "id": "LEAF-G244-001",
+      "gate": "Gate 244",
+      "title": "Locate the exact capture trigger in runtime",
+      "objective": "Identify the exact runtime point where OptionsFlowContextOutput is fully formed and stable for observation capture.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G243-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf fixes the runtime tap boundary so later extraction and persistence work cannot drift upstream or downstream.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/options_flow_context.py"
+      ],
+      "inputs": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/options_flow_context.py"
+      ],
+      "ordered_actions": [
+        "Trace the runtime order until the full OptionsFlowContextOutput is produced.",
+        "Freeze the observation-build trigger at that point and record why earlier or later points are wrong for this tranche.",
+        "Record any existing lineage values available at the trigger point."
+      ],
+      "forbidden_actions": [
+        "Do not move the capture trigger upstream into a new Step 0/1 concern.",
+        "Do not shift the trigger downstream into review or CDA logic."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_options_flow_context.py"
+      ],
+      "expected_evidence": [
+        "Gate 244 leaf text names the exact runtime tap boundary.",
+        "Earlier and later boundaries are ruled out explicitly."
+      ],
+      "definition_of_done": [
+        "The capture trigger is fixed to one lawful runtime point.",
+        "Available alignment keys are recorded."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py"
+      ]
+    },
+    {
+      "id": "LEAF-G244-002",
+      "gate": "Gate 244",
+      "title": "Prove the bounded raw-source path",
+      "objective": "Identify the lawful source for the front/next raw subset and the deterministic keys needed to align it to the same observation.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G244-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf resolves the main design tension in the tranche by proving where the raw subset comes from without widening scope.",
+      "vocabulary_terms_checked": [
+        "OptionSnapshot",
+        "OptionSnapshotPayload",
+        "PreparedRuntimeLineage"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/options.py",
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/services/market_state.py"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/market_state.py",
+        "tests/test_gate183_option_surface_raw_contract.py"
+      ],
+      "ordered_actions": [
+        "Trace which current surface can lawfully yield front and next expiry raw option rows for the same observation.",
+        "Freeze the deterministic alignment keys such as symbol, chain_ts or as_of_date, and front/next expiry identifiers.",
+        "State explicitly whether the runtime will read from persisted option rows, prepared inputs, or another lawful existing source."
+      ],
+      "forbidden_actions": [
+        "Do not assume raw rows are already inside OptionsFlowContextOutput.",
+        "Do not broaden the source path into all-expiry archival or ad hoc data reconstruction."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate183_option_surface_raw_contract.py"
+      ],
+      "expected_evidence": [
+        "The pack names one lawful raw-source path and its alignment keys.",
+        "The contradiction report no longer leaves raw-source location vague."
+      ],
+      "definition_of_done": [
+        "Gate 244 has one bounded raw-source plan.",
+        "No hidden second raw-chain warehouse is implied."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/market_state.py",
+        "src/nvda_desk/schemas/dataset.py"
+      ]
+    },
+    {
+      "id": "LEAF-G244-003",
+      "gate": "Gate 244",
+      "title": "Freeze the extraction helper boundary",
+      "objective": "Plan the helper or builder that returns only front and next expiry rows plus the derived block and metadata.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G244-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf prevents later implementation from silently widening the capture payload beyond the architecture brief.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Record"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/services/market_state.py",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "inputs": [
+        "/mnt/data/options_and_flow_context_history_lane_architecture_brief_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Define the helper contract or builder shape that packages the observational record.",
+        "Freeze the helper output to front and next expiry subsets only.",
+        "Record the required completeness and partiality flags when one expiry subset is missing or empty."
+      ],
+      "forbidden_actions": [
+        "Do not let the helper return all expiries.",
+        "Do not let the helper mutate runtime authority surfaces while assembling the record."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Helper boundary is explicit in the leaves.",
+        "Partiality handling is explicit."
+      ],
+      "definition_of_done": [
+        "The pack defines one bounded extraction-helper shape.",
+        "All-expiry widening is prohibited explicitly."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": "LEAF-G244-004",
+      "gate": "Gate 244",
+      "title": "Plan the runtime-threading and mutation guard",
+      "objective": "Thread the observational record build through runtime in a way that preserves existing stage order and authority surfaces.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G244-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_state.py"
+      ],
+      "workflow_intent_assertion": "This leaf keeps the lane adjacent to the stack rather than turning it into a hidden stage or packet mutation.",
+      "vocabulary_terms_checked": [
+        "PreparedRuntimeSnapshot",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "src/nvda_desk/schemas/dmp_v2.py"
+      ],
+      "ordered_actions": [
+        "Plan where the observation build and store-write call sites sit relative to the current runtime sequence.",
+        "Record explicit non-mutation law for PreparedRuntimeSnapshot, OptionsFlowContextOutput, and DMP/DMP V2 stage order.",
+        "Keep timestamp and lineage alignment explicit through the threading plan."
+      ],
+      "forbidden_actions": [
+        "Do not introduce a new DMP stage.",
+        "Do not reuse review packets as the transport for this tranche."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Mutation guards are explicit in the gate pack.",
+        "No DMP-stage addition is implied."
+      ],
+      "definition_of_done": [
+        "The runtime-threading plan preserves authority surfaces.",
+        "Stage-order and packet-order non-interference is explicit."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ]
+    },
+    {
+      "id": "LEAF-G244-005",
+      "gate": "Gate 244",
+      "title": "Plan the runtime and raw-boundary proof slice",
+      "objective": "Define the Gate 244 tests that prove emission timing, raw alignment, and no recommendation-surface mutation.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G244-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_state.py",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf defines the minimum runtime-proof slice needed before persistence and non-interference work can proceed.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "inputs": [
+        "tests/test_options_flow_context.py",
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate189_capital_deployment_authority_service.py"
+      ],
+      "ordered_actions": [
+        "Specify the Gate 244 runtime-tap correctness tests.",
+        "Specify the raw-slice boundary tests and the no-recommendation-mutation assertions.",
+        "Keep the proof bounded to runtime tap correctness rather than full persistence semantics."
+      ],
+      "forbidden_actions": [
+        "Do not conflate Gate 244 with persistence proof.",
+        "Do not treat later non-interference tests as optional."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 244 test families are named and bounded.",
+        "Recommendation-surface mutation guards are explicit."
+      ],
+      "definition_of_done": [
+        "The Gate 244 proof boundary is explicit.",
+        "Execution can implement the tap without inventing its acceptance slice."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ]
+    },
+    {
+      "id": "LEAF-G245-001",
+      "gate": "Gate 245",
+      "title": "Plan the bounded persistence service",
+      "objective": "Define the store-write service or equivalent persistence path for one observational record per cycle.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G244-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the first stateful write boundary and keeps the observational lane separate from recommendation or allocator stores.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Store"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/db/session.py",
+        "src/nvda_desk/services/",
+        "pyproject.toml"
+      ],
+      "inputs": [
+        "src/nvda_desk/db/session.py",
+        "pyproject.toml"
+      ],
+      "ordered_actions": [
+        "Freeze whether the observational lane writes through one dedicated service, repository, or equivalent bounded path.",
+        "Tie the persistence path to the current repo-local DB/session authority.",
+        "Require one new record per cycle rather than in-place mutation of earlier observations."
+      ],
+      "forbidden_actions": [
+        "Do not reuse execution or recommendation stores.",
+        "Do not assume a different backend than the one defined by current repo authority."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Persistence service/store-write path is explicit in the plan.",
+        "Per-cycle write semantics are explicit."
+      ],
+      "definition_of_done": [
+        "There is one bounded persistence path in the plan.",
+        "Write semantics are deterministic and append-only for the lane."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/db/session.py",
+        "pyproject.toml"
+      ]
+    },
+    {
+      "id": "LEAF-G245-002",
+      "gate": "Gate 245",
+      "title": "Freeze persistence-failure behaviour",
+      "objective": "Define explicit failure handling so lane-write failures do not silently change runtime recommendation behaviour.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G245-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf isolates observational-lane failures from desk-cognition authority, preventing silent behavioural drift under database faults.",
+      "vocabulary_terms_checked": [
+        "Capital Deployment Authority Service",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/cognition_runtime.py",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "ordered_actions": [
+        "State whether persistence failures surface as explicit notes, controlled exceptions, or bounded degraded status.",
+        "Record that write failures must not alter recommendation fields, stage order, or CDA inputs.",
+        "Tie the failure-handling rule to later non-interference tests."
+      ],
+      "forbidden_actions": [
+        "Do not silently absorb write failures if they change runtime meaning.",
+        "Do not let persistence become a gating dependency for recommendation formation."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Failure-handling semantics are explicit in the leaves.",
+        "Non-authoritative behaviour is frozen."
+      ],
+      "definition_of_done": [
+        "Persistence-failure law is explicit.",
+        "Recommendation and allocator surfaces remain outside the failure path."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ]
+    },
+    {
+      "id": "LEAF-G245-003",
+      "gate": "Gate 245",
+      "title": "Plan recommendation and CDA non-interference tests",
+      "objective": "Define the exact bounded tests that must prove recommendation outputs and CDA behaviour are unchanged when the lane is enabled.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G245-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the core safety proof for the tranche: observational capture must not alter recommendation or fresh-capital authority.",
+      "vocabulary_terms_checked": [
+        "Capital Deployment Authority Service",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "inputs": [
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate189_capital_deployment_authority_service.py",
+        "tests/test_gate190_capital_deployment_authority_integration.py"
+      ],
+      "ordered_actions": [
+        "Specify test pairs or fixtures that compare lane-disabled and lane-enabled runs.",
+        "Require equality of recommendation outputs across the bounded proof slice.",
+        "Require equality of CDA inputs and outputs across the bounded proof slice."
+      ],
+      "forbidden_actions": [
+        "Do not use hand-wavy review text in place of deterministic assertions.",
+        "Do not broaden into unrelated allocator-logic changes."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Non-interference tests are explicit in the leaves.",
+        "Recommendation and CDA equality expectations are frozen."
+      ],
+      "definition_of_done": [
+        "The lane's safety proof is executable from the plan.",
+        "Allocator semantics are protected explicitly."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ]
+    },
+    {
+      "id": "LEAF-G245-004",
+      "gate": "Gate 245",
+      "title": "Plan deterministic DB verification and repeat-run proof",
+      "objective": "Define the bounded tests that prove one new timestamped record is persisted per cycle and retrievable deterministically.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G245-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf proves the lane writes usable observational history rather than only transient in-memory objects.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Store"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/db/models.py",
+        "tests/"
+      ],
+      "inputs": [
+        "src/nvda_desk/db/models.py",
+        "src/nvda_desk/db/session.py"
+      ],
+      "ordered_actions": [
+        "Specify the Gate 245 DB verification tests for persisted and retrievable records.",
+        "Require repeat-run proof that each cycle produces one new timestamped record.",
+        "Require deterministic ordering or retrieval keys suitable for later replay."
+      ],
+      "forbidden_actions": [
+        "Do not stop at 'write was called' mocks.",
+        "Do not leave retrieval order or uniqueness semantics implicit."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "DB verification and repeat-run proof are explicit in the leaves.",
+        "Deterministic retrieval semantics are named."
+      ],
+      "definition_of_done": [
+        "Persistence is planned as observable and retrievable state.",
+        "Repeat-run expectations are explicit."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/db/models.py"
+      ]
+    },
+    {
+      "id": "LEAF-G245-005",
+      "gate": "Gate 245",
+      "title": "Plan stage-order and packet non-interference proof",
+      "objective": "Define the bounded tests that prove no new DMP packet appears and no stage order changes because of the lane.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G245-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "workflow_intent_assertion": "This leaf protects the architecture brief's core promise that the lane remains adjacent to the stack rather than inside the stage grammar.",
+      "vocabulary_terms_checked": [
+        "Modifier Runtime Packet",
+        "Independent Parallel Risk Lane"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "tests/",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "src/nvda_desk/services/cognition_runtime.py"
+      ],
+      "ordered_actions": [
+        "Specify the packet-order and stage-order assertions required for Gate 245.",
+        "Record explicitly that no new DMP packet or stage binding is allowed in this tranche.",
+        "Tie the assertions to existing packet/state readers so execution cannot weaken them later."
+      ],
+      "forbidden_actions": [
+        "Do not assume stage order is protected without tests.",
+        "Do not sneak the lane into review packets as a de facto DMP stage."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "No-new-packet and no-stage-order-change tests are explicit in the leaves.",
+        "The lane's adjacent status is protected by proof."
+      ],
+      "definition_of_done": [
+        "Gate 245 includes explicit architecture non-interference proof.",
+        "DMP / DMP V2 stage order remains protected."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/dmp_v2.py",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ]
+    },
+    {
+      "id": "LEAF-G246-001",
+      "gate": "Gate 246",
+      "title": "Plan the bounded replay fixture path",
+      "objective": "Choose one admitted fixture or prepared-runtime path for replay and freeze why it is sufficient for tranche closeout.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G245-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf defines the bounded acceptance anchor for the new lane and prevents premature scenario-matrix expansion.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "fixtures/",
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "inputs": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "ordered_actions": [
+        "Choose one admitted fixture/replay path that already exercises Options and Flow Context meaningfully.",
+        "Record why one bounded path is sufficient for this tranche.",
+        "Keep the acceptance slice narrow and deterministic."
+      ],
+      "forbidden_actions": [
+        "Do not broaden to historical alpha evaluation.",
+        "Do not require many scenarios before one bounded replay path is proven."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Replay anchor path is explicit in the leaves.",
+        "Acceptance scope remains bounded."
+      ],
+      "definition_of_done": [
+        "Gate 246 has one deterministic replay anchor.",
+        "Scenario explosion is avoided."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ]
+    },
+    {
+      "id": "LEAF-G246-002",
+      "gate": "Gate 246",
+      "title": "Plan the record-completeness and no-all-expiry assertions",
+      "objective": "Define the replay assertions that prove each cycle emits the required blocks and that the lane never widens into all-expiry archival.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G246-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns the architecture brief's capture requirements into explicit acceptance checks.",
+      "vocabulary_terms_checked": [
+        "Options Surface Observation Record"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "docs/03_DOMAIN_MODEL.md"
+      ],
+      "inputs": [
+        "/mnt/data/options_and_flow_context_history_lane_architecture_brief_2026-04-09.md"
+      ],
+      "ordered_actions": [
+        "Require each replayed cycle to produce one derived-state block, one bounded front subset, one bounded next subset, and deterministic timestamps/lineage.",
+        "Require explicit failure if all-expiry accidental archival appears.",
+        "Allow only the bounded partiality semantics frozen earlier in the pack."
+      ],
+      "forbidden_actions": [
+        "Do not settle for a loosely populated record.",
+        "Do not permit silent widening of expiry scope during replay."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Replay completeness assertions are explicit in the leaves.",
+        "No-all-expiry assertion is explicit."
+      ],
+      "definition_of_done": [
+        "Gate 246 acceptance checks match the architecture brief exactly.",
+        "Expiry-scope drift is protected by proof."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/03_DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "id": "LEAF-G246-003",
+      "gate": "Gate 246",
+      "title": "Plan the final closeout note and truthful router state",
+      "objective": "Define the closeout artefacts and router updates required once the lane is implemented and replay-proven.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G246-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps closeout truthful and prevents the new pack from lingering in an ambiguous partially closed state.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context History Lane"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "ordered_actions": [
+        "Specify the short closeout note stating exactly what the lane now does and does not do.",
+        "Require the router quartet to move together when the pack closes.",
+        "Record any retained-evidence handoff surfaces needed after closeout."
+      ],
+      "forbidden_actions": [
+        "Do not leave Gate 246 active in one surface and closed in another.",
+        "Do not keep stale 'active pack paired files' semantics after closeout if no pack remains active."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Closeout artefacts and router updates are explicit in the leaves.",
+        "Later hygiene semantics are already accounted for."
+      ],
+      "definition_of_done": [
+        "Truthful closeout requirements are explicit.",
+        "The router quartet cannot drift during closeout."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ]
+    },
+    {
+      "id": "LEAF-G246-004",
+      "gate": "Gate 246",
+      "title": "Plan the bounded final proof slice",
+      "objective": "Define the exact final pytest slice and file validations required to call the tranche complete.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G246-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md"
+      ],
+      "workflow_intent_assertion": "This leaf freezes the end-of-tranche proof so execution cannot substitute a broad but irrelevant test run for the required acceptance checks.",
+      "vocabulary_terms_checked": [
+        "Capital Deployment Authority Service",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "tests/",
+        "docs/TESTING_AND_PROMOTION.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md"
+      ],
+      "inputs": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ],
+      "ordered_actions": [
+        "List the exact final bounded pytest slice covering schema/model, runtime tap, persistence, non-interference, and replay closeout.",
+        "Require any file-level validations needed for leaves JSON or closeout artefacts.",
+        "Keep the slice bounded to tranche-relevant surfaces only."
+      ],
+      "forbidden_actions": [
+        "Do not rely on a vague 'make check' statement alone.",
+        "Do not broaden into unrelated historical evaluation or allocator logic tests."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Final proof slice is explicit in the leaves.",
+        "Bounded acceptance remains aligned to repo test doctrine."
+      ],
+      "definition_of_done": [
+        "The tranche has an exact final proof definition.",
+        "Irrelevant broad testing is excluded."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/TESTING_AND_PROMOTION.md"
+      ]
+    },
+    {
+      "id": "LEAF-G246-005",
+      "gate": "Gate 246",
+      "title": "Validate the completed planning pack before handoff",
+      "objective": "Ensure the draft pack remains mechanically valid and handoff-ready once all leaves are written.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G246-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml"
+      ],
+      "workflow_intent_assertion": "This leaf is the planning-thread handoff check before any later execution thread begins routing or code changes.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "tests/test_planning_state_integrity.py"
+      ],
+      "inputs": [
+        "tests/test_planning_state_integrity.py"
+      ],
+      "ordered_actions": [
+        "Run JSON validation on the leaves ledger after all leaf content is final.",
+        "Run planning-state integrity tests again.",
+        "Record the observed planning validation results in the execution log placeholder and package the repo only if the operator requested sandbox preservation."
+      ],
+      "forbidden_actions": [
+        "Do not hand off a mechanically invalid planning pack.",
+        "Do not claim routing occurred when it has not."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Planning pack validates mechanically.",
+        "Execution log notes the observed planning-validation results truthfully."
+      ],
+      "definition_of_done": [
+        "The planning pack is handoff-ready.",
+        "No routing or execution state is overstated."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "GitHub branch/commit/merge receipts remain the default closeout evidence if execution proceeds. Create a fresh zip only when the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json"
+      ]
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+      "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+      "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  }
+}

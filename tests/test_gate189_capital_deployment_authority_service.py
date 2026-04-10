@@ -79,8 +79,8 @@ def test_gate189_service_deploys_from_controlled_capital_snapshot() -> None:
 
     assert capital.buying_power == 1000.0
     assert decision.deployment_action is CapitalDeploymentAuthorityAction.DEPLOY
-    assert decision.authorised_deployable_pct == 55.0
-    assert decision.authorised_notional_usd == 550.0
+    assert decision.authorised_deployable_pct == 35.0
+    assert decision.authorised_notional_usd == 350.0
     assert decision.terminal_risk_action is RiskAction.ALLOW
 
 def test_gate189_service_stands_down_when_runtime_candidate_is_blocked() -> None:

@@ -27,7 +27,8 @@ def test_gate132_router_and_gate_map_allow_the_new_pack() -> None:
         or "successor retained-test cleanup execution pack; Gate 224 is active" in plans
         or "Gate 224 is complete on `work/gate-224-runtime-review-and-contract-retarget-20260406`" in plans
         or "successor retained-test cleanup execution pack; Gate 225 is active" in plans
-        or "no active pack currently routed" in plans
+        or "no active pack currently routed" in plans.lower()
+        or "2026-04-09_MAIN_SERIAL_STACK_STEPS_3_TO_6_CORRECTIVE_IMPLEMENTATION_GATES_v1.md" in plans
     )
     assert (
         "Gate 132 in the bounded trace scenario review pack" in gate_map
@@ -41,6 +42,7 @@ def test_gate132_router_and_gate_map_allow_the_new_pack() -> None:
         or "Gate 225 active on `work/gate-225-retained-test-cleanup-closeout-20260406` under the successor retained-test cleanup execution pack" in gate_map
         or "No active gate under the successor retained-test cleanup execution pack. Gate 225 is complete on `work/gate-225-retained-test-cleanup-closeout-20260406`; cleanup pack closed." in gate_map
         or "Current active gate: **No active pack currently routed. The successor retained-test cleanup execution pack is closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`.**" in gate_map
+        or "Current active gate: **No active pack currently routed. The main serial stack Steps 3-6 corrective implementation pack is closed through Gate 241 in the uploaded workspace copy.**" in gate_map
     )
     assert "Gate 132" in leaves
 

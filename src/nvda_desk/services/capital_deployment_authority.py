@@ -39,7 +39,7 @@ class CapitalDeploymentAuthorityService:
 
         buying_power = round(max(0.0, payload.capital_state.buying_power), 4)
         opportunity_target_pct = round(max(0.0, min(100.0, payload.execution.target_fresh_deployable_pct)), 4)
-        posture_cap_pct = round(max(0.0, min(100.0, payload.posture.fresh_deployable_capital_pct)), 4)
+        posture_cap_pct = self._posture_cap_pct(payload)
         terminal_risk_action, notes = self._terminal_risk_action(payload)
         weather_state = self._weather_state(payload.parallel_risk_lane_packet)
         consequence_class = self._consequence_class(payload.parallel_risk_lane_packet)
@@ -52,6 +52,7 @@ class CapitalDeploymentAuthorityService:
             f"buying_power:{buying_power:.4f}",
             f"opportunity_target_pct:{opportunity_target_pct:.4f}",
             f"posture_cap_pct:{posture_cap_pct:.4f}",
+            f"posture_cap_source:permission_state:{payload.posture.permission_state.value}",
         ]
         if weather_state is not None:
             rationale_codes.append(f"weather_state:{weather_state}")
@@ -196,3 +197,12 @@ class CapitalDeploymentAuthorityService:
         if packet.candidate_audit_surface.consequence_class is None:
             return None
         return packet.candidate_audit_surface.consequence_class.value
+
+
+    def _posture_cap_pct(self, payload: CapitalDeploymentAuthorityInput) -> float:
+        permission_state = payload.posture.permission_state.value
+        if permission_state == "block":
+            return 0.0
+        if permission_state == "derisk":
+            return 30.0
+        return 55.0

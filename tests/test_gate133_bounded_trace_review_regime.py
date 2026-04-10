@@ -35,7 +35,7 @@ def test_gate133_runtime_trace_pack_freezes_broad_human_sanity_outcomes() -> Non
 
     assert runs["clear_window_continuation"].final_risk_action == "allow"
     assert runs["clear_window_continuation"].active_playbook_ids == ["continuation_ladder"]
-    assert round(runs["clear_window_continuation"].target_fresh_deployable_pct, 4) == 55.0
+    assert round(runs["clear_window_continuation"].target_fresh_deployable_pct, 4) == 35.0
 
     assert runs["lunch_flattened"].final_risk_action == "allow"
     assert runs["lunch_flattened"].active_playbook_ids == []

@@ -124,6 +124,8 @@ These services own:
 - replay session grouping and replay comparison;
 - prepared runtime ingress construction from canonical and real-data surfaces.
 
+- upstream ingress-promotion helpers that derive proxy `PreparedParticipationBaselinePacket` carriage, build `PreparedRuntimeRegimePacket` from admitted live capture surfaces when available, and keep `ChainToCognitionService` as the only lawful prepared-runtime to cognition ingress boundary for promoted regime input.
+
 ### 4.2 Research, module-registry, promotion, and evaluation services
 
 Current research and governed module services include:
@@ -587,3 +589,7 @@ It describes:
 - the intended long-term promoted database target where that target differs from the current default local implementation path.
 
 It does not authorise bypassing the normative docs, the operating model, or the domain model.
+
+## Adjacent observational lane: Options and Flow Context History Lane
+
+The runtime now supports one adjacent observational lane anchored to the fully formed `OptionsFlowContextOutput` boundary. The lane builds one `OptionsFlowHistoryObservationRecord` per enabled cycle, persists it through the bounded `Options Surface Observation Store`, and leaves the serial desk-cognition stage order unchanged. The lane is outside the seven-stage stack, outside CDA authority, and outside review-packet ownership.

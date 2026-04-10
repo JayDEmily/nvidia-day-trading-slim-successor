@@ -1,0 +1,132 @@
+{
+  "governing_plan": "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_GATES_v1.md",
+  "version": "v1",
+  "routing_status": "closed_no_active_pack",
+  "execution_status": "workflow_law_and_template_pack_refresh_closed_through_gate_254",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_GATES_v1.md",
+    "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_LEAVES_v1.json",
+    "docs/planning/2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 254"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G254-001"
+  ],
+  "pending_gate_ids": [],
+  "remaining_leaf_ids": [],
+  "draft_activation_preconditions": [],
+  "existing_anchor_tests": [
+    "python3 -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate110_agents_reading_order.py tests/test_upstream_signal_followup_corrections.py tests/test_planning_state_integrity.py tests/test_gate254_workflow_law_and_template_pack_refresh.py"
+  ],
+  "notes": [
+    "Gate 254 is a prepared handoff workspace refresh, not a GitHub push. The final deliverable is a downloadable zip for Codex.",
+    "The workflow bundle AGENTS file was not applied because it would regress the later Gate 253 testing-doctrine read-stack repair."
+  ],
+  "global_rules": {
+    "sequential_execution": "One leaf at a time. One gate at a time. One branch per gate when later applied in the live repo.",
+    "anti_drift_closeout": "A gate is not closed until repo-root PLANS.md, the canonical gate map, the active leaf ledger, and the active execution log move together.",
+    "bounded_proof": "Gate 254 uses bounded workflow-law, template-pack, and planning-state proof only; no runtime suite."
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G254-001",
+      "gate": "Gate 254",
+      "title": "Refresh workflow law and template pack without regressing the later Gate 253 doctrine repair",
+      "objective": "Carry forward the available workflow bundle improvements into the prepared handoff repo while preserving the later AGENTS/testing-doctrine state, recording the contradiction, and packaging the result for Codex.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/TESTING_AND_PROMOTION.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_CONTRADICTION_REPORT_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "workflow_intent_assertion": "This leaf reconciles an older workflow-law bundle into a later Gate 253 workspace state. It preserves the later AGENTS/testing-doctrine repair and imports only the non-regressive workflow-law/template-pack additions.",
+      "repo_surfaces": [
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "docs/planning/tranche_briefing_template_pack/README.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_GENERIC_TRANCHE_BRIEFING_DOCTRINE_v3.md",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_GENERIC_GATE_TEMPLATE_v3.md",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_GENERIC_LEAVES_TEMPLATE_v3.json",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_GENERIC_EXECUTION_LOG_TEMPLATE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_GENERIC_DOCUMENT_TOUCH_CHECKLIST_TEMPLATE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-04-06_WORKED_EXAMPLE_CONTROLLED_CONTINUITY_EXECUTION_PACK_SKELETON_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_GATES_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_LEAVES_v1.json",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_CONTRADICTION_REPORT_v1.md",
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "CHANGELOG.jsonl",
+        "tests/test_tranche_briefing_template_pack.py",
+        "tests/test_gate254_workflow_law_and_template_pack_refresh.py"
+      ],
+      "inputs": [
+        "/mnt/data/workflow_docs_refresh_bundle_2026-04-06.zip",
+        "WORKFLOW_DOCS_REFRESH_INTEGRATION_NOTE.md",
+        "repo_updates/docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "repo_updates/docs/planning/tranche_briefing_template_pack/*"
+      ],
+      "ordered_actions": [
+        "Inspect the available workflow docs refresh bundle and record the AGENTS contradiction against the later Gate 253 state before mutating repo surfaces.",
+        "Preserve repo-root AGENTS.md from Gate 253 unchanged.",
+        "Merge the workflow-bundle continuity additions into docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md while preserving docs/TESTING_AND_PROMOTION.md authority.",
+        "Refresh the tranche briefing template pack to the 2026-04-06 template generation and continuity example.",
+        "Update bounded workflow-law/template-pack tests and add a Gate 254 reconciliation test.",
+        "Update PLANS.md, the canonical gate map, the leaves ledger, the execution log, the contradiction report, and CHANGELOG.jsonl together, then package the prepared repo handoff for Codex."
+      ],
+      "forbidden_actions": [
+        "Do not overwrite repo-root AGENTS.md with the older workflow-bundle AGENTS file.",
+        "Do not remove docs/TESTING_AND_PROMOTION.md from live process-law or read-stack authority.",
+        "Do not widen Gate 254 into runtime/schema/data mutation."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_tranche_briefing_template_pack.py tests/test_gate110_agents_reading_order.py tests/test_upstream_signal_followup_corrections.py tests/test_planning_state_integrity.py tests/test_gate254_workflow_law_and_template_pack_refresh.py"
+      ],
+      "expected_evidence": [
+        "Gate 253 AGENTS file remains unchanged",
+        "docs/06 now contains controlled continuity plus retained testing doctrine authority",
+        "2026-04-06 template-pack files exist and tests pass",
+        "router quartet closed through Gate 254 with no active pack"
+      ],
+      "definition_of_done": [
+        "The prepared handoff repo reflects Gate 252 plus Gate 253 plus the bounded Gate 254 workflow-law/template-pack refresh.",
+        "The workflow bundle AGENTS contradiction is recorded truthfully instead of hidden.",
+        "The prepared handoff package is zipped for Codex."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_LEAVES_v1.json",
+        "docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "Create a downloadable handoff zip for Codex because GitHub push is unavailable in this environment.",
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": false,
+        "docstring_compliance_required": false
+      }
+    }
+  ],
+  "contradiction_scan": [
+    "The workflow-bundle AGENTS.md hash 505e49bc7e6eb5f03912e8a4d843a5ea671fcb669e1e50cafdce3aca922b0011 conflicts materially with the later Gate 253 AGENTS.md hash 2ea30b3ee36ba778d71262dafd4c5b14ce684099c860474891ae3e2754a514a3; Gate 254 preserves the later AGENTS.md and records the contradiction explicitly."
+  ],
+  "state_invariants": [
+    "No active pack is routed after Gate 254 closeout.",
+    "Repo-root AGENTS.md remains the later Gate 253 file.",
+    "docs/06 retains docs/TESTING_AND_PROMOTION.md authority while carrying the continuity additions.",
+    "The 2026-04-06 template-pack generation is available for future planning threads."
+  ]
+}

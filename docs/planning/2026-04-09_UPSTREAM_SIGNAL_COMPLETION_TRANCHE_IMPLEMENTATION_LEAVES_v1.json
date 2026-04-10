@@ -1,0 +1,2325 @@
+{
+  "governing_plan": "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+  "version": "v1.0",
+  "routing_status": "upstream_signal_completion_pack_closed_no_active_pack_routed",
+  "execution_status": "upstream_signal_completion_pack_closed_through_gate_252_no_active_pack_routed",
+  "active_gate": "none",
+  "supersedes": [
+    "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_GATES_v1.md",
+    "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_LEAVES_v1.json",
+    "docs/planning/2026-04-09_OPTIONS_AND_FLOW_CONTEXT_HISTORY_LANE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+  ],
+  "completed_gate_ids": [
+    "Gate 247",
+    "Gate 248",
+    "Gate 249",
+    "Gate 250",
+    "Gate 251",
+    "Gate 252"
+  ],
+  "completed_leaf_ids": [
+    "LEAF-G247-001",
+    "LEAF-G247-002",
+    "LEAF-G247-003",
+    "LEAF-G247-004",
+    "LEAF-G247-005",
+    "LEAF-G248-001",
+    "LEAF-G248-002",
+    "LEAF-G248-003",
+    "LEAF-G248-004",
+    "LEAF-G248-005",
+    "LEAF-G249-001",
+    "LEAF-G249-002",
+    "LEAF-G249-003",
+    "LEAF-G249-004",
+    "LEAF-G249-005",
+    "LEAF-G250-001",
+    "LEAF-G250-002",
+    "LEAF-G250-003",
+    "LEAF-G250-004",
+    "LEAF-G250-005",
+    "LEAF-G251-001",
+    "LEAF-G251-002",
+    "LEAF-G251-003",
+    "LEAF-G251-004",
+    "LEAF-G251-005",
+    "LEAF-G252-001",
+    "LEAF-G252-002",
+    "LEAF-G252-003",
+    "LEAF-G252-004",
+    "LEAF-G252-005"
+  ],
+  "pending_gate_ids": [],
+  "remaining_leaf_ids": [],
+  "draft_activation_preconditions": [
+    "Gate 247 routing executed and the router quartet now points to the upstream tranche pack.",
+    "repo-local environment honours pyproject.toml through make install / uv sync --extra dev for execution-phase proof.",
+    "the raw signal coverage map exists and is referenced by the active pack.",
+    "vocabulary disposition for new tranche labels was resolved before the pack became active authority."
+  ],
+  "existing_anchor_tests": [
+    "tests/test_planning_state_integrity.py",
+    "tests/test_market_regime_context.py",
+    "tests/test_options_flow_context.py",
+    "tests/test_execution_review_runtime.py",
+    "tests/test_gate189_capital_deployment_authority_service.py",
+    "tests/test_gate190_capital_deployment_authority_integration.py"
+  ],
+  "notes": [
+    "The upstream signal completion tranche pack is closed through Gate 252 in the uploaded workspace copy.",
+    "No active pack is currently routed in the uploaded workspace copy.",
+    "Checkpoint-integrity and structured-docstring methodology were absorbed into the tranche-local gates and leaves before closeout."
+  ],
+  "global_rules": {
+    "one_leaf_at_a_time": true,
+    "one_gate_at_a_time": true,
+    "branch_per_gate": true,
+    "planning_control_surfaces_must_move_together": true,
+    "vocabulary_authority_mandatory_before_new_naming": true,
+    "packet_contract_authority_mandatory_when_contracts_change": true,
+    "workflow_trace_mandatory_before_planning_new_behavior": true,
+    "retire_from_authority_not_delete": true,
+    "git_history_primary_execution_ledger": true,
+    "zip_required_only_on_explicit_operator_request_or_backup": true,
+    "do_not_fill_unknowns_with_guesswork": true,
+    "document_touch_checklist_required": true,
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "multi_gate_requests_do_not_waive_per_gate_closeout": true,
+    "material_control_surface_contradictions_require_contradiction_report": true,
+    "latest_closed_pack_is_evidence_not_template": true,
+    "gate_and_leaf_counts_are_variable_but_must_preserve_granularity": true,
+    "tests_must_prefer_invariants_over_brittle_historical_strings": true,
+    "pyproject_toml_is_environment_authority": true,
+    "class_a_and_class_b_gaps_must_remain_distinct": true,
+    "steps_3_to_6_authority_must_remain_untouched": true,
+    "checkpoint_integrity_extension_required_for_modified_boundaries": true
+  },
+  "leaves": [
+    {
+      "id": "LEAF-G247-001",
+      "gate": "Gate 247",
+      "title": "Bootstrap the upstream draft pack",
+      "objective": "Create the new draft pack from live repo truth and template-law scaffolding before any routing edit is attempted.",
+      "status": "complete",
+      "depends_on": [],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/tranche_briefing_template_pack/README.md",
+        "docs/planning/tranche_briefing_template_pack/HOW_TO_USE_THESE_DOCUMENTS.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf sits at the planning boundary before any new active pack is routed and prevents the closed Gate 242-246 evidence pack from being amended in place.",
+      "vocabulary_terms_checked": [
+        "Vocabulary Workflow",
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "inputs": [
+        "/mnt/data/upstream_signal_completion_tranche_architecture_brief_2026-04-09.md",
+        "/mnt/data/upstream_signal_completion_tranche_gate_leaf_execution_brief_2026-04-09.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_GATE_TEMPLATE_v2.md",
+        "docs/planning/tranche_briefing_template_pack/2026-03-29_GENERIC_LEAVES_TEMPLATE_v2.json"
+      ],
+      "ordered_actions": [
+        "Read the two 2026-04-09 upstream signal briefs line by line and translate fixed constraints into repo-native execution notes.",
+        "Read the template-pack grammar docs rather than cloning the last closed pack mechanically.",
+        "Create the new gates master, leaves ledger, scope note, contradiction report, checklist, and execution log under docs/planning/ using live repo truth only.",
+        "Keep the pack unrouted and mark any Gate 247 placeholder as planning bookkeeping only until the router quartet moves together.",
+        "Add explicit negative-proof coverage-map or vocabulary-lock checks so the gate turns red when deferred scope or contract mappings drift."
+      ],
+      "forbidden_actions": [
+        "Do not edit PLANS.md or the canonical gate map in this planning-only leaf.",
+        "Do not present the pack as active authority while repo-root PLANS.md still says no active pack."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "python3 -m pytest -q tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "JSON validation passes",
+        "planning-state integrity passes"
+      ],
+      "definition_of_done": [
+        "All six draft-pack files exist under docs/planning/.",
+        "The new pack is explicitly marked draft-only and unrouted."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": false
+      }
+    },
+    {
+      "id": "LEAF-G247-002",
+      "gate": "Gate 247",
+      "title": "Freeze the raw signal coverage map",
+      "objective": "Build one authoritative coverage-map artefact that classifies named upstream families by wiring state and Class A versus Class B status.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G247-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf freezes the tranche's upstream truth boundary before any contract or runtime surface is touched.",
+      "vocabulary_terms_checked": [
+        "Raw Signal Coverage Map",
+        "Market Regime Context",
+        "normalised_features"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json"
+      ],
+      "inputs": [
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "ordered_actions": [
+        "Classify each named family into exactly one of: already wired, captured but weak, schema-expected but unwired, not raw-captured yet.",
+        "For each named family, record Class A versus Class B explicitly.",
+        "Freeze in-scope, optional, and deferred families in the coverage map and mirror the same scope in the gates master and leaves ledger.",
+        "Add explicit negative-proof coverage-map or vocabulary-lock checks so the gate turns red when deferred scope or contract mappings drift."
+      ],
+      "forbidden_actions": [
+        "Do not let breadth, concentration, or dealer-flow slide into in-scope merely because schemas exist.",
+        "Do not label a family promoted if the live ingress path does not actually carry it."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "expected_evidence": [
+        "coverage map markdown exists",
+        "Gate 247 scope matches the coverage map",
+        "Class A versus Class B is explicit for every named family"
+      ],
+      "definition_of_done": [
+        "One authoritative coverage-map artefact exists.",
+        "Class A versus Class B status is frozen for the tranche."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": false
+      }
+    },
+    {
+      "id": "LEAF-G247-003",
+      "gate": "Gate 247",
+      "title": "Lock vocabulary handling for tranche labels",
+      "objective": "Resolve whether new tranche labels are classified lawfully through enrich_existing, add_new, alias_only, or quarantine before any gate uses them as live authority.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G247-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents later gates from inventing durable prose labels without lawful vocabulary handling.",
+      "vocabulary_terms_checked": [
+        "Upstream Signal Completion Tranche",
+        "Cross-Asset Regime Promotion",
+        "Same-Bucket Participation Baseline",
+        "Raw Signal Coverage Map"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json"
+      ],
+      "inputs": [
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "ordered_actions": [
+        "Classify each proposed new tranche label as enrich_existing, add_new, alias_only, or quarantine.",
+        "If a label is not lawfully admitted now, freeze exact code-symbol or evidence-only usage in the gates master and leaves ledger.",
+        "Record the decision in the contradiction report and coverage map if the label affects tranche boundaries.",
+        "Add explicit negative-proof coverage-map or vocabulary-lock checks so the gate turns red when deferred scope or contract mappings drift."
+      ],
+      "forbidden_actions": [
+        "Do not pretend draft planning use automatically equals canonical admission.",
+        "Do not add durable labels to live doctrine without Vocabulary Workflow proof."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "expected_evidence": [
+        "vocabulary handling note exists in the gates master",
+        "no uncontrolled new durable labels remain in the leaves ledger"
+      ],
+      "definition_of_done": [
+        "Every new tranche label has an explicit vocabulary disposition.",
+        "Later gates can execute without naming drift."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": false
+      }
+    },
+    {
+      "id": "LEAF-G247-004",
+      "gate": "Gate 247",
+      "title": "Freeze stop conditions and deferred families",
+      "objective": "Encode the non-negotiable stop conditions, deferred families, and optional top-of-book rule into the pack so later gates cannot improvise.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G247-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "/mnt/data/upstream_signal_completion_tranche_gate_leaf_execution_brief_2026-04-09.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf converts external brief warnings into repo-native stop conditions and keeps the tranche bounded.",
+      "vocabulary_terms_checked": [
+        "Capital Deployment Authority Service",
+        "Execution Expression",
+        "relative_volume_ratio"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "inputs": [
+        "/mnt/data/upstream_signal_completion_tranche_gate_leaf_execution_brief_2026-04-09.md",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "ordered_actions": [
+        "Freeze the five stop conditions from the execution brief into the pack's contradiction and scope surfaces.",
+        "Record the optional top-of-book rule as admitted only if already cheap and lawful, otherwise explicit deferral.",
+        "Record that any dependency on breadth, concentration, or dealer-flow families triggers stop-and-report rather than scope creep.",
+        "Add explicit negative-proof coverage-map or vocabulary-lock checks so the gate turns red when deferred scope or contract mappings drift."
+      ],
+      "forbidden_actions": [
+        "Do not leave the top-of-book decision ambiguous.",
+        "Do not let later gates proceed if same-bucket baselines turn out to require a large capture rewrite."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "expected_evidence": [
+        "scope note freezes optional top-of-book semantics",
+        "contradiction report lists the stop conditions"
+      ],
+      "definition_of_done": [
+        "Deferred families and stop conditions are explicit and inspectable.",
+        "The pack cannot silently widen during execution."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": false
+      }
+    },
+    {
+      "id": "LEAF-G247-005",
+      "gate": "Gate 247",
+      "title": "Route the pack and close Gate 247 truthfully",
+      "objective": "When execution begins, move the router quartet together so Gate 247 becomes the only active gate and the draft pack becomes active authority.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G247-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf is the boundary between draft planning and live execution. It is where repo-authority state must begin to match the new pack.",
+      "vocabulary_terms_checked": [
+        "Vocabulary Workflow",
+        "Raw Signal Coverage Map"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md"
+      ],
+      "ordered_actions": [
+        "Update PLANS.md so the new upstream signal completion pack is the active pack and the latest closed options-flow history pack becomes retained evidence.",
+        "Update the canonical gate map to record Gate 247 as the current active gate and the new pack as the active paired files.",
+        "Update the leaves ledger and execution log together so routing_status becomes active and the first execution receipt is truthful.",
+        "Record any required CHANGELOG receipt and planned validation commands for the new active gate.",
+        "Add explicit negative-proof coverage-map or vocabulary-lock checks so the gate turns red when deferred scope or contract mappings drift."
+      ],
+      "forbidden_actions": [
+        "Do not leave the repo half-routed with the pack active in one surface and inactive in another.",
+        "Do not close Gate 247 without a coverage-map artefact, vocabulary disposition, and a green Gate 247 test slice."
+      ],
+      "validation_commands": [
+        "python3 -m json.tool docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "python3 -m pytest -q tests/test_planning_state_integrity.py tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "expected_evidence": [
+        "PLANS.md routes the new pack",
+        "gate map reports Gate 247 active",
+        "execution log records Gate 247 closeout receipt"
+      ],
+      "definition_of_done": [
+        "The router quartet is aligned on Gate 247 as the only active gate.",
+        "Gate 247 coverage/vocabulary/scope proof is green."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": false,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": false
+      }
+    },
+    {
+      "id": "LEAF-G248-001",
+      "gate": "Gate 248",
+      "title": "Trace promotable source families into the live repo",
+      "objective": "Identify the actual admitted source or collector-reuse path for each in-scope regime and participation family before changing contracts.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G247-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf anchors the contract work to real promotable source paths rather than schema wish lists.",
+      "vocabulary_terms_checked": [
+        "PreparedRuntimeSnapshot",
+        "MarketRegimeContextInput"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/replay_compare.py",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md"
+      ],
+      "inputs": [
+        "coverage map",
+        "current live source/collector code or imported source path identified during execution"
+      ],
+      "ordered_actions": [
+        "For each in-scope family, name the actual source path, symbol identity, and whether the truth is already in-repo, in the separate collector, or still absent.",
+        "Mark top-of-book as admitted or deferred based on cheap/lawful availability evidence only.",
+        "Record any remaining unknowns as stop conditions rather than filling them with assumed structure.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not extend the contract for a family whose source path is still unknown.",
+        "Do not collapse multiple source paths into one vague 'market data' label."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate248_upstream_prepared_runtime_contracts.py"
+      ],
+      "expected_evidence": [
+        "source-family mapping note exists in execution log",
+        "optional top-of-book decision is explicit"
+      ],
+      "definition_of_done": [
+        "Every in-scope family has one named source path or a truthful stop condition.",
+        "Contract work is anchored to real promotable truth."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G248-002",
+      "gate": "Gate 248",
+      "title": "Extend prepared-runtime regime fields",
+      "objective": "Add or update prepared-runtime fields so promoted cross-asset regime primitives have lawful typed places to live.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G248-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf creates the upstream carrier before any cognition ingress or downstream consumer reads the richer regime truth.",
+      "vocabulary_terms_checked": [
+        "PreparedRuntimeSnapshot",
+        "Market Regime Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "inputs": [
+        "coverage map",
+        "MarketRegimeContextInput schema"
+      ],
+      "ordered_actions": [
+        "Define typed prepared-runtime surfaces for the promoted regime primitives or for one supporting nested packet if that is cleaner and still repo-native.",
+        "Keep symbol/source identity and observation/alignment metadata explicit enough for later inspection.",
+        "Update doctrine docs to match the contract rather than leaving the contract richer than the docs or vice versa.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not add speculative placeholders for breadth, concentration, or dealer-flow drivers.",
+        "Do not bury promoted regime fields only inside normalised_features provenance blobs."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate248_upstream_prepared_runtime_contracts.py"
+      ],
+      "expected_evidence": [
+        "dataset schema diff",
+        "domain-model update",
+        "architecture update"
+      ],
+      "definition_of_done": [
+        "Prepared runtime has lawful typed places for promoted regime truth.",
+        "Deferred families remain deferred rather than silently blank placeholders."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G248-003",
+      "gate": "Gate 248",
+      "title": "Extend participation and baseline contract surfaces",
+      "objective": "Add or update prepared-runtime fields so same-bucket participation and liquidity baseline truth can be carried lawfully.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G248-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf promotes the truthful same-bucket baseline doctrine into typed runtime carriage without yet changing the consumer logic.",
+      "vocabulary_terms_checked": [
+        "relative_volume_ratio",
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "Gate 42 doctrine",
+        "coverage map",
+        "current PreparedRuntimeSnapshot fields"
+      ],
+      "ordered_actions": [
+        "Define explicit same-bucket baseline and live-observed fields for volume, spread, and trade-count when lawfully available.",
+        "Define whether the baseline lives as discrete fields or one supporting typed packet, provided downstream ownership remains explicit.",
+        "State how absent baseline history is represented deterministically.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not leave recent-bar relative volume masquerading as a full baseline once lawful same-bucket fields exist.",
+        "Do not promote trade-count if it is not actually available from the admitted source path."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate248_upstream_prepared_runtime_contracts.py"
+      ],
+      "expected_evidence": [
+        "prepared-runtime baseline fields exist",
+        "runtime-surface ownership doc names the new readers and non-readers"
+      ],
+      "definition_of_done": [
+        "Prepared runtime has lawful same-bucket baseline carriage.",
+        "Absence/fallback semantics are explicit."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G248-004",
+      "gate": "Gate 248",
+      "title": "Freeze top-of-book admission or deferral",
+      "objective": "Resolve whether optional top-of-book quote truth is admitted in this tranche or explicitly deferred.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G248-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/config.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents top-of-book from remaining an attractive but undefined side door in later gates.",
+      "vocabulary_terms_checked": [
+        "Options and Flow Context",
+        "Execution Expression"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "inputs": [
+        "source-family mapping note from LEAF-G248-001",
+        "current admitted raw/prepared surfaces"
+      ],
+      "ordered_actions": [
+        "If top-of-book truth is already cheaply and lawfully available, define bounded typed fields and state their supporting-only role.",
+        "Otherwise freeze explicit deferral in the scope note, contradiction report, and any affected checklist/log surface.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not carry a maybe-field with no named source path or consumer rule.",
+        "Do not let top-of-book promotion widen into execution redesign."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate248_upstream_prepared_runtime_contracts.py"
+      ],
+      "expected_evidence": [
+        "scope note states top-of-book admitted or deferred",
+        "contradiction report and contract docs match the same answer"
+      ],
+      "definition_of_done": [
+        "Top-of-book state is explicit and non-ambiguous.",
+        "Later gates cannot wander on this point."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G248-005",
+      "gate": "Gate 248",
+      "title": "Close Gate 248 with contract proof",
+      "objective": "Close the prepared-runtime contract gate only after schema/docs/tests align and the router quartet moves together.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G248-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns the contract freeze into the next active execution boundary without leaving stale routing state behind.",
+      "vocabulary_terms_checked": [
+        "PreparedRuntimeSnapshot",
+        "MarketRegimeContextInput",
+        "relative_volume_ratio"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/04_TECHNICAL_ARCHITECTURE.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "inputs": [
+        "Gate 248 schema/model changes",
+        "Gate 248 tests"
+      ],
+      "ordered_actions": [
+        "Run the declared Gate 248 schema/model proof slice.",
+        "Update PLANS.md, the gate map, the leaves ledger, and the execution log together so Gate 249 becomes the only active gate.",
+        "Record exact validation commands and observed results in the execution log.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not close Gate 248 if docs and schema disagree on what was admitted.",
+        "Do not leave the leaves ledger on Gate 248 while PLANS.md claims Gate 249 is active."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate248_upstream_prepared_runtime_contracts.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 248 tests green",
+        "router quartet now points to Gate 249 active",
+        "execution log records Gate 248 receipt"
+      ],
+      "definition_of_done": [
+        "Prepared-runtime contract and doctrine surfaces are aligned.",
+        "Gate 249 is the only active gate after closeout."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G249-001",
+      "gate": "Gate 249",
+      "title": "Implement deterministic regime alignment rules",
+      "objective": "Freeze timestamp and symbol/source alignment rules between NVDA observations and promoted cross-asset observations before wiring runtime builders.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G248-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/replay_compare.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf creates the deterministic alignment law that keeps promoted regime truth inspectable and bounded.",
+      "vocabulary_terms_checked": [
+        "Market Regime Context",
+        "PreparedRuntimeLineage"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/replay_compare.py",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "inputs": [
+        "source-family mapping note",
+        "current prepared runtime lineage fields"
+      ],
+      "ordered_actions": [
+        "Define alignment rules for timestamp closeness, session/calendar compatibility, and symbol/source identity between NVDA runtime observations and cross-asset observations.",
+        "Decide how missing but non-critical upstream fields are surfaced in lineage/fallback notes.",
+        "Make the rules inspectable in code, docs, or both before broad promotion wiring proceeds.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not rely on vague 'nearest point' wording without a deterministic rule.",
+        "Do not allow cross-asset promotion to depend on nondeterministic ordering or ambient provider state."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "expected_evidence": [
+        "alignment rule documented",
+        "lineage or fallback surfaces name the rule"
+      ],
+      "definition_of_done": [
+        "Cross-asset alignment rules are deterministic and inspectable.",
+        "Promotion wiring has one frozen matching law."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G249-002",
+      "gate": "Gate 249",
+      "title": "Promote cross-asset regime primitives into prepared runtime",
+      "objective": "Thread ES, NQ, SOX, VIX, VVIX, US10Y, US2Y, and USDJPY truth into the prepared-runtime build path.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G249-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/schemas/dataset.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf promotes the highest-value Class B regime family into the live runtime path before cognition ingress wiring.",
+      "vocabulary_terms_checked": [
+        "Market Regime Context",
+        "normalised_features"
+      ],
+      "repo_surfaces": [
+        "prepared-runtime builder surfaces identified during execution",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "inputs": [
+        "source-family mapping note",
+        "alignment rules from LEAF-G249-001"
+      ],
+      "ordered_actions": [
+        "Implement the builder changes that populate the admitted regime fields in prepared runtime objects.",
+        "Keep symbol/source identity and timestamp alignment inspectable in the resulting runtime object or lineage.",
+        "Preserve current runtime usability when some non-critical regime feeds are absent if that remains repo law.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not widen scope to breadth or concentration families here.",
+        "Do not backfill absent fields with fixture constants or toy defaults that look real."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "expected_evidence": [
+        "prepared runtime objects now carry the promoted regime primitives",
+        "fallback behaviour is explicit when some feeds are absent"
+      ],
+      "definition_of_done": [
+        "Cross-asset regime primitives are present in the live prepared-runtime path.",
+        "Absence/fallback behaviour is truthful and inspectable."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "prepared-runtime builder surfaces identified during execution",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G249-003",
+      "gate": "Gate 249",
+      "title": "Keep replay/runtime comparison truthful",
+      "objective": "Update any replay/runtime comparison or harness surfaces that assume regime inputs are fixture-only so they remain truthful after promotion.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G249-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/services/replay_compare.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps diagnostic and parity surfaces from silently drifting when live regime promotion becomes real.",
+      "vocabulary_terms_checked": [
+        "MarketRegimeContextInput",
+        "PreparedRuntimeSnapshot"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/testing/canonical_runtime_harness.py"
+      ],
+      "inputs": [
+        "promoted regime fields",
+        "current replay/runtime compare logic"
+      ],
+      "ordered_actions": [
+        "Trace any harness or replay-compare surfaces that currently fabricate or expect regime inputs outside the live path.",
+        "Update them so they reflect the promoted runtime truth or still declare fixture-only behaviour explicitly.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not let debug or replay surfaces keep stale 'manual regime packet' assumptions without labelling them.",
+        "Do not rewrite evaluation logic beyond what is needed to preserve truthful comparison."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "expected_evidence": [
+        "replay compare surfaces remain truthful",
+        "harness/replay tests reflect live regime promotion boundaries"
+      ],
+      "definition_of_done": [
+        "Diagnostic surfaces still tell the truth after regime promotion.",
+        "No hidden fixture-only assumptions remain where live truth now exists."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/replay_compare.py",
+        "src/nvda_desk/testing/canonical_runtime_harness.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G249-004",
+      "gate": "Gate 249",
+      "title": "Prove explicit regime absence handling",
+      "objective": "Add bounded tests that prove missing or partially missing regime feeds remain explicit and deterministic.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G249-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents the new regime promotion path from becoming brittle or silently lossy when upstream feeds are incomplete.",
+      "vocabulary_terms_checked": [
+        "Market Regime Context"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "inputs": [
+        "promoted regime builder path",
+        "alignment rules"
+      ],
+      "ordered_actions": [
+        "Add bounded tests proving promoted fields are present when available and explicit when absent.",
+        "Add bounded tests proving timestamp alignment and symbol/source identity remain inspectable.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not only test the happy path.",
+        "Do not hide absent-feed behaviour behind silent zeroing unless that zero is explicitly lawful."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "expected_evidence": [
+        "regime ingestion tests cover presence and absence paths"
+      ],
+      "definition_of_done": [
+        "Regime absence/fallback handling is proven, not assumed.",
+        "Timestamp alignment behaviour is test-covered."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G249-005",
+      "gate": "Gate 249",
+      "title": "Close Gate 249 with ingestion proof",
+      "objective": "Close the cross-asset promotion gate only after runtime promotion and fallback proof are green and the router quartet moves together.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G249-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns the cross-asset promotion path into the next active boundary without leaving stale router state.",
+      "vocabulary_terms_checked": [
+        "Market Regime Context"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "tests/test_gate249_cross_asset_regime_ingestion.py"
+      ],
+      "inputs": [
+        "Gate 249 code surfaces",
+        "Gate 249 tests"
+      ],
+      "ordered_actions": [
+        "Run the declared Gate 249 proof slice.",
+        "Update PLANS.md, the gate map, the leaves ledger, and the execution log together so Gate 250 becomes the only active gate.",
+        "Record observed results and any still-deferred regime families in the execution log.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not close Gate 249 if fallback behaviour is still ambiguous.",
+        "Do not leave replay/runtime comparison surfaces stale while claiming regime promotion is done."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate249_cross_asset_regime_ingestion.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 249 tests green",
+        "router quartet now points to Gate 250 active",
+        "execution log records Gate 249 receipt"
+      ],
+      "definition_of_done": [
+        "Cross-asset regime promotion is live and inspectable.",
+        "Gate 250 is the only active gate after closeout."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G250-001",
+      "gate": "Gate 250",
+      "title": "Trace same-bucket baseline source and lookup law",
+      "objective": "Identify the lawful baseline builder path and freeze how same-bucket lookup works relative to runtime timestamps.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G249-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf anchors the baseline promotion to real same-bucket doctrine and a deterministic lookup rule.",
+      "vocabulary_terms_checked": [
+        "relative_volume_ratio",
+        "Temporal Context"
+      ],
+      "repo_surfaces": [
+        "prepared-runtime builder surfaces identified during execution",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md"
+      ],
+      "inputs": [
+        "Gate 42 doctrine",
+        "source-family mapping note",
+        "current runtime timestamp surfaces"
+      ],
+      "ordered_actions": [
+        "Identify the existing baseline builder logic or capture substrate that supports same-bucket volume, spread, and trade-count baselines.",
+        "Freeze how same-bucket lookup keys off runtime timestamp, session bucket, and any required calendar/session rules.",
+        "Record a stop condition if lawful same-bucket baselines are not actually reachable without a much larger capture rewrite.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not hand-wave a recent-bar average as same-bucket baseline truth.",
+        "Do not assume trade-count exists if the admitted source path does not expose it."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "expected_evidence": [
+        "baseline-source mapping note exists",
+        "same-bucket lookup rule is inspectable"
+      ],
+      "definition_of_done": [
+        "Same-bucket source path and lookup law are frozen.",
+        "A truthful stop condition exists if the baseline is not actually reachable."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G250-002",
+      "gate": "Gate 250",
+      "title": "Promote baseline and observed participation fields",
+      "objective": "Add live observed and baseline participation/liquidity fields to the prepared-runtime path where they are lawfully available.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G250-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/schemas/dataset.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns same-bucket doctrine into live runtime truth without yet widening downstream authority.",
+      "vocabulary_terms_checked": [
+        "relative_volume_ratio",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "prepared-runtime builder surfaces identified during execution",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "inputs": [
+        "baseline-source mapping note",
+        "Gate 248 contract surfaces"
+      ],
+      "ordered_actions": [
+        "Populate the prepared-runtime fields for same-bucket baseline and live observed participation values.",
+        "Keep absent baseline history deterministic and explicit.",
+        "Ensure lunch/open/close style bucket differentiation is representable in the resulting runtime objects.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not let baseline promotion leak into Step 4-6 behavioural logic in this leaf.",
+        "Do not store a fake baseline just to satisfy a required field."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "expected_evidence": [
+        "prepared runtime now carries baseline and observed participation truth",
+        "bucket differentiation is representable in runtime objects"
+      ],
+      "definition_of_done": [
+        "Same-bucket participation truth is present in the live runtime path.",
+        "Absent-baseline behaviour is explicit."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "prepared-runtime builder surfaces identified during execution",
+        "src/nvda_desk/schemas/dataset.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G250-003",
+      "gate": "Gate 250",
+      "title": "Resolve the relative-volume compatibility path",
+      "objective": "Decide whether relative volume remains as explicit compatibility scaffolding or becomes a derived echo from lawful same-bucket baseline truth.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G250-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/domain/temporal_state.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf prevents the old participation proxy from silently surviving as if nothing changed.",
+      "vocabulary_terms_checked": [
+        "relative_volume_ratio",
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/domain/temporal_state.py"
+      ],
+      "inputs": [
+        "promoted baseline fields",
+        "current relative_volume_ratio readers"
+      ],
+      "ordered_actions": [
+        "Trace every current runtime reader of relative_volume_ratio.",
+        "Choose whether the field becomes an explicitly marked compatibility echo or a baseline-derived metric with lawful provenance.",
+        "Update doctrine and code comments/notes so the chosen compatibility status is explicit.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not leave the old proxy semantically unchanged while also claiming same-bucket promotion is complete.",
+        "Do not redesign temporal or options-flow behaviour beyond what is needed to preserve truthful semantics."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "expected_evidence": [
+        "relative_volume_ratio compatibility path is explicit in code and docs",
+        "current readers continue to function lawfully"
+      ],
+      "definition_of_done": [
+        "Recent-bar proxy no longer masquerades as full baseline truth.",
+        "Compatibility semantics are inspectable."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G250-004",
+      "gate": "Gate 250",
+      "title": "Prove baseline fallback and bucket differentiation",
+      "objective": "Add bounded tests that prove bucket differentiation and deterministic fallback when historical baseline truth is absent.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G250-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf proves the promoted participation truth is usable and honest without turning into an optimisation pass.",
+      "vocabulary_terms_checked": [
+        "Temporal Context"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "inputs": [
+        "promoted baseline builder path",
+        "current temporal/options-flow readers"
+      ],
+      "ordered_actions": [
+        "Add bounded tests that distinguish lunch/open/close-style buckets.",
+        "Add bounded tests that exercise explicit baseline absence/fallback behaviour.",
+        "Keep the tests structural and semantic, not performance-tuning oriented.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not only test one default bucket.",
+        "Do not hide missing baseline history behind silent identity values unless that identity is explicit doctrine."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "expected_evidence": [
+        "baseline tests cover bucket differentiation and absence paths"
+      ],
+      "definition_of_done": [
+        "Bucket differentiation and fallback behaviour are test-covered.",
+        "No ambiguous participation semantics remain."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G250-005",
+      "gate": "Gate 250",
+      "title": "Close Gate 250 with baseline proof",
+      "objective": "Close the same-bucket baseline gate only after participation truth, compatibility semantics, and fallback proof are green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G250-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf turns truthful participation promotion into the next active boundary without reopening downstream logic design.",
+      "vocabulary_terms_checked": [
+        "relative_volume_ratio",
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "tests/test_gate250_same_bucket_participation_baseline.py"
+      ],
+      "inputs": [
+        "Gate 250 code surfaces",
+        "Gate 250 tests"
+      ],
+      "ordered_actions": [
+        "Run the declared Gate 250 proof slice.",
+        "Update PLANS.md, the gate map, the leaves ledger, and the execution log together so Gate 251 becomes the only active gate.",
+        "Record observed results and any still-deferred participation/top-of-book families in the execution log.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not close Gate 250 if the relative_volume_ratio compatibility decision is still ambiguous.",
+        "Do not claim same-bucket promotion if bucket differentiation is not actually representable in tests."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate250_same_bucket_participation_baseline.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 250 tests green",
+        "router quartet now points to Gate 251 active",
+        "execution log records Gate 250 receipt"
+      ],
+      "definition_of_done": [
+        "Same-bucket participation truth is lawfully promoted.",
+        "Gate 251 is the only active gate after closeout."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G251-001",
+      "gate": "Gate 251",
+      "title": "Define lawful regime-input mapping",
+      "objective": "Freeze the mapping from promoted prepared-runtime regime truth into MarketRegimeContextInput before wiring consumers.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G250-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/market_regime_context.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf makes the MarketRegimeContextInput mapping explicit so live ingress does not depend on fixture-era assumptions.",
+      "vocabulary_terms_checked": [
+        "MarketRegimeContextInput",
+        "normalised_features"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/market_regime_context.py"
+      ],
+      "inputs": [
+        "promoted regime fields in prepared runtime",
+        "current MarketRegimeContextInput schema"
+      ],
+      "ordered_actions": [
+        "Name the exact field-by-field mapping from prepared-runtime regime truth to MarketRegimeContextInput.",
+        "Record any lawful derived transform, such as return normalisation, rather than hiding it in prose.",
+        "Keep breadth and concentration inputs explicit deferred scope if they still lack raw source truth.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not backfill missing breadth or concentration with fake values to satisfy the schema silently.",
+        "Do not create a second hidden mapping path outside ChainToCognitionService or the chosen ingress boundary."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "expected_evidence": [
+        "explicit regime-input mapping note exists in code/docs/tests",
+        "deferred fields remain deferred rather than silently guessed"
+      ],
+      "definition_of_done": [
+        "A lawful field-by-field regime-input mapping exists.",
+        "No hidden ingress path has been introduced."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G251-002",
+      "gate": "Gate 251",
+      "title": "Wire live regime input through ChainToCognitionService",
+      "objective": "Thread the promoted regime truth through ChainToCognitionService or the equivalent ingress boundary so runtime packets carry live-built regime input.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G251-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/schemas/dataset.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the biggest live/runtime gap named by the tranche: fixture-rich regime schemas but thin live ingress.",
+      "vocabulary_terms_checked": [
+        "MarketRegimeContextInput",
+        "PreparedRuntimeSnapshot"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/schemas/cognition.py"
+      ],
+      "inputs": [
+        "regime-input mapping from LEAF-G251-001",
+        "promoted prepared-runtime regime fields"
+      ],
+      "ordered_actions": [
+        "Add the live regime-input carriage to RealDataCognitionInputs or the chosen ingress packet without creating redundant surfaces.",
+        "Update ChainToCognitionService so it constructs the regime input from promoted runtime truth.",
+        "Keep lineage and normalised_features carriage intact and non-duplicative.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not remove or redesign temporal/options-flow ingress while adding regime ingress.",
+        "Do not route live regime truth around the ingress boundary by mutating downstream callers directly."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "expected_evidence": [
+        "RealDataCognitionInputs now carries live regime input or equivalent lawful ingress carrier",
+        "ChainToCognitionService constructs regime input from promoted truth"
+      ],
+      "definition_of_done": [
+        "Live regime input is now part of the raw-to-cognition path.",
+        "Ingress remains singular and inspectable."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/dataset.py",
+        "src/nvda_desk/services/chain_to_cognition.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G251-003",
+      "gate": "Gate 251",
+      "title": "Wire participation-supporting truth into lawful ingress readers",
+      "objective": "Map promoted participation/baseline truth into TemporalContextInput and any lawful Step-3-supporting ingress fields without redesigning downstream logic.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G251-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/options_flow_context.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf makes the richer participation truth visible where the existing grammar already expects it, and nowhere else.",
+      "vocabulary_terms_checked": [
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/options_flow_context.py"
+      ],
+      "inputs": [
+        "promoted participation/baseline fields",
+        "current lawful readers"
+      ],
+      "ordered_actions": [
+        "Identify whether each participation/liquidity truth belongs in TemporalContextInput, MarketRegimeContextInput, OptionsFlowContextInput, or normalised_features according to existing step responsibilities.",
+        "Wire only the lawful supporting fields and update docs/tests accordingly.",
+        "Preserve current options-flow semantics except for lawful participation-supporting enrichment if it already belongs there.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not turn participation truth into a new hidden risk lane.",
+        "Do not widen OptionsFlowContextInput with unrelated regime families."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "expected_evidence": [
+        "temporal/options-flow ingress reflects the promoted participation truth lawfully",
+        "Step responsibilities remain explicit"
+      ],
+      "definition_of_done": [
+        "Participation-supporting truth reaches lawful ingress readers only.",
+        "No downstream redesign occurs."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/schemas/cognition.py",
+        "src/nvda_desk/services/chain_to_cognition.py",
+        "src/nvda_desk/services/temporal_context.py",
+        "src/nvda_desk/services/options_flow_context.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G251-004",
+      "gate": "Gate 251",
+      "title": "Prove downstream contract non-redesign within the wiring gate",
+      "objective": "Add bounded tests proving Steps 4-6 contracts remain intact while the upstream ingress gets richer.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G251-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf catches accidental downstream redesign before Gate 252 broadens into the final tranche proof.",
+      "vocabulary_terms_checked": [
+        "Execution Expression",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "tests/test_gate251_upstream_raw_to_cognition_wiring.py",
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate189_capital_deployment_authority_service.py",
+        "tests/test_gate190_capital_deployment_authority_integration.py"
+      ],
+      "inputs": [
+        "new ingress wiring",
+        "existing corrected-stack proof surfaces"
+      ],
+      "ordered_actions": [
+        "Add bounded tests proving live regime/participation ingress is now populated from runtime truth.",
+        "Add bounded tests proving Steps 4-6 code paths and CDA separation are not redesigned in this gate.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not rely only on happy-path fixture tests that bypass the live ingress.",
+        "Do not close the gate if live ingress changed but non-interference is still untested."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "expected_evidence": [
+        "Gate 251 tests prove populated live regime input and no Step 4-6 redesign"
+      ],
+      "definition_of_done": [
+        "Live raw-to-cognition wiring is test-covered.",
+        "Downstream contract non-redesign is already visible before final proof."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G251-005",
+      "gate": "Gate 251",
+      "title": "Close Gate 251 with ingress proof",
+      "objective": "Close the raw-to-cognition wiring gate only after live regime ingress and participation-supporting ingress are wired and bounded proof is green.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G251-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf hands off to the final non-interference trace gate with one truthful active-gate state.",
+      "vocabulary_terms_checked": [
+        "MarketRegimeContextInput",
+        "Execution Expression",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "tests/test_gate251_upstream_raw_to_cognition_wiring.py"
+      ],
+      "inputs": [
+        "Gate 251 code surfaces",
+        "Gate 251 tests"
+      ],
+      "ordered_actions": [
+        "Run the declared Gate 251 proof slice.",
+        "Update PLANS.md, the gate map, the leaves ledger, and the execution log together so Gate 252 becomes the only active gate.",
+        "Record the exact wiring surfaces, test commands, and observed results in the execution log.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not close Gate 251 if downstream non-redesign is still only inferred.",
+        "Do not leave RealDataCognitionInputs and ChainToCognitionService out of sync about live regime ingress."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate251_upstream_raw_to_cognition_wiring.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "Gate 251 tests green",
+        "router quartet now points to Gate 252 active",
+        "execution log records Gate 251 receipt"
+      ],
+      "definition_of_done": [
+        "Live regime and participation ingress is wired truthfully.",
+        "Gate 252 is the only active gate after closeout."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G252-001",
+      "gate": "Gate 252",
+      "title": "Rerun the corrected-stack regression slice",
+      "objective": "Re-run the bounded corrected-stack acceptance slice so upstream truth promotion proves non-interference rather than assuming it.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G251-005"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf is the hard integrity gate that keeps the richer ingress from reopening the corrected serial stack.",
+      "vocabulary_terms_checked": [
+        "Execution Expression",
+        "Capital Deployment Authority Service"
+      ],
+      "repo_surfaces": [
+        "tests/test_execution_review_runtime.py",
+        "tests/test_gate189_capital_deployment_authority_service.py",
+        "tests/test_gate190_capital_deployment_authority_integration.py",
+        "tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "inputs": [
+        "current corrected-stack proof slice",
+        "new upstream ingress wiring"
+      ],
+      "ordered_actions": [
+        "Run the bounded corrected-stack acceptance slice that protects Steps 3-6 and CDA separation.",
+        "Record any regression as a stop condition rather than compensating by redesigning downstream logic.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not hand-wave a downstream regression as acceptable because the upstream inputs got richer.",
+        "Do not expand into optimiser-style evaluation work here."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_execution_review_runtime.py tests/test_gate189_capital_deployment_authority_service.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_gate240_main_serial_cross_step_boundary_enforcement.py"
+      ],
+      "expected_evidence": [
+        "corrected-stack regression slice green"
+      ],
+      "definition_of_done": [
+        "Steps 3-6 and CDA separation remain intact under the richer ingress.",
+        "Any failure is explicit stop-state evidence."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G252-002",
+      "gate": "Gate 252",
+      "title": "Add bounded cross-asset sanity trace",
+      "objective": "Add one bounded trace that varies cross-asset inputs while holding the rest of the runtime state fixed.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G252-001"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf proves the richer regime truth is visible to the live cognition grammar without becoming an optimisation pass.",
+      "vocabulary_terms_checked": [
+        "Market Regime Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "src/nvda_desk/testing/canonical_runtime_harness.py",
+        "tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "inputs": [
+        "promoted cross-asset regime ingress",
+        "current bounded trace harness"
+      ],
+      "ordered_actions": [
+        "Add one bounded trace scenario that varies cross-asset inputs only.",
+        "Hold the rest of the runtime state fixed so the interpretive change is attributable to the promoted regime truth.",
+        "Keep the trace as a sanity check only, not an optimisation evaluation.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not run broad scenario sweeps or P&L studies.",
+        "Do not let the trace mutate downstream authority surfaces."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "expected_evidence": [
+        "bounded cross-asset trace exists and is green"
+      ],
+      "definition_of_done": [
+        "Cross-asset regime promotion is visible in a bounded trace.",
+        "The trace remains structural rather than evaluative."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G252-003",
+      "gate": "Gate 252",
+      "title": "Add bounded participation-baseline sanity trace",
+      "objective": "Add one bounded trace that varies participation baseline context while holding the rest of the runtime state fixed.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G252-002"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf proves the promoted same-bucket baseline truth is visible without turning the tranche into a behavioural retune.",
+      "vocabulary_terms_checked": [
+        "Temporal Context",
+        "Options and Flow Context"
+      ],
+      "repo_surfaces": [
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "inputs": [
+        "promoted participation baseline ingress",
+        "current bounded trace harness"
+      ],
+      "ordered_actions": [
+        "Add one bounded trace scenario that varies participation baseline context only.",
+        "Hold the rest of the runtime state fixed so the interpretive change is attributable to the promoted baseline truth.",
+        "Record whether the resulting temporal/options-flow outputs look more desk-realistic without claiming optimisation success.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not turn the trace into playbook-quality tuning.",
+        "Do not use the trace to justify redesigning Steps 4-6."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "expected_evidence": [
+        "bounded participation-baseline trace exists and is green"
+      ],
+      "definition_of_done": [
+        "Participation-baseline promotion is visible in a bounded trace.",
+        "The trace remains a sanity check, not an optimiser."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "src/nvda_desk/testing/bounded_trace_review.py",
+        "tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G252-004",
+      "gate": "Gate 252",
+      "title": "Log remaining Class A gaps truthfully",
+      "objective": "Record the still-missing Class A families at closeout so the tranche does not pretend the upstream truth gap is fully solved.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G252-003"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf keeps deferred upstream work visible and prevents false closeout completeness.",
+      "vocabulary_terms_checked": [
+        "Raw Signal Coverage Map"
+      ],
+      "repo_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "inputs": [
+        "coverage map",
+        "Gate 252 trace results"
+      ],
+      "ordered_actions": [
+        "Update the coverage map and execution log to record which Class A families remain deferred at closeout.",
+        "Record whether any optional top-of-book work also remained deferred.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not let deferred families disappear from the final receipt.",
+        "Do not reclassify a still-missing family as solved just because downstream logic can already name it."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate252_upstream_non_interference_and_sanity_traces.py"
+      ],
+      "expected_evidence": [
+        "execution log and coverage map both record the remaining Class A families"
+      ],
+      "definition_of_done": [
+        "Deferred upstream gaps remain explicit at closeout.",
+        "The tranche cannot overclaim completion."
+      ],
+      "closeout_updates_required": [],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_RAW_SIGNAL_COVERAGE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    },
+    {
+      "id": "LEAF-G252-005",
+      "gate": "Gate 252",
+      "title": "Close the tranche truthfully",
+      "objective": "Close the upstream signal completion tranche only after the non-interference slice, bounded traces, and router closeout all agree on the finished state.",
+      "status": "complete",
+      "depends_on": [
+        "LEAF-G252-004"
+      ],
+      "authority_docs": [
+        "docs/01_NORMATIVE.md",
+        "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
+        "AGENTS.md",
+        "PLANS.md",
+        "docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json",
+        "docs/03_DOMAIN_MODEL.md",
+        "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
+        "pyproject.toml",
+        "docs/TESTING_AND_PROMOTION.md",
+        "/mnt/data/checkpoint_integrity_normative_extension.md"
+      ],
+      "workflow_intent_assertion": "This leaf closes the tranche and must leave no stale active-pack wording or hidden completeness claims behind.",
+      "vocabulary_terms_checked": [
+        "Capital Deployment Authority Service",
+        "Raw Signal Coverage Map"
+      ],
+      "repo_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md",
+        "CHANGELOG.jsonl"
+      ],
+      "inputs": [
+        "Gate 252 traces",
+        "corrected-stack regression slice",
+        "coverage map"
+      ],
+      "ordered_actions": [
+        "Run the declared final tranche proof slice.",
+        "Update PLANS.md, the gate map, the gates master, the leaves ledger, the execution log, and retained support docs together so no active pack remains if the tranche is complete.",
+        "Record the exact observed proof counts and any remaining deferred families truthfully.",
+        "Add or update named runtime checkpoints, bounded observable state, structured docstrings, and at least one red-turning negative proof for every modified boundary touched by this leaf."
+      ],
+      "forbidden_actions": [
+        "Do not close the tranche while any routing surface still reports an active gate.",
+        "Do not leave stale Gate 252-active wording in retained support docs or tests."
+      ],
+      "validation_commands": [
+        "python3 -m pytest -q tests/test_gate252_upstream_non_interference_and_sanity_traces.py tests/test_execution_review_runtime.py tests/test_gate189_capital_deployment_authority_service.py tests/test_gate190_capital_deployment_authority_integration.py tests/test_planning_state_integrity.py"
+      ],
+      "expected_evidence": [
+        "final tranche slice green",
+        "router quartet shows no active pack",
+        "support docs are in closed-pack language"
+      ],
+      "definition_of_done": [
+        "The tranche is closed truthfully with no active pack routed.",
+        "Deferred Class A families remain visible in the final evidence."
+      ],
+      "closeout_updates_required": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "full_suite_required": false,
+      "packaging_requirement": "If this leaf closes the gate, GitHub branch/commit/merge receipts are the default closeout evidence when metadata is available. Create a fresh full-history zip only if the operator explicitly requests backup, offline handoff, or sandbox transfer packaging.",
+      "document_touch_surfaces": [
+        "PLANS.md",
+        "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_LEAVES_v1.json",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_EXECUTION_LOG_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_GATES_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_SCOPE_NOTE_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_CONTRADICTION_REPORT_v1.md",
+        "docs/planning/2026-04-09_UPSTREAM_SIGNAL_COMPLETION_TRANCHE_IMPLEMENTATION_DOCUMENT_TOUCH_CHECKLIST_v1.md"
+      ],
+      "checkpoint_integrity": {
+        "runtime_checkpoints_required": true,
+        "observable_state_required": true,
+        "negative_proof_required": true,
+        "docstring_compliance_required": true
+      }
+    }
+  ],
+  "contradiction_scan": {
+    "required_before_new_pack": true,
+    "report_required_when_material_conflicts_exist": true,
+    "report_must_name_conflicting_surfaces": [
+      "PLANS.md",
+      "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
+      "src/nvda_desk/schemas/dataset.py",
+      "src/nvda_desk/schemas/cognition.py",
+      "src/nvda_desk/services/chain_to_cognition.py"
+    ]
+  },
+  "state_invariants": {
+    "completed_and_remaining_leaf_sets_must_be_disjoint": true,
+    "all_referenced_leaf_ids_must_exist_in_leaves_map": true,
+    "active_gate_none_requires_no_remaining_or_pending_ids": true,
+    "closed_pack_requires_all_leaf_statuses_complete": true
+  },
+  "checkpoint_integrity_extension": {
+    "path": "/mnt/data/checkpoint_integrity_normative_extension.md",
+    "forward_applies_only": true,
+    "runtime_checkpoints_required_for_modified_boundaries": true,
+    "negative_proof_required_for_gate_local_tests": true,
+    "structured_docstrings_required_for_modified_boundaries": true
+  }
+}

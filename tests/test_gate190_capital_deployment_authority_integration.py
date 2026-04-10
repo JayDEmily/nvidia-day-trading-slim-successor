@@ -44,7 +44,7 @@ def test_gate190_runtime_carries_capital_deployment_authority_without_creating_a
 
     assert result.capital_deployment_authority is not None
     assert result.capital_deployment_authority.deployment_action is CapitalDeploymentAuthorityAction.DEPLOY
-    assert result.capital_deployment_authority.authorised_notional_usd == 550.0
+    assert result.capital_deployment_authority.authorised_notional_usd == 350.0
     assert len(result.stage_packets) == 7
     review_packet = cast(dict[str, Any], result.review.review_packet)
     assert "capital_deployment_authority" in review_packet

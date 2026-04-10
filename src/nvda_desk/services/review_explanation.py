@@ -260,6 +260,8 @@ class ReviewExplanationService:
             review_packet["effective_policy"] = effective_policy.model_dump(mode="json")
         if payload.stage_local_handoff is not None:
             review_packet["stage_local_handoff"] = payload.stage_local_handoff.model_dump(mode="json")
+            if payload.stage_local_handoff.execution_post_modifier_pre_final_risk is not None:
+                review_packet["execution_recommendation"] = payload.stage_local_handoff.execution_post_modifier_pre_final_risk.model_dump(mode="json")
             if payload.stage_local_handoff.overlay_risk_decision is not None:
                 review_packet["overlay_risk_decision"] = payload.stage_local_handoff.overlay_risk_decision.model_dump(mode="json")
             if payload.stage_local_handoff.terminal_risk_application is not None:
