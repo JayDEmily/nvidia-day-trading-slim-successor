@@ -22,19 +22,22 @@ def test_gate255_router_quartet_closes_truthfully() -> None:
     execution_log = EXEC_LOG.read_text(encoding="utf-8")
 
     assert "## Active pack\n\n- none" in plans
-    assert "live prepared-handoff reconciliation pack is closed through Gate 255" in plans
+    assert "live prepared-handoff reconciliation pack retained through Gate 255" in plans
     assert leaves["active_gate"] == "none"
     assert leaves["completed_gate_ids"] == ["Gate 255"]
     assert leaves["remaining_leaf_ids"] == []
     assert "Closed through Gate 255" in execution_log
-    assert "Current active gate: **No active pack currently routed. The live prepared-handoff reconciliation pack is closed through Gate 255" in gate_map
+    assert (
+        "latest closed live prepared-handoff reconciliation gate authority "
+        "retained as predecessor evidence for Gate 255" in gate_map
+    )
 
 
 def test_gate255_records_gate254_as_predecessor_evidence() -> None:
     plans = PLANS.read_text(encoding="utf-8")
     gate_map = GATE_MAP.read_text(encoding="utf-8")
 
-    assert "2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_GATES_v1.md" in plans
+    assert "2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_GATES_v1.md" in plans
     assert "2026-04-10_DOCTRINE_BASELINE_REFRESH_FOR_AGENTS_AND_01_NORMATIVE_GATES_v1.md" in gate_map
     assert "| Gate 254 | imported prepared handoff evidence retained in the live repo |" in gate_map
 
@@ -43,12 +46,10 @@ def test_gate255_agents_deferral_is_explicit_and_future_safe() -> None:
     agents = AGENTS.read_text(encoding="utf-8")
     contradiction = CONTRADICTION.read_text(encoding="utf-8")
     manifest = MANIFEST.read_text(encoding="utf-8")
-    docs_08 = REPO_ROOT / "docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md"
+    testing_doctrine = REPO_ROOT / "docs/08_TESTING_AND_PROMOTION.md"
 
-    if "docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md" in agents:
-        assert docs_08.is_file()
-    else:
-        assert not docs_08.exists()
-        assert "keep the live repo `AGENTS.md` unchanged" in contradiction
-        assert "AGENTS.md" in manifest
-        assert "depends on missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`" in manifest
+    assert testing_doctrine.is_file()
+    assert "docs/08_TESTING_AND_PROMOTION.md" in agents
+    assert "numbered `08` slot" in contradiction
+    assert "AGENTS.md" in manifest
+    assert "missing numbered-08 doctrine path" in manifest

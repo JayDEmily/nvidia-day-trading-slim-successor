@@ -44,6 +44,7 @@ Reporting must:
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md` for behavioural authority and required reading order only
 
 `AGENTS.md` must point here for detailed workflow law.
@@ -113,7 +114,7 @@ Execution mode is used only for an approved active gate or for a controlled cont
 Before execution starts, the thread must read:
 1. `docs/01_NORMATIVE.md`
 2. `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-3. `docs/TESTING_AND_PROMOTION.md`
+3. `docs/08_TESTING_AND_PROMOTION.md`
 4. repo-root `PLANS.md`
 5. the active gates master named by `PLANS.md`, if one exists
 6. the active leaves ledger named by `PLANS.md`, if one exists
@@ -169,7 +170,7 @@ Never amend an old closed pack merely because it is nearby.
 If a change affects repo law, update the normative/process surfaces.
 If a change affects the current active tranche state, update the active pack and router surfaces.
 If a change affects proof order or test expectations, update the test doctrine or active tranche docs that govern that proof.
-For new and modified boundary work, `docs/TESTING_AND_PROMOTION.md` checkpoint-integrity rules are live authority: runtime checkpoints, observable checkpoint truth, negative proof, and structured docstrings are mandatory forward-only.
+For new and modified boundary work, `docs/08_TESTING_AND_PROMOTION.md` checkpoint-integrity rules are live authority: runtime checkpoints, observable checkpoint truth, negative proof, and structured docstrings are mandatory forward-only.
 If a change affects none of those, do not spray edits across the repo.
 
 Every planning pack must include an explicit document-touch checklist.

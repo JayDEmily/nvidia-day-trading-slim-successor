@@ -46,7 +46,7 @@
       "authority_docs": [
         "docs/01_NORMATIVE.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "AGENTS.md",
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
@@ -95,7 +95,7 @@
       ],
       "forbidden_actions": [
         "Do not import the prepared .git history.",
-        "Do not fabricate docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md.",
+        "Do not fabricate a numbered GitHub/ChatGPT interactions doctrine file.",
         "Do not silently edit the prepared AGENTS.md into a local compromise state.",
         "Do not widen to unrelated repo cleanup."
       ],

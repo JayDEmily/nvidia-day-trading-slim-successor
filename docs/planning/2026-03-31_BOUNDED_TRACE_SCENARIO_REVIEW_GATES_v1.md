@@ -24,7 +24,7 @@ Read before any execution leaf:
 - `docs/03_DOMAIN_MODEL.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
@@ -75,7 +75,7 @@ Checklist file: `docs/planning/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_DOCUMENT
 - Add one narrow trace-review proof regime that runs the sibling scenarios through the live runtime and checks broad human-sanity outcomes rather than pretending to score alpha.
 
 **In-scope surfaces**
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `src/nvda_desk/testing/bounded_trace_review.py`
 - `tests/test_gate133_bounded_trace_review_regime.py`
 - `tests/test_gate132_bounded_trace_scenario_pack.py`

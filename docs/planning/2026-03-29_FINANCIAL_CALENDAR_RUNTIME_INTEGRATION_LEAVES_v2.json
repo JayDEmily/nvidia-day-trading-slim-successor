@@ -868,7 +868,7 @@
       "authority_docs": [
         "AGENTS.md",
         "PLANS.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "PLANS.md",
@@ -934,7 +934,7 @@
       "authority_docs": [
         "AGENTS.md",
         "PLANS.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "tests/test_financial_calendar_planning_v3.py",

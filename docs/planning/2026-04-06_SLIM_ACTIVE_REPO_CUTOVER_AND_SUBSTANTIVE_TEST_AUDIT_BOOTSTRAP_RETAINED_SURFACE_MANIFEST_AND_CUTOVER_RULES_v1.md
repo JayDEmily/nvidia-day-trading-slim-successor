@@ -23,7 +23,7 @@ Retain surfaces required for live execution, doctrine, ongoing planning, and the
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md` (using the rescoped rewrite, not the older source-repo text)
 
@@ -113,7 +113,7 @@ Gate 218 freezes the actual tracked successor-repo baseline rather than relying 
 
 ### Retained baseline for the first substantive audit
 
-- doctrine and operator baseline: `AGENTS.md`, repo-root `PLANS.md`, `README.md`, `Makefile`, `CHANGELOG.jsonl`, `docs/01_NORMATIVE.md`, `docs/02_OPERATING_MODEL.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/05_GUARDRAILS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, `docs/TESTING_AND_PROMOTION.md`, `docs/BUILD_PLAN.md`, `docs/RUNBOOK.md`, `docs/reference/`, and `docs/vocabulary/`
+- doctrine and operator baseline: `AGENTS.md`, repo-root `PLANS.md`, `README.md`, `Makefile`, `CHANGELOG.jsonl`, `docs/01_NORMATIVE.md`, `docs/02_OPERATING_MODEL.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/05_GUARDRAILS.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, `docs/08_TESTING_AND_PROMOTION.md`, `docs/BUILD_PLAN.md`, `docs/RUNBOOK.md`, `docs/reference/`, and `docs/vocabulary/`
 - runtime, fixture, and test baseline: `src/`, `tests/`, `fixtures/`, `config/`, `data/`, `scripts/`, `schemas/`, `alembic/`, `alembic.ini`, `pyproject.toml`, `uv.lock`, `.env.example`, `.gitignore`, `docker-compose.yml`, and `hypothesis/`
 - planning baseline: `docs/planning/`, the active slim-successor pack surfaces, and the retained Gate 210 cutover brief named in this pack
 

@@ -15,7 +15,7 @@ This log supersedes prior shortcut completion claims. LEAF-000 through LEAF-012 
 
 - Implementation commit: `72a144d`
 - Scope: normative authority reconciliation, downstream gate reset, and hard acceptance-criteria correction for later leaves.
-- Files touched: `PLANS.md`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_EXECUTION_PLAN.md`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_LEAVES.json`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_LEAF_EXECUTION_LOG.md`, `docs/TESTING_AND_PROMOTION.md`.
+- Files touched: `PLANS.md`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_EXECUTION_PLAN.md`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_LEAVES.json`, `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_LEAF_EXECUTION_LOG.md`, `docs/08_TESTING_AND_PROMOTION.md`.
 - Validation in the repo venv:
   - absolute-language grep across audited docs passed;
   - JSON parse for `docs/planning/2026-03-23_CANONICAL_DESK_REBUILD_LEAVES.json` passed;

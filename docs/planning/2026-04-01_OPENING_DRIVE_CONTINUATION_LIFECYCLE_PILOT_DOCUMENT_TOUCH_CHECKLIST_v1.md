@@ -14,7 +14,7 @@ Current planned sequence: Gate 135 -> Gate 136 -> Gate 137 -> Gate 138 -> Gate 1
 - [x] `docs/04_TECHNICAL_ARCHITECTURE.md`
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 
 ## Live routing surfaces checked

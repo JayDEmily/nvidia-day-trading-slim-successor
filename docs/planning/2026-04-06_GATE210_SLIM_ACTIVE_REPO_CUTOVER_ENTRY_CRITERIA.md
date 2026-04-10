@@ -35,7 +35,7 @@ If any one of those is false, the slim-repo successor work has not started yet.
   - `docs/04_TECHNICAL_ARCHITECTURE.md`
   - `docs/05_GUARDRAILS.md`
   - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-  - `docs/TESTING_AND_PROMOTION.md`
+  - `docs/08_TESTING_AND_PROMOTION.md`
   - `AGENTS.md`
 - No new active planning pack may be opened in this repo to sneak the cutover work in early.
 

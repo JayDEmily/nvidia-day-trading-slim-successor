@@ -43,7 +43,7 @@ Frozen doctrine and process inputs:
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
 - `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - repo-root `PLANS.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`

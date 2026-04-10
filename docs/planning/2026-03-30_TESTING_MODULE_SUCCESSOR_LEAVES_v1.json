@@ -47,7 +47,7 @@
       "objective": "Map the exact raw bundle surfaces required by RealDataBundle, real_data_loader, and downstream cognition ingress before admitting any canonical raw artefact.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md",
         "src/nvda_desk/schemas/dataset.py",
         "src/nvda_desk/services/real_data_loader.py"
@@ -85,7 +85,7 @@
       "objective": "Check in or otherwise admit one lawful raw bundle, or stop the pack with an explicit blocker if the raw truth does not exist.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_SCOPE_NOTE_v1.md"
       ],
       "repo_surfaces": [
@@ -127,7 +127,7 @@
       "objective": "Create one deterministic test harness that starts at the admitted raw bundle and reaches review outputs through the checked-in runtime path.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/real_data_loader.py",
         "src/nvda_desk/services/chain_to_cognition.py",
         "src/nvda_desk/services/cognition_runtime.py"
@@ -165,7 +165,7 @@
       "objective": "Assert stable runtime outputs, packet lineage, and review surfaces for the admitted raw-path harness.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "tests/test_gate102_raw_runtime_harness.py"
@@ -202,7 +202,7 @@
       "objective": "Assert parity on the lawful surfaces that should agree between the canonical raw-path harness and the canonical prepared-runtime harness.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/testing/canonical_runtime_harness.py"
       ],
       "repo_surfaces": [
@@ -237,7 +237,7 @@
       "objective": "Run the invariant regime against the raw path as well as the prepared path.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "tests/test_gate103_raw_prepared_parity.py",
@@ -275,7 +275,7 @@
       "objective": "Use Hypothesis/property testing only on the selected services where bounded edge exploration has the highest payoff.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/state_conditioned_modifier.py",
         "src/nvda_desk/services/playbook_eligibility.py"
       ],
@@ -311,7 +311,7 @@
       "objective": "Use stateful testing where ordered transitions matter more than isolated values.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/event_store.py"
       ],
       "repo_surfaces": [
@@ -349,7 +349,7 @@
       "objective": "Freeze which coercions are allowed and which are prohibited on the selected typed ingress surfaces.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/"
       ],
       "repo_surfaces": [
@@ -384,7 +384,7 @@
       "objective": "Exercise transaction-boundary and HTTP dependency seams using the repo venv and official test patterns.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/api/app.py",
         "src/nvda_desk/db/session.py"
       ],
@@ -461,7 +461,7 @@
       "objective": "Cut the full-history zip from the exact green successor-pack closeout state.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "docs/planning/2026-03-30_TESTING_MODULE_SUCCESSOR_EXECUTION_LOG_v1.md"

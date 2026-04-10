@@ -4,7 +4,7 @@ Status: closed checklist retained as evidence for Gate 255.
 
 - [x] `docs/01_NORMATIVE.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 - [x] `PLANS.md`
 - [x] `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`

@@ -3,7 +3,7 @@
 Gate 133 freezes the narrow trace-review testing regime for the bounded sibling scenario pack.
 
 Implemented surfaces:
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `tests/test_gate133_bounded_trace_review_regime.py`
 - `src/nvda_desk/testing/bounded_trace_review.py`
 

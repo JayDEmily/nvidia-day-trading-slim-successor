@@ -417,7 +417,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf is the boundary between draft planning and live execution. It is where repo-authority state must begin to match the new pack.",
@@ -788,7 +788,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf turns the contract freeze into the next active execution boundary without leaving stale routing state behind.",
@@ -1080,7 +1080,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf prevents the new regime promotion path from becoming brittle or silently lossy when upstream feeds are incomplete.",
@@ -1144,7 +1144,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf turns the cross-asset promotion path into the next active boundary without leaving stale router state.",
@@ -1438,7 +1438,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf proves the promoted participation truth is usable and honest without turning into an optimisation pass.",
@@ -1503,7 +1503,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf turns truthful participation promotion into the next active boundary without reopening downstream logic design.",
@@ -1801,7 +1801,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf catches accidental downstream redesign before Gate 252 broadens into the final tranche proof.",
@@ -1869,7 +1869,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf hands off to the final non-interference trace gate with one truthful active-gate state.",
@@ -1950,7 +1950,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf is the hard integrity gate that keeps the richer ingress from reopening the corrected serial stack.",
@@ -2222,7 +2222,7 @@
         "docs/03_DOMAIN_MODEL.md",
         "docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md",
         "pyproject.toml",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "/mnt/data/checkpoint_integrity_normative_extension.md"
       ],
       "workflow_intent_assertion": "This leaf closes the tranche and must leave no stale active-pack wording or hidden completeness claims behind.",

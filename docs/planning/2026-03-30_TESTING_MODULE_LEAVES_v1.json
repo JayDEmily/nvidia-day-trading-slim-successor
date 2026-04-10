@@ -49,13 +49,13 @@
       "objective": "Move the testing doctrine and the new testing-module planning pair from the testing branch into repo-active authority surfaces.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
         "AGENTS.md",
         "PLANS.md"
       ],
       "repo_surfaces": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md",
         "docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json"
       ],
@@ -161,7 +161,7 @@
       "objective": "Move the Phase 0 workbook-audit artefacts and script onto main without widening the verdict beyond what was actually proved.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md"
       ],
       "repo_surfaces": [
@@ -266,7 +266,7 @@
       "objective": "Create one reusable helper that bridges a checked-in prepared snapshot plus explicit companion regime/inventory truth into a full runtime invocation surface.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
       ],
       "repo_surfaces": [
@@ -314,7 +314,7 @@
       "objective": "Run one canonical prepared-runtime snapshot through the full cognition runtime and assert stable outputs and packet lineage.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/cognition_runtime.py"
       ],
       "repo_surfaces": [
@@ -361,7 +361,7 @@
       "status": "complete",
       "authority_docs": [
         "docs/01_NORMATIVE.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "tests/test_gate97_runtime_invariants.py"
@@ -407,7 +407,7 @@
       "status": "complete",
       "authority_docs": [
         "docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "tests/test_gate97_runtime_invariants.py"
@@ -452,7 +452,7 @@
       "objective": "Probe modifier-sensitive threshold edges with bounded parametrized cases rather than one hand-picked value.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/state_conditioned_modifier.py"
       ],
       "repo_surfaces": [
@@ -495,7 +495,7 @@
       "objective": "Probe temporal event-window edges across same-session, imminent, and live transitions.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/temporal_context.py"
       ],
       "repo_surfaces": [
@@ -542,7 +542,7 @@
       "objective": "Run the checked-in prepared-runtime snapshot sequence in order and assert lawful non-illegal transitions across adjacent snapshots.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json"
       ],
       "repo_surfaces": [
@@ -586,7 +586,7 @@
       "objective": "Freeze a lawful allow -> derisk -> block transition across ordered event-time offsets.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/services/posture_risk.py"
       ],
       "repo_surfaces": [
@@ -632,7 +632,7 @@
       "objective": "Promote a small materially distinct deterministic scenario matrix without opening a scenario sprawl problem.",
       "status": "complete",
       "authority_docs": [
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "fixtures/replay/gate_f_replay_regression_fixture_pack.json"
       ],
       "repo_surfaces": [
@@ -678,7 +678,7 @@
       "authority_docs": [
         "PLANS.md",
         "docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "repo_surfaces": [
         "PLANS.md",

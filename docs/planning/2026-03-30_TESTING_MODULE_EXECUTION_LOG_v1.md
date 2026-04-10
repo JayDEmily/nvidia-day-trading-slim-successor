@@ -19,7 +19,7 @@ This execution log records the sequential execution receipts for the testing-mod
 - Branch: `work/gate-94-testing-module-planning-20260330`
 - Start commit: `281a0ae`
 - End commit: `139d69a`
-- Files touched: `docs/TESTING_AND_PROMOTION.md`, `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md`, `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json`, `scripts/phase0_signal_workbook_audit.py`, `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
+- Files touched: `docs/08_TESTING_AND_PROMOTION.md`, `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.md`, `docs/planning/2026-03-30_PHASE0_SIGNAL_WORKBOOK_AUDIT.json`, `scripts/phase0_signal_workbook_audit.py`, `docs/planning/2026-03-30_TESTING_MODULE_GATES_v1.md`, `docs/planning/2026-03-30_TESTING_MODULE_LEAVES_v1.json`
 - Validations run: planned-pack authority test slice
 - Full suite required: no
 - Exact evidence: the testing doctrine, Phase 0 audit artefacts, and testing-module planning pair are now present on the Gate 94 branch from `main`.

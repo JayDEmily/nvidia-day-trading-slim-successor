@@ -15,7 +15,7 @@ It does not reconstruct fake git history for Gates 236-254.
 - Prepared handoff zip restored at `/home/jds/dev/nvidia-day-trading-slim-successor/codex_reconciliation_handoff_prepared_repo_2026-04-10.zip`
 - Comparison copy staged under `.incoming/prepared_handoff/`
 - Import source unpacked under `/tmp/gate255_handoff_source/`
-- Known contradiction before import: prepared `AGENTS.md` references missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`; defer import rather than fabricate or trim
+- Known contradiction before import: prepared `AGENTS.md` referenced a missing numbered-08 doctrine path; defer import rather than fabricate or trim
 - Pre-apply same-file overlap scan: `tests/test_gate134_bounded_trace_reporting.py` only; prepared change accepted as later-state tolerance, not a control-surface conflict
 
 ## Bounded proof
@@ -47,4 +47,4 @@ It does not reconstruct fake git history for Gates 236-254.
 - Closed through Gate 255 on `work/gate-255-live-prepared-handoff-reconciliation-20260410`
 - No active pack currently routed after closeout
 - Imported prepared repo-tree state through Gate 254 without replaying fake git history
-- Prepared `AGENTS.md` import deferred explicitly because `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md` is absent in both the live repo and the prepared handoff
+- Prepared `AGENTS.md` import deferred explicitly because the numbered-08 doctrine slot was unresolved in both the live repo and the prepared handoff at Gate 255 time

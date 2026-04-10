@@ -836,7 +836,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -884,7 +884,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -932,7 +932,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -980,7 +980,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -1028,7 +1028,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -1076,7 +1076,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/calibration.py",
         "src/nvda_desk/schemas/eval.py",
         "config/evaluation_config.example.yaml",
@@ -1123,7 +1123,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/review.py",
         "src/nvda_desk/schemas/calibration.py",
         "tests/test_gate63_review_eligibility.py"
@@ -1170,7 +1170,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/review.py",
         "src/nvda_desk/schemas/calibration.py",
         "tests/test_gate63_review_eligibility.py"
@@ -1217,7 +1217,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/review.py",
         "src/nvda_desk/schemas/calibration.py",
         "tests/test_gate63_review_eligibility.py"
@@ -1264,7 +1264,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/review.py",
         "src/nvda_desk/schemas/calibration.py",
         "tests/test_gate63_review_eligibility.py"
@@ -1311,7 +1311,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/review.py",
         "src/nvda_desk/schemas/calibration.py",
         "tests/test_gate63_review_eligibility.py"
@@ -1357,7 +1357,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/research.py",
         "src/nvda_desk/schemas/review.py",
         "tests/test_gate64_candidate_governance.py"
@@ -1404,7 +1404,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/research.py",
         "src/nvda_desk/schemas/review.py",
         "tests/test_gate64_candidate_governance.py"
@@ -1451,7 +1451,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/research.py",
         "src/nvda_desk/schemas/review.py",
         "tests/test_gate64_candidate_governance.py"
@@ -1498,7 +1498,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/research.py",
         "src/nvda_desk/schemas/review.py",
         "tests/test_gate64_candidate_governance.py"
@@ -1545,7 +1545,7 @@
       "files_expected": [
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_GATES_v6.md",
         "docs/planning/2026-03-27_COGNITIVE_WORKFLOW_MODIFICATION_LEAVES_v6.json",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "src/nvda_desk/schemas/research.py",
         "src/nvda_desk/schemas/review.py",
         "tests/test_gate64_candidate_governance.py"

@@ -31,7 +31,7 @@ Status: retained import manifest for Gate 255 closeout.
 
 ## Modified
 
-- doctrine/control surfaces: `docs/01_NORMATIVE.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, `docs/TESTING_AND_PROMOTION.md`
+- doctrine/control surfaces: `docs/01_NORMATIVE.md`, `docs/03_DOMAIN_MODEL.md`, `docs/04_TECHNICAL_ARCHITECTURE.md`, `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`, `docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md`, `docs/08_TESTING_AND_PROMOTION.md`
 - runtime/schema surfaces: `src/nvda_desk/config.py`, `src/nvda_desk/db/models.py`, `src/nvda_desk/schemas/cognition.py`, `src/nvda_desk/schemas/dataset.py`, `src/nvda_desk/services/chain_to_cognition.py`, `src/nvda_desk/services/real_data_loader.py`, `src/nvda_desk/services/cognition_runtime.py`, `src/nvda_desk/services/execution_expression.py`, `src/nvda_desk/services/review_explanation.py`, `src/nvda_desk/services/capital_deployment_authority.py`
 - fixtures and evidence artefacts: `fixtures/real_data/gate_e_prepared_runtime_fixture_pack.json`, `fixtures/trace_review/gate_134_bounded_trace_report.json`, `docs/status/2026-03-31_BOUNDED_TRACE_SCENARIO_REVIEW_REPORT.md`, `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`, `uv.lock`
 - bounded later-state test updates, including `tests/test_gate134_bounded_trace_reporting.py`
@@ -56,7 +56,7 @@ Reason:
 - `tests/test_gate110_agents_reading_order.py`
 
 Reason:
-- `AGENTS.md` depends on missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`
+- `AGENTS.md` depended on a missing numbered-08 doctrine path at the time of Gate 255
 - `tests/test_gate110_agents_reading_order.py` is not a required Gate 255 proof surface and does not encode Gate 255 reconciliation truth
 
 ## Hard-conflict Scan

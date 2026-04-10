@@ -26,7 +26,7 @@ def test_gate254_contradiction_and_continuity_additions_are_preserved() -> None:
     process_law = PROCESS_LAW.read_text(encoding="utf-8")
     contradiction = CONTRADICTION.read_text(encoding="utf-8")
 
-    assert "docs/TESTING_AND_PROMOTION.md" in process_law
+    assert "docs/08_TESTING_AND_PROMOTION.md" in process_law
     assert "## Controlled continuity execution packs" in process_law
     assert "## Closed-world leaf requirement" in process_law
     assert "would therefore regress the later checkpoint-integrity/testing-doctrine authority" in contradiction

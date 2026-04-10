@@ -4,15 +4,15 @@ Status: closed contradiction report retained as evidence for Gate 255.
 
 ## Known contradiction
 
-The prepared handoff includes a later `AGENTS.md` that adds a hard authority reference to `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`.
+The prepared handoff includes a later `AGENTS.md` that adds a hard authority reference to a numbered-08 doctrine path that did not exist in the repo-tracked tree at the time of Gate 255.
 
 Observed truth:
 - the prepared handoff contains `AGENTS.md`
-- the prepared handoff does not contain `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`
-- the live repo does not contain `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md`
+- the prepared handoff did not contain a repo-tracked numbered `08` doctrine file
+- the live repo did not contain a repo-tracked numbered `08` doctrine file
 
 Why this is not safe to auto-resolve:
-- importing the prepared `AGENTS.md` verbatim would create a dangling authority reference on a GitHub-mutation surface;
+- importing the prepared `AGENTS.md` verbatim would create a dangling authority reference on the numbered doctrine stack;
 - trimming the prepared `AGENTS.md` would falsify the locked Gate 253 doctrine content;
 - fabricating `docs/08...` would invent authority not present in either source tree.
 
@@ -22,6 +22,8 @@ Why this is not safe to auto-resolve:
 - import the rest of the prepared repo-tree state that remains lawful without the missing `docs/08...` file;
 - adapt imported governance tests that hard-code the prepared Gate 253/254 `AGENTS.md` state;
 - record the deferment explicitly in the import manifest, Gate 255 proof, and closeout receipts.
+
+This contradiction is later retired by Gate 256, which assigns the numbered `08` slot to `docs/08_TESTING_AND_PROMOTION.md` and removes the older GitHub/ChatGPT path confusion from repo authority.
 
 ## Additional same-file conflict scan
 

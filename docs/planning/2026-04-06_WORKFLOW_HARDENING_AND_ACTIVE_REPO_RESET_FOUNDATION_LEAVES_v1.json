@@ -598,7 +598,7 @@
       "authority_docs": [
         "README.md",
         "Makefile",
-        "docs/TESTING_AND_PROMOTION.md",
+        "docs/08_TESTING_AND_PROMOTION.md",
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md"
       ],
       "workflow_intent_assertion": "This leaf addresses the human/operator front door after the router, doctrine, and taxonomy have already been cleaned.",
@@ -653,7 +653,7 @@
         "docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md",
         "README.md",
         "PLANS.md",
-        "docs/TESTING_AND_PROMOTION.md"
+        "docs/08_TESTING_AND_PROMOTION.md"
       ],
       "workflow_intent_assertion": "This leaf closes the workflow-hardening pack by handing later work a precise cutover brief instead of another loose brainstorming boundary.",
       "vocabulary_terms_checked": [

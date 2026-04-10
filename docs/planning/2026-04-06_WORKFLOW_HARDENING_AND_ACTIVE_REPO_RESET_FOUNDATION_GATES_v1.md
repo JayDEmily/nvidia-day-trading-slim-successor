@@ -39,7 +39,7 @@ Out of scope:
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 - repo-root `PLANS.md`
 - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
@@ -89,7 +89,7 @@ This tranche therefore hardens the planning master -> coding executor split with
 - `AGENTS.md` as the stable behavioural layer only
 - repo-root `PLANS.md` as the router only
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md` as the canonical gate-level control surface
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - the closed Gate 200-205 successor pack as evidence only
 - `README.md` as onboarding context only, not the active router
 

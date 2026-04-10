@@ -44,7 +44,7 @@ Out of scope:
 - `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
 - `docs/planning/2026-03-24_DMP_V2_NORMATIVE_SPEC.md`
 - `docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md`
-- `docs/TESTING_AND_PROMOTION.md`
+- `docs/08_TESTING_AND_PROMOTION.md`
 - `src/nvda_desk/schemas/financial_calendar.py`
 - `src/nvda_desk/services/financial_calendar_reference.py`
 - `src/nvda_desk/services/financial_calendar_import.py`

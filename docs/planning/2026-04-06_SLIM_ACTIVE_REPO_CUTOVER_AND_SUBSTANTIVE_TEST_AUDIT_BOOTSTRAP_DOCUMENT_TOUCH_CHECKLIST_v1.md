@@ -12,7 +12,7 @@ Declare the frozen, source, and successor control surfaces that must be checked 
 - [x] `docs/04_TECHNICAL_ARCHITECTURE.md`
 - [x] `docs/05_GUARDRAILS.md`
 - [x] `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
-- [x] `docs/TESTING_AND_PROMOTION.md`
+- [x] `docs/08_TESTING_AND_PROMOTION.md`
 - [x] `AGENTS.md`
 
 ## Source-repo routing and evidence surfaces checked
@@ -52,7 +52,7 @@ Declare the frozen, source, and successor control surfaces that must be checked 
 - [ ] `2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_RETAINED_SURFACE_MANIFEST_AND_CUTOVER_RULES_v1.md`
 - [ ] `2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_INVENTORY_CLASSIFICATION_AND_DECISION_RULES_v1.md`
 - [ ] `2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_TEST_AUDIT_PROOF_SLICE_AND_SUCCESSOR_HANDOFF_v1.md`
-- [ ] `docs/TESTING_AND_PROMOTION.md` if proof order or test doctrine changes
+- [ ] `docs/08_TESTING_AND_PROMOTION.md` if proof order or test doctrine changes
 
 ## State-integrity invariants checked
 
