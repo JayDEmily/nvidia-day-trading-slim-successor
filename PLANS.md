@@ -13,6 +13,7 @@ It names the live planning authority and the nearest retained evidence classes; 
 - `docs/04_TECHNICAL_ARCHITECTURE.md`
 - `docs/05_GUARDRAILS.md`
 - `docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md`
+- `docs/TESTING_AND_PROMOTION.md`
 - `AGENTS.md`
 
 ## Canonical gate map
@@ -33,31 +34,31 @@ It names the live planning authority and the nearest retained evidence classes; 
 
 ## Latest closed pack retained as evidence
 
-- gates: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_GATES_v1.md`
-- leaves: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_SCOPE_NOTE_v1.md`
-- contradiction report: `docs/planning/2026-04-08_OPENING_POSITION_DOMAIN_ISOLATION_AND_INTERFACE_HARDENING_CONTRADICTION_REPORT_v1.md`
+- gates: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_GATES_v1.md`
+- leaves: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- contradiction report: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_CONTRADICTION_REPORT_v1.md`
+- import manifest: `docs/planning/2026-04-10_LIVE_PREPARED_HANDOFF_RECONCILIATION_IMPORT_MANIFEST_v1.md`
 
 ## Latest closed predecessor evidence
 
-- gates: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_GATES_v1.md`
-- leaves: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_LEAVES_v1.json`
-- execution log: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_EXECUTION_LOG_v1.md`
-- document-touch checklist: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_DOCUMENT_TOUCH_CHECKLIST_v1.md`
-- bounded-scope note: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_SCOPE_NOTE_v1.md`
-- contradiction report: `docs/planning/2026-04-06_SUCCESSOR_RETAINED_TEST_CLEANUP_EXECUTION_PACK_CONTRADICTION_REPORT_v1.md`
+- gates: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_GATES_v1.md`
+- leaves: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_LEAVES_v1.json`
+- execution log: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_EXECUTION_LOG_v1.md`
+- document-touch checklist: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_DOCUMENT_TOUCH_CHECKLIST_v1.md`
+- contradiction report: `docs/planning/2026-04-10_WORKFLOW_LAW_AND_TEMPLATE_PACK_REFRESH_CONTRADICTION_REPORT_v1.md`
 
 ## Older historical planning material
 
-- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including `docs/planning/2026-04-06_WORKFLOW_HARDENING_AND_ACTIVE_REPO_RESET_FOUNDATION_GATES_v1.md`, `docs/planning/2026-04-06_SLIM_ACTIVE_REPO_CUTOVER_AND_SUBSTANTIVE_TEST_AUDIT_BOOTSTRAP_GATES_v1.md`, the workflow hardening and active-repo reset foundation pack, the slim active-repo cutover and substantive test-audit bootstrap pack, and the 2026-04-05 target-repo admitted-evidence successor pack with their closeout/handoff surfaces.
+- earlier closed planning artefacts remain under `docs/planning/` as historical-only material, including the imported prepared handoff packs for Gates 236-253, the opening-position domain isolation and interface hardening pack, the workflow hardening and active-repo reset foundation pack, the slim active-repo cutover and substantive test-audit bootstrap pack, and the 2026-04-05 target-repo admitted-evidence successor pack with their closeout and handoff surfaces.
 
 ## Current state
 
-- no active pack currently routed; the opening-position domain isolation and interface hardening pack is closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
-- latest closed pack retained as evidence is the opening-position domain isolation and interface hardening pack closed through Gate 235 on `work/gate-235-cross-flow-harness-and-pack-closeout-20260408`
-- latest closed predecessor evidence is the successor retained-test cleanup execution pack closed through Gate 225 on `work/gate-225-retained-test-cleanup-closeout-20260406`
+- no active pack currently routed; the live prepared-handoff reconciliation pack is closed through Gate 255 on `work/gate-255-live-prepared-handoff-reconciliation-20260410`
+- latest closed pack retained as evidence is the live prepared-handoff reconciliation pack closed through Gate 255 on `work/gate-255-live-prepared-handoff-reconciliation-20260410`
+- latest closed predecessor evidence is the workflow-law and template-pack refresh pack retained from the prepared handoff content state through Gate 254
+- prepared `AGENTS.md` import remains deferred pending the missing `docs/08_GITHUB_OR_CHATGPT_GITHUB_INTERACTIONS.md` authority source
 
 ## Sequential execution rule
 
